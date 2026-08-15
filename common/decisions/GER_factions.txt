@@ -1,0 +1,5526 @@
+GER_internal_factions = {
+
+	GER_Wehrmacht_wargames = {
+
+		icon = generic_decision
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_Wehrmacht_wargames_tt
+				check_variable = { GER_Wehrmacht_attitude = 0 compare = less_than }
+				check_variable = { GER_Wehrmacht_influence = 5 compare = greater_than_or_equals }
+			}
+		}
+
+		days_re_enable = 270
+
+		cost = 50
+
+		fire_only_once = no
+
+		visible = {
+			tag = GER
+			check_variable = { GER_Wehrmacht_attitude = 4 compare = less_than_or_equals }
+			check_variable = { GER_Wehrmacht_influence = 0 compare = greater_than_or_equals }
+		}
+
+		modifier = {
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					check_variable = { GER_Wehrmacht_influence > 39 }
+				}
+				army_experience = 25
+			}
+			else_if = {
+				limit = {
+					check_variable = { GER_Wehrmacht_influence > 29 }
+				}
+				army_experience = 20
+			}
+			else_if = {
+				limit = {
+					check_variable = { GER_Wehrmacht_influence > 19 }
+				}
+				army_experience = 15
+			}
+			else_if = {
+				limit = {
+					check_variable = { GER_Wehrmacht_influence > 9 }
+				}
+				army_experience = 10
+			}
+			else = {
+				army_experience = 5
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	GER_Wehrmacht_lessons_from_war = {
+
+		icon = generic_decision
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+            has_war = yes
+			custom_trigger_tooltip = {
+				tooltip = GER_Wehrmacht_lessons_from_war_tt
+				check_variable = { GER_Wehrmacht_attitude = 4 compare = less_than_or_equals }
+				check_variable = { GER_Wehrmacht_influence = 5 compare = greater_than_or_equals }
+			}
+		}
+
+		days_remove = WEHRMACHT_INFLUENCE_LEVEL2
+		days_re_enable = 90
+
+		cost = 50
+
+		fire_only_once = no
+
+		visible = {
+			tag = GER
+			check_variable = { GER_Wehrmacht_attitude = 4 compare = less_than_or_equals }
+			check_variable = { GER_Wehrmacht_influence = 0 compare = greater_than_or_equals }
+		}
+
+		modifier = {
+			training_time_army_factor = -0.20
+			max_training = 0.5
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				if = {
+					limit = {
+						check_variable = { GER_Wehrmacht_influence > 39 }
+					}
+					set_variable = { WEHRMACHT_INFLUENCE_LEVEL2 = 70 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Wehrmacht_influence > 29 }
+					}
+					set_variable = { WEHRMACHT_INFLUENCE_LEVEL2 = 56 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Wehrmacht_influence > 19 }
+					}
+					set_variable = { WEHRMACHT_INFLUENCE_LEVEL2 = 42 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Wehrmacht_influence > 9 }
+					}
+					set_variable = { WEHRMACHT_INFLUENCE_LEVEL2 = 28 }
+				}
+				else = {
+					set_variable = { WEHRMACHT_INFLUENCE_LEVEL2 = 14 }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+
+			modifier = {
+				factor = 0
+				AND = {
+					date > 1941.1.1
+					num_divisions > 199
+				}
+			}
+		}
+	}
+
+	GER_SS_patriotic_fighting = {
+
+		icon = generic_decision
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+            has_war = yes
+			has_government = fascism
+			custom_trigger_tooltip = {
+				tooltip = GER_SS_patriotic_fighting_tt
+				check_variable = { GER_SS_attitude = 0 compare = less_than }
+				check_variable = { GER_SS_influence = 1 compare = greater_than_or_equals }
+			}
+		}
+
+		days_remove = SS_INFLUENCE_LEVEL2
+		days_re_enable = 90
+
+		cost = 25
+
+		fire_only_once = no
+
+		visible = {
+			tag = GER
+			has_government = fascism
+			check_variable = { GER_SS_attitude = 4 compare = less_than_or_equals }
+			check_variable = { GER_SS_influence = 0 compare = greater_than_or_equals }
+		}
+
+		modifier = {
+			army_attack_factor = 0.1
+			air_superiority_efficiency = 0.1
+			air_intercept_efficiency = 0.1
+			air_cas_efficiency = 0.1
+			navy_capital_ship_attack_factor = 0.1
+			navy_carrier_air_attack_factor = 0.1
+			navy_screen_attack_factor = 0.1
+			navy_submarine_attack_factor = 0.1
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				if = {
+					limit = {
+						check_variable = { GER_SS_influence > 39 }
+					}
+					set_variable = { SS_INFLUENCE_LEVEL2 = 35 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_SS_influence > 29 }
+					}
+					set_variable = { SS_INFLUENCE_LEVEL2 = 28 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_SS_influence > 19 }
+					}
+					set_variable = { SS_INFLUENCE_LEVEL2 = 21 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_SS_influence > 9 }
+					}
+					set_variable = { SS_INFLUENCE_LEVEL2 = 14 }
+				}
+				else = {
+					set_variable = { SS_INFLUENCE_LEVEL2 = 7 }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	GER_SS_special_orders = {
+
+		icon = generic_decision
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			has_government = fascism
+			custom_trigger_tooltip = {
+				tooltip = GER_SS_special_orders_tt
+				check_variable = { GER_SS_attitude = 4 compare = less_than_or_equals }
+				check_variable = { GER_SS_influence = 1 compare = greater_than_or_equals }
+			}
+		}
+
+		days_remove = SS_INFLUENCE_LEVEL
+		days_re_enable = 90
+
+		cost = 25
+
+		fire_only_once = no
+
+		visible = {
+			tag = GER
+			has_government = fascism
+			check_variable = { GER_SS_attitude = 4 compare = less_than_or_equals }
+			check_variable = { GER_SS_influence = 0 compare = greater_than_or_equals }
+		}
+
+		modifier = {
+			command_power_gain = 0.25
+			political_power_gain = 0.1
+		}
+
+		complete_effect = {
+			if = {
+                limit = {
+                    check_variable = { GER_SS_influence > 39 }
+                }
+                set_variable = { SS_INFLUENCE_LEVEL = 150 }
+            }
+            else_if = {
+                limit = {
+                    check_variable = { GER_SS_influence > 29 }
+                }
+                set_variable = { SS_INFLUENCE_LEVEL = 120 }
+            }
+            else_if = {
+                limit = {
+                    check_variable = { GER_SS_influence > 19 }
+                }
+                set_variable = { SS_INFLUENCE_LEVEL = 90 }
+            }
+            else_if = {
+                limit = {
+                    check_variable = { GER_SS_influence > 9 }
+                }
+                set_variable = { SS_INFLUENCE_LEVEL = 60 }
+            }
+            else = {
+                set_variable = { SS_INFLUENCE_LEVEL = 30 }
+            }
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+	
+	GER_SS_oak_operation = {
+
+		icon = generic_decision
+
+		allowed = {
+			tag = GER
+		}
+
+		visible = {
+			tag = GER
+			ITA = {
+				check_variable = {
+					var = ITA_med_control
+					value = -44
+					compare = less_than
+				}
+			}
+			has_completed_focus = GER_ss_secret_operations
+		}
+
+		available = {
+			ITA = { has_country_flag = ITA_deposed_leader_flag }
+		}
+
+		days_remove = 60
+
+		cost = 15
+
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1000
+		}
+		modifier = {
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = GER_SS_oak_operation_tt
+		}
+		
+		remove_effect = {
+			GER = { country_event = { id = lar_rescue_mussolini.2 random_hours = 30 } }
+			hidden_effect = {
+				ITA = {
+					country_event = BBA_italy_civil_war.1
+					add_ideas = death_before_defeat
+					GER = {
+						transfer_state = 39
+						transfer_state = 885
+						transfer_state = 886
+						transfer_state = 736
+					}
+					if = {
+						limit = {
+							ITA = {
+								has_full_control_of_state = 102
+							}
+						}
+						GER = { set_state_controller = 102 }
+					}
+					if = {
+						limit = {
+							ITA = {
+								has_full_control_of_state = 185
+							}
+						}
+						GER = { set_state_controller = 185 }
+					}
+					if = {
+						limit = {
+							ITA = {
+								has_full_control_of_state = 47
+							}
+						}
+						GER = { set_state_controller = 47 }
+					}
+					if = {
+						limit = {
+							ITA = {
+								has_full_control_of_state = 186
+							}
+						}
+						GER = { set_state_controller = 186 }
+					}
+				}
+			}
+		}
+	}
+	
+	GER_SS_grief_operation = {
+
+		icon = generic_decision
+
+		allowed = {
+			tag = GER
+		}
+
+		visible = {
+			tag = GER
+			date > 1944.6.1
+			has_completed_focus = GER_ss_secret_operations
+		}
+
+		available = {
+			date > 1944.12.1
+		}
+
+		days_remove = 30
+
+		cost = 25
+
+		fire_only_once = yes
+
+		modifier = {
+			equipment_capture_factor = 0.25
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+		complete_effect = {
+			custom_effect_tooltip = GER_SS_grief_operation_tt
+			division_template = {
+				name = "SS-Panzer-Brigade"
+				template_counter = 155
+				priority = 3
+				is_locked = yes
+				
+				regiments = {
+					ss_medium_armor_regiment = { x = 0 y = 0 }
+					ss_medium_armor_regiment = { x = 0 y = 1 }
+					
+					ss_mechanized = { x = 1 y = 0 }
+					ss_mechanized = { x = 1 y = 1 }
+					
+					ss_motorized = { x = 2 y = 0 }
+					ss_motorized = { x = 2 y = 1 }
+				}
+				regimental_support = {
+					medium_tank_destroyer = { x = 0 y = 0 }
+					
+					artillery = { x = 1 y = 0 }
+					anti_tank = { x = 1 y = 1 }
+					
+					artillery = { x = 2 y = 0 }
+					anti_tank = { x = 2 y = 1 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					motorbike_recon = { x = 0 y = 1 }
+					mot_signal_company = { x = 0 y = 2 }
+					armored_car_recon  = { x = 0 y = 3 }
+				}
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 64 }
+				create_unit = {
+					division = "name = \"150.SS-Panzer-Brigade\" division_template = \"SS-Panzer-Brigade\" start_experience_factor = 1 start_equipment_factor = 0.2" 
+					owner = GER
+				}
+			}
+		}
+	}
+	
+	
+	GER_me262_1943 = {
+		icon = generic_air
+		available = {
+			original_tag = GER
+			GER = {
+				is_special_project_completed = sp:sp_air_axial_jet_engine
+			}
+			date > 1943.9.1
+			has_tech = advanced_small_airframe
+			NOT = {
+				has_tech = modern_small_airframe
+			}
+		}
+		visible = {
+			original_tag = GER
+			GER = {
+				is_special_project_completed = sp:sp_air_jet_engine
+			}
+			NOT = {
+				has_tech = modern_small_airframe
+			}
+		}
+		cost = 50
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1000
+		}
+		complete_effect = {
+			set_technology = {
+				modern_small_airframe = 1
+			}
+		}
+	}
+
+
+	GER_Industrialists_political_favours = {
+
+		icon = generic_decision
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_Industrialists_political_favours_tt
+				check_variable = { GER_Industrialists_attitude = 1 compare = greater_than_or_equals }
+				check_variable = { GER_Industrialists_influence = 1 compare = greater_than_or_equals }
+			}
+		}
+
+		days_remove = INDUSTRIALISTS_INFLUENCE_LEVEL_2
+		days_re_enable = 90
+
+		cost = 25
+
+		fire_only_once = no
+
+		visible = {
+			tag = GER
+			check_variable = { GER_Industrialists_attitude = 0 compare = greater_than_or_equals }
+			check_variable = { GER_Industrialists_influence = 0 compare = greater_than_or_equals }
+		}
+
+		modifier = {
+			political_power_gain = 0.3
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 4 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 150 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 3 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 120 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 2 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 90 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 1 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 60 }
+				}
+				else = {
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 30 }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+	
+	GER_Industrialists_invest_in_porsche = {
+
+		icon = generic_decision
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_Industrialists_invests_tt
+				check_variable = { GER_Industrialists_attitude = 1 compare = greater_than_or_equals }
+				check_variable = { GER_Industrialists_influence = 1 compare = greater_than_or_equals }
+			}
+		}
+
+		days_remove = INDUSTRIALISTS_INFLUENCE_LEVEL_2
+		days_re_enable = 180
+
+		cost = 25
+
+		fire_only_once = no
+
+		visible = {
+			tag = GER
+			check_variable = { GER_Industrialists_attitude = 0 compare = greater_than_or_equals }
+			check_variable = { GER_Industrialists_influence = 0 compare = greater_than_or_equals }
+		}
+
+		modifier = {
+			civilian_factory_use = 10
+		}
+
+		complete_effect = {
+			#hidden_effect = {
+				if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 5 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 180 }
+					mio:GER_porsche_organization = { add_mio_funds = 1800 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 4 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 150 }
+					mio:GER_porsche_organization = { add_mio_funds = 1500 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 3 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 120 }
+					mio:GER_porsche_organization = { add_mio_funds = 1200 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 2 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 90 }
+					mio:GER_porsche_organization = { add_mio_funds = 900 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 1 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 60 }
+					mio:GER_porsche_organization = { add_mio_funds = 600 }
+				}
+				else = {
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 30 }
+					mio:GER_porsche_organization = { add_mio_funds = 300 }
+				}
+			#}
+		}
+	}
+	
+	GER_Industrialists_invest_in_henschel = {
+
+		icon = generic_decision
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_Industrialists_invests_tt
+				check_variable = { GER_Industrialists_attitude = 1 compare = greater_than_or_equals }
+				check_variable = { GER_Industrialists_influence = 1 compare = greater_than_or_equals }
+			}
+		}
+
+		days_remove = INDUSTRIALISTS_INFLUENCE_LEVEL_2
+		days_re_enable = 180
+
+		cost = 25
+
+		fire_only_once = no
+
+		visible = {
+			tag = GER
+			check_variable = { GER_Industrialists_attitude = 0 compare = greater_than_or_equals }
+			check_variable = { GER_Industrialists_influence = 0 compare = greater_than_or_equals }
+		}
+
+		modifier = {
+			civilian_factory_use = 10
+		}
+
+		complete_effect = {
+			#hidden_effect = {
+				if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 5 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 180 }
+					mio:GER_henschel_organization = { add_mio_funds = 1800 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 4 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 150 }
+					mio:GER_henschel_organization = { add_mio_funds = 1500 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 3 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 120 }
+					mio:GER_henschel_organization = { add_mio_funds = 1200 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 2 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 90 }
+					mio:GER_henschel_organization = { add_mio_funds = 900 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 1 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 60 }
+					mio:GER_henschel_organization = { add_mio_funds = 600 }
+				}
+				else = {
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 30 }
+					mio:GER_henschel_organization = { add_mio_funds = 300 }
+				}
+			#}
+		}
+	}
+	
+	GER_Industrialists_invest_in_krupp = {
+
+		icon = generic_decision
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_Industrialists_invests_tt
+				check_variable = { GER_Industrialists_attitude = 1 compare = greater_than_or_equals }
+				check_variable = { GER_Industrialists_influence = 1 compare = greater_than_or_equals }
+			}
+		}
+
+		days_remove = INDUSTRIALISTS_INFLUENCE_LEVEL_2
+		days_re_enable = 180
+
+		cost = 25
+
+		fire_only_once = no
+
+		visible = {
+			tag = GER
+			check_variable = { GER_Industrialists_attitude = 0 compare = greater_than_or_equals }
+			check_variable = { GER_Industrialists_influence = 0 compare = greater_than_or_equals }
+		}
+
+		modifier = {
+			civilian_factory_use = 10
+		}
+
+		complete_effect = {
+			#hidden_effect = {
+				if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 5 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 180 }
+					mio:GER_krupp_organization = { add_mio_funds = 1800 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 4 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 150 }
+					mio:GER_krupp_organization = { add_mio_funds = 1500 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 3 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 120 }
+					mio:GER_krupp_organization = { add_mio_funds = 1200 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 2 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 90 }
+					mio:GER_krupp_organization = { add_mio_funds = 900 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 1 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 60 }
+					mio:GER_krupp_organization = { add_mio_funds = 600 }
+				}
+				else = {
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 30 }
+					mio:GER_krupp_organization = { add_mio_funds = 300 }
+				}
+			#}
+		}
+	}
+	
+	GER_Industrialists_invest_in_man = {
+
+		icon = generic_decision
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_Industrialists_invests_tt
+				check_variable = { GER_Industrialists_attitude = 1 compare = greater_than_or_equals }
+				check_variable = { GER_Industrialists_influence = 1 compare = greater_than_or_equals }
+			}
+		}
+
+		days_remove = INDUSTRIALISTS_INFLUENCE_LEVEL_2
+		days_re_enable = 180
+
+		cost = 25
+
+		fire_only_once = no
+
+		visible = {
+			tag = GER
+			check_variable = { GER_Industrialists_attitude = 0 compare = greater_than_or_equals }
+			check_variable = { GER_Industrialists_influence = 0 compare = greater_than_or_equals }
+		}
+
+		modifier = {
+			civilian_factory_use = 10
+		}
+
+		complete_effect = {
+			#hidden_effect = {
+				if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 5 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 180 }
+					mio:GER_man_organization = { add_mio_funds = 1800 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 4 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 150 }
+					mio:GER_man_organization = { add_mio_funds = 1500 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 3 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 120 }
+					mio:GER_man_organization = { add_mio_funds = 1200 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 2 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 90 }
+					mio:GER_man_organization = { add_mio_funds = 900 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 1 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 60 }
+					mio:GER_man_organization = { add_mio_funds = 600 }
+				}
+				else = {
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 30 }
+					mio:GER_man_organization = { add_mio_funds = 300 }
+				}
+			#}
+		}
+	}
+	
+	GER_Industrialists_invest_in_daimlerbenz = {
+
+		icon = generic_decision
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_Industrialists_invests_tt
+				check_variable = { GER_Industrialists_attitude = 1 compare = greater_than_or_equals }
+				check_variable = { GER_Industrialists_influence = 1 compare = greater_than_or_equals }
+			}
+		}
+
+		days_remove = INDUSTRIALISTS_INFLUENCE_LEVEL_2
+		days_re_enable = 180
+
+		cost = 25
+
+		fire_only_once = no
+
+		visible = {
+			tag = GER
+			check_variable = { GER_Industrialists_attitude = 0 compare = greater_than_or_equals }
+			check_variable = { GER_Industrialists_influence = 0 compare = greater_than_or_equals }
+		}
+
+		modifier = {
+			civilian_factory_use = 10
+		}
+
+		complete_effect = {
+			#hidden_effect = {
+				if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 5 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 180 }
+					mio:GER_daimler_benz_organization = { add_mio_funds = 1800 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 4 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 150 }
+					mio:GER_daimler_benz_organization = { add_mio_funds = 1500 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 3 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 120 }
+					mio:GER_daimler_benz_organization = { add_mio_funds = 1200 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 2 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 90 }
+					mio:GER_daimler_benz_organization = { add_mio_funds = 900 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Industrialists_influence > 1 }
+					}
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 60 }
+					mio:GER_daimler_benz_organization = { add_mio_funds = 600 }
+				}
+				else = {
+					set_variable = { INDUSTRIALISTS_INFLUENCE_LEVEL_2 = 30 }
+					mio:GER_daimler_benz_organization = { add_mio_funds = 300 }
+				}
+			#}
+		}
+	}
+	
+	GER_Public_Support_inspire_the_public = {
+
+		icon = generic_decision
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_Public_Support_inspire_the_public_tt
+				check_variable = { GER_Public_Support_attitude = 1 compare = greater_than_or_equals }
+				check_variable = { GER_Public_Support_influence = 1 compare = greater_than_or_equals }
+			}
+		}
+
+		days_remove = PUBLIC_SUPPORT_INFLUENCE_LEVEL
+		days_re_enable = 90
+
+		cost = 25
+
+		fire_only_once = no
+
+		visible = {
+			tag = GER
+			check_variable = { GER_Public_Support_attitude = 0 compare = greater_than_or_equals }
+			check_variable = { GER_Public_Support_influence = 0 compare = greater_than_or_equals }
+			has_idea = sour_loser_4
+		}
+
+		modifier = {
+			production_speed_buildings_factor = 0.2
+			industrial_capacity_factory = 0.2
+			industrial_capacity_dockyard = 0.2
+			war_support_weekly = 0.01
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				if = {
+					limit = {
+						check_variable = { GER_Public_Support_attitude > 4 }
+					}
+					set_variable = { PUBLIC_SUPPORT_INFLUENCE_LEVEL = 70 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Public_Support_attitude > 3 }
+					}
+					set_variable = { PUBLIC_SUPPORT_INFLUENCE_LEVEL = 56 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Public_Support_attitude > 2 }
+					}
+					set_variable = { PUBLIC_SUPPORT_INFLUENCE_LEVEL = 42 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Public_Support_attitude > 1 }
+					}
+					set_variable = { PUBLIC_SUPPORT_INFLUENCE_LEVEL = 28 }
+				}
+				else = {
+					set_variable = { PUBLIC_SUPPORT_INFLUENCE_LEVEL = 14 }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+
+			modifier = {
+				factor = 0
+				OR = {
+					has_idea = undisturbed_isolation
+					has_idea = isolation
+					has_idea = civilian_economy
+					has_idea = low_economic_mobilisation
+				}
+			}
+		}
+	}
+
+	GER_Public_Support_mobilize_the_public = {
+
+		icon = generic_decision
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			has_war = yes
+			custom_trigger_tooltip = {
+				tooltip = GER_Public_Support_mobilize_the_public_tt
+				check_variable = { GER_Public_Support_attitude = 1 compare = greater_than_or_equals }
+				check_variable = { GER_Public_Support_influence = 1 compare = greater_than_or_equals }
+			}
+		}
+
+		days_remove = PUBLIC_SUPPORT_INFLUENCE_LEVEL_2
+		days_re_enable = 90
+
+		cost = 25
+
+		fire_only_once = no
+
+		visible = {
+			tag = GER
+			check_variable = { GER_Public_Support_attitude = 0 compare = greater_than_or_equals }
+			check_variable = { GER_Public_Support_influence = 0 compare = greater_than_or_equals }
+			has_idea = sour_loser_4
+		}
+
+		modifier = {
+			mobilization_speed = 0.2
+			production_factory_efficiency_gain_factor = 0.2
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				if = {
+					limit = {
+						check_variable = { GER_Public_Support_attitude > 4 }
+					}
+					set_variable = { PUBLIC_SUPPORT_INFLUENCE_LEVEL_2 = 70 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Public_Support_attitude > 3 }
+					}
+					set_variable = { PUBLIC_SUPPORT_INFLUENCE_LEVEL_2 = 56 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Public_Support_attitude > 2 }
+					}
+					set_variable = { PUBLIC_SUPPORT_INFLUENCE_LEVEL_2 = 42 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_Public_Support_attitude > 1 }
+					}
+					set_variable = { PUBLIC_SUPPORT_INFLUENCE_LEVEL_2 = 28 }
+				}
+				else = {
+					set_variable = { PUBLIC_SUPPORT_INFLUENCE_LEVEL_2 = 14 }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+
+			modifier = {
+				factor = 0
+				date < 1941.1.1
+			}
+		}
+	}
+
+############################################################################################################
+############################################################################################################
+############################################################################################################
+#############################SS RECRUITMENT#################################################################
+############################################################################################################
+############################################################################################################
+	
+	SS_recruitment_denmark = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			has_completed_focus = GER_foreign_recruitment
+			99 = {
+				CONTROLLER = {
+					OR = {
+						original_tag = GER
+						is_subject_of = GER
+					}
+				}
+			}
+			37 = {
+				CONTROLLER = {
+					OR = {
+						original_tag = GER
+						is_subject_of = GER
+					}
+				}
+			}
+			871 = { 
+				CONTROLLER = { 
+					OR = { 
+						original_tag = GER 
+						is_subject_of = GER 
+					} 
+				} 
+			}
+			OR = {
+				date > 1940.12.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+		}
+
+		visible = {
+			OR = {
+				has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				99 = {
+					CONTROLLER = {
+						OR = {
+							original_tag = GER
+							is_subject_of = GER
+						}
+					}
+				}
+				37 = {
+					CONTROLLER = {
+						OR = {
+							original_tag = GER
+							is_subject_of = GER
+						}
+					}
+				}
+				871 = { 
+					CONTROLLER = { 
+						OR = { 
+							original_tag = GER 
+							is_subject_of = GER 
+						} 
+					} 
+				}
+			}
+			OR = {
+				date > 1940.11.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		days_remove = 30
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			country_event = ss_recruitment_event.1
+		}
+	}
+
+	SS_recruitment_norway = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			has_completed_focus = GER_foreign_recruitment
+			99 = {
+				CONTROLLER = {
+					OR = {
+						original_tag = GER
+						is_subject_of = GER
+					}
+				}
+			}
+			37 = {
+				CONTROLLER = {
+					OR = {
+						original_tag = GER
+						is_subject_of = GER
+					}
+				}
+			}
+			110 = { 
+				CONTROLLER = { 
+					OR = { 
+						original_tag = GER 
+						is_subject_of = GER 
+					} 
+				} 
+			}
+			142 = { 
+				CONTROLLER = { 
+					OR = { 
+						original_tag = GER 
+						is_subject_of = GER 
+					} 
+				} 
+			}
+			143 = { 
+				CONTROLLER = { 
+					OR = { 
+						original_tag = GER 
+						is_subject_of = GER 
+					} 
+				} 
+			}
+			144 = { 
+				CONTROLLER = { 
+					OR = { 
+						original_tag = GER 
+						is_subject_of = GER 
+					} 
+				} 
+			}
+			878 = { 
+				CONTROLLER = { 
+					OR = { 
+						original_tag = GER 
+						is_subject_of = GER 
+					} 
+				} 
+			}
+			OR = {
+				date > 1941.4.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+		}
+
+		visible = {
+			OR = {
+				has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+			}
+			AND = {
+				99 = {
+					CONTROLLER = {
+						OR = {
+							original_tag = GER
+							is_subject_of = GER
+						}
+					}
+				}
+				37 = {
+					CONTROLLER = {
+						OR = {
+							original_tag = GER
+							is_subject_of = GER
+						}
+					}
+				}
+				110 = { 
+					CONTROLLER = { 
+						OR = { 
+							original_tag = GER 
+							is_subject_of = GER 
+						} 
+					} 
+				}
+				142 = { 
+					CONTROLLER = { 
+						OR = { 
+							original_tag = GER 
+							is_subject_of = GER 
+						} 
+					} 
+				}
+				143 = { 
+					CONTROLLER = { 
+						OR = { 
+							original_tag = GER 
+							is_subject_of = GER 
+						} 
+					} 
+				}
+				144 = { 
+					CONTROLLER = { 
+						OR = { 
+							original_tag = GER 
+							is_subject_of = GER 
+						} 
+					} 
+				}
+				878 = { 
+					CONTROLLER = { 
+						OR = { 
+							original_tag = GER 
+							is_subject_of = GER 
+						} 
+					} 
+				}
+			}
+			OR = {
+				date > 1941.3.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		days_remove = 30
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			country_event = ss_recruitment_event.2
+		}
+	}
+	
+
+
+	SS_recruitment_netherlands = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			OR = {
+				date > 1945.1.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			has_completed_focus = GER_foreign_recruitment
+			36 = { 
+				CONTROLLER = { 
+					OR = { 
+						original_tag = GER 
+						is_subject_of = GER 
+					} 
+				} 
+			}
+			7 = { 
+				CONTROLLER = { 
+					OR = { 
+						original_tag = GER 
+						is_subject_of = GER 
+					} 
+				} 
+			}
+			35 = { 
+				CONTROLLER = { 
+					OR = { 
+						original_tag = GER 
+						is_subject_of = GER 
+					} 
+				} 
+			}
+				
+			
+		}
+		visible = {
+			OR = {
+				date > 1944.12.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				HOL = {
+					is_subject_of = GER
+				}
+				has_war_with = HOL
+				HOL = { exists = no }
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+			country_event = ss_recruitment_event.3
+		}
+	}
+	
+	SS_recruitment_belgium = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			OR = {
+				date > 1944.9.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			has_completed_focus = GER_foreign_recruitment
+		}
+		visible = {
+			OR = {
+				date > 1944.8.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				BEL = {
+					is_subject_of = GER
+				}
+				has_war_with = BEL
+				BEL = { exists = no }
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+			country_event = ss_recruitment_event.4
+		}
+	}
+	
+	SS_recruitment_france = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			OR = {
+				date > 1945.1.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			has_completed_focus = GER_foreign_recruitment
+		}
+		visible = {
+			OR = {
+				date > 1944.12.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				FRA = {
+					is_subject_of = GER
+				}
+				has_war_with = FRA
+				FRA = { exists = no }
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+			country_event = ss_recruitment_event.5
+		}
+	}
+
+	SS_recruitment_germany = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			64 = { 
+				CONTROLLER = { 
+					OR = { 
+						original_tag = GER 
+						is_subject_of = GER 
+					} 
+				} 
+			}
+			55 = { 
+				CONTROLLER = { 
+					OR = { 
+						original_tag = GER 
+						is_subject_of = GER 
+					} 
+				} 
+			}
+			50 = {  
+				CONTROLLER = { 
+					OR = { 
+						original_tag = GER 
+						is_subject_of = GER 
+					} 
+				} 
+			}
+			52 = { 
+				CONTROLLER = { 
+					OR = { 
+						original_tag = GER 
+						is_subject_of = GER 
+					} 
+				} 
+			}
+		}
+		visible = {
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+			country_event = ss_recruitment_event.9
+		}
+	}
+
+	SS_recruitment_prinz_eugen = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			810 = { 
+				CONTROLLER = { 
+					OR = { 
+						original_tag = GER 
+						is_subject_of = GER 
+					} 
+				} 
+			}
+			OR = {
+                AND = {
+                    is_in_faction_with = YUG
+                    YUG = { has_government = fascism }
+                }
+                AND = {
+                    107 = {
+                        CONTROLLER = {
+                            is_in_faction_with = GER
+                        }
+                    }
+                    NOT = {
+                        YUG = { has_full_control_of_state = 102 }
+                        YUG = { has_full_control_of_state = 103 }
+                        YUG = { has_full_control_of_state = 908 }
+                        YUG = { has_full_control_of_state = 109 }
+                        YUG = { has_full_control_of_state = 104 }
+                        YUG = { has_full_control_of_state = 45 }
+                        YUG = { has_full_control_of_state = 764 }
+                        YUG = { has_full_control_of_state = 107 }
+                        YUG = { has_full_control_of_state = 907 }
+                        YUG = { has_full_control_of_state = 105 }
+                        YUG = { has_full_control_of_state = 108 }
+                        YUG = { has_full_control_of_state = 799 }
+                        YUG = { has_full_control_of_state = 800 }
+                        YUG = { has_full_control_of_state = 801 }
+                        YUG = { has_full_control_of_state = 106 }
+                        YUG = { has_full_control_of_state = 887 }
+                        YUG = { has_full_control_of_state = 888 }
+                    }
+                }
+			}
+			OR = {
+				date > 1942.3.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			has_completed_focus = GER_foreign_recruitment
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1942.2.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			OR = {
+                AND = {
+                    is_in_faction_with = YUG
+                    YUG = { has_government = fascism }
+                }
+                AND = {
+                    107 = {
+                        CONTROLLER = {
+                            is_in_faction_with = GER
+                        }
+                    }
+                    NOT = {
+                        YUG = { has_full_control_of_state = 102 }
+                        YUG = { has_full_control_of_state = 103 }
+                        YUG = { has_full_control_of_state = 908 }
+                        YUG = { has_full_control_of_state = 109 }
+                        YUG = { has_full_control_of_state = 104 }
+                        YUG = { has_full_control_of_state = 45 }
+                        YUG = { has_full_control_of_state = 764 }
+                        YUG = { has_full_control_of_state = 107 }
+                        YUG = { has_full_control_of_state = 907 }
+                        YUG = { has_full_control_of_state = 105 }
+                        YUG = { has_full_control_of_state = 108 }
+                        YUG = { has_full_control_of_state = 799 }
+                        YUG = { has_full_control_of_state = 800 }
+                        YUG = { has_full_control_of_state = 801 }
+                        YUG = { has_full_control_of_state = 106 }
+                        YUG = { has_full_control_of_state = 887 }
+                        YUG = { has_full_control_of_state = 888 }
+                    }
+                }
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_prinz_eugen_refit_tt
+			country_event = ss_recruitment_event.29
+		}
+	}
+
+	SS_recruitment_florian_geyer = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1942.8.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			OR = {
+				84 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				76 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				83 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+			OR = {
+				107 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				108 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1942.7.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_florian_geyer_recruitment_tt
+			country_event = ss_recruitment_event.30
+		}
+	}
+
+	SS_recruitment_Hohenstaufen = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1943.2.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1943.1.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_Hohenstaufen_recruitment_tt
+			country_event = ss_recruitment_event.31
+		}
+	}
+
+	SS_recruitment_Frundsberg = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			OR = {
+				date > 1943.10.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1943.9.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_Frundsberg_recruitment_tt
+			country_event = ss_recruitment_event.32
+		}
+	}
+
+	SS_recruitment_Nordland = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			has_completed_focus = GER_foreign_recruitment
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1943.7.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			OR = {
+				99 = {
+					CONTROLLER = {
+						OR = {
+							original_tag = GER
+							is_subject_of = GER
+						}
+					}
+				}
+				37 = {
+					CONTROLLER = {
+						OR = {
+							original_tag = GER
+							is_subject_of = GER
+						}
+					}
+				}
+				871 = { 
+					CONTROLLER = { 
+						OR = { 
+							original_tag = GER 
+							is_subject_of = GER 
+						} 
+					} 
+				}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1943.6.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_Nordland_recruitment_tt
+			country_event = ss_recruitment_event.33
+		}
+	}
+
+	SS_recruitment_Hitlerjugend = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			has_completed_focus = GER_recruit_from_the_hitler_youth
+			OR = {
+				date > 1943.10.23
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1943.9.23
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_Hitlerjugend_recruitment_tt
+			country_event = ss_recruitment_event.34
+		}
+	}
+
+	SS_recruitment_Handschar = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			has_completed_focus = GER_foreign_recruitment
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1944.1.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			OR = {
+				104 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				103 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				109 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1943.12.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_Handschar_recruitment_tt
+			country_event = ss_recruitment_event.35
+		}
+	}
+
+	SS_recruitment_14 = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			has_completed_focus = GER_foreign_recruitment
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1944.1.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			OR = {
+				91 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				89 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				199 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1943.12.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_14_recruitment_tt
+			country_event = ss_recruitment_event.36
+		}
+	}
+
+	SS_recruitment_15 = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			has_completed_focus = GER_foreign_recruitment
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1944.1.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			OR = {
+				190 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				12 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1943.12.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_15_recruitment_tt
+			country_event = ss_recruitment_event.37
+		}
+	}
+
+	SS_recruitment_Reichsfuhrer_SS = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1943.12.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1943.11.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_Reichsfuhrer_SS_recruitment_tt
+			country_event = ss_recruitment_event.38
+		}
+	}
+
+	SS_recruitment_Berlichingen = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1944.1.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			hidden_trigger = {
+				OR = {
+				date > 1943.12.1
+				has_country_flag = general_debug
+				}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_Berlichingen_recruitment_tt
+			country_event = ss_recruitment_event.39
+		}
+	}
+
+	SS_recruitment_Wessel = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			has_completed_focus = GER_foreign_recruitment
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1944.1.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			OR = {
+				155 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				43 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				889 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				890 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				891 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				154 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1943.12.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_Wessel_recruitment_tt
+			country_event = ss_recruitment_event.40
+		}
+	}
+
+	SS_recruitment_19 = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			has_completed_focus = GER_foreign_recruitment
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1944.1.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			OR = {
+				190 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				12 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1943.12.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_19_recruitment_tt
+			country_event = ss_recruitment_event.41
+		}
+	}
+
+	SS_recruitment_20 = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			has_completed_focus = GER_foreign_recruitment
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1944.1.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			OR = {
+				191 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				13 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1943.12.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_20_recruitment_tt
+			country_event = ss_recruitment_event.42
+		}
+	}
+
+	SS_recruitment_skanderberg = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			has_completed_focus = GER_foreign_recruitment
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1944.2.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			44 = {
+				CONTROLLER = {
+					is_in_faction_with = GER
+				}
+			}
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1944.1.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_skanderberg_recruitment_tt
+			country_event = ss_recruitment_event.46
+		}
+	}
+
+	SS_recruitment_maria_theresia = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			has_completed_focus = GER_foreign_recruitment
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1944.6.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			OR = {
+				155 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				890 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				889 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				43 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				891 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				154 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1944.5.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_maria_theresia_recruitment_tt
+			country_event = ss_recruitment_event.47
+		}
+	}
+
+	SS_recruitment_KAMA_karstjager = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			has_completed_focus = GER_foreign_recruitment
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1944.9.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			OR = {
+				39 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				160 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				159 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				158 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				161 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1944.8.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_kama_karstjager_recruitment_tt
+			country_event = ss_recruitment_event.48
+		}
+	}
+
+	SS_recruitment_hunyadi = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			has_completed_focus = GER_foreign_recruitment
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1944.11.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			OR = {
+				155 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				890 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				889 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				43 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				891 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				154 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1944.10.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_hunyadi_recruitment_tt
+			country_event = ss_recruitment_event.49
+		}
+	}
+
+	SS_recruitment_hungaria = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			has_completed_focus = GER_foreign_recruitment
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1944.11.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			OR = {
+				155 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				890 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				889 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				43 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				891 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				154 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1944.10.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_hungaria_recruitment_tt
+			country_event = ss_recruitment_event.50
+		}
+	}
+
+	SS_recruitment_RONA = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			has_completed_focus = GER_foreign_recruitment
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1943.6.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			OR = {
+				202 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				206 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1943.5.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_RONA_recruitment_tt
+			country_event = ss_recruitment_event.51
+		}
+	}
+
+	SS_recruitment_29 = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			has_completed_focus = GER_foreign_recruitment
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1945.2.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			OR = {
+				39 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				160 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				159 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				158 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+				161 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1945.1.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_29_recruitment_tt
+			country_event = ss_recruitment_event.52
+		}
+	}
+
+	SS_recruitment_30 = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			has_completed_focus = GER_foreign_recruitment
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1944.8.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			10 = {
+				CONTROLLER = {
+					is_in_faction_with = GER
+				}
+			}
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1944.7.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_30_recruitment_tt
+			country_event = ss_recruitment_event.53
+		}
+	}
+
+	SS_recruitment_31 = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			has_completed_focus = GER_foreign_recruitment
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1944.10.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+		visible = {
+			OR = {
+				45 = {
+					CONTROLLER = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+			AND = {
+				OR = {
+					has_idea = heinrich_himmler
+					has_country_leader = { name = "Heinrich Himmler" }
+				}
+				hidden_trigger = {
+					OR = {
+					date > 1944.9.1
+					has_country_flag = general_debug
+					}
+				}
+				hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = SS_31_recruitment_tt
+			country_event = ss_recruitment_event.54
+		}
+	}
+	
+	grossdeutschland_recruitment = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			OR = {
+				date > 1942.3.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+		}
+		
+		visible = {
+			OR = {
+				date > 1942.1.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		
+		days_remove = 30
+		
+		remove_effect = {
+			division_template = {
+				name = "Großdeutschland Motorisierte-Division"
+				template_counter = 155
+				priority = 3
+				is_locked = yes
+				
+				regiments = {
+					medium_armor = { x = 0 y = 0 }
+					
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+					
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+					
+					motorized = { x = 3 y = 0 }
+					motorized = { x = 3 y = 1 }
+					motorized = { x = 3 y = 2 }
+					
+					mot_artillery_brigade = { x = 4 y = 0 }
+					mot_artillery_brigade = { x = 4 y = 1 }
+					mot_artillery_brigade = { x = 4 y = 2 }
+					
+					mot_anti_tank_brigade = { x = 5 y = 0 }
+				}
+				regimental_support = {
+					armored_signal = { x = 0 y = 0 }
+					armored_maintenance = { x = 0 y = 1 }
+					
+					artillery = { x = 1 y = 0 }
+					anti_tank = { x = 1 y = 1 }
+					
+					artillery = { x = 2 y = 0 }
+					anti_tank = { x = 2 y = 1 }
+					
+					artillery = { x = 3 y = 0 }
+					anti_tank = { x = 3 y = 1 }
+					
+					medium_tank_destroyer = { x = 5 y = 0 }
+				}
+				support = {
+					assault_engineer = { x = 0 y = 0 }
+					motorbike_recon = { x = 0 y = 1 }
+					armored_car_recon = { x = 0 y = 2 }
+					mot_field_hospital = { x = 0 y = 3 }
+					mot_maintenance_company = { x = 0 y = 4 }
+					pontoneer_support = { x = 0 y = 5 }
+					logistics_company = { x = 0 y = 6 }
+				}
+			}
+			custom_effect_tooltip = grossdeutschland_recruitment_tt
+			country_event = ss_recruitment_event.55
+		}
+	}
+	
+	herman_goering_recruitment = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			OR = {
+				date > 1943.4.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+		}
+		
+		visible = {
+			OR = {
+				date > 1943.1.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		
+		days_remove = 30
+		
+		remove_effect = {
+			division_template = {
+				name = "Luftwaffen-Panzer-Division"
+				template_counter = 155
+				priority = 3
+				is_locked = yes
+				
+				regiments = {
+					medium_armor = { x = 0 y = 0 }
+					medium_armor = { x = 0 y = 1 }
+					medium_armor = { x = 0 y = 2 }
+					medium_armor = { x = 0 y = 3 }
+					
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+					motorized = { x = 1 y = 3 }
+					
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+					motorized = { x = 2 y = 3 }
+					
+					mot_anti_tank_brigade = { x = 3 y = 1 }
+					mot_artillery_brigade = { x = 3 y = 2 }
+					mot_artillery_brigade = { x = 3 y = 3 }
+				}
+				regimental_support = {
+					armored_signal = { x = 0 y = 0 }
+					armored_maintenance = { x = 0 y = 1 }
+					
+					artillery = { x = 1 y = 0 }
+					anti_tank = { x = 1 y = 1 }
+					
+					artillery = { x = 2 y = 0 }
+					anti_tank = { x = 2 y = 1 }
+					
+					medium_tank_destroyer = { x = 3 y = 0 }
+					anti_air_battery = { x = 3 y = 1 }
+				}
+				support = {
+					assault_engineer = { x = 0 y = 0 }
+					motorbike_recon = { x = 0 y = 1 }
+					armored_car_recon = { x = 0 y = 2 }
+					mot_field_hospital = { x = 0 y = 3 }
+					mot_maintenance_company = { x = 0 y = 4 }
+					pontoneer_support = { x = 0 y = 5 }
+					logistics_company = { x = 0 y = 6 }
+				}
+			}
+			custom_effect_tooltip = herman_goering_recruitment_tt
+			country_event = ss_recruitment_event.56
+		}
+	}
+	
+	dirlevanger_recruitment = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			OR = {
+				date > 1940.6.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+		}
+		
+		visible = {
+			OR = {
+				date > 1944.10.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		
+		days_remove = 30
+		
+		remove_effect = {
+			division_template = {
+				name = "SS-Sonderbrigade"
+				template_counter = 152
+				priority = 3
+				is_locked = yes
+				
+				regiments = {
+					penal_battalion = { x = 0 y = 0 }
+					penal_battalion = { x = 0 y = 1 }
+					penal_battalion = { x = 0 y = 2 }
+					
+					penal_battalion = { x = 0 y = 0 }
+					penal_battalion = { x = 0 y = 1 }
+					penal_battalion = { x = 0 y = 2 }
+				}
+				
+				support = {
+					engineer = { x = 0 y = 0 }
+					military_police = { x = 0 y = 1 }
+				}
+			}
+			custom_effect_tooltip = dirlevanger_recruitment_tt
+			country_event = ss_recruitment_event.57
+		}
+	}
+
+	SS_lssah_early_refit = {
+
+		icon = GFX_decision_ss_icon
+
+		allowed = {
+			original_tag = GER
+		}
+		
+		available = {
+			has_idea = heinrich_himmler
+			810 = { 
+				CONTROLLER = {
+					original_tag = GER 
+				}
+			}
+			OR = {
+				date > 1940.8.1
+				hidden_trigger = { has_country_flag = general_debug }
+			}
+		}
+		
+		visible = {
+			AND = {
+				has_idea = heinrich_himmler
+				hidden_trigger = {
+					OR = {
+						date > 1940.5.1
+						has_country_flag = general_debug
+					}
+				}
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 14
+		
+		complete_effect = {
+			hidden_effect = {
+				GER = {
+					delete_unit_template_and_units = {
+						division_template = "SS-Infanterie-Regiment(mot) «LSSAH»"
+						disband = yes
+					}
+					SS_LSSAH_middle = yes
+				}
+			}
+		}
+		remove_effect = {
+			set_country_flag = lssah_early_refit_done
+			if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_10
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"1.SS-Infanterie-Brig(mot) 'LSSAH'\" division_template = \"SS-Infanterie-Brigade(mot) «LSSAH»\" start_experience_factor = 1 start_equipment_factor = 0.6" 
+						owner = GER
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_5
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"1.SS-Infanterie-Brig(mot) 'LSSAH'\" division_template = \"SS-Infanterie-Brigade(mot) «LSSAH»\" start_experience_factor = 1 start_equipment_factor = 0.3"
+						owner = GER
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"1.SS-Infanterie-Brig(mot) 'LSSAH'\" division_template = \"SS-Infanterie-Brigade(mot) «LSSAH»\" start_experience_factor = 1 start_equipment_factor = 0.05" 
+						owner = GER
+					}
+				}
+			}
+		}
+	}
+	
+	SS_lssah_middle_refit = {
+
+		icon = GFX_decision_ss_icon
+
+		allowed = {
+			original_tag = GER
+		}
+		
+		available = {
+			has_idea = heinrich_himmler
+			810 = { 
+				CONTROLLER = {
+					original_tag = GER 
+				}
+			}
+			OR = {
+				date > 1942.6.1
+				hidden_trigger = { has_country_flag = general_debug }
+			}
+		}
+		
+		visible = {
+			has_country_flag = lssah_early_refit_done
+			AND = {
+				has_idea = heinrich_himmler
+				hidden_trigger = {
+					OR = {
+						date > 1942.3.1
+						has_country_flag = general_debug
+					}
+				}
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 14
+		
+		complete_effect = {
+			hidden_effect = {
+				GER = {
+					delete_unit_template_and_units = {
+						division_template = "SS-Infanterie-Brigade(mot) «LSSAH»"
+						disband = yes
+					}
+					SS_LSSAH_late = yes
+				}
+			}
+		}
+		remove_effect = {
+			set_country_flag = lssah_middle_refit_done
+			if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_10
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"1.SS-Infanterie-Div(mot) 'LSSAH'\" division_template = \"SS-Infanterie-Division(mot) «LSSAH»\" start_experience_factor = 0.9 start_equipment_factor = 0.6" 
+						owner = GER
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_5
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"1.SS-Infanterie-Div(mot) 'LSSAH'\" division_template = \"SS-Infanterie-Division(mot) «LSSAH»\" start_experience_factor = 0.9 start_equipment_factor = 0.3"
+						owner = GER
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"1.SS-Infanterie-Div(mot) 'LSSAH'\" division_template = \"SS-Infanterie-Division(mot) «LSSAH»\" start_experience_factor = 0.9 start_equipment_factor = 0.05" 
+						owner = GER
+					}
+				}
+			}
+		}
+	}
+	
+	SS_lssah_late_refit = {
+
+		icon = GFX_decision_ss_icon
+
+		allowed = {
+			original_tag = GER
+		}
+		
+		available = {
+			has_idea = heinrich_himmler
+			810 = { 
+				CONTROLLER = {
+					original_tag = GER 
+				}
+			}
+			OR = {
+				date > 1943.11.1
+				hidden_trigger = { has_country_flag = general_debug }
+			}
+		}
+		
+		visible = {
+			has_country_flag = lssah_middle_refit_done
+			AND = {
+				has_idea = heinrich_himmler
+				hidden_trigger = {
+					OR = {
+						date > 1943.8.1
+						has_country_flag = general_debug
+					}
+				}
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 14
+		
+		complete_effect = {
+			hidden_effect = {
+				GER = {
+					delete_unit_template_and_units = {
+						division_template = "SS-Infanterie-Division(mot) «LSSAH»"
+						disband = yes
+					}
+					SS_LSSAH_panzer = yes
+				}
+			}
+		}
+		remove_effect = {
+			set_country_flag = lssah_late_refit_done
+			if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_10
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"1.SS-Panzer-Division 'LSSAH'\" division_template = \"SS-Panzer-Division «LSSAH»\" start_experience_factor = 0.85 start_equipment_factor = 0.6" 
+						owner = GER
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_5
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"1.SS-Panzer-Division 'LSSAH'\" division_template = \"SS-Panzer-Division «LSSAH»\" start_experience_factor = 0.85 start_equipment_factor = 0.3"
+						owner = GER
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"1.SS-Panzer-Division 'LSSAH'\" division_template = \"SS-Panzer-Division «LSSAH»\" start_experience_factor = 0.85 start_equipment_factor = 0.05" 
+						owner = GER
+					}
+				}
+			}
+		}
+	}
+	
+	SS_dasreich_early_refit = {
+
+		icon = GFX_decision_ss_icon
+
+		allowed = {
+			original_tag = GER
+		}
+		
+		available = {
+			has_idea = heinrich_himmler
+			810 = { 
+				CONTROLLER = {
+					original_tag = GER 
+				}
+			}
+			OR = {
+				date > 1941.1.1
+				hidden_trigger = { has_country_flag = general_debug }
+			}
+		}
+		
+		visible = {
+			AND = {
+				has_idea = heinrich_himmler
+				hidden_trigger = {
+					OR = {
+						date > 1940.9.1
+						has_country_flag = general_debug
+					}
+				}
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 14
+		
+		complete_effect = {
+			hidden_effect = {
+				GER = {
+					delete_unit_template_and_units = {
+						division_template = "SS-Verfügungsdivision"
+						disband = yes
+					}
+					SS_das_reich_middle = yes
+				}
+			}
+		}
+		remove_effect = {
+			set_country_flag = dasreich_early_refit_done
+			if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_10
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"2.SS-Infanterie-Div(mot) 'Das Reich'\" division_template = \"SS-Infanterie-Division(mot) «Das Reich»\" start_experience_factor = 0.5 start_equipment_factor = 0.6" 
+						owner = GER
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_5
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"2.SS-Infanterie-Div(mot) 'Das Reich'\" division_template = \"SS-Infanterie-Division(mot) «Das Reich»\" start_experience_factor = 0.5 start_equipment_factor = 0.3"
+						owner = GER
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"2.SS-Infanterie-Div(mot) 'Das Reich'\" division_template = \"SS-Infanterie-Division(mot) «Das Reich»\" start_experience_factor = 0.5 start_equipment_factor = 0.05" 
+						owner = GER
+					}
+				}
+			}
+		}
+	}
+	
+	SS_dasreich_middle_refit = {
+
+		icon = GFX_decision_ss_icon
+
+		allowed = {
+			original_tag = GER
+		}
+		
+		available = {
+			has_idea = heinrich_himmler
+			810 = { 
+				CONTROLLER = {
+					original_tag = GER 
+				}
+			}
+			OR = {
+				date > 1942.10.1
+				hidden_trigger = { has_country_flag = general_debug }
+			}
+		}
+		
+		visible = {
+			has_country_flag = dasreich_early_refit_done
+			AND = {
+				has_idea = heinrich_himmler
+				hidden_trigger = {
+					OR = {
+						date > 1942.7.1
+						has_country_flag = general_debug
+					}
+				}
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 14
+		
+		complete_effect = {
+			hidden_effect = {
+				GER = {
+					delete_unit_template_and_units = {
+						division_template = "SS-Infanterie-Division(mot) «Das Reich»"
+						disband = yes
+					}
+					SS_das_reich_late = yes
+				}
+			}
+		}
+		remove_effect = {
+			set_country_flag = dasreich_middle_refit_done
+			if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_10
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"2.SS-Panzergrenadier-Div 'Das Reich'\" division_template = \"SS-Panzergrenadier-Division «Das Reich»\" start_experience_factor = 0.6 start_equipment_factor = 0.6" 
+						owner = GER
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_5
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"2.SS-Panzergrenadier-Div 'Das Reich'\" division_template = \"SS-Panzergrenadier-Division «Das Reich»\" start_experience_factor = 0.6 start_equipment_factor = 0.3"
+						owner = GER
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"2.SS-Panzergrenadier-Div 'Das Reich'\" division_template = \"SS-Panzergrenadier-Division «Das Reich»\" start_experience_factor = 0.6 start_equipment_factor = 0.05" 
+						owner = GER
+					}
+				}
+			}
+		}
+	}
+	
+	SS_dasreich_late_refit = {
+
+		icon = GFX_decision_ss_icon
+
+		allowed = {
+			original_tag = GER
+		}
+		
+		available = {
+			has_idea = heinrich_himmler
+			810 = { 
+				CONTROLLER = {
+					original_tag = GER 
+				}
+			}
+			OR = {
+				date > 1943.10.1
+				hidden_trigger = { has_country_flag = general_debug }
+			}
+		}
+		
+		visible = {
+			has_country_flag = dasreich_middle_refit_done
+			AND = {
+				has_idea = heinrich_himmler
+				hidden_trigger = {
+					OR = {
+						date > 1943.7.1
+						has_country_flag = general_debug
+					}
+				}
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 14
+		
+		complete_effect = {
+			hidden_effect = {
+				GER = {
+					delete_unit_template_and_units = {
+						division_template = "SS-Panzergrenadier-Division «Das Reich»"
+						disband = yes
+					}
+					SS_das_reich_panzer = yes
+				}
+			}
+		}
+		remove_effect = {
+			set_country_flag = lssah_late_refit_done
+			if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_10
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"2.SS-Panzer-Division 'Das Reich'\" division_template = \"SS-Panzer-Division «Das Reich»\" start_experience_factor = 0.7 start_equipment_factor = 0.6" 
+						owner = GER
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_5
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"2.SS-Panzer-Division 'Das Reich'\" division_template = \"SS-Panzer-Division «Das Reich»\" start_experience_factor = 0.7 start_equipment_factor = 0.3"
+						owner = GER
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"2.SS-Panzer-Division 'Das Reich'\" division_template = \"SS-Panzer-Division «Das Reich»\" start_experience_factor = 0.7 start_equipment_factor = 0.05" 
+						owner = GER
+					}
+				}
+			}
+		}
+	}
+	
+	SS_totenkopf_early_refit = {
+
+		icon = GFX_decision_ss_icon
+
+		allowed = {
+			original_tag = GER
+		}
+		
+		available = {
+			has_idea = heinrich_himmler
+			810 = { 
+				CONTROLLER = {
+					original_tag = GER 
+				}
+			}
+			OR = {
+				date > 1941.4.1
+				hidden_trigger = { has_country_flag = general_debug }
+			}
+		}
+		
+		visible = {
+			AND = {
+				has_idea = heinrich_himmler
+				hidden_trigger = {
+					OR = {
+						date > 1941.1.1
+						has_country_flag = general_debug
+					}
+				}
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 14
+		
+		complete_effect = {
+			hidden_effect = {
+				GER = {
+					delete_unit_template_and_units = {
+						division_template = "SS-Division «Totenkopf»"
+						disband = yes
+					}
+					SS_totenkopf_middle = yes
+				}
+			}
+		}
+		remove_effect = {
+			set_country_flag = totenkopf_early_refit_done
+			if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_10
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"3.SS-Infanterie-Div(mot) 'Totenkopf'\" division_template = \"SS-Infanterie-Division(mot) «Totenkopf»\" start_experience_factor = 0.5 start_equipment_factor = 0.6" 
+						owner = GER
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_5
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"3.SS-Infanterie-Div(mot) 'Totenkopf'\" division_template = \"SS-Infanterie-Division(mot) «Totenkopf»\" start_experience_factor = 0.5 start_equipment_factor = 0.3"
+						owner = GER
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"3.SS-Infanterie-Div(mot) 'Totenkopf'\" division_template = \"SS-Infanterie-Division(mot) «Totenkopf»\" start_experience_factor = 0.5 start_equipment_factor = 0.05" 
+						owner = GER
+					}
+				}
+			}
+		}
+	}
+	
+	SS_totenkopf_middle_refit = {
+
+		icon = GFX_decision_ss_icon
+
+		allowed = {
+			original_tag = GER
+		}
+		
+		available = {
+			has_idea = heinrich_himmler
+			810 = { 
+				CONTROLLER = {
+					original_tag = GER 
+				}
+			}
+			OR = {
+				date > 1942.12.1
+				hidden_trigger = { has_country_flag = general_debug }
+			}
+		}
+		
+		visible = {
+			has_country_flag = totenkopf_early_refit_done
+			AND = {
+				has_idea = heinrich_himmler
+				hidden_trigger = {
+					OR = {
+						date > 1942.9.1
+						has_country_flag = general_debug
+					}
+				}
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 14
+		
+		complete_effect = {
+			hidden_effect = {
+				GER = {
+					delete_unit_template_and_units = {
+						division_template = "SS-Infanterie-Division(mot) «Totenkopf»"
+						disband = yes
+					}
+					SS_totenkopf_late = yes
+				}
+			}
+		}
+		remove_effect = {
+			set_country_flag = totenkopf_middle_refit_done
+			if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_10
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"3.SS-Panzergrenadier-Div 'Totenkopf'\" division_template = \"SS-Panzergrenadier-Division «Totenkopf»\" start_experience_factor = 0.6 start_equipment_factor = 0.6" 
+						owner = GER
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_5
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"3.SS-Panzergrenadier-Div 'Totenkopf'\" division_template = \"SS-Panzergrenadier-Division «Totenkopf»\" start_experience_factor = 0.6 start_equipment_factor = 0.3"
+						owner = GER
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"3.SS-Panzergrenadier-Div 'Totenkopf'\" division_template = \"SS-Panzergrenadier-Division «Totenkopf»\" start_experience_factor = 0.6 start_equipment_factor = 0.05" 
+						owner = GER
+					}
+				}
+			}
+		}
+	}
+	
+	SS_totenkopf_late_refit = {
+
+		icon = GFX_decision_ss_icon
+
+		allowed = {
+			original_tag = GER
+		}
+		
+		available = {
+			has_idea = heinrich_himmler
+			810 = { 
+				CONTROLLER = {
+					original_tag = GER 
+				}
+			}
+			OR = {
+				date > 1943.10.1
+				hidden_trigger = { has_country_flag = general_debug }
+			}
+		}
+		
+		visible = {
+			has_country_flag = totenkopf_middle_refit_done
+			AND = {
+				has_idea = heinrich_himmler
+				hidden_trigger = {
+					OR = {
+						date > 1943.7.1
+						has_country_flag = general_debug
+					}
+				}
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 14
+		
+		complete_effect = {
+			hidden_effect = {
+				GER = {
+					delete_unit_template_and_units = {
+						division_template = "SS-Panzergrenadier-Division «Totenkopf»"
+						disband = yes
+					}
+					SS_totenkopf_panzer = yes
+				}
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_10
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"3.SS-Panzer-Division 'Totenkopf'\" division_template = \"SS-Panzer-Division «Totenkopf»\" start_experience_factor = 0.7 start_equipment_factor = 0.6" 
+						owner = GER
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_5
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"3.SS-Panzer-Division 'Totenkopf'\" division_template = \"SS-Panzer-Division «Totenkopf»\" start_experience_factor = 0.7 start_equipment_factor = 0.3"
+						owner = GER
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"3.SS-Panzer-Division 'Totenkopf'\" division_template = \"SS-Panzer-Division «Totenkopf»\" start_experience_factor = 0.7 start_equipment_factor = 0.05" 
+						owner = GER
+					}
+				}
+			}
+		}
+	}
+	
+	SS_polizei_early_refit = {
+
+		icon = GFX_decision_ss_icon
+
+		allowed = {
+			original_tag = GER
+		}
+		
+		available = {
+			has_idea = heinrich_himmler
+			810 = { 
+				CONTROLLER = {
+					original_tag = GER 
+				}
+			}
+			OR = {
+				date > 1941.4.1
+				hidden_trigger = { has_country_flag = general_debug }
+			}
+		}
+		
+		visible = {
+			AND = {
+				has_idea = heinrich_himmler
+				hidden_trigger = {
+					OR = {
+						date > 1941.1.1
+						has_country_flag = general_debug
+					}
+				}
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 14
+		
+		complete_effect = {
+			hidden_effect = {
+				GER = {
+					delete_unit_template_and_units = {
+						division_template = "SS-Polizei-Division(Early)"
+						disband = yes
+					}
+					SS_polizei_middle = yes
+				}
+			}
+		}
+		remove_effect = {
+			set_country_flag = polizei_early_refit_done
+			if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_10
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"4.SS-Division 'Polizei'\" division_template = \"SS-Polizei-Division\" start_experience_factor = 0.4 start_equipment_factor = 0.6" 
+						owner = GER
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_5
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"4.SS-Division 'Polizei'\" division_template = \"SS-Polizei-Division\" start_experience_factor = 0.4 start_equipment_factor = 0.3"
+						owner = GER
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"4.SS-Division 'Polizei'\" division_template = \"SS-Polizei-Division\" start_experience_factor = 0.4 start_equipment_factor = 0.05" 
+						owner = GER
+					}
+				}
+			}
+		}
+	}
+	
+	SS_polizei_middle_refit = {
+
+		icon = GFX_decision_ss_icon
+
+		allowed = {
+			original_tag = GER
+		}
+		
+		available = {
+			has_idea = heinrich_himmler
+			810 = { 
+				CONTROLLER = {
+					original_tag = GER 
+				}
+			}
+			OR = {
+				date > 1943.2.1
+				hidden_trigger = { has_country_flag = general_debug }
+			}
+		}
+		
+		visible = {
+			has_country_flag = polizei_early_refit_done
+			AND = {
+				has_idea = heinrich_himmler
+				hidden_trigger = {
+					OR = {
+						date > 1942.11.1
+						has_country_flag = general_debug
+					}
+				}
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 14
+		
+		complete_effect = {
+			hidden_effect = {
+				GER = {
+					delete_unit_template_and_units = {
+						division_template = "SS-Polizei-Division"
+						disband = yes
+					}
+					SS_polizei_late = yes
+				}
+			}
+		}
+		remove_effect = {
+			set_country_flag = polizei_middle_refit_done
+			if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_10
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"4.SS-Panzergrenadier-Div 'Polizei'\" division_template = \"SS-Polizei-Panzergrenadier-Division\" start_experience_factor = 0.65 start_equipment_factor = 0.6" 
+						owner = GER
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_5
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"4.SS-Panzergrenadier-Div 'Polizei'\" division_template = \"SS-Polizei-Panzergrenadier-Division\" start_experience_factor = 0.65 start_equipment_factor = 0.3"
+						owner = GER
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"4.SS-Panzergrenadier-Div 'Polizei'\" division_template = \"SS-Polizei-Panzergrenadier-Division\" start_experience_factor = 0.65 start_equipment_factor = 0.05" 
+						owner = GER
+					}
+				}
+			}
+		}
+	}
+	
+	SS_wiking_early_refit = {
+
+		icon = GFX_decision_ss_icon
+
+		allowed = {
+			original_tag = GER
+		}
+		
+		available = {
+			has_idea = heinrich_himmler
+			810 = { 
+				CONTROLLER = {
+					original_tag = GER 
+				}
+			}
+			OR = {
+				date > 1942.4.1
+				hidden_trigger = { has_country_flag = general_debug }
+			}
+		}
+		
+		visible = {
+			AND = {
+				has_idea = heinrich_himmler
+				hidden_trigger = {
+					OR = {
+						date > 1942.1.1
+						has_country_flag = general_debug
+					}
+				}
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 14
+		
+		complete_effect = {
+			hidden_effect = {
+				GER = {
+					delete_unit_template_and_units = {
+						division_template = "SS-Infanterie-Division(mot) «Wiking»"
+						disband = yes
+					}
+					SS_wiking_middle = yes
+				}
+			}
+		}
+		remove_effect = {
+			set_country_flag = wiking_early_refit_done
+			if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_10
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"5.SS-Panzergrenadier-Div 'Wiking'\" division_template = \"SS-Panzergrenadier-Division «Wiking»\" start_experience_factor = 0.7 start_equipment_factor = 0.6" 
+						owner = GER
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_5
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"5.SS-Panzergrenadier-Div 'Wiking'\" division_template = \"SS-Panzergrenadier-Division «Wiking»\" start_experience_factor = 0.7 start_equipment_factor = 0.3"
+						owner = GER
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"5.SS-Panzergrenadier-Div 'Wiking'\" division_template = \"SS-Panzergrenadier-Division «Wiking»\" start_experience_factor = 0.7 start_equipment_factor = 0.05" 
+						owner = GER
+					}
+				}
+			}
+		}
+	}
+	
+	SS_wiking_middle_refit = {
+
+		icon = GFX_decision_ss_icon
+
+		allowed = {
+			original_tag = GER
+		}
+		
+		available = {
+			has_idea = heinrich_himmler
+			810 = { 
+				CONTROLLER = {
+					original_tag = GER 
+				}
+			}
+			OR = {
+				date > 1943.2.1
+				hidden_trigger = { has_country_flag = general_debug }
+			}
+		}
+		
+		visible = {
+			has_country_flag = wiking_early_refit_done
+			AND = {
+				has_idea = heinrich_himmler
+				hidden_trigger = {
+					OR = {
+						date > 1942.11.1
+						has_country_flag = general_debug
+					}
+				}
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 14
+		
+		complete_effect = {
+			hidden_effect = {
+				GER = {
+					delete_unit_template_and_units = {
+						division_template = "SS-Panzergrenadier-Division «Wiking»"
+						disband = yes
+					}
+					SS_wiking_panzer = yes
+				}
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_10
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"5.SS-Panzer-Division 'Wiking'\" division_template = \"SS-Panzer-Division «Wiking»\" start_experience_factor = 0.6 start_equipment_factor = 0.6" 
+						owner = GER
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_5
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"5.SS-Panzer-Division 'Wiking'\" division_template = \"SS-Panzer-Division «Wiking»\" start_experience_factor = 0.6 start_equipment_factor = 0.3"
+						owner = GER
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"5.SS-Panzer-Division 'Wiking'\" division_template = \"SS-Panzer-Division «Wiking»\" start_experience_factor = 0.6 start_equipment_factor = 0.05" 
+						owner = GER
+					}
+				}
+			}
+		}
+	}
+	
+	############################################################################################################
+	############################################################################################################
+	############################################################################################################
+
+
+	############################################################################################################
+	############################################################################################################
+	############################################################################################################
+	
+	GER_take_warsaw = {
+		icon = GFX_decision_wehrmacht_icon
+		allowed = {
+			original_tag = GER
+		}
+		#Succeed trigger
+		available = {
+			10 = {
+				CONTROLLER = {
+					is_in_faction_with = GER
+				}
+			}
+		}
+		days_mission_timeout = 45
+		fire_only_once = yes
+		activation = {
+			has_war = yes
+			has_civil_war = no
+			has_decision = GER_fall_weiss
+		}
+		#Success
+		timeout_effect = {
+			custom_effect_tooltip = GER_take_XX_success_tt2
+			hidden_effect = {
+				add_to_variable = {
+					var = GER_SS_attitude
+					value = 5
+				}
+				subtract_from_variable = {
+					var = GER_Wehrmacht_stability
+					value = 1
+				}
+				add_to_variable = {
+					var = GER_SS_influence
+					value = 5
+				}
+				GER_political_instability_update_effect = yes
+			}
+		}
+		#Fail
+		complete_effect = {
+			custom_effect_tooltip = GER_take_XX_fail_tt
+			subtract_from_variable = {
+				var = GER_Wehrmacht_attitude
+				value = 5
+			}
+			add_to_variable = {
+				var = GER_Wehrmacht_influence
+				value = 10
+			}
+			subtract_from_variable = {
+				var = GER_SS_influence
+				value = 5
+			}
+		}
+	}
+	GER_take_norway = {
+		icon = GFX_decision_wehrmacht_icon
+		allowed = {
+			original_tag = GER
+		}
+		#Succeed trigger
+		available = {
+			110 = {
+				CONTROLLER = {
+					is_in_faction_with = GER
+				}
+			}
+			143 = {
+				CONTROLLER = {
+					is_in_faction_with = GER
+				}
+			}
+			142 = {
+				CONTROLLER = {
+					is_in_faction_with = GER
+				}
+			}
+		}
+		days_mission_timeout = 90
+		fire_only_once = yes
+		activation = {
+			has_war = yes
+			has_civil_war = no
+			OR = {
+				has_decision = GER_weserubung
+			}
+		}
+		#Success
+		timeout_effect = {
+			custom_effect_tooltip = GER_take_XX_success_tt
+			add_to_variable = {
+				var = GER_SS_attitude
+				value = 5
+			}
+			add_to_variable = {
+				var = GER_SS_influence
+				value = 5
+			}
+			subtract_from_variable = {
+				var = GER_Wehrmacht_influence
+				value = 5
+			}
+		}
+		#Fail
+		complete_effect = {
+			custom_effect_tooltip = GER_take_XX_fail_tt
+			subtract_from_variable = {
+				var = GER_Wehrmacht_attitude
+				value = 5
+			}
+			add_to_variable = {
+				var = GER_Wehrmacht_influence
+				value = 10
+			}
+			subtract_from_variable = {
+				var = GER_SS_influence
+				value = 5
+			}
+		}
+	}
+	GER_take_paris = {
+		icon = GFX_decision_wehrmacht_icon
+		allowed = {
+			original_tag = GER
+		}
+		#Succeed trigger
+		available = {
+			855 = {
+				CONTROLLER = {
+					is_in_faction_with = GER
+				}
+			}
+		}
+		days_mission_timeout = 90
+		fire_only_once = yes
+		activation = {
+			has_war = yes
+			has_civil_war = no
+			OR = {
+				has_decision = GER_gelb
+				OR = {
+					has_decision = GER_fall_rot
+					AND = {
+						OR = {
+							has_decision = GER_gelb
+						}
+						OR = {
+							GER = {
+								controls_state = 28
+							}
+							GER = {
+								controls_state = 29
+							}
+							GER = {
+								controls_state = 785
+							}
+							GER = {
+								controls_state = 18
+							}
+							GER = {
+								controls_state = 17
+							}
+							GER = {
+								controls_state = 15
+							}
+							GER = {
+								controls_state = 14
+							}
+						}
+					}
+					AND = {
+						date > 1940.7.1
+						OR = {
+							GER = {
+								controls_state = 28
+							}
+							GER = {
+								controls_state = 29
+							}
+							GER = {
+								controls_state = 785
+							}
+							GER = {
+								controls_state = 18
+							}
+							GER = {
+								controls_state = 17
+							}
+							GER = {
+								controls_state = 15
+							}
+							GER = {
+								controls_state = 14
+							}
+						}
+					}
+				}
+			}
+		}
+		#Success
+		timeout_effect = {
+			custom_effect_tooltip = GER_take_XX_success_tt
+			add_to_variable = {
+				var = GER_SS_attitude
+				value = 5
+			}
+			add_to_variable = {
+				var = GER_SS_influence
+				value = 5
+			}
+			subtract_from_variable = {
+				var = GER_Wehrmacht_influence
+				value = 5
+			}
+			add_to_variable = { GER_wehrmacht_army_org_factor = 0.05 }
+		}
+		#Fail
+		complete_effect = {
+			custom_effect_tooltip = GER_take_XX_fail_tt
+			subtract_from_variable = {
+				var = GER_Wehrmacht_attitude
+				value = 5
+			}
+			add_to_variable = {
+				var = GER_Wehrmacht_influence
+				value = 10
+			}
+			subtract_from_variable = {
+				var = GER_SS_influence
+				value = 5
+			}
+		}
+	}
+	GER_take_moscow = {
+		icon = GFX_decision_wehrmacht_icon
+		allowed = {
+			original_tag = GER
+		}
+		#Succeed trigger
+		available = {
+			219 = {
+				CONTROLLER = {
+					is_in_faction_with = GER
+				}
+			}
+		}
+		days_mission_timeout = 160
+		fire_only_once = yes
+		activation = {
+			always = no
+		}
+		#Success
+		timeout_effect = {
+			custom_effect_tooltip = GER_take_XX_success_tt
+			add_to_variable = {
+				var = GER_SS_attitude
+				value = 5
+			}
+			add_to_variable = {
+				var = GER_SS_influence
+				value = 5
+			}
+			subtract_from_variable = {
+				var = GER_Wehrmacht_influence
+				value = 5
+			}
+			add_to_variable = { GER_wehrmacht_army_org_factor = -0.05 }
+			GER_clean_case_typhoon_offensive_effect = yes
+			set_country_flag = GER_blitz_loses
+		}
+		#Fail
+		complete_effect = {
+			custom_effect_tooltip = GER_take_XX_fail_tt
+			subtract_from_variable = {
+				var = GER_Wehrmacht_attitude
+				value = 5
+			}
+			add_to_variable = {
+				var = GER_Wehrmacht_influence
+				value = 10
+			}
+			subtract_from_variable = {
+				var = GER_SS_influence
+				value = 5
+			}
+			GER_clean_case_typhoon_offensive_effect = yes
+		}
+	}
+	GER_take_leningrad = {
+		icon = GFX_decision_wehrmacht_icon
+		allowed = {
+			original_tag = GER
+		}
+		#Succeed trigger
+		available = {
+			195 = {
+				CONTROLLER = {
+					is_in_faction_with = GER
+				}
+			}
+		}
+		days_mission_timeout = 160
+		fire_only_once = yes
+		activation = {
+			always = no
+		}
+		#Success
+		timeout_effect = {
+			custom_effect_tooltip = GER_take_XX_success_tt
+			add_to_variable = {
+				var = GER_SS_attitude
+				value = 5
+			}
+			add_to_variable = {
+				var = GER_SS_influence
+				value = 5
+			}
+			subtract_from_variable = {
+				var = GER_Wehrmacht_influence
+				value = 5
+			}
+			add_to_variable = { GER_wehrmacht_army_org_factor = -0.05 }
+		}
+		#Fail
+		complete_effect = {
+			custom_effect_tooltip = GER_take_XX_fail_tt
+			subtract_from_variable = {
+				var = GER_Wehrmacht_attitude
+				value = 5
+			}
+			add_to_variable = {
+				var = GER_Wehrmacht_influence
+				value = 10
+			}
+			subtract_from_variable = {
+				var = GER_SS_influence
+				value = 5
+			}
+		}
+	}
+	GER_take_stalingrad = {
+		icon = GFX_decision_wehrmacht_icon
+		allowed = {
+			original_tag = GER
+		}
+		#Succeed trigger
+		available = {
+			217 = {
+				CONTROLLER = {
+					is_in_faction_with = GER
+				}
+			}
+		}
+		days_mission_timeout = 180
+		fire_only_once = yes
+		activation = {
+			always = no
+		}
+		#Success
+		timeout_effect = {
+			custom_effect_tooltip = GER_take_XX_success_tt
+			add_to_variable = {
+				var = GER_SS_attitude
+				value = 5
+			}
+			add_to_variable = {
+				var = GER_SS_influence
+				value = 5
+			}
+			subtract_from_variable = {
+				var = GER_Wehrmacht_influence
+				value = 5
+			}
+			add_to_variable = { GER_wehrmacht_army_org_factor = -0.05 }
+			GER_clean_case_blue_offensive_effect = yes
+			set_country_flag = stalingrad_ended
+		}
+		#Fail
+		complete_effect = {
+			custom_effect_tooltip = GER_take_XX_fail_tt
+			subtract_from_variable = {
+				var = GER_Wehrmacht_attitude
+				value = 5
+			}
+			add_to_variable = {
+				var = GER_Wehrmacht_influence
+				value = 10
+			}
+			subtract_from_variable = {
+				var = GER_SS_influence
+				value = 5
+			}
+			GER_clean_case_blue_offensive_effect = yes
+			set_country_flag = stalingrad_ended
+		}
+	}
+
+	SS_himmler_wants_field_command = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			has_completed_focus = GER_form_the_waffen_ss
+		}
+		visible = {
+			has_completed_focus = GER_form_the_waffen_ss
+		}
+		cost = 5
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = SS_himmler_wants_field_command_tt
+			hidden_effect = {
+				subtract_from_variable = { var = GER_SS_attitude value = 5 }
+			}
+			GER_heinrich_himmler = {
+				add_field_marshal_role = {
+					traits = { politically_connected gen_fm }
+					skill = 1
+					attack_skill = 1
+					defense_skill = 1
+					planning_skill = 1
+					logistics_skill = 1
+				}
+			}
+			add_ideas = { heinrich_himmler }
+		}
+	}
+
+	SS_form_SS_high_command = {
+
+		icon = GFX_decision_ss_icon
+
+		available = {
+			has_completed_focus = GER_form_the_waffen_ss
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1940.7.15
+				hidden_trigger = {has_country_flag = general_debug }
+			}
+		}
+		visible = {
+			has_completed_focus = GER_form_the_waffen_ss
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			OR = {
+				date > 1940.7.15
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+			hidden_trigger = {has_country_flag = SS_recruitment_flag_1}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+		cost = 5
+		
+		fire_only_once = yes
+		
+		timeout_effect = {
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = SS_form_SS_high_command_tt
+			hidden_effect = {
+				add_to_variable = { var = GER_SS_attitude value = 5 }
+			}
+			custom_effect_tooltip = SS_form_SS_high_command_tt2
+			hidden_effect = {
+				add_to_variable = { var = GER_SS_influence value = 10 }
+				subtract_from_variable = { var = GER_Wehrmacht_influence value = 10 }
+			}
+			hidden_effect = { set_country_flag = SS_high_command }
+		}
+	}
+
+	SS_himmler_speer_agreement = {
+
+		icon = GFX_decision_ss_icon
+
+		allowed = {
+			original_tag = GER
+		}
+
+		activation = {
+			has_completed_focus = GER_appoint_albert_speer
+			has_completed_focus = GER_form_the_waffen_ss
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			hidden_trigger = { has_country_flag = SS_recruitment_flag_1 }
+		}
+
+		available = {
+			has_completed_focus = GER_appoint_albert_speer
+			has_completed_focus = GER_form_the_waffen_ss
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			hidden_trigger = { has_country_flag = SS_recruitment_flag_1 }
+		}
+		cost = 5
+		days_mission_timeout = 180
+		fire_only_once = yes
+		selectable_mission = yes 
+
+		timeout_effect = {
+			subtract_from_variable = { var = GER_SS_attitude value = 10 }
+			add_to_variable = { var = GER_Wehrmacht_influence value = 10 }
+		}
+
+		complete_effect = {
+			country_event = ss_recruitment_event.45
+		}
+		ai_will_do = {
+            factor = 150
+        }
+	}
+	
+	GER_creation_of_the_panzer_core = {
+
+		icon = generic_tank
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_creation_of_the_panzer_core_tt
+				AND = {
+					check_variable = { num_equipment_in_armies@light_tank_chassis > 799 }
+					check_variable = { num_equipment_in_armies@medium_tank_chassis > 399 }
+				}
+			}
+			has_army_size = {
+				size > 7
+				type = armor
+			}
+		}
+
+		visible = {
+			tag = GER
+		}
+
+		days_mission_timeout = 1278
+		is_good = yes
+		fire_only_once = yes
+		activation = {
+			tag = GER
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = GER_creation_of_the_panzer_core_tt2
+			hidden_effect = {
+				add_to_variable = { var = GER_Wehrmacht_stability value = 2 }
+				GER_political_instability_update_effect = yes
+			}
+		}
+
+		timeout_effect = {
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	GER_keep_up_with_light_tank_research = {
+
+		icon = generic_tank
+
+		available = {
+			has_tech = advanced_light_tank_chassis
+		}
+
+		visible = {
+			tag = GER
+		}
+
+		days_mission_timeout = 730
+		is_good = yes
+		fire_only_once = yes
+		activation = {
+			tag = GER
+			date > 1941.1.1
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = GER_keep_up_with_light_tank_research_tt
+			hidden_effect = {
+				add_to_variable = { var = GER_Industrialists_attitude value = 1 }
+				add_to_variable = { var = GER_Industrialists_influence value = 1 }
+				add_to_variable = { var = GER_Industrialists_research_speed value = 1 }
+				GER_political_instability_update_effect = yes
+			}
+		}
+
+		timeout_effect = {
+			custom_effect_tooltip = GER_keep_up_with_light_tank_research_tt2
+			hidden_effect = {
+				subtract_from_variable = { var = GER_Industrialists_attitude value = 1 }
+				subtract_from_variable = { var = GER_Industrialists_research_speed value = 1 }
+				GER_political_instability_update_effect = yes
+				set_country_flag = krupp_lost
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	GER_keep_up_with_medium_tank_research = {
+
+		icon = generic_tank
+
+		available = {
+			has_tech = improved_medium_tank_chassis
+		}
+
+		visible = {
+			tag = GER
+		}
+
+		days_mission_timeout = 730
+		is_good = yes
+		fire_only_once = yes
+		activation = {
+			tag = GER
+			date > 1937.1.1
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = GER_keep_up_with_medium_tank_research_tt
+			hidden_effect = {
+				add_to_variable = { var = GER_Industrialists_attitude value = 1 }
+				add_to_variable = { var = GER_Industrialists_influence value = 1 }
+				add_to_variable = { var = GER_Industrialists_research_speed value = 1 }
+				GER_political_instability_update_effect = yes
+			}
+		}
+
+		timeout_effect = {
+			custom_effect_tooltip = GER_keep_up_with_medium_tank_research_tt2
+			hidden_effect = {
+				subtract_from_variable = { var = GER_Industrialists_attitude value = 1 }
+				subtract_from_variable = { var = GER_Industrialists_research_speed value = 1 }
+				GER_political_instability_update_effect = yes
+				set_country_flag = daimler_lost
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	GER_keep_up_with_modern_tank_research = {
+
+		icon = generic_tank
+
+		available = {
+			has_tech = advanced_medium_tank_chassis
+		}
+
+		visible = {
+			tag = GER
+		}
+
+		days_mission_timeout = 730
+		is_good = yes
+		fire_only_once = yes
+		activation = {
+			tag = GER
+			date > 1942.1.1
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = GER_keep_up_with_modern_tank_research_tt
+			hidden_effect = {
+				add_to_variable = { var = GER_Industrialists_attitude value = 1 }
+				add_to_variable = { var = GER_Industrialists_influence value = 1 }
+				add_to_variable = { var = GER_Industrialists_research_speed value = 1 }
+				GER_political_instability_update_effect = yes
+			}
+		}
+
+		timeout_effect = {
+			custom_effect_tooltip = GER_keep_up_with_modern_tank_research_tt2
+			hidden_effect = {
+				subtract_from_variable = { var = GER_Industrialists_attitude value = 1 }
+				subtract_from_variable = { var = GER_Industrialists_research_speed value = 1 }
+				GER_political_instability_update_effect = yes
+				set_country_flag = man_lost
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	GER_keep_up_with_heavy_tank_research = {
+
+		icon = generic_tank
+
+		available = {
+			OR = {
+				has_tech = improved_heavy_tank_chassis
+			}
+		}
+
+		visible = {
+			tag = GER
+		}
+
+		days_mission_timeout = 730
+		is_good = yes
+		fire_only_once = yes
+		activation = {
+			tag = GER
+			date > 1941.1.1
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = GER_keep_up_with_heavy_tank_research_tt
+			hidden_effect = {
+				add_to_variable = { var = GER_Industrialists_attitude value = 1 }
+				add_to_variable = { var = GER_Industrialists_influence value = 1 }
+				add_to_variable = { var = GER_Industrialists_research_speed value = 1 }
+				GER_political_instability_update_effect = yes
+			}
+		}
+
+		timeout_effect = {
+			custom_effect_tooltip = GER_keep_up_with_heavy_tank_research_tt2
+			hidden_effect = {
+				subtract_from_variable = { var = GER_Industrialists_attitude value = 1 }
+				subtract_from_variable = { var = GER_Industrialists_research_speed value = 1 }
+				GER_political_instability_update_effect = yes
+				set_country_flag = henschel_lost
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	GER_keep_up_with_air_research = {
+
+		icon = generic_air
+
+		available = {
+			has_tech = improved_small_airframe
+			has_tech = improved_medium_airframe
+		}
+
+		visible = {
+			tag = GER
+		}
+
+		days_mission_timeout = 730
+		is_good = yes
+		fire_only_once = yes
+		activation = {
+			tag = GER
+			date > 1939.1.1
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = GER_keep_up_with_air_research_tt
+			hidden_effect = {
+				add_to_variable = { var = GER_Industrialists_attitude value = 2 }
+				add_to_variable = { var = GER_Industrialists_influence value = 1 }
+				add_to_variable = { var = GER_Industrialists_research_speed value = 2 }
+				GER_political_instability_update_effect = yes
+			}
+		}
+
+		timeout_effect = {
+			custom_effect_tooltip = GER_keep_up_with_air_research_tt2
+			hidden_effect = {
+				subtract_from_variable = { var = GER_Industrialists_attitude value = 2 }
+				subtract_from_variable = { var = GER_Industrialists_research_speed value = 2 }
+				GER_political_instability_update_effect = yes
+				set_country_flag = henschel_lost
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	GER_danzig_speech = {
+
+		icon = generic_political_discourse
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			has_government = fascism
+			
+			85 = { is_controlled_by = GER }
+			OR = {
+				AND = {
+					has_war_with = POL
+					POL = { has_capitulated = yes }
+				}
+				NOT = { has_war_with = POL }
+				POL = { exists = no }
+			}
+		}
+
+		cost = 5
+
+		fire_only_once = yes
+
+		visible = {
+			tag = GER
+			has_government = fascism
+			
+			OR = {
+				has_war_with = POL
+				AND = {
+					POL = { has_capitulated = yes }
+					85 = { is_controlled_by = GER }
+				}
+				AND = {
+					NOT = { has_war_with = POL }
+					85 = { is_controlled_by = GER }
+				}
+				AND = {
+					POL = { exists = no }
+					85 = { is_controlled_by = GER }
+				}
+			}
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = GER_danzig_speech_tt
+			hidden_effect = {
+				add_to_variable = { var = GER_Public_Support_war_support value = 2 }
+				add_to_variable = { var = GER_Public_Support_attitude value = 1 }
+				GER_political_instability_update_effect = yes
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
+
+	GER_fall_of_france_speech = {
+
+		icon = generic_political_discourse
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			has_government = fascism
+			
+			OR = {
+				AND = {
+					has_war_with = FRA
+					FRA = { has_capitulated = yes }
+				}
+				
+				AND = {
+					any_country_with_original_tag = {
+						original_tag_to_check = FRA
+						has_government = fascism
+						OR = {
+							is_subject_of = GER
+							has_focus_tree = vichy_french_focus
+						}
+						exists = yes
+						has_capitulated = no
+					}
+				}
+			}
+		}
+
+		cost = 5
+
+		fire_only_once = yes
+
+		visible = {
+			tag = GER
+			has_government = fascism
+			
+			OR = {
+				AND = {
+					has_war_with = FRA
+					FRA = { has_capitulated = yes }
+				}
+				
+				AND = {
+					any_country_with_original_tag = {
+						original_tag_to_check = FRA
+						has_government = fascism
+						OR = {
+							is_subject_of = GER
+							has_focus_tree = vichy_french_focus
+						}
+						exists = yes
+						has_capitulated = no
+					}
+				}
+			}
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = GER_fall_of_france_speech_tt
+			hidden_effect = {
+				add_to_variable = { var = GER_Public_Support_stability value = 2 }
+				add_to_variable = { var = GER_Public_Support_attitude value = 1 }
+				GER_political_instability_update_effect = yes
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
+
+	GER_total_war_speech = {
+
+		icon = generic_political_discourse
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			has_government = fascism
+			has_completed_focus = GER_appoint_albert_speer
+			casualties > 1500000
+			fascism > 0.75
+			has_war_with = USA
+			has_war_with = SOV
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = more_than_50_economy_fatigue
+					OR = {
+						has_idea = economy_fatigue_51
+						has_idea = economy_fatigue_52
+						has_idea = economy_fatigue_53
+						has_idea = economy_fatigue_54
+						has_idea = economy_fatigue_55
+						has_idea = economy_fatigue_56
+						has_idea = economy_fatigue_57
+						has_idea = economy_fatigue_58
+						has_idea = economy_fatigue_59
+						has_idea = economy_fatigue_60
+						has_idea = economy_fatigue_61
+						has_idea = economy_fatigue_62
+						has_idea = economy_fatigue_63
+						has_idea = economy_fatigue_64
+						has_idea = economy_fatigue_65
+						has_idea = economy_fatigue_66
+						has_idea = economy_fatigue_67
+						has_idea = economy_fatigue_68
+						has_idea = economy_fatigue_69
+						has_idea = economy_fatigue_70
+						has_idea = economy_fatigue_71
+						has_idea = economy_fatigue_72
+						has_idea = economy_fatigue_73
+						has_idea = economy_fatigue_74
+						has_idea = economy_fatigue_75
+						has_idea = economy_fatigue_76
+						has_idea = economy_fatigue_77
+						has_idea = economy_fatigue_78
+						has_idea = economy_fatigue_79
+						has_idea = economy_fatigue_80
+						has_idea = economy_fatigue_81
+						has_idea = economy_fatigue_82
+						has_idea = economy_fatigue_83
+						has_idea = economy_fatigue_84
+						has_idea = economy_fatigue_85
+						has_idea = economy_fatigue_86
+						has_idea = economy_fatigue_87
+						has_idea = economy_fatigue_88
+						has_idea = economy_fatigue_89
+						has_idea = economy_fatigue_90
+						has_idea = economy_fatigue_91
+						has_idea = economy_fatigue_92
+						has_idea = economy_fatigue_93
+						has_idea = economy_fatigue_94
+						has_idea = economy_fatigue_95
+						has_idea = economy_fatigue_96
+						has_idea = economy_fatigue_97
+						has_idea = economy_fatigue_98
+						has_idea = economy_fatigue_99
+						has_idea = economy_fatigue_100
+					}
+				}
+				date > 1943.02.18
+			}
+		}
+
+		cost = 5
+
+		fire_only_once = yes
+
+		visible = {
+			tag = GER
+			has_government = fascism
+			
+			AND = {
+				has_war_with = USA
+				USA = { has_capitulated = no }
+			}
+			AND = {
+				has_war_with = SOV
+				SOV = { has_capitulated = no }
+			}
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = GER_total_war_speech_tt
+			economy_fatigue_level_down_10 = yes
+			hidden_effect = {
+				add_to_variable = { var = GER_Public_Support_war_support value = 3 }
+				add_to_variable = { var = GER_Public_Support_influence value = 2 }
+				add_to_variable = { var = GER_Public_Support_attitude value = 3 }
+				GER_political_instability_update_effect = yes
+				sound_effect = total_war_speech
+			}
+			if = {
+				limit = {
+					has_idea = sour_loser
+				}
+				swap_ideas = {
+					remove_idea = sour_loser
+					add_idea = sour_loser_4				
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = triumphant_will
+				}
+				swap_ideas = {
+					remove_idea = triumphant_will
+					add_idea = triumphant_will_2				
+				}
+			}
+			clr_country_flag = mob_has_start
+			clr_country_flag = reserves_finished_1
+			set_country_flag = reserve_total_4
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 25000
+				producer = GER
+			}
+			news_event = { id = her_news.33 hours = 2 }
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
+}

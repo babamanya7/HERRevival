@@ -1,0 +1,527 @@
+﻿add_namespace = nsb_news
+
+#Polish Peasant's strike civil war
+news_event = {
+	id = nsb_news.1
+	title = nsb_news.1.t
+	desc = nsb_news.1.desc
+	picture = GFX_news_event_ger_civil_war
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Communist nations
+		name = nsb_news.1.a
+		trigger = {
+			has_government = communism
+			NOT = { tag = POL }
+		}
+	}
+
+	option = { #Sanation Poland
+		name = nsb_news.1.b
+		trigger = {
+			original_tag = POL
+			NOT = { has_cosmetic_tag = POL_PEASANT }
+		}
+	}
+
+	option = { #Peasant Poland
+		name = nsb_news.1.c
+		trigger = {
+			original_tag = POL
+			has_cosmetic_tag = POL_PEASANT
+		}
+	}
+	
+	option = { #Fascist Germany revels at Poland tearing itself apart
+		name = nsb_news.1.d
+		trigger = {
+			has_government = fascism
+			original_tag = GER
+		}
+	}
+
+	option = { #Fallback - Others
+		name = nsb_news.1.e
+		trigger = {
+			NOT = { has_government = communism }
+			OR = {
+				NOT = {
+					original_tag = POL
+				}
+				AND = {
+					original_tag = GER
+					NOT = { has_government = fascism }
+				}
+			}
+		}
+	}
+}
+
+#Poland gains Liberia
+news_event = {
+	id = nsb_news.2
+	title = nsb_news.2.t
+	desc = {
+		text = nsb_news.2.desc.dem
+		trigger = {
+			POL = { NOT = { has_government = communism } }
+		}
+	}
+	desc = {
+		text = nsb_news.2.desc.com
+		trigger = {
+			POL = { has_government = communism }
+		}
+	}
+	picture = GFX_news_event_imro
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #USA mad
+		name = nsb_news.2.a
+		trigger = {
+			original_tag = USA
+		}
+		add_opinion_modifier = {
+			target = POL
+			modifier = annex_liberia_opinion
+		}
+	}
+
+	option = { #Liberia, I for one welcome our Polish overlords.
+		name = nsb_news.2.b
+		trigger = {
+			original_tag = LIB
+		}
+	}
+
+	option = { #Poland
+		name = nsb_news.2.c
+		trigger = {
+			original_tag = POL
+		}
+	}
+
+	option = { #Fallback - Others
+		name = nsb_news.2.d
+		trigger = {
+			NOT = {
+				original_tag = POL
+				original_tag = LIB
+				original_tag = USA
+				has_government = communism
+			}
+		}
+	}
+	
+	option = { #Communist nations and Poland is not Communist
+		name = nsb_news.2.e
+		trigger = {
+			has_government = communism
+			POL = { NOT = { has_government = communism } }
+			NOT = { tag = POL }
+		}
+	}
+	
+	option = { #Communist nations and Poland is Communist
+		name = nsb_news.2.f
+		trigger = {
+			has_government = communism
+			POL = { has_government = communism }
+			NOT = { tag = POL }
+			NOT = { tag = LIB }
+		}
+	}
+}
+
+# United Turkestan
+news_event = {
+	id = nsb_news.3
+	title = nsb_news.3.t
+	desc = nsb_news.3.desc
+	picture = GFX_news_event_generic_parliament
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = nsb_news.3.a
+		trigger = {
+			tag = FROM
+		}
+	}
+	option = {
+		name = nsb_news.3.b
+		trigger = {
+			NOT = { tag = FROM }
+		}
+	}
+}
+
+# Poland chooses a King
+news_event = {
+	id = nsb_news.5
+	title = nsb_news.5.t
+	desc = {
+		text = nsb_news.5.desc.saxon
+		trigger = {
+			POL = { has_completed_focus = POL_claiming_lithuania }
+		}
+	}
+	desc = {
+		text = nsb_news.5.desc.romania
+		trigger = {
+			POL = { has_completed_focus = POL_hohenzollern }
+		}
+	}
+	desc = {
+		text = nsb_news.5.desc.cossack
+		trigger = {
+			POL = { has_completed_focus = POL_cossack_king }
+		}
+	}
+	desc = {
+		text = nsb_news.5.desc.romanov
+		trigger = {
+			POL = { has_completed_focus = POL_romanov }
+		}
+	}
+	desc = {
+		text = nsb_news.5.desc.habsburg
+		trigger = {
+			POL = { has_completed_focus = POL_habsburg }
+		}
+	}
+	picture = GFX_news_event_generic_parliament
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = nsb_news.5.a
+		trigger = {
+			tag = FROM
+		}
+	}
+	option = {
+		name = nsb_news.5.b
+		trigger = {
+			NOT = { tag = FROM }
+			POL = {
+				NOT = {
+					OR = {
+						has_completed_focus = POL_cossack_king
+						has_completed_focus = POL_romanov
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = nsb_news.5.c
+		trigger = {
+			NOT = { tag = FROM }
+			POL = {
+				OR = {
+					has_completed_focus = POL_cossack_king
+					has_completed_focus = POL_romanov
+				}
+			}
+		}
+	}
+}
+
+# Poland becomes fascist
+news_event = {
+	id = nsb_news.6
+	title = nsb_news.6.t
+	desc = nsb_news.6.desc
+	picture = GFX_news_event_generic_parliament
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = nsb_news.6.a
+		trigger = {
+			tag = FROM
+		}
+	}
+	option = {
+		name = nsb_news.6.b
+		trigger = {
+			NOT = { tag = FROM }
+			has_government = democratic
+		}
+	}
+	option = {
+		name = nsb_news.4.e
+		trigger = {
+			NOT = { tag = FROM }
+			NOT = { has_government = democratic }
+		}
+	}
+}
+
+# Poland and somebody else enters PU
+news_event = {
+	id = nsb_news.7
+	title = nsb_news.7.t
+	desc = nsb_news.7.desc
+	picture = GFX_news_event_generic_parliament
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = nsb_news.7.a
+		trigger = {
+			OR = {
+				tag = FROM
+				tag = POL
+			}
+		}
+	}
+	option = {
+		name = nsb_news.7.b
+		trigger = {
+			NOT = {
+				tag = FROM
+				tag = POL
+			}
+		}
+	}
+}
+
+# Karl Gero becomes King of Lithuania
+news_event = {
+	id = nsb_news.8
+	title = nsb_news.8.t
+	desc = nsb_news.8.desc
+	picture = GFX_news_event_023
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = nsb_news.8.a
+		trigger = {
+			NOT = { tag = POL }
+			has_government = communism
+		}
+	}
+	
+	option = {
+		name = nsb_news.8.b
+		trigger = {
+			tag = POL
+		}
+	}
+	
+	option = {
+		name = nsb_news.8.c
+		trigger = {
+			tag = LIT
+		}
+	}
+	
+	option = {
+		name = nsb_news.8.d
+		trigger = {
+			NOT = {
+				tag = LIT
+				tag = POL
+				has_government = communism
+			}
+		}
+	}
+}
+
+# The Death of Stalin
+news_event = {
+	id = nsb_news.11
+	title = nsb_news.11.t
+	desc = nsb_news.11.desc
+	picture = GFX_news_event_generic_funeral
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = nsb_news.11.a
+		trigger = { 
+			NOT = { has_country_leader_ideology = stalinism } 
+		}
+	}
+	option = {
+		name = nsb_news.11.b
+		trigger = { has_country_leader_ideology = stalinism }
+	}
+
+}
+
+# Trotsky Survives Assassination (raid on his villa)
+news_event = {
+	id = nsb_news.101
+	title = news.38.t
+	desc = nsb_news.101.desc
+	picture = GFX_news_event_023
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		set_global_flag = trotsky_survives
+	}
+	
+	option = {
+		name = news.38.a
+		trigger = { NOT = { TAG = SOV } }
+	}
+	option = {
+		name = news.38.b
+		trigger = { TAG = SOV }
+	}
+}
+
+# Successful Defensive Pact with Allies -> SOV-FRA (default) + maybe POL
+news_event = {
+	id = nsb_news.102
+	title = nsb_news.102.t
+	desc = {
+		text = nsb_news.102.desc_default
+		trigger = {
+			NOT = { has_global_flag = SOV_collective_security_pact_poland_inlcuded_flag }
+		}
+	}
+	desc = {
+		text = nsb_news.102.desc_poland
+		trigger = {
+			has_global_flag = SOV_collective_security_pact_poland_inlcuded_flag
+		}
+	}
+	picture = GFX_news_event_SOV_supreme_soviet
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Other people around
+		name = nsb_news.102.a
+
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = event_target:SOV_collective_security_pact_integrant
+				AND = {
+					tag = POL
+					has_global_flag = SOV_collective_security_pact_poland_inlcuded_flag
+				}
+			}
+		}
+	}
+
+	option = { #Integrants of the pact
+		name = nsb_news.102.b
+
+		trigger = {
+			OR = {
+				tag = SOV
+				tag = event_target:SOV_collective_security_pact_integrant
+				AND = {
+					tag = POL
+					has_global_flag = SOV_collective_security_pact_poland_inlcuded_flag
+				}
+			}
+		}
+
+		hidden_effect = { #Clean things up thank you
+			if = {
+				limit = {
+					tag = SOV
+					has_global_flag = SOV_collective_security_pact_poland_inlcuded_flag
+				}
+				clr_global_flag = SOV_collective_security_pact_poland_inlcuded_flag
+			}
+			clear_global_event_target = SOV_collective_security_pact_integrant
+		}
+	}
+}
+
+# Successful Soviet-German Trade Agreement
+news_event = {
+	id = nsb_news.103
+	title = nsb_news.103.t
+	desc = nsb_news.103.desc
+	picture = GFX_news_event_aid_pact
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #SOV || GER
+		name = nsb_news.103.a
+
+		trigger = {
+			OR = {
+				tag = SOV
+				tag = GER
+			}
+		}
+	}
+
+	option = { #Others
+		name = nsb_news.103.b
+
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = GER
+			}
+		}
+	}
+}
+
+# Anglo-Soviet Invasion of Iran
+news_event = {
+	id = nsb_news.104
+	title = nsb_news.104.t
+	desc = nsb_news.104.desc
+	picture = GFX_news_event_SOV_invasion_iran
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #SOV || GER
+		name = nsb_news.104.a
+
+		trigger = {
+			OR = {
+				tag = SOV
+				tag = ENG
+			}
+		}
+	}
+
+	option = { #Others
+		name = nsb_news.104.b
+
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = ENG
+			}
+		}
+	}
+}

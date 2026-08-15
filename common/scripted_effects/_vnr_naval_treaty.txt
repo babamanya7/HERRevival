@@ -1,0 +1,61 @@
+remove_naval_treaty_effect = {
+	if = {
+		limit = {
+			has_idea = MTG_naval_treaty_adherent
+		}
+		remove_ideas = MTG_naval_treaty_adherent
+	}
+    else_if = {
+		limit = {
+			has_idea = MTG_naval_treaty_adherent_1936
+		}
+		remove_ideas = MTG_naval_treaty_adherent_1936
+	}
+	else_if = {
+		limit = {
+			has_idea = MTG_naval_treaty_cheating
+		}
+		remove_ideas = MTG_naval_treaty_cheating
+	}
+	else_if = {
+		limit = {
+			has_idea = MTG_naval_treaty_adherent_reduced
+		}
+		remove_ideas = MTG_naval_treaty_adherent_reduced
+	}
+	else_if = {
+		limit = {
+			has_idea = MTG_naval_treaty_cheating_reduced
+		}
+		remove_ideas = MTG_naval_treaty_cheating_reduced
+	}
+	set_country_flag = MTG_naval_treaty_abandoned
+}
+
+add_starting_navy_spirits = {
+	JAP = {
+		add_ideas = etajima_naval_academy
+		add_ideas = inflexible_headquarter
+	}
+	GER = {
+		add_ideas = kiel_standard
+		add_ideas = murwik_naval_academy
+	}
+	USA = {
+		add_ideas = annapolis_naval_academy
+		add_ideas = panama_standard
+	}
+	ENG = {
+		add_ideas = dartmouth_naval_academy
+	}
+}
+
+sign_naval_treaty = {
+	every_country = {
+		limit = { has_naval_treaty_trigger = yes }
+		country_event = {
+			id = MTG_naval_treaty.12
+			days = 60
+		}
+	}
+}

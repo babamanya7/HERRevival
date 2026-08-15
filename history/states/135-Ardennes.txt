@@ -1,0 +1,31 @@
+
+state={
+	id=135
+	name="STATE_135"
+	manpower = 1210500
+	
+	state_category = city
+	
+	resources = {
+		iron = 10
+	}
+
+	history={
+		owner = BEL
+		buildings = {
+			infrastructure = 6
+			industrial_complex = 5
+		}
+		add_core_of = BEL
+		victory_points = {
+			13867 3
+		}
+		victory_points = {
+			3485 1
+		}
+	}
+
+	provinces={
+		984 1127 1145 1194 1346 1594 3485 3574 7082 13867 
+	}
+}

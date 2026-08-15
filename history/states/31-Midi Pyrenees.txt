@@ -1,0 +1,31 @@
+
+state={
+	id=31
+	name="STATE_31"
+	manpower = 1825000
+	
+	state_category = city
+	
+	resources = {
+		iron = 148
+	}
+
+	history={
+		owner = FRA
+		victory_points = {
+			14687 10
+		}
+		buildings = {
+			infrastructure = 6
+			arms_factory = 1
+			industrial_complex = 11
+			air_base = 4
+
+		}
+		add_core_of = FRA
+	}
+
+	provinces={
+		14779 14706 14664 14628 14613 14607 14650 14695 14749 14763 14738 14696 14679 14651 14620 14608 14638 14584 14577 14589 14621 14614 14629 14661 14644 14672 14707 14687 14730 14780 14813
+	}
+}

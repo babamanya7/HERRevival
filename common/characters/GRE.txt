@@ -1,0 +1,175 @@
+characters={
+	GRE_konstantinos_demertzis={
+		name=GRE_konstantinos_demertzis
+		portraits={
+			civilian={
+				large="GFX_portrait_gre_konstantinos_demertzis"
+			}
+		}
+		country_leader={
+			ideology=centrism
+			traits={ monarchist_puppet }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+
+	GRE_nikos_zachariadis={
+		name=GRE_nikos_zachariadis
+		portraits={
+			civilian={
+				large="GFX_portrait_gre_nikos_zachariadis"
+			}
+		}
+		country_leader={
+			ideology=stalinism
+			traits={ reluctant_stalinist }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+
+	GRE_george_mercouris={
+		name=GRE_george_mercouris
+		portraits={
+			civilian={
+				large="GFX_portrait_gre_george_mercouris"
+			}
+		}
+		country_leader={
+			ideology=gen_nazism
+			traits={ polemarch likes_turkey }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	
+	GRE_georgios_kosmidis={
+		name=GRE_georgios_kosmidis
+		portraits={
+			civilian={
+				large="GFX_portrait_gre_georgios_kosmidis"
+			}
+		}
+		country_leader={
+			ideology=nazism
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+
+	GRE_charalambos_katsimitros={
+		name=GRE_charalambos_katsimitros
+		portraits={
+			army={
+				large="GFX_portrait_gre_charalambos_katsimitros"
+				small="gfx/interface/ideas/idea_GRE_charalambos_katsimitros.dds"
+			}
+		}
+		corps_commander={
+			traits={ inflexible_strategist trait_cautious war_hero trait_GRE_stauch_monarchist trickster trait_mountaineer }
+			skill=3
+			attack_skill=2
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=304
+		}
+	}
+
+	GRE_markos_drakos={
+		instance = {
+			allowed = {
+				has_dlc = "Battle for the Bosporus"
+			}
+			name=GRE_markos_drakos
+			portraits={
+				army={
+					large="GFX_portrait_gre_markos_drakos"
+					small="gfx/interface/ideas/idea_GRE_markos_drakos.dds"
+				}
+			}
+			corps_commander={
+				traits={ career_officer infantry_officer trickster trait_mountaineer }
+				skill=3
+				attack_skill=1
+				defense_skill=3
+				planning_skill=3
+				logistics_skill=3
+				legacy_id=306
+			}
+		}
+		instance = {
+			allowed = {
+				NOT = { has_dlc = "Battle for the Bosporus" }
+			}
+			name=GRE_markos_drakos
+			portraits={
+				army={
+					large="gfx/leaders/Europe/Portrait_Europe_Generic_land_5.dds"
+					small="gfx/interface/ideas/idea_europe_generic_land_5.dds"
+				}
+			}
+			corps_commander={
+				traits={ hill_fighter }
+				skill=3
+				attack_skill=1
+				defense_skill=3
+				planning_skill=3
+				logistics_skill=3
+				legacy_id=-1
+			}
+		}
+	}
+
+	### Empty characters -> Can become Unit Leaders later
+
+	GRE_theodoros_pangalos = {
+		name=GRE_theodoros_pangalos
+		portraits={
+			army={
+				large="GFX_portrait_gre_theodoros_pangalos"
+				small="gfx/interface/ideas/idea_GRE_theodoros_pangalos.dds" #Can become a unit leader later
+			}
+		}
+	}
+
+	GRE_dimitrios_psarros = {
+		name=GRE_dimitrios_psarros
+		portraits={
+			army={
+				large="GFX_portrait_gre_dimitrios_psarros"
+				small="gfx/interface/ideas/idea_GRE_dimitrios_psarros.dds" #Can become a unit leader later
+			}
+		}
+	}
+
+	GRE_panagiotis_demestichas = {
+		name=GRE_panagiotis_demestichas
+		portraits={
+			army={
+				large="GFX_portrait_gre_panagiotis_demestichas"
+				small="gfx/interface/ideas/idea_GRE_panagiotis_demestichas.dds" #Can become a unit leader later
+			}
+		}
+	}
+
+	GRE_alexandros_papagos={
+		name=GRE_alexandros_papagos
+		portraits={
+			army={
+				small="GFX_idea_gre_alexandros_papagos"
+				large="GFX_portrait_gre_alexandros_papagos"
+			}
+		}
+		field_marshal={
+			traits={ old_guard inflexible_strategist career_officer war_hero trait_GRE_stauch_monarchist trait_mountaineer }
+			skill=3
+			attack_skill=2
+			defense_skill=3
+			planning_skill=3
+			logistics_skill=2
+			legacy_id=300
+		}
+	}
+}

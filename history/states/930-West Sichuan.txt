@@ -1,0 +1,30 @@
+state={
+	id=930
+	name="STATE_930"
+	manpower=140000
+	buildings_max_level_factor=1.000
+	state_category=pastoral
+	history={
+		owner = CHI
+		add_core_of = CHI
+		#
+		buildings = {
+			infrastructure = 1
+
+		}
+		victory_points = {
+			12141 3
+		}
+		1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+	}
+	provinces = {
+		12141 12819 13438 13799 13800 
+	}
+}

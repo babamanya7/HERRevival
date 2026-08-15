@@ -1,0 +1,64 @@
+
+state={
+	id=137
+	name="STATE_137"
+	manpower = 1061607
+	
+	state_category = city
+
+	history={
+		owner = SOV
+		victory_points = {
+			3686 20
+		}
+		victory_points = {
+			9680 1
+		}
+		victory_points = {
+			6704 1
+		}
+		victory_points = {
+			663 1
+		}
+		victory_points = {
+			6724 5
+		}
+		victory_points = {
+			3660 2
+		}
+		victory_points = {
+			9638 2
+		}
+		buildings = {
+			infrastructure = 5
+			dockyard = 4
+			air_base = 6
+			steel_refinery = 2
+			industrial_complex = 5
+			arms_factory = 4
+			3686 ={
+				naval_base = 10
+				coastal_bunker = 3
+				bunker = 7
+				naval_facility = 1
+			}
+			9680 ={
+				naval_base = 1
+				coastal_bunker = 1
+			}
+			9638 ={
+				naval_base = 1
+				coastal_bunker = 1
+			}
+			3660 ={
+				naval_base = 1
+				coastal_bunker = 1
+			}
+		}
+		add_core_of = SOV
+	}
+
+	provinces={
+		705 3686 3722 6704 6724 9677 9680 9718 11649 13827 13826 661 663 9622 11623 13393 636 3612 9618 9638 3660 11590
+	}
+}

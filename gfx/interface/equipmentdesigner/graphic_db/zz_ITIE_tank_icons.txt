@@ -1,0 +1,201 @@
+	## order:
+	## tank - art - td - spaa - flame - rocket - etc
+	## Tags:
+	## AOI - ITA - LBV - LOM - PAP - SIC - SPM - SRD - SRI - TUS - VNC
+ITA = {
+
+	light_tank_chassis_0 = {
+		pool = {
+			weight = 2.5
+			icons = { 
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_flame_fiat_3000lf.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_fiat_3000b.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_fiat_3000a_4.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_fiat_3000a_3.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_fiat_3000a_2.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_fiat_3000a.dds"
+			}
+			models = {
+				"ITA_light_armor_entity"
+			}
+		}
+	}
+	light_tank_chassis_1 = {
+		pool = {
+			weight = 2.5
+			icons = {
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_flame_cv35_lanzallamas.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_td_smvt_47_32_cv.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_td_cv33_cc.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_cv38r.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_cv38_2.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_cv38.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_cv35r.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_cv35_2.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_cv35.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_cv35_3.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_cv33_2.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_cv33.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_cv33_proto_2.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_cv33_proto.dds"
+			}
+			models = {
+				"ITA_light_armor_entity"
+			}
+		}
+	}
+
+	light_tank_chassis_2 = {
+		pool = {
+			weight = 2.5
+			icons = {
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_td_smvt_47_32_2.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_td_smvt_47_32_3.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_td_smvt_47_32.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_art_smvt_75_18.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_l6_40_6.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_l6_40_5.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_l6_40_3.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_l6_40_4.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_l6_40_2.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_l6_40.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/light_l6_40_proto.dds"
+			}
+			models = {
+				"ITA_light_armor_entity"
+			}
+		}
+	}
+	medium_tank_chassis_0 = {
+		pool = {
+			weight = 2.5
+			icons = { 
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_fiat_3000_type2.dds"
+			}
+			models = {
+				"ITA_medium_armor_entity"
+			}
+		}
+	}
+	medium_tank_chassis_1 = {
+		pool = {
+			weight = 2.5
+			icons = { 
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_td_smvt_90_53_41_3.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_td_smvt_90_53_41_2.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_td_smvt_90_53_41.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_art_smvt_75_18_41.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_art_smvt_75_18_40_4.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_art_smvt_75_18_40_3.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_art_smvt_75_18_40_2.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_art_smvt_75_18_40.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m13_40_5.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m13_40_4.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m13_40_3.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m13_40_2.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m13_40.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m11_39_5.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m11_39_4.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m11_39_3.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m11_39_2.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m11_39.dds"
+			}
+			models = {
+				"ITA_medium_armor_entity"
+			}
+		}
+	}
+
+	medium_tank_chassis_2 = {
+		pool = {
+			weight = 2.5
+			icons = { 
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_spaa_m15_42_aa.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_td_smvt_105_25_43_2.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_td_smvt_105_25_43.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_td_smvt_75_34_42_2.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_td_smvt_75_34_42.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_art_smvt_75_18_42_2.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_art_smvt_75_18_42.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m15_42_6.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m15_42_5.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m15_42_4.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m15_42_3.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m15_42_2.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m15_42.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m14_41_3.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m14_41_2.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m14_41.dds"
+			}
+			models = {
+				"ITA_medium_armor_entity"
+			}
+		}
+	}
+
+	medium_tank_chassis_3 = {
+		pool = {
+			weight = 2.5
+			icons = { 
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_td_smvt_75_46_43.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/heavy_td_smvt_149_40_43.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m16_43_2.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m16_43.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/medium_m16_43_3.dds"
+			}
+			models = {
+				"ITA_medium_armor_entity"
+			}
+		}
+	}
+	heavy_tank_chassis_0 = {
+		pool = {
+			weight = 2.5
+			icons = { 
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/heavy_fiat_2000.dds"
+			}
+			models = {
+				"ITA_heavy_armor_entity"
+			}
+		}
+	}
+	heavy_tank_chassis_1 = {
+		pool = {
+			weight = 2.5
+			icons = { 
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/heavy_fiat_2000_34.dds"
+			}
+			models = {
+				"ITA_heavy_armor_entity"
+			}
+		}
+	}
+
+	heavy_tank_chassis_2 = {
+		pool = {
+			weight = 2.5
+			icons = { 
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/heavy_p26_40_3.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/heavy_p26_40.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/heavy_p26_40_2.dds"
+			}
+			models = {
+				"ITA_heavy_armor_entity"
+			}
+		}
+	}
+
+	heavy_tank_chassis_3 = {
+		pool = {
+			weight = 2.5
+			icons = { 
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/heavy_p35_43_bis_2.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/heavy_p35_43_bis.dds"
+				"gfx/interface/equipmentdesigner/tanks/designer/ITA/heavy_p35_43.dds"
+			}
+			models = {
+				"ITA_heavy_armor_entity"
+			}
+		}
+	}
+}

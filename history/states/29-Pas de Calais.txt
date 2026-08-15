@@ -1,0 +1,47 @@
+
+state={
+	id=29
+	name="STATE_29"
+	manpower = 2976400
+	
+	state_category = large_city
+	resources={
+	}
+
+	history={
+		owner = FRA
+		victory_points = {
+			6759 3
+		}
+		victory_points = {
+			13872 5
+		}
+		victory_points = {
+			7066 3
+		}
+		victory_points = {
+			13534 10
+		}
+		victory_points = {
+			13125 15
+		}
+		buildings = {
+			infrastructure = 8
+			industrial_complex = 9
+			arms_factory = 5
+			steel_refinery = 1
+			air_base = 12
+			13872 = {
+				naval_base = 7
+			}
+			13125 = {
+				naval_base = 2
+			}
+		}
+		add_core_of = FRA
+	}
+
+	provinces={
+		6759 6952 7005 7030 7066 7073 7162 9560 9586 9837 9983 11521 11533 11582 11597 12058 13125 13534 13872 
+	}
+}

@@ -1,0 +1,83 @@
+characters={
+	SIK_sheng_shicai={
+		name=SIK_sheng_shicai
+		portraits={
+			civilian={
+				large="gfx/leaders/SIK/Portrait_Sinkiang_Sheng_Shicai.dds"
+			}
+			army={
+				large="GFX_portrait_sheng_shicai"
+				small="gfx/interface/ideas/idea_asia_generic_land_2.dds"
+
+			}
+		}
+		country_leader={
+			ideology=stalinism
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+
+	SIK_chiang_yufen={
+		name=SIK_chiang_yufen
+		portraits={
+			army={
+				large="gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
+				small="gfx/interface/ideas/idea_asia_generic_land_3.dds"
+			}
+		}
+		corps_commander={
+			skill=3
+			attack_skill=4
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+
+	SIK_kwong_jin={
+		name=SIK_kwong_jin
+		portraits={
+			civilian={
+				large="gfx/leaders/Asia/portrait_asia_generic_4.dds"
+			}
+		}
+		country_leader={
+			ideology=conservatism
+			traits={ captain_of_industry compassionate_gentleman }
+			expire="1952.1.1.12"
+			id=-1
+		}
+	}
+
+	SIK_luo_wei={
+		name=SIK_luo_wei
+		portraits={
+			civilian={
+				large="gfx/leaders/Asia/portrait_asia_generic_4.dds"
+			}
+		}
+		country_leader={
+			ideology=nazism
+			traits={ reluctant_interventionist dealbroker }
+			expire="1950.1.1.12"
+			id=-1
+		}
+	}
+
+	SIK_liang_jiang={
+		name=SIK_liang_jiang
+		portraits={
+			civilian={
+				large="gfx/leaders/Asia/Portrait_Asia_Generic_3.dds"
+			}
+		}
+		country_leader={
+			ideology=centrism
+			traits={ financial_expert }
+			expire="1947.1.1.12"
+			id=-1
+		}
+	}
+}

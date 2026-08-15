@@ -1,0 +1,28 @@
+state={
+	id=881
+	name="STATE_881"
+	manpower = 878150
+	resources={
+		bauxite = 17
+		coal = 122
+	}
+	
+	state_category = city
+	
+	history={
+		owner = CZE
+		victory_points = { 11723 5 }
+		buildings = {
+			infrastructure = 6
+			arms_factory = 5
+			industrial_complex = 6
+			steel_refinery = 2
+			air_base = 10
+		}
+		add_core_of = CZE
+	}
+
+	provinces={
+		662 668 708 771 3340 3488 3683 3684 6668 6770 9574 10758 10771 11463 11470 11679 11723 
+	}
+}

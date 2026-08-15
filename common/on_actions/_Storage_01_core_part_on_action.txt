@@ -1,0 +1,1483 @@
+### rubber part ###
+
+on_actions = {
+	on_startup = {
+		effect = {
+			every_country = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { num_of_rubber_storage = 0 }
+				every_state = {
+					limit = { is_controlled_by = PREV }
+					PREV = { add_to_variable = { num_of_rubber_storage = PREV.non_damaged_building_level@rubber_storage } }
+				}
+				### Above, to count the number of rubber storages. ###
+				
+				set_variable = { rubber_speed = num_of_rubber_storage }
+				multiply_variable = { rubber_speed = 500 }
+				
+				### Above, to count the speed of rubber storages putting out. ###
+			
+				set_variable = { rubber_cap = num_of_rubber_storage }
+				multiply_variable = { rubber_cap = 100000 }
+				
+				set_variable = { storage_size_modifier = modifier@storage_size_factor }
+				add_to_variable = { storage_size_modifier = 1 }
+				multiply_variable = { rubber_cap = storage_size_modifier }
+				round_variable = rubber_cap
+				
+				### Above, to count the total cap of rubber storages. ###
+				
+				set_variable = { daily_left_rubber = resource@rubber }
+				clamp_variable = {
+					var = daily_left_rubber
+					min = 0
+					max = 50000
+				}
+				
+				### Above, to record the rubber left everyday. ###
+				
+				set_variable = { left_rubber = 0 }
+				set_variable = { rubber_storage_use = 0 }
+				
+				### Above, to init. ###
+				
+			}
+		}
+	}
+    on_daily = {
+		effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { num_of_rubber_storage = 0 }
+				every_state = {
+					limit = { is_controlled_by = ROOT }
+					ROOT = { add_to_variable = { num_of_rubber_storage = PREV.non_damaged_building_level@rubber_storage } }
+				}
+				### Above, to count the number of rubber storages. ###
+				
+				set_variable = { rubber_speed = num_of_rubber_storage }
+				multiply_variable = { rubber_speed = 500 }
+				
+				### Above, to count the speed of rubber storages putting out. ###
+				
+				set_variable = { rubber_cap = num_of_rubber_storage }
+				multiply_variable = { rubber_cap = 100000 }
+				
+				set_variable = { storage_size_modifier = modifier@storage_size_factor }
+				add_to_variable = { storage_size_modifier = 1 }
+				multiply_variable = { rubber_cap = storage_size_modifier }
+				round_variable = rubber_cap
+				
+				### Above, to count the total cap of rubber storages. ###
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = rubber_storage_use }
+					ROOT = { check_variable = { resource@rubber < 0 } }
+				}
+				ROOT = {
+					set_variable = { rubber_storage_use_temp = 0 }
+					add_to_variable = { rubber_storage_use_temp = resource@rubber }
+					multiply_variable = { rubber_storage_use_temp = -1 }
+					clamp_variable = {
+						var = rubber_storage_use_temp
+						min = 0
+						max = rubber_speed
+					}
+					add_to_variable = { rubber_storage_use = rubber_storage_use_temp }
+					clamp_variable = {
+						var = rubber_storage_use
+						min = 0
+						max = rubber_speed
+					}
+					set_variable = { res_eff_size_modifier = 1 }
+					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
+					divide_variable = { rubber_storage_use = res_eff_size_modifier }
+					round_variable = rubber_storage_use
+					### rubber_storage_use, This var will be used in dynamic modifier. ###
+				}
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = rubber_storage_use }
+					ROOT = { check_variable = { resource@rubber > 0 } }
+				}
+				set_variable = { rubber_storage_use_temp = 0 }
+				add_to_variable = { rubber_storage_use_temp = resource@rubber }
+				subtract_from_variable = { rubber_storage_use = rubber_storage_use_temp }
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = rubber_storage_use }
+					ROOT = { check_variable = { rubber_storage_use > 0 } }
+				}
+				if = {
+					limit = { ROOT = { check_variable = { left_rubber > rubber_speed } } }
+					subtract_from_variable = { left_rubber = rubber_storage_use }
+				}
+				else = {
+					ROOT = {
+						if = { 
+							limit = { ROOT = { NOT = { has_country_flag = rubber_storage_empty } } }
+							set_country_flag = rubber_storage_empty
+							set_variable = { rubber_storage_use = left_rubber }
+							set_variable = { left_rubber = 0 }
+						}
+						
+						### Above, If the left rubber is less than the max of the building that one day can putting out, just let the putting out number be the left. ###
+						### VERY IMPORTANT!!! MAKE A FLAG to let the storages not to put out before its left more than the speed putting out !!! ###
+						
+						else = {
+							set_variable = { rubber_storage_use = 0 }
+						}
+						### Above, Let it invaild ###
+						
+					}
+				}
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { NOT = { has_country_flag = rubber_storage_use } }
+				}
+				set_variable = { rubber_storage_use = 0 }
+			}
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { daily_left_rubber = resource@rubber }
+				subtract_from_variable = { daily_left_rubber = rubber_storage_use }
+				clamp_variable = {
+					var = daily_left_rubber
+					min = 0
+					max = 50000
+				}
+				add_to_variable = { left_rubber = daily_left_rubber }
+				
+				### Above, to store the rubber ###
+				
+				clamp_variable = {
+					var = left_rubber
+					min = 0
+					max = rubber_cap
+				}
+				
+				### Above, to clamp the storage ###
+				
+				if = {
+					limit = { 
+						ROOT = { 
+							OR = {
+								check_variable = { left_rubber > rubber_speed }
+								check_variable = { left_rubber = rubber_speed } 
+							}
+						} 
+					}
+					ROOT = { clr_country_flag = rubber_storage_empty }
+				}
+				
+				### Above, Let the storages work again, when the storage become enough. ###
+				
+				### Notice: Because in 1936.1.1 there is no storage, so it should take out first, then put in. ###
+			}
+		}
+    }
+}
+
+### steel part ###
+
+on_actions = {
+	on_startup = {
+		effect = {
+			every_country = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { num_of_steel_storage = 0 }
+				
+				every_state = {
+					limit = { is_controlled_by = PREV }
+					PREV = { add_to_variable = { num_of_steel_storage = PREV.non_damaged_building_level@steel_storage } }
+				}
+				
+				set_variable = { steel_speed = num_of_steel_storage }
+				multiply_variable = { steel_speed = 1000 }
+			
+				set_variable = { steel_cap = num_of_steel_storage }
+				multiply_variable = { steel_cap = 120000 }
+				
+				set_variable = { storage_size_modifier = modifier@storage_size_factor }
+				add_to_variable = { storage_size_modifier = 1 }
+				multiply_variable = { steel_cap = storage_size_modifier }
+				round_variable = steel_cap
+				
+				set_variable = { daily_left_steel = resource@steel }
+				clamp_variable = {
+					var = daily_left_steel
+					min = 0
+					max = 50000
+				}
+				set_variable = { left_steel = 0 }
+				set_variable = { steel_storage_use = 0 }
+			}
+		}
+	}
+    on_daily = {
+		effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { num_of_steel_storage = 0 }
+				every_state = {
+					limit = { is_controlled_by = ROOT }
+					ROOT = { add_to_variable = { num_of_steel_storage = PREV.non_damaged_building_level@steel_storage } }
+				}
+				### Above, to count the number of steel storages. ###
+				
+				set_variable = { steel_speed = num_of_steel_storage }
+				multiply_variable = { steel_speed = 500 }
+				
+				### Above, to count the speed of steel storages putting out. ###
+				
+				set_variable = { steel_cap = num_of_steel_storage }
+				multiply_variable = { steel_cap = 100000 }
+				
+				set_variable = { storage_size_modifier = modifier@storage_size_factor }
+				add_to_variable = { storage_size_modifier = 1 }
+				multiply_variable = { steel_cap = storage_size_modifier }
+				round_variable = steel_cap
+				
+				### Above, to count the total cap of steel storages. ###
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = steel_storage_use }
+					ROOT = { check_variable = { resource@steel < 0 } }
+				}
+				ROOT = {
+					set_variable = { steel_storage_use_temp = 0 }
+					add_to_variable = { steel_storage_use_temp = resource@steel }
+					multiply_variable = { steel_storage_use_temp = -1 }
+					clamp_variable = {
+						var = steel_storage_use_temp
+						min = 0
+						max = steel_speed
+					}
+					add_to_variable = { steel_storage_use = steel_storage_use_temp }
+					clamp_variable = {
+						var = steel_storage_use
+						min = 0
+						max = steel_speed
+					}
+					set_variable = { res_eff_size_modifier = 1 }
+					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
+					divide_variable = { steel_storage_use = res_eff_size_modifier }
+					round_variable = steel_storage_use
+					### steel_storage_use, This var will be used in dynamic modifier. ###
+				}
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = steel_storage_use }
+					ROOT = { check_variable = { resource@steel > 0 } }
+				}
+				set_variable = { steel_storage_use_temp = 0 }
+				add_to_variable = { steel_storage_use_temp = resource@steel }
+				subtract_from_variable = { steel_storage_use = steel_storage_use_temp }
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = steel_storage_use }
+					ROOT = { check_variable = { steel_storage_use > 0 } }
+				}
+				if = {
+					limit = { ROOT = { check_variable = { left_steel > steel_speed } } }
+					subtract_from_variable = { left_steel = steel_storage_use }
+				}
+				else = {
+					ROOT = {
+						if = { 
+							limit = { ROOT = { NOT = { has_country_flag = steel_storage_empty } } }
+							set_country_flag = steel_storage_empty
+							set_variable = { steel_storage_use = left_steel }
+							set_variable = { left_steel = 0 }
+						}
+						
+						### Above, If the left steel is less than the max of the building that one day can putting out, just let the putting out number be the left. ###
+						### VERY IMPORTANT!!! MAKE A FLAG to let the storages not to put out before its left more than the speed putting out !!! ###
+						
+						else = {
+							set_variable = { steel_storage_use = 0 }
+						}
+						### Above, Let it invaild ###
+						
+					}
+				}
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { NOT = { has_country_flag = steel_storage_use } }
+				}
+				set_variable = { steel_storage_use = 0 }
+			}
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { daily_left_steel = resource@steel }
+				subtract_from_variable = { daily_left_steel = steel_storage_use }
+				clamp_variable = {
+					var = daily_left_steel
+					min = 0
+					max = 50000
+				}
+				add_to_variable = { left_steel = daily_left_steel }
+				
+				### Above, to store the steel ###
+				
+				clamp_variable = {
+					var = left_steel
+					min = 0
+					max = steel_cap
+				}
+				
+				### Above, to clamp the storage ###
+				
+				if = {
+					limit = { 
+						ROOT = { 
+							OR = {
+								check_variable = { left_steel > steel_speed }
+								check_variable = { left_steel = steel_speed } 
+							}
+						} 
+					}
+					ROOT = { clr_country_flag = steel_storage_empty }
+				}
+				
+				### Above, Let the storages work again, when the storage become enough. ###
+				
+				### Notice: Because in 1936.1.1 there is no storage, so it should take out first, then put in. ###
+			}
+		}
+    }
+}
+
+### aluminium part ###
+
+on_actions = {
+	on_startup = {
+		effect = {
+			every_country = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { num_of_aluminium_storage = 0 }
+				
+				every_state = {
+					limit = { is_controlled_by = PREV }
+					PREV = { add_to_variable = { num_of_aluminium_storage = PREV.non_damaged_building_level@aluminium_storage } }
+				}
+				
+				set_variable = { aluminium_speed = num_of_aluminium_storage }
+				multiply_variable = { aluminium_speed = 300 }
+			
+				set_variable = { aluminium_cap = num_of_aluminium_storage }
+				multiply_variable = { aluminium_cap = 100000 }
+				
+				set_variable = { storage_size_modifier = modifier@storage_size_factor }
+				add_to_variable = { storage_size_modifier = 1 }
+				multiply_variable = { aluminium_cap = storage_size_modifier }
+				round_variable = aluminium_cap
+				
+				set_variable = { daily_left_aluminium = resource@aluminium }
+				clamp_variable = {
+					var = daily_left_aluminium
+					min = 0
+					max = 50000
+				}
+				set_variable = { left_aluminium = 0 }
+				set_variable = { aluminium_storage_use = 0 }
+			}
+		}
+	}
+    on_daily = {
+		effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { num_of_aluminium_storage = 0 }
+				every_state = {
+					limit = { is_controlled_by = ROOT }
+					ROOT = { add_to_variable = { num_of_aluminium_storage = PREV.non_damaged_building_level@aluminium_storage } }
+				}
+				### Above, to count the number of aluminium storages. ###
+				
+				set_variable = { aluminium_speed = num_of_aluminium_storage }
+				multiply_variable = { aluminium_speed = 500 }
+				
+				### Above, to count the speed of aluminium storages putting out. ###
+				
+				set_variable = { aluminium_cap = num_of_aluminium_storage }
+				multiply_variable = { aluminium_cap = 100000 }
+				
+				set_variable = { storage_size_modifier = modifier@storage_size_factor }
+				add_to_variable = { storage_size_modifier = 1 }
+				multiply_variable = { aluminium_cap = storage_size_modifier }
+				round_variable = aluminium_cap
+				
+				### Above, to count the total cap of aluminium storages. ###
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = aluminium_storage_use }
+					ROOT = { check_variable = { resource@aluminium < 0 } }
+				}
+				ROOT = {
+					set_variable = { aluminium_storage_use_temp = 0 }
+					add_to_variable = { aluminium_storage_use_temp = resource@aluminium }
+					multiply_variable = { aluminium_storage_use_temp = -1 }
+					clamp_variable = {
+						var = aluminium_storage_use_temp
+						min = 0
+						max = aluminium_speed
+					}
+					add_to_variable = { aluminium_storage_use = aluminium_storage_use_temp }
+					clamp_variable = {
+						var = aluminium_storage_use
+						min = 0
+						max = aluminium_speed
+					}
+					set_variable = { res_eff_size_modifier = 1 }
+					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
+					divide_variable = { aluminium_storage_use = res_eff_size_modifier }
+					round_variable = aluminium_storage_use
+					### aluminium_storage_use, This var will be used in dynamic modifier. ###
+				}
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = aluminium_storage_use }
+					ROOT = { check_variable = { resource@aluminium > 0 } }
+				}
+				set_variable = { aluminium_storage_use_temp = 0 }
+				add_to_variable = { aluminium_storage_use_temp = resource@aluminium }
+				subtract_from_variable = { aluminium_storage_use = aluminium_storage_use_temp }
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = aluminium_storage_use }
+					ROOT = { check_variable = { aluminium_storage_use > 0 } }
+				}
+				if = {
+					limit = { ROOT = { check_variable = { left_aluminium > aluminium_speed } } }
+					subtract_from_variable = { left_aluminium = aluminium_storage_use }
+				}
+				else = {
+					ROOT = {
+						if = { 
+							limit = { ROOT = { NOT = { has_country_flag = aluminium_storage_empty } } }
+							set_country_flag = aluminium_storage_empty
+							set_variable = { aluminium_storage_use = left_aluminium }
+							set_variable = { left_aluminium = 0 }
+						}
+						
+						### Above, If the left aluminium is less than the max of the building that one day can putting out, just let the putting out number be the left. ###
+						### VERY IMPORTANT!!! MAKE A FLAG to let the storages not to put out before its left more than the speed putting out !!! ###
+						
+						else = {
+							set_variable = { aluminium_storage_use = 0 }
+						}
+						### Above, Let it invaild ###
+						
+					}
+				}
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { NOT = { has_country_flag = aluminium_storage_use } }
+				}
+				set_variable = { aluminium_storage_use = 0 }
+			}
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { daily_left_aluminium = resource@aluminium }
+				subtract_from_variable = { daily_left_aluminium = aluminium_storage_use }
+				clamp_variable = {
+					var = daily_left_aluminium
+					min = 0
+					max = 50000
+				}
+				add_to_variable = { left_aluminium = daily_left_aluminium }
+				
+				### Above, to store the aluminium ###
+				
+				clamp_variable = {
+					var = left_aluminium
+					min = 0
+					max = aluminium_cap
+				}
+				
+				### Above, to clamp the storage ###
+				
+				if = {
+					limit = { 
+						ROOT = { 
+							OR = {
+								check_variable = { left_aluminium > aluminium_speed }
+								check_variable = { left_aluminium = aluminium_speed } 
+							}
+						} 
+					}
+					ROOT = { clr_country_flag = aluminium_storage_empty }
+				}
+				
+				### Above, Let the storages work again, when the storage become enough. ###
+				
+				### Notice: Because in 1936.1.1 there is no storage, so it should take out first, then put in. ###
+			}
+		}
+    }
+}
+
+
+### tungsten part ###
+
+on_actions = {
+	on_startup = {
+		effect = {
+			every_country = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { num_of_tungsten_storage = 0 }
+				
+				every_state = {
+					limit = { is_controlled_by = PREV }
+					PREV = { add_to_variable = { num_of_tungsten_storage = PREV.non_damaged_building_level@tungsten_storage } }
+				}
+				
+				set_variable = { tungsten_speed = num_of_tungsten_storage }
+				multiply_variable = { tungsten_speed = 600 }
+			
+				set_variable = { tungsten_cap = num_of_tungsten_storage }
+				multiply_variable = { tungsten_cap = 90000 }
+				
+				set_variable = { storage_size_modifier = modifier@storage_size_factor }
+				add_to_variable = { storage_size_modifier = 1 }
+				multiply_variable = { tungsten_cap = storage_size_modifier }
+				round_variable = tungsten_cap
+				
+				set_variable = { daily_left_tungsten = resource@tungsten }
+				clamp_variable = {
+					var = daily_left_tungsten
+					min = 0
+					max = 50000
+				}
+				set_variable = { left_tungsten = 0 }
+				set_variable = { tungsten_storage_use = 0 }
+			}
+		}
+	}
+    on_daily = {
+		effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { num_of_tungsten_storage = 0 }
+				every_state = {
+					limit = { is_controlled_by = ROOT }
+					ROOT = { add_to_variable = { num_of_tungsten_storage = PREV.non_damaged_building_level@tungsten_storage } }
+				}
+				### Above, to count the number of tungsten storages. ###
+				
+				set_variable = { tungsten_speed = num_of_tungsten_storage }
+				multiply_variable = { tungsten_speed = 500 }
+				
+				### Above, to count the speed of tungsten storages putting out. ###
+				
+				set_variable = { tungsten_cap = num_of_tungsten_storage }
+				multiply_variable = { tungsten_cap = 100000 }
+				
+				set_variable = { storage_size_modifier = modifier@storage_size_factor }
+				add_to_variable = { storage_size_modifier = 1 }
+				multiply_variable = { tungsten_cap = storage_size_modifier }
+				round_variable = tungsten_cap
+				
+				### Above, to count the total cap of tungsten storages. ###
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = tungsten_storage_use }
+					ROOT = { check_variable = { resource@tungsten < 0 } }
+				}
+				ROOT = {
+					set_variable = { tungsten_storage_use_temp = 0 }
+					add_to_variable = { tungsten_storage_use_temp = resource@tungsten }
+					multiply_variable = { tungsten_storage_use_temp = -1 }
+					clamp_variable = {
+						var = tungsten_storage_use_temp
+						min = 0
+						max = tungsten_speed
+					}
+					add_to_variable = { tungsten_storage_use = tungsten_storage_use_temp }
+					clamp_variable = {
+						var = tungsten_storage_use
+						min = 0
+						max = tungsten_speed
+					}
+					set_variable = { res_eff_size_modifier = 1 }
+					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
+					divide_variable = { tungsten_storage_use = res_eff_size_modifier }
+					round_variable = tungsten_storage_use
+					### tungsten_storage_use, This var will be used in dynamic modifier. ###
+				}
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = tungsten_storage_use }
+					ROOT = { check_variable = { resource@tungsten > 0 } }
+				}
+				set_variable = { tungsten_storage_use_temp = 0 }
+				add_to_variable = { tungsten_storage_use_temp = resource@tungsten }
+				subtract_from_variable = { tungsten_storage_use = tungsten_storage_use_temp }
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = tungsten_storage_use }
+					ROOT = { check_variable = { tungsten_storage_use > 0 } }
+				}
+				if = {
+					limit = { ROOT = { check_variable = { left_tungsten > tungsten_speed } } }
+					subtract_from_variable = { left_tungsten = tungsten_storage_use }
+				}
+				else = {
+					ROOT = {
+						if = { 
+							limit = { ROOT = { NOT = { has_country_flag = tungsten_storage_empty } } }
+							set_country_flag = tungsten_storage_empty
+							set_variable = { tungsten_storage_use = left_tungsten }
+							set_variable = { left_tungsten = 0 }
+						}
+						
+						### Above, If the left tungsten is less than the max of the building that one day can putting out, just let the putting out number be the left. ###
+						### VERY IMPORTANT!!! MAKE A FLAG to let the storages not to put out before its left more than the speed putting out !!! ###
+						
+						else = {
+							set_variable = { tungsten_storage_use = 0 }
+						}
+						### Above, Let it invaild ###
+						
+					}
+				}
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { NOT = { has_country_flag = tungsten_storage_use } }
+				}
+				set_variable = { tungsten_storage_use = 0 }
+			}
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { daily_left_tungsten = resource@tungsten }
+				subtract_from_variable = { daily_left_tungsten = tungsten_storage_use }
+				clamp_variable = {
+					var = daily_left_tungsten
+					min = 0
+					max = 50000
+				}
+				add_to_variable = { left_tungsten = daily_left_tungsten }
+				
+				### Above, to store the tungsten ###
+				
+				clamp_variable = {
+					var = left_tungsten
+					min = 0
+					max = tungsten_cap
+				}
+				
+				### Above, to clamp the storage ###
+				
+				if = {
+					limit = { 
+						ROOT = { 
+							OR = {
+								check_variable = { left_tungsten > tungsten_speed }
+								check_variable = { left_tungsten = tungsten_speed } 
+							}
+						} 
+					}
+					ROOT = { clr_country_flag = tungsten_storage_empty }
+				}
+				
+				### Above, Let the storages work again, when the storage become enough. ###
+				
+				### Notice: Because in 1936.1.1 there is no storage, so it should take out first, then put in. ###
+			}
+		}
+    }
+}
+
+
+### chromium part ###
+
+on_actions = {
+	on_startup = {
+		effect = {
+			every_country = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { num_of_chromium_storage = 0 }
+				
+				every_state = {
+					limit = { is_controlled_by = PREV }
+					PREV = { add_to_variable = { num_of_chromium_storage = PREV.non_damaged_building_level@chromium_storage } }
+				}
+				
+				set_variable = { chromium_speed = num_of_chromium_storage }
+				multiply_variable = { chromium_speed = 600 }
+			
+				set_variable = { chromium_cap = num_of_chromium_storage }
+				multiply_variable = { chromium_cap = 75000 }
+				
+				set_variable = { storage_size_modifier = modifier@storage_size_factor }
+				add_to_variable = { storage_size_modifier = 1 }
+				multiply_variable = { chromium_cap = storage_size_modifier }
+				round_variable = chromium_cap
+				
+				set_variable = { daily_left_chromium = resource@chromium }
+				clamp_variable = {
+					var = daily_left_chromium
+					min = 0
+					max = 50000
+				}
+				set_variable = { left_chromium = 0 }
+				set_variable = { chromium_storage_use = 0 }
+			}
+		}
+	}
+    on_daily = {
+		effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { num_of_chromium_storage = 0 }
+				every_state = {
+					limit = { is_controlled_by = ROOT }
+					ROOT = { add_to_variable = { num_of_chromium_storage = PREV.non_damaged_building_level@chromium_storage } }
+				}
+				### Above, to count the number of chromium storages. ###
+				
+				set_variable = { chromium_speed = num_of_chromium_storage }
+				multiply_variable = { chromium_speed = 500 }
+				
+				### Above, to count the speed of chromium storages putting out. ###
+				
+				set_variable = { chromium_cap = num_of_chromium_storage }
+				multiply_variable = { chromium_cap = 100000 }
+				
+				set_variable = { storage_size_modifier = modifier@storage_size_factor }
+				add_to_variable = { storage_size_modifier = 1 }
+				multiply_variable = { chromium_cap = storage_size_modifier }
+				round_variable = chromium_cap
+				
+				### Above, to count the total cap of chromium storages. ###
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = chromium_storage_use }
+					ROOT = { check_variable = { resource@chromium < 0 } }
+				}
+				ROOT = {
+					set_variable = { chromium_storage_use_temp = 0 }
+					add_to_variable = { chromium_storage_use_temp = resource@chromium }
+					multiply_variable = { chromium_storage_use_temp = -1 }
+					clamp_variable = {
+						var = chromium_storage_use_temp
+						min = 0
+						max = chromium_speed
+					}
+					add_to_variable = { chromium_storage_use = chromium_storage_use_temp }
+					clamp_variable = {
+						var = chromium_storage_use
+						min = 0
+						max = chromium_speed
+					}
+					set_variable = { res_eff_size_modifier = 1 }
+					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
+					divide_variable = { chromium_storage_use = res_eff_size_modifier }
+					round_variable = chromium_storage_use
+					### chromium_storage_use, This var will be used in dynamic modifier. ###
+				}
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = chromium_storage_use }
+					ROOT = { check_variable = { resource@chromium > 0 } }
+				}
+				set_variable = { chromium_storage_use_temp = 0 }
+				add_to_variable = { chromium_storage_use_temp = resource@chromium }
+				subtract_from_variable = { chromium_storage_use = chromium_storage_use_temp }
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = chromium_storage_use }
+					ROOT = { check_variable = { chromium_storage_use > 0 } }
+				}
+				if = {
+					limit = { ROOT = { check_variable = { left_chromium > chromium_speed } } }
+					subtract_from_variable = { left_chromium = chromium_storage_use }
+				}
+				else = {
+					ROOT = {
+						if = { 
+							limit = { ROOT = { NOT = { has_country_flag = chromium_storage_empty } } }
+							set_country_flag = chromium_storage_empty
+							set_variable = { chromium_storage_use = left_chromium }
+							set_variable = { left_chromium = 0 }
+						}
+						
+						### Above, If the left chromium is less than the max of the building that one day can putting out, just let the putting out number be the left. ###
+						### VERY IMPORTANT!!! MAKE A FLAG to let the storages not to put out before its left more than the speed putting out !!! ###
+						
+						else = {
+							set_variable = { chromium_storage_use = 0 }
+						}
+						### Above, Let it invaild ###
+						
+					}
+				}
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { NOT = { has_country_flag = chromium_storage_use } }
+				}
+				set_variable = { chromium_storage_use = 0 }
+			}
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { daily_left_chromium = resource@chromium }
+				subtract_from_variable = { daily_left_chromium = chromium_storage_use }
+				clamp_variable = {
+					var = daily_left_chromium
+					min = 0
+					max = 50000
+				}
+				add_to_variable = { left_chromium = daily_left_chromium }
+				
+				### Above, to store the chromium ###
+				
+				clamp_variable = {
+					var = left_chromium
+					min = 0
+					max = chromium_cap
+				}
+				
+				### Above, to clamp the storage ###
+				
+				if = {
+					limit = { 
+						ROOT = { 
+							OR = {
+								check_variable = { left_chromium > chromium_speed }
+								check_variable = { left_chromium = chromium_speed } 
+							}
+						} 
+					}
+					ROOT = { clr_country_flag = chromium_storage_empty }
+				}
+				
+				### Above, Let the storages work again, when the storage become enough. ###
+				
+				### Notice: Because in 1936.1.1 there is no storage, so it should take out first, then put in. ###
+			}
+		}
+    }
+}
+
+### coal part ###
+
+on_actions = {
+	on_startup = {
+		effect = {
+			every_country = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { num_of_coal_storage = 0 }
+				
+				every_state = {
+					limit = { is_controlled_by = PREV }
+					PREV = { add_to_variable = { num_of_coal_storage = PREV.non_damaged_building_level@coal_storage } }
+				}
+				
+				set_variable = { coal_speed = num_of_coal_storage }
+				multiply_variable = { coal_speed = 400 }
+			
+				set_variable = { coal_cap = num_of_coal_storage }
+				multiply_variable = { coal_cap = 120000 }
+				
+				set_variable = { storage_size_modifier = modifier@storage_size_factor }
+				add_to_variable = { storage_size_modifier = 1 }
+				multiply_variable = { coal_cap = storage_size_modifier }
+				round_variable = coal_cap
+				
+				set_variable = { daily_left_coal = resource@coal }
+				clamp_variable = {
+					var = daily_left_coal
+					min = 0
+					max = 50000
+				}
+				set_variable = { left_coal = 0 }
+				set_variable = { coal_storage_use = 0 }
+			}
+		}
+	}
+    on_daily = {
+		effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { num_of_coal_storage = 0 }
+				every_state = {
+					limit = { is_controlled_by = ROOT }
+					ROOT = { add_to_variable = { num_of_coal_storage = PREV.non_damaged_building_level@coal_storage } }
+				}
+				### Above, to count the number of coal storages. ###
+				
+				set_variable = { coal_speed = num_of_coal_storage }
+				multiply_variable = { coal_speed = 500 }
+				
+				### Above, to count the speed of coal storages putting out. ###
+				
+				set_variable = { coal_cap = num_of_coal_storage }
+				multiply_variable = { coal_cap = 100000 }
+				
+				set_variable = { storage_size_modifier = modifier@storage_size_factor }
+				add_to_variable = { storage_size_modifier = 1 }
+				multiply_variable = { coal_cap = storage_size_modifier }
+				round_variable = coal_cap
+				
+				### Above, to count the total cap of coal storages. ###
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = coal_storage_use }
+					ROOT = { check_variable = { resource@coal < 0 } }
+				}
+				ROOT = {
+					set_variable = { coal_storage_use_temp = 0 }
+					add_to_variable = { coal_storage_use_temp = resource@coal }
+					multiply_variable = { coal_storage_use_temp = -1 }
+					clamp_variable = {
+						var = coal_storage_use_temp
+						min = 0
+						max = coal_speed
+					}
+					add_to_variable = { coal_storage_use = coal_storage_use_temp }
+					clamp_variable = {
+						var = coal_storage_use
+						min = 0
+						max = coal_speed
+					}
+					set_variable = { res_eff_size_modifier = 1 }
+					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
+					divide_variable = { coal_storage_use = res_eff_size_modifier }
+					round_variable = coal_storage_use
+					### coal_storage_use, This var will be used in dynamic modifier. ###
+				}
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = coal_storage_use }
+					ROOT = { check_variable = { resource@coal > 0 } }
+				}
+				set_variable = { coal_storage_use_temp = 0 }
+				add_to_variable = { coal_storage_use_temp = resource@coal }
+				subtract_from_variable = { coal_storage_use = coal_storage_use_temp }
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = coal_storage_use }
+					ROOT = { check_variable = { coal_storage_use > 0 } }
+				}
+				if = {
+					limit = { ROOT = { check_variable = { left_coal > coal_speed } } }
+					subtract_from_variable = { left_coal = coal_storage_use }
+				}
+				else = {
+					ROOT = {
+						if = { 
+							limit = { ROOT = { NOT = { has_country_flag = coal_storage_empty } } }
+							set_country_flag = coal_storage_empty
+							set_variable = { coal_storage_use = left_coal }
+							set_variable = { left_coal = 0 }
+						}
+						
+						### Above, If the left coal is less than the max of the building that one day can putting out, just let the putting out number be the left. ###
+						### VERY IMPORTANT!!! MAKE A FLAG to let the storages not to put out before its left more than the speed putting out !!! ###
+						
+						else = {
+							set_variable = { coal_storage_use = 0 }
+						}
+						### Above, Let it invaild ###
+						
+					}
+				}
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { NOT = { has_country_flag = coal_storage_use } }
+				}
+				set_variable = { coal_storage_use = 0 }
+			}
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { daily_left_coal = resource@coal }
+				subtract_from_variable = { daily_left_coal = coal_storage_use }
+				clamp_variable = {
+					var = daily_left_coal
+					min = 0
+					max = 50000
+				}
+				add_to_variable = { left_coal = daily_left_coal }
+				
+				### Above, to store the coal ###
+				
+				clamp_variable = {
+					var = left_coal
+					min = 0
+					max = coal_cap
+				}
+				
+				### Above, to clamp the storage ###
+				
+				if = {
+					limit = { 
+						ROOT = { 
+							OR = {
+								check_variable = { left_coal > coal_speed }
+								check_variable = { left_coal = coal_speed } 
+							}
+						} 
+					}
+					ROOT = { clr_country_flag = coal_storage_empty }
+				}
+				
+				### Above, Let the storages work again, when the storage become enough. ###
+				
+				### Notice: Because in 1936.1.1 there is no storage, so it should take out first, then put in. ###
+			}
+		}
+    }
+}
+
+### bauxite part ###
+
+on_actions = {
+	on_startup = {
+		effect = {
+			every_country = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { num_of_bauxite_storage = 0 }
+				
+				every_state = {
+					limit = { is_controlled_by = PREV }
+					PREV = { add_to_variable = { num_of_bauxite_storage = PREV.non_damaged_building_level@bauxite_storage } }
+				}
+				
+				set_variable = { bauxite_speed = num_of_bauxite_storage }
+				multiply_variable = { bauxite_speed = 200 }
+			
+				set_variable = { bauxite_cap = num_of_bauxite_storage }
+				multiply_variable = { bauxite_cap = 50000 }
+				
+				set_variable = { storage_size_modifier = modifier@storage_size_factor }
+				add_to_variable = { storage_size_modifier = 1 }
+				multiply_variable = { bauxite_cap = storage_size_modifier }
+				round_variable = bauxite_cap
+				
+				set_variable = { daily_left_bauxite = resource@bauxite }
+				clamp_variable = {
+					var = daily_left_bauxite
+					min = 0
+					max = 50000
+				}
+				set_variable = { left_bauxite = 0 }
+				set_variable = { bauxite_storage_use = 0 }
+			}
+		}
+	}
+    on_daily = {
+		effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { num_of_bauxite_storage = 0 }
+				every_state = {
+					limit = { is_controlled_by = ROOT }
+					ROOT = { add_to_variable = { num_of_bauxite_storage = PREV.non_damaged_building_level@bauxite_storage } }
+				}
+				### Above, to count the number of bauxite storages. ###
+				
+				set_variable = { bauxite_speed = num_of_bauxite_storage }
+				multiply_variable = { bauxite_speed = 500 }
+				
+				### Above, to count the speed of bauxite storages putting out. ###
+				
+				set_variable = { bauxite_cap = num_of_bauxite_storage }
+				multiply_variable = { bauxite_cap = 100000 }
+				
+				set_variable = { storage_size_modifier = modifier@storage_size_factor }
+				add_to_variable = { storage_size_modifier = 1 }
+				multiply_variable = { bauxite_cap = storage_size_modifier }
+				round_variable = bauxite_cap
+				
+				### Above, to count the total cap of bauxite storages. ###
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = bauxite_storage_use }
+					ROOT = { check_variable = { resource@bauxite < 0 } }
+				}
+				ROOT = {
+					set_variable = { bauxite_storage_use_temp = 0 }
+					add_to_variable = { bauxite_storage_use_temp = resource@bauxite }
+					multiply_variable = { bauxite_storage_use_temp = -1 }
+					clamp_variable = {
+						var = bauxite_storage_use_temp
+						min = 0
+						max = bauxite_speed
+					}
+					add_to_variable = { bauxite_storage_use = bauxite_storage_use_temp }
+					clamp_variable = {
+						var = bauxite_storage_use
+						min = 0
+						max = bauxite_speed
+					}
+					set_variable = { res_eff_size_modifier = 1 }
+					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
+					divide_variable = { bauxite_storage_use = res_eff_size_modifier }
+					round_variable = bauxite_storage_use
+					### bauxite_storage_use, This var will be used in dynamic modifier. ###
+				}
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = bauxite_storage_use }
+					ROOT = { check_variable = { resource@bauxite > 0 } }
+				}
+				set_variable = { bauxite_storage_use_temp = 0 }
+				add_to_variable = { bauxite_storage_use_temp = resource@bauxite }
+				subtract_from_variable = { bauxite_storage_use = bauxite_storage_use_temp }
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = bauxite_storage_use }
+					ROOT = { check_variable = { bauxite_storage_use > 0 } }
+				}
+				if = {
+					limit = { ROOT = { check_variable = { left_bauxite > bauxite_speed } } }
+					subtract_from_variable = { left_bauxite = bauxite_storage_use }
+				}
+				else = {
+					ROOT = {
+						if = { 
+							limit = { ROOT = { NOT = { has_country_flag = bauxite_storage_empty } } }
+							set_country_flag = bauxite_storage_empty
+							set_variable = { bauxite_storage_use = left_bauxite }
+							set_variable = { left_bauxite = 0 }
+						}
+						
+						### Above, If the left bauxite is less than the max of the building that one day can putting out, just let the putting out number be the left. ###
+						### VERY IMPORTANT!!! MAKE A FLAG to let the storages not to put out before its left more than the speed putting out !!! ###
+						
+						else = {
+							set_variable = { bauxite_storage_use = 0 }
+						}
+						### Above, Let it invaild ###
+						
+					}
+				}
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { NOT = { has_country_flag = bauxite_storage_use } }
+				}
+				set_variable = { bauxite_storage_use = 0 }
+			}
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { daily_left_bauxite = resource@bauxite }
+				subtract_from_variable = { daily_left_bauxite = bauxite_storage_use }
+				clamp_variable = {
+					var = daily_left_bauxite
+					min = 0
+					max = 50000
+				}
+				add_to_variable = { left_bauxite = daily_left_bauxite }
+				
+				### Above, to store the bauxite ###
+				
+				clamp_variable = {
+					var = left_bauxite
+					min = 0
+					max = bauxite_cap
+				}
+				
+				### Above, to clamp the storage ###
+				
+				if = {
+					limit = { 
+						ROOT = { 
+							OR = {
+								check_variable = { left_bauxite > bauxite_speed }
+								check_variable = { left_bauxite = bauxite_speed } 
+							}
+						} 
+					}
+					ROOT = { clr_country_flag = bauxite_storage_empty }
+				}
+				
+				### Above, Let the storages work again, when the storage become enough. ###
+				
+				### Notice: Because in 1936.1.1 there is no storage, so it should take out first, then put in. ###
+			}
+		}
+    }
+}
+
+### iron part ###
+
+on_actions = {
+	on_startup = {
+		effect = {
+			every_country = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { num_of_iron_storage = 0 }
+				
+				every_state = {
+					limit = { is_controlled_by = PREV }
+					PREV = { add_to_variable = { num_of_iron_storage = PREV.non_damaged_building_level@iron_storage } }
+				}
+				
+				set_variable = { iron_speed = num_of_iron_storage }
+				multiply_variable = { iron_speed = 150 }
+			
+				set_variable = { iron_cap = num_of_iron_storage }
+				multiply_variable = { iron_cap = 50000 }
+				
+				set_variable = { storage_size_modifier = modifier@storage_size_factor }
+				add_to_variable = { storage_size_modifier = 1 }
+				multiply_variable = { iron_cap = storage_size_modifier }
+				round_variable = iron_cap
+				
+				set_variable = { daily_left_iron = resource@iron }
+				clamp_variable = {
+					var = daily_left_iron
+					min = 0
+					max = 50000
+				}
+				set_variable = { left_iron = 0 }
+				set_variable = { iron_storage_use = 0 }
+			}
+		}
+	}
+    on_daily = {
+		effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { num_of_iron_storage = 0 }
+				every_state = {
+					limit = { is_controlled_by = ROOT }
+					ROOT = { add_to_variable = { num_of_iron_storage = PREV.non_damaged_building_level@iron_storage } }
+				}
+				### Above, to count the number of iron storages. ###
+				
+				set_variable = { iron_speed = num_of_iron_storage }
+				multiply_variable = { iron_speed = 500 }
+				
+				### Above, to count the speed of iron storages putting out. ###
+				
+				set_variable = { iron_cap = num_of_iron_storage }
+				multiply_variable = { iron_cap = 100000 }
+				
+				set_variable = { storage_size_modifier = modifier@storage_size_factor }
+				add_to_variable = { storage_size_modifier = 1 }
+				multiply_variable = { iron_cap = storage_size_modifier }
+				round_variable = iron_cap
+				
+				### Above, to count the total cap of iron storages. ###
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = iron_storage_use }
+					ROOT = { check_variable = { resource@iron < 0 } }
+				}
+				ROOT = {
+					set_variable = { iron_storage_use_temp = 0 }
+					add_to_variable = { iron_storage_use_temp = resource@iron }
+					multiply_variable = { iron_storage_use_temp = -1 }
+					clamp_variable = {
+						var = iron_storage_use_temp
+						min = 0
+						max = iron_speed
+					}
+					add_to_variable = { iron_storage_use = iron_storage_use_temp }
+					clamp_variable = {
+						var = iron_storage_use
+						min = 0
+						max = iron_speed
+					}
+					set_variable = { res_eff_size_modifier = 1 }
+					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
+					divide_variable = { iron_storage_use = res_eff_size_modifier }
+					round_variable = iron_storage_use
+					### iron_storage_use, This var will be used in dynamic modifier. ###
+				}
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = iron_storage_use }
+					ROOT = { check_variable = { resource@iron > 0 } }
+				}
+				set_variable = { iron_storage_use_temp = 0 }
+				add_to_variable = { iron_storage_use_temp = resource@iron }
+				subtract_from_variable = { iron_storage_use = iron_storage_use_temp }
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { has_country_flag = iron_storage_use }
+					ROOT = { check_variable = { iron_storage_use > 0 } }
+				}
+				if = {
+					limit = { ROOT = { check_variable = { left_iron > iron_speed } } }
+					subtract_from_variable = { left_iron = iron_storage_use }
+				}
+				else = {
+					ROOT = {
+						if = { 
+							limit = { ROOT = { NOT = { has_country_flag = iron_storage_empty } } }
+							set_country_flag = iron_storage_empty
+							set_variable = { iron_storage_use = left_iron }
+							set_variable = { left_iron = 0 }
+						}
+						
+						### Above, If the left iron is less than the max of the building that one day can putting out, just let the putting out number be the left. ###
+						### VERY IMPORTANT!!! MAKE A FLAG to let the storages not to put out before its left more than the speed putting out !!! ###
+						
+						else = {
+							set_variable = { iron_storage_use = 0 }
+						}
+						### Above, Let it invaild ###
+						
+					}
+				}
+			}
+			if = {
+				limit = {
+					is_ai = no
+					ROOT = { NOT = { has_country_flag = iron_storage_use } }
+				}
+				set_variable = { iron_storage_use = 0 }
+			}
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { daily_left_iron = resource@iron }
+				subtract_from_variable = { daily_left_iron = iron_storage_use }
+				clamp_variable = {
+					var = daily_left_iron
+					min = 0
+					max = 50000
+				}
+				add_to_variable = { left_iron = daily_left_iron }
+				
+				### Above, to store the iron ###
+				
+				clamp_variable = {
+					var = left_iron
+					min = 0
+					max = iron_cap
+				}
+				
+				### Above, to clamp the storage ###
+				
+				if = {
+					limit = { 
+						ROOT = { 
+							OR = {
+								check_variable = { left_iron > iron_speed }
+								check_variable = { left_iron = iron_speed } 
+							}
+						} 
+					}
+					ROOT = { clr_country_flag = iron_storage_empty }
+				}
+				
+				### Above, Let the storages work again, when the storage become enough. ###
+				
+				### Notice: Because in 1936.1.1 there is no storage, so it should take out first, then put in. ###
+			}
+		}
+    }
+}

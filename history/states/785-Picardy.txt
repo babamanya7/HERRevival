@@ -1,0 +1,36 @@
+state={
+	id=785
+	name="STATE_785"
+	manpower = 1580000
+	
+	state_category = large_city
+	resources={
+		coal = 287
+	}
+	
+	history={
+		victory_points = {
+			12866 3
+		}
+		victory_points = {
+			13321 5
+		}
+		victory_points = {
+			963 3
+		}
+		victory_points = {
+			9515 1
+		}
+		owner = FRA
+		add_core_of = FRA
+		buildings = {
+			infrastructure = 8
+			industrial_complex = 5
+			aluminium_refinery = 2
+		}
+	}
+
+	provinces={
+		963 3444 9486 9515 9838 9994 10780 11494 11625 11657 11711 12866 13321 
+	}
+}

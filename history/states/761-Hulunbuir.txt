@@ -1,0 +1,35 @@
+state={
+	id=761
+	name="STATE_761"
+	manpower=1405000
+	buildings_max_level_factor=1.000
+	state_category = pastoral
+	
+	resources = {
+		coal = 59
+	}
+	history={
+		owner = MAN
+		add_core_of = CHI
+		add_core_of = MAN
+		#
+		buildings = {
+			infrastructure = 3
+
+		}
+		victory_points = {
+			2147 1
+		}
+		1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+	}
+	provinces={
+		2147 4745 7743 10612 10638 12690 13220 
+	}
+}

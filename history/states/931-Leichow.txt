@@ -1,0 +1,35 @@
+
+state={
+	id=931
+	name="STATE_931"
+	manpower = 1650000
+	state_category = town
+
+	history={
+		owner = CHI
+		add_core_of = CHI
+		#
+		buildings = {
+			infrastructure = 1
+			industrial_complex = 4
+			1018 = {
+				naval_base = 1
+			}
+		}
+		victory_points = { 
+			1018 1
+		}
+		1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+	}
+
+	provinces={
+		1018 4023 4160 7135 10004 10105 11926 13441 
+	}
+}

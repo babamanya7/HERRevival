@@ -1,0 +1,33 @@
+
+state={
+	id=24
+	name="STATE_24"
+	manpower = 1546300
+	
+	resources = {
+		coal = 132
+	}
+	
+	
+	state_category = city
+
+	history={
+		owner = FRA
+		victory_points = {
+			13493 10
+		}
+		victory_points = {
+			13301 15
+		}
+		buildings = {
+			infrastructure = 7
+			industrial_complex = 5
+			arms_factory = 2
+		}
+		add_core_of = FRA
+	}
+
+	provinces={
+		293 309 557 565 958 1967 3547 3550 6931 7173 7188 9536 9595 9603 9613 9633 9672 9906 10023 10097 10868 11468 11612 11613 12066 13301 13493 
+	}
+}

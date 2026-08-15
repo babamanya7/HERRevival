@@ -1,0 +1,567 @@
+﻿add_namespace = wtt_germany
+
+#Notification event for Hungary and Romania for Integrate War Economies
+country_event = {
+	id = wtt_germany.7
+	title = wtt_germany.7.t
+	desc = wtt_germany.7.d
+	picture = GFX_report_event_tank_factory
+
+	is_triggered_only = yes
+
+	option = {
+		name = wtt_germany.7.a
+		effect_tooltip = {
+			every_state = {
+				limit = { has_state_flag = GER_integrate_war_economies }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+}
+
+# Japan demands withdraw support of Von Falkenhausen in return
+country_event = {
+	id = wtt_germany.44
+	title = wtt_germany.44.t
+	desc = wtt_germany.44.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	# Accept
+	option = {
+		name = wtt_germany.39.a
+		transfer_state = 743
+		743 = { set_state_name = "Tsingtao" }
+		set_province_name = { id = 10000 name = "Tsingtao" }
+		JAP = { country_event = { id = wtt_germany.46 } }
+		CHI = {
+			country_event = { days = 1 id = china.2 }
+			effect_tooltip = {
+				remove_ideas = german_advisors
+				show_ideas_tooltip = german_advisors
+			}
+		}
+		hidden_effect = { 
+			every_country = {
+				limit = {
+					has_unit_leader = 602
+				}
+				remove_unit_leader = 602
+			}
+		}
+		set_global_flag = falkenhausen_recalled
+	}
+}
+
+# German notification event that Japan rejected request
+country_event = {
+	id = wtt_germany.45
+	title = wtt_germany.40.t
+	desc = wtt_germany.40.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	# Too bad
+	option = {
+		name = wtt_germany.40.a
+		add_state_claim = 743
+	}
+}
+
+# Japanese notification event that Germany accepted offer
+country_event = {
+	id = wtt_germany.46
+	title = wtt_germany.41.t
+	desc = wtt_germany.46.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	# excellent
+	option = {
+		name = excellent
+		hidden_effect = { news_event = { id = wtt_news.17 hours = 6 } }
+	}
+}
+
+# Reintegration remove cores for Alsace and notification for France
+country_event = {
+	id = wtt_germany.63
+	title = wtt_germany.63.t
+	desc = wtt_germany.63.desc
+	picture = GFX_report_event_generic_peaceful_annexation
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_germany.63.a
+		effect_tooltip = {
+			GER = {
+				add_state_core = 8
+				add_state_core = 28
+				add_state_core = 790
+				add_state_core = 871
+				add_state_core = 797
+				add_state_core = 86
+				add_state_core = 762
+			}
+		}
+	}
+}
+
+# Reintegration notification for Luxemburg
+country_event = {
+	id = wtt_germany.64
+	title = wtt_germany.64.t
+	desc = wtt_germany.63.desc
+	picture = GFX_report_event_generic_peaceful_annexation
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_germany.64.a
+		effect_tooltip = {
+			GER = {
+				add_state_core = 8
+				add_state_core = 28
+				add_state_core = 790
+				add_state_core = 871
+				add_state_core = 797
+				add_state_core = 86
+				add_state_core = 762
+			}
+		}
+	}
+}
+
+# Event asking whether HUN/ROM want to become puppet in return for factories.
+country_event = {
+	id = wtt_germany.72
+	title = wtt_germany.72.t
+	desc = wtt_germany.72.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	
+	option = { # Yaplx
+		name = wtt_germany.72.a
+		trigger = { tag = HUN }
+		if = {
+			limit = {
+				has_dlc = "Man the Guns"
+			}
+			HUN = {
+				give_resource_rights = { receiver = GER state = 890 resources = { oil } }
+			}
+		}
+		effect_tooltip = {
+			give_resource_rights = { receiver = GER state = 890 }
+			GER = {
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+						NOT = { has_state_flag = GER_integrate_war_economies }
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					set_state_flag = GER_integrate_war_economies
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+						NOT = { has_state_flag = GER_integrate_war_economies }
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					set_state_flag = GER_integrate_war_economies
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = GER_integrate_war_economies_1
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = GER_integrate_war_economies_2
+			}
+		}
+		custom_effect_tooltip = wtt_germany.72_tt
+		FROM = {
+			country_event = { id = wtt_germany.73 days = 1 }
+		}
+	}
+	option = { # Yaplx
+		name = wtt_germany.72.a
+		trigger = { tag = ROM }
+		if = {
+			limit = {
+				has_dlc = "Man the Guns"
+			}
+			ROM = {
+				give_resource_rights = { receiver = GER state = 900 resources = { oil } }
+			}
+		}
+		effect_tooltip = {
+			GER = {
+				give_resource_rights = { receiver = GER state = 900 }
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+						NOT = { has_state_flag = GER_integrate_war_economies }
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					set_state_flag = GER_integrate_war_economies
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+						NOT = { has_state_flag = GER_integrate_war_economies }
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					set_state_flag = GER_integrate_war_economies
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = GER_integrate_war_economies_1
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = GER_integrate_war_economies_2
+			}
+		}
+		custom_effect_tooltip = wtt_germany.72_tt
+		FROM = {
+			country_event = { id = wtt_germany.75 days = 1 }
+		}
+	}
+}
+
+# Event for GER saying HUN accepted
+country_event = {
+	id = wtt_germany.73
+	title = wtt_germany.73.t
+	desc = wtt_germany.73.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_germany.73.a
+		random_owned_controlled_state = {
+			limit = {
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+					include_locked = yes
+				}
+				NOT = { has_state_flag = GER_integrate_war_economies }
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+			set_state_flag = GER_integrate_war_economies
+		}
+		random_owned_controlled_state = {
+			limit = {
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+					include_locked = yes
+				}
+				NOT = { has_state_flag = GER_integrate_war_economies }
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+			set_state_flag = GER_integrate_war_economies
+		}
+		FROM = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = GER_integrate_war_economies_1
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = GER_integrate_war_economies_2
+			}
+		}
+	}
+}
+
+# Event for GER saying ROM accepted
+country_event = {
+	id = wtt_germany.75
+	title = wtt_germany.73.t
+	desc = wtt_germany.73.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_germany.73.a
+		random_owned_controlled_state = {
+			limit = {
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+					include_locked = yes
+				}
+				NOT = { has_state_flag = GER_integrate_war_economies }
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+			set_state_flag = GER_integrate_war_economies
+		}
+		random_owned_controlled_state = {
+			limit = {
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+					include_locked = yes
+				}
+				NOT = { has_state_flag = GER_integrate_war_economies }
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+			set_state_flag = GER_integrate_war_economies
+		}
+		FROM = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = GER_integrate_war_economies_1
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = GER_integrate_war_economies_2
+			}
+		}
+	}
+}
+
+# Reintegration notification for Belgium
+country_event = {
+	id = wtt_germany.76
+	title = wtt_germany.76.t
+	desc = wtt_germany.63.desc
+	picture = GFX_report_event_generic_peaceful_annexation
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_germany.76.a
+		effect_tooltip = {
+			GER = {
+				add_state_core = 8
+				add_state_core = 28
+				add_state_core = 790
+				add_state_core = 871
+				add_state_core = 797
+				add_state_core = 86
+				add_state_core = 762
+			}
+		}
+	}
+}
+
+# Reintegration notification for Denmark
+country_event = {
+	id = wtt_germany.77
+	title = wtt_germany.77.t
+	desc = wtt_germany.63.desc
+	picture = GFX_report_event_generic_peaceful_annexation
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_germany.77.a
+		effect_tooltip = {
+			GER = {
+				add_state_core = 8
+				add_state_core = 28
+				add_state_core = 790
+				add_state_core = 871
+				add_state_core = 797
+				add_state_core = 86
+				add_state_core = 762
+			}
+		}
+	}
+}
+
+# Reintegration notification for Poland
+country_event = {
+	id = wtt_germany.78
+	title = wtt_germany.78.t
+	desc = wtt_germany.63.desc
+	picture = GFX_report_event_generic_peaceful_annexation
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_germany.78.a
+		effect_tooltip = {
+			GER = {
+				add_state_core = 8
+				add_state_core = 28
+				add_state_core = 790
+				add_state_core = 871
+				add_state_core = 797
+				add_state_core = 86
+				add_state_core = 762
+			}
+		}
+	}
+}

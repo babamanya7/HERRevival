@@ -1,0 +1,29 @@
+
+state={
+	id=900
+	name="STATE_900"
+	manpower = 1780560
+	resources={
+		oil=20
+	}
+
+	state_category = city
+
+	history={
+		owner = ROM
+		victory_points = { 12816 3 }
+		victory_points = { 13521 5 }
+		buildings = {
+			infrastructure = 5
+			arms_factory = 4
+			industrial_complex = 8
+			air_base = 6
+			synthetic_refinery = 1
+		}
+		add_core_of = ROM
+	}
+
+	provinces={
+		575 707 833 3577 8128 9310 11493 11598 11818 11957 12816 13521 14760 14761 14793 14803 14804 14811 14820 14833 14834 14874 14888 14898 14899 14900 14912 14933 
+	}
+}

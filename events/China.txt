@@ -1,0 +1,120 @@
+﻿###########################
+# Chinese Events
+###########################
+
+add_namespace = china
+
+# Japanese Stage Border Incident
+country_event = {
+	id = china.1
+	title = china.1.t
+	desc = china.1.d
+	picture = GFX_report_event_chinese_soldiers_fighting
+	
+	is_triggered_only = yes
+	
+	option = { # Breaking point!
+		name = china.1.a
+		ai_chance = { factor = 90 }
+		add_war_support = 0.05
+		effect_tooltip = {
+			JAP = {
+				add_war_support = 0.05
+				country_event = { id = japan.1 }
+				create_wargoal = {
+  					type = annex_everything
+  					target = CHI
+  				}
+			}
+		}
+		hidden_effect = {
+			JAP = { country_event = { id = japan.1 } }
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.5
+				has_war = yes
+			}
+			modifier = {
+				factor = 0.5
+				any_enemy_country = {
+					is_major = yes
+				}
+			}
+		}
+	}
+}
+
+# Germany Withdraws Advisors
+country_event = {
+	id = china.2
+	title = china.2.t
+	desc = china.2.d
+	picture = GFX_report_event_chinese_army_training
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = china.2.a
+		set_country_flag = Germany_withdraws_support
+	}
+}
+
+# Chinese - German Relations Poor, Mission Recalled
+country_event = {
+	id = china.3
+	title = china.3.t
+	desc = china.3.d
+	picture = GFX_report_event_chinese_soldiers
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = china.3.a
+	}
+}
+
+# China is at war with Germany, Advisors Detained
+country_event = {
+	id = china.4
+	title = china.4.t
+	desc = china.4.d
+	picture = GFX_report_event_german_detained_china
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = china.4.a
+	}
+}
+
+country_event = {
+	id = china.11
+	title = china.11.t
+	desc = china.11.d
+	picture = GFX_report_event_chinese_soldiers_fighting
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = china.11.a
+		add_political_power = -75
+		add_manpower = -5000
+	}
+}
+
+country_event = {
+	id = china.12
+	title = china.12.t
+	desc = china.12.d
+	picture = GFX_report_event_chinese_soldiers_fighting
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = china.12.a
+		add_political_power = 150
+		add_manpower = -1000
+	}
+}

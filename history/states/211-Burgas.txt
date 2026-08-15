@@ -1,0 +1,47 @@
+
+state={
+	id=211
+	name="STATE_211"
+	manpower = 1575499
+
+	resources={
+		coal = 27
+	}
+
+	state_category = rural
+
+	history={
+		owner = BUL
+		victory_points = {
+			14643 5
+		}
+		victory_points = {
+			14576 3
+		}
+		victory_points = {
+			14619 1
+		}
+		victory_points = {
+			14582 1
+		}
+		victory_points = {
+			14541 1
+		}
+		buildings = {
+			infrastructure = 4
+			industrial_complex = 4
+			arms_factory = 2
+			14643 = {
+				naval_base = 3
+			}
+			14576 = {
+				naval_base = 1
+			}
+		}
+		add_core_of = BUL
+	}
+
+	provinces={
+		14643 14612 14576 14547 14550 14583 14627 14671 14703 14702 14642 14660 14619 14606 14582 14541 14569
+	}
+}

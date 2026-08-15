@@ -1,0 +1,19 @@
+on_actions = {
+    on_startup = {
+        effect = {
+            # major naval powers array setup
+            add_to_array = { global.vnr_naval_powers = ENG }
+            add_to_array = { global.vnr_naval_powers = FRA }
+            add_to_array = { global.vnr_naval_powers = GER }
+            add_to_array = { global.vnr_naval_powers = ITA }
+            add_to_array = { global.vnr_naval_powers = JAP }
+            add_to_array = { global.vnr_naval_powers = SOV }
+            add_to_array = { global.vnr_naval_powers = USA }
+
+            # naval treaty violator
+            set_global_flag = { flag = MTG_naval_treaty_violator value = 0 }
+			
+			makeup_starting_techs = yes
+        }
+    }
+}

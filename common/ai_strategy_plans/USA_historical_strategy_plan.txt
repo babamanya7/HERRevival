@@ -1,0 +1,86 @@
+USA_historical_plan = {
+	name = "US historical plan"
+	desc = "Historical behavior for US"
+
+	allowed = {
+		original_tag = USA
+	}
+	enable = {
+		always = yes
+	}
+	abort = {
+		always = no
+	}
+
+	ai_national_focuses = {
+		USA_cash_and_carry_act
+		
+		
+		USA_join_the_allies
+		USA_build_the_pentagon
+		USA_appoint_william_knudsen
+		USA_hatch_act
+		USA_budget_balancing
+		USA_wartime_industry
+		USA_keynesian_economics
+		USA_limited_rearmament
+		USA_second_agricultural_adjustment_act
+		USA_robinson_patman_act
+		USA_war_department
+		USA_air_war_plans_division
+		USA_war_plans_division
+		USA_arsenal_of_democracy
+		#1939
+		USA_scientist_haven
+		USA_USACE_projects
+		USA_manhattan_project
+		#1940
+		USA_the_giant_wakes
+		USA_two_ocean_navy_act
+		USA_destroyers_for_bases
+		#1941
+		USA_maritime_commission
+		USA_lend_lease_act
+		USA_office_of_scientific_research_and_development
+		USA_louisiana_maneuvers
+		USA_support_rock_island
+		#1942
+		USA_tank_experiments
+		USA_tank_destroyer_doctrine
+		USA_combined_bomber_offensive
+		USA_bureau_of_ships
+		USA_carrier_primacy
+		#1943
+		USA_army_of_the_united_states
+		USA_womens_armed_service_integration_act
+	}
+
+	research = {
+		air_equipment = 80
+	}
+
+	ideas = {
+
+	}
+	traits = {
+		war_industrialist = 5
+		financial_expert = 10
+		silent_workhorse = 25
+	}
+
+	ai_strategy = {
+		type = support
+		id = "ENG"			
+		value = 200
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}

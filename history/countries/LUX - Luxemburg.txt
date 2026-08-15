@@ -1,0 +1,35 @@
+﻿capital = 8
+set_rule = {
+	can_access_market = no
+}
+country_lock_all_division_template = yes
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	gw_artillery = 1
+	tech_support = 1		
+	tech_engineers = 1
+	basic_train = 1
+}
+
+set_war_support = 0.1
+set_stability = 0.8
+
+recruit_character = LUX_joseph_bech
+recruit_character = LUX_gustave_lebeau
+recruit_character = LUX_frédéric_nagelmackers
+recruit_character = LUX_jean_pirson
+
+set_politics = {
+	ruling_party = democratic
+	last_election = "1934.6.3"
+	election_frequency = 36
+	elections_allowed = yes
+}
+set_popularities = {
+	democratic = 92
+	fascism = 3
+	communism = 5
+}

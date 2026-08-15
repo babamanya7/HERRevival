@@ -1,0 +1,3200 @@
+ideas = {
+	
+	hidden_ideas = {
+		GER_no_oberkomando_stab_leader = {
+			allowed = {
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				genstab_chief_cost_factor = 100
+			}
+		}
+		SOV_no_army_stab_leader = {
+			allowed = {
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				army_genstab_chief_cost_factor = 100
+			}
+		}
+		airframes_speed_set = {
+			allowed = {
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+			}
+			equipment_bonus ={
+				medium_plane_airframe = {
+					maximum_speed = -0.25 instant = yes
+				}
+				large_plane_airframe = {
+					maximum_speed = -0.5 instant = yes
+				}
+			}
+		}
+		GER_ss_no_modify = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				unit_ss_heavy_infantry_design_cost_factor = 100
+				unit_ss_cavalry_design_cost_factor = 100
+				unit_ss_mountaineers_design_cost_factor = 100
+				unit_ss_motorized_design_cost_factor = 100
+				unit_ss_mechanized_design_cost_factor = 100
+				unit_ss_medium_armor_regiment_design_cost_factor = 100
+				unit_ss_heavy_armor_regiment_design_cost_factor = 100
+				unit_ss_artillery_brigade_design_cost_factor = 100
+			}
+		}
+		reliability_motorized_debuff = {
+			allowed = {
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+			}
+			equipment_bonus ={
+				motorized_equipment = {
+					reliability = -0.15 instant = yes
+				}
+			}
+		}
+		minor_nation = {
+			allowed = {
+				is_minor = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				political_power_factor = -0.2
+				experience_gain_army_factor = -0.2
+				experience_gain_air_factor = -0.2
+				experience_gain_navy_factor = -0.2
+			}
+		}
+		AI_free_designs = {
+			allowed = {
+				is_ai = yes
+			}
+			
+			removal_cost = -1
+			
+			cancel = { is_ai = no }
+			
+			modifier = {
+				light_tank_chassis_design_cost_factor = -1
+				medium_tank_chassis_design_cost_factor = -1
+				heavy_tank_chassis_design_cost_factor = -1
+				small_plane_airframe_design_cost_factor = -1
+				cv_small_plane_airframe_design_cost_factor = -1
+				medium_plane_airframe_design_cost_factor = -1
+				large_plane_airframe_design_cost_factor = -1
+			}
+		}
+		SOV_debuff_1 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				unit_light_armor_design_cost_factor = 100
+				unit_medium_armor_design_cost_factor = 100
+				unit_modern_armor_design_cost_factor = 100
+				unit_heavy_armor_design_cost_factor = 100
+				
+				#unit_amphibious_light_armor_design_cost_factor = 100
+				unit_amphibious_medium_armor_design_cost_factor = 100
+				unit_amphibious_heavy_armor_design_cost_factor = 100
+				
+				unit_light_sp_anti_air_brigade_design_cost_factor = 100
+				unit_medium_sp_anti_air_brigade_design_cost_factor = 100
+				unit_modern_sp_anti_air_brigade_design_cost_factor = 100
+				unit_heavy_sp_anti_air_brigade_design_cost_factor = 100
+				
+				unit_light_tank_destroyer_brigade_design_cost_factor = 100
+				unit_medium_tank_destroyer_brigade_design_cost_factor = 100
+				unit_modern_tank_destroyer_brigade_design_cost_factor = 100
+				unit_heavy_tank_destroyer_brigade_design_cost_factor = 100
+				
+				unit_light_sp_artillery_brigade_design_cost_factor = 100
+				unit_medium_sp_artillery_brigade_design_cost_factor = 100
+				unit_modern_sp_artillery_brigade_design_cost_factor = 100
+				unit_heavy_sp_artillery_brigade_design_cost_factor = 100
+			}
+		}
+		SOV_debuff_2 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				unit_motorized_design_cost_factor = 100
+				unit_mechanized_design_cost_factor = 100
+				
+				unit_mot_rocket_artillery_brigade_design_cost_factor = 100
+				unit_motorized_rocket_brigade_design_cost_factor = 100
+				unit_motorized_heavy_artillery_brigade_design_cost_factor = 100
+				
+				unit_mot_artillery_brigade_design_cost_factor = 100
+				unit_mot_anti_tank_brigade_design_cost_factor = 100
+				unit_mot_anti_air_brigade_design_cost_factor = 100
+				
+				unit_mechanized_sp_artillery_brigade_design_cost_factor = 100
+				unit_mechanized_tank_destroyer_brigade_design_cost_factor = 100
+				unit_mechanized_anti_air_brigade_design_cost_factor = 100
+			}
+		}
+		fin_sov_attack = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			targeted_modifier = {
+				tag = SOV
+				attack_bonus_against = 0.5
+			}
+		}
+		
+		abn_eq_1 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				para_equipment = {
+					build_cost_ic = 0.15 instant = yes
+				}
+			}
+		}
+		
+		abn_eq_2 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				para_equipment = {
+					build_cost_ic = 0.15 instant = yes
+				}
+			}
+		}
+		
+		abn_eq_3 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				para_equipment = {
+					build_cost_ic = 0.25 instant = yes
+				}
+			}
+		}
+		
+		mnt_eq_1 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				mount_equipment = {
+					build_cost_ic = 0.2 instant = yes
+				}
+			}
+		}
+		
+		mnt_eq_2 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				mount_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		
+		at_inf_1 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = 0.2 instant = yes
+				}
+			}
+		}
+		
+		at_inf_2 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = 0.2 instant = yes
+				}
+			}
+		}
+		
+		night_vision_inf_1 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = 0.2 instant = yes
+				}
+			}
+		}
+		
+		night_vision_inf_2 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = 0.2 instant = yes
+				}
+			}
+		}
+		
+		inf_up_1 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = 0.05 instant = yes
+				}
+				machinegun = {
+					build_cost_ic = 0.05 instant = yes
+				}
+				mortar = {
+					build_cost_ic = 0.05 instant = yes
+				}
+			}
+		}
+		
+		inf_up_2 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = 0.05 instant = yes
+				}
+				machinegun = {
+					build_cost_ic = 0.05 instant = yes
+				}
+				mortar = {
+					build_cost_ic = 0.05 instant = yes
+				}
+			}
+		}
+		
+		inf_up_3 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = 0.05 instant = yes
+				}
+				machinegun = {
+					build_cost_ic = 0.05 instant = yes
+				}
+				mortar = {
+					build_cost_ic = 0.05 instant = yes
+				}
+			}
+		}
+		
+		bp_up_1 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				ammunition_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		bp_up_2 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				ammunition_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		bp_up_3 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				ammunition_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		bp_up_4 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				ammunition_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		bp_up_5 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				ammunition_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		bp_up_6 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				ammunition_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		bp_up_7 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				ammunition_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		bp_up_8 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				ammunition_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		bp_up_9 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				ammunition_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		bp_up_10 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				ammunition_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		
+		sup_weapons_1 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = 0.05 instant = yes
+				}
+			}
+		}
+		
+		sup_weapons_2 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = 0.05 instant = yes
+				}
+			}
+		}
+		
+		sup_weapons_3 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = 0.05 instant = yes
+				}
+			}
+		}
+		
+		sup_weapons_4 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = 0.05 instant = yes
+				}
+			}
+		}
+		
+		art_up_1 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			equipment_bonus = {
+				artillery_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		art_up_2 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			equipment_bonus = {
+				artillery_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		art_up_3 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			equipment_bonus = {
+				artillery_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		art_up_4 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			equipment_bonus = {
+				artillery_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		art_up_5 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			equipment_bonus = {
+				artillery_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		
+		rag_up_1 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			equipment_bonus = {
+				rocket_artillery_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+				motorized_rocket_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		
+		rag_up_2 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			equipment_bonus = {
+				rocket_artillery_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+				motorized_rocket_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		
+		rag_up_3 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			equipment_bonus = {
+				rocket_artillery_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+				motorized_rocket_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		
+		atg_up_1 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			equipment_bonus = {
+				anti_tank_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		atg_up_2 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			equipment_bonus = {
+				anti_tank_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		atg_up_3 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			equipment_bonus = {
+				anti_tank_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		atg_up_4 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			equipment_bonus = {
+				anti_tank_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		atg_up_5 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			equipment_bonus = {
+				anti_tank_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		
+		aag_up_1 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			equipment_bonus = {
+				anti_air_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		aag_up_2 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			equipment_bonus = {
+				anti_air_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		aag_up_3 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			equipment_bonus = {
+				anti_air_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		aag_up_4 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			equipment_bonus = {
+				anti_air_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+		aag_up_5 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			equipment_bonus = {
+				anti_air_equipment = {
+					build_cost_ic = 0.1 instant = yes
+				}
+			}
+		}
+
+		trade_fix_delay = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+			}
+		}
+
+		payment_sender_large = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.06
+			}
+		}
+
+		payment_sender_medium = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.04
+			}
+		}
+
+		payment_sender_small = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.02
+			}
+		}
+
+		payment_reciever_large = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = -0.06
+			}
+		}
+
+		payment_reciever_medium = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = -0.04
+			}
+		}
+
+		payment_reciever_small = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = -0.02
+			}
+		}
+
+		FRA_loan = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.05
+			}
+		}
+
+		ENG_loan = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.05
+			}
+		}
+
+		USA_loan = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.05
+			}
+		}
+
+		GER_loan = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.05
+			}
+		}
+
+		SOV_loan = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.05
+			}
+		}
+
+		continuous_naval_production = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				industrial_capacity_dockyard = 0.2
+			}
+		}
+
+
+		continuous_air_production = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			equipment_bonus = {
+				small_plane_airframe = {
+					instant = yes
+					build_cost_ic = -0.10
+				}
+				cv_small_plane_airframe = {
+					instant = yes
+					build_cost_ic = -0.10
+				}
+				medium_plane_airframe = {
+					instant = yes
+					build_cost_ic = -0.10
+				}
+				large_plane_airframe = {
+					instant = yes
+					build_cost_ic = -0.10
+				}
+				transport_plane_equipment = {
+					instant = yes
+					build_cost_ic = -0.10
+				}
+			}
+		}
+	}
+
+	# Special ones that can be applied on other countries through focus system.
+	country = {
+		
+		special_project_consumer_costs_high = { 
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			picture = generic_industrial_concern_1
+			
+			modifier = {
+				consumer_goods_factor = 0.1
+			}
+		}
+
+		special_project_consumer_costs_medium = { 
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			picture = generic_industrial_concern_1
+			
+			modifier = {
+				consumer_goods_factor = 0.05
+			}
+		}
+
+		special_project_consumer_costs_low = { 
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			picture = generic_industrial_concern_1
+			
+			modifier = {
+				consumer_goods_factor = 0.025
+			}
+		}
+		
+		no_market_access = {
+
+			allowed = {
+				always = no
+			}
+
+			on_add = {
+				set_rule = { can_access_market = no }
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				
+			}
+		}
+		
+		offensive_in_preparation = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				max_planning = -0.70
+				planning_speed = -0.70
+			}
+		}
+	
+		oil_mismanagment = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				min_export = -0.3
+			}
+		}
+	
+		desire_for_independance = {
+			
+			cancel = {
+				is_subject = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+			
+			removal_cost = -1
+	
+			modifier = {
+				surrender_limit = -0.5
+			}
+		}
+	
+		internal_conflict = {
+
+			picture = anti_soviet_pact
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				ai_get_ally_desire_factor = -500
+			}
+		}
+
+		Recovering_from_war = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				industrial_capacity_factory = -0.5
+			}
+		}
+
+		war_torn_country = {
+
+			picture = prc_low_popular_support3
+
+			allowed = {
+				OR = {
+					original_tag = SPR
+				}
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			modifier = {
+				ai_get_ally_desire_factor = -500
+				war_support_factor = -0.4
+				join_faction_tension = 0.5
+				send_volunteer_size = -2
+			}
+		}
+
+		agrarian_society = {
+
+			picture = generic_agrarian_society
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			research_bonus = {
+				electronics = -0.25
+				naval_equipment = -0.25
+			}
+		}
+
+		foreign_technologies = {
+			
+			removal_cost = -1
+			
+			research_bonus = {
+				major_technologies = -0.10
+			}
+		}
+
+		nationalism = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+
+			picture = generic_infantry_bonus
+
+			
+			modifier = {
+				fascism_drift = 0.1
+			}
+		}
+
+		internationalism = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			picture = generic_intel_bonus
+			
+			modifier = {
+				#justify_war_goal_time = -0.25
+				communism_drift = 0.1
+			}
+		}
+
+		fascist_influence = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+
+			picture = generic_fascism_drift_bonus
+			
+			modifier = {
+				fascism_drift = 0.1
+				fascism_acceptance = 85
+			}
+		}
+		
+		communist_influence = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			picture = generic_communism_drift_bonus
+			
+			modifier = {
+				communism_drift = 0.1
+				communism_acceptance = 85
+			}
+		}
+		democratic_influence = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_democratic_drift_bonus
+			
+			modifier = {
+				democratic_drift = 0.1
+				democratic_acceptance = 85
+			}
+		}
+		neutrality_influence = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = generic_pp_unity_bonus
+			
+			modifier = {
+				neutrality_drift = 0.1
+				neutrality_acceptance = 85
+			}
+		}
+		
+		#Weaker version
+		fascist_influence_weak = {
+			name = fascist_influence
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+
+			picture = generic_fascism_drift_bonus
+			
+			modifier = {
+				fascism_drift = 0.1
+				fascism_acceptance = 35
+			}
+		}
+		
+		communist_influence_weak = {
+			name = communist_influence
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			picture = generic_communism_drift_bonus
+			
+			modifier = {
+				communism_drift = 0.1
+				communism_acceptance = 35
+			}
+		}
+
+		democratic_influence_weak = {
+			name = democratic_influence
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_democratic_drift_bonus
+			
+			modifier = {
+				democratic_drift = 0.1
+				democratic_acceptance = 35
+			}
+		}
+
+		neutrality_influence_weak = {
+			name = neutrality_influence
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = generic_pp_unity_bonus
+			
+			modifier = {
+				neutrality_drift = 0.1
+				neutrality_acceptance = 35
+			}
+		}
+		
+		soviet_german_friendship = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				OR = {
+					AND = {
+						tag = GER
+						has_government = fascism
+						SOV = {
+							has_government = communism
+						}
+					}
+					AND = {
+						tag = SOV
+						has_government = communism
+						GER = {
+							has_government = fascism
+						}
+					}
+				}
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				communism_acceptance = 100
+				fascism_acceptance = 100
+			}
+		}
+		
+		communist_pressure = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			picture = generic_communism_drift_bonus
+			
+			modifier = {
+				communism_drift = 0.1
+			}
+		}
+		# from decision
+		socialist_education = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			picture = generic_communism_drift_bonus
+			
+			modifier = {
+				communism_drift = 0.1
+				research_speed_factor = 0.025
+			}
+		}
+		# from decision
+		paramilitary_training = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+
+			picture = generic_fascism_drift_bonus
+			
+			modifier = {
+				fascism_drift = 0.1
+				experience_gain_army = 0.1
+			}
+		}
+		# from decision
+		nation_building = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_democratic_drift_bonus
+			
+			modifier = {
+				democratic_drift = 0.1
+				stability_factor = 0.1
+			}
+		}
+		
+		military_parade = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = generic_pp_unity_bonus
+			
+			modifier = {
+				neutrality_drift = 0.1
+				mobilization_speed = 0.15
+			}
+		}
+		# Generic Focus Ideas
+
+		special_forces = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			picture = FRA_scw_intervention_nationalists_focus
+			
+			modifier = {
+				special_forces_cap = 0.02
+			}
+		}
+		
+		collectivist_ethos_focus = {
+			
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+		
+			removal_cost = -1
+
+			picture = generic_pp_unity_bonus
+
+			modifier = {
+				democratic_drift = -0.02
+			}
+		}
+	
+		liberty_ethos_focus = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+			
+			removal_cost = -1
+
+			picture = generic_democratic_drift_bonus
+	
+			modifier = {
+				trade_opinion_factor = 0.2
+			}
+		}
+	
+		militarism_focus = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			
+			removal_cost = -1
+
+			picture = generic_manpower_bonus
+	
+			modifier = {
+				conscription = 0.025
+				war_support_factor = 0.05
+				resistance_damage_to_garrison = -0.1
+			}
+		}
+	
+		military_youth_focus = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				OR = {
+					has_government = communism
+					has_government = fascism
+				}
+			}
+			
+			removal_cost = -1
+
+			picture = generic_manpower_bonus
+	
+			modifier = {
+				conscription = 0.02
+			}
+		}
+	
+		paramilitarism_focus = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				OR = {
+					has_government = communism
+					has_government = fascism
+				}
+			}
+			
+			removal_cost = -1
+
+			picture = generic_infantry_bonus
+	
+			modifier = {
+				training_time_army_factor = -0.1
+			}
+		}
+	
+		indoctrination_focus = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				OR = {
+					has_government = communism
+					has_government = fascism
+				}
+			}
+			
+			removal_cost = -1
+
+			picture = generic_pp_unity_bonus
+	
+			modifier = {
+				stability_factor = 0.05
+				#0.001
+			}
+		}
+	
+		ideological_fanaticism_focus = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			picture = generic_pp_unity_bonus
+	
+			rule = {
+				can_create_factions = yes
+			}
+	
+			modifier = {
+				war_support_factor = 0.05
+				#0.002
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.1
+			}
+		}
+	
+		political_commissars_focus = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+			
+			removal_cost = -1
+
+			picture = generic_morale_bonus
+	
+			modifier = {
+				army_morale_factor = 0.1
+			}
+		}
+	
+		neutrality_idea = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			cancel = {
+				has_war = yes
+			}
+			
+			removal_cost = -1
+	
+			modifier = {
+				join_faction_tension = 1.00
+				send_volunteers_tension = 0.20
+				guarantee_tension = 1.0
+				ai_badass_factor = 0.01    # Will receive 1% of the threat from others
+				ai_get_ally_desire_factor = -100
+			}
+		}
+	
+		deterrence = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			picture = generic_production_bonus
+	
+			modifier = {
+				production_speed_bunker_factor = 0.2
+				production_speed_coastal_bunker_factor = 0.2
+				production_speed_anti_air_building_factor = 0.2
+				production_speed_arms_factory_factor = 0.1
+			}
+		}
+
+		volunteer_corps_focus = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			picture = generic_volunteer_expedition_bonus
+
+			modifier = {
+				send_volunteer_divisions_required = -0.25
+			}
+		}
+
+		foreign_expeditions_focus = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			picture = generic_volunteer_expedition_bonus
+			
+			modifier = {
+				send_volunteer_divisions_required = -0.5
+			}
+		}
+
+		why_we_fight_focus = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			picture = generic_pp_unity_bonus
+			
+			modifier = {
+				stability_factor = 0.10
+				#0.003
+				war_support_factor = 0.1
+			}
+		}	
+
+		idea_political_correctness = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			picture = generic_intel_bonus
+			
+			modifier = {
+				foreign_subversive_activites = -0.75
+			}			
+		}
+
+		communism_banned = {
+			picture = anti_soviet_pact
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				NOT = {
+					has_government = communism
+				}
+			}
+
+			modifier = {
+				communism_drift = -0.05
+			}
+		}
+
+		fascism_banned = {
+
+			picture = generic_fascism_banned
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				NOT = {
+					has_government = fascism
+				}
+			}
+
+			modifier = {
+				fascism_drift = -0.05
+			}
+		}
+
+		race_for_the_bomb = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			picture = generic_research_bonus
+	
+			modifier = {
+				production_speed_nuclear_reactor_factor = 0.2
+			}
+			research_bonus = {
+				nuclear = 0.10
+			}
+		}
+
+		race_for_the_bomb_outclassed = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			picture = generic_research_bonus
+	
+			modifier = {
+				production_speed_nuclear_reactor_factor = 0.25
+				political_power_factor = -0.5
+			}
+			research_bonus = {
+				nuclear = 0.15
+			}
+		}
+		
+		received_attache = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_org_factor = 0.02
+				planning_speed = 0.10
+			}
+		}
+		draft_dodging = {
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = generic_manpower_bonus
+			
+			modifier = {
+				conscription_factor = -0.2
+			}
+		}
+
+		draft_dodging_2 = {
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = generic_manpower_bonus
+			
+			modifier = {
+				conscription_factor = -0.3
+			}
+		}
+
+		draft_dodging_3 = {
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = generic_manpower_bonus
+			
+			modifier = {
+				conscription_factor = -0.4
+			}
+		}
+
+		strikes_1 = {
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = generic_production_bonus
+			
+			modifier = {
+				consumer_goods_factor = 0.1
+				local_resources_factor = -0.2
+				industrial_capacity_factory = -0.2
+				industrial_capacity_dockyard = -0.2
+			}
+		}
+		strikes_2 = {
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = generic_production_bonus
+			
+			modifier = {
+				consumer_goods_factor = 0.15
+				local_resources_factor = -0.35
+				industrial_capacity_factory = -0.35
+				industrial_capacity_dockyard = -0.35
+			}
+		}
+		strikes_3 = {
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = generic_production_bonus
+			
+			modifier = {
+				consumer_goods_factor = 0.2
+				local_resources_factor = -0.5
+				industrial_capacity_factory = -0.5
+				industrial_capacity_dockyard = -0.5
+			}
+		}
+		mutiny_1 = {
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = generic_army_problems
+			
+			modifier = {
+				army_morale_factor = -0.2
+				training_time_factor = 0.2
+				army_attack_factor = -0.2
+				experience_gain_army = -0.2
+				army_org_factor = -0.2
+			}
+		}
+		mutiny_2 = {
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = generic_army_problems
+			
+			modifier = {
+				army_morale_factor = -0.35
+				training_time_factor = 0.35
+				army_attack_factor = -0.35
+				experience_gain_army = -0.35
+				army_org_factor = -0.35
+			}
+		}
+		mutiny_3 = {
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = generic_army_problems
+			
+			modifier = {
+				army_morale_factor = -0.5
+				training_time_factor = 0.5
+				army_attack_factor = -0.5
+				experience_gain_army = -0.5
+				army_org_factor = -0.5
+			}
+		}
+
+		# Civil War Ideas
+		civil_war_surprise_attack_plan = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			picture = generic_manpower_bonus
+			
+			modifier = {
+				army_core_attack_factor = 0.25 
+			}
+		}	
+
+		idea_weapons_for_the_resistance = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			picture = chi_war_of_resistance3
+			
+			modifier = {
+				resistance_growth_on_our_occupied_states = 0.1 
+				resistance_damage_to_garrison_on_our_occupied_states = 0.25
+			}
+		}
+
+		MTG_naval_treaty_heavy_cruiser_limit_reached = {
+
+			available = {
+				has_war = no
+				has_navy_size = {
+					unit = heavy_cruiser
+				    size > 17
+				}
+				OR = {
+					has_idea = MTG_naval_treaty_adherent
+					has_idea = MTG_naval_treaty_adherent_reduced
+				}
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			equipment_bonus = {
+				ship_hull_heavy = {
+					build_cost_ic = 1.0 instant = yes
+				}
+			}
+		}
+
+		MTG_naval_treaty_battleship_limit_reached = {
+
+			available = {
+				has_war = no
+				has_navy_size = {
+					unit = battleship
+				    size > 18
+				}
+				OR = {
+					has_idea = MTG_naval_treaty_adherent
+					has_idea = MTG_naval_treaty_adherent_reduced
+				}
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			equipment_bonus = {
+				capital_ship = {
+					build_cost_ic = 1.0 instant = yes
+				}
+			}
+		}
+
+		MTG_naval_treaty_carrier_limit_reached = {
+
+			available = {
+				has_war = no
+				has_navy_size = {
+					unit = carrier
+				    size > 5
+				}
+				OR = {
+					has_idea = MTG_naval_treaty_adherent
+					has_idea = MTG_naval_treaty_adherent_reduced
+				}
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			equipment_bonus = {
+				carrier = {
+					build_cost_ic = 1.0 instant = yes
+				}
+			}
+		}
+	}
+	
+	political_advisor = {
+		# POLITICAL	
+		generic_communist_revolutionary = {
+			
+			allowed = {
+				NOT = { OR = { tag = GER tag = ENG tag = SOV original_tag = FRA tag = ITA tag = JAP tag = USA tag = AST tag = RAJ tag = CAN tag = SAF tag = CZE tag = ROM tag = CHI tag = MAN tag = MEX tag = HOL tag = FIN original_tag = SPR } }
+				NOT = {
+					has_available_idea_with_traits = { idea = communist_revolutionary limit = 1 }
+				}
+				if = {
+					limit = { has_dlc = "Battle for the Bosporus" }
+					NOT = { tag = TUR tag = GRE }
+				}
+			}
+
+			available = {
+				
+				if = {
+					limit = { has_dlc = "Man the Guns" }	
+					NOT = { has_autonomy_state = autonomy_supervised_state }
+				}
+			}
+			
+			traits = { communist_revolutionary }
+	
+			on_add = {
+				#country_event = political.1
+			}
+	
+			do_effect = {
+				NOT = {
+					has_government = communism
+				}
+			}
+	
+			ai_will_do = {
+				factor = 0
+			}
+		}
+			
+		generic_democratic_reformer = {
+			
+			allowed = {
+				NOT = { OR = { tag = GER tag = ENG tag = SOV original_tag = FRA tag = ITA tag = JAP tag = USA tag = AST tag = RAJ tag = CAN tag = SAF tag = CZE tag = CHI tag = MAN tag = MEX tag = HOL original_tag = SPR tag = BEL } }
+				NOT = {
+					has_available_idea_with_traits = { idea = democratic_reformer limit = 1 }
+				}
+				if = {
+					limit = { has_dlc = "Battle for the Bosporus" }
+					NOT = { tag = TUR tag = GRE }
+				}
+			}
+			
+			available = {
+				
+				if = {
+					limit = { has_dlc = "Man the Guns" }	
+					NOT = { has_autonomy_state = autonomy_supervised_state }
+				}
+			}
+
+			
+			traits = { democratic_reformer }
+	
+			on_add = {
+				#country_event = political.13
+			}
+	
+			do_effect = {
+				NOT = {
+					has_government = democratic
+				}
+			}
+	
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
+		generic_fascist_demagogue = {
+			
+			allowed = {
+				NOT = { OR = { tag = GER tag = ENG tag = SOV original_tag = FRA tag = ITA tag = JAP tag = USA tag = AST tag = RAJ tag = CAN tag = SAF tag = ROM tag = CZE tag = CHI tag = MAN tag = MEX tag = HOL original_tag = SPR original_tag = POR tag = FIN tag = BEL } }
+				NOT = {
+					has_available_idea_with_traits = { idea = fascist_demagogue limit = 1 }
+				}
+				if = {
+					limit = { has_dlc = "Battle for the Bosporus" }
+					NOT = { tag = TUR tag = GRE }
+				}
+			}
+			
+			available = {
+				
+				if = {
+					limit = { has_dlc = "Man the Guns" }	
+					NOT = { has_autonomy_state = autonomy_supervised_state }
+				}				
+			}
+			
+			traits = { fascist_demagogue }
+	
+			on_add = {
+				#country_event = political.7
+			}
+	
+			do_effect = {
+				NOT = {
+					has_government = fascism
+				}
+			}
+	
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		generic_head_of_intelligence = {
+			allowed = { 
+				has_dlc = "La Resistance"
+				# china gets a special one via focus
+				NOT = { original_tag = CHI }
+				if = {
+					limit = {
+						has_dlc = "Battle for the Bosporus"
+					}
+					NOT = {
+						tag = GRE
+						tag = TUR
+					}
+				}
+			}
+			visible = {
+				OR = {
+					has_idea = generic_head_of_intelligence
+					NOT = {
+						OR = {
+							# ignore if a (historical) minister already available
+							has_allowed_idea_with_traits = { 
+								idea = head_of_intelligence 
+								limit = 1
+								ignore = generic_head_of_intelligence
+							}
+							# ignore if the other one is already taken
+							has_idea_with_trait = head_of_intelligence
+						}
+					}
+				}
+			}
+			available = {
+				has_intelligence_agency = yes
+			}
+			traits = { head_of_intelligence }
+
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					has_intelligence_agency = no
+					factor = 0
+				}
+			}
+
+		}
+	}
+	
+
+	# TECHNOLOGY
+		tank_manufacturer = { 
+	
+		designer = yes
+		
+		generic_tank_manufacturer = {
+
+			picture = generic_tank_manufacturer_1
+			
+			allowed = {
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = BEL tag = CZE } }
+				NOT = {
+					has_available_idea_with_traits = { idea = tank_manufacturer limit = 1 }
+				}
+				NOT = {
+					AND = {
+						OR = { tag = AST tag = SAF tag = NZL tag = CAN }
+						has_dlc = "Together for Victory"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = {
+							is_literally_china = yes
+							tag = MAN
+						}
+						has_dlc = "Waking the Tiger"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = MEX }
+						has_dlc = "Man the Guns"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = BUL tag = GRE tag = TUR }
+						has_dlc = "Battle for the Bosporus"
+					}
+				}
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				armor = 0.15
+			}
+			
+			traits = { tank_manufacturer }
+		}
+	}
+	
+	naval_manufacturer = { 
+	
+		designer = yes
+	
+		generic_naval_manufacturer = {
+			
+			picture = generic_naval_manufacturer_1
+
+			allowed = {
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = SWE tag = HUN tag = CZE } }
+				NOT = {
+					has_available_idea_with_traits = { idea = naval_manufacturer limit = 1 }
+				}
+				NOT = {
+					AND = {
+						OR = { tag = AST tag = CAN tag = NZL tag = RAJ }
+						has_dlc = "Together for Victory"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = CHI tag = MAN tag = SIK tag = MEN }
+						has_dlc = "Waking the Tiger"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = MEX tag = HOL }
+						has_dlc = "Man the Guns"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = SPR tag = SPA tag = SPB tag = SPC tag = SPD }
+						has_dlc = "La Resistance"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = BUL tag = GRE tag = TUR }
+						has_dlc = "Battle for the Bosporus"
+					}
+				}
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+			
+			traits = { naval_manufacturer }
+		}
+	}
+
+	aircraft_manufacturer = { 
+	
+		designer = yes
+	
+		generic_light_aircraft_manufacturer = {
+			
+			picture = generic_air_manufacturer_1
+
+			allowed = {
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA } }
+				NOT = {
+					has_available_idea_with_traits = { idea = light_aircraft_manufacturer limit = 1 }
+				}
+				if = {
+					limit = {
+						has_dlc = "Death or Dishonor"
+					}
+					NOT = { tag = ROM } NOT = { tag = YUG }
+				}
+				NOT = {
+					AND = {
+						OR = { tag = CHI tag = MAN tag = SIK tag = MEN }
+						has_dlc = "Waking the Tiger"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = MEX tag = HOL }
+						has_dlc = "Man the Guns"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = SPR tag = SPA tag = SPB tag = SPC tag = SPD tag = POR}
+						has_dlc = "La Resistance"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = BUL tag = GRE tag = TUR }
+						has_dlc = "Battle for the Bosporus"
+					}
+				}
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				air_equipment = 0.15
+			}
+			
+			traits = { light_aircraft_manufacturer }
+		}
+		
+		generic_medium_aircraft_manufacturer = {
+			
+			picture = generic_air_manufacturer_3
+
+			allowed = {
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = ROM } }
+				NOT = {
+					has_available_idea_with_traits = { idea = medium_aircraft_manufacturer limit = 1 }
+				}
+				if = {
+					limit = {
+						has_dlc = "Death or Dishonor"
+					}
+					NOT = { tag = YUG }
+				}
+				NOT = {
+					AND = {
+						OR = { tag = CHI tag = MAN tag = SIK tag = MEN }
+						has_dlc = "Waking the Tiger"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = MEX tag = HOL }
+						has_dlc = "Man the Guns"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = SPR tag = SPA tag = SPB tag = SPC tag = SPD tag = POR }
+						has_dlc = "La Resistance"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = BUL tag = GRE tag = TUR }
+						has_dlc = "Battle for the Bosporus"
+					}
+				}
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				air_equipment = 0.15
+			}
+			
+			traits = { medium_aircraft_manufacturer }
+		}
+		
+		generic_heavy_aircraft_manufacturer = {
+
+			picture = generic_air_manufacturer_2
+			
+			allowed = {
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = CAN tag = ROM } }
+				NOT = {
+					has_available_idea_with_traits = { idea = heavy_aircraft_manufacturer limit = 1 }
+				}
+				if = {
+					limit = {
+						has_dlc = "Death or Dishonor"
+					}
+					NOT = { tag = YUG }
+				}
+				NOT = {
+					AND = {
+						OR = { tag = CHI tag = MAN tag = SIK tag = MEN }
+						
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = MEX tag = HOL }
+						has_dlc = "Man the Guns"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = SPR tag = SPA tag = SPB tag = SPC tag = SPD tag = POR }
+						has_dlc = "La Resistance"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = BUL tag = GRE tag = TUR }
+						has_dlc = "Battle for the Bosporus"
+					}
+				}
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				air_equipment = 0.15
+			}
+			
+			traits = { heavy_aircraft_manufacturer }
+		}
+		
+		generic_naval_aircraft_manufacturer = {
+			
+			picture = generic_naval_manufacturer_2
+
+			allowed = {
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = CAN tag = ROM tag = YUG } }
+				NOT = {
+					has_available_idea_with_traits = { idea = naval_aircraft_manufacturer limit = 1 }
+				}
+				if = {
+					limit = {
+						has_dlc = "Waking the Tiger"
+					}
+					NOT = {
+						OR = { tag = CHI tag = MAN tag = SIK tag = MEN }
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = MEX tag = HOL }
+						has_dlc = "Man the Guns"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = SPR tag = SPA tag = SPB tag = SPC tag = SPD tag = POR }
+						has_dlc = "La Resistance"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = BUL tag = GRE tag = TUR }
+						has_dlc = "Battle for the Bosporus"
+					}
+				}
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				air_equipment = 0.15
+			}
+			
+			traits = { naval_aircraft_manufacturer }
+		}
+	}
+
+	industrial_concern = {
+	
+		generic_industrial_concern = {
+			
+			picture = generic_industrial_concern_1
+
+			allowed = {
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = HUN } }
+				NOT = {
+					has_available_idea_with_traits = { idea = industrial_concern limit = 1 }
+				}
+				NOT = {
+					AND = {
+						OR = { tag = CHI tag = MAN tag = SIK tag = MEN }
+						has_dlc = "Waking the Tiger"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = MEX tag = HOL }
+						has_dlc = "Man the Guns"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = SPR tag = SPA tag = SPB tag = SPC tag = SPD }
+						has_dlc = "La Resistance"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = BUL tag = GRE tag = TUR }
+						has_dlc = "Battle for the Bosporus"
+					}
+				}
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				industry = 0.15
+			}
+			
+			traits = { industrial_concern }
+		}
+
+		generic_electronics_concern = {
+			
+			picture = generic_electronics_concern_1
+
+			allowed = {
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA } }
+				NOT = {
+					has_available_idea_with_traits = { idea = electronics_concern limit = 1 }
+				}
+				NOT = {
+					AND = {
+						has_DLC = "Waking the Tiger"
+						OR = {
+							original_tag = MAN
+							is_literally_china = yes
+						}
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = HOL tag = MEX }
+						has_dlc = "Man the Guns"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = SPR tag = SPA tag = SPB tag = SPC tag = SPD }
+						has_dlc = "La Resistance"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = BUL tag = GRE tag = TUR }
+						has_dlc = "Battle for the Bosporus"
+					}
+				}
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				electronics = 0.15
+			}
+			
+			traits = { electronics_concern }
+		}
+	}
+
+	materiel_manufacturer = {
+	
+		designer = yes
+	
+		generic_motorized_equipment_manufacturer = {
+			
+			picture = generic_motorized_equipment_manufacturer_3
+
+			allowed = {
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA } }
+				NOT = {
+					has_available_idea_with_traits = { idea = motorized_equipment_manufacturer limit = 1 }
+				}
+				NOT = {
+					AND = {
+						OR = { tag = CHI tag = MAN tag = SIK tag = MEN }
+						has_dlc = "Waking the Tiger"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = HOL }
+						has_dlc = "Man the Guns"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = SPR tag = SPA tag = SPB tag = SPC tag = SPD tag = POR }
+						has_dlc = "La Resistance"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = BUL tag = GRE tag = TUR }
+						has_dlc = "Battle for the Bosporus"
+					}
+				}
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				motorized_equipment = 0.15
+			}
+			
+			traits = { motorized_equipment_manufacturer }
+		}
+		
+		generic_infantry_equipment_manufacturer = {
+			
+			picture = generic_infantry_equipment_manufacturer_2
+
+			allowed = {
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = HUN } }
+				NOT = {
+					has_available_idea_with_traits = { idea = infantry_equipment_manufacturer limit = 1 }
+				}
+				NOT = {
+					AND = {
+						OR = { tag = CHI tag = MAN tag = SIK tag = MEN }
+						has_dlc = "Waking the Tiger"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = HOL }
+						has_dlc = "Man the Guns"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = SPR tag = SPA tag = SPB tag = SPC tag = SPD tag = POR }
+						has_dlc = "La Resistance"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = BUL tag = GRE tag = TUR }
+						has_dlc = "Battle for the Bosporus"
+					}
+				}
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				infantry_weapons = 0.15
+			}
+			
+			traits = { infantry_equipment_manufacturer }
+		}
+		
+		generic_artillery_manufacturer = {
+			
+			picture = generic_artillery_manufacturer_2
+
+			allowed = {
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA } }
+				NOT = {
+					has_available_idea_with_traits = { idea = artillery_manufacturer limit = 1 }
+				}
+				NOT = {
+					AND = {
+						OR = { tag = CHI tag = MAN tag = SIK tag = MEN }
+						has_dlc = "Waking the Tiger"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = HOL }
+						has_dlc = "Man the Guns"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = SPR tag = SPA tag = SPB tag = SPC tag = SPD tag = POR }
+						has_dlc = "La Resistance"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = BUL tag = GRE tag = TUR }
+						has_dlc = "Battle for the Bosporus"
+					}
+				}
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				artillery = 0.15
+			}
+			
+			traits = { artillery_manufacturer }
+		}
+	}
+
+	hidden_ideas = {
+
+		AI_production_efficiency_cheat = {
+		
+			removal_cost = -1
+			
+			allowed = {
+				always = no 
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+				production_factory_efficiency_gain_factor = 50.0
+			}
+		}
+	}
+}

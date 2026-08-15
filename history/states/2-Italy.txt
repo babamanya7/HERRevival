@@ -1,0 +1,32 @@
+state= {
+	id=2
+	name="STATE_2" # Latium
+	manpower = 781520
+	
+	state_category = city
+
+	history= {
+		owner = ITA
+		victory_points = { 14489 5 }
+		victory_points = { 14498 1 }
+		buildings = {
+			infrastructure = 5
+			air_base = 14
+			industrial_complex = 6
+			dockyard = 1
+			arms_factory = 1
+			steel_refinery = 1
+			14526 = {
+				naval_base = 5
+			}
+			14489 = {
+				naval_base = 2
+			}
+		}
+		add_core_of = ITA
+	}
+
+	provinces= {
+		14498 14489 14492 14515 14528 14552 14543 14570 14585 14580 14551 14556 14526
+ 	}
+}

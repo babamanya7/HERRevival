@@ -1,0 +1,39 @@
+
+state={
+	id=186
+	name="STATE_186"
+	manpower=995000
+	
+	state_category = rural
+
+	history={
+		victory_points = {
+			14368 5
+		}
+		victory_points = {
+			14337 1
+		}
+		victory_points = {
+			14315 1
+		}
+		owner = GRE
+		buildings = {
+			infrastructure = 5
+			arms_factory = 2
+			industrial_complex = 2
+			14315 = {
+				naval_base = 1
+			}
+			14368 = {
+				naval_base = 2
+
+			}
+		}
+		add_core_of = GRE
+
+	}
+
+	provinces={
+		14368 14360 14339 14332 14324 14315 14326 14317 14328 14330 14351 14366 14344 14336 14345 14337 14303
+	}
+}

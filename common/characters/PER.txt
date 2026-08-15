@@ -1,0 +1,74 @@
+characters={
+	PER_reza_shah_pahlavi={
+		name="Reza Shah Pahlavi"
+		portraits={
+			civilian={
+				large="gfx/leaders/PER/Portrait_Iran_Reza_Shah_Pahlavi.dds"
+			}
+		}
+		country_leader={
+			ideology=despotism
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	PER_soleyman_mirza_eskandari={
+		name="Soleyman Mirza Eskandari"
+		portraits={
+			civilian={
+				large="gfx/leaders/South America/Portrait_South_America_Generic_land_1.dds"
+			}
+		}
+		country_leader={
+			ideology=anarchist_communism
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	PER_hasan_arfa={
+		name="Hasan Arfa"
+		portraits={
+			army={
+				large="gfx/leaders/Europe/Portrait_Europe_Generic_land_5.dds"
+				small="gfx/interface/ideas/idea_europe_generic_land_5.dds"
+			}
+		}
+		corps_commander={
+			traits={ desert_fox }
+			skill=3
+			attack_skill=3
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	PER_dalir_pesyan={
+		name="Dalir Pesyan"
+		portraits={
+			civilian={
+				large="gfx/leaders/SAU/Portrait_Arabia_Generic_2.dds"
+			}
+		}
+		country_leader={
+			ideology=socialism
+			traits={ financial_expert }
+			expire="1953.1.1.12"
+			id=-1
+		}
+	}
+	PER_sohrab_tahmasebi={
+		name="Sohrab Tahmasebi"
+		portraits={
+			civilian={
+				large="gfx/leaders/SAU/Portrait_Arabia_Generic_3.dds"
+			}
+		}
+		country_leader={
+			ideology=rexism
+			traits={ dealbroker national_integralist }
+			expire="1948.1.1.12"
+			id=-1
+		}
+	}
+}

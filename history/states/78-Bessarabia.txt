@@ -1,0 +1,34 @@
+state=
+{
+	id=78
+	name="STATE_78"
+	manpower = 2296800
+	
+	state_category = town
+	
+	history= {
+		owner = ROM
+		victory_points = {
+			13507 5
+		}
+		victory_points = {
+			9503 1
+		}
+		victory_points = {
+			1205 1
+		}
+		victory_points = {
+			11787 1
+		}
+		buildings = {
+			infrastructure = 4
+			industrial_complex = 4
+			arms_factory = 1
+			air_base = 8
+		}
+		add_core_of = ROM
+	}
+	provinces= {
+		1174 1205 3552 6712 6913 6960 7149 7194 9492 9503 9597 9780 10005 11456 11508 11774 11787 11832 11869 13507 
+	}
+}

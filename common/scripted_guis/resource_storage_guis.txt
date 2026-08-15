@@ -1,0 +1,379 @@
+scripted_gui = {
+
+	ware_house_name = {
+        window_name = "ware_house_name"
+        context_type = player_context
+        parent_window_token = trade_tab
+        visible = {  }
+        effects = {  }
+        triggers = {  }
+    }
+	
+    number_of_left_rubber = {
+        window_name = "number_of_left_rubber"
+        context_type = player_context
+        parent_window_token = trade_tab
+        visible = {  }
+        effects = {  }
+        triggers = {  }
+    }
+	rubber_toogle_window = {
+		context_type = player_context
+		window_name = "rubber_toogle_window"
+		parent_window_token = trade_tab
+		effects = {
+			rubber_off_button_click = {
+				if = {
+					limit = {
+						has_country_flag = rubber_storage_use
+					}
+					clr_country_flag = rubber_storage_use
+				}
+				else = {
+					set_country_flag = rubber_storage_use
+				}
+			}
+			rubber_on_button_click = {
+				if = {
+					limit = {
+						has_country_flag = rubber_storage_use
+					}
+					clr_country_flag = rubber_storage_use
+				}
+				else = {
+					set_country_flag = rubber_storage_use
+				}
+			}
+		}
+		triggers = {
+            rubber_off_button_visible = {
+                NOT = { has_country_flag = rubber_storage_use }
+            }
+            rubber_on_button_visible = {
+                has_country_flag = rubber_storage_use
+            }
+        }
+	}
+
+	number_of_left_aluminium = {
+        window_name = "number_of_left_aluminium"
+        context_type = player_context
+        parent_window_token = trade_tab
+        visible = {  }
+        effects = {  }
+        triggers = {  }
+    }
+	aluminium_toogle_window = {
+		context_type = player_context
+		window_name = "aluminium_toogle_window"
+		parent_window_token = trade_tab
+		effects = {
+			aluminium_off_button_click = {
+				if = {
+					limit = {
+						has_country_flag = aluminium_storage_use
+					}
+					clr_country_flag = aluminium_storage_use
+				}
+				else = {
+					set_country_flag = aluminium_storage_use
+				}
+			}
+			aluminium_on_button_click = {
+				if = {
+					limit = {
+						has_country_flag = aluminium_storage_use
+					}
+					clr_country_flag = aluminium_storage_use
+				}
+				else = {
+					set_country_flag = aluminium_storage_use
+				}
+			}
+		}
+		triggers = {
+            aluminium_off_button_visible = {
+                NOT = { has_country_flag = aluminium_storage_use }
+            }
+            aluminium_on_button_visible = {
+                has_country_flag = aluminium_storage_use
+            }
+        }
+	}
+	
+	number_of_left_chromium = {
+        window_name = "number_of_left_chromium"
+        context_type = player_context
+        parent_window_token = trade_tab
+        visible = {  }
+        effects = {  }
+        triggers = {  }
+    }
+	chromium_toogle_window = {
+		context_type = player_context
+		window_name = "chromium_toogle_window"
+		parent_window_token = trade_tab
+		effects = {
+			chromium_off_button_click = {
+				if = {
+					limit = {
+						has_country_flag = chromium_storage_use
+					}
+					clr_country_flag = chromium_storage_use
+				}
+				else = {
+					set_country_flag = chromium_storage_use
+				}
+			}
+			chromium_on_button_click = {
+				if = {
+					limit = {
+						has_country_flag = chromium_storage_use
+					}
+					clr_country_flag = chromium_storage_use
+				}
+				else = {
+					set_country_flag = chromium_storage_use
+				}
+			}
+		}
+		triggers = {
+            chromium_off_button_visible = {
+                NOT = { has_country_flag = chromium_storage_use }
+            }
+            chromium_on_button_visible = {
+                has_country_flag = chromium_storage_use
+            }
+        }
+	}
+	
+	number_of_left_tungsten = {
+        window_name = "number_of_left_tungsten"
+        context_type = player_context
+        parent_window_token = trade_tab
+        visible = {  }
+        effects = {  }
+        triggers = {  }
+    }
+	tungsten_toogle_window = {
+		context_type = player_context
+		window_name = "tungsten_toogle_window"
+		parent_window_token = trade_tab
+		effects = {
+			tungsten_off_button_click = {
+				if = {
+					limit = {
+						has_country_flag = tungsten_storage_use
+					}
+					clr_country_flag = tungsten_storage_use
+				}
+				else = {
+					set_country_flag = tungsten_storage_use
+				}
+			}
+			tungsten_on_button_click = {
+				if = {
+					limit = {
+						has_country_flag = tungsten_storage_use
+					}
+					clr_country_flag = tungsten_storage_use
+				}
+				else = {
+					set_country_flag = tungsten_storage_use
+				}
+			}
+		}
+		triggers = {
+            tungsten_off_button_visible = {
+                NOT = { has_country_flag = tungsten_storage_use }
+            }
+            tungsten_on_button_visible = {
+                has_country_flag = tungsten_storage_use
+            }
+        }
+	}
+	
+	number_of_left_steel = {
+        window_name = "number_of_left_steel"
+        context_type = player_context
+        parent_window_token = trade_tab
+        visible = {  }
+        effects = {  }
+        triggers = {  }
+    }
+	steel_toogle_window = {
+		context_type = player_context
+		window_name = "steel_toogle_window"
+		parent_window_token = trade_tab
+		effects = {
+			steel_off_button_click = {
+				if = {
+					limit = {
+						has_country_flag = steel_storage_use
+					}
+					clr_country_flag = steel_storage_use
+				}
+				else = {
+					set_country_flag = steel_storage_use
+				}
+			}
+			steel_on_button_click = {
+				if = {
+					limit = {
+						has_country_flag = steel_storage_use
+					}
+					clr_country_flag = steel_storage_use
+				}
+				else = {
+					set_country_flag = steel_storage_use
+				}
+			}
+		}
+		triggers = {
+            steel_off_button_visible = {
+                NOT = { has_country_flag = steel_storage_use }
+            }
+            steel_on_button_visible = {
+                has_country_flag = steel_storage_use
+            }
+        }
+	}
+    
+	number_of_left_coal = {
+        window_name = "number_of_left_coal"
+        context_type = player_context
+        parent_window_token = trade_tab
+        visible = {  }
+        effects = {  }
+        triggers = {  }
+    }
+	coal_toogle_window = {
+		context_type = player_context
+		window_name = "coal_toogle_window"
+		parent_window_token = trade_tab
+		effects = {
+			coal_off_button_click = {
+				if = {
+					limit = {
+						has_country_flag = coal_storage_use
+					}
+					clr_country_flag = coal_storage_use
+				}
+				else = {
+					set_country_flag = coal_storage_use
+				}
+			}
+			coal_on_button_click = {
+				if = {
+					limit = {
+						has_country_flag = coal_storage_use
+					}
+					clr_country_flag = coal_storage_use
+				}
+				else = {
+					set_country_flag = coal_storage_use
+				}
+			}
+		}
+		triggers = {
+            coal_off_button_visible = {
+                NOT = { has_country_flag = coal_storage_use }
+            }
+            coal_on_button_visible = {
+                has_country_flag = coal_storage_use
+            }
+        }
+	}
+	
+	number_of_left_bauxite = {
+        window_name = "number_of_left_bauxite"
+        context_type = player_context
+        parent_window_token = trade_tab
+        visible = {  }
+        effects = {  }
+        triggers = {  }
+    }
+	bauxite_toogle_window = {
+		context_type = player_context
+		window_name = "bauxite_toogle_window"
+		parent_window_token = trade_tab
+		effects = {
+			bauxite_off_button_click = {
+				if = {
+					limit = {
+						has_country_flag = bauxite_storage_use
+					}
+					clr_country_flag = bauxite_storage_use
+				}
+				else = {
+					set_country_flag = bauxite_storage_use
+				}
+			}
+			bauxite_on_button_click = {
+				if = {
+					limit = {
+						has_country_flag = bauxite_storage_use
+					}
+					clr_country_flag = bauxite_storage_use
+				}
+				else = {
+					set_country_flag = bauxite_storage_use
+				}
+			}
+		}
+		triggers = {
+            bauxite_off_button_visible = {
+                NOT = { has_country_flag = bauxite_storage_use }
+            }
+            bauxite_on_button_visible = {
+                has_country_flag = bauxite_storage_use
+            }
+        }
+	}
+	
+	number_of_left_iron = {
+        window_name = "number_of_left_iron"
+        context_type = player_context
+        parent_window_token = trade_tab
+        visible = {  }
+        effects = {  }
+        triggers = {  }
+    }
+	iron_toogle_window = {
+		context_type = player_context
+		window_name = "iron_toogle_window"
+		parent_window_token = trade_tab
+		effects = {
+			iron_off_button_click = {
+				if = {
+					limit = {
+						has_country_flag = iron_storage_use
+					}
+					clr_country_flag = iron_storage_use
+				}
+				else = {
+					set_country_flag = iron_storage_use
+				}
+			}
+			iron_on_button_click = {
+				if = {
+					limit = {
+						has_country_flag = iron_storage_use
+					}
+					clr_country_flag = iron_storage_use
+				}
+				else = {
+					set_country_flag = iron_storage_use
+				}
+			}
+		}
+		triggers = {
+            iron_off_button_visible = {
+                NOT = { has_country_flag = iron_storage_use }
+            }
+            iron_on_button_visible = {
+                has_country_flag = iron_storage_use
+            }
+        }
+	}
+}

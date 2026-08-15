@@ -1,0 +1,27 @@
+
+state={
+	id=962
+	name="STATE_962"
+	manpower = 73066
+	state_category = small_island
+	history={
+		owner = EST
+		victory_points = {
+			185 1 
+		}
+		buildings = {
+			infrastructure = 3
+			185 = {
+				naval_base = 1
+			}
+			6201 = {
+				naval_base = 1
+			}
+		}
+		add_core_of = EST
+	}
+
+	provinces={
+		185 6201 
+	}
+}

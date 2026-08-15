@@ -1,0 +1,35 @@
+state={
+	id=802
+	name="STATE_802"
+	
+	resources = {
+		coal = 271
+	}
+	
+	history={
+		owner = GER
+		
+		victory_points = {
+			13541 5 
+		}
+		buildings = {
+			infrastructure = 7
+			arms_factory = 5
+			industrial_complex = 4
+			anti_air_building = 1
+			synthetic_refinery = 1
+			steel_refinery = 3
+			air_base = 12
+			fuel_silo = 2
+		}
+		add_core_of = GER
+	}
+	
+	
+	provinces={
+		316 526 571 923 1635 7033 8077 9575 9737 10163 11360 11676 11730 13541 
+	}
+	manpower=1400000
+	buildings_max_level_factor=1.000
+	state_category=large_city
+}

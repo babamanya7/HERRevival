@@ -1,0 +1,112 @@
+spriteTypes = {	
+
+	spriteType = {
+		name = "GFX_ability_list_begin"
+		texturefile = "gfx/interface/abilitylist/bg_begin.dds"
+	}
+
+	spriteType = {
+		name = "GFX_ability_list_mid"
+		texturefile = "gfx/interface/abilitylist/bg_mid.dds"
+	}
+
+	spriteType = {
+		name = "GFX_ability_list_end"
+		texturefile = "gfx/interface/abilitylist/bg_end.dds"
+	}
+	
+	
+	progressbartype = {
+		name = "GFX_ability_active_bg"
+		textureFile1 = "gfx/interface/abilitylist/ability_active_bg_full.dds"
+		textureFile2 = "gfx/interface/abilitylist/ability_active_bg.dds"
+		size = {x=33 y=33}
+		effectFile = "gfx/FX/progress.lua"
+		horizontal = no
+	}
+	
+	progressbartype = {
+		name = "GFX_ability_cooldown_bg"
+		textureFile1 = "gfx/interface/abilitylist/ability_cooldown_bg_full.dds"
+		textureFile2 = "gfx/interface/abilitylist/ability_cooldown_bg.dds"
+		size = {x=33 y=33}
+		effectFile = "gfx/FX/progress.lua"
+		horizontal = no
+	}
+	
+	spriteType = {
+		name = "GFX_ability_icon_default"
+		texturefile = "gfx/interface/abilitylist/ability_default.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_ability_force_attack"
+		texturefile = "gfx/interface/abilitylist/ability_force_attack.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_ability_siege_artillery"
+		texturefile = "gfx/interface/abilitylist/ability_siege_artillery.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_ability_glider_planes"
+		texturefile = "gfx/interface/abilitylist/ability_glider_planes.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_ability_extra_suplies"
+		texturefile = "gfx/interface/abilitylist/ability_extra_supplies.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_ability_GER_extra_suplies"
+		texturefile = "gfx/interface/abilitylist/GER_ability_extra_supplies.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_ability_faster_naval_invasion_planning"
+		texturefile = "gfx/interface/abilitylist/ability_naval_assault_plan.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_ability_requisition_winter_gear"
+		texturefile = "gfx/interface/abilitylist/ability_requisition_winter_gear.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_ability_probing_attack"
+		texturefile = "gfx/interface/abilitylist/ability_probing_attack.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_ability_chi_force_attack"
+		texturefile = "gfx/interface/abilitylist/ability_chi_force_attack.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_ability_last_stand"
+		texturefile = "gfx/interface/abilitylist/ability_last_stand.dds"
+	}
+
+	spriteType = {
+		name = "GFX_ability_jap_last_stand"
+		texturefile = "gfx/interface/abilitylist/ability_jap_last_stand.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_ability_staff_office_plan"
+		texturefile = "gfx/interface/abilitylist/ability_staff_office_plan.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_ability_makeshift_bridges"
+		texturefile = "gfx/interface/abilitylist/ability_makeshift_bridges.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_ability_dig_in_ability"
+		texturefile = "gfx/interface/unitcontrol/order_draw_fallback_btn.dds"
+		noOfFrames = 2
+	}
+}

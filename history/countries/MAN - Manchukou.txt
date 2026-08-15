@@ -1,0 +1,39 @@
+﻿capital = 328
+
+oob = "MAN_1936"
+
+set_technology = {
+	infantry_weapons = 1
+	gw_artillery = 1
+	
+}
+
+	set_country_flag = MAN_northern_bandits
+	set_country_flag = MAN_eastern_bandits
+	set_country_flag = MAN_western_bandits
+	add_ideas = MAN_banditry
+	add_ideas = MAN_kwantung_veto
+	add_ideas = MAN_low_legitimacy_5
+
+recruit_character = MAN_aisin_gioro_puyi
+recruit_character = MAN_zhang_haipeng
+recruit_character = MAN_zhang_jinghui
+recruit_character = MAN_aisin_gioro_xiqia
+recruit_character = MAN_yoshiko_kawashima
+recruit_character = MAN_zhao_shangzhi
+recruit_character = MAN_changlin_linge
+
+
+set_convoys = 5
+
+
+set_politics = {
+	ruling_party = fascism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+set_popularities = {
+	fascism = 80
+	neutrality = 20
+}

@@ -1,0 +1,273 @@
+equipments = {
+
+	support_equipment = {
+		year = 1918
+
+		is_archetype = yes
+		picture = archetype_support_equipment
+		is_buildable = no
+		type = {
+			infantry
+			motorized
+		}
+		group_by = archetype
+		
+		interface_category = interface_category_land
+		
+		reliability = 0.95
+
+		#Space taken in convoy
+		lend_lease_cost = 0.25
+
+		build_cost_ic = 3
+		resources = {
+			aluminium = 10
+			steel = 20
+		}
+	}
+
+	support_equipment_1 = {
+		year = 1918
+
+		archetype = support_equipment
+		priority = 5
+		
+		reliability = 0.95
+		build_cost_ic = 3
+	}
+	support_equipment_2 = {
+		year = 1939
+
+		archetype = support_equipment
+		parent = support_equipment_1
+		priority = 10
+		
+		max_organisation = 1
+		
+		reliability = 0.9
+		build_cost_ic = 4.5
+	}
+	support_equipment_3 = {
+		year = 1941
+
+		archetype = support_equipment
+		parent = support_equipment_2
+		priority = 15
+		
+		max_organisation = 2
+		
+		reliability = 0.85
+		build_cost_ic = 6
+	}
+	support_equipment_4 = {
+		year = 1943
+
+		archetype = support_equipment
+		parent = support_equipment_3
+		priority = 20
+		
+		max_organisation = 3
+		
+		reliability = 0.8
+		build_cost_ic = 7.5
+	}
+	support_equipment_5 = {
+		year = 1945
+
+		archetype = support_equipment
+		parent = support_equipment_4
+		priority = 25
+		
+		max_organisation = 4
+		
+		reliability = 0.75
+		build_cost_ic = 9
+	}
+	
+	para_equipment = {
+		is_archetype = yes
+		is_buildable = no
+		type = infantry
+		group_by = archetype
+		
+		interface_category = interface_category_land
+		
+		active = yes
+		
+		reliability = 0.85
+		max_strength = 0.2
+		max_organisation = 0.2
+		breakthrough = 0.1
+		defense = 0.1
+
+		lend_lease_cost = 1
+		
+		build_cost_ic = 3.5
+		resources = {
+			aluminium = 16
+			chromium = 6
+			rubber = 4
+		}
+	}
+
+	para_equipment_0 = {
+		archetype = para_equipment
+		active = no
+		priority = 5
+		visual_level = 0
+	}
+	para_equipment_1 = {
+		archetype = para_equipment
+		parent = para_equipment_0
+		priority = 5
+		
+		max_strength = 0.2
+		max_organisation = 0.3
+		breakthrough = 0.1
+		defense = 0.1
+		soft_attack = 0.05
+		hard_attack = 0.05
+		
+		build_cost_ic = 4.05
+	}
+	para_equipment_2 = {
+		archetype = para_equipment
+		parent = para_equipment_1
+		priority = 5
+		
+		max_strength = 0.2
+		max_organisation = 0.4
+		breakthrough = 0.1
+		defense = 0.1
+		soft_attack = 0.1
+		hard_attack = 0.1
+		
+		build_cost_ic = 4.65
+	}
+	
+	amph_equipment = {
+		is_archetype = yes
+		is_buildable = no
+		type = infantry
+		group_by = archetype
+		
+		interface_category = interface_category_land
+		
+		active = yes
+		
+		reliability = 0.85
+		max_strength = 0.2
+		max_organisation = 0.2
+		breakthrough = 0.1
+		defense = 0.1
+		
+		lend_lease_cost = 1
+		
+		build_cost_ic = 4.5
+		resources = {
+			steel = 16
+			chromium = 12
+			rubber = 4
+		}
+	}
+
+	amph_equipment_0 = {
+		archetype = amph_equipment
+		active = no
+		priority = 5
+		visual_level = 0
+	}
+	amph_equipment_1 = {
+		archetype = amph_equipment
+		parent = amph_equipment_0
+		priority = 5
+		
+		max_strength = 0.2
+		max_organisation = 0.3
+		breakthrough = 0.1
+		defense = 0.1
+		soft_attack = 0.05
+		hard_attack = 0.05
+		
+		build_cost_ic = 5.18
+	}
+	amph_equipment_2 = {
+		archetype = amph_equipment
+		parent = amph_equipment_1
+		priority = 5
+		
+		max_strength = 0.2
+		max_organisation = 0.4
+		breakthrough = 0.1
+		defense = 0.1
+		soft_attack = 0.1
+		hard_attack = 0.1
+		
+		build_cost_ic = 5.95
+	}
+	
+	mount_equipment = {
+		is_archetype = yes
+		is_buildable = no
+		type = infantry
+		group_by = archetype
+		
+		interface_category = interface_category_land
+		
+		active = yes
+		
+		reliability = 0.85
+		max_strength = 0.2
+		max_organisation = 0.2
+		breakthrough = 0.1
+		defense = 0.1
+
+		lend_lease_cost = 1
+		
+		build_cost_ic = 3
+		
+		resources = {
+			steel = 24
+			tungsten = 6
+		}
+	}
+	
+	mount_equipment_0 = {
+		archetype = mount_equipment
+		active = no
+		priority = 5
+		visual_level = 0
+	}
+	mount_equipment_1 = {
+		archetype = mount_equipment
+		parent = mount_equipment_0
+		priority = 5
+		
+		max_strength = 0.2
+		max_organisation = 0.3
+		breakthrough = 0.1
+		defense = 0.1
+		soft_attack = 0.05
+		hard_attack = 0.05
+		
+		acclimatization_cold_climate_gain_factor = 0.5
+		
+		build_cost_ic = 3.45
+	}
+	mount_equipment_2 = {
+		archetype = mount_equipment
+		parent = mount_equipment_1
+		priority = 5
+		
+		max_strength = 0.2
+		max_organisation = 0.4
+		breakthrough = 0.1
+		defense = 0.1
+		soft_attack = 0.1
+		hard_attack = 0.1
+		
+		acclimatization_cold_climate_gain_factor = 1.0
+		
+		build_cost_ic = 3.98
+	}
+}

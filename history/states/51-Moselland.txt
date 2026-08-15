@@ -1,0 +1,38 @@
+
+state={
+	id=51
+	name="STATE_51"
+	resources={
+		coal = 294
+	}
+
+	history={
+		owner = GER
+		victory_points = {
+			13865 5 
+		}
+		victory_points = {
+			6706 5 
+		}
+		victory_points = {
+			9535 3
+		}
+		buildings = {
+			infrastructure = 10
+			arms_factory = 3
+			industrial_complex = 14
+			steel_refinery = 3
+			air_base = 12
+
+		}
+		add_core_of = GER
+		set_demilitarized_zone = yes
+	}
+
+	provinces={
+		6706 7979 9535 11359 11431 11689 13865 
+	}
+	manpower=3144743
+	buildings_max_level_factor=1.000
+	state_category=megalopolis
+}

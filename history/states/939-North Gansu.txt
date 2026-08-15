@@ -1,0 +1,34 @@
+state={
+	id=939
+	name="STATE_939"
+	manpower=1300000
+	buildings_max_level_factor=1.000
+	state_category = rural
+
+	history={
+		owner = CHI
+
+		add_core_of = CHI
+		#
+		buildings = {
+			infrastructure = 0
+		}
+		victory_points = {
+			8102 1 
+		}
+		victory_points = {
+			5057 1 
+		}
+		1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+	}
+	provinces={
+		1778 2028 5057 5076 5100 7971 8102 12327 12596 12776 12820 
+	}
+}

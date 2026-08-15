@@ -1,0 +1,67 @@
+SPR_historical_plan = {
+	name = "Spanish historical plan"
+	desc = "Historical behavior for Nationalist Spain"
+
+	enable = {
+		OR = {
+			tag = SPR
+			tag = SPA
+		}
+	}
+
+	ai_national_focuses = {
+		SPA_unify_the_nationalist_front
+		SPA_consolidate_the_north
+		SPA_foment_a_carlist_split
+		SPA_integrate_the_requetes
+		SPA_extol_the_martyrs_of_the_war
+		SPA_caudillo_of_spain
+		SPA_martyrdom_for_primo_de_rivera
+		SPA_banish_the_party_leaders
+		SPA_fuse_the_parties
+		SPA_adopt_the_26_points
+		SPA_national_recovery
+		SPA_fascist_economic_aid
+		SPA_facilitate_pyrenees_freight_transports
+		SPA_support_the_war_industry
+		SPA_the_duty_to_work
+		SPA_autarky
+		SPA_spanish_austerity
+		SPA_expand_the_axis_gold_trade
+		SPA_ensure_agricultural_self_sufficiency
+		SPA_improve_cross_country_railways
+		SPA_expand_the_war_industry
+		SPA_the_national_and_popular_army_of_spain
+		SPA_direct_the_universities
+		SPA_strengthen_the_supreme_reality_of_spain
+		SPA_dictator_for_life
+		SPA_italian_shipbuilding_expertise
+		SPA_reduce_reliance_on_foreign_resources
+		SPA_the_army_of_africa_model
+		SPA_equipment_modernization
+		SPA_artillery_modernization
+		SPA_expand_the_air_branch
+		SPA_expand_the_special_forces
+		SPA_motorization
+		SPA_an_armored_corps
+		SPA_la_division_azul
+	}
+
+	research = {
+		industry = 20.0
+		infantry_tech = 15.0
+		artillery = 8.0
+		support_tech = 6.5
+	}
+
+#	ideas = {
+#		
+#	}
+
+	traits = {
+		captain_of_industry = 5
+		war_industrialist = 4
+		smooth_talking_charmer = 3
+	}
+
+}

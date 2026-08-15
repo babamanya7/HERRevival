@@ -1,0 +1,64 @@
+
+state={
+	id=15
+	name="STATE_15"
+	manpower = 2332100
+	resources={
+	}
+	
+	state_category = city
+
+	history={
+		owner = FRA
+		victory_points = {
+			12071 1
+		}
+		victory_points = {
+			309 3
+		}
+		victory_points = {
+			13233 10
+		}
+		victory_points = {
+			13376 5
+		}
+		victory_points = {
+			13349 5
+		}
+		victory_points = {
+			13388 5
+		}
+		victory_points = {
+			7632 3
+		}
+		victory_points = {
+			13494 5
+		}
+		victory_points = {
+			9294 1
+		}
+		buildings = {
+			infrastructure = 6
+			industrial_complex = 6
+			arms_factory = 2
+			steel_refinery = 1
+			air_base = 12
+			13376 = {
+				naval_base = 5
+				coastal_bunker = 1
+			}
+			13233 = {
+				naval_base = 5
+				coastal_bunker = 1
+			}
+			7632 = {
+				naval_base = 1
+			}
+		}
+		add_core_of = FRA
+	}
+
+	provinces={
+		630 1028 1046 1062 1095 1173 3231 3514 3579 3617 3730 3764 3776 6790 6814 7116 7632 8069 9294 9602 9665 9882 9929 10038 10884 10900 11611 11652 11659 12020 12071 13233 13349 13376 13388 13494 
+	}
+}

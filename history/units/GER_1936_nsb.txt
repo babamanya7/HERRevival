@@ -1,0 +1,673 @@
+﻿division_template = {
+	name = "Infanterie-Division"
+
+	division_names_group = GER_Inf_01
+
+	regiments = {
+		heavy_infantry = { x = 0 y = 0 }
+		heavy_infantry = { x = 0 y = 1 }
+		heavy_infantry = { x = 0 y = 2 }
+        heavy_infantry = { x = 1 y = 0 }
+		heavy_infantry = { x = 1 y = 1 }
+		heavy_infantry = { x = 1 y = 2 }
+        heavy_infantry = { x = 2 y = 0 }
+		heavy_infantry = { x = 2 y = 1 }
+		heavy_infantry = { x = 2 y = 2 }
+		artillery_brigade = { x = 3 y = 0 }
+		artillery_brigade = { x = 3 y = 1 }
+		artillery_brigade = { x = 3 y = 2 }
+		heavy_artillery_brigade = { x = 3 y = 3 }
+	}
+	
+	support = {
+        engineer = { x = 0 y = 0 }
+        field_hospital = { x = 0 y = 1 }
+		signal_company = { x = 0 y = 2 }
+		recon = { x = 1 y = 0 }
+		logistics_company = { x = 1 y = 1 }
+	}
+}
+division_template = {
+	name = "Panzer-Division"
+
+	division_names_group = GER_Arm_01
+
+	regiments = {
+		light_armor = { x = 0 y = 0 }
+		light_armor = { x = 0 y = 1 }
+        light_armor = { x = 1 y = 0 }
+		light_armor = { x = 1 y = 1 }
+		motorized = { x = 2 y = 0 }
+        motorized = { x = 2 y = 1 }
+		mot_artillery_brigade = { x = 3 y = 0 }
+        mot_artillery_brigade = { x = 3 y = 1 }
+	}
+	support = {
+        mot_recon = { x = 0 y = 0 }
+        engineer = { x = 0 y = 1 }
+        logistics_company = { x = 0 y = 2 }
+		mot_field_hospital = { x = 1 y = 0 }
+        mot_signal_company = { x = 1 y = 1 }
+	}
+}
+division_template = {
+	name = "SS-Verfügungsdivision"
+	is_locked = yes
+	division_names_group = GER_SS_01
+
+	regiments = {
+		ss_motorized = { x = 0 y = 0 }
+		ss_motorized = { x = 0 y = 1 }
+		ss_motorized = { x = 0 y = 2 }
+		
+		ss_motorized = { x = 1 y = 0 }
+		ss_motorized = { x = 1 y = 1 }
+		ss_motorized = { x = 1 y = 2 }
+		
+		ss_motorized = { x = 2 y = 0 }
+		ss_motorized = { x = 2 y = 1 }
+		ss_motorized = { x = 2 y = 2 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }
+		mot_signal_company = { x = 0 y = 1 }
+		mot_recon = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "SS-Infanterie-Regiment(mot) «LSSAH»"
+	is_locked = yes
+	division_names_group = GER_SS_01
+	
+	regiments = {
+		ss_motorized = { x = 0 y = 0 }
+		ss_motorized = { x = 0 y = 1 }
+		
+		ss_motorized = { x = 1 y = 0 }
+		ss_motorized = { x = 1 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }
+		mot_signal_company = { x = 0 y = 1 }
+		mot_field_hospital = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Infanterie-Division (mot.)" 			# Used to be SS division -> New system for SS. Also messed up the civil war by refusing to move to the fascists, and immersion-breaking to have them around as royalists
+
+	division_names_group = GER_MOT_02
+
+	regiments = {
+		motorized = { x = 0 y = 0 }
+	    motorized = { x = 0 y = 1 }
+		motorized = { x = 0 y = 2 }
+		
+		motorized = { x = 1 y = 0 }
+		motorized = { x = 1 y = 1 }
+		motorized = { x = 1 y = 2 }
+		
+		motorized = { x = 2 y = 0 }
+	    motorized = { x = 2 y = 1 }
+		motorized = { x = 2 y = 2 }
+		
+		mot_artillery_brigade = { x = 3 y = 0 }
+		mot_artillery_brigade = { x = 3 y = 1 }
+		mot_artillery_brigade = { x = 3 y = 2 }
+		motorized_heavy_artillery_brigade = { x = 3 y = 3 }
+		
+		mot_anti_tank_brigade = { x = 4 y = 0 }
+	}
+	support = {
+        engineer = { x = 0 y = 0 }
+        mot_field_hospital = { x = 0 y = 1 }
+		mot_signal_company = { x = 0 y = 2 }
+		mot_recon = { x = 1 y = 0 }
+		logistics_company = { x = 1 y = 1 }
+	}
+}
+division_template = {
+	name = "Gebirgs-Brigade"		# Gebirgsbrigade
+	#Note: precursor to Gebirgs-Divisions
+	division_names_group = GER_Mnt_01
+
+	regiments = {
+		mountaineers = { x = 0 y = 0 }
+	    mountaineers = { x = 0 y = 1 }
+		mountaineers = { x = 0 y = 2 }
+		
+		mountaineers = { x = 1 y = 0 }
+		mountaineers = { x = 1 y = 1 }
+		mountaineers = { x = 1 y = 2 }
+		
+		artillery_brigade = { x = 2 y = 0 }
+	}
+	support = {
+        recon = { x = 0 y = 0 }
+	 	engineer = { x = 0 y = 1 }
+        signal_company = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "Kavallerie-Brigade"
+
+	division_names_group = GER_Cav_01
+
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+        cavalry = { x = 0 y = 1 }
+        cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+	}
+	support = {
+	    recon = { x = 0 y = 0 }
+	}
+}
+
+units = {
+
+	##### Oberkommando des Heeres #####
+	### 1. Armee (Wehrmacht-Gruppenkommando) ###
+	# II. Armeekorps
+	division= {	
+		division_name = {
+		}
+		location = 13541
+		division_template = "SS-Infanterie-Regiment(mot) «LSSAH»"
+		start_experience_factor = 0.25
+	}
+	division= {	
+		division_name = {
+		}
+		location = 13541
+		division_template = "SS-Verfügungsdivision"
+		start_experience_factor = 0.25
+	}
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 2
+		}
+		location = 3355
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 12
+		}
+		location = 6282
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+	# III. Armeekorps
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 3
+		}
+		location = 13880
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 23
+		}
+		location = 13346
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+	# Panzertruppenkommando
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 1
+		}
+		#officer = {
+		#	name = "Maximilian von Weichs"
+		#	portraits = {
+		#		army = {
+		#			large="GFX_idea_maximilian_von_weichs"
+		#			small="GFX_idea_maximilian_von_weichs_small"
+		#		}
+		#	}
+		#}
+		location = 13508
+		division_template = "Panzer-Division"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		#officer = {
+		#	name = "Heinz Guderian"
+		#	portraits = {
+		#		army = {
+		#			large="GFX_idea_heinz_guderian_large"
+		#			small="GFX_idea_heinz_guderian"
+		#		}
+		#	}
+		#}
+		location = 13508
+		division_template = "Panzer-Division"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 3
+		}
+		#officer = {
+		#	name = "Walter Model"
+		#	portraits = {
+		#		army = {
+		#			large=GFX_portrait_GER_walter_model
+		#			small=GFX_portrait_GER_walter_model_small
+		#		}
+		#	}
+		#}
+		location = 13508
+		division_template = "Panzer-Division"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 1
+		}
+		location = 13294
+		division_template = "Infanterie-Division (mot.)"
+		start_experience_factor = 0.3
+	}
+
+	### 3. Armee (Wehrmacht-Gruppenkommando) ###
+	# IV. Armeekorps
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 4
+		}
+		location = 9570
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 14
+		}
+		location = 9570
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 24
+		}
+		location = 11467
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+	# VIII. Armeekorps
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 8
+		}
+		location = 10823
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 18
+		}
+		location = 13248
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+
+	# I. Armeekorps
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 1
+		}
+		location = 13519
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 11
+		}
+		location = 6332
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 21
+		}
+		location = 6332
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+	division= {	
+		name = "Kavallerie-Kommando Insterburg" 
+		location = 6375
+		division_template = "Kavallerie-Brigade"
+		start_experience_factor = 0.3
+	}
+
+
+	### 2. Armee (Wehrmacht-Gruppenkommando) ###
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 13
+		}
+		location = 13245
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+	# VI. Armeekorps
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 6
+		}
+		location = 13260
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 16
+		}
+		location = 3936
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+	# IX. Armeekorps
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 9
+		}
+		location = 13874
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 15
+		}
+		location = 13527
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+	# X. Armeekorps
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 19
+		}
+		location = 3689
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 20
+		}
+		location = 13351
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 22
+		}
+		location = 13351
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+
+	# V. Armeekorps
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 5
+		}
+		location = 13863
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+
+	# VII. Armeekorps
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 7
+		}
+		location = 13475
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 10
+		}
+		location = 13502
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}
+	division= {	
+		division_name = {
+				is_name_ordered = yes
+				name_order = 17
+		}
+		location = 13877
+		division_template = "Infanterie-Division"
+		start_experience_factor = 0.3
+	}			
+	division= {	
+		name = "Gebirgs-Brigade" 
+		location = 11887
+		division_template = "Gebirgs-Brigade" 
+		start_experience_factor = 0.3
+	}
+}
+
+### Air oob in its own file
+
+
+#########################
+## STARTING PRODUCTION ##
+#########################
+
+instant_effect = {
+
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_1
+			creator = "GER"
+		}
+		requested_factories = 10
+		progress = 0.1
+		efficiency = 50
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = mortar_1
+			creator = "GER"
+		}
+		requested_factories = 5
+		progress = 0.1
+		efficiency = 50
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = machinegun_1
+			creator = "GER"
+		}
+		requested_factories = 5
+		progress = 0.1
+		efficiency = 50
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = antitank_2
+			creator = "GER"
+		}
+		requested_factories = 5
+		progress = 0.1
+		efficiency = 50
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = ammunition_equipment_0
+			creator = "GER"
+		}
+		requested_factories = 5
+		progress = 0.1
+		efficiency = 50
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = heavy_artillery_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 5
+		progress = 0.3
+		efficiency = 50
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = artillery_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 5
+		progress = 0.3
+		efficiency = 50
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = anti_tank_equipment_1
+			creator = "GER"
+		}
+		requested_factories = 3
+		progress = 0.1
+		efficiency = 50
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = anti_air_equipment_1
+			creator = "GER"
+		}
+		requested_factories = 3
+		progress = 0.1
+		efficiency = 50
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = support_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 5
+		progress = 0.3
+		efficiency = 50
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = mount_equipment_0
+			creator = "GER" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = gw_armored_car_equipment
+			creator = "GER" 
+		}
+		requested_factories = 2
+		progress = 0.3
+		efficiency = 50
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = motorbike_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 2
+		progress = 0.4
+		efficiency = 50
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = motorized_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 10
+		progress = 0.4
+		efficiency = 50
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = train_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 5
+		progress = 0.3
+		efficiency = 50
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = light_tank_chassis_2
+			creator = "GER" 
+			version_name = "Panzer II"
+		}
+		requested_factories = 5
+		progress = 0.4
+		efficiency = 50
+	}
+}
+
+#####################

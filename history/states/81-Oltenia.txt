@@ -1,0 +1,28 @@
+state={
+	id=81
+	name="STATE_81"
+	manpower=1519300
+	
+	resources={
+		coal = 34
+	}
+	
+	state_category = town
+	
+	history={
+		victory_points = {
+			14879 3
+		}
+		owner = ROM
+		buildings = {
+			infrastructure = 5
+			industrial_complex = 3
+			arms_factory = 1
+			steel_refinery = 1
+		}
+		add_core_of = ROM
+	}
+	provinces={
+		928 1118 3665 3771 14759 14767 14783 14792 14819 14831 14840 14873 14879 14897 14911 14932 
+	}
+}

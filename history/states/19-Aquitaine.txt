@@ -1,0 +1,38 @@
+
+state={
+	id=19
+	name="STATE_19"
+	manpower = 1340400
+	resources={
+		
+	}
+	
+	state_category = city
+
+	history={
+		owner = FRA
+		victory_points = {
+			14889 20
+		}
+		victory_points = {
+			9320 3
+		}
+		buildings = {
+			infrastructure = 6
+			arms_factory = 1
+			industrial_complex = 5
+			dockyard = 1
+			air_base = 6
+			fuel_silo = 1
+			405 = {
+				naval_base = 4
+				coastal_bunker = 1
+			}
+		}
+		add_core_of = FRA
+	}
+
+	provinces={
+		14889 6747 9320 14914 405 727 14913 14841 14821 14795 14769 14705 14729 14678 14649
+	}
+}

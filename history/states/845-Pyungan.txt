@@ -1,0 +1,34 @@
+state={
+
+	id=845
+	name="STATE_845"
+	manpower = 2070970
+	state_category = rural
+	resources={
+		coal = 55
+	}
+	history={
+		owner = JAP
+		buildings = {
+			infrastructure = 4
+			industrial_complex = 2
+		}
+		
+		victory_points = {
+			4052 1
+		}	
+1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+		add_core_of = KOR
+	}
+
+	provinces={
+		3981 852 906 6963 11775 978 6928 11770 3912 11896 11828 9795
+	}
+}

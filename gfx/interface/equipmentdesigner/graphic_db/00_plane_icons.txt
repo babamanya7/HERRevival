@@ -1,0 +1,2145 @@
+default = {
+
+	######################
+	### SMALL AIRFRAME ###
+	######################
+
+	small_plane_airframe = {
+		pool = {
+			models = {
+				light_plane_entity #Improved Small Fighter Vultee P-66 Vanguard (USA)
+			}
+		}
+	}
+	small_plane_airframe_2 = {
+		pool = {
+			models = {
+				light_plane_entity #Improved Small Fighter Vultee P-66 Vanguard (USA)
+			}
+		}
+	}
+
+	### CARRIER AIRFRAME ###
+
+	cv_small_plane_airframe = {
+		pool = {
+			models = {
+				light_plane_entity #Improved Small Fighter Vultee P-66 Vanguard (USA)
+			}
+		}
+	}
+
+	cv_small_plane_airframe_2 = {
+		pool = {
+			models = {
+				light_plane_entity #Improved Small Fighter Vultee P-66 Vanguard (USA)
+			}
+		}
+	}
+
+
+	### SPECIAL PROJECTS ###
+
+	small_plane_airframe_5 = { #Supersonic Jet
+		pool = {
+			models = {
+				supersonic_jet_plane_entity
+			}
+		}
+	}
+
+	supersonic_fighter_equipment_1 = { #Supersonic Jet (Non-BBA version) #MM: This equipment was implemented as the same air unit as the old Jet Plane so those old models will be the ones hooked-in
+		pool = {
+			models = {
+				supersonic_jet_plane_entity
+			}
+		}
+	}
+
+
+	#######################
+	### MEDIUM AIRFRAME ###
+	#######################
+
+	medium_plane_airframe = {
+		pool = {
+			models = {
+				medium_plane_entity #Modern Medium Tac Bomber I.Ae. 24 Calquin (ARG)
+			}
+		}
+	}
+
+
+	medium_plane_airframe_4 = {
+		pool = {
+			models = {
+				medium_plane_entity #Modern Medium Tac Bomber I.Ae. 24 Calquin (ARG)
+			}
+		}
+	}
+
+
+	######################
+	### LARGE AIRFRAME ###
+	######################
+
+	large_plane_airframe = {
+		pool = {
+			models = {
+				heavy_plane_entity #No idea where this came from tbh
+			}
+		}
+	}
+
+}
+
+GER = {
+	small_plane_cas_airframe = {
+		pool = {
+			models = {
+				#MODELS ARE HANDELED IN 01_axis_plane_icons OR IN 01_bba_plane_icons DUE TO BEING DLC LOCKED
+
+				GER_light_plane_entity
+			}
+		}
+	}
+
+	cv_small_plane_cas_airframe = {
+		pool = {
+			models = {
+				#MODELS ARE HANDELED IN 01_axis_plane_icons OR IN 01_bba_plane_icons DUE TO BEING DLC LOCKED
+
+				GER_light_plane_entity
+			}
+		}
+	}
+
+	small_plane_naval_bomber_airframe = {
+		pool = {
+			models = {
+				GER_light_plane_entity
+			}
+		}
+	}
+	
+	cv_small_plane_naval_bomber_airframe = {
+		pool = {
+			models = {
+				GER_light_plane_entity
+			}
+		}
+	}
+
+	small_plane_airframe = {
+		pool = {
+			models = {
+				#MODELS ARE HANDELED IN 01_axis_plane_icons OR IN 01_bba_plane_icons DUE TO BEING DLC LOCKED
+
+				#Jet & Rocket planes show after regular planes (unless it is Modern frame)				
+				GER_light_jet_fighter_entity #Horten Ho 229
+				GER_jet_plane_entity #Modern Small (Jet) Fighter Messerschmitt Me 262
+
+				GER_light_plane_entity				
+			}
+		}
+	}
+
+	small_plane_airframe_4 = {
+		pool = {
+			models = {
+				GER_light_jet_fighter_entity #Horten Ho 229
+				GER_jet_plane_entity #Modern Small (Jet) Fighter Messerschmitt Me 262
+			}
+		}
+	}
+
+	cv_small_plane_airframe = {
+		pool = {
+			models = {
+				GER_jet_plane_entity
+				GER_light_plane_entity	
+			}
+		}
+	}
+
+	medium_plane_airframe = {
+		pool = {
+			models = {
+				GER_medium_plane_entity
+			}
+		}
+	}
+	
+	medium_plane_airframe_2 = {
+		pool = {
+			models = {
+				GER_medium_plane_entity
+			}
+		}
+	}
+		
+	large_plane_airframe = {
+		pool = {
+			models = {
+				GER_heavy_plane_entity
+			}
+		}
+	}
+	
+	large_plane_airframe_2 = {
+		pool = {
+			models = {
+				GER_heavy_plane_entity
+			}
+		}
+	}
+	
+	
+}
+
+SOV = {
+	small_plane_airframe = {
+		pool = {
+			models = {
+				SOV_light_plane_entity
+			}
+		}
+	}
+	
+	cv_small_plane_airframe = {
+		pool = {
+			models = {
+				SOV_light_plane_entity
+			}
+		}
+	}
+	small_plane_naval_bomber_airframe = {
+		pool = {
+			models = {
+				SOV_light_plane_entity
+			}
+		}
+	}
+	medium_plane_airframe = {
+		pool = {
+			models = {
+				SOV_medium_plane_entity
+			}
+		}
+	}
+
+	medium_plane_airframe_3 = {
+		pool = {
+			models = {
+				SOV_medium_plane_entity # // Basic Backup Model 
+			}
+		}
+	}
+
+	large_plane_airframe = {
+		pool = {
+			models = {
+				SOV_heavy_plane_entity
+			}
+		}
+	}
+}
+
+USA = {
+	small_plane_airframe = {
+		pool = {
+			models = {
+				USA_light_plane_entity
+			}
+		}
+	}
+
+	cv_small_plane_airframe = {
+		pool = {
+			models = {
+				USA_light_plane_entity
+			}
+		}
+	}
+
+	medium_plane_airframe = {
+		pool = {
+			models = {
+				USA_medium_plane_entity
+			}
+		}
+	}
+	
+	large_plane_airframe = {
+		pool = {
+			models = {
+				USA_heavy_plane_entity
+				heavy_plane_entity
+			}
+		}
+	}
+
+	jet_strat_bomber_equipment = {
+		pool = {
+			models = { # Fallback Models
+				heavy_plane_entity
+				USA_heavy_plane_entity	
+			}
+		}
+	}
+	
+	jet_tac_bomber_equipment = {
+		pool = {
+			models = { # Fallback Models
+				medium_plane_entity
+				USA_medium_plane_entity
+			}
+		}
+	}
+	
+}
+
+ENG = {
+	small_plane_airframe = {
+		pool = {
+			models = {
+				ENG_jet_plane_entity
+				ENG_light_plane_entity
+			}
+		}
+	}
+
+	small_plane_airframe_2 = {
+		pool = {
+			models = {
+				ENG_light_plane_entity
+			}
+		}
+	}
+	
+	small_plane_airframe_3 = {
+		pool = {
+			models = {
+				ENG_light_plane_entity
+			}
+		}
+	}
+
+	small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			models = {
+				RAJ_fighter_equipment_0_entity
+				AST_fighter_equipment_1_entity
+				AST_CAS_equipment_entity
+			}
+		}
+	}
+	cv_small_plane_airframe = {
+		pool = {
+			models = {
+				ENG_jet_plane_entity
+				ENG_light_plane_entity
+			}
+		}
+	}
+	cv_small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			models = {
+				RAJ_fighter_equipment_0_entity
+				AST_fighter_equipment_1_entity
+				AST_CAS_equipment_entity
+			}
+		}
+	}
+		
+	medium_plane_airframe = {
+		pool = {
+			models = {
+				ENG_medium_plane_entity
+			}
+		}
+	}
+	
+	medium_plane_fighter_airframe_1 = {
+		pool = {
+			models = {
+				medium_plane_entity
+			}
+		}
+	}
+	
+	medium_plane_fighter_airframe_2 = {
+		pool = {
+			models = {
+				medium_plane_entity
+			}
+		}
+	}
+	
+	medium_plane_fighter_airframe_3 = {
+		pool = {
+			models = {
+				medium_plane_entity
+			}
+		}
+	}
+	
+	
+	large_plane_airframe = {
+		pool = {
+			models = {
+				ENG_heavy_plane_entity
+			}
+		}
+	}
+	
+	large_plane_airframe_2 = {
+		pool = {
+			models = {
+				ENG_heavy_plane_entity
+			}
+		}
+	}
+
+}
+
+FRA = {
+	small_plane_airframe = {
+		pool = {
+			models = {
+				FRA_light_plane_entity
+			}
+		}
+	}
+	
+	cv_small_plane_airframe = {
+		pool = {
+			models = {
+				FRA_light_plane_entity
+			}
+		}
+	}
+	
+	medium_plane_airframe = {
+		pool = {
+			models = {
+				FRA_medium_plane_entity
+			}
+		}
+	}
+	
+	large_plane_airframe = {
+		pool = {
+			models = {
+				FRA_heavy_plane_entity
+			}
+		}
+	}
+}
+
+JAP = {
+	small_plane_airframe = {
+		pool = {
+			models = {
+				JAP_light_plane_entity
+				#MORE MODELS ARE HANDLED ELSEWHERE DUE TO BEING DLC LOCKED
+			}
+		}
+	}
+
+	cv_small_plane_airframe = {
+		pool = {
+			models = {
+				JAP_light_plane_entity
+				#MORE MODELS ARE HANDLED ELSEWHERE DUE TO BEING DLC LOCKED
+			}
+		}
+	}
+
+medium_plane_airframe = {
+		pool = {
+			models = {
+				JAP_medium_plane_entity
+				#MORE MODELS ARE HANDLED ELSEWHERE DUE TO BEING DLC LOCKED
+			}
+		}
+	}
+
+large_plane_airframe = {
+		pool = {
+			models = {
+				JAP_heavy_plane_entity
+				#MORE MODELS ARE HANDLED ELSEWHERE DUE TO BEING DLC LOCKED
+			}
+		}
+	}
+
+ITA = {
+	small_plane_airframe = {
+		pool = {
+			models = {
+				#MORE MODELS ARE HANDLED IN 01_bba_plane_icons
+				ITA_light_plane_entity
+			}
+		}
+	}
+
+	#CARRIER AIRPLANES
+	cv_small_plane_airframe = {
+		pool = {
+			models = {
+				#MORE MODELS ARE HANDLED IN 01_bba_plane_icons
+				ITA_light_plane_entity
+			}
+		}
+	}
+	
+	#Naval Bombers
+	medium_plane_airframe = {
+		pool = {
+			models = {
+				#MORE MODELS ARE HANDLED IN 01_bba_plane_icons
+				ITA_medium_plane_entity
+			}
+		}
+	}
+
+	large_plane_airframe = {
+		pool = {
+			models = {
+				#MORE MODELS ARE HANDLED IN 01_bba_plane_icons
+				ITA_heavy_plane_entity
+			}
+		}
+	}
+
+###TFV minors
+
+AST = {
+	small_plane_airframe = {
+		pool = {
+			models = {
+				ENG_light_plane_entity
+			}
+		}
+	}
+	small_plane_airframe = {
+		pool = {
+			weight = 0.5
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			models = {
+				AST_fighter_equipment_1_entity
+				AST_CAS_equipment_entity
+			}
+		}
+	}
+	cv_small_plane_airframe = {
+		pool = {
+			models = {
+				ENG_light_plane_entity
+			}
+		}
+	}
+	cv_small_plane_airframe = {
+		pool = {
+			weight = 0.5
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			models = {
+				AST_fighter_equipment_1_entity
+				AST_CAS_equipment_entity
+			}
+		}
+	}
+	medium_plane_airframe = {
+		pool = {			
+			models = {
+				ENG_medium_plane_entity
+			}
+		}
+	}
+	
+	large_plane_airframe = {
+		pool = {
+			models = {
+				ENG_heavy_plane_entity
+			}
+		}
+	}
+}
+
+RAJ = {
+	small_plane_airframe = {
+		pool = {
+			models = {
+				ENG_light_plane_entity
+			}
+		}
+	}
+	
+	small_plane_airframe = {
+		pool = {
+			weight = 0.5
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			models = {
+				RAJ_fighter_equipment_0_entity
+			}
+		}
+	}
+	
+	cv_small_plane_airframe = {
+		pool = {
+			models = {
+				ENG_light_plane_entity
+			}
+		}
+	}
+	
+	cv_small_plane_airframe = {
+		pool = {
+			weight = 0.5
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			models = {
+				RAJ_fighter_equipment_0_entity
+			}
+		}
+	}
+	
+	medium_plane_airframe = {
+		pool = {
+			models = {
+				ENG_medium_plane_entity
+			}
+		}
+	}
+	
+	large_plane_airframe = {
+		pool = {
+			models = {
+				ENG_heavy_plane_entity
+			}
+		}
+	}
+}
+
+CAN = {
+	small_plane_airframe = {
+		pool = {
+			models = {
+				ENG_light_plane_entity
+			}
+		}
+	}
+	cv_small_plane_airframe = {
+		pool = {
+			models = {
+				ENG_light_plane_entity
+			}
+		}
+	}
+	medium_plane_airframe = {
+		pool = {
+			models = {
+				ENG_medium_plane_entity
+			}
+		}
+	}
+	large_plane_airframe = {
+		pool = {
+			models = {
+				ENG_heavy_plane_entity
+			}
+		}
+	}
+}
+
+SAF = {
+	small_plane_airframe = {
+		pool = {
+			models = {
+				ENG_light_plane_entity
+			}
+		}
+	}
+	cv_small_plane_airframe = {
+		pool = {
+			models = {
+				ENG_light_plane_entity
+			}
+		}
+	}
+	medium_plane_airframe = {
+		pool = {
+			models = {
+				ENG_medium_plane_entity
+			}
+		}
+	}
+	large_plane_airframe = {
+		pool = {
+			models = {
+				ENG_heavy_plane_entity
+			}
+		}
+	}
+}
+
+NZL = {
+	small_plane_airframe = {
+		pool = {
+			models = {
+				ENG_light_plane_entity
+			}
+		}
+	}
+	cv_small_plane_airframe = {
+		pool = {
+			models = {
+				ENG_light_plane_entity
+			}
+		}
+	}
+	medium_plane_airframe = {
+		pool = {
+			models = {
+				ENG_medium_plane_entity
+			}
+		}
+	}
+	large_plane_airframe = {
+		pool = {
+			models = {
+				ENG_heavy_plane_entity
+			}
+		}
+	}
+}
+
+
+### DoD countries
+
+HUN = {
+	small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Death or Dishonor"
+			}
+			models = {
+				HUN_light_plane_entity
+			}
+		}
+	}
+	
+	cv_small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Death or Dishonor"
+			}
+			models = {
+				HUN_light_plane_entity
+			}
+		}
+	}
+	
+	medium_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Death or Dishonor"
+			}
+			models = {
+				HUN_medium_plane_entity
+			}
+		}
+	}
+	
+
+CZE = {
+	small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Death or Dishonor"
+			}
+			models = {
+				CZE_light_plane_entity
+			}
+		}
+	}
+	
+	cv_small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Death or Dishonor"
+			}
+			models = {
+				CZE_light_plane_entity
+			}
+		}
+	}
+	
+	medium_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Death or Dishonor"
+			}
+			models = {
+				CZE_medium_plane_entity
+			}
+		}
+	}
+	
+}
+
+ROM = {
+	small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Death or Dishonor"
+			}
+			models = {
+				ROM_light_plane_entity
+			}
+		}
+	}
+	
+	cv_small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Death or Dishonor"
+			}
+			models = {
+				ROM_light_plane_entity
+			}
+		}
+	}
+	
+	medium_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Death or Dishonor"
+			}
+			models = {
+				ROM_medium_plane_entity
+			}
+		}
+	}
+	
+}
+
+YUG = {
+	small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Death or Dishonor"
+			}
+			models = {
+				YUG_light_plane_entity
+			}
+		}
+	}	
+	
+	cv_small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Death or Dishonor"
+			}
+			models = {
+				YUG_light_plane_entity
+			}
+		}
+	}
+	
+	medium_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Death or Dishonor"
+			}
+			models = {
+				YUG_medium_plane_entity
+			}
+		}
+	}
+}
+
+###Waking the Tiger
+
+CHI = {
+	small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Waking the Tiger"
+			}
+			models = {
+				CHI_light_plane_entity
+			}
+		}
+	}
+	
+	cv_small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Waking the Tiger"
+			}
+			models = {
+				CHI_light_plane_entity
+			}
+		}
+	}
+
+
+PRC = {
+	small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Waking the Tiger"
+			}
+			models = {
+				PRC_light_plane_entity
+			}
+		}
+	}
+	
+	cv_small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Waking the Tiger"
+			}
+			models = {
+				PRC_light_plane_entity
+			}
+		}
+	}
+	}
+
+YUN = {
+	small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Waking the Tiger"
+			}
+			models = {
+				CHI_light_plane_entity
+			}
+		}
+	}
+	cv_small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Waking the Tiger"
+			}
+			models = {
+				CHI_light_plane_entity
+			}
+		}
+	}
+}
+
+XSM = {
+	small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Waking the Tiger"
+			}
+			models = {
+				CHI_light_plane_entity
+			}
+		}
+	}
+	cv_small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Waking the Tiger"
+			}
+			models = {
+				CHI_light_plane_entity
+			}
+		}
+	}
+}
+
+SIK = {
+	small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Waking the Tiger"
+			}
+			models = {
+				CHI_light_plane_entity
+			}
+		}
+	}
+	cv_small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Waking the Tiger"
+			}
+			models = {
+				CHI_light_plane_entity
+			}
+		}
+	}
+	}
+
+GXC = {
+	small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Waking the Tiger"
+			}
+			models = {
+				CHI_light_plane_entity
+			}
+		}
+	}
+	cv_small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Waking the Tiger"
+			}
+			models = {
+				CHI_light_plane_entity
+			}
+		}
+	}
+}
+
+SHX = {
+	small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Waking the Tiger"
+			}
+			models = {
+				CHI_light_plane_entity
+			}
+		}
+	}
+	cv_small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Waking the Tiger"
+			}
+			models = {
+				CHI_light_plane_entity
+			}
+		}
+	}
+}
+
+###Man the Guns Countries
+
+HOL = {
+	small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Man the Guns"
+			}
+			models = {
+				HOL_light_plane_entity
+			}
+		}
+	}
+	cv_small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Man the Guns"
+			}
+			models = {
+				HOL_light_plane_entity
+			}
+		}
+	}
+	medium_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Man the Guns"
+			}
+			models = {
+				HOL_medium_plane_entity
+			}
+		}
+	}
+	large_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Man the Guns"
+			}
+			models = {
+				HOL_heavy_plane_entity
+			}
+		}
+	}
+}
+
+MEX = {
+	small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Man the Guns"
+			}
+			models = {
+				MEX_light_plane_entity
+			}
+		}
+	}
+	cv_small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Man the Guns"
+			}
+			models = {
+				MEX_light_plane_entity
+			}
+		}
+	}
+	medium_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Man the Guns"
+			}
+			models = {
+				MEX_medium_plane_entity
+			}
+		}
+	}
+	large_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Man the Guns"
+			}
+			models = {
+				MEX_heavy_plane_entity
+			}
+		}
+	}
+}
+
+#La Resistance
+
+SPR = {
+	small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "La Resistance"
+			}
+			models = {
+				SPA_light_plane_entity
+				SPR_light_plane_entity
+			}
+		}
+	}
+	cv_small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "La Resistance"
+			}
+			models = {
+				SPA_light_plane_entity
+				SPR_light_plane_entity
+			}
+		}
+	}
+}
+###BFTB
+###NSB
+
+MAN = {
+	small_plane_airframe = {
+		pool = {
+			models = {
+				JAP_light_plane_entity
+			}
+		}
+	}
+	cv_small_plane_airframe = {
+		pool = {
+			models = {
+				JAP_light_plane_entity
+			}
+		}
+	}
+	medium_plane_airframe = {
+		pool = {
+			models = {
+				JAP_medium_plane_entity
+			}
+		}
+	}
+	large_plane_airframe = {
+		pool = {
+			models = {
+				JAP_heavy_plane_entity
+			}
+		}
+	}
+}
+
+DEN = {
+	#FIGHTERS
+	small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				DEN_light_plane_entity #generic DEN_light_plane
+				DEN_light_plane_1_entity #Marinejeger OV-J-1
+				DEN_light_plane_1_var_1_entity #Marinejeger OV-B-1
+			}
+		}
+	}
+small_plane_airframe_1 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				DEN_light_plane_1_entity #Marinejeger OV-J-1
+				DEN_light_plane_1_var_1_entity #Marinejeger OV-B-1
+			}
+		}
+	}
+
+
+	#CAS
+	small_plane_cas_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				DEN_CAS_equipment_1_entity #Marinejeger OV-B-1 CLONE
+			}
+		}
+	}
+	
+	small_plane_cas_airframe_1 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				DEN_CAS_equipment_1_entity #Marinejeger OV-B-1 CLONE
+			}
+		}
+	}
+
+	#NAVAL BOMBER
+	small_plane_naval_bomber_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				DEN_light_plane_1_entity #Marinejeger OV-J-1
+				DEN_light_plane_1_entity #Marinejeger OV-B-1
+				DEN_light_plane_entity #generic DEN_light_plane
+			}
+		}
+	}
+
+	#CV FIGHTER
+	cv_small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				DEN_fighter_equipment_1_entity #Marinejeger OV-J-1 CLONE
+				DEN_light_plane_entity #generic DEN_light_plane
+			}
+		}
+	}
+	cv_small_plane_airframe_0 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				DEN_light_plane_entity #generic DEN_light_plane
+			}
+		}
+	}
+	cv_small_plane_airframe_1 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				DEN_fighter_equipment_1_entity #Marinejeger OV-J-1 CLONE
+			}
+		}
+	}
+
+	#CV CAS
+	cv_small_plane_cas_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				DEN_CAS_equipment_1_entity #Marinejeger OV-B-1 CLONE
+				DEN_light_plane_entity #generic DEN_light_plane
+			}
+		}
+	}
+	cv_small_plane_cas_airframe_1 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				DEN_light_plane_entity #generic DEN_light_plane
+				DEN_CAS_equipment_1_entity #Marinejeger OV-B-1 CLONE
+			}
+		}
+	}
+
+	#CV NAVAL BOMBER
+	#TACTICAL BOMBER
+	medium_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				DEN_medium_plane_entity #generic DEN_medium_plane
+			}
+		}
+	}
+
+	#STRATEGIC BOMBER
+	large_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				DEN_heavy_plane_entity #generic DEN_heavy_plane
+			}
+		}
+	}
+	
+	
+FIN = {
+	small_plane_airframe = {
+		pool = {
+			models = {
+				FIN_light_plane_0_entity #IVL Haukka
+				FIN_light_plane_2_entity #VL Myrsky
+			}
+		}
+	}
+	small_plane_airframe_0 = {
+		pool = {
+			models = {
+				FIN_light_plane_0_entity #IVL Haukka
+			}
+		}
+	}
+	small_plane_airframe_1 = {
+		pool = {
+			models = {
+				FIN_light_plane_0_entity #IVL Haukka #This goes here so that this tier (that has no specific model) gets the previous model as default (instead of the next one)
+			}
+		}
+	}
+	small_plane_airframe_2 = {
+		pool = {
+			models = {
+				FIN_light_plane_2_entity #VL Myrsky
+			}
+		}
+	}
+
+	#FIGTHER
+	cv_small_plane_airframe = {
+		pool = {
+			models = {
+				FIN_light_plane_2_entity #VL Myrsky
+				FIN_light_plane_0_entity #IVL Haukka
+			}
+		}
+	}
+	cv_small_plane_airframe_0 = {
+		pool = {
+			models = {
+				FIN_light_plane_0_entity #IVL Haukka
+			}
+		}
+	}
+	cv_small_plane_airframe_2 = {
+		pool = {
+			models = {
+				FIN_light_plane_2_entity #VL Myrsky
+			}
+		}
+	}
+
+	#TACTICAL BOMBER
+	medium_plane_airframe = {
+		pool = {
+			models = {
+				FIN_medium_plane_entity #generic FIN_medium_plane
+			}
+		}
+	}
+
+
+	#STRATEGIC BOMBER
+	large_plane_airframe = {
+		pool = {
+			models = {
+				FIN_heavy_plane_entity #generic FIN_heavy_plane
+			}
+		}
+	}
+	
+}
+
+NOR = {
+################################ Small Air Frames #######################################
+	small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				NOR_light_plane_0_entity #Fokker C.V-D
+				NOR_light_plane_entity #generic NOR_light_plane
+			}
+		}
+	}
+	small_plane_airframe_0 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				NOR_light_plane_0_entity #Fokker C.V-D
+			}
+		}
+	}
+	small_plane_airframe_1 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				NOR_light_plane_0_entity
+			}
+		}
+	}
+	
+	#CAS
+	small_plane_cas_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				NOR_CAS_equipment_0_entity #Fokker C.V-D CLONE
+			}
+		}
+	}
+	small_plane_cas_airframe_0 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				NOR_CAS_equipment_0_entity #Fokker C.V-D CLONE
+			}
+		}
+	}
+	
+	
+	# CV FIGHTER
+	cv_small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				NOR_light_plane_0_entity #Fokker C.V-D
+				NOR_light_plane_entity #generic NOR_light_plane
+			}
+		}
+	}
+	
+	cv_small_plane_airframe_0 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				NOR_light_plane_0_entity #Fokker C.V-D
+			}
+		}
+	}
+	cv_small_plane_airframe_1 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				NOR_light_plane_0_entity
+			}
+		}
+	}
+
+	#CV CAS
+	cv_small_plane_cas_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				NOR_CAS_equipment_0_entity #Fokker C.V-D CLONE
+			}
+		}
+	}
+	cv_small_plane_cas_airframe_0 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				NOR_CAS_equipment_0_entity #Fokker C.V-D CLONE
+			}
+		}
+	}
+
+#CV NAVAL BOMBER
+	
+
+################################ Medium Air Frames #######################################
+
+	medium_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				NOR_medium_plane_entity
+			}
+		}
+	}
+
+	# SCOUT PLANES
+	# No Scout Planes
+
+################################ Large Air Frames #######################################
+
+	#STRATEGIC BOMBER
+	large_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				NOR_heavy_plane_entity #generic NOR_heavy_plane
+			}
+		}
+	}
+	
+	large_plane_airframe_0 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				NOR_heavy_plane_entity #generic NOR_heavy_plane
+			}
+		}
+	}
+	
+}
+
+
+SWE = {
+################################ Small Air Frames #######################################
+
+	small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				SWE_light_plane_0_entity #J8 Gladiator
+				SWE_light_plane_1_entity #J9
+				SWE_light_plane_2_entity #B17
+				SWE_light_plane_3_entity #J 22A
+				SWE_modern_plane_entity #J 21A
+				SWE_jet_plane_entity #J 21R
+			}
+		}
+	}
+
+	#CAS
+	small_plane_cas_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				SWE_CAS_equipment_2_entity #B17 CLONE
+			}
+		}
+	}
+	
+	#CV FIGTHER
+	cv_small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				SWE_light_plane_0_entity #J8 Gladiator
+				SWE_light_plane_1_entity #J9
+				SWE_light_plane_2_entity #B17
+				SWE_light_plane_3_entity #J 22A
+				SWE_modern_plane_entity #J 21A
+				SWE_jet_plane_entity #J 21R
+			}
+		}
+	}
+	
+	#CV CAS
+	cv_small_plane_cas_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				SWE_CAS_equipment_2_entity #B17 CLONE
+			}
+		}
+	}
+	
+
+################################ Medium Air Frames #######################################
+	
+	#TACTICAL BOMBER
+	medium_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				SWE_medium_plane_0_entity #Junkers Ju-52
+				SWE_medium_plane_1_entity #Junkers Ju-86
+				SWE_medium_plane_2_entity #B18
+			}
+		}
+	}
+
+################################ Large Air Frames #######################################
+
+	large_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			models = {
+				SWE_heavy_plane_entity #generic SWE_heavy_plane
+			}
+		}
+	}
+}
+
+#ARG = {
+################################# Small Air Frames #######################################
+#
+#	small_plane_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				ARG_light_plane_entity #P-66 Vultee
+#			}
+#		}
+#	}
+#
+#	#CAS
+#	small_plane_cas_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				ARG_light_plane_entity #P-66 Vultee
+#			}
+#		}
+#	}
+#
+#	#NAVAL BOMBER
+#
+#	small_plane_naval_bomber_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				ARG_light_plane_entity #P-66 Vultee
+#			}
+#		}
+#	}
+#
+#	#CV FIGTHER
+#	cv_small_plane_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				ARG_light_plane_entity #P-66 Vultee
+#			}
+#		}
+#	}
+#
+#	#CV CAS
+#	cv_small_plane_cas_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				ARG_light_plane_entity #P-66 Vultee
+#			}
+#		}
+#	}
+#
+#
+#	#CV NAVAL BOMBER
+#	cv_small_plane_naval_bomber_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				ARG_light_plane_entity #P-66 Vultee
+#			}
+#		}
+#	}
+#
+#
+#	################################ Medium Air Frames #######################################
+#	
+#	#TACTICAL BOMBER
+#	medium_plane_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#			ARG_medium_plane_entity #B-25 Mitchell (reskin of USA_medium_plane)
+#			}
+#		}
+#	}
+#
+#	
+#	#HEAVY FIGHTER
+#	medium_plane_fighter_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				ARG_medium_plane_entity
+#			}
+#		}
+#	}
+#
+################################# Large Air Frames #######################################
+#
+#	large_plane_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#			ARG_heavy_plane_entity #B17 FlyingFortress
+#			}
+#		}
+#	}
+#}
+#
+#
+#BRA = {
+################################# Small Air Frames #######################################
+#
+#	small_plane_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				BRA_light_plane_0_entity #Muniz M-7
+#				BRA_light_plane_1_entity #Vultee V-11
+#				BRA_light_plane_2_entity #Vultee P-66
+#				BRA_light_plane_3_entity #VC-13 Avenger
+#				BRA_light_plane_4_entity #P-38 lightning
+#				BRA_light_plane_5_entity #P-47D Thunderbolt
+#				BRA_modern_plane_entity #Meteor F8
+#			}
+#		}
+#	}
+#	small_plane_airframe_0 = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				BRA_light_plane_0_entity #Muniz M-7
+#			}
+#		}
+#	}
+#	small_plane_airframe_1 = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				BRA_light_plane_1_entity #Vultee V-11
+#			}
+#		}
+#	}
+#	small_plane_airframe_2 = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				BRA_light_plane_2_entity #Vultee P-66
+#			}
+#		}
+#	}
+#	small_plane_airframe_3 = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				BRA_light_plane_3_entity #VC-13 Avenger
+#			}
+#		}
+#	}
+#	small_plane_airframe_4 = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				BRA_light_plane_4_entity #P-38 lightning
+#				BRA_light_plane_5_entity #P-47D Thunderbolt		
+#				BRA_modern_plane_entity #Meteor F8	
+#			}
+#		}
+#	}
+#
+#	#CAS
+#	small_plane_cas_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				BRA_light_plane_1_entity #Vultee V-11
+#			}
+#		}
+#	}
+#	
+small_plane_cas_airframe_1 = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				BRA_light_plane_1_entity #Vultee V-11
+#			}
+#		}
+#	}
+#
+#	#CV FIGTHER
+#	cv_small_plane_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				BRA_light_plane_0_entity #Muniz M-7
+#				BRA_light_plane_1_entity #Vultee V-11
+#				BRA_light_plane_2_entity #Vultee P-66
+#				BRA_light_plane_3_entity #VC-13 Avenger
+#				BRA_light_plane_4_entity #P-38 lightning
+#				BRA_light_plane_5_entity #P-47D Thunderbolt
+#				BRA_modern_plane_entity #Meteor F8
+#			}
+#		}
+#	}
+#	cv_small_plane_airframe_0 = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				BRA_light_plane_0_entity #Muniz M-7
+#			}
+#		}
+#	}
+#	cv_small_plane_airframe_1 = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				BRA_light_plane_1_entity #Vultee V-11
+#			}
+#		}
+#	}
+#	cv_small_plane_airframe_2 = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				BRA_light_plane_2_entity #Vultee P-66
+#			}
+#		}
+#	}
+#	cv_small_plane_airframe_3 = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				BRA_light_plane_3_entity #VC-13 Avenger
+#			}
+#		}
+#	}
+#	cv_small_plane_airframe_4 = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				BRA_light_plane_4_entity #P-38 lightning
+#				BRA_light_plane_5_entity #P-47D Thunderbolt		
+#				BRA_modern_plane_entity #Meteor F8	
+#			}
+#		}
+#	}
+#
+#	#CV CAS
+#	cv_small_plane_cas_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				BRA_light_plane_1_entity #Vultee V-11
+#			}
+#		}
+#	}
+#	
+#	cv_small_plane_cas_airframe_1 = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				BRA_light_plane_1_entity #Vultee V-11
+#			}
+#		}
+#	}
+#	
+#
+#	################################ Medium Air Frames #######################################
+#	
+#	#TACTICAL BOMBER
+#	medium_plane_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				BRA_medium_plane_entity #Douglas B-18
+#			}
+#		}
+#	}
+#
+#
+#	
+#
+################################# Large Air Frames #######################################
+#
+#	large_plane_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#			BRA_heavy_plane_var_1_entity #B17 FlyingFortress (variation 1)
+#			BRA_heavy_plane_entity #B17 FlyingFortress
+#			}
+#		}
+#	}
+#}
+#
+#CHL = {
+################################# Small Air Frames #######################################
+#
+#	small_plane_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				CHL_jet_plane_entity #Shooting Star
+#				CHL_light_plane_entity #P-66 Vultee (Chile)
+#			}
+#		}
+#	}
+#	small_plane_airframe_4 = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				CHL_jet_plane_entity #Shooting Star
+#			}
+#		}
+#	}
+#
+#	#CAS
+#	small_plane_cas_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				CHL_light_plane_entity #P-66 Vultee (Chile)
+#			}
+#		}
+#	}
+#	small_plane_cas_airframe_1 = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				CHL_light_plane_entity #P-66 Vultee (Chile)
+#			}
+#		}
+#	}
+#	small_plane_cas_airframe_2 = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				CHL_light_plane_entity #P-66 Vultee (Chile)
+#			}
+#		}
+#	}
+#	small_plane_cas_airframe_3 = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				CHL_light_plane_entity #P-66 Vultee (Chile)
+#			}
+#		}
+#	}
+#
+#	#CV FIGTHER
+#	cv_small_plane_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				CHL_jet_plane_entity #Shooting Star
+#				CHL_light_plane_entity #P-66 Vultee (Chile)
+#			}
+#		}
+#	}
+#	cv_small_plane_airframe_4 = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				CHL_jet_plane_entity #Shooting Star
+#			}
+#		}
+#	}
+#
+#	#CV CAS
+#	cv_small_plane_cas_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				CHL_light_plane_entity #P-66 Vultee (Chile)
+#			}
+#		}
+#	}
+#	#CV NAVAL BOMBER
+#	cv_small_plane_naval_bomber_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				CHL_light_plane_entity #P-66 Vultee (Chile)
+#			}
+#		}
+#	}
+#
+#	################################ Medium Air Frames #######################################
+#	
+#	#TACTICAL BOMBER
+#	medium_plane_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#				CHL_medium_plane_entity
+#			}
+#		}
+#	}
+#
+################################# Large Air Frames #######################################
+#
+#	large_plane_airframe = {
+#		pool = {
+#			limit = {
+#				has_dlc = "Trial of Allegiance"
+#			}
+#			models = {
+#			CHL_heavy_plane_entity #B17 FlyingFortress
+#			}
+#		}
+#	}
+#
+#
+#}
+

@@ -1,0 +1,49 @@
+
+state={
+	id=598
+	name="STATE_598"
+	
+	state_category = metropolis
+	
+	resources = {
+	}
+
+	history={
+		owner = CHI
+		add_core_of = CHI
+		#
+		victory_points = {
+			11913 40 
+		}
+		victory_points = {
+			13370 5
+		}
+		victory_points = {
+			10076 5
+		}
+		victory_points = {
+			11982 1
+		}
+		buildings = {
+			infrastructure = 3
+			arms_factory = 2
+			industrial_complex = 8
+			air_base = 2
+			steel_refinery = 4
+		}
+		1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+	}
+
+	provinces={
+		996 7120 10034 10076 11913 11982 12052 13142 13369 13370 13704 13703
+	}
+	manpower=19132200
+	buildings_max_level_factor=1.000
+}

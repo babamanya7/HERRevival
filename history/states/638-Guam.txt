@@ -1,0 +1,32 @@
+state= {
+	id=638
+	name="STATE_638"
+	state_category = small_island
+	manpower=75153
+	history= {
+		owner = USA
+
+		buildings = {
+			infrastructure = 2
+			air_base = 2
+			12140 = {
+				naval_base = 1
+			}
+		}
+		victory_points = {
+			13261 1
+		}
+		
+		1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+	}
+	provinces={
+		12140 13261 
+	}
+}

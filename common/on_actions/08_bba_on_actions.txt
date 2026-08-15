@@ -1,0 +1,202 @@
+on_actions = {
+
+	#ROOT is new controller #FROM is old controller #FROM.FROM is state ID
+	on_state_control_changed = {
+		# Losing cores and colonies as Italy has an impact on BoP
+		effect = {
+			if = { #Italy loses a state
+				limit = {
+					FROM = {
+						original_tag = ITA
+						has_power_balance = { id = ITA_power_balance }
+						is_power_balance_side_active = {
+							id = ITA_power_balance
+							side = ITA_grand_council_side
+						}
+					}
+					FROM.FROM = {
+						is_owned_by = ITA
+					}
+				}
+				if = { #It's a core -> Non mi piazze!
+					limit = {
+						FROM.FROM = {
+							is_core_of = ITA
+						}
+					}
+					if = { #FIRST TIME LOSING A CORE PLAYER GETS EVENT (Effects are handled there)
+						limit = {
+							FROM = { check_variable = { ITA_lost_core = 0 } }
+						}
+						FROM = {
+							set_variable = { ITA_lost_core = FROM.FROM }
+							country_event = { id = BBA_italy_bop.1 hours = 1 }
+						}
+					}
+					else = { #Further cores lost will not trigger event
+						ITA_bop_high_decrease_effect = yes
+						ITA_bop_increase_lost_core_modifier = yes
+					}
+					#log = "-20% BoP due to losing core [FROM.FROM.GetName]"
+				}
+				else = { #Colony -> Not great but hey, it could have been worse!
+					if = { #FIRST TIME LOSING A CORE PLAYER GETS EVENT (Effects are handled there)
+						limit = {
+							FROM = { check_variable = { ITA_lost_colony = 0 } }
+						}
+						FROM = {
+							set_variable = { ITA_lost_colony = FROM.FROM }
+							country_event = { id = BBA_italy_bop.2 hours = 1 }
+						}
+					}
+					else = {
+						ITA_bop_very_low_decrease_effect = yes
+					}
+					#log = "-5% BoP due to losing colony [FROM.FROM.GetName]"
+				}
+			}
+			else_if = { #Italy gets a core state back
+				limit = {
+					ROOT = {
+						original_tag = ITA
+						has_power_balance = { id = ITA_power_balance }
+						is_power_balance_side_active = {
+							id = ITA_power_balance
+							side = ITA_grand_council_side
+						}
+					}
+					FROM.FROM = {
+						is_owned_by = ITA
+						is_core_of = ITA
+					}
+				}
+				ROOT = { #This event is fired only once, condition set in the actual event
+						set_variable = { ITA_reclaimed_core = FROM.FROM }
+						country_event = { id = BBA_italy_bop.3 hours = 1 }
+					}
+				ITA_bop_high_increase_effect = yes
+				ITA_bop_decrease_lost_core_modifier = yes
+				#log = "Reducing BoP modifier penalty due to getting back core [FROM.FROM.GetName]"
+			}
+			if = {
+				limit = { #Losing a core State
+					FROM = { original_tag = SWI }
+					FROM.FROM = { is_core_of = SWI }
+				}
+				FROM.FROM = {
+					if = {
+						limit = { #Destroys infra and railways on lost states
+					 		has_dynamic_modifier = { modifier = SWI_infrastructure_rigged_to_blow }
+						}
+						damage_building = {
+							type = rail_way
+							damage = 5
+						}
+						damage_building = {
+							type = infrastructure
+							damage = 5
+						}
+						damage_building = {
+							type = arms_factory
+							damage = 2
+						}
+						damage_building = {
+							type = industrial_complex
+							damage = 2
+						}
+						damage_building = {
+							type = bunker
+							damage = 10
+						}
+						damage_building = {
+							type = supply_node
+							damage = 1
+						}
+						remove_dynamic_modifier = { modifier = SWI_infrastructure_rigged_to_blow }
+					}
+				}
+			}
+		}
+
+		#Cooperatives for Intensive Exploitation
+		effect = {
+			if = {
+				limit = {
+					ROOT = {
+						original_tag = ITA
+						has_completed_focus = ITA_cooperatives_for_intensive_exploitation
+					}
+					FROM.FROM = {
+						is_on_continent = africa
+						state_has_any_resource = yes
+						NOT = { has_dynamic_modifier = { modifier = ITA_cooperatives_for_intensive_exploitation_dm } }
+					}
+				}
+				FROM.FROM = {
+					add_dynamic_modifier = { modifier = ITA_cooperatives_for_intensive_exploitation_dm }
+				}
+			}
+		}
+
+		#Mafia State modifiers
+		effect = {
+			if = {
+				limit = {
+					FROM.FROM = {
+						ITA_state_has_any_version_of_mafia_rising_modifier = yes
+					}
+					ROOT = {
+						original_tag = ITA
+						has_completed_focus = ITA_cooperate_with_the_mafia
+					}
+				}
+				if = {
+					limit = {
+						has_dynamic_modifier = { modifier = ITA_mafia_on_the_rise_no_lar }
+					}
+					remove_dynamic_modifier = { modifier = ITA_mafia_on_the_rise_no_lar }
+					add_dynamic_modifier = { modifier = ITA_established_mafia_no_lar }
+				}
+				else = {
+					remove_dynamic_modifier = { modifier = ITA_mafia_on_the_rise }
+					add_dynamic_modifier = { modifier = ITA_established_mafia }
+				}
+			}
+			else_if = {
+				limit = {
+					FROM.FROM = {
+						ITA_state_has_any_version_of_mafia_rising_modifier = yes
+					}
+					ROOT = {
+						NOT = { original_tag = ITA }
+					}
+				}
+				if = {
+					limit = {
+						has_dynamic_modifier = { modifier = ITA_established_mafia_no_lar }
+					}
+					remove_dynamic_modifier = { modifier = ITA_established_mafia_no_lar }
+					add_dynamic_modifier = { modifier = ITA_mafia_on_the_rise_no_lar }
+				}
+				else = {
+					remove_dynamic_modifier = { modifier = ITA_established_mafia }
+					add_dynamic_modifier = { modifier = ITA_mafia_on_the_rise }
+				}
+			}
+		}
+
+		#RENAME STATES/VPs
+		effect = {
+			if = {
+				limit = {
+					ITA_state_or_vp_name_should_change = yes
+				}
+				ITA_change_name_of_state_or_vp = yes
+			}
+		}
+
+	}
+}
+
+
+

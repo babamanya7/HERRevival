@@ -1,0 +1,15 @@
+# modifiers used in static_modifiers needs to be predefined here
+
+death_chance_factor = {
+	color_type = bad
+	value_type = percentage
+	precision = 1
+	category = unit_leader
+}
+
+storage_size_factor = {
+	color_type = good
+	value_type = percentage
+	precision = 1
+	category = country
+}

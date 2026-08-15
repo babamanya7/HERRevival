@@ -1,0 +1,44 @@
+
+state={
+	id=200
+	name="STATE_200" # Zaporozhe
+	manpower = 1294082
+	state_category = town
+	
+	resources = {
+		coal = 111
+	}
+
+	history={
+		owner = SOV
+		victory_points = {
+			11405 5
+		}
+		victory_points = {
+			9571 1
+		}
+		victory_points = {
+			6596 3
+		}
+		buildings = {
+			infrastructure = 4
+			air_base = 6
+			industrial_complex = 2
+			steel_refinery = 2
+			9571 = {
+				naval_base = 1
+			}
+		}
+		add_core_of = SOV
+		add_core_of = UKR
+		1939.1.1 = {
+			buildings = {
+				industrial_complex = 1
+			}
+		}
+	}
+
+	provinces={
+		429 588 3399 3767 6596 9571 9729 11405 11700 13850 4991 13093 9763 7026 9755 869 4124 11792 13122 9811 3967 6995
+	}
+}

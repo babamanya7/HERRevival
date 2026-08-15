@@ -1,0 +1,324 @@
+equipment_modules = {
+
+	jet_engine_1x = {
+		abbreviation = "j1"
+		category = plane_jet_engine_type
+		sfx = sfx_ui_sd_module_engine
+
+		add_stats = {
+			thrust = 18
+			build_cost_ic = 21
+			fuel_consumption = 0.2
+			reliability = -0.15
+			maximum_speed = 620
+			weight = 8
+		}
+
+		build_cost_resources = {
+			tungsten = 4
+			chromium = 8
+		}
+		dismantle_cost_ic = 2.6
+		
+		forbid_module_categories = {
+			plane_non_jet_special_modules
+			plane_special_module_radial_engine
+			engine_mounted_cannons
+			plane_special_module_engine_tc
+			plane_special_module_engine_sc
+		}		
+	}
+
+	jet_engine_2x = {
+		abbreviation = "j2"
+		category = twin_plane_jet_engine_type
+		sfx = sfx_ui_sd_module_engine
+
+		add_stats = {
+			thrust = 31.5
+			build_cost_ic = 42
+			fuel_consumption = 0.4
+			reliability = -0.15
+			maximum_speed = 620
+			weight = 16
+		}
+
+		build_cost_resources = {
+			tungsten = 8
+			chromium = 16
+		}
+		dismantle_cost_ic = 5.2
+		
+		forbid_module_categories = {
+			plane_non_jet_special_modules
+			plane_special_module_radial_engine
+			engine_mounted_cannons
+			plane_special_module_engine_tc
+			plane_special_module_engine_sc
+		}			
+	}
+
+	jet_engine_3x = {
+		abbreviation = "j3"
+		category = medium_plane_jet_engine_type
+		sfx = sfx_ui_sd_module_engine
+
+		add_stats = {
+			thrust = 47.25
+			build_cost_ic = 63
+			fuel_consumption = 0.6
+			reliability = -0.15
+			maximum_speed = 620
+			weight = 24
+		}
+
+		build_cost_resources = {
+			tungsten = 12
+			chromium = 24
+		}
+		dismantle_cost_ic = 7.3
+		
+		forbid_module_categories = {
+			plane_non_jet_special_modules
+			plane_special_module_radial_engine
+			engine_mounted_cannons
+			plane_special_module_engine_tc
+			plane_special_module_engine_sc
+		}			
+	}
+
+	jet_engine_4x = {
+		abbreviation = "j4"
+		category = quad_large_plane_jet_engine_type
+		sfx = sfx_ui_sd_module_engine
+
+		add_stats = {
+			thrust = 59.063
+			build_cost_ic = 84
+			fuel_consumption = 0.8
+			reliability = -0.15
+			maximum_speed = 620
+			weight = 32
+		}
+
+		build_cost_resources = {
+			tungsten = 16
+			chromium = 32
+		}
+		dismantle_cost_ic = 10.4
+		
+		forbid_module_categories = {
+			plane_non_jet_special_modules
+			plane_special_module_radial_engine
+			engine_mounted_cannons
+			plane_special_module_engine_tc
+			plane_special_module_engine_sc
+		}
+	}
+	
+	jet_engine_axial_1x = {
+		abbreviation = "ja1"
+		category = plane_jet_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = jet_engine_1x
+		
+		add_stats = {
+			thrust = 24
+			build_cost_ic = 25
+			fuel_consumption = 0.25
+			reliability = -0.1
+			maximum_speed = 740
+			weight = 8
+		}
+
+		build_cost_resources = {
+			tungsten = 6
+			chromium = 12
+		}
+		
+		forbid_module_categories = {
+			plane_non_jet_special_modules
+			plane_special_module_radial_engine
+			engine_mounted_cannons
+			plane_special_module_engine_tc
+			plane_special_module_engine_sc
+		}
+	}
+
+	jet_engine_axial_2x = {
+		abbreviation = "ja2"
+		category = twin_plane_jet_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = jet_engine_2x
+
+		add_stats = {
+			thrust = 42
+			build_cost_ic = 50
+			fuel_consumption = 0.5
+			reliability = -0.1
+			maximum_speed = 740
+			weight = 16
+		}
+
+		build_cost_resources = {
+			tungsten = 12
+			chromium = 24
+		}
+
+		forbid_module_categories = {
+			plane_non_jet_special_modules
+			plane_special_module_radial_engine
+			engine_mounted_cannons
+			plane_special_module_engine_tc
+			plane_special_module_engine_sc
+		}
+	}
+
+	jet_engine_axial_3x = {
+		abbreviation = "ja3"
+		category = medium_plane_jet_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = jet_engine_3x
+
+		add_stats = {
+			thrust = 63
+			build_cost_ic = 75
+			fuel_consumption = 0.75
+			reliability = -0.1
+			maximum_speed = 740
+			weight = 24
+		}
+
+		build_cost_resources = {
+			tungsten = 18
+			chromium = 36
+		}
+
+		forbid_module_categories = {
+			plane_non_jet_special_modules
+			plane_special_module_radial_engine
+			engine_mounted_cannons
+			plane_special_module_engine_tc
+			plane_special_module_engine_sc
+		}
+	}
+
+	jet_engine_axial_4x = {
+		abbreviation = "ja4"
+		category = quad_large_plane_jet_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = jet_engine_4x
+
+		add_stats = {
+			thrust = 78.75
+			build_cost_ic = 100
+			fuel_consumption = 1
+			reliability = -0.1
+			maximum_speed = 740
+			weight = 32
+		}
+
+		build_cost_resources = {
+			tungsten = 24
+			chromium = 48
+		}
+
+		forbid_module_categories = {
+			plane_non_jet_special_modules
+			plane_special_module_radial_engine
+			engine_mounted_cannons
+			plane_special_module_engine_tc
+			plane_special_module_engine_sc
+		}
+	}
+
+	rocket_engine_1 = {
+		abbreviation = "re1"
+		category = plane_rocket_engine_type
+		sfx = sfx_ui_sd_module_engine
+
+		add_stats = {
+			thrust = 15
+			build_cost_ic = 12
+			reliability = -0.2
+			maximum_speed = 600
+			weight = 5
+		}
+		multiply_stats = {
+			air_range = -0.85
+		}
+		build_cost_resources = {
+			tungsten = 10
+			chromium = 5
+		}
+		dismantle_cost_ic = 6
+		
+		forbid_module_categories = {
+			plane_non_jet_special_modules
+			plane_special_module_radial_engine
+			engine_mounted_cannons
+			plane_special_module_engine_tc
+			plane_special_module_engine_sc
+		}			
+	}
+
+	rocket_engine_2 = { #rocket engines only come in sets of 1
+		abbreviation = "re2"
+		category = plane_rocket_engine_type
+		sfx = sfx_ui_sd_module_engine
+
+		add_stats = {
+			thrust = 19.5
+			build_cost_ic = 18
+			reliability = -0.15
+			maximum_speed = 650
+			weight = 6
+		}
+		multiply_stats = {
+			air_range = -0.8
+		}
+		build_cost_resources = {
+			tungsten = 10
+			chromium = 5
+		}
+		dismantle_cost_ic = 9
+		
+		forbid_module_categories = {
+			plane_non_jet_special_modules
+			plane_special_module_radial_engine
+			engine_mounted_cannons
+			plane_special_module_engine_tc
+			plane_special_module_engine_sc
+		}			
+	}
+
+	rocket_engine_3 = { #rocket engines only come in sets of 1
+		abbreviation = "re3"
+		category = plane_rocket_engine_type
+		sfx = sfx_ui_sd_module_engine
+
+		add_stats = {
+			thrust = 25.35
+			build_cost_ic = 24
+			reliability = -0.1
+			maximum_speed = 700
+			weight = 7
+		}
+		multiply_stats = {
+			air_range = -0.75
+		}
+		build_cost_resources = {
+			tungsten = 10
+			chromium = 5
+		}
+		dismantle_cost_ic = 12
+		
+		forbid_module_categories = {
+			plane_non_jet_special_modules
+			plane_special_module_radial_engine
+			engine_mounted_cannons
+			plane_special_module_engine_tc
+			plane_special_module_engine_sc
+		}			
+	}
+}

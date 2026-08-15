@@ -1,0 +1,97 @@
+
+state={
+	id=684
+	name="STATE_684"
+	manpower=42357
+	state_category = small_island
+
+	history={
+		owner = JAP
+
+		buildings = {
+			infrastructure = 1
+			air_base = 4
+			2489 = {
+				naval_base = 6
+				coastal_bunker = 3
+			}
+			13028 = {
+				naval_base = 1
+			}
+			13030 = {
+				naval_base = 1
+			}
+			13036 = {
+				naval_base = 1
+			}
+			13027 = {
+				naval_base = 1
+			}
+			13029 = {
+				naval_base = 1
+			}
+			849 = {
+				naval_base = 1
+			}
+			9761 = {
+				naval_base = 1
+			}
+			11797 = {
+				naval_base = 1
+			}
+			652 = {
+				naval_base = 1
+			}
+			13033 = {
+				naval_base = 1
+			}
+		}
+		victory_points = {
+			2489 5 
+		}
+		victory_points = {
+			13027 1 
+		}
+		victory_points = {
+			13028 1 
+		}
+		victory_points = {
+			13029 1 
+		}
+		victory_points = {
+			13033 1 
+		}
+		victory_points = {
+			13030 1 
+		}
+		victory_points = {
+			13036 1 
+		}
+		victory_points = {
+			849 1 
+		}
+		victory_points = {
+			9761 1 
+		}
+		victory_points = {
+			11797 1 
+		}
+		victory_points = {
+			652 1 
+		}
+		1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+	}
+
+	provinces={
+		2489 13027 13028 13029 13030 13033 13036 
+		849 9761 11797 652
+		#13031 #13032 #13034 #13035   
+	}
+}

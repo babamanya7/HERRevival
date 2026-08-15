@@ -1,0 +1,36 @@
+state=
+{
+	id=625
+	name="STATE_625"
+	manpower = 1138724
+	
+	resources = {
+		iron = 18
+	}
+	
+	state_category = rural
+	history = {
+		owner = PHI
+		buildings = {
+			infrastructure = 1
+			1340 = {
+				naval_base = 1
+			}
+		}
+		victory_points = {
+			1340 2
+		}
+		add_core_of = PHI
+		1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+	}
+	provinces={
+		1224 1311 1340 4269 4373 
+	}
+}

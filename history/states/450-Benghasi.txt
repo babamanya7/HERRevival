@@ -1,0 +1,29 @@
+
+state={
+	id=450
+	name="STATE_450"
+	manpower = 82535
+	
+	state_category = rural
+
+	history={
+		owner = ITA
+		
+		victory_points = {
+			14119 5
+		}
+		buildings = {
+			infrastructure = 3
+			industrial_complex = 1
+			air_base = 2
+			14119 = {
+				naval_base = 1
+			}
+		}
+		add_core_of = BRA
+	}
+
+	provinces={
+		14001 14040 14023 14044 14063 14100 14076 14092 14106 14119 14099 14120 14146 14131 14145 14156 14166
+	}
+}

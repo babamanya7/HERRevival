@@ -1,0 +1,26 @@
+state = {
+	id=887
+	name="STATE_887"
+	manpower = 330200
+	
+	state_category = town
+	resources={
+		bauxite = 137
+	}
+	history = {
+		owner = YUG
+		buildings = {
+			infrastructure = 5
+			arms_factory = 1
+			industrial_complex = 1
+		}
+		victory_points = {
+			3654 1 
+		}
+		add_core_of = YUG
+
+	}
+	provinces={
+		247 3649 3654 3681 4047 4933 6651 
+	}
+}

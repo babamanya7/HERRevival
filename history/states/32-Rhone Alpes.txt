@@ -1,0 +1,27 @@
+
+state={
+	id=32
+	name="STATE_32" 
+	manpower = 1007500
+	
+	state_category = town
+	
+	resources={
+		bauxite = 49
+	}
+
+	history={
+		owner = FRA
+		buildings = {
+			infrastructure = 4
+		}
+		victory_points = {
+			6568 1 
+		}
+		add_core_of = FRA
+	}
+
+	provinces={
+		3703 6529 6568 6652 9537 11616 14796 14823 14866 14881 14904 14924 
+	}
+}

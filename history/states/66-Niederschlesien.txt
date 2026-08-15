@@ -1,0 +1,31 @@
+
+state={
+	id=66
+	name="STATE_66"
+	manpower = 3052726
+	resources={
+		coal = 340
+		iron = 24
+	}
+	
+	state_category = large_city
+
+	history={
+		owner = GER
+		victory_points = {
+			9570 10 
+		}
+		buildings = {
+			infrastructure = 6
+			industrial_complex = 4
+			aluminium_refinery = 2
+			arms_factory = 5
+			air_base = 12
+		}
+		add_core_of = GER
+	}
+
+	provinces={
+		109 552 3138 3283 3438 3510 3545 6024 6161 6462 6534 6582 6595 8080 9470 9570 11517 
+	}
+}

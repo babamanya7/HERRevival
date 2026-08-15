@@ -1,0 +1,86 @@
+air_wings = {
+	18 = {
+		cv_small_plane_airframe_0 = {
+			owner = "FRA" 
+			amount = 30
+			version_name = "D.371"
+		}
+		cv_small_plane_naval_bomber_airframe_0 = {
+			owner = "FRA" 
+			amount = 46
+			version_name = "PL.7"
+		}
+		medium_plane_airframe_0 = {
+			owner = "FRA" 
+			amount = 208
+			version_name = "M.B. 200"
+		}
+		large_plane_airframe_0 = {
+			owner = "FRA" 
+			amount = 10
+			version_name = "F.222"
+		}
+		medium_plane_airframe_0 = {
+			owner = "FRA" 
+			amount = 11
+			version_name = "Amiot 143"
+		}
+		small_plane_naval_bomber_airframe_0 = {
+			owner = "FRA" 
+			amount = 32
+			version_name = "Latécoère 296"
+		}
+		small_plane_airframe_0 = {
+			owner = "FRA" 
+			amount = 258
+			version_name = "D.500/501"
+		}
+		small_plane_airframe_0 = {
+			owner = "FRA" 
+			amount = 5
+			version_name = "D.510"
+		}
+		small_plane_airframe_0 = {
+			owner = "FRA" 
+			amount = 63
+			version_name = "NiD 62"
+		}
+	}
+}
+
+#########################
+## STARTING PRODUCTION ##
+#########################
+instant_effect = 
+{
+	add_equipment_production = {
+		equipment = {
+			type = small_plane_airframe_0
+			creator = "FRA" 
+			version_name = "D.510"
+		}
+		requested_factories = 1
+		progress = 0.15
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = medium_plane_airframe_0
+			creator = "FRA" 
+			version_name = "Amiot 143"
+		}
+		requested_factories = 1
+		progress = 0.15
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = large_plane_airframe_0
+			creator = "FRA" 
+			version_name = "F.222"
+		}
+		requested_factories = 1
+		progress = 0.15
+		efficiency = 50
+	}
+}

@@ -1,0 +1,36 @@
+state = {
+	id = 923
+	name = "STATE_923"
+	manpower = 10000
+	
+	state_category = town
+	
+	resources = {
+		#
+	}
+	
+	history = {
+		owner = ENG
+		add_core_of = BRA
+		buildings = {
+			infrastructure = 6
+			air_base = 4
+			13979 = {
+				naval_base = 2
+			}
+			14073 = {
+				naval_base = 2
+			}
+		}
+		victory_points = {
+			13979 3
+		}
+		victory_points = {
+			14073 5
+		}
+	}
+
+	provinces = {
+		1155 9947 14073 14036 14005 13979
+	}
+}

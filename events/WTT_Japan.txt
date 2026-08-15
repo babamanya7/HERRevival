@@ -1,0 +1,415 @@
+﻿add_namespace = wtt_japan
+
+#Japan propose NAP to ROOT
+country_event = {
+	id = wtt_japan.11
+	title = wtt_japan.11.t
+	desc = wtt_japan.11.desc
+	picture = GFX_report_event_japan_europe_pact
+
+	is_triggered_only = yes
+	
+	#Accept NAP
+	option = {
+		name = wtt_japan.11.a
+		ai_chance = {
+			base = 10
+		}
+		diplomatic_relation = {
+			country = FROM
+			relation = non_aggression_pact
+			active = yes
+		}
+		FROM = { country_event = { id = wtt_japan.12 days = 1 } }
+	}
+}
+
+#Japan propose NAP to ROOT
+country_event = {
+	id = wtt_japan.12
+	title = wtt_japan.12.t
+	desc = wtt_japan.12.desc
+	picture = GFX_report_event_japan_europe_pact
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_japan.12.a
+		ai_chance = {
+			base = 10
+		}
+		effect_tooltip = {
+			diplomatic_relation = {
+				country = FROM
+				relation = non_aggression_pact
+				active = yes
+			}
+		}
+	}
+}
+
+#Japan propose NAP to ROOT
+country_event = {
+	id = wtt_japan.13
+	title = wtt_japan.13.t
+	desc = wtt_japan.13.desc
+	picture = GFX_report_event_japan_europe_pact
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_japan.13.a
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+### ###  ### ###   ##  ###  ### ### ### ###     ###   ##   ##  ### 
+ #  #  #  #  #  # #  # #  #  #   #   #  #       #  # #  # #  #  #  
+ #  ###   #  ###  #### ###   #   #   #  ##      ###  #### #     #  
+ #  #  #  #  #    #  # #  #  #   #   #  #       #    #  # #  #  #  
+ #  #  # ### #    #  # #  #  #  ###  #  ###     #    #  #  ##   #  
+
+ # Event for Germany to accept Tripartite Pact
+country_event = {
+	id = wtt_japan.109
+	title = wtt_japan.109.t
+	desc = wtt_japan.109.desc
+	picture = GFX_report_event_japan_europe_pact
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			FROM = { save_event_target_as = JAP_initiator }
+			save_event_target_as = GER_fascism
+			random_country = {
+				limit = {
+					original_tag = ITA
+					has_government = fascism
+				}
+				save_event_target_as = ITA_fascism
+			}
+		}
+	}
+	
+	option = {
+		name = wtt_japan.109.a #accept
+		add_political_power = 50
+		ai_chance = {
+			base = 10
+		}
+
+		effect_tooltip = {
+			JAP = { add_ideas = JAP_tripartite_pact }
+		}
+		event_target:ITA_fascism = {
+			country_event = { id = wtt_japan.110 hours = 6 }
+		}
+	}
+}
+
+ # Event for Italy to accept Tripartite Pact
+country_event = {
+	id = wtt_japan.110
+	title = wtt_japan.109.t
+	desc = wtt_japan.110.desc
+	picture = GFX_report_event_japan_europe_pact
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_japan.109.a ##accept
+		add_political_power = 50
+		ai_chance = {
+			base = 10
+		}
+		event_target:JAP_initiator = {
+			give_guarantee = event_target:ITA_fascism
+			give_guarantee = event_target:GER_fascism
+		}
+		event_target:GER_fascism = {
+			give_guarantee = event_target:ITA_fascism
+			give_guarantee = event_target:JAP_initiator
+		}
+		event_target:ITA_fascism = {
+			give_guarantee = event_target:JAP_initiator
+			give_guarantee = event_target:GER_fascism
+		}
+		event_target:JAP_initiator = { country_event = { id = wtt_japan.111 hours = 6 } }
+		event_target:GER_fascism = { country_event = { id = wtt_japan.113 hours = 6 } }
+	}
+}
+
+ #Notification event that Tripartite Pact has been signed
+country_event = {
+	id = wtt_japan.111
+	title = wtt_japan.111.t
+	desc = wtt_japan.111.desc
+	picture = GFX_report_event_japan_europe_pact
+
+	is_triggered_only = yes
+	
+	option = {
+		name = excellent
+		add_political_power = 50
+		JAP = { add_ideas = JAP_tripartite_pact }
+		add_opinion_modifier = { target = GER modifier = tripartite_pact_trade }
+		reverse_add_opinion_modifier = { target = GER modifier = tripartite_pact_trade }
+		hidden_effect = {
+			set_global_flag = tripartite_pact_signed
+		}
+		ai_chance = {
+			base = 10
+		}
+		effect_tooltip = {
+			event_target:JAP_initiator = {
+				give_guarantee = event_target:ITA_fascism
+				give_guarantee = event_target:GER_fascism
+			}
+			event_target:GER_fascism = {
+				give_guarantee = event_target:ITA_fascism
+				give_guarantee = event_target:JAP_initiator
+			}
+			event_target:ITA_fascism = {
+				give_guarantee = event_target:JAP_initiator
+				give_guarantee = event_target:GER_fascism
+			}
+		}
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_literally_china = yes
+				}
+				event_target:ITA_fascism = {
+					add_ai_strategy = {
+						type = alliance
+						id = PREV
+						value = -500
+					}
+				}
+				event_target:GER_fascism = {
+					add_ai_strategy = {
+						type = alliance
+						id = PREV
+						value = -500
+					}
+				}
+			}
+		}
+	}
+}
+
+ #Notification event that FROM has rejected Tripartite Pact
+country_event = {
+	id = wtt_japan.112
+	title = wtt_japan.112.t
+	desc = wtt_japan.112.desc
+	picture = GFX_report_event_japan_europe_pact
+
+	is_triggered_only = yes
+	
+	option = {
+		name = unfortunate
+	}
+}
+
+ #Notification event for GER that ITA has accepted Tripartite Pact
+country_event = {
+	id = wtt_japan.113
+	title = wtt_japan.113.t
+	desc = wtt_japan.113.desc
+	picture = GFX_report_event_japan_europe_pact
+
+	is_triggered_only = yes
+	
+	option = {
+		name = excellent
+		effect_tooltip = {
+			event_target:JAP_initiator = {
+				give_guarantee = event_target:ITA_fascism
+				give_guarantee = event_target:GER_fascism
+			}
+			event_target:GER_fascism = {
+				give_guarantee = event_target:ITA_fascism
+				give_guarantee = event_target:JAP_initiator
+			}
+			event_target:ITA_fascism = {
+				give_guarantee = event_target:JAP_initiator
+				give_guarantee = event_target:GER_fascism
+			}
+		}
+	}
+}
+
+###   ##  ###  ###  ### ###       ##   ##  #  # ### #   ###  ##  ###  ## 
+#  # #  # #  # #  # #   #  #     #  # #  # ## # #   #    #  #  #  #  #   
+###  #  # ###  #  # ##  ###      #    #  # # ## ##  #    #  #     #   #  
+#  # #  # #  # #  # #   #  #     #  # #  # #  # #   #    #  #  #  #    # 
+###   ##  #  # ###  ### #  #      ##   ##  #  # #   ### ###  ##   #  ##  
+
+add_namespace = japan_border_conflict
+
+#initial border incident against Soviet Union
+country_event = {
+	id = japan_border_conflict.1
+	title = japan_border_conflict.1.t
+	desc = japan_border_conflict.1.desc
+	picture = GFX_report_event_japan_army_mountainside
+
+	is_triggered_only = yes
+
+	option = {
+		name = japan_border_conflict.1.a
+	}
+}
+#Japan wins
+country_event = {
+	id = japan_border_conflict.2
+	title = japan_border_conflict.2.t
+	desc = japan_border_conflict.2.desc
+	picture = GFX_report_event_japanese_transport_soldiers
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				country_exists = MAN
+			}
+			MAN = { transfer_state = 761 }
+		}
+		else = {
+			JAP = { transfer_state = 761 }
+		}
+		MON = { transfer_state = 952 }
+		MON = { transfer_state = 954 }
+	}
+
+	option = {
+		name = japan_border_conflict.2.a
+		trigger = {
+			original_tag = JAP
+		}
+		army_experience = 25
+#		add_doctrine_cost_reduction = {
+#			name = sov_jap_border_conflict_won
+#			cost_reduction = 0.99
+#			uses = 1
+#			category = land_doctrine
+#		}
+		add_tech_bonus = {
+			name = sov_jap_border_conflict_won
+			category = armor
+			bonus = 0.5
+		}
+	}
+	option = {
+		name = japan_border_conflict.2.b
+		trigger = {
+			original_tag = SOV
+		}
+		army_experience = 15
+	}
+}
+#Japan loses
+country_event = {
+	id = japan_border_conflict.3
+	title = japan_border_conflict.3.t
+	desc = japan_border_conflict.3.desc
+	picture = GFX_report_event_japanese_soldiers_03
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				country_exists = MAN
+			}
+			MAN = { transfer_state = 761 }
+		}
+		else = {
+			JAP = { transfer_state = 761 }
+		}
+		MON = { transfer_state = 952 }
+		MON = { transfer_state = 954 }
+	}
+
+	option = {
+		name = japan_border_conflict.3.a
+		trigger = {
+			original_tag = JAP
+		}
+		army_experience = 15
+	}
+	option = {
+		name = japan_border_conflict.3.b
+		trigger = {
+			original_tag = SOV
+		}
+		set_global_flag = sov_win_border_conflict
+		army_experience = 25
+#		add_doctrine_cost_reduction = {
+#			name = sov_jap_border_conflict_won
+#			cost_reduction = 0.99
+#			uses = 1
+#			category = land_doctrine
+#		}
+	}
+}
+
+#stalemate
+country_event = {
+	id = japan_border_conflict.4
+	title = japan_border_conflict.4.t
+	desc = japan_border_conflict.4.desc
+	picture = GFX_report_event_japanese_army_parade
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				country_exists = MAN
+			}
+			MAN = { transfer_state = 761 }
+		}
+		else = {
+			JAP = { transfer_state = 761 }
+		}
+		MON = { transfer_state = 952 }
+		MON = { transfer_state = 954 }
+	}
+
+	option = {
+		name = japan_border_conflict.4.a
+		trigger = {
+			original_tag = JAP
+		}
+		army_experience = 50
+	}
+	option = {
+		name = japan_border_conflict.3.b
+		trigger = {
+			original_tag = SOV
+		}
+		army_experience = 50
+	}
+}
+
+#japan escalates
+country_event = {
+	id = japan_border_conflict.5
+	title = japan_border_conflict.5.t
+	desc = japan_border_conflict.5.desc
+	picture = GFX_report_event_japanese_parade
+
+	is_triggered_only = yes
+
+	option = {
+		name = japan_border_conflict.5.a
+		
+	}
+	
+}

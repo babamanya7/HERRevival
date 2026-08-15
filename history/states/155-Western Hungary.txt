@@ -1,0 +1,31 @@
+
+state={
+	id=155
+	name="STATE_155" # Transdanubia
+	manpower = 1512303
+	
+	state_category = city
+	resources={
+		coal = 59
+		bauxite = 593
+	}
+	history={
+		owner = HUN
+		victory_points = {
+			11536 3
+		}
+		victory_points = {
+			11584 1
+		}
+		buildings = {
+			infrastructure = 6
+			industrial_complex = 7
+			arms_factory = 2
+		}
+		add_core_of = HUN
+	}
+
+	provinces={
+		589 678 3592 3631 3676 6789 8103 9431 9690 9756 10046 11276 11536 11547 11584 11636 12087 13011 13883
+	}
+}

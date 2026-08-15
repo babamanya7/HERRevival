@@ -1,0 +1,614 @@
+equipment_modules = {
+	###SMALL AIRFRAME ROLES###
+	role_small_fighter = {
+		abbreviation = "fr"
+		category = plane_roles_small
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = fighter
+		
+		allow_mission_type = {
+			air_superiority
+			interception
+		}
+		mission_type_stats = {
+			limit = {
+				interception
+			}
+			multiply_stats = {
+				air_attack = -0.5
+			}
+		}
+		forbid_module_categories = {
+			recon_camera
+		#	capot_fighter_weapon
+		#	engine_mounted_cannons
+		#	wing_fighter_weapon
+			wing_fb_weapon
+			frame_fb_weapon
+			wing_cas_weapon
+			frame_naval_weapon
+			wing_naval_weapon
+			wing_bomber_weapon
+			frame_cas_weapon
+			frame_small_bay_weapon
+			frame_medium_bay_weapon
+			frame_large_bay_weapon
+		}
+		
+		xp_cost = 0
+	}
+	
+	role_small_fighter_bomber = {
+		abbreviation = "fr"
+		category = plane_roles_small
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = fighter
+		
+		allow_mission_type = {
+			air_superiority
+			cas
+		}
+		mission_type_stats = {
+			limit = {
+				cas
+			}
+			multiply_stats = {
+				air_ground_attack = -0.33
+			}
+		}
+		forbid_module_categories = {
+			recon_camera
+		#	capot_fighter_weapon
+		#	engine_mounted_cannons
+		#	wing_fighter_weapon
+		#	frame_fb_weapon
+		#	wing_fb_weapon
+			wing_cas_weapon
+			frame_naval_weapon
+			wing_naval_weapon
+			wing_bomber_weapon
+			frame_cas_weapon
+			frame_small_bay_weapon
+			frame_medium_bay_weapon
+			frame_large_bay_weapon
+		}
+		
+		xp_cost = 0
+	}
+	
+	role_small_interceptor = {
+		abbreviation = "ir"
+		category = plane_roles_small
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = interceptor
+		
+		allow_mission_type = {
+			air_superiority
+			interception
+		}
+		mission_type_stats = {
+			limit = {
+				air_superiority
+			}
+			multiply_stats = {
+				air_attack = -0.25
+			}
+		}
+		mission_type_stats = {
+			limit = {
+				interception
+			}
+			multiply_stats = {
+				air_attack = 0.25
+			}
+		}
+		forbid_module_categories = {
+			recon_camera
+		#	capot_fighter_weapon
+		#	engine_mounted_cannons
+		#	wing_fighter_weapon
+			wing_fb_weapon
+			frame_fb_weapon
+			wing_cas_weapon
+			frame_naval_weapon
+			wing_naval_weapon
+			wing_bomber_weapon
+			frame_cas_weapon
+			frame_small_bay_weapon
+			frame_medium_bay_weapon
+			frame_large_bay_weapon
+		}
+		xp_cost = 0
+	}
+	
+	role_small_cas = {
+		abbreviation = "cas"
+		category = plane_roles_small
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = cas
+		
+		allow_mission_type = {
+			cas
+			naval_bomber
+			attack_logistics
+		}
+		forbid_module_categories = {
+			recon_camera
+		#	capot_fighter_weapon
+			engine_mounted_cannons
+		#	wing_fighter_weapon
+			wing_fb_weapon
+			frame_fb_weapon
+		#	wing_cas_weapon
+			frame_naval_weapon
+			wing_naval_weapon
+			wing_bomber_weapon
+		#	frame_cas_weapon
+		#	frame_small_bay_weapon
+			frame_medium_bay_weapon
+			frame_large_bay_weapon
+		}
+		xp_cost = 0
+	}
+	
+	role_small_naval_bomber = {
+		abbreviation = "nb"
+		category = plane_roles_small
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = maritime_patrol_plane
+		
+		allow_mission_type = {
+			naval_bomber
+			naval_patrol
+			port_strike
+			naval_mines_sweeping
+			naval_mines_planting
+		}
+		forbid_module_categories = {
+			recon_camera
+		#	capot_fighter_weapon
+			engine_mounted_cannons
+			wing_fighter_weapon
+			wing_fb_weapon
+			frame_fb_weapon
+			wing_cas_weapon
+			frame_naval_weapon
+		#	wing_naval_weapon
+			wing_bomber_weapon
+			frame_cas_weapon
+		#	frame_small_bay_weapon
+			frame_medium_bay_weapon
+			frame_large_bay_weapon
+		}
+		
+		xp_cost = 0
+	}
+	
+	role_small_torpedo_bomber = {
+		abbreviation = "tb"
+		category = plane_roles_small
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = naval_bomber
+		
+		allow_mission_type = {
+			naval_bomber
+			port_strike
+		}
+		forbid_module_categories = {
+			recon_camera
+		#	capot_fighter_weapon
+			engine_mounted_cannons
+			wing_fighter_weapon
+			wing_fb_weapon
+			frame_fb_weapon
+			wing_cas_weapon
+		#	frame_naval_weapon
+			wing_naval_weapon
+			wing_bomber_weapon
+			frame_cas_weapon
+			frame_small_bay_weapon
+			frame_medium_bay_weapon
+			frame_large_bay_weapon
+		}
+		
+		xp_cost = 0
+	}
+	
+	role_small_bomber = {
+		abbreviation = "cas"
+		category = plane_roles_small
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = tactical_bomber
+		
+		allow_mission_type = {
+			cas
+			attack_logistics
+			strategic_bomber
+		}
+		forbid_module_categories = {
+			recon_camera
+		#	capot_fighter_weapon
+			engine_mounted_cannons
+			wing_fighter_weapon
+			wing_fb_weapon
+			frame_fb_weapon
+		#	wing_cas_weapon
+			frame_naval_weapon
+			wing_naval_weapon
+			wing_bomber_weapon
+			frame_cas_weapon
+		#	frame_small_bay_weapon
+			frame_medium_bay_weapon
+			frame_large_bay_weapon
+		}
+		
+		xp_cost = 0
+	}
+	
+	role_small_recon = {
+		abbreviation = "tb"
+		category = plane_roles_small
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = scout_plane
+		forbid_equipment_type_exact_match_for_category = {
+			capot_fighter_weapon = scout_plane
+			engine_mounted_cannons = scout_plane
+			wing_fighter_weapon = scout_plane
+			wing_cas_weapon = scout_plane
+			frame_naval_weapon = scout_plane
+			wing_naval_weapon = scout_plane
+			wing_bomber_weapon = scout_plane
+			frame_cas_weapon = scout_plane
+			frame_small_bay_weapon = scout_plane
+			frame_medium_bay_weapon = scout_plane
+			frame_large_bay_weapon = scout_plane
+		}
+		
+		forbid_module_categories = {
+		#	recon_camera
+		#	capot_fighter_weapon
+			engine_mounted_cannons
+			wing_fighter_weapon
+			wing_fb_weapon
+			frame_fb_weapon
+			wing_cas_weapon
+			frame_naval_weapon
+			wing_naval_weapon
+			wing_bomber_weapon
+			frame_cas_weapon
+			frame_small_bay_weapon
+			frame_medium_bay_weapon
+			frame_large_bay_weapon
+		}
+		
+		xp_cost = 0
+	}
+	
+	role_small_suicide = {
+		abbreviation = "tb"
+		category = plane_roles_small
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = suicide
+		
+		forbid_module_categories = {
+			recon_camera
+			capot_fighter_weapon
+			engine_mounted_cannons
+			wing_fighter_weapon
+			wing_fb_weapon
+			frame_fb_weapon
+			wing_cas_weapon
+		#	frame_naval_weapon
+			wing_naval_weapon
+			wing_bomber_weapon
+			frame_cas_weapon
+			frame_small_bay_weapon
+			frame_medium_bay_weapon
+			frame_large_bay_weapon
+		}
+		
+		allow_mission_type = {
+			naval_kamikaze
+		}
+		xp_cost = 0
+	}
+	
+	###MEDIUM AIRFRAME ROLES###
+	
+	role_heavy_fighter = {
+		abbreviation = "fr"
+		category = plane_roles_medium
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = heavy_fighter
+		
+		allow_mission_type = {
+			air_superiority
+			interception
+		}
+		forbid_module_categories = {
+			recon_camera
+		#	capot_fighter_weapon
+		#	engine_mounted_cannons
+		#	wing_fighter_weapon
+			wing_fb_weapon
+			frame_fb_weapon
+			wing_cas_weapon
+			frame_naval_weapon
+			wing_naval_weapon
+			wing_bomber_weapon
+			frame_cas_weapon
+			frame_small_bay_weapon
+			frame_medium_bay_weapon
+			frame_large_bay_weapon
+			
+			medium_plane_engine_type
+		}
+		
+		xp_cost = 0
+	}
+	
+	role_heavy_fighter_bomber = {
+		abbreviation = "fr"
+		category = plane_roles_medium
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = heavy_fighter
+		
+		allow_mission_type = {
+			air_superiority
+			interception
+			cas
+		}
+		mission_type_stats = {
+			limit = {
+				cas
+			}
+			multiply_stats = {
+				air_ground_attack = -0.3
+			}
+		}
+		forbid_module_categories = {
+			recon_camera
+		#	capot_fighter_weapon
+		#	engine_mounted_cannons
+		#	wing_fighter_weapon
+		#	wing_fb_weapon
+		#	frame_fb_weapon
+			wing_cas_weapon
+			frame_naval_weapon
+			wing_naval_weapon
+			wing_bomber_weapon
+			frame_cas_weapon
+			frame_small_bay_weapon
+			frame_medium_bay_weapon
+			frame_large_bay_weapon
+			
+			medium_plane_engine_type
+		}
+		
+		xp_cost = 0
+	}
+	
+	role_medium_cas = {
+		abbreviation = "db"
+		category = plane_roles_medium
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = cas
+		
+		allow_mission_type = {
+			cas
+			naval_bomber
+		}
+		forbid_module_categories = {
+			recon_camera
+		#	capot_fighter_weapon
+			engine_mounted_cannons
+			wing_fighter_weapon
+			wing_fb_weapon
+			frame_fb_weapon
+		#	wing_cas_weapon
+			frame_naval_weapon
+			wing_naval_weapon
+			wing_bomber_weapon
+		#	frame_cas_weapon
+		#	frame_small_bay_weapon
+			frame_medium_bay_weapon
+			frame_large_bay_weapon
+		}
+		
+		xp_cost = 0
+	}
+	
+	role_medium_naval_bomber = {
+		abbreviation = "nb"
+		category = plane_roles_medium
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = maritime_patrol_plane
+		
+		allow_mission_type = {
+			naval_bomber
+			naval_patrol
+			port_strike
+			naval_mines_sweeping
+			naval_mines_planting
+		}
+		forbid_module_categories = {
+			recon_camera
+		#	capot_fighter_weapon
+			engine_mounted_cannons
+			wing_fighter_weapon
+			wing_fb_weapon
+			frame_fb_weapon
+			wing_cas_weapon
+			frame_naval_weapon
+		#	wing_naval_weapon
+			wing_bomber_weapon
+			frame_cas_weapon
+		#	frame_small_bay_weapon
+		#	frame_medium_bay_weapon
+			frame_large_bay_weapon
+		}
+		
+		xp_cost = 0
+	}
+	
+	role_medium_torpedo_bomber = {
+		abbreviation = "tb"
+		category = plane_roles_medium
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = naval_bomber
+		
+		allow_mission_type = {
+			naval_bomber
+			port_strike
+		}
+		forbid_module_categories = {
+			recon_camera
+		#	capot_fighter_weapon
+			engine_mounted_cannons
+			wing_fighter_weapon
+			wing_fb_weapon
+			frame_fb_weapon
+			wing_cas_weapon
+		#	frame_naval_weapon
+		#	wing_naval_weapon
+			wing_bomber_weapon
+			frame_cas_weapon
+			frame_small_bay_weapon
+			frame_medium_bay_weapon
+			frame_large_bay_weapon
+		}
+		
+		xp_cost = 0
+	}
+	
+	role_medium_bomber = {
+		abbreviation = "cas"
+		category = plane_roles_medium
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = tactical_bomber
+		
+		allow_mission_type = {
+			cas
+			attack_logistics
+			strategic_bomber
+		}
+		forbid_module_categories = {
+			recon_camera
+		#	capot_fighter_weapon
+			engine_mounted_cannons
+			wing_fighter_weapon
+			wing_fb_weapon
+			frame_fb_weapon
+		#	wing_cas_weapon
+			frame_naval_weapon
+			wing_naval_weapon
+			wing_bomber_weapon
+			frame_cas_weapon
+		#	frame_small_bay_weapon
+		#	frame_medium_bay_weapon
+			frame_large_bay_weapon
+		}
+		
+		xp_cost = 0
+	}
+	
+	role_medium_recon = {
+		abbreviation = "tb"
+		category = plane_roles_medium
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = scout_plane
+		forbid_equipment_type_exact_match_for_category = {
+			capot_fighter_weapon = scout_plane
+			engine_mounted_cannons = scout_plane
+			wing_fighter_weapon = scout_plane
+			wing_cas_weapon = scout_plane
+			frame_naval_weapon = scout_plane
+			wing_naval_weapon = scout_plane
+			wing_bomber_weapon = scout_plane
+			frame_cas_weapon = scout_plane
+			frame_small_bay_weapon = scout_plane
+			frame_medium_bay_weapon = scout_plane
+			frame_large_bay_weapon = scout_plane
+		}
+		
+		forbid_module_categories = {
+		#	recon_camera
+		#	capot_fighter_weapon
+			engine_mounted_cannons
+			wing_fighter_weapon
+			wing_fb_weapon
+			frame_fb_weapon
+			wing_cas_weapon
+			frame_naval_weapon
+			wing_naval_weapon
+			wing_bomber_weapon
+			frame_cas_weapon
+			frame_small_bay_weapon
+			frame_medium_bay_weapon
+			frame_large_bay_weapon
+		}
+		xp_cost = 0
+	}
+	
+	###LARGE AIRFRAME ROLES###
+	
+	role_large_torpedo_bomber = {
+		abbreviation = "tb"
+		category = plane_roles_large
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = maritime_patrol_plane
+		
+		allow_mission_type = {
+			naval_bomber
+			port_strike
+		}
+		forbid_module_categories = {
+			recon_camera
+			capot_fighter_weapon
+			engine_mounted_cannons
+			wing_fighter_weapon
+			wing_fb_weapon
+			frame_fb_weapon
+			wing_cas_weapon
+		#	frame_naval_weapon
+		#	wing_naval_weapon
+		#	wing_bomber_weapon
+			frame_cas_weapon
+			frame_small_bay_weapon
+			frame_medium_bay_weapon
+			frame_large_bay_weapon
+		}
+		
+		xp_cost = 0
+	}
+	
+	role_large_bomber = {
+		abbreviation = "cas"
+		category = plane_roles_large
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = strategic_bomber
+		
+		allow_mission_type = {
+			strategic_bomber
+			port_strike
+		}
+		forbid_module_categories = {
+			recon_camera
+			capot_fighter_weapon
+			engine_mounted_cannons
+			wing_fighter_weapon
+			wing_fb_weapon
+			frame_fb_weapon
+		#	wing_cas_weapon
+			frame_naval_weapon
+			wing_naval_weapon
+		#	wing_bomber_weapon
+			frame_cas_weapon
+		#	frame_small_bay_weapon
+		#	frame_medium_bay_weapon
+		#	frame_large_bay_weapon
+		}
+		
+		xp_cost = 0
+	}
+}

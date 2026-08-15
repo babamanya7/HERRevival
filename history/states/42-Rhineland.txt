@@ -1,0 +1,38 @@
+
+state={
+	id=42
+	name="STATE_42"
+	resources={
+		
+	}
+
+	history={
+		owner = GER
+		victory_points = {
+			914 1 
+		}
+		victory_points = {
+			13246 5
+		}
+		victory_points = {
+			13509 3
+		}
+		buildings = {
+			infrastructure = 9
+			arms_factory = 1
+			industrial_complex = 12
+			steel_refinery = 3
+
+		}
+		add_core_of = GER
+		set_demilitarized_zone = yes
+
+	}
+
+	provinces={
+		914 956 969 1164 3258 3526 3690 3728 3868 8038 9619 9629 9666 9930 11233 13246 13509 
+	}
+	manpower=2027739
+	buildings_max_level_factor=1.000
+	state_category=metropolis
+}

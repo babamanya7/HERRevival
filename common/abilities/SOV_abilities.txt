@@ -1,0 +1,33 @@
+ability = {	
+	SOV_force_attack = {
+		name = ABILITY_NO_STEP_BACK
+		desc = ABILITY_NO_STEP_BACK_DESC
+		icon = GFX_ability_chi_force_attack
+		
+		sound_effect = command_power_ability_offensive
+		
+		type = army_leader
+		
+		allowed = {
+			is_leading_army_group = no
+			is_border_war = no
+			OWNER = {
+				AND = {
+					has_completed_focus = SOV_great_patriotic_war
+					has_idea = order_227
+				}
+			}
+		}
+		
+		cost = 0.06
+		duration = 168
+		
+			unit_modifiers = {
+				defence = 0.2
+				org_damage_multiplier = -0.75
+				str_damage_multiplier = 0.75
+				war_support_reduction_on_damage = 0.2
+				cannot_retreat_while_defending = 1.0
+			}
+	}
+}

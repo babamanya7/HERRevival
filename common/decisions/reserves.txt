@@ -1,0 +1,1372 @@
+reserve_divisions = {
+	
+	mob_start = {
+		
+		icon = generic_nationalism
+		
+		#fire_only_once = yes
+		
+		available = {
+			has_war = yes
+			has_manpower > 139499
+			any_enemy_country = {
+				is_major = yes
+			}
+			NOT = { surrender_progress > 0.8 }
+			num_of_controlled_states > 0
+		}
+		
+		visible = {
+			has_war = yes
+			NOT = { has_country_flag = mob_has_start }
+			NOT = { has_country_flag = reserves_finished_1 }
+			OR = {
+				has_country_flag = reserve_total_1
+				has_country_flag = reserve_total_2
+				has_country_flag = reserve_total_3
+				has_country_flag = reserve_total_4
+				has_country_flag = reserve_total_5
+				has_country_flag = reserve_total_6
+				has_country_flag = reserve_total_7
+				has_country_flag = reserve_total_8
+				has_country_flag = reserve_total_9
+				has_country_flag = reserve_total_10
+				has_country_flag = reserve_total_11
+				has_country_flag = reserve_total_12
+				has_country_flag = reserve_total_13
+				has_country_flag = reserve_total_14
+				has_country_flag = reserve_total_15
+			}
+		}
+	
+		complete_effect = {
+			set_country_flag = mob_has_start
+		}
+		
+		
+		ai_will_do = {
+			factor = 5000
+		}
+	}
+	
+	recruit_more_reserves = {
+
+		icon = generic_nationalism
+
+		available = {
+			if = {
+				limit = {
+					has_country_flag = reserve_total_1
+				}
+				has_country_flag = reserve_total_1
+				OR = {
+					has_country_flag = USA_selective_service_act_flag
+					has_army_manpower = { size > 150000 }
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_2
+				}
+				has_country_flag = reserve_total_2
+				OR = {
+					has_country_flag = USA_selective_service_act_flag
+					has_army_manpower = { size > 300000 }
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_3
+				}
+				has_country_flag = reserve_total_3
+				OR = {
+					has_country_flag = USA_selective_service_act_flag
+					has_army_manpower = { size > 450000 }
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_4
+				}
+				has_country_flag = reserve_total_4
+				OR = {
+					has_country_flag = USA_selective_service_act_flag
+					has_army_manpower = { size > 600000 }
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_5
+				}
+				has_country_flag = reserve_total_5
+				has_army_manpower = { size > 750000 }
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_6
+				}
+				has_country_flag = reserve_total_6
+				has_army_manpower = { size > 900000 }
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_7
+				}
+				has_country_flag = reserve_total_7
+				has_army_manpower = { size > 1050000 }
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_8
+				}
+				has_country_flag = reserve_total_8
+				has_army_manpower = { size > 1200000 }
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_9
+				}
+				has_country_flag = reserve_total_9
+				has_army_manpower = { size > 1350000 }
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_10
+				}
+				has_country_flag = reserve_total_10
+				has_army_manpower = { size > 1500000 }
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_11
+				}
+				has_country_flag = reserve_total_11
+				has_army_manpower = { size > 1650000 }
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_12
+				}
+				has_country_flag = reserve_total_12
+				has_army_manpower = { size > 1800000 }
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_13
+				}
+				has_country_flag = reserve_total_13
+				has_army_manpower = { size > 1950000 }
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_14
+				}
+				has_country_flag = reserve_total_14
+				has_army_manpower = { size > 2100000 }
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = reserve_total_1
+						has_country_flag = reserve_total_2
+						has_country_flag = reserve_total_3
+						has_country_flag = reserve_total_4
+						has_country_flag = reserve_total_5
+						has_country_flag = reserve_total_6
+						has_country_flag = reserve_total_7
+						has_country_flag = reserve_total_8
+						has_country_flag = reserve_total_9
+						has_country_flag = reserve_total_10
+						has_country_flag = reserve_total_11
+						has_country_flag = reserve_total_12
+						has_country_flag = reserve_total_13
+						has_country_flag = reserve_total_14
+					}
+				}
+				has_army_manpower = { size > 1 }
+			}
+			has_war = no
+			NOT = { has_country_flag = reserve_total_15 }
+		}
+
+		visible = {
+			OR = {
+				tag = FRA
+				tag = ITA
+				tag = JAP
+				tag = GER
+				tag = SOV
+				tag = ENG
+				tag = USA
+				tag = POL
+				tag = YUG
+			}
+		}
+
+		cost = 0
+		ai_will_do = {
+			factor = 500
+		}
+		days_remove = 90
+
+		cancel_trigger = {
+			has_war = yes
+		}
+
+		modifier = {
+			industrial_capacity_factory = -0.2
+			training_time_factor = 0.5
+		}
+
+		remove_effect = {
+			custom_effect_tooltip = recruiting_reserves		
+			country_event = sov_armor.817
+			hidden_effect = {
+				if = {
+					limit = {
+						has_country_flag = reserve_total_1
+					}
+					clr_country_flag = reserve_total_1
+					set_country_flag = reserve_total_2
+				}
+				else_if = {
+					limit = {
+						has_country_flag = reserve_total_2
+					}
+					clr_country_flag = reserve_total_2
+					set_country_flag = reserve_total_3
+				}
+				else_if = {
+					limit = {
+						has_country_flag = reserve_total_3
+					}
+					clr_country_flag = reserve_total_3
+					set_country_flag = reserve_total_4
+				}
+				else_if = {
+					limit = {
+						has_country_flag = reserve_total_4
+					}
+					clr_country_flag = reserve_total_4
+					set_country_flag = reserve_total_5
+				}
+				else_if = {
+					limit = {
+						has_country_flag = reserve_total_5
+					}
+					clr_country_flag = reserve_total_5
+					set_country_flag = reserve_total_6
+				}
+				else_if = {
+					limit = {
+						has_country_flag = reserve_total_6
+					}
+					clr_country_flag = reserve_total_6
+					set_country_flag = reserve_total_7
+				}
+				else_if = {
+					limit = {
+						has_country_flag = reserve_total_7
+					}
+					clr_country_flag = reserve_total_7
+					set_country_flag = reserve_total_8
+				}
+				else_if = {
+					limit = {
+						has_country_flag = reserve_total_8
+					}
+					clr_country_flag = reserve_total_8
+					set_country_flag = reserve_total_9
+				}
+				else_if = {
+					limit = {
+						has_country_flag = reserve_total_9
+					}
+					clr_country_flag = reserve_total_9
+					set_country_flag = reserve_total_10
+				}
+				else_if = {
+					limit = {
+						has_country_flag = reserve_total_10
+					}
+					clr_country_flag = reserve_total_10
+					set_country_flag = reserve_total_11
+				}
+				else_if = {
+					limit = {
+						has_country_flag = reserve_total_11
+					}
+					clr_country_flag = reserve_total_11
+					set_country_flag = reserve_total_12
+				}
+				else_if = {
+					limit = {
+						has_country_flag = reserve_total_12
+					}
+					clr_country_flag = reserve_total_12
+					set_country_flag = reserve_total_13
+				}
+				else_if = {
+					limit = {
+						has_country_flag = reserve_total_13
+					}
+					clr_country_flag = reserve_total_13
+					set_country_flag = reserve_total_14
+				}
+				else_if = {
+					limit = {
+						has_country_flag = reserve_total_14
+					}
+					clr_country_flag = reserve_total_14
+					set_country_flag = reserve_total_15
+				}
+				else = {
+					set_country_flag = reserve_total_1
+				}
+			}
+		}
+	}
+
+	#############################################################################################################################################################################
+
+	finish_recruitment_of_reserves = {
+
+		icon = generic_form_nation
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1000
+				NOT = {
+					has_country_flag = reserve_total_1
+					has_country_flag = reserve_total_2
+					has_country_flag = reserve_total_3
+					has_country_flag = reserve_total_4
+					has_country_flag = reserve_total_5
+					has_country_flag = reserve_total_6
+					has_country_flag = reserve_total_7
+					has_country_flag = reserve_total_8
+					has_country_flag = reserve_total_9
+					has_country_flag = reserve_total_10
+					has_country_flag = reserve_total_11
+					has_country_flag = reserve_total_12
+					has_country_flag = reserve_total_13
+					has_country_flag = reserve_total_14
+					has_country_flag = reserve_total_15
+				}
+			}
+		}
+
+		available = {
+			
+			hidden_trigger = {
+				OR = {
+					AND = {
+						NOT = { has_country_flag = reserves_finished_1 }
+						OR = {
+							has_template = "French Reserve Divisíon"
+							has_template = "Italian Reserve Divisíon"
+							has_template = "Japanese Reserve Divisíon"
+							has_template = "German Reserve Divisíon"
+							has_template = "Soviet Reserve Divisíon"
+							has_template = "British Reserve Divisíon"
+							has_template = "US Reserve Divisíon"
+							
+							has_template = "Polish Reserve Divisíon"
+							has_template = "Yugoslavian Reserve Divisíon"
+							has_template = "Belgian Reserve Divisíon"
+							has_template = "Greek Reserve Divisíon"
+						}
+					}	
+					NOT = {
+						has_country_flag = reserve_total_1
+						has_country_flag = reserve_total_2
+						has_country_flag = reserve_total_3
+						has_country_flag = reserve_total_4
+						has_country_flag = reserve_total_5
+						has_country_flag = reserve_total_6
+						has_country_flag = reserve_total_7
+						has_country_flag = reserve_total_8
+						has_country_flag = reserve_total_9
+						has_country_flag = reserve_total_10
+						has_country_flag = reserve_total_11
+						has_country_flag = reserve_total_12
+						has_country_flag = reserve_total_13
+						has_country_flag = reserve_total_14
+						has_country_flag = reserve_total_15
+					}
+				}
+			}
+		}
+
+		visible = {
+			NOT = {
+				has_country_flag = reserve_total_1
+				has_country_flag = reserve_total_2
+				has_country_flag = reserve_total_3
+				has_country_flag = reserve_total_4
+				has_country_flag = reserve_total_5
+				has_country_flag = reserve_total_6
+				has_country_flag = reserve_total_7
+				has_country_flag = reserve_total_8
+				has_country_flag = reserve_total_9
+				has_country_flag = reserve_total_10
+				has_country_flag = reserve_total_11
+				has_country_flag = reserve_total_12
+				has_country_flag = reserve_total_13
+				has_country_flag = reserve_total_14
+				has_country_flag = reserve_total_15
+			}
+			AND = {
+				NOT = { has_country_flag = reserves_finished_1 }
+				OR = {
+					has_template = "French Reserve Divisíon"
+					has_template = "Italian Reserve Divisíon"
+					has_template = "Japanese Reserve Divisíon"
+					has_template = "German Reserve Divisíon"
+					has_template = "Soviet Reserve Divisíon"
+					has_template = "British Reserve Divisíon"
+					has_template = "US Reserve Divisíon"
+					has_template = "Polish Reserve Divisíon"
+					has_template = "Yugoslavian Reserve Divisíon"
+				}
+			}
+		}
+
+		cost = 0
+
+		complete_effect = {
+			if = {
+				limit = {
+					NOT = { has_country_flag = reserves_finished_1 }
+				}
+				set_country_flag = reserves_finished_1
+			}
+			if = {
+				limit = {
+					has_template = "French Reserve Divisíon"
+				}
+				set_division_template_lock = {
+				    division_template = "French Reserve Divisíon"
+				    is_locked = no
+				}
+			}
+			if = {
+				limit = {
+					has_template = "Italian Reserve Divisíon"
+				}
+				set_division_template_lock = {
+				    division_template = "Italian Reserve Divisíon"
+				    is_locked = no
+				}
+			}
+			if = {
+				limit = {
+					has_template = "Japanese Reserve Divisíon"
+				}
+				set_division_template_lock = {
+				    division_template = "Japanese Reserve Divisíon"
+				    is_locked = no
+				}
+			}
+			if = {
+				limit = {
+					has_template = "German Reserve Divisíon"
+				}
+				set_division_template_lock = {
+				    division_template = "German Reserve Divisíon"
+				    is_locked = no
+				}
+			}
+			if = {
+				limit = {
+					has_template = "Soviet Reserve Divisíon"
+				}
+				set_division_template_lock = {
+				    division_template = "Soviet Reserve Divisíon"
+				    is_locked = no
+				}
+			}
+			if = {
+				limit = {
+					has_template = "British Reserve Divisíon"
+				}
+				set_division_template_lock = {
+				    division_template = "British Reserve Divisíon"
+				    is_locked = no
+				}
+			}
+			if = {
+				limit = {
+					has_template = "US Reserve Divisíon"
+				}
+				set_division_template_lock = {
+				    division_template = "US Reserve Divisíon"
+				    is_locked = no
+				}
+			}
+			if = {
+				limit = {
+					has_template = "Polish Reserve Divisíon"
+				}
+				set_division_template_lock = {
+				    division_template = "Polish Reserve Divisíon"
+				    is_locked = no
+				}
+			}
+			if = {
+				limit = {
+					has_template = "Yugoslavian Reserve Divisíon"
+				}
+				set_division_template_lock = {
+				    division_template = "Yugoslavian Reserve Divisíon"
+				    is_locked = no
+				}
+			}
+		}
+
+		remove_effect = {
+		}
+	}
+
+	#############################################################################################################################################################################
+
+	deploy_reserves_infantry = {
+
+		icon = generic_nationalism
+		
+		activation = {
+			has_manpower > 139499
+			has_country_flag = mob_has_start
+			OR = {
+				has_country_flag = reserve_total_1
+				has_country_flag = reserve_total_2
+				has_country_flag = reserve_total_3
+				has_country_flag = reserve_total_4
+				has_country_flag = reserve_total_5
+				has_country_flag = reserve_total_6
+				has_country_flag = reserve_total_7
+				has_country_flag = reserve_total_8
+				has_country_flag = reserve_total_9
+				has_country_flag = reserve_total_10
+				has_country_flag = reserve_total_11
+				has_country_flag = reserve_total_12
+				has_country_flag = reserve_total_13
+				has_country_flag = reserve_total_14
+				has_country_flag = reserve_total_15
+			}
+		}
+		
+		available = {
+			has_manpower < 139500
+		}
+
+		visible = {
+			NOT = { has_country_flag = reserves_finished_1 }
+			OR = {
+				has_country_flag = reserve_total_1
+				has_country_flag = reserve_total_2
+				has_country_flag = reserve_total_3
+				has_country_flag = reserve_total_4
+				has_country_flag = reserve_total_5
+				has_country_flag = reserve_total_6
+				has_country_flag = reserve_total_7
+				has_country_flag = reserve_total_8
+				has_country_flag = reserve_total_9
+				has_country_flag = reserve_total_10
+				has_country_flag = reserve_total_11
+				has_country_flag = reserve_total_12
+				has_country_flag = reserve_total_13
+				has_country_flag = reserve_total_14
+				has_country_flag = reserve_total_15
+			}
+		}
+
+		days_mission_timeout = 3
+		
+		is_good = yes
+		
+		timeout_effect = {
+			add_manpower = -139500
+			if = {
+				limit = {
+					has_country_flag = reserve_total_1
+				}
+				clr_country_flag = reserve_total_1
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_2
+				}
+				clr_country_flag = reserve_total_2
+				set_country_flag = reserve_total_1
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_3
+				}
+				clr_country_flag = reserve_total_3
+				set_country_flag = reserve_total_2
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_4
+				}
+				clr_country_flag = reserve_total_4
+				set_country_flag = reserve_total_3
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_5
+				}
+				clr_country_flag = reserve_total_5
+				set_country_flag = reserve_total_4
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_6
+				}
+				clr_country_flag = reserve_total_6
+				set_country_flag = reserve_total_5
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_7
+				}
+				clr_country_flag = reserve_total_7
+				set_country_flag = reserve_total_6
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_8
+				}
+				clr_country_flag = reserve_total_8
+				set_country_flag = reserve_total_7
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_9
+				}
+				clr_country_flag = reserve_total_9
+				set_country_flag = reserve_total_8
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_10
+				}
+				clr_country_flag = reserve_total_10
+				set_country_flag = reserve_total_9
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_11
+				}
+				clr_country_flag = reserve_total_11
+				set_country_flag = reserve_total_10
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_12
+				}
+				clr_country_flag = reserve_total_12
+				set_country_flag = reserve_total_11
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_13
+				}
+				clr_country_flag = reserve_total_13
+				set_country_flag = reserve_total_12
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_14
+				}
+				clr_country_flag = reserve_total_14
+				set_country_flag = reserve_total_13
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_15
+				}
+				clr_country_flag = reserve_total_15
+				set_country_flag = reserve_total_14
+			}
+			custom_effect_tooltip = deploying_reserves_infantry
+			hidden_effect = {
+				if = {
+					limit = {
+						has_war = yes
+						has_manpower > 139499
+						NOT = { surrender_progress > 0.8 }
+						num_of_controlled_states > 0
+						OR = {
+							has_country_flag = reserve_total_1
+							has_country_flag = reserve_total_2
+							has_country_flag = reserve_total_3
+							has_country_flag = reserve_total_4
+							has_country_flag = reserve_total_5
+							has_country_flag = reserve_total_6
+							has_country_flag = reserve_total_7
+							has_country_flag = reserve_total_8
+							has_country_flag = reserve_total_9
+							has_country_flag = reserve_total_10
+							has_country_flag = reserve_total_11
+							has_country_flag = reserve_total_12
+							has_country_flag = reserve_total_13
+							has_country_flag = reserve_total_14
+							has_country_flag = reserve_total_15
+						}
+					}
+					activate_mission = deploy_reserves_infantry
+				}
+				if = {
+					limit = {
+						tag = FRA
+						NOT = { has_template = "French Reserve Divisíon" }
+						OR = {
+							is_ai = no
+							NOT = { has_country_flag = infantry_template_fra }
+						}
+					}
+					division_template = {
+						name = "French Reserve Divisíon"
+						template_counter = 74
+						division_names_group = FRA_INF_01
+						is_locked = yes
+
+						regiments = {
+							heavy_infantry = { x = 0 y = 0 }
+							heavy_infantry = { x = 0 y = 1 }
+							heavy_infantry = { x = 0 y = 2 }
+
+							heavy_infantry = { x = 1 y = 0 }
+							heavy_infantry = { x = 1 y = 1 }
+							heavy_infantry = { x = 1 y = 2 }
+
+							heavy_infantry = { x = 2 y = 0 }
+							heavy_infantry = { x = 2 y = 1 }
+							heavy_infantry = { x = 2 y = 2 }
+							
+							artillery_brigade = { x = 3 y = 0 }
+							artillery_brigade = { x = 3 y = 1 }
+							artillery_brigade = { x = 3 y = 2 }
+							heavy_artillery_brigade = { x = 3 y = 3 }
+							
+							anti_tank_brigade = { x = 4 y = 0 }
+							anti_tank_brigade = { x = 4 y = 1 }
+						}
+						regimental_support = {
+							artillery = { x = 0 y = 0 }
+							anti_tank = { x = 0 y = 1 }
+							
+							artillery = { x = 1 y = 0 }
+							anti_tank = { x = 1 y = 1 }
+							
+							artillery = { x = 2 y = 0 }
+							anti_tank = { x = 2 y = 1 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+							field_hospital = { x = 0 y = 1 }
+							signal_company = { x = 0 y = 2 }
+							recon = { x = 0 y = 3 }
+							anti_air_battery = { x = 0 y = 4 }
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = FRA
+						OR = {
+							is_ai = no
+							NOT = { has_country_flag = infantry_template_fra }
+						}
+					}
+					capital_scope = {
+						create_unit = {
+							division = "division_template=\"French Reserve Divisíon\" start_experience_factor=0.2 start_equipment_factor=0.3" 
+							owner = ROOT
+							count = 10
+							prioritize_location = 13344
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = ITA
+						NOT = { has_template = "Italian Reserve Divisíon" }
+						OR = {
+							is_ai = no
+							NOT = { has_country_flag = infantry_template_ita }
+						}
+					}
+					division_template = {
+						name = "Italian Reserve Divisíon"
+						template_counter = 72
+						division_names_group = ITA_INF_01
+						is_locked = yes
+
+						regiments = {
+							heavy_infantry = { x = 0 y = 0 }
+							heavy_infantry = { x = 0 y = 1 }
+							heavy_infantry = { x = 0 y = 2 }
+
+							heavy_infantry = { x = 1 y = 0 }
+							heavy_infantry = { x = 1 y = 1 }
+							heavy_infantry = { x = 1 y = 2 }
+
+							heavy_infantry = { x = 2 y = 0 }
+							heavy_infantry = { x = 2 y = 1 }
+							heavy_infantry = { x = 2 y = 2 }
+							
+							artillery_brigade = { x = 3 y = 0 }
+							artillery_brigade = { x = 3 y = 1 }
+							artillery_brigade = { x = 3 y = 2 }
+							heavy_artillery_brigade = { x = 3 y = 3 }
+							
+							anti_tank_brigade = { x = 4 y = 0 }
+							anti_tank_brigade = { x = 4 y = 1 }
+						}
+						regimental_support = {
+							artillery = { x = 0 y = 0 }
+							anti_tank = { x = 0 y = 1 }
+							
+							artillery = { x = 1 y = 0 }
+							anti_tank = { x = 1 y = 1 }
+							
+							artillery = { x = 2 y = 0 }
+							anti_tank = { x = 2 y = 1 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+							field_hospital = { x = 0 y = 1 }
+							signal_company = { x = 0 y = 2 }
+							recon = { x = 0 y = 3 }
+							anti_air_battery = { x = 0 y = 4 }
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = ITA
+						OR = {
+							is_ai = no
+							NOT = { has_country_flag = infantry_template_ita }
+						}
+					}
+					capital_scope = {
+						create_unit = {
+							division = "division_template=\"Italian Reserve Divisíon\" start_experience_factor=0.2 start_equipment_factor=0.3" 
+							owner = ROOT
+							count = 10
+							prioritize_location = 14527
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = JAP
+						NOT = { has_template = "Japanese Reserve Divisíon" }
+						OR = {
+							is_ai = no
+							NOT = { has_country_flag = infantry_template_jap }
+						}
+					}
+					division_template = {
+						name = "Japanese Reserve Divisíon"
+						division_names_group = JAP_INF_01
+						is_locked = yes
+
+						regiments = {
+							heavy_infantry = { x = 0 y = 0 }
+							heavy_infantry = { x = 0 y = 1 }
+							heavy_infantry = { x = 0 y = 2 }
+
+							heavy_infantry = { x = 1 y = 0 }
+							heavy_infantry = { x = 1 y = 1 }
+							heavy_infantry = { x = 1 y = 2 }
+
+							heavy_infantry = { x = 2 y = 0 }
+							heavy_infantry = { x = 2 y = 1 }
+							heavy_infantry = { x = 2 y = 2 }
+							
+							artillery_brigade = { x = 3 y = 0 }
+							artillery_brigade = { x = 3 y = 1 }
+							artillery_brigade = { x = 3 y = 2 }
+							heavy_artillery_brigade = { x = 3 y = 3 }
+							
+							anti_tank_brigade = { x = 4 y = 0 }
+							anti_tank_brigade = { x = 4 y = 1 }
+						}
+						regimental_support = {
+							artillery = { x = 0 y = 0 }
+							anti_tank = { x = 0 y = 1 }
+							
+							artillery = { x = 1 y = 0 }
+							anti_tank = { x = 1 y = 1 }
+							
+							artillery = { x = 2 y = 0 }
+							anti_tank = { x = 2 y = 1 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+							field_hospital = { x = 0 y = 1 }
+							signal_company = { x = 0 y = 2 }
+							recon = { x = 0 y = 3 }
+							anti_air_battery = { x = 0 y = 4 }
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = JAP
+						OR = {
+							is_ai = no
+							NOT = { has_country_flag = infantry_template_jap }
+						}
+					}
+					capital_scope = {
+						create_unit = {
+							division = "division_template=\"Japanese Reserve Divisíon\" start_experience_factor=0.2 start_equipment_factor=0.3" 
+							owner = ROOT
+							count = 10
+							prioritize_location = 1182
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = GER
+						NOT = { has_template = "German Reserve Divisíon" }
+						OR = {
+							is_ai = no
+							NOT = { has_country_flag = infantry_template_ger }
+						}
+					}
+					division_template = {
+						name = "German Reserve Divisíon"
+						template_counter = 76
+						division_names_group = GER_INF_01
+						is_locked = yes
+
+						regiments = {
+							heavy_infantry = { x = 0 y = 0 }
+							heavy_infantry = { x = 0 y = 1 }
+							heavy_infantry = { x = 0 y = 2 }
+
+							heavy_infantry = { x = 1 y = 0 }
+							heavy_infantry = { x = 1 y = 1 }
+							heavy_infantry = { x = 1 y = 2 }
+
+							heavy_infantry = { x = 2 y = 0 }
+							heavy_infantry = { x = 2 y = 1 }
+							heavy_infantry = { x = 2 y = 2 }
+							
+							artillery_brigade = { x = 3 y = 0 }
+							artillery_brigade = { x = 3 y = 1 }
+							artillery_brigade = { x = 3 y = 2 }
+							heavy_artillery_brigade = { x = 3 y = 3 }
+							
+							anti_tank_brigade = { x = 4 y = 0 }
+							anti_tank_brigade = { x = 4 y = 1 }
+						}
+						regimental_support = {
+							artillery = { x = 0 y = 0 }
+							anti_tank = { x = 0 y = 1 }
+							
+							artillery = { x = 1 y = 0 }
+							anti_tank = { x = 1 y = 1 }
+							
+							artillery = { x = 2 y = 0 }
+							anti_tank = { x = 2 y = 1 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+							field_hospital = { x = 0 y = 1 }
+							signal_company = { x = 0 y = 2 }
+							recon = { x = 0 y = 3 }
+							anti_air_battery = { x = 0 y = 4 }
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = GER
+						OR = {
+							is_ai = no
+							NOT = { has_country_flag = infantry_template_ger }
+						}
+					}
+					capital_scope = {
+						create_unit = {
+							division = "division_template=\"German Reserve Divisíon\" start_experience_factor=0.2 start_equipment_factor=0.3" 
+							owner = ROOT
+							count = 10
+							prioritize_location = 13508
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = SOV
+						NOT = { has_template = "Soviet Reserve Divisíon" }
+						OR = {
+							is_ai = no
+							NOT = { has_country_flag = infantry_template_sov }
+						}
+					}
+					division_template = {
+						name = "Soviet Reserve Divisíon"
+						division_names_group = SOV_INF_01
+						is_locked = yes
+
+						regiments = {
+							heavy_infantry = { x = 0 y = 0 }
+							heavy_infantry = { x = 0 y = 1 }
+							heavy_infantry = { x = 0 y = 2 }
+
+							heavy_infantry = { x = 1 y = 0 }
+							heavy_infantry = { x = 1 y = 1 }
+							heavy_infantry = { x = 1 y = 2 }
+
+							heavy_infantry = { x = 2 y = 0 }
+							heavy_infantry = { x = 2 y = 1 }
+							heavy_infantry = { x = 2 y = 2 }
+							
+							artillery_brigade = { x = 3 y = 0 }
+							artillery_brigade = { x = 3 y = 1 }
+							artillery_brigade = { x = 3 y = 2 }
+							heavy_artillery_brigade = { x = 3 y = 3 }
+							
+							anti_tank_brigade = { x = 4 y = 0 }
+							anti_tank_brigade = { x = 4 y = 1 }
+						}
+						regimental_support = {
+							artillery = { x = 0 y = 0 }
+							anti_tank = { x = 0 y = 1 }
+							
+							artillery = { x = 1 y = 0 }
+							anti_tank = { x = 1 y = 1 }
+							
+							artillery = { x = 2 y = 0 }
+							anti_tank = { x = 2 y = 1 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+							field_hospital = { x = 0 y = 1 }
+							signal_company = { x = 0 y = 2 }
+							recon = { x = 0 y = 3 }
+							anti_air_battery = { x = 0 y = 4 }
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = SOV
+						OR = {
+							is_ai = no
+							NOT = { has_country_flag = infantry_template_sov }
+						}
+					}
+					capital_scope = {
+						create_unit = {
+							division = "division_template=\"Soviet Reserve Divisíon\" start_experience_factor=0.2 start_equipment_factor=0.3"
+							owner = ROOT
+							count = 10
+							prioritize_location = 6380
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = ENG
+						NOT = { has_template = "British Reserve Divisíon" }
+						OR = {
+							is_ai = no
+							NOT = { has_country_flag = infantry_template_eng }
+						}
+					}
+					division_template = {
+						name = "British Reserve Divisíon"
+						template_counter = 80
+						division_names_group = ENG_INF_01
+						is_locked = yes
+
+						regiments = {
+							heavy_infantry = { x = 0 y = 0 }
+							heavy_infantry = { x = 0 y = 1 }
+							heavy_infantry = { x = 0 y = 2 }
+
+							heavy_infantry = { x = 1 y = 0 }
+							heavy_infantry = { x = 1 y = 1 }
+							heavy_infantry = { x = 1 y = 2 }
+
+							heavy_infantry = { x = 2 y = 0 }
+							heavy_infantry = { x = 2 y = 1 }
+							heavy_infantry = { x = 2 y = 2 }
+							
+							artillery_brigade = { x = 3 y = 0 }
+							artillery_brigade = { x = 3 y = 1 }
+							artillery_brigade = { x = 3 y = 2 }
+							heavy_artillery_brigade = { x = 3 y = 3 }
+							
+							anti_tank_brigade = { x = 4 y = 0 }
+							anti_tank_brigade = { x = 4 y = 1 }
+						}
+						regimental_support = {
+							artillery = { x = 0 y = 0 }
+							anti_tank = { x = 0 y = 1 }
+							
+							artillery = { x = 1 y = 0 }
+							anti_tank = { x = 1 y = 1 }
+							
+							artillery = { x = 2 y = 0 }
+							anti_tank = { x = 2 y = 1 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+							field_hospital = { x = 0 y = 1 }
+							signal_company = { x = 0 y = 2 }
+							recon = { x = 0 y = 3 }
+							anti_air_battery = { x = 0 y = 4 }
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = ENG
+						OR = {
+							is_ai = no
+							NOT = { has_country_flag = infantry_template_eng }
+						}
+					}
+					capital_scope = {
+						create_unit = {
+							division = "division_template=\"British Reserve Divisíon\" start_experience_factor=0.2 start_equipment_factor=0.3" 
+							owner = ROOT
+							count = 10
+							prioritize_location = 6103
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = USA
+						NOT = { has_template = "US Reserve Divisíon" }
+						OR = {
+							is_ai = no
+							NOT = { has_country_flag = infantry_template_usa }
+						}
+					}
+					division_template = {
+						name = "US Reserve Divisíon"
+						division_names_group = USA_INF_01
+						is_locked = yes
+
+						regiments = {
+							heavy_infantry = { x = 0 y = 0 }
+							heavy_infantry = { x = 0 y = 1 }
+							heavy_infantry = { x = 0 y = 2 }
+
+							heavy_infantry = { x = 1 y = 0 }
+							heavy_infantry = { x = 1 y = 1 }
+							heavy_infantry = { x = 1 y = 2 }
+
+							heavy_infantry = { x = 2 y = 0 }
+							heavy_infantry = { x = 2 y = 1 }
+							heavy_infantry = { x = 2 y = 2 }
+							
+							artillery_brigade = { x = 3 y = 0 }
+							artillery_brigade = { x = 3 y = 1 }
+							artillery_brigade = { x = 3 y = 2 }
+							heavy_artillery_brigade = { x = 3 y = 3 }
+							
+							anti_tank_brigade = { x = 4 y = 0 }
+							anti_tank_brigade = { x = 4 y = 1 }
+						}
+						regimental_support = {
+							artillery = { x = 0 y = 0 }
+							anti_tank = { x = 0 y = 1 }
+							
+							artillery = { x = 1 y = 0 }
+							anti_tank = { x = 1 y = 1 }
+							
+							artillery = { x = 2 y = 0 }
+							anti_tank = { x = 2 y = 1 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+							field_hospital = { x = 0 y = 1 }
+							signal_company = { x = 0 y = 2 }
+							recon = { x = 0 y = 3 }
+							anti_air_battery = { x = 0 y = 4 }
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = USA
+						OR = {
+							is_ai = no
+							NOT = { has_country_flag = infantry_template_usa }
+						}
+					}
+					capital_scope = {
+						create_unit = {
+							division = "division_template=\"US Reserve Divisíon\" start_experience_factor=0.2 start_equipment_factor=0.3" 
+							owner = ROOT
+							count = 10
+							prioritize_location = 3957
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = POL
+						NOT = { has_template = "Polish Reserve Divisíon" }
+						OR = {
+							is_ai = no
+							NOT = { has_country_flag = infantry_template_pol }
+						}
+					}
+					division_template = {
+						name = "Polish Reserve Divisíon"
+						division_names_group = POL_INF_01
+						is_locked = yes
+
+						regiments = {
+							heavy_infantry = { x = 0 y = 0 }
+							heavy_infantry = { x = 0 y = 1 }
+							heavy_infantry = { x = 0 y = 2 }
+
+							heavy_infantry = { x = 1 y = 0 }
+							heavy_infantry = { x = 1 y = 1 }
+							heavy_infantry = { x = 1 y = 2 }
+
+							heavy_infantry = { x = 2 y = 0 }
+							heavy_infantry = { x = 2 y = 1 }
+							heavy_infantry = { x = 2 y = 2 }
+							
+							artillery_brigade = { x = 3 y = 0 }
+							artillery_brigade = { x = 3 y = 1 }
+							artillery_brigade = { x = 3 y = 2 }
+							heavy_artillery_brigade = { x = 3 y = 3 }
+							
+							anti_tank_brigade = { x = 4 y = 0 }
+							anti_tank_brigade = { x = 4 y = 1 }
+						}
+						regimental_support = {
+							artillery = { x = 0 y = 0 }
+							anti_tank = { x = 0 y = 1 }
+							
+							artillery = { x = 1 y = 0 }
+							anti_tank = { x = 1 y = 1 }
+							
+							artillery = { x = 2 y = 0 }
+							anti_tank = { x = 2 y = 1 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+							field_hospital = { x = 0 y = 1 }
+							signal_company = { x = 0 y = 2 }
+							recon = { x = 0 y = 3 }
+							anti_air_battery = { x = 0 y = 4 }
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = POL
+						OR = {
+							is_ai = no
+							NOT = { has_country_flag = infantry_template_pol }
+						}
+					}
+					capital_scope = {
+						create_unit = {
+							division = "division_template=\"Polish Reserve Divisíon\" start_experience_factor=0.2 start_equipment_factor=0.3" 
+							owner = ROOT
+							count = 10
+							prioritize_location = 3544
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = YUG
+						NOT = { has_template = "Yugoslavian Reserve Divisíon" }
+						OR = {
+							is_ai = no
+							NOT = { has_country_flag = infantry_template_yug }
+						}
+					}
+					division_template = {
+						name = "Yugoslavian Reserve Divisíon"
+						division_names_group = YUG_INF_01
+						is_locked = yes
+
+						regiments = {
+							heavy_infantry = { x = 0 y = 0 }
+							heavy_infantry = { x = 0 y = 1 }
+							heavy_infantry = { x = 0 y = 2 }
+
+							heavy_infantry = { x = 1 y = 0 }
+							heavy_infantry = { x = 1 y = 1 }
+							heavy_infantry = { x = 1 y = 2 }
+
+							heavy_infantry = { x = 2 y = 0 }
+							heavy_infantry = { x = 2 y = 1 }
+							heavy_infantry = { x = 2 y = 2 }
+							
+							artillery_brigade = { x = 3 y = 0 }
+							artillery_brigade = { x = 3 y = 1 }
+							artillery_brigade = { x = 3 y = 2 }
+							heavy_artillery_brigade = { x = 3 y = 3 }
+							
+							anti_tank_brigade = { x = 4 y = 0 }
+							anti_tank_brigade = { x = 4 y = 1 }
+						}
+						regimental_support = {
+							artillery = { x = 0 y = 0 }
+							anti_tank = { x = 0 y = 1 }
+							
+							artillery = { x = 1 y = 0 }
+							anti_tank = { x = 1 y = 1 }
+							
+							artillery = { x = 2 y = 0 }
+							anti_tank = { x = 2 y = 1 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+							field_hospital = { x = 0 y = 1 }
+							signal_company = { x = 0 y = 2 }
+							recon = { x = 0 y = 3 }
+							anti_air_battery = { x = 0 y = 4 }
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = YUG
+						OR = {
+							is_ai = no
+							NOT = { has_country_flag = infantry_template_yug }
+						}
+					}
+					capital_scope = {
+						create_unit = {
+							division = "division_template=\"Yugoslavian Reserve Divisíon\" start_experience_factor=0.2 start_equipment_factor=0.3" 
+							owner = ROOT
+							count = 10
+							prioritize_location = 14909
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 5000
+		}
+	}
+}

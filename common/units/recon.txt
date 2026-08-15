@@ -1,0 +1,529 @@
+sub_units = {
+	recon = { #mounted cav
+		abbreviation = "CREC"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+
+		type = {
+			infantry
+			support
+		}
+		
+		group = support
+		
+		categories = {
+			category_front_line
+			category_support_battalions
+			category_army
+			category_recon
+		}
+
+		regimental = no
+		combat_width = 0
+	
+		###STATS###
+		manpower = 300
+		max_organisation = 20
+		max_strength = 10
+		default_morale = 0
+		weight = 0.5
+		supply_consumption = 0.03
+		training_time = 90
+		
+		can_be_parachuted = yes
+	
+		need = {
+			infantry_equipment = 30
+			support_equipment = 10
+			ammunition_equipment = 6
+		}
+		essential = {
+			support_equipment
+			ammunition_equipment
+		}
+		
+		battalion_mult = {
+			category = category_all_art
+			soft_attack = 0.02
+			hard_attack = 0.02
+		}
+		battalion_mult = {
+			category = category_all_at
+			soft_attack = 0.02
+			hard_attack = 0.02
+		}
+		battalion_mult = {
+			category = category_all_aa
+			soft_attack = 0.02
+			hard_attack = 0.02
+		}
+		
+		recon = 0.75
+		maximum_speed = 0.48
+
+		plains = {
+			movement = 0.02
+		}
+		desert = {
+			movement = 0.02
+		}
+		hills = {
+			movement = 0.02
+		}
+		forest = {
+			movement = 0.02
+		}
+		urban = {
+			movement = 0.02
+		}
+		mountain = {
+			movement = 0.02
+		}
+		jungle = {
+			movement = 0.02
+		}
+		marsh = {
+			movement = 0.02
+		}
+		marsh_forest = {
+			movement = 0.02
+		}
+
+		same_support_type = recon
+	}
+
+	mot_recon = {
+		abbreviation = "MREC"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+
+		type = {
+			infantry
+			support
+		}
+		
+		group = support
+		
+		categories = {
+			category_front_line
+			category_support_battalions
+			category_army
+			category_recon
+		}
+
+	
+		combat_width = 0
+		
+		###STATS###
+		manpower = 360
+		max_organisation = 20
+		max_strength = 12
+		default_morale = 0
+		weight = 0.5
+		supply_consumption = 0.04
+		training_time = 90
+		
+		regimental = no
+		transport = motorized_equipment
+	
+		need = {
+			motorized_equipment = 15
+			infantry_equipment = 30
+			support_equipment = 10
+			ammunition_equipment = 6
+		}
+		essential = {
+			support_equipment
+			ammunition_equipment
+		}
+		
+		battalion_mult = {
+			category = category_all_art
+			soft_attack = 0.04
+			hard_attack = 0.04
+		}
+		battalion_mult = {
+			category = category_all_at
+			soft_attack = 0.04
+			hard_attack = 0.04
+		}
+		battalion_mult = {
+			category = category_all_aa
+			soft_attack = 0.04
+			hard_attack = 0.04
+		}
+		
+		recon = 1
+
+		plains = {
+			movement = 0.04
+		}
+		desert = {
+			movement = 0.04
+		}
+		hills = {
+			movement = 0.04
+		}
+		forest = {
+			movement = 0.04
+		}
+		urban = {
+			movement = 0.04
+		}
+		mountain = {
+			movement = 0.04
+		}
+		jungle = {
+			movement = 0.04
+		}
+		marsh = {
+			movement = 0.04
+		}
+		marsh_forest = {
+			movement = 0.04
+		}
+		
+		same_support_type = recon # blocks adding other recon types to template
+	}
+	
+	motorbike_recon = {
+		abbreviation = "MREC"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+
+		type = {
+			infantry
+			support
+		}
+		
+		group = support
+		
+		categories = {
+			category_front_line
+			category_support_battalions
+			category_army
+			category_recon
+		}
+		
+		can_be_parachuted = yes
+	
+		combat_width = 0
+		
+		###STATS###
+		manpower = 360
+		max_organisation = 20
+		max_strength = 12
+		default_morale = 0
+		weight = 0.5
+		supply_consumption = 0.05
+		training_time = 90
+		
+		regimental = no
+		transport = motorbike_equipment
+	
+		need = {
+			motorbike_equipment = 60
+			infantry_equipment = 30
+			support_equipment = 10
+			ammunition_equipment = 6
+		}
+		essential = {
+			support_equipment
+			ammunition_equipment
+		}
+		
+		battalion_mult = {
+			category = category_all_art
+			soft_attack = 0.06
+			hard_attack = 0.06
+		}
+		battalion_mult = {
+			category = category_all_at
+			soft_attack = 0.06
+			hard_attack = 0.06
+		}
+		battalion_mult = {
+			category = category_all_aa
+			soft_attack = 0.06
+			hard_attack = 0.06
+		}
+		
+		recon = 1.25
+
+		plains = {
+			movement = 0.06
+		}
+		desert = {
+			movement = 0.06
+		}
+		hills = {
+			movement = 0.06
+		}
+		forest = {
+			movement = 0.06
+		}
+		urban = {
+			movement = 0.06
+		}
+		mountain = {
+			movement = 0.06
+		}
+		jungle = {
+			movement = 0.06
+		}
+		marsh = {
+			movement = 0.06
+		}
+		marsh_forest = {
+			movement = 0.06
+		}
+		
+		same_support_type = recon
+	}
+
+	light_tank_recon = { #light tanks
+		abbreviation = "TREC"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+
+		type = {
+			infantry
+			support
+		}
+		
+		group = support
+		
+		categories = {
+			category_front_line
+			category_support_battalions
+			category_army
+			category_all_armor
+			category_recon
+		}
+	
+		combat_width = 0
+	
+		###STATS###
+		manpower = 450
+		max_organisation = 20
+		max_strength = 15
+		default_morale = 0
+		weight = 0.5
+		supply_consumption = 0.09
+		training_time = 120
+		
+		regimental = no
+		transport = light_tank_chassis
+	
+		need = {
+			light_tank_chassis = 30
+			ammunition_equipment = 60
+			support_equipment = 10
+		}
+		
+		essential = {
+			light_tank_chassis
+			ammunition_equipment
+		}
+		
+		armor_value = -0.25
+		soft_attack = -0.25
+		hard_attack = -0.25
+		defense = -0.25
+		breakthrough = -0.25
+		air_attack = -0.25
+		ap_attack = -0.25
+		
+		recon = 0.5
+
+		plains = {
+		    attack = 0.03
+		    defence = 0.02
+		}
+		desert = {
+		    attack = 0.03
+		    defence = 0.02
+		}
+		hills = {
+		    attack = 0.03
+		    defence = 0.02
+		}
+		forest = {
+			attack = 0.03
+		    defence = 0.02
+		}
+		urban = {
+			attack = 0.03
+		    defence = 0.02
+		}
+		mountain = {
+			attack = 0.03
+		    defence = 0.02
+		}
+		jungle = {
+			attack = 0.03
+		    defence = 0.02
+		}
+		marsh = {
+			attack = 0.03
+		    defence = 0.02
+		}
+		marsh_forest = {
+			attack = 0.03
+		    defence = 0.02
+		}
+		
+		same_support_type = light_tank_recon
+	}
+	
+	armored_car_recon = { #armored_cars
+		abbreviation = "AREC"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+
+		type = {
+			infantry
+			support
+		}
+		
+		group = support
+		
+		categories = {
+			category_front_line
+			category_support_battalions
+			category_army
+			category_recon
+			category_armored_cars
+		}
+
+		regimental = no
+		combat_width = 0
+	
+		###STATS###
+		manpower = 400
+		max_organisation = 20
+		max_strength = 13
+		default_morale = 0
+		weight = 0.5
+		supply_consumption = 0.06
+		training_time = 90
+		
+		transport = armored_car_equipment
+	
+		need = {
+			armored_car_equipment = 20
+			support_equipment = 10
+			ammunition_equipment = 40
+		}
+		essential = {
+			armored_car_equipment
+			support_equipment
+			ammunition_equipment
+		}
+		
+		recon = 0.75
+
+		plains = {
+		    attack = 0.06
+		    defence = 0.04
+		}
+		desert = {
+		    attack = 0.06
+		    defence = 0.04
+		}
+		hills = {
+		    attack = 0.06
+		    defence = 0.04
+		}
+		forest = {
+			attack = 0.06
+		    defence = 0.04
+		}
+		urban = {
+			attack = 0.06
+		    defence = 0.04
+		}
+		mountain = {
+			attack = 0.06
+		    defence = 0.04
+		}
+		jungle = {
+			attack = 0.06
+		    defence = 0.04
+		}
+		marsh = {
+			attack = 0.06
+		    defence = 0.04
+		}
+		marsh_forest = {
+			attack = 0.06
+		    defence = 0.04
+		}
+		
+		same_support_type = light_tank_recon
+	}
+	
+	airborne_light_armor = { #light tanks
+		abbreviation = "LTA"
+		sprite = light_armor
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+
+		type = {
+			infantry
+			support
+		}
+		
+		group = support
+		
+		categories = {
+			category_front_line
+			category_support_battalions
+			category_army
+			category_all_armor
+			category_paratroopers
+		}
+	
+		combat_width = 0
+	
+		###STATS###
+		manpower = 450
+		max_organisation = 20
+		max_strength = 15
+		default_morale = 0
+		weight = 0.5
+		supply_consumption = 0.08
+		training_time = 120
+		recon = 0.5
+		
+		can_be_parachuted = yes
+		
+		same_support_type = light_tank_recon
+	
+		need = {
+			motorized_equipment = 40
+			support_equipment = 20
+			para_equipment = 20
+		}
+		essential = {
+			support_equipment
+		}
+	}
+}

@@ -1,0 +1,35 @@
+state={
+	id=605
+	name="STATE_605"
+	manpower=31913200
+	buildings_max_level_factor=1.000
+	state_category= large_city
+
+	history={
+		owner = CHI
+		add_core_of = CHI
+		#
+		buildings = {
+			infrastructure = 3
+			arms_factory = 5
+			industrial_complex = 4
+			air_base = 4
+			steel_refinery = 2
+		}
+		victory_points = {
+			6999 30 
+		}
+		1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+	}
+
+	provinces = {
+		1395 1893 6999 7240 10144 11865 12705 13546 13547 13551 13667 13708 13709 13778 13779 
+	}
+}

@@ -1,0 +1,258 @@
+guiTypes = {
+
+	containerWindowType = {
+		name = "ware_house_name"
+		position = { x = 11 y = 75 }
+		
+		instantTextBoxType = {
+			name ="S_text"
+			position = { x= 12 y = 110 }
+			font = "hoi_16mbs"
+			text = S_TEXT
+			format = center
+			maxWidth = 85
+			maxHeight = 18
+			fixedsize = yes
+			format = left
+		}
+	}
+	containerWindowType = {
+		name = "number_of_left_rubber"
+		position = { x = 220 y = 181 }
+		instantTextBoxType = {
+			name ="cash_text_1"
+			position = { x= 15 y = 4 }
+			font = "hoi_16mbs"
+			text = rubber_num_desc
+			format = right
+			maxWidth = 72
+			maxHeight = 24
+			fixedsize = yes
+			pdx_tooltip = "left_rubber_text"
+			pdx_tooltip_delayed = "left_rubber_desc"
+		}
+	}
+	containerWindowType = {
+		name = "rubber_toogle_window"
+		buttonType ={
+			name ="rubber_off_button"
+			quadTextureSprite ="GFX_import_form_storage_button_off"
+			position = { x = 253 y = 200 }
+		}
+		buttonType ={
+			name ="rubber_on_button"
+			quadTextureSprite ="GFX_import_form_storage_button_on"
+			position = { x = 253 y = 200 }
+		}
+	}
+	
+	containerWindowType = {
+		name = "number_of_left_aluminium"
+		position = { x = 152 y = 181 }
+		instantTextBoxType = {
+			name ="cash_text_1"
+			position = { x= 15 y = 4 }
+			font = "hoi_16mbs"
+			text = aluminium_num_desc
+			format = right
+			maxWidth = 72
+			maxHeight = 24
+			fixedsize = yes
+			pdx_tooltip = "left_aluminium_text"
+			pdx_tooltip_delayed = "left_aluminium_desc"
+		}
+	}
+	containerWindowType = {
+		name = "aluminium_toogle_window"
+		buttonType ={
+			name ="aluminium_off_button"
+			quadTextureSprite ="GFX_import_form_storage_button_off"
+			position = { x = 185 y = 200 }
+		}
+		buttonType ={
+			name ="aluminium_on_button"
+			quadTextureSprite ="GFX_import_form_storage_button_on"
+			position = { x = 185 y = 200 }
+		}
+	}
+	
+	containerWindowType = {
+		name = "number_of_left_tungsten"
+		position = { x = 288 y = 181 }
+		instantTextBoxType = {
+			name ="cash_text_1"
+			position = { x= 15 y = 4 }
+			font = "hoi_16mbs"
+			text = tungsten_num_desc
+			format = right
+			maxWidth = 72
+			maxHeight = 24
+			fixedsize = yes
+			pdx_tooltip = "left_tungsten_text"
+			pdx_tooltip_delayed = "left_tungsten_desc"
+		}
+	}
+	containerWindowType = {
+		name = "tungsten_toogle_window"
+		buttonType ={
+			name ="tungsten_off_button"
+			quadTextureSprite ="GFX_import_form_storage_button_off"
+			position = { x = 321 y = 200 }
+		}
+		buttonType ={
+			name ="tungsten_on_button"
+			quadTextureSprite ="GFX_import_form_storage_button_on"
+			position = { x = 321 y = 200 }
+		}
+	}
+	
+	containerWindowType = {
+		name = "number_of_left_steel"
+		position = { x = 356 y = 181 }
+		instantTextBoxType = {
+			name ="cash_text_1"
+			position = { x= 15 y = 4 }
+			font = "hoi_16mbs"
+			text = steel_num_desc
+			format = right
+			maxWidth = 72
+			maxHeight = 24
+			fixedsize = yes
+			pdx_tooltip = "left_steel_text"
+			pdx_tooltip_delayed = "left_steel_desc"
+		}
+	}
+	containerWindowType = {
+		name = "steel_toogle_window"
+		buttonType ={
+			name ="steel_off_button"
+			quadTextureSprite ="GFX_import_form_storage_button_off"
+			position = { x = 389 y = 200 }
+		}
+		buttonType ={
+			name ="steel_on_button"
+			quadTextureSprite ="GFX_import_form_storage_button_on"
+			position = { x = 389 y = 200 }
+		}
+	}
+	
+	containerWindowType = {
+		name = "number_of_left_chromium"
+		position = { x = 424 y = 181 }
+		instantTextBoxType = {
+			name ="cash_text_1"
+			position = { x= 15 y = 4 }
+			font = "hoi_16mbs"
+			text = chromium_num_desc
+			format = right
+			maxWidth = 72
+			maxHeight = 24
+			fixedsize = yes
+			pdx_tooltip = "left_chromium_text"
+			pdx_tooltip_delayed = "left_chromium_desc"
+		}
+	}
+	containerWindowType = {
+		name = "chromium_toogle_window"
+		buttonType ={
+			name ="chromium_off_button"
+			quadTextureSprite ="GFX_import_form_storage_button_off"
+			position = { x = 457 y = 200 }
+		}
+		buttonType ={
+			name ="chromium_on_button"
+			quadTextureSprite ="GFX_import_form_storage_button_on"
+			position = { x = 457 y = 200 }
+		}
+	}
+	
+	containerWindowType = {
+		name = "number_of_left_coal"
+		position = { x = 492 y = 181 }
+		instantTextBoxType = {
+			name ="cash_text_1"
+			position = { x= 15 y = 4 }
+			font = "hoi_16mbs"
+			text = coal_num_desc
+			format = right
+			maxWidth = 72
+			maxHeight = 24
+			fixedsize = yes
+			pdx_tooltip = "left_coal_text"
+			pdx_tooltip_delayed = "left_coal_desc"
+		}
+	}
+	containerWindowType = {
+		name = "coal_toogle_window"
+		buttonType ={
+			name ="coal_off_button"
+			quadTextureSprite ="GFX_import_form_storage_button_off"
+			position = { x = 525 y = 200 }
+		}
+		buttonType ={
+			name ="coal_on_button"
+			quadTextureSprite ="GFX_import_form_storage_button_on"
+			position = { x = 525 y = 200 }
+		}
+	}
+	
+	containerWindowType = {
+		name = "number_of_left_bauxite"
+		position = { x = 560 y = 181 }
+		instantTextBoxType = {
+			name ="cash_text_1"
+			position = { x= 15 y = 4 }
+			font = "hoi_16mbs"
+			text = bauxite_num_desc
+			format = right
+			maxWidth = 72
+			maxHeight = 24
+			fixedsize = yes
+			pdx_tooltip = "left_bauxite_text"
+			pdx_tooltip_delayed = "left_bauxite_desc"
+		}
+	}
+	containerWindowType = {
+		name = "bauxite_toogle_window"
+		buttonType ={
+			name ="bauxite_off_button"
+			quadTextureSprite ="GFX_import_form_storage_button_off"
+			position = { x = 593 y = 200 }
+		}
+		buttonType ={
+			name ="bauxite_on_button"
+			quadTextureSprite ="GFX_import_form_storage_button_on"
+			position = { x = 593 y = 200 }
+		}
+	}
+	
+	containerWindowType = {
+		name = "number_of_left_iron"
+		position = { x = 628 y = 181 }
+		instantTextBoxType = {
+			name ="cash_text_1"
+			position = { x= 15 y = 4 }
+			font = "hoi_16mbs"
+			text = iron_num_desc
+			format = right
+			maxWidth = 72
+			maxHeight = 24
+			fixedsize = yes
+			pdx_tooltip = "left_iron_text"
+			pdx_tooltip_delayed = "left_iron_desc"
+		}
+	}
+	containerWindowType = {
+		name = "iron_toogle_window"
+		buttonType ={
+			name ="iron_off_button"
+			quadTextureSprite ="GFX_import_form_storage_button_off"
+			position = { x = 661 y = 200 }
+		}
+		buttonType ={
+			name ="iron_on_button"
+			quadTextureSprite ="GFX_import_form_storage_button_on"
+			position = { x = 661 y = 200 }
+		}
+	}
+}

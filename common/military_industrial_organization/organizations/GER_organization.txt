@@ -1,0 +1,3474 @@
+
+@aircraft_hamburger_X = 9
+@aircraft_hamburger_Y = 0
+
+#####################
+
+###  ##  #  # # #  ## 
+ #  #  # ## # # # #   
+ #  #### # ## ##   #  
+ #  #  # #  # # #   # 
+ #  #  # #  # # # ## 
+
+ #################### 
+
+
+GER_porsche_organization = {
+	icon = GFX_idea_porsche
+	
+	allowed = {	
+		tag = GER 
+	}
+	
+	equipment_type = { mio_cat_porsche_designer }
+    research_categories = { mio_cat_porsche_designer }
+	
+	tree_header_text = {
+		text = mio_header_engine_and_drive_system
+		x = 1
+	}
+
+	tree_header_text = {
+		text = mio_header_guns_and_turret
+		x = 4
+	}
+
+
+	initial_trait = {
+		name = mio_porsche_inital_trait
+
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 1.0
+		}
+		
+		equipment_bonus = {
+			armor_value = 0.2
+			breakthrough = 0.15
+			reliability = -0.05
+		}
+	}
+
+	add_trait = {
+		token = mio_porsche_electric_engine
+		name = mio_porsche_electric_engine
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_engine
+
+		position = { x=1 y=0 }
+		
+		equipment_bonus = {
+			reliability = 0.05
+			build_cost_ic = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_porsche_simplified_transmission_system
+		name = mio_porsche_simplified_transmission_system
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_conversion
+
+		position = { x=0 y=1 }
+		
+		all_parents = { mio_porsche_electric_engine }
+		
+		relative_position_id = mio_porsche_electric_engine
+		
+		production_bonus = {
+			production_efficiency_gain_factor = 0.05
+			production_cost_factor = -0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_porsche_ship_steel_rubka
+		name = mio_porsche_ship_steel_rubka
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_armor
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_porsche_simplified_transmission_system
+
+		all_parents = { mio_porsche_simplified_transmission_system }
+		
+		equipment_bonus = {
+			armor_value = 0.25
+			defense = 0.05
+		}
+	}
+
+	add_trait = {
+		token = mio_porsche_commander_cupola
+		name = mio_porsche_commander_cupola
+		icon = GFX_generic_mio_department_icon_tank_general_armor
+
+		position = { x=3 y=0 }
+		relative_position_id = mio_porsche_electric_engine
+		
+		equipment_bonus = {
+			armor_value = 0.05
+			defense = 0.03
+			breakthrough = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_porsche_high_explosive_shells
+		name = mio_porsche_high_explosive_shells
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_spg
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_porsche_commander_cupola
+
+		any_parent = { mio_porsche_commander_cupola }
+
+		mutually_exclusive = { mio_porsche_apcr_hvap_shells }
+		
+		equipment_bonus = {
+			soft_attack = 0.2
+			breakthrough = 0.1
+		}
+	}
+
+	add_trait = {
+		token = mio_porsche_apcr_hvap_shells
+		name = mio_porsche_apcr_hvap_shells
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_at
+
+		position = { x=-1 y=1 }
+		relative_position_id = mio_porsche_commander_cupola
+
+		any_parent = { mio_porsche_commander_cupola }
+
+		mutually_exclusive = { mio_porsche_high_explosive_shells }
+		
+		equipment_bonus = {
+			ap_attack = 0.1
+			hard_attack = 0.12
+		}
+	}
+	
+	add_trait = {
+		token = mio_porsche_hmg
+		name = mio_porsche_hmg
+		icon = GFX_generic_mio_trait_icon_soft_attack
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_porsche_apcr_hvap_shells
+
+		any_parent = { mio_porsche_high_explosive_shells mio_porsche_apcr_hvap_shells }
+		
+		equipment_bonus = {
+			soft_attack = 0.07
+			breakthrough = 0.03
+			defense = 0.03
+		}
+	}
+}
+
+GER_henschel_organization = {
+	#include = generic_heavy_tank_organization
+	icon = GFX_idea_henschel
+	
+	allowed = {	
+		tag = GER 
+	}
+
+	equipment_type = { mio_cat_henschel_designer }
+	research_categories = { mio_cat_tech_heavy_armor_and_modules }
+
+	tree_header_text = {
+		text = mio_header_henschel_tiger_1
+		x = 1
+	}
+
+	tree_header_text = {
+		text = mio_header_henschel_tiger_2
+		x = 4
+	}
+
+	initial_trait = {
+		name = mio_henschel_initial_trait
+
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 1.0
+		}
+		
+		production_bonus = {
+			production_efficiency_gain_factor = 0.05
+		}
+		
+		equipment_bonus = {
+			reliability = -0.1
+			armor_value = 0.2
+		}
+	}
+	
+	add_trait = { 
+		token = GER_mio_stanki
+		name = GER_mio_stanki
+		icon = GFX_generic_mio_department_icon_facilities
+		special_trait_background = yes
+
+		position = { x=8 y=0 }
+		
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				has_country_flag = inspektor_guderian
+			}
+		}
+
+		production_bonus = {
+			production_efficiency_cap_factor = 0.2
+			production_efficiency_gain_factor = 0.2
+		}
+	}
+
+	add_trait = { 
+		token = GER_mio_slavery
+		name = GER_mio_slavery
+		icon = GFX_generic_mio_department_icon_facilities
+		special_trait_background = yes
+
+		position = { x=8 y=2 }
+		
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				has_country_flag = europe_exploited
+			}
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.05
+			production_capacity_factor = 0.25
+		}
+	}
+
+	trait = {
+		token = mio_henschel_welded_armor
+		name = mio_henschel_welded_armor
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_armor
+
+		position = { x=0 y=0 }
+		
+		limit_to_equipment_type = { heavy_tank_chassis_2 }
+		
+		equipment_bonus = {
+			reliability = 0.02
+			armor_value = 0.1
+		}
+	}
+
+	trait = {
+		token = mio_henschel_fire_extinguishers
+		name = mio_henschel_fire_extinguishers
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_henschel_welded_armor
+		
+		limit_to_equipment_type = { heavy_tank_chassis_2 }
+
+		all_parents = { mio_henschel_welded_armor }
+		
+		equipment_bonus = {
+			reliability = 0.03
+		}
+	}
+
+	trait = {
+		token = mio_henschel_antiair_gun
+		name = mio_henschel_antiair_gun
+		icon = GFX_generic_mio_department_icon_anti_air_technology
+
+		position = { x=2 y=0 }
+		
+		limit_to_equipment_type = { heavy_tank_chassis_2 }
+		
+		available = {
+			FROM = {
+				has_tech = antiair5
+			}
+		}
+		
+		equipment_bonus = {
+			reliability = 0.01
+			hard_attack = 0.10
+			ap_attack = 0.15
+		}
+	}
+	
+	trait = {
+		token = mio_henschel_optics
+		name = mio_henschel_optics
+		icon = GFX_generic_mio_trait_icon_surface_detection
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_henschel_antiair_gun
+		
+		limit_to_equipment_type = { heavy_tank_chassis_2 }
+
+		all_parents = { mio_henschel_antiair_gun }
+		
+		equipment_bonus = {
+			soft_attack = 0.02
+			hard_attack = 0.02
+			breakthrough = 0.04
+			defense = 0.03
+		}
+	}
+
+	trait = {
+		token = mio_henschel_armor_circle
+		name = mio_henschel_armor_circle
+		icon = GFX_generic_mio_department_icon_tank_general_armor
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_henschel_fire_extinguishers
+		
+		limit_to_equipment_type = { heavy_tank_chassis_2 }
+
+		all_parents = { mio_henschel_optics mio_henschel_fire_extinguishers }
+		
+		equipment_bonus = {
+			armor_value = 0.1
+			defense = 0.03
+		}
+	}
+
+	trait = {
+		token = mio_henschel_krupp_tower
+		name = mio_henschel_krupp_tower
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_armor
+		
+		limit_to_equipment_type = { heavy_tank_chassis_3 }
+
+		position = { x=4 y=0 }
+		
+		equipment_bonus = {
+			armor_value = 0.2
+		}
+		production_bonus = {
+			production_cost_factor = -0.02
+		}
+	}
+
+	trait = {
+		token = mio_henschel_hydraulic_tower
+		name = mio_henschel_hydraulic_tower
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_quality
+
+		position = { x=0 y=1 }
+
+		relative_position_id = mio_henschel_krupp_tower
+		
+		limit_to_equipment_type = { heavy_tank_chassis_3 }
+		
+		all_parents = { mio_henschel_krupp_tower }
+		
+		equipment_bonus = {
+			reliability = 0.03
+		}
+	}
+
+	trait = {
+		token = mio_henschel_kwk43l71
+		name = mio_henschel_kwk43l71
+		icon = GFX_generic_mio_department_icon_anti_tank
+
+		position = { x=0 y=1 }
+		
+		relative_position_id = mio_henschel_hydraulic_tower
+		
+		limit_to_equipment_type = { heavy_tank_chassis_3 }
+		
+		all_parents = { mio_henschel_hydraulic_tower }
+		
+		available = {
+			FROM = {
+				has_tech = antitank7
+			}
+		}
+		
+		equipment_bonus = {
+			ap_attack = 0.2
+			hard_attack = 0.2
+			reliability = -0.08
+			build_cost_ic = 0.06
+		}
+	}
+
+	trait = {
+		token = mio_henschel_soft_mortat
+		name = mio_henschel_soft_mortat
+		icon = GFX_generic_mio_trait_icon_breakthrough
+
+		position = { x=-1 y=1 }
+		
+		relative_position_id = mio_henschel_kwk43l71
+		
+		limit_to_equipment_type = { heavy_tank_chassis_3 }
+
+		all_parents = { mio_henschel_kwk43l71 }
+		
+		equipment_bonus = {
+			soft_attack = 0.03
+			defense = 0.02
+		}
+	}
+
+	trait = {
+		token = mio_henschel_x16_engine
+		name = mio_henschel_x16_engine
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_engine
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_henschel_kwk43l71
+		
+		limit_to_equipment_type = { heavy_tank_chassis_3 }
+
+		all_parents = { mio_henschel_kwk43l71 }
+
+		equipment_bonus = {
+			maximum_speed = 0.03
+			reliability = 0.03
+		}
+	}
+
+	trait = {
+		token = mio_henschel_zimmerit
+		name = mio_henschel_zimmerit
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_materials
+
+		position = { x=1 y=2 }
+		
+		relative_position_id = mio_henschel_armor_circle
+		
+		limit_to_equipment_type = { heavy_tank_chassis_2 heavy_tank_chassis_3 }
+
+		any_parent = { mio_henschel_armor_circle mio_henschel_x16_engine mio_henschel_soft_mortat }
+		
+		equipment_bonus = {
+			defense = 0.04
+		}
+	}
+}
+
+GER_krupp_organization = {
+	icon = GFX_idea_krupp_tank
+	
+	allowed = {	
+		tag = GER 
+	}
+
+	equipment_type = { light_tank_chassis_2 medium_tank_chassis_2 medium_tank_destroyer_chassis_2 medium_tank_aa_chassis_2 }
+	research_categories = { mio_cat_tech_medium_armor_and_modules mio_cat_tech_light_armor_and_modules }
+
+	tree_header_text = {
+		text = mio_krupp_pz_ii
+		x = 0
+	}
+
+	tree_header_text = {
+		text = mio_krupp_pz_iv
+		x = 4
+	}
+	
+	tree_header_text = {
+		text = mio_krupp_stug_iv
+		x = 8
+	}
+
+	initial_trait = {
+		name = mio_krupp_initial_trait
+
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+			military_industrial_organization_funds_gain = 0.75
+		}
+		production_bonus = {
+			production_efficiency_gain_factor = 0.1
+		}
+		equipment_bonus = {
+			reliability = 0.02
+			armor_value = -0.05
+		}
+	}
+	
+	add_trait = { 
+		token = GER_mio_stanki
+		name = GER_mio_stanki
+		icon = GFX_generic_mio_department_icon_facilities
+		special_trait_background = yes
+
+		position = { x=6 y=0 }
+		
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				has_country_flag = inspektor_guderian
+			}
+		}
+
+		production_bonus = {
+			production_efficiency_cap_factor = 0.2
+			production_efficiency_gain_factor = 0.2
+		}
+	}
+
+	add_trait = { 
+		token = GER_mio_slavery
+		name = GER_mio_slavery
+		icon = GFX_generic_mio_department_icon_facilities
+		special_trait_background = yes
+
+		position = { x=6 y=2 }
+		
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				has_country_flag = europe_exploited
+			}
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.05
+			production_capacity_factor = 0.25
+		}
+	}
+
+	trait = {
+		token = mio_krupp_kwk30_gun
+		name = mio_krupp_kwk30_gun
+		icon = GFX_generic_mio_department_icon_tank_light_tank_weapons
+
+		position = { x=0 y=0 }
+		
+		limit_to_equipment_type = { light_tank_chassis_2 }
+		
+		equipment_bonus = {
+			breakthrough = 0.03
+			soft_attack = 0.04
+		}
+	}
+
+	trait = {
+		token = mio_krupp_simplified_suspension
+		name = mio_krupp_simplified_suspension
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_krupp_kwk30_gun
+		limit_to_equipment_type = { light_tank_chassis_2 }
+
+		all_parents = { mio_krupp_kwk30_gun }
+		
+		equipment_bonus = {
+			reliability = 0.05
+		}
+	}
+
+	trait = {
+		token = mio_krupp_standartization
+		name = mio_krupp_standartization
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_krupp_simplified_suspension
+		limit_to_equipment_type = { light_tank_chassis_2 }
+
+		all_parents = { mio_krupp_simplified_suspension }
+		
+		production_bonus = {
+			production_efficiency_cap_factor = 0.05
+			production_cost_factor = -0.03
+		}
+	}
+
+	trait = {
+		token = mio_krupp_kwk38_gun
+		name = mio_krupp_kwk38_gun
+		icon = GFX_generic_mio_trait_icon_hard_attack
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_krupp_standartization
+		limit_to_equipment_type = { light_tank_chassis_2 }
+
+		all_parents = { mio_krupp_standartization }
+		
+		equipment_bonus = {
+			hard_attack = 0.04
+			ap_attack = 0.04
+		}
+	}
+
+	trait = {
+		token = mio_krupp_support_tank
+		name = mio_krupp_support_tank
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_spg
+		limit_to_equipment_type = { medium_tank_chassis_2 }
+
+		position = { x=4 y=0 }
+		
+		equipment_bonus = {
+			soft_attack = 0.1
+			breakthrough = 0.15
+			hard_attack = -0.2
+			ap_attack = -0.2
+		}
+	}
+
+	trait = {
+		token = mio_krupp_screens
+		name = mio_krupp_screens
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_krupp_support_tank
+		limit_to_equipment_type = { medium_tank_chassis_2 }
+		any_parent = { mio_krupp_support_tank }
+		
+		equipment_bonus = {
+			armor_value = 0.05
+			defense = 0.02
+		}
+	}
+
+	trait = {
+		token = mio_krupp_kwk40
+		name = mio_krupp_kwk40
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+
+		position = { x=-1 y=1 }
+		relative_position_id = mio_krupp_screens
+		all_parents = { mio_krupp_screens }
+		limit_to_equipment_type = { medium_tank_chassis_2 }
+		
+		available = {
+			FROM = {
+				has_tech = antitank2
+			}
+		}
+		
+		equipment_bonus = {
+			soft_attack = -0.07
+			breakthrough = -0.12
+			hard_attack = 0.23
+			ap_attack = 0.23
+			build_cost_ic = 0.03
+		}
+	}
+	
+	trait = {
+		token = mio_krupp_apc_shells
+		name = mio_krupp_apc_shells
+		icon = GFX_generic_mio_trait_icon_ap_attack
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_krupp_kwk40
+		all_parents = { mio_krupp_kwk40 }
+		limit_to_equipment_type = { medium_tank_chassis_2 }
+		
+		equipment_bonus = {
+			ap_attack = 0.1
+			build_cost_ic = 0.02
+		}
+	}
+
+	trait = {
+		token = mio_krupp_30mm_welded_armor
+		name = mio_krupp_30mm_welded_armor
+		icon = GFX_generic_mio_trait_icon_armor_value
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_krupp_screens
+
+		all_parents = { mio_krupp_screens }
+		limit_to_equipment_type = { medium_tank_chassis_2 }
+		
+		equipment_bonus = {
+			armor_value = 0.1
+			build_cost_ic = 0.03
+		}
+	}
+	
+	trait = {
+		token = mio_krupp_wide_tracks
+		name = mio_krupp_wide_tracks
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_krupp_screens
+
+		all_parents = { mio_krupp_screens }
+		limit_to_equipment_type = { medium_tank_chassis_2 }
+		
+		equipment_bonus = {
+			reliability = 0.03
+			maximum_speed = 0.02
+		}
+	}
+
+	trait = {
+		token = mio_krupp_turret_mg
+		name = mio_krupp_turret_mg
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_aa		
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_krupp_kwk40
+
+		any_parent = { mio_krupp_30mm_welded_armor mio_krupp_kwk40 }
+		limit_to_equipment_type = { medium_tank_chassis_2 }
+		
+		equipment_bonus = {
+			defense = 0.03
+			soft_attack = 0.02
+			air_attack = 0.35
+		}
+	}
+
+	trait = {
+		token = mio_krupp_prod_buf
+		name = mio_krupp_prod_buf
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_technology
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_krupp_turret_mg
+
+		all_parents = { mio_krupp_turret_mg }
+		limit_to_equipment_type = { medium_tank_chassis_2 }
+		
+		production_bonus = {
+			production_cost_factor = -0.05
+			production_resource_need_factor = -0.1
+		}
+	}
+	
+	trait = {
+		token = mio_krupp_pziv_corpus
+		name = mio_krupp_pziv_corpus
+		icon = GFX_generic_mio_department_icon_tank_medium_tank
+
+		position = { x=8 y=0 }
+		
+		limit_to_equipment_type = { medium_tank_destroyer_chassis_2 }
+		
+		equipment_bonus = {
+			armor_value = 0.05
+			reliability = 0.02
+		}
+		production_bonus = {
+			production_cost_factor = -0.03
+		}
+	}
+	
+	trait = {
+		token = mio_krupp_stuk40
+		name = mio_krupp_stuk40
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_krupp_pziv_corpus
+		all_parents = { mio_krupp_pziv_corpus }
+		limit_to_equipment_type = { medium_tank_destroyer_chassis_2 }
+		
+		available = {
+			FROM = {
+				has_tech = antitank2
+			}
+		}
+		
+		equipment_bonus = {
+			ap_attack = 0.07
+			hard_attack = 0.04
+			build_cost_ic = 0.02
+		}
+	}
+	trait = {
+		token = mio_krupp_suspension
+		name = mio_krupp_suspension
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_krupp_stuk40
+		all_parents = { mio_krupp_stuk40 }
+		limit_to_equipment_type = { medium_tank_destroyer_chassis_2 }
+		
+		equipment_bonus = {
+			reliability = 0.03
+		}
+		production_bonus = {
+			production_cost_factor = -0.02
+		}
+	}
+	trait = {
+		token = mio_krupp_standartization_2
+		name = mio_krupp_standartization_2
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_technology
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_krupp_suspension
+		all_parents = { mio_krupp_suspension }
+		limit_to_equipment_type = { medium_tank_destroyer_chassis_2 }
+		
+		production_bonus = {
+			production_cost_factor = -0.05
+			production_resource_need_factor = -0.1
+		}
+	}
+}
+
+GER_man_organization = {
+	icon = GFX_idea_GER_MAN
+	
+	allowed = {	
+		tag = GER 
+	}
+
+	equipment_type = { medium_tank_chassis_3 medium_tank_destroyer_chassis_3 }
+	research_categories = { mio_cat_tech_medium_armor_and_modules }
+
+	tree_header_text = {
+		text = mio_man_pz_v
+		x = 2
+	}
+	
+	initial_trait = {
+		name = mio_man_initial_trait
+
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+			military_industrial_organization_funds_gain = 1.0
+		}
+
+		equipment_bonus = {
+			reliability = -0.05
+			armor_value = 0.2
+		}
+	}
+
+	trait = {
+		token = mio_man_welded_armor
+		name = mio_man_welded_armor
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
+
+		position = { x=2 y=0 }
+		
+		equipment_bonus = {
+			armor_value = 0.15
+		}
+	}
+
+	trait = {
+		token = mio_man_suspension
+		name = mio_man_suspension
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_engine
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_man_welded_armor
+
+		all_parents = { mio_man_welded_armor }
+		
+		equipment_bonus = {
+			reliability = -0.03
+			breakthrough = 0.03
+		}
+	}
+
+	trait = {
+		token = mio_man_kwk42
+		name = mio_man_kwk42
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_man_suspension
+
+		all_parents = { mio_man_suspension }
+		
+		available = {
+			FROM = {
+				has_tech = antitank4
+			}
+		}
+		
+		equipment_bonus = {
+			build_cost_ic = 0.05
+			hard_attack = 0.06
+			ap_attack = 0.08
+		}
+	}
+
+	trait = {
+		token = mio_man_night_vision
+		name = mio_man_night_vision
+		icon = GFX_generic_mio_trait_icon_surface_detection
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_man_kwk42
+
+		all_parents = { mio_man_kwk42 }
+		
+		equipment_bonus = {
+			hard_attack = 0.05
+			soft_attack = 0.05
+			breakthrough = 0.05
+			defense = 0.05
+		}
+		production_bonus = {
+			production_cost_factor = 0.04
+			production_resource_need_factor = 0.03
+		}
+	}
+
+	trait = {
+		token = mio_man_turret_armor
+		name = mio_man_turret_armor
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_quality
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_man_night_vision
+		
+		any_parent = { mio_man_night_vision }
+		
+		equipment_bonus = {
+			armor_value = 0.1
+			build_cost_ic = 0.03
+		}
+	}
+	
+	add_trait = { 
+		token = GER_mio_stanki
+		name = GER_mio_stanki
+		icon = GFX_generic_mio_department_icon_facilities
+		special_trait_background = yes
+
+		position = { x=6 y=0 }
+		
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				has_country_flag = inspektor_guderian
+			}
+		}
+
+		production_bonus = {
+			production_efficiency_cap_factor = 0.2
+			production_efficiency_gain_factor = 0.2
+		}
+	}
+
+	add_trait = { 
+		token = GER_mio_slavery
+		name = GER_mio_slavery
+		icon = GFX_generic_mio_department_icon_facilities
+		special_trait_background = yes
+
+		position = { x=6 y=2 }
+		
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				has_country_flag = europe_exploited
+			}
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.05
+			production_capacity_factor = 0.25
+		}
+	}
+}
+
+#Benz 
+GER_daimler_benz_organization = {
+	icon = GFX_idea_daimlerbenz
+	
+	allowed = {	
+		tag = GER 
+	}
+	
+	equipment_type = { medium_tank_chassis_1 medium_tank_destroyer_chassis_1 }
+	research_categories = { mio_cat_tech_medium_armor_and_modules }
+
+	tree_header_text = {
+		text = mio_daimlerbenz_pz_iii
+		x = 1
+	}
+
+	tree_header_text = {
+		text = mio_daimlerbenz_stug_iii
+		x = 4
+	}
+	
+	initial_trait = {
+		name = mio_daimlerbenz_initial_trait
+	
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+			military_industrial_organization_funds_gain = 0.75
+		}
+		
+		equipment_bonus = {
+			soft_attack = 0.08
+			hard_attack = -0.1
+			ap_attack = -0.15
+			armor_value = -0.1
+		}
+	}
+
+	trait = {  
+		token = mio_daimlerbenz_prod_lines
+		name = mio_daimlerbenz_prod_lines
+		icon = GFX_generic_mio_department_icon_tank_general_technology
+
+		limit_to_equipment_type = { medium_tank_chassis_1 medium_tank_destroyer_chassis_1 }
+		
+		production_bonus = {
+			production_efficiency_cap_factor = 0.05
+			production_efficiency_gain_factor = 0.05
+		}
+
+		position = { x=0 y=0 }  
+	}
+	
+	trait = {  
+		token = mio_daimlerbenz_cementation_armor
+		name = mio_daimlerbenz_cementation_armor
+		icon = GFX_generic_mio_trait_icon_armor_value
+
+		limit_to_equipment_type = { medium_tank_chassis_1 }
+		
+		relative_position_id = mio_daimlerbenz_prod_lines
+		
+		any_parent = { mio_daimlerbenz_prod_lines }
+		
+		equipment_bonus = {
+			armor_value = 0.03
+			defense = 0.03
+		}
+
+		position = { x=0 y=1 }  
+	}
+	
+	trait = {  
+		token = mio_daimlerbenz_vision
+		name = mio_daimlerbenz_vision
+		icon = GFX_generic_mio_trait_icon_surface_detection
+
+		limit_to_equipment_type = { medium_tank_chassis_1 }
+		
+		equipment_bonus = {
+			breakthrough = 0.05
+			defense = 0.02
+		}
+
+		position = { x=2 y=0 }  
+	}
+	trait = {
+		token = mio_daimlerbenz_kwk38
+		name = mio_daimlerbenz_kwk38
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+
+		limit_to_equipment_type = { medium_tank_chassis_1 }
+		
+		relative_position_id = mio_daimlerbenz_vision
+		
+		any_parent = { mio_daimlerbenz_vision }
+		
+		available = {
+			FROM = {
+				has_tech = antitank2
+			}
+		}
+		
+		equipment_bonus = {
+			hard_attack = 0.1
+			ap_attack = 0.15
+		}
+
+		position = { x=0 y=1 }  
+	}
+	trait = {
+		token = mio_daimlerbenz_armor_turret
+		name = mio_daimlerbenz_armor_turret
+		icon = GFX_generic_mio_trait_icon_armor_value
+
+		limit_to_equipment_type = { medium_tank_chassis_1 }
+		
+		relative_position_id = mio_daimlerbenz_kwk38
+		
+		any_parent = { mio_daimlerbenz_kwk38 mio_daimlerbenz_cementation_armor }
+		
+		equipment_bonus = {
+			armor_value = 0.05
+			reliability = 0.03
+		}
+
+		position = { x=-1 y=1 }
+	}
+	trait = {
+		token = mio_daimlerbenz_wide_tracks
+		name = mio_daimlerbenz_wide_tracks
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+
+		position = { x=0 y=2 }
+		relative_position_id = mio_daimlerbenz_armor_turret
+
+		all_parents = { mio_daimlerbenz_armor_turret }
+		limit_to_equipment_type = { medium_tank_chassis_1 }
+		
+		equipment_bonus = {
+			reliability = 0.03
+			maximum_speed = 0.03
+		}
+	}
+	trait = {
+		token = mio_daimlerbenz_armor_chassis
+		name = mio_daimlerbenz_armor_chassis
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
+
+		limit_to_equipment_type = { medium_tank_chassis_1 }
+		
+		relative_position_id = mio_daimlerbenz_armor_turret
+		
+		any_parent = { mio_daimlerbenz_armor_turret }
+		
+		equipment_bonus = {
+			armor_value = 0.2
+			build_cost_ic = 0.04
+		}
+
+		position = { x=-1 y=1 }  
+	}
+	trait = {
+		token = mio_daimlerbenz_kwk39
+		name = mio_daimlerbenz_kwk39
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+
+		limit_to_equipment_type = { medium_tank_chassis_1 light_tank_chassis_3 }
+		
+		relative_position_id = mio_daimlerbenz_armor_turret
+		
+		any_parent = { mio_daimlerbenz_armor_turret }
+		
+		equipment_bonus = {
+			soft_attack = -0.05
+			hard_attack = 0.04
+			ap_attack = 0.07
+		}
+		
+		available = {
+			FROM = {
+				has_tech = antitank3
+			}
+		}
+
+		position = { x=1 y=1 }
+	}
+	
+	trait = {
+		token = mio_daimlerbenz_sturmgun
+		name = mio_daimlerbenz_sturmgun
+		icon = GFX_generic_mio_trait_icon_hard_attack
+
+		limit_to_equipment_type = { medium_tank_destroyer_chassis_1 }
+		
+		equipment_bonus = {
+			soft_attack = 0.05
+			hard_attack = -0.1
+			ap_attack = -0.05
+			breakthrough = 0.35
+		}
+		
+		production_bonus = {
+			production_cost_factor = -0.05
+		}
+
+		position = { x=4 y=0 }  
+	}
+	
+	trait = {
+		token = mio_daimlerbenz_bolt_armor
+		name = mio_daimlerbenz_bolt_armor
+		icon = GFX_generic_mio_trait_icon_armor_value
+
+		limit_to_equipment_type = { medium_tank_destroyer_chassis_1 }
+		
+		relative_position_id = mio_daimlerbenz_sturmgun
+		
+		any_parent = { mio_daimlerbenz_sturmgun }
+		
+		equipment_bonus = {
+			build_cost_ic = 0.04
+			armor_value = 0.2
+		}
+
+		position = { x=1 y=1 }  
+	}
+	
+	trait = {
+		token = mio_daimlerbenz_zakalka_armor
+		name = mio_daimlerbenz_zakalka_armor
+		icon = GFX_generic_mio_trait_icon_armor_value
+
+		limit_to_equipment_type = { medium_tank_destroyer_chassis_1 }
+		
+		relative_position_id = mio_daimlerbenz_bolt_armor
+		
+		any_parent = { mio_daimlerbenz_bolt_armor }
+		
+		equipment_bonus = {
+			armor_value = 0.05
+		}
+
+		position = { x=0 y=1 }  
+	}
+	
+	trait = {
+		token = mio_daimlerbenz_stuk40
+		name = mio_daimlerbenz_stuk40
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+
+		limit_to_equipment_type = { medium_tank_destroyer_chassis_1 }
+		
+		relative_position_id = mio_daimlerbenz_sturmgun
+		
+		any_parent = { mio_daimlerbenz_sturmgun }
+		
+		available = {
+			FROM = {
+				has_tech = antitank3
+			}
+		}
+		
+		equipment_bonus = {
+			build_cost_ic = 0.03
+			soft_attack = -0.07
+			hard_attack = 0.25
+			ap_attack = 0.25
+		}
+
+		position = { x=-1 y=1 }  
+	}
+	
+	trait = {
+		token = mio_daimlerbenz_radio_hmg
+		name = mio_daimlerbenz_radio_hmg
+		icon = GFX_generic_mio_trait_icon_breakthrough
+
+		limit_to_equipment_type = { medium_tank_destroyer_chassis_1 }
+		
+		relative_position_id = mio_daimlerbenz_stuk40
+		
+		any_parent = { mio_daimlerbenz_stuk40 }
+		
+		equipment_bonus = {
+			soft_attack = 0.04
+			defense = 0.03
+			air_attack = 0.5
+		}
+
+		position = { x=0 y=1 }  
+	}
+	
+	trait = {
+		token = mio_daimlerbenz_alkett_production
+		name = mio_daimlerbenz_alkett_production
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		limit_to_equipment_type = { medium_tank_destroyer_chassis_1 }
+		
+		relative_position_id = mio_daimlerbenz_radio_hmg
+		
+		any_parent = { mio_daimlerbenz_radio_hmg mio_daimlerbenz_zakalka_armor }
+		
+		production_bonus = {
+			production_cost_factor = -0.05
+			production_efficiency_cap_factor = 0.15
+		}
+
+		position = { x=1 y=1 }  
+	}
+	
+	add_trait = { 
+		token = GER_mio_stanki
+		name = GER_mio_stanki
+		icon = GFX_generic_mio_department_icon_facilities
+		special_trait_background = yes
+
+		position = { x=8 y=0 }
+		
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				has_country_flag = inspektor_guderian
+			}
+		}
+
+		production_bonus = {
+			production_efficiency_cap_factor = 0.2
+			production_efficiency_gain_factor = 0.2
+		}
+	}
+
+	add_trait = { 
+		token = GER_mio_slavery
+		name = GER_mio_slavery
+		icon = GFX_generic_mio_department_icon_facilities
+		special_trait_background = yes
+
+		position = { x=8 y=2 }
+		
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				has_country_flag = europe_exploited
+			}
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.05
+			production_capacity_factor = 0.25
+		}
+	}
+}
+
+#####################
+
+ ## #  # ### ###   ## 
+#   #  #  #  #  # #   
+ #  ####  #  ###   #  
+  # #  #  #  #      # 
+##  #  # ### #    ##  
+ 
+#####################
+
+GER_deschimag_organization = {
+	include = generic_escort_ship_organization
+	icon = GFX_idea_GER_deschimag
+
+	override_trait = {
+		token = generic_mio_trait_fleet_escorts
+		
+		position = { x=4 y=0 }
+	}
+
+	override_trait = {
+		token = generic_mio_trait_anti_air_ships
+		
+		position = { x=-2 y=2 }
+	}
+	
+	allowed = {	
+		original_tag = GER 
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_krupp_contacts
+		name = GER_mio_trait_krupp_contacts
+		icon = GFX_generic_mio_department_icon_ship_screen_ship_quality
+		special_trait_background = yes
+
+		relative_position_id = generic_mio_trait_escort_in_force
+
+		any_parent = { generic_mio_trait_anti_air_ships generic_mio_trait_escort_in_force }
+
+		position = { x=0 y=1 } 
+
+		#available = {
+		#	FROM = {
+		#		has_completed_focus = GER_high_seas_fleet
+		#	}
+		#}
+
+		equipment_bonus = {
+			lg_attack = 0.05
+			lg_armor_piercing = 0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_armored_design
+		name = GER_mio_trait_armored_design
+		icon = GFX_generic_mio_trait_icon_armor_value
+		special_trait_background = yes
+
+		relative_position_id = GER_mio_trait_krupp_contacts
+
+		all_parents = { GER_mio_trait_krupp_contacts }
+
+		position = { x=0 y=1 } 
+
+		#available = {
+		#	FROM = {
+		#		has_completed_focus = GER_high_seas_fleet
+		#	}
+		#}
+
+		equipment_bonus = {
+			armor_value = 0.07
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_shipyard_conglomerate
+		name = GER_mio_trait_shipyard_conglomerate
+		icon = GFX_generic_mio_department_icon_facilities
+		special_trait_background = yes
+
+		relative_position_id = generic_mio_trait_fleet_escorts 
+
+		position = { x=3 y=0 } 
+
+		available = {
+			FROM = {
+				has_completed_focus = GER_u_boat_efforts
+			}
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+}
+
+GER_germaniawerft_organization = {
+	include = generic_battle_line_ship_organization
+	icon = GFX_idea_germaniawerft
+
+	override_trait = {
+		token = generic_mio_trait_internal_armor_belt
+		
+		position = { x=1 y=0 }
+	}
+
+	override_trait = {
+		token = generic_mio_trait_advanced_armor_design
+		
+		position = { x=0 y=2 }
+	}
+
+	override_trait = {
+		token = generic_mio_trait_anti_air_layout
+		
+		position = { x=3 y=0 }
+	}
+	
+	allowed = {	
+		original_tag = GER 
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_history_of_battleships
+		name = GER_mio_trait_history_of_battleships
+		icon = GFX_generic_mio_department_icon_ship_capital_ship_production
+		special_trait_background = yes
+
+		relative_position_id = generic_mio_trait_internal_armor_belt
+
+		position = { x=1 y=0 }  
+
+		available = {
+            #FROM = {
+            #    has_completed_focus = GER_plan_z
+            #}
+        }
+
+        limit_to_equipment_type = { mio_cat_eq_all_battleship }
+
+      	equipment_bonus = {
+			hg_attack = 0.05
+			build_cost_ic = -0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_krupp_guns
+		name = GER_mio_trait_krupp_guns
+		icon = GFX_generic_mio_department_icon_ship_capital_ship_weapons
+		special_trait_background = yes
+
+		relative_position_id = GER_mio_trait_history_of_battleships
+
+		all_parents = { GER_mio_trait_history_of_battleships }
+		position = { x=0 y=1 }  
+
+		available = {
+			#FROM = {
+			#	has_completed_focus = GER_grosskampfschiff_construction
+			#}
+		}
+
+      	equipment_bonus = {
+			hg_attack = 0.05
+			lg_attack = 0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_h_class_battleships
+		name = GER_mio_trait_h_class_battleships
+		icon = GFX_generic_mio_department_icon_ship_capital_ship_quality
+		special_trait_background = yes
+
+		relative_position_id = GER_mio_trait_krupp_guns
+
+		all_parents = { GER_mio_trait_krupp_guns }
+
+		position = { x=0 y=1 }  
+
+		available = {
+			#FROM = {
+			#	has_completed_focus = GER_grosskampfschiff_construction
+			#}
+		}
+
+        limit_to_equipment_type = { mio_cat_eq_all_battleship }
+
+      	equipment_bonus = {
+			hg_armor_piercing = 0.05
+			naval_speed = 0.05
+			build_cost_ic = -0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+}
+
+GER_blohm_und_voss_organization = {
+	include = generic_raider_ship_organization
+	icon = GFX_idea_blohm_und_voss
+
+	override_trait = {
+		token = generic_mio_trait_unescorted_raider_requirements
+		
+		position = { x=2 y=1 }
+	}
+	override_trait = {
+		token = generic_mio_trait_raider_escort_requirements
+		
+		position = { x=0 y=1 }
+	}
+	
+	allowed = {	
+		original_tag = GER 
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_heavy_raiders
+		name = GER_mio_trait_heavy_raiders
+		icon = GFX_generic_mio_department_icon_ship_screen_ship_engine
+		special_trait_background = yes
+
+		relative_position_id = generic_mio_trait_raiding_capital_ships
+
+		all_parents = { generic_mio_trait_raiding_capital_ships }
+
+		position = { x=-2 y=1 }  
+
+		available = {
+            #FROM = {
+            #   has_completed_focus = GER_cruiser_warfare
+            #}
+        }
+
+        limit_to_equipment_type = { ship_hull_cruiser }
+
+      	equipment_bonus = {
+			surface_visibility = -0.05
+			naval_speed = 0.05
+			naval_range = 0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_o_class_battlecruisers
+		name = GER_mio_trait_o_class_battlecruisers
+		icon = GFX_generic_mio_department_icon_ship_screen_ship_engine
+		special_trait_background = yes
+
+		relative_position_id = GER_mio_trait_heavy_raiders
+
+		all_parents = { GER_mio_trait_heavy_raiders }
+
+		position = { x=0 y=1 }  
+
+		available = {
+			#FROM = {
+			#	has_completed_focus = GER_panzerschiff_raiders
+			#}
+		}
+
+        limit_to_equipment_type = { mio_cat_eq_all_cruiser }
+
+      	equipment_bonus = {
+			hg_armor_piercing = 0.05
+			naval_speed = 0.05
+			build_cost_ic = -0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_u_boat_yards
+		name = GER_mio_trait_u_boat_yards
+		icon = GFX_generic_mio_department_icon_ship_submarine_production
+		special_trait_background = yes
+
+		relative_position_id = generic_mio_trait_raiding_submarines
+
+		all_parents = { generic_mio_trait_raiding_submarines }
+
+		position = { x=2 y=1 }  
+
+		available = {
+            #FROM = {
+            #    has_completed_focus = GER_u_boat_efforts
+            #}
+        }
+
+        limit_to_equipment_type = { submarine }
+
+        equipment_bonus = {
+			build_cost_ic = -0.1		
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_high_test_peroxide
+		name = GER_mio_trait_high_test_peroxide
+		icon = GFX_generic_mio_department_icon_ship_submarine_engine
+		special_trait_background = yes
+
+		relative_position_id = GER_mio_trait_u_boat_yards
+
+		all_parents = { GER_mio_trait_u_boat_yards }
+
+		position = { x=0 y=1 }  
+
+        limit_to_equipment_type = { submarine }
+
+        equipment_bonus = {
+			naval_speed = 0.1		
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+}
+
+GER_hdw_organization = {
+	include = generic_submarine_organization
+	icon = GFX_idea_GER_hdw 
+	
+	allowed = {	
+		original_tag = GER 
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_ocean_u_boats
+		name = GER_mio_trait_ocean_u_boats
+		icon = GFX_generic_mio_department_icon_ship_submarine_engine
+		special_trait_background = yes
+
+		relative_position_id = generic_mio_trait_long_range_raiding
+
+		all_parents = { generic_mio_trait_long_range_raiding }
+
+		position = { x=0 y=1 }  
+
+		available = {
+			#FROM = {
+			#	has_completed_focus = GER_u_boat_efforts
+			#}
+		}
+
+        equipment_bonus = {
+			sub_visibility = -0.03
+			naval_range = 0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_kilian_submarine_bunker
+		name = GER_mio_trait_kilian_submarine_bunker
+		icon = GFX_generic_mio_department_icon_ship_submarine_production
+		special_trait_background = yes
+
+		relative_position_id = generic_mio_trait_submarine_mass_production
+
+		all_parents = { generic_mio_trait_submarine_mass_production }
+
+		position = { x=0 y=1 }  
+
+		available = {
+			#FROM = {
+			#	has_completed_focus = GER_u_boat_efforts
+			#}
+		}
+
+        production_bonus = {
+			production_capacity_factor = 0.05
+		}
+
+		equipment_bonus = {
+			build_cost_ic = -0.05		
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_saddle_tanks
+		name = GER_mio_trait_saddle_tanks
+		icon = GFX_generic_mio_department_icon_ship_submarine_quality
+		special_trait_background = yes
+
+		position = { x=9 y=0 }  
+
+		equipment_bonus = {
+			naval_range = 0.07
+			build_cost_ic = 0.02	
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_excellent_diving_performance
+		name = GER_mio_trait_excellent_diving_performance
+		icon = GFX_generic_mio_department_icon_ship_submarine_survivability
+		special_trait_background = yes
+
+		relative_position_id = GER_mio_trait_saddle_tanks
+
+		all_parents = { GER_mio_trait_saddle_tanks }
+
+		position = { x=0 y=1 } 
+
+		equipment_bonus = {
+			sub_visibility = -0.05	
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_atlantic_raiders
+		name = GER_mio_trait_atlantic_raiders
+		icon = GFX_generic_mio_department_icon_ship_submarine_engine
+		special_trait_background = yes
+
+		relative_position_id = GER_mio_trait_excellent_diving_performance
+
+		all_parents = { GER_mio_trait_excellent_diving_performance }
+
+		position = { x=0 y=1 } 
+
+		available = {
+			#FROM = {
+			#	has_completed_focus = GER_u_boat_efforts
+			#}
+		}
+
+		equipment_bonus = {
+			sub_visibility = -0.03
+			naval_range = 0.05
+			naval_speed = 0.03
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+}
+
+GER_deutsche_werke_organization = {
+	include = generic_task_force_ship_organization
+	icon = GFX_idea_GER_deutsche_werke
+
+	override_trait = {
+		token = generic_mio_trait_primary_fire_director_control
+		
+		position = { x=2 y=0 }
+	}
+
+	override_trait = {
+		token = generic_mio_trait_splinter_protection
+
+		all_parents = { GER_mio_trait_raider_doctrine }
+
+		relative_position_id = GER_mio_trait_raider_doctrine 
+		
+		position = { x=0 y=1 }
+	}
+
+	override_trait = {
+		token = generic_mio_trait_underway_replenishment_equipment
+
+		position = { x=0 y=2 }
+	}
+	
+	allowed = {	
+		original_tag = GER 
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_foreign_influences
+		name = GER_mio_trait_foreign_influences
+		icon = GFX_generic_mio_department_icon_facilities
+		special_trait_background = yes
+
+		relative_position_id = generic_mio_trait_primary_fire_director_control 
+
+		
+
+		position = { x=2 y=0 } 
+
+		available = {
+			FROM = {
+				has_completed_focus = GER_u_boat_efforts
+			}
+		}
+
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_raider_doctrine
+		name = GER_mio_trait_raider_doctrine
+		icon = GFX_generic_mio_department_icon_ship_screen_ship_quality
+		special_trait_background = yes
+
+		position = { x=1 y=1 }
+		relative_position_id = generic_mio_trait_long_range_cruising
+		
+		any_parent = { generic_mio_trait_long_range_cruising generic_mio_trait_high_speed_cruising }
+
+		available = {
+			FROM = {
+				has_completed_focus = GER_u_boat_efforts
+			}
+		}
+
+		limit_to_equipment_type = { screen_ship }
+
+		equipment_bonus = {
+			naval_speed = 0.05
+			surface_visibility = -0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_fast_raiders
+		name = GER_mio_trait_fast_raiders
+		icon = GFX_generic_mio_department_icon_ship_screen_ship_engine
+		special_trait_background = yes
+
+		position = { x=1 y=1 }
+		relative_position_id = generic_mio_trait_splinter_protection
+		
+		any_parent = { generic_mio_trait_splinter_protection  }
+
+		available = {
+			FROM = {
+				has_completed_focus = GER_u_boat_efforts
+			}
+		}
+
+		limit_to_equipment_type = { screen_ship }
+
+		equipment_bonus = {
+			naval_speed = 0.05
+			naval_range = 0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_carrier_raiders
+		name = GER_mio_trait_carrier_raiders
+		icon = GFX_generic_mio_department_icon_ship_carrier_engine
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = GER_mio_trait_fast_raiders
+		
+		all_parents = { GER_mio_trait_fast_raiders  }
+
+		available = {
+			FROM = {
+				has_completed_focus = GER_u_boat_efforts
+			}
+		}
+
+		limit_to_equipment_type = { mio_cat_eq_all_carrier }
+
+		equipment_bonus = {
+			naval_speed = 0.05
+			naval_range = 0.05
+			surface_visibility = -0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+}
+
+GER_kriegsmarinewerft_wilhelmshaven_organization = {
+	include = generic_refurbishment_repair_organization
+	icon = GFX_idea_GER_kriegsmarinewerft_wilhelmshaven
+	
+	allowed = {	
+		original_tag = GER 
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_historical_shipyard
+		name = GER_mio_trait_historical_shipyard
+		icon = GFX_generic_mio_department_icon_facilities
+		special_trait_background = yes
+
+		position = { x=8 y=0 }
+		
+		available = {
+			#FROM = {
+			#	has_completed_focus = GER_expand_kriegsmarinewerft
+			#}
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.07
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_upgrade_panzerschiffs
+		name = GER_mio_trait_upgrade_panzerschiffs
+		icon = GFX_generic_mio_department_icon_ship_screen_ship_engine
+		special_trait_background = yes
+
+		position = { x=9 y=0 }
+		
+		available = {
+			FROM = {
+				has_completed_focus = GER_u_boat_efforts
+			}
+		}
+
+		limit_to_equipment_type = { ship_hull_cruiser }
+
+		equipment_bonus = {
+			naval_speed = 0.05
+			surface_visibility = -0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_innovative_battleship_designs
+		name = GER_mio_trait_innovative_battleship_designs
+		icon = GFX_generic_mio_department_icon_ship_capital_ship_engine
+		special_trait_background = yes
+
+		relative_position_id = GER_mio_trait_upgrade_panzerschiffs
+		
+		all_parents = { GER_mio_trait_upgrade_panzerschiffs }
+
+		position = { x=0 y=1 }
+		
+		available = {
+			FROM = {
+				has_completed_focus = GER_u_boat_efforts
+			}
+		}
+
+		limit_to_equipment_type = { capital_ship }
+
+		equipment_bonus = {
+			naval_speed = 0.05
+			surface_visibility = -0.03
+			naval_torpedo_enemy_critical_chance_factor = -0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+}
+
+###########################
+
+###  #    ##  #  # ###  ## 
+#  # #   #  # ## # #   #   
+###  #   #### # ## ##   #  
+#    #   #  # #  # #     # 
+#    ### #  # #  # ### ##  
+
+###########################
+
+GER_messerschmitt_organization = {
+	include = generic_light_aircraft_organization
+	icon = GFX_idea_messerschmitt
+	
+	allowed = {	
+		original_tag = GER
+	}
+
+	add_trait = {
+		token = GER_mio_trait_maintenance_first_design
+		name = GER_mio_trait_maintenance_first_design
+
+		icon = GFX_generic_mio_department_icon_plane_fighter_line_efficiency
+		special_trait_background = yes
+		
+		position = { x=-2 y=1 }
+		relative_position_id = generic_mio_trait_expanded_production_facilities
+
+		all_parents = { generic_mio_trait_expanded_production_facilities }
+
+		equipment_bonus = {
+			reliability = 0.05
+		}
+
+		production_bonus = {
+			production_efficiency_gain_factor = 0.05
+		}
+	}
+
+	add_trait = {
+		token = GER_mio_trait_fuselage_based_weapons
+		name = GER_mio_trait_fuselage_based_weapons
+
+		icon = GFX_generic_mio_trait_icon_anti_air_attack
+		special_trait_background = yes
+		
+		position = { x=1 y=1 }
+		relative_position_id = generic_mio_trait_gun_pods
+
+		any_parent = { generic_mio_trait_heavier_airframe generic_mio_trait_maximum_wing_loads generic_mio_trait_gun_pods }
+
+		equipment_bonus = {
+			air_attack = 0.05
+			air_agility = 0.05
+		} 
+	}
+
+	add_trait = {
+		token = GER_mio_trait_hamburger_flugzeugbau
+		name = GER_mio_trait_hamburger_flugzeugbau
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+
+		position = { x=@aircraft_hamburger_X y=@aircraft_hamburger_Y }  
+		
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				mio:GER_blohm_und_voss_organization = {
+					has_mio_size > 4
+				}
+				NOT = { has_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag }
+			}
+		}
+
+		on_complete = {
+			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
+			FROM = {
+				set_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag
+			}
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {
+		token = GER_mio_trait_aerodynamic_research_insitute
+		name = GER_mio_trait_aerodynamic_research_insitute
+		icon = GFX_generic_mio_department_icon_facilities
+		special_trait_background = yes
+
+		relative_position_id = generic_mio_trait_advanced_aerodynamics
+
+		position = { x = 2 y = 0 }  
+		
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				has_completed_focus = GER_aerodynamic_research_institute
+				NOT = { has_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag }
+			}
+		}
+
+		on_complete = {
+			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
+			FROM = {
+				set_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag
+			}
+		}
+
+		organization_modifier = {
+		    military_industrial_organization_research_bonus = 0.1
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+}
+
+GER_junkers_organization = {
+	include = generic_cas_aircraft_organization
+	icon = GFX_idea_junkers
+	
+	allowed = {
+		original_tag = GER 
+	}
+
+	add_trait = {
+		token = GER_mio_trait_psychological_warfare
+		name = GER_mio_trait_psychological_warfare
+
+		icon = GFX_generic_mio_trait_icon_fuel_consumption
+		special_trait_background = yes
+		
+		position = { x=2 y=0 }
+		relative_position_id = generic_mio_trait_reinforced_wings
+
+		equipment_bonus = {
+			fuel_consumption = -0.05
+		} 
+	}
+
+	add_trait = {
+		token = GER_mio_trait_90_degree_dives
+		name = GER_mio_trait_90_degree_dives
+
+		icon = GFX_generic_mio_department_icon_plane_cas_quality
+		special_trait_background = yes
+		
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_automatic_pull_out
+		all_parents = { generic_mio_trait_automatic_pull_out }
+
+		equipment_bonus = {
+			air_ground_attack = 0.05
+		} 
+	}
+
+	add_trait = {
+		token = GER_mio_trait_hamburger_flugzeugbau
+		name = GER_mio_trait_hamburger_flugzeugbau
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+
+		position = { x=@aircraft_hamburger_X y=@aircraft_hamburger_Y }  
+		
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				mio:GER_blohm_und_voss_organization = {
+					has_mio_size > 4
+				}
+				NOT = { has_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag }
+			}
+		}
+
+		on_complete = {
+			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
+			FROM = {
+				set_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag
+			}
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {
+		token = GER_mio_trait_aerodynamic_research_insitute
+		name = GER_mio_trait_aerodynamic_research_insitute
+		icon = GFX_generic_mio_department_icon_facilities
+		special_trait_background = yes
+
+		relative_position_id = generic_mio_trait_reinforced_wings
+
+		position = { x = 2 y = 1 }  
+		
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				has_completed_focus = GER_aerodynamic_research_institute
+				NOT = { has_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag }
+			}
+		}
+
+		on_complete = {
+			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
+			FROM = {
+				set_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag
+			}
+		}
+
+		organization_modifier = {
+		    military_industrial_organization_research_bonus = 0.1
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+}
+
+GER_focke_wulf_organization = {
+	include = generic_range_focused_aircraft_organization
+	icon = GFX_idea_focke_wulf
+	
+	allowed = {	
+		original_tag = GER 
+	}
+
+	override_trait = {
+		token = generic_mio_trait_extra_cargo_doors
+
+		position = { x=8 y=0 }
+	}
+
+	add_trait = {
+		token = GER_mio_trait_work_horse_design_philosophy
+		name = GER_mio_trait_work_horse_design_philosophy
+
+		icon = GFX_generic_mio_department_icon_plane_medium_engine
+		special_trait_background = yes
+		
+		position = { x=0 y=1 }
+		relative_position_id = GER_mio_trait_hamburger_flugzeugbau
+
+		limit_to_equipment_type = { mio_cat_eq_all_small_plane mio_cat_eq_all_medium_plane }
+
+		equipment_bonus = {
+			reliability = 0.05
+			air_defence = 0.03
+		} 
+	}
+
+	add_trait = {
+		token = GER_mio_trait_aerodynamic_research_insitute
+		name = GER_mio_trait_aerodynamic_research_insitute
+		icon = GFX_generic_mio_department_icon_facilities
+		special_trait_background = yes
+
+		relative_position_id = GER_mio_trait_work_horse_design_philosophy
+
+		position = { x = 0 y = 1 }  
+		
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				has_completed_focus = GER_aerodynamic_research_institute
+				NOT = { has_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag }
+			}
+		}
+
+		on_complete = {
+			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
+			FROM = {
+				set_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag
+			}
+		}
+
+		organization_modifier = {
+		    military_industrial_organization_research_bonus = 0.1
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {
+		token = GER_mio_trait_bomber_destroyer
+		name = GER_mio_trait_bomber_destroyer
+
+		icon = GFX_generic_mio_department_icon_plane_light_combat
+		special_trait_background = yes
+		
+		position = { x=-0 y=1 }
+		relative_position_id = generic_mio_trait_strafing_techniques
+		all_parents = { generic_mio_trait_strafing_techniques }
+
+		limit_to_equipment_type = { mio_cat_eq_all_small_plane mio_cat_eq_all_medium_plane }
+
+		equipment_bonus = {
+			air_attack = 0.05
+			air_agility = 0.03
+		}
+	}
+
+	add_trait = {
+		token = GER_mio_trait_radial_engine
+		name = GER_mio_trait_radial_engine
+
+		icon = GFX_generic_mio_trait_icon_air_agility
+		special_trait_background = yes
+		
+		position = { x=-0 y=1 }
+		relative_position_id = GER_mio_trait_long_nose_design
+		all_parents = { GER_mio_trait_long_nose_design }
+
+		limit_to_equipment_type = { mio_cat_eq_all_small_plane }
+
+		equipment_bonus = {
+			air_defence = 0.05
+			air_agility = 0.05
+		}
+	}
+
+	add_trait = {
+		token = GER_mio_trait_long_nose_design
+		name = GER_mio_trait_long_nose_design
+
+		icon = GFX_generic_mio_department_icon_plane_light_engine
+		special_trait_background = yes
+		
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_large_rudders_and_flaps
+		all_parents = { generic_mio_trait_large_rudders_and_flaps }
+
+		limit_to_equipment_type = { mio_cat_eq_all_small_plane }
+
+		equipment_bonus = {
+			air_range = 0.05
+			air_defence = 0.05
+		} 
+	} 
+
+	add_trait = {
+		token = GER_mio_trait_hamburger_flugzeugbau
+		name = GER_mio_trait_hamburger_flugzeugbau
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+
+		position = { x=@aircraft_hamburger_X y=@aircraft_hamburger_Y }  
+		
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				mio:GER_blohm_und_voss_organization = {
+					has_mio_size > 4
+				}
+				NOT = { has_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag }
+			}
+		}
+
+		on_complete = {
+			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
+			FROM = {
+				set_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag
+			}
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+}
+
+GER_heinkel_organization = {
+	include = generic_heavy_aircraft_organization
+	icon = GFX_idea_heinkel
+	
+	allowed = {
+		original_tag = GER 
+	}
+
+	tree_header_text = {
+		text = mio_header_design_department
+		x = 2
+	}
+
+	tree_header_text = {
+		text = mio_header_operational_department
+		x = 7
+	}
+
+	override_trait = {
+		token = generic_mio_trait_advanced_turbochargers
+
+		position = { x=0 y=1 }
+	}
+
+	override_trait = {
+		token = generic_mio_trait_extended_rear_fuselage
+
+		position = { x=5 y=0 }
+	}
+
+	override_trait = {
+		token = generic_mio_trait_pressurized_cockpit
+
+		position = { x=2 y=1 }
+	}
+
+	add_trait = {
+		token = GER_mio_trait_doppel_blitz
+		name = GER_mio_trait_doppel_blitz
+		icon = GFX_generic_mio_department_icon_plane_heavy_engine
+		special_trait_background = yes
+		
+		position = { x=3 y=0 }
+		relative_position_id = generic_mio_trait_reinforced_frames
+
+		equipment_bonus = {
+			maximum_speed = 0.05
+		} 
+	} 
+
+	add_trait = {
+		token = GER_mio_trait_advanced_night_equipment
+		name = GER_mio_trait_advanced_night_equipment
+		icon = GFX_generic_mio_trait_icon_detection
+		special_trait_background = yes
+		
+		position = { x=-1 y=1 }
+		relative_position_id = generic_mio_trait_pressurized_cockpit
+		all_parents = { generic_mio_trait_pressurized_cockpit }
+
+		equipment_bonus = {
+			night_penalty = -0.05
+		} 
+	} 
+
+	add_trait = {
+		token = GER_mio_trait_stepless_cockpit
+		name = GER_mio_trait_stepless_cockpit
+		icon = GFX_generic_mio_trait_icon_strategic_attack
+		special_trait_background = yes
+		
+		position = { x=1 y=1 }
+		relative_position_id = generic_mio_trait_pressurized_cockpit
+		all_parents = { generic_mio_trait_pressurized_cockpit }
+
+		limit_to_equipment_type = { mio_cat_eq_only_strategic_bomber }
+
+		equipment_bonus = {
+			air_bombing = 0.05
+		} 
+	} 
+
+	add_trait = {
+		token = GER_mio_trait_hamburger_flugzeugbau
+		name = GER_mio_trait_hamburger_flugzeugbau
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+
+		position = { x=@aircraft_hamburger_X y=@aircraft_hamburger_Y }  
+
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				mio:GER_blohm_und_voss_organization = {
+					has_mio_size > 4
+				}
+				NOT = { has_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag }
+			}
+		}
+
+		on_complete = {
+			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
+			FROM = {
+				set_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag
+			}
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {
+		token = GER_mio_trait_aerodynamic_research_insitute
+		name = GER_mio_trait_aerodynamic_research_insitute
+		icon = GFX_generic_mio_department_icon_facilities
+		special_trait_background = yes
+
+		relative_position_id = generic_mio_trait_air_deployed_sonobuoys
+
+		position = { x = 1 y = 0 }  
+		
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				has_completed_focus = GER_aerodynamic_research_institute
+				NOT = { has_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag }
+			}
+		}
+
+		on_complete = {
+			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
+			FROM = {
+				set_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag
+			}
+		}
+
+		organization_modifier = {
+		    military_industrial_organization_research_bonus = 0.1
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+}
+
+GER_dornier_organization = {
+	include = generic_medium_aircraft_organization
+	icon = GFX_idea_dornier
+	
+	allowed = {	
+		original_tag = GER 
+	}
+
+	add_trait = {
+		token = GER_mio_trait_flying_boat_specialist
+		name = GER_mio_trait_flying_boat_specialist
+		icon = GFX_generic_mio_trait_icon_torpedo_attack
+		special_trait_background = yes
+		
+		position = { x=-1 y=1 }
+		relative_position_id = generic_mio_trait_skip_bombing
+		all_parents = { generic_mio_trait_skip_bombing }
+
+		limit_to_equipment_type = { mio_cat_eq_all_medium_plane }
+
+		equipment_bonus = {
+			surface_detection = 0.03
+			naval_strike_attack = 0.05
+		} 
+	}
+
+	add_trait = {
+		token = GER_mio_trait_schnellbomber_doctrine
+		name = GER_mio_trait_schnellbomber_doctrine
+		icon = GFX_generic_mio_department_icon_plane_medium_engine
+		special_trait_background = yes
+		
+		position = { x=-1 y=1 }
+		relative_position_id = generic_mio_trait_refined_engines
+		all_parents = { generic_mio_trait_refined_engines }
+
+		limit_to_equipment_type = { mio_cat_eq_all_medium_plane }
+
+		equipment_bonus = {
+			maximum_speed = 0.1
+		} 
+	} 
+
+	add_trait = {
+		token = GER_mio_trait_hamburger_flugzeugbau
+		name = GER_mio_trait_hamburger_flugzeugbau
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+
+		position = { x=@aircraft_hamburger_X y=@aircraft_hamburger_Y }  
+		
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				mio:GER_blohm_und_voss_organization = {
+					has_mio_size > 4
+				}
+				NOT = { has_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag }
+			}
+		}
+
+		on_complete = {
+			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
+			FROM = {
+				set_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag
+			}
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {
+		token = GER_mio_trait_aerodynamic_research_insitute
+		name = GER_mio_trait_aerodynamic_research_insitute
+		icon = GFX_generic_mio_department_icon_facilities
+		special_trait_background = yes
+
+		relative_position_id = GER_mio_trait_flying_boat_specialist
+
+		position = { x = 2 y = 0 }  
+		
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				has_completed_focus = GER_aerodynamic_research_institute
+				NOT = { has_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag }
+			}
+		}
+
+		on_complete = {
+			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
+			FROM = {
+				set_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag
+			}
+		}
+
+		organization_modifier = {
+		    military_industrial_organization_research_bonus = 0.1
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+}
+
+GER_arado_flugzeugwerke_organization = {
+	include = generic_multi_role_aircraft_organization
+	icon = GFX_idea_GER_arado_flugzeugwerke
+	
+	allowed = {	
+		original_tag = GER 
+	}
+
+	add_trait = {
+		token = GER_mio_trait_jet_bomber_innovator
+		name = GER_mio_trait_jet_bomber_innovator
+		icon = GFX_generic_mio_department_icon_plane_medium_engine
+		special_trait_background = yes
+		
+		position = { x=0 y=1 }
+		relative_position_id = GER_mio_trait_hamburger_flugzeugbau
+
+		available = {
+			FROM = {
+				is_special_project_completed = sp:sp_air_axial_jet_engine
+			}
+		}
+
+		limit_to_equipment_type = { mio_cat_eq_all_medium_plane }
+
+		equipment_bonus = {
+			maximum_speed = 0.1
+		} 
+	} 
+
+	add_trait = {
+		token = GER_mio_trait_hamburger_flugzeugbau
+		name = GER_mio_trait_hamburger_flugzeugbau
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+		
+		position = { x=@aircraft_hamburger_X y=@aircraft_hamburger_Y }  
+
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				mio:GER_blohm_und_voss_organization = {
+					has_mio_size > 4
+				}
+				NOT = { has_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag }
+			}
+		}
+
+		on_complete = {
+			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
+			FROM = {
+				set_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag
+			}
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {
+		token = GER_mio_trait_aerodynamic_research_insitute
+		name = GER_mio_trait_aerodynamic_research_insitute
+		icon = GFX_generic_mio_department_icon_facilities
+		special_trait_background = yes
+
+		relative_position_id = GER_mio_trait_hamburger_flugzeugbau
+
+		position = { x = -1 y = 0 }  
+		
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				has_completed_focus = GER_aerodynamic_research_institute
+				NOT = { has_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag }
+			}
+		}
+
+		on_complete = {
+			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
+			FROM = {
+				set_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag
+			}
+		}
+
+		organization_modifier = {
+		    military_industrial_organization_research_bonus = 0.1
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+}
+
+GER_fieseler_organization = {
+	include = generic_naval_aircraft_organization
+	icon = GFX_idea_GER_fieseler
+	
+	allowed = {	
+		original_tag = GER 
+	}
+
+	add_trait = {
+		token = GER_mio_trait_hamburger_flugzeugbau
+		name = GER_mio_trait_hamburger_flugzeugbau
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+
+		position = { x=@aircraft_hamburger_X y=@aircraft_hamburger_Y }  
+		
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				mio:GER_blohm_und_voss_organization = {
+					has_mio_size > 4
+				}
+				NOT = { has_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag }
+			}
+		}
+
+		on_complete = {
+			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
+			FROM = {
+				set_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag
+			}
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.1
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {
+		token = GER_mio_trait_aerodynamic_research_insitute
+		name = GER_mio_trait_aerodynamic_research_insitute
+		icon = GFX_generic_mio_department_icon_facilities
+		special_trait_background = yes
+
+		relative_position_id = GER_mio_trait_hamburger_flugzeugbau
+
+		position = { x = 0 y = 1 }  
+		
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				has_completed_focus = GER_aerodynamic_research_institute
+				NOT = { has_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag }
+			}
+		}
+
+		on_complete = {
+			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
+			FROM = {
+				set_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag
+			}
+		}
+
+		organization_modifier = {
+		    military_industrial_organization_research_bonus = 0.1
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+}
+
+################################### 
+
+#   #  ##  ### ### ###  ### ### #   
+## ## #  #  #  #   #  #  #  #   #   
+# # # ####  #  ##  ###   #  ##  #   
+#   # #  #  #  #   #  #  #  #   #   
+#   # #  #  #  ### #  # ### ### ### 
+
+
+###################################
+
+GER_rheinmetall_organization = {
+	include = generic_artillery_organization
+	icon = GFX_idea_rheinmetall
+	
+	allowed = {
+		original_tag = GER 
+	}
+
+	add_trait = { 
+		token = GER_mio_trait_3_7_cm_pak
+		name = GER_mio_trait_3_7_cm_pak
+		icon = GFX_generic_mio_department_icon_anti_tank
+		special_trait_background = yes
+		
+		
+		
+		position = { x = 1 y = 0 }
+		relative_position_id = generic_mio_trait_big_guns
+
+		#any_parent = { generic_mio_trait_cantilever_wing_structure }
+
+		limit_to_equipment_type = { 
+			anti_tank_equipment
+		}
+
+		equipment_bonus = {
+			ap_attack = 0.05
+			hard_attack = 0.05
+			soft_attack = 0.1
+		}
+	}
+
+	add_trait = { 
+		token = GER_mio_trait_7_5_cm_pak
+		name = GER_mio_trait_7_5_cm_pak
+		icon = GFX_generic_mio_trait_icon_ap_attack
+		special_trait_background = yes
+
+		position = { x = 0 y = 1 }
+		relative_position_id = GER_mio_trait_3_7_cm_pak
+		
+		available = {
+			FROM = { has_tech = antitank3 }
+		}
+		
+		any_parent = { GER_mio_trait_3_7_cm_pak }
+
+		limit_to_equipment_type = { 
+			anti_tank_equipment
+		}
+
+		equipment_bonus = {
+			ap_attack = 0.05
+			hard_attack = 0.1
+		}
+	}
+
+	add_trait = { 
+		token = GER_mio_trait_versatile_carriage
+		name = GER_mio_trait_versatile_carriage
+		icon = GFX_generic_mio_department_icon_anti_air
+		special_trait_background = yes
+
+		position = { x = 1 y = 1 }
+		relative_position_id = generic_mio_trait_rapid_fire
+
+		all_parents = {
+			generic_mio_trait_rapid_fire
+			generic_mio_trait_advanced_barrel_forging
+		}
+
+		limit_to_equipment_type = { 
+			anti_tank_equipment
+			anti_air_equipment
+		}
+
+		equipment_bonus = {
+			ap_attack = 0.03
+			hard_attack = 0.03
+			air_attack = 0.05
+		}
+	}
+
+	add_trait = { 
+		token = GER_mio_trait_dual_recoil_mechanism
+		name = GER_mio_trait_dual_recoil_mechanism
+		icon = GFX_generic_mio_department_icon_artillery
+		special_trait_background = yes
+
+		position = { x = 1 y = 1 }
+		relative_position_id = generic_mio_trait_advanced_barrel_forging
+
+		all_parents = {
+			generic_mio_trait_advanced_barrel_forging
+			generic_mio_trait_big_guns
+		}
+
+		available = {
+			FROM = {
+				has_tech = artillery3
+			}
+		}
+
+		limit_to_equipment_type = { 
+			artillery_equipment
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.1
+			build_cost_ic = 0.05
+		}
+	}
+}
+
+GER_mauser_organization = {
+	include = generic_infantry_equipment_organization
+	icon = GFX_idea_mauser
+
+	override_trait = {
+		token = generic_mio_trait_armor_piercing_rounds
+
+		position = { x=0 y=2 }
+	}
+
+	override_trait = {
+		token = generic_mio_trait_advanced_barrel_forging
+
+		position = { x=1 y=2 }
+	}
+
+	override_trait = {
+		token = generic_mio_trait_reinforced_stocks
+
+		position = { x=3 y=0 }
+	}
+
+	override_trait = {
+		token = generic_mio_trait_medium_machineguns
+
+		position = { x=0 y=2 }
+	}
+	
+	allowed = {
+		original_tag = GER 
+	}
+
+	add_trait = {
+		token = GER_mio_trait_experienced_manufacturer
+		name = GER_mio_trait_experienced_manufacturer
+		icon = GFX_generic_mio_trait_icon_reliability
+		special_trait_background = yes
+
+		position = { x=-1 y=0 }  
+		relative_position_id = generic_mio_trait_drum_pattern_sights
+
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		equipment_bonus = {
+			reliability = 0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {
+		token = GER_mio_trait_export_models
+		name = GER_mio_trait_export_models
+		icon = GFX_generic_mio_department_icon_facilities
+		special_trait_background = yes
+
+		position = { x=-1 y=1 }  
+		relative_position_id = generic_mio_trait_drum_pattern_sights
+
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		production_bonus = {
+			production_efficiency_cap_factor = 0.03
+			production_cost_factor = -0.03
+		}
+		
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {
+		token = GER_mio_trait_karabiner
+		name = GER_mio_trait_karabiner
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+
+		position = { x=0 y=1 }  
+		relative_position_id = generic_mio_trait_reinforced_stocks
+
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		all_parents = {	generic_mio_trait_reinforced_stocks }
+
+		equipment_bonus = {
+			soft_attack = 0.03
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.03
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {
+		token = GER_mio_trait_sturmgewehr
+		name = GER_mio_trait_sturmgewehr
+		icon = GFX_generic_mio_department_icon_infantry_offense
+		special_trait_background = yes
+
+		position = { x=2 y=2 }
+		relative_position_id = generic_mio_trait_bolt_action
+
+		any_parent = { generic_mio_trait_semi_auto generic_mio_trait_bolt_action }
+
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			FROM = {
+				has_tech = advanced_infantry_weapons
+			}
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.07
+			breakthrough = 0.03
+		}
+
+		production_bonus = {
+			production_cost_factor = 0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+}
+
+GER_opel_organization = {
+	include = generic_motorized_mechanized_organization
+	icon = GFX_idea_opel
+	
+	allowed = {
+		original_tag = GER
+	}
+
+	add_trait = {
+		token = GER_mio_trait_continental_ag_tires
+		name = GER_mio_trait_continental_ag_tires
+		icon = GFX_generic_mio_trait_icon_reliability
+		special_trait_background = yes
+
+		position = { x=9 y=0 }  
+
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = { 
+			#FROM = {
+			#	has_completed_focus = GER_nationalize_ford_factories
+			#}
+		}
+
+		equipment_bonus = {
+			reliability = 0.05
+			build_cost_ic = -0.02
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {
+		token = GER_mio_trait_ford_facilities
+		name = GER_mio_trait_ford_facilities
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+
+		position = { x=9 y=1 }  
+
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		available = {
+			#FROM = {
+			#	has_completed_focus = GER_nationalize_ford_factories
+			#}
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {
+		token = GER_mio_trait_efficiency_in_mass_production
+		name = GER_mio_trait_efficiency_in_mass_production
+		icon = GFX_generic_mio_trait_icon_efficiency_cap
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = GER_mio_trait_ford_facilities
+
+		any_parent = { GER_mio_trait_ford_facilities }
+
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		production_bonus = {
+			production_efficiency_cap_factor = 0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {
+		token = GER_mio_trait_improved_engines
+		name = GER_mio_trait_improved_engines
+		icon = GFX_generic_mio_department_icon_motorized_mechanized_engine
+		special_trait_background = yes
+
+		position = { x=-1 y=1 }
+		relative_position_id = GER_mio_trait_ford_facilities
+
+		any_parent = { GER_mio_trait_ford_facilities }
+
+		visible = {
+			FROM = { original_tag = GER }
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.05
+			reliability = 0.03
+			build_cost_ic = 0.02
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+}
+
+GER_carl_walther_organization = {
+	include = generic_support_equipment_organization
+	icon = GFX_idea_GER_carl_walther
+	
+	allowed = {	
+		original_tag = GER 
+	}
+
+	add_trait = {
+		token = GER_mio_trait_innovative_safety_features
+		name = GER_mio_trait_innovative_safety_features
+		icon = GFX_generic_mio_department_icon_facilities
+		special_trait_background = yes
+
+		position = { x=1 y=1 } 
+		relative_position_id = generic_mio_trait_private_scientists_program
+		
+		all_parents = { generic_mio_trait_private_scientists_program }
+
+		ai_will_do = {
+			base = 2
+		}
+
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+			military_industrial_organization_design_team_assign_cost = -0.05
+			military_industrial_organization_industrial_manufacturer_assign_cost = -0.05
+		}
+	}
+
+	add_trait = {
+		token = GER_mio_trait_policiary_equipment
+		name = GER_mio_trait_policiary_equipment
+		icon = GFX_generic_mio_department_icon_support_equipment
+		special_trait_background = yes
+
+		position = { x=0 y=1 } 
+		relative_position_id = generic_mio_trait_private_tenders
+		
+		all_parents = { generic_mio_trait_private_tenders }
+
+		ai_will_do = {
+			base = 2
+		}
+
+		limit_to_equipment_type = { support_equipment }
+
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 0.05
+		}
+
+		equipment_bonus = {
+			build_cost_ic = -0.05
+		}
+	}
+}
+
+GER_auto_union_organization = {
+	include = generic_armored_car_organization
+	icon = GFX_idea_GER_auto_union
+	
+	allowed = {	
+		original_tag = GER 
+	}
+
+	add_trait = {
+		token = GER_mio_trait_racing_pedigree
+		name = GER_mio_trait_racing_pedigree
+		icon = GFX_generic_mio_department_icon_armored_car_engine
+		special_trait_background = yes
+
+		position = { x=-1 y=1 }
+		relative_position_id = generic_mio_trait_simplified_suspension
+
+		all_parents = { generic_mio_trait_simplified_suspension }
+
+		equipment_bonus = {
+			maximum_speed = 0.07
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {
+		token = GER_mio_trait_military_exclusivity
+		name = GER_mio_trait_military_exclusivity
+		icon = GFX_generic_mio_department_icon_armored_car_line_efficiency
+		special_trait_background = yes
+
+		position = { x=0 y=3 }
+		relative_position_id = GER_mio_trait_racing_pedigree
+
+		all_parents = { GER_mio_trait_racing_pedigree generic_mio_trait_improved_tooling }
+
+		production_bonus = {
+			production_efficiency_gain_factor = 0.05
+			production_efficiency_cap_factor = 0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {
+		token = GER_mio_trait_schwerer_panzerspahwagen
+		name = GER_mio_trait_schwerer_panzerspahwagen
+		icon = GFX_generic_mio_department_icon_armored_car_defense
+		special_trait_background = yes
+
+		position = { x=1 y=1 }
+		relative_position_id = generic_mio_trait_defensive_equipment
+
+		all_parents = { generic_mio_trait_defensive_equipment }
+
+		available = { 
+			FROM = {
+				has_completed_focus = GER_panzergrenadier
+			}
+		}
+
+		equipment_bonus = {
+			breakthrough = 0.03
+			armor_value = 0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+}

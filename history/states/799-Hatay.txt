@@ -1,0 +1,40 @@
+state={
+	id=799
+	name="STATE_799"
+	manpower=3142000
+	buildings_max_level_factor=1.000
+	state_category=megalopolis
+	resources={
+		coal = 213
+	}
+	
+	history={
+		owner = GER
+		add_core_of = GER
+		
+		set_demilitarized_zone = yes
+		
+		victory_points = {
+			13875 10 
+		}
+		victory_points = {
+			13491 5 
+		}
+		victory_points = {
+			883 5
+		}
+		
+		buildings = {
+			infrastructure = 10
+			arms_factory = 3
+			industrial_complex = 14
+			steel_refinery = 2
+			synthetic_refinery = 1
+			air_base = 12
+		}
+	}
+	
+	provinces={
+		555 624 883 974 9303 9416 9599 9783 13491 13875 
+	}
+}

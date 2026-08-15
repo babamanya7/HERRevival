@@ -1,0 +1,26 @@
+
+category = {
+	name = "UI"
+	soundeffects = {
+
+		click_tech_tab
+		click_diplomacy_tab
+		click_trade_tab
+		click_construction_tab
+		click_ledger_tab
+		click_training_tab
+		click_production_tab
+		click_espionage_tab
+
+	}
+ 
+	compressor = {
+		enabled = yes
+		pregain = 3.0
+		postgain = 1.0
+		ratio = 2.0
+		threshold = -10.0
+		attacktime = 0.03
+		releasetime = 0.0
+	}
+}

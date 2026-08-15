@@ -1,0 +1,38 @@
+
+state={
+	id=44
+	name="STATE_44"
+	manpower = 952000
+	resources={
+		
+		chromium=28 # was: 3
+	}
+	
+	state_category = town
+	
+	history={
+		owner = ALB
+		victory_points = {
+			14480 5
+		}
+		victory_points = {
+			14481 1
+		}
+		buildings = {
+			infrastructure = 3
+			arms_factory = 2
+			industrial_complex = 4
+			air_base = 6
+			14481 = {
+				naval_base = 1
+			}
+			
+		}
+		add_core_of = ALB
+		add_claim_by = ITA
+	}
+
+	provinces={
+		14464 14460 14443 14453 14480 14484 14481 14522 14507 14516 14544 14559
+	}
+}

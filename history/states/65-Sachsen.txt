@@ -1,0 +1,34 @@
+
+state={
+	id=65
+	name="STATE_65"
+	manpower = 5592576
+	buildings_max_level_factor=1.000
+	state_category = metropolis
+
+	resources={
+		coal = 264
+	}
+
+	history={
+		owner = GER
+		buildings = {
+			infrastructure = 7
+			arms_factory = 6
+			industrial_complex = 7
+			steel_refinery = 2
+			synthetic_refinery = 1
+		}
+		victory_points = {
+			13314 5 
+		}
+		victory_points = {
+			13294 5 
+		}
+		add_core_of = GER
+	}
+
+	provinces={
+		482 532 982 1111 1130 1994 3374 3537 3560 3561 3565 6679 6953 7216 8035 9478 9745 11773 13294 13314 13476 
+	}
+}

@@ -1,0 +1,31 @@
+state={
+	id=826
+	name="STATE_826"
+	
+	history={
+		owner = USA
+		buildings = {
+			infrastructure = 7
+		
+			industrial_complex = 9
+			steel_refinery = 5
+		}
+		add_core_of = USA
+		1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+
+	}
+	
+	provinces={
+		831 4601 9775 11776 11890 
+	}
+	manpower=1000000
+	buildings_max_level_factor=1.000
+	state_category=metropolis
+}

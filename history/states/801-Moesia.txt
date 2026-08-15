@@ -1,0 +1,30 @@
+state={
+	id=801
+	name="STATE_801"
+	
+	history={
+		owner = GER
+		victory_points = {
+			6708 3 
+		}
+		
+		buildings = {
+			infrastructure = 8
+			arms_factory = 5
+			industrial_complex = 9
+			air_base = 6
+			steel_refinery = 3
+		}
+		add_core_of = GER
+		set_demilitarized_zone = yes
+
+	}
+	
+	
+	provinces={
+		68 1901 3484 3524 3924 4139 6586 6631 6708 7215 9539 9681 11506 11534 11699 11837 
+	}
+	manpower=3000000
+	buildings_max_level_factor=1.000
+	state_category=large_city
+}

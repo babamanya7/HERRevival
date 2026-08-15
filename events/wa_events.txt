@@ -1,0 +1,346 @@
+﻿add_namespace = afo_event
+add_namespace = her_event
+
+
+#######war bonds events
+country_event = {
+	id = her_event.1
+	title = her_event.1.t
+	desc  = her_event.1.d
+
+	is_triggered_only = yes
+	
+	option = {
+		name = her_event.1.a  ###YES
+		trigger = {
+			has_political_power > 49
+			if = {
+				limit = {
+					has_idea = Series_A_bonds
+				}
+				num_of_civilian_factories > 25
+			}
+			if = {
+				limit = {
+					has_idea = Series_B_bonds
+				}
+				num_of_civilian_factories > 40
+			}
+			if = {
+				limit = {
+					has_idea = Series_C_bonds
+				}
+				num_of_civilian_factories > 80
+			}
+			if = {
+				limit = {
+					has_idea = Series_D_bonds
+				}
+				num_of_civilian_factories > 120
+			}
+			if = {
+				limit = {
+					has_idea = Series_E_bonds
+				}
+				num_of_civilian_factories > 160
+			}
+			if = {
+				limit = {
+					has_idea = Series_F_bonds
+				}
+				num_of_civilian_factories > 200
+			}
+		}
+		add_political_power = -50
+		if = {
+			limit = {
+				has_idea = Series_F_bonds
+			}
+			add_ideas = Series_G_bonds
+		}
+		else_if = {
+			limit = {
+				has_idea = Series_E_bonds
+			}
+			add_ideas = Series_F_bonds
+		}
+		else_if = {
+			limit = {
+				has_idea = Series_D_bonds
+			}
+			add_ideas = Series_E_bonds
+		}
+		else_if = {
+			limit = {
+				has_idea = Series_C_bonds
+			}
+			add_ideas = Series_D_bonds
+		}
+		else_if = {
+			limit = {
+				has_idea = Series_B_bonds
+			}
+			add_ideas = Series_C_bonds
+		}
+		else = {
+			add_ideas = Series_B_bonds
+		}
+	}
+
+	option = {
+		name = her_event.1.b  ###NO
+		
+	}
+}
+
+country_event = {
+	id = her_event.2
+	title = her_event.2.t
+	desc  = her_event.2.d
+
+	is_triggered_only = yes
+	
+	option = {
+		name = her_event.2.a
+	}
+}
+
+country_event = {
+	id = afo_event.1
+	title = afo_event.1.t
+	desc  = afo_event.1.d
+	picture = GFX_news_event_world_ablaze_logo
+
+	fire_only_once = no
+	is_triggered_only = yes
+	################### changes to the economy
+	option = {
+		name = afo_event.1.a
+
+		country_event = afo_event.2
+	}
+
+	################### changes to tech tree's
+	option = {
+		name = afo_event.1.b
+
+		country_event = afo_event.3
+	}
+
+	################### changes to combat
+	option = {
+		name = afo_event.1.c
+
+		country_event = afo_event.4
+	}
+
+	################### i already understand
+	option = {
+		name = afo_event.1.e
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+country_event = {
+	id = afo_event.2
+	title = afo_event.2.t
+	desc  = afo_event.2.d
+
+	is_triggered_only = yes
+
+	################### back
+	option = {
+		name = afo_event.2.a
+
+		country_event = afo_event.10
+	}
+
+	################### changes to industry
+	option = {
+		name = afo_event.2.b
+
+		country_event = afo_event.5
+	}
+
+	################### changes to politics
+	option = {
+		name = afo_event.2.c
+
+		country_event = afo_event.6
+	}
+
+	################### i am ready to play now
+	option = {
+		name = afo_event.2.e
+	}
+}
+
+country_event = {
+	id = afo_event.3
+	title = afo_event.3.t
+	desc  = afo_event.3.d
+
+	is_triggered_only = yes
+
+	################### back
+	option = {
+		name = afo_event.3.a
+
+		country_event = afo_event.10
+	}
+
+	################### i am ready to play now
+	option = {
+		name = afo_event.3.b
+	}
+}
+
+country_event = {
+	id = afo_event.4
+	title = afo_event.4.t
+	desc  = afo_event.4.d
+
+	is_triggered_only = yes
+
+	################### back
+	option = {
+		name = afo_event.4.a
+
+		country_event = afo_event.10
+	}
+
+	################### i am ready to play now
+	option = {
+		name = afo_event.4.b
+	}
+}
+
+country_event = {
+	id = afo_event.5
+	title = afo_event.5.t
+	desc  = afo_event.5.d
+
+	is_triggered_only = yes
+
+	################### back
+	option = {
+		name = afo_event.5.a
+
+		country_event = afo_event.10
+	}
+
+	################### i am ready to play now
+	option = {
+		name = afo_event.5.b
+	}
+}
+
+country_event = {
+	id = afo_event.6
+	title = afo_event.6.t
+	desc  = afo_event.6.d
+
+	is_triggered_only = yes
+
+	################### back
+	option = {
+		name = afo_event.6.a
+
+		country_event = afo_event.10
+	}
+
+	################### i am ready to play now
+	option = {
+		name = afo_event.6.b
+	}
+}
+
+country_event = {
+	id = afo_event.10
+	title = afo_event.1.t
+	desc  = afo_event.1.d
+
+	is_triggered_only = yes
+
+	################### changes to the economy
+	option = {
+		name = afo_event.1.a
+
+		country_event = afo_event.2
+	}
+
+	################### changes to tech tree's
+	option = {
+		name = afo_event.1.b
+
+		country_event = afo_event.3
+	}
+
+	################### changes to combat
+	option = {
+		name = afo_event.1.c
+
+		country_event = afo_event.4
+	}
+
+	################### i already understand
+	option = {
+		name = afo_event.1.e
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+country_event = {
+	id = afo_event.13
+	hidden = yes
+
+	mean_time_to_happen = { days = 1 }
+
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = USA
+		NOT = {has_idea = undisturbed_isolation}
+		NOT = {has_idea = isolation}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				has_idea = civilian_economy
+			}
+			activate_mission = economy_fatigue_civilian_economy_mission
+		}
+		if = {
+			limit = {
+				has_idea = low_economic_mobilisation
+			}
+			activate_mission = economy_fatigue_low_economic_mobilisation_mission
+		}
+		if = {
+			limit = {
+				has_idea = partial_economic_mobilisation
+			}
+			activate_mission = economy_fatigue_partial_economic_mobilisation_mission
+		}
+		if = {
+			limit = {
+				has_idea = war_economy
+			}
+			activate_mission = economy_fatigue_war_economy_mission
+		}
+		if = {
+			limit = {
+				has_idea = tot_economic_mobilisation
+			}
+			activate_mission = economy_fatigue_tot_economic_mobilisation_mission
+		}
+	}
+
+	option = {}
+
+}

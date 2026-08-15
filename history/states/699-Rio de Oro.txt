@@ -1,0 +1,24 @@
+state={
+	id=699
+	name="STATE_699"
+	manpower = 21056
+	
+	state_category = wasteland
+
+	history={
+		owner = SPR
+		buildings = {
+			infrastructure = 1
+			13892 = {
+				naval_base = 1
+			}
+		}
+		victory_points = {
+			13892 1
+		}
+	}
+	
+	provinces={
+		13892
+	}
+}

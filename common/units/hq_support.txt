@@ -1,0 +1,771 @@
+sub_units = {
+	hq_support_company = {
+		abbreviation = "HQ"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = yes
+		affects_speed = no
+
+		type = {
+			infantry
+			support
+		}
+		
+		group = support
+		
+		categories = {
+			category_support_battalions
+			category_divisional_support_battalions
+			category_army
+		}
+
+		deployed_leader_modifiers = {
+		    skill_bonus_factor = 0.1
+		}
+
+		regimental = no
+		combat_width = 0
+		allow_in_army_hq = yes
+		allow_in_non_army_hq = no
+
+		#Size Definitions
+		max_strength = 8
+		max_organisation = 30
+		default_morale = 0.05
+		manpower = 60
+		deployment_cost = 0
+		training_time = 120
+
+		#Misc Abilities
+		weight = 0.1
+		can_be_parachuted = yes
+
+		need = {
+			support_equipment = 20
+		}
+
+		division_3d_model_priority = 99999
+	}
+
+	hq_engineer = {
+		abbreviation = "HQE"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+		affects_speed = no
+
+		type = {
+			infantry
+			support
+		}
+
+		group = support
+
+		categories = {
+			category_front_line
+			category_support_battalions
+			category_divisional_support_battalions
+			category_army
+		}
+
+		deployed_leader_modifiers = {
+			fortification_damage = 0.1
+			amphibious_invasion_defence = 0.05
+		}
+
+		#enable_ability = { deeper_dig_in }
+
+		regimental = no
+		combat_width = 0
+		allow_in_army_hq = yes
+		allow_in_non_army_hq = no
+
+		#Size Definitions
+		max_strength = 8
+		max_organisation = 30
+		default_morale = 0.05
+		manpower = 60
+		deployment_cost = 0
+		training_time = 120
+
+		#Misc Abilities
+		weight = 0.1
+		can_be_parachuted = yes
+
+		entrenchment = 2
+		defense = 0.1
+		breakthrough = 0.5
+		soft_attack = -0.5
+
+		need = {
+			infantry_equipment = 25
+			support_equipment = 10
+		}
+	}
+
+	hq_recon = {
+		abbreviation = "HQR"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+		affects_speed = no
+
+		type = {
+			infantry
+			support
+		}
+
+		group = support
+
+		categories = {
+			category_front_line
+			category_support_battalions
+			category_divisional_support_battalions
+			category_army
+			category_recon
+		}
+
+		deployed_leader_modifiers = {
+			terrain_trait_xp_gain_factor = 0.1
+			recon_factor = 0.05
+		}
+
+		#enable_ability = { defense_in_depth }
+
+		regimental = no
+		combat_width = 0
+		allow_in_army_hq = yes
+		allow_in_non_army_hq = no
+
+		#Size Definitions
+		max_strength = 8
+		max_organisation = 30
+		default_morale = 0.05
+		manpower = 60
+		deployment_cost = 0
+		training_time = 120
+
+		#Misc Abilities
+		weight = 0.1
+		can_be_parachuted = yes
+
+		defense = -0.5
+		breakthrough = -0.5
+		soft_attack = -0.9
+		hard_attack = -0.9
+		recon = 1
+
+		need = {
+			infantry_equipment = 20
+			support_equipment = 10
+		}
+	}
+
+	hq_military_police = {
+		abbreviation = "HQP"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+		affects_speed = no
+
+		type = {
+			infantry
+			support
+		}
+
+		group = support
+
+		categories = {
+			category_support_battalions
+			category_divisional_support_battalions
+			category_army
+		}
+
+
+		deployed_leader_modifiers = {
+			army_speed_factor = 0.05
+		}
+
+		regimental = no
+		combat_width = 0
+		allow_in_army_hq = yes
+		allow_in_non_army_hq = no
+
+		#Size Definitions
+		max_strength = 8
+		max_organisation = 30
+		default_morale = 0.05
+		manpower = 60
+		deployment_cost = 0
+		training_time = 120
+
+		#Misc Abilities
+		weight = 0.1
+		can_be_parachuted = yes
+
+		suppression_factor = 0.15
+
+		need = {
+			support_equipment = 15
+		}
+	}
+
+	hq_maintenance = {
+		abbreviation = "HQM"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+		affects_speed = no
+
+		type = {
+			infantry
+			support
+		}
+
+		group = support
+
+		categories = {
+			category_support_battalions
+			category_divisional_support_battalions
+			category_army
+		}
+
+		regimental = no
+		combat_width = 0
+		allow_in_army_hq = yes
+		allow_in_non_army_hq = no
+
+		deployed_leader_modifiers = {
+			attrition = -0.05
+			equipment_capture_factor = 0.01
+		}
+
+		#Size Definitions
+		max_strength = 8
+		max_organisation = 30
+		default_morale = 0.05
+		manpower = 60
+		deployment_cost = 0
+		training_time = 120
+
+		#Misc Abilities
+		weight = 0.1
+		can_be_parachuted = yes
+
+		reliability_factor = 0.05
+		equipment_capture_factor = 0.01
+
+		need = {
+			support_equipment = 15
+		}
+	}
+
+	hq_field_hospital = {
+		abbreviation = "HQF"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+		affects_speed = no
+
+		type = {
+			infantry
+			support
+		}
+
+		group = support
+
+		categories = {
+			category_support_battalions
+			category_divisional_support_battalions
+			category_army
+		}
+
+		deployed_leader_modifiers = {
+			wounded_chance_factor = -0.25
+			sickness_chance = -0.25
+			experience_gain_army_unit_factor = 0.05
+		}
+
+		#enable_ability = { extra_medics }
+
+		regimental = no
+		combat_width = 0
+		allow_in_army_hq = yes
+		allow_in_non_army_hq = no
+
+		#Size Definitions
+		max_strength = 8
+		max_organisation = 30
+		default_morale = 0.05
+		manpower = 60
+		deployment_cost = 0
+		training_time = 120
+
+		#Misc Abilities
+		weight = 0.1
+		can_be_parachuted = yes
+
+		casualty_trickleback = 0.05
+		experience_loss_factor = -0.05
+
+		need = {
+			support_equipment = 15
+		}
+	}
+
+	hq_logistics = {
+		abbreviation = "HQL"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+		affects_speed = no
+
+		type = {
+			infantry
+			support
+		}
+
+		group = support
+
+		categories = {
+			category_support_battalions
+			category_divisional_support_battalions
+			category_army
+		}
+
+		deployed_leader_modifiers = {
+			max_commander_army_size = 1
+			supply_consumption_factor = -0.03
+		}
+
+		#enable_ability = { front_overrun }
+
+		regimental = no
+		combat_width = 0
+		allow_in_army_hq = yes
+		allow_in_non_army_hq = no
+
+		#Size Definitions
+		max_strength = 8
+		max_organisation = 30
+		default_morale = 0.05
+		manpower = 60
+		deployment_cost = 0
+		training_time = 120
+
+		#Misc Abilities
+		weight = 0.1
+		can_be_parachuted = yes
+
+		fuel_consumption_factor = -0.05
+
+		need = {
+			support_equipment = 10
+			motorized_equipment = 20
+		}
+	}
+
+	hq_signal = {
+		abbreviation = "HQS"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+		affects_speed = no
+
+		type = {
+			infantry
+			support
+		}
+
+		group = support
+
+		categories = {
+			category_support_battalions
+			category_divisional_support_battalions
+			category_army
+		}
+
+		deployed_leader_modifiers = {
+			max_planning = 0.03
+			recon_factor_while_entrenched = 0.05
+		}
+
+		#enable_ability = { rotating_reserves }
+
+		regimental = no
+		combat_width = 0
+		allow_in_army_hq = yes
+		allow_in_non_army_hq = no
+
+		#Size Definitions
+		max_strength = 8
+		max_organisation = 30
+		default_morale = 0.05
+		manpower = 60
+		deployment_cost = 0
+		training_time = 120
+
+		#Misc Abilities
+		weight = 0.1
+		can_be_parachuted = yes
+
+		need = {
+			support_equipment = 10
+		}
+	}
+
+	hq_naval_liaison = {
+		abbreviation = "HQNL"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = yes
+		affects_speed = no
+
+		type = {
+			infantry
+			support
+		}
+
+		group = support
+
+		categories = {
+			category_support_battalions
+			category_divisional_support_battalions
+			category_army
+		}
+
+		deployed_leader_modifiers = {
+			shore_bombardment_bonus = 0.05
+			extra_marine_supply_grace = 24
+			amphibious_invasion = 0.05
+		}
+
+		regimental = no
+		combat_width = 0
+		allow_in_army_hq = yes
+		allow_in_non_army_hq = no
+
+		#Size Definitions
+		max_strength = 8
+		max_organisation = 30
+		default_morale = 0.05
+		manpower = 60
+		deployment_cost = 0
+		training_time = 120
+
+		#Misc Abilities
+		weight = 0.1
+		can_be_parachuted = yes
+
+		need = {
+			support_equipment = 15
+			amph_equipment = 20
+		}
+	}
+
+	hq_air_liaison = {
+		abbreviation = "HQAL"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = yes
+		affects_speed = no
+
+		type = {
+			infantry
+			support
+		}
+
+		group = support
+
+		categories = {
+			category_support_battalions
+			category_divisional_support_battalions
+			category_army
+		}
+
+		deployed_leader_modifiers = {
+			air_invasion_preparation = -0.05
+			cas_damage_reduction = 0.05
+			air_superiority_bonus_in_combat = 0.05
+		}
+
+		regimental = no
+		combat_width = 0
+		allow_in_army_hq = yes
+		allow_in_non_army_hq = no
+
+		#Size Definitions
+		max_strength = 8
+		max_organisation = 30
+		default_morale = 0.05
+		manpower = 60
+		deployment_cost = 0
+		training_time = 120
+
+		#Misc Abilities
+		weight = 0.1
+		can_be_parachuted = yes
+
+		need = {
+			support_equipment = 10
+			para_equipment = 20
+		}
+
+	}
+
+	hq_specops = {
+		abbreviation = "HQSO"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = yes
+		affects_speed = no
+
+		type = {
+			infantry
+			support
+		}
+
+		group = support
+
+		categories = {
+			category_support_battalions
+			category_divisional_support_battalions
+			category_army
+		}
+
+		deployed_leader_modifiers = {
+			special_forces_out_of_supply_factor = -0.05
+			special_forces_attack_factor = 0.05
+		}
+
+		regimental = no
+		combat_width = 0
+		allow_in_army_hq = yes
+		allow_in_non_army_hq = no
+
+		#Size Definitions
+		max_strength = 8
+		max_organisation = 30
+		default_morale = 0.05
+		manpower = 60
+		deployment_cost = 0
+		training_time = 120
+
+		#Misc Abilities
+		weight = 0.1
+		can_be_parachuted = yes
+
+		need = {
+			support_equipment = 20
+			amph_equipment = 30
+			mount_equipment = 30
+			para_equipment = 30
+		}
+	}
+
+	#HQ LINE BATTALIONS
+
+	hq_infantry1 = {
+		abbreviation = "HINF"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = yes
+
+		type = {
+			infantry
+		}
+
+		group = infantry
+
+		categories = {
+			category_front_line
+			category_light_infantry
+			category_all_infantry
+			category_army
+		}
+
+		regimental = no
+		combat_width = 0
+		allow_in_army_hq = yes
+		allow_in_non_army_hq = no
+
+		#Size Definitions
+		max_strength = 20
+		max_organisation = 60
+		default_morale = 0.2
+		manpower = 150
+		deployment_cost = 0
+		training_time = 90
+
+		#Misc Abilities
+		weight = 0.5
+		suppression = 1.5
+		
+		initiative = -1
+
+		need = {
+			infantry_equipment = 20
+			ammunition_equipment = 5
+		}
+	}
+
+	hq_motorized1 = {
+		abbreviation = "HMOT"
+		sprite = motorized
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+
+		type = {
+			motorized
+		}
+
+		group = mobile
+
+		categories = {
+			category_front_line
+			category_all_infantry
+			category_army
+			category_vehicle_infantry
+		}
+
+		combat_width = 0
+		allow_in_army_hq = yes
+		allow_in_non_army_hq = no
+
+		#Size Definitions
+		max_strength = 20
+		max_organisation = 60
+		default_morale = 0.2
+		manpower = 150
+		deployment_cost = 0
+		training_time = 90
+		
+		initiative = -1
+
+		transport = motorized_equipment
+
+		#Misc Abilities
+		weight = 0.75
+		suppression = 2.2
+
+		need = {
+			infantry_equipment = 20
+			ammunition_equipment = 5
+			motorized_equipment = 20
+		}
+
+		plains = {
+			movement = 0.12
+		}
+		desert = {
+			movement = 0.12
+		}
+		forest = {
+			attack = -0.12
+			movement = -0.18
+		}
+		jungle = {
+			attack = -0.16
+			movement = -0.24
+		}
+		hills = {
+			attack = -0.04
+			movement = -0.08
+		}
+		mountain = {
+			attack = -0.04
+			movement = -0.08
+		}
+		marsh = {
+			attack = -0.12
+			movement = -0.24
+		}
+		marsh_forest = {
+			attack = -0.16
+			movement = -0.32
+		}
+		river = {
+			attack = -0.1
+			movement = -0.2
+		}
+		amphibious = {
+			attack = -0.3
+		}
+	}
+
+	hq_paratrooper1 = {
+		abbreviation = "HPAR"
+		sprite = infantry
+		map_icon_category = infantry
+		special_forces = yes
+		priority = 0
+		ai_priority = 0
+		active = no
+
+		type = {
+			infantry
+		}
+
+		group = infantry
+
+		categories = {
+			category_front_line
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_special_forces
+			category_paratroopers
+		}
+
+		combat_width = 0
+		allow_in_army_hq = yes
+		allow_in_non_army_hq = no
+
+		#Size Definitions
+		max_strength = 20
+		max_organisation = 70
+		default_morale = 0.2
+		manpower = 150
+		deployment_cost = 0
+		training_time = 150
+		
+		initiative = -1
+
+		#Misc Abilities
+		weight = 0.5
+		can_be_parachuted = yes
+		suppression = 1
+
+		need = {
+			infantry_equipment = 20
+			ammunition_equipment = 5
+			para_equipment = 20
+		}
+	}
+}

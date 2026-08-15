@@ -1,0 +1,23 @@
+﻿capital = 329
+
+oob = "TAN_1936"
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+recruit_character = TAN_salchak_toka
+
+add_ideas = {
+	limited_conscription
+}
+
+set_politics = {
+	ruling_party = communism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+set_popularities = {
+	communism = 100
+}

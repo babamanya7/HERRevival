@@ -1,0 +1,210 @@
+﻿capital = 110
+set_rule = {
+	can_access_market = no
+}
+
+set_naval_oob = "00_NOR_vnr_naval"
+
+country_lock_all_division_template = yes
+
+recruit_character = NOR_johan_nygaardsvold
+recruit_character = NOR_vidkun_quisling
+recruit_character = NOR_johan_ludwig_mowinckel
+recruit_character = NOR_adam_egedenissen
+recruit_character = NOR_carl_gustav_fleischer
+recruit_character = NOR_elias_corneliussen
+
+set_research_slots = 3
+
+add_ideas = {
+	limited_conscription
+}
+
+set_stability = 0.9
+set_war_support = 0.1
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	gw_artillery = 1
+	interwar_antiair = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_recon = 1
+	basic_train = 1
+	basic_naval_mines = 1
+	submarine_mine_laying = 1
+	early_ship_hull_light = 1
+	basic_ship_hull_light = 1
+	early_ship_hull_submarine = 1
+	early_ship_hull_cruiser = 1
+	basic_battery = 1
+	basic_torpedo = 1
+	coastal_defense_ships = 1
+	early_cruiser_armor = 1
+}
+
+set_convoys = 200		# biggest merchant marine in the world
+set_stability = 0.7
+
+set_politics = {
+	ruling_party = democratic
+	last_election = "1933.10.16"
+	election_frequency = 36
+	elections_allowed = yes
+}
+set_popularities = {
+	democratic = 96
+	fascism = 2
+	communism = 2
+}
+
+### LAND VARIANTS ###
+
+### AIR VARIANTS ###
+
+### NAVY VARIANTS ###
+
+    # heavy_cruiser
+    create_equipment_variant = {
+        name = "Eidsvold Class"
+		parent_version = 0
+		role_icon_index = 19
+        type = vnr_ship_hull_cruiser_coastal_defense_ship
+        name_group = NOR_CA_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_medium_battery_1_single
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+            fixed_ship_secondaries_slot = ship_secondaries_1
+            front_1_custom_slot = empty
+            mid_1_custom_slot = empty
+            mid_2_custom_slot = ship_torpedo_1
+        }
+    }
+    create_equipment_variant = {
+        name = "Tordenskjold Class"
+		parent_version = 0
+		role_icon_index = 19
+        type = vnr_ship_hull_cruiser_coastal_defense_ship
+        name_group = NOR_CA_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_medium_battery_1_single
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+            fixed_ship_secondaries_slot = ship_secondaries_1
+            front_1_custom_slot = empty
+            mid_1_custom_slot = ship_secondaries_1
+            mid_2_custom_slot = ship_torpedo_1
+        }
+    }
+    # destroyer
+    create_equipment_variant = {
+        name = "Sleipner Class"
+		parent_version = 0
+		role_icon_index = 31
+        type = vnr_ship_hull_light_2
+        name_group = NOR_DD_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			front_1_custom_slot = empty
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = ship_light_battery_1
+			rear_1_custom_slot = ship_light_battery_1
+			rear_2_custom_slot = ship_depth_charge_1
+        }
+    }
+    create_equipment_variant = {
+        name = "Olaf Tryggvason Class"
+		parent_version = 0
+		role_icon_index = 23
+        type = vnr_ship_hull_cruiser_1
+        name_group = NOR_CL_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+            fixed_ship_role_slot = ship_hull_cruiser_role_pc
+			front_1_custom_slot = ship_light_battery_2
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_light_battery_2
+			rear_1_custom_slot = ship_mine_layer_1
+			rear_2_custom_slot = ship_light_battery_2
+        }
+    }
+    create_equipment_variant = {
+        name = "Draug Class"
+		parent_version = 0
+		role_icon_index = 31
+        type = vnr_ship_hull_light_1
+        name_group = NOR_DD_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			front_1_custom_slot = ship_light_battery_1
+            front_2_custom_slot = ship_light_battery_1
+			mid_1_custom_slot = ship_light_battery_1
+			mid_2_custom_slot = ship_light_battery_1
+			rear_1_custom_slot = ship_light_battery_1
+			rear_2_custom_slot = empty
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = {
+        name = "Frøya Class"
+		parent_version = 0
+		role_icon_index = 29
+        type = vnr_ship_hull_light_1
+        name_group = NOR_DD_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			front_1_custom_slot = ship_light_battery_1
+			mid_1_custom_slot = ship_light_battery_1
+			mid_2_custom_slot = empty
+			rear_1_custom_slot = ship_light_battery_1
+			rear_2_custom_slot = ship_mine_layer_1
+        }
+        obsolete = yes
+    }
+    # submarine
+    create_equipment_variant = {
+        name = "B Class"
+		parent_version = 0
+		role_icon_index = 37
+        type = vnr_ship_hull_submarine_1
+        name_group = NOR_SS_HISTORICAL
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+            fixed_ship_armor_slot = pressure_hull_1
+			rear_1_custom_slot = ship_torpedo_sub_1
+        }
+    }
+    create_equipment_variant = {
+        name = "A Class"
+		parent_version = 0
+		role_icon_index = 37
+        type = vnr_ship_hull_submarine_1
+        name_group = NOR_SS_HISTORICAL
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+            fixed_ship_armor_slot = pressure_hull_1
+			rear_1_custom_slot = empty
+        }
+    }

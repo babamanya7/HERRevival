@@ -1,0 +1,22 @@
+ideas = {
+	
+	country = {
+
+		sia_join_war_idea = {
+
+			picture = FRA_matignon_agreements
+
+			allowed = {
+				original_tag = SIA
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			modifier = {
+				ai_join_ally_desire_factor = 500
+			}
+		}
+	}
+}

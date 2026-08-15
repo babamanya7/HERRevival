@@ -1,0 +1,1217 @@
+﻿capital = 856
+starting_train_buffer = 1.5
+
+activate_mission = economy_fatigue_partial_economic_mobilisation_mission
+activate_mission = economy_fatigue_limited_exports_mission
+activate_mission = economy_fatigue_volunteer_only_mission
+
+set_oob = "ITA_1936_nsb"
+set_air_oob = "ITA_1936_air_bba"
+set_naval_oob = "00_ITA_vnr_naval"
+
+set_research_slots = 4
+set_stability = 0.25
+set_war_support = 0.65
+add_ideas = {
+	economy_fatigue_20
+	vittorio_emanuele
+	vittoria_mutilata
+	limited_exports
+	volunteer_only
+	partial_economic_mobilisation
+	ITA_ai_no_war_before_1940
+	national_socialism
+}
+
+set_variable = { ITA_missiolinis_number_of_missions_triggered = 0 }
+set_variable = { ITA_missiolinis_number_of_missions_resolved = 0 }
+set_variable = { ITA_missiolinis_active_missions = 0 }
+set_variable = { ITA_missiolinis_successful_missions = 0 }
+set_variable = { ITA_missiolinis_failed_missions = 0 }
+
+set_variable = { ITA_missiolinis_min_cd_between_missions = 30 }
+set_country_flag = { flag = ITA_missiolinis_level_flag value = 1 }
+
+set_variable = { ITA_missiolinis_conquer_ethiopia_days = 170 }
+set_variable = { ITA_missiolinis_pacify_ethiopia_days = 720 }
+set_variable = { ITA_missiolinis_default_days = 350 }
+
+set_variable = { ITA_missiolinis_number_of_civs_goal = 10 } #Used by Strengthen Heavy Industry Missiolini
+set_variable = { ITA_missiolinis_fielded_manpower_goal = 1000000 } # (1kk) Used by Strengthen the Army Missiolini
+set_variable = { ITA_missiolinis_fielded_manpower_goal_repeatable = 500000 } # (500k) Used by Strengthen the Army Missiolini
+set_variable = { ITA_missiolinis_trucks_to_produce = 5000 } #Used by Stockpile Trucks Missiolini
+set_variable = { ITA_missiolinis_fighters_to_produce = 1200 } #Used by Strengthened the Airforce Missiolini
+set_variable = { ITA_missiolinis_bombers_to_produce = 600 } #Used by Strengthened the Airforce Missiolini
+set_variable = { ITA_missiolinis_aircraft_to_produce = 300 } #Unused yet. Might be used in the future by Strengthened the Airforce Missiolini
+
+
+############# MILITIA CAP ###############
+set_variable = { ITA_militias_cap = 12 } #WARNING THIS VALUE NEEDS TOP MATCH THE division_cap value for the blackshirt template in the OOB
+
+#######################################
+################ BOP ##################
+#######################################
+
+#set_variable = { ITA_cores_lost_for_modifiers = 0 } #TODO_Manu: This will be killed once there is code support for has_bop_modifier or something like that
+set_variable = { ITA_bop_take_over_ministry_cost = 50 }
+set_variable = { ITA_bop_resign_ministry_cost = 15 }
+set_variable = { ITA_bop_liturgical_reforms_cd = 365 }
+
+set_variable = { ITA_bop_concesions_to_the_bourgeoisie_cost = 100 } # Changes if going democratic
+set_variable = { ITA_bop_concesions_to_the_bourgeoisie_days = 180 } # Changes if going democratic
+
+
+set_variable = { ITA_bop_generic_council_cost = 25 }
+
+#Naval Cooperation Programs
+set_variable = { ITA_export_midget_submarines_days = 90 }
+
+
+# ETHIOPIAN STATES ARRAY
+every_state = {
+	limit = {
+		is_initial_ethiopian_state = yes
+	}
+	add_to_array = { ROOT.ITA_initial_ethiopian_states = THIS }
+}
+
+#INDUSTRIALIZATION
+set_variable = { ITA_new_industrialization_program_factories_required = 100 }
+
+#VALLO ALPINO ORIENTALE
+set_variable = { ITA_vallo_alpino_days = 180 }
+set_variable = { ITA_vallo_alpino_cp_cost = 25 }
+set_variable = { ITA_vallo_alpino_pp_cost = 15 }
+set_variable = { ITA_vallo_alpino_cp_cost_negative = -25 }
+set_variable = { ITA_vallo_alpino_pp_cost_negative = -15 }
+
+#COLONIAL MANAGEMENT
+set_variable = { ITA_colonial_management_days = 30 }
+set_variable = { ITA_colonial_management_cd = 335 }
+set_variable = { ITA_reorganize_irregulars_days = 60 }
+set_variable = { ITA_reorganize_ascari_days = 60 }
+set_variable = { ITA_infrastructure_program_in_state_days = 120 }
+set_variable = { ITA_infrastructure_program_in_state_cost = 50 }
+set_variable = { ITA_abolish_the_colonies_days = 365 }
+
+#NAVAL COOPERATION PROGRAMS
+set_variable = { ITA_joint_maneuvers_with_country_days = 60 }
+
+#DIPLOMACY
+set_variable = { ITA_pressure_government_days = 30 }
+set_variable = { ITA_pressure_government_cd = 365 }
+set_variable = { ITA_pressure_country_government_cost = 50 }
+set_variable = { ITA_ideological_rallies_days = 90 }
+set_variable = { ITA_promote_ideology_rallies_cost = 50 }
+set_variable = { ITA_send_ultimatum_to_country_cost = 75 }
+set_variable = { ITA_ultimatum_days = 14 }
+
+
+# DYNAMIC MODIFIERS
+
+#RICOSTRUZIONE INDUSTRIALE
+set_variable = { ITA_iri_production_speed_industrial_complex_factor = 0.05 }
+set_variable = { ITA_iri_industrial_concern_cost_factor = -0.35 }
+set_variable = { ITA_iri_tank_manufacturer_cost_factor = -0.15 }
+set_variable = { ITA_iri_materiel_manufacturer_cost_factor = -0.15 }
+set_variable = { ITA_iri_aircraft_manufacturer_cost_factor = -0.15 }
+set_variable = { ITA_iri_naval_manufacturer_cost_factor = -0.15 }
+
+set_variable = { ITA_iri_production_speed_arms_factory_factor = 0 }
+set_variable = { ITA_iri_consumer_goods_factor = 0 }
+set_variable = { ITA_iri_local_resources_factor = 0 }
+set_variable = { ITA_iri_production_speed_infrastructure_factor = 0 }
+set_variable = { ITA_re_supply_node_range = 0 }
+set_variable = { ITA_iri_production_speed_dockyard_factor = 0 }
+
+add_dynamic_modifier = { modifier = ITA_ricostruzione_industriale_dynamic_modifier }
+
+
+#MILITARY INDUSTRY
+set_variable = { ITA_military_industry_dm_production_factory_start_efficiency_factor = 0.04 }
+set_variable = { ITA_military_industry_dm_factory_max_efficiency_factor = -0.1 }
+set_variable = { ITA_military_industry_dm_production_factory_efficiency_gain_factor = -0.05 }
+set_variable = { ITA_military_industry_dm_industrial_capacity_factory = -0.1 }
+
+set_variable = { ITA_military_industry_dm_line_change_production_efficiency_factor = 0 }
+set_variable = { ITA_military_industry_dm_production_lack_of_resource_penalty_factor = 0 }
+set_variable = { ITA_military_industry_dm_equipment_upgrade_xp_cost = 0 }
+set_variable = { ITA_military_industry_dm_industrial_capacity_dockyard = 0 }
+set_variable = { ITA_military_industry_air_equipment_upgrade_xp_cost = 0 }
+
+add_dynamic_modifier = { modifier = ITA_military_industry_dynamic_modifier }
+add_ideas = ITA_hidden_research_penalties_ns #TODO_Manu: Hidden NS to apply research penalties as part of the Military Industry Dynamic Modifier. Delete when code support is in
+
+
+#REGIO ESERCITO
+set_variable = { ITA_re_army_max_dig_in_factor = 0.1 }
+set_variable = { ITA_re_land_doctrine_cost_factor = 0.2 }
+set_variable = { ITA_re_army_speed_factor = -0.1 }
+set_variable = { ITA_re_army_army_org_factor = -0.2 }
+set_variable = { ITA_re_org_loss_when_moving = 0.2 }
+
+set_variable = { ITA_re_army_morale_factor = 0 }
+set_variable = { ITA_re_army_leader_cost_factor = 0 }
+set_variable = { ITA_re_experience_gain_factor = 0 }
+set_variable = { ITA_re_modifier_army_sub_unit_infantry_defence_factor = 0 }
+set_variable = { ITA_re_army_core_defence_factor = 0 }
+set_variable = { ITA_re_modifier_army_sub_unit_cavalry_speed_factor = 0 }
+set_variable = { ITA_re_modifier_army_sub_unit_cavalry_attack_factor = 0 }
+set_variable = { ITA_re_unit_cavalry_design_cost_factor = 0 }
+set_variable = { ITA_re_unit_camelry_design_cost_factor = 0 }
+set_variable = { ITA_re_promote_cost_factor = 0 }
+set_variable = { ITA_re_special_forces_cap = 0 }
+set_variable = { ITA_re_special_forces_attack_factor = 0 }
+set_variable = { ITA_re_special_forces_defence_factor = 0 }
+set_variable = { ITA_re_modifier_army_sub_unit_mountaineers_defence_factor = 0 }
+set_variable = { ITA_re_modifier_army_sub_unit_mountaineers_max_org_factor = 0 }
+set_variable = { ITA_re_modifier_army_sub_unit_paratrooper_max_org_factor = 0 }
+set_variable = { ITA_re_modifier_army_sub_unit_militia_max_org_factor = 0 }
+set_variable = { ITA_re_modifier_army_sub_unit_militia_defence_factor = 0 }
+set_variable = { ITA_re_modifier_army_sub_unit_militia_attack_factor = 0 }
+set_variable = { ITA_re_modifier_army_sub_unit_militia_speed_factor = 0 }
+set_variable = { ITA_re_modifier_army_sub_unit_blackshirt_assault_battalion_defence_factor = 0 }
+set_variable = { ITA_re_modifier_army_sub_unit_blackshirt_assault_battalion_max_org_factor = 0 }
+set_variable = { ITA_re_special_forces_out_of_supply_factor = 0 }
+set_variable = { ITA_re_conscription_factor = 0 }
+set_variable = { ITA_re_command_power_gain_mult = 0 }
+set_variable = { ITA_re_non_core_manpower = 0 }
+set_variable = { ITA_re_army_attack_factor = 0 }
+set_variable = { ITA_re_modifier_army_sub_unit_cavalry_defence_factor = 0 }
+set_variable = { ITA_re_max_command_power_mult = 0 }
+set_variable = { ITA_re_supply_consumption_factor = 0 }
+set_variable = { ITA_re_acclimatization_hot_climate_gain_factor = 0 }
+set_variable = { ITA_re_heat_attrition_factor = 0 }
+
+add_dynamic_modifier = { modifier = ITA_regio_esercito_dynamic_modifier }
+
+
+#REGIA AERONAUTICA
+set_variable = { ITA_ra_air_ace_generation_chance_factor = 0.1 }
+set_variable = { ITA_ra_air_superiority_bonus_in_combat = 0.05 }
+set_variable = { ITA_ra_air_doctrine_cost_factor = 0.1 }
+set_variable = { ITA_ra_air_nav_efficiency = -0.1 }
+set_variable = { ITA_ra_air_night_penalty = 0.15 }
+set_variable = { ITA_ra_air_weather_penalty = 0.15 }
+set_variable = { ITA_ra_air_accidents_factor= 0.05 }
+
+set_variable = { ITA_ra_air_training_xp_gain_factor = 0 }
+set_variable = { ITA_ra_air_mission_xp_gain_factor = 0 }
+set_variable = { ITA_ra_strategic_bomb_visibility = 0 }
+set_variable = { ITA_ra_air_strategic_bomber_bombing_factor = 0 }
+set_variable = { ITA_ra_air_range_factor = 0 }
+set_variable = { ITA_ra_air_superiority_efficiency = 0 }
+set_variable = { ITA_ra_air_intercept_efficiency = 0 }
+
+add_dynamic_modifier = { modifier = ITA_regia_aeronautica_dynamic_modifier }
+
+
+#REGIA MARINA
+set_variable = { ITA_rm_naval_has_potf_in_combat_attack = 0.1 }
+set_variable = { ITA_rm_screening_efficiency = 0.05 }
+set_variable = { ITA_rm_naval_doctrine_cost_factor = 0.1 }
+set_variable = { ITA_rm_naval_coordination = -0.05 }
+set_variable = { ITA_rm_naval_detection = -0.1 }
+set_variable = { ITA_rm_spotting_chance = -0.1 }
+
+set_variable = { ITA_rm_convoy_raiding_efficiency_factor = 0 }
+set_variable = { ITA_rm_naval_strike_attack_factor = 0 }
+set_variable = { ITA_rm_navy_submarine_attack_factor = 0 }
+set_variable = { ITA_rm_navy_capital_ship_attack_factor = 0 }
+set_variable = { ITA_rm_naval_morale_factor = 0 }
+set_variable = { ITA_rm_strike_force_movement_org_loss = 0 }
+set_variable = { ITA_rm_special_forces_cap = 0 }
+set_variable = { ITA_rm_amphibious_invasion = 0 }
+set_variable = { ITA_rm_naval_invasion_capacity = 0 }
+set_variable = { ITA_rm_invasion_preparation = 0 }
+set_variable = { ITA_rm_naval_strike_agility_factor = 0 }
+set_variable = { ITA_rm_naval_critical_score_chance_factor = 0 }
+set_variable = { ITA_rm_sub_retreat_speed = 0 }
+set_variable = { ITA_rm_decryption_factor = 0 }
+set_variable = { ITA_rm_navy_intel_factor = 0 }
+set_variable = { ITA_rm_naval_invasion_prep_speed = 0 }
+
+add_dynamic_modifier = { modifier = ITA_regia_marina_dynamic_modifier }
+
+#DANNES STUFF
+set_variable = { ITA_iri_conversion_cost_civ_to_mil_factor = 0 } #Civilian Industry
+set_variable = { ITA_re_infantry_attack = 0 } #Army
+set_variable = { ITA_re_motorized_attack = 0 } #Army
+set_variable = { ITA_re_out_of_supply = 0 } #Army
+set_variable = { ITA_re_armor_attack = 0 } #Army
+set_variable = { ITA_re_irregular_org = 0 } #Army/Irregular
+set_variable = { ITA_ra_air_agility_factor = 0 } #Airforce
+set_variable = { ITA_ra_ground_attack_factor = 0 } #Airforce
+set_variable = { ITA_ra_air_cas_present_factor = 0 } #Airforce
+set_variable = { ITA_ra_air_mission_efficiency = 0 } #Airforce
+set_variable = { ITA_ra_air_attack = 0 } #Airforce
+set_variable = { ITA_ra_air_interception = 0 } #Airforce
+
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	support_weapons = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_recon = 1
+	tech_field_hospital = 1
+	tech_logistics_company = 1
+	tech_military_police = 1
+	tech_signal_company = 1
+	tech_maintenance_company = 1
+	tech_mountaineers = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	gw_artillery = 1
+	interwar_antiair = 1
+	trench_warfare = 1
+	fleet_in_being = 1
+	fuel_silos = 1
+	fuel_refining = 1
+	basic_train = 1
+	heavy_artillery_1 = 1
+	armored_car1 = 1
+	gwtank_chassis = 1
+	basic_light_tank_chassis = 1
+	camelry = 1
+	
+	bba_early_transport_plane = 1
+	aa_lmg = 1
+	early_bombs = 1
+	aircraft_construction = 1
+	engines_1 = 1
+	engines_2 = 1
+	engines_3 = 1
+	engines_4 = 1
+	radial_engines_2 = 1
+	radial_engines_3 = 1
+	radial_engines_4 = 1
+	iw_small_airframe = 1
+	iw_medium_airframe = 1
+	basic_small_airframe = 1
+	basic_medium_airframe = 1
+	air_torpedoe_1 = 1
+	survivability_studies = 1
+	range_improvements = 1
+	aa_hmg = 1		
+	
+	multi_mounted_battery = 1
+	basic_naval_mines = 1
+	submarine_mine_laying = 1
+	basic_depth_charges = 1
+	basic_torpedo = 1
+	basic_battery = 1
+	basic_heavy_battery = 1
+	basic_medium_battery = 1
+	basic_light_battery = 1
+	early_ship_hull_submarine = 1
+	basic_ship_hull_submarine = 1
+	early_ship_hull_light = 1
+	basic_ship_hull_light = 1
+	early_ship_hull_cruiser = 1
+	basic_ship_hull_cruiser = 1
+	early_ship_hull_heavy = 1
+	basic_ship_hull_heavy = 1
+	mtg_transport = 1
+	coastal_defense_ships = 1
+	improved_airplane_launcher = 1
+	interwar_ship_hull_light = 1
+    interwar_ship_hull_cruiser = 1
+    interwar_ship_hull_heavy = 1
+    searchlight = 1
+	large_destroyer_trend = 1
+    treaty_cruiser_trend = 1
+    early_cruiser_armor = 1
+    basic_cruiser_armor = 1
+    incremental_armor_scheme = 1
+    mixed_armor_scheme = 1
+    basic_torpedo_defense = 1
+    improved_torpedo_defense = 1
+    enhanced_horizontal_defense = 1
+    basic_heavy_armor = 1
+    improved_conning_tower = 1
+    prototype_airplane_launcher = 1
+    basic_periscope = 1
+    improved_periscope = 1
+    basic_ballast_tank = 1
+    cruiser_submarines = 1
+    basic_super_heavy_battery = 1
+	early_carrier_study = 1
+	improved_ship_torpedo_launcher = 1
+	ita_extra_armor = 1
+	pre_dreadnoughts = 1
+	harvey_steel = 1
+}
+
+add_ideas = MTG_naval_treaty_cheating
+
+declare_war_on = {
+	target = ETH
+	type = annex_everything
+}
+give_guarantee = ALB
+
+set_convoys = 200
+
+set_politics = {
+	ruling_party = fascism
+	last_election = "1934.3.26"
+	election_frequency = 60
+	elections_allowed = no
+}
+set_popularities = {
+	democratic = 20
+	fascism = 73
+	communism = 2
+	neutrality = 5
+}
+
+recruit_character = ITA_benito_mussolini
+recruit_character = ITA_grand_council
+recruit_character = ITA_vittorio_emanuele_iii
+recruit_character = ITA_ferruccio_parri
+recruit_character = ITA_rodolfo_graziani
+recruit_character = ITA_pietro_badoglio
+recruit_character = ITA_emilio_de_bono
+recruit_character = ITA_ugo_cavallero
+recruit_character = ITA_giovanni_messe
+recruit_character = ITA_sebastiano_visconti_prasca
+recruit_character = ITA_ubaldo_soddu
+recruit_character = ITA_italo_balbo
+
+recruit_character = ITA_ettore_bastico
+recruit_character = ITA_italo_gariboldi
+recruit_character = ITA_pietro_pintor
+recruit_character = ITA_mario_berti
+recruit_character = ITA_carlo_geloso
+recruit_character = ITA_giuseppe_tellera
+recruit_character = ITA_francesco_zingales
+recruit_character = ITA_ezio_rosi
+recruit_character = ITA_mario_vercellino
+recruit_character = ITA_prince_filiberto
+recruit_character = ITA_prince_adalberto
+recruit_character = ITA_prince_umberto
+recruit_character = ITA_alessandro_pirzio_biroli
+recruit_character = ITA_carlo_vecchiarelli
+recruit_character = ITA_mario_robotti
+recruit_character = ITA_ettore_baldassarre
+recruit_character = ITA_amedeo_guillet
+recruit_character = ITA_annibale_bergonzoli
+recruit_character = ITA_hamid_idris_awate
+recruit_character = ITA_ibrahim_farag_mohammed
+recruit_character = ITA_prince_aimone
+
+recruit_character = ITA_inigo_campioni
+recruit_character = ITA_alberto_da_zara
+recruit_character = ITA_giuseppe_fioravanzo
+recruit_character = ITA_carlo_bergamini
+recruit_character = ITA_angelo_iachino
+recruit_character = ITA_giuseppe_di_bartolo
+recruit_character = ITA_junio_valerio_borghese
+
+recruit_character = ITA_alfredo_guzzoni
+recruit_character = ITA_renato_sandalli
+recruit_character = ITA_francesco_pricolo
+recruit_character = ITA_silvio_scaroni
+recruit_character = ITA_vittorio_ambrosio
+recruit_character = ITA_arturo_riccardi
+recruit_character = ITA_mario_roatta
+recruit_character = ITA_marziale_cerutti
+recruit_character = ITA_ettore_muti
+recruit_character = ITA_gaetano_crocco
+recruit_character = ITA_luigi_mascherpa
+recruit_character = ITA_domenico_cavagnari
+recruit_character = ITA_amedeo_mecozzi
+recruit_character = ITA_rino_corso_fougier
+recruit_character = ITA_giacomo_acerbo
+recruit_character = ITA_giovanni_marinelli
+recruit_character = ITA_serafino_mazzolini
+recruit_character = ITA_roberto_farinacci
+recruit_character = ITA_paolo_thaon_di_revel
+recruit_character = ITA_dino_grandi
+recruit_character = ITA_carlo_scorza
+recruit_character = ITA_gian_galeazzo_ciano
+recruit_character = ITA_alberto_pariani
+recruit_character = ITA_romeo_bernotti
+recruit_character = ITA_aldo_pellegrini
+recruit_character = ITA_achille_starace
+recruit_character = ITA_renato_ricci
+recruit_character = ITA_carlo_favagrossa
+recruit_character = ITA_alberto_beneduce
+recruit_character = ITA_guido_jung
+recruit_character = ITA_adelchi_serena
+recruit_character = ITA_curzio_malaparte
+recruit_character = ITA_giuseppe_bottai
+
+
+########################################
+##### MISSIOLINIS - TRIGGER EVENTS #####
+########################################
+
+ITA_benito_mussolini = { unit_leader_event = { id = BBA_italy_missiolinis.11 days = 185 random_days = 5 } } # JUN 36 - Conquer Ethiopia  - DEC 36 - (170 days)
+#ITA_benito_mussolini = { unit_leader_event = { id = BBA_italy_missiolinis.21 days = 370 random_days = 5 } } # JAN 37 - Pacify Ethiopia - DEC 39 - (720 days) #TODO_Manu: This is now triggered after war with MTTH
+ITA_benito_mussolini = { unit_leader_event = { id = BBA_italy_missiolinis.31 days = 370 random_days = 5 } } # JAN 37 - Industrialization - DEC 37 - (350 days)
+ITA_benito_mussolini = { unit_leader_event = { id = BBA_italy_missiolinis.41 days = 735 random_days = 5 } } # JAN 38 - Increase Army - DEC 38 (350 days)
+ITA_benito_mussolini = { unit_leader_event = { id = BBA_italy_missiolinis.00 days = 1105 random_days = 5 } } # JAN 39 - Random mission dispatcher (350 days) - This event auto-triggers itself every 6 months
+# Next Missiolini is random and comes in JUN 39, next one in JUN 40.
+
+
+#PURGE FLAGS
+ITA_achille_starace = { set_character_flag = ITA_character_can_be_purged }
+ITA_renato_ricci = { set_character_flag = ITA_character_can_be_purged }
+ITA_carlo_scorza = { set_character_flag = ITA_character_can_be_purged }
+ITA_roberto_farinacci = { set_character_flag = ITA_character_can_be_purged }
+ITA_alberto_beneduce = { set_character_flag = ITA_character_can_be_purged }
+ITA_carlo_favagrossa = { set_character_flag = ITA_character_can_be_purged }
+ITA_giacomo_acerbo = { set_character_flag = ITA_character_can_be_purged }
+ITA_guido_jung = { set_character_flag = ITA_character_can_be_purged }
+ITA_serafino_mazzolini = { set_character_flag = ITA_character_can_be_purged }
+ITA_rodolfo_graziani = { set_character_flag = ITA_character_can_be_purged }
+ITA_ubaldo_soddu = { set_character_flag = ITA_character_can_be_purged }
+ITA_ugo_cavallero = { set_character_flag = ITA_character_can_be_purged }
+ITA_francesco_zingales = { set_character_flag = ITA_character_can_be_purged }
+ITA_alessandro_pirzio_biroli = { set_character_flag = ITA_character_can_be_purged }
+ITA_ettore_baldassarre = { set_character_flag = ITA_character_can_be_purged }
+ITA_annibale_bergonzoli = { set_character_flag = ITA_character_can_be_purged }
+ITA_pietro_badoglio = { set_character_flag = ITA_character_can_be_purged } 
+ITA_emilio_de_bono = { set_character_flag = ITA_character_can_be_purged }
+
+	ITA_create_francesco_de_martini_operative = yes
+	ITA_create_paolo_caccia_dominioni_operative = yes
+
+### LAND VARIANTS ###
+
+		create_equipment_variant = {
+		name = "Fiat 3000"
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 2
+			tank_light_nsb_armor_upgrade = 16
+		}
+		icon = "GFX_ITA_basic_light_tank_medium"
+	}
+	create_equipment_variant = {
+		name = "L3/33"
+		type = light_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 3
+			tank_light_nsb_armor_upgrade = 15
+		}
+		icon = "GFX_ITA_basic_light_tank_medium"
+	}
+	create_equipment_variant = {
+		name = "L3/35"
+		type = light_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = additional_machine_guns
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 4
+			tank_light_nsb_armor_upgrade = 15
+		}
+		icon = "GFX_ITA_basic_light_tank_medium"
+	}
+
+### AIR VARIANTS ###
+	create_equipment_variant = {
+		name = "CR.30" #
+		type = small_plane_airframe_0
+		modules = {
+			fixed_capot_weapon_slot_1 = light_mg_2x
+			engine_type_slot = radial_engine_3_1x
+			special_type_slot_7 = aircraft_lightweight_construction_small
+			fuel_tank_type_slot = fuel_tanks_small
+			role_type_slot = role_small_fighter
+		}
+	}
+	create_equipment_variant = {
+		name = "CR.32" #
+		type = small_plane_airframe_0
+		modules = {
+			fixed_capot_weapon_slot_1 = light_mg_2x
+			engine_type_slot = radial_engine_3_1x
+			special_type_slot_7 = aircraft_lightweight_construction_small
+			fuel_tank_type_slot = fuel_tanks_small
+			role_type_slot = role_small_fighter
+		}
+	}
+	create_equipment_variant = {
+		name = "Ca.111" #
+		type = medium_plane_airframe_0
+		modules = {
+			fixed_frame_weapon_slot_1 = small_bomb_bay
+			engine_type_slot = engine_4_1x
+			fuel_tank_type_slot = fuel_tanks_medium
+			role_type_slot = role_medium_bomber
+		}
+		obsolete = yes
+		icon = "GFX_ITA_early_bomber_old_medium"
+	}
+	create_equipment_variant = {
+		name = "Ca.133" #
+		type = medium_plane_airframe_0
+		modules = {
+			fixed_frame_weapon_slot_1 = medium_bomb_bay
+			fixed_frame_weapon_slot_2 = small_bomb_bay
+			engine_type_slot = radial_engine_3_3x
+			special_type_slot_2 = NACA_cowling
+			fuel_tank_type_slot = fuel_tanks_medium
+			role_type_slot = role_medium_bomber
+		}
+		icon = "GFX_ITA_early_bomber_old_medium"
+	}
+	create_equipment_variant = {
+		name = "SM.81" #
+		type = medium_plane_airframe_1
+		modules = {
+			fixed_frame_weapon_slot_1 = medium_bomb_bay
+			fixed_frame_weapon_slot_2 = medium_bomb_bay
+			engine_type_slot = radial_engine_4_3x
+			fuel_tank_type_slot = fuel_tanks_medium
+			role_type_slot = role_medium_bomber
+		}
+		icon = "GFX_ITA_early_bomber_medium"
+	}
+	create_equipment_variant = {
+		name = "SM.79" #
+		type = medium_plane_maritime_patrol_plane_airframe_1
+		modules = {
+			fixed_frame_weapon_slot_1 = medium_bomb_bay
+			fixed_wing_weapon_slot_1 = wing_torpedo_mounting
+			engine_type_slot = radial_engine_4_3x
+			special_type_slot_1 = empty
+			fuel_tank_type_slot = fuel_tanks_medium
+			role_type_slot = role_medium_naval_bomber
+		}
+		icon = "GFX_ITA_naval_bomber1_medium"
+	}
+	create_equipment_variant = {
+		name = "Ba.65" #
+		type = small_plane_tactical_bomber_airframe_1
+		modules = {
+			fixed_frame_weapon_slot_1 = small_bomb_bay
+			fixed_capot_weapon_slot_1 = light_mg_2x
+			engine_type_slot = radial_engine_4_1x
+			special_type_slot_1 = empty
+			fuel_tank_type_slot = fuel_tanks_small
+			role_type_slot = role_small_bomber
+		}
+		icon = "GFX_ITA_CAS1_medium"
+	}
+
+### NAVY VARIANTS ###
+
+    # battleship
+    create_equipment_variant = {
+        name = "Littorio Class"
+		parent_version = 0
+		role_icon_index = 1
+		icon = "gfx/interface/technologies/Italy/ITA_battleship4.png"
+        type = vnr_ship_hull_heavy_3
+        name_group = ITA_BB_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_heavy_battery_2_triple
+			fixed_ship_anti_air_slot = ship_anti_air_2_h
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = heavy_ship_engine_2
+			fixed_ship_secondaries_slot = ship_secondaries_2
+			fixed_ship_armor_slot = ship_armor_bb_2
+            fixed_ship_armor_scheme_slot = ship_scheme_mixed
+			fixed_ship_torpedo_defense_system_slot = pugliese_system
+			fixed_ship_extra_secondaries_slot = ship_high_velocity_shell
+            front_1_custom_slot = empty
+			front_2_custom_slot = ship_heavy_battery_2_triple
+			mid_1_custom_slot = ship_secondaries_2
+			mid_2_custom_slot = ship_anti_air_1
+			rear_1_custom_slot = ship_heavy_battery_2_triple
+            rear_2_custom_slot = ship_airplane_launcher_1
+        }
+    }
+    create_equipment_variant = {
+        name = "Andrea Doria Class"
+		parent_version = 0
+		role_icon_index = 3
+		icon = "gfx/interface/technologies/Italy/ITA_battleship_Andrea.png"
+        type = vnr_ship_hull_heavy_1
+        name_group = ITA_BB_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_heavy_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_2_h
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = heavy_ship_engine_2
+			fixed_ship_secondaries_slot = ship_secondaries_1
+            fixed_ship_armor_scheme_slot = ship_scheme_incremental_post_jutland
+			fixed_ship_armor_slot = ship_armor_bb_1
+			fixed_ship_torpedo_defense_system_slot = pugliese_system
+            front_1_custom_slot = ship_anti_air_1
+			front_2_custom_slot = ship_heavy_battery_1_triple
+			mid_1_custom_slot = ship_secondaries_1
+			mid_2_custom_slot = ship_airplane_launcher_1
+			rear_1_custom_slot = ship_heavy_battery_1
+            rear_2_custom_slot = ship_heavy_battery_1_triple
+        }
+    }
+    create_equipment_variant = {
+        name = "Conte Di Cavour Class"
+		parent_version = 0
+		role_icon_index = 3
+		icon = "gfx/interface/technologies/Italy/ITA_battleship3.png"
+        type = vnr_ship_hull_heavy_1
+        name_group = ITA_BB_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_heavy_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_2_h
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = heavy_ship_engine_2
+			fixed_ship_secondaries_slot = ship_secondaries_1
+            fixed_ship_armor_scheme_slot = ship_scheme_incremental_post_jutland
+			fixed_ship_armor_slot = ship_armor_bb_1
+			fixed_ship_torpedo_defense_system_slot = pugliese_system
+            front_1_custom_slot = empty
+			front_2_custom_slot = ship_heavy_battery_1_triple
+			mid_1_custom_slot = ship_secondaries_1
+			mid_2_custom_slot = ship_airplane_launcher_1
+			rear_1_custom_slot = ship_heavy_battery_1
+            rear_2_custom_slot = ship_heavy_battery_1_triple
+        }
+        obsolete = yes
+    }
+    # heavy_cruiser
+    create_equipment_variant = {
+        name = "Bolzano Class"
+		parent_version = 0
+		role_icon_index = 27
+		icon = "gfx/interface/technologies/Italy/ITA_heavy_cruiser2.png"
+        type = vnr_ship_hull_cruiser_2
+        name_group = ITA_CA_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_medium_battery_2_double
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_secondaries_slot = ship_secondaries_2_light
+			fixed_ship_role_slot = ship_hull_cruiser_role_ca
+            front_1_custom_slot = ship_medium_battery_2_double
+            mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_torpedo_1
+            mid_3_custom_slot = ship_airplane_launcher_1
+			rear_1_custom_slot = ship_medium_battery_2_double
+            rear_2_custom_slot = ship_medium_battery_2_double
+        }
+    }
+    create_equipment_variant = {
+        name = "Zara Class"
+		parent_version = 0
+		role_icon_index = 27
+        icon = "gfx/interface/technologies/Italy/ITA_heavy_cruiser3.png"
+        type = vnr_ship_hull_cruiser_3
+        name_group = ITA_CA_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_medium_battery_2_double
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = ship_armor_cruiser_2
+			fixed_ship_secondaries_slot = ship_secondaries_2_light
+			fixed_ship_role_slot = ship_hull_cruiser_role_ca
+            fixed_ship_extra_secondaries_slot = ship_armor_extra
+            front_1_custom_slot = ship_medium_battery_2_double
+            mid_1_custom_slot = empty
+			mid_2_custom_slot = ship_anti_air_1
+            mid_3_custom_slot = ship_airplane_launcher_1
+			rear_1_custom_slot = ship_medium_battery_2_double
+            rear_2_custom_slot = ship_medium_battery_2_double
+        }
+    }
+    create_equipment_variant = {
+        name = "Trento Class"
+		parent_version = 0
+		role_icon_index = 27
+		icon = "gfx/interface/technologies/Italy/ITA_heavy_cruiser2.png"
+        type = vnr_ship_hull_cruiser_2
+        name_group = ITA_CA_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_medium_battery_1_double
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_secondaries_slot = ship_secondaries_2_light
+			fixed_ship_role_slot = ship_hull_cruiser_role_ca
+            front_1_custom_slot = ship_medium_battery_1_double
+            front_2_custom_slot = ship_anti_air_1
+            mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_torpedo_1
+            mid_3_custom_slot = ship_airplane_launcher_1
+			rear_1_custom_slot = ship_medium_battery_1_double
+            rear_2_custom_slot = ship_medium_battery_1_double
+        }
+    }
+    create_equipment_variant = {
+        name = "San Giorgio Class"
+		parent_version = 0
+		role_icon_index = 17
+        type = vnr_ship_hull_cruiser_coastal_defense_ship
+        name_group = ITA_CA_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_medium_battery_1_double
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+            fixed_ship_role_slot = ship_hull_cruiser_role_ac
+            mid_1_custom_slot = ship_secondaries_1
+			mid_2_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = empty
+            rear_2_custom_slot = ship_medium_battery_1_double
+        }
+        obsolete = yes
+    }
+    # light_cruiser
+    create_equipment_variant = {
+        name = "Duca degli Abruzzi Class"
+		parent_version = 0
+		role_icon_index = 25
+		icon = "gfx/interface/technologies/Italy/ITA_heavy_cruiser4.png"
+        type = vnr_ship_hull_cruiser_3
+        name_group = ITA_CL_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_medium_battery_2_double
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_3
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_secondaries_slot = ship_secondaries_1_light
+            front_1_custom_slot = ship_light_medium_battery_2
+            mid_1_custom_slot = ship_torpedo_2
+			mid_2_custom_slot = ship_airplane_launcher_1
+            mid_3_custom_slot = empty
+			rear_1_custom_slot = ship_light_medium_battery_2_double
+            rear_2_custom_slot = ship_light_medium_battery_2
+        }
+    }
+    create_equipment_variant = {
+        name = "Montecuccoli/Duca d'Aosta Class"
+		parent_version = 0
+		role_icon_index = 25
+        type = vnr_ship_hull_cruiser_3
+        name_group = ITA_CL_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_medium_battery_2_double
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_3
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_secondaries_slot = ship_secondaries_1_light
+            front_1_custom_slot = ship_light_medium_battery_2_double
+			mid_2_custom_slot = ship_torpedo_2
+            mid_3_custom_slot = ship_airplane_launcher_1
+			rear_1_custom_slot = ship_light_medium_battery_2_double
+            rear_2_custom_slot = ship_light_medium_battery_2_double
+        }
+    }
+    create_equipment_variant = {
+        name = "Giussano/Cadorna Class"
+		parent_version = 0
+		role_icon_index = 25
+		icon = "gfx/interface/technologies/Italy/ITA_light_cruiser3.png"
+        type = vnr_ship_hull_cruiser_2
+        name_group = ITA_CL_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_medium_battery_2_double
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_3
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_secondaries_slot = ship_secondaries_1_light
+            front_1_custom_slot = ship_light_medium_battery_2_double
+			mid_2_custom_slot = ship_torpedo_1
+            mid_3_custom_slot = ship_airplane_launcher_1
+			rear_1_custom_slot = ship_light_medium_battery_2_double
+            rear_2_custom_slot = ship_light_medium_battery_2_double
+        }
+    }
+    create_equipment_variant = {
+        name = "Taranto/Bari Class"
+		parent_version = 0
+		role_icon_index = 23
+		icon = "gfx/interface/technologies/Generic/generic_light_cruiser1.png"
+        type = vnr_ship_hull_cruiser_1
+        name_group = ITA_CL_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_medium_battery_1_single
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_secondaries_slot = ship_secondaries_1_light
+            front_1_custom_slot = ship_light_medium_battery_1_single
+			mid_2_custom_slot = ship_torpedo_1
+            mid_3_custom_slot = ship_mine_layer_1
+			rear_1_custom_slot = ship_light_medium_battery_1_single
+            rear_2_custom_slot = ship_light_medium_battery_1_single
+        }
+        obsolete = yes
+    }
+    # destroyer
+    create_equipment_variant = {
+        name = "Maestrale/Oriani Class"
+		parent_version = 0
+		role_icon_index = 31
+        type = vnr_ship_hull_light_3
+        name_group = ITA_DD_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_2_double
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+			fixed_ship_engine_slot = light_ship_engine_2
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			front_1_custom_slot = ship_light_battery_2
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_light_battery_2
+			rear_1_custom_slot = ship_mine_layer_1
+			rear_2_custom_slot = ship_light_battery_2_double
+        }
+    }
+    create_equipment_variant = {
+        name = "Freccia/Folgore Class"
+		parent_version = 0
+		role_icon_index = 31
+        type = vnr_ship_hull_light_3
+        name_group = ITA_DD_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_2_double
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+			fixed_ship_engine_slot = light_ship_engine_2
+			fixed_ship_torpedo_slot = ship_torpedo_2
+			front_1_custom_slot = empty
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = ship_depth_charge_1
+			rear_1_custom_slot = ship_mine_layer_1
+			rear_2_custom_slot = ship_light_battery_2_double
+        }
+    }
+    create_equipment_variant = {
+        name = "Navigatori Class"
+		parent_version = 0
+		role_icon_index = 31
+		icon = "gfx/interface/technologies/Italy/ITA_destroyer_Navigatori.png"
+        type = vnr_ship_hull_light_2
+        name_group = ITA_DD_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_2_double
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			front_1_custom_slot = empty
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_light_battery_2_double
+			rear_1_custom_slot = ship_mine_layer_1
+			rear_2_custom_slot = ship_light_battery_2_double
+        }
+    }
+    create_equipment_variant = {
+        name = "Sauro/Turbine Class"
+		parent_version = 0
+		role_icon_index = 31
+        type = vnr_ship_hull_light_2
+        name_group = ITA_DD_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_2_double
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			front_1_custom_slot = empty
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = empty
+			rear_1_custom_slot = ship_mine_layer_1
+			rear_2_custom_slot = ship_light_battery_2_double
+        }
+    }
+    create_equipment_variant = {
+        name = "Sella Class"
+		parent_version = 0
+		role_icon_index = 31
+        type = vnr_ship_hull_light_1
+        name_group = ITA_DD_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			front_1_custom_slot = empty
+			rear_1_custom_slot = ship_mine_layer_1
+			rear_2_custom_slot = ship_light_battery_2_double
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = {
+        name = "Leone Class"
+		parent_version = 0
+		role_icon_index = 31
+        type = vnr_ship_hull_light_1
+        name_group = ITA_DD_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_2_double
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			front_1_custom_slot = ship_light_battery_2_double
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_light_battery_2_double
+			rear_1_custom_slot = ship_mine_layer_1
+			rear_2_custom_slot = ship_light_battery_2_double
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = {
+        name = "Mirabello Class"
+		parent_version = 0
+		role_icon_index = 31
+        type = vnr_ship_hull_light_1
+        name_group = ITA_DD_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			front_1_custom_slot = ship_light_battery_1
+            front_2_custom_slot = ship_light_battery_1
+			mid_1_custom_slot = ship_light_battery_1
+			mid_2_custom_slot = ship_light_battery_1
+			rear_1_custom_slot = ship_mine_layer_1
+			rear_2_custom_slot = ship_light_battery_1
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = {
+        name = "Spica Class"
+		parent_version = 0
+		role_icon_index = 29
+		icon = "gfx/interface/technologies/Italy/ITA_destroyer_Spica.png"
+        type = vnr_ship_hull_light_2
+        name_group = ITA_MYTHOLOGY
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_2
+			rear_1_custom_slot = ship_mine_layer_1
+			rear_2_custom_slot = ship_light_battery_2
+        }
+    }
+    create_equipment_variant = {
+        name = "Generali/Curtatone Class"
+		parent_version = 0
+		role_icon_index = 29
+		icon = "gfx/interface/technologies/Italy/ITA_destroyer_Pilo.png"
+        type = vnr_ship_hull_light_1
+        name_group = ITA_DD_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+            mid_1_custom_slot = ship_light_battery_1
+			rear_1_custom_slot = empty
+			rear_2_custom_slot = ship_light_battery_1
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = {
+        name = "Pilo/Sirtori Class"
+		parent_version = 0
+		role_icon_index = 29
+		icon = "gfx/interface/technologies/Italy/ITA_destroyer_Pilo.png"
+        type = vnr_ship_hull_light_1
+        name_group = ITA_DD_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+            front_1_custom_slot = ship_light_battery_1
+            mid_1_custom_slot = ship_light_battery_1
+            mid_2_custom_slot = ship_light_battery_1
+			rear_1_custom_slot = empty
+			rear_2_custom_slot = ship_light_battery_1
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = {
+        name = "La Masa/Palestro Class"
+		parent_version = 0
+		role_icon_index = 29
+		icon = "gfx/interface/technologies/Italy/ITA_destroyer_Pilo.png"
+        type = vnr_ship_hull_light_1
+        name_group = ITA_DD_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+            front_1_custom_slot = ship_light_battery_1
+            mid_1_custom_slot = ship_light_battery_1
+			rear_1_custom_slot = ship_mine_layer_1
+			rear_2_custom_slot = ship_light_battery_1
+        }
+        obsolete = yes
+    }
+    # submarine
+    create_equipment_variant = {
+        name = "Sirena/Perla Class"
+		parent_version = 0
+		role_icon_index = 37
+        type = vnr_ship_hull_submarine_2
+        name_group = ITA_SS_HISTORICAL
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			fixed_ship_engine_slot = sub_ship_engine_2
+            fixed_ship_armor_slot = pressure_hull_2
+			rear_1_custom_slot = empty
+        }
+    }
+    create_equipment_variant = {
+        name = "Argonauta/Settembrini Class"
+		parent_version = 0
+		role_icon_index = 37
+        type = vnr_ship_hull_submarine_2
+        name_group = ITA_SS_HISTORICAL
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			fixed_ship_engine_slot = sub_ship_engine_2
+            fixed_ship_armor_slot = pressure_hull_2
+			rear_1_custom_slot = empty
+        }
+    }
+    create_equipment_variant = {
+        name = "Bragadin Class"
+		parent_version = 0
+		role_icon_index = 37
+        type = vnr_ship_hull_submarine_2
+        name_group = ITA_SS_HISTORICAL
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_2
+            fixed_ship_armor_slot = pressure_hull_1
+			rear_1_custom_slot = empty
+        }
+    }
+    create_equipment_variant = {
+        name = "Bandiera/Squalo Class"
+		parent_version = 0
+		role_icon_index = 37
+        type = vnr_ship_hull_submarine_2
+        name_group = ITA_SS_HISTORICAL
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+            fixed_ship_armor_slot = pressure_hull_1
+			rear_1_custom_slot = ship_torpedo_sub_1
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = {
+        name = "Mameli/Pisani Class"
+		parent_version = 0
+		role_icon_index = 37
+        type = vnr_ship_hull_submarine_2
+        name_group = ITA_SS_HISTORICAL
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+            fixed_ship_armor_slot = pressure_hull_1
+			rear_1_custom_slot = empty
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = {
+        name = "H Class"
+		parent_version = 0
+		role_icon_index = 37
+        type = vnr_ship_hull_submarine_1
+        name_group = ITA_SS_HISTORICAL
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+            fixed_ship_armor_slot = pressure_hull_1
+			rear_1_custom_slot = empty
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = {
+        name = "Fieramosca/Calvi Class"
+		parent_version = 0
+		role_icon_index = 39
+        type = vnr_ship_hull_cruiser_submarine
+        name_group = ITA_SS_HISTORICAL
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			fixed_ship_engine_slot = sub_ship_engine_2
+            fixed_ship_armor_slot = pressure_hull_1
+            front_1_custom_slot = ship_extra_fuel_tank
+			rear_1_custom_slot = ship_torpedo_sub_2
+        }
+    }
+    create_equipment_variant = {
+        name = "Balilla Class"
+		parent_version = 0
+		role_icon_index = 39
+        type = vnr_ship_hull_cruiser_submarine
+        name_group = ITA_SS_HISTORICAL
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			fixed_ship_engine_slot = sub_ship_engine_2
+            fixed_ship_armor_slot = pressure_hull_1
+            front_1_custom_slot = ship_extra_fuel_tank
+			rear_1_custom_slot = empty
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = {
+        name = "Glauco/Micca Class"
+		parent_version = 0
+		role_icon_index = 37
+        type = vnr_ship_hull_submarine_2
+        name_group = ITA_SS_HISTORICAL
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			fixed_ship_engine_slot = sub_ship_engine_2
+            fixed_ship_armor_slot = pressure_hull_1
+			rear_1_custom_slot = ship_torpedo_sub_2
+        }
+    }

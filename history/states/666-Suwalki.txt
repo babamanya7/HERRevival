@@ -1,0 +1,25 @@
+
+state={
+	id=666
+	name="STATE_666"
+	manpower = 41742
+	
+	state_category = rural
+
+	history={
+		owner = POL
+		buildings = {
+			infrastructure = 3
+			industrial_complex = 1
+			air_base = 4
+		}
+		victory_points = {
+			3254 1
+		}
+		add_core_of = POL
+	}
+
+	provinces={
+		3254 13392 9823
+	}
+}

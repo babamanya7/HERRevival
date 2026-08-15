@@ -1,0 +1,33 @@
+
+state={
+	id=459
+	name="STATE_459" # Algiers
+	manpower = 2589944
+	state_category = large_town
+	
+	resources={
+		iron = 72
+	}
+
+	history={
+		owner = FRA
+		add_core_of = BRA
+		
+		victory_points = {
+			14309 5 
+		}
+		buildings = {
+			infrastructure = 4
+			industrial_complex = 2
+			arms_factory = 1
+			air_base = 8
+			14309 = {
+				naval_base = 6
+			}
+		}
+	}
+
+	provinces={
+		14224 14217 14205 14200 14189 14211 14222 14233 14230 14238 14252 14267 14289 14284 14271 14259 14251 14246 14279 14288 14298 14281 14286 14302 14309 14307 14291 
+	}
+}

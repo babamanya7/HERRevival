@@ -1,0 +1,31 @@
+state= {
+	id=941
+	name="STATE_941"
+	manpower = 1201000
+	
+	state_category = pastoral
+
+	history= {
+
+		owner = CHI
+		add_core_of = CHI
+		#
+		victory_points = {
+			12432 1
+		}
+		buildings = {
+			infrastructure = 2
+		}
+		1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+	}
+	provinces={
+		7158 10480 12432 13631 13633 13789 13632
+	}
+}

@@ -1,0 +1,18 @@
+add_namespace = chi_armor
+
+##################################### CHI Shanghai Incident
+
+country_event = {
+	id = chi_armor.802
+	title = chi_armor.802.t
+	desc = chi_armor.802.d
+	picture = GFX_report_event_chinese_soldiers_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = chi_armor.802.a
+		add_war_support = 0.05
+	}
+}
+

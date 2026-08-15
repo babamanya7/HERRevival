@@ -1,0 +1,35 @@
+
+state={
+	id=448
+	name="STATE_448"
+	manpower = 469136
+	
+	state_category = town
+
+	history={
+		owner = ITA
+		
+		victory_points = {
+			14161 10 
+		}
+		victory_points = {
+			14136 1
+		}
+		buildings = {
+			infrastructure = 3
+			industrial_complex = 2
+			air_base = 12
+			14161 = {
+				naval_base = 5
+			}
+			14136 = {
+				naval_base = 2
+			}
+		}
+		add_core_of = BRA
+	}
+
+	provinces={
+		14000 14043 14083 14115 14016 14054 14069 14114 14136 14144 14150 14161 14126 14096 14068 14028 14027 14075 14103 14139 14159 14135 14110 14038 14089 14123 14155 14165 14142 14109 14111 14056 14067
+	}
+}

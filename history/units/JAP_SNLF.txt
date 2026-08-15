@@ -1,0 +1,192 @@
+﻿division_template = {
+	name = "SNLF Unit"
+	is_locked = yes
+	division_names_group = JAP_INF_01
+	
+	regiments = {
+		jap_snlf_company = { x = 0 y = 0 }
+		jap_snlf_company = { x = 0 y = 1 }
+		jap_snlf_company = { x = 0 y = 2 }
+        jap_snlf_company = { x = 0 y = 3 }
+		jap_snlf_company = { x = 0 y = 4 }
+	}
+	
+	support = {
+	}
+}
+
+##### OOB #####
+units = {
+
+	division = {
+		name = "1st Kure SNLF"
+		location = 1092
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.03
+	}
+	division = {
+		name = "2st Kure SNLF"
+		location = 1092
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.03
+	}
+	division = {
+		name = "3st Kure SNLF"
+		location = 1092
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.03
+	}
+	division = {
+		name = "4st Kure SNLF"
+		location = 1092
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.03
+	}
+	division = {
+		name = "5st Kure SNLF"
+		location = 1092
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.03
+	}
+	division = {
+		name = "6st Kure SNLF"
+		location = 1092
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.03
+	}
+	division = {
+		name = "7st Kure SNLF"
+		location = 1092
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.03
+	}
+	
+	division = {
+		name = "1st Maizuru SNLF"
+		location = 1136
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.55
+		start_equipment_factor = 0.03
+	}
+	division = {
+		name = "2st Maizuru SNLF"
+		location = 1136
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.55
+		start_equipment_factor = 0.03
+	}
+	division = {
+		name = "4st Maizuru SNLF"
+		location = 1136
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.55
+		start_equipment_factor = 0.03
+	}
+	division = {
+		name = "5st Maizuru SNLF"
+		location = 1136
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.55
+		start_equipment_factor = 0.03
+	}
+	
+	division = {
+		name = "1st Sasebo SNLF"
+		location = 9950
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.03
+	}
+	division = {
+		name = "2st Sasebo SNLF"
+		location = 9950
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.03
+	}
+	division = {
+		name = "5st Sasebo SNLF"
+		location = 9950
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.03
+	}
+	division = {
+		name = "6st Sasebo SNLF"
+		location = 9950
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.03
+	}
+	division = {
+		name = "7st Sasebo SNLF"
+		location = 9950
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.03
+	}
+	division = {
+		name = "8st Sasebo SNLF"
+		location = 9950
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.03
+	}
+	
+	division = {
+		name = "1st Yokosuka SNLF"
+		location = 9998
+		division_template = "SNLF Unit"
+		start_experience_factor = 1
+		start_equipment_factor = 0.03
+	}
+	division = {
+		name = "2st Yokosuka SNLF"
+		location = 9998
+		division_template = "SNLF Unit"
+		start_experience_factor = 1
+		start_equipment_factor = 0.03
+	}
+	division = {
+		name = "3st Yokosuka SNLF"
+		location = 9998
+		division_template = "SNLF Unit"
+		start_experience_factor = 1
+		start_equipment_factor = 0.03
+	}
+	division = {
+		name = "4st Yokosuka SNLF"
+		location = 9998
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.8
+		start_equipment_factor = 0.03
+	}
+	division = {
+		name = "5st Yokosuka SNLF"
+		location = 9998
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.8
+		start_equipment_factor = 0.03
+	}
+	division = {
+		name = "6st Yokosuka SNLF"
+		location = 9998
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.8
+		start_equipment_factor = 0.03
+	}
+	division = {
+		name = "7st Yokosuka SNLF"
+		location = 9998
+		division_template = "SNLF Unit"
+		start_experience_factor = 0.8
+		start_equipment_factor = 0.03
+	}
+}

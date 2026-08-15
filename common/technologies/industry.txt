@@ -1,0 +1,4959 @@
+
+technologies = {
+	# Vertical yearorder
+	@1900 = -2
+	@1930 = 0
+	@1936 = 3
+	@1937 = 7
+	@1938 = 10
+	@1939 = 13
+	@1940 = 16
+	@1941 = 19
+	@1942 = 22
+	@1943 = 25
+	@1944 = 28
+	@1945 = 31
+	@1946 = 34
+	
+	basic_machine_tools = {
+	
+		production_factory_max_efficiency_factor = 0.08
+		path = {
+			leads_to_tech = concentrated_industry 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = improved_machine_tools 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tool_maintenance
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.5
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = -1 y = @1930 }
+		}
+		
+		ai_will_do = {
+			factor = 12
+			modifier = {
+				factor = 10
+				num_of_military_factories > 24
+			}
+		}
+		
+		categories = {
+			industry
+			cat_production
+		}
+	}
+	
+	improved_machine_tools = {
+	
+		production_factory_max_efficiency_factor = 0.08
+
+		path = {
+			leads_to_tech = advanced_machine_tools 
+			research_cost_coeff = 1
+		}
+		
+		
+		
+		research_cost = 1.5
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = -3 y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 17
+			modifier = {
+				factor = 9
+				num_of_military_factories > 40
+			}
+		}
+		
+		categories = {
+			industry
+			cat_production
+		}
+	}
+	#Conversion branch - Enabled in DoD
+	improved_equipment_conversion = {
+	
+		equipment_conversion_speed = 0.25
+		conversion_cost_civ_to_mil_factor = -0.05
+		conversion_cost_mil_to_civ_factor = -0.05
+		line_change_production_efficiency_factor = 0.025
+		
+		path = {
+			leads_to_tech = advanced_equipment_conversion
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.5
+		start_year = 1938
+		
+		folder = {
+			name = industry_folder
+			position = { x = -1 y = @1938 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			industry
+		}
+	}
+	
+	advanced_equipment_conversion = {
+		
+		equipment_conversion_speed = 0.25
+		conversion_cost_civ_to_mil_factor = -0.05
+		conversion_cost_mil_to_civ_factor = -0.05
+		line_change_production_efficiency_factor = 0.025
+
+		research_cost = 1.5
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = -1 y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			industry
+		}
+	}
+	advanced_machine_tools = {
+	
+		production_factory_max_efficiency_factor = 0.08
+
+		path = {
+			leads_to_tech = assembly_line_production 
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = -3 y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 11
+			modifier = {
+				factor = 4
+				num_of_military_factories > 35
+			}
+			modifier = {
+				factor = 6
+				date > 1938.7.1
+				num_of_military_factories > 65
+			}
+			modifier = {
+				factor = 3
+				num_of_military_factories > 80
+			}
+		}
+		
+		categories = {
+			industry
+			cat_production
+		}
+	}
+	assembly_line_production = {
+	
+		production_factory_max_efficiency_factor = 0.08
+		
+		path = {
+			leads_to_tech = flexible_line
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = streamlined_line
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = industry_folder
+			position = { x = -3 y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 12
+			modifier = {
+				factor = 4
+				num_of_military_factories > 39
+			}
+			modifier = {
+				factor = 9
+				date > 1940.10.1
+				num_of_military_factories > 70
+			}
+			modifier = {
+				factor = 20
+				date > 1941.1.1
+				num_of_military_factories > 95
+			}
+		}
+		
+		categories = {
+			industry
+			cat_production
+		}
+	}
+	flexible_line = {
+
+	    production_factory_max_efficiency_factor = 0.06
+		line_change_production_efficiency_factor = 0.25
+		
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = -4 y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 12
+			modifier = {
+				factor = 10
+				date > 1943.1.1
+				num_of_military_factories > 45
+			}
+			modifier = {
+				factor = 8
+				num_of_military_factories > 85
+			}
+		}
+		
+		categories = {
+			industry
+			cat_production
+		}
+	}
+	streamlined_line = {
+
+		production_factory_max_efficiency_factor = 0.12
+		
+		research_cost = 2
+		start_year = 1944
+		folder = {
+			name = industry_folder
+			position = { x = -2 y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 11
+			modifier = {
+				factor = 13
+				date > 1943.1.1
+				num_of_military_factories > 45
+			}
+			modifier = {
+				factor = 7
+				num_of_military_factories > 85
+			}
+		}
+		
+		categories = {
+			industry
+			cat_production
+		}
+	}
+	
+	tool_maintenance = {
+	
+		production_factory_efficiency_gain_factor = 0.1
+		industry_repair_factor = 0.1
+		
+		path = {
+			leads_to_tech = worker_training 
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.5
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = 1 y = @1936 }
+		}
+		path = {
+			leads_to_tech = improved_equipment_conversion
+			research_cost_coeff = 1
+		}
+		
+		ai_will_do = {
+			factor = 17
+			modifier = {
+				factor = 9
+				num_of_military_factories > 40
+			}
+		}
+		
+		categories = {
+			industry
+			cat_production
+		}
+	}
+	
+	worker_training = {
+	
+		industry_repair_factor = 0.1
+		production_factory_efficiency_gain_factor = 0.05
+		line_change_production_efficiency_factor = 0.05
+		production_factory_start_efficiency_factor = 0.04
+		
+		
+		path = {
+			leads_to_tech = on_spot_training
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.7
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = 1 y = @1937 }
+		}
+		
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 10
+				num_of_military_factories > 40
+				date > 1937.8.1
+			}
+		}
+		
+		categories = {
+			industry
+			cat_production
+		}
+	}
+	
+	worker_colleges = {
+	
+		production_factory_efficiency_gain_factor = 0.2
+		line_change_production_efficiency_factor = 0.05
+		
+		path = {
+			leads_to_tech = workplace_processes
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2.5
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = 1 y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 10
+				num_of_military_factories > 40
+			}
+		}
+		
+		categories = {
+			industry
+			cat_production
+		}
+	}
+	
+	on_spot_training = {
+		
+		industry_repair_factor = 0.1
+		production_factory_efficiency_gain_factor = 0.15
+		
+		path = {
+			leads_to_tech = worker_colleges
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2.5
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = 1 y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 15
+		}
+		
+		categories = {
+			industry
+			cat_production
+		}
+	}
+	foriegn_labour = {
+		
+		industrial_capacity_factory = 0.25
+		industrial_capacity_dockyard = 0.25
+		production_factory_efficiency_gain_factor = -0.1
+		line_change_production_efficiency_factor = -0.06
+		industry_repair_factor = -0.25
+		
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = 8 y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 10
+				num_of_military_factories > 40
+			}
+		}
+		
+		categories = {
+			industry
+			cat_production
+		}
+	}
+	workplace_processes = {
+		industrial_capacity_factory = 0.1
+		industrial_capacity_dockyard = 0.1
+		production_factory_efficiency_gain_factor = 0.15
+		
+		research_cost = 2.5
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = 1 y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 5
+				num_of_military_factories > 40
+			}
+			modifier = {
+				factor = 5
+				num_of_military_factories > 80
+			}
+			modifier = {
+				factor = 3
+				num_of_military_factories > 130
+			}
+		}	
+		categories = {
+			industry
+			cat_production
+		}
+	}
+	#####################################
+	### Level I Concentrated Industry ###
+	concentrated_industry = {
+	
+		global_building_slots_factor = 0.2
+		conscription = -0.002
+		industry_air_damage_factor = 0.1
+		production_factory_max_efficiency_factor = 0.02
+		production_factory_efficiency_gain_factor = -0.02
+		##
+		xor = { dispersed_industry }
+		##
+		path = {
+			leads_to_tech = concentrated_industry2
+			research_cost_coeff = 1
+		}
+		### Factories
+		
+		research_cost = 2
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = 4 y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 9
+			
+			modifier = {
+				factor = 3
+				OR = {
+				tag = USA
+				tag = CAN
+				}
+			}
+			
+			modifier = {
+				factor = 4
+				num_of_military_factories > 25
+			}
+			modifier = {
+				factor = 4
+				num_of_military_factories > 45
+			}
+
+			modifier = {
+				factor = -4
+				has_war = yes
+			}
+			modifier = {
+				factor = -15
+				has_tech = dispersed_industry
+			}
+			modifier = {
+				factor = 0
+				tag = FIN
+				date < 1943.1.1
+			}
+		}
+		
+		categories = {
+			industry
+		}
+		
+	}
+	##################################
+	### Level I Dispersed Industry ###
+	dispersed_industry = {
+
+		global_building_slots_factor = 0.1
+		conscription = -0.002
+		industry_air_damage_factor = -0.1
+		industry_repair_factor = 0.05
+		repair_speed_anti_air_building_factor = 0.05
+		line_change_production_efficiency_factor = 0.03
+		production_factory_start_efficiency_factor = 0.01
+		
+		### 
+		xor = { concentrated_industry }
+		### Next tech level
+		path = {
+			leads_to_tech = dispersed_industry2
+			research_cost_coeff = 1
+		}
+		### Factories
+		
+		research_cost = 2
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = 12 y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 3
+
+			modifier = {
+				factor = 8
+				tag = GER
+			}
+			
+			modifier = {
+				factor = 9
+				tag = SOV
+			}		
+			modifier = {
+				factor = 9
+				OR = {
+				tag = CCP
+				tag = CHI
+				}
+			}
+			modifier = {
+				factor = 4
+				num_of_military_factories > 25
+			}
+			modifier = {
+				factor = -10
+				has_war = yes
+				has_tech = concentrated_industry
+			}
+			modifier = {
+				factor = 0
+				tag = FIN
+				date < 1943.1.1
+			}
+		}
+		
+		categories = {
+			industry
+		}
+		
+	}
+	### Level II Concentrated Industry ###
+	concentrated_industry2 = {
+
+		global_building_slots_factor = 0.2
+		conscription = -0.002
+		industry_air_damage_factor = 0.1
+		production_factory_max_efficiency_factor = 0.02
+		production_factory_efficiency_gain_factor = -0.02
+		### Next tech level
+		path = {
+			leads_to_tech = concentrated_industry3
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = 4 y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 9
+			modifier = {
+				factor = 2
+				num_of_military_factories > 25
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 50
+			}
+			modifier = {
+				factor = 0.5
+				num_of_military_factories < 40
+				NOT = { has_tech = housing_work2 }
+			}			
+		}
+		
+		categories = {
+			industry
+		}
+		
+	}
+	### Level II Dispersed Industry ###
+	dispersed_industry2 = {
+		
+		global_building_slots_factor = 0.1
+		conscription = -0.002
+		industry_air_damage_factor = -0.1
+		industry_repair_factor = 0.05
+		repair_speed_anti_air_building_factor = 0.05
+		line_change_production_efficiency_factor = 0.03
+		production_factory_start_efficiency_factor = 0.01
+		
+		### Next tech level
+		path = {
+			leads_to_tech = dispersed_industry3 
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = 12 y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 8
+			modifier = {
+				factor = 2
+				num_of_military_factories > 25
+			}
+			modifier = {
+				factor = 3
+				num_of_military_factories > 50
+			}
+			modifier = {
+				factor = 0.5
+				num_of_military_factories < 40
+				NOT = { has_tech = housing_work2 }
+			}						
+		}
+		
+		categories = {
+			industry
+		}
+		
+	}
+	### Level III Concentrated Industry ###
+	concentrated_industry3 = {
+
+		global_building_slots_factor = 0.2
+		conscription = -0.002
+		industry_air_damage_factor = 0.1
+		production_factory_max_efficiency_factor = 0.02
+		production_factory_efficiency_gain_factor = -0.02
+		
+		### Next tech level
+		path = {
+			leads_to_tech = concentrated_industry4
+			research_cost_coeff = 1
+		}
+		### Factories
+		
+		research_cost = 2
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = 4 y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 9
+			modifier = {
+				factor = 2
+				num_of_military_factories > 25
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 55
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 100
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 200
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 300
+			}
+			modifier = {
+				factor = 0.35
+				num_of_military_factories < 50
+				NOT = { has_tech = housing_work2 }
+			}				
+		}
+		
+		categories = {
+			industry
+		}
+		
+	}
+	### Level III Dispersed Industry ###
+	dispersed_industry3 = {
+
+		global_building_slots_factor = 0.1
+		conscription = -0.002
+		industry_air_damage_factor = -0.1
+		industry_repair_factor = 0.05
+		repair_speed_anti_air_building_factor = 0.05
+		line_change_production_efficiency_factor = 0.03
+		production_factory_start_efficiency_factor = 0.01
+		
+		### Next tech level
+		path = {
+			leads_to_tech = dispersed_industry4 
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1940
+		
+		folder = {
+			name = industry_folder
+			position = { x = 12 y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 8
+			modifier = {
+				factor = 2
+				num_of_military_factories > 25
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 55
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 100
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 200
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 300
+			}
+			modifier = {
+				factor = 0.35
+				num_of_military_factories < 50
+				NOT = { has_tech = housing_work2 }
+			}				
+		}
+		
+		categories = {
+			industry
+		}
+		
+	}
+	### Level IV Concentrated Industry ###
+	concentrated_industry4 = {
+
+		global_building_slots_factor = 0.2
+		conscription = -0.002
+		industry_air_damage_factor = 0.1
+		production_factory_max_efficiency_factor = 0.02
+		production_factory_efficiency_gain_factor = -0.02
+		
+		### Next tech level
+		path = {
+			leads_to_tech = concentrated_industry5
+			research_cost_coeff = 1
+		}
+
+		path = {
+			leads_to_tech = foriegn_labour
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 2
+		start_year = 1942
+		
+		folder = {
+			name = industry_folder
+			position = { x = 4 y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 6
+			modifier = {
+				factor = 2
+				num_of_military_factories > 30
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 70
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 100
+			}
+			modifier = {
+				factor = 3
+				num_of_military_factories > 200
+			}
+			modifier = {
+				factor = 3
+				num_of_military_factories > 300
+			}
+			modifier = {
+				factor = 0.5
+				num_of_military_factories < 50
+				NOT = { has_tech = housing_work3 }
+			}				
+		}
+		
+		categories = {
+			industry
+		}
+	}
+	### Level IV Dispersed Industry ###
+	dispersed_industry4 = {
+
+		global_building_slots_factor = 0.1
+		conscription = -0.002
+		industry_air_damage_factor = -0.1
+		industry_repair_factor = 0.05
+		repair_speed_anti_air_building_factor = 0.05
+		line_change_production_efficiency_factor = 0.03
+		production_factory_start_efficiency_factor = 0.01
+		
+		### Next tech level
+		path = {
+			leads_to_tech = dispersed_industry5
+			research_cost_coeff = 1
+		}
+	
+		path = {
+			leads_to_tech = foriegn_labour
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1942
+		
+		folder = {
+			name = industry_folder
+			position = { x = 12 y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 6
+			modifier = {
+				factor = 2
+				num_of_military_factories > 30
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 70
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 100
+			}
+			modifier = {
+				factor = 3
+				num_of_military_factories > 200
+			}
+			modifier = {
+				factor = 3
+				num_of_military_factories > 300
+			}
+			modifier = {
+				factor = 0.5
+				num_of_military_factories < 50
+				NOT = { has_tech = housing_work3 }
+			}				
+		}
+		
+		categories = {
+			industry
+		}
+		
+	}
+	### Level V Concentrated Industry ###
+	concentrated_industry5 = {
+
+		global_building_slots_factor = 0.2
+		conscription = -0.002
+		industry_air_damage_factor = 0.1
+		production_factory_max_efficiency_factor = 0.02
+		production_factory_efficiency_gain_factor = -0.02
+		
+		research_cost = 2
+		start_year = 1944
+		
+		folder = {
+			name = industry_folder
+			position = { x = 4 y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 2
+				num_of_military_factories > 50
+			}
+			modifier = {
+				factor = 5
+				num_of_military_factories > 90
+			}
+			modifier = {
+				factor = 3
+				num_of_military_factories > 200
+			}
+			modifier = {
+				factor = 3
+				num_of_military_factories > 300
+			}
+			modifier = {
+				factor = 0.35
+				num_of_military_factories < 50
+				NOT = { has_tech = housing_work3 }
+			}				
+		}	
+		categories = {
+			industry
+		}
+	}
+	### Level V Dispersed Industry ###
+	dispersed_industry5 = {
+
+		global_building_slots_factor = 0.1
+		conscription = -0.002
+		industry_air_damage_factor = -0.1
+		industry_repair_factor = 0.05
+		repair_speed_anti_air_building_factor = 0.05
+		line_change_production_efficiency_factor = 0.03
+		production_factory_start_efficiency_factor = 0.01
+		
+		research_cost = 2
+		start_year = 1944
+		
+		folder = {
+			name = industry_folder
+			position = { x = 12 y = @1944 }
+		}		
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 2
+				num_of_military_factories > 50
+			}
+			modifier = {
+				factor = 5
+				num_of_military_factories > 90
+			}
+			modifier = {
+				factor = 3
+				num_of_military_factories > 200
+			}
+			modifier = {
+				factor = 3
+				num_of_military_factories > 300
+			}
+			modifier = {
+				factor = 0.35
+				num_of_military_factories < 50
+				NOT = { has_tech = housing_work3 }
+			}				
+		}	
+		categories = {
+			industry
+		}
+	}
+	
+##################################################################
+	
+	# Construction I 1936
+	construction1 = {
+		
+		enable_building = {
+			building = industrial_complex
+			level = 20
+		}
+		enable_building = {
+			building = arms_factory
+			level = 20
+		}
+		
+		production_speed_buildings_factor = 0.05
+		production_speed_industrial_complex_factor = 0.02
+
+		path = {
+			leads_to_tech = construction2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = excavation1
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = defence_works
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = infra_works
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = civ_works
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1936
+		categories = {
+			industry
+			construction_tech
+		}
+		
+		folder = {
+			name = industry_folder
+			position = { x = 18 y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 3
+			modifier = {
+				factor = 5
+				num_of_factories > 100
+			}
+			modifier = {
+				factor = 3
+				or = {
+				   has_war = no
+				   date < 1939.1.1
+				}
+			}
+			modifier = {
+				factor = 4
+				or = {
+				   tag = JAP
+				   tag = USA
+				   tag = CAN
+				   tag = ROM
+				   tag = BRA
+				   tag = POR
+				   tag = TUR
+				   tag = SOV
+				   tag = VEN
+				   tag = FRA
+				   tag = EGY
+				}
+			}
+			modifier = {
+				factor = 5
+				tag = NOR
+			}
+		}
+	}
+	# Defenses I
+	defence_works = {
+		
+		max_dig_in = 0.5
+		max_dig_in_factor = 0.05
+		production_speed_bunker_factor = 0.05
+		production_speed_coastal_bunker_factor = 0.05
+		production_speed_anti_air_building_factor = 0.05
+		army_core_defence_factor = 0.01
+		
+		enable_building = {
+			building = anti_air_building
+			level = 2
+		}
+		enable_building = {
+			building = bunker
+			level = 4
+		}
+		enable_building = {
+			building = coastal_bunker
+			level = 4
+		}
+		
+		research_cost = 1.8
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = 21 y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 5
+				or = {
+				   tag = SOV
+				   tag = FRA
+				   tag = ITA
+				}
+			}
+                        modifier = {
+				factor = 3
+				or = {
+				   has_war = yes
+				   date > 1939.2.1
+				}
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	
+	# Infrastructure I
+	infra_works = {
+		
+		production_speed_infrastructure_factor = 0.05
+		production_speed_naval_base_factor = 0.03
+		production_speed_air_base_factor = 0.03
+		industry_free_repair_factor = 0.05
+		
+		enable_building = {
+			building = infrastructure
+			level = 11
+		}
+		
+		path = {
+			leads_to_tech = rail_infra
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = road_infra
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = air_infra
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = port_infra
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.8
+		start_year = 1936
+		categories = {
+			industry
+			construction_tech
+		}
+		
+		folder = {
+			name = industry_folder
+			position = { x = 25 y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 6
+			modifier = {
+				tag = SOV
+				tag = GER
+				tag = USA
+				factor = 3
+			}
+            modifier = {
+				factor = 3
+				num_of_military_factories > 40
+			}
+		}
+	}
+	# Rail Network 1936
+	rail_infra = {
+		
+		industrial_capacity_factory = 0.04
+		industrial_capacity_dockyard = 0.04
+		production_factory_max_efficiency_factor = 0.01
+		production_factory_efficiency_gain_factor = 0.01
+		supply_consumption_factor = -0.01
+		production_speed_rail_way_factor = 0.05
+        production_speed_supply_node_factor = 0.05
+		
+		research_cost = 1.6
+		start_year = 1936
+		categories = {
+			industry
+			construction_tech
+		}
+		
+		folder = {
+			name = industry_folder
+			position = { x = 24 y = 5 }
+		}
+		
+		ai_will_do = {
+			factor = 3 # important!!!
+			modifier = {
+				factor = 2
+				or = {
+				   tag = SOV
+				   tag = USA
+				   tag = GER
+				}
+			}
+			modifier = {
+				factor = 3
+				num_of_military_factories > 40
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 80
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 140
+			}
+		}
+	}
+	# Road Network 1936
+	road_infra = {
+		
+		industrial_capacity_factory = 0.04
+		industrial_capacity_dockyard = 0.04
+		org_loss_when_moving = -0.01
+		production_factory_max_efficiency_factor = 0.01
+		line_change_production_efficiency_factor = 0.01
+		supply_node_range = 0.02
+		production_speed_infrastructure_factor = 0.05
+		
+		research_cost = 1.6
+		start_year = 1936
+		categories = {
+			industry
+			construction_tech
+		}
+		
+		folder = {
+			name = industry_folder
+			position = { x = 25 y = 5 }
+		}
+		
+		ai_will_do = {
+			factor = 3 # important!!!
+			modifier = {
+				factor = 2
+				or = {
+				   tag = SOV
+				   tag = USA
+				   tag = GER
+				}
+			}
+			modifier = {
+				factor = 3
+				num_of_military_factories > 40
+			}
+			modifier = {
+				factor = 3
+				num_of_military_factories > 80
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 140
+			}
+		}
+	}
+	#Air Fields 1936
+	air_infra = {
+		
+		enemy_army_bonus_air_superiority_factor = -0.01
+		air_weather_penalty = -0.01
+		air_mission_efficiency = 0.02
+		air_accidents_factor = -0.04
+		production_speed_air_base_factor = 0.07
+		
+		enable_building = {
+			building = air_base
+			level = 12
+		}
+		
+		research_cost = 1.6
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = 26 y = 5 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Dockyards 1936
+	port_infra = {
+	
+		production_speed_dockyard_factor = 0.04
+		industrial_capacity_dockyard = 0.04
+		refit_speed = 0.02
+		production_speed_naval_base_factor = 0.04
+		repair_speed_factor = 0.02
+		
+		research_cost = 1.6
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = 27 y = 5 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 3
+				or = {
+				   tag = CAN
+				   tag = USA
+				   tag = ENG
+				   tag = JAP
+				   tag = ITA
+				}
+			}
+			modifier = {
+				factor = 2
+				num_of_naval_factories > 15
+			}
+			modifier = {
+				factor = 2
+				num_of_naval_factories > 24
+			}
+			modifier = {
+				factor = 2
+				num_of_naval_factories > 40
+			}
+			modifier = {
+				factor = 3
+				num_of_naval_factories > 65
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	# Civilian works I
+	civ_works = {
+		energy_gain_factor = 0.04
+		storage_size_factor = 0.03
+		on_research_complete = {
+            add_stability = 0.02
+        }
+		show_effect_as_desc = yes
+		
+		path = {
+			leads_to_tech = housing_work
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = hospital_work
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = schools_work
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.8
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = 30 y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Agricultural Advances 1936
+	housing_work = {
+		
+		consumer_goods_factor = -0.02
+		conscription = 0.002
+		weekly_manpower = 100
+		
+		research_cost = 1.6
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = 29 y = 5 }
+		}
+		
+		ai_will_do = {
+			factor = 20
+            modifier = {
+				factor = 3
+				OR = {
+				   tag = SOV
+				   tag = USA
+				   tag = GER
+				}
+				date > 1940.2.1
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Health Care System 1936
+	hospital_work = {
+		
+		attrition = -0.01
+		experience_loss_factor = -0.02
+		heat_attrition_factor = -0.02
+		winter_attrition_factor = -0.02
+		army_morale_factor = 0.01
+		acclimatization_cold_climate_gain_factor = 0.05
+		acclimatization_hot_climate_gain_factor = 0.05
+		
+		research_cost = 1.6
+		start_year = 1936		
+		folder = {
+			name = industry_folder
+			position = { x = 30 y = 5 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Education System 1936
+	schools_work = {
+		special_forces_min = 6
+		army_leader_start_level = 1
+		navy_leader_start_level = 1	
+		research_speed_factor = 0.02
+		training_time_army_factor = -0.02
+		minimum_training_level = -0.02
+		
+		research_cost = 1.6
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = 31 y = 5 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#### Construction II 1937
+	construction2 = {
+
+		production_speed_buildings_factor = 0.05
+		production_speed_industrial_complex_factor = 0.02
+		
+		enable_building = {
+			building = industrial_complex
+			level = 25
+		}
+		enable_building = {
+			building = arms_factory
+			level = 25
+		}
+		
+		path = {
+			leads_to_tech = construction3 
+			research_cost_coeff = 1
+		}		
+		path = {
+			leads_to_tech = excavation2 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = defence_works2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = infra_works2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = civ_works2
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1938		
+		folder = {
+			name = industry_folder
+			position = { x = 18 y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 5
+				num_of_factories > 100
+			}
+            modifier = {
+				factor = 4
+				has_war = no
+				date > 1937.1.1	
+			}
+			modifier = {
+				factor = 6
+				tag = USA
+			}
+			modifier = {
+				factor = 3
+				OR = { tag = ENG tag = SOV tag = FRA }
+			}
+			modifier = {
+				factor = 4
+				tag = NOR
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	# Defenses II
+	defence_works2 = {
+		
+		max_dig_in = 0.5
+		max_dig_in_factor = 0.05
+		production_speed_bunker_factor = 0.05
+		production_speed_coastal_bunker_factor = 0.05
+		production_speed_anti_air_building_factor = 0.05
+		army_core_defence_factor = 0.01
+		
+		enable_building = {
+			building = anti_air_building
+			level = 3
+		}
+		enable_building = {
+			building = bunker
+			level = 5
+		}
+		enable_building = {
+			building = coastal_bunker
+			level = 5
+		}
+
+		dependencies = {
+		    defence_works = 1
+		}
+		
+		research_cost = 1.8
+		start_year = 1938	
+		folder = {
+			name = industry_folder
+			position = { x = 21 y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+            modifier = {
+				factor = 3
+				or = {
+				   has_war = yes
+				   date > 1939.5.1
+				}
+			}
+			
+			modifier = {
+				factor = 30
+				tag = FRA
+			}
+			modifier = {
+				factor = 5
+				tag = GER
+				date > 1941.7.1
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	
+	# Infrastructure II
+	infra_works2 = {
+		
+		production_speed_infrastructure_factor = 0.05
+		production_speed_naval_base_factor = 0.03
+		production_speed_air_base_factor = 0.03
+		industry_free_repair_factor = 0.05
+		
+		enable_building = {
+			building = infrastructure
+			level = 12
+		}
+		
+		path = {
+			leads_to_tech = rail_infra2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = road_infra2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = air_infra2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = port_infra2
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			infra_works = 1
+		}
+		
+		research_cost = 1.8
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = 25 y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				tag = SOV
+				tag = GER
+				factor = 2
+			}
+			modifier = {
+				tag = USA
+				factor = 4
+			}
+            modifier = {
+			    factor = 3
+				num_of_military_factories > 40
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	# Rail network 1937
+	rail_infra2 = {
+		
+		industrial_capacity_factory = 0.04
+		industrial_capacity_dockyard = 0.04
+		production_factory_max_efficiency_factor = 0.01
+		production_factory_efficiency_gain_factor = 0.01
+		supply_consumption_factor = -0.01
+		production_speed_rail_way_factor = 0.05
+        production_speed_supply_node_factor = 0.05
+		
+		dependencies = {
+			rail_infra = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = 24 y = 12 }
+		}
+		
+		ai_will_do = {
+			factor = 3
+            modifier = {
+				factor = 2
+				or = {
+				   tag = CAN
+				   tag = USA
+				   tag = ENG
+				   tag = JAP
+				   tag = GER
+                   tag = SOV
+				}
+			}
+			modifier = {
+				factor = 3
+				num_of_military_factories > 40
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 80
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 140
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	# Road Network 1937
+	road_infra2 = {
+	
+		industrial_capacity_factory = 0.04
+		industrial_capacity_dockyard = 0.04
+		org_loss_when_moving = -0.01
+		production_factory_max_efficiency_factor = 0.01
+		line_change_production_efficiency_factor = 0.01
+		supply_node_range = 0.02
+		production_speed_infrastructure_factor = 0.05
+		
+		dependencies = {
+			road_infra = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = 25 y = 12 }
+		}
+		
+		ai_will_do = {
+			factor = 3
+			modifier = {
+				factor = 3
+				or = {
+				   tag = CAN
+				   tag = USA
+				   tag = ENG
+				   tag = JAP
+				   tag = GER
+                   tag = SOV
+				}
+			}
+			modifier = {
+				factor = 3
+				num_of_military_factories > 40
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 80
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 140
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Air Fields 1937
+	air_infra2 = {
+		
+		enemy_army_bonus_air_superiority_factor = -0.01
+		air_weather_penalty = -0.01
+		air_mission_efficiency = 0.02
+		air_accidents_factor = -0.04
+		production_speed_air_base_factor = 0.07
+		
+		enable_building = {
+			building = air_base
+			level = 14
+		}
+		
+		dependencies = {
+			air_infra = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = 26 y = 12 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Dockyard 1937
+	port_infra2 = {
+		
+		production_speed_dockyard_factor = 0.04
+		industrial_capacity_dockyard = 0.04
+		refit_speed = 0.02
+		production_speed_naval_base_factor = 0.04
+		repair_speed_factor = 0.02
+		
+		dependencies = {
+			port_infra = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1938
+		categories = {
+			industry
+			construction_tech
+		}
+		
+		folder = {
+			name = industry_folder
+			position = { x = 27 y = 12 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 3
+				or = {
+				   tag = CAN
+				   tag = USA
+				   tag = ENG
+				   tag = JAP
+				   tag = ITA
+				}
+			}
+			modifier = {
+				factor = 2
+				num_of_naval_factories > 24
+			}
+			modifier = {
+				factor = 2
+				num_of_naval_factories > 40
+			}
+			modifier = {
+				factor = 3
+				num_of_naval_factories > 65
+			}
+		}
+	}
+	# Civilian works II
+	civ_works2 = {
+		energy_gain_factor = 0.04
+		storage_size_factor = 0.03
+		on_research_complete = {
+            add_stability = 0.02
+        }
+		show_effect_as_desc = yes
+		
+		path = {
+			leads_to_tech = housing_work2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = hospital_work2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = schools_work2
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			civ_works = 1
+		}
+		
+		research_cost = 1.8
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = 30 y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Agricultural Advances 1937
+	housing_work2 = {
+		
+		dependencies = {
+			housing_work = 1
+		}
+		
+		consumer_goods_factor = -0.02
+		conscription = 0.002
+		weekly_manpower = 100
+		
+		research_cost = 1.6
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = 29 y = 12 }
+		}
+		
+		ai_will_do = {
+			factor = 20
+		}
+		categories = {
+			industry
+			construction_tech
+		}		
+	}
+	#Health Care System 1937
+	hospital_work2 = {
+		
+		attrition = -0.01
+		experience_loss_factor = -0.02
+		heat_attrition_factor = -0.02
+		winter_attrition_factor = -0.02
+		army_morale_factor = 0.01
+		acclimatization_cold_climate_gain_factor = 0.05
+		acclimatization_hot_climate_gain_factor = 0.05
+		
+		dependencies = {
+			hospital_work = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = 30 y = 12 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Education System 1937
+	schools_work2 = {
+		special_forces_min = 6
+		army_leader_start_level = 1
+		navy_leader_start_level = 1	
+		research_speed_factor = 0.02
+		training_time_army_factor = -0.02
+		minimum_training_level = -0.02
+		
+		dependencies = {
+			schools_work = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = 31 y = 12 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#### Construction III 1939
+	construction3 = {
+		
+		production_speed_buildings_factor = 0.05
+		production_speed_industrial_complex_factor = 0.02
+		
+		enable_building = {
+			building = industrial_complex
+			level = 30
+		}
+		enable_building = {
+			building = arms_factory
+			level = 30
+		}
+		
+		path = {
+			leads_to_tech = construction4 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = excavation3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = defence_works3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = infra_works3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = civ_works3
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = 18 y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 3
+				num_of_factories > 100
+			}
+            modifier = {
+				factor = 3
+				or = {
+				   tag = CAN
+				   tag = USA
+				   tag = ENG
+				   tag = JAP
+				   tag = ITA
+                   tag = GER
+                   tag = SOV
+				}
+                has_war = no
+                date > 1939.1.1
+			}
+			modifier = {
+				factor = 8
+				tag = USA
+			}
+			modifier = {
+				factor = 6
+				tag = NOR
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	# Defenses III
+	defence_works3 = {
+		
+		max_dig_in = 0.5
+		max_dig_in_factor = 0.05
+		production_speed_bunker_factor = 0.05
+		production_speed_coastal_bunker_factor = 0.05
+		production_speed_anti_air_building_factor = 0.05
+		army_core_defence_factor = 0.01
+		
+		enable_building = {
+			building = anti_air_building
+			level = 4
+		}
+		enable_building = {
+			building = bunker
+			level = 6
+		}
+		enable_building = {
+			building = coastal_bunker
+			level = 6
+		}
+		
+		dependencies = {
+			defence_works2 = 1
+		}
+
+		research_cost = 1.8
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = 21 y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+                        modifier = {
+				factor = 5
+				or = {
+				   has_war = yes
+				   date > 1941.6.1
+				}
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+
+	# Infrastructure III
+	infra_works3 = {
+		
+		production_speed_infrastructure_factor = 0.05
+		production_speed_naval_base_factor = 0.03
+		production_speed_air_base_factor = 0.03
+		industry_free_repair_factor = 0.05
+		
+		enable_building = {
+			building = infrastructure
+			level = 13
+		}
+		
+		path = {
+			leads_to_tech = rail_infra3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = road_infra3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = air_infra3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = port_infra3
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			infra_works2 = 1
+		}
+		
+		research_cost = 1.8
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = 25 y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 5
+				tag = USA
+				date > 1940.1.1
+			}
+			modifier = {
+				factor = 3
+				num_of_military_factories > 60
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 80
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 140
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	# Rail Network 1939
+	rail_infra3 = {
+		
+		industrial_capacity_factory = 0.04
+		industrial_capacity_dockyard = 0.04
+		production_factory_max_efficiency_factor = 0.01
+		production_factory_efficiency_gain_factor = 0.01
+		supply_consumption_factor = -0.01
+		production_speed_rail_way_factor = 0.05
+        production_speed_supply_node_factor = 0.05
+		
+		dependencies = {
+			rail_infra2 = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = 24 y = 18 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 3
+				tag = USA
+				date > 1940.2.1
+			}
+			modifier = {
+				factor = 3
+				num_of_military_factories > 60
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 80
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 140
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Road Network 1939
+	road_infra3 = {
+		
+		industrial_capacity_factory = 0.04
+		industrial_capacity_dockyard = 0.04
+		org_loss_when_moving = -0.01
+		production_factory_max_efficiency_factor = 0.01
+		line_change_production_efficiency_factor = 0.01
+		supply_node_range = 0.02
+		production_speed_infrastructure_factor = 0.05
+		
+		dependencies = {
+			road_infra2 = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = 25 y = 18 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 3
+				tag = USA
+				date > 1940.2.1
+			}
+			modifier = {
+				factor = 3
+				num_of_military_factories > 60
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 80
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 140
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Air Fields 1939
+	air_infra3 = {
+		
+		enemy_army_bonus_air_superiority_factor = -0.01
+		air_weather_penalty = -0.01
+		air_mission_efficiency = 0.02
+		air_accidents_factor = -0.04
+		production_speed_air_base_factor = 0.07
+		
+		enable_building = {
+			building = air_base
+			level = 16
+		}
+		
+		dependencies = {
+			air_infra2 = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = 26 y = 18 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Dockyard 1939
+	port_infra3 = {
+		
+		production_speed_dockyard_factor = 0.04
+		industrial_capacity_dockyard = 0.04
+		refit_speed = 0.02
+		production_speed_naval_base_factor = 0.04
+		repair_speed_factor = 0.02
+		
+		dependencies = {
+			port_infra2 = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = 27 y = 18 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 3
+				or = {
+				   tag = CAN
+				   tag = USA
+				   tag = ENG
+				   tag = JAP
+				   tag = ITA
+				}
+			}
+			modifier = {
+				factor = 2
+				num_of_naval_factories > 24
+			}
+			modifier = {
+				factor = 2
+				num_of_naval_factories > 40
+			}
+			modifier = {
+				factor = 3
+				num_of_naval_factories > 65
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	# Civilian works III
+	civ_works3 = {
+		energy_gain_factor = 0.04
+		storage_size_factor = 0.03
+		on_research_complete = {
+            add_stability = 0.02
+        }
+		show_effect_as_desc = yes
+		
+		path = {
+			leads_to_tech = housing_work3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = hospital_work3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = schools_work3
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			civ_works2 = 1
+		}
+		
+		research_cost = 1.8
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = 30 y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Agricultural Advances 1939
+	housing_work3 = {
+		
+		dependencies = {
+			housing_work2 = 1
+		}
+		
+		consumer_goods_factor = -0.02
+		conscription = 0.002
+		weekly_manpower = 100
+		
+		research_cost = 1.6
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = 29 y = 18 }
+		}
+		
+		ai_will_do = {
+			factor = 15
+			modifier = {
+				factor = 5
+				date > 1942.1.1
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Health Care System 1939
+	hospital_work3 = {
+		
+		attrition = -0.01
+		experience_loss_factor = -0.02
+		heat_attrition_factor = -0.02
+		winter_attrition_factor = -0.02
+		army_morale_factor = 0.01
+		acclimatization_cold_climate_gain_factor = 0.05
+		acclimatization_hot_climate_gain_factor = 0.05
+		
+		dependencies = {
+			hospital_work2 = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = 30 y = 18 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Education System 1939
+	schools_work3 = {
+		special_forces_min = 6
+		army_leader_start_level = 1
+		navy_leader_start_level = 1	
+		research_speed_factor = 0.02
+		training_time_army_factor = -0.02
+		minimum_training_level = -0.02
+		
+		dependencies = {
+			schools_work2 = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = 31 y = 18 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#### Construction IV 1941
+	construction4 = {
+
+		production_speed_buildings_factor = 0.05
+		production_speed_industrial_complex_factor = 0.02
+		
+		enable_building = {
+			building = industrial_complex
+			level = 35
+		}
+		enable_building = {
+			building = arms_factory
+			level = 35
+		}
+		
+		path = {
+			leads_to_tech = construction5 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = excavation4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = defence_works4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = infra_works4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = civ_works4
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1942	
+		folder = {
+			name = industry_folder
+			position = { x = 18 y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 5
+				num_of_factories > 100
+			}
+			modifier = {
+				factor = 5
+				tag = USA
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	# Defenses IV
+	defence_works4 = {
+		
+		max_dig_in = 0.5
+		max_dig_in_factor = 0.05
+		production_speed_bunker_factor = 0.05
+		production_speed_coastal_bunker_factor = 0.05
+		production_speed_anti_air_building_factor = 0.05
+		army_core_defence_factor = 0.01
+		
+		enable_building = {
+			building = anti_air_building
+			level = 5
+		}
+		enable_building = {
+			building = bunker
+			level = 8
+		}
+		enable_building = {
+			building = coastal_bunker
+			level = 8
+		}
+	
+		dependencies = {
+			defence_works3 = 1
+		}
+		
+		research_cost = 1.8
+		start_year = 1942
+		folder = {
+			name = industry_folder
+			position = { x = 21 y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+
+	# Infrastructure IV
+	infra_works4 = {
+		
+		production_speed_infrastructure_factor = 0.05
+		production_speed_naval_base_factor = 0.03
+		production_speed_air_base_factor = 0.03
+		industry_free_repair_factor = 0.05
+		
+		enable_building = {
+			building = infrastructure
+			level = 14
+		}
+		
+		path = {
+			leads_to_tech = rail_infra4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = road_infra4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = air_infra4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = port_infra4
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			infra_works3 = 1
+		}
+		
+		research_cost = 1.8
+		start_year = 1942
+		folder = {
+			name = industry_folder
+			position = { x = 25 y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				tag = USA
+				factor = 4
+			}
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	# Rail Network 1941
+	rail_infra4 = {
+		
+		industrial_capacity_factory = 0.04
+		industrial_capacity_dockyard = 0.04
+		production_factory_max_efficiency_factor = 0.01
+		production_factory_efficiency_gain_factor = 0.01
+		supply_consumption_factor = -0.01
+		production_speed_rail_way_factor = 0.05
+        production_speed_supply_node_factor = 0.05
+		
+		dependencies = {
+			rail_infra3 = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1942
+		folder = {
+			name = industry_folder
+			position = { x = 24 y = 24 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Road Network 1941
+	road_infra4 = {
+		
+		industrial_capacity_factory = 0.04
+		industrial_capacity_dockyard = 0.04
+		org_loss_when_moving = -0.01
+		production_factory_max_efficiency_factor = 0.01
+		line_change_production_efficiency_factor = 0.01
+		supply_node_range = 0.02
+		production_speed_infrastructure_factor = 0.05
+		
+		dependencies = {
+			road_infra3 = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1942
+		folder = {
+			name = industry_folder
+			position = { x = 25 y = 24 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Air Fields 1941
+	air_infra4 = {
+		
+		enemy_army_bonus_air_superiority_factor = -0.01
+		air_weather_penalty = -0.01
+		air_mission_efficiency = 0.02
+		air_accidents_factor = -0.04
+		production_speed_air_base_factor = 0.07
+		
+		enable_building = {
+			building = air_base
+			level = 18
+		}
+		
+		dependencies = {
+			air_infra3 = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1942
+		folder = {
+			name = industry_folder
+			position = { x = 26 y = 24 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Dockyard 1941
+	port_infra4 = {
+		
+		production_speed_dockyard_factor = 0.04
+		industrial_capacity_dockyard = 0.04
+		refit_speed = 0.02
+		production_speed_naval_base_factor = 0.04
+		repair_speed_factor = 0.02
+		
+		dependencies = {
+			port_infra3 = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1942
+		folder = {
+			name = industry_folder
+			position = { x = 27 y = 24 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 3
+				num_of_naval_factories > 20
+			}
+			modifier = {
+				factor = 3
+				num_of_naval_factories > 30
+			}
+			modifier = {
+				factor = 3
+				num_of_naval_factories > 45
+			}
+			modifier = {
+				factor = 3
+				num_of_naval_factories > 70
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	# Civilian works IV
+	civ_works4 = {
+		energy_gain_factor = 0.04
+		storage_size_factor = 0.03
+		on_research_complete = {
+            add_stability = 0.02
+        }
+		show_effect_as_desc = yes
+		
+		path = {
+			leads_to_tech = housing_work4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = hospital_work4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = schools_work4
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			civ_works3 = 1
+		}
+		
+		research_cost = 1.8
+		start_year = 1942
+		folder = {
+			name = industry_folder
+			position = { x = 30 y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Agricultural Advances 1941
+	housing_work4 = {
+		
+		dependencies = {
+			housing_work3 = 1
+		}
+		
+		consumer_goods_factor = -0.02
+		conscription = 0.002
+		weekly_manpower = 100
+		
+		research_cost = 1.6
+		start_year = 1942
+		folder = {
+			name = industry_folder
+			position = { x = 29 y = 24 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Health Care System 1941
+	hospital_work4 = {
+		
+		attrition = -0.01
+		experience_loss_factor = -0.02
+		heat_attrition_factor = -0.02
+		winter_attrition_factor = -0.02
+		army_morale_factor = 0.01
+		acclimatization_cold_climate_gain_factor = 0.05
+		acclimatization_hot_climate_gain_factor = 0.05
+		
+		dependencies = {
+			hospital_work3 = 1
+		}
+		
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = industry_folder
+			position = { x = 30 y = 24 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Education System 1941
+	schools_work4 = {
+		special_forces_min = 6
+		army_leader_start_level = 1
+		navy_leader_start_level = 1	
+		research_speed_factor = 0.02
+		training_time_army_factor = -0.02
+		minimum_training_level = -0.02
+		
+		dependencies = {
+			schools_work2 = 1
+		}
+		
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = industry_folder
+			position = { x = 31 y = 24 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#### Construction V
+	construction5 = {
+
+		production_speed_buildings_factor = 0.05
+		production_speed_industrial_complex_factor = 0.02
+		
+		enable_building = {
+			building = industrial_complex
+			level = 40
+		}
+		enable_building = {
+			building = arms_factory
+			level = 40
+		}
+		
+		path = {
+			leads_to_tech = excavation5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = defence_works5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = infra_works5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = civ_works5
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1944
+		folder = {
+			name = industry_folder
+			position = { x = 18 y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 5
+				num_of_factories > 100
+			}
+			modifier = {
+				factor = 5
+				tag = USA
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	# Defenses V
+	defence_works5 = {
+		
+		max_dig_in = 0.5
+		max_dig_in_factor = 0.05
+		production_speed_bunker_factor = 0.05
+		production_speed_coastal_bunker_factor = 0.05
+		production_speed_anti_air_building_factor = 0.05
+		army_core_defence_factor = 0.01
+		
+		enable_building = {
+			building = anti_air_building
+			level = 6
+		}
+		enable_building = {
+			building = bunker
+			level = 10
+		}
+		enable_building = {
+			building = coastal_bunker
+			level = 10
+		}
+		
+		dependencies = {
+			defence_works4 = 1
+		}
+		
+		research_cost = 1.8
+		start_year = 1944
+		folder = {
+			name = industry_folder
+			position = { x = 21 y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	
+	# Infrastructure V
+	infra_works5 = {
+		
+		production_speed_infrastructure_factor = 0.05
+		production_speed_naval_base_factor = 0.03
+		production_speed_air_base_factor = 0.03
+		industry_free_repair_factor = 0.05
+		
+		enable_building = {
+			building = infrastructure
+			level = 15
+		}
+		
+		path = {
+			leads_to_tech = rail_infra5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = road_infra5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = air_infra5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = port_infra5
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			infra_works4 = 1
+		}
+		
+		research_cost = 1.8
+		start_year = 1944
+		folder = {
+			name = industry_folder
+			position = { x = 25 y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				tag = USA
+				factor = 3
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Railroad Network 1943
+	rail_infra5 = {
+		
+		industrial_capacity_factory = 0.04
+		industrial_capacity_dockyard = 0.04
+		production_factory_max_efficiency_factor = 0.01
+		production_factory_efficiency_gain_factor = 0.01
+		supply_consumption_factor = -0.01
+		production_speed_rail_way_factor = 0.05
+        production_speed_supply_node_factor = 0.05
+		
+		dependencies = {
+			rail_infra4 = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1944
+		folder = {
+			name = industry_folder
+			position = { x = 24 y = 30 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Road Network 1943
+	road_infra5 = {
+		
+		industrial_capacity_factory = 0.04
+		industrial_capacity_dockyard = 0.04
+		org_loss_when_moving = -0.01
+		production_factory_max_efficiency_factor = 0.01
+		line_change_production_efficiency_factor = 0.01
+		supply_node_range = 0.02
+		production_speed_infrastructure_factor = 0.05
+		
+		dependencies = {
+			road_infra4 = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1944
+		folder = {
+			name = industry_folder
+			position = { x = 25 y = 30 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Air Fields 1943
+	air_infra5 = {
+		
+		enemy_army_bonus_air_superiority_factor = -0.01
+		air_weather_penalty = -0.01
+		air_mission_efficiency = 0.02
+		air_accidents_factor = -0.04
+		production_speed_air_base_factor = 0.07
+		
+		enable_building = {
+			building = air_base
+			level = 20
+		}
+		
+		dependencies = {
+			air_infra4 = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1944
+		folder = {
+			name = industry_folder
+			position = { x = 26 y = 30 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Dockyard 1943
+	port_infra5 = {
+		
+		production_speed_dockyard_factor = 0.04
+		industrial_capacity_dockyard = 0.04
+		refit_speed = 0.02
+		production_speed_naval_base_factor = 0.04
+		repair_speed_factor = 0.02
+		
+		dependencies = {
+			port_infra4 = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1944
+		folder = {
+			name = industry_folder
+			position = { x = 27 y = 30 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 3
+				num_of_naval_factories > 20
+			}
+			modifier = {
+				factor = 3
+				num_of_naval_factories > 30
+			}
+			modifier = {
+				factor = 3
+				num_of_naval_factories > 45
+			}
+			modifier = {
+				factor = 3
+				num_of_naval_factories > 70
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	# Civilian works V
+	civ_works5 = {
+		energy_gain_factor = 0.04
+		storage_size_factor = 0.03
+		on_research_complete = {
+            add_stability = 0.02
+        }
+		show_effect_as_desc = yes
+		
+		path = {
+			leads_to_tech = housing_work5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = hospital_work5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = schools_work5
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			civ_works4 = 1
+		}
+		
+		research_cost = 1.8
+		start_year = 1944
+		folder = {
+			name = industry_folder
+			position = { x = 30 y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Agricultural Advances 1943
+	housing_work5 = {
+		
+		dependencies = {
+			housing_work4 = 1
+		}
+		consumer_goods_factor = -0.02
+		conscription = 0.002
+		weekly_manpower = 100
+		
+		research_cost = 1.6
+		start_year = 1944
+		folder = {
+			name = industry_folder
+			position = { x = 29 y = 30 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Health Care System 1943
+	hospital_work5 = {
+		
+		attrition = -0.01
+		experience_loss_factor = -0.02
+		heat_attrition_factor = -0.02
+		winter_attrition_factor = -0.02
+		army_morale_factor = 0.01
+		acclimatization_cold_climate_gain_factor = 0.05
+		acclimatization_hot_climate_gain_factor = 0.05
+		
+		dependencies = {
+			hospital_work4 = 1
+		}
+		
+		research_cost = 2
+		start_year = 1944
+		folder = {
+			name = industry_folder
+			position = { x = 30 y = 30 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	#Education System 1943
+	schools_work5 = {
+		special_forces_min = 6
+		army_leader_start_level = 1
+		navy_leader_start_level = 1	
+		research_speed_factor = 0.02
+		training_time_army_factor = -0.02
+		minimum_training_level = -0.02
+		
+		dependencies = {
+			schools_work4 = 1
+		}
+		
+		research_cost = 2
+		start_year = 1944
+		folder = {
+			name = industry_folder
+			position = { x = 31 y = 30 }
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+		
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	
+#################################################################
+	excavation1 = {
+		
+		local_resources_factor = 0.10
+		storage_size_factor = 0.05
+		
+		research_cost = 2
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = 33 y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 8
+			modifier = {
+				factor = 4
+				num_of_factories > 100
+			}
+			modifier = {
+				factor = 3
+				date > 1940.1.1
+				OR = {
+				tag = ENG
+				tag = FRA
+				tag = GER
+				tag = USA
+				}
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 50
+			}
+			modifier = {
+				factor = 8
+				or = {
+				   tag = JAP
+				   tag = ROM
+				   tag = BRA
+				   tag = POR
+				   tag = TUR
+				   tag = SOV
+				   tag = VEN
+				   tag = MAN
+				   tag = SIA
+				}
+			}
+			modifier = {
+				factor = 4
+				is_subject_of = JAP
+			}
+		}
+		
+		categories = {
+			industry
+			construction_tech
+			excavation_tech
+		}
+	}
+	excavation2 = {
+		
+		local_resources_factor = 0.10
+		storage_size_factor = 0.05
+		
+		dependencies = {
+			excavation1 = 1
+		}
+		research_cost = 2
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = 33 y = @1938 }
+		}
+		
+		
+		ai_will_do = {
+			factor = 8
+			modifier = {
+				factor = 4
+				num_of_factories > 100
+			}
+			modifier = {
+				factor = 3
+				date > 1940.1.1
+				OR = {
+				tag = ENG
+				tag = FRA
+				tag = GER
+				tag = USA
+				}
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 50
+			}
+			modifier = {
+				factor = 8
+				or = {
+				   tag = JAP
+				   tag = ROM
+				   tag = BRA
+				   tag = POR
+				   tag = TUR
+				   tag = SOV
+				   tag = VEN
+				   tag = MAN
+				   tag = SIA
+				}
+			}
+			modifier = {
+				factor = 4
+				is_subject_of = JAP
+			}
+		}
+		
+		categories = {
+			excavation_tech
+			industry
+			construction_tech
+		}
+	}
+	excavation3 = {
+		
+		local_resources_factor = 0.10
+		storage_size_factor = 0.05
+
+		dependencies = {
+			excavation2 = 1
+		}
+		
+		research_cost = 2
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = 33 y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 8
+			modifier = {
+				factor = 4
+				num_of_factories > 100
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 50
+			}
+			modifier = {
+				factor = 8
+				or = {
+				   tag = JAP
+				   tag = ROM
+				   tag = BRA
+				   tag = POR
+				   tag = TUR
+				   tag = SOV
+				   tag = VEN
+				   tag = MAN
+				   tag = SIA
+				}
+			}
+			modifier = {
+				factor = 4
+				is_subject_of = JAP
+			}
+		}
+		
+		categories = {
+			excavation_tech
+			industry
+			construction_tech
+		}
+	}	
+	excavation4 = {
+		
+		local_resources_factor = 0.10
+		storage_size_factor = 0.05
+		
+		dependencies = {
+			excavation3 = 1
+		}
+		
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = industry_folder
+			position = { x = 33 y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 8
+			modifier = {
+				factor = 4
+				num_of_factories > 100
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 50
+			}
+			modifier = {
+				factor = 8
+				or = {
+				   tag = JAP
+				   tag = ROM
+				   tag = BRA
+				   tag = POR
+				   tag = TUR
+				   tag = SOV
+				   tag = VEN
+				   tag = MAN
+				   tag = SIA
+				}
+			}
+			modifier = {
+				factor = 4
+				is_subject_of = JAP
+			}
+		}
+		
+		categories = {
+			excavation_tech
+			industry
+			construction_tech
+		}
+	}			
+	excavation5 = {
+		
+		local_resources_factor = 0.1
+		storage_size_factor = 0.05
+		
+		dependencies = {
+			excavation4 = 1
+		}
+		
+		research_cost = 2
+		start_year = 1944
+		folder = {
+			name = industry_folder
+			position = { x = 33 y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 8
+			modifier = {
+				factor = 4
+				num_of_factories > 100
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 50
+			}
+			modifier = {
+				factor = 8
+				or = {
+				   tag = JAP
+				   tag = ROM
+				   tag = BRA
+				   tag = POR
+				   tag = TUR
+				   tag = SOV
+				   tag = VEN
+				   tag = MAN
+				   tag = SIA
+				}
+			}
+			modifier = {
+				factor = 4
+				is_subject_of = JAP
+			}
+		}
+		
+		categories = {
+			excavation_tech
+			industry
+			construction_tech
+		}
+	}	
+###########################################################	
+	heavy_industry = {
+
+		enable_building = {
+			building = steel_refinery
+			level = 5
+		}
+		enable_building = {
+			building = hydro_steel_refinery
+			level = 5
+		}
+		enable_building = {
+			building = aluminium_refinery
+			level = 5
+		}
+		enable_building = {
+			building = hydro_aluminium_refinery
+			level = 5
+		}
+		
+		path = {
+			leads_to_tech = heavy_industry2
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = 36 y = @1936 }
+		}
+		
+		categories = {
+			industry
+			heavy_industry
+		}
+		
+		ai_will_do = {
+			factor = 0.5
+			modifier = {
+				factor = 2
+				steel < 20
+			}
+			modifier = {
+				factor = 2
+				steel < 50
+			}	
+			modifier = {
+				factor = 2
+				steel < 150
+			}	
+            modifier = {
+				factor = 2
+				num_of_military_factories > 45
+			}		
+           modifier = {
+				factor = 2
+				num_of_military_factories > 80
+			}
+			modifier = {
+				factor = 2
+				tag = ROM
+			}
+		}
+	}
+	
+	heavy_industry2 = {
+	
+        enable_building = {
+			building = steel_refinery
+			level = 10
+		}
+		enable_building = {
+			building = hydro_steel_refinery
+			level = 10
+		}
+		enable_building = {
+			building = aluminium_refinery
+			level = 10
+		}
+		enable_building = {
+			building = hydro_aluminium_refinery
+			level = 10
+		}
+		
+		on_research_complete = {
+			modify_building_resources = {
+				building = steel_refinery
+				resource = steel
+				amount = 25
+			}
+			modify_building_resources = {
+				building = hydro_steel_refinery
+				resource = steel
+				amount = 25
+			}
+			modify_building_resources = {
+				building = aluminium_refinery
+				resource = aluminium
+				amount = 15
+			}
+			modify_building_resources = {
+				building = hydro_aluminium_refinery
+				resource = aluminium
+				amount = 15
+			}
+		}
+		
+		path = {
+			leads_to_tech = heavy_industry3
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.6
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = 36 y = @1938 }
+		}
+		
+		categories = {
+			industry
+			heavy_industry
+		}
+		
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 0
+				num_of_military_factories < 50
+			}
+			modifier = {
+				factor = 4
+				num_of_factories > 130
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 80
+			}
+			modifier = {
+				factor = 2.5
+				OR = {
+				tag = SOV
+				tag = GER
+				}
+			}
+			modifier = {
+				factor = 3
+				date > 1938.9.1
+				OR = {
+				tag = SOV
+				tag = GER
+				}
+			}
+			modifier = {
+				factor = 2
+				steel < 20
+			}
+			modifier = {
+				factor = 2
+				steel < 50
+			}	
+			modifier = {
+				factor = 2
+				steel < 150
+			}
+		}
+	}
+	
+	heavy_industry3 = {
+	
+        enable_building = {
+			building = steel_refinery
+			level = 15
+		}
+		enable_building = {
+			building = hydro_steel_refinery
+			level = 15
+		}
+		enable_building = {
+			building = aluminium_refinery
+			level = 15
+		}
+		enable_building = {
+			building = hydro_aluminium_refinery
+			level = 15
+		}
+		
+		on_research_complete = {
+			modify_building_resources = {
+				building = steel_refinery
+				resource = steel
+				amount = 25
+			}
+			modify_building_resources = {
+				building = hydro_steel_refinery
+				resource = steel
+				amount = 25
+			}
+			modify_building_resources = {
+				building = aluminium_refinery
+				resource = aluminium
+				amount = 15
+			}
+			modify_building_resources = {
+				building = hydro_aluminium_refinery
+				resource = aluminium
+				amount = 15
+			}
+		}
+		
+		path = {
+			leads_to_tech = heavy_industry4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = heavy_industry5
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2.2
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = 36 y = @1940 }
+		}
+		
+		categories = {
+			industry
+			heavy_industry
+		}
+		
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 0
+				num_of_military_factories < 50
+			}
+			modifier = {
+				factor = 4
+				num_of_factories > 130
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 80
+			}
+			modifier = {
+				factor = 2.5
+				OR = {
+				tag = USA
+				tag = SOV
+				tag = GER
+				}
+			}
+			modifier = {
+				factor = 2
+				steel < 20
+			}
+			modifier = {
+				factor = 2
+				steel < 50
+			}	
+			modifier = {
+				factor = 2
+				steel < 150
+			}		
+		}
+	}
+	
+	heavy_industry4 = {
+
+		enable_building = {
+			building = steel_refinery
+			level = 20
+		}
+		enable_building = {
+			building = hydro_steel_refinery
+			level = 20
+		}
+		enable_building = {
+			building = aluminium_refinery
+			level = 20
+		}
+		enable_building = {
+			building = hydro_aluminium_refinery
+			level = 20
+		}
+		
+		on_research_complete = {
+			modify_building_resources = {
+				building = steel_refinery
+				resource = steel
+				amount = 25
+			}
+			modify_building_resources = {
+				building = hydro_steel_refinery
+				resource = steel
+				amount = 25
+			}
+			modify_building_resources = {
+				building = aluminium_refinery
+				resource = aluminium
+				amount = 15
+			}
+			modify_building_resources = {
+				building = hydro_aluminium_refinery
+				resource = aluminium
+				amount = 15
+			}
+		}
+		
+		research_cost = 2.2
+		start_year = 1942
+		folder = {
+			name = industry_folder
+			position = { x = 36 y = @1942 }
+		}
+		
+		categories = {
+			synth_resources
+			heavy_industry
+		}
+		
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 2
+				chromium < 16
+			}
+			modifier = {
+				factor = 2
+				chromium < 30
+			}	
+			modifier = {
+				factor = 2
+				chromium < 70
+			}				
+		}
+	}
+	
+	####################################################
+	fuel_silos = {
+
+		enable_building = {
+			building = fuel_silo
+			level = 3
+		}
+				
+		path = {
+			leads_to_tech = synth_oil_experiments 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = fuel_refining 
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1
+		start_year = 1930
+		folder = {
+			name = industry_folder
+			position = { x = 38 y = @1930 }
+		}
+		
+		categories = {
+			industry
+			synth_resources
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 2
+				oil > 10
+			}
+			modifier = {
+				factor = 3
+				oil > 20
+			}	
+			modifier = {
+				factor = 4
+				oil > 30
+			}	
+			
+			modifier = {
+				factor = 2
+				num_of_military_factories > 10
+			}	
+			modifier = {
+				factor = 3
+				num_of_military_factories > 20
+			}	
+			modifier = {
+				factor = 4
+				num_of_military_factories > 30
+			}	
+			modifier = {
+				factor = 4
+				num_of_military_factories > 40
+			}	
+			modifier = {
+				factor = 4
+				num_of_military_factories > 50
+			}	
+
+			modifier = {
+				factor = 2
+				num_of_naval_factories > 10
+			}	
+			modifier = {
+				factor = 3
+				num_of_naval_factories > 20
+			}	
+			modifier = {
+				factor = 4
+				num_of_naval_factories > 30
+			}	
+			modifier = {
+				factor = 4
+				num_of_naval_factories > 40
+			}
+			modifier = {
+				factor = 4
+				num_of_naval_factories > 50
+			}
+			
+			modifier = {
+				factor = 0
+				tag = SOV
+			}
+			
+			modifier = {
+				factor = 0.2
+				date < "1937.1.1"
+			}
+			modifier = {
+				factor = 0.4
+				date < "1938.1.1"
+			}
+			
+		}
+	}
+
+	fuel_refining = {
+
+		fuel_gain_factor = 0.2
+		fuel_gain_factor_from_states = 0.1
+		enable_equipment_modules = {
+			high_octane_fuel
+		}
+		
+		path = {
+			leads_to_tech = fuel_refining2 
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 3
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = 38 y = @1936 }
+		}
+		
+		categories = {
+			industry
+			synth_resources
+		}
+		
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				tag = USA
+				factor = 0.5
+			}
+			modifier = {
+				has_war = yes
+				factor = 2
+			}
+			modifier = {
+				num_of_factories < 100
+				factor = 0.25
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 20
+			}	
+			modifier = {
+				factor = 2
+				num_of_military_factories > 30
+			}	
+			modifier = {
+				factor = 2
+				num_of_military_factories > 40
+			}	
+
+			modifier = {
+				factor = 1.5
+				num_of_naval_factories > 10
+			}	
+			modifier = {
+				factor = 1.5
+				num_of_naval_factories > 20
+			}	
+			modifier = {
+				factor = 1.5
+				num_of_naval_factories > 30
+			}
+			modifier = {
+				factor = 0.2
+				date < 1937.1.1
+			}
+			modifier = {
+				factor = 0.5
+				date < 1938.1.1
+			}
+			modifier = {			
+				factor = 0
+				tag = JAP
+				date < 1937.1.1
+			}
+			
+		}
+		
+	}
+
+	fuel_refining2 = {
+		
+		fuel_gain_factor = 0.2
+		fuel_gain_factor_from_states = 0.1
+
+		path = {
+			leads_to_tech = fuel_refining3 
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 3
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = 38 y = @1938 }
+		}
+		
+		categories = {
+			industry
+			synth_resources
+		}
+		
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				tag = USA
+				factor = 0.5
+			}	
+			modifier = {
+				has_war = yes
+				factor = 2
+			}
+			modifier = {
+				num_of_factories < 100
+				factor = 0.25
+			}
+			modifier = {
+				factor = 1.5
+				num_of_military_factories > 25
+			}	
+			modifier = {
+				factor = 2
+				num_of_military_factories > 40
+			}	
+			modifier = {
+				factor = 2
+				tag = GER
+			}
+
+			modifier = {
+				factor = 1.5
+				num_of_naval_factories > 20
+			}	
+			modifier = {
+				factor = 1.5
+				num_of_naval_factories > 30
+			}			
+		}
+		
+	}
+
+	fuel_refining3 = {
+		
+		fuel_gain_factor = 0.1
+		fuel_gain_factor_from_states = 0.1
+
+		path = {
+			leads_to_tech = fuel_refining4 
+			research_cost_coeff = 1
+		}
+		research_cost = 3
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = 38 y = @1940 }
+		}
+		
+		categories = {
+			industry
+			synth_resources
+		}
+		
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				tag = USA
+				factor = 0.5
+			}	
+			modifier = {
+				has_war = yes
+				factor = 2
+			}
+			modifier = {
+				num_of_factories < 100
+				factor = 0.25
+			}
+			modifier = {
+				factor = 1.5
+				num_of_military_factories > 30
+			}	
+
+			modifier = {
+				factor = 1.5
+				num_of_naval_factories > 30
+			}
+            modifier = {
+				factor = 5
+				tag = GER
+				date > 1941.5.1
+			}			
+		}		
+	}
+
+	fuel_refining4 = {
+		
+		fuel_gain_factor = 0.10
+		fuel_gain_factor_from_states = 0.1
+
+		path = {
+			leads_to_tech = fuel_refining5
+			research_cost_coeff = 1
+		}
+		research_cost = 3
+		start_year = 1942
+		folder = {
+			name = industry_folder
+			position = { x = 38 y = @1942 }
+		}
+		
+		categories = {
+			industry
+			synth_resources
+		}
+		
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				tag = USA
+				factor = 0.5
+			}	
+			modifier = {
+				has_war = yes
+				factor = 2
+			}
+			modifier = {
+				num_of_factories < 100
+				factor = 0.25
+			}
+			modifier = {
+				factor = 1.5
+				num_of_military_factories > 30
+			}	
+
+			modifier = {
+				factor = 1.5
+				num_of_naval_factories > 30
+			}	
+            modifier = {
+				factor = 5
+				tag = GER
+			}			
+		}		
+	}
+
+	fuel_refining5 = {
+		
+		fuel_gain_factor = 0.10
+		fuel_gain_factor_from_states = 0.1
+
+		research_cost = 3
+		start_year = 1944
+		folder = {
+			name = industry_folder
+			position = { x = 38 y = @1944 }
+		}
+		
+		categories = {
+			industry
+			synth_resources
+		}
+		
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				tag = USA
+				factor = 0.5
+			}
+			modifier = {
+				has_war = yes
+				factor = 2
+			}
+			modifier = {
+				num_of_factories < 100
+				factor = 0.25
+			}
+			modifier = {
+				factor = 1.5
+				num_of_military_factories > 40
+			}	
+
+			modifier = {
+				factor = 1.5
+				num_of_naval_factories > 40
+			}	
+            modifier = {
+				factor = 5
+				tag = GER
+			}			
+		}		
+	}
+	
+	synth_oil_experiments = {
+		
+		enable_building = {
+			building = synthetic_refinery
+			level = 5
+		}
+		
+		path = {
+			leads_to_tech = oil_processing 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = rubber_processing 
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = 40 y = @1936 }
+		}
+		
+		categories = {
+			synth_resources
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 2
+				oil < 10
+			}
+			modifier = {
+				factor = 2
+				oil < 20
+			}	
+			modifier = {
+				factor = 2
+				oil < 40
+			}	
+			modifier = {
+				factor = 2
+				rubber < 20
+			}	
+			modifier = {
+				factor = 2
+				rubber < 40
+			}
+			modifier = {
+				factor = 35
+				tag = GER
+			}	
+            modifier = {
+				factor = 4
+				tag = ITA
+			}			
+			modifier = {
+				factor = 0.2
+				date < 1937.1.1
+			}
+			modifier = {
+				factor = 0.5
+				date < 1938.1.1
+			}
+			modifier = {
+				factor = 4
+				num_of_military_factories > 45
+			}	
+			modifier = {
+				factor = 3
+				num_of_military_factories > 65
+			}		
+            modifier = {
+				factor = 3
+				num_of_military_factories > 105
+			}
+			
+		}
+		
+	}
+	
+	oil_processing = {
+		
+		fuel_gain_factor_from_states = 0.5
+
+		start_year = 1938
+
+		path = {
+			leads_to_tech = improved_oil_processing
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.5
+		
+		folder = {
+			name = industry_folder
+			position = { x = 40 y = @1938 }
+		}
+		
+		categories = {
+			industry
+			synth_resources
+			cat_synth_oil
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				OR = {
+					tag = GER
+					tag = ITA
+					tag = JAP
+				}
+				has_war = yes
+				factor = 25
+			}
+			modifier = {
+				factor = 0.5
+				oil > 10
+			}
+			modifier = {
+				factor = 0.5
+				oil > 20
+			}	
+			modifier = {
+				factor = 0.5
+				oil > 30
+			}			
+		}
+		
+		ai_research_weights = {
+			oil = -2.0
+		}
+		
+		show_effect_as_desc = yes
+	}
+	
+	improved_oil_processing = {
+		
+		fuel_gain_factor_from_states = 0.5
+
+		path = {
+			leads_to_tech = advanced_oil_processing
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.5
+		start_year = 1940
+		
+		folder = {
+			name = industry_folder
+			position = { x = 40 y = @1940 }
+		}
+		
+		categories = {
+			industry
+			synth_resources
+			cat_synth_oil
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				OR = {
+					tag = GER
+					tag = ITA
+					tag = JAP
+				}
+				has_war = yes
+				factor = 25
+			}
+			modifier = {
+				factor = 0.5
+				oil > 10
+			}
+			modifier = {
+				factor = 0.5
+				oil > 20
+			}	
+			modifier = {
+				factor = 0.5
+				oil > 30
+			}	
+			modifier = {
+				original_tag = GER			
+				has_war = yes
+				factor = 3
+			}		
+		}
+		
+		ai_research_weights = {
+			oil = -2.0
+		}
+		
+		show_effect_as_desc = yes
+	}
+	
+	advanced_oil_processing = {
+
+		fuel_gain_factor_from_states = 0.5
+
+		path = {
+			leads_to_tech = modern_oil_processing
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.5
+		start_year = 1942
+		
+		folder = {
+			name = industry_folder
+			position = { x = 40 y = @1942 }
+		}
+		
+		categories = {
+			industry
+			synth_resources
+			cat_synth_oil
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				OR = {
+					tag = GER
+					tag = ITA
+					tag = JAP
+				}
+				has_war = yes
+				factor = 25
+			}
+			modifier = {
+				factor = 0.5
+				rubber > 10
+			}
+			modifier = {
+				factor = 0.5
+				rubber > 20
+			}	
+			modifier = {
+				factor = 0.5
+				rubber > 30
+			}			
+		}
+		
+		ai_research_weights = {
+			rubber = -2.0
+		}
+		
+		show_effect_as_desc = yes
+	}
+
+	modern_oil_processing = {
+
+		fuel_gain_factor_from_states = 0.5
+		
+		research_cost = 1.5
+		start_year = 1944
+		
+		folder = {
+			name = industry_folder
+			position = { x = 40 y = @1944 }
+		}
+		
+		categories = {
+			industry
+			synth_resources
+			cat_synth_oil
+		}
+		
+		ai_will_do = {
+			factor = 0.5
+			modifier = {
+				factor = 0.5
+				oil > 10
+			}
+			modifier = {
+				factor = 0.5
+				oil > 20
+			}	
+			modifier = {
+				factor = 0.5
+				oil > 30
+			}			
+		}
+		
+		ai_research_weights = {
+			oil = -2.0
+		}
+		
+		show_effect_as_desc = yes
+	}
+
+	#####################################
+	rubber_processing = {
+
+		on_research_complete = {
+			modify_building_resources = {
+				building = synthetic_refinery
+				resource = rubber
+				amount = 10
+			}
+		}
+
+		path = {
+			leads_to_tech = improved_rubber_processing
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.5
+		start_year = 1938
+		
+		folder = {
+			name = industry_folder
+			position = { x = 42 y = @1938 }
+		}
+		
+		categories = {
+			industry
+			synth_resources
+			cat_synth_rubber
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				OR = {
+					tag = GER
+					tag = ITA
+				}
+				has_war = yes
+				factor = 15
+			}
+			modifier = {
+				factor = 0.5
+				rubber > 10
+			}
+			modifier = {
+				factor = 0.5
+				rubber > 20
+			}	
+			modifier = {
+				factor = 0.5
+				rubber > 30
+			}			
+		}
+		
+		ai_research_weights = {
+			rubber = -2.0
+		}
+		
+		show_effect_as_desc = yes
+	}
+	
+	improved_rubber_processing = {
+
+		on_research_complete = {
+			modify_building_resources = {
+				building = synthetic_refinery
+				resource = rubber
+				amount = 10
+			}
+		}
+
+		path = {
+			leads_to_tech = advanced_rubber_processing
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.5
+		start_year = 1940
+		
+		folder = {
+			name = industry_folder
+			position = { x = 42 y = @1940 }
+		}
+		
+		categories = {
+			industry
+			synth_resources
+			cat_synth_rubber
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				OR = {
+					tag = GER
+					tag = ITA
+				}
+				has_war = yes
+				factor = 15
+			}
+			modifier = {
+				factor = 0.5
+				rubber > 10
+			}
+			modifier = {
+				factor = 0.5
+				rubber > 20
+			}	
+			modifier = {
+				factor = 0.5
+				rubber > 30
+			}			
+		}
+		
+		ai_research_weights = {
+			rubber = -2.0
+		}
+		
+		show_effect_as_desc = yes
+	}
+	
+	advanced_rubber_processing = {
+
+		on_research_complete = {
+			modify_building_resources = {
+				building = synthetic_refinery
+				resource = rubber
+				amount = 10
+			}
+		}
+
+		path = {
+			leads_to_tech = modern_rubber_processing
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.5
+		start_year = 1942
+		
+		folder = {
+			name = industry_folder
+			position = { x = 42 y = @1942 }
+		}
+		
+		categories = {
+			industry
+			synth_resources
+			cat_synth_rubber
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				OR = {
+					tag = GER
+					tag = ITA
+				}
+				has_war = yes
+				factor = 15
+			}
+			modifier = {
+				factor = 0.5
+				rubber > 10
+			}
+			modifier = {
+				factor = 0.5
+				rubber > 20
+			}	
+			modifier = {
+				factor = 0.5
+				rubber > 30
+			}			
+		}
+		
+		ai_research_weights = {
+			rubber = -2.0
+		}
+		
+		show_effect_as_desc = yes
+	}
+
+	modern_rubber_processing = {
+
+		on_research_complete = {
+			modify_building_resources = {
+				building = synthetic_refinery
+				resource = rubber
+				amount = 10
+			}
+		}
+		
+		research_cost = 1.5
+		start_year = 1944
+		
+		folder = {
+			name = industry_folder
+			position = { x = 42 y = @1944 }
+		}
+		
+		categories = {
+			industry
+			synth_resources
+			cat_synth_rubber
+		}
+		
+		ai_will_do = {
+			factor = 0.5
+			modifier = {
+				factor = 0.5
+				rubber > 10
+			}
+			modifier = {
+				factor = 0.5
+				rubber > 20
+			}	
+			modifier = {
+				factor = 0.5
+				rubber > 30
+			}			
+		}
+		
+		ai_research_weights = {
+			rubber = -2.0
+		}
+		
+		show_effect_as_desc = yes
+	}
+	starting_tech = {
+	
+		allow = {
+			always = no
+		}
+	
+		enable_building = {
+			building = infrastructure
+			level = 10
+		}
+		enable_building = {
+			building = air_base
+			level = 10
+		}
+		enable_building = {
+			building = bunker
+			level = 3
+		}
+		enable_building = {
+			building = coastal_bunker
+			level = 3
+		}
+		enable_building = {
+			building = anti_air_building
+			level = 1
+		}
+		enable_building = {
+			building = industrial_complex
+			level = 15
+		}
+		enable_building = {
+			building = arms_factory
+			level = 15
+		}
+	}
+}
+#EOF#

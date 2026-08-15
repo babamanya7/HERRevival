@@ -1,0 +1,601 @@
+spriteTypes = {
+
+	#################################################################### Events GFX ####################################################################
+	
+	
+spriteType = {
+    name = "GFX_Emphasis_On_Movement_medium"
+    texturefile = "gfx/interface/technologies/armored_spearhead.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Emphasis_On_Firepower_medium"
+    texturefile = "gfx/interface/technologies/EmphasisOnFirepower.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Emphasis_On_Cooperation_medium"
+    texturefile = "gfx/interface/technologies/deep_operations.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Tank_Primacy_medium"
+    texturefile = "gfx/interface/technologies/Tank Primacy.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Infantry_Armor_Cooperation_medium"
+    texturefile = "gfx/interface/technologies/tactical_control.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Tank_Heavy_Formations_medium"
+    texturefile = "gfx/interface/technologies/mass_motorization.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_All_Around_Versatility_medium"
+    texturefile = "gfx/interface/technologies/combined_arms.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Cruiser_Infantry_Split_medium"
+    texturefile = "gfx/interface/technologies/large_front_operations.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Focal_Point_medium"
+    texturefile = "gfx/interface/technologies/schwerpunk.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Large_Front_Advances_medium"
+    texturefile = "gfx/interface/technologies/armored_operations.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Mobile_Combat_Formations_medium"
+    texturefile = "gfx/interface/technologies/mobile_infantry.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Mobile_Exploitation_Force_medium"
+    texturefile = "gfx/interface/technologies/mechanised_offensive.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Combat_Command_medium"
+    texturefile = "gfx/interface/technologies/c3i_theory.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Mobile_Reserves_medium"
+    texturefile = "gfx/interface/technologies/firebrigades.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Integrated_Forces_medium"
+    texturefile = "gfx/interface/technologies/mobile_defence.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Armored_Spearhead_2_medium"
+    texturefile = "gfx/interface/technologies/modern_blitzkrieg.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Ensure_Operational_Depth_medium"
+    texturefile = "gfx/interface/technologies/operational_concentration.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Break_Trough_And_Encircle_medium"
+    texturefile = "gfx/interface/technologies/continuous_offensive.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Ravage_Their_BackLines_medium"
+    texturefile = "gfx/interface/technologies/mechanized_wave.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Cross_Branch_Coordination_medium"
+    texturefile = "gfx/interface/technologies/blitzkrieg.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_War_Of_Movement_medium"
+    texturefile = "gfx/interface/technologies/mobile_warfare.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Battle_Of_Annihilation_medium"
+    texturefile = "gfx/interface/technologies/vast_offensives.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_War_Of_Supremacy_medium"
+    texturefile = "gfx/interface/technologies/backhand_blow.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Fire_Superiority_medium"
+    texturefile = "gfx/interface/technologies/guerilla_warfare.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Fire_And_Maneuver_medium"
+    texturefile = "gfx/interface/technologies/infantry_offensive.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Attritional_Defense_medium"
+    texturefile = "gfx/interface/technologies/attritional_containment.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Elastic_Defense_medium"
+    texturefile = "gfx/interface/technologies/elastic_defence.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Static_Defense_medium"
+    texturefile = "gfx/interface/technologies/trench_warfare.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Mass_Infantry_Organization_medium"
+    texturefile = "gfx/interface/technologies/human_wave_offensive.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Small_Unit_Tactics_medium"
+    texturefile = "gfx/interface/technologies/kampfgruppe.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_All_Around_Defense_medium"
+    texturefile = "gfx/interface/technologies/pocket_defence.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Overlapping_Defensive_Positions_medium"
+    texturefile = "gfx/interface/technologies/defence_in_depth.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Combined_Arms_2_medium"
+    texturefile = "gfx/interface/technologies/branch_interoperation.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Flexible_Formations_medium"
+    texturefile = "gfx/interface/technologies/assault_breakthrough.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Skirmish_Lines_medium"
+    texturefile = "gfx/interface/technologies/prepared_defense.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Violent_Attacks_medium"
+    texturefile = "gfx/interface/technologies/volkssturm.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Lightning_Attacks_medium"
+    texturefile = "gfx/interface/technologies/assault_concentration.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Continuous_Operations_medium"
+    texturefile = "gfx/interface/technologies/large_front_offensive.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Continuous_Front_medium"
+    texturefile = "gfx/interface/technologies/breakthrough_priority.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Frontal_Assault_medium"
+    texturefile = "gfx/interface/technologies/grand_assault.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Infiltration_Tactics_medium"
+    texturefile = "gfx/interface/technologies/night_assault_tactics.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Counterstrikes_medium"
+    texturefile = "gfx/interface/technologies/werwolf_guerillas.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Multiple_Sides_Attack_medium"
+    texturefile = "gfx/interface/technologies/infiltration_assault.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Massed_Fire_medium"
+    texturefile = "gfx/interface/technologies/superior_firepower.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Forward_Operators_medium"
+    texturefile = "gfx/interface/technologies/forward_observers.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Pre_Assault_Barrage_medium"
+    texturefile = "gfx/interface/technologies/PreAssaultBarrage.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Dedicated_Artillery_Divisions_medium"
+    texturefile = "gfx/interface/technologies/Dedicated Artillery Division.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Huge_Barrages_medium"
+    texturefile = "gfx/interface/technologies/Huge Barrages.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Direct_Fire_Support_medium"
+    texturefile = "gfx/interface/technologies/Direct Fire Support.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Establish_Kill_Zones_medium"
+    texturefile = "gfx/interface/technologies/EstablishKillsZones.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Regimental_Fire_Support_medium"
+    texturefile = "gfx/interface/technologies/regimental_combat_teams.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Fire_By_Command_medium"
+    texturefile = "gfx/interface/technologies/intergrated_support.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Fire_By_Request_medium"
+    texturefile = "gfx/interface/technologies/centralized_fire_control.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Counterbattery_Fire_medium"
+    texturefile = "gfx/interface/technologies/overwhelming_firepower.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Converging_Fire_medium"
+    texturefile = "gfx/interface/technologies/concentrated_fire_plans.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Superior_Calculations_medium"
+    texturefile = "gfx/interface/technologies/SuperiorCalculations.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Rapid_Fire_medium"
+    texturefile = "gfx/interface/technologies/Rapid Fire.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Emphasis_On_Neutralization_medium"
+    texturefile = "gfx/interface/technologies/Emphasis on Neutralization.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Advanced_Firebases_2_medium"
+    texturefile = "gfx/interface/technologies/advanced_firebases.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Concentrated_Strongpoints_medium"
+    texturefile = "gfx/interface/technologies/Concentrated StrongPoints.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Suppressive_Barrages_medium"
+    texturefile = "gfx/interface/technologies/dispersed_support.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Shock_And_Awe_2_medium"
+    texturefile = "gfx/interface/technologies/shock_and_awe.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Unity_Of_Command_medium"
+    texturefile = "gfx/interface/technologies/UnityOfCommand.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Mission_Command_medium"
+    texturefile = "gfx/interface/technologies/MissionCommand.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Control_By_Directive_medium"
+    texturefile = "gfx/interface/technologies/ControlByDirective.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Maintain_Flexibility_medium"
+    texturefile = "gfx/interface/technologies/MaintainFlexibility.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Encourage_Local_Initiative_medium"
+    texturefile = "gfx/interface/technologies/EncourageLocalInitiative.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Strong_Hierarchy_medium"
+    texturefile = "gfx/interface/technologies/StrongHierarchy.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Top_Down_Structure_medium"
+    texturefile = "gfx/interface/technologies/central_planning.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Always_Ensure_Grip_medium"
+    texturefile = "gfx/interface/technologies/mass_assault.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Set_Piece_Battle_medium"
+    texturefile = "gfx/interface/technologies/SetPieceBattles.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Ensure_Supply_Effectiveness_medium"
+    texturefile = "gfx/interface/technologies/SupplyEffectiveness.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Assign_Air_Armies_To_Fronts_medium"
+    texturefile = "gfx/interface/technologies/battlefield_support.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Unity_Trough_Effort_medium"
+    texturefile = "gfx/interface/technologies/UnityTroughEffortpsd.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Ensure_Supply_Efficiency_medium"
+    texturefile = "gfx/interface/technologies/SupplyEfficiency.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Front_Level_Coordination_medium"
+    texturefile = "gfx/interface/technologies/FrontLevelCoordination.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Seamless_Airforce_Cooperation_medium"
+    texturefile = "gfx/interface/technologies/ground_support_integration.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Decentralised_Decisionmaking_medium"
+    texturefile = "gfx/interface/technologies/DecentralisedDecisionmaking.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Forward_Control_medium"
+    texturefile = "gfx/interface/technologies/ForwardControl.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Tactical_Autonomy_medium"
+    texturefile = "gfx/interface/technologies/infiltration_in_depth.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Dynamic_Battle_medium"
+    texturefile = "gfx/interface/technologies/DynamicBattle.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Focus_On_Operational_Mobility_medium"
+    texturefile = "gfx/interface/technologies/OperationalMobility.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Focus_On_Operational_Secrecy_medium"
+    texturefile = "gfx/interface/technologies/OperationalSecrecy.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Maintain_Operational_Intent_medium"
+    texturefile = "gfx/interface/technologies/MaintainOperationalIntent.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Bridge_The_Gap_Between_Tactics_And_Strategy_medium"
+    texturefile = "gfx/interface/technologies/BridgeTheGap.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Methodical_Battle_medium"
+    texturefile = "gfx/interface/technologies/MethodicalBattle.dds"
+    alwaystransparent = yes
+}
+
+spriteType = {
+    name = "GFX_Culminating_Point_Of_Victory_medium"
+    texturefile = "gfx/interface/technologies/CulminatingPointofVictory.dds"
+    alwaystransparent = yes
+}
+
+
+spriteType = {
+    name = "GFX_idea_Centralized_High_Command_spirit"
+    texturefile = "gfx/interface/officer_corp/spirit_idea_CentralizedHighCommand.dds"
+    alwaystransparent = yes
+}
+spriteType = {
+    name = "GFX_idea_Cross_Branch_Training_spirit"
+    texturefile = "gfx/interface/officer_corp/spirit_idea_CrossBranchTraining.dds"
+    alwaystransparent = yes
+}
+spriteType = {
+    name = "GFX_idea_Field_Experience_For_All_Officers_spirit"
+    texturefile = "gfx/interface/officer_corp/spirit_idea_FieldExperienceForAll.dds"
+    alwaystransparent = yes
+}
+spriteType = {
+    name = "GFX_idea_artillery_primer_spirit"
+    texturefile = "gfx/interface/officer_corp/spirit_idea_ArtyPrimer.dds"
+    alwaystransparent = yes
+}
+spriteType = {
+    name = "GFX_idea_infantry_studies_spirit"
+    texturefile = "gfx/interface/officer_corp/spirit_idea_InfantryPrimer.dds"
+    alwaystransparent = yes
+}
+spriteType = {
+    name = "GFX_idea_mobility_integration_spirit"
+    texturefile = "gfx/interface/officer_corp/spirit_idea_ArmorPrimer.dds"
+    alwaystransparent = yes
+}
+spriteType = {
+    name = "GFX_idea_command_lessons_spirit"
+    texturefile = "gfx/interface/officer_corp/spirit_idea_CommandPrimer.dds"
+    alwaystransparent = yes
+}
+spriteType = {
+    name = "GFX_idea_King_Of_Battle_spirit"
+    texturefile = "gfx/interface/officer_corp/spirit_idea_KingOfBattle.dds"
+    alwaystransparent = yes
+}
+spriteType = {
+    name = "GFX_idea_Cannons_Are_Always_Ready_spirit"
+    texturefile = "gfx/interface/officer_corp/spirit_idea_CannonsAlwaysReady.dds"
+    alwaystransparent = yes
+}
+spriteType = {
+    name = "GFX_idea_Unbreakable_Will_spirit"
+    texturefile = "gfx/interface/officer_corp/spirit_idea_UnbreakableWill.dds"
+    alwaystransparent = yes
+}
+spriteType = {
+    name = "GFX_idea_Tyranny_Of_Technique_spirit"
+    texturefile = "gfx/interface/officer_corp/spirit_idea_TirannyOfTechnique.dds"
+    alwaystransparent = yes
+}
+spriteType = {
+    name = "GFX_idea_Armor_First_In_The_Fight_spirit"
+    texturefile = "gfx/interface/officer_corp/spirit_idea_ArmorFirstInTheFight.dds"
+    alwaystransparent = yes
+}
+spriteType = {
+    name = "GFX_idea_One_Hand_Washes_The_Other_spirit"
+    texturefile = "gfx/interface/officer_corp/spirit_idea_OneHandWashesTheOther.dds"
+    alwaystransparent = yes
+}
+spriteType = {
+    name = "GFX_idea_The_Ever_Faithful_Companion_spirit"
+    texturefile = "gfx/interface/officer_corp/spirit_idea_EverFaithfulCompanion.dds"
+    alwaystransparent = yes
+}
+
+}
+

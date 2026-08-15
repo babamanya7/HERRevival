@@ -1,0 +1,3070 @@
+#Category allowed for all potential nationalist china
+#Category visible when CHI_army_reform focus is completed
+CHI_army_reform = {
+
+	CHI_army_reform = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			has_army_experience > 119
+			has_completed_focus = CHI_army_reform
+		}
+
+		cost = 50
+		ai_will_do = {
+			factor = 500
+		}
+		days_remove = 90
+
+		visible = {
+			OR = {
+				has_idea = CHI_army_corruption_1
+				has_idea = CHI_army_corruption_2
+				has_idea = CHI_army_corruption_3
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = { has_idea = CHI_army_corruption_1 }
+				swap_ideas = {
+					remove_idea = CHI_army_corruption_1
+					add_idea = CHI_army_corruption_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = CHI_army_corruption_2 }
+				swap_ideas = {
+					remove_idea = CHI_army_corruption_2
+					add_idea = CHI_army_corruption_3
+				}
+			}
+			else_if = {
+				limit = { has_idea = CHI_army_corruption_3 }
+				remove_ideas = CHI_army_corruption_3
+			}
+		}
+		complete_effect = {
+			army_experience = -120
+		}		
+	}
+
+	CHI_lessons_of_war = {
+		icon = generic_army_support
+		available = {
+			has_army_experience > 149
+			has_idea = CHI_incompetent_officers
+			if = {
+				limit = { has_idea = CHI_army_corruption_1 }
+				NOT = { has_idea = CHI_army_corruption_1 }
+			}
+
+			if = {
+				limit = { has_idea = CHI_army_corruption_2 }
+				NOT = { has_idea = CHI_army_corruption_2 }
+			}
+
+			if = {
+				limit = { has_idea = CHI_army_corruption_3 }
+				NOT = { has_idea = CHI_army_corruption_3 }
+			}
+
+			if = {
+				limit = {
+					NOT = { has_idea = CHI_army_corruption_1 }
+					NOT = { has_idea = CHI_army_corruption_2 }
+					NOT = { has_idea = CHI_army_corruption_3 }
+				}
+				NOT = { has_idea = CHI_army_corruption_3 }
+			}
+		}
+
+		cost = 50
+		ai_will_do = {
+			factor = 10
+		}
+		fire_only_once = yes
+
+		visible = {
+			has_idea = CHI_incompetent_officers
+			has_completed_focus = CHI_army_reform
+		}
+
+		complete_effect = {
+			army_experience = -150
+			remove_ideas = CHI_incompetent_officers
+			set_country_flag = CHI_lessons_of_war_completed
+			add_war_support = 0.15
+		}		
+	}
+
+	#Activates when the player picks CHI_60_divisions_plan decision
+	CHI_bolster_our_ranks = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			num_divisions > 120
+			has_army_manpower = { size > 1500000 }
+			has_template_majority_unit = infantry
+		}
+
+		fire_only_once = yes
+		
+		days_mission_timeout = 360
+
+		is_good = no
+
+		activation = {
+			always = no #Triggered from effect in CHI_60_divisions_plan
+		}
+
+		complete_effect = {
+			add_war_support = 0.25
+		}
+
+		timeout_effect = {
+
+		}
+	}
+
+	CHI_60_divisions_plan = {
+
+		icon = generic_operation
+
+		available = {
+			
+		}
+
+		cost = 50
+		ai_will_do = {
+			factor = 1
+		}
+		fire_only_once = yes
+
+		visible = {
+			has_completed_focus = CHI_60_divisions_plan
+		}
+
+		days_remove = 180
+
+		modifier = {
+			training_time_army_factor = -0.25
+		}
+
+		complete_effect = {
+			activate_mission = CHI_bolster_our_ranks
+		}		
+	}
+
+}
+
+economy_decisions = {
+
+	CHI_abandon_the_silver_standard_mission = {
+
+		available = {
+			has_completed_focus = CHI_abandon_the_silver_standard
+		}
+
+		visible = {
+			has_completed_focus = CHI_abandon_the_silver_standard
+		}
+
+		fire_only_once = yes
+
+		days_remove = 360
+
+		complete_effect = {
+			
+		}
+
+		timeout_effect = {
+
+		}
+
+		modifier = {
+			consumer_goods_factor = -0.05
+			production_speed_buildings_factor = 0.2
+		}
+
+		ai_will_do = {
+			factor = 500
+		}
+	}
+
+	CHI_forced_loans = {
+
+		icon = ger_mefo_bills
+
+		available = {
+			OR = {
+				has_idea = economy_fatigue_80
+				has_idea = economy_fatigue_81
+				has_idea = economy_fatigue_82
+				has_idea = economy_fatigue_83
+				has_idea = economy_fatigue_84
+				has_idea = economy_fatigue_85
+				has_idea = economy_fatigue_86
+				has_idea = economy_fatigue_87
+				has_idea = economy_fatigue_88
+				has_idea = economy_fatigue_89
+				has_idea = economy_fatigue_90
+				has_idea = economy_fatigue_91
+				has_idea = economy_fatigue_92
+				has_idea = economy_fatigue_93
+				has_idea = economy_fatigue_94
+				has_idea = economy_fatigue_95
+				has_idea = economy_fatigue_96
+				has_idea = economy_fatigue_97
+				has_idea = economy_fatigue_98
+				has_idea = economy_fatigue_99
+				has_idea = economy_fatigue_100
+			}
+		}
+
+		visible = {
+			has_completed_focus = CHI_forced_loans
+		}
+
+		fire_only_once = no
+		
+		days_re_enable = 360
+
+		cost = 100
+		ai_will_do = {
+			factor = 500
+		}
+
+		complete_effect = {
+			economy_fatigue_level_down_10 = yes
+			add_war_support = -0.1
+		}		
+	}
+}
+
+war_measures = {
+
+	CHI_breach_the_yellow_river = { 
+		icon = GFX_decision_hol_inundate_water_lines
+		
+		available = {
+			controls_state = 607
+			has_war_with = JAP
+			OR = {
+				NOT = { controls_state = 608 }
+				NOT = { controls_state = 614 }
+				NOT = { controls_state = 597 }
+				NOT = { controls_state = 598 }
+				NOT = { controls_state = 606 }
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 607
+			} 
+		}
+		
+		visible = {
+			controls_state = 607
+			tag = CHI
+			NOT = { has_global_flag = chi_yellow_river_blown }
+		}
+		
+		fire_only_once = yes
+		
+		cost = 10
+
+		ai_will_do = {
+			base = 100
+		}
+		
+		complete_effect = {
+			add_war_support = -0.05
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 606
+						state = 607
+						state = 598
+						state = 597
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = yellow_river_blown
+					days = 730 
+				}
+			}
+			hidden_effect = { 
+				news_event = { id = news.409 } 
+				set_global_flag = chi_yellow_river_blown
+			}
+		}
+	}
+}
+CHI_war_of_resistance = {
+	CHI_div_spam = {
+		activation = {
+			has_manpower > 80000
+			has_completed_focus = CHI_war_of_national_liberation
+			CHI = { has_full_control_of_state = 929 }
+			is_ai = yes
+		}
+		
+		available = {
+			has_manpower < 80000
+		}
+
+		visible = {
+			has_manpower > 80000
+			CHI = { has_full_control_of_state = 929 }
+			is_ai = yes
+		}
+
+		days_mission_timeout = 90
+		
+		is_good = yes
+		
+		timeout_effect = {
+			load_oob = CHI_partisan
+			add_manpower = -80000
+			if = {
+				limit = {
+					has_war = yes
+					has_manpower > 80000
+					CHI = { has_full_control_of_state = 929 }
+					is_ai = yes
+				}
+				activate_mission = CHI_div_spam
+			}
+		}
+	}
+	CHI_industrial_evacuations_from_guizhou = {
+		icon = generic_scorched_earth
+		available = {
+			603 = {
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = { highlight_state_targets = { state = 603 } }
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			603 = {
+				is_controlled_by = ROOT
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 603
+				}
+				603 = {
+					remove_building = {
+						type = arms_factory
+						level = 2
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 3
+					}
+				}
+				605 = { #Chongqing
+					add_extra_state_shared_building_slots = 5
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	CHI_industrial_evacuations_from_xian = {
+		icon = generic_scorched_earth
+		available = {
+			744 = {
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = { highlight_state_targets = { state = 744 } }
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			744 = {
+				is_controlled_by = ROOT
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 744
+				}
+				744 = {
+					remove_building = {
+						type = arms_factory
+						level = 2
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 1
+					}
+				}
+				753 = { #Gannan
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	CHI_industrial_evacuations_from_changde = {
+		icon = generic_scorched_earth
+		available = {
+			750 = {
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = { highlight_state_targets = { state = 750 } }
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			750 = {
+				is_controlled_by = ROOT
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 750
+				}
+				750 = {
+					remove_building = {
+						type = arms_factory
+						level = 1
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 3
+					}
+				}
+				753 = { #Gannan
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	CHI_industrial_evacuations_from_hainan = { #591 #hainan
+		icon = generic_scorched_earth
+		available = {
+			591 = { #591 #hainan
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = { highlight_state_targets = { state = 591 } }
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			591 = { #591 #hainan
+				is_controlled_by = ROOT
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 591
+				}
+				591 = { #591 #hainan
+					remove_building = {
+						type = industrial_complex
+						level = 1
+					}
+				}
+				753 = { #Gannan
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	CHI_industrial_evacuations_from_guangzhou = { #592 #guangzhou
+		icon = generic_scorched_earth
+		available = {
+			592 = { #592 #guangzhou
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = { highlight_state_targets = { state = 592 } }
+
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			592 = { #592 #guangzhou
+				is_controlled_by = ROOT
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 592
+				}
+				592 = { #592 #guangzhou
+					remove_building = {
+						type = arms_factory
+						level = 1
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+					remove_building = {
+						type = steel_refinery
+						level = 1
+					}
+				}
+				753 = { #Gannan
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = steel_refinery
+						level = 1
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = steel_refinery damage = 0.1 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	CHI_industrial_evacuations_from_guangdong = {
+		icon = generic_scorched_earth
+		available = {
+			593 = { #593 #guangdong
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = { highlight_state_targets = { state = 593 } }
+
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			593 = {
+				is_controlled_by = ROOT
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 593
+				}
+				593 = { #593 #guangdong
+					remove_building = {
+						type = arms_factory
+						level = 1
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				753 = { #Gannan
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	CHI_industrial_evacuations_from_nanning = { #594 #nanning
+		icon = generic_scorched_earth
+		available = {
+			OR = {
+				594 = {
+					OR = {
+						arms_factory > 0
+						industrial_complex > 0
+					}
+				}
+				931 = {
+					OR = {
+						arms_factory > 0
+						industrial_complex > 0
+					}
+				}
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 594
+				state = 931
+			}
+		}
+
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			OR = {
+				594 = {
+					is_controlled_by = ROOT
+				}
+				931 = {
+					is_controlled_by = ROOT
+				}
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 594
+					controls_state = 931
+				}
+				594 = {
+					remove_building = {
+						type = arms_factory
+						level = 2
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 3
+					}
+				}
+				931 = {
+					remove_building = {
+						type = industrial_complex
+						level = 3
+					}
+				}
+				605 = { #Sichuan
+					add_extra_state_shared_building_slots = 8
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 6
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					controls_state = 594
+				}
+				594 = {
+					remove_building = {
+						type = arms_factory
+						level = 2
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 3
+					}
+				}
+				605 = { #Sichuan
+					add_extra_state_shared_building_slots = 5
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.1 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					controls_state = 931
+				}
+				931 = {
+					remove_building = {
+						type = industrial_complex
+						level = 3
+					}
+				}
+				605 = { #Sichuan
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	CHI_industrial_evacuations_from_fujian = { #595 #fujian
+		icon = generic_scorched_earth
+		available = {
+			595 = { #595 #fujian
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = { highlight_state_targets = { state = 595 } }
+
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			595 = { #595 #fujian
+				is_controlled_by = ROOT
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 595
+				}
+				595 = { #595 #fujian
+					remove_building = {
+						type = arms_factory
+						level = 1
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				605 = { #Sichuan
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	CHI_industrial_evacuations_from_zhejiang = { #596 #zhejiang
+		icon = generic_scorched_earth
+		available = {
+			596 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = { highlight_state_targets = { state = 596 } }
+
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			596 = {
+				is_controlled_by = ROOT
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 596
+				}
+				596 = {
+					remove_building = {
+						type = arms_factory
+						level = 1
+					}
+				}
+				929 = { #Sichuan
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	CHI_industrial_evacuations_from_shandong = { #597 #shandong
+		icon = generic_scorched_earth
+		available = {
+			OR = {
+				597 = {
+					OR = {
+						arms_factory > 0
+						industrial_complex > 0
+					}
+				}
+				937 = {
+					OR = {
+						arms_factory > 0
+						industrial_complex > 0
+					}
+				}
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 597
+				state = 937
+			}
+		}
+
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			OR = {
+				597 = {
+					is_controlled_by = ROOT
+				}
+				937 = {
+					is_controlled_by = ROOT
+				}
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 597
+					controls_state = 937
+				}
+				597 = {
+					remove_building = {
+						type = arms_factory
+						level = 1
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				937 = {
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				929 = { #Sichuan
+					add_extra_state_shared_building_slots = 5
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 4
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					controls_state = 597
+				}
+				597 = {
+					remove_building = {
+						type = arms_factory
+						level = 1
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				929 = { #Sichuan
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					controls_state = 937
+				}
+				937 = {
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				929 = { #Sichuan
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	CHI_industrial_evacuations_from_jiangsu = { #598 #jiangsu
+		icon = generic_scorched_earth
+		available = {
+			OR = {
+				598 = {
+					OR = {
+						arms_factory > 0
+						industrial_complex > 0
+					}
+				}
+				925 = {
+					OR = {
+						arms_factory > 0
+						industrial_complex > 0
+					}
+				}
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 598
+				state = 925
+			}
+		}
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			OR = {
+				598 = {
+					is_controlled_by = ROOT
+				}
+				925 = {
+					is_controlled_by = ROOT
+				}
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 598
+					controls_state = 925
+				}
+				598 = {
+					remove_building = {
+						type = arms_factory
+						level = 2
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 3
+					}
+				}
+				925 = {
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				929 = { #Sichuan
+					add_extra_state_shared_building_slots = 7
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 5
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.1 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					controls_state = 598
+				}
+				598 = {
+					remove_building = {
+						type = arms_factory
+						level = 2
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 3
+					}
+				}
+				929 = { #Sichuan
+					add_extra_state_shared_building_slots = 5
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.1 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					controls_state = 925
+				}
+				925 = {
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				929 = { #Sichuan
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.1 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 150
+		}
+	}
+
+	CHI_industrial_evacuations_from_guangxi = { #599 #guangxi
+		icon = generic_scorched_earth
+		available = {
+			OR =  {
+				599 = {
+					OR = {
+						arms_factory > 0
+						industrial_complex > 0
+					}
+				}
+				932 = {
+					OR = {
+						arms_factory > 0
+						industrial_complex > 0
+					}
+				}
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 599
+				state = 932
+			}
+		}
+
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			OR = {
+				599 = {
+					is_controlled_by = ROOT
+				}
+				932 = {
+					is_controlled_by = ROOT
+				}
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 599
+					controls_state = 932
+				}
+				599 = { #599 #guangxi
+					remove_building = {
+						type = arms_factory
+						level = 1
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				599 = { #599 #guangxi
+					remove_building = {
+						type = arms_factory
+						level = 1
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 1
+					}
+				}
+				605 = { #Sichuan
+					add_extra_state_shared_building_slots = 5
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					controls_state = 599
+				}
+				599 = { #599 #guangxi
+					remove_building = {
+						type = arms_factory
+						level = 1
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				605 = { #Sichuan
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.1 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					controls_state = 932
+				}
+				932 = { #599 #guangxi
+					remove_building = {
+						type = arms_factory
+						level = 1
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 1
+					}
+				}
+				605 = { #Sichuan
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.1 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	CHI_industrial_evacuations_from_jiangxi = { #600 #jiangxi
+		icon = generic_scorched_earth
+		available = {
+			OR = {
+				600 = {
+					OR = {
+						arms_factory > 0
+						industrial_complex > 0
+					}
+				}
+				938 = {
+					OR = {
+						arms_factory > 0
+						industrial_complex > 0
+					}
+				}
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 600
+				state = 938
+			}
+		}
+
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			OR = {
+				600 = {
+					is_controlled_by = ROOT
+				}
+				938 = {
+					is_controlled_by = ROOT
+				}
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 600
+					controls_state = 938
+				}
+				600 = {
+					remove_building = {
+						type = industrial_complex
+						level = 1
+					}
+				}
+				938 = {
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				929 = { #Sichuan
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					controls_state = 600
+				}
+				600 = {
+					remove_building = {
+						type = industrial_complex
+						level = 1
+					}
+				}
+				929 = { #Sichuan
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					controls_state = 938
+				}
+				938 = {
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				929 = { #Sichuan
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	CHI_industrial_evacuations_from_hunan = { #602 #hunan
+		icon = generic_scorched_earth
+		available = {
+			OR = {
+				602 = {
+					OR = {
+						arms_factory > 0
+						industrial_complex > 0
+					}
+				}
+				934 = {
+					OR = {
+						arms_factory > 0
+						industrial_complex > 0
+					}
+				}
+			}
+		}	
+		highlight_states = {
+			highlight_state_targets = {
+				state = 602
+				state = 934
+			}
+		}
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			OR = {
+				602 = {
+					is_controlled_by = ROOT
+				}
+				934 = {
+					is_controlled_by = ROOT
+				}
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 602
+					controls_state = 934
+				}
+				602 = {
+					remove_building = {
+						type = arms_factory
+						level = 1
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				934 = {
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				929 = { #Sichuan
+					add_extra_state_shared_building_slots = 5
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 4
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					controls_state = 602
+				}
+				602 = {
+					remove_building = {
+						type = arms_factory
+						level = 1
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				929 = { #Sichuan
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					controls_state = 934
+				}
+				934 = {
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				929 = { #Sichuan
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	CHI_industrial_evacuations_from_anhui = { #606 #anhui
+		icon = generic_scorched_earth
+		available = {
+			606 = {
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			606 = {
+				is_controlled_by = ROOT
+			}			
+		}
+		highlight_states = { highlight_state_targets = { state = 606 } }
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 606
+				}
+				606 = {
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				929 = { #Sichuan
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	CHI_industrial_evacuations_from_henan = { #607 #henan
+		icon = generic_scorched_earth
+		available = {
+			OR = {
+				607 = {
+					OR = {
+						arms_factory > 0
+						industrial_complex > 0
+					}
+				}
+				936 = {
+					OR = {
+						arms_factory > 0
+						industrial_complex > 0
+					}
+				}
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 607
+				state = 936
+			}
+		}
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			OR = {
+				607 = {
+					is_controlled_by = ROOT
+				}
+				936 = {
+					is_controlled_by = ROOT
+				}
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 607
+					controls_state = 936
+				}
+				607 = {
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				936 = {
+					remove_building = {
+						type = industrial_complex
+						level = 1
+					}
+				}
+				929 = { #Sichuan
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = steel_refinery damage = 0.1 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					controls_state = 936
+				}
+				936 = {
+					remove_building = {
+						type = industrial_complex
+						level = 1
+					}
+				}
+				929 = { #Sichuan
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = steel_refinery damage = 0.1 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					controls_state = 607
+				}
+				607 = {
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				929 = { #Sichuan
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = steel_refinery damage = 0.1 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	CHI_industrial_evacuations_from_beijing = { #608 #beijing
+		icon = generic_scorched_earth
+		available = {
+			608 = { #608 #beijing
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = { highlight_state_targets = { state = 608 } }
+
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			608 = { #608 #beijing
+				is_controlled_by = ROOT
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 608
+				}
+				608 = { #608 #beijing
+					remove_building = {
+						type = arms_factory
+						level = 3
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 3
+					}
+				}
+				753 = { #Gannan
+					add_extra_state_shared_building_slots = 6
+					add_building_construction = {
+						type = arms_factory
+						level = 3
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	CHI_industrial_evacuations_from_tianjin = { #608 #beijing
+		icon = generic_scorched_earth
+		available = {
+			949 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = { highlight_state_targets = { state = 949 } }
+
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			949 = {
+				is_controlled_by = ROOT
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 949
+				}
+				949 = {
+					remove_building = {
+						type = arms_factory
+						level = 2
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				753 = { #Gannan
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	CHI_industrial_evacuations_from_shanghai = { #613 #shanghai
+	icon = generic_scorched_earth
+		available = {
+			613 = { #613 #shanghai
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = { highlight_state_targets = { state = 613 } }
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			613 = { #613 #shanghai
+				is_controlled_by = ROOT
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 613
+				}
+				613 = { #613 #shanghai
+					remove_building = {
+						type = arms_factory
+						level = 3
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 3
+					}
+				}
+				752 = { #Ganzi
+					add_extra_state_shared_building_slots = 6
+					add_building_construction = {
+						type = arms_factory
+						level = 3
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = steel_refinery damage = 0.1 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	CHI_industrial_evacuations_from_hebei = { #614 #hebei
+		icon = generic_scorched_earth
+		available = {
+			614 = { #614 #hebei
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = { highlight_state_targets = { state = 614 } }
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			614 = { #614 #hebei
+				is_controlled_by = ROOT
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 614
+				}
+				614 = { #614 #hebei
+					remove_building = {
+						type = industrial_complex
+						level = 3
+					}
+				}
+				605 = { #Sichuan
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	CHI_industrial_evacuations_from_hubei = { #620 #hubei
+		icon = generic_scorched_earth
+		available = {
+			OR = {
+				620 = {
+					OR = {
+						arms_factory > 0
+						industrial_complex > 0
+					}
+				}
+				935 = {
+					OR = {
+						arms_factory > 0
+						industrial_complex > 0
+					}
+				}
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 620
+				state = 935
+			}
+		}
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			OR = {
+				620 = {
+					is_controlled_by = ROOT
+				}
+				935 = {
+					is_controlled_by = ROOT
+				}
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 620
+					controls_state = 935
+				}
+				935 = { #935 #Shiyam
+					remove_building = {
+						type = arms_factory
+						level = 1
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				620 = { #620 #hubei
+					remove_building = {
+						type = arms_factory
+						level = 3
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 3
+					}
+				}
+				605 = { #Sichuan
+					add_extra_state_shared_building_slots = 9
+					add_building_construction = {
+						type = arms_factory
+						level = 4
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 5
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = steel_refinery damage = 0.1 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					controls_state = 620
+				}
+				620 = { #620 #hubei
+					remove_building = {
+						type = arms_factory
+						level = 3
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 3
+					}
+				}
+				605 = { #Sichuan
+					add_extra_state_shared_building_slots = 6
+					add_building_construction = {
+						type = arms_factory
+						level = 3
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = steel_refinery damage = 0.1 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					controls_state = 935
+				}
+				935 = { #935 #Shiyam
+					remove_building = {
+						type = arms_factory
+						level = 1
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 2
+					}
+				}
+				605 = { #Sichuan
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = arms_factory damage = 0.3 }
+						damage_building = { type = steel_refinery damage = 0.1 }
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 150
+		}
+	}
+
+	CHI_industrial_evacuations_from_qingdao = { #743 #qingdao
+		icon = generic_scorched_earth
+		available = {
+			743 = { #743 #qingdao
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = { highlight_state_targets = { state = 743 } }
+		visible = {
+			has_completed_focus = CHI_industrial_evacuations
+			OR = {
+				has_idea = CHI_war_of_resistance
+				has_idea = CHI_war_of_resistance_2
+				 
+			}
+			743 = { #743 #qingdao
+				is_controlled_by = ROOT
+			}			
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		custom_cost_text = custom_cost_50_cp
+		custom_cost_trigger = {
+			command_power > 49
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+
+		days_remove = 15
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 743
+				}
+				743 = { #743 #qingdao
+					remove_building = {
+						type = industrial_complex
+						level = 1
+					}
+				}
+				605 = { #Sichuan
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+	
+					hidden_effect = {
+						damage_building = { type = industrial_complex damage = 0.1 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+}
+
+#Category allowed for all potential nationalist china
+#Visible for nationalist china if has warlords as subjects
+
+
+
+
+###  ##  ###  ### ###  ##  #  #      ## #  # ###  ###   ##  ###  ### 
+#   #  # #  # #    #  #    ## #     #   #  # #  # #  # #  # #  #  #  
+##  #  # ###  ##   #  # ## # ##      #  #  # ###  ###  #  # ###   #  
+#   #  # #  # #    #  #  # #  #       # #  # #    #    #  # #  #  #  
+#    ##  #  # ### ###  ##  #  #     ##   ##  #    #     ##  #  #  #  
+
+foreign_support = {
+
+	CHI_expand_the_burma_road = {
+		icon = generic_construction
+		allowed = {
+			OR = {
+				tag = ENG
+				tag = CHI
+			}
+		}
+
+		available = {
+			if = {
+				limit = {
+					tag = CHI
+				}
+				has_completed_focus = CHI_burma_road
+			}
+			if = {
+				limit = {
+					tag = ENG
+				}
+				has_completed_focus = uk_burma_focus
+			}
+			any_state = {
+				has_state_flag = CHI_needed_for_burma_road
+				CONTROLLER = {
+					NOT = { has_war_with = ROOT }
+					custom_trigger_tooltip = {
+						tooltip = burma_road_expansion_tt
+						OR = {
+							has_completed_focus = uk_burma_focus
+							has_completed_focus = CHI_burma_road
+							AND = {
+								OR = {
+									is_in_faction_with = ROOT
+									is_subject_of = ROOT
+								}
+								ROOT = {
+									OR = {
+										has_completed_focus = uk_burma_focus
+										has_completed_focus = CHI_burma_road
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		visible = {
+			NOT = { check_variable = { CHI_burma_road > 5 } }
+			OR = {
+				tag = ENG
+				tag = CHI
+			}
+			if = {
+				limit = {
+					tag = CHI
+				}
+				has_completed_focus = CHI_burma_road
+			}
+			if = {
+				limit = {
+					tag = ENG
+				}
+				has_completed_focus = uk_burma_focus
+			}
+		}
+		days_re_enable = 240
+		ai_will_do = {
+			factor = 1
+		}
+		cost = 25
+		days_remove = 120
+		modifier = {
+			civilian_factory_use = 5
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					has_war_support < 0.5
+				}
+				add_war_support = 0.05
+			}
+		}
+		remove_effect = {
+			288 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			640 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			325 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			747 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			CHI = {
+				add_to_variable = { var = CHI_burma_road value = 1 }
+				add_offsite_building = { type = arms_factory level = 4 }
+			}
+		}
+	}
+	CHI_expand_the_ledo_road = {
+		icon = generic_construction
+		available = {
+			CHI = { has_completed_focus = CHI_ledo_road }
+			any_state = {
+				has_state_flag = CHI_needed_for_ledo_road
+				CONTROLLER = {
+					NOT = { has_war_with = ROOT }
+				}
+			}
+		}
+		visible = {
+			NOT = { check_variable = { CHI_ledo_road > 5 } }
+			OR = {
+				tag = ENG
+				tag = CHI
+			}
+			has_completed_focus = CHI_ledo_road
+		}
+		days_re_enable = 240
+		ai_will_do = {
+			factor = 1
+		}
+		cost = 25
+		days_remove = 120
+		modifier = {
+			civilian_factory_use = 5
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					has_war_support < 0.5
+				}
+				add_war_support = 0.05
+			}
+		}
+		remove_effect = {
+			CHI = {
+				add_to_variable = { var = CHI_ledo_road value = 1 }
+				add_offsite_building = { type = arms_factory level = 2 }
+			}
+		}
+	}
+	CHI_expand_the_airlift = {
+		icon = generic_construction
+		available = {
+			tag = CHI
+			has_war = yes
+		}
+		visible = {
+			tag = CHI
+			has_war = yes
+			NOT = { check_variable = { CHI_the_hump > 3 } }
+		}
+		cost = 25
+		days_re_enable = 240
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 120
+		modifier = {
+			civilian_factory_use = 5
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					has_war = no
+					has_war_support < 0.6
+				}
+				add_war_support = 0.05
+			}
+		}
+		remove_effect = {
+			434 = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			601 = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			601 = {
+				CONTROLLER = {
+					add_to_variable = { var = CHI_the_hump value = 1 }
+					add_offsite_building = { type = arms_factory level = 2 }
+				}
+			}
+		}
+	}
+}
+
+political_actions = {
+
+	CHI_suspend_the_inter_party_coordination_council = {
+		icon = oppression
+		available = {
+			has_idea = CHI_inter_party_coordination_council
+		}
+		visible = {
+			has_idea = CHI_inter_party_coordination_council
+		}
+		cost = 25
+		complete_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_government = democratic
+					}
+				}
+				add_stability = -0.05
+			}
+			remove_ideas = CHI_inter_party_coordination_council
+		}
+	}
+	CHI_reinstate_the_inter_party_coordination_council = {
+		icon = generic_political_discourse
+		available = {
+			NOT = { has_idea = CHI_inter_party_coordination_council }
+			NOT = {
+				has_government = democratic
+			}
+			has_completed_focus = CHI_inter_party_coordination_council
+		}
+		visible = {
+			NOT = { has_idea = CHI_inter_party_coordination_council }
+			NOT = {
+				has_government = democratic
+			}
+			has_completed_focus = CHI_inter_party_coordination_council
+		}
+		cost = 25
+		complete_effect = {
+			add_ideas = CHI_inter_party_coordination_council
+		}
+	}
+}
+
+prestigious_projects = {
+	CHI_build_a_carrier = {
+		allowed = {
+			is_literally_china = yes
+		}
+		icon = generic_naval
+		available = {
+			has_navy_size = { unit = carrier size > 0 }
+		}
+
+		days_mission_timeout = 720
+
+		fire_only_once = yes
+		is_good = no
+		activation = {
+			has_completed_focus = CHI_naval_aviation
+		}
+		
+		complete_effect = {
+			add_political_power = 100
+			navy_experience = 30
+			add_war_support = 0.05
+		}
+
+		timeout_effect = {
+		
+		}
+	}
+}
+

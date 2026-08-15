@@ -1,0 +1,2909 @@
+﻿l_english:
+    
+    FRA_activate_Dyle_plan: "План Дайла"
+    
+    SOV_propaganda_more_metal_tt: "Дается §G+40§! §Y$state_resource_coal$§!, §G+25§! §Y$state_resource_aluminium$§!, §G+80§! §Y$state_resource_tungsten$§!, §G+45§! §Y$state_resource_steel$§! и §G+60§! §Y$state_resource_chromium$§! за каждый регион, производящий эти ресурсы."
+    
+    SOV_add_hspg_companies_to_guards:0 "£faction_sov_army Придать гвардейским частям тяжёлые САУ"
+    SOV_add_mspg_companies_to_guards:0 "£faction_sov_army Придать гвардейским частям средние САУ"
+    SOV_add_htd_companies_to_guards:0 "£faction_sov_army Придать гвардейским частям тяжёлые ПТ-САУ"
+    SOV_add_mtd_companies_to_guards:0 "£faction_sov_army Придать гвардейским частям средние ПТ-САУ"
+    
+    SOV_military_offensive_name_generic: "Наступление на регион города [FROM.GetName]"
+    SOV_peoples_militia_reform: "Реформа народного ополчения"
+    
+    SOV_glory_to_partisans_tt:0 "§GУвеличится§! влияние §RПартизан§!"
+    SOV_propaganda_death_to_invaders_no_invaders_tt: "Каждая национальная территория, имеющее более чем §RНезначительное§! влияние партизан и контролируемая противником: \nДобавить модификатор: §Y$SOV_invaders_must_die$§!\n\n"
+    SOV_propaganda_death_to_invaders_state_modifier_tt: "\n§Y$SOV_invaders_must_die$§!:\n$MODIFIER_ARMY_SPEED_FACTOR_FOR_CONTROLLER$: §R-30%§! \n$MODIFIER_LOCAL_SUPPLIES_FOR_CONTROLLER$: §R-30%§! \n$MODIFIER_STRATEGIC_REDEPLOYMENT_DISABLED$: §RДа§! \n"
+    europe_exploited:0 "Европа эксплуатирована"
+    GER_forced_labor_camps_system:0 "Принудительный труд"
+    GER_forced_labor_camps_system_desc:0 "TODO"
+    
+    GER_ostarbieter_tt:0 "Разблокирует §Yрешения§! по угону рабочей силы с оккупированных регионов СССР в Германию, §Gулучшая§! национальный дух §R$GER_economy_of_conquest_modifier$§!"
+    GER_evac_ost:0 "Депортирует остарбайтеров в Германию"
+    GER_ostarbieter_generic_decision:0 "Угон остарбайтеров в Германию из города [FROM.GetName]"
+    GER_evac_ost_1tt:0 "§O~20000§! жителей региона будет вывезено на принудительные работы в §RГерманию§! \nРегион [FROM.GetName]:\n£political_violence_texticon  Цель сопротивления: §R+5.00%§!"
+    GER_evac_ost_2tt:0 "Прибывшая рабочая сила §Gувеличивает§! бонусы от национального духа §Y$GER_economy_of_conquest_modifier$§!"
+    
+    GER_ui_inmates_header:0 "Кол-во"
+    GER_case_blue_activated:0 "Операция «Блау» началась"
+    forced_labor_state_add_mission:0 "Интеграция подневольного труда"
+    GER_foreign_workers_name:0 "Иностранные рабочие"
+    foreign_workers_inmates_amount:0 "[?total_labor|0Y]"    
+    
+    SS_lssah_early_refit:0 "Переформировать «LSSAH» в моторизированную бригаду"
+    SS_lssah_middle_refit:0 "Переформировать «LSSAH» в моторизированную дивизию"
+    SS_lssah_late_refit:0 "Переформировать «LSSAH» в танковую дивизию"
+    
+    SS_dasreich_early_refit:0 "Переформировать дивизию усиления СС"
+    SS_dasreich_middle_refit:0 "Переформировать «Das Reich» в панцергренадерcкую дивизию"
+    SS_dasreich_late_refit:0 "Переформировать «Das Reich» в танковую дивизию"
+    
+    SS_totenkopf_early_refit:0 "Переформировать «Totenkopf» в моторизированную дивизию"
+    SS_totenkopf_middle_refit:0 "Переформировать «Totenkopf» в панцергренадерcкую дивизию"
+    SS_totenkopf_late_refit:0 "Переформировать «Totenkopf» в танковую дивизию"
+    
+    SS_polizei_early_refit:0 "Переформировать полицейскую дивизию СС"
+    SS_polizei_middle_refit:0 "Переформировать полицейскую дивизию в панцергренадерcкую дивизию"
+    
+    SS_wiking_early_refit:0 "Переформировать «Wiking» в панцергренадерcкую дивизию"
+    SS_wiking_middle_refit:0 "Переформировать «Wiking» в танковую дивизию"
+    
+    decision_cost_CP_10:0 "£command_power §Y10§!"
+    decision_cost_CP_10_blocked:0 "£command_power §R10§!"
+    
+    SOV_GER_partisans:0 "Партизанская война"
+    
+    generic_partisans:0 "Увеличить влияние партизан в регионе [FROM.GetName]"
+    SOV_partisan_influence_trigger_tt: "Влияние партизан в регионе не §Yполное§!."
+    SOV_partisan_influence_trigger_2_tt: "Не увеличивает влияние в 3-х регионах"
+    SOV_expand_partisan_influence_tt: "Увеличить влияние партизан в регионе на один шаг.\n\n"
+    SOV_partisan_influence_none_tt: "§LТекущее влияние партизан в регионе:§! §Rнезначительное§!\n"
+    SOV_partisan_influence_weak_tt: "§LТекущее влияние партизан в регионе:§! §Rслабое§!\n"
+    SOV_partisan_influence_strong_tt: "§LТекущее влияние партизан в регионе:§! §Rсильное§!\n"
+    SOV_partisan_influence_total_tt: "§LТекущее влияние партизан в регионе:§! §Rполное§!\n"
+    
+    generic_anti_partisans:0 "Антипартизанская операция в регионе [FROM.GetName]"
+    GER_anti_partisan_operations_tt: "Открывает решения по антипартизанским операциям на территории СССР"
+    GER_partisan_influence_trigger_tt: "Имеется партизанская активность в регионе."
+    GER_partisan_influence_trigger_2_tt: "Не подваляет влияние в 3-х регионах."
+    GER_down_partisan_influence_tt: "Подавляет влияние партизан в регионе на один шаг.\n\n"
+    
+    GER_anti_partisan_operation:0 "Антипартизанская операция"
+    SOV_partisans_activity_1:0 "Слабая партизанская активность"
+    SOV_partisans_activity_2:0 "Средняя партизанская активность"
+    SOV_partisans_activity_3:0 "Сильная партизанская активность"
+    
+    
+    ROM_change_sides_to_commintern:0 "Переворот короля Михая"
+    
+    SOV_complete_second_five_year_plan:0 "Завершение второго пятилетнего плана"
+    
+    SOV_winter_counterattack:0 "Провести зимнее контрнаступление"
+    
+    SOV_fyp_azovsteel:0 "Стройка Азовстали"
+    SOV_fyp_zaporozhsteel:0 "Стройка Запорожстали"
+    SOV_fyp_ural_heavy_industry:0 "Стройка Уральского завода тяжёлого машиностроения"
+    SOV_fyp_donbass_heavy_industry:0 "Стройка Краматорского завода тяжёлого станкостроения"
+    SOV_fyp_chelyabinsk_heavy_industry:0 "Стройка Челябинского тракторного завода"
+    SOV_fyp_dneproges:0 "Стройка Днепрогэс"
+    
+    azov_complete:0 "Азовсталь построена"
+    zaporozh_complete:0 "Запорожсталь построена"
+    ural_complete:0 "УЗТМ построен"
+    donbass_complete:0 "КЗТС построен"
+    chtz_complete:0 "ЧТЗ построен"
+    dneproges_complete:0 "Днепрогэс построена"
+    
+    MAN_raid_otw:0 "Уже проводим рейд"
+    
+    MAN_raid_chita:0 "Налёт на Читу"
+    MAN_chita_raid_launched:0 "Начался рейд на Читу"
+    SOV_chita_raid_underway:0 "Чита подвергается налету"
+
+    MAN_raid_amur:0 "Налёт на Амур"
+    MAN_amur_raid_launched:0 "Начался рейд на Амур"
+    SOV_amur_raid_underway:0 "Амур подвергается налету"
+
+    MAN_raid_birobidzhan:0 "Налёт на Биробиджан"
+    MAN_birobidzhan_raid_launched:0 "Начался рейд на Биробиджан"
+    SOV_birobidzhan_raid_underway:0 "Биробиджан подвергается налету"
+
+    MAN_raid_khabarovsk:0 "Налёт на Хабаровск"
+    MAN_khabarovsk_raid_launched:0 "Начался рейд на Хабаровск"
+    SOV_khabarovsk_raid_underway:0 "Хабаровск подвергается налету"
+
+    MAN_raid_vladivostok:0 "Налёт на Владивосток"
+    MAN_vladivostok_raid_launched:0 "Начался рейд на Владивосток"
+    SOV_vladivostok_raid_underway:0 "Владивосток подвергается налету"
+
+    MAN_army_reform:0 "Army Reform"
+
+    MAN_manchu_soviet_category:0 "Манчжурско-Советская граница"
+    MAN_manchu_soviet_category_desc:0 ""
+
+    mob_start:0 "Начать мобилизацию резервов"
+
+    #################################################################################### Decisions ####################################################################################
+    GER_reichskommissariat_polen:0 "Генерал-губернаторство"
+    GER_transfer_lwow_and_stanislaw:0 "Передать Галицию Генерал-губернаторству"
+    GER_reichskommissariat_belgien_nordfrankreich:0 "Рейхскомиссариат Бельгия и Северная Франция"
+    GER_reichskommissariat_niederlande:0 "Рейхскомиссариат Нидерланды"
+    GER_reichskommissariat_danemark:0 "Рейхскомиссариат Дания"
+    GER_reichskommissariat_cze:0 "Протекторат Богемии и Моравии"
+    
+    
+    
+    
+    
+    GER_holocaust:0 "Решение еврейского вопроса"
+    
+    form_ainzats_groups:0 "Создать Айнзацгруппы"
+    form_ainzats_groups_desc:0 "Военизированные эскадроны смерти будут осуществлять массовые убийства унтерменшей на завоеванных территориях стран Европы и СССР и сыграют главную роль в «окончательном решении еврейского вопроса»."
+    create_extermination_camps:0 "Создание лагерей смерти на территории Польши"
+    operation_reinhard:0 "Операция Рейнхард"
+    operation_reinhard_desc:0 "Операция Рейнхард - государственная программа по систематическому истреблению евреев и цыган в генерал-губернаторстве."
+    jew_deportation:0 "Депортация евреев в Генерал-губернаторство"
+    generic_jew_holocaust:0 "Уничтожение евреев в провинции [FROM.GetName]"
+    
+    
+    GER_case_blue_tt:0 "Начать наступление на южном направлении Восточного фронта с целью захвата нефтяных месторождений Северного Кавказа и Баку"
+    GER_case_typhoon_tt:0 "Мощными ударами крупных группировок окружить основные силы войск Красной Армии, прикрывавшие столицу, и уничтожить их в районах Брянска и Вязьмы, а затем стремительно обойти Москву с севера и юга с целью её захвата"
+    
+    GER_exploit:0 "Эксплуатация СССР"
+    
+    exploited_terr:0 "Эксплуатировано"
+    generic_exploit:0 "Эксплуатация промышленности города [FROM.GetName]"
+    generic_exploit_jap:0 "Эксплуатация региона [FROM.GetName]"
+    
+    
+    
+    
+    lend_lease_to_sov:0 "Ленд-Лиз по трансиранскому маршруту"
+    
+    send_inf_eq:0 "Отправить пехотное снаряжение"
+    send_med_tanks:0 "Отправить средние танки"
+    send_hev_tanks:0 "Отправить тяжёлые танки"
+    send_light_tanks:0 "Отправить лёгкие танки"
+    send_fighters:0 "Отправить истребители"
+    send_cas:0 "Отправить штурмовики"
+    send_trains:0 "Отправить поезда"
+    build_motor_factories_in_iran:0 "Построить автомобильные заводы в Иране"
+    motor_production_from_iran:0 "Производство автомобилей в Иране"
+    motor_factories_in_iran:0 "Автозаводы в Иране построены"
+    
+    ENG_crusader:0 "Операция Крусейдер"
+    
+    SOV_GAZ_factory_recovery:0 "Восстановление автозаводов ГАЗ"
+    
+    SOV_raise_guards_units:0 "Сформировать Гвардейские дивизии"
+    GER_case_blue_activation:0 "Операция Блау"
+    GER_case_typhoon_activation:0 "Операция Тайфун"
+    
+    guide:0 "Служебность"
+    guide_on:0 "Гайд на [From.GetName]"
+    payback_of_war_bonds:0 "Возврат военных облигаций"
+    Lost_our_tech_tree_partnership:0 "Loss of our Techtree Partnership"
+
+    demobilization_economic_fatigue:0 "Handle Economic Fatigue"
+    demob_economic_fatigue_mission:0 "Handle Economic Fatigue"
+    
+    iron_shortage:0 "Нехватка железа"
+    iron_shortage_desc:0 "Our Steel Mills are lacking Iron to function correctly. We will be forced to shut them down until we make up the deficit. We can avoid this by either taking or trading for more resources"
+
+    iron_prosperity:0 "Достаток железа"
+    bauxite_prosperity:0 "Достаток Бокситов"
+    
+    bauxite_shortage:0 "Нехватка Бокситов"
+    bauxite_shortage_desc:0 "Our Aluminium Smelters are lacking Bauxite to function correctly. We will be forced to shut them down until we make up the deficit. We can avoid this by either taking or trading for more resources"
+
+    coal_shortage:0 "Нехватка Угля"
+    coal_shortage_desc:0 "Our Synthetic Refineries are lacking Coal to function correctly. We will be forced to shut them down until we make up the deficit. We can avoid this by either taking or trading for more resources"
+
+    trigger_has_30_iron:0 "Иметь в наличии не менее 30 единиц железа"
+    trigger_has_60_iron:0 "Иметь в наличии не менее 60 единиц железа"
+    trigger_has_90_iron:0 "Иметь в наличии не менее 90 единиц железа"
+    trigger_has_120_iron:0 "Иметь в наличии не менее 120 единиц железа"
+    trigger_has_150_iron:0 "Иметь в наличии не менее 150 единиц железа"
+    trigger_has_180_iron:0 "Иметь в наличии не менее 180 единиц железа"
+    trigger_has_210_iron:0 "Иметь в наличии не менее 210 единиц железа"
+    trigger_has_240_iron:0 "Иметь в наличии не менее 240 единиц железа"
+    trigger_has_270_iron:0 "Иметь в наличии не менее 270 единиц железа"
+    trigger_has_300_iron:0 "Иметь в наличии не менее 300 единиц железа"
+    trigger_has_330_iron:0 "Иметь в наличии не менее 330 единиц железа"
+    trigger_has_360_iron:0 "Иметь в наличии не менее 360 единиц железа"
+    trigger_has_390_iron:0 "Иметь в наличии не менее 390 единиц железа"
+    trigger_has_420_iron:0 "Иметь в наличии не менее 420 единиц железа"
+    trigger_has_450_iron:0 "Иметь в наличии не менее 450 единиц железа"
+    trigger_has_480_iron:0 "Иметь в наличии не менее 480 единиц железа"
+    trigger_has_510_iron:0 "Иметь в наличии не менее 510 единиц железа"
+    trigger_has_540_iron:0 "Иметь в наличии не менее 540 единиц железа"
+    trigger_has_570_iron:0 "Иметь в наличии не менее 570 единиц железа"
+    trigger_has_600_iron:0 "Иметь в наличии не менее 600 единиц железа"
+
+    trigger_has_25_coal:0 "Иметь в наличии не менее 25 единиц угля"
+    trigger_has_50_coal:0 "Иметь в наличии не менее 50 единиц угля"
+    trigger_has_75_coal:0 "Иметь в наличии не менее 75 единиц угля"
+    trigger_has_100_coal:0 "Иметь в наличии не менее 100 единиц угля"
+    trigger_has_125_coal:0 "Иметь в наличии не менее 125 единиц угля"
+    trigger_has_150_coal:0 "Иметь в наличии не менее 150 единиц угля"
+    trigger_has_175_coal:0 "Иметь в наличии не менее 175 единиц угля"
+    trigger_has_200_coal:0 "Иметь в наличии не менее 200 единиц угля"
+    trigger_has_225_coal:0 "Иметь в наличии не менее 225 единиц угля"
+    trigger_has_250_coal:0 "Иметь в наличии не менее 250 единиц угля"
+    trigger_has_275_coal:0 "Иметь в наличии не менее 275 единиц угля"
+    trigger_has_300_coal:0 "Иметь в наличии не менее 300 единиц угля"
+    trigger_has_325_coal:0 "Иметь в наличии не менее 325 единиц угля"
+    trigger_has_350_coal:0 "Иметь в наличии не менее 350 единиц угля"
+    trigger_has_375_coal:0 "Иметь в наличии не менее 375 единиц угля"
+    trigger_has_400_coal:0 "Иметь в наличии не менее 400 единиц угля"
+    trigger_has_425_coal:0 "Иметь в наличии не менее 425 единиц угля"
+    trigger_has_450_coal:0 "Иметь в наличии не менее 450 единиц угля"
+    trigger_has_475_coal:0 "Иметь в наличии не менее 475 единиц угля"
+    trigger_has_500_coal:0 "Иметь в наличии не менее 500 единиц угля"
+
+    reactivate_synthetic_refineries:0 "Открыть один НПЗ"
+    reactivate_synthetic_refineries_desc:0 ""
+    close_synthetic_refineries:0 "Закрыть один НПЗ"
+    close_synthetic_refineries_desc:0 ""
+    trigger_has_75_coal:0 "Как минимум 75 угля в избытке"
+
+    develop_chengdu_oil_deposits:0 "Исследовать нефтяные месторождения Чэнду"
+    develop_magnitogorsk_coal_deposits:0 "Разработка месторождения угля в Магнитогорске"
+    
+    CHI_yellow_river_flood:0 "Flood the Yellow River"
+    CHI_yellow_river_flood_desc:0 "Flooding the Yellow river can help us hinder the Japanese progress into China, allowing us to have a defensive line from the Yellow to the Yangtze"
+    CHI_yellow_river_flooded:0 "Yellow River Flooded"
+
+    china_militia_recruitment_effort_6:0 "Exhausted Recruitment Efforts\n"
+    military_affairs_commission_relocated:0 "Military Affairs Commission Relocated\n"
+
+    CHI_emergency_procuration_of_weapons:0 "Emergency Procuration of Weapons"
+
+    FRA_internal_factions:0 "Внутренние фракции"
+    FRA_internal_factions_desc:1 "Состояние французской политики далеко от стабильного. Хотя реформы необходимы и приветствуются, нация разделена, и втягивание в конфликт подвергнет ее большому риску. Мы можем попытаться умилостивить различные группировки, господствующие в стране, или выбрать сторону и сокрушить оппозицию.\n\n"
+    
+    FRA_national_bloc_name_text:0 "Нац блок"
+    FRA_cgt_name_text:0 "ВКТ"
+    FRA_french_industrialists_name_text:0 "Промышленники"
+    FRA_french_army_name_text:0 "Армия"
+    FRA_ui_attitude_header:0 "Отношение"
+    FRA_ui_influence_header:0 "Влияние"
+
+    FRA_national_bloc_attitude_status_amount:0 "[Root.GetNationalBlocAttitudeLevel]"
+    FRA_cgt_attitude_status_amount:0 "[Root.GetCGTAttitudeLevel]"
+    FRA_french_industrialists_attitude_status_amount:0 "[Root.GetFrenchIndustrialistsAttitudeLevel]"
+    FRA_french_army_attitude_status_amount:0 "[Root.GetFrenchArmyAttitudeLevel]"
+
+    FRA_national_bloc_influence_status_amount:0 "[Root.GetNationalBlocInfluenceLevel]"
+    FRA_cgt_influence_status_amount:0 "[Root.GetCGTInfluenceLevel]"
+    FRA_french_industrialists_influence_status_amount:0 "[Root.GetFrenchIndustrialistsInfluenceLevel]"
+    FRA_french_army_influence_status_amount:0 "[Root.GetFrenchArmyInfluenceLevel]"
+
+    FRA_national_bloc_political_power_gain_status_amount:0 "[Root.GetNationalBlocPoliticalPowerGainLevel]"
+    FRA_cgt_political_power_gain_status_amount:0 "[Root.GetCGTPoliticalPowerGainLevel]"
+    FRA_french_industrialists_political_power_gain_status_amount:0 "[Root.GetFrenchIndustrialistsPoliticalPowerGainLevel]"
+    FRA_french_army_political_power_gain_status_amount:0 "[Root.GetFrenchArmyPoliticalPowerGainLevel]"
+
+    FRA_national_bloc_factory_output_status_amount:0 "[ROOT.GetNationalBlocFactoryOutputLevel]"
+    FRA_cgt_factory_output_status_amount:0 "[ROOT.GetCGTFactoryOutputLevel]"
+    FRA_french_industrialists_factory_output_status_amount:0 "[ROOT.GetFrenchIndustrialistsFactoryOutputLevel]"
+    FRA_french_army_factory_output_status_amount:0 "[ROOT.GetFrenchArmyFactoryOutputLevel]"
+
+    FRA_national_bloc_stability_status_amount:0 "[ROOT.GetNationalBlocStabilityLevel]"
+    FRA_cgt_stability_status_amount:0 "[ROOT.GetCGTStabilityLevel]"
+    FRA_french_industrialists_stability_status_amount:0 "[ROOT.GetFrenchIndustrialistsStabilityLevel]"
+    FRA_french_army_stability_status_amount:0 "[ROOT.GetFrenchArmyStabilityLevel]"
+
+    FRA_faction_loyal_attitude:0 "§CЛояльное§!"
+    FRA_faction_friendly_attitude:0 "§GДружелюбное§!"
+    FRA_faction_calm_attitude:0 "Спокойное"
+    FRA_faction_worried_attitude:0 "§YТревожное§!"
+    FRA_faction_agitated_attitude:0 "§OВзвольнованное§!"
+    FRA_faction_angry_attitude:0 "§OСердитое§!"
+    FRA_faction_violent_attitude:0 "§RЖестокое§!"
+    FRA_faction_rebellious_attitude:0 "§RМятежное§!"
+
+    FRA_faction_total_influence:0 "§OПолное§!"
+    FRA_faction_widespread_influence:0 "§OМассовое§!"
+    FRA_faction_high_influence:0 "§YВысокое§!"
+    FRA_faction_moderate_influence:0 "§YУмеренное§!"
+    FRA_faction_low_influence:0 "§YНизкое§!"
+    FRA_faction_tiny_influence:0 "Крошечное"
+    FRA_faction_no_influence:0 "§gНет§!"
+
+    FRA_faction_loyal_political_power_gain:0 "§G+10%§!"
+    FRA_faction_friendly_political_power_gain:0 "§G+5%§!"
+    FRA_faction_calm_political_power_gain:0 "0"
+    FRA_faction_worried_political_power_gain:0 "§R-5%§!"
+    FRA_faction_agitated_political_power_gain:0 "§R-10%§!"
+    FRA_faction_angry_political_power_gain:0 "§R-15%§!"
+    FRA_faction_violent_political_power_gain:0 "§R-20%§!"
+    FRA_faction_rebellious_political_power_gain:0 "§R-25%§!"
+
+    FRA_faction_loyal_consumer_goods:0 "§Y-10%§!"
+    FRA_faction_friendly_consumer_goods:0 "§Y-5%§!"
+    FRA_faction_calm_consumer_goods:0 "0"
+    FRA_faction_worried_consumer_goods:0 "§Y5%§!"
+    FRA_faction_agitated_consumer_goods:0 "§Y10%§!"
+    FRA_faction_angry_consumer_goods:0 "§Y15%§!"
+    FRA_faction_violent_consumer_goods:0 "§Y20%§!"
+    FRA_faction_rebellious_consumer_goods:0 "§Y25%§!"
+
+    FRA_faction_loyal_factory_output:0 "§G+10%§!"
+    FRA_faction_friendly_factory_output:0 "§G+5%§!"
+    FRA_faction_calm_factory_output:0 "0"
+    FRA_faction_worried_factory_output:0 "§R-10%§!"
+    FRA_faction_agitated_factory_output:0 "§R-20%§!"
+    FRA_faction_angry_factory_output:0 "§R-30%§!"
+    FRA_faction_violent_factory_output:0 "§R-40%§!"
+    FRA_faction_rebellious_factory_output:0 "§R-50%§!"
+
+    FRA_faction_loyal_stability:0 "§G+10%§!"
+    FRA_faction_friendly_stability:0 "§G+5%§!"
+    FRA_faction_calm_stability:0 "0"
+    FRA_faction_worried_stability:0 "§R-5%§!"
+    FRA_faction_agitated_stability:0 "§R-10%§!"
+    FRA_faction_angry_stability:0 "§R-15%§!"
+    FRA_faction_violent_stability:0 "§R-20%§!"
+    FRA_faction_rebellious_stability:0 "§R-25%§!"
+
+    FRA_National_bloc_political_power_gain_1:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_National_bloc_political_power_gain_2:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_National_bloc_political_power_gain_4:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_National_bloc_political_power_gain_5:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_National_bloc_political_power_gain_6:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_National_bloc_political_power_gain_7:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_National_bloc_political_power_gain_8:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_CGT_political_power_gain_1:0 "£faction_fra_cgt ВКТ"
+    FRA_CGT_political_power_gain_2:0 "£faction_fra_cgt ВКТ"
+    FRA_CGT_political_power_gain_4:0 "£faction_fra_cgt ВКТ"
+    FRA_CGT_political_power_gain_5:0 "£faction_fra_cgt ВКТ"
+    FRA_CGT_political_power_gain_6:0 "£faction_fra_cgt ВКТ"
+    FRA_CGT_political_power_gain_7:0 "£faction_fra_cgt ВКТ"
+    FRA_CGT_political_power_gain_8:0 "£faction_fra_cgt ВКТ"
+    FRA_French_Industrialists_political_power_gain_1:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Industrialists_political_power_gain_2:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Industrialists_political_power_gain_4:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Industrialists_political_power_gain_5:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Industrialists_political_power_gain_6:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Industrialists_political_power_gain_7:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Industrialists_political_power_gain_8:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Army_political_power_gain_1:0 "£faction_fra_French_Army Армия"
+    FRA_French_Army_political_power_gain_2:0 "£faction_fra_French_Army Армия"
+    FRA_French_Army_political_power_gain_4:0 "£faction_fra_French_Army Армия"
+    FRA_French_Army_political_power_gain_5:0 "£faction_fra_French_Army Армия"
+    FRA_French_Army_political_power_gain_6:0 "£faction_fra_French_Army Армия"
+    FRA_French_Army_political_power_gain_7:0 "£faction_fra_French_Army Армия"
+    FRA_French_Army_political_power_gain_8:0 "£faction_fra_French_Army Армия"
+
+    FRA_National_bloc_factory_output_1:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_National_bloc_factory_output_2:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_National_bloc_factory_output_4:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_National_bloc_factory_output_5:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_National_bloc_factory_output_6:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_National_bloc_factory_output_7:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_National_bloc_factory_output_8:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_CGT_factory_output_1:0 "£faction_fra_cgt ВКТ"
+    FRA_CGT_factory_output_2:0 "£faction_fra_cgt ВКТ"
+    FRA_CGT_factory_output_4:0 "£faction_fra_cgt ВКТ"
+    FRA_CGT_factory_output_5:0 "£faction_fra_cgt ВКТ"
+    FRA_CGT_factory_output_6:0 "£faction_fra_cgt ВКТ"
+    FRA_CGT_factory_output_7:0 "£faction_fra_cgt ВКТ"
+    FRA_CGT_factory_output_8:0 "£faction_fra_cgt ВКТ"
+    FRA_French_Industrialists_factory_output_1:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Industrialists_factory_output_2:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Industrialists_factory_output_4:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Industrialists_factory_output_5:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Industrialists_factory_output_6:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Industrialists_factory_output_7:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Industrialists_factory_output_8:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Army_factory_output_1:0 "£faction_fra_French_Army Армия"
+    FRA_French_Army_factory_output_2:0 "£faction_fra_French_Army Армия"
+    FRA_French_Army_factory_output_4:0 "£faction_fra_French_Army Армия"
+    FRA_French_Army_factory_output_5:0 "£faction_fra_French_Army Армия"
+    FRA_French_Army_factory_output_6:0 "£faction_fra_French_Army Армия"
+    FRA_French_Army_factory_output_7:0 "£faction_fra_French_Army Армия"
+    FRA_French_Army_factory_output_8:0 "£faction_fra_French_Army Армия"
+
+    FRA_National_bloc_stability_1:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_National_bloc_stability_2:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_National_bloc_stability_4:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_National_bloc_stability_5:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_National_bloc_stability_6:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_National_bloc_stability_7:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_National_bloc_stability_8:0 "£faction_fra_national_bloc Национальный блок"
+    FRA_CGT_stability_1:0 "£faction_fra_cgt ВКТ"
+    FRA_CGT_stability_2:0 "£faction_fra_cgt ВКТ"
+    FRA_CGT_stability_4:0 "£faction_fra_cgt ВКТ"
+    FRA_CGT_stability_5:0 "£faction_fra_cgt ВКТ"
+    FRA_CGT_stability_6:0 "£faction_fra_cgt ВКТ"
+    FRA_CGT_stability_7:0 "£faction_fra_cgt ВКТ"
+    FRA_CGT_stability_8:0 "£faction_fra_cgt ВКТ"
+    FRA_French_Industrialists_stability_1:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Industrialists_stability_2:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Industrialists_stability_4:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Industrialists_stability_5:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Industrialists_stability_6:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Industrialists_stability_7:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Industrialists_stability_8:0 "£faction_fra_French_Industrialists Промышленники"
+    FRA_French_Army_stability_1:0 "£faction_fra_French_Army Армия"
+    FRA_French_Army_stability_2:0 "£faction_fra_French_Army Армия"
+    FRA_French_Army_stability_4:0 "£faction_fra_French_Army Армия"
+    FRA_French_Army_stability_5:0 "£faction_fra_French_Army Армия"
+    FRA_French_Army_stability_6:0 "£faction_fra_French_Army Армия"
+    FRA_French_Army_stability_7:0 "£faction_fra_French_Army Армия"
+    FRA_French_Army_stability_8:0 "£faction_fra_French_Army Армия"
+
+    FRA_National_Bloc_contracts_for_the_national_bloc:0 "£faction_fra_national_bloc Контракты для Национального блока"
+    FRA_National_Bloc_contracts_for_the_national_bloc_tt:0 "£faction_fra_national_bloc Нацблок лоялен и имеет влияние\nУвеличивает длительность на §Y14 Дней§! за каждый уровень влияния"
+
+    FRA_National_Bloc_increase_interest_rates:0 "£faction_fra_national_bloc Увеличить процентные ставки"
+    FRA_National_Bloc_increase_interest_rates_tt:0 "£faction_fra_national_bloc Нацблок дружелюбен и имеет влияние\nБонус увеличивается с каждым уровнем влияния"
+
+    FRA_CGT_inspire_the_workforce:0 "£faction_fra_cgt Вдохновление рабочих"
+    FRA_CGT_inspire_the_workforce_tt:0 "£faction_fra_cgt ВКТ лояльны и имеют влияние\nУвеличивает длительность на §Y14 Дней§! за каждый уровень влияния"
+
+    FRA_CGT_factory_planning:0 "£faction_fra_cgt Заводское планирование"
+    FRA_CGT_factory_planning_tt:0 "£faction_fra_cgt ВКТ дружелюбны и имеют влияние\nУвеличивает длительность на §Y14 Дней§! за каждый уровень влияния"
+
+    FRA_Industrialists_cut_the_red_tape:0 "£faction_fra_French_Industrialists Сократить бюрократизм"
+    FRA_Industrialists_cut_the_red_tape_tt:0 "£faction_fra_French_Industrialists Промышленники лояльны и имеют влияние\nУвеличивает длительность на §Y30 Дней§! за каждый уровень влияния"
+
+    FRA_Industrialists_subsidize_the_companies:0 "£faction_fra_French_Industrialists Субсидировать компании"
+    FRA_Industrialists_subsidize_the_companies_tt:0 "T£faction_fra_French_Industrialists Промышленники дружелюбны и имеют влияние\nУвеличивает длительность на §Y7 Дней§! за каждый уровень влияния"
+
+    FRA_revoke_the_matignon_agreements: "£faction_fra_cgt Отозвать Матиньонские соглашения"
+    
+    FRA_professional_army_decision:0 "£faction_fra_French_Army Перевод профессиональных солдат в мобильные подразделения"
+
+    FRA_professional_army:0 "Опытные мобильные части"
+
+
+    FRA_Army_army_recruiters:0 "£faction_fra_French_Army Армейские рекрутеры"
+    FRA_Army_army_recruiters_tt:0 "£faction_fra_French_Army Армия лояльна и имеет влияние\nУвеличивает длительность на §Y30 Дней§! за каждый уровень влияния"
+
+    FRA_Army_army_modernization:0 "£faction_fra_French_Army Модернизация армии"
+    FRA_Army_army_modernization_tt:0 "£faction_fra_French_Army Армия дружелюбна и имеет влияние\nБонус увеличивается с каждым уровнем влияния"
+
+    FRA_fulfill_the_renault_contract:0 "Контракт Рено"
+    FRA_fulfill_the_renault_contract_tt:0 "Иметь §G500§! §YСредних танков в армии§!"
+    FRA_fulfill_the_renault_contract_tt2:1 "£faction_fra_French_Army §YАрмия§! станет более §GНадёжной§! уменьшая штраф к §Yпроизводству бронетехники§! на §G10%§!.\n"
+
+    FRA_fulfill_the_hotchkiss_contract:0 "Контракт Гочкисc"
+    FRA_fulfill_the_hotchkiss_contract_tt:0 "Иметь §G750§! §YЛегких танков в армии§!"
+    
+    FRA_professional_army_decision_tt:0 "Выполнены контракты от Рено и Гочкисс"
+    
+    topple_the_vichy_regime:0 "Topple the Vichy Regime"
+
+    ITA_internal_factions:0 "Внутренние Фракции"
+    ITA_internal_factions_desc:1 "Италия имеет сильную власть над своими фракциями, и поддержание счастья Ватикана является ключом к тому, чтобы люди поддерживали нашу политику. Однако растущий подъем коммунистов угрожает стабильности нации, и мы должны решить, принять их или подавить.\n\n"
+    
+    ITA_bourgeoisie_name_text:0 "Буржуазия"
+    ITA_proletariat_name_text:0 "Пролетариат"
+    ITA_vatican_name_text:0 "Ватикан"
+    ITA_communists_name_text:0 "Коммунисты"
+    ITA_ui_attitude_header:0 "Отношение"
+
+    ITA_bourgeoisie_attitude_status_amount:0 "[Root.GetBourgeoisieAttitudeLevel]"
+    ITA_proletariat_attitude_status_amount:0 "[Root.GetProletariatAttitudeLevel]"
+    ITA_vatican_attitude_status_amount:0 "[Root.GetVaticanAttitudeLevel]"
+    ITA_communists_attitude_status_amount:0 "[Root.GetCommunistsAttitudeLevel]"
+
+    ITA_bourgeoisie_influence_status_amount:0 "[ROOT.GetBourgeoisieInfluenceLevel]"
+    ITA_proletariat_influence_status_amount:0 "[ROOT.GetProletariatInfluenceLevel]"
+    ITA_vatican_influence_status_amount:0 "[ROOT.GetVaticanInfluenceLevel]"
+    ITA_communists_influence_status_amount:0 "[ROOT.GetCommunistsInfluenceLevel]"
+
+    ITA_bourgeoisie_political_power_gain_status_amount:0 "[Root.GetBourgeoisiePoliticalPowerGainLevel]"
+    ITA_proletariat_political_power_gain_status_amount:0 "[Root.GetProletariatPoliticalPowerGainLevel]"
+    ITA_vatican_political_power_gain_status_amount:0 "[Root.GetVaticanPoliticalPowerGainLevel]"
+    ITA_communists_political_power_gain_status_amount:0 "[Root.GetCommunistsPoliticalPowerGainLevel]"
+
+    ITA_bourgeoisie_stability_status_amount:0 "[ROOT.GetBourgeoisieStabilityLevel]"
+    ITA_proletariat_stability_status_amount:0 "[ROOT.GetProletariatStabilityLevel]"
+    ITA_vatican_stability_status_amount:0 "[ROOT.GetVaticanStabilityLevel]"
+    ITA_communists_stability_status_amount:0 "[ROOT.GetCommunistsStabilityLevel]"
+
+    ITA_faction_loyal_attitude:0 "§CЛояльное§!"
+    ITA_faction_friendly_attitude:0 "§GДружелюбное§!"
+    ITA_faction_calm_attitude:0 "Спокойное"
+    ITA_faction_worried_attitude:0 "§YТревожное§!"
+    ITA_faction_agitated_attitude:0 "§OВзвольнованное§!"
+    ITA_faction_angry_attitude:0 "§OСердитое§!"
+    ITA_faction_violent_attitude:0 "§RЖестокое§!"
+    ITA_faction_rebellious_attitude:0 "§RМятежное§!"
+
+    ITA_faction_total_influence:0 "§OПолное§!"
+    ITA_faction_widespread_influence:0 "§OМассовое§!"
+    ITA_faction_high_influence:0 "§YВысокое§!"
+    ITA_faction_moderate_influence:0 "§YУмеренное§!"
+    ITA_faction_low_influence:0 "§YНизкое§!"
+    ITA_faction_tiny_influence:0 "Крошечное"
+    ITA_faction_no_influence:0 "§gНет§!"
+
+    ITA_faction_loyal_political_power_gain:0 "§G+10%§!"
+    ITA_faction_friendly_political_power_gain:0 "§G+5%§!"
+    ITA_faction_calm_political_power_gain:0 "0"
+    ITA_faction_worried_political_power_gain:0 "§R-5%§!"
+    ITA_faction_agitated_political_power_gain:0 "§R-10%§!"
+    ITA_faction_angry_political_power_gain:0 "§R-15%§!"
+    ITA_faction_violent_political_power_gain:0 "§R-20%§!"
+    ITA_faction_rebellious_political_power_gain:0 "§R-25%§!"
+
+    ITA_faction_loyal_stability:0 "§G+10%§!"
+    ITA_faction_friendly_stability:0 "§G+5%§!"
+    ITA_faction_calm_stability:0 "0"
+    ITA_faction_worried_stability:0 "§R-5%§!"
+    ITA_faction_agitated_stability:0 "§R-10%§!"
+    ITA_faction_angry_stability:0 "§R-15%§!"
+    ITA_faction_violent_stability:0 "§R-20%§!"
+    ITA_faction_rebellious_stability:0 "§R-25%§!"
+
+    ITA_Bourgeoisie_political_power_gain_10:0 "£faction_ita_bourgeoisie Буржуазия"
+    ITA_Bourgeoisie_political_power_gain_9:0 "£faction_ita_bourgeoisie Буржуазия"
+    ITA_Bourgeoisie_political_power_gain_8:0 "£faction_ita_bourgeoisie Буржуазия"
+    ITA_Bourgeoisie_political_power_gain_7:0 "£faction_ita_bourgeoisie Буржуазия"
+    ITA_Bourgeoisie_political_power_gain_6:0 "£faction_ita_bourgeoisie Буржуазия"
+    ITA_Bourgeoisie_political_power_gain_5:0 "£faction_ita_bourgeoisie Буржуазия"
+    ITA_Bourgeoisie_political_power_gain_4:0 "£faction_ita_bourgeoisie Буржуазия"
+    ITA_Bourgeoisie_political_power_gain_3:0 "£faction_ita_bourgeoisie Буржуазия"
+    ITA_Bourgeoisie_political_power_gain_2:0 "£faction_ita_bourgeoisie Буржуазия"
+    ITA_Bourgeoisie_political_power_gain_1:0 "£faction_ita_bourgeoisie Буржуазия"
+    ITA_Proletariat_political_power_gain_10:0 "£faction_ita_proletariat Пролетариат"
+    ITA_Proletariat_political_power_gain_9:0 "£faction_ita_proletariat Пролетариат"
+    ITA_Proletariat_political_power_gain_8:0 "£faction_ita_proletariat Пролетариат"
+    ITA_Proletariat_political_power_gain_7:0 "£faction_ita_proletariat Пролетариат"
+    ITA_Proletariat_political_power_gain_6:0 "£faction_ita_proletariat Пролетариат"
+    ITA_Proletariat_political_power_gain_5:0 "£faction_ita_proletariat Пролетариат"
+    ITA_Proletariat_political_power_gain_4:0 "£faction_ita_proletariat Пролетариат"
+    ITA_Proletariat_political_power_gain_3:0 "£faction_ita_proletariat Пролетариат"
+    ITA_Proletariat_political_power_gain_2:0 "£faction_ita_proletariat Пролетариат"
+    ITA_Proletariat_political_power_gain_1:0 "£faction_ita_proletariat Пролетариат"
+    ITA_Vatican_political_power_gain_10:0 "£faction_ita_vatican Ватикан"
+    ITA_Vatican_political_power_gain_9:0 "£faction_ita_vatican Ватикан"
+    ITA_Vatican_political_power_gain_8:0 "£faction_ita_vatican Ватикан"
+    ITA_Vatican_political_power_gain_7:0 "£faction_ita_vatican Ватикан"
+    ITA_Vatican_political_power_gain_6:0 "£faction_ita_vatican Ватикан"
+    ITA_Vatican_political_power_gain_5:0 "£faction_ita_vatican Ватикан"
+    ITA_Vatican_political_power_gain_4:0 "£faction_ita_vatican Ватикан"
+    ITA_Vatican_political_power_gain_3:0 "£faction_ita_vatican Ватикан"
+    ITA_Vatican_political_power_gain_2:0 "£faction_ita_vatican Ватикан"
+    ITA_Vatican_political_power_gain_1:0 "£faction_ita_vatican Ватикан"
+    ITA_Communists_political_power_gain_10:0 "£faction_ita_communists Коммунисты"
+    ITA_Communists_political_power_gain_9:0 "£faction_ita_communists Коммунисты"
+    ITA_Communists_political_power_gain_8:0 "£faction_ita_communists Коммунисты"
+    ITA_Communists_political_power_gain_7:0 "£faction_ita_communists Коммунисты"
+    ITA_Communists_political_power_gain_6:0 "£faction_ita_communists Коммунисты"
+    ITA_Communists_political_power_gain_5:0 "£faction_ita_communists Коммунисты"
+    ITA_Communists_political_power_gain_4:0 "£faction_ita_communists Коммунисты"
+    ITA_Communists_political_power_gain_3:0 "£faction_ita_communists Коммунисты"
+    ITA_Communists_political_power_gain_2:0 "£faction_ita_communists Коммунисты"
+    ITA_Communists_political_power_gain_1:0 "£faction_ita_communists Коммунисты"
+
+    ITA_Bourgeoisie_stability_1:0 "£faction_ita_bourgeoisie Буржуазия"
+    ITA_Bourgeoisie_stability_2:0 "£faction_ita_bourgeoisie Буржуазия"
+    ITA_Bourgeoisie_stability_4:0 "£faction_ita_bourgeoisie Буржуазия"
+    ITA_Bourgeoisie_stability_5:0 "£faction_ita_bourgeoisie Буржуазия"
+    ITA_Bourgeoisie_stability_6:0 "£faction_ita_bourgeoisie Буржуазия"
+    ITA_Bourgeoisie_stability_7:0 "£faction_ita_bourgeoisie Буржуазия"
+    ITA_Bourgeoisie_stability_8:0 "£faction_ita_bourgeoisie Буржуазия"
+    ITA_Proletariat_stability_1:0 "£faction_ita_proletariat Пролетариат"
+    ITA_Proletariat_stability_2:0 "£faction_ita_proletariat Пролетариат"
+    ITA_Proletariat_stability_4:0 "£faction_ita_proletariat Пролетариат"
+    ITA_Proletariat_stability_5:0 "£faction_ita_proletariat Пролетариат"
+    ITA_Proletariat_stability_6:0 "£faction_ita_proletariat Пролетариат"
+    ITA_Proletariat_stability_7:0 "£faction_ita_proletariat Пролетариат"
+    ITA_Proletariat_stability_8:0 "£faction_ita_proletariat Пролетариат"
+    ITA_Vatican_stability_1:0 "£faction_ita_vatican Ватикан"
+    ITA_Vatican_stability_2:0 "£faction_ita_vatican Ватикан"
+    ITA_Vatican_stability_4:0 "£faction_ita_vatican Ватикан"
+    ITA_Vatican_stability_5:0 "£faction_ita_vatican Ватикан"
+    ITA_Vatican_stability_6:0 "£faction_ita_vatican Ватикан"
+    ITA_Vatican_stability_7:0 "£faction_ita_vatican Ватикан"
+    ITA_Vatican_stability_8:0 "£faction_ita_vatican Ватикан"
+    ITA_Communists_stability_1:0 "£faction_ita_communists Коммунисты"
+    ITA_Communists_stability_2:0 "£faction_ita_communists Коммунисты"
+    ITA_Communists_stability_4:0 "£faction_ita_communists Коммунисты"
+    ITA_Communists_stability_5:0 "£faction_ita_communists Коммунисты"
+    ITA_Communists_stability_6:0 "£faction_ita_communists Коммунисты"
+    ITA_Communists_stability_7:0 "£faction_ita_communists Коммунисты"
+    ITA_Communists_stability_8:0 "£faction_ita_communists Коммунисты"
+
+    ITA_Bourgeoisie_issue_construction_contracts:0 "£faction_ita_bourgeoisie Выдача строительных контрактов"
+    ITA_Bourgeoisie_issue_construction_contracts_tt:0 "£faction_ita_bourgeoisie Буржуазия лояльна и имеет влияние\nУвеличивает длительность на §Y14 Дней§! за каждый уровень влияния"
+
+    ITA_Bourgeoisie_fund_r_and_d:0 "£faction_ita_bourgeoisie Фонд НИОКР"
+    ITA_Bourgeoisie_fund_r_and_d_tt:0 "£faction_ita_bourgeoisie Буржуазия дружелюбна и имеет влияние\nБонус увеличивается с каждым уровнем влияния"
+
+    ITA_Proletariat_fund_engineering_workshops:0 "£faction_ita_proletariat Фонд инженерных мастерских"
+    ITA_Proletariat_fund_engineering_workshops_tt:0 "£faction_ita_proletariat Пролетариат лоялен и имеет влияние\nУвеличивает длительность на §Y7 Дней§! за каждый уровень влияния"
+
+    ITA_Proletariat_mobilize_the_people:0 "£faction_ita_proletariat Мобилизовать людей"
+    ITA_Proletariat_mobilize_the_people_tt:0 "£faction_ita_proletariat Пролетариат дружелюбен и имеет влияние\nУвеличивает длительность на §Y14 Дней§! за каждый уровень влияния"
+
+    ITA_Vatican_inspire_the_people:0 "£faction_ita_vatican Вдохновить людей"
+    ITA_Vatican_inspire_the_people_tt:0 "£faction_ita_vatican Ватикан лоялен и имеет влияние\nУвеличивает длительность на §Y7 Дней§! за каждый уровень влияния"
+
+    ITA_Vatican_dennounce_our_opponents:0 "£faction_ita_vatican Осудить наших противников"
+    ITA_Vatican_dennounce_our_opponents_tt:0 "£faction_ita_vatican Ватикан дружелюбен и имеет влияние\nУвеличивает длительность на §Y14 Дней§! за каждый уровень влияния"
+
+    ITA_Communists_communist_Rhetoric:0 "£faction_ita_communists Коммунистическая риторика"
+    ITA_Communists_communist_Rhetoric_tt:0 "£faction_ita_communists Коммунисты лояльны и имеют влияние\nУвеличивает длительность на §Y14 Дней§! за каждый уровень влияния"
+
+    ITA_Communists_more_power_to_the_unions:0 "£faction_ita_communists Больше власти профсоюзам"
+    ITA_Communists_more_power_to_the_unions_tt:0 "£faction_ita_communists Коммунисты дружелюбны и имеют влияние\nБонус увеличивается с каждым уровнем влияния"
+    
+    ITA_modernization_of_the_Regio_esercito:0 "Модернизация Королевской Итальянской Армии"
+    ITA_modernization_of_the_Regio_esercito_tt:0 "Имеет §G400§! §YСредних танков§! или §YЛёгких танков§! в армии\n"
+
+    ITA_war_speech:0 "Речь «Жребий брошен»"
+    ITA_war_speech_desc:0 "'Бойцы на суше, на море и в воздухе, мужчины и женщины Италии и империи, слушайте! Час, предначертанный нам судьбой, пробьёт для нас. Час бесповоротного решения настал. Объявление войны уже объявлено. Мы победим, чтобы наконец даровать новый мир, мир и справедливость Италии, Европе и вселенной. Итальянский народ, хватайтесь за оружие и покажите свою стойкость, своё мужество, свою доблесть!'"
+
+    ITA_war_speech_tt:1 "£faction_ita_proletariat §YПролетариат§! станет §Gподдерживать§! войну, увеличивая §YПрирост политической власти§! на §G10%§!"
+
+    ITA_increase_the_influence_of_the_vatican:0 "£faction_ita_vatican Повлиять на Ватикан"
+    ITA_increase_the_influence_of_the_vatican_desc:0 ""
+    ITA_increase_the_influence_of_the_vatican_tt:0 "£faction_ita_vatican Ватикан дружелюбен"
+    ITA_increase_the_influence_of_the_vatican_tt2:0 "§GУвеличивает§! §YВлияние§! §YВатикана§! на один уровень"
+
+    ITA_bonifica_integrale_tt:0 "£faction_ita_proletariat  §YПролетариат§! станет более §GДружелюбным§!, увеличивая £stability_texticon  §YСтабильность§! на §G+5.00%§!."
+
+    ITA_cooperate_with_moderates_tt:0 "£faction_ita_bourgeoisie  §YБуржуазия§! станет более §GДружелюбной§! и §GВлиятельной§!, увеличивая £stability_texticon  §YСтабильность§! на §G+5.00%§! и £political_power_texticon  §YПрирост политической власти§! на §G+0.10§!"
+
+
+
+
+    JAP_internal_factions:0 "Внутренние Фракции"
+    JAP_internal_factions_desc:1 "Япония получает выгоду от лояльного населения, готового выполнять любые приказы Императора. Однако различные военные группировки Японии ведут ожесточенное соперничество, которое приносит больше вреда, чем пользы. Дзайбацу крепко контролируют экономику и открыты для нашего Влияния, чтобы компенсировать наши стратегические слабости..\n\n"
+    
+    JAP_kantaiha_name_text:0 "Фракция флота"
+    JAP_toseiha_name_text:0 "Фракция контроля"
+    JAP_kodoha_name_text:0 "Кодоха"
+    JAP_zaibatsus_name_text:0 "Дзайбацу"
+    JAP_ui_attitude_header:0 "Отношение"
+
+    JAP_kantaiha_influence_status_amount:0 "[ROOT.GetKantaihaInfluenceLevel]"
+    JAP_toseiha_influence_status_amount:0 "[ROOT.GetToseihaInfluenceLevel]"
+    JAP_kodoha_influence_status_amount:0 "[ROOT.GetKodohaInfluenceLevel]"
+    JAP_zaibatsus_influence_status_amount:0 "[ROOT.GetZaibatsusInfluenceLevel]"
+
+    JAP_kantaiha_construction_speed_military_status_amount:0 "[Root.GetKantaihaConstructionSpeedMilitaryLevel]"
+    JAP_toseiha_construction_speed_military_status_amount:0 "[Root.GetToseihaConstructionSpeedMilitaryLevel]"
+    JAP_kodoha_construction_speed_military_status_amount:0 "[Root.GetKodohaConstructionSpeedMilitaryLevel]"
+
+    JAP_kantaiha_construction_speed_dockyard_status_amount:0 "[Root.GetKantaihaConstructionSpeedDockyardLevel]"
+    JAP_toseiha_construction_speed_dockyard_status_amount:0 "[Root.GetToseihaConstructionSpeedDockyardLevel]"
+    JAP_kodoha_construction_speed_dockyard_status_amount:0 "[Root.GetKodohaConstructionSpeedDockyardLevel]"
+
+    JAP_zaibatsus_construction_speed_civilian_status_amount:0 "[Root.GetZaibatsusConstructionSpeedCivilianLevel]"
+
+    JAP_kantaiha_factory_output_status_amount:0 "[Root.GetKantaihaFactoryOutputLevel]"
+    JAP_toseiha_factory_output_status_amount:0 "[Root.GetToseihaFactoryOutputLevel]"
+    JAP_kodoha_factory_output_status_amount:0 "[Root.GetKodohaFactoryOutputLevel]"
+
+    JAP_kantaiha_dockyard_output_status_amount:0 "[Root.GetKantaihaDockyardOutputLevel]"
+    JAP_toseiha_dockyard_output_status_amount:0 "[Root.GetToseihaDockyardOutputLevel]"
+    JAP_kodoha_dockyard_output_status_amount:0 "[Root.GetKodohaDockyardOutputLevel]"
+
+    JAP_zaibatsus_consumer_goods_status_amount:0 "[Root.GetZaibatsusConsumerGoodsLevel]"
+
+    JAP_kantaiha_stability_status_amount:0 "[ROOT.GetKantaihaStabilityLevel]"
+    JAP_toseiha_stability_status_amount:0 "[ROOT.GetToseihaStabilityLevel]"
+    JAP_kodoha_stability_status_amount:0 "[ROOT.GetKodohaStabilityLevel]"
+
+    JAP_zaibatsus_political_power_gain_status_amount:0 "[ROOT.GetZaibatsusPoliticalPowerGainLevel]"
+
+    JAP_faction_total_influence:0 "§OПолное§!"
+    JAP_faction_large_influence:0 "§OБольшое§!"
+    JAP_faction_widespread_influence:0 "§OМассовое§!"
+    JAP_faction_high_influence:0 "§YВысокое§!"
+    JAP_faction_moderate_influence:0 "§YУмеренное§!"
+    JAP_faction_low_influence:0 "§YНизкое§!"
+    JAP_faction_tiny_influence:0 "Крошечное"
+    JAP_faction_no_influence:0 "§gНет§!"
+    
+    
+    JAP_faction_loyal_construction_speed_military:0 "§G+20%§!"
+    JAP_faction_trusting_construction_speed_military:0 "§G+15%§!"
+    JAP_faction_cooperative_construction_speed_military:0 "§G+10%§!"
+    JAP_faction_friendly_construction_speed_military:0 "§G+5%§!"
+    JAP_faction_worried_construction_speed_military:0 "0"
+    JAP_faction_agitated_construction_speed_military:0 "§R-5%§!"
+    JAP_faction_angry_construction_speed_military:0 "§R-10%§!"
+    JAP_faction_violent_construction_speed_military:0 "§R-15%§!"
+    JAP_faction_rebellious_construction_speed_military:0 "§R-20%§!"
+
+    JAP_faction_loyal_construction_speed_dockyard:0 "§G+20%§!"
+    JAP_faction_trusting_construction_speed_dockyard:0 "§G+15%§!"
+    JAP_faction_cooperative_construction_speed_dockyard:0 "§G+10%§!"
+    JAP_faction_friendly_construction_speed_dockyard:0 "§G+5%§!"
+    JAP_faction_worried_construction_speed_dockyard:0 "0"
+    JAP_faction_agitated_construction_speed_dockyard:0 "§R-5%§!"
+    JAP_faction_angry_construction_speed_dockyard:0 "§R-10%§!"
+    JAP_faction_violent_construction_speed_dockyard:0 "§R-15%§!"
+    JAP_faction_rebellious_construction_speed_dockyard:0 "§R-20%§!"
+
+    JAP_faction_loyal_construction_speed_civilian:0 "§G+20%§!"
+    JAP_faction_trusting_construction_speed_civilian:0 "§G+15%§!"
+    JAP_faction_cooperative_construction_speed_civilian:0 "§G+10%§!"
+    JAP_faction_friendly_construction_speed_civilian:0 "§G+5%§!"
+    JAP_faction_worried_construction_speed_civilian:0 "0"
+    JAP_faction_agitated_construction_speed_civilian:0 "§R-5%§!"
+    JAP_faction_angry_construction_speed_civilian:0 "§R-10%§!"
+    JAP_faction_violent_construction_speed_civilian:0 "§R-15%§!"
+    JAP_faction_rebellious_construction_speed_civilian:0 "§R-20%§!"
+
+    JAP_faction_loyal_factory_output:0 "§G+40%§!"
+    JAP_faction_trusting_factory_output:0 "§G+30%§!"
+    JAP_faction_cooperative_factory_output:0 "§G+20%§!"
+    JAP_faction_friendly_factory_output:0 "§G+10%§!"
+    JAP_faction_worried_factory_output:0 "0"
+    JAP_faction_agitated_factory_output:0 "§R-10%§!"
+    JAP_faction_angry_factory_output:0 "§R-20%§!"
+    JAP_faction_violent_factory_output:0 "§R-30%§!"
+    JAP_faction_rebellious_factory_output:0 "§R-40%§!"
+
+    JAP_faction_loyal_dockyard_output:0 "§G+40%§!"
+    JAP_faction_trusting_dockyard_output:0 "§G+30%§!"
+    JAP_faction_cooperative_dockyard_output:0 "§G+20%§!"
+    JAP_faction_friendly_dockyard_output:0 "§G+10%§!"
+    JAP_faction_worried_dockyard_output:0 "0"
+    JAP_faction_agitated_dockyard_output:0 "§R-10%§!"
+    JAP_faction_angry_dockyard_output:0 "§R-20%§!"
+    JAP_faction_violent_dockyard_output:0 "§R-30%§!"
+    JAP_faction_rebellious_dockyard_output:0 "§R-40%§!"
+
+    JAP_faction_loyal_consumer_goods:0 "§Y-40%§!"
+    JAP_faction_trusting_consumer_goods:0 "§Y-30%§!"
+    JAP_faction_cooperative_consumer_goods:0 "§Y-20%§!"
+    JAP_faction_friendly_consumer_goods:0 "§Y-10%§!"
+    JAP_faction_worried_consumer_goods:0 "0"
+    JAP_faction_agitated_consumer_goods:0 "§Y10%§!"
+    JAP_faction_angry_consumer_goods:0 "§Y20%§!"
+    JAP_faction_violent_consumer_goods:0 "§Y30%§!"
+    JAP_faction_rebellious_consumer_goods:0 "§Y40%§!"
+
+    JAP_faction_loyal_stability:0 "§G+20%§!"
+    JAP_faction_trusting_stability:0 "§Y+15%§!"
+    JAP_faction_cooperative_stability:0 "§Y+10%§!"
+    JAP_faction_friendly_stability:0 "§G+5%§!"
+    JAP_faction_worried_stability:0 "0"
+    JAP_faction_agitated_stability:0 "§R-5%§!"
+    JAP_faction_angry_stability:0 "§R-10%§!"
+    JAP_faction_violent_stability:0 "§R-15%§!"
+    JAP_faction_rebellious_stability:0 "§R-20%§!"
+
+    JAP_faction_loyal_political_power_gain:0 "§G+20%§!"
+    JAP_faction_trusting_political_power_gain:0 "§G+15%§!"
+    JAP_faction_cooperative_political_power_gain:0 "§G+10%§!"
+    JAP_faction_friendly_political_power_gain:0 "§G+5%§!"
+    JAP_faction_worried_political_power_gain:0 "0"
+    JAP_faction_agitated_political_power_gain:0 "§R-5%§!"
+    JAP_faction_angry_political_power_gain:0 "§R-10%§!"
+    JAP_faction_violent_political_power_gain:0 "§R-15%§!"
+    JAP_faction_rebellious_political_power_gain:0 "§R-20%§!"
+
+    JAP_Kantaiha_construction_speed_military_10:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_construction_speed_military_9:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_construction_speed_military_8:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_construction_speed_military_7:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_construction_speed_military_6:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_construction_speed_military_5:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_construction_speed_military_4:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_construction_speed_military_3:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_construction_speed_military_2:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_construction_speed_military_1:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Toseiha_construction_speed_military_10:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_construction_speed_military_9:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_construction_speed_military_8:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_construction_speed_military_7:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_construction_speed_military_6:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_construction_speed_military_5:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_construction_speed_military_4:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_construction_speed_military_3:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_construction_speed_military_2:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_construction_speed_military_1:0 "£faction_jap_toseiha Toseiha"
+    JAP_Kodoha_construction_speed_military_10:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_construction_speed_military_9:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_construction_speed_military_8:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_construction_speed_military_7:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_construction_speed_military_6:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_construction_speed_military_5:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_construction_speed_military_4:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_construction_speed_military_3:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_construction_speed_military_2:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_construction_speed_military_1:0 "£faction_jap_kodoha Kodoha"
+
+    JAP_Kantaiha_construction_speed_dockyard_10:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_construction_speed_dockyard_9:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_construction_speed_dockyard_8:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_construction_speed_dockyard_7:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_construction_speed_dockyard_6:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_construction_speed_dockyard_5:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_construction_speed_dockyard_4:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_construction_speed_dockyard_3:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_construction_speed_dockyard_2:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_construction_speed_dockyard_1:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Toseiha_construction_speed_dockyard_10:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_construction_speed_dockyard_9:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_construction_speed_dockyard_8:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_construction_speed_dockyard_7:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_construction_speed_dockyard_6:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_construction_speed_dockyard_5:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_construction_speed_dockyard_4:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_construction_speed_dockyard_3:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_construction_speed_dockyard_2:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_construction_speed_dockyard_1:0 "£faction_jap_toseiha Toseiha"
+    JAP_Kodoha_construction_speed_dockyard_10:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_construction_speed_dockyard_9:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_construction_speed_dockyard_8:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_construction_speed_dockyard_7:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_construction_speed_dockyard_6:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_construction_speed_dockyard_5:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_construction_speed_dockyard_4:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_construction_speed_dockyard_3:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_construction_speed_dockyard_2:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_construction_speed_dockyard_1:0 "£faction_jap_kodoha Kodoha"
+
+    JAP_Zaibatsus_construction_speed_civilian_10:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_construction_speed_civilian_9:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_construction_speed_civilian_8:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_construction_speed_civilian_7:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_construction_speed_civilian_6:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_construction_speed_civilian_5:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_construction_speed_civilian_4:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_construction_speed_civilian_3:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_construction_speed_civilian_2:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_construction_speed_civilian_1:0 "£faction_jap_zaibatsus Дзайбацу"
+
+    JAP_Kantaiha_factory_output_10:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_factory_output_9:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_factory_output_8:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_factory_output_7:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_factory_output_6:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_factory_output_5:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_factory_output_4:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_factory_output_3:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_factory_output_2:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_factory_output_1:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Toseiha_factory_output_10:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_factory_output_9:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_factory_output_8:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_factory_output_7:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_factory_output_6:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_factory_output_5:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_factory_output_4:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_factory_output_3:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_factory_output_2:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_factory_output_1:0 "£faction_jap_toseiha Toseiha"
+    JAP_Kodoha_factory_output_10:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_factory_output_9:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_factory_output_8:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_factory_output_7:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_factory_output_6:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_factory_output_5:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_factory_output_4:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_factory_output_3:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_factory_output_2:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_factory_output_1:0 "£faction_jap_kodoha Kodoha"
+
+    JAP_Kantaiha_dockyard_output_10:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_dockyard_output_9:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_dockyard_output_8:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_dockyard_output_7:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_dockyard_output_6:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_dockyard_output_5:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_dockyard_output_4:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_dockyard_output_3:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_dockyard_output_2:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_dockyard_output_1:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Toseiha_dockyard_output_10:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_dockyard_output_9:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_dockyard_output_8:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_dockyard_output_7:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_dockyard_output_6:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_dockyard_output_5:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_dockyard_output_4:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_dockyard_output_3:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_dockyard_output_2:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_dockyard_output_1:0 "£faction_jap_toseiha Toseiha"
+    JAP_Kodoha_dockyard_output_10:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_dockyard_output_9:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_dockyard_output_8:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_dockyard_output_7:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_dockyard_output_6:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_dockyard_output_5:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_dockyard_output_4:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_dockyard_output_3:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_dockyard_output_2:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_dockyard_output_1:0 "£faction_jap_kodoha Kodoha"
+
+    JAP_Zaibatsus_consumer_goods_10:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_consumer_goods_9:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_consumer_goods_8:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_consumer_goods_7:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_consumer_goods_6:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_consumer_goods_5:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_consumer_goods_4:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_consumer_goods_3:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_consumer_goods_2:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_consumer_goods_1:0 "£faction_jap_zaibatsus Дзайбацу"
+
+    JAP_Kantaiha_stability_1:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_stability_2:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_stability_4:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_stability_5:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_stability_6:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_stability_7:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Kantaiha_stability_8:0 "£faction_jap_kantaiha Kantaiha"
+    JAP_Toseiha_stability_1:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_stability_2:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_stability_4:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_stability_5:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_stability_6:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_stability_7:0 "£faction_jap_toseiha Toseiha"
+    JAP_Toseiha_stability_8:0 "£faction_jap_toseiha Toseiha"
+    JAP_Kodoha_stability_1:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_stability_2:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_stability_4:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_stability_5:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_stability_6:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_stability_7:0 "£faction_jap_kodoha Kodoha"
+    JAP_Kodoha_stability_8:0 "£faction_jap_kodoha Kodoha"
+
+    JAP_Zaibatsus_political_power_gain_1:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_political_power_gain_2:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_political_power_gain_4:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_political_power_gain_5:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_political_power_gain_6:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_political_power_gain_7:0 "£faction_jap_zaibatsus Дзайбацу"
+    JAP_Zaibatsus_political_power_gain_8:0 "£faction_jap_zaibatsus Дзайбацу"
+
+    JAP_Kantaiha_patriotic_fighting:0 "£faction_jap_kantaiha Патриотическая борьба"
+    JAP_Kantaiha_patriotic_fighting_tt:0 "£faction_jap_kantaiha Фракция флота Лояльна и имеет какое-либо влияние\nЗа каждый уровень влияния длительность решения возрастает на §Y7 Дней§!"
+
+    JAP_Kantaiha_special_orders:0 "£faction_jap_kantaiha Государственные заказы"
+    JAP_Kantaiha_special_orders_tt:0 "£faction_jap_kantaiha Фракция флота Дружелюбена и имеет какое-либо влияние\nЗа каждый уровень влияния длительность решения возрастает на §Y30 Дней§!"
+
+    JAP_Toseiha_free_thinking:0 "£faction_jap_toseiha Свободомыслие"
+    JAP_Toseiha_free_thinking_tt:0 "£faction_jap_toseiha Фракция контроля Лояльна и имеет какое-либо влияние\nЗа каждый уровень влияния длительность решения возрастает на §Y30 Дней§!"
+
+    JAP_Toseiha_modernization_efforts:0 "£faction_jap_toseiha Усилия по модернизации"
+    JAP_Toseiha_modernization_efforts_tt:0 "£faction_jap_toseiha Фракция контроля Дружелюбна и имеет какое-либо влияние"
+
+    JAP_Kodoha_material_scavanging:0 "£faction_jap_kodoha Сбор природных ресурсов"
+    JAP_Kodoha_material_scavanging_tt:0 "£faction_jap_kodoha Кодоха Дружелюбна и имеет какое-либо влияние\nЗа каждый уровень влияния длительность решения возрастает на §Y14 Дней§!"
+
+    JAP_Zaibatsus_fund_r_and_d:0 "£faction_jap_zaibatsus Фонд НИОКР"
+    JAP_Zaibatsus_fund_r_and_d_tt:0 "£faction_jap_zaibatsus Дзайбацу Дружелюбны и имеют какое-либо влияние\nЗа каждый уровень влияния длительность решения возрастает на §Y14 Дней§!"
+
+    JAP_Zaibatsus_issue_material_contracts:0 "£faction_jap_zaibatsus Выдача существенных контрактов"
+    JAP_Zaibatsus_issue_material_contracts_tt:0 "The £faction_jap_zaibatsus Дзайбацу Дружелюбны и имеют какое-либо влияние\nЗа каждый уровень влияния длительность решения возрастает на §Y14 Дней§!"
+
+    JAP_Zaibatsus_economic_measures:0 "£faction_jap_zaibatsus Усиление конгломератов"
+    JAP_Zaibatsus_economic_measures_tt:0 "£faction_jap_zaibatsus Дзайбацу Дружелюбны и имеют какое-либо влияние\nЗа каждое последующую активацию решения длительность его возрастает на §Y30 Дней§!"
+    JAP_Zaibatsus_construction_speed_civilian_tt:0 "£faction_jap_zaibatsus §YДзайбацу§! станут более §GЭффективнее§! увеличивая §YСкорость строительства§! на §G5%§! и уменьшает §YФактор фабрик народного потребления§! на §G10%§!"
+    
+    JAP_steel_for_guns: "£faction_jap_toseiha Сталь для орудий"
+    JAP_steel_for_ships: "£faction_jap_kantaiha Сталь для кораблей"
+    JAP_raiding_regiments: "£faction_jap_toseiha Формирование рейдерских подразделений"
+    JAP_special_air_landing_force: "£faction_jap_kantaiha Формирование десантных подразделений"
+    JAP_everybody_serves: "£faction_jap_toseiha Введение всеобщей воинской повинности"
+    JAP_draft_exemptions: "£faction_jap_kantaiha Введение отсрочки от призыва"
+    JAP_prioritize_naval_aircraft_construction: "£faction_jap_kantaiha Приоритет флотской авиации"
+    JAP_prioritize_army_aircraft_construction: "£faction_jap_toseiha Приоритет армейской авиации"
+    JAP_favor_navy: "£faction_jap_kantaiha Приоритет ВМФ"
+    JAP_favor_army: "£faction_jap_toseiha Приоритет армии"
+    
+    JAP_young_officers_coup:0 "Путч Молодых офицеров"
+    young_officers_coup_fired:0 "The Young Officers have attempted a coup"
+
+    JAP_invade_siam:0 "Вторжение в Тайланд"
+
+    JAP_militia_recruitment:0 "Deploys §G100 Militia Regiments§! in the Capital. Requires control of Tokyo\n"
+
+    JAP_annex_protectorates:0 "Annex Protectorates"
+
+    JAP_exploit_beijing:0 "Exploit Beijing"
+    JAP_exploit_tianjin:0 "Exploit Tianjin"
+    JAP_exploit_shandong:0 "Exploit Shandong"
+    JAP_exploit_shanghai:0 "Exploit Shanghai"
+    JAP_exploit_nanjing:0 "Exploit Nanjing"
+    JAP_exploit_wuhan:0 "Exploit Wuhan"
+    JAP_exploit_chongqing:0 "Exploit Chongqing"
+    JAP_exploit_chengdu:0 "Exploit Chengdu"
+    JAP_exploit_changde:0 "Exploit Changde"
+    JAP_exploit_changsha:0 "Exploit Changsha"
+    JAP_exploit_guangzhou:0 "Exploit Guangzhou"
+    JAP_exploit_nanning:0 "Exploit Nanning"
+
+    JAP_exploit_malaysia:0 "Exploit Malaysia"
+    JAP_exploit_indonesia:0 "Exploit Indonesia"
+    JAP_exploit_the_philippines:0 "Exploit The Philippines"
+
+    JAP_exploit_india:0 "Exploit India"
+    JAP_exploit_australia:0 "Exploit Australia"
+    JAP_exploit_new_zealand:0 "Exploit New Zealand"
+
+    JAP_annex_french_indochina:0 "Annex French Indochina"
+
+    JAP_modernize_the_mongolian_army_tt:0 "Will §YCreate 10 New Infantry Divisions§! for [MEN.GetName]"
+
+    JAP_send_infantry_equipment_to_imperial_protectorate:0 "Equipment Allocation to [From.GetName]"
+    JAP_send_infantry_equipment_to_imperial_protectorate_desc:0 ""
+
+    JAP_send_manpower_to_imperial_protectorate:0 "Manpower Allocation to [From.GetName]"
+    JAP_send_manpower_to_imperial_protectorate_desc:0 ""
+    
+    JAP_ask_for_peace_SOV:0 "Peace with the Soviets"
+    JAP_ask_for_peace_SOV_TT:0 "Must control all Soviet territory East of Central Siberia"
+
+    JAP_demand_germany_to_withdraw_support_for_china:0 "Demand Germany to Withdraw Support for China"
+
+    JAP_execute_b_e_m:0 "Execute Operations B, E, M"
+
+    JAP_assume_full_control_over_liaotung_iron:0 "Assume full control over Liaotung Iron"
+    JAP_assume_full_control_over_north_china_resources:0 "Assume full control over North China Resources"
+    JAP_assume_full_control_over_south_china_resources:0 "Assume full control over South China Resources"
+    JAP_assume_full_control_over_malaysian_resources:0 "Assume full control over Malaysian Resources"
+    JAP_assume_full_control_over_indonesian_oil:0 "Assume full control over Indonesian Oil Fields"
+    JAP_assume_full_control_over_siam_rubber:0 "Assume full control over Siamese Rubber"
+
+    kaiyo_ship_conversion:0 "Kaiyo Ship Conversion"
+    kaiyo_ship_conversion_desc:0 "Convert merchant ships into carriers"
+
+    taiyo_ship_conversion:0 "Taiyo Ship Conversion"
+    taiyo_ship_conversion_desc:0 "Convert merchant ships into carriers"
+
+    ryuho_ship_conversion:0 "Ryuho Ship Conversion"
+    ryuho_ship_conversion_desc:0 "Convert merchant ships into carriers"
+
+    GER_internal_factions:0 "Внутренние Фракции"
+    GER_internal_factions_desc:1 "СС и Вермахт соперничают за господство в немецкой армии, и оба не потерпят параллельной командной структуры, нам придется осторожно ориентироваться, чтобы предотвратить враждебные действия, или просто выбрать одну сторону и очистить другую. Немецкий народ жаждет, чтобы Германия обрела свой законный статус великой державы, и с помощью промышленников мы можем сделать это реальностью.\n\n"
+    
+    GER_whermacht_name_text:0 "Вермахт"
+    GER_ss_name_text:0 "СС"
+    GER_industrialists_name_text:0 "Промышленники"
+    GER_public_support_name_text:0 "Общественность"
+    GER_ui_attitude_header:0 "Отношение"
+    GER_ui_influence_header:0 "Влияние"
+
+    GER_whermacht_attitude_status_amount:0 "[Root.GetWehrmachtAttitudeLevel]"
+    GER_GER_SS_attitude_status_amount:0 "[Root.GetSSAttitudeLevel]"
+    GER_industrialists_attitude_status_amount:0 "[Root.GetIndustrialistsAttitudeLevel]"
+    GER_public_support_attitude_status_amount:0 "[Root.GetPublicSupportAttitudeLevel]"
+
+    GER_whermacht_influence_status_amount:0 "[Root.GetWehrmachtInfluenceLevel]"
+    GER_GER_SS_influence_status_amount:0 "[Root.GetSSInfluenceLevel]"
+    GER_industrialists_influence_status_amount:0 "[Root.GetIndustrialistsInfluenceLevel]"
+    GER_public_support_influence_status_amount:0 "[Root.GetPublicSupportInfluenceLevel]"
+
+    GER_whermacht_political_power_gain_status_amount:0 "[ROOT.GetWehrmachtPoliticalPowerGainLevel]"
+    GER_ss_political_power_gain_status_amount:0 "[ROOT.GetSSPoliticalPowerGainLevel]"
+
+    GER_industrialists_research_speed_status_amount:0 "[ROOT.GetIndustrialistsResearchspeedLevel]"
+
+    GER_public_support_war_support_status_amount:0 "[ROOT.GetPublicSupportWarsupportLevel]"
+
+    GER_whermacht_stability_status_amount:0 "[ROOT.GetWehrmachtStabilityLevel]"
+    GER_ss_stability_status_amount:0 "[ROOT.GetSSStabilityLevel]"
+    GER_industrialists_stability_status_amount:0 "[ROOT.GetIndustrialistsStabilityLevel]"
+    GER_public_support_stability_status_amount:0 "[ROOT.GetPublicSupportStabilityLevel]"
+
+    GER_faction_loyal_attitude:0 "§CЛояльное§!"
+    GER_faction_friendly_attitude:0 "§GДружелюбное§!"
+    GER_faction_calm_attitude:0 "Спокойное"
+    GER_faction_worried_attitude:0 "§YТревожное§!"
+    GER_faction_agitated_attitude:0 "§OВзвольнованное§!"
+    GER_faction_angry_attitude:0 "§OСердитое§!"
+    GER_faction_violent_attitude:0 "§RЖестокое§!"
+    GER_faction_rebellious_attitude:0 "§RМятежное§!"
+
+    GER_faction_total_influence:0 "§OПолное§!"
+    GER_faction_widespread_influence:0 "§OМассовое§!"
+    GER_faction_high_influence:0 "§YВысокое§!"
+    GER_faction_moderate_influence:0 "§YУмеренное§!"
+    GER_faction_low_influence:0 "§YНизкое§!"
+    GER_faction_tiny_influence:0 "Крошечное"
+    GER_faction_no_influence:0 "§gНет§!"
+
+    GER_faction_loyal_political_power_gain:0 "§G+10%§!"
+    GER_faction_friendly_political_power_gain:0 "§G+5%§!"
+    GER_faction_calm_political_power_gain:0 "0"
+    GER_faction_worried_political_power_gain:0 "§R-5%§!"
+    GER_faction_agitated_political_power_gain:0 "§R-10%§!"
+    GER_faction_angry_political_power_gain:0 "§R-15%§!"
+    GER_faction_violent_political_power_gain:0 "§R-20%§!"
+    GER_faction_rebellious_political_power_gain:0 "§R-25%§!"
+
+    GER_faction_loyal_research_speed:0 "§G+10%§!"
+    GER_faction_trusting_research_speed:0 "§G+8%§!"
+    GER_faction_cooperative_research_speed:0 "§G+6%§!"
+    GER_faction_friendly_research_speed:0 "§G+4%§!"
+    GER_faction_calm_research_speed:0 "§G+2%§!"
+    GER_faction_worried_research_speed:0 "0"
+    GER_faction_agitated_research_speed:0 "§R-2%§!"
+    GER_faction_angry_research_speed:0 "§R-4%§!"
+    GER_faction_violent_research_speed:0 "§R-8%§!"
+    GER_faction_rebellious_research_speed:0 "§R-10%§!"
+
+    GER_faction_fanatical_war_support:0 "§G+25%§!"
+    GER_faction_zealous_war_support:0 "§G+20%§!"
+    GER_faction_loyal_war_support:0 "§G+15%§!"
+    GER_faction_trusting_war_support:0 "§G+10%§!"
+    GER_faction_friendly_war_support:0 "§G+5%§!"
+    GER_faction_calm_war_support:0 "0"
+    GER_faction_worried_war_support:0 "§R-5%§!"
+    GER_faction_agitated_war_support:0 "§R-10%§!"
+    GER_faction_angry_war_support:0 "§R-15%§!"
+    GER_faction_violent_war_support:0 "§R-20%§!"
+    GER_faction_rebellious_war_support:0 "§R-25%§!"
+
+    GER_faction_loyal_stability:0 "§G+10%§!"
+    GER_faction_friendly_stability:0 "§G+5%§!"
+    GER_faction_calm_stability:0 "0"
+    GER_faction_worried_stability:0 "§R-5%§!"
+    GER_faction_agitated_stability:0 "§R-10%§!"
+    GER_faction_angry_stability:0 "§R-15%§!"
+    GER_faction_violent_stability:0 "§R-20%§!"
+    GER_faction_rebellious_stability:0 "§R-25%§!"
+
+    GER_Wehrmacht_political_power_gain_10:0 "£faction_ger_whermacht Wehrmacht"
+    GER_Wehrmacht_political_power_gain_9:0 "£faction_ger_whermacht Wehrmacht"
+    GER_Wehrmacht_political_power_gain_8:0 "£faction_ger_whermacht Wehrmacht"
+    GER_Wehrmacht_political_power_gain_7:0 "£faction_ger_whermacht Wehrmacht"
+    GER_Wehrmacht_political_power_gain_6:0 "£faction_ger_whermacht Wehrmacht"
+    GER_Wehrmacht_political_power_gain_5:0 "£faction_ger_whermacht Wehrmacht"
+    GER_Wehrmacht_political_power_gain_4:0 "£faction_ger_whermacht Wehrmacht"
+    GER_Wehrmacht_political_power_gain_3:0 "£faction_ger_whermacht Wehrmacht"
+    GER_Wehrmacht_political_power_gain_2:0 "£faction_ger_whermacht Wehrmacht"
+    GER_Wehrmacht_political_power_gain_1:0 "£faction_ger_whermacht Wehrmacht"
+    GER_SS_political_power_gain_10:0 "£faction_ger_ss SS"
+    GER_SS_political_power_gain_9:0 "£faction_ger_ss SS"
+    GER_SS_political_power_gain_8:0 "£faction_ger_ss SS"
+    GER_SS_political_power_gain_7:0 "£faction_ger_ss SS"
+    GER_SS_political_power_gain_6:0 "£faction_ger_ss SS"
+    GER_SS_political_power_gain_5:0 "£faction_ger_ss SS"
+    GER_SS_political_power_gain_4:0 "£faction_ger_ss SS"
+    GER_SS_political_power_gain_3:0 "£faction_ger_ss SS"
+    GER_SS_political_power_gain_2:0 "£faction_ger_ss SS"
+    GER_SS_political_power_gain_1:0 "£faction_ger_ss SS"
+
+    GER_Industrialists_research_speed_10:0 "£faction_ger_industrialists Промышленники"
+    GER_Industrialists_research_speed_9:0 "£faction_ger_industrialists Промышленники"
+    GER_Industrialists_research_speed_8:0 "£faction_ger_industrialists Промышленники"
+    GER_Industrialists_research_speed_7:0 "£faction_ger_industrialists Промышленники"
+    GER_Industrialists_research_speed_6:0 "£faction_ger_industrialists Промышленники"
+    GER_Industrialists_research_speed_5:0 "£faction_ger_industrialists Промышленники"
+    GER_Industrialists_research_speed_4:0 "£faction_ger_industrialists Промышленники"
+    GER_Industrialists_research_speed_3:0 "£faction_ger_industrialists Промышленники"
+    GER_Industrialists_research_speed_2:0 "£faction_ger_industrialists Промышленники"
+    GER_Industrialists_research_speed_1:0 "£faction_ger_industrialists Промышленники"
+
+    GER_Public_Support_war_support_11:0 "£faction_ger_public_support Народ"
+    GER_Public_Support_war_support_10:0 "£faction_ger_public_support Народ"
+    GER_Public_Support_war_support_9:0 "£faction_ger_public_support Народ"
+    GER_Public_Support_war_support_8:0 "£faction_ger_public_support Народ"
+    GER_Public_Support_war_support_7:0 "£faction_ger_public_support Народ"
+    GER_Public_Support_war_support_6:0 "£faction_ger_public_support Народ"
+    GER_Public_Support_war_support_5:0 "£faction_ger_public_support Народ"
+    GER_Public_Support_war_support_4:0 "£faction_ger_public_support Народ"
+    GER_Public_Support_war_support_3:0 "£faction_ger_public_support Народ"
+    GER_Public_Support_war_support_2:0 "£faction_ger_public_support Народ"
+    GER_Public_Support_war_support_1:0 "£faction_ger_public_support Народ"
+
+    GER_Wehrmacht_stability_8:0 "£faction_ger_whermacht Wehrmacht"
+    GER_Wehrmacht_stability_7:0 "£faction_ger_whermacht Wehrmacht"
+    GER_Wehrmacht_stability_6:0 "£faction_ger_whermacht Wehrmacht"
+    GER_Wehrmacht_stability_5:0 "£faction_ger_whermacht Wehrmacht"
+    GER_Wehrmacht_stability_4:0 "£faction_ger_whermacht Wehrmacht"
+    GER_Wehrmacht_stability_3:0 "£faction_ger_whermacht Wehrmacht"
+    GER_Wehrmacht_stability_2:0 "£faction_ger_whermacht Wehrmacht"
+    GER_Wehrmacht_stability_1:0 "£faction_ger_whermacht Wehrmacht"
+    GER_SS_stability_8:0 "£faction_ger_ss SS"
+    GER_SS_stability_7:0 "£faction_ger_ss SS"
+    GER_SS_stability_6:0 "£faction_ger_ss SS"
+    GER_SS_stability_5:0 "£faction_ger_ss SS"
+    GER_SS_stability_4:0 "£faction_ger_ss SS"
+    GER_SS_stability_3:0 "£faction_ger_ss SS"
+    GER_SS_stability_2:0 "£faction_ger_ss SS"
+    GER_SS_stability_1:0 "£faction_ger_ss SS"
+    GER_Industrialists_stability_8:0 "£faction_ger_industrialists Промышленники"
+    GER_Industrialists_stability_7:0 "£faction_ger_industrialists Промышленники"
+    GER_Industrialists_stability_6:0 "£faction_ger_industrialists Промышленники"
+    GER_Industrialists_stability_5:0 "£faction_ger_industrialists Промышленники"
+    GER_Industrialists_stability_4:0 "£faction_ger_industrialists Промышленники"
+    GER_Industrialists_stability_3:0 "£faction_ger_industrialists Промышленники"
+    GER_Industrialists_stability_2:0 "£faction_ger_industrialists Промышленники"
+    GER_Industrialists_stability_1:0 "£faction_ger_industrialists Промышленники"
+    GER_Public_Support_stability_8:0 "£faction_ger_public_support Народ"
+    GER_Public_Support_stability_7:0 "£faction_ger_public_support Народ"
+    GER_Public_Support_stability_6:0 "£faction_ger_public_support Народ"
+    GER_Public_Support_stability_5:0 "£faction_ger_public_support Народ"
+    GER_Public_Support_stability_4:0 "£faction_ger_public_support Народ"
+    GER_Public_Support_stability_3:0 "£faction_ger_public_support Народ"
+    GER_Public_Support_stability_2:0 "£faction_ger_public_support Народ"
+    GER_Public_Support_stability_1:0 "£faction_ger_public_support Народ"
+
+    GER_Wehrmacht_wargames:0 "£faction_ger_whermacht Военные игры"
+    GER_Wehrmacht_wargames_tt:0 "£faction_ger_whermacht Вермахт лоялен и имеет влияние\nБонус увеличивается с каждым уровнем влияния"
+
+    GER_Wehrmacht_lessons_from_war:0 "£faction_ger_whermacht Уроки войны"
+    GER_Wehrmacht_lessons_from_war_tt:0 "£faction_ger_whermacht Вермахт лоялен и имеет влияние\nУвеличивает длительность на §Y14 Дней§! за каждый уровень влияния"
+
+    GER_SS_patriotic_fighting:0 "£faction_ger_ss Патриотическая борьба"
+    GER_SS_patriotic_fighting_tt:0 "£faction_ger_ss СС лоялен и имеет влияние\nУвеличивает длительность на §Y7 Дней§! за каждый уровень влиянияe"
+
+    GER_SS_special_orders:0 "£faction_ger_ss Государственные заказы"
+    GER_SS_special_orders_tt:0 "£faction_ger_ss СС лоялен и имеет влияние\nУвеличивает длительность на §Y30 Дней§! за каждый уровень влияния"
+    
+    GER_SS_oak_operation:0 "£faction_ger_ss Операция Дуб"
+    GER_SS_oak_operation_tt:0 "Операция по спасению Муссолини"
+    GER_SS_grief_operation:0 "£faction_ger_ss Операция Гриф"
+    GER_SS_grief_operation_tt:0 "Сформирует 150-ю Танковую бригаду СС"
+    
+    GER_Industrialists_invest_in_porsche:0 "£faction_ger_industrialists Инвестиции в Порше"
+    GER_Industrialists_invest_in_henschel:0 "£faction_ger_industrialists Инвестиции в Хеншель"
+    GER_Industrialists_invest_in_krupp:0 "£faction_ger_industrialists Инвестиции в Крупп"
+    GER_Industrialists_invest_in_man:0 "£faction_ger_industrialists Инвестиции в MAN"
+    GER_Industrialists_invest_in_daimlerbenz:0 "£faction_ger_industrialists Инвестиции в Даймлер-Бенц"
+    GER_Industrialists_invests_tt:0 "£faction_ger_industrialists Промышленники должны быть §Gдружелюбны§! и иметь §YВлияние§!.\n§GУвеличивает§! размер финансов за каждый уровень §YВлияния§!."
+
+    GER_Industrialists_political_favours:0 "£faction_ger_industrialists Политические льготы"
+    GER_Industrialists_political_favours_tt:0 "£faction_ger_industrialists Промышленники должны быть дружелюбны и иметь влияние\nУвеличивает длительность на §Y30 Дней§! за каждый уровень §YВлияния§!"
+
+    GER_Public_Support_inspire_the_public:0 "£faction_ger_public_support Вдохновить народ"
+    GER_Public_Support_inspire_the_public_tt:0 "£faction_ger_public_support Народ должен быть дружелюбен и иметь влияние\nУвеличивает длительность на §Y14 Дней§! за каждый уровень §GОтношений§!"
+
+    GER_Public_Support_mobilize_the_public:0 "£faction_ger_public_support Мобилизовать людей"
+    GER_Public_Support_mobilize_the_public_tt:0 "£faction_ger_public_support Народ должен быть дружелюбен и иметь влияние\nУвеличивает длительность на §Y7 Дней§! за каждый уровень §YВлияния§!"
+    
+    GER_creation_of_the_panzer_core:0 "Создание танкового корпуса"
+    GER_creation_of_the_panzer_core_tt:0 "Имейте §G400§! §YСредних танков§! и §G800§! §YЛегких танков§! в армии\n"
+
+    GER_creation_of_the_panzer_core_tt2:1 "£faction_ger_whermacht §YВермахт§! станет более §GУверенным§! увеличивая §YСтабильность§! на §G10%§!"
+    
+    
+    
+    Wehrmacht_disband_the_ss:0 "Распустить СС"
+    Wehrmacht_disband_the_ss_desc:0 "СС были полезны в создании Германского рейха, но теперь они создают больше проблем, чем приносят пользу. Вермахт выступает против параллельной структуры командования, и выполнение их требований приведет к большей лояльности с их стороны."
+    Wehrmacht_disband_the_ss_tt:0 "§YСС§! §gРаспущено§! и §YWehrmacht§! станет §GБолее лояльным§! и влиятельным"
+    SS_destroyed:0 "СС Распущено"
+
+    SS_himmler_wants_field_command_tt:0 "§YСС§! станет §Gболее дружелюбным§!"
+
+    SS_form_SS_high_command:0 "£faction_ger_ss Сформировать высшее командование СС"
+    SS_form_SS_high_command_desc:0 "Гиммлер получил одобрение Ваффен-СС на формирование собственного высшего командования, Kommandoamt der Waffen-SS в рамках SS-Führungshauptamt, которое было создано в августе 1940 года. Оно получило командование SS-VT (Leibstandarte и Verfügungs-Division). , переименованная в Das Reich) и вооруженные полки SS-TV (Totenkopf-Division вместе с несколькими независимыми Totenkopf-Standarten)."
+    SS_form_SS_high_command_tt:0 "§YCC§! станет §RБольше злостным§!"
+    SS_form_SS_high_command_tt2:0 "§YСС§! станет §Gгораздо более влиятельным§! и §YВермахт§! станет §Rменее влиятельным§!"
+
+    GER_danzig_speech_tt:1 "£faction_ger_public_support §YНарод§! станет §Gподдерживать§! войну увеличив §YПоддержку войны§! на §G10%§!"
+
+    GER_fall_of_france_speech_tt:1 "£faction_ger_public_support §YНарод§! станет больше §Gподдерживать§! войну увеличив §YСтабильность§! на §G10%§!"
+
+    GER_total_war_speech_tt:1 "£faction_ger_public_support §YНарод§! станет больше §Gподдерживать§! войну увеличив §YПоддержку войны§! на §G15%§!"
+
+    GER_keep_up_with_light_tank_research:0 "Новаторская технология легких танков"
+    GER_keep_up_with_light_tank_research_tt:0 "£faction_ger_industrialists Промышленники станут более §Gэффективными§! §Gувеличивая§! §YСкорость исследования§! на §G2%§!"
+    GER_keep_up_with_light_tank_research_tt2:0 "£faction_ger_industrialists Промышленники потеряют §YKrupp§! из-за банкротства §Rуменьшая§! §YСкорость исследования§! на §R2%§!"
+
+    GER_keep_up_with_medium_tank_research:0 "Новаторская технология средних танков"
+    GER_keep_up_with_medium_tank_research_tt:0 "£faction_ger_industrialists Промышленники станут более §Gэффективными§! §Gувеличивая§! §YСкорость исследования§! на §G2%§!"
+    GER_keep_up_with_medium_tank_research_tt2:0 "£faction_ger_industrialists Промышленники потеряют §YDaimler§! из-за банкротства §Rуменьшая§! §YСкорость исследования§! на §R2%§!"
+
+    GER_keep_up_with_modern_tank_research:0 "Новаторская технология современных танков"
+    GER_keep_up_with_modern_tank_research_tt:0 "£faction_ger_industrialists Промышленники станут более §Gэффективными§! §Gувеличивая§! §YСкорость исследования§! на §G2%§!"
+    GER_keep_up_with_modern_tank_research_tt2:0 "£faction_ger_industrialists Промышленники потеряют §YMAN§! из-за банкротства §Rуменьшая§! §YСкорость исследования§! на §R2%§!"
+
+    GER_keep_up_with_heavy_tank_research:0 "Новаторская технология тяжёлых танков"
+    GER_keep_up_with_heavy_tank_research_tt:0 "£faction_ger_industrialists Промышленники станут более §Gэффективными§! §Gувеличивая§! §YСкорость исследования§! на §G2%§!"
+    GER_keep_up_with_heavy_tank_research_tt2:0 "£faction_ger_industrialists Промышленники потеряют §YHenschel§! из-за банкротства §Rуменьшая§! §YСкорость исследования§! на §R2%§!"
+
+    GER_keep_up_with_air_research:0 "Новаторская технология самолётов"
+    GER_keep_up_with_air_research_tt:0 "£faction_ger_industrialists Промышленники станут более §Gэффективными§! §Gувеличивая§! §YСкорость исследования§! на §G4%§!"
+    GER_keep_up_with_air_research_tt2:0 "£faction_ger_industrialists IПромышленники потеряют §YJunkers§!, §YHeinkel§! и §YDornier§! из-за отсутствия финансирования §Rуменьшая§! §YСкорость исследования§! на §R4%§!"
+
+    krupp_lost:0 "Крупп обанкротился"
+    daimler_lost:0 "Даймлер-бенц обанкротился"
+    man_lost:0 "MAN обанкротился"
+    henschel_lost:0 "Хеншель обанкротился"
+
+    GER_STABILITY_TOOLTIP:0 "Stability bonus"
+
+    GER_befriending_faction:0 "Making Political Overtures"
+
+    SS_recruitment_germany:0 "£faction_ger_ss Вербовать Ваффен-СС"
+
+    SS_recruitment_denmark:0 "Сформировать 5-ю моторизованную дивизию СС 'Викинг'."
+    SS_recruitment_denmark_tt:0 "В Берлине будет создана 5-я моторизованная дивизия СС 'Викинг'."
+
+    SS_recruitment_norway:0 "Сформировать 6-ю Горнострелковую дивизию СС 'Норд'"
+    SS_recruitment_norway_tt:0 "В Берлине будет создана 6-я Горнострелковая дивизия СС 'Норд'"
+
+    SS_recruitment_prinz_eugen:0 "Сформировать 7-ю горнопехотную дивизию СС 'Принц Ойген'"
+    SS_prinz_eugen_recruitment_tt:0 "В Берлине будет создана 7-я добровольческая горнострелковая дивизия СС 'Принц Ойген'"
+
+    SS_recruitment_florian_geyer:0 "Сформировать 8-ю кавалерийскую дивизию СС 'Флориан Гейер'"
+    SS_florian_geyer_recruitment_tt:0 "В Берлине будет создана 8-я кавалерийская дивизия СС «Флориан Гейер»."
+
+    SS_recruitment_Hohenstaufen:0 "Сформировать 9-ю панцергренадерcкую дивизию СС 'Хоэнштауфен'"
+    SS_Hohenstaufen_recruitment_tt:0 "В Берлине будет создана 9-я панцергренадерcкая дивизия СС 'Хоэнштауфен'"
+
+    SS_recruitment_Frundsberg:0 "Сформировать 10-ю танковую дивизию СС 'Фрундсберг'"
+    SS_Frundsberg_recruitment_tt:0 "В Берлине будет создана 10-я танковая дивизия СС 'Фрундсберг'"
+
+    SS_recruitment_Nordland:0 "Сформировать 11-ю панцергренадерcкую дивизию СС 'Нордланд'"
+    SS_Nordland_recruitment_tt:0 "В Берлине будет создана 11-я панцергренадерcкая дивизия СС 'Нордланд'"
+
+    SS_recruitment_Hitlerjugend:0 "Сформировать 12-ю танковую дивизию СС 'Гитлерюгенд'"
+    SS_Hitlerjugend_recruitment_tt:0 "В Берлине будет создана 12-я танковая дивизия СС 'Гитлерюгенд'"
+
+    SS_recruitment_Handschar:0 "Сформировать 13-ю Горнострелковую дивизию СС 'Хандшар'"
+    SS_Handschar_recruitment_tt:0 "В Берлине будет создана 13-я Горнострелковая дивизия СС 'Хандшар'"
+
+    SS_recruitment_14:0 "Сформировать 14-ю гренадерскую дивизию СС"
+    SS_14_recruitment_tt:0 "В Берлине будет создана 14-я гренадерская дивизия СС (Галицкая №1)"
+
+    SS_recruitment_15:0 "Сформировать 15-ю гренадерскую дивизию СС"
+    SS_15_recruitment_tt:0 "В Берлине будет создана 15-я гренадерская дивизия СС (латышская №1)"
+
+    SS_recruitment_Reichsfuhrer_SS:0 "Сформировать 16-ю панцергренадерcкую дивизию СС 'Рейхсфюрер СС'"
+    SS_Reichsfuhrer_SS_recruitment_tt:0 "В Берлине будет создана 16-я панцергренадерcкая дивизия СС 'Рейхсфюрер СС'"
+
+    SS_recruitment_Berlichingen:0 "Сформировать 17-ю панцергренадерcкую дивизию СС 'Гетц фон Берлихинген'"
+    SS_Berlichingen_recruitment_tt:0 "В Берлине будет создана 17-я панцергренадерcкая дивизия СС 'Гетц фон Берлихинген'"
+
+    SS_recruitment_Wessel:0 "Сформировать 18-ю панцергренадерcкую дивизию СС 'Хорст Вессель'"
+    SS_Wessel_recruitment_tt:0 "В Берлине будет создана 18-я панцергренадерcкая дивизия СС 'Хорст Вессель'"
+
+    SS_recruitment_19:0 "Сформировать 19-ю гренадерскую дивизию СС"
+    SS_19_recruitment_tt:0 "В Берлине будет создана 19-я гренадерская дивизия СС (латышская №2)"
+
+    SS_recruitment_20:0 "Сформировать 20-ю гренадерскую дивизию СС"
+    SS_20_recruitment_tt:0 "В Берлине будет создана 20-я гренадерская дивизия СС (эстонская №1)"
+
+    SS_recruitment_skanderberg:0 "Сформировать 21-ю горнопехотную дивизию СС 'Сканденберг'"
+    SS_skanderberg_recruitment_tt:0 "В Берлине будет создана 21-я горнопехотная дивизия СС 'Сканденберг' (албанская №1)"
+
+    SS_recruitment_maria_theresia:0 "Сформировать 22-ю кавалерийскую дивизию СС 'Мария Терезия'"
+    SS_maria_theresia_recruitment_tt:0 "В Берлине будет создана 22-я кавалерийская дивизия СС 'Мария Терезия'"
+
+    SS_recruitment_netherlands:0 "Сформировать 23-ю добровольческую панцергренадерскую дивизию СС 'Недерланд'"
+    SS_recruitment_netherlands_tt:0 "В Берлине будет создана 23-я добровольческая панцергренадерская дивизия СС 'Недерланд' (нидерландская №1)"
+
+    SS_recruitment_KAMA_karstjager:0 "Сформировать 24-ю горнопехотную дивизию СС 'Карстъегер'"
+    SS_kama_karstjager_recruitment_tt:0 "В Берлине будет создана 24-я горнопехотная дивизия СС 'Карстъегер'"
+
+    SS_recruitment_hunyadi:0 "Сформировать 25-ю гренадерскую дивизию СС 'Хуньяди'"
+    SS_hunyadi_recruitment_tt:0 "В Берлине будет создана 25-я гренадерская дивизия СС 'Хуньяди' (венгерская №1)"
+
+    SS_recruitment_hungaria:0 "Сформировать 26-ю гренадерскую дивизию СС 'Гомбёс'"
+    SS_hungaria_recruitment_tt:0 "В Берлине будет создана 26-я гренадерская дивизия СС 'Гомбёс' (венгерская №2)"
+
+    SS_recruitment_RONA:0 "Сформировать штурмовую бригаду ваффен СС 'РОНА'"
+    SS_RONA_recruitment_tt:0 "В Берлине будет создана штурмовая бригада ваффен СС 'РОНА' (русская №1)"
+
+    SS_recruitment_belgium:0 "Сформировать 28-ю добровольческую гренадерскую дивизию СС 'Валлония'"
+    SS_recruitment_belgium_tt:0 "В Берлине будет создана 28-я добровольческая гренадерская дивизия СС 'Валлония'"
+
+    SS_recruitment_29:0 "Сформировать 29-ю гренадерскую дивизию СС"
+    SS_29_recruitment_tt:0 "В Берлине будет создана 29-я гренадерская дивизия СС (итальянская №1)"
+
+    SS_recruitment_30:0 "Сформировать 30-ю гренадерскую дивизию СС"
+    SS_30_recruitment_tt:0 "В Берлине будет создана 30-я гренадерская дивизия СС (русская №2)"
+
+    SS_recruitment_31:0 "Сформировать 31-ю добровольческую гренадерскую дивизию СС 'Бачка'"
+    SS_31_recruitment_tt:0 "В Берлине будет создана 31-я добровольческая гренадерская дивизия СС 'Бачка'"
+    
+    grossdeutschland_recruitment:0 "Сформировать моторизированную дивизию 'Гроссдойчланд'"
+    grossdeutschland_recruitment_tt:0 "В Берлине будет создана моторизированная дивизия 'Гроссдойчланд'"
+    
+    herman_goering_recruitment:0 "Сформировать танковую дивизию люфтваффе «Герман Геринг»"
+    herman_goering_recruitment_tt:0 "В Берлине будет создана танковая дивизия люфтваффе «Герман Геринг»"
+    
+    dirlevanger_recruitment:0 "Сформировать карательное подразделение СС"
+    dirlevanger_recruitment_tt:0 "В Берлине будет создано карательное подразделение СС под командованием Оскара Дирлевангера"
+    
+    SS_recruitment_france:0 "Сформировать 33-ю гренадерскую дивизию СС 'Карл Великий'"
+    SS_recruitment_france_tt:0 "В Берлине будет создана 33-я гренадерская дивизия СС 'Карл Великий' (французкая №1)"
+
+    SS_himmler_speer_agreement:0 "Соглашение Гиммлера-Шпеера"
+    SS_himmler_speer_agreement_desc:0 "В 1942 году, после назначения Альберта Шпеера, Гиммлер предложил, чтобы от 5% до 8% военного производства Германии было перенаправлено Ваффен-СС в обмен на лояльных рабочих СС для промышленности Германии. Выполнение этого решения приведет к появлению новых юнитов СС с 5/45/90% бесплатным снаряжением в зависимости от выбранного варианта."
+
+    GER_take_warsaw:0 "Take Warsaw"
+    GER_take_XX_success_tt:0 "§RВлияние СС увеличится на 5 пунктов.§!\n§RЗлость СС увеличится на 10 пунктов.§!\n§RВлияние Вермахта уменьшится на 5 пунктов§!"
+    GER_take_XX_fail_tt:0 "§GВлияние Вермахта увеличится на 10 пунктов.§!\n§GЗлость Вермахта уменьшится на 5 пунктов§!\n§GВлияние СС уменьшится на 5 пунктов§!"
+
+    GER_take_norway:0 "Захват Норвегии"
+    GER_take_paris:0 "Захват Парижа"
+    GER_take_moscow:0 "Захват Москвы"
+    GER_take_leningrad:0 "Захват Ленинграда"
+    GER_take_stalingrad:0 "Захват Сталинграда"
+
+    SS_waffen_SS_formation:0 "Formation of the Waffen-SS"
+    SS_waffen_SS_formation_desc:0 "The Waffen-SS are now full-fledged combat divisions."
+    SS_formation_tt:0 "Unlock Waffen-SS Division template"
+
+    GER_naval_rearmament_spirit:0 "Перевооружение флота"
+
+    GER_fall_weiss:0 "План Вайс"
+    GER_fall_weiss_desc:0 ""
+    
+    GER_weserubung:0 "Операция Везерюбунг"
+    GER_weserubung_desc:0 ""
+    GER_operation_weserubung_tt:0 "Хотя нам еще предстоит выступить против другой страны, у нас есть элемент неожиданности. Если мы хотим повторить это в матче с Норвегией, то нам могут сойти с рук амбициозные вторжения, но мы должны действовать быстро."
+
+    GER_gelb:0 "План Гельб"
+    GER_gelb_desc:0 ""
+    
+    GER_fall_rot:0 "План Рот"
+    GER_fall_rot_desc:0 ""
+    
+    GER_hammerkopf:0 "Второе арденское наступление"
+    GER_hammerkopf_desc:0 ""
+
+    GER_barbarossa:0 "Операция 'Барбаросса'"
+    GER_barbarossa_desc:0 "We have prepared extra supplies for our grand offensive, the time is now to strike the final victory against the communist threat!"
+
+    GER_me262_1943:0 "£faction_ger_industrialists Первый реактивный самолёт"
+    GER_me262_1943_desc:0 "Наша реактивная техника далеко продвинулась вперед, и мы уже проектируем наш первый реактивный истребитель. Потребуется много политических маневров и благосклонности, чтобы подтолкнуть люфтваффе к внедрению этой неизвестной технологии"
+
+    GER_reopen_trade_with_sweden:0 "Reopen Trade with Sweden"
+    GER_reopen_trade_with_sweden_desc:0 "Britain has used Norway as a means of coercing Sweden to stop trading with us, we must conquer Norway to force the Swedish to reopen trade with us."
+
+    GER_close_off_sweden:0 "Close off Sweden"
+    GER_close_off_sweden_desc:0 "Now we have control over Norway, we are at full liberty to force Sweden to trade only with the Axis"
+
+    GER_volkssturm_battalion_des:0 "Разблокирует шаблон дивизии фольксштурма."
+
+    GER_volkssturm_battalions_berlin:0 "Берлинские дивизии фольксштурма"
+    GER_volkssturm_battalions_berlin_desc:0 "Развернуть 6 батальонов Фольксштурма в Берлине"
+
+    GER_volkssturm_battalions_frankfurt:0 "Франкфуртские дивизии фольксштурма"
+    GER_volkssturm_battalions_frankfurt_desc:0 "Развернуть 6 батальонов Фольксштурма во Франкфурте"
+
+    GER_volkssturm_battalions_munich:0 "Мюнхенские дивизии фольксштурма"
+    GER_volkssturm_battalions_munich_desc:0 "Развернуть 6 батальонов Фольксштурма в Мюнхене"
+
+    GER_exploitation_of_western_poland:0 "Эксплуатация Польши"
+    GER_exploitation_of_western_poland_desc:0 "§RПовредит§! Инфраструктуру и гражданские заводы."
+    GER_exploitation_of_western_poland_tt:0 "Вся §YЗападная польша§!контролируется Германией"
+
+    GER_exploitation_of_holland:0 "Эксплуатация Нидерландов"
+    GER_exploitation_of_holland_desc:0 "§RПовредит§! Инфраструктуру и гражданские заводы."
+    GER_exploitation_of_holland_tt:0 "Вся §YГолландия§! контролируется Германией"
+
+    GER_exploitation_of_belgium:0 "Эксплуатация Бельгии"
+    GER_exploitation_of_belgium_desc:0 "§RПовредит§! Инфраструктуру и гражданские заводы."
+    GER_exploitation_of_belgium_tt:0 "Вся §YБельгия§! контролируется Германией"
+
+    GER_exploitation_of_luxembourg:0 "Эксплуатация Люксембурга"
+    GER_exploitation_of_luxembourg_desc:0 "§RПовредит§! Инфраструктуру и гражданские заводы."
+    GER_exploitation_of_luxembourg_tt:0 "Весь §YЛюксембург§! контролируется Германией"
+
+    GER_exploitation_of_france:0 "Эксплуатация Франции"
+    GER_exploitation_of_france_desc:0 "§RПовредит§! Инфраструктуру и гражданские заводы."
+    GER_exploitation_of_france_tt:0 "Вся §YФранция§! контролируется Германией"
+
+    GER_exploitation_of_denmark:0 "Эксплуатация Дании"
+    GER_exploitation_of_denmark_desc:0 "§RПовредит§! Инфраструктуру и гражданские заводы."
+    GER_exploitation_of_denmark_tt:0 "Вся §YДания§! контролируется Германией"
+
+    GER_exploitation_of_norway:0 "Эксплуатация Норвегии"
+    GER_exploitation_of_norway_desc:0 "§RПовредит§! Инфраструктуру и гражданские заводы."
+    GER_exploitation_of_norway_tt:0 "Вся §YНорвегия§! контролируется Германией"
+
+    GER_exploitation_of_belarus:0 "Эксплуатация Беларусии"
+    GER_exploitation_of_belarus_desc:0 "§RПовредит§! Инфраструктуру и гражданские заводы."
+    GER_exploitation_of_belarus_tt:0 "Вся §YБеларусь§! и §YСтраны Балтии§! контролируется Германией"
+
+    GER_exploitation_of_ukraine:0 "Эксплуатация Украины"
+    GER_exploitation_of_ukraine_desc:0 "§RПовредит§! Инфраструктуру и гражданские заводы."
+    GER_exploitation_of_ukraine_tt:0 "Вся §YУкраина§! контролируется Германией"
+
+    GER_danzig_speech:0 "Речь 'Данциг останется немецким'"
+    GER_danzig_speech_desc:0 "'My Dear Danzigers, Not only you experience this moment with deepest emotion; nay, the entire German nation experiences it with you, and I, too, am aware of the greatness of the hour when I, for the first time, tread on the soil which German settlers occupied five centuries ago and which for five centuries was German, and which, thereof you may rest assured, will remain German.'"
+    GER_fall_of_france_speech:0 "Речь 'Версаль отомщен'"
+    GER_fall_of_france_speech_desc:0 "'Now that we defeated the French they will feel what you get when you try to hold the German people down! They will pay our troops that we leave to guard and protect the land!'"
+    GER_total_war_speech:0 "Речь 'Тотальная война'"
+    GER_total_war_speech_desc:0 "'Do you believe with the Führer and us in the final total victory of the German people? Are you and the German people willing to work, if the Führer orders, 10, 12 and if necessary 14 hours a day and to give everything for victory? Do you want total war? If necessary, do you want a war more total and radical than anything that we can even imagine today?'"
+
+    GER_west_wall_border_watch:0 "Build the Westwall Border Watch"
+    GER_west_wall_border_watch_dd:0 "Builds §Y3 Land Forts§! on each province along the French Border from Saarland to Baden.\n"
+    GER_west_wall_border_watch_completed:0 "The Westwall Border Watch has been completed"
+
+    GER_west_wall_limes_line:0 "Build the Westwall Limes Line"
+    GER_west_wall_limes_line_desc:0 "The westwall needs to be improved to include any attack from the Benelux area, aswell as reinforcing the French line."
+    GER_west_wall_limes_line_dd:0 "Builds §Y4 Land Forts§! on each province along the French and Belgian Border from Moselland to Baden.\n"
+    GER_west_wall_limes_line_completed:0 "The Limes Line has been completed"
+
+    GER_west_wall_air_Defence_zone:0 "Build the Westwall Air Defence Zone"
+    GER_west_wall_air_Defence_zone_dd:0 "Builds §Y2 Anti Air Emplacements§! Along the French Border from Saarland to Baden"
+
+    GER_west_wall_geldern_line:0 "Build the Westwall Geldern Line"
+    GER_west_wall_geldern_line_dd:0 "Builds up to §Y7 Land Forts§! on each province along the Belgian and Dutch Border from Western Rhineland to Moselland.\n"
+
+    GER_festungs_category:0 "Города крепости"
+    GER_festungs_category_name:0 "Выберите на карте, где строить города-крепости"
+
+    GER_norway_atlantik_wall:0 "Атлантический вал в норвегии"
+    GER_german_benelux_atlantik_wall:0 "Атлантический вал в Бенилюксе"
+    GER_france_atlantik_wall:0 "Атлантический вал во Франции"
+
+    GER_northern_germany_air_defense:0 "Зенитные башни в Гамбурге"
+    GER_western_germany_air_defense:0 "Зенитные башни во Франкфурте"
+    GER_eastern_germany_air_defense:0 "Зенитные башни в Берлине"
+    GER_austrian_air_defense:0 "Зенитные башни в Вене"
+
+    GER_ostwall_baltic:0 "Северная часть линии 'Пантера'"
+    GER_ostwall_baltic_dd:0 "Постройка §Y2ед Укреплений§! в каждой провинции на линии Нарва-Псков-Витебск.\n"
+    
+    GER_ostwall_belarus:0 "Южная часть линии 'Пантера'"
+    GER_ostwall_belarus_dd:0 "Постройка §Y2ед Укреплений§! в каждой провинции на линии Витебск-Могилёв-Бобруйск.\n"
+
+    GER_ostwall_ukraine:0 "Линия 'Вотан'"
+    GER_ostwall_ukraine_dd:0 "Постройка §Y2-6ед Укреплений§! в каждой провинции на линии Киев-Запорожье-Мелитополь.\n"
+
+    atlantikwall_afo_tooltip:0 "Place §YCoastal Forts§! in each of the following Atlantic coastal states that are fully controlled by you:\n"
+    atlantikwall_afo_tooltip_2:0 "§YOstlandet§!\n§YVestlandet§!\n§YTrondelag§!\n§YNord-Norge§!\n"
+    atlantikwall_afo_tooltip_3:0 "§YVlaanderen§!\n§YHolland§!\n§YFriesland§!\n§YWeser-Ems§!\n§YHannover§!\n§YSchleswig-Holstein§!\n§YJutland§!\n"
+    atlantikwall_afo_tooltip_4:0 "§YAquitaine§!\n§YPoitou§!\n§YLoire§!\n§YBrittany§!\n§YNormandy§!\n§YPas de Calais§!\n"
+
+    GER_festung_paris:0 "[FRA.GetFlag] Крепость Париж"
+    GER_festung_brest:0 "[FRA.GetFlag] Крепость Брест"
+    GER_festung_calais:0 "[FRA.GetFlag] Крепость Кале"
+    GER_festung_bordeaux:0 "[FRA.GetFlag] Крепость Бордо"
+    GER_festung_lyon:0 "[FRA.GetFlag] Крепость Лион"
+    GER_festung_toulon:0 "[FRA.GetFlag] Крепость Тулон"
+    GER_festung_brussels:0 "[BEL.GetFlag] Крепость Брюссель"
+    GER_festung_antwerpen:0 "[BEL.GetFlag] Крепость Антверпен"
+    GER_festung_rotterdam:0 "[HOL.GetFlag] Крепость Роттердам"
+    GER_festung_amsterdam:0 "[HOL.GetFlag] Крепость Амстердам"
+    GER_festung_frankfurt:0 "[GER.GetFlag] Крепость Франкфурт"
+    GER_festung_stuttgart:0 "[GER.GetFlag] Крепость Штутгарт"
+    GER_festung_munich:0 "[GER.GetFlag] Крепость Мюнхен"
+    GER_festung_hamburg:0 "[GER.GetFlag] Крепость Гамбург"
+    GER_festung_berlin:0 "[GER.GetFlag] Крепость Берлин"
+    GER_festung_danzig:0 "[GER.GetFlag] Крепость Данцинг"
+    GER_festung_konigsberg:0 "[GER.GetFlag] Крепость Кёнигсберг"
+    GER_festung_hannover:0 "[GER.GetFlag] Крепость Ганновер"
+    GER_festung_vienna:0 "[GER.GetFlag] Крепость Вена"
+    GER_festung_oder:0 "[GER.GetFlag] Крепость Одер"
+    GER_festung_rhine:0 "[GER.GetFlag] Крепость Рейн"
+    GER_festung_elbe:0 "[GER.GetFlag] Крепость Эльба"
+    GER_festung_prague:0 "[CZE.GetFlag] Крепость Прага"
+    GER_festung_brno:0 "[CZE.GetFlag] Крепость Брно"
+    GER_festung_budapest:0 "[HUN.GetFlag] Крепость Будапешт"
+    GER_festung_milan:0 "[ITA.GetFlag] Крепость Милан"
+    GER_festung_rome:0 "[ITA.GetFlag] Крепость Рим"
+    GER_festung_warsaw:0 "[POL.GetFlag] Крепость Варшава"
+    GER_festung_krakow:0 "[POL.GetFlag] Крепость Краков"
+
+    develop_german_coast:0 "Развитие прибрежных регионов"
+    develop_german_coast_desc:0 "In order to grow our Navy we must make more room for dockyards"
+
+    SOV_internal_factions:0 "Внутренние Фракции"
+    SOV_internal_factions_desc:1 "Людям России нужна сильная рука, чтобы вести их к величию. Пятилетние планы гарантируют, что эпоха процветания не за горами, и нам нужно, чтобы все народы страны гарантировали свою поддержку, для максимальной реализации наших ресурсов.\n\n"
+    
+    SOV_commissars_name_text:0 "Коммисары"
+    SOV_army_name_text:0 "Армия"
+    SOV_workers_name_text:0 "Рабочие"
+    SOV_peasants_name_text:0 "Крестьяне"
+    SOV_ui_attitude_header:0 "Отношение"
+
+    SOV_commissars_attitude_status_amount:0 "[Root.GetCommissarsAttitudeLevel]"
+    SOV_army_attitude_status_amount:0 "[Root.GetArmyAttitudeLevel]"
+    SOV_workers_attitude_status_amount:0 "[Root.GetWorkersAttitudeLevel]"
+    SOV_peasants_attitude_status_amount:0 "[Root.GetPeasantsAttitudeLevel]"
+
+    SOV_commissars_influence_status_amount:0 "[ROOT.GetCommissarsInfluenceLevel]"
+    SOV_army_influence_status_amount:0 "[ROOT.GetArmyInfluenceLevel]"
+    SOV_workers_influence_status_amount:0 "[ROOT.GetWorkersInfluenceLevel]"
+    SOV_peasants_influence_status_amount:0 "[ROOT.GetPeasantsInfluenceLevel]"
+
+    SOV_commissars_political_power_gain_status_amount:0 "[Root.GetCommissarsPoliticalPowerGainLevel]"
+    SOV_army_political_power_gain_status_amount:0 "[Root.GetArmyPoliticalPowerGainLevel]"
+
+    SOV_workers_factory_output_status_amount:0 "[Root.GetWorkersFactoryOutputLevel]"
+
+    SOV_peasants_consumer_goods_status_amount:0 "[Root.GetPeasantsConsumerGoodsLevel]"
+
+    SOV_commissars_stability_status_amount:0 "[ROOT.GetCommissarsStabilityLevel]"
+    SOV_army_stability_status_amount:0 "[ROOT.GetArmyStabilityLevel]"
+    SOV_workers_stability_status_amount:0 "[ROOT.GetWorkersStabilityLevel]"
+    SOV_peasants_stability_status_amount:0 "[ROOT.GetPeasantsStabilityLevel]"
+    SOV_army_research_speed_status_amount:0 "[ROOT.GetArmyResearchspeedLevel]"
+
+    SOV_faction_loyal_attitude:0 "§CЛояльное§!"
+    SOV_faction_friendly_attitude:0 "§GДружелюбное§!"
+    SOV_faction_calm_attitude:0 "Спокойное"
+    SOV_faction_worried_attitude:0 "§YТревожное§!"
+    SOV_faction_agitated_attitude:0 "§OВзвольнованное§!"
+    SOV_faction_angry_attitude:0 "§OСердитое§!"
+    SOV_faction_violent_attitude:0 "§RЖестокое§!"
+    SOV_faction_rebellious_attitude:0 "§RМятежное§!"
+
+    SOV_faction_total_influence:0 "§OПолное§!"
+    SOV_faction_widespread_influence:0 "§OМассовое§!"
+    SOV_faction_high_influence:0 "§YВысокое§!"
+    SOV_faction_moderate_influence:0 "§YУмеренное§!"
+    SOV_faction_low_influence:0 "§YНизкое§!"
+    SOV_faction_tiny_influence:0 "Крошечное"
+    SOV_faction_no_influence:0 "§gНет§!"
+
+    SOV_faction_loyal_political_power_gain:0 "§G+10%§!"
+    SOV_faction_friendly_political_power_gain:0 "§G+5%§!"
+    SOV_faction_calm_political_power_gain:0 "0"
+    SOV_faction_worried_political_power_gain:0 "§R-5%§!"
+    SOV_faction_agitated_political_power_gain:0 "§R-10%§!"
+    SOV_faction_angry_political_power_gain:0 "§R-15%§!"
+    SOV_faction_violent_political_power_gain:0 "§R-20%§!"
+    SOV_faction_rebellious_political_power_gain:0 "§R-25%§!"
+
+    SOV_faction_loyal_factory_output:0 "§G+20%§!"
+    SOV_faction_trusting_factory_output:0 "§G+15%§!"
+    SOV_faction_cooperative_factory_output:0 "§G+10%§!"
+    SOV_faction_friendly_factory_output:0 "§G+5%§!"
+    SOV_faction_calm_factory_output:0 "0"
+    SOV_faction_worried_factory_output:0 "§R-10%§!"
+    SOV_faction_agitated_factory_output:0 "§R-20%§!"
+    SOV_faction_angry_factory_output:0 "§R-30%§!"
+    SOV_faction_violent_factory_output:0 "§R-40%§!"
+    SOV_faction_rebellious_factory_output:0 "§R-50%§!"
+
+    SOV_faction_loyal_consumer_goods:0 "§Y-5%§!"
+    SOV_faction_trusting_consumer_goods:0 "§Y-4%§!"
+    SOV_faction_cooperative_consumer_goods:0 "§Y-3%§!"
+    SOV_faction_friendly_consumer_goods:0 "§Y-2%§!"
+    SOV_faction_calm_consumer_goods:0 "§Y-1%§!"
+    SOV_faction_worried_consumer_goods:0 "0"
+    SOV_faction_agitated_consumer_goods:0 "§Y1%§!"
+    SOV_faction_angry_consumer_goods:0 "§Y2%§!"
+    SOV_faction_violent_consumer_goods:0 "§Y3%§!"
+    SOV_faction_rebellious_consumer_goods:0 "§Y5%§!"
+
+    SOV_faction_loyal_stability:0 "§G+10%§!"
+    SOV_faction_friendly_stability:0 "§G+5%§!"
+    SOV_faction_calm_stability:0 "0"
+    SOV_faction_worried_stability:0 "§R-5%§!"
+    SOV_faction_agitated_stability:0 "§R-10%§!"
+    SOV_faction_angry_stability:0 "§R-15%§!"
+    SOV_faction_violent_stability:0 "§R-20%§!"
+    SOV_faction_rebellious_stability:0 "§R-25%§!"
+    
+    
+    
+    
+    SOV_faction_rebellious_research_speed:0 "§R-10%§!"
+    SOV_faction_violent_research_speed:0 "§R-8%§!"
+    SOV_faction_angry_research_speed:0 "§R-4%§!"
+    SOV_faction_agitated_research_speed:0 "§R-2%§!"
+    SOV_faction_worried_research_speed:0 "§R-2%§!"
+    SOV_faction_calm_research_speed:0 "§G+2%§!"
+    SOV_faction_calm_2_research_speed:0 "§G+2%§!"
+    SOV_faction_friendly_research_speed:0 "§G+4%§!"
+    SOV_faction_friendly_2_research_speed:0 "§G+4%§!"
+    SOV_faction_cooperative_research_speed:0 "§G+6%§!"
+    SOV_faction_cooperative_2_research_speed:0 "§G+6%§!"
+    SOV_faction_trusting_research_speed:0 "§G+8%§!"
+    SOV_faction_trusting_2_research_speed:0 "§G+8%§!"
+    SOV_faction_loyal_2_research_speed:0 "§G+10%§!"
+    SOV_faction_loyal_research_speed:0 "§G+10%§!"
+    
+    
+    
+    
+    
+    
+    
+    
+    SOV_Commissars_political_power_gain_10:0 "£faction_sov_commissars Commissars"
+    SOV_Commissars_political_power_gain_9:0 "£faction_sov_commissars Commissars"
+    SOV_Commissars_political_power_gain_8:0 "£faction_sov_commissars Commissars"
+    SOV_Commissars_political_power_gain_7:0 "£faction_sov_commissars Commissars"
+    SOV_Commissars_political_power_gain_6:0 "£faction_sov_commissars Commissars"
+    SOV_Commissars_political_power_gain_5:0 "£faction_sov_commissars Commissars"
+    SOV_Commissars_political_power_gain_4:0 "£faction_sov_commissars Commissars"
+    SOV_Commissars_political_power_gain_3:0 "£faction_sov_commissars Commissars"
+    SOV_Commissars_political_power_gain_2:0 "£faction_sov_commissars Commissars"
+    SOV_Commissars_political_power_gain_1:0 "£faction_sov_commissars Commissars"
+    SOV_Army_political_power_gain_10:0 "£faction_sov_army Army"
+    SOV_Army_political_power_gain_9:0 "£faction_sov_army Army"
+    SOV_Army_political_power_gain_8:0 "£faction_sov_army Army"
+    SOV_Army_political_power_gain_7:0 "£faction_sov_army Army"
+    SOV_Army_political_power_gain_6:0 "£faction_sov_army Army"
+    SOV_Army_political_power_gain_5:0 "£faction_sov_army Army"
+    SOV_Army_political_power_gain_4:0 "£faction_sov_army Army"
+    SOV_Army_political_power_gain_3:0 "£faction_sov_army Army"
+    SOV_Army_political_power_gain_2:0 "£faction_sov_army Army"
+    SOV_Army_political_power_gain_1:0 "£faction_sov_army Army"
+
+    SOV_Workers_factory_output_10:0 "£faction_sov_workers Workers"
+    SOV_Workers_factory_output_9:0 "£faction_sov_workers Workers"
+    SOV_Workers_factory_output_8:0 "£faction_sov_workers Workers"
+    SOV_Workers_factory_output_7:0 "£faction_sov_workers Workers"
+    SOV_Workers_factory_output_6:0 "£faction_sov_workers Workers"
+    SOV_Workers_factory_output_5:0 "£faction_sov_workers Workers"
+    SOV_Workers_factory_output_4:0 "£faction_sov_workers Workers"
+    SOV_Workers_factory_output_3:0 "£faction_sov_workers Workers"
+    SOV_Workers_factory_output_2:0 "£faction_sov_workers Workers"
+    SOV_Workers_factory_output_1:0 "£faction_sov_workers Workers"
+
+    SOV_Peasants_consumer_goods_10:0 "£faction_sov_peasants Peasants"
+    SOV_Peasants_consumer_goods_9:0 "£faction_sov_peasants Peasants"
+    SOV_Peasants_consumer_goods_8:0 "£faction_sov_peasants Peasants"
+    SOV_Peasants_consumer_goods_7:0 "£faction_sov_peasants Peasants"
+    SOV_Peasants_consumer_goods_6:0 "£faction_sov_peasants Peasants"
+    SOV_Peasants_consumer_goods_5:0 "£faction_sov_peasants Peasants"
+    SOV_Peasants_consumer_goods_4:0 "£faction_sov_peasants Peasants"
+    SOV_Peasants_consumer_goods_3:0 "£faction_sov_peasants Peasants"
+    SOV_Peasants_consumer_goods_2:0 "£faction_sov_peasants Peasants"
+    SOV_Peasants_consumer_goods_1:0 "£faction_sov_peasants Peasants"
+
+    SOV_Commissars_stability_1:0 "£faction_sov_commissars Commissars"
+    SOV_Commissars_stability_2:0 "£faction_sov_commissars Commissars"
+    SOV_Commissars_stability_4:0 "£faction_sov_commissars Commissars"
+    SOV_Commissars_stability_5:0 "£faction_sov_commissars Commissars"
+    SOV_Commissars_stability_6:0 "£faction_sov_commissars Commissars"
+    SOV_Commissars_stability_7:0 "£faction_sov_commissars Commissars"
+    SOV_Commissars_stability_8:0 "£faction_sov_commissars Commissars"
+    SOV_Army_stability_1:0 "£faction_sov_army Army"
+    SOV_Army_stability_2:0 "£faction_sov_army Army"
+    SOV_Army_stability_4:0 "£faction_sov_army Army"
+    SOV_Army_stability_5:0 "£faction_sov_army Army"
+    SOV_Army_stability_6:0 "£faction_sov_army Army"
+    SOV_Army_stability_7:0 "£faction_sov_army Army"
+    SOV_Army_stability_8:0 "£faction_sov_army Army"
+    
+    SOV_Army_research_speed_1:0 "£faction_sov_army Army"
+    SOV_Army_research_speed_2:0 "£faction_sov_army Army"
+    SOV_Army_research_speed_3:0 "£faction_sov_army Army"
+    SOV_Army_research_speed_4:0 "£faction_sov_army Army"
+    SOV_Army_research_speed_5:0 "£faction_sov_army Army"
+    SOV_Army_research_speed_6:0 "£faction_sov_army Army"
+    SOV_Army_research_speed_7:0 "£faction_sov_army Army"
+    SOV_Army_research_speed_8:0 "£faction_sov_army Army"
+    
+    SOV_Workers_stability_1:0 "£faction_sov_workers Workers"
+    SOV_Workers_stability_2:0 "£faction_sov_workers Workers"
+    SOV_Workers_stability_4:0 "£faction_sov_workers Workers"
+    SOV_Workers_stability_5:0 "£faction_sov_workers Workers"
+    SOV_Workers_stability_6:0 "£faction_sov_workers Workers"
+    SOV_Workers_stability_7:0 "£faction_sov_workers Workers"
+    SOV_Workers_stability_8:0 "£faction_sov_workers Workers"
+    SOV_Peasants_stability_1:0 "£faction_sov_peasants Peasants"
+    SOV_Peasants_stability_2:0 "£faction_sov_peasants Peasants"
+    SOV_Peasants_stability_4:0 "£faction_sov_peasants Peasants"
+    SOV_Peasants_stability_5:0 "£faction_sov_peasants Peasants"
+    SOV_Peasants_stability_6:0 "£faction_sov_peasants Peasants"
+    SOV_Peasants_stability_7:0 "£faction_sov_peasants Peasants"
+    SOV_Peasants_stability_8:0 "£faction_sov_peasants Peasants"
+
+    SOV_Commissars_patriotic_fighting:0 "£faction_sov_commissars Патриотическая борьба"
+    SOV_Commissars_patriotic_fighting_tt:0 "The £faction_sov_commissars Commissars are Loyal and have at least some influence\nThis lasts §Y7 Days§! for every level of Influence"
+
+    SOV_Commissars_special_orders:0 "£faction_sov_commissars Государственные заказы"
+    SOV_Commissars_special_orders_tt:0 "The £faction_sov_commissars Commissars are Friendly and have at least some influence\nThis lasts §Y30 Days§! for every level of Influence"
+
+    SOV_Army_free_thinking:0 "£faction_sov_army Свободомыслие"
+    SOV_Army_free_thinking_tt:0 "The £faction_sov_army Army are Loyal and have at least some influence\nThis lasts §Y30 Days§! for every level of Influence"
+    
+    SOV_Army_seizure_weapons:0 "£faction_sov_army Изъятие вооружения из небоевых частей"
+    
+    SOV_Army_modernization_efforts:0 "£faction_sov_army Усилия по модернизации"
+    SOV_Army_modernization_efforts_tt:0 "The £faction_sov_army Army are Friendly and have at least some influence\nThe bonus increases for every level of Influence"
+
+    SOV_Workers_fabricate_new_structures:0 "£faction_sov_workers Программа гос. строительства"
+    SOV_Workers_fabricate_new_structures_tt:0 "The £faction_sov_workers Workers are Loyal and have at least some influence\nThis lasts §Y7 Days§! for every level of Influence"
+
+    SOV_Workers_material_scavanging:0 "£faction_sov_workers Сбор природных ресурсов"
+    SOV_Workers_material_scavanging_tt:0 "The £faction_sov_workers Workers are Friendly and have at least some influence\nThis lasts §Y14 Days§! for every level of Influence"
+
+    SOV_Peasants_stricter_rationing:0 "£faction_sov_peasants Более строгое нормирование"
+    SOV_Peasants_stricter_rationing_tt:0 "The £faction_sov_peasants Peasants are Loyal and have at least some influence\nThis lasts §Y30 Days§! for every level of Influence"
+
+    SOV_Peasants_lessons_from_russia:0 "£faction_sov_peasants Уроки России"
+    SOV_Peasants_lessons_from_russia_tt:0 "The £faction_sov_peasants Peasants are Friendly and have at least some influence\nThis lasts §Y14 Days§! for every level of Influence"
+
+    SOV_pay_for_new_agricultural_equipment:0 "£faction_sov_peasants Оплата новой сельскохозяйственной техники"
+    SOV_pay_for_new_agricultural_equipment_tt:1 "£faction_sov_peasants §YКрестьяне§! станут более §GЭффективными§! уменьшая §YФактор фабрик товаров народного потребления§! на §G6%§!"
+
+    SOV_military_reform:0 "Военные реформы"
+    
+    SOV_army_reform_cost_tt:0 "£army_experience  §Y150§!"
+    SOV_air_reform_cost_tt:0 "£air_experience  §Y200§!"
+    SOV_navy_reform_cost_tt:0 "£navy_experience  §Y200§!"
+    
+    SOV_army_reform_cost_tt_blocked:0 "£army_experience  §R150§!"
+    SOV_air_reform_cost_tt_blocked:0 "£air_experience  §R200§!"
+    SOV_navy_reform_cost_tt_blocked:0 "£navy_experience  §R200§!"
+
+    SOV_army_reform:0 "Реформа армии"
+    SOV_army_reform_desc:0 "Using experience learned from the field, we can make the neccesary reforms to bring our military to a modern standard"
+
+    SOV_air_reform:0 "Реформа ВВС"
+    SOV_air_reform_desc:0 "Using experience learned from the field, we can make the neccesary reforms to bring our military to a modern standard"
+
+    SOV_naval_reform:0 "Реформа флота"
+    SOV_naval_reform_desc:0 "Using experience learned from the field, we can make the neccesary reforms to bring our military to a modern standard"
+
+    SOV_relocate_capital_from_moscow:0 "Relocate Capital from Moscow"
+    SOV_relocate_capital_from_moscow_desc:0 ""
+
+    SOV_relocate_capital_from_kazan:0 "Relocate Capital from Kazan"
+    SOV_relocate_capital_from_kazan_desc:0 ""
+
+    SOV_estonian_ultimatum:0 "Ультиматум Эстонии"
+    SOV_latvian_ultimatum:0 "Ультиматум Латвии"
+    SOV_lithuanian_ultimatum:0 "Ультиматум Литвы"
+    SOV_demand_karjala:0 "Потребовать Карелию"
+    SOV_demand_bessarabia:0 "Потребовать Бессарабию"
+
+    SOV_hold_minsk:0 "Удерживать Минск"
+
+    SOV_hold_kiev:0 "Удерживать Киев"
+
+    SOV_hold_sevastapol:0 "Удерживать Севастополь"
+
+    SOV_invite_faction_members:0 "Invite [From.GetName] to the COMECON"
+
+    SOV_tehran_treaty_mission:0 "Tehran Treaty"
+
+    western_ukraine_transformation:0 "Transformation of Western Ukraine"
+    western_ukraine_agricultural_construction:0 "Agricultural Construction in Western Ukraine"
+    western_ukraine_transformed:0 "Western Ukraine is Transformed"
+
+    eastern_ukraine_transformation:0 "Transformation of Eastern Ukraine"
+    eastern_ukraine_agricultural_construction:0 "Agricultural Construction in Eastern Ukraine"
+    eastern_ukraine_transformed:0 "Eastern Ukraine is Transformed"
+
+    western_forest_steppe_transformation:0 "Transformation of the Western Forest Steppe"
+    western_forest_steppe_agricultural_construction:0 "Agricultural Construction in the Western Forest Steppe"
+    western_forest_steppe_transformed:0 "The Western Forest Steppe is Transformed"
+
+    eastern_forest_steppe_transformation:0 "Transformation of the Eastern Forest Steppe"
+    eastern_forest_steppe_agricultural_construction:0 "Agricultural Construction in the Eastern Forest Steppe"
+    eastern_forest_steppe_transformed:0 "The Eastern Forest Steppe is Transformed"
+
+    kuban_transformation:0 "Transformation of Kuban"
+    kuban_agricultural_construction:0 "Agricultural Construction in Kuban"
+    kuban_transformed:0 "Kuban is Transformed"
+
+    SOV_negotiate_an_end_to_the_winter_war:0 "Negotiate an End to the Winter War"
+    SOV_negotiate_an_end_to_the_winter_war_desc:0 ""
+
+    SOV_cancel_order_227:0 "Отменить приказ 227"
+
+    SOV_peoples_militias:0 "Unlock a Peoples Militia Division template"
+
+    SOV_peoples_militia_leningrad:0 "Народное ополчение Ленинграда"
+    SOV_peoples_militia_leningrad_desc:0 "Deploy 12 PM Divisions in Leningrad with no equipment"
+
+    SOV_peoples_militia_stalingrad:0 "Народное ополчение Сталинграда"
+    SOV_peoples_militia_stalingrad_desc:0 "Deploy 12 PM Divisions in Stalingrad with no equipment"
+
+    SOV_peoples_militia_moscow:0 "Народное ополчение Москвы"
+    SOV_peoples_militia_moscow_desc:0 "Deploy 12 PM Divisions in Moscow with no equipment"
+
+    SOV_comecon_decision:0 "§GThis is dependant on the other nation accepting the invite§!\n"
+    Soviet_provide_economic_aid:0 "Provide Economic Aid"
+
+    ENG_internal_factions:0 "Внутренние Фракции"
+    ENG_internal_factions_desc:1 "Великобритания стоит на прочном фундаменте демократии и давнем наследии военной доблести и традиций. Пока есть разногласия, курс вперед стабилен, пока она идет, если только Общество не станет извращенным.\n\n"
+    
+    ENG_labour_name_text:0 "Рабочие"
+    ENG_conservative_name_text:0 "Консерваторы"
+    ENG_british_royalists_name_text:0 "Роялисты"
+    ENG_british_radicalists_name_text:0 "Радикалисты"
+    ENG_ui_attitude_header:0 "Отношение"
+
+    ENG_labour_attitude_status_amount:0 "[Root.GetLabourAttitudeLevel]"
+    ENG_conservative_attitude_status_amount:0 "[Root.GetConservativeAttitudeLevel]"
+    ENG_british_royalists_attitude_status_amount:0 "[Root.GetBritishRoyalistsAttitudeLevel]"
+    ENG_british_radicalists_attitude_status_amount:0 "[Root.GetBritishRadicalistsAttitudeLevel]"
+
+    ENG_labour_influence_status_amount:0 "[ROOT.GetLabourInfluenceLevel]"
+    ENG_conservative_influence_status_amount:0 "[ROOT.GetConservativeInfluenceLevel]"
+    ENG_british_royalists_influence_status_amount:0 "[ROOT.GetBritishRoyalistsInfluenceLevel]"
+    ENG_british_radicalists_influence_status_amount:0 "[ROOT.GetBritishRadicalistsInfluenceLevel]"
+
+    ENG_labour_political_power_gain_status_amount:0 "[Root.GetLabourPoliticalPowerGainLevel]"
+    ENG_conservative_political_power_gain_status_amount:0 "[Root.GetConservativePoliticalPowerGainLevel]"
+    ENG_british_royalists_political_power_gain_status_amount:0 "[Root.GetBritishRoyalistsPoliticalPowerGainLevel]"
+    ENG_british_radicalists_political_power_gain_status_amount:0 "[Root.GetBritishRadicalistsPoliticalPowerGainLevel]"
+
+    ENG_labour_stability_status_amount:0 "[ROOT.GetLabourStabilityLevel]"
+    ENG_conservative_stability_status_amount:0 "[ROOT.GetConservativeStabilityLevel]"
+    ENG_british_royalists_stability_status_amount:0 "[ROOT.GetBritishRoyalistsStabilityLevel]"
+    ENG_british_radicalists_stability_status_amount:0 "[ROOT.GetBritishRadicalistsStabilityLevel]"
+
+    ENG_faction_loyal_attitude:0 "§CЛояльное§!"
+    ENG_faction_friendly_attitude:0 "§GДружелюбное§!"
+    ENG_faction_calm_attitude:0 "Спокойное"
+    ENG_faction_worried_attitude:0 "§YТревожное§!"
+    ENG_faction_agitated_attitude:0 "§OВзвольнованное§!"
+    ENG_faction_angry_attitude:0 "§OСердитое§!"
+    ENG_faction_violent_attitude:0 "§RЖестокое§!"
+    ENG_faction_rebellious_attitude:0 "§RМятежное§!"
+
+    ENG_faction_total_influence:0 "§OПолное§!"
+    ENG_faction_widespread_influence:0 "§OМассовое§!"
+    ENG_faction_high_influence:0 "§YВысокое§!"
+    ENG_faction_moderate_influence:0 "§YУмеренное§!"
+    ENG_faction_low_influence:0 "§YНизкое§!"
+    ENG_faction_tiny_influence:0 "Крошечное"
+    ENG_faction_no_influence:0 "§gНет§!"
+
+    ENG_faction_loyal_political_power_gain:0 "§G+10%§!"
+    ENG_faction_friendly_political_power_gain:0 "§G+5%§!"
+    ENG_faction_calm_political_power_gain:0 "0"
+    ENG_faction_worried_political_power_gain:0 "§R-5%§!"
+    ENG_faction_agitated_political_power_gain:0 "§R-10%§!"
+    ENG_faction_angry_political_power_gain:0 "§R-15%§!"
+    ENG_faction_violent_political_power_gain:0 "§R-20%§!"
+    ENG_faction_rebellious_political_power_gain:0 "§R-25%§!"
+
+    ENG_faction_loyal_stability:0 "§G+10%§!"
+    ENG_faction_friendly_stability:0 "§G+5%§!"
+    ENG_faction_calm_stability:0 "0"
+    ENG_faction_worried_stability:0 "§R-5%§!"
+    ENG_faction_agitated_stability:0 "§R-10%§!"
+    ENG_faction_angry_stability:0 "§R-15%§!"
+    ENG_faction_violent_stability:0 "§R-20%§!"
+    ENG_faction_rebellious_stability:0 "§R-25%§!"
+
+    ENG_Labour_political_power_gain_1:0 "£faction_eng_labour Labour"
+    ENG_Labour_political_power_gain_2:0 "£faction_eng_labour Labour"
+    ENG_Labour_political_power_gain_4:0 "£faction_eng_labour Labour"
+    ENG_Labour_political_power_gain_5:0 "£faction_eng_labour Labour"
+    ENG_Labour_political_power_gain_6:0 "£faction_eng_labour Labour"
+    ENG_Labour_political_power_gain_7:0 "£faction_eng_labour Labour"
+    ENG_Labour_political_power_gain_8:0 "£faction_eng_labour Labour"
+    ENG_Conservative_political_power_gain_1:0 "£faction_eng_conservative Conservative"
+    ENG_Conservative_political_power_gain_2:0 "£faction_eng_conservative Conservative"
+    ENG_Conservative_political_power_gain_4:0 "£faction_eng_conservative Conservative"
+    ENG_Conservative_political_power_gain_5:0 "£faction_eng_conservative Conservative"
+    ENG_Conservative_political_power_gain_6:0 "£faction_eng_conservative Conservative"
+    ENG_Conservative_political_power_gain_7:0 "£faction_eng_conservative Conservative"
+    ENG_Conservative_political_power_gain_8:0 "£faction_eng_conservative Conservative"
+    ENG_British_Royalists_political_power_gain_1:0 "£faction_eng_british_royalists Royalists"
+    ENG_British_Royalists_political_power_gain_2:0 "£faction_eng_british_royalists Royalists"
+    ENG_British_Royalists_political_power_gain_4:0 "£faction_eng_british_royalists Royalists"
+    ENG_British_Royalists_political_power_gain_5:0 "£faction_eng_british_royalists Royalists"
+    ENG_British_Royalists_political_power_gain_6:0 "£faction_eng_british_royalists Royalists"
+    ENG_British_Royalists_political_power_gain_7:0 "£faction_eng_british_royalists Royalists"
+    ENG_British_Royalists_political_power_gain_8:0 "£faction_eng_british_royalists Royalists"
+    ENG_British_Radicalists_political_power_gain_1:0 "£faction_eng_british_radicalists Radicalists"
+    ENG_British_Radicalists_political_power_gain_2:0 "£faction_eng_british_radicalists Radicalists"
+    ENG_British_Radicalists_political_power_gain_4:0 "£faction_eng_british_radicalists Radicalists"
+    ENG_British_Radicalists_political_power_gain_5:0 "£faction_eng_british_radicalists Radicalists"
+    ENG_British_Radicalists_political_power_gain_6:0 "£faction_eng_british_radicalists Radicalists"
+    ENG_British_Radicalists_political_power_gain_7:0 "£faction_eng_british_radicalists Radicalists"
+    ENG_British_Radicalists_political_power_gain_8:0 "£faction_eng_british_radicalists Radicalists"
+
+    ENG_Labour_stability_1:0 "£faction_eng_labour Labour"
+    ENG_Labour_stability_2:0 "£faction_eng_labour Labour"
+    ENG_Labour_stability_4:0 "£faction_eng_labour Labour"
+    ENG_Labour_stability_5:0 "£faction_eng_labour Labour"
+    ENG_Labour_stability_6:0 "£faction_eng_labour Labour"
+    ENG_Labour_stability_7:0 "£faction_eng_labour Labour"
+    ENG_Labour_stability_8:0 "£faction_eng_labour Labour"
+    ENG_Conservative_stability_1:0 "£faction_eng_conservative Conservative"
+    ENG_Conservative_stability_2:0 "£faction_eng_conservative Conservative"
+    ENG_Conservative_stability_4:0 "£faction_eng_conservative Conservative"
+    ENG_Conservative_stability_5:0 "£faction_eng_conservative Conservative"
+    ENG_Conservative_stability_6:0 "£faction_eng_conservative Conservative"
+    ENG_Conservative_stability_7:0 "£faction_eng_conservative Conservative"
+    ENG_Conservative_stability_8:0 "£faction_eng_conservative Conservative"
+    ENG_British_Royalists_stability_1:0 "£faction_eng_british_royalists Royalists"
+    ENG_British_Royalists_stability_2:0 "£faction_eng_british_royalists Royalists"
+    ENG_British_Royalists_stability_4:0 "£faction_eng_british_royalists Royalists"
+    ENG_British_Royalists_stability_5:0 "£faction_eng_british_royalists Royalists"
+    ENG_British_Royalists_stability_6:0 "£faction_eng_british_royalists Royalists"
+    ENG_British_Royalists_stability_7:0 "£faction_eng_british_royalists Royalists"
+    ENG_British_Royalists_stability_8:0 "£faction_eng_british_royalists Royalists"
+    ENG_British_Radicalists_stability_1:0 "£faction_eng_british_radicalists Radicalists"
+    ENG_British_Radicalists_stability_2:0 "£faction_eng_british_radicalists Radicalists"
+    ENG_British_Radicalists_stability_4:0 "£faction_eng_british_radicalists Radicalists"
+    ENG_British_Radicalists_stability_5:0 "£faction_eng_british_radicalists Radicalists"
+    ENG_British_Radicalists_stability_6:0 "£faction_eng_british_radicalists Radicalists"
+    ENG_British_Radicalists_stability_7:0 "£faction_eng_british_radicalists Radicalists"
+    ENG_British_Radicalists_stability_8:0 "£faction_eng_british_radicalists Radicalists"
+
+    ENG_labour_inspire_the_workforce:0 "£faction_eng_labour Вдохновить рабочих"
+    ENG_labour_inspire_the_workforce_tt:0 "The £faction_eng_labour Labour Faction is Loyal and has at least some influence.\nThis lasts §Y7 Days§! for every level of Influence"
+
+    ENG_labour_mobilize_the_workforce:0 "£faction_eng_labour Мобилизовать рабочих"
+    ENG_labour_mobilize_the_workforce_tt:0 "The £faction_eng_labour Labour Faction is Friendly and has at least some influence.\nThis lasts §Y7 Days§! for every level of Influence"
+
+    ENG_conservative_enlarge_the_colonial_elite:0 "£faction_eng_conservative Увеличить колониальную элиту"
+    ENG_conservative_enlarge_the_colonial_elite_tt:0 "The £faction_eng_conservative Conservative Faction is Loyal and has at least some influence\nThis lasts §Y30 Days§! for every level of Influence"
+
+    ENG_conservative_political_favours:0 "£faction_eng_conservative Политические льготы"
+    ENG_conservative_political_favours_tt:0 "The £faction_eng_conservative Conservative Faction is Friendly and has at least some influence.\nThis lasts §Y30 Days§! for every level of Influence"
+ 
+    ENG_royalists_donations_of_consumer_goods:0 "£faction_eng_british_royalists Пожертвования потребительских товаров"
+    ENG_royalists_donations_of_consumer_goods_tt:0 "The £faction_eng_british_royalists Royalists Faction is Friendly and their influence is at least §YTiny§!"
+
+    ENG_royalists_royal_dragoon_guards:0 "£faction_eng_british_royalists Королевские драгунские гвардейцы"
+    ENG_royalists_royal_dragoon_guards_tt:0 "The £faction_eng_british_royalists Royalists Faction is Friendly and their influence is at least §YLow§!"
+    ENG_create_unit_royal_dragoon_guards_tt:0 "Gain an Elite Mechanized unit in London."
+
+    ENG_royalists_permanent_defence_budget:0 "£faction_eng_british_royalists Постоянный оборонный бюджет"
+    ENG_royalists_permanent_defence_budget_tt:0 "The £faction_eng_british_royalists Royalists Faction is Loyal and their influence is at least §YModerate§!"
+
+    ENG_special_powers_for_the_king:0 "£faction_eng_british_royalists Особые полномочия короля"
+    ENG_special_powers_for_the_king_tt:0 "The £faction_eng_british_royalists Royalists Faction is Loyal and their influence is at least §YHigh§!"
+    ENG_royalists_pp_tt:0 "will make the £faction_eng_british_royalists Royalists give §G5%§! §YPolitical Power gain§!\n"
+
+    ENG_imperial_army_service:0 "£faction_eng_british_royalists Императорская Армейская Служба"
+    ENG_imperial_army_service_tt:0 "The £faction_eng_british_royalists Royalists Faction is Loyal and their influence is at least §YWidespread§!"
+
+    ENG_the_kings_speech:0 "The Kings Speech"
+    ENG_the_kings_speech_desc:0 "'In this grave hour, perhaps the most fateful in our history, for the second time in the lives of most of us we are at war. Over and over again we have tried to find a peaceful way out of the differences between ourselves and those who are now our enemies. But it has been in vain. The task will be hard. There may be dark days ahead and war is no longer confined to the battlefield.'"
+    ENG_the_kings_speech_tt:0 "The £faction_eng_british_royalists Royalists, £faction_eng_conservative §YConservative§! and £faction_eng_labour §YLabour§! factions become more §GFriendly§!"
+
+    ENG_work_quotas:0 "£faction_eng_british_radicalists Work Quotas"
+    ENG_work_quotas_tt:0 "The £faction_eng_british_radicalists Radical Factions are Loyal and their influence is at least §YHigh§!\nThis lasts §Y14 Days§! for every level of Influence"
+
+    ENG_radicals_radical_propaganda:0 "£faction_eng_british_radicalists Radical Propaganda"
+    ENG_radicals_radical_propaganda_tt:0 "The £faction_eng_british_radicalists Radical Factions are Friendly and their influence is at least §YModerate§!\nThis lasts §Y14 Days§! for every level of Influence"
+
+    ENG_radicals_mock_battles:0 "£faction_eng_british_radicalists Mock Battles"
+    ENG_radicals_mock_battles_tt:0 "The £faction_eng_british_radicalists Radical Factions are Friendly and have at least some influence\nThe bonus increases for every level of Influence"
+
+    ENG_British_Royalists_attitude_2_tt:0 "will make the £faction_eng_british_royalists Royalists §GFriendly§! towards the government\n"
+    ENG_British_Royalists_attitude_3_tt:0 "will make the £faction_eng_british_royalists Royalists §GLoyal§! towards the government\n"
+    ENG_British_Royalists_influence_2_tt:0 "will make the £faction_eng_british_royalists Royalists §GMore Influential§!\n"
+    ENG_British_Royalists_influence_3_tt:0 "will make the £faction_eng_british_royalists Royalists §GMore Influential§! and will increase by §YPolitical Power gain§! §G5%§!\n"
+    ENG_British_Royalists_stability:0 "will make the £faction_eng_british_royalists Royalists §GSupportive§! increasing §YStability§! by §G5%§!\n"
+
+    ENG_Conservative_anger_tt:0 "will make the £faction_eng_conservative Conservatives §RMore angry§! losing §R-5%§! §YPolitical Power gain§!\n"
+    ENG_Conservative_anger_2_tt:0 "will make the £faction_eng_conservative Conservatives §RMore angry§! losing §R-5%§! §YStability§!\n"
+    ENG_Conservative_anger_3_tt:0 "will make the £faction_eng_conservative Conservatives §RMore angry§! losing §R-5%§! §YPolitical Power gain§! and §R-5%§! §YStability§!\n"
+
+    ENG_government_fallen_tt:0 "will §RLose all support§! from the £faction_eng_labour Labour and £faction_eng_conservative Conservatives and will lose §R-20%§! §YStability§!\n"
+
+    ENG_raymond_briggs_tt:0 "Has a loyal attitude from £faction_eng_labour Labour\nHas a loyal attitude from £faction_eng_british_radicalists the Radicals\n"
+    ENG_Labour_attitude_2_tt:0 "Has a loyal attitude from £faction_eng_labour Labour\n"
+    ENG_Labour_influence_3_tt:0 "will make £faction_eng_labour Labour §GMore Supportive§! and will increase by §YStability§! by §G5%§!, §YAttitude§! and §YInfluence§!\n"
+    ENG_British_Royalists_stability:0 "will make the £faction_eng_british_royalists Royalists §GSupportive§! increasing §YStability§! by §G5%§!\n"
+
+    ENG_Radicals_attitude_2_tt:0 "Has a loyal attitude from £faction_eng_british_radicalists the Radicals\n"
+
+    ENG_domestic_crackdown:0 "£faction_eng_british_radicalists Domestic Crackdown"
+    ENG_domestic_crackdown_tt:0 "The £faction_eng_british_radicalists Radical Factions are Loyal and their influence is at least §OWidespread§!\nEach time this is used, its effectivness diminishes."
+
+    ENG_befriend_the_blackshirts:0 "£faction_eng_british_radicalists Befriend the Radical Parties"
+    ENG_befriend_the_blackshirts_tt:0 "Will §GFlip§! all negative modifiers from the £faction_eng_british_radicalists Radical Party and open up new decisions\nThe £faction_eng_conservative §YConservative§! and £faction_eng_labour §YLabour§! Part become §RLess Friendly§! and give neutral support to the government §Rremoving§! all §YStability§! bonuses."
+    Blackshirts_befriended:0 "Has Befriended the Radical Parties"
+
+    ENG_support_the_radical_parties:0 "£faction_eng_british_radicalists Support the Radical Parties"
+    ENG_support_the_radical_parties_tt:0 "The £faction_eng_british_radicalists Radical Parties will become more §GFriendly§! and §GInfluencial§!"
+
+    ENG_ban_the_radical_parties:0 "£faction_eng_british_radicalists Ban the Radical Parties"
+    ENG_ban_the_radical_parties_tt:0 "Will §GRemove§! all modifiers from the £faction_eng_british_radicalists Radical Party"
+
+    ENG_blackshirt_march_in_norfolk:0 "Blackshirt March in Norfolk"
+    ENG_blackshirt_march_in_norfolk_desc:0 "Preparations are under way for a large march of Blackshirts in Norfolk, which will certainly sway the state's population to support our cause."
+
+    ENG_blackshirt_march_in_essex:0 "Blackshirt March in Essex"
+    ENG_blackshirt_march_in_essex_desc:0 "Preparations are under way for a large march of Blackshirts in Essex, which will certainly sway the state's population to support our cause."
+
+    ENG_blackshirt_march_in_berkshire:0 "Blackshirt March in Berkshire"
+    ENG_blackshirt_march_in_berkshire_desc:0 "Preparations are under way for a large march of Blackshirts in Berkshire, which will certainly sway the state's population to support our cause."
+
+    ENG_blackshirt_march_in_kent:0 "Blackshirt March in Kent"
+    ENG_blackshirt_march_in_kent_desc:0 "Preparations are under way for a large march of Blackshirts in Kent, which will certainly sway the state's population to support our cause."
+
+    ENG_blackshirt_march_in_dorset:0 "Blackshirt March in Dorset"
+    ENG_blackshirt_march_in_dorset_desc:0 "Preparations are under way for a large march of Blackshirts in Dorset, which will certainly sway the state's population to support our cause."
+
+    ###############################################################################################
+
+    ENG_sterling_reserve_loans:0 "Займы из резерва в фунтах стерлингов"
+    
+    ENG_imperial_conference_timer:0 "Имперская конференция 1937 года"
+
+    loans_from_canada:0 "Канадские займы"
+    loans_from_canada_desc:0 ""
+    sterling_bills:0 "Векселя стерлингов"
+    sterling_bills_desc:0 ""
+    loans_from_the_empire:0 "Имперские займы"
+    loans_from_the_empire_desc:0 ""
+    empty_the_treasuary:0 "Опустошить казну"
+    empty_the_treasuary_desc:0 ""
+    
+    USA_operation_torch:0 "Операция Факел"
+    USA_operation_torch_desc:0 "Свергнуть режим Виши"
+
+    ENG_evacuate_the_merchant_fleet:0 "Evacuate the Merchant Fleet"
+    ENG_evacuate_the_merchant_fleet_desc:0 ""
+
+    ENG_order_weapons_in_USA:0 "Order US Infantry Weapons"
+    ENG_order_artillery_in_USA:0 "Order US Artillery"
+    ENG_order_tanks_in_USA:0 "Order US Tanks"
+    ENG_order_fighters_in_USA:0 "Order US Fighters"
+    ENG_order_bombers_in_USA:0 "Order US Bombers"
+
+    FRA_order_weapons_in_USA:0 "Order US Infantry Weapons"
+    FRA_order_artillery_in_USA:0 "Order US Artillery"
+    FRA_order_tanks_in_USA:0 "Order US Tanks"
+    FRA_order_fighters_in_USA:0 "Order US Fighters"
+    FRA_order_bombers_in_USA:0 "Order US Bombers"
+
+    USA_internal_factions:0 "Внутренние Фракции"
+    USA_internal_factions_desc:1 "Великая депрессия увеличила политическую напряженность в США. Несмотря на то, что они финансировал его первые выборы, промышленные титаны все больше расходятся с Рузвельтом, поскольку он обслуживает народ. Однако он не может позволить себе полностью потерять их поддержку, так как их промышленная база может понадобиться, если Соединенные Штаты будут втянуты в новую войну....\n\n"
+
+    USA_kaiser_attitude_status_amount:0 "[Root.GetKaiserAttitudeLevel]"
+    USA_ford_chrysler_attitude_status_amount:0 "[Root.GetFordChryslerAttitudeLevel]"
+    USA_gm_dupont_attitude_status_amount:0 "[Root.GetGMDuPontAttitudeLevel]"
+    USA_jpmorgan_attitude_status_amount:0 "[Root.GetJPMorganAttitudeLevel]"
+    USA_public_attitude_status_amount:0 "[Root.GetPublicAttitudeLevel]"
+
+    USA_kaiser_influence_status_amount:0 "[ROOT.GetKaiserInfluenceLevel]"
+    USA_ford_chrysler_influence_status_amount:0 "[ROOT.GetFordChryslerInfluenceLevel]"
+    USA_gm_dupont_influence_status_amount:0 "[ROOT.GetGMDuPontInfluenceLevel]"
+    USA_jpmorgan_influence_status_amount:0 "[ROOT.GetJPMorganInfluenceLevel]"
+    USA_public_influence_status_amount:0 "[ROOT.GetPublicInfluenceLevel]"
+
+    USA_kaiser_dockyard_output_status_amount:0 "[Root.GetKaiserDockyardOutputLevel]"
+    USA_ford_chrysler_factory_output_status_amount:0 "[Root.GetFordChryslerFactoryOutputLevel]"
+    USA_gm_dupont_construction_speed_military_status_amount:0 "[Root.GetGMDuPontConstructionSpeedMilitaryLevel]"
+    USA_jpmorgan_consumer_goods_status_amount:0 "[Root.GetJPMorganConsumerGoodsLevel]"
+    USA_public_political_power_gain_status_amount:0 "[Root.GetPublicPoliticalPowerGainLevel]"
+
+    USA_kaiser_construction_speed_status_amount:0 "[ROOT.GetKaiserConstructionSpeed]"
+    USA_ford_chrysler_civilian_construction_speed_status_amount:0 "[ROOT.GetFordChryslerCivilianConstructionSpeed]"
+    USA_gm_dupont_civilian_construction_speed_status_amount:0 "[ROOT.GetGMDuPontCivilianConstructionSpeed]"
+    USA_jpmorgan_stability_status_amount:0 "[ROOT.GetJPMorganStabilityLevel]"
+    USA_public_stability_status_amount:0 "[ROOT.GetPublicStabilityLevel]"
+
+    USA_kaiser_name_text:0 "Кайзер Индастри"
+    USA_ford_chrysler_name_text:0 "Форд/Крайслер"
+    USA_gm_dupont_name_text:0 "ГМ/Дюпон"
+    USA_jpmorgan_name_text:0 "Дж П Морган"
+    USA_public_name_text:0 "Публика"
+
+    USA_ui_attitude_header:0 "Отношение"
+
+    USA_faction_loyal_attitude:0 "§CЛояльное§!"
+    USA_faction_friendly_attitude:0 "§GДружелюбное§!"
+    USA_faction_calm_attitude:0 "Спокойное"
+    USA_faction_worried_attitude:0 "§YТревожное§!"
+    USA_faction_agitated_attitude:0 "§OВзвольнованное§!"
+    USA_faction_angry_attitude:0 "§OСердитое§!"
+    USA_faction_violent_attitude:0 "§RЖестокое§!"
+    USA_faction_rebellious_attitude:0 "§RМятежное§!"
+
+    USA_faction_total_influence:0 "§OПолное§!"
+    USA_faction_widespread_influence:0 "§OМассовое§!"
+    USA_faction_high_influence:0 "§YВысокое§!"
+    USA_faction_moderate_influence:0 "§YУмеренное§!"
+    USA_faction_low_influence:0 "§YНизкое§!"
+    USA_faction_tiny_influence:0 "Крошечное"
+    USA_faction_no_influence:0 "§gНет§!"
+
+    USA_faction_loyal_dockyard_output:0 "§G+35%§!"
+    USA_faction_friendly_dockyard_output:0 "§G+30%§!"
+    USA_faction_calm_dockyard_output:0 "§G+25%§!"
+    USA_faction_worried_dockyard_output:0 "§G+20%§!"
+    USA_faction_agitated_dockyard_output:0 "§G+15%§!"
+    USA_faction_angry_dockyard_output:0 "§G+10%§!"
+    USA_faction_violent_dockyard_output:0 "§G+5%§!"
+    USA_faction_rebellious_dockyard_output:0 "0%"
+
+    USA_faction_loyal_factory_output:0 "§G+35%§!"
+    USA_faction_friendly_factory_output:0 "§G+30%§!"
+    USA_faction_calm_factory_output:0 "§G+25%§!"
+    USA_faction_worried_factory_output:0 "§G+20%§!"
+    USA_faction_agitated_factory_output:0 "§G+15%§!"
+    USA_faction_angry_factory_output:0 "§G+10%§!"
+    USA_faction_violent_factory_output:0 "§G+5%§!"
+    USA_faction_rebellious_factory_output:0 "0%"
+
+    USA_faction_loyal_military_construction_speed:0 "§G+35%§!"
+    USA_faction_friendly_military_construction_speed:0 "§G+30%§!"
+    USA_faction_calm_military_construction_speed:0 "§G+25%§!"
+    USA_faction_worried_military_construction_speed:0 "§G+20%§!"
+    USA_faction_agitated_military_construction_speed:0 "§G+15%§!"
+    USA_faction_angry_military_construction_speed:0 "§G+10%§!"
+    USA_faction_violent_military_construction_speed:0 "§G+5%§!"
+    USA_faction_rebellious_military_construction_speed:0 "0%"
+
+    USA_faction_loyal_consumer_goods:0 "§Y-32%§!"
+    USA_faction_friendly_consumer_goods:0 "§Y-24%§!"
+    USA_faction_calm_consumer_goods:0 "§Y-16%§!"
+    USA_faction_worried_consumer_goods:0 "§Y-8%§!"
+    USA_faction_agitated_consumer_goods:0 "§Y8%§!"
+    USA_faction_angry_consumer_goods:0 "§Y16%§!"
+    USA_faction_violent_consumer_goods:0 "§Y24%§!"
+    USA_faction_rebellious_consumer_goods:0 "§Y32%§!"
+
+    USA_faction_loyal_political_power_gain:0 "§G+0.40§!"
+    USA_faction_friendly_political_power_gain:0 "§G+0.30§!"
+    USA_faction_calm_political_power_gain:0 "§G+0.20§!"
+    USA_faction_worried_political_power_gain:0 "§G+0.10§!"
+    USA_faction_agitated_political_power_gain:0 "§R-0.10§!"
+    USA_faction_angry_political_power_gain:0 "§R-0.20§!"
+    USA_faction_violent_political_power_gain:0 "§R-0.30§!"
+    USA_faction_rebellious_political_power_gain:0 "§R-0.40§!"
+
+    USA_faction_loyal_construction_speed:0 "§G+20%§!"
+    USA_faction_friendly_construction_speed:0 "§G+15%§!"
+    USA_faction_calm_construction_speed:0 "§G+10%§!"
+    USA_faction_worried_construction_speed:0 "§G+5%§!"
+    USA_faction_agitated_construction_speed:0 "0%"
+    USA_faction_angry_construction_speed:0 "§R-5%§!"
+    USA_faction_violent_construction_speed:0 "§R-10%§!"
+    USA_faction_rebellious_construction_speed:0 "§R-15%§!"
+
+    USA_faction_loyal_civilian_construction_speed:0 "§G+20%§!"
+    USA_faction_friendly_civilian_construction_speed:0 "§G+15%§!"
+    USA_faction_calm_civilian_construction_speed:0 "§G+10%§!"
+    USA_faction_worried_civilian_construction_speed:0 "§G+5%§!"
+    USA_faction_agitated_civilian_construction_speed:0 "0%"
+    USA_faction_angry_civilian_construction_speed:0 "§R-5%§!"
+    USA_faction_violent_civilian_construction_speed:0 "§R-10%§!"
+    USA_faction_rebellious_civilian_construction_speed:0 "§R-15%§!"
+
+    USA_faction_loyal_stability:0 "§G+20%§!"
+    USA_faction_friendly_stability:0 "§G+15%§!"
+    USA_faction_calm_stability:0 "§G+10%§!"
+    USA_faction_worried_stability:0 "§G+5%§!"
+    USA_faction_agitated_stability:0 "§R-5%§!"
+    USA_faction_angry_stability:0 "§R-10%§!"
+    USA_faction_violent_stability:0 "§R-15%§!"
+    USA_faction_rebellious_stability:0 "§R-20%§!"
+
+    USA_Kaiser_dockyard_output_7:0 "£faction_usa_kaiser Kaiser"
+    USA_Kaiser_dockyard_output_6:0 "£faction_usa_kaiser Kaiser"
+    USA_Kaiser_dockyard_output_5:0 "£faction_usa_kaiser Kaiser"
+    USA_Kaiser_dockyard_output_4:0 "£faction_usa_kaiser Kaiser"
+    USA_Kaiser_dockyard_output_3:0 "£faction_usa_kaiser Kaiser"
+    USA_Kaiser_dockyard_output_2:0 "£faction_usa_kaiser Kaiser"
+    USA_Kaiser_dockyard_output_1:0 "£faction_usa_kaiser Kaiser"
+    USA_Kaiser_construction_speed_8:0 "£faction_usa_kaiser Kaiser"
+    USA_Kaiser_construction_speed_7:0 "£faction_usa_kaiser Kaiser"
+    USA_Kaiser_construction_speed_6:0 "£faction_usa_kaiser Kaiser"
+    USA_Kaiser_construction_speed_5:0 "£faction_usa_kaiser Kaiser"
+    USA_Kaiser_construction_speed_4:0 "£faction_usa_kaiser Kaiser"
+    USA_Kaiser_construction_speed_3:0 "£faction_usa_kaiser Kaiser"
+    USA_Kaiser_construction_speed_2:0 "£faction_usa_kaiser Kaiser"
+    USA_Kaiser_construction_speed_1:0 "£faction_usa_kaiser Kaiser"
+    USA_Ford_Chrysler_factory_output_7:0 "£faction_usa_chrysler_ford Ford/Chrysler"
+    USA_Ford_Chrysler_factory_output_6:0 "£faction_usa_chrysler_ford Ford/Chrysler"
+    USA_Ford_Chrysler_factory_output_5:0 "£faction_usa_chrysler_ford Ford/Chrysler"
+    USA_Ford_Chrysler_factory_output_4:0 "£faction_usa_chrysler_ford Ford/Chrysler"
+    USA_Ford_Chrysler_factory_output_3:0 "£faction_usa_chrysler_ford Ford/Chrysler"
+    USA_Ford_Chrysler_factory_output_2:0 "£faction_usa_chrysler_ford Ford/Chrysler"
+    USA_Ford_Chrysler_factory_output_1:0 "£faction_usa_chrysler_ford Ford/Chrysler"
+    USA_Ford_Chrysler_civilian_construction_speed_8:0 "£faction_usa_chrysler_ford Ford/Chrysler"
+    USA_Ford_Chrysler_civilian_construction_speed_7:0 "£faction_usa_chrysler_ford Ford/Chrysler"
+    USA_Ford_Chrysler_civilian_construction_speed_6:0 "£faction_usa_chrysler_ford Ford/Chrysler"
+    USA_Ford_Chrysler_civilian_construction_speed_5:0 "£faction_usa_chrysler_ford Ford/Chrysler"
+    USA_Ford_Chrysler_civilian_construction_speed_4:0 "£faction_usa_chrysler_ford Ford/Chrysler"
+    USA_Ford_Chrysler_civilian_construction_speed_3:0 "£faction_usa_chrysler_ford Ford/Chrysler"
+    USA_Ford_Chrysler_civilian_construction_speed_2:0 "£faction_usa_chrysler_ford Ford/Chrysler"
+    USA_Ford_Chrysler_civilian_construction_speed_1:0 "£faction_usa_chrysler_ford Ford/Chrysler"
+    USA_GM_Dupont_construction_speed_military_7:0 "£faction_usa_gm_dupont GM/DuPont"
+    USA_GM_Dupont_construction_speed_military_6:0 "£faction_usa_gm_dupont GM/DuPont"
+    USA_GM_Dupont_construction_speed_military_5:0 "£faction_usa_gm_dupont GM/DuPont"
+    USA_GM_Dupont_construction_speed_military_4:0 "£faction_usa_gm_dupont GM/DuPont"
+    USA_GM_Dupont_construction_speed_military_3:0 "£faction_usa_gm_dupont GM/DuPont"
+    USA_GM_Dupont_construction_speed_military_2:0 "£faction_usa_gm_dupont GM/DuPont"
+    USA_GM_Dupont_construction_speed_military_1:0 "£faction_usa_gm_dupont GM/DuPont"
+    USA_GM_Dupont_civilian_construction_speed_8:0 "£faction_usa_gm_dupont GM/DuPont"
+    USA_GM_Dupont_civilian_construction_speed_7:0 "£faction_usa_gm_dupont GM/DuPont"
+    USA_GM_Dupont_civilian_construction_speed_6:0 "£faction_usa_gm_dupont GM/DuPont"
+    USA_GM_Dupont_civilian_construction_speed_5:0 "£faction_usa_gm_dupont GM/DuPont"
+    USA_GM_Dupont_civilian_construction_speed_4:0 "£faction_usa_gm_dupont GM/DuPont"
+    USA_GM_Dupont_civilian_construction_speed_3:0 "£faction_usa_gm_dupont GM/DuPont"
+    USA_GM_Dupont_civilian_construction_speed_2:0 "£faction_usa_gm_dupont GM/DuPont"
+    USA_GM_Dupont_civilian_construction_speed_1:0 "£faction_usa_gm_dupont GM/DuPont"
+    USA_JPMorgan_consumer_goods_8:0 "£faction_usa_jpmorgan JPMorgan"
+    USA_JPMorgan_consumer_goods_7:0 "£faction_usa_jpmorgan JPMorgan"
+    USA_JPMorgan_consumer_goods_6:0 "£faction_usa_jpmorgan JPMorgan"
+    USA_JPMorgan_consumer_goods_5:0 "£faction_usa_jpmorgan JPMorgan"
+    USA_JPMorgan_consumer_goods_4:0 "£faction_usa_jpmorgan JPMorgan"
+    USA_JPMorgan_consumer_goods_3:0 "£faction_usa_jpmorgan JPMorgan"
+    USA_JPMorgan_consumer_goods_2:0 "£faction_usa_jpmorgan JPMorgan"
+    USA_JPMorgan_consumer_goods_1:0 "£faction_usa_jpmorgan JPMorgan"
+    USA_JPMorgan_stability_8:0 "£faction_usa_jpmorgan JPMorgan" 
+    USA_JPMorgan_stability_7:0 "£faction_usa_jpmorgan JPMorgan"
+    USA_JPMorgan_stability_6:0 "£faction_usa_jpmorgan JPMorgan"
+    USA_JPMorgan_stability_5:0 "£faction_usa_jpmorgan JPMorgan"
+    USA_JPMorgan_stability_4:0 "£faction_usa_jpmorgan JPMorgan"
+    USA_JPMorgan_stability_3:0 "£faction_usa_jpmorgan JPMorgan"
+    USA_JPMorgan_stability_2:0 "£faction_usa_jpmorgan JPMorgan"
+    USA_JPMorgan_stability_1:0 "£faction_usa_jpmorgan JPMorgan"
+    USA_Public_political_power_gain_8:0 "£faction_usa_public_support Public"
+    USA_Public_political_power_gain_7:0 "£faction_usa_public_support Public"
+    USA_Public_political_power_gain_6:0 "£faction_usa_public_support Public"
+    USA_Public_political_power_gain_5:0 "£faction_usa_public_support Public"
+    USA_Public_political_power_gain_4:0 "£faction_usa_public_support Public"
+    USA_Public_political_power_gain_3:0 "£faction_usa_public_support Public"
+    USA_Public_political_power_gain_2:0 "£faction_usa_public_support Public"
+    USA_Public_political_power_gain_1:0 "£faction_usa_public_support Public"
+    USA_Public_stability_8:0 "£faction_usa_public_support Public"
+    USA_Public_stability_7:0 "£faction_usa_public_support Public"
+    USA_Public_stability_6:0 "£faction_usa_public_support Public"
+    USA_Public_stability_5:0 "£faction_usa_public_support Public"
+    USA_Public_stability_4:0 "£faction_usa_public_support Public"
+    USA_Public_stability_3:0 "£faction_usa_public_support Public"
+    USA_Public_stability_2:0 "£faction_usa_public_support Public"
+    USA_Public_stability_1:0 "£faction_usa_public_support Public"
+
+    USA_negotiate_with_ford:0 "£faction_usa_chrysler_ford Переговоры с Ford/Chrysler"
+    USA_negotiate_with_GM:0 "£faction_usa_gm_dupont Переговоры с GM/DuPont"
+    USA_negotiate_with_JPMorgan:0 "£faction_usa_jpmorgan Переговоры с J.P. Morgan"
+
+    USA_public_fireside_chat_sway:0 "£faction_usa_public_support Публичные беседы в мирное время"
+    USA_public_fireside_chat_sway_desc:0 "FDR was well known for his fireside chats. Here, he could use his best political power, charisma, to directly influence the American people on a personal level."
+    USA_public_fireside_chat_sway_tt:0 "The £faction_usa_public_support Public is §YWorried§! or Friendlier and has at least some Influence\nThis lasts §Y30 Days§! for every level of Friendliness starting at §YWorried§!"
+
+    USA_public_fireside_chat_war_support:0 "£faction_usa_public_support Публичные беседы военного времени"
+    USA_public_fireside_chat_war_support_desc:0 "By wielding his skillful charisma via Fireside chats, FDR can reassure the American people about the war abroad on a personal and intimate level."
+    USA_public_fireside_chat_war_support_tt:0 "The £faction_usa_public_support Public is §GFriendly§! or Friendlier and has at least some Influence\nThis lasts §Y60 Days§! for every level of Friendliness starting at §GFriendly§!"
+
+    USA_ford_retooling_factories_slow:0 "£faction_usa_chrysler_ford Ford/Chrysler Переоснащают заводы"
+    USA_ford_retooling_factories_slow_desc:0 "£faction_usa_chrysler_ford Ford/Chrysler are slowly retooling some of their automobile industry to cover peacetime government contracts for military products."
+
+    USA_ford_retooling_factories_fast:0 "£faction_usa_chrysler_ford Ford/Chrysler Быстро переоснащают заводы"
+    USA_ford_retooling_factories_fast_desc:0 "£faction_usa_chrysler_ford Ford/Chrysler are rapidly retooling all of their automobile industry to cover wartime military production needs."
+
+    USA_gm_retooling_factories_slow:0 "£faction_usa_gm_dupont GM/DuPont Переоснащают заводы"
+    USA_gm_retooling_factories_slow_desc:0 "£faction_usa_gm_dupont GM/DuPont are slowly retooling some of their automobile industry to cover peacetime government contracts for military products."
+
+    USA_gm_retooling_factories_fast:0 "£faction_usa_gm_dupont GM/DuPont Быстро переоснащают заводы"
+    USA_gm_retooling_factories_fast_desc:0 "£faction_usa_gm_dupont GM/DuPont are rapidly retooling all of their automobile industry to cover wartime military production needs."
+
+    USA_ford_build_toledo_complex:0 "£faction_usa_chrysler_ford Ford строит автомобильный комплекс в Толедо"
+    USA_ford_build_tank_factory:0 "£faction_usa_chrysler_ford Chrysler строит сборочный завод в Ричмонде"
+    USA_chrysler_build_tank_factory:0 "£faction_usa_chrysler_ford Chrysler строит Детройтский арсенал"
+    USA_ford_activate_willow_run:0 "£faction_usa_chrysler_ford Ford повторно активирует Willow Run"
+
+    USA_cooperate_with_ford:0 "£faction_usa_chrysler_ford Сотрудничество с Ford/Chrysler"
+    USA_cooperate_with_GM:0 "£faction_usa_gm_dupont Сотрудничество с GM/DuPont"
+    USA_cooperate_with_JPMorgan:0 "£faction_usa_jpmorgan Сотрудничество с J.P. Morgan"
+    USA_JPMorgan_loans:0 "£faction_usa_jpmorgan Кредиты J.P. Morgan"
+
+    USA_kaiser_ford_cooperation:0 "£faction_usa_chrysler_ford Форд помогает £faction_usa_kaiser Kaiser industries"
+
+    USA_Public_inspire_the_public:0 "£faction_usa_public_support Воодушевить людей"
+    USA_Public_inspire_the_public_tt:0 "The £faction_usa_public_support Public are Loyal and have at least some influence\nThis lasts §Y7 Days§! for every level of Influence"
+
+    USA_Public_mobilize_the_public:0 "£faction_usa_public_support Мобилизовать людей"
+    USA_Public_mobilize_the_public_tt:0 "The £faction_usa_public_support Public are Friendly and have at least some influence\nThis lasts §Y7 Days§! for every level of Influence"
+
+    dockyard_tooltip_desc:0 "£GFX_faction_dockyard_icon Dockyard Output and £GFX_faction_construction_dockyard_icon Construction Speed"
+    military_factory_tooltip_desc:0 "£GFX_faction_industry_icon Military Factory Output and £GFX_faction_construction_military_icon Construction Speed"
+    research_efficiency_tooltip_desc:0 "£GFX_faction_research_icon Research Speed and £GFX_faction_efficiency_icon Production Efficiency Growth"
+    consumer_goods_tooltip_desc:0 "£GFX_faction_consumer_goods_icon Consumer Goods"
+    political_power_tooltip_desc:0 "£GFX_faction_pol_power_icon Political Power Gain"
+    construction_speed_tooltip_desc:0 "£GFX_faction_construction_civilian_icon Construction Speed"
+    civilian_construction_speed_tooltip_desc:0 "£GFX_faction_construction_civilian_factory_icon Civilian Factory Construction Speed"
+    stability_tooltip_desc:0 "£GFX_faction_stability_icon Stability"
+
+
+
+    USA_soviet_aid_otw:0 "Уже создаются советские промышленные проекты"
+
+    USA_aid_soviet_union:0 "Помощь Советскому Союзу"
+
+    USA_provide_infrastructure_SOV:0 "Соединить Урал с Москвой"
+    USA_provide_infrastructure_SOV_desc:0 ""
+
+    USA_provide_food_SOV:0 "Ленд лиз продовольствия"
+    USA_provide_food_SOV_desc:0 ""
+
+    USA_provide_synthetic_refineries_SOV:0 "Настроить синтетические очистительные заводы"
+    USA_provide_synthetic_refineries_SOV_desc:0 ""
+
+    USA_provide_steel_and_aluminum_SOV:0 "Создание сталелитейных заводов и алюминиевых заводов"
+    USA_provide_steel_and_aluminum_SOV_desc:0 ""
+
+    USA_provide_civilian_factories_SOV:0 "Настроить гражданскую промышленность"
+    USA_provide_civilian_factories_SOV_desc:0 ""
+
+    USA_provide_military_factories_SOV:0 "Настроить военную промышленность"
+    USA_provide_military_factories_SOV_desc:0 ""
+
+    USA_iranian_corridor:0 "Построить Персидский коридор"
+    USA_iranian_corridor_desc:0 ""
+
+    USA_regain_control_of_us_possessions:0 "Regain control over US Possessions"
+
+    USA_finish_boulder_dam_construction:0 "Завершить строительство плотины в Боулдер-Дэм"
+
+    USA_boulder_dam_construction:0 "£faction_usa_kaiser Строительство плотины Боулдер-Дэм"
+    USA_boulder_dam_construction_desc:0 "The completion of the Boulder Dam will provide substantial power to nearby regions and will allow further construction projects."
+    USA_build_the_boulder_dam:0 "Завершение строительства плотины в Боулдер-Дэм\n"
+    boulder_dam_built:0 "Построена Боулдер-Дэм"
+
+    USA_austerity_measures_missions:0 "Austerity Measures"
+    
+    USA_provide_regular_fuel_ENG:0 "Заправить британские корабли"
+    USA_provide_regular_fuel_ENG_desc:0 "While British ships dock at US ports we can secretly refuel them and give them extra fuel for when they return back to Britain"
+
+    USA_foreign_support_tt:0 "These decisions allow us to approach major countries to lobby for material support once we are officially the CSA."
+
+    USA_embargo_italy:0 "Эмбарго Италии"
+    USA_embargo_japan:0 "Эмбарго Японии"
+    USA_embargo_germany:0 "Эмбарго Германии"
+
+    USA_execute_war_plan_gold:0 "Execute War plan Gold"
+
+    long_island_ship_conversion:0 "Long Island Ship Conversion"
+    long_island_ship_conversion_desc:0 "Convert merchant ships into carriers"
+
+    USA_operation_overlord:0 "Операция Оверлорд"
+    ENG_operation_overlord:0 "Операция Оверлорд"
+    FRA_operation_overlord:0 "Операция Оверлорд"
+    USA_operation_overlord_tt:0 "Activates operation Overlord for France and England"
+    
+    divert_production_to_repairs:0 "Divert Production towards repairs"
+    divert_production_to_repairs_desc:0 ""
+    
+    war_propaganda_against_enemy_minor:0 "Demonize the Enemy"
+    war_propaganda_against_enemy_minor_desc:0 ""
+    
+    war_propaganda_against_enemy_major:0 "Demonize the Enemy"
+    war_propaganda_against_enemy_major_desc:0 ""
+
+    war_propaganda_against_warmonger_minor:1 "War Propaganda Against [From.GetName]"
+    war_propaganda_against_warmonger_minor_desc:0 "The nation calls for every man, woman and child. A war like that of [From.GetName] could happen here as well."
+
+    war_propaganda_against_warmonger_major:1 "War Propaganda Against [From.GetName]"
+    war_propaganda_against_warmonger_major_desc:0 "The nation calls for every man, woman and child. A war like that of [From.GetName] could happen here as well."
+
+    payback_the_war_bonds:0 "Begin Repayments"
+    payback_the_war_bonds_desc:0 "This will lock you from increasing your war bonds. The more bonds you have taken, the more you have to pay back"
+
+    series_a_bond_mission:0 "Облигации серии A"
+    series_b_bond_mission:0 "Облигации серии B"
+    series_c_bond_mission:0 "Облигации серии C"
+    series_d_bond_mission:0 "Облигации серии D"
+    series_e_bond_mission:0 "Облигации серии E"
+    series_f_bond_mission:0 "Облигации серии F"
+    series_g_bond_mission:0 "Облигации серии G"
+
+    series_a_bond_mission_hermann:0 "Облигации серии A"
+    series_b_bond_mission_hermann:0 "Облигации серии B"
+    series_c_bond_mission_hermann:0 "Облигации серии C"
+    series_d_bond_mission_hermann:0 "Облигации серии D"
+    series_e_bond_mission_hermann:0 "Облигации серии E"
+    series_f_bond_mission_hermann:0 "Облигации серии F"
+    series_g_bond_mission_hermann:0 "Облигации серии G"
+
+    war_bonds_tt:0 "Приведёт к §GМассовому снижению§! экономической усталости.\n"
+
+    payback_war_bond_A:0 "Выплаты по облигациям"
+    payback_war_bond_B:0 "Выплаты по облигациям"
+    payback_war_bond_C:0 "Выплаты по облигациям"
+    payback_war_bond_D:0 "Выплаты по облигациям"
+    payback_war_bond_E:0 "Выплаты по облигациям"
+    payback_war_bond_F:0 "Выплаты по облигациям"
+    payback_war_bond_G:0 "Выплаты по облигациям"
+
+    develop_western_rhineland_coal_mines:0 "Develop Western Rhineland Coal Mines"
+    develop_western_rhineland_coal_mines_desc:0 "" 
+
+    develop_eastern_rhineland_coal_mines:0 "Develop Eastern Rhineland Coal Mines"
+    develop_eastern_rhineland_coal_mines_desc:0 "" 
+
+    develop_tuscany_coal_mines:0 "Develop Tuscany Coal Mines"
+    develop_tuscany_coal_mines_desc:0 "" 
+
+    develop_champagne_coal_mines:0 "Develop Champagne Coal Mines"
+    develop_champagne_coal_mines_desc:0 ""
+
+    develop_guadalajara_coal_mines:0 "Develop Guadalajara Coal Mines"
+    develop_guadalajara_coal_mines_desc:0 ""
+
+    develop_sevilla_coal_mines:0 "Develop Sevilla Coal Mines"
+    develop_sevilla_coal_mines_desc:0 ""
+
+    develop_bursa_coal_mines:0 "Develop Bursa Coal Mines"
+    develop_bursa_coal_mines_desc:0 ""
+
+    develop_trabzon_coal_mines:0 "Develop Trabzon Coal Mines"
+    develop_trabzon_coal_mines_desc:0 ""
+
+    develop_montana_coal_mines:0 "Develop Montana Coal Mines"
+    develop_montana_coal_mines_desc:0 ""
+
+    develop_north_dakota_coal_mines:0 "Develop North Dakota Coal Mines"
+    develop_north_dakota_coal_mines_desc:0 ""
+
+    develop_gulf_province_coal_mines:0 "Develop Coal Mines in the Gulf Province"
+    develop_gulf_province_coal_mines_desc:0 ""
+    
+    develop_hannover_iron_mines:0 "Develop Salzgitter Iron Mines"
+    develop_hannover_iron_mines_desc:0 ""
+    
+    develop_styria_iron_mines:0 "Establish Erzberg Iron Mines"
+    develop_styria_iron_mines_desc:0 ""
+    
+    develop_hessen_iron_mines:0 "Establish Brunswick and Linz Iron Mines"
+    develop_hessen_iron_mines_desc:0 ""
+
+    develop_hubei_iron_mines:0 "Develop Hubei Iron Mines"
+    develop_hubei_iron_mines_desc:0 "" 
+
+    custom_cost_100_cp:0 "£command_power  §Y100§!"
+    custom_cost_100_cp_blocked:0 "£command_power  §R100§!"
+
+    custom_cost_75_cp:0 "£command_power  §Y75§!"
+    custom_cost_75_cp_blocked:0 "£command_power  §R75§!"
+
+    custom_cost_50_cp:0 "£command_power  §Y50§!"
+    custom_cost_50_cp_blocked:0 "£command_power  §R50§!"
+
+    custom_cost_40_cp:0 "£command_power  §Y40§!"
+    custom_cost_40_cp_blocked:0 "£command_power  §R40§!"
+
+    custom_cost_35_cp:0 "£command_power  §Y35§!"
+    custom_cost_35_cp_blocked:0 "£command_power  §R35§!"
+
+    custom_cost_30_cp:0 "£command_power  §Y30§!"
+    custom_cost_30_cp_blocked:0 "£command_power  §R30§!"
+
+    custom_cost_25_cp:0 "£command_power  §Y25§!"
+    custom_cost_25_cp_blocked:0 "£command_power  §R25§!"
+
+    custom_cost_20_cp:0 "£command_power  §Y20§!"
+    custom_cost_20_cp_blocked:0 "£command_power  §R20§!"
+
+    custom_cost_15_cp:0 "£command_power  §Y15§!"
+    custom_cost_15_cp_blocked:0 "£command_power  §R15§!"
+
+    custom_cost_10_cp:0 "£command_power  §Y10§!"
+    custom_cost_10_cp_blocked:0 "£command_power  §R10§!"
+
+    custom_cost_5_cp:0 "£command_power  §Y5§!"
+    custom_cost_5_cp_blocked:0 "£command_power  §R5§!"
+    
+
+
+
+
+#################################################################################### Strategic Regions ####################################################################################
+
+
+
+
+
+    STRATEGIC_REGION_pacific:0 "Тихоокеанский контроль"
+    STRATEGIC_REGION_pacific_desc:0 "Тихий океан жизненно важен для безопасности нашей родной территории.\n\nКонтроль должен быть сохранен, и в случае войны мы не можем §Rпотерять§! наши владения здесь иначе наше население начнет чувствовать угрозу. Усиление контроля над Тихим океаном позволит нам утвердить §Yбольшее господство§! над другими великими державами\n\n§Y[USA.GetFlag]Американское§! влияние на тихом океане - [ROOT.GetUSApacificcontrol] ([?USA_pacific_control|Y0])\n\n§Y[JAP.GetFlag]Японское§! влияние на тихом океане - [ROOT.GetJAPpacificcontrol] ([?JAP_pacific_control|Y0])"
+
+    STRATEGIC_REGION_mediterranean:0 "Средиземноморский контроль"
+    STRATEGIC_REGION_mediterranean_desc:0 "Средиземное море жизненно важно для безопасности нашей родной территории.\n\nКонтроль должен быть сохранен, и в случае войны мы не можем §Rпотерять§! наши владения здесь иначе наше население начнет чувствовать угрозу. Усиление контроля над Средиземным морем позволит нам утвердить §Yбольшее господство§! над другими великими державами.\n\n§Y[ENG.GetFlag][ENG.GetName]§! контроль над Средиземным морем - [ROOT.GetENGMediterraneancontrol] ([?ENG_med_control|Y0])\n\n§Y[ITA.GetFlag][ITA.GetName]§! контроль над Средиземным морем - [ROOT.GetITAMediterraneancontrol] ([?ITA_med_control|Y0])"
+
+    STRATEGIC_REGION_5_g_tt:0 "Даст §Y5§! очков"
+    STRATEGIC_REGION_5_l_tt:0 "Потеря §Y5§! очков"
+    
+    STRATEGIC_REGION_10_g_tt:0 "Даст §Y10§! очков"
+    STRATEGIC_REGION_10_l_tt:0 "Потеря §Y10§! очков"
+    
+    STRATEGIC_REGION_15_g_tt:0 "Даст §Y15§! очков"
+    STRATEGIC_REGION_15_l_tt:0 "Потеря §Y15§! очков"
+    
+    STRATEGIC_REGION_20_g_tt:0 "Даст §Y20§! очков"
+    STRATEGIC_REGION_20_l_tt:0 "Потеря §Y20§! очков"
+
+    STRATEGIC_REGION_25_g_tt:0 "Даст §Y25§! очков"
+    STRATEGIC_REGION_25_l_tt:0 "Потеря §Y25§! очков"
+
+    USA_power_projection:0 "Тихоокеанская проекция силы"
+    USA_power_projection_desc:0 "Мы должны переместить наш штаб Тихоокеанского флота в Перл-Харбор, на Гавайи, чтобы улучшить нашу проекцию силы через Тихий океан. Без него японское эмбарго невозможно.\n\nРазместите Тихоокеанский флот, состоящий как минимум из §Y8 линкоров§!, §Y8 крейсеров§! и §Y30 эсминцев§! в Перл-Харборе, Гавайи, чтобы дать отпор японским провокациям."  
+    USA_power_projection_tt:0 "§RМы не сможем ввести эмбарго на Японию!"
+    USA_power_projection_fail:0 "Тихоокеанская проекция силы"
+    USA_embargo_japan_tt:0 "Имейте адекватную проекцию силы через Тихий океан через Тихоокеанский флот в Перл-Харборе."
+
+    JAP_pearl_harbor:0 "Окно возможностей в Перл-Харборе"
+    JAP_pearl_harbor_desc:0 "Нам представилась уникальная возможность атаковать сгруппированный Тихоокеанский флот Соединенных Штатов в Перл-Харборе. Если мы нанесем скоординированный удар в Перл-Харборе, то сможем вывести из строя значительную часть их военно-морской мощи. Если мы будем ждать слишком долго, мы упустим наш единственный шанс. Мы должны объявить войну и атаковать Перл-Харбор в течение полу года, пока американцы не готовы."
+    JAP_pearl_harbor_tt:0 "§RМы потеряем элемент неожиданности, а вместе с ним и возможность быстрой войны!§!"
+
+    USA_hold_iwo_jima:0 "Удержание Иводзимы"
+    USA_hold_iwo_jima_desc:0 ""
+
+    JAP_hold_iwo_jima:0 "Удержание Иводзимы"
+    JAP_hold_iwo_jima_desc:0 ""
+
+    USA_retake_iwo_jima:0 "Возврат Иводзимы"
+    USA_retake_iwo_jima_desc:0 ""
+
+    JAP_retake_iwo_jima:0 "Возврат Иводзимы"
+    JAP_retake_iwo_jima_desc:0 ""
+
+    USA_hold_marcus_island:0 "Удержание острова Маркуса"
+    USA_hold_marcus_island_desc:0 ""
+
+    JAP_hold_marcus_island:0 "Удержание острова Маркуса"
+    JAP_hold_marcus_island_desc:0 ""
+
+    USA_retake_marcus_island:0 "Возврат острова Маркуса"
+    USA_retake_marcus_island_desc:0 ""
+
+    JAP_retake_marcus_island:0 "Возврат острова Маркуса"
+    JAP_retake_marcus_island_desc:0 ""
+
+    USA_hold_saipan:0 "Удержание Сайпана"
+    USA_hold_saipan_desc:0 ""
+
+    JAP_hold_saipan:0 "Удержание Сайпана"
+    JAP_hold_saipan_desc:0 ""
+
+    USA_retake_saipan:0 "Возврат Сайпана"
+    USA_retake_saipan_desc:0 ""
+
+    JAP_retake_saipan:0 "Возврат Сайпана"
+    JAP_retake_saipan_desc:0 ""
+
+    USA_hold_marshall_islands:0 "Удержание Маршалловых островов"
+    USA_hold_marshall_islands_desc:0 ""
+
+    JAP_hold_marshall_islands:0 "Удержание Маршалловых островов"
+    JAP_hold_marshall_islands_desc:0 ""
+
+    USA_retake_marshall_islands:0 "Возврат Маршалловых островов"
+    USA_retake_marshall_islands_desc:0 ""
+
+    JAP_retake_marshall_islands:0 "Возврат Маршалловых островов"
+    JAP_retake_marshall_islands_desc:0 ""
+
+    USA_hold_okinawa:0 "Удержание Окинавы"
+    USA_hold_okinawa_desc:0 ""
+
+    JAP_hold_okinawa:0 "Удержание Окинавы"
+    JAP_hold_okinawa_desc:0 ""
+
+    USA_retake_okinawa:0 "Возврат Окинавы"
+    USA_retake_okinawa_desc:0 ""
+
+    JAP_retake_okinawa:0 "Возврат Окинавы"
+    JAP_retake_okinawa_desc:0 ""
+
+    USA_hold_guam:0 "Удержание Гуама"
+    USA_hold_guam_desc:0 ""
+
+    JAP_hold_guam:0 "Удержание Гуама"
+    JAP_hold_guam_desc:0 ""
+
+    USA_retake_guam:0 "Возврат Гуама"
+    USA_retake_guam_desc:0 ""
+
+    JAP_retake_guam:0 "Возврат Гуама"
+    JAP_retake_guam_desc:0 ""
+
+    USA_hold_wake_island:0 "Удержание острова Уэйк"
+    USA_hold_wake_island_desc:0 ""
+
+    JAP_hold_wake_island:0 "Удержание острова Уэйк
+    JAP_hold_wake_island_desc:0 ""
+
+    USA_retake_wake_island:0 "Возврат острова Уэйк"
+    USA_retake_wake_island_desc:0 ""
+
+    JAP_retake_wake_island:0 "Возврат острова Уэйк"
+    JAP_retake_wake_island_desc:0 ""
+
+    USA_hold_midway_island:0 "Удержание острова Мидуэй"
+    USA_hold_midway_island_desc:0 ""
+
+    JAP_hold_midway_island:0 "Удержание острова Мидуэй"
+    JAP_hold_midway_island_desc:0 ""
+
+    USA_retake_midway_island:0 "Возврат острова Мидуэй"
+    USA_retake_midway_island_desc:0 ""
+
+    JAP_retake_midway_island:0 "Возврат острова Мидуэй"
+    JAP_retake_midway_island_desc:0 ""
+
+    USA_hold_johnston_atoll:0 "Удержание атолла Джонстон"
+    USA_hold_johnston_atoll_desc:0 ""
+
+    JAP_hold_johnston_atoll:0 "Удержание атолла Джонстон"
+    JAP_hold_johnston_atoll_desc:0 ""
+
+    USA_retake_johnston_atoll:0 "Возврат атолла Джонстон"
+    USA_retake_johnston_atoll_desc:0 ""
+
+    JAP_retake_johnston_atoll:0 "Возврат атолла Джонстон"
+    JAP_retake_johnston_atoll_desc:0 ""
+
+    USA_hold_hawaii:0 "Удержание Гавайи"
+    USA_hold_hawaii_desc:0 ""
+
+    JAP_hold_hawaii:0 "Удержание Гавайи"
+    JAP_hold_hawaii_desc:0 ""
+
+    USA_retake_hawaii:0 "Возврат Гавайи"
+    USA_retake_hawaii_desc:0 ""
+
+    JAP_retake_hawaii:0 "Возврат Гавайи"
+    JAP_retake_hawaii_desc:0 ""
+
+    USA_pacific_control_Zero:0 "§OНулевое§!"
+    USA_pacific_control_miniscule:0 "§OМиниатюрное§!"
+    USA_pacific_control_Small:0 "§OМаленькое§!"
+    USA_pacific_control_Moderate:0 "§OУмеренное§!"
+    USA_pacific_control_Large:0 "§OБольшое§!"
+    USA_pacific_control_Overpowering:0 "§OГосподствующее§!"
+
+    JAP_pacific_control_Zero:0 "§OНулевое§!"
+    JAP_pacific_control_miniscule:0 "§OМиниатюрное§!"
+    JAP_pacific_control_Small:0 "§OМаленькое§!"
+    JAP_pacific_control_Moderate:0 "§OУмеренное§!"
+    JAP_pacific_control_Large:0 "§OБольшое§!"
+    JAP_pacific_control_Overpowering:0 "§OГосподствующее§!"
+
+    ENG_retake_malta:0 "Retake Malta"
+    ENG_retake_malta_desc:0 ""
+
+    ITA_retake_malta:0 "Retake Malta"
+    ITA_retake_malta_desc:0 ""
+
+    ENG_hold_malta:0 "Hold Malta"
+    ENG_hold_malta_desc:0 ""
+
+    ITA_hold_malta:0 "Hold Malta"
+    ITA_hold_malta_desc:0 ""
+
+    ENG_retake_gibraltar:0 "Retake Gibraltar"
+    ENG_retake_gibraltar_desc:0 ""
+
+    ITA_retake_gibraltar:0 "Retake Gibraltar"
+    ITA_retake_gibraltar_desc:0 ""
+
+    ENG_hold_gibraltar:0 "Hold Gibraltar"
+    ENG_hold_gibraltar_desc:0 ""
+
+    ITA_hold_gibraltar:0 "Hold Gibraltar"
+    ITA_hold_gibraltar_desc:0 ""
+
+    ENG_retake_suez:0 "Retake Suez"
+    ENG_retake_suez_desc:0 ""
+
+    ITA_retake_suez:0 "Retake Suez"
+    ITA_retake_suez_desc:0 ""
+
+    ENG_hold_suez:0 "Hold Suez"
+    ENG_hold_suez_desc:0 ""
+
+    ITA_hold_suez:0 "Hold Suez"
+    ITA_hold_suez_desc:0 ""
+
+    ENG_retake_sardinia:0 "Retake Sardinia"
+    ENG_retake_sardinia_desc:0 ""
+
+    ITA_retake_sardinia:0 "Retake Sardinia"
+    ITA_retake_sardinia_desc:0 ""
+
+    ENG_hold_sardinia:0 "Hold Sardinia"
+    ENG_hold_sardinia_desc:0 ""
+
+    ITA_hold_sardinia:0 "Hold Sardinia"
+    ITA_hold_sardinia_desc:0 ""
+
+    ENG_retake_sicily:0 "Retake Sicily"
+    ENG_retake_sicily_desc:0 ""
+
+    ITA_retake_sicily:0 "Retake Sicily"
+    ITA_retake_sicily_desc:0 ""
+
+    ENG_hold_sicily:0 "Hold Sicily"
+    ENG_hold_sicily_desc:0 ""
+
+    ITA_hold_sicily:0 "Hold Sicily"
+    ITA_hold_sicily_desc:0 ""
+
+    ENG_retake_tripoli:0 "Retake Tripoli"
+    ENG_retake_tripoli_desc:0 ""
+
+    ITA_retake_tripoli:0 "Retake Tripoli"
+    ITA_retake_tripoli_desc:0 ""
+
+    ENG_hold_tripoli:0 "Hold Tripoli"
+    ENG_hold_tripoli_desc:0 ""
+
+    ITA_hold_tripoli:0 "Hold Tripoli"
+    ITA_hold_tripoli_desc:0 ""
+
+    ENG_retake_tobruk:0 "Retake Tobruk"
+    ENG_retake_tobruk_desc:0 ""
+
+    ITA_retake_tobruk:0 "Retake Tobruk"
+    ITA_retake_tobruk_desc:0 ""
+
+    ENG_hold_tobruk:0 "Hold Tobruk"
+    ENG_hold_tobruk_desc:0 ""
+
+    ITA_hold_tobruk:0 "Hold Tobruk"
+    ITA_hold_tobruk_desc:0 ""
+
+    ENG_retake_algiers:0 "Retake Algiers"
+    ENG_retake_algiers_desc:0 ""
+
+    ITA_retake_algiers:0 "Retake Algiers"
+    ITA_retake_algiers_desc:0 ""
+
+    ENG_hold_algiers:0 "Hold Algiers"
+    ENG_hold_algiers_desc:0 ""
+
+    ITA_hold_algiers:0 "Hold Algiers"
+    ITA_hold_algiers_desc:0 ""
+
+    ENG_retake_casablanca:0 "Retake Casablanca"
+    ENG_retake_casablanca_desc:0 ""
+
+    ITA_retake_casablanca:0 "Retake Casablanca"
+    ITA_retake_casablanca_desc:0 ""
+
+    ENG_hold_casablanca:0 "Hold Casablanca"
+    ENG_hold_casablanca_desc:0 ""
+
+    ITA_hold_casablanca:0 "Hold Casablanca"
+    ITA_hold_casablanca_desc:0 ""
+
+    ENG_retake_tunis:0 "Retake Tunis"
+    ENG_retake_tunis_desc:0 ""
+
+    ITA_retake_tunis:0 "Retake Tunis"
+    ITA_retake_tunis_desc:0 ""
+
+    ENG_hold_tunis:0 "Hold Tunis"
+    ENG_hold_tunis_desc:0 ""
+
+    ITA_hold_tunis:0 "Hold Tunis"
+    ITA_hold_tunis_desc:0 ""
+
+    ENG_med_control_Zero:0 "§OНулевое§!"
+    ENG_med_control_miniscule:0 "§OМиниатюрное§!"
+    ENG_med_control_Small:0 "§OМаленькое§!"
+    ENG_med_control_Moderate:0 "§OУмеренное§!"
+    ENG_med_control_Large:0 "§OБольшое§!"
+    ENG_med_control_Overpowering:0 "§OГосподствующее§!"
+
+    ITA_med_control_Zero:0 "§OНулевое§!"
+    ITA_med_control_miniscule:0 "§OМиниатюрное§!"
+    ITA_med_control_Small:0 "§OМаленькое§!"
+    ITA_med_control_Moderate:0 "§OУмеренное§!"
+    ITA_med_control_Large:0 "§OБольшое§!"
+    ITA_med_control_Overpowering:0 "§OГосподствующее§!"
+
+    anti_non_aligned_raids:0 "Антимонархические рейды"
+    ban_non_aligned_party:0 "Запрет монархизма"
+
+    reserve_divisions:0 "Резервные дивизии"
+    recruit_more_reserves:0 "Набирать больше резервных дивизий"
+    recruiting_reserves:0 "Создаст запас из §Y10 обученных пехотных дивизий§!, которые будут доступны для развертывания во время войны с §Y5% оборудования§!\n"
+    
+    recruiting_reserves_40:0 "Создаст запас из §Y40 обученных пехотных дивизий§!, которые будут доступны для развертывания во время войны с §Y5% оборудования§!\n"
+  
+    deploy_reserves_infantry:0 "Развернуть резерв §OПехотных§! дивизий"
+    deploying_reserves_infantry:0 "Развернуть §G10§! Пехотных дивизий в столице"
+
+    
+
+    finish_recruitment_of_reserves:0 "Завершить мобилизацию резервов (НАЖИМАТЬ ПОСЛЕ МОБИЛИЗАЦИИ ВСЕХ ДИВИЗИЙ)"
+
+
+    reserve_total_1:0 "Имеет очень небольшой резервов (§G10§!)"
+    reserve_total_2:0 "Имеет небольшой резервов (§G20§!)"
+    reserve_total_3:0 "Имеет не очень большой резервов (§G30§!)"
+    reserve_total_4:0 "Имеет увеличенное количество резервов (§G40§!)"
+    reserve_total_5:0 "Имеет умеренное количество резервов (§G50§!)"
+    reserve_total_6:0 "Имеет значительный объем резервов (§G60§!)"
+    reserve_total_7:0 "Имеет большое количество резервов (§G70§!)"
+    reserve_total_8:0 "Имеет очень большой резервов (§G80§!)"
+    reserve_total_9:0 "Имеет изрядное количество резервов (§G90§!)"
+    reserve_total_10:0 "Имеет не очень огромное количество резервов (§G100§!)"
+    reserve_total_11:0 "Имеет предогромное количество резервов (§G110§!)"
+    reserve_total_12:0 "Имеет огромное количество резервов (§G120§!)"
+    reserve_total_13:0 "Имеет колоссальное количество резервов (§G130§!)"
+    reserve_total_14:0 "Имеет предмаксимальное количество резервов (§G140§!)"
+    reserve_total_15:0 "Имеет максимальное количество резервов (§G150§!)"

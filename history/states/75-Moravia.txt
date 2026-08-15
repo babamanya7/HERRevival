@@ -1,0 +1,33 @@
+state={
+	id=75
+	name="STATE_75"
+	manpower = 2598400
+	resources={
+		oil = 2
+	}
+
+	state_category = large_city
+
+	history={
+		owner = CZE
+		victory_points = {
+			13338 20
+		}
+		victory_points = {
+			13295 5
+		}
+		buildings = {
+			infrastructure = 7
+			industrial_complex = 5
+			arms_factory = 7
+			steel_refinery = 1
+			air_base = 10
+
+		}
+		add_core_of = CZE
+	}
+
+	provinces={
+		561 1058 3535 3666 3670 3741 3884 9490 9670 9977 10107 11702 11987 12044 13295 13338 
+	}
+}

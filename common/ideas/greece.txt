@@ -1,0 +1,39 @@
+ideas = {
+	hidden_ideas = {
+		ita_loh = {
+			allowed = {
+				tag = GRE
+			}
+			cancel = {
+				GRE = { has_capitulated = yes }
+			}
+			targeted_modifier = {
+				tag = ITA
+				attack_bonus_against = 0.4
+				defense_bonus_against = 0.4
+			}
+		}
+		fin_secret_buff = {
+			allowed = {
+				tag = FIN
+			}
+			cancel = {
+				FIN = { is_ai = no }
+			}
+			modifier = {
+				army_strength_factor = 4
+			}
+		}
+		fin_secret_buff_player = {
+			allowed = {
+				tag = FIN
+			}
+			cancel = {
+				FIN = { is_ai = yes }
+			}
+			modifier = {
+				army_strength_factor = 1
+			}
+		}
+	}
+}

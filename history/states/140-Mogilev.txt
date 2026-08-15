@@ -1,0 +1,29 @@
+
+state={
+	id=140
+	name="STATE_140"
+	manpower = 179554
+	state_category = town
+
+	history={
+		owner = SOV
+		victory_points = {
+			9289 5
+		}
+		victory_points = {
+			11322 1
+		}
+		buildings = {
+			infrastructure = 4
+			industrial_complex = 3
+			air_base = 2
+			arms_factory = 2
+		}
+		add_core_of = SOV
+		add_core_of = BLR
+	}
+	
+	provinces={
+		11322 9289 13859 3378 342 6292 9308 3331 11220 11917 4583 294 11811
+	}
+}

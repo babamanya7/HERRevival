@@ -1,0 +1,1434 @@
+on_actions = {
+	on_state_control_changed = {
+		effect = {
+			if = {
+				limit = {
+					FROM.FROM = { state = 85 }
+				}
+				85 = { POL_remove_danzig_effect = yes }
+				if = {
+					limit = {
+						ROOT = {
+							OR = {
+								original_tag = GER
+								original_tag = DNZ
+							}
+						}
+					}
+					85 = {
+						reset_state_name = yes
+					}
+					reset_province_name = 362
+				}
+				if = {
+					limit = { ROOT = { original_tag = POL } }
+					85 = { set_state_name = "Gdańsk" }
+					set_province_name = {
+						id = 362
+						name = "Gdańsk"
+					}
+				}
+			}
+			if = {
+				limit = {
+					divisions_in_state = { state = FROM.FROM size > 0 }
+					FROM.FROM = { 
+						NOT = { has_state_flag = already_sabotaged_flag }
+					}
+					FROM = {
+						original_tag = POL
+						has_completed_focus = POL_sabotage_polish_industry
+					}
+				}
+				FROM.FROM = { 
+					set_state_flag = poland_state_withdrawn
+					state_event = { id = poland.23 trigger_for = controller }
+				}
+			}
+		}
+
+		#SOVIET - If Death to Invaders Propaganda Campaign is active, manage the appropriate state modifier
+		effect = {
+			if = {
+				limit = {
+					has_global_flag = SOV_propaganda_death_to_invaders_active_flag
+					FROM.FROM = { is_core_of = SOV }
+				}
+				if = { #If SOV is new controller, remove state modifier
+					limit = {
+						ROOT = { tag = SOV }
+						FROM.FROM = { has_dynamic_modifier = { modifier = SOV_invaders_must_die } }
+					}
+					FROM.FROM = { remove_dynamic_modifier = { modifier = SOV_invaders_must_die } }
+				}
+				else_if = { #If SOV lost the state, add state modifier
+					limit = {
+						FROM = { tag = SOV }
+						ROOT = { has_war_with = SOV }
+					}
+					FROM.FROM = { add_dynamic_modifier = { modifier = SOV_invaders_must_die } }
+				}
+			}
+		}
+		
+		#SOVIET - Clean other state modifiers when Soviets lose control over the state
+		effect = {
+			if = {
+				limit = {
+					FROM.FROM = { is_core_of = SOV }
+					ROOT = { NOT = { tag = SOV } }
+				}
+				if = { #SOV_defend_moscow
+					limit = {
+						FROM.FROM = { has_dynamic_modifier = { modifier = SOV_defend_moscow } }
+					}
+					FROM.FROM = { remove_dynamic_modifier = { modifier = SOV_defend_moscow } }
+				}
+				if = { #SOV_increased_metals_production
+					limit = {
+						FROM.FROM = { has_dynamic_modifier = { modifier = SOV_increased_metals_production } }
+					}
+					FROM.FROM = { remove_dynamic_modifier = { modifier = SOV_increased_metals_production } }
+				}
+				if = { #SOV_seraya_loshad_battery
+					limit = {
+						FROM.FROM = { has_dynamic_modifier = { modifier = SOV_seraya_loshad_battery } }
+					}
+					FROM.FROM = { remove_dynamic_modifier = { modifier = SOV_seraya_loshad_battery } }
+				}
+				if = { #SOV_krasnaya_gorka_battery
+					limit = {
+						FROM.FROM = { has_dynamic_modifier = { modifier = SOV_krasnaya_gorka_battery } }
+					}
+					FROM.FROM = { remove_dynamic_modifier = { modifier = SOV_krasnaya_gorka_battery } }
+				}
+				if = { #SOV_armored_battery_35
+					limit = {
+						FROM.FROM = { has_dynamic_modifier = { modifier = SOV_armored_battery_35 } }
+					}
+					FROM.FROM = { remove_dynamic_modifier = { modifier = SOV_armored_battery_35 } }
+				}
+				if = { #SOV_factory_worker_militias_raised
+					limit = {
+						FROM.FROM = { has_dynamic_modifier = { modifier = SOV_factory_worker_militias_raised } }
+					}
+					FROM.FROM = { remove_dynamic_modifier = { modifier = SOV_factory_worker_militias_raised } }
+				}
+				if = { #SOV_civilian_labor_in_defense
+					limit = {
+						FROM.FROM = { has_dynamic_modifier = { modifier = SOV_civilian_labor_in_defense } }
+					}
+					FROM.FROM = { remove_dynamic_modifier = { modifier = SOV_civilian_labor_in_defense } }
+				}
+			}
+		}
+		
+		effect = {
+			if = {
+				limit = {
+					FROM.FROM = { is_core_of = SOV }
+					ROOT = { tag = SOV }
+				}
+				if = { #SOV_partisans_activity_1
+					limit = {
+						FROM.FROM = { has_dynamic_modifier = { modifier = SOV_partisans_activity_1 } }
+					}
+					FROM.FROM = { remove_dynamic_modifier = { modifier = SOV_partisans_activity_1 } }
+				}
+				if = { #SOV_partisans_activity_2
+					limit = {
+						FROM.FROM = { has_dynamic_modifier = { modifier = SOV_partisans_activity_2 } }
+					}
+					FROM.FROM = { remove_dynamic_modifier = { modifier = SOV_partisans_activity_2 } }
+				}
+				if = { #SOV_partisans_activity_3
+					limit = {
+						FROM.FROM = { has_dynamic_modifier = { modifier = SOV_partisans_activity_3 } }
+					}
+					FROM.FROM = { remove_dynamic_modifier = { modifier = SOV_partisans_activity_3 } }
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					FROM = { tag = GER }
+					FROM.FROM = { has_dynamic_modifier = { modifier = SOV_soviet_imports } }
+				}
+				FROM.FROM = { remove_dynamic_modifier = { modifier = SOV_soviet_imports } }
+			}
+		}
+
+		#SOVIET - Nikolay Kuznetsov becomes an operative (Ukrainian state occupied)
+		effect = { #ROOT is new controller #FROM is old controller #FROM.FROM is state ID
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+					FROM.FROM = {
+						is_core_of = UKR
+						NOT = { is_owned_by = ROOT }
+					}
+					FROM = {
+						original_tag = SOV
+						has_government = communism
+					}
+					ROOT = { has_war_with = SOV }
+				}
+				FROM = {
+					set_variable = { SOV_invader_of_ukraine = ROOT } #Store invader in SOV for loc purposes in the event below
+					country_event = { id = NSB_soviet_great_patriotic_war.01 days = 10 random_days = 30 }
+				}
+			}
+		}
+	}
+	
+	#FROM - Country (owner)
+	#ROOT - leader
+	#FROMFROM - original owner for exiled leaders
+	on_unit_leader_level_up = {
+		effect = {
+			if = { 
+				limit = { 
+					FROM = { 
+						has_idea = bold_attack_spirit 
+					} 
+				}
+				character = { 
+					IF = { 
+						limit = { is_army_leader = yes }
+					
+						random_list = { 
+							50 = { add_attack = 1 } 
+							50 = {} 
+						} 
+					}
+				}
+			}
+			else_if = { #since these spirits are mutually exclusive, we can use else_if for added performance!
+				limit = {
+					FROM = { has_idea = tenacious_defense_spirit }
+				}
+				character = { 
+					IF = { 
+						limit = { is_army_leader = yes }
+					
+						random_list = {
+							50 = { add_defense = 1 }
+							50 = {}
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = { has_idea = meticulous_preparation_spirit }
+				}
+				character = { 
+					IF = { 
+						limit = { is_army_leader = yes }
+					
+						random_list = {
+							50 = { 
+								add_planning = 1 
+								add_logistics = 1
+							}
+							50 = {}
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = { has_idea = instilled_aggression_spirit }
+				}
+				character = { 
+					IF = { 
+						limit = { is_navy_leader = yes }
+		
+						random_list = {
+							40 = { 
+								add_attack = 1 
+							}
+							60 = {}
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = { has_idea = calculated_restraint_spirit }
+				}
+				character = { 
+					IF = { 
+						limit = { is_navy_leader = yes }
+					
+						random_list = {
+							40 = { 
+								add_defense = 1 
+							}
+							60 = {}
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = { has_idea = signals_training_spirit }
+				}
+				character = { 
+					IF = { 
+						limit = { is_navy_leader = yes }
+					
+						random_list = {
+							40 = { 
+								add_maneuver = 1
+								add_coordination = 1
+							}
+							60 = {}
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					ROOT = {
+						has_trait = trait_cautious
+					}
+				}
+				character = { 
+					if = {
+						limit = { is_army_leader = yes }
+						random_list = {
+							25 = { 
+								add_planning = 1
+							}
+							75 = {  }
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						has_trait = trait_reckless
+					}
+				}
+				character = { 
+					if = {
+						limit = { is_army_leader = yes }
+						random_list = {
+							25 = { 
+								add_logistics = 1
+							}
+							75 = {  }
+						}
+					}
+				}
+			}
+		}
+	}
+
+	on_unit_leader_created = { # This uses the UNIT LEADER sub scope of a character, FROM == country
+		effect = {
+			character = {
+				if = { 
+					limit = {
+						is_army_leader = yes
+					}
+					if = {
+						limit = {	
+							FROM = { has_idea = political_loyalty_spirit } #done here instead of the trait file to avoid some oddness with generating assignable traits under certain circumstances, makes it easier to control probabilities
+						}
+						root = {
+							random_list = {
+								50 = { 
+									add_unit_leader_trait = media_personality
+								}
+								50 = { 
+									add_unit_leader_trait = politically_connected
+								}
+							}
+						}
+						
+					}
+					else_if = {
+						limit = {
+							FROM = { has_idea = mobile_warfare_academy_spirit } #done here instead of the trait file to avoid some oddness with generating assignable traits under certain circumstances, makes it easier to control probabilities
+						}
+						root = {
+							random_list = {
+								50 = { 
+									add_unit_leader_trait = panzer_leader
+								}
+								50 = {}
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							FROM = { has_idea = inventive_leadership_spirit } #done here instead of the trait file to avoid some oddness with generating assignable traits under certain circumstances, makes it easier to control probabilities
+						}
+						root = {
+							random_list = {
+								75 = { 
+									random_list = {
+										33 = { add_unit_leader_trait = naval_invader }
+										33 = { add_unit_leader_trait = commando }
+										33 = { add_unit_leader_trait = trickster }
+									}
+								}
+								25 = {}
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							FROM = { has_idea = mass_assault_academy_spirit } #done here instead of the trait file to avoid some oddness with generating assignable traits under certain circumstances, makes it easier to control probabilities
+						}
+						root = {
+							random_list = {
+								50 = { 
+									add_unit_leader_trait = infantry_officer
+								}
+								50 = {}
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							FROM = { has_idea = superior_firepower_academy_spirit } #done here instead of the trait file to avoid some oddness with generating assignable traits under certain circumstances, makes it easier to control probabilities
+						}
+						root = {
+							random_list = {
+								50 = { 
+									add_unit_leader_trait = engineer_officer
+								}
+								50 = {}
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							FROM = { has_idea = theatre_training_spirit } #done here instead of the trait file to avoid some oddness with generating assignable traits under certain circumstances, makes it easier to control probabilities
+						}
+						root = {
+							random_list = {
+								50 = { 
+									random_list = {
+										50 = { add_unit_leader_trait = brilliant_strategist }
+										50 = { add_unit_leader_trait = inflexible_strategist }
+									}
+								}
+								50 = {}
+							}
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						FROM = { has_idea = fleet_in_being_academy_spirit } #done here instead of the trait file to avoid some oddness with generating assignable traits under certain circumstances, makes it easier to control probabilities
+					}
+					root = {
+						random_list = {
+							50 = { 
+								add_unit_leader_trait = gunnery_expert
+							}
+							50 = {}
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						FROM = { has_idea = trade_interdiction_academy_spirit } #done here instead of the trait file to avoid some oddness with generating assignable traits under certain circumstances, makes it easier to control probabilities
+					}
+					root = {
+						random_list = {
+							25 = { 
+								add_unit_leader_trait = seawolf
+							}
+							25 = { 
+								add_unit_leader_trait = blockade_runner
+							}
+							50 = {}
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						FROM = { has_idea = base_strike_academy_spirit } #done here instead of the trait file to avoid some oddness with generating assignable traits under certain circumstances, makes it easier to control probabilities
+					}
+					root = {
+						random_list = {
+							50 = { 
+								add_unit_leader_trait = aviation_enthusiast 
+							}
+							50 = {}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	on_war_relation_added = { # ---> Fires in 2nd place (1st is on_declare_war) -> This one is triggered ALWAYS 
+		effect = { #SOV - Great Patriotic War and Third Five Year Plan
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							ROOT = { original_tag = SOV }
+							FROM = {
+								is_major = yes
+								NOT = { original_tag = SOV }
+							}
+						}
+						AND = {
+							FROM = { original_tag = SOV }
+							ROOT = {
+								is_major = yes
+								NOT = { original_tag = SOV }
+							}
+						}
+					}
+				}
+				if = { ## GREAT PATRIOTIC WAR
+					limit = {
+						NOT = { has_country_flag = SOV_great_patriotic_war_flag }
+					}
+					SOV = { set_country_flag = SOV_great_patriotic_war_flag }
+				}
+				if = { ## THIRD FIVE YEAR PLAN
+					limit = {
+						SOV = { NOT = { has_country_flag = SOV_third_five_year_plan_locked_flag } }
+					}
+					SOV = {
+						set_country_flag = SOV_third_five_year_plan_locked_flag
+
+						if = { #Prio Germany if possible
+							limit = {
+								has_war_with = GER
+								GER = { is_major = yes }
+							}
+							GER = { set_country_flag = SOV_third_five_year_plan_disruptor_flag }
+						}
+						else = { #If no Germany, choose a random enemy major
+							random_enemy_country = {
+								limit = {
+									is_major = yes
+								}
+								set_country_flag = SOV_third_five_year_plan_disruptor_flag
+							}
+						}
+						random_country = {
+							limit = {
+								has_country_flag = SOV_third_five_year_plan_disruptor_flag
+							}
+							#log = "The disruptor is [THIS.GetName]"
+						}
+
+						country_event = NSB_soviet_five_year_plan.01
+					}
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					ROOT = { tag = SOV }
+					FROM = { tag = FIN }
+					NOT = { has_global_flag = SOV_winter_war_flag }
+				}
+				set_global_flag = SOV_winter_war_flag
+				FIN = { country_event = finland.10 }
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					FROM = { tag =  SOV } 
+					ROOT = { tag =  GER } 
+					NOT = {
+						SOV = {
+							has_country_flag = SOV_barbarossa_scorched_earth_delay
+						}
+					}
+				}
+				SOV = {
+					set_country_flag = { flag = SOV_barbarossa_scorched_earth_delay days = 45 value = 1 }
+				}
+			}
+		}
+		effect = {
+			if = { #British Puppet
+				limit = {
+					OR = {
+						AND = {
+							ROOT = { original_tag = SOV }
+							OR = {
+								FROM = { original_tag = PER }
+								PER = { is_subject_of = FROM }
+							}
+						}
+						AND = {
+							FROM = { original_tag = SOV }
+							OR = {
+								ROOT = { original_tag = PER }
+								PER = { is_subject_of = ROOT }
+							}
+						}
+					}
+					PER = {
+						any_owned_state = {
+							has_state_flag = SOV_soviet_resource_rights_iran_flag
+						}
+					}
+				}
+				PER = {
+					every_owned_state = {
+						limit = {
+							has_state_flag = SOV_soviet_resource_rights_iran_flag
+						}
+						PREV = { remove_resource_rights = PREV }
+						clr_state_flag = SOV_soviet_resource_rights_iran_flag
+					}
+				}
+			}
+			else_if = { #Soviet Puppet
+				limit = {
+					OR = {
+						AND = {
+							ROOT = { original_tag = ENG }
+							OR = {
+								FROM = { original_tag = PER }
+								PER = { is_subject_of = FROM }
+							}
+						}
+						AND = {
+							FROM = { original_tag = ENG }
+							OR = {
+								ROOT = { original_tag = PER }
+								PER = { is_subject_of = ROOT }
+							}
+						}
+					}
+					PER = {
+						any_owned_state = {
+							has_state_flag = SOV_british_resource_rights_iran_flag
+						}
+					}
+				}
+				PER = {
+					every_owned_state = {
+						limit = {
+							has_state_flag = SOV_british_resource_rights_iran_flag
+						}
+						PREV = { remove_resource_rights = PREV }
+						clr_state_flag = SOV_british_resource_rights_iran_flag
+					}
+				}
+			}
+		}
+	}
+
+	on_weekly_SOV = {
+		effect ={ #Weekly Paranoia modifiers
+			if = { #If other modifiers affect Paranoia, then use the same flag with different values, which will work as a multiplier
+				limit = {
+					has_country_flag = SOV_paranoia_system_active_flag
+					has_country_flag = SOV_paranoia_modifier_active_flag #Stalin's Paranoid leader trait
+				}
+				SOV_paranoia_modifier_increase_effect = yes
+			}
+		}
+	}
+
+	on_daily_SOV = {
+		effect = {
+			if = {
+				limit = {
+					has_country_flag = { flag = SOV_last_purge_flag days > 15 }
+				}
+				add_to_variable = { SOV_paranoia_weekly_bucket = SOV_paranoia }
+				#log = "Added [?SOV_paranoia] Paranoia. Weekly BUCKET = [?SOV_paranoia_weekly_bucket]" #Debug 
+
+				if = { #MEDIUM PARANOIA LEVEL
+					limit = {
+						SOV_paranoia_is_medium_level = yes
+					}
+					add_to_variable = { SOV_medium_paranoia_days = 1 } #Used to randomize having a Great or a Regular purge (so that every day kinda counts)
+				}
+				else_if = { #HIGH PARANOIA LEVEL
+					limit = {
+						SOV_paranoia_is_high_level = yes
+					}
+					add_to_variable = { SOV_high_paranoia_days = 1 } #Used to randomize having a Great or a Regular purge (so that every day kinda counts)
+				}
+				#log = "Medium Paranoia days = [?SOV_medium_paranoia_days] // High Paranoia days = [?SOV_high_paranoia_days]" #Debug
+			}
+			else = {
+				#log = "NOT A PURGE WEEK" #Debug
+			}
+		}
+	}
+	on_join_faction = {
+		effect = {
+			if = {
+				limit = {
+					tag = SIK
+					FROM = { original_tag = SOV }
+				}
+				FROM = { set_country_flag = SOV_sinkiang_joined_comintern_counter_flag }
+			}
+		}
+	}
+	on_offer_join_faction = {
+		effect = {
+			if = {
+				limit = {
+					FROM = { tag = SIK }
+					original_tag = SOV
+				}
+				SOV = { set_country_flag = SOV_sinkiang_joined_comintern_counter_flag }
+			}
+		}
+	}
+
+	on_startup = {
+		effect = {
+			#Set Iranian initial states (for Anglo-Soviet invasion of Iran)
+			PER = {
+				every_owned_state = {
+					add_to_array = { SOV_iranian_initial_states = PREV }
+				}
+			}
+		}
+	}
+
+
+	on_capitulation = {
+		effect = {
+			if = {
+				limit = {
+					original_tag = PER
+					OR = {
+						FROM = { original_tag = ENG }
+						FROM = { original_tag = SOV }
+						FROM = { original_tag = USA }
+						FROM = { original_tag = RAJ }
+						FROM = { original_tag = FRA }
+					}
+				}
+				SOV = { transfer_state = 419 }
+				SOV = { transfer_state = 420 }
+				SOV = { transfer_state = 416 }
+				SOV = { transfer_state = 266 }
+				SOV = { transfer_state = 418 }
+				ENG = { transfer_state = 413 }
+				ENG = { transfer_state = 421 }
+				ENG = { transfer_state = 417 }
+				ENG = { transfer_state = 411 }
+				ENG = { transfer_state = 414 }
+				ENG = { transfer_state = 412 }
+				ENG = { transfer_state = 410 }
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					original_tag = ETH
+					FROM = { original_tag = ITA }
+				}
+				ITA = { transfer_state = 910 }
+				ITA = { transfer_state = 271 }
+				ITA = { transfer_state = 909 }
+				clr_global_flag = second_italo_ethiopian_war_flag
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					original_tag = IRQ
+					OR = {
+						FROM = { original_tag = ENG }
+						FROM = { original_tag = FRA }
+						FROM = { original_tag = USA }
+					}
+				}
+				ENG = { transfer_state = 675 }
+				ENG = { transfer_state = 291 }
+				ENG = { transfer_state = 676 }
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					original_tag = IRQ
+					OR = {
+						FROM = { original_tag = ENG }
+						FROM = { original_tag = FRA }
+						FROM = { original_tag = USA }
+					}
+				}
+				ENG = { transfer_state = 675 }
+				ENG = { transfer_state = 291 }
+				ENG = { transfer_state = 676 }
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					original_tag = POL
+					OR = {
+						FROM = { original_tag = GER }
+						FROM = { original_tag = SOV }
+					}
+					NOT = { has_global_flag = POL_cap }
+				}
+				set_global_flag = POL_cap
+				SOV = { 
+					complete_national_focus = SOV_approach_germany
+					transfer_state = 96
+					transfer_state = 95
+					transfer_state = 94
+					transfer_state = 93
+					transfer_state = 91
+					transfer_state = 89
+					transfer_state = 97
+					transfer_state = 49
+				}
+				LIT = {
+					transfer_state = 784
+				}
+				GER = {
+					set_state_controller = 88
+					set_state_controller = 92
+					set_state_controller = 90
+					set_state_controller = 892
+					set_state_controller = 10
+					set_state_controller = 893
+					set_state_controller = 72
+					set_state_controller = 762
+					set_state_controller = 87
+					set_state_controller = 86
+					set_state_controller = 98
+					set_state_controller = 666
+					set_state_controller = 797
+					set_state_controller = 85
+					set_state_controller = 798
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					original_tag = GER
+					OR = {
+						FROM = { original_tag = SOV }
+						AND = {
+							FROM = { original_tag = ENG }
+							SOV = { NOT = { has_war_with = ENG } }
+							SOV = { exists = yes }
+						}
+						AND = {
+							FROM = { original_tag = USA }
+							SOV = { NOT = { has_war_with = USA } }
+							SOV = { exists = yes }
+						}
+					}
+					NOT = { has_global_flag = GER_global_cap }
+				}
+				
+				
+				set_global_flag = GER_global_cap
+				POL = { drop_cosmetic_tag = yes }
+				DEN = { drop_cosmetic_tag = yes }
+				CZE = { drop_cosmetic_tag = yes }
+				HOL = { drop_cosmetic_tag = yes }
+				BEL = { drop_cosmetic_tag = yes }
+				ITA = { drop_cosmetic_tag = yes }
+				every_state = {
+					limit = {
+						is_core_of = BRA
+						is_owned_by = GER
+					}
+					transfer_state_to = FRA
+				}
+				SOV = {
+					188 = { add_core_of = SOV }
+					763 = { add_core_of = SOV }
+					73 = { add_core_of = SOV }
+					transfer_state = 73
+					transfer_state = 4
+					transfer_state = 882
+					
+					annex_country = { target = GER transfer_troops = no }
+					annex_country = { target = POL transfer_troops = no }
+					annex_country = { target = HUN transfer_troops = no }
+					annex_country = { target = SLO transfer_troops = no }
+					annex_country = { target = CZE transfer_troops = no }
+					annex_country = { target = CRO transfer_troops = no }
+					release = POL
+					release = HUN
+					release = CZE
+					release = LUX
+					release = NOR
+					POL = {
+						set_state_controller = 63
+						set_state_controller = 68
+						set_state_controller = 66
+						set_state_controller = 67
+						set_state_controller = 762
+						set_state_controller = 893
+						set_state_controller = 86
+						set_state_controller = 797
+						set_state_controller = 85
+						set_state_controller = 798
+						set_state_controller = 5
+						set_state_controller = 98
+						set_state_controller = 87
+						set_state_controller = 666
+						set_state_controller = 97
+						set_state_controller = 892
+						set_state_controller = 10
+						set_state_controller = 92
+						set_state_controller = 90
+						set_state_controller = 88
+						set_state_controller = 49
+						
+						transfer_state = 63
+						transfer_state = 68
+						transfer_state = 66
+						transfer_state = 67
+						transfer_state = 762
+						transfer_state = 893
+						transfer_state = 86
+						transfer_state = 797
+						transfer_state = 85
+						transfer_state = 798
+						transfer_state = 5
+						transfer_state = 98
+						transfer_state = 87
+						transfer_state = 666
+						transfer_state = 97
+						transfer_state = 892
+						transfer_state = 10
+						transfer_state = 92
+						transfer_state = 90
+						transfer_state = 88
+						transfer_state = 49
+						
+						every_state = {
+							limit = {
+								is_owned_by = POL
+							}
+							add_core_of = POL
+						}
+						
+						remove_ideas = GER_reichkommissariats_governments
+						
+						country_lock_all_division_template = no
+						
+						SOV = { set_autonomy = { target = POL autonomy_state = puppet } }
+					}
+					puppet = POL
+					HUN = {
+						set_state_controller = 155
+						set_state_controller = 890
+						set_state_controller = 889
+						set_state_controller = 891
+						set_state_controller = 43
+						set_state_controller = 154
+						
+						transfer_state = 155
+						transfer_state = 890
+						transfer_state = 889
+						transfer_state = 891
+						transfer_state = 43
+						transfer_state = 154
+						
+						every_state = {
+							limit = {
+								is_owned_by = HUN
+							}
+							add_core_of = HUN
+						}
+						
+						remove_ideas = death_before_defeat
+						
+						country_lock_all_division_template = no
+						
+						SOV = { set_autonomy = { target = HUN autonomy_state = puppet } }
+					}
+					puppet = HUN
+					CZE = {
+						set_state_controller = 69
+						set_state_controller = 880
+						set_state_controller = 881
+						set_state_controller = 9
+						set_state_controller = 75
+						set_state_controller = 74
+						set_state_controller = 72
+						set_state_controller = 70
+						set_state_controller = 71
+						set_state_controller = 664
+						set_state_controller = 73
+						
+						transfer_state = 69
+						transfer_state = 880
+						transfer_state = 881
+						transfer_state = 9
+						transfer_state = 75
+						transfer_state = 74
+						transfer_state = 72
+						transfer_state = 70
+						transfer_state = 71
+						transfer_state = 664
+						transfer_state = 73
+						
+						every_state = {
+							limit = {
+								is_owned_by = CZE
+							}
+							add_core_of = CZE
+						}
+						
+						remove_ideas = GER_reichkommissariats_governments
+						
+						country_lock_all_division_template = no
+						
+						SOV = { set_autonomy = { target = CZE autonomy_state = puppet } }
+					}
+					puppet = CZE
+					ROM = {
+						set_state_controller = 82
+						set_state_controller = 83
+						set_state_controller = 84
+						set_state_controller = 76
+						set_state_controller = 81
+						
+						transfer_state = 82
+						transfer_state = 83
+						transfer_state = 84
+						transfer_state = 76
+						transfer_state = 81
+						
+						every_state = {
+							limit = {
+								is_owned_by = ROM
+							}
+							add_core_of = ROM
+						}
+						
+						country_lock_all_division_template = no
+						
+						SOV = { set_autonomy = { target = ROM autonomy_state = puppet } }
+						set_politics = {
+							ruling_party = communism
+						}
+						add_popularity = {
+							ideology = communism
+							popularity = 0.5
+						}
+					}
+					puppet = ROM
+					BUL = {
+						set_state_controller = 48
+						set_state_controller = 905
+						set_state_controller = 875
+						set_state_controller = 212
+						set_state_controller = 211
+						
+						transfer_state = 48
+						transfer_state = 905
+						transfer_state = 875
+						transfer_state = 212
+						transfer_state = 211
+					
+						every_state = {
+							limit = {
+								is_owned_by = BUL
+							}
+							add_core_of = BUL
+						}
+					
+						country_lock_all_division_template = no
+						
+						SOV = { set_autonomy = { target = BUL autonomy_state = puppet } }
+					}
+					puppet = BUL
+					YUG = {
+						set_state_controller = 888
+						set_state_controller = 887
+						set_state_controller = 886
+						set_state_controller = 736
+						set_state_controller = 163
+						set_state_controller = 908
+						set_state_controller = 103
+						set_state_controller = 109
+						set_state_controller = 102
+						set_state_controller = 104
+						set_state_controller = 103
+						set_state_controller = 913
+						set_state_controller = 105
+						set_state_controller = 850
+						set_state_controller = 849
+						set_state_controller = 106
+						set_state_controller = 851
+						set_state_controller = 108
+						set_state_controller = 107
+						set_state_controller = 764
+						set_state_controller = 907
+						set_state_controller = 45
+						
+						transfer_state = 888
+						transfer_state = 887
+						transfer_state = 886
+						transfer_state = 736
+						transfer_state = 163
+						transfer_state = 908
+						transfer_state = 103
+						transfer_state = 109
+						transfer_state = 102
+						transfer_state = 104
+						transfer_state = 103
+						transfer_state = 913
+						transfer_state = 105
+						transfer_state = 850
+						transfer_state = 849
+						transfer_state = 106
+						transfer_state = 851
+						transfer_state = 108
+						transfer_state = 107
+						transfer_state = 764
+						transfer_state = 907
+						transfer_state = 45
+						
+						every_state = {
+							limit = {
+								is_owned_by = YUG
+							}
+							add_core_of = YUG
+						}
+						
+						country_lock_all_division_template = no
+						
+						SOV = { set_autonomy = { target = YUG autonomy_state = puppet } }
+					}
+					puppet = YUG
+				}
+				USA = {
+					transfer_state = 152
+					transfer_state = 55
+					transfer_state = 54
+					transfer_state = 50
+					transfer_state = 52
+					transfer_state = 53
+					transfer_state = 804
+					annex_country = { target = HOL transfer_troops = no }
+					annex_country = { target = BEL transfer_troops = no }
+					annex_country = { target = DEN transfer_troops = no }
+					annex_country = { target = ITA transfer_troops = no }
+					release = HOL
+					release = BEL
+					release = DEN
+					release = ITA
+					release = GRE
+					release = ALB
+					HOL = {
+						set_state_controller = 36
+						set_state_controller = 35
+						set_state_controller = 7
+						
+						transfer_state = 36
+						transfer_state = 35
+						transfer_state = 7
+						
+						every_state = {
+							limit = {
+								is_owned_by = HOL
+							}
+							add_core_of = HOL
+						}
+						set_politics = {
+							ruling_party = democratic
+						}
+						add_popularity = {
+							ideology = democratic
+							popularity = 0.5
+						}
+						remove_ideas = GER_reichkommissariats_governments
+					}
+					BEL = {
+						set_state_controller = 790
+						set_state_controller = 135
+						set_state_controller = 34
+						set_state_controller = 979
+						set_state_controller = 6
+						
+						transfer_state = 790
+						transfer_state = 135
+						transfer_state = 34
+						transfer_state = 979
+						transfer_state = 6
+						
+						every_state = {
+							limit = {
+								is_owned_by = BEL
+							}
+							add_core_of = BEL
+						}
+						set_politics = {
+							ruling_party = democratic
+						}
+						add_popularity = {
+							ideology = democratic
+							popularity = 0.5
+						}
+						remove_ideas = GER_reichkommissariats_governments
+					}
+					DEN = {
+						set_state_controller = 957
+						set_state_controller = 37
+						set_state_controller = 99
+						set_state_controller = 871
+						
+						transfer_state = 957
+						transfer_state = 37
+						transfer_state = 99
+						transfer_state = 871
+						
+						every_state = {
+							limit = {
+								is_owned_by = DEN
+							}
+							add_core_of = DEN
+						}
+						set_politics = {
+							ruling_party = democratic
+						}
+						add_popularity = {
+							ideology = democratic
+							popularity = 0.5
+						}
+						remove_ideas = GER_reichkommissariats_governments
+					}
+					ITA = {
+						set_state_controller = 158
+						set_state_controller = 159
+						set_state_controller = 161
+						set_state_controller = 160
+						set_state_controller = 885
+						set_state_controller = 39
+						set_state_controller = 162
+						set_state_controller = 157
+						set_state_controller = 2
+						set_state_controller = 856
+						set_state_controller = 117
+						set_state_controller = 134
+						set_state_controller = 156
+						set_state_controller = 115
+						set_state_controller = 114
+						
+						transfer_state = 158
+						transfer_state = 159
+						transfer_state = 161
+						transfer_state = 160
+						transfer_state = 885
+						transfer_state = 39
+						transfer_state = 162
+						transfer_state = 157
+						transfer_state = 2
+						transfer_state = 856
+						transfer_state = 117
+						transfer_state = 134
+						transfer_state = 156
+						transfer_state = 115
+						transfer_state = 114
+						
+						remove_ideas = death_before_defeat
+						
+						every_state = {
+							limit = {
+								is_owned_by = ITA
+							}
+							add_core_of = ITA
+						}
+						set_politics = {
+							ruling_party = democratic
+						}
+						add_popularity = {
+							ideology = democratic
+							popularity = 0.5
+						}
+					}
+					ALB = {
+						set_state_controller = 44
+						set_state_controller = 906
+						
+						transfer_state = 44
+						transfer_state = 906
+						
+						every_state = {
+							limit = {
+								is_owned_by = ALB
+							}
+							add_core_of = ALB
+						}
+					}
+					SOV = {
+						puppet = ALB
+						set_autonomy = { target = ALB autonomy_state = puppet }
+					}
+					GRE = {
+						set_state_controller = 182
+						set_state_controller = 164
+						set_state_controller = 187
+						set_state_controller = 47
+						set_state_controller = 186
+						set_state_controller = 185
+						set_state_controller = 731
+						set_state_controller = 184
+						
+						transfer_state = 182
+						transfer_state = 164
+						transfer_state = 187
+						transfer_state = 47
+						transfer_state = 186
+						transfer_state = 185
+						transfer_state = 731
+						transfer_state = 184
+						
+						every_state = {
+							limit = {
+								is_owned_by = GRE
+							}
+							add_core_of = GRE
+						}
+					}
+					ETH = {
+						transfer_state = 550
+						transfer_state = 910
+						transfer_state = 271
+						transfer_state = 909
+						transfer_state = 559
+						
+						set_state_controller = 550
+						set_state_controller = 910
+						set_state_controller = 271
+						set_state_controller = 909
+						set_state_controller = 559
+					}
+				}
+				FRA = {
+					transfer_state = 801
+					transfer_state = 42
+					transfer_state = 800
+					transfer_state = 153
+					
+					set_state_controller = 29
+					set_state_controller = 785
+					set_state_controller = 18
+					set_state_controller = 28
+					set_state_controller = 17
+					set_state_controller = 27
+					set_state_controller = 20
+					set_state_controller = 16
+					set_state_controller = 855
+					set_state_controller = 15
+					set_state_controller = 24
+					set_state_controller = 30
+					set_state_controller = 14
+					set_state_controller = 23
+					set_state_controller = 19
+					set_state_controller = 33
+					set_state_controller = 25
+					set_state_controller = 31
+					set_state_controller = 26
+					set_state_controller = 22
+					set_state_controller = 32
+					set_state_controller = 21
+					set_state_controller = 735
+					set_state_controller = 1
+					
+					transfer_state = 29
+					transfer_state = 785
+					transfer_state = 18
+					transfer_state = 28
+					transfer_state = 17
+					transfer_state = 27
+					transfer_state = 20
+					transfer_state = 16
+					transfer_state = 855
+					transfer_state = 15
+					transfer_state = 24
+					transfer_state = 30
+					transfer_state = 14
+					transfer_state = 23
+					transfer_state = 19
+					transfer_state = 33
+					transfer_state = 25
+					transfer_state = 31
+					transfer_state = 26
+					transfer_state = 22
+					transfer_state = 32
+					transfer_state = 21
+					transfer_state = 735
+					transfer_state = 1
+					
+					
+				}
+				every_state = {
+					limit = {
+						OR = {
+							is_core_of = POL
+							is_core_of = DEN
+							is_core_of = HUN
+							is_core_of = BUL
+							is_core_of = ROM
+							is_core_of = YUG
+							is_core_of = CZE
+							is_core_of = HOL
+							is_core_of = BEL
+							is_core_of = ALB
+						}
+						NOT = { is_core_of = GER }
+						NOT = { is_core_of = SOV }
+						NOT = { is_core_of = BLR }
+						NOT = { is_core_of = UKR }
+					}
+					remove_core_of = BRA
+				}
+				ENG = {
+					transfer_state = 853
+					transfer_state = 852
+					
+					transfer_state = 58
+					transfer_state = 59
+					transfer_state = 803
+					transfer_state = 56
+					transfer_state = 57
+					transfer_state = 799
+					transfer_state = 51
+				}
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			}
+		}
+	}
+}
+

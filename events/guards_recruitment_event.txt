@@ -1,0 +1,555 @@
+
+add_namespace = guards_recruitment_event
+
+country_event = {
+	id = guards_recruitment_event.1
+	title = guards_recruitment_event.1.t
+	desc = guards_recruitment_event.1.desc
+	#picture = 
+	
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		has_completed_focus = SOV_guards_units
+		date > 1941.11.14
+	}
+	
+	option = { 
+		name = guards_recruitment_event.1.a
+		hidden_effect = {
+			capital_scope = {
+				create_unit = {
+					division = "name = \"1iy Gv. Strelk. Korpus\" division_template = \"Gvardeyskiy Strelkoviy Korpus\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"1iy Gv. Zhitomirskiy Kav. Korpus\" division_template = \"Gvardeyskiy Kavaleriyskiy Korpus\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"2oi Gv. Pomeranskiy Kav. Korpus\" division_template = \"Gvardeyskiy Kavaleriyskiy Korpus\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = guards_recruitment_event.2
+	title = guards_recruitment_event.1.t	
+	desc = guards_recruitment_event.1.desc
+	#picture = 
+	
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		has_completed_focus = SOV_guards_units
+		date > 1941.12.14
+	}
+	
+	option = { 
+		name = guards_recruitment_event.1.a
+		hidden_effect = {
+			capital_scope = {
+				create_unit = {
+					division = "name = \"2oi Gv. Strelk. Korpus\" division_template = \"Gvardeyskiy Strelkoviy Korpus\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"3iy Gv. Grodnenskiy Kav. Korpus\" division_template = \"Gvardeyskiy Kavaleriyskiy Korpus\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = guards_recruitment_event.3
+	title = guards_recruitment_event.1.t	
+	desc = guards_recruitment_event.1.desc
+	#picture = 
+	
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		has_completed_focus = SOV_guards_units
+		date > 1942.1.14
+	}
+	
+	option = { 
+		name = guards_recruitment_event.1.a
+		hidden_effect = {
+			capital_scope = {
+				create_unit = {
+					division = "name = \"3iy Gv. Strelk. Korpus\" division_template = \"Gvardeyskiy Strelkoviy Korpus\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"4iy Gv. Brandenburgskiy Strelk. Korpus\" division_template = \"Gvardeyskiy Strelkoviy Korpus\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = guards_recruitment_event.4
+	title = guards_recruitment_event.1.t	
+	desc = guards_recruitment_event.1.desc
+	#picture = 
+	
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		has_completed_focus = SOV_guards_units
+		date > 1942.3.14
+	}
+	
+	option = { 
+		name = guards_recruitment_event.1.a
+		hidden_effect = {
+			capital_scope = {
+				create_unit = {
+					division = "name = \"6oi Gv. Dunaiskiy Strelk. Korpus\" division_template = \"Gvardeyskiy Strelkoviy Korpus\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"8oi Gv. Nemanskiy Strelk. Korpus\" division_template = \"Gvardeyskiy Strelkoviy Korpus\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = guards_recruitment_event.5
+	title = guards_recruitment_event.1.t	
+	desc = guards_recruitment_event.1.desc
+	#picture = 
+	
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		has_completed_focus = SOV_guards_units
+		date > 1942.7.14
+	}
+	
+	option = { 
+		name = guards_recruitment_event.1.a
+		hidden_effect = {
+			capital_scope = {
+				create_unit = {
+					division = "name = \"9iy Gv. Brestskiy Strelk. Korpus\" division_template = \"Gvardeyskiy Strelkoviy Korpus\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"10iy Gv. Budapeshtskiy Strelk. Korpus\" division_template = \"Gvardeyskiy Strelkoviy Korpus\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"11iy Gv. Strelk. Korpus\" division_template = \"Gvardeyskiy Strelkoviy Korpus\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"4iy Gv. Kubanskiy Kav. Korpus\" division_template = \"Gvardeyskiy Kavaleriyskiy Korpus\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = guards_recruitment_event.6
+	title = guards_recruitment_event.1.t	
+	desc = guards_recruitment_event.1.desc
+	#picture = 
+	
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		has_completed_focus = SOV_guards_units
+		date > 1942.10.14
+	}
+	
+	option = { 
+		name = guards_recruitment_event.1.a
+		hidden_effect = {		
+			capital_scope = {
+				create_unit = {
+					division = "name = \"5iy Gv. Budapeshtskiy Kav. Korpus\" division_template = \"Gvardeyskiy Kavaleriyskiy Korpus\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"1iy Gv. Venskiy Mech. Korpus\" division_template = \"Gvardeyskiy Mechanizovaniy Korpus\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"2oi Gv. Nikolaevskiy Mech. Korpus\" division_template = \"Gvardeyskiy Mechanizovaniy Korpus\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = guards_recruitment_event.7
+	title = guards_recruitment_event.1.t	
+	desc = guards_recruitment_event.1.desc
+	#picture = 
+	
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		has_completed_focus = SOV_guards_units
+		date > 1943.1.14
+	}
+	
+	option = { 
+		name = guards_recruitment_event.1.a
+		hidden_effect = {		
+			capital_scope = {
+				create_unit = {
+					division = "name = \"6oi Gv. Kav. Korpus\" division_template = \"Gvardeyskiy Kavaleriyskiy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"3iy Gv. Stalingradskiy Mech. Korpus\" division_template = \"Gvardeyskiy Mechanizovaniy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"4iy Gv. Stalingradskiy Mech. Korpus\" division_template = \"Gvardeyskiy Mechanizovaniy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"5iy Gv. Zimovnikovskiy Mech. Korpus\" division_template = \"Gvardeyskiy Mechanizovaniy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"1iy Gv. Donskoi Tank. Korpus\" division_template = \"Gvardeyskiy Tankoviy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"2oi Gv. Tatsinskiy Tank. Korpus\" division_template = \"Gvardeyskiy Tankoviy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"3iy Gv. Kotelnikovskiy Tank. Korpus\" division_template = \"Gvardeyskiy Tankoviy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"4iy Gv. Kantemirovskiy Tank. Korpus\" division_template = \"Gvardeyskiy Tankoviy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"5iy Gv. Kievskiy Tank. Korpus\" division_template = \"Gvardeyskiy Tankoviy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"1ya Gv. Glukhovskaya Art. Div. Proriva\" division_template = \"Gvardeyskaya Artilleriyskaya Diviziya Proriva\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"2ya Gv. Perekopskaya Art. Div. Proriva\" division_template = \"Gvardeyskaya Artilleriyskaya Diviziya Proriva\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"3ya Gv. Vitebskaya Art. Div. Proriva\" division_template = \"Gvardeyskaya Artilleriyskaya Diviziya Proriva\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"1ya Gv. Vozdushno-desantnaya Diviziya\" division_template = \"Gvardeyskaya Vozdushno-desantnaya Diviziya\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"2ya Gv. Vozdushno-desantnaya Diviziya\" division_template = \"Gvardeyskaya Vozdushno-desantnaya Diviziya\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"3ya Gv. Vozdushno-desantnaya Diviziya\" division_template = \"Gvardeyskaya Vozdushno-desantnaya Diviziya\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"4ya Gv. Vozdushno-desantnaya Diviziya\" division_template = \"Gvardeyskaya Vozdushno-desantnaya Diviziya\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"5ya Gv. Vozdushno-desantnaya Diviziya\" division_template = \"Gvardeyskaya Vozdushno-desantnaya Diviziya\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"6ya Gv. Vozdushno-desantnaya Diviziya\" division_template = \"Gvardeyskaya Vozdushno-desantnaya Diviziya\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"7ya Gv. Vozdushno-desantnaya Diviziya\" division_template = \"Gvardeyskaya Vozdushno-desantnaya Diviziya\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"8ya Gv. Vozdushno-desantnaya Diviziya\" division_template = \"Gvardeyskaya Vozdushno-desantnaya Diviziya\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"9ya Gv. Vozdushno-desantnaya Diviziya\" division_template = \"Gvardeyskaya Vozdushno-desantnaya Diviziya\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"10ya Gv. Vozdushno-desantnaya Diviziya\" division_template = \"Gvardeyskaya Vozdushno-desantnaya Diviziya\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = guards_recruitment_event.8
+	title = guards_recruitment_event.1.t	
+	desc = guards_recruitment_event.1.desc
+	#picture = 
+	
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		has_completed_focus = SOV_guards_units
+		date > 1943.7.14
+	}
+	
+	option = { 
+		name = guards_recruitment_event.1.a
+		hidden_effect = {		
+			capital_scope = {
+				create_unit = {
+					division = "name = \"16iy Gv. Kenigsbergskiy Strelk. Korpus\" division_template = \"Gvardeyskiy Strelkoviy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"18iy Gv. Kenigsbergskiy Strelk. Korpus\" division_template = \"Gvardeyskiy Strelkoviy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"28iy Gv. Lublinskiy Strelk. Korpus\" division_template = \"Gvardeyskiy Strelkoviy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"29iy Gv. Lodzinskiy Strelk. Korpus\" division_template = \"Gvardeyskiy Strelkoviy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"30iy Gv. Leningradskiy Strelk. Korpus\" division_template = \"Gvardeyskiy Strelkoviy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"7oi Gv. Brandenburgskiy Kav. Korpus\" division_template = \"Gvardeyskiy Kavaleriyskiy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"6oi Gv. Lvovskiy Mech. Korpus\" division_template = \"Gvardeyskiy Mechanizovaniy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"7oi Gv. Nezhinskiy Mech. Korpus\" division_template = \"Gvardeyskiy Mechanizovaniy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"6oi Gv. Berlinskiy Tank. Korpus\" division_template = \"Gvardeyskiy Tankoviy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"7oi Gv. Berlinskiy Tank. Korpus\" division_template = \"Gvardeyskiy Tankoviy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"4ya Gv. Smolenskaya Art. Div. Proriva\" division_template = \"Gvardeyskaya Artilleriyskaya Diviziya Proriva\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"5ya Gv. Stalingradskaya Art. Div. Proriva\" division_template = \"Gvardeyskaya Artilleriyskaya Diviziya Proriva\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"6ya Gv. Rizhskaya Art. Div. Proriva\" division_template = \"Gvardeyskaya Artilleriyskaya Diviziya Proriva\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = guards_recruitment_event.9
+	title = guards_recruitment_event.1.t	
+	desc = guards_recruitment_event.1.desc
+	#picture = 
+	
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		has_completed_focus = SOV_guards_units
+		date > 1943.11.14
+	}
+	
+	option = { 
+		name = guards_recruitment_event.1.a
+		hidden_effect = {		
+			capital_scope = {
+				create_unit = {
+					division = "name = \"8oi Gv. Prikarpatskiy Mech. Korpus\" division_template = \"Gvardeyskiy Mechanizovaniy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"9iy Gv. Dnestrovskiy Mech. Korpus\" division_template = \"Gvardeyskiy Mechanizovaniy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"8oi Gv. Tank. Korpus\" division_template = \"Gvardeyskiy Tankoviy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"9iy Gv. Umanskiy Tank. Korpus\" division_template = \"Gvardeyskiy Tankoviy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"11iy Gv. Prikarpatskiy Tank. Korpus\" division_template = \"Gvardeyskiy Tankoviy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = guards_recruitment_event.10
+	title = guards_recruitment_event.1.t	
+	desc = guards_recruitment_event.1.desc
+	#picture = 
+	
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		has_completed_focus = SOV_guards_units
+		date > 1944.3.14
+	}
+	
+	option = { 
+		name = guards_recruitment_event.1.a
+		hidden_effect = {		
+			capital_scope = {
+				create_unit = {
+					division = "name = \"37oi Gv. Svirskiy Strelk. Korpus\" division_template = \"Gvardeyskiy Strelkoviy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"39iy Gv. Venskiy Strelk. Korpus\" division_template = \"Gvardeyskiy Strelkoviy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+				create_unit = {
+					division = "name = \"40oi Gv. Strelk. Korpus\" division_template = \"Gvardeyskiy Strelkoviy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = guards_recruitment_event.11
+	title = guards_recruitment_event.1.t	
+	desc = guards_recruitment_event.1.desc
+	#picture = 
+	
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		has_completed_focus = SOV_guards_units
+		date > 1944.11.14
+	}
+	
+	option = { 
+		name = guards_recruitment_event.1.a
+		hidden_effect = {		
+			capital_scope = {
+				create_unit = {
+					division = "name = \"12iy Gv. Umanskiy Tank. Korpus\" division_template = \"Gvardeyskiy Tankoviy Korpus\" start_experience_factor = 0.45 start_equipment_factor = 0.01"
+					owner = SOV
+					prioritize_location = 6380
+				}
+			}
+		}
+	}
+}

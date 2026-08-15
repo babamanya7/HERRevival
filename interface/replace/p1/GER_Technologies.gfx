@@ -1,0 +1,54 @@
+spriteTypes = {	
+
+	
+### Arty ###
+
+	SpriteType = {
+	name = "GFX_GER_gw_artillery_medium"
+	texturefile = "gfx/interface/technologies/GER_iwa.dds"
+	}
+
+	SpriteType = {
+	name = "GFX_GER_artillery1_medium"
+	texturefile = "gfx/interface/technologies/GER_a2.dds"
+	}
+	
+	SpriteType = {
+	name = "GFX_GER_artillery4_medium"
+	texturefile = "gfx/interface/technologies/GER_a3.dds"
+	}	
+	
+### Anti-tank ###
+
+	SpriteType = {
+	name = "GFX_GER_interwar_antitank_medium"
+	texturefile = "gfx/interface/technologies/GER_at1.dds"
+	}	
+	
+	SpriteType = {
+	name = "GFX_GER_antitank2_medium"
+	texturefile = "gfx/interface/technologies/GER_at2.dds"
+	}		
+   
+    SpriteType = {
+	name = "GFX_GER_antitank5_medium"
+	texturefile = "gfx/interface/technologies/GER_at3.dds"
+	}	
+
+### Anti-air ###
+	
+	SpriteType = {
+	name = "GFX_GER_interwar_antiair_medium"
+	texturefile = "gfx/interface/technologies/GER_aa1.dds"
+	}
+	
+	SpriteType = {
+	name = "GFX_GER_antiair2_medium"
+	texturefile = "gfx/interface/technologies/GER_aa2.dds"
+	}
+		
+	SpriteType = {
+	name = "GFX_GER_antiair5_medium"
+	texturefile = "gfx/interface/technologies/GER_aa3.dds"
+	}	
+}

@@ -1,0 +1,51 @@
+sub_units = {
+	military_police = {
+		abbreviation = "MP"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+		affects_speed = no
+
+		type = {
+			infantry
+			support
+		}
+		
+		regimental = no
+		group = support
+		
+		categories = {
+			category_support_battalions
+			category_army
+		}
+
+		###STATS###
+		manpower = 300
+		max_organisation = 20
+		max_strength = 10
+		default_morale = 0
+		weight = 0.5
+		supply_consumption = 0.03
+		training_time = 90
+		
+		#transport = motorized_equipment
+		can_be_parachuted = yes
+	
+		need = {
+			support_equipment = 3
+			infantry_equipment = 30
+			ammunition_equipment = 6
+		}
+		essential = {
+			support_equipment
+		}
+		
+		battalion_mult = {
+			category = category_all_infantry
+			default_morale = 0.1
+		}
+		suppression_factor = 0.2
+	}
+}

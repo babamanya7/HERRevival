@@ -1,0 +1,116 @@
+ideas = {
+
+	country = {
+		sisu = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				NOT = {
+					has_government = communism
+				}
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				conscription = 0.02
+				army_core_attack_factor = 0.25
+				army_core_defence_factor = 0.25
+				defensive_war_stability_factor = 0.5
+				war_support_weekly = 0.001
+				acclimatization_cold_climate_gain_factor = 10
+				winter_attrition_factor = -0.5
+				supply_node_range = 0.5
+				experience_gain_army_factor = 0.5
+				ai_desired_divisions_factor = 1
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					hard_attack = 0.5
+					ap_attack = 0.5
+					instant = yes
+				}
+			}
+		}
+
+		winter_war_ns = {
+			picture = tur_sub_zero_survival_training
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			cancel = {
+				NOT = { has_war_with = SOV }
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				conscription = 0.02
+				mobilization_speed = 1
+				winter_attrition_factor = -0.2
+				army_core_defence_factor = 0.25
+			}
+		}
+	}
+
+	# TECHNOLOGY
+
+	naval_manufacturer = { 
+		
+		designer = yes
+		
+		crichton = {
+			
+			picture = generic_naval_manufacturer_1
+
+			
+			allowed = {
+				original_tag = FIN
+			}
+			
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+			
+			# submarine and defence ship production
+			
+			traits = { naval_manufacturer }
+		}
+	}
+	
+	aircraft_manufacturer = { 
+			
+		designer = yes
+		
+		
+		valtion_lentokonetehdas = {
+			
+			picture = generic_air_manufacturer_3
+
+			
+			allowed = {
+				original_tag = FIN
+			}
+			
+			research_bonus = {
+				air_equipment = 0.15
+			}
+			
+			traits = { light_aircraft_manufacturer }
+			
+			# assembled Junkers, fast bombers
+		
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+}

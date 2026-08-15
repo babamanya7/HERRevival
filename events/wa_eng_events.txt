@@ -1,0 +1,614 @@
+add_namespace = eng_armor
+
+############################################ Britain demands Sweden embargo Germany
+
+country_event = {
+	id = eng_armor.805
+	title = eng_armor.805.t
+	desc = eng_armor.805.d
+
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = eng_armor.805.a
+		SWE = { add_opinion_modifier = { target = GER modifier = embargo } }
+		GER = { set_country_flag = ENG_sweden_coerced }
+		if = { 
+			limit = {
+				GER = { 
+					has_completed_focus = GER_befriend_sweden
+				}
+			}
+			SWE = {
+				remove_opinion_modifier = { target = GER modifier = befriend_sweden_for_more_tungsten_trade }
+				remove_opinion_modifier = { target = GER modifier = befriend_sweden_for_more_tungsten }
+				set_country_flag = ENG_swedish_iron_blocked
+			}
+			GER = {
+				remove_opinion_modifier = { target = GER modifier = befriend_sweden_for_more_tungsten_trade }
+				remove_opinion_modifier = { target = GER modifier = befriend_sweden_for_more_tungsten }
+				set_country_flag = ENG_swedish_iron_blocked
+			}
+			hidden_effect = {
+				SWE = {
+					remove_opinion_modifier = { target = GER modifier = befriend_sweden_for_more_iron_trade }
+				}
+				GER = {
+					remove_opinion_modifier = { target = GER modifier = befriend_sweden_for_more_iron_trade }
+				}
+			}
+			ENG = { country_event = { id = eng_armor.806 hours = 6 } }
+			GER = { country_event = { id = eng_armor.811 hours = 6 } }
+		}
+		ai_chance = { 
+			factor = 25 
+		}
+	}
+}
+
+country_event = {
+	id = eng_armor.806
+	title = eng_armor.806.t
+	desc = eng_armor.806.d
+
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = {
+		name = eng_armor.806.a
+	}
+}
+
+country_event = {
+	id = eng_armor.807
+	title = eng_armor.807.t
+	desc = eng_armor.807.d
+
+	picture = GFX_report_event_german_politician_speech
+
+	is_triggered_only = yes
+
+	option = {
+		name = eng_armor.807.a
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = SWE
+		}
+	}
+}
+
+country_event = {
+	id = eng_armor.808
+	title = eng_armor.808.t
+	desc = eng_armor.808.d
+
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = eng_armor.808.a
+		SWE = {
+			remove_opinion_modifier = { target = GER modifier = embargo }
+		}
+		if = { 
+			limit = {
+				has_country_flag = ENG_swedish_iron_blocked
+			}
+			add_opinion_modifier = { target = GER modifier = befriend_sweden_for_more_tungsten_trade }
+			add_opinion_modifier = { target = GER modifier = befriend_sweden_for_more_tungsten }
+			reverse_add_opinion_modifier = { target = GER modifier = befriend_sweden_for_more_tungsten_trade }
+			reverse_add_opinion_modifier = { target = GER modifier = befriend_sweden_for_more_tungsten }
+			hidden_effect = {
+				add_opinion_modifier = { target = GER modifier = befriend_sweden_for_more_iron_trade }
+				reverse_add_opinion_modifier = { target = GER modifier = befriend_sweden_for_more_iron_trade }
+			}
+		}
+		GER = { country_event = { id = eng_armor.809 hours = 6 } }
+		ai_chance = { 
+			factor = 25 
+		}
+	}
+
+	option = {
+		name = eng_armor.808.b
+		GER = { country_event = { id = eng_armor.810 hours = 6 } }
+		effect_tooltip = { 
+			GER = { 
+				create_wargoal = {
+					type = annex_everything
+					target = SWE
+				}
+			}
+		}
+		ai_chance = { 
+			factor = 0 
+		}
+	}
+}
+
+country_event = {
+	id = eng_armor.809
+	title = eng_armor.809.t
+	desc = eng_armor.809.d
+
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			clr_country_flag = ENG_sweden_coerced
+		}
+	}
+
+	option = {
+		name = eng_armor.809.a
+	}
+}
+
+country_event = {
+	id = eng_armor.810
+	title = eng_armor.810.t
+	desc = eng_armor.810.d
+
+	picture = GFX_report_event_german_politician_speech
+
+	is_triggered_only = yes
+
+	option = {
+		name = eng_armor.810.a
+		create_wargoal = {
+			type = annex_everything
+			target = SWE
+		}
+	}
+}
+
+country_event = {
+	id = eng_armor.811
+	title = eng_armor.811.t
+	desc = eng_armor.811.d
+
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+
+	option = {
+		name = eng_armor.811.a
+		ai_chance = { 
+			factor = 95 
+		}
+	}
+}
+
+############################################ We are imposing an embargo
+
+country_event = {
+	id = eng_armor.812
+	title = eng_armor.812.t
+	desc = eng_armor.812.d
+
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+
+	option = {
+		name = eng_armor.812.a
+		ai_chance = { 
+			factor = 25 
+		}
+	}
+}
+
+############################################ Iran surrenders
+
+country_event = {
+	id = eng_armor.813
+	title = eng_armor.813.t
+	desc = eng_armor.813.d
+
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+
+	option = {
+		name = eng_armor.813.a
+		every_country = {
+			limit = {
+				has_war_with = PER
+				OR = {
+					is_in_faction_with = ENG
+					is_in_faction_with = SOV
+				}
+			}
+			white_peace = PER
+		}
+		if = {
+			limit = {
+				GER = { is_in_faction_with = PER }
+			}
+			GER = { 
+				remove_from_faction = PER 
+			}
+		}
+		SOV = { 
+			transfer_state = 413
+			transfer_state = 416
+			transfer_state = 418
+			give_resource_rights = { receiver = ENG state = 413 }
+		}
+		ai_chance = { 
+			factor = 25 
+		}
+	}
+
+	option = {
+		name = eng_armor.813.b
+		ai_chance = { 
+			factor = 0 
+		}
+	}
+}
+
+####################################### Evacuate UK
+
+country_event = {
+	id = eng_armor.815
+	title = eng_armor.815.t
+	desc = eng_armor.815.d
+
+	trigger = {
+		tag = ENG
+		has_war = yes
+		surrender_progress > 0.4
+		is_subject = no
+		CAN = { surrender_progress < 0.1 }
+		CAN = { has_government = ROOT }
+		OR = {
+			is_in_faction_with = CAN
+			CAN = { is_subject_of = ENG }
+		}
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = eng_armor.815.a
+		ai_chance = { 
+			factor = 1
+		}
+		if = {
+			limit = {
+				ENG = { is_ai = yes }
+				CAN = { is_ai = no }
+			}
+			ENG = { change_tag_from = CAN }
+		}
+		set_cosmetic_tag = ENG_canadian_union
+		every_state = {
+			limit = { is_core_of = CAN }
+			add_core_of = ENG
+		}
+		CAN = {
+			every_unit_leader = {
+				set_nationality = ENG
+			}
+			every_army_leader = {
+				set_nationality = ENG
+			}
+			every_navy_leader = {
+				set_nationality = ENG
+			}
+			transfer_navy = { target = ENG }
+			transfer_units_fraction = {
+				target = ENG
+				size = 1.0
+				stockpile_ratio = 1.0
+				air_ratio = 1.0
+			}
+		}
+		ENG = {
+			annex_country = { target = CAN transfer_troops = yes }
+			add_ideas = winter_experts
+			set_capital = { state = 276 }
+			remove_ideas = ENG_george_vi
+			add_ideas = ENG_duel_cabinet
+			retire_country_leader = yes
+			create_country_leader = {
+				name = "George VI"
+				desc = "POLITICS_GEORGE_VI_DESC"
+				picture = "gfx/leaders/PAL/Portrait_Britain_George_VI.dds"
+				expire = "1965.1.1"
+				ideology = conservatism
+				traits = {
+					popular_figurehead stammer humble
+				}
+			}
+		}
+		ENG = { transfer_state = 332 }
+		ENG = { transfer_state = 331 }
+		custom_effect_tooltip = population_evacuates_tt
+		hidden_effect = {
+			120 = {
+				add_manpower = -15000
+			}
+			136 = {
+				add_manpower = -25000
+			}
+			121 = {
+				add_manpower = -65000
+			}
+			133 = {
+				add_manpower = -65000
+			}
+			131 = {
+				add_manpower = -65000
+			}
+			130 = {
+				add_manpower = -105000
+			}
+			132 = {
+				add_manpower = -115000
+			}
+			129 = {
+				add_manpower = -65000
+			}
+			128 = {
+				add_manpower = -65000
+			}
+			122 = {
+				add_manpower = -65000
+			}
+			860 = {
+				add_manpower = -15000
+			}
+			125 = {
+				add_manpower = -45000
+			}
+			126 = {
+				add_manpower = -200000
+			}
+			858 = {
+				add_manpower = -25000
+			}
+			338 = {
+				add_manpower = -45000
+			}
+			859 = {
+				add_manpower = -5000
+			}
+			123 = {
+				add_manpower = -15000
+			}
+			news_event = { id = afo_news.33 hours = 6 }
+			276 = {
+				add_manpower = 600000
+			}
+			468 = {
+				add_manpower = 300000
+			}
+			682 = {
+				add_manpower = 100000
+			}
+		}
+	}
+
+	option = {
+		name = eng_armor.815.b
+		ai_chance = { 
+			factor = 0
+		}
+	}
+}
+
+############################################ We are imposing an embargo
+
+country_event = {
+	id = eng_armor.828
+	title = eng_armor.828.t
+	desc = eng_armor.828.d
+
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+
+	option = {
+		name = eng_armor.828.a
+		hidden_effect = {
+			set_country_flag = lon_embargo_flag
+		}
+		ai_chance = { 
+			factor = 25 
+		}
+	}
+}
+
+############################################ We are lifting an embargo
+
+country_event = {
+	id = eng_armor.829
+	title = eng_armor.829.t
+	desc = eng_armor.829.d
+
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+
+	option = {
+		name = eng_armor.829.a
+		hidden_effect = {
+			clr_country_flag = lon_embargo_flag
+		}
+		ai_chance = { 
+			factor = 25 
+		}
+	}
+}
+
+############################################ We are kicking a member
+
+country_event = {
+	id = eng_armor.830
+	title = eng_armor.830.t
+	desc = eng_armor.830.d
+
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+
+	option = {
+		name = eng_armor.830.a
+		add_stability = -0.05
+		effect_tooltip = {
+			remove_ideas = League_of_nations
+		}
+		ai_chance = { 
+			factor = 25 
+		}
+	}
+}
+####################################### Radical Party
+
+country_event = { #Radical party Banned
+	id = eng_armor.835
+	title = eng_armor.835.t
+	desc = eng_armor.835.d
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = Radical_parties_banned
+		}
+	}
+
+	option = {
+		name = eng_armor.835.a
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+country_event = { #Radical Party protest against war with Germany
+	id = eng_armor.836
+	title = eng_armor.836.t
+	desc = eng_armor.836.d
+
+	trigger = {
+		tag = ENG
+		has_war_with = GER
+		NOT = { has_war_with = SOV }
+		NOT = { has_country_flag = Radical_parties_banned }
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = eng_armor.836.a
+		custom_effect_tooltip = ENG_Radical_party_protest_tt
+		hidden_effect = {
+			subtract_from_variable = { var = ENG_British_Radicalists_attitude value = 2 }
+			subtract_from_variable = { var = ENG_British_Radicalists_political_power_gain value = 1 }
+			subtract_from_variable = { var = ENG_British_Radicalists_stability value = 1 }
+			ENG_political_instability_update_effect = yes
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+####################################### Merchant fleet evacuation
+
+country_event = {
+	id = eng_armor.842
+	title = eng_armor.842.t
+	desc = eng_armor.842.d
+
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+
+	option = {
+		name = eng_armor.842.a
+		ai_chance = { 
+			factor = 1
+		}
+	}
+}
+####################################### Ghazi warns of Iraq
+
+country_event = {
+	id = eng_armor.846
+	title = eng_armor.846.t
+	desc = eng_armor.846.d
+
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = {
+		name = eng_armor.846.a
+	}
+}
+
+####################################### Soviet accepts a joint invasion
+
+country_event = {
+	id = eng_armor.847
+	title = eng_armor.847.t
+	desc = eng_armor.847.d
+
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = {
+		name = eng_armor.847.a
+		SOV = {
+			create_wargoal = {
+				type = take_state
+				generator = { 419 420 266 418 416 }
+				target = PER
+			}
+		}
+		ENG = {
+			create_wargoal = {
+				type = take_state
+				generator = { 410 421 417 413 411 412 414 }
+				target = PER
+			}
+		}
+	}
+}
+
+####################################### Soviet rejects a joint invasion
+
+country_event = {
+	id = eng_armor.848
+	title = eng_armor.848.t
+	desc = eng_armor.848.d
+
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = {
+		name = eng_armor.848.a
+		ENG = {
+			create_wargoal = {
+				type = take_state
+				generator = { 419 420 266 418 416 410 421 417 413 411 412 414 }
+				target = PER
+			}
+		}
+	}
+	option = {
+		name = eng_armor.848.b
+	}
+}

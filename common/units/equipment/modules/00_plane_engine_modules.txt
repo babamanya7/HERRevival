@@ -1,0 +1,762 @@
+equipment_modules = {
+	### Engines
+
+	engine_1_1x = {
+		abbreviation = "e11"
+		category = plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+
+		add_stats = {
+			thrust = 11
+			build_cost_ic = 10
+			fuel_consumption = 0.12
+			maximum_speed = 400
+			weight = 6.25
+		}
+		
+		forbid_module_categories = {
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}
+	}
+
+	engine_1_2x = {
+		abbreviation = "e12"
+		category = twin_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		add_stats = {
+			thrust = 19.25
+			build_cost_ic = 24
+			fuel_consumption = 0.24
+			maximum_speed = 400
+			weight = 12.5
+		}
+		forbid_module_categories = {
+			engine_mounted_cannons
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}
+	}
+
+	engine_1_3x = {
+		abbreviation = "e13"
+		category = medium_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+
+		add_stats = {
+			thrust = 28.875
+			build_cost_ic = 36
+			fuel_consumption = 0.36
+			maximum_speed = 400
+			weight = 18.75
+		}
+		forbid_module_categories = {
+			engine_mounted_cannons
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+
+	engine_1_4x = {
+		abbreviation = "e14"
+		category = quad_large_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+
+		add_stats = {
+			thrust = 36.1
+			build_cost_ic = 48
+			fuel_consumption = 0.48
+			maximum_speed = 400
+			weight = 25
+		}
+		forbid_module_categories = {
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+
+	engine_2_1x = {
+		abbreviation = "e21"
+		category = plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_1_1x
+
+		add_stats = {
+			thrust = 13
+			build_cost_ic = 11
+			fuel_consumption = 0.13
+			maximum_speed = 420
+			weight = 6.5
+		}
+
+		can_convert_from = {
+			module = engine_1_1x
+			convert_cost_ic = 1.3
+		}
+		forbid_module_categories = {
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+
+	engine_2_2x = {
+		abbreviation = "e22"
+		category = twin_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_1_2x
+
+		add_stats = {
+			thrust = 22.75
+			build_cost_ic = 26
+			fuel_consumption = 0.26
+			maximum_speed = 420
+			weight = 13
+		}
+
+		can_convert_from = {
+			module = engine_1_2x
+			convert_cost_ic = 2.1
+		}
+		forbid_module_categories = {
+			engine_mounted_cannons
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}
+	}
+
+	engine_2_3x = {
+		abbreviation = "e23"
+		category = medium_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_1_3x
+
+		add_stats = {
+			thrust = 34.125
+			build_cost_ic = 39
+			fuel_consumption = 0.39
+			maximum_speed = 420
+			weight = 19.5
+		}
+
+		can_convert_from = {
+			module = engine_1_3x
+			convert_cost_ic = 3
+		}
+		forbid_module_categories = {
+			engine_mounted_cannons
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+
+	engine_2_4x = {
+		abbreviation = "e24"
+		category = quad_large_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_1_4x
+
+		add_stats = {
+			thrust = 42.66
+			build_cost_ic = 52
+			fuel_consumption = 0.52
+			maximum_speed = 420
+			weight = 26
+		}
+
+		can_convert_from = {
+			module = engine_1_4x
+			convert_cost_ic = 3.8
+		}
+		forbid_module_categories = {
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+	
+	engine_3_1x = {
+		abbreviation = "e31"
+		category = plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_2_1x
+
+		add_stats = {
+			thrust = 15
+			build_cost_ic = 12
+			fuel_consumption = 0.14
+			maximum_speed = 440
+			weight = 6.75
+		}
+
+		can_convert_from = {
+			module = engine_2_1x
+			convert_cost_ic = 1.5
+		}
+		forbid_module_categories = {
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+
+	engine_3_2x = {
+		abbreviation = "e32"
+		category = twin_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_2_2x
+
+		add_stats = {
+			thrust = 26.25
+			build_cost_ic = 28
+			fuel_consumption = 0.28
+			maximum_speed = 440
+			weight = 13.5
+		}
+
+		can_convert_from = {
+			module = engine_2_2x
+			convert_cost_ic = 2.4
+		}
+		forbid_module_categories = {
+			engine_mounted_cannons
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}
+	}
+
+	engine_3_3x = {
+		abbreviation = "e33"
+		category = medium_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_2_3x
+
+		add_stats = {
+			thrust = 39.375
+			build_cost_ic = 42
+			fuel_consumption = 0.42
+			maximum_speed = 440
+			weight = 20.25
+		}
+
+		can_convert_from = {
+			module = engine_2_3x
+			convert_cost_ic = 3.5
+		}
+		forbid_module_categories = {
+			engine_mounted_cannons
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+
+	engine_3_4x = {
+		abbreviation = "e34"
+		category = quad_large_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_2_4x
+
+		add_stats = {
+			thrust = 49.22
+			build_cost_ic = 56
+			fuel_consumption = 0.56
+			maximum_speed = 440
+			weight = 27
+		}
+
+		can_convert_from = {
+			module = engine_2_4x
+			convert_cost_ic = 4.4
+		}
+		forbid_module_categories = {
+		plane_special_module_jet
+		plane_special_module_radial_engine
+		}		
+	}
+
+	engine_4_1x = {
+		abbreviation = "e41"
+		category = plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_3_1x
+
+		add_stats = {
+			thrust = 17
+			build_cost_ic = 13
+			fuel_consumption = 0.15
+			maximum_speed = 460
+			weight = 7
+		}
+
+		can_convert_from = {
+			module = engine_3_1x
+			convert_cost_ic = 1.7
+		}
+		forbid_module_categories = {
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+
+	engine_4_2x = {
+		abbreviation = "e42"
+		category = twin_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_3_2x
+
+		add_stats = {
+			thrust = 29.75
+			build_cost_ic = 30
+			fuel_consumption = 0.3
+			maximum_speed = 460
+			weight = 14
+		}
+
+		can_convert_from = {
+			module = engine_3_2x
+			convert_cost_ic = 2.7
+		}
+		forbid_module_categories = {
+			engine_mounted_cannons
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+
+	engine_4_3x = {
+		abbreviation = "e43"
+		category = medium_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_3_3x
+
+		add_stats = {
+			thrust = 44.625
+			build_cost_ic = 45
+			fuel_consumption = 0.45
+			maximum_speed = 460
+			weight = 21
+		}
+
+		can_convert_from = {
+			module = engine_3_3x
+			convert_cost_ic = 4
+		}
+		forbid_module_categories = {
+			engine_mounted_cannons
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+
+	engine_4_4x = {
+		abbreviation = "e44"
+		category = quad_large_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_3_4x
+
+		add_stats = {
+			thrust = 55.78
+			build_cost_ic = 60
+			fuel_consumption = 0.6
+			maximum_speed = 460
+			weight = 28
+		}
+
+		can_convert_from = {
+			module = engine_3_4x
+			convert_cost_ic = 5
+		}
+		forbid_module_categories = {
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+	
+	engine_5_1x = {
+		abbreviation = "e11"
+		category = plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_4_1x
+
+		add_stats = {
+			thrust = 19
+			build_cost_ic = 14
+			fuel_consumption = 0.16
+			maximum_speed = 480
+			weight = 7.25
+		}
+		
+		can_convert_from = {
+			module = engine_4_1x
+			convert_cost_ic = 1.9
+		}
+		forbid_module_categories = {
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}
+	}
+
+	engine_5_2x = {
+		abbreviation = "e12"
+		category = twin_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_4_2x
+		
+		add_stats = {
+			thrust = 33.25
+			build_cost_ic = 32
+			fuel_consumption = 0.32
+			maximum_speed = 480
+			weight = 14.5
+		}
+		
+		can_convert_from = {
+			module = engine_4_2x
+			convert_cost_ic = 3
+		}
+		forbid_module_categories = {
+			engine_mounted_cannons
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}
+	}
+
+	engine_5_3x = {
+		abbreviation = "e13"
+		category = medium_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_4_3x
+
+		add_stats = {
+			thrust = 49.875
+			build_cost_ic = 48
+			fuel_consumption = 0.48
+			maximum_speed = 480
+			weight = 21.75
+		}
+		can_convert_from = {
+			module = engine_4_3x
+			convert_cost_ic = 4.5
+		}
+		forbid_module_categories = {
+			engine_mounted_cannons
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+
+	engine_5_4x = {
+		abbreviation = "e14"
+		category = quad_large_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_4_4x
+
+		add_stats = {
+			thrust = 62.34
+			build_cost_ic = 64
+			fuel_consumption = 0.64
+			maximum_speed = 480
+			weight = 29
+		}
+		
+		can_convert_from = {
+			module = engine_4_4x
+			convert_cost_ic = 5.6
+		}
+		forbid_module_categories = {
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+
+	engine_6_1x = {
+		abbreviation = "e21"
+		category = plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_5_1x
+
+		add_stats = {
+			thrust = 21
+			build_cost_ic = 15
+			fuel_consumption = 0.17
+			maximum_speed = 500
+			weight = 7.5
+		}
+
+		can_convert_from = {
+			module = engine_5_1x
+			convert_cost_ic = 2.1
+		}
+		forbid_module_categories = {
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+
+	engine_6_2x = {
+		abbreviation = "e22"
+		category = twin_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_5_2x
+
+		add_stats = {
+			thrust = 36.75
+			build_cost_ic = 34
+			fuel_consumption = 0.34
+			maximum_speed = 500
+			weight = 15
+		}
+
+		can_convert_from = {
+			module = engine_5_2x
+			convert_cost_ic = 3.3
+		}
+		forbid_module_categories = {
+			engine_mounted_cannons
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}
+	}
+
+	engine_6_3x = {
+		abbreviation = "e23"
+		category = medium_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_5_3x
+
+		add_stats = {
+			thrust = 55.125
+			build_cost_ic = 51
+			fuel_consumption = 0.51
+			maximum_speed = 500
+			weight = 22.5
+		}
+
+		can_convert_from = {
+			module = engine_5_3x
+			convert_cost_ic = 5
+		}
+		forbid_module_categories = {
+			engine_mounted_cannons
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+
+	engine_6_4x = {
+		abbreviation = "e24"
+		category = quad_large_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_5_4x
+
+		add_stats = {
+			thrust = 68.9
+			build_cost_ic = 68
+			fuel_consumption = 0.68
+			maximum_speed = 500
+			weight = 30
+		}
+		
+		can_convert_from = {
+			module = engine_5_4x
+			convert_cost_ic = 6.2
+		}
+		forbid_module_categories = {
+		plane_special_module_jet
+		plane_special_module_radial_engine
+		}		
+	}
+	
+	engine_7_1x = {
+		abbreviation = "e31"
+		category = plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_6_1x
+
+		add_stats = {
+			thrust = 23
+			build_cost_ic = 16
+			fuel_consumption = 0.18
+			maximum_speed = 520
+			weight = 7.75
+		}
+
+		can_convert_from = {
+			module = engine_6_1x
+			convert_cost_ic = 2.3
+		}
+		forbid_module_categories = {
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+
+	engine_7_2x = {
+		abbreviation = "e32"
+		category = twin_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_6_2x
+
+		add_stats = {
+			thrust = 40.25
+			build_cost_ic = 36
+			fuel_consumption = 0.36
+			maximum_speed = 520
+			weight = 15.5
+		}
+
+		can_convert_from = {
+			module = engine_6_2x
+			convert_cost_ic = 3.6
+		}
+		forbid_module_categories = {
+			engine_mounted_cannons
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}
+	}
+
+	engine_7_3x = {
+		abbreviation = "e33"
+		category = medium_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_6_3x
+
+		add_stats = {
+			thrust = 60.375
+			build_cost_ic = 54
+			fuel_consumption = 0.54
+			maximum_speed = 520
+			weight = 23.25
+		}
+
+		can_convert_from = {
+			module = engine_6_3x
+			convert_cost_ic = 5.5
+		}
+		forbid_module_categories = {
+			engine_mounted_cannons
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+
+	engine_7_4x = {
+		abbreviation = "e34"
+		category = quad_large_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_6_4x
+
+		add_stats = {
+			thrust = 75.47
+			build_cost_ic = 72
+			fuel_consumption = 0.72
+			maximum_speed = 520
+			weight = 31
+		}
+
+		can_convert_from = {
+			module = engine_6_4x
+			convert_cost_ic = 6.8
+		}
+		forbid_module_categories = {
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+
+	engine_8_1x = {
+		abbreviation = "e41"
+		category = plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_7_1x
+
+		add_stats = {
+			thrust = 25
+			build_cost_ic = 17
+			fuel_consumption = 0.19
+			maximum_speed = 540
+			weight = 8
+		}
+
+		can_convert_from = {
+			module = engine_7_1x
+			convert_cost_ic = 2.5
+		}
+		forbid_module_categories = {
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+
+	engine_8_2x = {
+		abbreviation = "e42"
+		category = twin_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_7_2x
+
+		add_stats = {
+			thrust = 43.75
+			build_cost_ic = 38
+			fuel_consumption = 0.38
+			maximum_speed = 540
+			weight = 16
+		}
+
+		can_convert_from = {
+			module = engine_7_2x
+			convert_cost_ic = 3.9
+		}
+		forbid_module_categories = {
+			engine_mounted_cannons
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+
+	engine_8_3x = {
+		abbreviation = "e43"
+		category = medium_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_7_3x
+
+		add_stats = {
+			thrust = 65.625
+			build_cost_ic = 57
+			fuel_consumption = 0.57
+			maximum_speed = 540
+			weight = 24
+		}
+
+		can_convert_from = {
+			module = engine_7_3x
+			convert_cost_ic = 6
+		}
+		forbid_module_categories = {
+			engine_mounted_cannons
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+
+	engine_8_4x = {
+		abbreviation = "e44"
+		category = quad_large_plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = engine_7_4x
+
+		add_stats = {
+			thrust = 82.03
+			build_cost_ic = 76
+			fuel_consumption = 0.76
+			maximum_speed = 540
+			weight = 32
+		}
+
+		can_convert_from = {
+			module = engine_7_4x
+			convert_cost_ic = 7.4
+		}
+		forbid_module_categories = {
+			plane_special_module_jet
+			plane_special_module_radial_engine
+		}		
+	}
+}

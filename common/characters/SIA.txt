@@ -1,0 +1,69 @@
+characters={
+	SIA_phraya_phahon={
+		name="Phraya Phahon"
+		portraits={
+			civilian={
+				large="gfx/leaders/SIA/Portrait_Siam_Phraya_Phahon.dds"
+			}
+		}
+		country_leader={
+			ideology=despotism
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	SIA_nangklao_chichalerm={
+		name="Nangklao Chichalerm"
+		portraits={
+			civilian={
+				large="gfx/leaders/Asia/portrait_asia_generic_4.dds"
+			}
+		}
+		country_leader={
+			ideology=socialism
+			traits={ retired_officer financial_expert }
+			expire="1948.1.1.12"
+			id=-1
+		}
+	}
+	SIA_chao_phonphayuhasena={
+		name="Chao Phonphayuhasena"
+		portraits={
+			civilian={
+				large="gfx/leaders/Asia/Portrait_Asia_Generic_1.dds"
+			}
+		}
+		country_leader={
+			ideology=anarchist_communism
+			traits={ retired_officer }
+			expire="1942.1.1.12"
+			id=-1
+		}
+	}
+	SIA_nangklao_suriyawongse={
+		name="Nangklao Suriyawongse"
+		portraits={
+			civilian={
+				large="gfx/leaders/Asia/Portrait_Asia_Generic_3.dds"
+			}
+		}
+		country_leader={
+			ideology=gen_nazism
+			expire="1953.1.1.12"
+			id=-1
+		}
+	}
+	SIA_plaek_phibunsongkhram={
+		name="Plaek Phibunsongkhram"
+		portraits={
+			civilian={
+				large="gfx/leaders/Asia/Portrait_Asia_Generic_3.dds"
+			}
+		}
+		country_leader={
+			ideology=fascism_ideology
+			expire="1953.1.1.12"
+			id=-1
+		}
+	}
+}

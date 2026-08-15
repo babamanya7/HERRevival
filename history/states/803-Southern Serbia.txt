@@ -1,0 +1,30 @@
+state={
+	id=803
+	name="STATE_803"
+	
+	history={
+		
+		victory_points = {
+			13245 20 
+		}
+		owner = GER
+		buildings = {
+			infrastructure = 10
+			industrial_complex = 5
+			dockyard = 4
+			air_base = 10
+			13245 = {
+				naval_base = 7
+			}
+		}
+		add_core_of = GER		
+
+	}
+		
+	provinces={
+		11587 13245 
+	}
+	manpower=1600000
+	buildings_max_level_factor=1.000
+	state_category=megalopolis
+}

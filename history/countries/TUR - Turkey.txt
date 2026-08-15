@@ -1,0 +1,25 @@
+﻿capital = 339
+
+set_cosmetic_tag = TUR_neutrality
+set_rule = {
+	can_access_market = no
+}
+set_research_slots = 0
+country_lock_all_division_template = yes
+add_ideas = {
+	limited_conscription
+	export_focus
+	civilian_economy
+	neutrality_drift
+}
+set_politics = {
+	ruling_party = neutrality
+	elections_allowed = no
+}
+set_popularities = {
+	neutrality = 100
+}
+
+set_convoys = 0
+set_stability = 1
+set_war_support = 0

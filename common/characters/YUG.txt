@@ -1,0 +1,90 @@
+characters={
+	YUG_prince_paul={
+		name=YUG_prince_paul
+		portraits={
+			civilian={
+				large="gfx/leaders/YUG/Portrait_Yugoslavia_Prince_Paul.dds"
+			}
+		}
+		country_leader={
+			ideology=despotism
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	YUG_milan_stojadinovic={
+		name=YUG_milan_stojadinovic
+		portraits={
+			civilian={
+				large="gfx/leaders/YUG/Portrait_Yugoslavia_Milan_Stojadinovic.dds"
+			}
+		}
+		country_leader={
+			ideology=fascism_ideology
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	YUG_milan_grol={
+		name=YUG_milan_grol
+		portraits={
+			civilian={
+				large="gfx/leaders/YUG/Portrait_Yugoslavia_Milan_Grol.dds"
+			}
+		}
+		country_leader={
+			ideology=liberalism
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	YUG_peter_ii={
+		name=YUG_peter_ii
+		portraits={
+			civilian={
+				large="GFX_portrait_yugoslavia_peter_ii_young"
+			}
+		}
+		country_leader={
+			ideology=despotism
+			traits={ underage_monarch }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		country_leader={
+			ideology=conservatism
+			traits={ underage_monarch }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	
+	YUG_josip_broz_tito={
+		name=YUG_josip_broz_tito
+		country_leader={
+			ideology=leninism
+			expire="1966.1.1.1"
+			id=-1
+		}
+		portraits={
+			army={
+				small="GFX_idea_YUG_josip_broz_tito"
+			}
+			civilian={
+				large="gfx/leaders/YUG/Portrait_Yugoslavia_Josip_Broz_Tito.dds"
+			}
+		}
+	}
+
+	#Characters added elsewhere 
+
+	CRO_nikola_mandic = {
+		name=CRO_nikola_mandic
+		portraits={
+			civilian={
+				large="gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
+			}
+		}
+
+	}
+}

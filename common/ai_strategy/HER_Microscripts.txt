@@ -1,0 +1,660 @@
+
+only_civ_construction = {
+	enable = {
+		OR = {
+			has_idea = undisturbed_isolation
+			has_idea = isolation
+			has_idea = civilian_economy
+		}
+	}
+
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 1000
+	}
+}
+
+there_is_no_place_for_coward_in_a_civil_war = {
+	enable = {
+		has_civil_war = yes
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			has_war_with = FROM
+			original_tag = FROM
+		}
+
+		ratio = 0.3
+
+		priority = 1000
+		ordertype = front
+		execution_type = rush
+		execute_order = yes
+	}
+}
+
+naval_invasions = {
+	enable = {
+		has_war = yes
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = naval_invasion_focus
+		value = 20
+	}
+}
+
+convoy_raiding_enthusiast = {
+	enable = {
+		has_war = yes
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = naval_mission_threshold
+		id = MISSION_CONVOY_RAIDING
+		value = 50
+	}
+}
+
+will_you_concentrate_troops = {
+	enable = {
+		always = yes
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = force_concentration_factor
+		value = 20
+	}
+
+}
+
+build_steels = {
+	enable = {
+		has_resources_in_country = {
+			resource = iron
+			amount > 30
+			extracted = yes
+		}
+		has_resources_in_country = {
+			resource = coal
+			amount > 30
+			extracted = yes
+		}
+		has_resources_in_country = {
+			resource = steel
+			amount < 250
+			buildings = yes
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_building
+		id = steel_refinery
+		value = 1500
+	}
+}
+
+build_hydro_steels = {
+	enable = {
+		has_resources_in_country = {
+			resource = iron
+			amount > 30
+			extracted = yes
+		}
+		has_resources_in_country = {
+			resource = coal
+			amount < 30
+			extracted = yes
+		}
+		has_resources_in_country = {
+			resource = steel
+			amount < 250
+			buildings = yes
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_building
+		id = hydro_steel_refinery
+		value = 1350
+	}
+}
+
+build_alum = {
+	enable = {
+		has_resources_in_country = {
+			resource = bauxite
+			amount > 30
+			extracted = yes
+		}
+		has_resources_in_country = {
+			resource = coal
+			amount > 30
+			extracted = yes
+		}
+		has_resources_in_country = {
+			resource = steel
+			amount < 250
+			buildings = yes
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_building
+		id = aluminium_refinery
+		value = 1500
+	}
+}
+
+build_hydro_alum = {
+	enable = {
+		has_resources_in_country = {
+			resource = bauxite
+			amount > 30
+			extracted = yes
+		}
+		has_resources_in_country = {
+			resource = coal
+			amount < 30
+			extracted = yes
+		}
+		has_resources_in_country = {
+			resource = aluminium
+			amount < 200
+			buildings = yes
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_building
+		id = hydro_aluminium_refinery
+		value = 1350
+	}
+}
+
+default_build_a_nl_facility_faster = {
+	enable = {
+		is_major = yes
+		num_of_civilian_factories > 100
+		num_of_military_factories > 50 # Even if we have the base tech, let's wait until we have some kind of capacity
+		nuclear_facility < 1  # one is enough
+		NOT = { tag = FRA }
+		NOT = { tag = CHI }
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_building
+		id = nuclear_facility
+		value = 1000
+	}
+}
+
+default_build_a_nav_facility_faster = {
+	enable = {
+		is_major = yes
+		num_of_naval_factories > 25 # Only Naval Powers should bother with these unless specifically told to do otherwise
+		naval_facility < 1 # one is enough
+		NOT = { tag = FRA }
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_building
+		id = naval_facility
+		value = 1000
+	}
+}
+
+default_build_a_lw_facility_faster = {
+	enable = {
+		is_major = yes
+		num_of_civilian_factories > 40
+		num_of_military_factories > 40
+		OR = { # Don't start until we can build decent tanks of some kind
+			has_tech = improved_light_tank_chassis
+			has_tech = basic_medium_tank_chassis
+			has_tech = improved_heavy_tank_chassis
+		}
+		land_facility < 2 # one is enough
+		NOT = { tag = FRA }
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_building
+		id = land_facility
+		value = 1000
+	}
+}
+
+default_build_an_air_facility_faster = {
+	enable = {
+		
+		is_major = yes # Minors don't bother until strong enough to be considered major
+		num_of_military_factories > 50 # We should first build up our military industry 
+		
+		OR = { # Don't start until we can build decent aircraft
+			has_tech = basic_small_airframe
+			has_tech = basic_medium_airframe
+			has_tech = basic_large_airframe
+		}
+		air_facility < 3 # one is enough
+		NOT = { tag = FRA }
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_building
+		id = air_facility
+		value = 1000
+	}
+}
+
+### SPECIAL PROJECT SCIENTISTS STRATEGIES
+
+default_recruit_land_scientist_faster = {
+	enable = {
+		land_facility > 0
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = recruit_scientist
+		id = specialization_land
+		value = 1000
+	}
+}
+
+default_recruit_nuclear_scientist_faster = {
+	enable = {
+		nuclear_facility > 0
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = recruit_scientist
+		id = specialization_nuclear
+		value = 1000
+	}
+}
+
+default_recruit_naval_scientist_faster = {
+	enable = {
+		naval_facility > 0
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = recruit_scientist
+		id = specialization_naval
+		value = 1000
+	}
+}
+
+default_recruit_air_scientist_faster = {
+	enable = {
+		air_facility > 0
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = recruit_scientist
+		id = specialization_air
+		value = 1000
+	}
+}
+
+
+nuclear_we_must_know = {
+	enable = {
+		num_of_civilian_factories > 250
+		NOT = { 
+			OR = {
+				surrender_progress > 0.2 
+				nuclear_facility > 1
+			}
+		}
+		NOT = { tag = FRA }
+		NOT = { tag = CHI }
+	}
+
+	abort_when_not_enabled = yes
+
+	
+	ai_strategy = {
+		type = build_building
+		id = nuclear_facility
+		value = 2000
+	}
+}
+
+this_one_came_from_here = {
+	enable = {
+		OR = {
+			threat > 0.80
+			has_war = yes
+		}
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 150
+	}
+}
+
+get_yourself_some_nuke_yo = {
+	enable = {
+		has_tech = nuclear_reactor
+		NOT = { surrender_progress > 0.05 }
+		num_of_civilian_factories > 100
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = building_target
+		id = nuclear_reactor 
+		value = 1
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = strategic_bomber
+		value = 5
+	}
+
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = strategic_bomber
+		value = 1
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = strategic_bomber
+		value = 1
+	}
+}
+
+get_yourself_some_nuke_yeah = {
+	enable = {
+		has_tech = nuclear_reactor
+		NOT = { surrender_progress > 0.05 }
+		num_of_civilian_factories > 100
+		has_deployed_air_force_size = {
+			type = fighter
+			size > 4999
+		}
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = building_target
+		id = nuclear_reactor 
+		value = 10
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = strategic_bomber
+		value = 10
+	}
+
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = strategic_bomber
+		value = 5
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = strategic_bomber
+		value = 5
+	}
+}
+
+get_yourself_some_strat_yeah = {
+	enable = {
+		has_tech = nuclear_reactor
+		NOT = { surrender_progress > 0.05 }
+		has_deployed_air_force_size = {
+			type = fighter
+			size > 4999
+		}
+		has_deployed_air_force_size = {
+			type = strategic_bomber
+			size < 1000
+		}
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = unit_ratio
+		id = strategic_bomber
+		value = 10
+	}
+
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = strategic_bomber
+		value = 5
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = strategic_bomber
+		value = 15
+	}
+}
+
+
+scout_plane_cuz_why_not = {
+	enable = {
+		has_deployed_air_force_size = {
+			size > 1000
+			type = fighter
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = scout_plane
+		value = 1
+	}
+}
+
+
+
+division_template_is_really_cool = {
+	enable = {
+		always = yes
+	}
+
+	abort = {
+		always = no
+	}
+	ai_strategy = {
+		type = land_xp_spend_priority
+		id = division_template
+		value = 100
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = medium_armor
+		value = 100
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = infantry
+		value = 100
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = marines
+		value = 100
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = mountaineers
+		value = 100
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = motorized
+		value = 100
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = cavalry
+		value = 100
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = paratroopers
+		value = 100
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = heavy_armor
+		value = 50
+	}
+}
+
+civil_war_no_garrison = {
+
+	enable = {
+		has_civil_war = yes
+		NOT = {
+			any_enemy_country = {
+				has_civil_war = no
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = garrison
+		value = -9999
+	}
+}
+
+garrison_is_meme_at_low_world_tension = {
+	enable = {
+		threat < 0.15
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = garrison
+		value = -9999
+	}
+}
+
+no_garrison_in_minor_war = {
+	enable = {
+		NOT = {
+			any_country = {
+				has_war_with = ROOT
+				is_major = yes
+				has_navy_size = {
+					size > 30
+				}
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = garrison
+		value = -9999
+	}
+}
+
+
+major_train = {
+
+	enable = {
+		has_war = yes
+		is_major = yes
+		num_of_military_factories > 100
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = min_wanted_supply_trains
+		value = 200
+	}
+}
+
+military_factory_ramping = {
+	enable = {
+		OR = {
+			threat > 0.25
+			has_war = yes
+		}
+		NOT = {
+			AND = {
+				OR = {
+					has_idea = civilian_economy
+					has_idea = undisturbed_isolation
+					has_idea = isolation
+				}
+				has_war = no
+			}
+		}
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 50
+	}
+}
+
+military_factory_ramping_2 = {
+	enable = {
+		OR = {
+			threat > 0.80
+			has_war = yes
+		}
+		OR = {
+			num_of_civilian_factories > 200
+			surrender_progress > 0
+		}
+		NOT = {
+			AND = {
+				OR = {
+					has_idea = civilian_economy
+					has_idea = undisturbed_isolation
+					has_idea = isolation
+				}
+				has_war = no
+			}
+		}
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 50
+	}
+}

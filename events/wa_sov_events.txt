@@ -1,0 +1,1068 @@
+add_namespace = sov_armor
+add_namespace = sov_her
+
+country_event = {
+	id = sov_her.1
+	title = sov_her.1.t
+	desc = sov_her.1.d
+
+	picture = GFX_vatutin_event
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = SOV
+		date > 1943.1.1
+		SOV = { has_war_with = GER }
+		OR = {
+			93 = { is_controlled_by = SOV }
+			199 = { is_controlled_by = SOV }
+		}
+	}
+	
+	immediate = {
+		set_country_flag = vatutin_killed
+	}
+	
+	mean_time_to_happen = { days = 30 }
+	
+	option = {
+		name = sov_her.1.a
+	}
+}
+
+country_event = {
+	id = sov_her.2
+	title = sov_her.2.t
+	desc = sov_her.2.d
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = sov_her.2.a
+	}
+}
+
+country_event = {
+	id = sov_her.3
+	title = sov_her.3.t
+	desc = sov_her.3.d
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = sov_her.2.a
+	}
+}
+
+country_event = {
+	id = sov_her.4
+	title = sov_her.4.t
+	desc = sov_her.4.d
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = sov_her.2.a
+	}
+}
+
+country_event = {
+	id = sov_her.5
+	title = sov_her.5.t
+	desc = sov_her.5.d
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = sov_her.2.a
+	}
+}
+
+country_event = {
+	id = sov_her.6
+	title = sov_her.6.t
+	desc = sov_her.6.d
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = sov_her.2.a
+	}
+}
+
+country_event = {
+	id = sov_her.7
+	title = sov_her.7.t
+	desc = sov_her.7.d
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = sov_her.2.a
+	}
+}
+
+country_event = {
+	id = sov_her.8
+	title = sov_her.8.t
+	desc = sov_her.8.d
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = sov_her.2.a
+	}
+}
+
+country_event = {
+	id = sov_her.9
+	title = sov_her.9.t
+	desc = sov_her.9.d
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = sov_her.2.a
+	}
+}
+
+country_event = {
+	id = sov_her.10
+	title = sov_her.10.t
+	desc = sov_her.10.d
+
+	fire_only_once = yes
+	
+	trigger = {
+		date > 1945.2.1
+		tag = SOV
+	}
+	
+	option = {
+		name = sov_her.10.a
+	}
+}
+
+country_event = {
+	id = sov_her.11
+	title = sov_her.11.t
+	desc = sov_her.11.d
+	picture = GFX_report_event_stalin_01
+	
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	immediate = {
+		SOV_paranoia_very_high_increase_effect = yes
+	}
+
+	option = {
+		name = sov_her.11.a
+		effect_tooltip = {
+			SOV_paranoia_very_high_increase_effect = yes
+		}
+	}
+}
+
+country_event = {
+	id = sov_her.12
+	title = sov_her.12.t
+	desc = sov_her.12.d
+	picture = GFX_matrona_stalin
+	
+	is_triggered_only = yes
+	
+	#trigger = {
+	#	GER = { has_country_flag = GER_blitz_loses }
+	#	219 = { NOT = { is_fully_controlled_by = SOV } }
+	#	date > 1941.12.1
+	#	date < 1942.1.14
+	#	tag = SOV
+	#}
+	
+	option = {
+		name = sov_her.12.a
+		complete_national_focus = SOV_patriarch_of_all_russia
+	}
+}
+
+country_event = { #pavlov treason trigger
+	id = sov_her.13
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		SOV_dmitry_pavlov = { unit_leader_event = { id = sov_her.14 days = 3 random_days = 3 } }
+	}
+}
+
+unit_leader_event = {
+	id = sov_her.14
+	title = sov_her.14.t
+	desc = sov_her.14.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = sov_her.14.a
+		retire_character = FROM
+	}
+}
+
+
+country_event = { #kirponos dies in encirclement
+	id = sov_her.15
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		SOV_mikhail_kirponos = { unit_leader_event = { id = sov_her.16 days = 5 random_days = 2 } }
+	}
+}
+
+unit_leader_event = {
+	id = sov_her.16
+	title = sov_her.16.t
+	desc = sov_her.16.d
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = { retire_character = FROM }
+	}
+	
+	option = {
+		name = sov_her.16.a
+	}
+}
+
+country_event = { #potapov surrendered
+	id = sov_her.17
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		SOV_mikhail_potapov = { unit_leader_event = { id = sov_her.18 days = 1 random_days = 3 } }
+	}
+}
+
+unit_leader_event = {
+	id = sov_her.18
+	title = sov_her.18.t
+	desc = sov_her.18.d
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = { retire_character = FROM }
+	}
+	
+	option = {
+		name = sov_her.18.a
+	}
+}
+
+country_event = {
+	id = sov_her.19
+	title = sov_her.19.t
+	desc = sov_her.19.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = sov_her.19.a
+		retire_character = SOV_pavel_rychagov
+		retire_character = SOV_Pavel_Volodin
+		retire_character = SOV_Arjenuhin_Fedor
+		retire_character = SOV_yakov_smushkevich
+		add_advisor_role = {
+			character = SOV_pavel_zhigarev
+			activate = yes
+			advisor = {
+				slot = air_chief
+				cost = 0
+				idea_token = SOV_pavel_zhigarev
+				traits = {
+					sov_air_chief_3
+				}
+				can_be_fired = no
+			}
+		}
+		add_advisor_role = {
+			character = SOV_Grigory_Vorojeikin
+			activate = yes
+			advisor = {
+				slot = air_genstab_chief
+				cost = 0
+				idea_token = SOV_Grigory_Vorojeikin
+				traits = {
+					sov_air_genshtab_chief_3
+				}
+				can_be_fired = no
+			}
+		}
+	}
+}
+
+country_event = {
+	id = sov_her.20
+	title = sov_her.20.t
+	desc = sov_her.20.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = sov_her.20.a
+		remove_advisor_role = {
+			character = "SOV_pavel_zhigarev"
+			slot = air_chief
+		}
+		remove_advisor_role = {
+			character = "SOV_Grigory_Vorojeikin"
+			slot = air_genstab_chief
+		}
+		add_advisor_role = {
+			character = SOV_aleksandr_novikov
+			activate = yes
+			advisor = {
+				slot = air_chief
+				cost = 0
+				idea_token = SOV_aleksandr_novikov
+				traits = {
+					sov_air_chief_4
+				}
+				can_be_fired = no
+			}
+		}
+		add_advisor_role = {
+			character = SOV_sergey_khudyakov
+			activate = yes
+			advisor = {
+				slot = air_genstab_chief
+				cost = 0
+				idea_token = SOV_sergey_khudyakov
+				traits = {
+					sov_air_genshtab_chief_4
+				}
+				can_be_fired = no
+			}
+		}
+	}
+}
+
+country_event = {
+	id = sov_her.21
+	title = sov_her.21.t
+	desc = sov_her.21.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = sov_her.21.a
+		declare_war_on = {
+			type = take_state_focus
+			target = POL
+			generator = { 96 95 97 94 93 91 89 49 }
+		}
+		every_country = {
+			limit = {
+				is_in_faction_with = ENG
+				NOT = { tag = POL }
+				is_ai = yes
+			}
+			white_peace = SOV
+		}
+	}
+}
+
+country_event = {
+	id = sov_armor.555
+	hidden = yes
+
+	trigger = {
+		tag = SOV
+		any_controlled_state = {
+			is_core_of = SOV
+		}
+	}
+	
+	immediate = {
+		every_state = {
+			limit = {
+				OR = {
+					is_core_of = SOV
+					is_core_of = EST
+					is_core_of = LAT
+					is_core_of = LIT
+				}
+				is_owned_by = GER
+				is_fully_controlled_by = SOV
+			}
+			SOV = {
+				transfer_state = PREV
+			}
+		}
+	}
+
+	option = {}
+
+}
+
+country_event = {
+	id = sov_armor.700
+	title = sov_armor.700.t
+	desc = sov_armor.700.d
+
+	picture = GFX_report_event_airplane_crash
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = SOV
+		date > 1941.11.9
+		SOV = { has_war_with = GER }
+	}
+	
+	
+	option = {
+		name = sov_armor.700.a
+		swap_ideas = {
+			remove_idea = gaz_automobile_plants
+			add_idea = gaz_automobile_plants_1
+		}
+	}
+}
+
+country_event = {
+	id = sov_armor.800
+	title = sov_armor.800.t
+	desc = sov_armor.800.d
+
+	picture = GFX_yevgeni_oskarovich_paton
+	
+	is_triggered_only = yes
+
+	#fire_only_once = yes
+	
+	#trigger = {
+	#	tag = SOV
+	#	SOV = {
+	#		has_completed_focus = SOV_tankograd
+	#	}
+	#}
+	
+	
+	option = {
+		name = sov_armor.800.a
+		set_technology = { weld_armor_2 = 1 }
+	}
+}
+
+country_event = {
+	id = sov_armor.806
+	title = sov_armor.806.t
+	desc = sov_armor.806.d
+
+	picture = GFX_report_event_generic_conference
+
+	fire_only_once = yes
+	
+	immediate = {
+		set_country_flag = SOV_far_east_secured
+	}
+	
+	trigger = {
+		tag = SOV
+		network_strength = {
+			target = JAP
+			state = 282
+			value > 54
+		}
+		has_war_with = GER
+		date > 1941.9.20
+		date < 1941.12.1
+	}
+	
+	option = {
+		name = sov_armor.806.a
+		custom_effect_tooltip = sov_armor.806_tt
+		every_controlled_state = {
+			limit = {
+				every_neighbor_state = {
+					is_controlled_by = ROOT
+				}
+				is_on_continent = asia
+			}
+			add_dynamic_modifier = {
+				modifier = SOV_ramazan_divisions
+				days = 30
+			}
+		}
+	}
+}
+
+
+
+
+####################################### England proposes a joint invasion of Iran
+
+country_event = {
+	id = sov_armor.801
+	title = sov_armor.801.t
+	desc = sov_armor.801.d
+
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = {
+		name = sov_armor.801.a
+		ENG = { country_event = { days = 1 id = eng_armor.847 } }
+		ai_chance = { 
+			factor = 25 
+		}
+	}
+
+	option = {
+		name = sov_armor.801.b
+		ENG = { country_event = { days = 1 id = eng_armor.848 } }
+		ai_chance = { 
+			factor = 0 
+		}
+	}
+}
+
+####################################### Socialist Realism
+
+country_event = {
+	id = sov_armor.804
+	title = sov_armor.804.t
+	desc = sov_armor.804.d
+
+	picture = GFX_report_event_spain_civil_war_volunteers_02
+
+	is_triggered_only = yes
+
+	option = {
+		name = sov_armor.804.a
+		add_ideas = socialist_realism_workforce
+		ai_chance = { 
+			factor = 0 
+		}
+	}
+
+	option = {
+		name = sov_armor.804.b
+		add_ideas = socialist_realism_people
+		add_political_power = 50
+		ai_chance = { 
+			factor = 25 
+		}
+	}
+
+	option = {
+		name = sov_armor.804.c
+		add_ideas = socialist_realism_army
+		army_experience = 25
+		ai_chance = { 
+			factor = 25 
+		}
+	}
+
+	option = {
+		name = sov_armor.804.e
+		add_ideas = socialist_realism_partisans
+		ai_chance = { 
+			factor = 25 
+		}
+	}
+}
+
+####################################### Liberation of Western Belarus
+
+country_event = {
+	id = sov_armor.809
+	title = sov_armor.809.t
+	desc = sov_armor.809.d
+
+	picture = GFX_report_event_soldiers_marching
+
+	mean_time_to_happen = { days = 2 }
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		96 = { is_fully_controlled_by = SOV }
+		95 = { is_fully_controlled_by = SOV }
+		94 = { is_fully_controlled_by = SOV }
+		93 = { is_fully_controlled_by = SOV }
+		91 = { is_fully_controlled_by = SOV }
+		89 = { is_fully_controlled_by = SOV }
+	}
+
+	option = {
+		name = sov_armor.809.a
+		ai_chance = { 
+			factor = 1 
+		}
+		49 = { add_core_of = SOV }
+		97 = { add_core_of = SOV }
+		96 = { add_core_of = SOV }
+		95 = { add_core_of = SOV }
+		94 = { add_core_of = SOV }
+		93 = { add_core_of = SOV }
+		91 = { add_core_of = SOV }
+		89 = { add_core_of = SOV }
+	}
+}
+
+####################################### Reserves recruited
+
+country_event = {
+	id = sov_armor.817
+	title = sov_armor.817.t
+	desc = sov_armor.817.d
+
+	picture = GFX_report_event_soldiers_marching
+
+	is_triggered_only = yes
+
+	option = {
+		name = sov_armor.817.a
+		ai_chance = { 
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = sov_armor.817.b
+		trigger = {
+			if = {
+				limit = {
+					has_country_flag = reserve_total_1
+				}
+				has_country_flag = reserve_total_1
+				OR = {
+					has_country_flag = USA_selective_service_act_flag
+					has_army_manpower = { size > 150000 }
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_2
+				}
+				has_country_flag = reserve_total_2
+				OR = {
+					has_country_flag = USA_selective_service_act_flag
+					has_army_manpower = { size > 300000 }
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_3
+				}
+				has_country_flag = reserve_total_3
+				OR = {
+					has_country_flag = USA_selective_service_act_flag
+					has_army_manpower = { size > 450000 }
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_4
+				}
+				has_country_flag = reserve_total_4
+				OR = {
+					has_country_flag = USA_selective_service_act_flag
+					has_army_manpower = { size > 600000 }
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_5
+				}
+				has_country_flag = reserve_total_5
+				has_army_manpower = { size > 750000 }
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_6
+				}
+				has_country_flag = reserve_total_6
+				has_army_manpower = { size > 900000 }
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_7
+				}
+				has_country_flag = reserve_total_7
+				has_army_manpower = { size > 1050000 }
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_8
+				}
+				has_country_flag = reserve_total_8
+				has_army_manpower = { size > 1200000 }
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_9
+				}
+				has_country_flag = reserve_total_9
+				has_army_manpower = { size > 1350000 }
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_10
+				}
+				has_country_flag = reserve_total_10
+				has_army_manpower = { size > 1500000 }
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_11
+				}
+				has_country_flag = reserve_total_11
+				has_army_manpower = { size > 1650000 }
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_12
+				}
+				has_country_flag = reserve_total_12
+				has_army_manpower = { size > 1800000 }
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_13
+				}
+				has_country_flag = reserve_total_13
+				has_army_manpower = { size > 1950000 }
+			}
+			if = {
+				limit = {
+					has_country_flag = reserve_total_14
+				}
+				has_country_flag = reserve_total_14
+				has_army_manpower = { size > 2100000 }
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = reserve_total_1
+						has_country_flag = reserve_total_2
+						has_country_flag = reserve_total_3
+						has_country_flag = reserve_total_4
+						has_country_flag = reserve_total_5
+						has_country_flag = reserve_total_6
+						has_country_flag = reserve_total_7
+						has_country_flag = reserve_total_8
+						has_country_flag = reserve_total_9
+						has_country_flag = reserve_total_10
+						has_country_flag = reserve_total_11
+						has_country_flag = reserve_total_12
+						has_country_flag = reserve_total_13
+						has_country_flag = reserve_total_14
+					}
+				}
+				has_army_manpower = { size > 1 }
+			}
+			has_war = no
+			NOT = { has_country_flag = reserve_total_15 }
+		}
+		activate_decision = recruit_more_reserves
+		ai_chance = { 
+			factor = 0
+		}
+	}
+}
+
+
+
+
+################################################# Molotov Ribbentrop pact invade?
+
+
+
+
+country_event = {
+	id = sov_armor.819
+	title = sov_armor.819.t
+	desc = sov_armor.819.d
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = {
+		name = sov_armor.819.a
+		declare_war_on = { 
+			type = take_state_focus
+			target = POL
+			generator = { 96 95 97 94 93 91 89 }
+		}
+	}
+}
+
+####################################### Inexperienced Workforce
+
+# More experienced workforce
+country_event = {
+	id = sov_armor.820
+	title = sov_armor.820.t
+	desc = sov_armor.820.d
+	picture = GFX_report_event_tank_factory
+
+	is_triggered_only = yes
+	
+	mean_time_to_happen = { days = 1 }
+
+	immediate = {
+		hidden_effect = {
+			add_to_variable = { var = SOV_fyp_production_factory_efficiency_gain_factor value = 0.05 }
+			add_to_variable = { var = SOV_fyp_industrial_capacity_factory value = 0.05 }
+			country_event = { id = sov_armor.821 days = 365 }
+		}
+	}
+	option = {
+		name = sov_armor.820.a
+		custom_effect_tooltip = sov_armor.820.a_tt
+	}
+}
+
+# More experienced workforce
+country_event = {
+	id = sov_armor.821
+	title = sov_armor.820.t
+	desc = sov_armor.820.d
+	picture = GFX_report_event_tank_factory
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_to_variable = { var = SOV_fyp_production_factory_efficiency_gain_factor value = 0.05 }
+			add_to_variable = { var = SOV_fyp_industrial_capacity_factory value = 0.05 }
+			country_event = { id = sov_armor.822 days = 365 }
+		}
+	}
+	option = {
+		name = sov_armor.820.a
+		custom_effect_tooltip = sov_armor.820.a_tt
+	}
+}
+
+# More experienced workforce
+country_event = {
+	id = sov_armor.822
+	title = sov_armor.820.t
+	desc = sov_armor.820.d
+	picture = GFX_report_event_tank_factory
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_to_variable = { var = SOV_fyp_production_factory_efficiency_gain_factor value = 0.05 }
+			add_to_variable = { var = SOV_fyp_industrial_capacity_factory value = 0.05 }
+			country_event = { id = sov_armor.823 days = 365 }
+		}
+	}
+	option = {
+		name = sov_armor.820.a
+		custom_effect_tooltip = sov_armor.820.a_tt
+	}
+}
+
+# More experienced workforce
+country_event = {
+	id = sov_armor.823
+	title = sov_armor.820.t
+	desc = sov_armor.820.d
+	picture = GFX_report_event_tank_factory
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_to_variable = { var = SOV_fyp_production_factory_efficiency_gain_factor value = 0.05 }
+			add_to_variable = { var = SOV_fyp_industrial_capacity_factory value = 0.05 }
+			country_event = { id = sov_armor.824 days = 365 }
+		}
+	}
+	option = {
+		name = sov_armor.820.a
+		custom_effect_tooltip = sov_armor.820.a_tt
+	}
+}
+
+# More experienced workforce
+country_event = {
+	id = sov_armor.824
+	title = sov_armor.820.t
+	desc = sov_armor.820.d
+	picture = GFX_report_event_tank_factory
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_to_variable = { var = SOV_fyp_production_factory_efficiency_gain_factor value = 0.05 }
+			add_to_variable = { var = SOV_fyp_industrial_capacity_factory value = 0.05 }
+			country_event = { id = sov_armor.825 days = 365 }
+		}
+	}
+	option = {
+		name = sov_armor.820.a
+		custom_effect_tooltip = sov_armor.820.a_tt
+	}
+}
+
+# More experienced workforce
+country_event = {
+	id = sov_armor.825
+	title = sov_armor.820.t
+	desc = sov_armor.820.d
+	picture = GFX_report_event_tank_factory
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_to_variable = { var = SOV_fyp_production_factory_efficiency_gain_factor value = 0.05 }
+			add_to_variable = { var = SOV_fyp_industrial_capacity_factory value = 0.05 }
+		}
+	}
+	option = {
+		name = sov_armor.820.a
+		custom_effect_tooltip = sov_armor.820.a_tt
+	}
+}
+
+# More fafctories recovery
+country_event = {
+	id = sov_armor.830
+	title = sov_armor.830.t
+	desc = sov_armor.830.d
+	picture = GFX_report_event_tank_factory
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_to_variable = { var = SOV_fyp_production_factory_efficiency_gain_factor value = 0.1 }
+			add_timed_idea = { idea = prom_evacuation_1 days = 3 }
+			country_event = { id = sov_armor.831 days = 110 }
+		}
+	}
+	option = {
+		name = sov_armor.830.a
+		custom_effect_tooltip = sov_armor.830.a_tt
+	}
+}
+
+# More fafctories recovery
+country_event = {
+	id = sov_armor.831
+	title = sov_armor.830.t
+	desc = sov_armor.830.d
+	picture = GFX_report_event_tank_factory
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_to_variable = { var = SOV_fyp_production_factory_efficiency_gain_factor value = 0.1 }
+			country_event = { id = sov_armor.832 days = 110 }
+		}
+	}
+	option = {
+		name = sov_armor.830.a
+		custom_effect_tooltip = sov_armor.830.a_tt
+	}
+}
+
+# More fafctories recovery
+country_event = {
+	id = sov_armor.832
+	title = sov_armor.830.t
+	desc = sov_armor.830.d
+	picture = GFX_report_event_tank_factory
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_to_variable = { var = SOV_fyp_production_factory_efficiency_gain_factor value = 0.1 }
+			country_event = { id = sov_armor.833 days = 110 }
+		}
+	}
+	option = {
+		name = sov_armor.830.a
+		custom_effect_tooltip = sov_armor.830.a_tt
+	}
+}
+
+# More fafctories recovery
+country_event = {
+	id = sov_armor.833
+	title = sov_armor.830.t
+	desc = sov_armor.830.d
+	picture = GFX_report_event_tank_factory
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_to_variable = { var = SOV_fyp_production_factory_efficiency_gain_factor value = 0.1 }
+			country_event = { id = sov_armor.834 days = 120 }
+		}
+	}
+	option = {
+		name = sov_armor.830.a
+		custom_effect_tooltip = sov_armor.830.a_tt
+	}
+}
+
+# More fafctories recovery
+country_event = {
+	id = sov_armor.834
+	title = sov_armor.830.t
+	desc = sov_armor.830.d
+	picture = GFX_report_event_tank_factory
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_to_variable = { var = SOV_fyp_production_factory_efficiency_gain_factor value = 0.1 }
+		}
+	}
+	option = {
+		name = sov_armor.830.a
+		custom_effect_tooltip = sov_armor.830.a_tt
+	}
+}

@@ -1,0 +1,54 @@
+form_greater_german_reich_category = {
+
+	form_greater_german_reich = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			OR = {
+				AND = {
+					is_subject = no
+					has_full_control_of_state = 195
+					has_full_control_of_state = 217
+					all_owned_state = {
+						is_fully_controlled_by = ROOT
+					}
+				}
+				date > 1943.1.1
+			}
+		}
+
+		visible = {
+			AND = {
+				original_tag = GER
+				has_government = fascism
+			}
+			NOT = { has_global_flag = form_greater_german_reich_flag }
+			OR = {
+				AND = {
+					has_war_with = FRA
+					FRA = { has_capitulated = yes }
+				}
+				AND = {
+					owns_state = 16
+					has_full_control_of_state = 16
+				}
+			}
+		}
+
+		complete_effect = {
+			set_cosmetic_tag = GER_greater_german_reich
+			hidden_effect = {
+				set_global_flag = form_greater_german_reich_flag
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
+}

@@ -1,0 +1,43 @@
+state={
+	id=92
+	name="STATE_92"
+	manpower=2464600
+	buildings_max_level_factor=1.000
+	state_category=town
+	resources={
+		coal = 103
+	}
+
+	history={
+		victory_points = {
+			11399 5
+		}
+		victory_points = {
+			3063 1
+		}
+		victory_points = {
+			3359 1
+		}
+		owner = POL
+		buildings = {
+			infrastructure = 5
+			industrial_complex = 2
+			arms_factory = 1
+			air_base = 4
+
+		}
+		add_core_of = POL
+		1939.1.1 = {
+			buildings = {
+				air_base = 6
+
+			}
+
+		}
+
+	}
+
+	provinces={
+		3521 3559 6484 6580 9452 9521 9544 11399 11466 3063 285 7377 3359 11303 9321 9369 337
+	}
+}

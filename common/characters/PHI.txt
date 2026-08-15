@@ -1,0 +1,55 @@
+characters={
+	PHI_manuel_luis_quezón={
+		name="Manuel Luis Quezón"
+		portraits={
+			civilian={
+				large="gfx/leaders/PHI/Portrait_Philippines_Manuel_Luis_Quezon.dds"
+			}
+		}
+		country_leader={
+			ideology=conservatism
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	PHI_pedro_p_baguisa={
+		name="Pedro P. Baguisa"
+		portraits={
+			civilian={
+				large="gfx/leaders/South America/Portrait_South_America_Generic_land_2.dds"
+			}
+		}
+		country_leader={
+			ideology=marxism
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	PHI_deodato_jacinto={
+		name="Deodato Jacinto"
+		portraits={
+			civilian={
+				large="gfx/leaders/Asia/Portrait_Asia_Generic_3.dds"
+			}
+		}
+		country_leader={
+			ideology=nazism
+			expire="1941.1.1.12"
+			id=-1
+		}
+	}
+	PHI_hermano_jacinto={
+		name="Hermano Jacinto"
+		portraits={
+			civilian={
+				large="gfx/leaders/Asia/portrait_asia_generic_4.dds"
+			}
+		}
+		country_leader={
+			ideology=oligarchism
+			traits={ fortification_engineer }
+			expire="1954.1.1.12"
+			id=-1
+		}
+	}
+}

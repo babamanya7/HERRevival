@@ -1,0 +1,33 @@
+
+state={
+	id=54
+	name="STATE_54"
+	manpower = 2508159
+
+	state_category = city
+	
+	resources = {
+		#iron = 18
+	}
+
+	history={
+		owner = GER
+		buildings = {
+			infrastructure = 7
+			industrial_complex = 7
+			arms_factory = 3
+			steel_refinery = 2
+		}
+		victory_points = {
+			13475 10 
+		}
+		victory_points = {
+			13863 5
+		}
+		add_core_of = GER
+	}
+
+	provinces={
+		551 607 863 943 966 1143 1189 1204 3423 3509 3569 3770 3882 6682 6685 6725 6942 7008 7079 7211 9642 11631 11663 11666 11867 13475 13863 
+	}
+}

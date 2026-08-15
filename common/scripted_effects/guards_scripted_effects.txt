@@ -1,0 +1,336 @@
+guards_set_templates = {
+	guards_infantry_division = yes
+	guards_cavalry_division = yes
+	guards_mechanised_division = yes
+	guards_armored_division = yes
+	guards_paratrooper_division = yes
+	guards_artillery_division = yes
+}
+
+guards_infantry_division = {
+	division_template = {
+		name = "Gvardeyskiy Strelkoviy Korpus"
+		priority = 2
+		division_names_group = SOV_GRC_01
+		is_locked = yes
+		
+		regiments = {
+			guards_infantry = { x = 0 y = 0 }
+			guards_infantry = { x = 0 y = 1 }
+			guards_infantry = { x = 0 y = 2 }
+			guards_infantry = { x = 0 y = 3 }
+
+			guards_infantry = { x = 1 y = 0 }
+			guards_infantry = { x = 1 y = 1 }
+			guards_infantry = { x = 1 y = 2 }
+			guards_infantry = { x = 1 y = 3 }
+
+			guards_infantry = { x = 2 y = 0 }
+			guards_infantry = { x = 2 y = 1 }
+			guards_infantry = { x = 2 y = 2 }
+			guards_infantry = { x = 2 y = 3 }
+			
+			guards_infantry = { x = 3 y = 0 }
+			guards_infantry = { x = 3 y = 1 }
+			guards_infantry = { x = 3 y = 2 }
+			
+			guards_infantry = { x = 4 y = 0 }
+			guards_infantry = { x = 4 y = 1 }
+			guards_infantry = { x = 4 y = 2 }
+			
+			guards_artillery_brigade = { x = 5 y = 0 }
+			guards_artillery_brigade = { x = 5 y = 1 }
+			guards_artillery_brigade = { x = 5 y = 2 }
+			guards_artillery_brigade = { x = 5 y = 3 }
+		}
+		regimental_support = {
+			artillery = { x = 0 y = 0 }
+			anti_tank = { x = 0 y = 1 }
+			
+			artillery = { x = 1 y = 0 }
+			anti_tank = { x = 1 y = 1 }
+			
+			artillery = { x = 2 y = 0 }
+			anti_tank = { x = 2 y = 1 }
+			
+			artillery = { x = 3 y = 0 }
+			anti_tank = { x = 3 y = 1 }
+			
+			artillery = { x = 4 y = 0 }
+			anti_tank = { x = 4 y = 1 }
+			
+			motorized_rocket_brigade = { x = 5 y = 0 }
+			super_heavy_artillery = { x = 5 y = 1 }
+		}
+		support = {
+			assault_engineer = { x = 0 y = 0 }
+			motorbike_recon = { x = 0 y = 1 }
+			armored_car_recon = { x = 0 y = 2 }
+			field_hospital = { x = 0 y = 3 }
+			logistics_company = { x = 0 y = 4 }
+			signal_company = { x = 0 y = 5 }
+			military_police = { x = 0 y = 6 }
+		}
+	}
+}
+
+guards_cavalry_division = {
+	division_template = {
+		name = "Gvardeyskiy Kavaleriyskiy Korpus"
+		priority = 2
+		division_names_group = SOV_GKC_01
+		is_locked = yes
+
+		regiments = {
+			guards_cavalry = { x = 0 y = 0 }
+			guards_cavalry = { x = 0 y = 1 }
+			guards_cavalry = { x = 0 y = 2 }
+			guards_cavalry = { x = 0 y = 3 }
+
+			guards_cavalry = { x = 1 y = 0 }
+			guards_cavalry = { x = 1 y = 1 }
+			guards_cavalry = { x = 1 y = 2 }
+			guards_cavalry = { x = 1 y = 3 }
+
+			guards_cavalry = { x = 2 y = 0 }
+			guards_cavalry = { x = 2 y = 1 }
+			guards_cavalry = { x = 2 y = 2 }
+			
+			guards_medium_armor_regiment = { x = 3 y = 0 }
+			guards_medium_armor_regiment = { x = 3 y = 1 }
+			
+			guards_artillery_brigade = { x = 4 y = 0 }
+		}
+		regimental_support = {
+			artillery = { x = 0 y = 0 }
+			anti_tank = { x = 0 y = 1 }
+			
+			artillery = { x = 1 y = 0 }
+			anti_tank = { x = 1 y = 1 }
+			
+			artillery = { x = 2 y = 0 }
+			anti_tank = { x = 2 y = 1 }
+		}
+		support = {
+			assault_engineer = { x = 0 y = 0 }
+			motorbike_recon = { x = 0 y = 1 }
+			armored_car_recon = { x = 0 y = 2 }
+			mot_field_hospital = { x = 0 y = 3 }
+			logistics_company = { x = 0 y = 4 }
+			mot_signal_company = { x = 0 y = 5 }
+			mot_maintenance_company = { x = 0 y = 6 }
+		}
+	}
+}
+
+guards_mechanised_division = {
+	division_template = {
+		name = "Gvardeyskiy Mechanizovaniy Korpus"
+		priority = 2
+		division_names_group = SOV_GMC_01
+		is_locked = yes
+		
+		regiments = {
+			guards_mechanized = { x = 0 y = 0 }
+			guards_motorized = { x = 0 y = 1 }
+			guards_motorized = { x = 0 y = 2 }
+			
+			guards_mechanized = { x = 1 y = 0 }
+			guards_motorized = { x = 1 y = 1 }
+			guards_motorized = { x = 1 y = 2 }
+			guards_motorized = { x = 1 y = 3 }
+			
+			guards_mechanized = { x = 2 y = 0 }
+			guards_motorized = { x = 2 y = 1 }
+			guards_motorized = { x = 2 y = 2 }
+			
+			guards_medium_armor_regiment = { x = 3 y = 0 }
+			guards_medium_armor_regiment = { x = 3 y = 1 }
+			guards_medium_armor_regiment = { x = 3 y = 2 }
+			guards_medium_armor_regiment = { x = 3 y = 3 }
+			
+			guards_medium_armor_regiment = { x = 4 y = 0 }
+			guards_medium_armor_regiment = { x = 4 y = 1 }
+			guards_medium_armor_regiment = { x = 4 y = 2 }
+			guards_medium_armor_regiment = { x = 4 y = 3 }
+			
+			guards_artillery_brigade = { x = 5 y = 0 }
+			guards_artillery_brigade = { x = 5 y = 1 }
+		}
+		regimental_support = {
+			artillery = { x = 0 y = 0 }
+			anti_tank = { x = 0 y = 1 }
+			
+			artillery = { x = 1 y = 0 }
+			anti_tank = { x = 1 y = 1 }
+			
+			artillery = { x = 2 y = 0 }
+			anti_tank = { x = 2 y = 1 }
+			
+			heavy_infantry_support_armor = { x = 3 y = 0 }
+			
+			heavy_infantry_support_armor = { x = 4 y = 0 }
+			
+			motorized_rocket_brigade = { x = 5 y = 0 }
+		}
+		support = {
+			assault_engineer = { x = 0 y = 0 }
+			light_tank_recon = { x = 0 y = 1 }
+			logistics_company = { x = 0 y = 2 }
+			motorbike_recon = { x = 0 y = 3 }
+			mot_signal_company = { x = 0 y = 4 }
+			mot_field_hospital = { x = 0 y = 5 }
+			mot_maintenance_company = { x = 0 y = 6 }
+		}
+	}
+}
+
+guards_armored_division = {
+	division_template = {
+		name = "Gvardeyskiy Tankoviy Korpus"
+		priority = 2
+		division_names_group = SOV_GTC_01
+		is_locked = yes
+		
+		regiments = {
+			guards_medium_armor_regiment = { x = 0 y = 0 }
+			guards_medium_armor_regiment = { x = 0 y = 1 }
+			guards_medium_armor_regiment = { x = 0 y = 2 }
+			guards_heavy_armor_regiment = { x = 0 y = 3 }
+			
+			guards_medium_armor_regiment = { x = 1 y = 0 }
+			guards_medium_armor_regiment = { x = 1 y = 1 }
+			guards_medium_armor_regiment = { x = 1 y = 2 }
+			guards_heavy_armor_regiment = { x = 1 y = 3 }
+			
+			guards_medium_armor_regiment = { x = 2 y = 0 }
+			guards_medium_armor_regiment = { x = 2 y = 1 }
+			guards_medium_armor_regiment = { x = 2 y = 2 }
+			guards_heavy_armor_regiment = { x = 2 y = 3 }
+			
+			guards_motorized = { x = 3 y = 0 }
+			guards_motorized = { x = 3 y = 1 }
+			guards_motorized = { x = 3 y = 2 }
+			
+			guards_motorized = { x = 4 y = 0 }
+			guards_motorized = { x = 4 y = 1 }
+			guards_motorized = { x = 4 y = 2 }
+			
+			guards_artillery_brigade = { x = 5 y = 0 }
+		}
+		regimental_support = {
+			artillery = { x = 3 y = 0 }
+			anti_tank = { x = 3 y = 1 }
+			
+			artillery = { x = 4 y = 0 }
+			anti_tank = { x = 4 y = 1 }
+			
+			motorized_rocket_brigade = { x = 5 y = 0 }
+		}
+		support = {
+			assault_engineer = { x = 0 y = 0 }
+			light_tank_recon = { x = 0 y = 1 }
+			logistics_company = { x = 0 y = 2 }
+			motorbike_recon = { x = 0 y = 3 }
+			mot_signal_company = { x = 0 y = 4 }
+			mot_field_hospital = { x = 0 y = 5 }
+			mot_maintenance_company = { x = 0 y = 6 }
+		}
+	}
+}
+
+guards_paratrooper_division = {
+	division_template = {
+		name = "Gvardeyskaya Vozdushno-desantnaya Diviziya"
+		priority = 2
+		division_names_group = SOV_PAR_01
+		is_locked = yes
+		
+		regiments = {
+			guards_paratrooper = { x = 0 y = 0 }
+			guards_paratrooper = { x = 0 y = 1 }
+			guards_paratrooper = { x = 0 y = 2 }
+			
+			guards_paratrooper = { x = 1 y = 0 }
+			guards_paratrooper = { x = 1 y = 1 }
+			guards_paratrooper = { x = 1 y = 2 }
+			
+			guards_paratrooper = { x = 2 y = 0 }
+			guards_paratrooper = { x = 2 y = 1 }
+			guards_paratrooper = { x = 2 y = 2 }
+			
+			guards_artillery_brigade = { x = 3 y = 0 }
+			guards_artillery_brigade = { x = 3 y = 1 }
+		}
+		regimental_support = {
+			artillery = { x = 0 y = 0 }
+			anti_tank = { x = 0 y = 1 }
+			
+			artillery = { x = 1 y = 0 }
+			anti_tank = { x = 1 y = 1 }
+			
+			artillery = { x = 2 y = 0 }
+			anti_tank = { x = 2 y = 1 }
+			
+			motorized_rocket_brigade = { x = 3 y = 0 }
+		}
+		support = {
+			assault_engineer = { x = 0 y = 0 }
+			motorbike_recon = { x = 0 y = 1 }
+			armored_car_recon = { x = 0 y = 2 }
+			field_hospital = { x = 0 y = 3 }
+			logistics_company = { x = 0 y = 4 }
+			signal_company = { x = 0 y = 5 }
+			military_police = { x = 0 y = 6 }
+		}
+	}
+}
+
+guards_artillery_division = {
+	division_template = {
+		name = "Gvardeyskaya Artilleriyskaya Diviziya Proriva"
+		priority = 2
+		division_names_group = SOV_GRC_01
+		is_locked = yes
+		
+		regiments = {
+			guards_artillery_brigade = { x = 0 y = 0 }
+			guards_artillery_brigade = { x = 0 y = 1 }
+			guards_artillery_brigade = { x = 0 y = 2 }
+			
+			guards_artillery_brigade = { x = 1 y = 0 }
+			guards_artillery_brigade = { x = 1 y = 1 }
+			guards_artillery_brigade = { x = 1 y = 2 }
+			
+			guards_artillery_brigade = { x = 2 y = 0 }
+			guards_artillery_brigade = { x = 2 y = 1 }
+			guards_artillery_brigade = { x = 2 y = 2 }
+			
+			guards_motorized = { x = 3 y = 0 }
+			guards_motorized = { x = 3 y = 1 }
+			guards_motorized = { x = 3 y = 2 }
+		}
+		regimental_support = {
+			motorized_rocket_brigade = { x = 0 y = 0 }
+			super_heavy_artillery = { x = 0 y = 1 }
+			
+			motorized_rocket_brigade = { x = 1 y = 0 }
+			super_heavy_artillery = { x = 1 y = 1 }
+			
+			motorized_rocket_brigade = { x = 2 y = 0 }
+			super_heavy_artillery = { x = 2 y = 1 }
+			
+			artillery = { x = 3 y = 0 }
+			anti_tank = { x = 3 y = 1 }
+		}
+		support = {
+			assault_engineer = { x = 0 y = 0 }
+			motorbike_recon = { x = 0 y = 1 }
+			armored_car_recon = { x = 0 y = 2 }
+			mot_field_hospital = { x = 0 y = 3 }
+			logistics_company = { x = 0 y = 4 }
+			mot_signal_company = { x = 0 y = 5 }
+			mot_maintenance_company = { x = 0 y = 6 }
+		}
+	}
+}

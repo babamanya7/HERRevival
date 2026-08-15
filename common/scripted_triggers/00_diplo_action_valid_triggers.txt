@@ -1,0 +1,72 @@
+is_diplomatic_action_valid_naval_blockade = { always = no }
+is_diplomatic_action_valid_embargo = { always = no }
+is_diplomatic_action_valid_stage_coup = { always = no }
+is_diplomatic_action_valid_boost_party_popularity = { always = no }
+is_diplomatic_action_valid_military_access = { always = no }
+is_diplomatic_action_valid_offer_military_access = { always = no }
+is_diplomatic_action_valid_non_aggression_pact = { always = no }
+is_diplomatic_action_valid_offer_docking_rights = { always = no }
+is_diplomatic_action_valid_docking_rights = { always = no }
+is_diplomatic_action_valid_improve_relation = { always = no }
+is_diplomatic_action_valid_leave_faction = { always = no }
+is_diplomatic_action_valid_join_faction = {
+	OR = {
+		AND = {
+			tag = ENG
+			FROM = {
+				NOT = { is_playable_country = yes }
+				has_war_with = GER
+			}
+		}
+		AND = {
+			tag = GER
+			OR = {
+				AND = {
+					date > 1941.1.1
+					FROM = { the_axis = yes }
+				}
+				AND = {
+					FROM = { tag = ITA }
+					date > 1940.7.1
+				}
+			}
+		}
+	}
+}
+is_diplomatic_action_valid_guarantee = {
+	OR = {
+		AND = {
+			tag = POL
+			FROM = { tag = ENG }
+		}
+		AND = {
+			tag = POL
+			FROM = { tag = FRA }
+		}
+	}
+}
+is_diplomatic_action_valid_kick_from_faction = { always = no }
+is_diplomatic_action_valid_offer_join_faction = {
+	OR = {
+		AND = {
+			FROM = { tag = ENG }
+			NOT = { is_playable_country = yes }
+			has_war_with = GER
+		}
+		AND = {
+			FROM = { tag = GER }
+			OR = {
+				AND = {
+					date > 1941.1.1
+					the_axis = yes
+				}
+				AND = {
+					tag = ITA
+					date > 1940.7.1
+				}
+			}
+		}
+	}
+}
+is_diplomatic_action_valid_peace_proposal = { always = no }
+is_diplomatic_action_valid_create_faction = { always = no }

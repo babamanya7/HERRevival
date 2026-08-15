@@ -1,0 +1,27 @@
+################
+##### FRA ######
+################
+
+FIN_foreign_aid = {
+	
+	allowed = {
+		OR = {
+			original_tag = GER
+			original_tag = ENG
+		}
+	}
+
+	priority = 3
+}
+
+FIN_gather_local_support = {
+	
+	allowed = {
+		original_tag = FIN
+	}
+	visible = {
+		always = no
+	}
+
+	priority = 3
+}

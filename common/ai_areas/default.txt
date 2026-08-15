@@ -1,0 +1,511 @@
+areas = {
+	
+	###EUROPE###
+	
+	finland = {
+		strategic_regions = {
+            12
+			13
+			288
+			274
+			326
+        }
+	}
+	
+	baltics = {
+		strategic_regions = {
+			37
+			124
+		}
+	}
+	
+	belorussia = {
+		strategic_regions = {
+			39
+			131
+        }
+    }
+	
+	ukraine = {
+		strategic_regions = {
+			34
+			163
+			201
+			260
+			258
+			270
+			302
+			30
+        }
+	}
+	
+	kuban = {
+		strategic_regions = {
+            263
+			336
+			257
+			135
+			134
+        }
+	}
+	
+	leningrad_region = {
+		strategic_regions = {
+            304
+			125
+			132
+        }
+	}
+	
+	moscow_region = {
+		strategic_regions = {
+			303
+			301
+			272
+			213
+			35
+			271
+        }
+	}
+	
+	urals = {
+		strategic_regions = {
+			273
+			150
+			133
+			275
+			40
+			137
+			138
+        }
+	}
+
+    italy = {
+        strategic_regions = {
+            169
+			115
+			238
+			23
+			21
+        }
+    }
+	
+	reich = {
+		strategic_regions = {
+			264
+			7
+			6
+			262
+			5
+			8
+			294
+			22
+			268
+			261
+			38
+			296
+			192
+			298
+        }
+	}
+
+    britain = {
+        strategic_regions = {
+            1 
+            2
+            3
+            4
+        }
+    }
+
+	europe = {
+		continents = {
+			europe
+		}
+	}
+	
+	france = {
+		strategic_regions = {
+			20
+			290
+			265
+			239
+			19
+			266
+		}
+	}
+	
+	balkans = {
+		strategic_regions = {
+			202
+			144
+			26
+			295
+			25
+			292
+			24
+			27
+		}
+	}
+	
+	normandy_landing_zone = {
+        strategic_regions = {
+			239
+        }
+    }
+	
+	sicily_landing_zone = {
+        strategic_regions = {
+			236
+        }
+    }
+	
+	south_italy_landing_zone = {
+        strategic_regions = {
+			238
+			169
+        }
+    }
+	
+	norway = {
+		strategic_regions = {
+			11
+			297
+			191
+		}
+	}
+	
+	###AFRIKA###
+
+	africa = {
+		continents = {
+			africa
+		}
+	}
+	
+	suez = {
+        strategic_regions = {
+            128
+            28
+        }
+    }
+
+    north_africa = {
+        strategic_regions = {
+            182
+			126
+			329
+			215
+			328
+			128
+			28
+			217
+        }
+    }
+	
+	torch_landing_zone = {
+        strategic_regions = {
+			182
+			126
+        }
+    }
+	
+	central_africa = {
+		strategic_regions = {
+			140
+			184
+			183
+			185
+			338
+			139
+        }
+	}
+	
+	horn_of_africa = {
+		strategic_regions = {
+			17
+        }
+	}
+	
+	iraq_iran_zone = {
+		strategic_regions = {
+			28
+			259
+			116
+        }
+	}
+	
+	###AMERICA###
+
+	north_america = {
+		continents = {
+			north_america
+		}
+	}
+
+	south_america = {
+		continents = {
+			south_america
+		}
+	}
+	
+	###ASIA###
+	
+	philippines = {
+		strategic_regions = {
+			160
+		}
+	}
+	
+	east_indies = {
+		strategic_regions = {
+			187
+			287
+			159
+		}
+	}
+	
+	molucass = {
+		strategic_regions = {
+			93
+			158
+			91
+		}
+	}
+	
+	papua = {
+		strategic_regions = {
+			84
+			83
+		}
+	}
+	
+	burma = {
+		strategic_regions = {
+			189
+			141
+			142
+		}
+	}
+	
+	core_japan = {
+		strategic_regions = {
+			240
+			226
+			225
+			94
+			154
+			87
+		}
+	}
+
+	north_china = {
+		strategic_regions = {
+			279
+			155
+			276
+			143
+		}
+	}
+
+	central_china = {
+		strategic_regions = {
+			278
+			214
+			277
+		}
+	}
+
+	south_china = {
+		strategic_regions = {
+			165
+			253
+		}
+	}
+
+	china_coast = {
+		strategic_regions = {
+			164
+			253
+			254
+			143
+			155
+			186
+		}
+	}
+
+	east_india_ocean = {
+		strategic_regions = {
+			101
+			335
+			331
+			71
+			99
+		}
+	}
+
+	australia_new_zealand = {
+		strategic_regions = {
+		    282
+			195
+			193
+			281
+			194
+			156
+			157
+			235
+			
+			86
+			81
+			83
+			178
+			82
+			91
+			92
+		}
+	}
+	
+	johnston = {
+		strategic_regions = {
+			180
+		}
+	}
+
+	hawai_zone = {
+		strategic_regions = {
+			105
+			234
+			233
+			306
+		}
+	}
+	
+	midway = {
+		strategic_regions = {
+			224
+		}
+	}
+	
+	wake = {
+		strategic_regions = {
+			223
+		}
+	}
+	
+	marcus = {
+		strategic_regions = {
+			225
+		}
+	}
+	
+	iwojima = {
+		strategic_regions = {
+			94
+		}
+	}
+	
+	saipan = {
+		strategic_regions = {
+			226
+		}
+	}
+	
+	marshal = {
+		strategic_regions = {
+			97
+		}
+	}
+	
+	gilbert = {
+		strategic_regions = {
+			227
+		}
+	}
+	
+	caroline = {
+		strategic_regions = {
+			229
+		}
+	}
+	
+	palau = {
+		strategic_regions = {
+			78
+		}
+	}
+	
+	okinawa = {
+		strategic_regions = {
+			240
+		}
+	}
+	
+	attu = {
+		strategic_regions = {
+			95
+			
+			96
+			222
+			221
+			177
+		}
+	}
+
+	malaysia = {
+		strategic_regions = {
+			188
+		}
+	}
+	
+	thailand = {
+		strategic_regions = {
+			142
+		}
+	}
+
+	middle_east = {
+		continents = {
+			middle_east
+		}
+	}
+	
+	pacific_front = {
+		strategic_regions = {
+			78
+			229
+			227
+			97
+			240
+			226
+			94
+			225
+			223
+			224
+			105
+			234
+			233
+			306
+			180
+			95
+		}
+	}
+	
+	japan_routs = {
+		strategic_regions = {
+			309
+			252
+			231
+			73
+			75
+			76
+			240
+			90
+			280
+			80
+			78
+			230
+			94
+			90
+		}
+	}
+}

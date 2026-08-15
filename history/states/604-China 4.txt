@@ -1,0 +1,35 @@
+state={
+	id=604
+	name="STATE_604"
+	manpower=1196100
+	buildings_max_level_factor=1.000
+	state_category=rural
+
+	history={
+		owner = CHI
+
+		add_core_of = CHI
+		#
+		victory_points = {
+			7940 3
+		}
+		buildings = {
+			infrastructure = 1
+			industrial_complex = 3
+			arms_factory = 1
+
+		}
+		1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+	}
+
+	provinces={
+		4914 4964 7940 8018 8037 12899 
+	}
+}

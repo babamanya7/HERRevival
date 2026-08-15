@@ -1,0 +1,180 @@
+### designer aircraft ###
+
+ITA = {
+
+### light tank 0 ###
+	
+	light_tank_chassis_0 = { 
+		pool = {
+			weight = 5
+			icons = { 
+			GFX_ITA_gw_light_tank_2_medium
+            GFX_ITA_gw_light_tank_medium
+			}
+		}
+	}
+	
+	light_tank_destroyer_chassis_0 = { 
+		pool = {
+			weight = 6
+			icons = { 
+			GFX_ITA_gw_light_tank_2_medium
+			}
+		}
+	}
+
+### light tank 1 ###
+	
+	light_tank_chassis_1 = { 
+		pool = {
+			weight = 5
+			icons = { 
+			GFX_ITA_basic_light_tank_3_medium
+			GFX_ITA_basic_light_tank_2_medium
+			GFX_ITA_basic_light_td_medium
+            GFX_ITA_basic_light_tank_medium
+			}
+		}
+	}
+
+	light_tank_destroyer_chassis_1 = { 
+		pool = {
+			weight = 6
+			icons = { 
+			GFX_ITA_basic_light_td_medium
+			}
+		}
+	}	
+	
+
+### light tank 2 ###
+	
+	light_tank_chassis_2 = { 
+		pool = {
+			weight = 5
+			icons = { 
+			GFX_ITA_improved_light_spaa_medium
+			GFX_ITA_improved_light_art_medium
+			GFX_ITA_improved_light_td_medium
+            GFX_ITA_improved_light_tank_medium
+			}
+		}
+	}
+
+	light_tank_destroyer_chassis_2 = { 
+		pool = {
+			weight = 6
+			icons = { 
+			GFX_ITA_improved_light_td_medium
+			}
+		}
+	}	
+	
+	light_tank_artillery_chassis_2 = { 
+		pool = {
+			weight = 6
+			icons = { 
+			GFX_ITA_improved_light_art_medium
+			}
+		}
+	}		
+	
+	light_tank_aa_chassis_2 = { 
+		pool = {
+			weight = 6
+			icons = { 
+			GFX_ITA_improved_light_spaa_medium
+			}
+		}
+	}		
+	
+### light tank 3 ###
+		
+	light_tank_chassis_3 = { 
+		pool = {
+			weight = 5
+			icons = { 
+			GFX_ITA_advanced_light_spaa_medium
+			GFX_ITA_advanced_light_art_medium
+			GFX_ITA_advanced_light_tank_3_medium
+			GFX_ITA_advanced_light_tank_2_medium
+			GFX_ITA_advanced_light_tank_medium
+			}
+		}
+	}
+
+	light_tank_destroyer_chassis_3 = { 
+		pool = {
+			weight = 6
+			icons = { 
+			GFX_ITA_advanced_light_art_medium
+			GFX_ITA_advanced_light_td_medium
+			}
+		}
+	}	
+	
+	light_tank_artillery_chassis_3 = { 
+		pool = {
+			weight = 6
+			icons = { 
+			GFX_ITA_advanced_light_art_2_medium
+			GFX_ITA_advanced_light_art_medium
+			}
+		}
+	}		
+	
+	light_tank_aa_chassis_3 = { 
+		pool = {
+			weight = 6
+			icons = { 
+			GFX_ITA_advanced_light_spaa_medium
+			}
+		}
+	}	
+
+
+
+### medium tank 1 ###
+
+	medium_tank_chassis_1 = { 
+		pool = {
+			weight = 5
+			icons = { 
+			GFX_ITA_basic_medium_tank_medium
+			}
+		}
+	
+### medium tank 2 ###
+
+	medium_tank_chassis_2 = { 
+		pool = {
+			weight = 5
+			icons = { 
+			GFX_ITA_improved_medium_tank_medium
+			}
+		}
+	}
+	
+### medium tank 3 ###
+
+	medium_tank_chassis_3 = { 
+		pool = {
+			weight = 5
+			icons = { 
+			GFX_ITA_advanced_medium_tank_medium
+			}
+		}
+	}
+
+### heavy tank 1 ###
+	
+	heavy_tank_chassis_1 = { 
+		pool = {
+			weight = 5
+			icons = { 
+            GFX_ITA_basic_heavy_tank_medium
+			}
+		}
+	}
+
+}

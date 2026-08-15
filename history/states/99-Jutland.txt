@@ -1,0 +1,41 @@
+state= {
+	id=99
+	name="STATE_99"
+	manpower = 1632125
+	resources={
+		
+	}
+	
+	state_category = city
+
+	history = {
+		owner = DEN
+		victory_points = {
+			13250 5
+		}
+		victory_points = {
+			13504 3 
+		}
+		victory_points = {
+			11366 1
+		}
+		victory_points = {
+			12079 1
+		}
+		buildings = {
+			infrastructure = 8
+			industrial_complex = 6
+			air_base = 14
+			11366 = {
+				naval_base = 3
+			}
+			13250 = {
+				naval_base = 2
+			}
+		}
+		add_core_of = DEN
+	}
+	provinces = {
+		303 773 793 904 6729 6891 8061 9309 9498 9547 9610 9612 9748 9874 10059 11366 11505 11511 11549 11572 11573 11583 11604 12047 12079 13250 13504 
+	}
+}

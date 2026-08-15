@@ -1,0 +1,157 @@
+﻿capital = 276
+
+activate_mission = economy_fatigue_free_trade_mission
+activate_mission = economy_fatigue_disarmed_nation_mission
+activate_mission = economy_fatigue_civilian_economy_mission
+
+set_oob = "CAN_1936_nsb"
+set_air_oob = "CAN_1936_air_bba"
+set_naval_oob = "00_CAN_vnr_naval"
+
+set_research_slots = 3
+set_country_flag = monroe_doctrine
+set_stability = 0.8
+set_war_support = 0.1
+
+recruit_character = CAN_mackenzie_king
+recruit_character = CAN_adrien_arcand
+recruit_character = CAN_tim_buck
+recruit_character = CAN_j_s_woodsworth
+recruit_character = CAN_thomas_victor_anderson
+recruit_character = CAN_charles_foulkes
+recruit_character = CAN_percival_john_montague
+recruit_character = CAN_bert_hoffmeister
+recruit_character = CAN_leonard_w_murray
+recruit_character = CAN_ht_bailliegrohman
+recruit_character = CAN_james_d_prentice
+recruit_character = CAN_harry_dewolf
+recruit_character = CAN_lloyd_samuel_breadner
+recruit_character = CAN_george_pearkes
+recruit_character = CAN_john_murchie
+recruit_character = CAN_harold_edwards
+recruit_character = CAN_frederick_m_w_harvey
+recruit_character = CAN_harry_crerar
+recruit_character = CAN_robert_leckie
+recruit_character = CAN_kenneth_stuart
+recruit_character = CAN_andrew_mcnaughton
+recruit_character = CAN_george_jones
+recruit_character = CAN_raymond_collishaw
+recruit_character = CAN_guy_simonds
+recruit_character = CAN_gino_verchiella
+recruit_character = CAN_alasdair_murray
+recruit_character = CAN_george_volkoff
+recruit_character = CAN_george_croil
+recruit_character = CAN_percy_nelles
+recruit_character = CAN_robert_manion
+recruit_character = CAN_ian_a_mackenzie
+recruit_character = CAN_c_d_howe
+recruit_character = CAN_newton_wesley_rowell
+recruit_character = CAN_james_ilsley
+recruit_character = CAN_leo_richer_lafleche
+recruit_character = CAN_r_b_bennett
+recruit_character = CAN_louis_st_laurent
+
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_recon = 1
+	gw_artillery = 1
+	trench_warfare = 1
+	fleet_in_being = 1
+	basic_train = 1
+	gwtank_chassis = 1
+	basic_light_tank_chassis = 1
+	basic_naval_mines = 1
+	early_ship_hull_light = 1
+	basic_ship_hull_light = 1
+	early_ship_hull_cruiser = 1
+	basic_battery = 1
+	basic_light_battery = 1
+	basic_torpedo = 1
+	basic_depth_charges = 1
+	mtg_transport = 1
+	
+	bba_early_transport_plane = 1
+	
+	multi_mounted_battery = 1
+	early_ship_hull_heavy = 1
+	basic_ship_hull_submarine = 1
+	basic_ship_hull_heavy = 1
+	interwar_ship_hull_light = 1
+	interwar_ship_hull_cruiser = 1
+	interwar_ship_hull_heavy = 1
+	large_destroyer_trend = 1
+	sonar = 1
+	searchlight = 1
+	treaty_cruiser_trend = 1
+	basic_cruiser_armor = 1
+	incremental_armor_scheme = 1
+	mixed_armor_scheme = 1
+	all_or_nothing_armor_scheme = 1
+	basic_torpedo_defense = 1
+	improved_torpedo_defense = 1
+	enhanced_horizontal_defense = 1
+	basic_heavy_armor = 1
+	improved_conning_tower = 1
+	prototype_airplane_launcher = 1
+	basic_periscope = 1
+	coastal_defense_ships = 1
+	early_cruiser_armor = 1
+	pre_dreadnoughts = 1
+	harvey_steel = 1
+}
+
+	add_ideas = CAN_great_depression_1
+	add_ideas = CAN_conscription_crisis
+	add_ideas = full_privatization
+	add_ideas = free_trade
+	set_cosmetic_tag = CAN_UK
+
+	add_to_tech_sharing_group = commonwealth_research
+
+set_politics = {
+	ruling_party = democratic
+	last_election = "1935.10.14"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	democratic = 98
+	fascism = 1
+	communism = 1
+}
+
+set_convoys = 100
+set_stability = 0.75
+
+### LAND VARIANTS ###
+
+### AIR VARIANTS ###
+
+### NAVY VARIANTS ###
+
+    create_equipment_variant = {
+        name = "River Class"
+		parent_version = 0
+		role_icon_index = 31
+        type = vnr_ship_hull_light_2
+        name_group = CAN_DD_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+			fixed_ship_radar_slot = ship_sonar_1
+			fixed_ship_engine_slot = light_ship_engine_2
+			fixed_ship_torpedo_slot = ship_torpedo_2
+			front_1_custom_slot = ship_light_battery_2
+			mid_1_custom_slot = ship_torpedo_2
+			mid_2_custom_slot = ship_light_battery_2
+			rear_1_custom_slot = ship_depth_charge_1
+			rear_2_custom_slot = ship_light_battery_2
+        }
+    }

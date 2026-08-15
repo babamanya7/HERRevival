@@ -1,0 +1,534 @@
+﻿###########################
+# Japanese Events
+###########################
+
+add_namespace = japan
+
+# Chinese Refuse Concessions
+country_event = {
+	id = japan.1
+	title = china.1.t
+	desc = japan.1.d
+	picture = GFX_report_event_chinese_soldiers_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.1.a
+		add_war_support = 0.05
+		start_border_war = {
+			change_state_after_war = no
+			attacker = {
+				state = 950
+				num_provinces = 3
+				on_win = jap_armor.804
+				on_lose = jap_armor.806
+				on_cancel = jap_armor.808
+			}
+			
+			defender = {
+				state = 608
+				num_provinces = 2
+				on_win = jap_armor.805
+				on_lose = jap_armor.807
+				on_cancel = jap_armor.809
+			}
+		}
+		start_border_war = {
+			change_state_after_war = no
+			attacker = {
+				state = 609
+				num_provinces = 1
+				on_win = jap_armor.804
+				on_lose = jap_armor.806
+				on_cancel = jap_armor.808
+			}
+			
+			defender = {
+				state = 949
+				num_provinces = 1
+				on_win = jap_armor.805
+				on_lose = jap_armor.807
+				on_cancel = jap_armor.809
+			}
+		}
+		hidden_effect = {
+			country_event = { days = 5 id = news.1 }
+			country_event = { id = jap_armor.810 days = 36 }
+			CHI = { country_event = { id = chi_armor.802 days = 36 } }
+			set_global_flag = second_sino_japanese_war_has_started
+			608 = {
+				add_province_modifier = {
+					static_modifiers = { unplanned_offensive }
+					province = {
+						all_provinces = yes
+					}
+				}
+			}
+			949 = {
+				add_province_modifier = {
+					static_modifiers = { unplanned_offensive }
+					province = {
+						all_provinces = yes
+					}
+				}
+			}
+
+			set_border_war_data = {
+				attacker = 950
+				defender = 608
+				combat_width = 240
+			}
+
+			set_border_war_data = {
+				attacker = 609
+				defender = 949
+				combat_width = 120
+			}
+		}
+	}
+}
+
+# Chinese Concessions
+country_event = {
+	id = japan.2
+	title = china.1.t
+	desc = japan.2.d
+	picture = GFX_report_event_chinese_soldiers_running
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.2.a
+		effect_tooltip = {
+			set_truce = { target = FROM days = 180 }
+		}
+		hidden_effect = {
+			country_event = { days = 5 id = news.2 }
+		}
+		if = {
+			limit = {
+				608 = {
+					OR = {
+						is_controlled_by = CHI
+						is_controlled_by = HPC
+					}
+				}
+			}
+			JAP = {
+				transfer_state = 608
+			}
+		}
+		if = {
+			limit = {
+				MEN = { is_subject_of = JAP }
+				597 = {
+					OR = {
+						is_controlled_by = CHI
+						is_controlled_by = HPC
+					}
+				}
+			}
+			MEN = {
+				transfer_state = 597
+			}
+		}
+		else_if = {
+			limit = {
+				927 = {
+					OR = {
+						is_controlled_by = CHI
+						is_controlled_by = HPC
+					}
+				}
+			}
+			JAP = {
+				transfer_state = 927
+			}
+		}
+		if = {
+			limit = {
+				has_country_leader = { id = 700 ruling_only = yes }
+			}
+			remove_country_leader_trait = imperial_sanction
+		}
+		
+		add_ai_strategy = {
+			type = antagonize
+			id = "CHI"
+			value = 500
+		}
+	}
+}
+
+# Soviets Push Back And Win
+country_event = {
+	id = japan.3
+	title = japan.3.t
+	desc = japan.3.d
+	picture = GFX_report_event_soviet_soldiers_tank
+	
+	is_triggered_only = yes
+	
+	option = {
+		if = {
+			limit = { 
+			714 = { 
+				OR = {
+					is_owned_by = JAP
+					is_owned_by = MAN
+				} 
+				any_neighbor_state = { is_owned_by = SOV } }
+			} 
+			714 = { add_manpower = -30000 }
+		}		
+		if = {
+			limit = {
+				NOT = {
+					714 = {
+						OR = {
+							is_owned_by = JAP
+							is_owned_by = MAN
+						}
+						any_neighbor_state = { is_owned_by = SOV } 
+					}
+				}
+			}
+			random_owned_state = {
+				limit = { any_neighbor_state = { is_owned_by = SOV } }
+				add_manpower = -30000
+			}
+		}
+
+		army_experience = 5
+		add_tech_bonus = {
+			name = japan.3.t #test_the_ussr_focus
+			bonus = 0.5
+			uses = 1
+			category = cat_anti_tank
+		}
+		name = japan.3.a
+		SOV = {
+			country_event = { id = soviet.2 }
+		}
+	}
+}
+# Soviets Push Back And Lose
+country_event = {
+	id = japan.4
+	title = japan.4.t
+	desc = japan.4.d
+	picture = GFX_report_event_japanese_soldiers_01
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.4.a
+		if = {
+			limit = { 
+			714 = { 
+				OR = {
+					is_owned_by = JAP
+					is_owned_by = MAN						
+				}
+				any_neighbor_state = { is_owned_by = SOV } }
+			} 
+			714 = { add_manpower = -20000 }
+		}		
+		if = {
+			limit = {
+				NOT = {
+					714 = {
+						OR = {
+							is_owned_by = JAP							
+							is_owned_by = MAN						
+						}
+						any_neighbor_state = { is_owned_by = SOV } 
+					}
+				}
+			}
+			random_owned_state = {
+				limit = { any_neighbor_state = { is_owned_by = SOV } }
+				add_manpower = -20000
+			}
+		}
+		army_experience = 15
+		add_doctrine_cost_reduction = {
+			name = japan.4.t
+			cost_reduction = 0.99
+			uses = 1
+			category = cat_grand_battle_plan
+		}	
+		SOV = {
+			country_event = { id = soviet.3 }
+		}
+	}
+}
+
+# Soviets Yield
+country_event = {
+	id = japan.5
+	title = japan.5.t
+	desc = japan.5.d
+	picture = GFX_report_event_soviet_soldiers_tank
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.5.a
+		add_war_support = 0.05
+		hidden_effect = {
+			country_event = { days = 5 id = news.9 }
+		}
+	}
+}
+
+
+# Germany Agrees to Withdraw Falkenhausen
+country_event = {
+	id = japan.8
+	title = japan.8.t
+	desc = japan.8.d
+	picture = GFX_report_event_german_detained_china
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.8.a
+	}
+}
+
+# Germany Refuses to Withdraw Falkenhausen
+country_event = {
+	id = japan.9
+	title = japan.9.t
+	desc = japan.9.d
+	picture = GFX_report_event_german_advisors_remain
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.9.a
+	}
+	#option = { # Withdraw from the Anti-Comintern Pact
+	#	name = japan.9.b
+	#}
+}
+
+# USA condemns our war 
+country_event = {
+	id = japan.10
+	title = japan.10.t
+	desc = japan.10.d
+	picture = GFX_report_event_FDR_speech
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.10.a
+		USA = { 
+			add_opinion_modifier = { target = JAP modifier = condemn_aggression }
+		}
+	}
+}
+
+# Pressure Siam to become a puppet
+country_event = {
+	id = japan.11
+	title = japan.11.t
+	desc = japan.11.d
+	picture = GFX_report_event_japanese_officers
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.11.a
+		SIA = { 
+			country_event = { id = japan.12 }
+		}
+	}
+
+	option = {
+		name = japan.11.b
+		ai_chance = { factor = 0 }
+	}
+}
+
+# Siam event from Japan: Become puppet or not
+country_event = {
+	id = japan.12
+	title = japan.12.t
+	desc = japan.12.d
+	picture = GFX_report_event_japanese_officers
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.12.a
+		ai_chance = {
+			factor = 90 
+			modifier = {
+				#If they have a fighting chance, they should stand their ground
+				factor = 0
+				strength_ratio = {
+					tag = JAP
+					ratio > 0.75
+				}
+			}
+		}
+		JAP = { 
+			country_event = { id = japan.13 }
+			effect_tooltip = { puppet = SIA }
+		}
+	}
+
+	option = {
+		name = japan.12.b
+		ai_chance = { factor = 10 }
+		JAP = { 
+			country_event = { id = japan.14 }
+			effect_tooltip = {
+				declare_war_on = {
+					target = SIA
+					type = puppet_wargoal_focus
+				}
+			}
+		}
+	}
+}
+
+# Siam accepts and is puppeted
+country_event = {
+	id = japan.13
+	title = japan.13.t
+	desc = japan.13.d
+	picture = GFX_report_event_japanese_siam_politicians
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.13.a
+		puppet = SIA
+	}
+}
+
+# Siam refuses, nations go to war 
+country_event = {
+	id = japan.14
+	title = japan.14.t
+	desc = japan.14.d
+	picture = GFX_report_event_japanese_chinese_surrender
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.14.a
+		declare_war_on = {
+			target = SIA
+			type = puppet_wargoal_focus
+		}
+	}
+}
+
+# Indian national army 
+country_event = {
+	id = japan.15
+	title = japan.15.t
+	desc = japan.15.d
+	picture = GFX_report_event_indian_soldiers
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.15.a
+		hidden_effect = {
+			load_oob = "JAP_Indian_National_Army_reinforcement"
+		}
+		custom_effect_tooltip = JAP_Indian_National_Army_arrives
+		add_manpower = 10000
+		set_global_flag = indian_national_army_setup
+		RAJ = {
+			add_stability = -0.2
+			if = {
+				limit = { has_dlc = "Together for Victory" }
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.1
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.05
+				}
+				else = {
+					add_ideas = RAJ_azad_hind 
+					ENG = {
+						country_event = { id = britain.19 }
+					}
+				}
+			}
+		}
+	}
+}
+
+# China event from Japan: Become puppet or not
+country_event = {
+	id = japan.16
+	title = japan.16.t
+	desc = japan.16.d
+	picture = GFX_report_event_asian_politicians
+	
+	is_triggered_only = yes
+
+	option = {
+		name = japan.16.b
+		ai_chance = { factor = 40 }
+		JAP = { 
+			country_event = { id = japan.18 }
+			effect_tooltip = {
+				create_wargoal = {
+					type = take_state
+					target = CHI
+					generator = owned_states
+				}
+			}
+		}
+	}
+}
+
+# China accepts and is puppeted
+country_event = {
+	id = japan.17
+	title = japan.17.t
+	desc = japan.17.d
+	picture = GFX_report_event_chinese_japanese_handshake
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.17.a
+		puppet = CHI
+		add_named_threat = { threat = 20 name = chinese_puppet_focus }
+		hidden_effect = {
+			news_event = { hours = 6 id = news.210 }
+		}
+	}
+}
+
+# China refuses, gain cb
+country_event = {
+	id = japan.18
+	title = japan.18.t
+	desc = japan.18.d
+	picture = GFX_report_event_chinese_soldiers_02
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.18.a
+		create_wargoal = {
+			type = take_state
+			target = CHI
+			generator = owned_states
+		}
+	}
+}

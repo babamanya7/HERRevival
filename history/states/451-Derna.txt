@@ -1,0 +1,30 @@
+
+state={
+	id=451
+	name="STATE_451"
+	manpower = 45628
+	
+	state_category = pastoral
+
+	history={
+		owner = ITA
+		victory_points = {
+			14128 5
+		}
+		victory_points = {
+			14157 1 
+		}
+		buildings = {
+			infrastructure = 2
+			air_base = 8
+			14128 = {
+				naval_base = 3
+			}
+		}
+		add_core_of = BRA
+	}
+
+	provinces={
+		14163 14157 14137 14128 14121 14112 14081 14049 13997 14147 14132 14127 14116 14104 14097 14080 14057 14009 14017 14034 14071 14079 14107 14064 14041 14024
+	}
+}

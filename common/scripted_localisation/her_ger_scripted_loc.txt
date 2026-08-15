@@ -1,0 +1,16 @@
+#defined_text = {
+#	name = dachau_camp_inmates_amount
+#	text = {
+#		trigger = {
+#			check_variable = {dachau_camp_imprisoners > 0}
+#		}
+#		localization_key = "[?dachau_camp_imprisoners|0Y]"
+#	}
+#	text = {
+#		trigger = {
+#			always=yes
+#		}
+#		localization_key = "[?dachau_camp_imprisoners|0+]"
+#	}
+#}
+

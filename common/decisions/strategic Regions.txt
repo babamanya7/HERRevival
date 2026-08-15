@@ -1,0 +1,4392 @@
+STRATEGIC_REGION_pacific = {
+	USA_power_projection = {
+		icon = generic_naval
+
+		allowed = {
+			tag = USA
+		}
+
+		available = {
+			ships_in_state_ports = {
+				type = capital_ship
+				size > 7
+				state = 629
+			}
+			ships_in_state_ports = {
+				type = screen_ship
+				size > 37
+				state = 629
+			}
+		}
+
+		activation = {
+			is_ai = no
+			has_war = no
+			controls_state = 629
+			NOT = { has_country_flag = power_projection }
+			date > 1941.1.1
+		}
+
+		is_good = no
+		fire_only_once = yes
+		days_remove = 1
+
+		days_mission_timeout = 30
+
+		timeout_effect = {
+			add_war_support = -0.25
+			custom_effect_tooltip = USA_power_projection_tt
+			hidden_effect = {
+				clr_country_flag = power_projection
+				if = {
+					limit = {
+						JAP = {
+							has_country_flag = embargoed_by_USA
+						}
+					}
+					JAP = {
+						clr_country_flag = embargoed_by_USA
+					}
+					every_country = {
+						limit = {
+							OR = {
+								tag = ROOT
+								AND = {
+									is_guaranteed_by = USA
+									OR = {
+										tag = BRA
+										tag = ARG
+										tag = CHL
+										tag = BOL
+										tag = URG
+										tag = PRU
+										tag = ECU
+										tag = COL
+										tag = VEN
+										tag = PAR
+										tag = GUA
+										tag = ELS
+										tag = HON
+										tag = NIC
+										tag = COS
+										tag = PAN
+										tag = CUB
+										tag = HAI
+										tag = DOM
+										tag = JAM
+										tag = BAH
+										tag = BLZ
+										tag = TRI
+										tag = BAS
+										tag = CRC
+										tag = GDL
+										tag = PUE
+										tag = GYA
+										tag = SUR
+										tag = CAY
+										tag = MEX
+									}
+								}
+								is_in_faction_with = USA
+							}
+							NOT = { has_war_with = USA }
+						}
+						add_opinion_modifier = { target = JAP modifier = Unembargoed }
+					}
+				}
+			}
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = power_projection
+			}
+		}
+	}
+
+	USA_power_projection_fail = {
+		icon = generic_naval
+
+		allowed = {
+			tag = USA
+		}
+
+		available = {
+			ships_in_state_ports = {
+				type = capital_ship
+				size > 7
+				state = 629
+			}
+			ships_in_state_ports = {
+				type = screen_ship
+				size > 37
+				state = 629
+			}
+		}
+
+		activation = {
+			is_ai = no
+			has_war = no
+			controls_state = 629
+			has_country_flag = power_projection
+			date > 1941.1.1
+		}
+
+		is_good = no
+		fire_only_once = no
+		days_remove = 1
+
+		days_mission_timeout = 7
+
+		timeout_effect = {
+			add_war_support = -0.25
+			custom_effect_tooltip = USA_power_projection_tt
+			hidden_effect = {
+				clr_country_flag = power_projection
+				if = {
+					limit = {
+						JAP = {
+							has_country_flag = embargoed_by_USA
+						}
+					}
+					JAP = {
+						clr_country_flag = embargoed_by_USA
+					}
+					every_country = {
+						limit = {
+							OR = {
+								tag = ROOT
+								AND = {
+									is_guaranteed_by = USA
+									OR = {
+										tag = BRA
+										tag = ARG
+										tag = CHL
+										tag = BOL
+										tag = URG
+										tag = PRU
+										tag = ECU
+										tag = COL
+										tag = VEN
+										tag = PAR
+										tag = GUA
+										tag = ELS
+										tag = HON
+										tag = NIC
+										tag = COS
+										tag = PAN
+										tag = CUB
+										tag = HAI
+										tag = DOM
+										tag = JAM
+										tag = BAH
+										tag = BLZ
+										tag = TRI
+										tag = BAS
+										tag = CRC
+										tag = GDL
+										tag = PUE
+										tag = GYA
+										tag = SUR
+										tag = CAY
+										tag = MEX
+									}
+								}
+								is_in_faction_with = USA
+							}
+							NOT = { has_war_with = USA }
+						}
+						add_opinion_modifier = { target = JAP modifier = Unembargoed }
+					}
+				}
+			}
+		}
+
+		complete_effect = {
+		}
+	}
+
+	JAP_pearl_harbor = {
+		icon = generic_naval
+
+		allowed = {
+			tag = JAP
+		}
+
+		is_good = no
+		fire_only_once = yes
+		days_remove = 3
+		days_mission_timeout = 180
+
+		available = {
+			has_war_with = USA
+		}
+
+		activation = {
+			date > 1941.7.1
+		}
+
+		timeout_effect = {
+			add_war_support = -1
+			custom_effect_tooltip = JAP_pearl_harbor_tt
+		}
+
+		complete_effect = {
+			add_timed_idea = { idea = JAP_tora_tora_tora_idea days = 210 }
+			declare_war_on = {
+				target = RAJ
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = PHI
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = FRA
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = ENG
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = MAL
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = AST
+				type = annex_everything
+			}
+			hidden_effect = {
+				USA = {
+					swap_ideas = {
+						remove_idea = home_of_the_free
+						add_idea = home_of_the_free_1
+					}
+				}
+				damage_units = {
+					state = 629
+					damage = 0.5
+					str_damage = 0.5
+					ratio = yes
+					army = no
+					navy = yes
+				}
+			}
+		}
+	}
+
+	JAP_retake_iwo_jima = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = JAP 
+		}
+
+		available = {
+			controls_state = 645
+		}
+		activation = {
+			has_war = yes
+			NOT = { controls_state = 645 }
+			NOT = { has_country_flag = JAP_iwo_jima_lost }
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.08
+			add_political_power = -20
+			hidden_effect = {
+				set_country_flag = JAP_iwo_jima_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_10_l_tt
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = 10
+			}
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = -10
+			}
+		}
+		complete_effect = {
+			add_political_power = 20
+		}
+	}
+
+	USA_hold_iwo_jima = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = USA 
+		}
+
+		available = {
+			NOT = { controls_state = 645 }
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			has_war = yes
+			controls_state = 645
+			NOT = { has_country_flag = USA_iwo_jima_taken }
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.08
+			add_political_power = 20
+			hidden_effect = {
+				set_country_flag = USA_iwo_jima_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_10_g_tt
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = 10
+			}
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = -10
+			}
+		}
+		complete_effect = {
+			add_political_power = -20
+		}
+	}
+
+	JAP_hold_iwo_jima = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = JAP 
+		}
+
+		available = {
+			NOT = { controls_state = 645 }
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			controls_state = 645
+			has_country_flag = JAP_iwo_jima_lost
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.04
+			hidden_effect = {
+				clr_country_flag = JAP_iwo_jima_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_10_g_tt
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = -10
+			}
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = 10
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+	USA_retake_iwo_jima = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = USA 
+		}
+
+		available = {
+			controls_state = 645
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			NOT = { controls_state = 645 }
+			has_country_flag = USA_iwo_jima_taken
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.04
+			hidden_effect = {
+				clr_country_flag = USA_iwo_jima_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_10_l_tt
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = 10
+			}
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = -10
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+    JAP_retake_marcus_island = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = JAP 
+		}
+
+		available = {
+			controls_state = 648
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			has_war = yes
+			NOT = { controls_state = 648 }
+			NOT = { has_country_flag = JAP_marcus_island_lost }
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.04
+			add_political_power = -10
+			hidden_effect = {
+				set_country_flag = JAP_marcus_island_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_l_tt
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = 10
+		}
+	}
+
+	USA_hold_marcus_island = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = USA 
+		}
+
+		available = {
+			NOT = { controls_state = 648 }
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			has_war = yes
+			controls_state = 648
+			NOT = { has_country_flag = USA_marcus_island_taken }
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.04
+			add_political_power = 10
+			hidden_effect = {
+				set_country_flag = USA_marcus_island_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_g_tt
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = -10
+		}
+	}
+
+	JAP_hold_marcus_island = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = JAP 
+		}
+
+		available = {
+			NOT = { controls_state = 648 }
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			controls_state = 648
+			has_country_flag = JAP_marcus_island_lost
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.02
+			hidden_effect = {
+				clr_country_flag = JAP_marcus_island_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_g_tt
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = -5
+			}
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = 5
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+	USA_retake_marcus_island = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = USA 
+		}
+
+		available = {
+			controls_state = 648
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			NOT = { controls_state = 648 }
+			has_country_flag = USA_marcus_island_taken
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.02
+			hidden_effect = {
+				clr_country_flag = USA_marcus_island_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_l_tt
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+	JAP_retake_saipan = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = JAP 
+		}
+
+		available = {
+			controls_state = 646
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			has_war = yes
+			NOT = { controls_state = 646 }
+			NOT = { has_country_flag = JAP_saipan_lost }
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.04
+			add_political_power = -10
+			hidden_effect = {
+				set_country_flag = JAP_saipan_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_l_tt
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = 10
+		}
+	}
+
+	USA_hold_saipan = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = USA 
+		}
+
+		available = {
+			NOT = { controls_state = 646 }
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			has_war = yes
+			controls_state = 646
+			NOT = { has_country_flag = USA_saipan_taken }
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.04
+			add_political_power = 10
+			hidden_effect = {
+				set_country_flag = USA_saipan_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_g_tt
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = -10
+		}
+	}
+
+	JAP_hold_saipan = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = JAP 
+		}
+
+		available = {
+			NOT = { controls_state = 646 }
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			controls_state = 646
+			has_country_flag = JAP_saipan_lost
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.02
+			hidden_effect = {
+				clr_country_flag = JAP_saipan_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_g_tt
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = -5
+			}
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = 5
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+	USA_retake_saipan = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = USA 
+		}
+
+		available = {
+			controls_state = 646
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			NOT = { controls_state = 646 }
+			has_country_flag = USA_saipan_taken
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.02
+			hidden_effect = {
+				clr_country_flag = USA_saipan_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_l_tt
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+	JAP_retake_marshall_islands = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = JAP 
+		}
+
+		available = {
+			controls_state = 633
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			has_war = yes
+			NOT = { controls_state = 633 }
+			NOT = { has_country_flag = JAP_marshall_islands_lost }
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.04
+			add_political_power = -10
+			hidden_effect = {
+				set_country_flag = JAP_marshall_islands_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_l_tt
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = 10
+		}
+	}
+
+	USA_hold_marshall_islands = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = USA 
+		}
+
+		available = {
+			NOT = { controls_state = 633 }
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			has_war = yes
+			controls_state = 633
+			NOT = { has_country_flag = USA_marshall_islands_taken }
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.04
+			add_political_power = 10
+			hidden_effect = {
+				set_country_flag = USA_marshall_islands_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_g_tt
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = -10
+		}
+	}
+
+	JAP_hold_marshall_islands = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = JAP 
+		}
+
+		available = {
+			NOT = { controls_state = 633 }
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			controls_state = 633
+			has_country_flag = JAP_marshall_islands_lost
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.02
+			hidden_effect = {
+				clr_country_flag = JAP_marshall_islands_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_g_tt
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = -5
+			}
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = 5
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+	USA_retake_marshall_islands = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = USA 
+		}
+
+		available = {
+			controls_state = 633
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			NOT = { controls_state = 633 }
+			has_country_flag = USA_marshall_islands_taken
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.02
+			hidden_effect = {
+				clr_country_flag = USA_marshall_islands_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_l_tt
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+	JAP_retake_okinawa = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = JAP 
+		}
+
+		available = {
+			controls_state = 526
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			has_war = yes
+			NOT = { controls_state = 526 }
+			NOT = { has_country_flag = JAP_okinawa_lost }
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.25
+			add_stability = -0.1
+			add_political_power = -50
+			hidden_effect = {
+				set_country_flag = JAP_okinawa_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_25_l_tt
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = 25
+			}
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = -25
+			}
+		}
+		complete_effect = {
+			add_political_power = 50
+		}
+	}
+
+	USA_hold_okinawa = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = USA 
+		}
+
+		available = {
+			NOT = { controls_state = 526 }
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			has_war = yes
+			controls_state = 526
+			NOT = { has_country_flag = USA_okinawa_taken }
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.2
+			add_political_power = 50
+			hidden_effect = {
+				set_country_flag = USA_okinawa_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_25_g_tt
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = 25
+			}
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = -25
+			}
+		}
+		complete_effect = {
+			add_political_power = -50
+		}
+	}
+
+	JAP_hold_okinawa = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = JAP 
+		}
+
+		available = {
+			NOT = { controls_state = 526 }
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			controls_state = 526
+			has_country_flag = JAP_okinawa_lost
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.1
+			hidden_effect = {
+				clr_country_flag = JAP_okinawa_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_25_g_tt
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = -25
+			}
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = 25
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+	USA_retake_okinawa = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = USA 
+		}
+
+		available = {
+			controls_state = 526
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			NOT = { controls_state = 526 }
+			has_country_flag = USA_okinawa_taken
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.1
+			hidden_effect = {
+				clr_country_flag = USA_okinawa_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_25_l_tt
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = 25
+			}
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = -25
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+	USA_retake_guam = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = USA 
+		}
+
+		available = {		
+			controls_state = 638
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			has_war = yes
+			NOT = { controls_state = 638 }
+			NOT = { has_country_flag = USA_guam_lost }
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.08
+			add_political_power = -20
+			hidden_effect = {
+				set_country_flag = USA_guam_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_10_l_tt
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = 10
+			}
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = -10
+			}
+		}
+		complete_effect = {
+			add_political_power = 20
+		}
+	}
+
+	JAP_hold_guam = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = JAP 
+		}
+
+		available = {
+			NOT = { controls_state = 638 }
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			has_war = yes
+			controls_state = 638
+			NOT = { has_country_flag = JAP_guam_taken }
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.08
+			add_political_power = 20
+			hidden_effect = {
+				set_country_flag = JAP_guam_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_10_g_tt
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = 10
+			}
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = -10
+			}
+		}
+		complete_effect = {
+			add_political_power = -20
+		}
+	}
+
+	USA_hold_guam = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = USA 
+		}
+
+		available = {
+			NOT = { controls_state = 638 }
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			controls_state = 638
+			has_country_flag = USA_guam_lost
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.04
+			hidden_effect = {
+				clr_country_flag = USA_guam_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_10_g_tt
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = -10
+			}
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = 10
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+	JAP_retake_guam = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = JAP 
+		}
+
+		available = {
+			controls_state = 638
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			NOT = { controls_state = 638 }
+			has_country_flag = JAP_guam_taken
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.04
+			hidden_effect = {
+				clr_country_flag = JAP_guam_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_10_l_tt
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = 10
+			}
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = -10
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+    USA_retake_wake_island = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = USA 
+		}
+
+		available = {
+			controls_state = 632
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			has_war = yes
+			NOT = { controls_state = 632 }
+			NOT = { has_country_flag = USA_wake_island_lost }
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.04
+			add_political_power = -10
+			hidden_effect = {
+				set_country_flag = USA_wake_island_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_l_tt
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = 10
+		}
+	}
+
+	JAP_hold_wake_island = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = JAP 
+		}
+
+		available = {
+			NOT = { controls_state = 632 }
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			has_war = yes
+			controls_state = 632
+			NOT = { has_country_flag = JAP_wake_island_taken }
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.04
+			add_political_power = 10
+			hidden_effect = {
+				set_country_flag = JAP_wake_island_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_g_tt
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = -10
+		}
+	}
+
+	USA_hold_wake_island = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = USA 
+		}
+
+		available = {
+			NOT = { controls_state = 632 }
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			controls_state = 632
+			has_country_flag = USA_wake_island_lost
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.02
+			hidden_effect = {
+				clr_country_flag = USA_wake_island_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_g_tt
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = -5
+			}
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = 5
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+	JAP_retake_wake_island = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = JAP 
+		}
+
+		available = {
+			controls_state = 632
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			NOT = { controls_state = 632 }
+			has_country_flag = JAP_wake_island_taken
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.02
+			hidden_effect = {
+				clr_country_flag = JAP_wake_island_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_l_tt
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+	USA_retake_midway_island = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = USA 
+		}
+
+		available = {
+			controls_state = 631
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			has_war = yes
+			NOT = { controls_state = 631 }
+			NOT = { has_country_flag = USA_midway_island_lost }
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.04
+			add_political_power = -10
+			hidden_effect = {
+				set_country_flag = USA_midway_island_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_l_tt
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = 10
+		}
+	}
+
+	JAP_hold_midway_island = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = JAP 
+		}
+
+		available = {
+			NOT = { controls_state = 631 }
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			has_war = yes
+			controls_state = 631
+			NOT = { has_country_flag = JAP_midway_island_taken }
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.04
+			add_political_power = 10
+			hidden_effect = {
+				set_country_flag = JAP_midway_island_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_g_tt
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = -10
+		}
+	}
+
+	USA_hold_midway_island = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = USA 
+		}
+
+		available = {
+			NOT = { controls_state = 631 }
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			controls_state = 631
+			has_country_flag = USA_midway_island_lost
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.02
+			hidden_effect = {
+				clr_country_flag = USA_midway_island_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_g_tt
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = -5
+			}
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = 5
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+	JAP_retake_midway_island = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = JAP 
+		}
+
+		available = {
+			controls_state = 631
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			NOT = { controls_state = 631 }
+			has_country_flag = JAP_midway_island_taken
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.02
+			hidden_effect = {
+				clr_country_flag = JAP_midway_island_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_l_tt
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+	USA_retake_johnston_atoll = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = USA 
+		}
+
+		available = {
+			controls_state = 630
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			has_war = yes
+			NOT = { controls_state = 630 }
+			NOT = { has_country_flag = USA_johnston_atoll_lost }
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.04
+			add_political_power = -10
+			hidden_effect = {
+				set_country_flag = USA_johnston_atoll_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_l_tt
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = 10
+		}
+	}
+
+	JAP_hold_johnston_atoll = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = JAP 
+		}
+
+		available = {
+			NOT = { controls_state = 630 }
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			has_war = yes
+			controls_state = 630
+			NOT = { has_country_flag = JAP_johnston_atoll_taken }
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.04
+			add_political_power = 10
+			hidden_effect = {
+				set_country_flag = JAP_johnston_atoll_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_g_tt
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = -10
+		}
+	}
+
+	USA_hold_johnston_atoll = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = USA 
+		}
+
+		available = {
+			NOT = { controls_state = 630 }
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			controls_state = 630
+			has_country_flag = USA_johnston_atoll_lost
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.02
+			hidden_effect = {
+				clr_country_flag = USA_johnston_atoll_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_g_tt
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = -5
+			}
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = 5
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+	JAP_retake_johnston_atoll = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = JAP 
+		}
+
+		available = {
+			controls_state = 630
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			NOT = { controls_state = 630 }
+			has_country_flag = JAP_johnston_atoll_taken
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.02
+			hidden_effect = {
+				clr_country_flag = JAP_johnston_atoll_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_l_tt
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+	USA_retake_hawaii = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = USA 
+		}
+
+		available = {
+			controls_state = 629
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			has_war = yes
+			NOT = { controls_state = 629 }
+			NOT = { has_country_flag = USA_hawaii_lost }
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.25
+			add_stability = -0.1
+			add_political_power = -50
+			hidden_effect = {
+				set_country_flag = USA_hawaii_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_25_l_tt
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = 25
+			}
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = -25
+			}
+		}
+		complete_effect = {
+			add_political_power = 50
+		}
+	}
+
+	JAP_hold_hawaii = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = JAP 
+		}
+
+		available = {
+			NOT = { controls_state = 629 }
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			has_war = yes
+			controls_state = 629
+			NOT = { has_country_flag = JAP_hawaii_taken }
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.2
+			add_political_power = 50
+			hidden_effect = {
+				set_country_flag = JAP_hawaii_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_25_g_tt
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = 25
+			}
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = -25
+			}
+		}
+		complete_effect = {
+			add_political_power = -50
+		}
+	}
+
+	USA_hold_hawaii = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = USA 
+		}
+
+		available = {
+			NOT = { controls_state = 629 }
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			controls_state = 629
+			has_country_flag = USA_hawaii_lost
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.1
+			hidden_effect = {
+				clr_country_flag = USA_hawaii_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_25_g_tt
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = -25
+			}
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = 25
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+	JAP_retake_hawaii = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = JAP 
+		}
+
+		available = {
+			controls_state = 629
+		}
+		activation = {
+			country_exists = USA
+			country_exists = JAP
+			has_civil_war = no
+			NOT = { controls_state = 629 }
+			has_country_flag = JAP_hawaii_taken
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.1
+			hidden_effect = {
+				clr_country_flag = JAP_hawaii_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_25_l_tt
+			add_to_variable = {
+			    var = JAP_pacific_control
+			    value = 25
+			}
+			add_to_variable = {
+			    var = USA_pacific_control
+			    value = -25
+			}
+		}
+		complete_effect = {
+		}
+	}
+}
+
+STRATEGIC_REGION_mediterranean = {
+	ENG_retake_malta = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = ENG 
+		}
+
+		available = {
+			116 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT		
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			NOT = { 
+				116 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT		
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			NOT = { has_country_flag = ENG_malta_lost }
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.12
+			add_political_power = -30
+			hidden_effect = {
+				set_country_flag = ENG_malta_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_15_l_tt
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = 15
+			}
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = -15
+			}
+		}
+		complete_effect = {
+			add_political_power = 30
+		}
+	}
+
+	ITA_hold_malta = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = ITA 
+		}
+
+		available = {
+			NOT = {
+				116 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT		
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			116 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT		
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			NOT = { has_country_flag = ITA_malta_taken }
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.12
+			add_political_power = 30
+			hidden_effect = {
+				set_country_flag = ITA_malta_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_15_g_tt
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = 15
+			}
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = -15
+			}
+		}
+		complete_effect = {
+			add_political_power = -30
+		}
+	}
+
+	ITA_retake_malta = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = ITA 
+		}
+
+		available = {
+			116 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT		
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			NOT = {
+				116 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT		
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			has_country_flag = ITA_malta_taken
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.12
+			add_political_power = -30
+			hidden_effect = {
+				clr_country_flag = ITA_malta_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_15_l_tt
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = 15
+			}
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = -15
+			}
+		}
+		complete_effect = {
+			add_political_power = 30
+		}
+	}
+
+	ENG_hold_malta = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = ENG 
+		}
+
+		available = {
+			NOT = {
+				116 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT		
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			116 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT		
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			has_country_flag = ENG_malta_lost
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.12
+			add_political_power = 30
+			hidden_effect = {
+				clr_country_flag = ENG_malta_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_15_g_tt
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = 15
+			}
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = -15
+			}
+		}
+		complete_effect = {
+			add_political_power = -30
+		}
+	}
+
+	ENG_retake_gibraltar = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = ENG 
+		}
+
+		available = {
+			118 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			NOT = {
+				118 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			NOT = { has_country_flag = ENG_gibraltar_lost }
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.16
+			add_political_power = -40
+			hidden_effect = {
+				set_country_flag = ENG_gibraltar_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_20_l_tt
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = 20
+			}
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = -20
+			}
+		}
+		complete_effect = {
+			add_political_power = 40
+		}
+	}
+
+	ITA_hold_gibraltar = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = ITA 
+		}
+
+		available = {
+			NOT = {
+				118 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			118 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			NOT = { has_country_flag = ITA_gibraltar_taken }
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.16
+			add_political_power = 40
+			hidden_effect = {
+				set_country_flag = ITA_gibraltar_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_20_g_tt
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = 20
+			}
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = -20
+			}
+		}
+		complete_effect = {
+			add_political_power = -40
+		}
+	}
+
+	ITA_retake_gibraltar = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = ITA 
+		}
+
+		available = {
+			118 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			NOT = {
+				118 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			has_country_flag = ITA_gibraltar_taken
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.16
+			add_political_power = -40
+			hidden_effect = {
+				clr_country_flag = ITA_gibraltar_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_20_l_tt
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = 20
+			}
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = -20
+			}
+		}
+		complete_effect = {
+			add_political_power = 40
+		}
+	}
+
+	ENG_hold_gibraltar = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = ENG 
+		}
+
+		available = {
+			NOT = {
+				118 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			118 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			has_country_flag = ENG_gibraltar_lost
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.16
+			add_political_power = 40
+			hidden_effect = {
+				clr_country_flag = ENG_gibraltar_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_20_g_tt
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = 20
+			}
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = -20
+			}
+		}
+		complete_effect = {
+			add_political_power = -40
+		}
+	}
+
+	ENG_retake_suez = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = ENG 
+		}
+
+		available = {
+			923 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			NOT = {
+				923 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			NOT = { has_country_flag = ENG_suez_lost }
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.16
+			add_political_power = -40
+			hidden_effect = {
+				set_country_flag = ENG_suez_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_20_l_tt
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = 20
+			}
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = -20
+			}
+		}
+		complete_effect = {
+			add_political_power = 40
+		}
+	}
+
+	ITA_hold_suez = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = ITA 
+		}
+
+		available = {
+			NOT = {
+				923 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			923 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			NOT = { has_country_flag = ITA_suez_taken }
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.16
+			add_political_power = 40
+			hidden_effect = {
+				set_country_flag = ITA_suez_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_20_g_tt
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = 20
+			}
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = -20
+			}
+		}
+		complete_effect = {
+			add_political_power = -40
+		}
+	}
+
+	ITA_retake_suez = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = ITA 
+		}
+
+		available = {
+			923 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			NOT = { 
+				923 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			has_country_flag = ITA_suez_taken
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.16
+			add_political_power = -40
+			hidden_effect = {
+				clr_country_flag = ITA_suez_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_20_l_tt
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = 20
+			}
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = -20
+			}
+		}
+		complete_effect = {
+			add_political_power = 40
+		}
+	}
+
+	ENG_hold_suez = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = ENG 
+		}
+
+		available = {
+			NOT = { 
+				923 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			923 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			has_country_flag = ENG_suez_lost
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.16
+			add_political_power = 40
+			hidden_effect = {
+				clr_country_flag = ENG_suez_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_20_g_tt
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = 20
+			}
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = -20
+			}
+		}
+		complete_effect = {
+			add_political_power = -40
+		}
+	}
+
+	ENG_retake_sicily = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = ENG 
+		}
+
+		available = {
+			115 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			NOT = {
+				115 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			has_country_flag = ENG_sicily_taken
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.20
+			add_political_power = -50
+			hidden_effect = {
+				clr_country_flag = ENG_sicily_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_25_l_tt
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = 25
+			}
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = -25
+			}
+		}
+		complete_effect = {
+			add_political_power = 50
+		}
+	}
+
+	ITA_hold_sicily = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = ITA 
+		}
+
+		available = {
+			NOT = {
+				115 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			115 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			has_country_flag = ITA_sicily_lost
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.20
+			add_political_power = 50
+			hidden_effect = {
+				clr_country_flag = ITA_sicily_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_25_g_tt
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = 25
+			}
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = -25
+			}
+		}
+		complete_effect = {
+			add_political_power = -50
+		}
+	}
+
+	ITA_retake_sicily = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = ITA 
+		}
+
+		available = {
+			115 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			NOT = {
+				115 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			NOT = { has_country_flag = ITA_sicily_lost }
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.20
+			add_political_power = -50
+			hidden_effect = {
+				set_country_flag = ITA_sicily_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_25_l_tt
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = 25
+			}
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = -25
+			}
+		}
+		complete_effect = {
+			add_political_power = 50
+		}
+	}
+
+	ENG_hold_sicily = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = ENG 
+		}
+
+		available = {
+			NOT = {
+				115 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			115 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			NOT = { has_country_flag = ENG_sicily_taken }
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.20
+			add_political_power = 50
+			hidden_effect = {
+				set_country_flag = ENG_sicily_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_25_g_tt
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = 25
+			}
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = -25
+			}
+		}
+		complete_effect = {
+			add_political_power = -50
+		}
+	}
+
+	ENG_retake_tripoli = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = ENG 
+		}
+
+		available = {
+			448 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			NOT = {
+				448 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			has_country_flag = ENG_tripoli_taken
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.04
+			add_political_power = -10
+			hidden_effect = {
+				clr_country_flag = ENG_tripoli_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_l_tt
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = 10
+		}
+	}
+
+	ITA_hold_tripoli = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = ITA 
+		}
+
+		available = {
+			NOT = { 
+				448 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			448 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			has_country_flag = ITA_tripoli_lost
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.04
+			add_political_power = 10
+			hidden_effect = {
+				clr_country_flag = ITA_tripoli_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_g_tt
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = -10
+		}
+	}
+
+	ITA_retake_tripoli = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = ITA 
+		}
+
+		available = {
+			448 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			NOT = { 
+				448 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			NOT = { has_country_flag = ITA_tripoli_lost }
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.04
+			add_political_power = -10
+			hidden_effect = {
+				set_country_flag = ITA_tripoli_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_l_tt
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = 10
+		}
+	}
+
+	ENG_hold_tripoli = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = ENG 
+		}
+
+		available = {
+			NOT = { 
+				448 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			448 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			NOT = { has_country_flag = ENG_tripoli_taken }
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.04
+			add_political_power = 10
+			hidden_effect = {
+				set_country_flag = ENG_tripoli_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_g_tt
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = -10
+		}
+	}
+
+	ENG_retake_sardinia = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = ENG 
+		}
+
+		available = {
+			114 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			NOT = {
+				114 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			has_country_flag = ENG_sardinia_taken
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.04
+			add_political_power = -10
+			hidden_effect = {
+				clr_country_flag = ENG_sardinia_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_l_tt
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = 10
+		}
+	}
+
+	ITA_hold_sardinia = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = ITA 
+		}
+
+		available = {
+			NOT = {
+				114 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			114 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			has_country_flag = ITA_sardinia_lost
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.04
+			add_political_power = 10
+			hidden_effect = {
+				clr_country_flag = ITA_sardinia_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_g_tt
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = -10
+		}
+	}
+
+	ITA_retake_sardinia = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = ITA 
+		}
+
+		available = {
+			114 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			NOT = {
+				114 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			NOT = { has_country_flag = ITA_sardinia_lost }
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.04
+			add_political_power = -10
+			hidden_effect = {
+				set_country_flag = ITA_sardinia_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_l_tt
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = 10
+		}
+	}
+
+	ENG_hold_sardinia = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = ENG 
+		}
+
+		available = {
+			NOT = {
+				114 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			114 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			NOT = { has_country_flag = ENG_sardinia_taken }
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.04
+			add_political_power = 10
+			hidden_effect = {
+				set_country_flag = ENG_sardinia_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_g_tt
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = -10
+		}
+	}
+
+	ENG_retake_tobruk = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = ENG 
+		}
+
+		available = {
+			451 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			NOT = {		
+				451 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			has_country_flag = ENG_tobruk_taken
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.08
+			add_political_power = -20
+			hidden_effect = {
+				clr_country_flag = ENG_tobruk_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_10_l_tt
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = 10
+			}
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = -10
+			}
+		}
+		complete_effect = {
+			add_political_power = 20
+		}
+	}
+
+	ITA_hold_tobruk = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = ITA 
+		}
+
+		available = {
+			NOT = {		
+				451 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes	
+			451 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			has_country_flag = ITA_tobruk_lost
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.08
+			add_political_power = 20
+			hidden_effect = {
+				clr_country_flag = ITA_tobruk_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_10_g_tt
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = 10
+			}
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = -10
+			}
+		}
+		complete_effect = {
+			add_political_power = -20
+		}
+	}
+
+	ITA_retake_tobruk = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = ITA 
+		}
+
+		available = {
+			451 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			NOT = {		
+				451 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			NOT = { has_country_flag = ITA_tobruk_lost }
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.08
+			add_political_power = -20
+			hidden_effect = {
+				set_country_flag = ITA_tobruk_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_10_l_tt
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = 10
+			}
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = -10
+			}
+		}
+		complete_effect = {
+			add_political_power = 20
+		}
+	}
+
+	ENG_hold_tobruk = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = ENG 
+		}
+
+		available = {
+			NOT = {		
+				451 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			451 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			NOT = { has_country_flag = ENG_tobruk_taken }
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.08
+			add_political_power = 20
+			hidden_effect = {
+				set_country_flag = ENG_tobruk_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_10_g_tt
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = 10
+			}
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = -10
+			}
+		}
+		complete_effect = {
+			add_political_power = -20
+		}
+	}
+
+	ENG_retake_casablanca = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = ENG 
+		}
+
+		available = {
+			461 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			NOT = {
+				461 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			has_country_flag = ENG_casablanca_taken
+			has_global_flag = GER_case_anton
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.04
+			add_political_power = -10
+			hidden_effect = {
+				clr_country_flag = ENG_casablanca_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_l_tt
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = 10
+		}
+	}
+
+	ITA_hold_casablanca = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = ITA 
+		}
+
+		available = {
+			NOT = { 
+				461 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			461 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			has_country_flag = ITA_casablanca_lost
+			has_global_flag = GER_case_anton
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.04
+			add_political_power = 10
+			hidden_effect = {
+				clr_country_flag = ITA_casablanca_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_g_tt
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = -10
+		}
+	}
+
+	ITA_retake_casablanca = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = ITA 
+		}
+
+		available = {
+			461 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			NOT = { 
+				461 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			NOT = { has_country_flag = ITA_casablanca_lost }
+			has_global_flag = GER_case_anton
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.04
+			add_political_power = -10
+			hidden_effect = {
+				set_country_flag = ITA_casablanca_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_l_tt
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = 10
+		}
+	}
+
+	ENG_hold_casablanca = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = ENG 
+		}
+
+		available = {
+			NOT = { 
+				461 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			461 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			NOT = { has_country_flag = ENG_casablanca_taken }
+			has_global_flag = GER_case_anton
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.04
+			add_political_power = 10
+			hidden_effect = {
+				set_country_flag = ENG_casablanca_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_g_tt
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = -10
+		}
+	}
+
+	ENG_retake_algiers = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = ENG 
+		}
+
+		available = {
+			459 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			NOT = {
+				459 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			has_country_flag = ENG_algiers_taken
+			has_global_flag = GER_case_anton
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.04
+			add_political_power = -10
+			hidden_effect = {
+				clr_country_flag = ENG_algiers_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_l_tt
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = 10
+		}
+	}
+
+	ITA_hold_algiers = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = ITA 
+		}
+
+		available = {
+			NOT = { 
+				459 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			459 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			has_country_flag = ITA_algiers_lost
+			has_global_flag = GER_case_anton
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.04
+			add_political_power = 10
+			hidden_effect = {
+				clr_country_flag = ITA_algiers_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_g_tt
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = -10
+		}
+	}
+
+	ITA_retake_algiers = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = ITA 
+		}
+
+		available = {
+			459 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			NOT = { 
+				459 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			NOT = { has_country_flag = ITA_algiers_lost }
+			has_global_flag = GER_case_anton
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.04
+			add_political_power = -10
+			hidden_effect = {
+				set_country_flag = ITA_algiers_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_l_tt
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = 10
+		}
+	}
+
+	ENG_hold_algiers = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = ENG 
+		}
+
+		available = {
+			NOT = { 
+				459 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			459 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			NOT = { has_country_flag = ENG_algiers_taken }
+			has_global_flag = GER_case_anton
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.04
+			add_political_power = 10
+			hidden_effect = {
+				set_country_flag = ENG_algiers_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_5_g_tt
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = 5
+			}
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = -5
+			}
+		}
+		complete_effect = {
+			add_political_power = -10
+		}
+	}
+
+	ENG_retake_tunis = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = ENG 
+		}
+
+		available = {
+			458 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			NOT = {
+				458 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			has_country_flag = ENG_tunis_taken
+			has_global_flag = GER_case_anton
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.08
+			add_political_power = -20
+			hidden_effect = {
+				clr_country_flag = ENG_tunis_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_10_l_tt
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = 10
+			}
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = -10
+			}
+		}
+		complete_effect = {
+			add_political_power = 20
+		}
+	}
+
+	ITA_hold_tunis = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = ITA 
+		}
+
+		available = {
+			NOT = { 
+				458 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			458 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			has_country_flag = ITA_tunis_lost
+			has_global_flag = GER_case_anton
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.08
+			add_political_power = 20
+			hidden_effect = {
+				clr_country_flag = ITA_tunis_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_10_g_tt
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = 10
+			}
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = -10
+			}
+		}
+		complete_effect = {
+			add_political_power = -20
+		}
+	}
+
+	ITA_retake_tunis = {
+		icon = generic_prepare_civil_war
+
+		allowed = { 
+			tag = ITA 
+		}
+
+		available = {
+			458 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			NOT = { 
+				458 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+			NOT = { has_country_flag = ITA_tunis_lost }
+			has_global_flag = GER_case_anton
+		}
+		is_good = no
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = -0.08
+			add_political_power = -20
+			hidden_effect = {
+				set_country_flag = ITA_tunis_lost
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_10_l_tt
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = 10
+			}
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = -10
+			}
+		}
+		complete_effect = {
+			add_political_power = 20
+		}
+	}
+
+	ENG_hold_tunis = {
+		icon = generic_prepare_civil_war
+		
+		allowed = { 
+			tag = ENG 
+		}
+
+		available = {
+			NOT = { 
+				458 = {
+					CONTROLLER = {
+						OR = {		
+							original_tag = ROOT				
+							is_in_faction_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		activation = {
+			country_exists = ENG
+			country_exists = ITA
+			has_civil_war = no
+			has_war = yes
+			458 = {
+				CONTROLLER = {
+					OR = {		
+						original_tag = ROOT				
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			NOT = { has_country_flag = ENG_tunis_taken }
+			has_global_flag = GER_case_anton
+		}
+		is_good = yes
+
+		days_mission_timeout = 60
+
+		timeout_effect = {
+			add_war_support = 0.08
+			add_political_power = 20
+			hidden_effect = {
+				set_country_flag = ENG_tunis_taken
+			}
+			custom_effect_tooltip = STRATEGIC_REGION_10_g_tt
+			add_to_variable = {
+			    var = ENG_med_control
+			    value = 10
+			}
+			add_to_variable = {
+			    var = ITA_med_control
+			    value = -10
+			}
+		}
+		complete_effect = {
+			add_political_power = -20
+		}
+	}
+}

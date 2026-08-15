@@ -1,0 +1,37 @@
+
+state={
+	id=594
+	name="STATE_594"
+	manpower = 4650000
+	state_category = city
+	resources={
+		iron = 15
+		chromium = 35 # was: 4
+	}
+
+	history={
+		owner = CHI
+		add_core_of = CHI
+		#
+		buildings = {
+			infrastructure = 2
+			industrial_complex = 7
+			arms_factory = 2
+		}
+		victory_points = { 
+			7137 10 
+		}
+		1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+	}
+
+	provinces={
+		4121 4177 7137 13440 
+	}
+}

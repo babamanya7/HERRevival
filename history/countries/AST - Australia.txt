@@ -1,0 +1,225 @@
+﻿capital = 285
+
+activate_mission = economy_fatigue_free_trade_mission
+activate_mission = economy_fatigue_disarmed_nation_mission
+activate_mission = economy_fatigue_civilian_economy_mission
+
+oob = "AST_1936"
+set_air_oob = AST_1936_air_bba
+set_naval_oob = 00_AST_vnr_naval
+
+set_stability = 0.8
+set_war_support = 0.3
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_recon = 1
+	gw_artillery = 1
+	interwar_antiair = 1
+	gwtank_chassis = 1
+	basic_train = 1
+	trench_warfare = 1
+	fuel_silos = 1
+	
+	bba_early_transport_plane = 1
+
+	fleet_in_being = 1
+	early_ship_hull_heavy = 1
+	early_ship_hull_submarine = 1
+	early_ship_hull_light = 1
+	early_ship_hull_cruiser = 1
+	basic_ship_hull_submarine = 1
+	basic_ship_hull_heavy = 1
+	basic_ship_hull_light = 1
+	basic_ship_hull_cruiser = 1
+	interwar_ship_hull_light = 1
+	interwar_ship_hull_cruiser = 1
+	interwar_ship_hull_heavy = 1
+	large_destroyer_trend = 1
+	sonar = 1
+	searchlight = 1
+	treaty_cruiser_trend = 1
+	early_cruiser_armor = 1
+	basic_cruiser_armor = 1
+	incremental_armor_scheme = 1
+	mixed_armor_scheme = 1
+	all_or_nothing_armor_scheme = 1
+	basic_torpedo_defense = 1
+	improved_torpedo_defense = 1
+	enhanced_horizontal_defense = 1
+	basic_heavy_armor = 1
+	improved_conning_tower = 1
+	prototype_airplane_launcher = 1
+    basic_periscope = 1
+	pre_dreadnoughts = 1
+	harvey_steel = 1
+}
+
+recruit_character = AST_john_curtin
+recruit_character = AST_eric_campbell
+recruit_character = AST_richard_dixon
+recruit_character = AST_earle_page
+recruit_character = AST_rod_hull
+recruit_character = AST_leslie_morshead
+recruit_character = AST_thomas_blamey
+recruit_character = AST_henry_wynter
+recruit_character = AST_alan_vasey
+recruit_character = AST_horace_robertson
+recruit_character = AST_john_northcott
+recruit_character = AST_harold_farncomb
+recruit_character = AST_victor_crutchley
+recruit_character = AST_clive_caldwell
+recruit_character = AST_sydney_rowell
+recruit_character = AST_richard_williams
+recruit_character = AST_ragnar_colvin
+recruit_character = AST_norman_makin
+recruit_character = AST_james_fairbairn
+recruit_character = AST_john_collins
+recruit_character = AST_arthur_allen
+recruit_character = AST_vernon_sturdee
+recruit_character = AST_jack_crace
+recruit_character = AST_cederic_hicks
+recruit_character = AST_charles_burnett
+recruit_character = AST_edmund_herring
+recruit_character = AST_arthur_drakeford
+recruit_character = AST_john_lavarack
+recruit_character = AST_robert_g_menzies
+recruit_character = AST_ben_chifley
+recruit_character = AST_frank_forde
+recruit_character = AST_alexander_hore_ruthven
+recruit_character = AST_jack_beasley
+recruit_character = AST_herbert_v_evatt
+recruit_character = AST_arthur_calwell
+recruit_character = AST_iven_mackay #Empty char can become unit leader via FT
+
+add_ideas = AST_great_depression_1
+add_to_tech_sharing_group = commonwealth_research
+
+set_politics = {
+	ruling_party = democratic
+	last_election = "1934.9.15"
+	election_frequency = 36
+	elections_allowed = yes
+}
+
+set_convoys = 100
+
+set_popularities = {
+	democratic = 98
+	communism = 2
+}
+
+### LAND VARIANTS ###
+
+### AIR VARIANTS ###
+
+### NAVY VARIANTS ###
+
+    create_equipment_variant = {
+        name = "Kent Class"
+		parent_version = 0
+		role_icon_index = 27
+		icon = "gfx/interface/technologies/England/ENG_heavy_cruiser2.png"
+        type = vnr_ship_hull_cruiser_2
+        name_group = AST_CA_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_medium_battery_2_double
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_secondaries_slot = ship_secondaries_1_light
+            front_1_custom_slot = ship_medium_battery_2_double
+			mid_2_custom_slot = ship_anti_air_1
+			mid_3_custom_slot = ship_torpedo_2
+			rear_1_custom_slot = ship_medium_battery_2_double
+            rear_2_custom_slot = ship_medium_battery_2_double
+        }
+    }
+    create_equipment_variant = {
+        name = "Leander Class"
+		parent_version = 0
+		role_icon_index = 25
+        type = vnr_ship_hull_cruiser_3
+        name_group = AST_CL_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_medium_battery_2_double
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_secondaries_slot = dp_ship_secondaries_1
+            front_1_custom_slot = ship_light_medium_battery_2_double
+            mid_1_custom_slot = ship_airplane_launcher_1
+			mid_2_custom_slot = empty
+            mid_3_custom_slot = ship_torpedo_2
+			rear_1_custom_slot = ship_light_medium_battery_2_double
+            rear_2_custom_slot = ship_light_medium_battery_2_double
+        }
+    }
+    create_equipment_variant = {
+        name = "Town Class"
+		parent_version = 0
+		role_icon_index = 23
+        type = vnr_ship_hull_cruiser_1
+        name_group = AST_CL_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_medium_battery_1_single
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_secondaries_slot = ship_secondaries_1_light
+            front_1_custom_slot = ship_light_medium_battery_1_single
+            mid_1_custom_slot = empty
+			mid_2_custom_slot = empty
+            mid_3_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_light_medium_battery_1_single
+            rear_2_custom_slot = ship_light_medium_battery_1_single
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = {
+        name = "Shakespeare/Scott Class"
+		parent_version = 0
+		role_icon_index = 33
+        type = vnr_ship_hull_light_2
+        name_group = AST_DD_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			fixed_ship_role_slot = ship_hull_light_role_dl
+			front_1_custom_slot = ship_light_battery_2
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_light_battery_2
+			rear_1_custom_slot = ship_light_battery_2
+            rear_2_custom_slot = ship_light_battery_2
+        }
+        obsolete = yes
+    }
+    create_equipment_variant = {
+        name = "V/W Class"
+		parent_version = 0
+		role_icon_index = 31
+        type = vnr_ship_hull_light_1
+        name_group = AST_DD_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			front_1_custom_slot = ship_light_battery_1
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = ship_light_battery_1
+			rear_1_custom_slot = ship_light_battery_1
+        }
+        obsolete = yes
+    }

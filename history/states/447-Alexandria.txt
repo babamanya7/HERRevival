@@ -1,0 +1,38 @@
+
+state={
+	id=447
+	name="STATE_447"
+	manpower = 3859239
+	resources={
+		oil=1 # was: 2
+	}
+	
+	state_category = city
+
+	history={
+		owner = ENG
+		
+		victory_points = {
+			14077 10 
+		}
+		
+		victory_points = {
+			14052 1 
+		}		
+		buildings = {
+			infrastructure = 5
+			arms_factory = 1
+			industrial_complex = 3
+			air_base = 6
+			14077 = {
+				naval_base = 8
+			}
+		}
+		add_core_of = BRA
+
+	}
+
+	provinces={
+		14052 14025 14045 14015 14060 14013 14077 14035 14053 14085 14091 14086 14055 
+	}
+}

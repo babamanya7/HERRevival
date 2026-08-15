@@ -1,0 +1,205 @@
+sub_units = {
+	light_flame_tank = {
+		abbreviation = "LFT"
+		sprite = light_armor
+		map_icon_category = armored
+		priority = 0
+		ai_priority = 0
+		active = no
+
+		type = {
+			armor
+			flame
+			support
+		}
+		regimental = no
+		group = support
+
+		categories = {
+			category_front_line
+			category_support_battalions
+			category_tanks
+			category_all_armor
+			category_army
+		}
+
+		combat_width = 0
+
+		###---### STATS ###---###
+		manpower = 600
+		max_organisation = 20
+		max_strength = 20
+		default_morale = 0
+		weight = 0.75
+		supply_consumption = 0.28
+		training_time = 180
+		
+		can_be_parachuted = no
+
+		need = {
+			light_tank_flame_chassis = 40
+			ammunition_equipment = 80
+		}
+		
+		essential = {
+			ammunition_equipment
+		}
+
+		forest = {
+			attack = 0.04
+		}
+		jungle = {
+			attack = 0.04
+		}
+		marsh = {
+			attack = 0.04
+		}
+		marsh_forest = {
+			attack = 0.04
+		}
+		urban = {
+			attack = 0.04
+		}
+		fort = {
+			attack = 0.04
+		}
+		
+		same_support_type = flame
+	}
+
+	medium_flame_tank = {
+		abbreviation = "MFT"
+		sprite = medium_armor
+		map_icon_category = armored
+		priority = 0
+		ai_priority = 0
+		active = no
+
+		type = {
+			armor
+			flame
+			support
+		}
+		regimental = no
+		group = support
+
+		categories = {
+			category_front_line
+			category_support_battalions
+			category_tanks
+			category_all_armor
+			category_army
+		}
+
+		combat_width = 0
+
+		###---### STATS ###---###
+		manpower = 600
+		max_organisation = 20
+		max_strength = 20
+		default_morale = 0
+		weight = 1
+		supply_consumption = 0.34
+		training_time = 180
+		
+		can_be_parachuted = no
+
+		need = {
+			medium_tank_flame_chassis = 40
+			ammunition_equipment = 80
+		}
+		
+		essential = {
+			ammunition_equipment
+		}
+
+		forest = {
+			attack = 0.08
+		}
+		jungle = {
+			attack = 0.08
+		}
+		marsh = {
+			attack = 0.08
+		}
+		marsh_forest = {
+			attack = 0.08
+		}
+		urban = {
+			attack = 0.08
+		}
+		fort = {
+			attack = 0.08
+		}
+
+		same_support_type = flame
+	}
+
+	heavy_flame_tank = {
+		abbreviation = "HFT"
+		sprite = heavy_armor
+		map_icon_category = armored
+		priority = 0
+		ai_priority = 0
+		active = no
+
+		type = {
+			armor
+			flame
+			support
+		}
+		regimental = no
+		group = support
+
+		categories = {
+			category_front_line
+			category_support_battalions
+			category_tanks
+			category_all_armor
+			category_army
+		}
+
+		combat_width = 0
+
+		###---### STATS ###---###
+		manpower = 600
+		max_organisation = 20
+		max_strength = 20
+		default_morale = 0
+		weight = 1.25
+		supply_consumption = 0.4
+		training_time = 180
+		
+		can_be_parachuted = no
+
+		need = {
+			heavy_tank_flame_chassis = 40
+			ammunition_equipment = 80
+		}
+		
+		essential = {
+			ammunition_equipment
+		}
+
+		forest = {
+			attack = 0.08
+		}
+		jungle = {
+			attack = 0.08
+		}
+		marsh = {
+			attack = 0.08
+		}
+		marsh_forest = {
+			attack = 0.08
+		}
+		urban = {
+			attack = 0.12
+		}
+		fort = {
+			attack = 0.12
+		}
+
+		same_support_type = flame
+	}
+}

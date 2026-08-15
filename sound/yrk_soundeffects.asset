@@ -1,0 +1,19 @@
+soundeffect = {
+	name = "diplomatic_failure"
+	volume = 2.0
+	sounds = {
+		sound = "diplomatic_failure"
+	}
+	max_audible = 1
+	max_audible_behaviour = fail
+}
+
+soundeffect = {
+	name = "total_war_speech"
+	volume = 1.0
+	sounds = {
+		sound = "total_war_speech"
+	}
+	max_audible = 1
+	max_audible_behaviour = fail
+}

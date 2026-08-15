@@ -1,0 +1,28 @@
+state={
+	id=98
+	name="STATE_98"
+	manpower = 1412100
+	
+	state_category = town
+	history={
+		victory_points = {
+			3230 5
+		}
+		victory_points = {
+			6401 3
+		}
+		owner = POL
+		buildings = {
+			infrastructure = 6
+			industrial_complex = 2
+			6567 = {
+				bunker = 5
+			}
+		}
+		add_core_of = POL
+	}
+
+	provinces={
+		548 3230 6259 6321 6401 6567 9290 9316 10912 11026 11 6074 11190 11073 3054 11102 13498
+	}
+}

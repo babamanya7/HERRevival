@@ -1,0 +1,34 @@
+
+state={
+	id=189
+	name="STATE_189"
+	manpower = 697100
+	
+	state_category = rural
+	
+	resources={
+		iron = 5
+	}
+
+	history={
+		owner = LIT
+		victory_points = {
+			9483 5
+		}
+		victory_points = {
+			6314 3
+		}
+		buildings = {
+			infrastructure = 3
+			6314 = {
+				naval_base = 1
+			}
+			air_base = 4
+		}
+		add_core_of = LIT
+	}
+
+	provinces={
+		3337 3354 6314 9483 9499 9731 7546 6412 6345 6084 3862 11753
+	}
+}

@@ -1,0 +1,38 @@
+state= {
+	id=932
+	name="STATE_932"
+	manpower = 4082100
+	state_category = town
+	resources={
+		tungsten = 257
+		bauxite = 41
+	}
+
+	history= {
+		owner = CHI
+		add_core_of = CHI
+		#
+		buildings = {
+			infrastructure = 1
+			industrial_complex = 1
+			arms_factory = 1
+		}
+		victory_points = { 
+			10404 3 
+		}
+		victory_points = {
+			4028 1
+		}
+		1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+	}
+	provinces={
+		1469 1625 4028 4077 4085 4628 4656 7044 7192 7650 10050 10459 11983 12023 13757
+	}
+}

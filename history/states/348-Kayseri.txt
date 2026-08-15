@@ -1,0 +1,25 @@
+
+state={
+	id=348
+	name="STATE_348" # Uman
+	manpower = 543312
+
+	state_category = town
+
+	history={
+		victory_points = {
+			434 3
+		}
+		owner = SOV
+		buildings = {
+			infrastructure = 4
+			industrial_complex = 1
+		}
+		add_core_of = SOV
+		add_core_of = UKR
+	}
+
+	provinces={
+		434 9878 9900 11409 11424 9451 13853 975 10122
+	}
+}

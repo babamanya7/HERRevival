@@ -1,0 +1,35 @@
+
+state={
+	id=16
+	name="STATE_16"
+	manpower = 1014200
+	
+	state_category = large_city
+	
+
+	history={
+		owner = FRA
+		victory_points = {
+			11435 5
+		}
+		victory_points = {
+			7081 5
+		}
+		victory_points = {
+			6735 3
+		}
+		buildings = {
+			infrastructure = 8
+			industrial_complex = 10
+			arms_factory = 4
+			air_base = 16
+			fuel_silo = 1
+			6735 = { land_facility = 1 }
+		}
+		add_core_of = FRA
+	}
+
+	provinces={
+		394 6735 6957 7081 7148 7180 7958 9652 9701 9741 11435 11580 11716 
+	}
+}

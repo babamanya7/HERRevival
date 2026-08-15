@@ -1,0 +1,31 @@
+
+state={
+	id=611
+	name="STATE_611" # South Chahar
+	manpower = 1470000
+	
+	state_category = pastoral
+
+	history={
+		owner = MEN
+		add_core_of = MEN
+		add_core_of = CHI
+		#
+		buildings = {
+			infrastructure = 1
+			industrial_complex = 1
+		}
+		1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+	}
+
+	provinces={
+		1551 1796 4612 4655 7545 11752 12448 13772
+	}
+}

@@ -1,0 +1,29 @@
+
+state={
+	id=103
+	name="STATE_103"
+	manpower = 1130900
+
+	state_category = large_town
+	
+	resources = {
+	}
+
+	history={
+		owner = YUG
+		
+		buildings = {
+			infrastructure = 5
+			industrial_complex = 2
+			14587 = {
+				naval_base = 1
+			}
+		}
+		add_core_of = YUG
+		add_core_of = CRO
+	}
+
+	provinces={
+		3701 4910 6441 6540 6656 14587 14610 14631 14656 14715 14776 14817 14828 14895 14896 
+	}
+}

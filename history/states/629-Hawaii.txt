@@ -1,0 +1,45 @@
+
+state={
+	id=629
+	name="STATE_629"
+	manpower = 368336
+	state_category = large_island
+	history={
+		owner = USA
+
+		buildings = {
+			infrastructure = 3
+			air_base = 6
+			13367 = {
+				naval_base = 8
+			}
+			7195 = {
+				naval_base = 3
+			}
+			7112 = {
+				naval_base = 1
+			}
+			13366 = {
+				naval_base = 1
+			}
+			10048 = {
+				naval_base = 1
+			}
+		}
+		victory_points = {
+			13367 15
+		}
+		1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+	}
+
+	provinces={
+		4180 7112 7195 10048 12021 13361 13362 13364 13366 13367 13368 
+	}
+}

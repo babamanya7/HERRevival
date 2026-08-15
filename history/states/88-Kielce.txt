@@ -1,0 +1,38 @@
+state={
+	id=88
+	name="STATE_88"
+	manpower=3352400
+	buildings_max_level_factor=1.000
+	state_category=large_city
+
+	resources={
+		#oil=3.0
+	}
+
+	history={
+		owner = POL
+		victory_points = {
+			11208 20 
+		}
+		victory_points = {
+			11334 5
+		}
+		victory_points = {
+			6313 3 
+		}
+		buildings = {
+			infrastructure = 6
+			arms_factory = 4
+			industrial_complex = 5
+			steel_refinery = 1
+			air_base = 8
+			aluminium_refinery = 1
+		}
+		add_core_of = POL
+
+	}
+
+	provinces={
+		417 442 466 3410 3434 6499 6522 9427 11398 11413 11507 11208 3179 3095 11155 6313 6289 11334 6405 9405
+	}
+}

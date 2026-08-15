@@ -1,0 +1,41 @@
+
+state={
+	id=222
+	name="STATE_222"
+	manpower = 1218607
+	
+	state_category = rural
+	
+	resources={
+		
+		chromium=85 # was: 12
+	}
+
+	history={
+		owner = SOV
+		victory_points = {
+			9355 10
+		}
+		victory_points = {
+			9384 1
+		}
+		victory_points = {
+			11368 1
+		}
+		victory_points = {
+			11310 1
+		}
+		
+		buildings = {
+			infrastructure = 4
+			air_base = 8
+			industrial_complex = 2
+			arms_factory = 1
+		}
+		add_core_of = SOV
+	}
+
+	provinces={
+		302 328 384 6355 9328 9355 9384 9411 11214 11283 11310 11337 11368 11601 789 11023 2160 11005
+	}
+}

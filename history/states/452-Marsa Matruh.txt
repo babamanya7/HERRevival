@@ -1,0 +1,35 @@
+
+state={
+	id=452
+	name="STATE_452"
+	manpower = 52556
+	
+	state_category = pastoral
+
+	history={
+		owner = ENG
+		
+		victory_points = {
+			14082 1
+		}
+		victory_points = {
+			14093 1
+		}
+		buildings = {
+			infrastructure = 3
+			14093 = {
+				bunker = 3
+			}
+			14082 = {
+				naval_base = 8
+			}
+		}
+
+		add_core_of = BRA
+	}
+
+	provinces={
+		14093 14094 14084 14082 14072 14059 14030 14042 14051 14050 14065 14058 14018 13987 14003 14029 13980 14010 13984 13970 13988 14011 14012
+	}
+
+}

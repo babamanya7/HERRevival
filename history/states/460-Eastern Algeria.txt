@@ -1,0 +1,33 @@
+
+state={
+	id=460
+	name="STATE_460" # Constantine
+	manpower = 2343837
+	
+	state_category = large_town
+
+	history={
+		owner = FRA
+		add_core_of = BRA
+		victory_points = {
+			14312 1 
+		}
+		victory_points = {
+			14280 3 
+		}
+		victory_points = {
+			14254 1
+		}
+		buildings = {
+			infrastructure = 4
+			industrial_complex = 2
+			14312 = {
+				naval_base = 1
+			}
+		}
+	}
+
+	provinces={
+		14310 14304 14308 14311 14312 14316 14305 14287 14294 14292 14295 14299 14285 14275 14280 14265 14274 14247 14253 14254 14260 14242 14221 14220 14231 14237 14239 14223 14213 14212 14201
+	}
+}

@@ -1,0 +1,127 @@
+equipments = {
+
+	mechanized_equipment = {
+		year = 1936
+
+		is_archetype = yes
+		picture = archetype_motorized_equipment
+		is_buildable = no
+		type = {
+			#infantry #Removing inf type
+			mechanized
+		}
+
+		upgrades = {
+			tank_reliability_upgrade
+			tank_engine_upgrade
+			tank_armor_upgrade
+			mech_cost_upgrade
+		}
+		group_by = archetype
+
+		interface_category = interface_category_land
+
+		#Misc Abilities
+		maximum_speed = 6
+		reliability = 0.8
+
+		#Defensive Abilities
+		defense = 12
+		breakthrough = 6
+		hardness = 0.5
+		armor_value = 12
+
+		#Offensive Abilities
+		ap_attack = 3
+		air_attack = 0
+		soft_attack = 8
+		hard_attack = 0
+
+		#Space taken in convoy
+		lend_lease_cost = 3
+
+		build_cost_ic = 16
+		resources = {
+			steel = 20
+			rubber = 8
+		}
+
+		fuel_consumption = 1.5
+		supply_truck = no
+	}
+
+	# ~1941
+	mechanized_equipment_1 = {
+		year = 1940
+
+		archetype = mechanized_equipment
+		priority = 40
+		visual_level = 0
+		
+		max_strength = 0.1
+	}
+
+	# ~1943
+	mechanized_equipment_2 = {
+		year = 1942
+
+		archetype = mechanized_equipment
+		parent = mechanized_equipment_1
+		priority = 40
+		visual_level = 1
+
+		maximum_speed = 8
+
+		#Defensive Abilities
+		defense = 18
+		breakthrough = 9
+		hardness = 0.65
+		armor_value = 18
+
+		#Offensive Abilities
+		ap_attack = 6
+		soft_attack = 9
+		hard_attack = 3
+		
+		max_strength = 0.15
+
+		build_cost_ic = 18
+		resources = {
+			steel = 25
+			tungsten = 2
+			rubber = 10
+		}
+	}
+
+	# ~1945
+	mechanized_equipment_3 = {
+		year = 1944
+
+		archetype = mechanized_equipment
+		parent = mechanized_equipment_2
+		priority = 40
+		visual_level = 2
+
+		maximum_speed = 10
+
+		#Defensive Abilities
+		defense = 24
+		breakthrough = 12
+		hardness = 0.8
+		armor_value = 24
+
+		#Offensive Abilities
+		ap_attack = 12
+		soft_attack = 10
+		hard_attack = 6
+		
+		max_strength = 0.2
+
+		build_cost_ic = 20
+		resources = {
+			steel = 30
+			tungsten = 4
+			rubber = 12
+		}
+	}
+}

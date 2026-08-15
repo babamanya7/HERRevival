@@ -1,0 +1,44 @@
+state= {
+	id=615
+	name="STATE_615"
+	manpower = 10401000
+	
+	state_category = large_town
+	
+	resources = {
+		coal = 126
+		iron = 40
+		bauxite = 3
+	}
+
+	history= {
+		owner = CHI
+		add_core_of = CHI
+		#
+		victory_points = {
+			4174 3 
+		}
+		victory_points = {
+			1575 1
+		}
+		victory_points = {
+			1531 1
+		}
+		buildings = {
+			infrastructure = 2
+			arms_factory = 4
+			industrial_complex = 4
+		}
+		1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+	}
+	provinces={
+		1034 1531 4074 4174 10367 10507 12300 13637 13642 13643 13644 13761 13762 13783 13784 13787 1575 13656 7571 13786 13648 1180 13645 4634 13647 10421 13646 4538 1519 12344 13788 12078 1203 13785 4469 1438 1027
+	}
+}

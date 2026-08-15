@@ -1,0 +1,51 @@
+spriteTypes = {
+
+	spriteType = {
+		name = "GFX_lpfttw_trait_tree_bg"
+		texturefile = "gfx/interface/trait_window/lpfttw_trait_tree_bg.dds"
+	}
+
+	spriteType = {
+		name = "GFX_lpfttw_admiral_trait_tree_bg"
+		texturefile = "gfx/interface/trait_window/lpfttw_admiral_trait_tree_with_bigger_portraits_bg.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_lpfttw_portrait_overlay"
+		texturefile = "gfx/interface/trait_window/lpfttw_portrait_overlay.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_lpfttw_medal"
+		texturefile = "gfx/interface/trait_window/lpfttw_medal.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_lpfttw_navy_medal"
+		texturefile = "gfx/interface/trait_window/lpfttw_navy_medal.dds"
+	}
+	
+	### xp progress bar ###
+	
+	spriteType = {
+		name = "GFX_lpfttw_leader_exp_bg"
+		texturefile = "gfx/interface/trait_window/lpfttw_leader_exp_bg.dds"
+	}
+	
+#	spriteType = {							# unmodified
+#		name = "GFX_leader_exp_fg_begin"
+#		texturefile = "gfx/interface/trait_window/leader_exp_fg_begin.png"
+#	}
+	
+	progressbartype = {
+		name = "GFX_lpfttw_leader_exp_fg_mid"
+		color = { 1.0 1.0 1.0 }
+		colortwo = { 1.0 1.0 1.0 }
+		textureFile1 = "gfx/interface/trait_window/lpfttw_leader_exp_fg_mid.dds"
+		textureFile2 = "gfx/interface/trait_window/lpfttw_leader_exp_fg_mid_empty.png"
+		size = { x = 114 y = 11 }
+		effectFile = "gfx/FX/progress.lua"
+		steps = 500
+	}
+	
+}

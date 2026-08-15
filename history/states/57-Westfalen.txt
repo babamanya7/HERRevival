@@ -1,0 +1,39 @@
+
+state={
+	id=57
+	name="STATE_57"
+	manpower = 5109333
+	state_category = metropolis
+	
+	resources = {
+		iron = 24
+		coal = 834
+	}
+
+	history={
+		owner = GER
+		victory_points = {
+			13527 5 
+		}
+		victory_points = {
+			11951 5
+		}
+		victory_points = {
+			11691 1
+		}
+		buildings = {
+			infrastructure = 8
+			arms_factory = 8
+			industrial_complex = 6
+			steel_refinery = 3
+			aluminium_refinery = 2
+			air_base = 6
+
+		}
+		add_core_of = GER
+	}
+
+	provinces={
+		1109 1156 3623 3650 3707 3901 6711 6939 7065 7117 7154 9363 9593 11305 11606 11691 11951 11974 12051 13527 
+	}
+}

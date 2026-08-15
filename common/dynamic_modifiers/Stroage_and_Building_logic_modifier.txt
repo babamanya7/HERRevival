@@ -1,0 +1,48 @@
+
+rubber_stroage_put_out = {
+	enable = { always =yes }
+	remove_trigger = { always =no }
+	country_resource_rubber = rubber_storage_use
+}
+
+aluminium_stroage_put_out = {
+	enable = { always =yes }
+	remove_trigger = { always =no }
+	country_resource_aluminium = aluminium_storage_use
+}
+
+chromium_stroage_put_out = {
+	enable = { always =yes }
+	remove_trigger = { always =no }
+	country_resource_chromium = chromium_storage_use
+}
+
+tungsten_stroage_put_out = {
+	enable = { always =yes }
+	remove_trigger = { always =no }
+	country_resource_tungsten = tungsten_storage_use
+}
+
+steel_stroage_put_out = {
+	enable = { always =yes }
+	remove_trigger = { always =no }
+	country_resource_steel = steel_storage_use
+}
+
+coal_stroage_put_out = {
+	enable = { always =yes }
+	remove_trigger = { always =no }
+	country_resource_coal = coal_storage_use
+}
+
+bauxite_stroage_put_out = {
+	enable = { always =yes }
+	remove_trigger = { always =no }
+	country_resource_bauxite = bauxite_storage_use
+}
+
+iron_stroage_put_out = {
+	enable = { always =yes }
+	remove_trigger = { always =no }
+	country_resource_iron = iron_storage_use
+}

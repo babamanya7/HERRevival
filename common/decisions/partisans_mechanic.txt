@@ -1,0 +1,475 @@
+SOV_GER_partisans = {
+	
+	generic_partisans = {
+		
+		icon = {
+			key = sov_partisan_control_none
+			trigger = {
+				FROM = { check_variable = { var = SOV_partisans_controls value = 0 compare = equals } }
+			}
+		}
+		icon = {
+			key = sov_partisan_control_weak
+			trigger = {
+				FROM = { check_variable = { var = SOV_partisans_controls value = 1 compare = equals } }
+			}
+		}
+		icon = {
+			key = sov_partisan_control_strong
+			trigger = {
+				FROM = { check_variable = { var = SOV_partisans_controls value = 2 compare = equals } }
+			}
+		}
+		icon = {
+			key = sov_partisan_control_total
+			trigger = {
+				FROM = { check_variable = { var = SOV_partisans_controls value = 3 compare = greater_than_or_equals } }
+			}
+		}
+		fire_only_once = no
+		on_map_mode = map_only
+		state_target = yes
+
+		target_trigger = {
+			FROM = {
+				is_owned_by = GER
+				is_core_of = SOV
+				NOT = {
+					state = 89
+					state = 91
+					state = 93
+					state = 199
+					state = 201
+					state = 198
+					state = 192
+					state = 49
+				}
+			}
+		}
+
+		target_root_trigger = {
+			has_completed_focus = SOV_organization_of_the_partisans
+			has_war_with = GER
+		}
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		available = {
+			FROM = {
+				is_owned_by = GER
+				custom_trigger_tooltip = {
+					tooltip = SOV_partisan_influence_trigger_tt
+					FROM = { check_variable = { var = SOV_partisans_controls value = 3 compare = less_than } }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOV_partisan_influence_trigger_2_tt
+				NOT = {
+					AND = {
+						has_country_flag = SOV_partisan_up_infl_1
+						has_country_flag = SOV_partisan_up_infl_2
+						has_country_flag = SOV_partisan_up_infl_3
+					}
+				}
+			}
+		}
+
+		visible = {
+			FROM = {
+				is_owned_by = GER
+			}
+		}
+		
+		days_remove = 14
+		
+		cost = 3
+		
+		modifier = {
+			command_power_gain = -0.05
+		}
+		
+		complete_effect = {
+			if = {
+				limit = {
+					has_country_flag = SOV_partisan_up_infl_1
+					has_country_flag = SOV_partisan_up_infl_2
+					NOT = { has_country_flag = SOV_partisan_up_infl_3 }
+				}
+				set_country_flag = SOV_partisan_up_infl_3
+			}
+			else_if = {
+				limit = {
+					has_country_flag = SOV_partisan_up_infl_1
+					NOT = { has_country_flag = SOV_partisan_up_infl_2 }
+				}
+				set_country_flag = SOV_partisan_up_infl_2
+			}
+			else = {
+				set_country_flag = SOV_partisan_up_infl_1
+			}
+		}
+		
+		remove_effect = {
+			custom_effect_tooltip = SOV_expand_partisan_influence_tt
+			if = {
+				limit = {
+					has_country_flag = SOV_partisan_up_infl_1
+					NOT = { has_country_flag = SOV_partisan_up_infl_2 }
+					NOT = { has_country_flag = SOV_partisan_up_infl_3 }
+				}
+				clr_country_flag = SOV_partisan_up_infl_1
+			}
+			else_if = {
+				limit = {
+					has_country_flag = SOV_partisan_up_infl_1
+					has_country_flag = SOV_partisan_up_infl_2
+					NOT = { has_country_flag = SOV_partisan_up_infl_3 }
+				}
+				clr_country_flag = SOV_partisan_up_infl_2
+			}
+			else = {
+				clr_country_flag = SOV_partisan_up_infl_3
+			}
+			if = {
+				limit = {
+					FROM = { check_variable = { var = SOV_partisans_controls value = 0 compare = equals } }
+				}
+				FROM = {
+					add_dynamic_modifier = {
+						modifier = SOV_partisans_activity_1
+					}
+				}
+				custom_effect_tooltip = SOV_partisan_influence_none_tt
+			}
+			if = {
+				limit = {
+					FROM = { check_variable = { var = SOV_partisans_controls value = 1 compare = equals } }
+				}
+				FROM = {
+					add_dynamic_modifier = {
+						modifier = SOV_partisans_activity_2
+					}
+					hidden_effect = {
+						remove_dynamic_modifier = {
+							modifier = SOV_partisans_activity_1
+						}
+					}
+				}
+				custom_effect_tooltip = SOV_partisan_influence_weak_tt
+			}
+			if = {
+				limit = {
+					FROM = { check_variable = { var = SOV_partisans_controls value = 2 compare = equals } }
+				}
+				FROM = {
+					add_dynamic_modifier = {
+						modifier = SOV_partisans_activity_3
+					}
+					hidden_effect = {
+						remove_dynamic_modifier = {
+							modifier = SOV_partisans_activity_2
+						}
+					}
+				}
+				custom_effect_tooltip = SOV_partisan_influence_strong_tt
+			}
+			if = {
+				limit = {
+					FROM = { check_variable = { var = SOV_partisans_controls value = 3 compare = equals } }
+				}
+				custom_effect_tooltip = SOV_partisan_influence_total_tt
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						FROM = { check_variable = { var = SOV_partisans_controls value = 1 compare = equals } }
+						has_global_flag = SOV_propaganda_death_to_invaders_active_flag
+					}
+					FROM = { add_dynamic_modifier = { modifier = SOV_invaders_must_die } }
+				}
+				if = {
+					limit = {
+						FROM = { check_variable = { SOV_partisans_controls < 3 } }
+					}
+					FROM = {
+						add_to_variable = { var = SOV_partisans_controls value = 1 }
+					}
+				}
+			}
+		}
+	}
+	
+	generic_anti_partisans = {
+		
+		icon = {
+			key = sov_partisan_control_none
+			trigger = {
+				FROM = { check_variable = { var = SOV_partisans_controls value = 0 compare = equals } }
+			}
+		}
+		icon = {
+			key = sov_partisan_control_weak
+			trigger = {
+				FROM = { check_variable = { var = SOV_partisans_controls value = 1 compare = equals } }
+			}
+		}
+		icon = {
+			key = sov_partisan_control_strong
+			trigger = {
+				FROM = { check_variable = { var = SOV_partisans_controls value = 2 compare = equals } }
+			}
+		}
+		icon = {
+			key = sov_partisan_control_total
+			trigger = {
+				FROM = { check_variable = { var = SOV_partisans_controls value = 3 compare = greater_than_or_equals } }
+			}
+		}
+		
+		fire_only_once = no
+		on_map_mode = map_only
+		state_target = yes
+
+		target_trigger = {
+			FROM = {
+				is_owned_by = GER
+				is_core_of = SOV
+			}
+		}
+
+		target_root_trigger = {
+			has_completed_focus = GER_anti_partisan_operations
+			has_war_with = SOV
+		}
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			FROM = {
+				is_owned_by = GER
+				custom_trigger_tooltip = {
+					tooltip = GER_partisan_influence_trigger_tt
+					FROM = { check_variable = { var = SOV_partisans_controls value = 0 compare = greater_than } }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = GER_partisan_influence_trigger_2_tt
+				NOT = {
+					AND = {
+						has_country_flag = GER_partisan_down_infl_3
+						has_country_flag = GER_partisan_down_infl_2
+						has_country_flag = GER_partisan_down_infl_1
+					}
+				}
+			}
+			if = {
+				limit = {
+					FROM = { check_variable = { var = SOV_partisans_controls value = 3 compare = equals } }
+				}
+				divisions_in_state = { state = FROM size > 1 }
+				army_manpower_in_state = { state = FROM amount > 29999 }
+			}
+			if = {
+				limit = {
+					FROM = { check_variable = { var = SOV_partisans_controls value = 2 compare = equals } }
+				}
+				divisions_in_state = { state = FROM size > 1 }
+				army_manpower_in_state = { state = FROM amount > 19999 }
+			}
+			if = {
+				limit = {
+					FROM = { check_variable = { var = SOV_partisans_controls value = 1 compare = equals } }
+				}
+				divisions_in_state = { state = FROM size > 0 }
+				army_manpower_in_state = { state = FROM amount > 9999 }
+			}
+		}
+
+		visible = {
+			FROM = {
+				is_owned_by = GER
+				check_variable = { var = SOV_partisans_controls value = 0 compare = greater_than }
+			}
+		}
+		
+		cancel_trigger = {
+			if = {
+				limit = {
+					FROM = { check_variable = { var = SOV_partisans_controls value = 3 compare = equals } }
+				}
+				divisions_in_state = { state = FROM size < 2 }
+				army_manpower_in_state = { state = FROM amount < 30001 }
+			}
+			if = {
+				limit = {
+					FROM = { check_variable = { var = SOV_partisans_controls value = 2 compare = equals } }
+				}
+				divisions_in_state = { state = FROM size < 2 }
+				army_manpower_in_state = { state = FROM amount < 20001 }
+			}
+			if = {
+				limit = {
+					FROM = { check_variable = { var = SOV_partisans_controls value = 1 compare = equals } }
+				}
+				divisions_in_state = { state = FROM size < 1 }
+				army_manpower_in_state = { state = FROM amount < 10001 }
+			}
+		}
+		
+		days_remove = 14
+		
+		cost = 3
+		
+		modifier = {
+		}
+		
+		complete_effect = {
+			if = {
+				limit = {
+					has_country_flag = GER_partisan_down_infl_1
+					has_country_flag = GER_partisan_down_infl_2
+					NOT = { has_country_flag = GER_partisan_down_infl_3 }
+				}
+				set_country_flag = GER_partisan_down_infl_3
+			}
+			else_if = {
+				limit = {
+					has_country_flag = GER_partisan_down_infl_1
+					NOT = { has_country_flag = GER_partisan_down_infl_2 }
+				}
+				set_country_flag = GER_partisan_down_infl_2
+			}
+			else = {
+				set_country_flag = GER_partisan_down_infl_1
+			}
+			if = {
+				limit = {
+					FROM = { check_variable = { var = SOV_partisans_controls value = 3 compare = equals } }
+				}
+				FROM = {
+					add_dynamic_modifier = {
+						modifier = GER_anti_partisan_operation
+						days = 14
+					}
+				}
+			}
+			if = {
+				limit = {
+					FROM = { check_variable = { var = SOV_partisans_controls value = 2 compare = equals } }
+				}
+				FROM = {
+					add_dynamic_modifier = {
+						modifier = GER_anti_partisan_operation
+						days = 14
+					}
+				}
+			}
+			if = {
+				limit = {
+					FROM = { check_variable = { var = SOV_partisans_controls value = 1 compare = equals } }
+				}
+				FROM = {
+					add_dynamic_modifier = {
+						modifier = GER_anti_partisan_operation
+						days = 14
+					}
+				}
+			}
+		}
+		
+		remove_effect = {
+			custom_effect_tooltip = GER_down_partisan_influence_tt
+			if = {
+				limit = {
+					has_country_flag = GER_partisan_down_infl_1
+					NOT = { has_country_flag = GER_partisan_down_infl_2 }
+					NOT = { has_country_flag = GER_partisan_down_infl_3 }
+				}
+				clr_country_flag = GER_partisan_down_infl_1
+			}
+			else_if = {
+				limit = {
+					has_country_flag = GER_partisan_down_infl_1
+					has_country_flag = GER_partisan_down_infl_2
+					NOT = { has_country_flag = GER_partisan_down_infl_3 }
+				}
+				clr_country_flag = GER_partisan_down_infl_2
+			}
+			else = {
+				clr_country_flag = GER_partisan_down_infl_3
+			}
+			if = {
+				limit = {
+					FROM = { check_variable = { var = SOV_partisans_controls value = 0 compare = equals } }
+				}
+				FROM = { custom_effect_tooltip = SOV_partisan_influence_none_tt }
+			}
+			if = {
+				limit = {
+					FROM = { check_variable = { var = SOV_partisans_controls value = 1 compare = equals } }
+				}
+				FROM = {
+					remove_dynamic_modifier = {
+						modifier = SOV_partisans_activity_1
+					}
+				}
+				custom_effect_tooltip = SOV_partisan_influence_weak_tt
+			}
+			if = {
+				limit = {
+					FROM = { check_variable = { var = SOV_partisans_controls value = 2 compare = equals } }
+				}
+				FROM = {
+					remove_dynamic_modifier = {
+						modifier = SOV_partisans_activity_2
+					}
+					hidden_effect = {
+						add_dynamic_modifier = {
+							modifier = SOV_partisans_activity_1
+						}
+					}
+				}
+				custom_effect_tooltip = SOV_partisan_influence_strong_tt
+			}
+			if = {
+				limit = {
+					FROM = { check_variable = { var = SOV_partisans_controls value = 3 compare = equals } }
+				}
+				FROM = {
+					remove_dynamic_modifier = {
+						modifier = SOV_partisans_activity_3
+					}
+					hidden_effect = {
+						add_dynamic_modifier = {
+							modifier = SOV_partisans_activity_2
+						}
+					}
+				}
+				custom_effect_tooltip = SOV_partisan_influence_total_tt
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						FROM = { check_variable = { var = SOV_partisans_controls value = 2 compare = equals } }
+						FROM = { has_dynamic_modifier = { modifier = SOV_invaders_must_die } }
+					}
+					FROM = {
+						remove_dynamic_modifier = { modifier = SOV_invaders_must_die }
+					}
+				}
+				if = {
+					limit = {
+						FROM = { check_variable = { SOV_partisans_controls > 0 } }
+					}
+					FROM = {
+						subtract_from_variable = { var = SOV_partisans_controls value = 1 }
+					}
+				}
+			}
+		}
+	}
+}

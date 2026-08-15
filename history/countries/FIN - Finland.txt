@@ -1,0 +1,158 @@
+﻿capital = 111
+
+activate_mission = economy_fatigue_civilian_economy_mission
+activate_mission = economy_fatigue_export_focus_mission
+activate_mission = economy_fatigue_limited_conscription_mission
+
+oob = "FIN_1936"
+set_naval_oob = "00_FIN_vnr_naval"
+set_air_oob = "FIN_1936_air_bba"
+
+set_research_slots = 3
+
+set_stability = 0.8
+set_war_support = 0.8
+
+recruit_character = FIN_risto_heikki_ryti
+recruit_character = FIN_aimo_aaltonen
+recruit_character = FIN_vilho_annala
+recruit_character = FIN_kyosti_kallio
+recruit_character = FIN_carl_mannerheim
+recruit_character = FIN_erik_heinrichs
+recruit_character = FIN_vilho_petter_nenonen
+recruit_character = FIN_olavi_arho
+recruit_character = FIN_valio_porvari
+recruit_character = FIN_jarl_lundqvist
+recruit_character = FIN_hugo_osterman
+recruit_character = FIN_lauri_malmberg
+recruit_character = FIN_olavi_sarko
+recruit_character = FIN_vaino_valve
+recruit_character = FIN_akseli_anttila
+recruit_character = FIN_harald_ohquist
+recruit_character = FIN_eero_rahola
+recruit_character = FIN_karl_oesch
+recruit_character = FIN_lauri_tiainen
+recruit_character = FIN_ralf_torngren
+recruit_character = FIN_antti_hackzell
+recruit_character = FIN_ake_henrik_gartz
+
+
+add_ideas = {
+	limited_conscription
+}
+
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	support_weapons = 1
+	gw_artillery = 1			
+	interwar_antiair = 1
+	tech_support = 1		
+	tech_recon = 1
+	tech_engineers = 1
+	basic_train = 1
+	interwar_antitank = 1
+	heavy_artillery_1 = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	
+	bba_early_transport_plane = 1
+	
+	basic_naval_mines = 1
+	submarine_mine_laying = 1
+	early_ship_hull_light = 1
+	early_ship_hull_submarine = 1
+	early_ship_hull_cruiser = 1
+	basic_battery = 1
+	coastal_defense_ships = 1
+	early_cruiser_armor = 1
+}
+
+
+set_convoys = 5
+
+add_ideas = {
+	limited_conscription
+	sisu
+}
+
+set_politics = {
+	ruling_party = neutrality
+	last_election = "1933.7.1"
+	election_frequency = 36
+	elections_allowed = yes
+}
+set_popularities = {
+	democratic = 10
+	fascism = 10
+	communism = 1
+	neutrality = 79
+}
+
+### LAND VARIANTS ###
+
+### AIR VARIANTS ###
+
+### NAVY VARIANTS ###
+
+    # heavy_cruiser
+    create_equipment_variant = {
+        name = "Väinämöinen Class"
+		parent_version = 0
+		role_icon_index = 19
+        type = vnr_ship_hull_cruiser_coastal_defense_ship
+        name_group = FIN_CA_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_heavy_battery_small_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+            fixed_ship_secondaries_slot = ship_secondaries_1
+			rear_1_custom_slot = ship_heavy_battery_small_1
+        }
+    }
+    # destroyer
+    create_equipment_variant = {
+        name = "Golub/Filin Class"
+		parent_version = 0
+		role_icon_index = 47
+        type = vnr_ship_hull_light_1
+        name_group = FIN_DD_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = empty
+            fixed_ship_role_slot = ship_hull_light_role_ff
+			rear_1_custom_slot = ship_light_battery_1
+        }
+    }
+    # submarine
+    create_equipment_variant = {
+        name = "Vesikko Class"
+		parent_version = 0
+		role_icon_index = 37
+        type = vnr_ship_hull_submarine_1
+        name_group = DEN_SS_HISTORICAL
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+            fixed_ship_armor_slot = pressure_hull_1
+			rear_1_custom_slot = ship_torpedo_sub_1
+        }
+    }
+    create_equipment_variant = {
+        name = "Vetehinen Class"
+		parent_version = 0
+		role_icon_index = 37
+        type = vnr_ship_hull_submarine_1
+        name_group = DEN_SS_HISTORICAL
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+            fixed_ship_armor_slot = pressure_hull_1
+			rear_1_custom_slot = empty
+        }
+    }

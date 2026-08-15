@@ -1,0 +1,223 @@
+sub_units = {
+	signal_company = {
+		abbreviation = "SIG"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+		affects_speed = no
+
+		type = {
+			infantry
+			support
+		}
+		
+		group = support
+		
+		categories = {
+			category_support_battalions
+			category_army
+		}
+	
+		combat_width = 0
+		regimental = no
+		####STATS###
+		manpower = 600
+		max_organisation = 20
+		max_strength = 20
+		default_morale = 0
+		weight = 0.5
+		supply_consumption = 0.06
+		training_time = 90
+		
+		#transport = motorized_equipment
+		can_be_parachuted = yes
+	
+		need = {
+			#motorized_equipment = 20
+			support_equipment = 50
+		}
+		essential = {
+			support_equipment
+		}
+		
+		initiative = 0.16
+		
+		plains = {
+		    attack = 0.02
+		    defence = 0.02
+		}
+		desert = {
+		    attack = 0.02
+		    defence = 0.02
+		}
+		hills = {
+		    attack = 0.02
+		    defence = 0.03
+		}
+		forest = {
+			attack = 0.02
+		    defence = 0.02
+		}
+		urban = {
+			attack = 0.02
+			defence = 0.01
+		}
+		mountain = {
+			attack = 0.01
+		    defence = 0.01
+		}
+		jungle = {
+			attack = 0.02
+		    defence = 0.02
+		}
+		marsh = {
+			attack = 0.01
+		    defence = 0.02
+		}
+		marsh_forest = {
+			attack = 0.01
+		    defence = 0.01
+		}
+		same_support_type = signal_company
+	}
+	
+	mot_signal_company = {
+		abbreviation = "SIG"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+
+		type = {
+			infantry
+			support
+		}
+		
+		group = support
+		regimental = no
+		categories = {
+			category_support_battalions
+			category_army
+		}
+	
+		combat_width = 0
+	
+		####STATS###
+		manpower = 750
+		max_organisation = 20
+		max_strength = 25
+		default_morale = 0
+		weight = 0.5
+		supply_consumption = 0.06
+		training_time = 90
+		
+		transport = motorized_equipment
+		#can_be_parachuted = yes
+	
+		need = {
+			motorized_equipment = 25
+			support_equipment = 50
+		}
+		essential = {
+			support_equipment
+		}
+		
+		initiative = 0.20
+		
+		plains = {
+		    attack = 0.02
+		    defence = 0.02
+		}
+		desert = {
+		    attack = 0.02
+		    defence = 0.02
+		}
+		hills = {
+		    attack = 0.02
+		    defence = 0.03
+		}
+		forest = {
+			attack = 0.02
+		    defence = 0.02
+		}
+		urban = {
+			attack = 0.02
+			defence = 0.01
+		}
+		mountain = {
+			attack = 0.01
+		    defence = 0.01
+		}
+		jungle = {
+			attack = 0.02
+		    defence = 0.02
+		}
+		marsh = {
+			attack = 0.01
+		    defence = 0.02
+		}
+		marsh_forest = {
+			attack = 0.01
+		    defence = 0.01
+		}
+		same_support_type = signal_company
+	}
+	
+	armored_signal = {
+		abbreviation = "ASC"
+		sprite = armored_signal
+		map_icon_category = armored
+		priority = 0
+		ai_priority = 0
+		active = no
+		affects_speed = no
+
+		type = {
+			armor
+			support
+		}
+		divisional = no
+		allowed_battalion_groups = { armor }
+		group = support
+		
+		categories = {
+			category_support_battalions
+			category_army
+		}
+
+		battalion_mult = {
+			category = category_all_armor
+			breakthrough = 0.1
+		}
+		battalion_mult = {
+			category = category_all_armor
+			max_organisation = 0.1
+		}
+
+		####STATS###
+		manpower = 850
+		max_organisation = 20
+		max_strength = 28
+		default_morale = 0
+		weight = 1
+		supply_consumption = 0.12
+		training_time = 120
+	
+		initiative = 0.24
+		
+		need = {
+			armored_support_vehicle = 25
+			support_equipment = 50
+		}
+		
+		essential = {
+			support_equipment
+			armored_support_vehicle
+		}
+
+		same_support_type = signal_company
+	}
+}

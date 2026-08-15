@@ -1,0 +1,1378 @@
+                                                                                                                                          
+ ######  #         ##    #    #  ######  #####  #    #  #####    ####   #    #  ######  #####       #####    ##    #    #  #    #   ####  
+ #       #        #  #   ##  ##  #         #    #    #  #    #  #    #  #    #  #       #    #        #     #  #   ##   #  #   #   #      
+ #####   #       #    #  # ## #  #####     #    ######  #    #  #    #  #    #  #####   #    #        #    #    #  # #  #  ####     ####  
+ #       #       ######  #    #  #         #    #    #  #####   #    #  # ## #  #       #####         #    ######  #  # #  #  #         # 
+ #       #       #    #  #    #  #         #    #    #  #   #   #    #  ##  ##  #       #   #         #    #    #  #   ##  #   #   #    # 
+ #       ######  #    #  #    #  ######    #    #    #  #    #   ####   #    #  ######  #    #        #    #    #  #    #  #    #   ####  
+                                                                                                                                          
+sp_land_amphibious_drive = {
+	specialization = specialization_land
+
+	project_tags = sp_tag_tank
+
+	ai_will_do = {
+		base = 1
+	}
+	
+	available = {
+		FROM = {
+			OR = {
+				has_tech = improved_medium_tank_chassis
+				has_tech = advanced_light_tank_chassis
+			}
+		}
+	}
+
+	breakthrough_cost = {
+		specialization_land = 1
+	}
+	
+	prototype_time = sp_time.prototype.short
+
+	complexity = sp_complexity.large
+	
+	project_output = {
+		country_effects = {
+			add_design_template_bonus = {
+				name = sp_land_amphibious
+				uses = 1
+				cost_factor = 1
+				equipment = light_tank_amphibious_chassis
+				equipment = medium_tank_amphibious_chassis
+				equipment = heavy_tank_amphibious_chassis
+			}
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_TECH
+				TECH = amphibious_drive	
+			}
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_land_generic_reward_scientist_xp_1
+		sp_land_generic_reward_scientist_xp_2
+		sp_land_generic_reward_scientist_xp_3
+		sp_land_generic_reward_army_xp_1
+		sp_land_generic_reward_army_xp_2
+		sp_land_generic_reward_army_xp_3
+		sp_land_generic_reward_major_progress_1
+		sp_land_generic_reward_major_progress_2
+		sp_land_generic_reward_major_progress_3
+		sp_land_generic_reward_test_failure_1
+		sp_land_generic_reward_test_failure_2
+		sp_land_generic_reward_test_failure_3
+		sp_land_generic_reward_resource_scarcity
+	}
+}
+
+sp_land_flamethrower_tank = {
+	specialization = specialization_land
+
+	project_tags = sp_tag_tank
+
+	ai_will_do = {
+		base = 1
+	}
+	
+	available = {
+		FROM = {
+			has_tech = tech_engineers
+		}
+	}
+
+	breakthrough_cost = {
+		specialization_land = 2
+	}
+	
+	prototype_time = sp_time.prototype.medium
+
+	complexity = sp_complexity.small
+	
+	project_output = {
+		country_effects = {
+			add_design_template_bonus = {
+				name = sp_land_flamethrower_tank
+				uses = 1
+				cost_factor = 1
+				equipment = light_tank_flame_chassis
+				equipment = medium_tank_flame_chassis
+				equipment = heavy_tank_flame_chassis
+			}
+			add_design_template_bonus = {
+				name = sp_land_flamethrower_tank
+				uses = 2
+				cost_factor = 0.5
+				equipment = light_tank_flame_chassis
+				equipment = medium_tank_flame_chassis
+				equipment = heavy_tank_flame_chassis
+			}
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_TECH
+				TECH = sp_armored_advanced_flamethrower_tech	
+			}
+		}
+
+		enable_equipment_modules = {
+			flamethrower 
+		}
+
+		enable_subunits = { 
+			light_flame_tank
+			medium_flame_tank
+			heavy_flame_tank
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_land_generic_reward_scientist_xp_1
+		sp_land_generic_reward_scientist_xp_2
+		sp_land_generic_reward_scientist_xp_3
+		sp_land_generic_reward_army_xp_1
+		sp_land_generic_reward_army_xp_2
+		sp_land_generic_reward_army_xp_3
+		sp_land_generic_reward_major_progress_1
+		sp_land_generic_reward_major_progress_2
+		sp_land_generic_reward_major_progress_3
+		sp_land_generic_reward_test_failure_1
+		sp_land_generic_reward_test_failure_2
+		sp_land_generic_reward_test_failure_3
+		sp_land_generic_reward_resource_scarcity
+	}
+}
+
+
+  #####                                                                       #                                                         #     #                                                    
+ #     #  #####   ######   ####   #    ##    #       #   ####   #####        # #    #####   #    #   ####   #####   ######  #####       #     #  ######  #    #  #   ####   #       ######   ####  
+ #        #    #  #       #    #  #   #  #   #       #  #         #         #   #   #    #  ##  ##  #    #  #    #  #       #    #      #     #  #       #    #  #  #    #  #       #       #      
+  #####   #    #  #####   #       #  #    #  #       #   ####     #        #     #  #    #  # ## #  #    #  #    #  #####   #    #      #     #  #####   ######  #  #       #       #####    ####  
+       #  #####   #       #       #  ######  #       #       #    #        #######  #####   #    #  #    #  #####   #       #    #       #   #   #       #    #  #  #       #       #            # 
+ #     #  #       #       #    #  #  #    #  #       #  #    #    #        #     #  #   #   #    #  #    #  #   #   #       #    #        # #    #       #    #  #  #    #  #       #       #    # 
+  #####   #       ######   ####   #  #    #  ######  #   ####     #        #     #  #    #  #    #   ####   #    #  ######  #####          #     ######  #    #  #   ####   ######  ######   ####  
+                                                                                                                                                                                                
+
+sp_land_military_engineering_vehicles = {
+	specialization = specialization_land
+
+	project_tags = sp_tag_tank
+	
+	available = {
+		FROM = {
+			has_tech = tech_support_2
+		}
+	}
+	
+	prototype_time = sp_time.prototype.short
+
+	complexity = sp_complexity.small
+
+	breakthrough_cost = {
+		specialization_land = 1
+	}
+	
+	project_output = {
+		enable_equipments = {
+			armored_support_vehicle_1
+		}
+
+		enable_subunits = {
+			armored_engineer
+			armored_maintenance
+			armored_signal
+			pontoneer_support
+		}
+
+		country_effects = {
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_TECH
+				TECH = sp_armored_engineer_tech
+			}
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_TECH
+				TECH = sp_armored_maintenance_tech
+			}
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_TECH
+				TECH = sp_armored_signal_tech
+			}
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_TECH
+				TECH = sp_armored_motorized_military_police_tech
+			}
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_land_generic_reward_scientist_xp_1
+		sp_land_generic_reward_scientist_xp_2
+		sp_land_generic_reward_scientist_xp_3
+		sp_land_generic_reward_army_xp_1
+		sp_land_generic_reward_army_xp_2
+		sp_land_generic_reward_army_xp_3
+		sp_land_generic_reward_major_progress_1
+		sp_land_generic_reward_major_progress_2
+		sp_land_generic_reward_major_progress_3
+		sp_land_generic_reward_test_failure_1
+		sp_land_generic_reward_test_failure_2
+		sp_land_generic_reward_test_failure_3
+		sp_land_generic_reward_armor_tech_1
+		sp_land_generic_reward_armor_tech_2
+		sp_land_generic_reward_armor_tech_3
+		sp_land_generic_reward_engine_bonus_1
+		sp_land_generic_reward_engine_bonus_2
+		sp_land_generic_reward_engine_bonus_3
+		sp_land_generic_reward_resource_scarcity
+	}
+}
+
+sp_land_alloying_armor = {
+	specialization = specialization_land
+
+	project_tags = sp_tag_tank
+	
+	available = {
+		FROM = {
+			has_tech = armor_tech_1
+		}
+	}
+	
+	prototype_time = sp_time.prototype.medium
+
+	complexity = sp_complexity.large
+
+	breakthrough_cost = {
+		specialization_land = 2
+	}
+	
+	resource_cost = {
+		resources = { 
+			steel = 100
+			tungsten = 100
+			chromium = 100
+		}
+	}
+	
+	project_output = {
+		country_effects = {
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_TECH
+				TECH = alloying_tech_1
+			}
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_land_generic_reward_scientist_xp_1
+		sp_land_generic_reward_scientist_xp_2
+		sp_land_generic_reward_scientist_xp_3
+		sp_land_generic_reward_army_xp_1
+		sp_land_generic_reward_army_xp_2
+		sp_land_generic_reward_army_xp_3
+		sp_land_generic_reward_major_progress_1
+		sp_land_generic_reward_major_progress_2
+		sp_land_generic_reward_major_progress_3
+		sp_land_generic_reward_test_failure_1
+		sp_land_generic_reward_test_failure_2
+		sp_land_generic_reward_test_failure_3
+		sp_land_generic_reward_armor_tech_1
+		sp_land_generic_reward_armor_tech_2
+		sp_land_generic_reward_armor_tech_3
+		sp_land_generic_reward_engine_bonus_1
+		sp_land_generic_reward_engine_bonus_2
+		sp_land_generic_reward_engine_bonus_3
+		sp_land_generic_reward_resource_scarcity
+	}
+}
+
+sp_land_stabilizator = {
+	specialization = specialization_land
+	icon = GFX_sp_stabilizer
+
+	project_tags = sp_tag_tank
+	
+	available = {
+		FROM = {
+			has_tech = improved_computing_machine
+		}
+	}
+	
+	prototype_time = sp_time.prototype.medium
+
+	complexity = sp_complexity.medium
+
+	breakthrough_cost = {
+		specialization_land = 2
+	}
+	
+	resource_cost = {
+		resources = { 
+			steel = 80
+			tungsten = 120
+			chromium = 40
+		}
+	}
+	
+	project_output = {
+		enable_equipment_modules = {
+			stabilizer 
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_land_generic_reward_scientist_xp_1
+		sp_land_generic_reward_scientist_xp_2
+		sp_land_generic_reward_scientist_xp_3
+		sp_land_generic_reward_army_xp_1
+		sp_land_generic_reward_army_xp_2
+		sp_land_generic_reward_army_xp_3
+		sp_land_generic_reward_major_progress_1
+		sp_land_generic_reward_major_progress_2
+		sp_land_generic_reward_major_progress_3
+		sp_land_generic_reward_test_failure_1
+		sp_land_generic_reward_test_failure_2
+		sp_land_generic_reward_test_failure_3
+		sp_land_generic_reward_armor_tech_1
+		sp_land_generic_reward_armor_tech_2
+		sp_land_generic_reward_armor_tech_3
+		sp_land_generic_reward_engine_bonus_1
+		sp_land_generic_reward_engine_bonus_2
+		sp_land_generic_reward_engine_bonus_3
+		sp_land_generic_reward_resource_scarcity
+	}
+}
+
+sp_land_improved_stabilizator = {
+	specialization = specialization_land
+
+	project_tags = sp_tag_tank
+	
+	available = {
+		FROM = {
+			has_tech = advanced_computing_machine
+		}
+	}
+	
+	special_project_parent = {
+		sp_land_stabilizator
+	}
+	
+	prototype_time = sp_time.prototype.medium
+
+	complexity = sp_complexity.large
+
+	breakthrough_cost = {
+		specialization_land = 2
+	}
+	
+	resource_cost = {
+		resources = { 
+			steel = 80
+			tungsten = 160
+			chromium = 120
+		}
+	}
+	
+	project_output = {
+		enable_equipment_modules = {
+			stabilizer_2
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_land_generic_reward_scientist_xp_1
+		sp_land_generic_reward_scientist_xp_2
+		sp_land_generic_reward_scientist_xp_3
+		sp_land_generic_reward_army_xp_1
+		sp_land_generic_reward_army_xp_2
+		sp_land_generic_reward_army_xp_3
+		sp_land_generic_reward_major_progress_1
+		sp_land_generic_reward_major_progress_2
+		sp_land_generic_reward_major_progress_3
+		sp_land_generic_reward_test_failure_1
+		sp_land_generic_reward_test_failure_2
+		sp_land_generic_reward_test_failure_3
+		sp_land_generic_reward_armor_tech_1
+		sp_land_generic_reward_armor_tech_2
+		sp_land_generic_reward_armor_tech_3
+		sp_land_generic_reward_engine_bonus_1
+		sp_land_generic_reward_engine_bonus_2
+		sp_land_generic_reward_engine_bonus_3
+		sp_land_generic_reward_resource_scarcity
+	}
+}
+
+sp_land_autoloader = {
+	specialization = specialization_land
+
+	project_tags = sp_tag_tank
+	
+	available = {
+		FROM = {
+			OR = {
+				has_tech = antiair5
+				has_tech = artillery4
+				has_tech = antitank5
+			}
+		}
+	}
+	
+	prototype_time = sp_time.prototype.long
+
+	complexity = sp_complexity.large
+
+	breakthrough_cost = {
+		specialization_land = 3
+	}
+	
+	resource_cost = {
+		resources = { 
+			steel = 120
+			tungsten = 120
+			chromium = 40
+		}
+	}
+	
+	project_output = {
+		enable_equipment_modules = {
+			auto_loader
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_land_generic_reward_scientist_xp_1
+		sp_land_generic_reward_scientist_xp_2
+		sp_land_generic_reward_scientist_xp_3
+		sp_land_generic_reward_army_xp_1
+		sp_land_generic_reward_army_xp_2
+		sp_land_generic_reward_army_xp_3
+		sp_land_generic_reward_major_progress_1
+		sp_land_generic_reward_major_progress_2
+		sp_land_generic_reward_major_progress_3
+		sp_land_generic_reward_test_failure_1
+		sp_land_generic_reward_test_failure_2
+		sp_land_generic_reward_test_failure_3
+		sp_land_generic_reward_armor_tech_1
+		sp_land_generic_reward_armor_tech_2
+		sp_land_generic_reward_armor_tech_3
+		sp_land_generic_reward_engine_bonus_1
+		sp_land_generic_reward_engine_bonus_2
+		sp_land_generic_reward_engine_bonus_3
+		sp_land_generic_reward_resource_scarcity
+	}
+}
+
+sp_fluid_autowelding = {
+	specialization = specialization_land
+
+	project_tags = sp_tag_tank
+	
+	available = {
+		FROM = {
+			has_tech = armor_tech_2
+			has_tech = alloying_tech_2
+			tag = SOV
+		}
+	}
+	
+	special_project_parent = {
+		sp_land_alloying_armor
+	}
+	
+	prototype_time = sp_time.prototype.medium
+
+	complexity = sp_complexity.large
+	
+	resource_cost = {
+		resources = { 
+			coal = 100
+			steel = 200
+			tungsten = 50
+			chromium = 50
+		}
+	}
+
+	breakthrough_cost = {
+		specialization_land = 2
+	}
+	
+	project_output = {
+		country_effects = {
+			country_event = { id = sov_armor.800 }
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_land_generic_reward_scientist_xp_1
+		sp_land_generic_reward_scientist_xp_2
+		sp_land_generic_reward_scientist_xp_3
+		sp_land_generic_reward_army_xp_1
+		sp_land_generic_reward_army_xp_2
+		sp_land_generic_reward_army_xp_3
+		sp_land_generic_reward_major_progress_1
+		sp_land_generic_reward_major_progress_2
+		sp_land_generic_reward_major_progress_3
+		sp_land_generic_reward_test_failure_1
+		sp_land_generic_reward_test_failure_2
+		sp_land_generic_reward_test_failure_3
+		sp_land_generic_reward_armor_tech_1
+		sp_land_generic_reward_armor_tech_2
+		sp_land_generic_reward_armor_tech_3
+		sp_land_generic_reward_engine_bonus_1
+		sp_land_generic_reward_engine_bonus_2
+		sp_land_generic_reward_engine_bonus_3
+		sp_land_generic_reward_resource_scarcity
+	}
+}
+
+sp_antitank_rockets = {
+	specialization = specialization_land
+	icon = GFX_sp_anti_tank_rockets
+
+	project_tags = sp_tag_artillery
+	
+	available = {
+		FROM = {
+			has_tech = infantry_at
+		}
+	}
+	
+	prototype_time = sp_time.prototype.medium
+
+	complexity = sp_complexity.large
+	
+	resource_cost = {
+		resources = {
+			steel = 250
+			tungsten = 100
+		}
+	}
+
+	breakthrough_cost = {
+		specialization_land = 3
+	}
+	
+	project_output = {
+		enable_equipments = {
+			antitank_4 
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_land_generic_reward_scientist_xp_1
+		sp_land_generic_reward_scientist_xp_2
+		sp_land_generic_reward_scientist_xp_3
+		sp_land_generic_reward_army_xp_1
+		sp_land_generic_reward_army_xp_2
+		sp_land_generic_reward_army_xp_3
+		sp_land_generic_reward_major_progress_1
+		sp_land_generic_reward_major_progress_2
+		sp_land_generic_reward_major_progress_3
+		sp_land_generic_reward_test_failure_1
+		sp_land_generic_reward_test_failure_2
+		sp_land_generic_reward_test_failure_3
+		sp_land_generic_reward_armor_tech_1
+		sp_land_generic_reward_armor_tech_2
+		sp_land_generic_reward_armor_tech_3
+		sp_land_generic_reward_engine_bonus_1
+		sp_land_generic_reward_engine_bonus_2
+		sp_land_generic_reward_engine_bonus_3
+		sp_land_generic_reward_resource_scarcity
+	}
+}
+
+
+                                                                                             
+      #    #   ####   #####   ######  #####   #    #      #####    ##    #    #  #    #   ####  
+      ##  ##  #    #  #    #  #       #    #  ##   #        #     #  #   ##   #  #   #   #      
+      # ## #  #    #  #    #  #####   #    #  # #  #        #    #    #  # #  #  ####     ####  
+      #    #  #    #  #    #  #       #####   #  # #        #    ######  #  # #  #  #         # 
+      #    #  #    #  #    #  #       #   #   #   ##        #    #    #  #   ##  #   #   #    # 
+      #    #   ####   #####   ######  #    #  #    #        #    #    #  #    #  #    #   ####  
+                                                                                             
+
+
+
+                                                                                                                                                                                                        
+   ##    #####   #    #    ##    #    #   ####   ######  #####         ##    #####   #####  #  #       #       ######  #####   #   #      #####   #####    ####        #  ######   ####   #####   ####  
+  #  #   #    #  #    #   #  #   ##   #  #    #  #       #    #       #  #   #    #    #    #  #       #       #       #    #   # #       #    #  #    #  #    #       #  #       #    #    #    #      
+ #    #  #    #  #    #  #    #  # #  #  #       #####   #    #      #    #  #    #    #    #  #       #       #####   #    #    #        #    #  #    #  #    #       #  #####   #         #     ####  
+ ######  #    #  #    #  ######  #  # #  #       #       #    #      ######  #####     #    #  #       #       #       #####     #        #####   #####   #    #       #  #       #         #         # 
+ #    #  #    #   #  #   #    #  #   ##  #    #  #       #    #      #    #  #   #     #    #  #       #       #       #   #     #        #       #   #   #    #  #    #  #       #    #    #    #    # 
+ #    #  #####     ##    #    #  #    #   ####   ######  #####       #    #  #    #    #    #  ######  ######  ######  #    #    #        #       #    #   ####    ####   ######   ####     #     ####  
+                                                                                                                                                                                               
+
+sp_land_super_heavy_howitzer = {
+	specialization = specialization_land
+
+	project_tags = sp_tag_artillery
+	
+	available = {
+		FROM = {
+			has_tech = heavy_artillery_1
+		}
+	}
+	
+	prototype_time = sp_time.prototype.short
+
+	complexity = sp_complexity.medium
+
+	breakthrough_cost = {
+		specialization_land = 2
+	}
+
+	resource_cost = {
+		resources = { 
+			steel = 120
+			tungsten = 60
+			chromium = 30
+		}
+	}
+	
+	project_output = {
+		enable_subunits = {
+			super_heavy_artillery
+		}
+
+		enable_equipments = {
+			super_heavy_artillery_equipment_1
+		}
+
+		country_effects = {
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_TECH_WITH_EXTRA_TECH
+				TECH = sp_artillery_rocket_assisted_projectiles_tech
+				EXTRA_TECH = experimental_rockets
+			}
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_land_generic_reward_scientist_xp_1
+		sp_land_generic_reward_scientist_xp_2
+		sp_land_generic_reward_scientist_xp_3
+		sp_land_generic_reward_army_xp_1
+		sp_land_generic_reward_army_xp_2
+		sp_land_generic_reward_army_xp_3
+		sp_land_generic_reward_major_progress_1
+		sp_land_generic_reward_major_progress_2
+		sp_land_generic_reward_major_progress_3
+		sp_land_generic_reward_test_failure_1
+		sp_land_generic_reward_test_failure_2
+		sp_land_generic_reward_test_failure_3
+		sp_land_generic_reward_artillery_tech_1
+		sp_land_generic_reward_artillery_tech_2
+		sp_land_generic_reward_artillery_tech_3
+		sp_land_generic_reward_artillery_bonus_1
+		sp_land_generic_reward_artillery_bonus_2
+		sp_land_generic_reward_artillery_bonus_3
+		sp_land_generic_reward_resource_scarcity
+		sp_land_generic_reward_critical_failure
+	}
+
+	unique_prototype_rewards = {
+
+		sp_land_reward_super_heavy_howitzer_focus_preference = {
+			fire_only_once = yes
+
+			threshold = { 
+				min = 30
+				max = 100
+			}
+
+			weight = {
+				base = 50
+			}
+
+			option = {
+				token = sp_land_reward_option_super_heavy_howitzer_focus_preference_balance
+				iteration_output = {
+					country_effects = {
+						custom_effect_tooltip = {
+							localization_key = generic_no_effects_to_equipment_tt
+							EQUIPMENT = super_heavy_artillery_equipment_1
+						}
+					}
+				}
+			}
+
+			option = {
+				token = sp_land_reward_option_super_heavy_howitzer_focus_preference_firepower
+				iteration_output = {
+					equipment_bonus = {
+						super_heavy_artillery_equipment_1 = {
+							build_cost_ic = 0.1
+							soft_attack = 0.05
+							additional_collateral_damage = 0.1
+						}
+					}
+					country_effects = {
+					}
+				}
+			}
+
+			option = {
+				token = sp_land_reward_option_super_heavy_howitzer_focus_preference_production
+				iteration_output = {
+					equipment_bonus = {
+						super_heavy_artillery_equipment_1 = {
+							build_cost_ic = -0.15
+							soft_attack = -0.05
+							additional_collateral_damage = -0.1
+						}
+					}
+					country_effects = {
+					}
+				}
+			}
+		}
+	}
+}
+
+sp_land_self_propelled_super_heavy_howitzer = {
+	specialization = specialization_land
+
+	project_tags = sp_tag_artillery
+
+	special_project_parent = {
+		sp_land_military_engineering_vehicles
+		sp_land_super_heavy_howitzer
+	}
+	
+	prototype_time = sp_time.prototype.medium
+
+	complexity = sp_complexity.medium
+
+	breakthrough_cost = {
+		specialization_land = 2
+	}
+
+	resource_cost = {
+		resources = { 
+			steel = 160
+			tungsten = 80
+			chromium = 40
+		}
+	}
+	
+	project_output = {
+		country_effects = {
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_TECH
+				TECH = sp_artillery_purpose_built_gun_motor_carriages_tech
+			}
+		}
+		
+		enable_subunits = {
+			self_propelled_super_heavy_artillery
+		}
+
+		enable_equipments = {
+			self_propelled_super_heavy_artillery_equipment_1
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_land_generic_reward_scientist_xp_1
+		sp_land_generic_reward_scientist_xp_2
+		sp_land_generic_reward_scientist_xp_3
+		sp_land_generic_reward_army_xp_1
+		sp_land_generic_reward_army_xp_2
+		sp_land_generic_reward_army_xp_3
+		sp_land_generic_reward_major_progress_1
+		sp_land_generic_reward_major_progress_2
+		sp_land_generic_reward_major_progress_3
+		sp_land_generic_reward_test_failure_1
+		sp_land_generic_reward_test_failure_2
+		sp_land_generic_reward_test_failure_3
+		sp_land_generic_reward_artillery_tech_1
+		sp_land_generic_reward_artillery_tech_2
+		sp_land_generic_reward_artillery_tech_3
+		sp_land_generic_reward_artillery_bonus_1
+		sp_land_generic_reward_artillery_bonus_2
+		sp_land_generic_reward_artillery_bonus_3
+		sp_land_generic_reward_resource_scarcity
+		sp_land_generic_reward_critical_failure
+	}
+
+	unique_prototype_rewards = {
+
+		sp_land_reward_self_propelled_super_heavy_howitzer_focus_preference = {
+			fire_only_once = yes
+
+			threshold = { 
+				min = 30
+				max = 100
+			}
+
+			weight = {
+				base = 50
+			}
+
+			option = {
+				token = sp_land_reward_option_self_propelled_super_heavy_howitzer_focus_preference_balance
+				iteration_output = {
+					country_effects = {
+						custom_effect_tooltip = {
+							localization_key = generic_no_effects_to_equipment_tt
+							EQUIPMENT = self_propelled_super_heavy_artillery_equipment_1
+						}
+					}
+				}
+			}
+
+			option = {
+				token = sp_land_reward_option_self_propelled_super_heavy_howitzer_focus_preference_firepower
+				iteration_output = {
+					equipment_bonus = {
+						self_propelled_super_heavy_artillery_equipment_1 = {
+							build_cost_ic = 0.1
+							soft_attack = 0.05
+							additional_collateral_damage = 0.1
+						}
+					}
+				}
+			}
+
+			option = {
+				token = sp_land_reward_option_self_propelled_super_heavy_howitzer_focus_preference_production
+				iteration_output = {
+					equipment_bonus = {
+						self_propelled_super_heavy_artillery_equipment_1 = {
+							build_cost_ic = -0.15
+							soft_attack = -0.05
+							additional_collateral_damage = -0.1
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+##     ## ########  ######      ###       ########  #######  ########  ######## 
+###   ### ##       ##    ##    ## ##      ##       ##     ## ##     ##    ##    
+#### #### ##       ##         ##   ##     ##       ##     ## ##     ##    ##    
+## ### ## ######   ##   #### ##     ##    ######   ##     ## ########     ##    
+##     ## ##       ##    ##  #########    ##       ##     ## ##   ##      ##    
+##     ## ##       ##    ##  ##     ##    ##       ##     ## ##    ##     ##    
+##     ## ########  ######   ##     ##    ##        #######  ##     ##    ##
+
+sp_land_stronghold_network = {
+	specialization = specialization_land
+
+	project_tags = sp_tag_artillery
+	
+	available = {
+		FROM = {
+			has_tech = defence_works3
+		}
+	}
+	
+	prototype_time = sp_time.prototype.long
+
+	complexity = sp_complexity.medium
+
+	breakthrough_cost = {
+		specialization_land = 2
+	}
+
+	resource_cost = {
+		resources = { 
+			steel = 80
+			chromium = 20
+			tungsten = 20
+		}
+	}
+	
+	project_output = {
+		country_effects = {
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = SP_UNLOCK_BUILDING_ICON_DESC
+					BUILDING = stronghold_network
+					BUILDING_DESCRIPTION = stronghold_network_desc
+					ICON_FRAME = 23
+				}
+				set_technology = {
+					stronghold_network_tech = 1
+					popup = no
+				}
+			}
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_land_generic_reward_scientist_xp_1
+		sp_land_generic_reward_scientist_xp_2
+		sp_land_generic_reward_scientist_xp_3
+		sp_land_generic_reward_army_xp_1
+		sp_land_generic_reward_army_xp_2
+		sp_land_generic_reward_army_xp_3
+		sp_land_generic_reward_major_progress_1
+		sp_land_generic_reward_major_progress_2
+		sp_land_generic_reward_major_progress_3
+		sp_land_generic_reward_test_failure_1
+		sp_land_generic_reward_test_failure_2
+		sp_land_generic_reward_test_failure_3
+		sp_land_generic_reward_critical_failure
+	}
+
+	unique_prototype_rewards = {
+		sp_land_reward_stronghold_network_structural_weakness_discovered = {
+			fire_only_once = yes
+
+			threshold = { 
+				min = 20
+				max = 70
+			}
+
+			weight = {
+				base = 1
+				modifier = {
+					factor = 0
+					has_project_flag = sp_land_stronghold_network_structural_weakness_discovered_flag #Used in other unique rewards to prevent multiple structural failures
+				}
+			}
+
+			option = {
+				token = sp_land_reward_option_stronghold_network_structural_weakness_discovered
+				iteration_output = {
+					country_effects = {
+						FROM = {
+							add_project_progress_ratio = constant:sp_progress.loss.medium
+							set_project_flag = sp_land_stronghold_network_structural_weakness_discovered_flag #Used in other unique rewards to prevent multiple structural failures
+						}
+					}
+				}
+			}
+		}
+
+		sp_land_reward_stronghold_network_delayed_by_concrete_shortage = {
+			fire_only_once = yes
+
+			threshold = { 
+				min = 0
+				max = 90
+			}
+
+			weight = {
+				base = 1
+			}
+
+			option = {
+				token = sp_land_reward_option_stronghold_network_delayed_by_concrete_shortage
+				iteration_output = {
+					country_effects = {
+						FROM = {
+							add_project_progress_ratio = constant:sp_progress.loss.low
+						}
+					}
+					scientist_effects = {
+						add_scientist_xp = {
+							experience = constant:sp_scientist_xp_gain.low
+							specialization = specialization_land
+						}
+					}
+				}
+			}
+		}
+
+		sp_land_reward_stronghold_network_underground_rail_systems = {
+			fire_only_once = yes
+
+			threshold = { 
+				min = 30
+				max = 100
+			}
+
+			weight = {
+				base = 2
+			}
+
+			option = {
+				token = sp_land_reward_option_stronghold_network_delayed_by_concrete_shortage
+				iteration_output = {
+					country_effects = {
+						add_tech_bonus = {
+							name = sp_land_reward_stronghold_network_underground_rail_systems
+							bonus = 0.1
+							uses = 1
+							category = engineers_tech
+						}
+
+						FROM = {
+							add_project_progress_ratio = constant:sp_progress.gain.low
+						}
+					}
+				}
+			}
+		}
+
+		sp_land_reward_stronghold_network_integration_of_anti_blast_doors = {
+			fire_only_once = yes
+
+			threshold = { 
+				min = 30
+				max = 100
+			}
+
+			weight = {
+				base = 2
+			}
+
+			option = {
+				token = sp_land_reward_option_stronghold_network_integration_of_anti_blast_doors
+				iteration_output = {
+					country_effects = {
+						FROM = {
+							add_project_progress_ratio = constant:sp_progress.gain.low
+						}
+					}
+				}
+			}
+		}
+
+		sp_land_reward_stronghold_network_communication_system_overhaul = {
+			fire_only_once = yes
+
+			threshold = { 
+				min = 50
+				max = 100
+			}
+
+			weight = {
+				base = 5
+			}
+
+			option = {
+				token = sp_land_reward_option_stronghold_network_communication_system_overhaul_standardize
+				iteration_output = {
+					country_effects = {
+						add_tech_bonus = {
+							name = sp_land_reward_stronghold_network_communication_system_overhaul
+							bonus = 0.25
+							uses = 1
+							category = construction_tech
+						}
+					}
+				}
+			}
+
+			option = {
+				token = sp_land_reward_option_stronghold_network_communication_system_overhaul_further_study
+				iteration_output = {
+					scientist_effects = {
+						add_scientist_xp = {
+							experience = constant:sp_scientist_xp_gain.medium
+							specialization = specialization_land
+						}
+					}
+				}
+			}
+		}
+
+		sp_land_reward_stronghold_network_leadership_approach = {
+			fire_only_once = yes
+
+			threshold = { 
+				min = 0
+				max = 100
+			}
+
+			force_reward_if_available = yes
+			weight = {
+				base = 100 #Weight is still checked when more than 1 reward are supposed to be forced at the same time
+			}
+
+			option = {
+				token = sp_land_reward_option_stronghold_network_leadership_approach_oversee_work_personally
+				iteration_output = {
+					country_effects = {
+						FROM = {
+							add_project_progress_ratio = constant:sp_progress.gain.low
+							set_project_flag = sp_land_reward_stronghold_network_leadership_approach_field_flag #Unlocks possible specific rewards
+						}
+					}
+
+					scientist_effects = {
+						add_scientist_xp = {
+							experience = constant:sp_scientist_xp_gain.low
+							specialization = specialization_land
+						}
+					}
+				}
+			}
+
+			option = {
+				token = sp_land_reward_option_stronghold_network_leadership_approach_office_planning
+				iteration_output = {
+					country_effects = {
+						add_breakthrough_progress = {
+							specialization = specialization_land
+							value = sp_breakthrough_progress.low
+						}
+
+						FROM = {
+							set_project_flag = sp_land_reward_stronghold_network_leadership_approach_office_flag #Unlocks possible specific rewards
+						}
+					}
+				}
+			}
+		}
+
+		sp_land_reward_stronghold_network_breakthrough_in_concrete_reinforcement_01 = { #Scientist working from Office
+			fire_only_once = yes
+
+			threshold = { 
+				min = 50
+				max = 100
+			}
+
+			weight = {
+				base = 0
+				modifier = {
+					add = 15
+					has_project_flag = sp_land_reward_stronghold_network_leadership_approach_field_flag
+				}
+			}
+
+			option = {
+				token = sp_land_reward_option_stronghold_network_breakthrough_in_concrete_reinforcement_01_apply_and_document_discovery
+				iteration_output = {
+					country_effects = {
+						add_tech_bonus = {
+							name = sp_land_reward_stronghold_network_breakthrough_in_concrete_reinforcement_01
+							bonus = 0.5
+							uses = 1
+							category = construction_tech
+						}
+
+						FROM = {
+							add_project_progress_ratio = constant:sp_progress.gain.low
+						}
+					}
+				}
+			}
+
+			option = {
+				token = sp_land_reward_option_stronghold_network_breakthrough_in_concrete_reinforcement_01_use_in_current_project
+				
+				iteration_output = {
+					country_effects = {
+						FROM = {
+							add_project_progress_ratio = constant:sp_progress.gain.medium
+						}
+					}
+					scientist_effects = {
+						add_scientist_xp = {
+							experience = constant:sp_scientist_xp_gain.low
+							specialization = specialization_land
+						}
+					}
+				}
+			}
+		}
+
+		sp_land_reward_stronghold_network_breakthrough_in_concrete_reinforcement_02 = { #Scientist working from Office
+			fire_only_once = yes
+
+			threshold = { 
+				min = 50
+				max = 100
+			}
+
+			weight = {
+				base = 0
+				modifier = {
+					add = 15
+					has_project_flag = sp_land_reward_stronghold_network_leadership_approach_office_flag
+				}
+			}
+
+			option = {
+				token = sp_land_reward_option_stronghold_network_breakthrough_in_concrete_reinforcement_01_apply_and_document_discovery #Intentional 01
+				
+				iteration_output = {
+					country_effects = {
+						add_tech_bonus = {
+							name = sp_land_reward_stronghold_network_breakthrough_in_concrete_reinforcement_01 #Intentional 01
+							bonus = 0.75
+							uses = 1
+							category = construction_tech
+						}
+						if = {
+							limit = {
+								any_scientist = {
+									has_scientist_level = {
+										level > 0
+										specialization = specialization_land
+									}
+									is_active_scientist = no
+								}
+							}
+							random_scientist = {
+								limit = {
+									has_scientist_level = {
+										level > 0
+										specialization = specialization_land
+									}
+									is_active_scientist = no
+								}
+								add_scientist_xp = {
+									experience = constant:sp_scientist_xp_gain.high
+									specialization = specialization_land
+								}
+							}
+						}
+					}
+				}
+			}
+
+			option = {
+				token = sp_land_reward_option_stronghold_network_breakthrough_in_concrete_reinforcement_01_use_in_current_project #Intentional 01
+				
+				iteration_output = {
+					country_effects = {
+						if = {
+							limit = {
+								any_scientist = {
+									has_scientist_level = {
+										level > 0
+										specialization = specialization_land
+									}
+									is_active_scientist = no
+								}
+							}
+							random_scientist = {
+								limit = {
+									has_scientist_level = {
+										level > 0
+										specialization = specialization_land
+									}
+									is_active_scientist = no
+								}
+								add_scientist_xp = {
+									experience = constant:sp_scientist_xp_gain.medium
+									specialization = specialization_land
+								}
+							}
+						}
+						FROM = {
+							add_project_progress_ratio = constant:sp_progress.gain.low
+						}
+					}
+				}
+			}
+		}
+
+		sp_land_reward_option_stronghold_network_collapse_01 = { #Scientist working from Office
+			fire_only_once = yes
+
+			threshold = { 
+				min = 60
+				max = 100
+			}
+
+			weight = {
+				base = 0
+				modifier = {
+					add = 10
+					has_project_flag = sp_land_reward_stronghold_network_leadership_approach_field_flag
+				}
+				modifier = {
+					factor = 0
+					has_project_flag = sp_land_stronghold_network_structural_weakness_discovered_flag #Used in other unique rewards to prevent multiple structural failures
+				}
+			}
+
+			option = {
+				token = sp_land_reward_option_stronghold_network_collapse_01_prioritize_scientist
+				iteration_output = {
+					country_effects = {
+						FROM = {
+							add_project_progress_ratio = constant:sp_progress.loss.high
+						}
+					}
+					scientist_effects = {
+						injure_scientist_for_days = 30
+					}
+				}
+			}
+
+			option = {
+				token = sp_land_reward_option_stronghold_network_collapse_01_prioritize_safety
+				iteration_output = {
+					country_effects = {
+						FROM = {
+							add_project_progress_ratio = constant:sp_progress.loss.medium
+						}
+					}
+					scientist_effects = {
+						injure_scientist_for_days = 60
+					}
+				}
+			}
+
+			option = {
+				token = sp_land_reward_option_stronghold_network_collapse_01_continue_without_delay
+				iteration_output = {
+					country_effects = {
+						FROM = {
+							add_project_progress_ratio = constant:sp_progress.loss.low
+						}
+					}
+					scientist_effects = {
+						injure_scientist_for_days = 60
+					}
+					facility_state_effects = {
+					}
+				}
+			}
+		}
+
+		sp_land_reward_option_stronghold_network_collapse_02 = { #Scientist working from Office
+			fire_only_once = yes
+
+			threshold = { 
+				min = 60
+				max = 100
+			}
+
+			weight = {
+				base = 0
+				modifier = {
+					add = 10
+					has_project_flag = sp_land_reward_stronghold_network_leadership_approach_office_flag
+				}
+				modifier = {
+					factor = 0
+					has_project_flag = sp_land_stronghold_network_structural_weakness_discovered_flag #Used in other unique rewards to prevent multiple structural failures
+				}
+			}
+
+			option = {
+				token = sp_land_reward_option_stronghold_network_collapse_01_prioritize_safety #Intentional 01
+				iteration_output = {
+					country_effects = {
+						FROM = {
+							add_project_progress_ratio = constant:sp_progress.loss.medium
+						}
+					}
+				}
+			}
+
+			option = {
+				token = sp_land_reward_option_stronghold_network_collapse_01_continue_without_delay #Intentional 01
+				iteration_output = {
+					country_effects = {
+						FROM = {
+							add_project_progress_ratio = constant:sp_progress.loss.low
+						}
+					}
+					facility_state_effects = {
+					}
+				}
+			}
+		}
+	}
+}

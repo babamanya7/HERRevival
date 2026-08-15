@@ -1,0 +1,84 @@
+### designer aircraft ###
+
+FIN = {
+
+### light tank 0 ###
+	
+	light_tank_chassis_0 = { 
+		pool = {
+			weight = 5
+			icons = { 
+			GFX_FIN_gw_light_tank_medium
+			}
+		}
+	}
+
+### light tank 1 ###
+
+	light_tank_chassis_1 = { 
+		pool = {
+			weight = 5
+			icons = { 
+			GFX_FIN_basic_light_tank_medium
+			}
+		}
+	}		
+
+### light tank 2 ###
+	
+	light_tank_chassis_2 = { 
+		pool = {
+			weight = 5
+			icons = { 
+			GFX_FIN_improved_light_tank_3_medium
+			GFX_FIN_improved_light_tank_2_medium
+            GFX_FIN_improved_light_tank_medium
+			}
+		}
+	}	
+	
+### light tank 3 ###
+
+	light_tank_chassis_2 = { 
+		pool = {
+			weight = 5
+			icons = { 
+            GFX_FIN_advanced_light_tank_medium
+			}
+		}
+	}	
+	
+	
+### medium tank 1 ###
+
+	medium_tank_chassis_1 = { 
+		pool = {
+			weight = 5
+			icons = { 
+			GFX_FIN_basic_medium_tank_medium
+			}
+		}
+	}	
+
+	light_tank_aa_chassis_2 = { 
+		pool = {
+			weight = 6
+			icons = { 
+			GFX_FIN_basic_medium_tank_medium
+			}
+		}
+	}	
+	
+### medium tank 2 ###
+
+	medium_tank_chassis_2 = { 
+		pool = {
+			weight = 5
+			icons = { 
+			GFX_FIN_improved_medium_tank_medium
+			}
+		}
+	}		
+
+
+}

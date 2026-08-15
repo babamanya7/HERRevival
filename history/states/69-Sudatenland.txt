@@ -1,0 +1,48 @@
+state=
+{
+	id=69
+	name="STATE_69"
+	manpower = 2830000
+	
+	state_category = town
+	
+	resources={
+		coal = 271
+	}
+	
+	history={
+		victory_points = {
+			4117 3
+		}
+		victory_points = {
+			3749 3
+		}
+		owner = CZE
+		buildings = {
+			infrastructure = 8
+			arms_factory = 1
+			industrial_complex = 5
+			anti_air_building = 1
+			steel_refinery = 1
+			4117 = {
+				bunker = 1
+			}
+			3749 = {
+				bunker = 1
+			}
+			3601 = {
+				bunker = 1
+			}
+			3476 = {
+				bunker = 1
+			}
+			3596 = {
+				bunker = 1
+			}
+		}
+		add_core_of = CZE
+	}
+	provinces={
+		3206 3462 3476 3596 3601 3749 3991 3996 4061 4117 4159 4913 5078 6377 6487 6555 6581 6583 11998 
+	}
+}

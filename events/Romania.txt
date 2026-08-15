@@ -1,0 +1,218 @@
+﻿###########################
+# Romanian Events
+###########################
+add_namespace = her_romania
+add_namespace = romania
+
+country_event = {
+	id = her_romania.1
+	title = her_romania.1.t
+	desc = her_romania.1.d
+	picture = GFX_report_event_carol_party
+	
+	is_triggered_only = yes
+	
+	option = { # Accept demands
+		name = her_romania.1.a
+		add_stability = 0.2
+		complete_national_focus = ROM_force_abdication
+	}
+}
+
+news_event = {
+	id = her_romania.2
+	title = her_romania.2.t
+	desc = her_romania.2.d
+	picture = GFX_news_event_generic_parliament
+	
+	fire_only_once = yes
+	
+	trigger = {
+		date > 1938.11.30
+		NOT = { has_global_flag = zelya_killed }
+		tag = ROM
+	}
+	
+	immediate = {
+		set_global_flag = zelya_killed
+		ROM = {
+			hidden_effect = {
+				set_country_flag = zelya_killed_cf
+				create_country_leader = {
+					name = "Ion Antonescu"
+					desc = "POLITICS_ION_ANTONESCU_DESC"
+					picture = "Portrait_Romania_Ion_Antonescu.dds"
+					expire = "1965.1.1"
+					ideology = fascism_ideology
+					traits = {
+					}
+				}
+			}
+		}
+	} 
+	
+	option = {
+		name = her_romania.2.a
+		add_popularity = { ideology = neutrality popularity = -0.1 }
+	}
+}
+
+news_event = {
+	id = her_romania.3
+	title = her_romania.3.t
+	desc = her_romania.3.d
+	picture = GFX_news_event_generic_riot
+	
+	trigger = {
+		date > 1941.1.21
+		NOT = { has_country_flag = iron_guard_rebelion }
+		tag = ROM
+	}
+	
+	immediate = { set_country_flag = iron_guard_rebelion } 
+	
+	option = {
+		name = her_romania.3.a
+		add_stability = -0.1
+	}
+}
+
+# Soviet Union demands Bessarabia
+country_event = {
+	id = romania.1
+	title = romania.1.t
+	desc = romania.1.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = { # Accept demands
+		name = romania.1.a
+		ai_chance = {
+			factor = 90
+			modifier = { # Don't accept if in a faction that can protect them
+				factor = 0
+				NOT = { is_in_faction_with = FROM }
+				OR = {
+					any_other_country = {
+						is_major = yes
+						NOT = { tag = SOV }
+						OR = {
+							is_in_faction_with = ROM
+							has_guaranteed = ROM
+						}
+					}
+					has_idea = anti_soviet_pact
+				}
+			}
+			modifier = {
+				factor = 0.1
+				is_historical_focus_on = no #Romania will still cede on historical
+			}
+		}
+		FROM = {
+			country_event = { days = 1 id = soviet.4 }
+		}
+		set_country_flag = bessarabia_ceded
+		add_stability = -0.05
+		add_popularity = { ideology = neutrality popularity = 0.05 }
+	}
+}
+
+# Second Vienna Award - Northern Transylvania
+country_event = {
+	id = romania.2
+	title = romania.2.t
+	desc = romania.2.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+	
+	option = { # Accept demands
+		name = romania.2.a
+		ai_chance = {
+			factor = 80
+			modifier = { # Don't accept if in a faction that can protect them
+				factor = 0
+				OR = {
+					is_in_faction_with = ENG
+					is_in_faction_with = FRA
+					is_in_faction_with = SOV
+				}
+			}
+		}
+		HUN = {
+			country_event = { days = 1 id = hungary.2 }
+		}
+		set_country_flag = second_vienna_accepted_north
+		add_stability = -0.05
+		add_popularity = { ideology = neutrality popularity = 0.05 }
+	}
+}
+
+# Second Vienna Award - No Concessions
+country_event = {
+	id = romania.4
+	title = romania.4.t
+	desc = romania.4.d
+	picture = GFX_report_event_germany_politician_handshake
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = romania.4.a
+	}
+}
+
+# Treaty of Craiova - Bulgaria Demands Territory
+country_event = {
+	id = romania.5
+	title = romania.5.t
+	desc = romania.5.d
+	picture = GFX_report_event_hitler_croatia_handshake
+	
+	is_triggered_only = yes
+	
+	option = { # Accept
+		name = romania.5.a
+		ai_chance = { factor = 90 }
+		effect_tooltip = {
+			BUL = { transfer_state = 77 }
+		}
+		BUL = {
+			country_event = { days = 1 id = bulgaria.1 }
+		}
+		set_country_flag = craiova_treaty_accepted
+		add_stability = -0.05
+		add_popularity = { ideology = neutrality popularity = 0.05 }
+	}
+}
+
+country_event = {
+	id = romania.6
+	title = romania.6.t
+	desc = romania.6.d
+	picture = GFX_report_event_hitler_croatia_handshake
+	
+	trigger = {
+		has_country_flag = bessarabia_ceded
+		has_country_flag = second_vienna_accepted_north
+		has_country_flag = craiova_treaty_accepted
+		is_in_faction = no
+	}
+	
+	mean_time_to_happen = { days = 7 }
+
+	fire_only_once = yes
+
+	option = {
+		name = romania.6.a
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.1
+		}
+		add_war_support = 0.1
+		GER = { country_event = generic.2 }
+		add_timed_idea = { idea = ROM_revenge_against_soviet days = 720 }
+	}
+}

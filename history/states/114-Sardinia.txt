@@ -1,0 +1,40 @@
+state=
+{
+	id=114
+	name="STATE_114"
+	manpower = 991921
+	
+	resources = {
+		bauxite = 41
+		coal = 4
+	}
+	
+	state_category = town
+	
+	history=
+	{
+		owner = ITA
+		victory_points = {
+			14393 5
+		}
+		victory_points = {
+			14455 3
+		}
+		buildings = {
+			infrastructure = 5
+			arms_factory = 0
+			industrial_complex = 2
+			air_base = 10
+			14393 = {
+				naval_base = 5
+			}
+			14455 = {
+				naval_base = 3
+			}
+		}
+		add_core_of = ITA
+	}
+	provinces = {
+		14467 14446 14430 14411 14401 14391 14393 14382 14387 14399 14400 14412 14410 14418 14429 14428 14445 14455 14441
+	}
+}

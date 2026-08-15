@@ -1,0 +1,33 @@
+state= {
+	id=859
+	name="STATE_859"
+	manpower = 380832
+	
+	state_category = large_town
+	
+	resources={
+		tungsten = 853
+	}
+
+	history= {
+		owner = ENG
+		victory_points = { 
+			3463 5
+		}
+		victory_points = { 
+			3422 3
+		}
+		buildings = {
+			infrastructure = 6
+			industrial_complex = 3
+			dockyard = 4
+			air_base = 12
+
+		}
+		add_core_of = ENG
+	}
+
+	provinces= {
+		3422 3463 9562
+ 	}
+}

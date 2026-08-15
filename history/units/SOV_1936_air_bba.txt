@@ -1,0 +1,78 @@
+﻿
+### Air Wings
+air_wings = {
+	219 = {
+		small_plane_airframe_0 = {
+			owner = "SOV" 
+			amount = 382
+			version_name = "I-15"
+		}
+		ace={
+			modifier="fighter_genius"
+			name="Vasiliy"
+			surname="Stalin"
+			callsign="Krasniy"
+			portrait=1
+		}
+		small_plane_airframe_0 = {
+			owner = "SOV" 
+			amount = 815
+			version_name = "I-5"
+		}
+		small_plane_airframe_1 = {
+			owner = "SOV" 
+			amount = 581
+			version_name = "I-16"
+		}
+		large_plane_airframe_0 = {
+			owner = "SOV" 
+			amount = 250
+			version_name = "TB-3"
+		}
+		medium_plane_maritime_patrol_plane_airframe_1 = {
+			owner = "SOV" 
+			amount = 150
+			version_name = "MBR-2"
+		}
+		medium_plane_scout_plane_airframe_1 = {
+			owner = "SOV" 
+			amount = 200
+			version_name = "U-2"
+		}
+		transport_plane_equipment_1 = {
+			owner = "SOV" 
+			amount = 20
+		}
+	}
+}
+
+
+		
+	#########################
+	## STARTING PRODUCTION ##
+	#########################
+instant_effect = {
+
+	add_equipment_production = {
+		equipment = {
+			type = small_plane_airframe_1
+			creator = "SOV" 
+			version_name = "I-16"
+		}
+		requested_factories = 2
+		progress = 0.15
+		efficiency = 50
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = large_plane_airframe_0
+			creator = "SOV" 
+			version_name = "TB-3"
+		}
+		requested_factories = 2
+		progress = 0.2
+		efficiency = 50
+	}
+}
+	#####################

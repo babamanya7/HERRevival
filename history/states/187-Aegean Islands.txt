@@ -1,0 +1,56 @@
+
+state={
+	id=187
+	name="STATE_187"
+	manpower = 322600
+	
+	state_category = small_island
+	
+	resources={
+		chromium=77 # was: 10
+		iron = 57
+	}
+
+	history={
+		victory_points = {
+			14389 1
+		}
+		victory_points = {
+			14353 1
+		}
+		owner = GRE
+		buildings = {
+			infrastructure = 4
+			dockyard = 1
+			14389 = {
+				naval_base = 1
+			}
+			14353 = {
+				naval_base = 1
+			}
+			14416 = {
+				naval_base = 1
+			}
+			14370 = {
+				naval_base = 1
+			}
+			14321 = {
+				naval_base = 1
+			}
+			14346 = {
+				naval_base = 1
+			}
+			14338 = {
+				naval_base = 1
+			}
+			14320 = {
+				naval_base = 1
+			}
+		}
+		add_core_of = GRE
+	}
+
+	provinces={
+		14416 14389 14370 14347 14321 14346 14338 14320 14353
+	}
+}

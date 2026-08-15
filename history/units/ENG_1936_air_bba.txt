@@ -1,0 +1,107 @@
+﻿
+air_wings = {
+	129 = { 
+		small_plane_airframe_0 = {
+			owner = "ENG" 
+			amount = 443
+			version_name = "Bristol Bulldog"
+		}
+		small_plane_airframe_0 = {
+			owner = "ENG" 
+			amount = 246
+			version_name = "Gloster Gauntlet"
+		}
+		small_plane_airframe_0 = {
+			owner = "ENG" 
+			amount = 155
+			version_name = "Hawker Fury"
+		}
+		cv_small_plane_airframe_0 = {
+			owner = "ENG" 
+			amount = 92
+			version_name = "Hawker Nimrod"
+		}
+		small_plane_cas_airframe_0 = {
+			owner = "ENG" 
+			amount = 186
+			version_name = "Fairey Gordon"
+		}
+		small_plane_naval_bomber_airframe_0 = {
+			owner = "ENG" 
+			amount = 209
+			version_name = "Vickers Vildebeest"
+		}
+		medium_plane_airframe_0 = {
+			owner = "ENG" 
+			amount = 125
+			version_name = "Handley Page Heyford"
+		}
+		cv_small_plane_naval_bomber_airframe_0 = {
+			owner = "ENG" 
+			amount = 30
+			version_name = "Fairey Swordfish"
+		}
+		small_plane_airframe_0 = {
+			owner = "ENG" 
+			amount = 122
+			version_name = "Hawker Demon"
+		}
+	}
+}
+
+	#########################
+	## STARTING PRODUCTION ##
+	#########################
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = small_plane_airframe_0
+			creator = "ENG" 
+			version_name = "Gloster Gladiator"
+		}
+		requested_factories = 1
+		progress = 0.15
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = small_plane_cas_airframe_0
+			creator = "ENG" 
+			version_name = "Fairey Gordon"
+		}
+		requested_factories = 1
+		progress = 0.15
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = medium_plane_airframe_1
+			creator = "ENG" 
+			version_name = "Vickers Wellington"
+		}
+		requested_factories = 1
+		progress = 0.15
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = cv_small_plane_airframe_0
+			creator = "ENG" 
+			version_name = "Hawker Nimrod"
+		}
+		requested_factories = 1
+		progress = 0.15
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = cv_small_plane_naval_bomber_airframe_0
+			creator = "ENG" 
+			version_name = "Fairey Swordfish"
+		}
+		requested_factories = 1
+		progress = 0.1
+		efficiency = 50
+	}
+}
+	#####################

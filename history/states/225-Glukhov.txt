@@ -1,0 +1,32 @@
+
+state={
+	id=225
+	name="STATE_225" # Sumy
+	manpower = 1338280
+	
+	state_category = town
+
+	history={
+		victory_points = {
+			3520 5
+		}
+		victory_points = {
+			9566 1
+		}
+		victory_points = {
+			463 1
+		}
+		owner = SOV
+		buildings = {
+			infrastructure = 4
+			industrial_complex = 4
+			air_base = 4
+		}
+		add_core_of = SOV
+		add_core_of = UKR
+	}
+
+	provinces={
+		463 501 522 3225 3455 3520 6565 9477 9566 11462 11553 13842 9858 10399 9860 11826
+	}
+}

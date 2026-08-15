@@ -1,0 +1,37 @@
+﻿capital = 141	
+
+country_lock_all_division_template = yes
+set_research_slots = 3
+
+add_ideas = {
+	en_svensk_tiger
+	neutrality_idea
+	free_trade
+}
+set_stability = 1
+set_war_support = 0.2
+
+set_technology = {
+}
+
+set_politics = {
+	ruling_party = neutrality
+	last_election = "1932.9.18"
+	elections_allowed = no
+}
+set_popularities = {
+	democratic = 0
+	neutrality = 100
+	communism = 0
+	fascism = 0
+}
+
+set_convoys = 50
+
+recruit_character = SWE_per_albin_hansson
+recruit_character = SWE_sven_olov_lindholm
+recruit_character = SWE_sven_linderot
+recruit_character = SWE_axel_pehrssonbramstorp
+recruit_character = SWE_folke_hogberg
+recruit_character = SWE_erik_af_edholm
+recruit_character = SWE_claes_lindstrom

@@ -1,0 +1,73 @@
+### designer aircraft ###
+
+
+
+NZL = {
+
+### small_plane ###
+
+	small_plane_airframe_0 = {
+		pool = {
+			icons = {
+				GFX_NZL_early_fighter_medium
+			}
+		}
+	}
+	
+	small_plane_airframe_1 = {
+		pool = {
+			icons = {
+			GFX_NZL_fighter1_medium
+			}
+		}
+	}
+	
+	small_plane_airframe_2 = {
+		pool = {
+			icons = {
+			GFX_NZL_fighter2_medium
+			}
+		}
+	}
+	
+	small_plane_airframe_3 = {
+		pool = {
+			icons = {
+			GFX_NZL_fighter3_medium
+			}
+		}
+	}
+
+### small naval bombers ### 
+
+	small_plane_naval_bomber_airframe_0 = {
+		pool = {
+			weight = 5
+			icons = {
+			GFX_NZL_naval_bomber0_medium
+			}
+		}
+	}
+
+	small_plane_naval_bomber_airframe_1 = {
+		pool = {
+			weight = 5
+			icons = {
+			GFX_NZL_naval_bomber1_medium
+			}
+		}
+	}
+
+### medium_plane ###		
+
+	medium_plane_airframe_0 = {
+		pool = {
+			weight = 5
+			icons = {
+			GFX_NZL_early_bomber_medium
+			}
+		}
+	}
+
+}
+

@@ -1,0 +1,35 @@
+
+state={
+	id=201
+	name="STATE_201"
+	manpower = 1417834
+	
+	state_category = town
+
+	history={
+		victory_points = {
+			6593 3
+		}
+		victory_points = {
+			11477 1
+		}
+		victory_points = {
+			3470 1
+		}
+		victory_points = {
+			9481 1
+		}
+		owner = SOV
+		buildings = {
+			infrastructure = 4
+			air_base = 6
+			industrial_complex = 4
+		}
+		add_core_of = SOV
+		add_core_of = UKR
+	}
+
+	provinces={
+		441 550 3470 3570 6480 6593 9466 9481 9493 9533 11464 11477 11490 11514 13837 13838 13855 981 6864 3983 947 9799 11778 890 6871 3851 785
+	}
+}

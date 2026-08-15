@@ -1,0 +1,129 @@
+characters={
+	### The King of Bohemia
+	CZE_karl_albrecht = {
+		name=POL_karl_albrecht
+		portraits = {
+			civilian = {
+				large="GFX_portrait_POL_karl_albrecht"
+			}
+		}
+	}
+	CZE_edvard_benesh={
+		name="Edvard Beneš"
+		portraits={
+			civilian={
+				large="gfx/leaders/CZE/Portrait_Czech_Edvard_Benes.dds"
+			}
+		}
+		country_leader={
+			ideology=conservatism
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+
+	CZE_jaroslav_krejchi={
+		name="Jaroslav Krejčí"
+		portraits={
+			civilian={
+				large="gfx/leaders/CZE/Portrait_Czech_Jaroslav_Krejci.dds"
+			}
+		}
+		country_leader={
+			ideology=nazism
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+
+	CZE_frantishek_havlik={
+		name=CZE_frantishek_havlik
+		portraits={
+			civilian={
+				large="gfx/leaders/Europe/portrait_europe_generic_5.dds"
+			}
+		}
+		country_leader={
+			ideology=oligarchism
+			traits={ eager_collaborator captain_of_industry }
+			expire="1942.1.1.12"
+			id=-1
+		}
+	}
+
+	CZE_vojtyech_luzha={
+		name=CZE_vojtyech_luzha
+		portraits={
+			army={
+				large="GFX_Portrait_czechoslovakia_vojtech_luza"
+				small="gfx/interface/ideas/idea_CZE_vojtech_luza.dds"
+			}
+		}
+		field_marshal={
+			traits={ offensive_doctrine fast_planner }
+			skill=3
+			attack_skill=4
+			defense_skill=2
+			planning_skill=3
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+
+	CZE_josef_shnejdarek={
+		name=CZE_josef_shnejdarek
+		portraits={
+			army={
+				large="GFX_Portrait_czechoslovakia_josef_snejdarek"
+				small="gfx/interface/ideas/idea_CZE_josef_snejdarek.dds"
+			}
+		}
+		field_marshal={
+			traits={ defensive_doctrine thorough_planner }
+			skill=3
+			attack_skill=3
+			defense_skill=4
+			planning_skill=2
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+
+	CZE_richard_tesarzhik={
+		name=CZE_richard_tesarzhik
+		portraits={
+			army={
+				large="GFX_Portrait_czechoslovakia_richard_tesarik"
+				small="gfx/interface/ideas/idea_CZE_richard_tesarik.dds"
+			}
+		}
+		corps_commander={
+			traits={ armor_officer }
+			skill=2
+			attack_skill=4
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+
+	CZE_sergej_vojcechovsky={
+		name=CZE_sergej_vojcechovsky
+		portraits={
+			army={
+				large="GFX_Portrait_czechoslovakia_sergej_vojcechovsky"
+				small="gfx/interface/ideas/idea_CZE_sergej_vojcechovsky.dds"
+			}
+		}
+		corps_commander={
+			traits={ winter_specialist }
+			skill=3
+			attack_skill=4
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+}

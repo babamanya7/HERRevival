@@ -1,0 +1,33 @@
+
+state={
+	id=908
+	name="STATE_908"
+	manpower = 300800
+
+	state_category = rural
+	
+	resources = {
+		bauxite = 112
+	}
+
+	history={
+		owner = YUG
+		victory_points = {
+			14727 3
+		}
+		buildings = {
+			infrastructure = 3
+			dockyard = 1
+			industrial_complex = 1
+			14727 = {
+				naval_base = 6
+			}
+		}
+		add_core_of = YUG
+		add_core_of = CRO
+	}
+
+	provinces={
+		14775 14742 14727 14714
+	}
+}

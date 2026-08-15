@@ -1,0 +1,72 @@
+﻿###########################
+# Mexico Events
+# By Tristan 'Enjoy' Edge, aged 30 and 2 months
+###########################
+
+add_namespace = mexico
+
+# Trotsky arrives from Norway
+
+country_event = {
+	id = mexico.17
+	title = mexico.17.title
+	desc = mexico.17.desc
+	
+	picture = GFX_report_event_communists_cheer
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MEX
+		date > 1936.08.28
+		OR = {
+			has_government = neutrality
+			AND = {
+				has_government = communism
+				NOT = {
+					has_country_leader = { ruling_only = yes character = MEX_dionisio_encina }
+				} 
+			}
+
+		}
+		NOT = {
+			has_global_flag = trotsky_not_welcome_in_mexico
+		}
+		NOT = {
+			has_global_flag = flag_trotsky_dead
+		}
+
+	}
+	
+	mean_time_to_happen = {
+		months = 3 # Historically arrived in January 1937
+	}
+	
+	option = {
+		name = mexico.17.a # We aren't Stalin's puppets, let him stay
+		
+		if = {
+			limit = {
+				SOV = {
+					has_country_leader = { character = SOV_iosif_stalin }
+				}
+			}
+			SOV = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = mexico_trotskyite_wreckers
+				}
+			}
+		}
+		USA = {
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = mexico_snubbed_stalin
+			}
+		}
+		set_global_flag = trotsky_exile_mexico
+		ai_chance = {
+			factor = 100
+		}
+	}
+}

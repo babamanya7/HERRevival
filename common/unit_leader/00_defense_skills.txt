@@ -1,0 +1,827 @@
+leader_defense_skills = {
+
+	### NAVY ###
+	1 = {
+		cost = 100
+		type = navy
+		modifier = {
+			naval_defense_factor = 0.02
+		}
+	}
+	
+	2 = {
+		cost = 250
+		type = navy
+		modifier = {
+			naval_defense_factor = 0.04
+		}
+	}
+	
+	3 = {
+		cost = 450
+		type = navy
+		modifier = {
+			naval_defense_factor = 0.06
+		}
+	}
+	
+	4 = {
+		cost = 700
+		type = navy
+		modifier = {
+			naval_defense_factor = 0.08
+		}
+	}
+	
+	5 = {
+		cost = 1000
+		type = navy
+		modifier = {
+			naval_defense_factor = 0.1
+		}
+	}
+
+	6 = {
+		cost = 1400
+		type = navy
+		modifier = {
+			naval_defense_factor = 0.12
+		}
+	}
+
+	7 = {
+		cost = 1900
+		type = navy
+		modifier = {
+			naval_defense_factor = 0.14
+		}
+	}
+
+	8 = {
+		cost = 2500
+		type = navy
+		modifier = {
+			naval_defense_factor = 0.16
+		}
+	}
+
+	9 = {
+		cost = 3200
+		type = navy
+		modifier = {
+			naval_defense_factor = 0.18
+		}
+	}
+	
+	10 = {
+		cost = 4000
+		type = navy
+		modifier = {
+			naval_defense_factor = 0.2
+		}
+	}
+	
+	11 = {
+		cost = 4900
+		type = navy
+		modifier = {
+			naval_defense_factor = 0.22
+		}
+	}
+	
+	12 = {
+		cost = 5900
+		type = navy
+		modifier = {
+			naval_defense_factor = 0.24
+		}
+	}
+	
+	13 = {
+		cost = 7000
+		type = navy
+		modifier = {
+			naval_defense_factor = 0.26
+		}
+	}
+	
+	14 = {
+		cost = 8200
+		type = navy
+		modifier = {
+			naval_defense_factor = 0.28
+		}
+	}
+
+	15 = {
+		cost = 9500
+		type = navy
+		modifier = {
+			naval_defense_factor = 0.3
+		}
+	}
+
+	16 = {
+		cost = 11000
+		type = navy
+		modifier = {
+			naval_defense_factor = 0.32
+		}
+	}
+
+	17 = {
+		cost = 12600
+		type = navy
+		modifier = {
+			naval_defense_factor = 0.34
+		}
+	}
+
+	18 = {
+		cost = 14300
+		type = navy
+		modifier = {
+			naval_defense_factor = 0.36
+		}
+	}
+	
+	19 = {
+		cost = 16100
+		type = corps_commander
+		type = navy
+		modifier = {
+			naval_defense_factor = 0.38
+		}
+	}
+
+	20 = {
+		cost = 18000
+		type = navy
+		modifier = {
+			naval_defense_factor = 0.4
+		}
+	}
+	
+	### Corps Commander ###
+	1 = {
+		cost = 100
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.01
+			army_infantry_attack_factor = 0.01
+			army_artillery_attack_factor = 0.01
+			army_artillery_defence_factor = 0.01
+		}
+	}
+	
+	2 = {
+		cost = 250
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.02
+			army_infantry_attack_factor = 0.02
+			army_artillery_attack_factor = 0.02 
+			army_artillery_defence_factor = 0.02
+		}
+	}
+	
+	3 = {
+		cost = 450
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.03
+			army_infantry_attack_factor = 0.03
+			army_artillery_attack_factor = 0.03 
+			army_artillery_defence_factor = 0.03
+		}
+	}
+	
+	4 = {
+		cost = 700
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.04
+			army_infantry_attack_factor = 0.04
+			army_artillery_attack_factor = 0.04 
+			army_artillery_defence_factor = 0.04
+		}
+	}
+	
+	5 = {
+		cost = 1000
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.05
+			army_infantry_attack_factor = 0.05
+			army_artillery_attack_factor = 0.05 
+			army_artillery_defence_factor = 0.05
+		}
+	}
+
+	6 = {
+		cost = 1400
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.06
+			army_infantry_attack_factor = 0.06
+			army_artillery_attack_factor = 0.06 
+			army_artillery_defence_factor = 0.06
+		}
+	}
+
+	7 = {
+		cost = 1900
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.07
+			army_infantry_attack_factor = 0.07
+			army_artillery_attack_factor = 0.07 
+			army_artillery_defence_factor = 0.07
+		}
+	}
+
+	8 = {
+		cost = 2500
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.08
+			army_infantry_attack_factor = 0.08
+			army_artillery_attack_factor = 0.08 
+			army_artillery_defence_factor = 0.08
+		}
+	}
+
+	9 = {
+		cost = 3200
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.09
+			army_infantry_attack_factor = 0.09
+			army_artillery_attack_factor = 0.09 
+			army_artillery_defence_factor = 0.09
+		}
+	}
+	
+	10 = {
+		cost = 4000
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.1
+			army_infantry_attack_factor = 0.1
+			army_artillery_attack_factor = 0.1 
+			army_artillery_defence_factor = 0.1
+		}
+	}
+	
+	11 = {
+		cost = 4900
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.11
+			army_infantry_attack_factor = 0.11
+			army_artillery_attack_factor = 0.11 
+			army_artillery_defence_factor = 0.11
+		}
+	}
+	
+	12 = {
+		cost = 5900
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.12
+			army_infantry_attack_factor = 0.12
+			army_artillery_attack_factor = 0.12 
+			army_artillery_defence_factor = 0.12
+		}
+	}
+	
+	13 = {
+		cost = 7000
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.13
+			army_infantry_attack_factor = 0.13
+			army_artillery_attack_factor = 0.13 
+			army_artillery_defence_factor = 0.13
+		}
+	}
+	
+	14 = {
+		cost = 8200
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.14
+			army_infantry_attack_factor = 0.14
+			army_artillery_attack_factor = 0.14 
+			army_artillery_defence_factor = 0.14
+		}
+	}
+
+	15 = {
+		cost = 9500
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.15
+			army_infantry_attack_factor = 0.15
+			army_artillery_attack_factor = 0.15 
+			army_artillery_defence_factor = 0.15
+		}
+	}
+
+	16 = {
+		cost = 11000
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.16
+			army_infantry_attack_factor = 0.16
+			army_artillery_attack_factor = 0.16 
+			army_artillery_defence_factor = 0.16
+		}
+	}
+
+	17 = {
+		cost = 12600
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.17
+			army_infantry_attack_factor = 0.17
+			army_artillery_attack_factor = 0.17 
+			army_artillery_defence_factor = 0.17
+		}
+	}
+
+	18 = {
+		cost = 14300
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.18
+			army_infantry_attack_factor = 0.18
+			army_artillery_attack_factor = 0.18 
+			army_artillery_defence_factor = 0.18
+		}
+	}
+	
+	19 = {
+		cost = 16100
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.19
+			army_infantry_attack_factor = 0.19
+			army_artillery_attack_factor = 0.19 
+			army_artillery_defence_factor = 0.19
+		}
+	}
+
+	20 = {
+		cost = 18000
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.2
+			army_infantry_attack_factor = 0.2
+			army_artillery_attack_factor = 0.2 
+			army_artillery_defence_factor = 0.2
+		}
+	}
+	
+	21 = {
+		cost = 20000
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.21
+			army_infantry_attack_factor = 0.21
+			army_artillery_attack_factor = 0.21
+			army_artillery_defence_factor = 0.21
+		}
+	}
+	
+	22 = {
+		cost = 22000
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.22
+			army_infantry_attack_factor = 0.22
+			army_artillery_attack_factor = 0.22
+			army_artillery_defence_factor = 0.22
+		}
+	}
+	
+	23 = {
+		cost = 24000
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.23
+			army_infantry_attack_factor = 0.23
+			army_artillery_attack_factor = 0.23
+			army_artillery_defence_factor = 0.23
+		}
+	}
+	
+	24 = {
+		cost = 26000
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.24
+			army_infantry_attack_factor = 0.24
+			army_artillery_attack_factor = 0.24
+			army_artillery_defence_factor = 0.24
+		}
+	}
+	
+	25 = {
+		cost = 28000
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.25
+			army_infantry_attack_factor = 0.25
+			army_artillery_attack_factor = 0.25
+			army_artillery_defence_factor = 0.25
+		}
+	}
+
+	26 = {
+		cost = 30000
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.26
+			army_infantry_attack_factor = 0.26
+			army_artillery_attack_factor = 0.26
+			army_artillery_defence_factor = 0.26
+		}
+	}
+
+	27 = {
+		cost = 32000
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.27
+			army_infantry_attack_factor = 0.27
+			army_artillery_attack_factor = 0.27
+			army_artillery_defence_factor = 0.27
+		}
+	}
+
+	28 = {
+		cost = 34000
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.28
+			army_infantry_attack_factor = 0.28
+			army_artillery_attack_factor = 0.28
+			army_artillery_defence_factor = 0.28
+		}
+	}
+
+	29 = {
+		cost = 36000
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.29
+			army_infantry_attack_factor = 0.29
+			army_artillery_attack_factor = 0.29
+			army_artillery_defence_factor = 0.29
+		}
+	}
+	
+	30 = {
+		cost = 38000
+		type = corps_commander
+		modifier = {
+			army_infantry_defence_factor = 0.3
+			army_infantry_attack_factor = 0.3
+			army_artillery_attack_factor = 0.3
+			army_artillery_defence_factor = 0.3
+		}
+	}
+	
+	### Field Marshal ###
+	
+	1 = {
+		cost = 100
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.01
+			army_infantry_attack_factor = 0.01
+			army_artillery_attack_factor = 0.01
+			army_artillery_defence_factor = 0.01
+		}
+	}
+	
+	2 = {
+		cost = 250
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.02
+			army_infantry_attack_factor = 0.02
+			army_artillery_attack_factor = 0.02 
+			army_artillery_defence_factor = 0.02
+		}
+	}
+	
+	3 = {
+		cost = 450
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.03
+			army_infantry_attack_factor = 0.03
+			army_artillery_attack_factor = 0.03 
+			army_artillery_defence_factor = 0.03
+		}
+	}
+	
+	4 = {
+		cost = 700
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.04
+			army_infantry_attack_factor = 0.04
+			army_artillery_attack_factor = 0.04 
+			army_artillery_defence_factor = 0.04
+		}
+	}
+	
+	5 = {
+		cost = 1000
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.05
+			army_infantry_attack_factor = 0.05
+			army_artillery_attack_factor = 0.05 
+			army_artillery_defence_factor = 0.05
+		}
+	}
+
+	6 = {
+		cost = 1400
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.06
+			army_infantry_attack_factor = 0.06
+			army_artillery_attack_factor = 0.06 
+			army_artillery_defence_factor = 0.06
+		}
+	}
+
+	7 = {
+		cost = 1900
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.07
+			army_infantry_attack_factor = 0.07
+			army_artillery_attack_factor = 0.07 
+			army_artillery_defence_factor = 0.07
+		}
+	}
+
+	8 = {
+		cost = 2500
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.08
+			army_infantry_attack_factor = 0.08
+			army_artillery_attack_factor = 0.08 
+			army_artillery_defence_factor = 0.08
+		}
+	}
+
+	9 = {
+		cost = 3200
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.09
+			army_infantry_attack_factor = 0.09
+			army_artillery_attack_factor = 0.09 
+			army_artillery_defence_factor = 0.09
+		}
+	}
+	
+	10 = {
+		cost = 4000
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.1
+			army_infantry_attack_factor = 0.1
+			army_artillery_attack_factor = 0.1 
+			army_artillery_defence_factor = 0.1
+		}
+	}
+	
+	11 = {
+		cost = 4900
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.11
+			army_infantry_attack_factor = 0.11
+			army_artillery_attack_factor = 0.11 
+			army_artillery_defence_factor = 0.11
+		}
+	}
+	
+	12 = {
+		cost = 5900
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.12
+			army_infantry_attack_factor = 0.12
+			army_artillery_attack_factor = 0.12 
+			army_artillery_defence_factor = 0.12
+		}
+	}
+	
+	13 = {
+		cost = 7000
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.13
+			army_infantry_attack_factor = 0.13
+			army_artillery_attack_factor = 0.13 
+			army_artillery_defence_factor = 0.13
+		}
+	}
+	
+	14 = {
+		cost = 8200
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.14
+			army_infantry_attack_factor = 0.14
+			army_artillery_attack_factor = 0.14 
+			army_artillery_defence_factor = 0.14
+		}
+	}
+
+	15 = {
+		cost = 9500
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.15
+			army_infantry_attack_factor = 0.15
+			army_artillery_attack_factor = 0.15 
+			army_artillery_defence_factor = 0.15
+		}
+	}
+
+	16 = {
+		cost = 11000
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.16
+			army_infantry_attack_factor = 0.16
+			army_artillery_attack_factor = 0.16 
+			army_artillery_defence_factor = 0.16
+		}
+	}
+
+	17 = {
+		cost = 12600
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.17
+			army_infantry_attack_factor = 0.17
+			army_artillery_attack_factor = 0.17 
+			army_artillery_defence_factor = 0.17
+		}
+	}
+
+	18 = {
+		cost = 14300
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.18
+			army_infantry_attack_factor = 0.18
+			army_artillery_attack_factor = 0.18 
+			army_artillery_defence_factor = 0.18
+		}
+	}
+	
+	19 = {
+		cost = 16100
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.19
+			army_infantry_attack_factor = 0.19
+			army_artillery_attack_factor = 0.19 
+			army_artillery_defence_factor = 0.19
+		}
+	}
+
+	20 = {
+		cost = 18000
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.2
+			army_infantry_attack_factor = 0.2
+			army_artillery_attack_factor = 0.2 
+			army_artillery_defence_factor = 0.2
+		}
+	}
+	
+	21 = {
+		cost = 20000
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.21
+			army_infantry_attack_factor = 0.21
+			army_artillery_attack_factor = 0.21
+			army_artillery_defence_factor = 0.21
+		}
+	}
+	
+	22 = {
+		cost = 22000
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.22
+			army_infantry_attack_factor = 0.22
+			army_artillery_attack_factor = 0.22
+			army_artillery_defence_factor = 0.22
+		}
+	}
+	
+	23 = {
+		cost = 24000
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.23
+			army_infantry_attack_factor = 0.23
+			army_artillery_attack_factor = 0.23
+			army_artillery_defence_factor = 0.23
+		}
+	}
+	
+	24 = {
+		cost = 26000
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.24
+			army_infantry_attack_factor = 0.24
+			army_artillery_attack_factor = 0.24
+			army_artillery_defence_factor = 0.24
+		}
+	}
+	
+	25 = {
+		cost = 28000
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.25
+			army_infantry_attack_factor = 0.25
+			army_artillery_attack_factor = 0.25
+			army_artillery_defence_factor = 0.25
+		}
+	}
+
+	26 = {
+		cost = 30000
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.26
+			army_infantry_attack_factor = 0.26
+			army_artillery_attack_factor = 0.26
+			army_artillery_defence_factor = 0.26
+		}
+	}
+
+	27 = {
+		cost = 32000
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.27
+			army_infantry_attack_factor = 0.27
+			army_artillery_attack_factor = 0.27
+			army_artillery_defence_factor = 0.27
+		}
+	}
+
+	28 = {
+		cost = 34000
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.28
+			army_infantry_attack_factor = 0.28
+			army_artillery_attack_factor = 0.28
+			army_artillery_defence_factor = 0.28
+		}
+	}
+
+	29 = {
+		cost = 36000
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.29
+			army_infantry_attack_factor = 0.29
+			army_artillery_attack_factor = 0.29
+			army_artillery_defence_factor = 0.29
+		}
+	}
+	
+	30 = {
+		cost = 38000
+		type = field_marshal
+		modifier = {
+			army_infantry_defence_factor = 0.3
+			army_infantry_attack_factor = 0.3
+			army_artillery_attack_factor = 0.3
+			army_artillery_defence_factor = 0.3
+		}
+	}
+}

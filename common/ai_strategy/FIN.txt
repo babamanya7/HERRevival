@@ -1,0 +1,132 @@
+# befriend
+# conquer
+# antagonize
+# build_ship
+# build_army
+# unit_ratio
+# build_building
+# research_tech
+# garrison
+# protect
+# influence
+# send_volunteers_desire
+
+
+FIN_alone_in_the_north = {
+	enable = {
+		original_tag = FIN
+	}
+	abort = { always = no }
+	ai_strategy = {
+		type = pp_spend_priority
+		id = relation	
+		value = -200
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = armor
+		value = -200
+	}
+}
+
+FIN_the_soviet_threat = {
+	enable = {
+		original_tag = FIN
+	}
+
+	abort = {
+		OR = {
+			is_in_faction_with = SOV
+			is_guaranteed_by = SOV
+			has_guaranteed = SOV
+			has_non_aggression_pact_with = SOV
+		}
+	}
+
+	ai_strategy = {
+		type = prepare_for_war
+		id = SOV	
+		value = 200
+	}
+	
+	ai_strategy = {
+		type = force_build_armies
+		value = 200
+	}
+	
+	ai_strategy = {
+		type = build_army
+		id = infantry
+		value = 20
+	}
+}
+
+FIN_trust_nordic_neutrality = {
+	enable = {
+		tag = FIN
+	}
+	abort = { always = no }
+	ai_strategy = {
+	 	type = front_unit_request
+		tag = NOR
+		value = -200
+	}
+	ai_strategy = {
+	 	type = front_unit_request
+		tag = SWE
+		value = -200
+	}
+}
+
+FIN_antagonize_soviets = {
+	enable = {
+		tag = FIN
+		SOV = { owns_state = 146 } #Karjala
+	}
+	abort = {
+		SOV = { NOT = { owns_state = 146 } }
+	}
+	ai_strategy = {
+		type = antagonize
+		id = SOV
+		value = 1000
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = SOV	
+		value = 1000
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = SOV
+		value = 1000
+	}
+}
+
+FIN_continuation_war_attack = {
+	enable = {
+		tag = FIN
+		GER = {
+			has_war_with = SOV
+		}
+		SOV = {
+			any_owned_state = { is_core_of = FIN }	
+		}
+	}
+	abort = { always = no }
+	ai_strategy = {
+		type = antagonize
+		id = SOV
+		value = 1000
+	}
+	ai_strategy = {
+		type = declare_war
+		id = SOV
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = SOV
+		value = 1000
+	}
+}

@@ -1,0 +1,1841 @@
+
+ENG_imperial_conference_decision = {
+	
+	ENG_imperial_conference_decision = {
+
+		icon = generic_political_discourse
+		
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 40
+
+		fire_only_once = yes
+
+		activation = {
+			tag = ENG
+			has_country_flag = ENG_imperial_conference_timer_flag
+		}
+
+		visible = {
+			tag = ENG
+			has_country_flag = ENG_imperial_conference_timer_flag
+		}
+
+		cancel_if_not_visible = no
+
+		is_good = yes
+
+		complete_effect = {
+			
+		}
+
+		timeout_effect = {
+			custom_effect_tooltip = imperial_conference_ends_tt
+			every_country = {
+				limit = {
+					OR = {
+						AND = {
+							is_subject_of = ENG
+							tag = CAN
+						}
+						AND = {
+							is_subject_of = ENG
+							tag = SAF
+						}
+						AND = {
+							is_subject_of = ENG
+							tag = RAJ
+						}
+						AND = {
+							is_subject_of = ENG
+							tag = AST
+						}
+						AND = {
+							is_subject_of = ENG
+							tag = NZL
+						}
+					}
+				}
+				remove_opinion_modifier = { target = ENG modifier = ENG_imperial_conference_opinion }
+				remove_opinion_modifier = { target = ENG modifier = ENG_imperial_conference_approved_resolution }
+			}
+		}
+	}
+	
+	ENG_discuss_imperial_defense = {
+
+		icon = eng_trade_unions_support
+
+		allowed = {
+			tag = ENG
+		}
+
+		available = {
+			NOT = { has_country_flag = ENG_imperial_conference_discussion_in_progress }
+		}
+
+		cost = 10
+
+		fire_only_once = yes
+
+		visible = {
+			has_country_flag = ENG_imperial_conference_timer_flag
+		}
+
+		complete_effect = {
+			country_event = { id = mtg_britain.83 hours = 6 }
+			set_country_flag = ENG_imperial_conference_discussion_in_progress
+		}
+
+		ai_will_do = {
+			factor = 500
+		}
+	}
+
+	ENG_discuss_imperial_trade = {
+
+		icon = eng_trade_unions_support
+
+		allowed = {
+			tag = ENG
+		}
+
+		available = {
+			NOT = { has_country_flag = ENG_imperial_conference_discussion_in_progress }
+		}
+
+		cost = 10
+
+		fire_only_once = yes
+
+		visible = {
+			has_country_flag = ENG_imperial_conference_timer_flag
+		}
+
+		complete_effect = {
+			country_event = { id = mtg_britain.87 hours = 6 }
+			set_country_flag = ENG_imperial_conference_discussion_in_progress
+		}
+
+		ai_will_do = {
+			factor = 500
+		}
+	}
+
+	ENG_discuss_imperial_economy = {
+
+		icon = eng_trade_unions_support
+
+		allowed = {
+			tag = ENG
+		}
+
+		available = {
+			NOT = { has_country_flag = ENG_imperial_conference_discussion_in_progress }
+		}
+
+		cost = 10
+
+		fire_only_once = yes
+
+		visible = {
+			has_country_flag = ENG_imperial_conference_timer_flag
+		}
+
+		complete_effect = {
+			country_event = { id = mtg_britain.91 hours = 6 }
+			set_country_flag = ENG_imperial_conference_discussion_in_progress
+		}
+
+		ai_will_do = {
+			factor = 500
+		}
+	}
+
+	ENG_discuss_appeasement = {
+
+		icon = eng_trade_unions_support
+
+		allowed = {
+			tag = ENG
+		}
+
+		available = {
+			NOT = { has_country_flag = ENG_imperial_conference_discussion_in_progress }
+			has_war = no
+		}
+
+		cost = 10
+
+		fire_only_once = yes
+
+		visible = {
+			has_country_flag = ENG_imperial_conference_timer_flag
+		}
+
+		complete_effect = {
+			country_event = { id = mtg_britain.95 hours = 6 }
+			set_country_flag = ENG_imperial_conference_discussion_in_progress
+		}
+
+		ai_will_do = {
+			factor = 500
+		}
+	}
+
+	ENG_discuss_imperial_federation = {
+
+		icon = eng_imperial_federation
+
+		allowed = {
+			tag = ENG
+		}
+
+		available = {
+			NOT = { has_country_flag = ENG_imperial_conference_discussion_in_progress }
+			OR = {
+				CAN = { exists = yes }
+				SAF = { exists = yes }
+				AST = { exists = yes }
+				NZL = { exists = yes }
+				AND = {
+					RAJ = { is_subject_of = ENG }
+					has_completed_focus = ENG_indian_autonomy
+				}
+			}
+		}
+
+		cost = 25
+
+		fire_only_once = yes
+
+		visible = {
+			has_country_flag = ENG_imperial_conference_timer_flag
+		}
+
+		complete_effect = {
+			country_event = { id = mtg_britain.99 hours = 6 }
+			set_country_flag = ENG_imperial_conference_discussion_in_progress
+			if = {
+				limit = {
+					NOT = { has_completed_focus = ENG_indian_autonomy }
+				}
+				custom_effect_tooltip = ENG_indian_autonomy_tt
+			}
+		}
+
+		ai_will_do = {
+			factor = 500
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+	}
+}
+
+political_actions = {
+
+	ENG_imperial_conference_timer = {
+
+		icon = eng_imperial_federation
+
+		available = {
+			NOT = {
+				CAN = { is_subject_of = ROOT }
+				SAF = { is_subject_of = ROOT }
+				RAJ = { is_subject_of = ROOT }
+				AST = { is_subject_of = ROOT }
+				NZL = { is_subject_of = ROOT }
+			}
+		}
+
+		visible = {
+			tag = ENG
+			OR = {
+				CAN = { is_subject_of = ROOT }
+				SAF = { is_subject_of = ROOT }
+				RAJ = { is_subject_of = ROOT }
+				AST = { is_subject_of = ROOT }
+				NZL = { is_subject_of = ROOT }
+			}
+		}
+
+		days_mission_timeout = 498
+		is_good = yes
+		fire_only_once = yes
+		activation = {
+			tag = ENG
+		}
+
+		timeout_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						tag = ENG
+						AND = {
+							is_subject_of = ENG
+							tag = CAN
+						}
+						AND = {
+							is_subject_of = ENG
+							tag = SAF
+						}
+						AND = {
+							is_subject_of = ENG
+							tag = RAJ
+						}
+						AND = {
+							is_subject_of = ENG
+							tag = AST
+						}
+						AND = {
+							is_subject_of = ENG
+							tag = NZL
+						}
+					}
+				}
+				country_event = { id = mtg_britain.82 hours = 6 }
+			}
+			hidden_effect = { 
+				news_event = { id = mtg_news.13 days = 1 }
+				set_country_flag = imperial_conference_ends
+			}
+			custom_effect_tooltip = ENG_imperial_conference_tt
+			custom_effect_tooltip = ENG_indian_autonomy_tt
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+
+	hold_blood_toil_tears_sweat_speech = {
+
+		icon = generic_political_discourse
+
+		allowed = {
+			tag = ENG
+		}
+
+		available = {
+			has_government = democratic
+			OR = {
+				has_country_flag = chamberlain_died
+				has_country_flag = chamberlain_resigned
+			}
+			has_war_with = GER
+		}
+
+		cost = 25
+
+		fire_only_once = yes
+
+		visible = {
+			tag = ENG
+			has_government = democratic
+			has_war_with = GER
+			OR = {
+				has_country_flag = chamberlain_died
+				has_country_flag = chamberlain_resigned
+			}
+		}
+
+		complete_effect = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			if = {
+				limit = {
+					USA = {
+						exists = yes
+						has_war = no
+						has_government = ROOT
+					}
+				}
+				USA = { set_country_flag = blood_toil_tears_sweat_speech }
+			}
+			set_country_flag = blood_toil_tears_sweat_speech
+			play_blood_toil_tears_sweat_effect = yes
+		}
+
+		ai_will_do = {
+			factor = 200 #Gotta allow the Americans to help
+		}
+	}
+
+	hold_fight_on_the_beaches_speech = {
+
+		icon = generic_political_discourse
+
+		allowed = {
+			tag = ENG
+		}
+
+		available = {
+			has_government = democratic
+			OR = {
+				has_country_flag = chamberlain_died
+				has_country_flag = chamberlain_resigned
+			}
+			has_war_with = GER
+			is_in_faction_with = FRA
+			FRA = {
+				surrender_progress > 0.2
+			}
+		}
+
+		cost = 25
+
+		fire_only_once = yes
+
+		visible = {
+			tag = ENG
+			has_government = democratic
+			has_war_with = GER
+			has_country_flag = blood_toil_tears_sweat_speech
+			OR = {
+				has_country_flag = chamberlain_died
+				has_country_flag = chamberlain_resigned
+			}
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					USA = {
+						exists = yes
+						has_war = no
+						has_government = ROOT
+					}
+				}
+				USA = { set_country_flag = fight_on_the_beaches_speech }
+			}
+			if = {
+				limit = {
+					has_idea = stiff_upper_lip
+				}
+				swap_ideas = {
+					remove_idea = stiff_upper_lip
+					add_idea = stiff_upper_lip_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = stiff_upper_lip_2
+				}
+				swap_ideas = {
+					remove_idea = stiff_upper_lip_2
+					add_idea = stiff_upper_lip_3
+				}
+			}
+			set_country_flag = fight_on_the_beaches_speech
+			play_we_shall_fight_on_the_beaches_effect = yes
+		}
+
+		ai_will_do = {
+			factor = 200 #Gotta allow the Americans to help
+		}
+	}
+
+	hold_this_was_their_finest_hour_speech = {
+
+		icon = generic_political_discourse
+
+		allowed = {
+			tag = ENG
+		}
+
+		available = {
+			has_government = democratic
+			OR = {
+				has_country_flag = chamberlain_died
+				has_country_flag = chamberlain_resigned
+			}
+			has_war_with = GER
+			is_in_faction_with = FRA
+			FRA = { has_capitulated = yes }
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		visible = {
+			tag = ENG
+			has_government = democratic
+			has_war_with = GER
+			has_country_flag = fight_on_the_beaches_speech
+			OR = {
+				has_country_flag = chamberlain_died
+				has_country_flag = chamberlain_resigned
+			}
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					USA = {
+						exists = yes
+						has_war = no
+						has_government = ROOT
+					}
+				}
+				USA = { set_country_flag = this_was_their_finest_hour_speech }
+			}
+			if = {
+				limit = {
+					has_idea = stiff_upper_lip
+				}
+				swap_ideas = {
+					remove_idea = stiff_upper_lip
+					add_idea = stiff_upper_lip_2				
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = stiff_upper_lip_2
+				}
+				swap_ideas = {
+					remove_idea = stiff_upper_lip_2
+					add_idea = stiff_upper_lip_3				
+				}
+			}
+			set_country_flag = this_was_their_finest_hour_speech
+			play_their_finest_hour_effect = yes
+		}
+
+		ai_will_do = {
+			factor = 200 #Gotta allow the Americans to help
+		}
+	}
+	
+	ENG_request_azores_lease = {
+	
+		allowed = {
+			tag = ENG
+		}
+		
+		available = {
+			has_war = yes
+			has_government = democratic
+			POR = {
+				has_full_control_of_state = 698
+				OR = {
+					has_government = ROOT
+					has_government = neutrality
+				}
+			}
+			POR = { is_in_faction = no }
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 10
+		}
+		
+		visible = {
+			has_war = yes
+			POR = {
+				has_full_control_of_state = 698
+				NOT = { has_war_with = ROOT }
+			}
+		}
+		
+		complete_effect = {
+			POR = { country_event = wtt_britain_lease_azores.1 }
+		}
+	}
+
+	ENG_evacuate_the_merchant_fleet = {
+
+		icon = generic_generic_naval
+	
+		allowed = {
+			OR = {
+				tag = NOR
+				tag = DEN
+				tag = HOL
+				tag = BEL
+				tag = POR
+			}
+		}
+		
+		available = {
+			has_war_with = GER
+			is_in_faction_with = ENG
+			surrender_progress > 0.1
+			has_equipment = {
+				convoy_1 > 50
+			}
+		}
+
+		visible = {
+			has_war_with = GER
+			is_in_faction_with = ENG
+			NOT = { has_country_flag = merchant_fleet_evacuated }
+			OR = {
+				tag = NOR
+				tag = DEN
+				tag = HOL
+				tag = BEL
+				tag = POR
+			}
+		}
+
+		cost = 0
+
+		fire_only_once = no
+
+		days_remove = 3
+		is_good = no
+
+		cancel_trigger = {
+			OR = {
+				surrender_progress < 0.1
+				has_capitulated = yes
+			}
+		}
+
+		modifier = {
+			political_power_cost = 1.0
+		}
+
+		remove_effect = {
+			hidden_effect = {
+				set_country_flag = merchant_fleet_evacuated
+			}
+			add_war_support = -0.1
+			ENG = { 
+				country_event = { id = eng_armor.842 }
+			}
+			if = {
+				limit = {
+					has_equipment = {
+						convoy_1 > 150
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -150
+				}
+				ENG = {
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 150
+						producer = ROOT
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_equipment = {
+						convoy_1 > 140
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -140
+				}
+				ENG = {
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 140
+						producer = ROOT
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_equipment = {
+						convoy_1 > 130
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -130
+				}
+				ENG = {
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 130
+						producer = ROOT
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_equipment = {
+						convoy_1 > 120
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -120
+				}
+				ENG = {
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 120
+						producer = ROOT
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_equipment = {
+						convoy_1 > 110
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -110
+				}
+				ENG = {
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 110
+						producer = ROOT
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_equipment = {
+						convoy_1 > 100
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -100
+				}
+				ENG = {
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 100
+						producer = ROOT
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_equipment = {
+						convoy_1 > 90
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -90
+				}
+				ENG = {
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 90
+						producer = ROOT
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_equipment = {
+						convoy_1 > 80
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -80
+				}
+				ENG = {
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 80
+						producer = ROOT
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_equipment = {
+						convoy_1 > 70
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -70
+				}
+				ENG = {
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 70
+						producer = ROOT
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_equipment = {
+						convoy_1 > 60
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -60
+				}
+				ENG = {
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 60
+						producer = ROOT
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_equipment = {
+						convoy_1 > 50
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -50
+				}
+				ENG = {
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 50
+						producer = ROOT
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_equipment = {
+						convoy_1 > 40
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -40
+				}
+				ENG = {
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 40
+						producer = ROOT
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_equipment = {
+						convoy_1 > 30
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -30
+				}
+				ENG = {
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 30
+						producer = ROOT
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_equipment = {
+						convoy_1 > 20
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -20
+				}
+				ENG = {
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 20
+						producer = ROOT
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_equipment = {
+						convoy_1 > 10
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -10
+				}
+				ENG = {
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 10
+						producer = ROOT
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_equipment = {
+						convoy_1 > 50
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -50
+				}
+				ENG = {
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 50
+						producer = ROOT
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 700
+		}
+	}
+
+	ENG_abdication_crisis = { # timer for the player to see when the event chain ends
+
+		priority = 10
+
+		icon = eng_abdication_crisis
+		
+		available = {
+			has_country_flag = ENG_abdication_crisis_changed_mind
+		}
+
+		days_mission_timeout = 200
+
+		fire_only_once = yes
+
+		activation = {
+			tag = ENG
+			OR = {
+				has_country_flag = ENG_abdication_crisis_normal_marriage
+				has_country_flag = ENG_abdication_crisis_morganatic_marriage
+			}
+		}
+
+		visible = {
+			tag = ENG
+			OR = {
+				has_country_flag = ENG_abdication_crisis_normal_marriage
+				has_country_flag = ENG_abdication_crisis_morganatic_marriage
+			}
+			NOT = { has_country_flag = edward_viii_married_wallis_simpson }
+		}
+
+		cancel_if_not_visible = yes
+
+		is_good = yes
+
+		complete_effect = {
+			
+		}
+
+		timeout_effect = {
+			country_event = { id = mtg_britain.5 }
+		}
+	}
+
+	ENG_britain_demands_treaty_compliance = { # ENG demanding scuttling of ships to maintain Washington Naval Treaty
+
+		icon = generic_naval
+		
+		available = {
+			if = {
+				limit = {
+					original_tag = USA
+				}
+				custom_trigger_tooltip = {
+					tooltip = ENG_britain_demands_treaty_compliance_tt_1
+					naval_strength_comparison = {
+						other = ENG
+						ratio < 1.01
+						sub_unit_def_weights = {
+							carrier = 1
+							battleship = 1
+							battle_cruiser = 1
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					original_tag = JAP
+				}
+				custom_trigger_tooltip = {
+					tooltip = ENG_britain_demands_treaty_compliance_tt_2
+					naval_strength_comparison = {
+						other = ENG
+						ratio < 0.66
+						sub_unit_def_weights = {
+							carrier = 1
+							battleship = 1
+							battle_cruiser = 1
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					NOT = { original_tag = USA }
+					NOT = { original_tag = JAP }
+				}
+				custom_trigger_tooltip = {
+					tooltip = ENG_britain_demands_treaty_compliance_tt_3
+					naval_strength_comparison = {
+						other = ENG
+						ratio < 0.36
+						sub_unit_def_weights = {
+							carrier = 1
+							battleship = 1
+							battle_cruiser = 1
+						}
+					}
+				}
+			}
+		}
+
+		days_mission_timeout = 60
+
+		fire_only_once = no
+
+		activation = {
+			has_country_flag = ENG_demanding_ship_reduction_flag
+		}
+
+		visible = {
+			has_country_flag = ENG_demanding_ship_reduction_flag
+		}
+
+		cancel_if_not_visible = yes
+
+		is_good = no
+
+		complete_effect = {
+			clr_country_flag = ENG_demanding_ship_reduction_flag
+			random_country = {
+				limit = {
+					original_tag = ENG
+					has_completed_focus = ENG_enforce_the_naval_treaties
+				}
+				country_event = { id = mtg_britain.107 }
+			}
+		}
+
+		timeout_effect = {
+			clr_country_flag = ENG_demanding_ship_reduction_flag
+			random_country = {
+				limit = {
+					original_tag = ENG
+					has_completed_focus = ENG_enforce_the_naval_treaties
+				}
+				country_event = { id = mtg_britain.108 }
+			}
+			effect_tooltip = {
+				ENG = {
+					create_wargoal = {
+						target = ROOT
+						type = puppet_wargoal_focus
+						expire = 0
+					}
+				}
+			}
+		}
+	}
+}
+operations = {
+	
+	ENG_crusader = {
+		icon = generic_operation
+		allowed = {
+			always = yes
+		}
+		available = {
+			tag = ENG
+			has_war_with = GER
+			has_war_with = ITA
+			date > 1941.8.1
+			date < 1941.11.1
+		}
+		visible = {
+			tag = ENG
+			has_war_with = ITA
+			has_war_with = GER
+		}
+		cost = 25
+		days_remove = 40
+		fire_only_once = yes
+		modifier = {
+			supply_node_range = 0.5
+		}
+		targeted_modifier = {
+			tag = GER
+			attack_bonus_against = 0.25
+		}
+		targeted_modifier = {
+			tag = ITA
+			attack_bonus_against = 0.25
+		}
+		ai_will_do = {
+			factor = 150
+		}
+	}
+	
+	
+	ENG_operation_overlord = {
+
+		icon = generic_operation
+
+        allowed = {
+            always = yes
+        }
+
+        available = {
+            original_tag = ENG
+        }
+
+        visible = {
+        	original_tag = ENG
+			date > 1943.6.1
+        }
+
+        cost = 0
+        fire_only_once = yes
+		days_remove = 180
+
+        ai_will_do = {
+			factor = 500
+		}
+
+		targeted_modifier = {
+			tag = GER
+			attack_bonus_against = 0.1
+		}
+
+		modifier = {
+            supply_consumption_factor = -0.5
+		}
+	}
+
+	prepare_antropoid = {
+
+		icon = generic_naval
+	
+		allowed = {
+			tag = ENG
+		}
+		
+		available = {
+			date > 1942.2.1
+			date < 1943.1.1
+		}
+
+		cost = 0
+		
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 1
+		}
+		
+		visible = {
+			tag = ENG
+			has_war_with = GER
+			is_ai = yes
+		}
+		
+		complete_effect = {
+			add_equipment_to_stockpile = { type = transport_plane_equipment amount = 40 }
+		}
+	}
+
+	mers_el_kebir_raid = {
+
+		icon = generic_naval
+	
+		allowed = {
+			tag = ENG
+		}
+		
+		available = { 
+			has_government = democratic
+			has_war_with = GER
+			country_exists = VIC
+			VIC = { has_government = fascism }
+			VIC = { has_war = no }
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 600
+		}
+		
+		visible = {
+			tag = ENG
+			has_government = democratic
+			has_war_with = GER
+		}
+		
+		complete_effect = {
+			VIC = { country_event = { id = wtt_britain.25 hours = 5 } }
+		}
+	}
+}
+
+ENG_enforce_the_naval_treaties = {
+
+	ENG_demand_treaty_compliance = {
+
+		icon = eng_trade_unions_demand
+
+		allowed = {
+			tag = ENG
+		}
+
+		available = {
+			has_navy_size = {
+			    size > 14
+				archetype = ship_hull_heavy
+			}
+			if = {
+				limit = {
+					FROM = {
+						original_tag = USA
+					}
+				}
+				FROM = {
+					custom_trigger_tooltip = {
+						tooltip = ENG_demand_treaty_compliance_tt2
+						naval_strength_comparison = {
+							other = ENG
+							ratio > 1
+							sub_unit_def_weights = {
+								carrier = 1
+								battleship = 1
+								battle_cruiser = 1
+							}
+						}
+					}
+					NOT = { is_in_faction_with = ROOT }
+					NOT = { has_war_with = ROOT }
+				}
+			}
+			if = {
+				limit = {
+					FROM = {
+						original_tag = JAP
+					}
+				}
+				FROM = {
+					custom_trigger_tooltip = {
+						tooltip = ENG_demand_treaty_compliance_tt3
+						naval_strength_comparison = {
+							other = ENG
+							ratio > 0.65
+							sub_unit_def_weights = {
+								carrier = 1
+								battleship = 1
+								battle_cruiser = 1
+							}
+						}
+					}
+					NOT = { is_in_faction_with = ROOT }
+					NOT = { has_war_with = ROOT }
+				}
+			}
+			if = {
+				limit = {
+					FROM = {
+						NOT = { original_tag = USA }
+						NOT = { original_tag = JAP }
+					}
+				}
+				FROM = {
+					custom_trigger_tooltip = {
+						tooltip = ENG_demand_treaty_compliance_tt4
+						naval_strength_comparison = {
+							other = ENG
+							ratio > 0.35
+							sub_unit_def_weights = {
+								carrier = 1
+								battleship = 1
+								battle_cruiser = 1
+							}
+						}
+					}
+					NOT = { is_in_faction_with = ROOT }
+					NOT = { has_war_with = ROOT }
+				}
+			}
+		}
+
+		target_trigger = {
+			FROM = {
+				NOT = { has_country_flag = ENG_demanded_ship_reduction_flag }
+				OR = {
+					AND = {
+						original_tag = USA
+						naval_strength_comparison = {
+							other = ENG
+							ratio > 0.8
+							sub_unit_def_weights = {
+								carrier = 1
+								battleship = 1
+								battle_cruiser = 1
+							}
+						}
+						NOT = { is_in_faction_with = ROOT }
+						NOT = { has_war_with = ROOT }
+					}
+					AND = {
+						original_tag = JAP
+						naval_strength_comparison = {
+							other = ENG
+							ratio > 0.5
+							sub_unit_def_weights = {
+								carrier = 1
+								battleship = 1
+								battle_cruiser = 1
+							}
+						}
+						NOT = { is_in_faction_with = ROOT }
+						NOT = { has_war_with = ROOT }
+					}
+					AND = {
+						NOT = { original_tag = USA }
+						NOT = { original_tag = JAP }
+						naval_strength_comparison = {
+							other = ENG
+							ratio > 0.2
+							sub_unit_def_weights = {
+								carrier = 1
+								battleship = 1
+								battle_cruiser = 1
+							}
+						}
+						NOT = { is_in_faction_with = ROOT }
+						NOT = { has_war_with = ROOT }
+					}
+				}
+			}
+		}
+
+		cost = 50
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		visible = {
+			original_tag = ENG
+			has_completed_focus = ENG_enforce_the_naval_treaties
+			FROM = {
+				NOT = { has_country_flag = ENG_demanded_ship_reduction_flag }
+				OR = {
+					AND = {
+						original_tag = USA
+						naval_strength_comparison = {
+							other = ENG
+							ratio > 0.8
+							sub_unit_def_weights = {
+								carrier = 1
+								battleship = 1
+								battle_cruiser = 1
+							}
+						}
+						NOT = { is_in_faction_with = ROOT }
+						NOT = { has_war_with = ROOT }
+					}
+					AND = {
+						original_tag = JAP
+						naval_strength_comparison = {
+							other = ENG
+							ratio > 0.5
+							sub_unit_def_weights = {
+								carrier = 1
+								battleship = 1
+								battle_cruiser = 1
+							}
+						}
+						NOT = { is_in_faction_with = ROOT }
+						NOT = { has_war_with = ROOT }
+					}
+					AND = {
+						NOT = { original_tag = USA }
+						NOT = { original_tag = JAP }
+						naval_strength_comparison = {
+							other = ENG
+							ratio > 0.2
+							sub_unit_def_weights = {
+								carrier = 1
+								battleship = 1
+								battle_cruiser = 1
+							}
+						}
+						NOT = { is_in_faction_with = ROOT }
+						NOT = { has_war_with = ROOT }
+					}
+				}
+			}
+		}
+
+		complete_effect = {
+			FROM = {
+				set_country_flag = ENG_demanding_ship_reduction_flag
+				activate_mission = ENG_britain_demands_treaty_compliance
+				country_event = { id = mtg_britain.106 hours = 6 }
+				custom_effect_tooltip = ENG_demand_treaty_compliance_tt
+			}
+		}
+	}
+}
+
+economy_decisions = {
+
+	loans_from_canada = {
+	
+		icon = hol_attract_foreign_investors
+
+		available = {
+			has_completed_focus = ENG_empty_the_gold_reserves
+			CAN = { is_subject_of = ENG }
+		}
+
+		visible = {
+			has_war = yes
+			has_completed_focus = ENG_empty_the_gold_reserves
+			NOT = { has_war_with = CAN }
+			country_exists = CAN
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		days_remove = 30
+		is_good = yes
+
+		remove_effect = {
+			economy_fatigue_level_down_10 = yes
+		}
+
+		complete_effect = {
+
+		}
+
+		ai_will_do = {
+			base = 0
+
+			modifier = {
+				add = 500
+				OR = {
+					has_idea = economy_fatigue_30
+					has_idea = economy_fatigue_31
+					has_idea = economy_fatigue_32
+					has_idea = economy_fatigue_33
+					has_idea = economy_fatigue_34
+					has_idea = economy_fatigue_35
+					has_idea = economy_fatigue_36
+					has_idea = economy_fatigue_37
+					has_idea = economy_fatigue_38
+					has_idea = economy_fatigue_39
+					has_idea = economy_fatigue_40
+					has_idea = economy_fatigue_41
+					has_idea = economy_fatigue_42
+					has_idea = economy_fatigue_43
+					has_idea = economy_fatigue_44
+					has_idea = economy_fatigue_45
+					has_idea = economy_fatigue_46
+					has_idea = economy_fatigue_47
+					has_idea = economy_fatigue_48
+					has_idea = economy_fatigue_49
+					has_idea = economy_fatigue_50
+					has_idea = economy_fatigue_51
+					has_idea = economy_fatigue_52
+					has_idea = economy_fatigue_53
+					has_idea = economy_fatigue_54
+					has_idea = economy_fatigue_55
+					has_idea = economy_fatigue_56
+					has_idea = economy_fatigue_57
+					has_idea = economy_fatigue_58
+					has_idea = economy_fatigue_59
+					has_idea = economy_fatigue_60
+					has_idea = economy_fatigue_61
+					has_idea = economy_fatigue_62
+					has_idea = economy_fatigue_63
+					has_idea = economy_fatigue_64
+					has_idea = economy_fatigue_65
+					has_idea = economy_fatigue_66
+					has_idea = economy_fatigue_67
+					has_idea = economy_fatigue_68
+					has_idea = economy_fatigue_69
+					has_idea = economy_fatigue_70
+					has_idea = economy_fatigue_71
+					has_idea = economy_fatigue_72
+					has_idea = economy_fatigue_73
+					has_idea = economy_fatigue_74
+					has_idea = economy_fatigue_75
+					has_idea = economy_fatigue_76
+					has_idea = economy_fatigue_77
+					has_idea = economy_fatigue_78
+					has_idea = economy_fatigue_79
+					has_idea = economy_fatigue_80
+					has_idea = economy_fatigue_81
+					has_idea = economy_fatigue_82
+					has_idea = economy_fatigue_83
+					has_idea = economy_fatigue_84
+					has_idea = economy_fatigue_85
+					has_idea = economy_fatigue_86
+					has_idea = economy_fatigue_87
+					has_idea = economy_fatigue_88
+					has_idea = economy_fatigue_89
+					has_idea = economy_fatigue_90
+					has_idea = economy_fatigue_91
+					has_idea = economy_fatigue_92
+					has_idea = economy_fatigue_93
+					has_idea = economy_fatigue_94
+					has_idea = economy_fatigue_95
+					has_idea = economy_fatigue_96
+					has_idea = economy_fatigue_97
+					has_idea = economy_fatigue_98
+					has_idea = economy_fatigue_99
+					has_idea = economy_fatigue_100
+				}
+			}
+		}
+	}
+
+	sterling_bills = {
+	
+		icon = ger_mefo_bills
+
+		available = {
+			has_completed_focus = ENG_empty_the_gold_reserves
+		}
+
+		visible = {
+			has_war = yes
+			has_completed_focus = ENG_empty_the_gold_reserves
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		days_remove = 30
+		is_good = yes
+
+		remove_effect = {
+			economy_fatigue_level_down_5 = yes
+		}
+
+		complete_effect = {
+
+		}
+
+		ai_will_do = {
+			base = 0
+
+			modifier = {
+				add = 500
+				OR = {
+					has_idea = economy_fatigue_30
+					has_idea = economy_fatigue_31
+					has_idea = economy_fatigue_32
+					has_idea = economy_fatigue_33
+					has_idea = economy_fatigue_34
+					has_idea = economy_fatigue_35
+					has_idea = economy_fatigue_36
+					has_idea = economy_fatigue_37
+					has_idea = economy_fatigue_38
+					has_idea = economy_fatigue_39
+					has_idea = economy_fatigue_40
+					has_idea = economy_fatigue_41
+					has_idea = economy_fatigue_42
+					has_idea = economy_fatigue_43
+					has_idea = economy_fatigue_44
+					has_idea = economy_fatigue_45
+					has_idea = economy_fatigue_46
+					has_idea = economy_fatigue_47
+					has_idea = economy_fatigue_48
+					has_idea = economy_fatigue_49
+					has_idea = economy_fatigue_50
+					has_idea = economy_fatigue_51
+					has_idea = economy_fatigue_52
+					has_idea = economy_fatigue_53
+					has_idea = economy_fatigue_54
+					has_idea = economy_fatigue_55
+					has_idea = economy_fatigue_56
+					has_idea = economy_fatigue_57
+					has_idea = economy_fatigue_58
+					has_idea = economy_fatigue_59
+					has_idea = economy_fatigue_60
+					has_idea = economy_fatigue_61
+					has_idea = economy_fatigue_62
+					has_idea = economy_fatigue_63
+					has_idea = economy_fatigue_64
+					has_idea = economy_fatigue_65
+					has_idea = economy_fatigue_66
+					has_idea = economy_fatigue_67
+					has_idea = economy_fatigue_68
+					has_idea = economy_fatigue_69
+					has_idea = economy_fatigue_70
+					has_idea = economy_fatigue_71
+					has_idea = economy_fatigue_72
+					has_idea = economy_fatigue_73
+					has_idea = economy_fatigue_74
+					has_idea = economy_fatigue_75
+					has_idea = economy_fatigue_76
+					has_idea = economy_fatigue_77
+					has_idea = economy_fatigue_78
+					has_idea = economy_fatigue_79
+					has_idea = economy_fatigue_80
+					has_idea = economy_fatigue_81
+					has_idea = economy_fatigue_82
+					has_idea = economy_fatigue_83
+					has_idea = economy_fatigue_84
+					has_idea = economy_fatigue_85
+					has_idea = economy_fatigue_86
+					has_idea = economy_fatigue_87
+					has_idea = economy_fatigue_88
+					has_idea = economy_fatigue_89
+					has_idea = economy_fatigue_90
+					has_idea = economy_fatigue_91
+					has_idea = economy_fatigue_92
+					has_idea = economy_fatigue_93
+					has_idea = economy_fatigue_94
+					has_idea = economy_fatigue_95
+					has_idea = economy_fatigue_96
+					has_idea = economy_fatigue_97
+					has_idea = economy_fatigue_98
+					has_idea = economy_fatigue_99
+					has_idea = economy_fatigue_100
+				}
+			}
+		}
+	}
+
+	loans_from_the_empire = {
+	
+		icon = gre_investment_decisions
+
+		available = {
+			has_completed_focus = ENG_empty_the_gold_reserves
+			num_subjects > 4
+		}
+
+		visible = {
+			has_war = yes
+			has_completed_focus = ENG_empty_the_gold_reserves
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		days_remove = 30
+		is_good = yes
+
+		remove_effect = {
+			economy_fatigue_level_down_10 = yes
+		}
+
+		complete_effect = {
+
+		}
+
+		ai_will_do = {
+			base = 0
+
+			modifier = {
+				add = 500
+				OR = {
+					has_idea = economy_fatigue_30
+					has_idea = economy_fatigue_31
+					has_idea = economy_fatigue_32
+					has_idea = economy_fatigue_33
+					has_idea = economy_fatigue_34
+					has_idea = economy_fatigue_35
+					has_idea = economy_fatigue_36
+					has_idea = economy_fatigue_37
+					has_idea = economy_fatigue_38
+					has_idea = economy_fatigue_39
+					has_idea = economy_fatigue_40
+					has_idea = economy_fatigue_41
+					has_idea = economy_fatigue_42
+					has_idea = economy_fatigue_43
+					has_idea = economy_fatigue_44
+					has_idea = economy_fatigue_45
+					has_idea = economy_fatigue_46
+					has_idea = economy_fatigue_47
+					has_idea = economy_fatigue_48
+					has_idea = economy_fatigue_49
+					has_idea = economy_fatigue_50
+					has_idea = economy_fatigue_51
+					has_idea = economy_fatigue_52
+					has_idea = economy_fatigue_53
+					has_idea = economy_fatigue_54
+					has_idea = economy_fatigue_55
+					has_idea = economy_fatigue_56
+					has_idea = economy_fatigue_57
+					has_idea = economy_fatigue_58
+					has_idea = economy_fatigue_59
+					has_idea = economy_fatigue_60
+					has_idea = economy_fatigue_61
+					has_idea = economy_fatigue_62
+					has_idea = economy_fatigue_63
+					has_idea = economy_fatigue_64
+					has_idea = economy_fatigue_65
+					has_idea = economy_fatigue_66
+					has_idea = economy_fatigue_67
+					has_idea = economy_fatigue_68
+					has_idea = economy_fatigue_69
+					has_idea = economy_fatigue_70
+					has_idea = economy_fatigue_71
+					has_idea = economy_fatigue_72
+					has_idea = economy_fatigue_73
+					has_idea = economy_fatigue_74
+					has_idea = economy_fatigue_75
+					has_idea = economy_fatigue_76
+					has_idea = economy_fatigue_77
+					has_idea = economy_fatigue_78
+					has_idea = economy_fatigue_79
+					has_idea = economy_fatigue_80
+					has_idea = economy_fatigue_81
+					has_idea = economy_fatigue_82
+					has_idea = economy_fatigue_83
+					has_idea = economy_fatigue_84
+					has_idea = economy_fatigue_85
+					has_idea = economy_fatigue_86
+					has_idea = economy_fatigue_87
+					has_idea = economy_fatigue_88
+					has_idea = economy_fatigue_89
+					has_idea = economy_fatigue_90
+					has_idea = economy_fatigue_91
+					has_idea = economy_fatigue_92
+					has_idea = economy_fatigue_93
+					has_idea = economy_fatigue_94
+					has_idea = economy_fatigue_95
+					has_idea = economy_fatigue_96
+					has_idea = economy_fatigue_97
+					has_idea = economy_fatigue_98
+					has_idea = economy_fatigue_99
+					has_idea = economy_fatigue_100
+				}
+			}
+		}
+	}
+
+	empty_the_treasuary = {
+	
+		icon = eng_trade_unions_support
+
+		available = {
+			has_completed_focus = ENG_empty_the_gold_reserves
+		}
+
+		visible = {
+			has_war = yes
+			has_completed_focus = ENG_empty_the_gold_reserves
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		days_remove = 30
+		is_good = yes
+
+		remove_effect = {
+			add_stability = -0.05
+			economy_fatigue_level_down_5 = yes
+		}
+
+		complete_effect = {
+
+		}
+
+		ai_will_do = {
+			base = 0
+
+			modifier = {
+				add = 500
+				OR = {
+					has_idea = economy_fatigue_50
+					has_idea = economy_fatigue_51
+					has_idea = economy_fatigue_52
+					has_idea = economy_fatigue_53
+					has_idea = economy_fatigue_54
+					has_idea = economy_fatigue_55
+					has_idea = economy_fatigue_56
+					has_idea = economy_fatigue_57
+					has_idea = economy_fatigue_58
+					has_idea = economy_fatigue_59
+					has_idea = economy_fatigue_60
+					has_idea = economy_fatigue_61
+					has_idea = economy_fatigue_62
+					has_idea = economy_fatigue_63
+					has_idea = economy_fatigue_64
+					has_idea = economy_fatigue_65
+					has_idea = economy_fatigue_66
+					has_idea = economy_fatigue_67
+					has_idea = economy_fatigue_68
+					has_idea = economy_fatigue_69
+					has_idea = economy_fatigue_70
+					has_idea = economy_fatigue_71
+					has_idea = economy_fatigue_72
+					has_idea = economy_fatigue_73
+					has_idea = economy_fatigue_74
+					has_idea = economy_fatigue_75
+					has_idea = economy_fatigue_76
+					has_idea = economy_fatigue_77
+					has_idea = economy_fatigue_78
+					has_idea = economy_fatigue_79
+					has_idea = economy_fatigue_80
+					has_idea = economy_fatigue_81
+					has_idea = economy_fatigue_82
+					has_idea = economy_fatigue_83
+					has_idea = economy_fatigue_84
+					has_idea = economy_fatigue_85
+					has_idea = economy_fatigue_86
+					has_idea = economy_fatigue_87
+					has_idea = economy_fatigue_88
+					has_idea = economy_fatigue_89
+					has_idea = economy_fatigue_90
+					has_idea = economy_fatigue_91
+					has_idea = economy_fatigue_92
+					has_idea = economy_fatigue_93
+					has_idea = economy_fatigue_94
+					has_idea = economy_fatigue_95
+					has_idea = economy_fatigue_96
+					has_idea = economy_fatigue_97
+					has_idea = economy_fatigue_98
+					has_idea = economy_fatigue_99
+					has_idea = economy_fatigue_100
+				}
+			}
+		}
+	}
+}

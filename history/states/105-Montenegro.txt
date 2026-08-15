@@ -1,0 +1,31 @@
+state={
+	id=105
+	name="STATE_105"
+	resources={
+		chromium=209.000
+		bauxite = 400
+	}
+
+	history={
+		victory_points = {
+			14566 3
+		}
+		owner = YUG
+		buildings = {
+			infrastructure = 3
+			industrial_complex = 1
+			14538 = {
+				naval_base = 1
+			}
+		}
+		add_core_of = YUG
+
+	}
+
+	provinces={
+		14548 14538 14571 14590 14566 14591 14595 14618 14623 14604 14662 14640
+	}
+	manpower=895500
+	buildings_max_level_factor=1.000
+	state_category=rural
+}

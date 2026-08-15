@@ -1,0 +1,29 @@
+
+state={
+	id=853
+	name="STATE_853"
+	manpower = 654527
+	
+	state_category = rural
+	
+	resources={
+		iron = 12
+		bauxite = 74	
+	}
+
+	history={
+		owner = AUS
+		buildings = {
+			infrastructure = 6
+			industrial_complex = 2
+		}
+		victory_points = {
+			1152 3
+		}
+		add_core_of = AUS
+	}
+
+	provinces={
+		1152 4073 4084 4176 4920 6521 6545 6560 6569 6571 6650 
+	}
+}

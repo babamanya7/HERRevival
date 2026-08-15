@@ -1,0 +1,64 @@
+### designer aircraft ###
+
+SOV = {
+
+### light tank 0 ###
+	
+	light_tank_chassis_0 = { 
+		pool = {
+			weight = 5
+			icons = { 
+			GFX_SOV_gw_light_tank_medium
+			}
+		}
+	}
+
+### light tank 1 ###
+	
+	light_tank_chassis_1 = { 
+		pool = {
+			weight = 5
+			icons = { 
+			GFX_SOV_basic_light_tank_3_medium
+			}
+		}
+	}
+	
+### light tank 2 ###
+	
+	light_tank_chassis_2 = { 
+		pool = {
+			weight = 5
+			icons = { 
+			GFX_SOV_basic_light_tank_2_medium
+			GFX_SOV_basic_light_tank_medium
+			}
+		}
+	}
+	
+### MEDIUM tank 2 ###
+	
+	medium_tank_chassis_2 = { 
+		pool = {
+			weight = 5
+			icons = { 
+			GFX_SOV_improved_medium_tank_2_medium
+			GFX_SOV_improved_medium_tank_medium
+			}
+		}
+	}
+	
+### HEAVY tank 2 ###
+	
+	heavy_tank_chassis_2 = { 
+		pool = {
+			weight = 5
+			icons = { 
+			GFX_SOV_improved_heavy_tank_medium
+			}
+		}
+	}
+
+
+
+}

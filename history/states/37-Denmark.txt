@@ -1,0 +1,53 @@
+state= {
+	id=37
+	name="STATE_37"
+	manpower = 2106714
+
+	state_category = large_city
+
+	history= {
+		owner = DEN
+		victory_points = { 
+			13354 30 
+		}
+		victory_points = {
+			13396 5
+		}
+		buildings = {
+			infrastructure = 8
+			arms_factory = 4
+			industrial_complex = 8
+			dockyard = 2
+			air_base = 12
+			13354 = {
+				naval_base = 8
+			}
+			13396 = {
+				naval_base = 3
+			}
+			11432 = {
+				naval_base = 1
+			}
+			11465 = {
+				naval_base = 1
+			}
+			9650 = {
+				naval_base = 1
+			}
+			7136 = {
+				naval_base = 1
+			}
+			10779 = {
+				naval_base = 1
+			}
+			6980 = {
+				naval_base = 1
+			}
+		}
+		add_core_of = DEN
+	}
+
+	provinces= {
+		369 6700 6949 6967 6980 7059 7136 9441 9650 9668 9771 10091 10779 10844 11432 11465 11644 11849 13354 13396 
+	}
+}

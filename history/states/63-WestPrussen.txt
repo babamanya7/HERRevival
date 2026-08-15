@@ -1,0 +1,38 @@
+
+state={
+	id=63
+	name="STATE_63"
+	manpower = 1124417
+	resources={
+		
+	}
+	
+	state_category = large_town
+
+	history={
+		owner = GER
+		victory_points = {
+			6282 5
+		}
+		victory_points = {
+			10823 3
+		}
+		buildings = {
+			infrastructure = 6
+			arms_factory = 1
+			industrial_complex = 3
+			10823 = {
+				naval_base = 1
+			}
+			6282 = {
+				naval_base = 4
+			}
+			air_base = 6
+		}
+		add_core_of = GER
+	}
+
+	provinces={
+		6282 6309 6334 6390 9252 9277 9306 9334 9361 11260 11288 11316 11343 11372 10767 10823 3044 3173 145 9220 9093 11201 11067 6132 3113 118
+	}
+}

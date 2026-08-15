@@ -1,0 +1,24 @@
+
+state={
+	id=49
+	name="STATE_49" # Ankara
+	manpower = 223000
+	resources={
+	}
+	
+	state_category = rural
+
+	history={
+		owner = POL
+		buildings = {
+			infrastructure = 4
+			air_base = 2
+		}
+		add_core_of = POL
+		
+	}
+
+	provinces={
+		12349 10924 7394 9494 11237
+	}
+}

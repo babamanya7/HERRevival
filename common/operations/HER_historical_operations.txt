@@ -1,0 +1,76 @@
+operation_antropoid = {
+	icon = GFX_operation_antropoid
+	map_icon = GFX_operation_antropoid_map
+	name = operation_antropoid
+	desc = operation_antropoid_desc
+	days = 60
+
+	priority = 19
+
+	allowed = {
+		original_tag = ENG
+	}
+	
+	available = {
+		network_strength = {
+			target = GER
+			state = 64
+			value > 50
+		}
+	}
+	
+	visible = {
+		tag = ENG
+		OR = {
+			date > 1942.1.1
+			is_debug = yes
+		}
+		NOT = { has_global_flag = pokushenie_2 }
+		FROM = {
+			controls_state = 64
+		}
+	}
+	
+	ai_will_do = {
+		factor = 10000
+	}
+
+	operatives = 2
+
+	network_strength = 50
+
+	equipment = {
+		infantry_equipment = 50
+		support_equipment = 50
+	}
+
+	on_start = {
+		
+	}
+
+	outcome_modifiers = { operation_outcome }
+	cost_modifiers = { operation_cost }
+	risk_modifiers = { operation_risk }
+
+	outcome_potential = {
+		custom_effect_tooltip = operation_antropoid_outcome_tt
+	}
+	risk_chance = 0.05
+	experience = 10
+
+	outcome_execute = {
+		hidden_effect = {
+			ROOT = { country_event = { id = her_news.11 hours = 2 } }
+		}
+	}
+
+	phases = {
+		infiltration_paradrop = { base = 100 }
+	}
+	phases = {
+		operation_antropoid_attack = { base = 100 }
+	}
+	phases = { 
+		exfiltration_go_to_ground = { base = 100 }
+	}
+}

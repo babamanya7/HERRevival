@@ -1,0 +1,39 @@
+
+state={
+	id=161
+	name="STATE_161"
+	manpower = 3202401
+	
+	state_category = large_city
+	
+	resources={
+		coal = 31
+	}
+
+	history={
+		owner = ITA
+		victory_points = {
+			14883 5
+		}
+		victory_points = {
+			9658 1
+		}
+		victory_points = {
+			14893 1
+		}
+		buildings = {
+			infrastructure = 6
+			industrial_complex = 6
+			arms_factory = 5
+			air_base = 4
+			14788 = {
+				naval_base = 2
+			}
+		}
+		add_core_of = ITA
+	}
+
+	provinces={
+		6695 9658 9723 14756 14788 14798 14816 14827 14837 14848 14868 14882 14883 14893 14894 14920 14928 14929 14935 
+	}
+}

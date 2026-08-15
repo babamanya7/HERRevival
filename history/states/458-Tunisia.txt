@@ -1,0 +1,40 @@
+
+state={
+	id=458
+	name="STATE_458"
+	manpower = 1982940
+	state_category = large_town
+	resources={
+		iron = 24
+	}
+
+	history={
+		owner = FRA
+		add_core_of = BRA
+		victory_points = {
+			14313 10 
+		}
+		victory_points = {
+			14322 1 
+		}
+		victory_points = {
+			14243 1 
+		}
+		buildings = {
+			infrastructure = 4
+			arms_factory = 1
+			industrial_complex = 2
+			air_base = 12
+			14313 = {
+				naval_base = 5
+			}
+			14322 = {
+				naval_base = 8
+			}
+		}
+	}
+
+	provinces={
+		14261 14276 14255 14250 14225 14226 14243 14256 14273 14272 14282 14296 14306 14301 14319 14290 14293 14300 14322 14314 14313
+	}
+}

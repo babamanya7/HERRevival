@@ -1,0 +1,136 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			every_country = {
+			
+				add_dynamic_modifier = {
+					modifier = rubber_stroage_put_out
+				}
+				
+				add_dynamic_modifier = {
+					modifier = steel_stroage_put_out
+				}
+				
+				add_dynamic_modifier = {
+					modifier = chromium_stroage_put_out
+				}
+				
+				add_dynamic_modifier = {
+					modifier = tungsten_stroage_put_out
+				}
+				
+				add_dynamic_modifier = {
+					modifier = aluminium_stroage_put_out
+				}
+				
+				add_dynamic_modifier = {
+					modifier = coal_stroage_put_out
+				}
+				
+				add_dynamic_modifier = {
+					modifier = bauxite_stroage_put_out
+				}
+				
+				add_dynamic_modifier = {
+					modifier = iron_stroage_put_out
+				}
+			}
+			every_country = {
+				every_core_state  = {
+					limit = {
+						rubber > 800
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = rubber_storage
+						level = 1
+						instant_build = yes
+					}
+				}
+				every_core_state  = {
+					limit = {
+						OR = {
+							steel_refinery > 2
+							hydro_steel_refinery > 2
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = steel_storage
+						level = 1
+						instant_build = yes
+					}
+				}
+				every_core_state  = {
+					limit = {
+						chromium > 800
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = chromium_storage
+						level = 1
+						instant_build = yes
+					}
+				}
+				every_core_state  = {
+					limit = {
+						tungsten > 800
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = tungsten_storage
+						level = 1
+						instant_build = yes
+					}
+				}
+				every_core_state  = {
+					limit = {
+						OR = {
+							aluminium_refinery > 2
+							hydro_aluminium_refinery > 2
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = aluminium_storage
+						level = 1
+						instant_build = yes
+					}
+				}
+				every_core_state  = {
+					limit = {
+						coal > 800
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = coal_storage
+						level = 1
+						instant_build = yes
+					}
+				}
+				every_core_state  = {
+					limit = {
+						bauxite > 800
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = bauxite_storage
+						level = 1
+						instant_build = yes
+					}
+				}
+				every_core_state  = {
+					limit = {
+						iron > 800
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = iron_storage
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+}

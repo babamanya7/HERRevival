@@ -1,0 +1,29 @@
+state={
+	id=842
+	name="STATE_842"
+	
+	history={
+		owner = USA
+		buildings = {
+			infrastructure = 6
+			industrial_complex = 8
+		}
+		add_core_of = USA
+		1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+	}
+	
+	
+	provinces={
+		905 3906 
+	}
+	manpower=400000
+	buildings_max_level_factor=1.000
+	state_category=town
+}

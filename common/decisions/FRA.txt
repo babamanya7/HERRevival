@@ -1,0 +1,618 @@
+FRA_vichy_france = {
+
+	FRA_scuttle_the_fleet = {
+
+		icon = generic_ignite_civil_war
+
+		available = {
+			tag = VIC
+			has_government = fascism
+			NOT = {
+				GER = { divisions_in_state = { state = 21 size > 0 } }
+			}
+			has_country_flag = {
+				flag = case_anton
+				days > 2
+			}
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 200
+		}
+
+		visible = {
+			tag = VIC
+			has_government = fascism
+			has_country_flag = case_anton
+		}
+
+		complete_effect = {
+			set_country_flag = scuttled_fleet
+			destroy_ships = {
+				type = ship_hull_light
+				count = all
+			}
+			destroy_ships = {
+				type = ship_hull_cruiser
+				count = all
+			}
+			destroy_ships = {
+				type = ship_hull_heavy
+				count = all
+			}
+			destroy_ships = {
+				type = ship_hull_carrier
+				count = all
+			}
+			destroy_ships = {
+				type = ship_hull_submarine
+				count = all
+			}
+		}
+	}
+
+	FRA_case_anton_mission = {
+
+		icon = generic_tank
+
+		available = {
+			is_subject = no
+			has_war_with = GER
+		}
+
+		days_mission_timeout = 7
+		fire_only_once = yes
+
+		activation = {
+			original_tag = VIC
+			has_government = fascism
+			NOT = { VIC = { has_war_with = GER } }
+			has_country_flag = case_anton
+		}
+
+		complete_effect = {
+			FRA = {
+				add_legitimacy = 50
+			}
+			custom_effect_tooltip = FRA_case_anton_mission_tt
+		}
+
+		is_good = no
+
+		timeout_effect = {
+			FRA = {
+				add_legitimacy = 50
+			}
+			transfer_navy = { target = GER }
+			if = {
+				limit = {
+					NOT = { has_country_flag = scuttled_fleet }
+				}
+				GER = { news_event = { id = wtt_news.23 hours = 6 } }
+			}
+			if = {
+				limit = {
+					has_country_flag = scuttled_fleet
+				}
+				GER = { news_event = { id = wtt_news.24 hours = 6 } }
+			}
+			if = {
+				limit = {
+					FRA = { exists = yes }
+				}
+				hidden_effect = {
+					every_state = {
+						limit = {
+							is_controlled_by = VIC
+							NOT = { is_core_of = VIC }
+							NOT = { state = 458 }
+							NOT = { state = 665 }
+							NOT = { state = 513 }
+							NOT = { state = 459 }
+							NOT = { state = 460 }
+						}
+						FRA = { transfer_state = PREV }
+					}
+					set_global_flag = case_anton_fra
+				}
+			}
+			if = {
+				limit = {
+					FRA = { NOT = { exists = yes } }
+				}
+				hidden_effect = {
+					every_state = {
+						limit = {
+							is_controlled_by = VIC
+							NOT = { is_core_of = VIC }
+							NOT = { state = 458 }
+							NOT = { state = 665 }
+							NOT = { state = 513 }
+							NOT = { state = 459 }
+							NOT = { state = 460 }
+						}
+						USA = { transfer_state = PREV }
+					}
+					set_global_flag = case_anton_fra
+				}
+			}
+			GER = { annex_country = { target = ROOT } }
+			set_global_flag = GER_case_anton
+			add_to_variable = {
+				var = ENG_med_control
+				value = -20
+			}
+			add_to_variable = {
+				var = ITA_med_control
+				value = 20
+			}
+			custom_effect_tooltip = GAME_OVER_TT
+		}
+	}
+	FRA_demand_unification_with_vichy = {
+		available = {
+			VIC = {
+				exists = yes
+				NOT = {
+					has_war_with = ROOT
+				}
+			}
+			controls_state = 16 #Paris
+		}
+
+		visible = {
+			NOT = {
+				tag = VIC
+			}
+			country_exists = VIC
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		cost = 0
+		fire_only_once = yes
+		complete_effect = {
+			random_other_country = {
+				limit = {
+					tag = VIC
+				}
+				country_event = lar_france_vichy_reunification.1
+			}
+		}
+	}
+	FRA_failsafe_join_axis = {
+		available = {
+			tag = VIC
+			NOT = {
+				has_war_with = GER
+				is_in_faction_with = GER
+			}
+			date > 1942.6.1
+			FRA = {
+				any_controlled_state = {
+					NOT = { #algeria
+						state = 459
+						state = 460
+						state = 513
+					}
+					is_core_of = FRA
+				}
+			}
+		}
+		visible = {
+			is_ai = yes #if you are not a member of the dev team - avert thy eyes, traveller, for thou hath gazed upon my shame
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		cost = 0
+		fire_only_once = yes
+		complete_effect = {
+			set_rule = { can_join_factions = yes }
+			GER = { add_to_faction = ROOT }
+		}
+	}
+}
+economy_decisions = {
+
+	FRA_reorganize_aviation_industry_north = {
+		available = {  }
+
+		visible = { has_completed_focus = FRA_reorganize_the_aviation_industry }
+
+		remove_effect = {
+			set_country_flag = FRA_SNCAN_formed
+			random_owned_state = {
+				limit = {
+					OR = {
+						state = 29
+						state = 785
+						state = 15
+						state = 16
+					}
+					is_fully_controlled_by = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 3
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 4
+					instant_build = yes
+				}
+			}
+		}
+		days_remove = 90
+		cost = 10
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	FRA_reorganize_aviation_industry_west = {
+		available = {  }
+
+		visible = { has_completed_focus = FRA_reorganize_the_aviation_industry }
+
+		remove_effect = {
+			set_country_flag = FRA_SNCAO_formed
+			random_owned_state = {
+				prioritize = { 30 }
+				limit = {
+					OR = {
+						state = 30
+						state = 14
+						state = 23
+					}
+					is_fully_controlled_by = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 3
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 4
+					instant_build = yes
+				}
+			}
+		}
+		days_remove = 90
+		cost = 10
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	FRA_reorganize_aviation_industry_center = {
+		available = {  }
+
+		visible = { has_completed_focus = FRA_reorganize_the_aviation_industry }
+
+		remove_effect = {
+			set_country_flag = FRA_SNCAC_formed
+			mio:FRA_SNCAC_organization = { add_mio_funds = 3000 }
+			random_owned_state = {
+				limit = {
+					OR = {
+						state = 24
+						state = 33
+						state = 27
+						state = 26
+						state = 25
+					}
+					is_fully_controlled_by = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 3
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 4
+					instant_build = yes
+				}
+			}
+		}
+		days_remove = 90
+		cost = 10
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	FRA_reorganize_aviation_industry_south_east = {
+		available = {  }
+
+		visible = { has_completed_focus = FRA_reorganize_the_aviation_industry }
+
+		remove_effect = {
+			set_country_flag = FRA_SNCASE_formed
+			random_owned_state = {
+				limit = {
+					OR = {
+						state = 735
+						state = 32
+						state = 20
+						state = 21
+					}
+					is_fully_controlled_by = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 3
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 4
+					instant_build = yes
+				}
+			}
+		}
+		days_remove = 90
+		cost = 10
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	FRA_reorganize_aviation_industry_south_west = {
+		available = {  }
+
+		visible = { has_completed_focus = FRA_reorganize_the_aviation_industry }
+
+		remove_effect = {
+			set_country_flag = FRA_SNCASO_formed
+			random_owned_state = {
+				limit = {
+					OR = {
+						state = 22
+						state = 31
+						state = 19
+						state = 25
+					}
+					is_fully_controlled_by = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 3
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 4
+					instant_build = yes
+				}
+			}
+		}
+		days_remove = 90
+		cost = 10
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+	}
+}
+VIC_concessions_to_the_germans = {
+	VIC_basing_rights = {
+		available = {
+
+		}
+		visible = {
+			has_any_occupation_cost_trigger = yes
+		}
+
+		cost = 25
+
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				has_idea = FRA_occupation_costs_4
+				factor = 5
+			}
+			modifier = {
+				has_idea = FRA_occupation_costs_3
+				factor = 2
+			}
+			modifier = {
+				has_idea = FRA_occupation_costs_2
+				factor = 1.5
+			}
+		}
+		complete_effect = {
+			give_military_access = GER
+			#reduce_occupation_cost_effect = yes
+		}
+	}
+
+	VIC_produce_aircraft_parts = {
+		available = {}
+
+		visible = {
+			has_any_occupation_cost_trigger = yes
+		}
+
+		cost = 25
+
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				has_idea = FRA_occupation_costs_4
+				factor = 5
+			}
+			modifier = {
+				has_idea = FRA_occupation_costs_3
+				factor = 2
+			}
+			modifier = {
+				has_idea = FRA_occupation_costs_2
+				factor = 1.5
+			}
+		}
+		complete_effect = {
+			add_ideas = VIC_produce_aircraft_parts
+			GER = { add_ideas = VIC_aircraft_parts }
+			#reduce_occupation_cost_effect = yes
+		}
+	}
+	VIC_send_guest_workers = {
+		available = {
+
+		}
+		visible = { has_any_occupation_cost_trigger = yes }
+		cancel_trigger = {
+			not = { has_country_flag = VIC_send_guest_workers }
+		}
+		cost = 25
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				has_idea = FRA_occupation_costs_4
+				factor = 5
+			}
+			modifier = {
+				has_idea = FRA_occupation_costs_3
+				factor = 2
+			}
+			modifier = {
+				has_idea = FRA_occupation_costs_2
+				factor = 1.5
+			}
+		}
+		fire_only_once = yes
+		days_remove = -1
+		modifier = {
+			conscription_factor = -0.25
+		}
+		complete_effect = {
+			GER = { add_ideas = VIC_guest_workers }
+			#reduce_occupation_cost_effect = yes
+			set_country_flag = VIC_send_guest_workers
+		}
+	}
+	VIC_recall_guest_workers = {
+		available = {
+			has_country_flag = VIC_send_guest_workers
+		}
+		visible = {
+			has_country_flag = VIC_send_guest_workers
+		}
+		cost = 0
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				controls_state = 16
+				add = 10
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			GER = { remove_ideas = VIC_guest_workers }
+			# if = {
+			# 	limit = {
+			# 		NOT = {
+			# 			controls_state = 16
+			# 		}
+			# 	}
+			# 	#increase_occupation_cost_effect = yes
+			# }
+			if = {
+				limit = {
+					controls_state = 16
+					has_idea = FRA_mandatory_work_service
+				}
+				remove_ideas = FRA_mandatory_work_service
+			}
+			clr_country_flag = VIC_send_guest_workers
+		}
+	}
+}
+
+operations = {
+	FRA_operation_overlord = {
+
+		icon = generic_operation
+
+		allowed = {
+			always = yes
+		}
+
+		available = {
+            original_tag = FRA
+        }
+
+        visible = {
+        	original_tag = FRA
+			date > 1943.6.1
+        }
+
+		cost = 0
+		fire_only_once = yes
+		days_remove = 360
+
+		ai_will_do = {
+			factor = 150
+		}
+
+		targeted_modifier = {
+			tag = GER
+			attack_bonus_against = 0.1
+		}
+
+		modifier = {
+			consumer_goods_factor = -0.2
+			industry_repair_factor = 1.0
+			industry_free_repair_factor = 100
+			supply_consumption_factor = -0.4
+		}
+	}
+
+	FRA_activate_Dyle_Plan = {
+
+		icon = generic_operation
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		available = {
+			original_tag = FRA
+			has_war_with = GER
+			is_in_faction_with = BEL
+			GER = { has_war_with = BEL }
+		}
+
+		visible = {
+			original_tag = FRA
+			has_war_with = GER
+			GER = { exists = yes }
+		}
+
+		cost = 10
+		days_remove = 10
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 4000
+		}
+
+		remove_trigger = {
+			BEL = { has_capitulated = yes }
+		}
+
+		modifier = {
+			dig_in_speed_factor = 0.5
+			org_loss_when_moving = -0.2
+		}
+	}
+}

@@ -1,0 +1,2980 @@
+guide = {
+	AI_promote_leaders = {
+	
+		fire_only_once = no
+		
+		cost = 5
+		
+		available = {
+			is_ai = yes
+			has_war = yes
+			any_army_leader = {
+				is_corps_commander = yes
+				skill > 4
+				NOT = { has_trait = gen_arm }
+				NOT = { has_trait = gen_fm }
+				NOT = { has_trait = tank_gen_arm }
+				NOT = { has_trait = tank_gen_fm }
+				NOT = { has_trait = recently_promoted }
+			}
+		}
+		
+		visible = {
+			is_ai = yes
+			has_war = yes
+		}
+		
+		ai_will_do = {
+			factor = 500
+		}
+		
+		complete_effect = {
+			every_army_leader = {
+				limit = {
+					is_corps_commander = yes
+					skill > 4
+					NOT = { has_trait = gen_arm }
+					NOT = { has_trait = gen_fm }
+					NOT = { has_trait = tank_gen_arm }
+					NOT = { has_trait = tank_gen_fm }
+					NOT = { has_trait = recently_promoted }
+				}
+				promote_leader = yes
+			}
+			every_army_leader = {
+				limit = {
+					NOT = { has_trait = ai_general_pt }
+				}
+				add_unit_leader_trait = ai_general_pt
+			}
+		}
+	}
+	AI_1936_designs = {
+	
+		fire_only_once = yes
+		
+		cost = 0
+		
+		available = {
+			date > 1936.6.1
+			is_ai = yes
+			tag = BRA
+		}
+		
+		visible = {
+			date > 1936.6.1
+			is_ai = yes
+			tag = BRA
+		}
+		
+		complete_effect = {
+			if = {
+				limit = { GER = { is_ai = yes } }
+				GER = {
+					create_equipment_variant = {
+						name = "Bf-109 E-4"
+						type = small_plane_airframe_1
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_engine_mounted_cannon_1
+							fixed_wing_weapon_slot_1=wing_heavy_mg_2x
+							fixed_wing_weapon_slot_2=wing_heavy_mg_2x
+							
+							engine_type_slot=engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_4=auto_extinguisher_system_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=reflex_gunsight_2
+							special_type_slot_9=radio_navigation_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+						design_team = mio:GER_messerschmitt_organization
+					}
+					create_equipment_variant = {
+						name = "Ju-87 D-1"
+						type = small_plane_cas_airframe_1
+						modules={
+							role_type_slot=role_small_cas
+							fixed_wing_weapon_slot_1=rocket_rails
+							fixed_wing_weapon_slot_2=rocket_rails
+							
+							engine_type_slot=engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=high_octane_fuel
+							special_type_slot_3=pressurized_cockpit
+							special_type_slot_4=dive_brakes_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=air_ground_radar_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+						design_team = mio:GER_junkers_organization
+					}
+					create_equipment_variant = {
+						name = "Do-22"
+						type = small_plane_naval_bomber_airframe_1
+						modules={
+							role_type_slot=role_small_torpedo_bomber
+							fixed_capot_weapon_slot_1=heavy_mg_2x
+							fixed_wing_weapon_slot_1=drop_tanks
+							fixed_wing_weapon_slot_2=drop_tanks
+							fixed_frame_weapon_slot_1=torpedo_mounting
+							engine_type_slot=engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=auto_extinguisher_system_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=radio_navigation_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+					}
+					create_equipment_variant = {
+						name = "He-111 H-1"
+						type = medium_plane_airframe_1
+						modules={
+							role_type_slot=role_medium_bomber
+							fixed_frame_weapon_slot_1=medium_bomb_bay
+							fixed_frame_weapon_slot_2=small_bomb_bay
+							engine_type_slot=radial_engine_4_2x
+							fuel_tank_type_slot=fuel_tanks_medium
+							special_type_slot_2=high_octane_fuel
+							special_type_slot_8=bomb_sights_1
+							special_type_slot_9=radio_navigation_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_medium_range_upgrade = 4
+						}
+					}
+				}
+			}
+			if = {
+				limit = { ENG = { is_ai = yes } }
+				ENG = {
+					create_equipment_variant = {
+						name = "Hawker Hurricane"
+						type = small_plane_airframe_1
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_engine_mounted_cannon_1
+							fixed_wing_weapon_slot_1=wing_heavy_mg_2x
+							fixed_wing_weapon_slot_2=wing_heavy_mg_2x
+							
+							engine_type_slot=engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_4=auto_extinguisher_system_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=reflex_gunsight_2
+							special_type_slot_9=radio_navigation_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+						design_team = mio:ENG_supermarine_organization
+					}
+					create_equipment_variant = {
+						name = "Hawker Typhoon"
+						type = small_plane_cas_airframe_1
+						modules={
+							role_type_slot=role_small_cas
+							fixed_wing_weapon_slot_1=rocket_rails
+							fixed_wing_weapon_slot_2=rocket_rails
+							fixed_wing_weapon_slot_3=drop_tanks
+							fixed_wing_weapon_slot_4=drop_tanks
+							engine_type_slot=engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=high_octane_fuel
+							special_type_slot_3=pressurized_cockpit
+							special_type_slot_4=dive_brakes_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=air_ground_radar_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+					}
+					create_equipment_variant = {
+						name = "Vickers Vildebeest"
+						type = small_plane_naval_bomber_airframe_1
+						modules={
+							role_type_slot=role_small_torpedo_bomber
+							fixed_capot_weapon_slot_1=heavy_mg_2x
+							fixed_wing_weapon_slot_1=drop_tanks
+							fixed_wing_weapon_slot_2=drop_tanks
+							fixed_frame_weapon_slot_1=torpedo_mounting
+							engine_type_slot=engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=auto_extinguisher_system_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=radio_navigation_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+					}
+					create_equipment_variant = {
+						name = "Sea Gladiator"
+						type = cv_small_plane_airframe_1
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_cannon_1_1x
+							fixed_wing_weapon_slot_1=wing_heavy_mg_2x
+							fixed_wing_weapon_slot_2=wing_heavy_mg_2x
+							
+							engine_type_slot=radial_engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=reflex_gunsight_2
+							special_type_slot_9=radio_navigation_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+					}
+					create_equipment_variant = {
+						name = "Fairey Swordfish"
+						type = cv_small_plane_naval_bomber_airframe_1
+						modules={
+							role_type_slot=role_small_torpedo_bomber
+							fixed_capot_weapon_slot_1=heavy_mg_2x
+							fixed_capot_weapon_slot_2=heavy_mg_2x
+							fixed_wing_weapon_slot_1=drop_tanks
+							fixed_wing_weapon_slot_2=drop_tanks
+							fixed_frame_weapon_slot_1=torpedo_mounting
+							engine_type_slot=engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=radio_navigation_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+					}
+				}
+			}
+			if = {
+				limit = { SOV = { is_ai = yes } }
+				SOV = {
+					create_equipment_variant = {
+						name = "I-16"
+						type = small_plane_airframe_1
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_cannon_1_1x
+							fixed_wing_weapon_slot_1=wing_heavy_mg_2x
+							fixed_wing_weapon_slot_2=wing_heavy_mg_2x
+							
+							engine_type_slot=radial_engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_4=auto_extinguisher_system_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=reflex_gunsight_2
+							special_type_slot_9=radio_navigation_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+						design_team = mio:SOV_mig_design_bureau_organization
+					}
+					create_equipment_variant = {
+						name = "LBSH"
+						type = small_plane_cas_airframe_1
+						modules={
+							role_type_slot=role_small_cas
+							fixed_wing_weapon_slot_1=rocket_rails
+							fixed_wing_weapon_slot_2=rocket_rails
+							fixed_wing_weapon_slot_3=drop_tanks
+							fixed_wing_weapon_slot_4=drop_tanks
+							engine_type_slot=engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=high_octane_fuel
+							special_type_slot_3=pressurized_cockpit
+							special_type_slot_4=dive_brakes_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=air_ground_radar_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+					}
+					create_equipment_variant = {
+						name = "SB-2M"
+						type = medium_plane_airframe_1
+						modules={
+							role_type_slot=role_medium_bomber
+							fixed_frame_weapon_slot_1=medium_bomb_bay
+							fixed_frame_weapon_slot_2=small_bomb_bay
+							engine_type_slot=radial_engine_4_2x
+							fuel_tank_type_slot=fuel_tanks_medium
+							special_type_slot_2=high_octane_fuel
+							special_type_slot_8=bomb_sights_1
+							special_type_slot_9=radio_navigation_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_medium_range_upgrade = 4
+						}
+					}
+				}
+			}
+			if = {
+				limit = { FRA = { is_ai = yes } }
+				FRA = {
+					set_technology = { basic_small_airframe = 1 }
+					create_equipment_variant = {
+						name = "Dewoitine D.520"
+						type = small_plane_airframe_1
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_engine_mounted_cannon_1
+							fixed_wing_weapon_slot_1=wing_heavy_mg_2x
+							fixed_wing_weapon_slot_2=wing_heavy_mg_2x
+							
+							engine_type_slot=engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_4=auto_extinguisher_system_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=reflex_gunsight_2
+							special_type_slot_9=radio_navigation_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+					}
+				}
+			}
+			if = {
+				limit = { ITA = { is_ai = yes } }
+				ITA = {
+					create_equipment_variant = {
+						name = "Macchi C.200 Saetta"
+						type = small_plane_airframe_1
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_engine_mounted_cannon_1
+							fixed_wing_weapon_slot_1=wing_heavy_mg_2x
+							fixed_wing_weapon_slot_2=wing_heavy_mg_2x
+							
+							engine_type_slot=engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_4=auto_extinguisher_system_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=reflex_gunsight_2
+							special_type_slot_9=radio_navigation_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+					}
+					create_equipment_variant = {
+						name = "Ca.313"
+						type = small_plane_naval_bomber_airframe_1
+						modules={
+							role_type_slot=role_small_torpedo_bomber
+							fixed_capot_weapon_slot_1=heavy_mg_2x
+							fixed_wing_weapon_slot_1=drop_tanks
+							fixed_wing_weapon_slot_2=drop_tanks
+							fixed_frame_weapon_slot_1=torpedo_mounting
+							engine_type_slot=engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=auto_extinguisher_system_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=radio_navigation_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+					}
+				}
+			}
+			if = {
+				limit = { JAP = { is_ai = yes } }
+				JAP = {
+					set_technology = { basic_small_airframe = 1 }
+					set_technology = { basic_medium_airframe = 1 }
+					create_equipment_variant = {
+						name = "Ki-27"
+						type = small_plane_airframe_1
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_engine_mounted_cannon_1
+							fixed_wing_weapon_slot_1=wing_heavy_mg_2x
+							fixed_wing_weapon_slot_2=wing_heavy_mg_2x
+							
+							engine_type_slot=engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_4=auto_extinguisher_system_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=reflex_gunsight_2
+							special_type_slot_9=radio_navigation_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+					}
+					create_equipment_variant = {
+						name = "Ki-32"
+						type = small_plane_cas_airframe_1
+						modules={
+							role_type_slot=role_small_cas
+							fixed_wing_weapon_slot_1=rocket_rails
+							fixed_wing_weapon_slot_2=rocket_rails
+							fixed_wing_weapon_slot_3=drop_tanks
+							fixed_wing_weapon_slot_4=drop_tanks
+							engine_type_slot=engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=high_octane_fuel
+							special_type_slot_3=pressurized_cockpit
+							special_type_slot_4=dive_brakes_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=air_ground_radar_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+					}
+					create_equipment_variant = {
+						name = "A5M"
+						type = cv_small_plane_airframe_1
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_cannon_1_1x
+							fixed_wing_weapon_slot_1=wing_heavy_mg_2x
+							fixed_wing_weapon_slot_2=wing_heavy_mg_2x
+							
+							engine_type_slot=radial_engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=reflex_gunsight_2
+							special_type_slot_9=radio_navigation_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+					}
+					create_equipment_variant = {
+						name = "B5N2"
+						type = cv_small_plane_naval_bomber_airframe_1
+						modules={
+							role_type_slot=role_small_torpedo_bomber
+							fixed_capot_weapon_slot_1=heavy_mg_2x
+							fixed_capot_weapon_slot_2=heavy_mg_2x
+							fixed_wing_weapon_slot_1=drop_tanks
+							fixed_wing_weapon_slot_2=drop_tanks
+							fixed_frame_weapon_slot_1=torpedo_mounting
+							engine_type_slot=engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=radio_navigation_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+					}
+					create_equipment_variant = {
+						name = "D1A"
+						type = cv_small_plane_cas_airframe_1
+						modules={
+							role_type_slot=role_small_cas
+							fixed_frame_weapon_slot_1=armor_piercing_bomb_locks
+							fixed_frame_weapon_slot_2=armor_piercing_bomb_locks
+							engine_type_slot=radial_engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=radio_navigation_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 10
+							air_bba_small_range_upgrade = 4
+						}
+					}
+				}
+			}
+			if = {
+				limit = { USA = { is_ai = yes } }
+				USA = {
+					set_technology = { basic_small_airframe = 1 }
+					set_technology = { basic_medium_airframe = 1 }
+					create_equipment_variant = {
+						name = "P-36"
+						type = small_plane_airframe_1
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_engine_mounted_cannon_1
+							fixed_wing_weapon_slot_1=wing_heavy_mg_2x
+							fixed_wing_weapon_slot_2=wing_heavy_mg_2x
+							
+							engine_type_slot=engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_4=auto_extinguisher_system_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=reflex_gunsight_2
+							special_type_slot_9=radio_navigation_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+					}
+					create_equipment_variant = {
+						name = "A-12"
+						type = small_plane_cas_airframe_1
+						modules={
+							role_type_slot=role_small_cas
+							fixed_wing_weapon_slot_1=rocket_rails
+							fixed_wing_weapon_slot_2=rocket_rails
+							fixed_wing_weapon_slot_3=drop_tanks
+							fixed_wing_weapon_slot_4=drop_tanks
+							engine_type_slot=engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=high_octane_fuel
+							special_type_slot_3=pressurized_cockpit
+							special_type_slot_4=dive_brakes_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=air_ground_radar_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+					}
+					create_equipment_variant = {
+						name = "F3F"
+						type = cv_small_plane_airframe_1
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_cannon_1_1x
+							fixed_wing_weapon_slot_1=wing_heavy_mg_2x
+							fixed_wing_weapon_slot_2=wing_heavy_mg_2x
+							
+							engine_type_slot=radial_engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=reflex_gunsight_2
+							special_type_slot_9=radio_navigation_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+					}
+					create_equipment_variant = {
+						name = "TBD Devastator"
+						type = cv_small_plane_naval_bomber_airframe_1
+						modules={
+							role_type_slot=role_small_torpedo_bomber
+							fixed_capot_weapon_slot_1=heavy_mg_2x
+							fixed_capot_weapon_slot_2=heavy_mg_2x
+							fixed_wing_weapon_slot_1=drop_tanks
+							fixed_wing_weapon_slot_2=drop_tanks
+							fixed_frame_weapon_slot_1=torpedo_mounting
+							engine_type_slot=engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=radio_navigation_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 8
+							air_bba_small_range_upgrade = 4
+						}
+					}
+					create_equipment_variant = {
+						name = "Northrop BT"
+						type = cv_small_plane_cas_airframe_1
+						modules={
+							role_type_slot=role_small_cas
+							fixed_frame_weapon_slot_1=armor_piercing_bomb_locks
+							fixed_frame_weapon_slot_2=armor_piercing_bomb_locks
+							engine_type_slot=radial_engine_5_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=radio_navigation_1
+						}
+						upgrades={
+							air_bba_engine_upgrade = 10
+							air_bba_small_range_upgrade = 4
+						}
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	AI_1940_designs = {
+	
+		fire_only_once = yes
+		
+		cost = 0
+		
+		available = {
+			date > 1940.1.1
+			is_ai = yes
+			tag = BRA
+		}
+		
+		visible = {
+			date > 1940.1.1
+			is_ai = yes
+			tag = BRA
+		}
+		
+		complete_effect = {
+			if = {
+				limit = { GER = { is_ai = yes } }
+				GER = {
+					set_technology = { improved_small_airframe = 1 }
+					set_technology = { improved_medium_airframe = 1 }
+					set_technology = { improved_large_airframe = 1 }
+					create_equipment_variant = {
+						name = "Bf-109 F-4"
+						type = small_plane_airframe_2
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_engine_mounted_cannon_1
+							fixed_wing_weapon_slot_1=wing_aircraft_cannon_1_1x
+							fixed_wing_weapon_slot_2=wing_aircraft_cannon_1_1x
+							
+							engine_type_slot=engine_6_1x
+							fuel_tank_type_slot=self_sealing_fuel_tanks_small
+							special_type_slot_1=early_supercharger
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_4=auto_extinguisher_system_small
+							special_type_slot_5=water_injection
+							special_type_slot_6=fuel_injection
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=gyro_gunsight_1
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_small_range_upgrade = 12
+						}
+						design_team = mio:GER_messerschmitt_organization
+					}
+					create_equipment_variant = {
+						name = "Ju-87 G"
+						type = small_plane_cas_airframe_2
+						modules={
+							role_type_slot=role_small_cas
+							fixed_wing_weapon_slot_1=tank_buster_1
+							fixed_wing_weapon_slot_2=tank_buster_1
+							fixed_wing_weapon_slot_3=rocket_rails
+							engine_type_slot=engine_6_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_1=early_supercharger
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=dive_brakes_small
+							special_type_slot_4=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=air_ground_radar_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_small_range_upgrade = 12
+						}
+						design_team = mio:GER_junkers_organization
+					}
+					create_equipment_variant = {
+						name = "Ju-88 A-1"
+						type = medium_plane_airframe_2
+						modules={
+							role_type_slot=role_medium_bomber
+							fixed_wing_weapon_slot_1=drop_tanks_medium
+							fixed_frame_weapon_slot_1=medium_bomb_bay
+							fixed_frame_weapon_slot_2=medium_bomb_bay
+							engine_type_slot=radial_engine_7_2x
+							fuel_tank_type_slot=self_sealing_fuel_tanks_medium
+							special_type_slot_1=early_turbocharger
+							special_type_slot_2=water_injection
+							special_type_slot_3=pressurized_cockpit_med
+							special_type_slot_4=high_octane_fuel
+							special_type_slot_5=auto_extinguisher_system_medium
+							special_type_slot_8=bomb_sights_2
+							special_type_slot_9=air_ground_radar_2
+							special_type_slot_10=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_medium_range_upgrade = 12
+						}
+					}
+					create_equipment_variant = {
+						name = "Me-264"
+						type = large_plane_airframe_2
+						modules={
+							role_type_slot=role_large_bomber
+							fixed_frame_weapon_slot_1=large_bomb_bay
+							fixed_frame_weapon_slot_2=large_bomb_bay
+							fixed_turret_weapon_slot_1=hmg_defense_turret
+							fixed_turret_weapon_slot_2=hmg_defense_turret
+							engine_type_slot=radial_engine_6_4x
+							fuel_tank_type_slot=fuel_tanks_large
+							special_type_slot_1=early_turbocharger
+							special_type_slot_2=auto_extinguisher_system_large
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_8=bomb_sights_2
+							special_type_slot_9=air_ground_radar_2
+							special_type_slot_10=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_large_range_upgrade = 12
+						}
+					}
+				}
+			}
+			if = {
+				limit = { ENG = { is_ai = yes } }
+				ENG = {
+					set_technology = { improved_small_airframe = 1 }
+					set_technology = { improved_medium_airframe = 1 }
+					set_technology = { improved_large_airframe = 1 }
+					create_equipment_variant = {
+						name = "Supermarine Spitfire"
+						type = small_plane_airframe_2
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_engine_mounted_cannon_1
+							fixed_wing_weapon_slot_1=wing_aircraft_cannon_1_1x
+							fixed_wing_weapon_slot_2=wing_aircraft_cannon_1_1x
+							
+							engine_type_slot=engine_6_1x
+							fuel_tank_type_slot=self_sealing_fuel_tanks_small
+							special_type_slot_1=early_supercharger
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_4=auto_extinguisher_system_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=gyro_gunsight_1
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_small_range_upgrade = 12
+						}
+						design_team = mio:ENG_supermarine_organization
+					}
+					create_equipment_variant = {
+						name = "Hawker Typhoon"
+						type = small_plane_cas_airframe_2
+						modules={
+							role_type_slot=role_small_cas
+							fixed_wing_weapon_slot_1=tank_buster_1
+							fixed_wing_weapon_slot_2=tank_buster_1
+							fixed_wing_weapon_slot_3=rocket_rails
+							engine_type_slot=engine_6_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_1=early_supercharger
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=dive_brakes_small
+							special_type_slot_4=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=air_ground_radar_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_small_range_upgrade = 12
+						}
+					}
+					create_equipment_variant = {
+						name = "Firebrand TF.Mk.IV"
+						type = small_plane_naval_bomber_airframe_2
+						modules={
+							role_type_slot=role_small_torpedo_bomber
+							fixed_capot_weapon_slot_1=heavy_mg_2x
+							fixed_frame_weapon_slot_1=torpedo_mounting_2
+							fixed_turret_weapon_slot_1=hmg_defense_turret
+							engine_type_slot=radial_engine_6_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_1=early_supercharger
+							special_type_slot_2=auto_extinguisher_system_small
+							special_type_slot_3=pressurized_cockpit
+							special_type_slot_4=NACA_cowling
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_small_range_upgrade = 12
+						}
+					}
+					create_equipment_variant = {
+						name = "Blackburn Roc"
+						type = cv_small_plane_airframe_2
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=heavy_mg_2x
+							fixed_capot_weapon_slot_2=heavy_mg_2x
+							fixed_wing_weapon_slot_1=wing_aircraft_cannon_1_1x
+							fixed_wing_weapon_slot_2=wing_aircraft_cannon_1_1x
+							engine_type_slot=radial_engine_6_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_1=early_supercharger
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=gyro_gunsight_1
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_small_range_upgrade = 12
+						}
+					}
+					create_equipment_variant = {
+						name = "Vickers Wellington"
+						type = medium_plane_airframe_2
+						modules={
+							role_type_slot=role_medium_bomber
+							fixed_wing_weapon_slot_1=drop_tanks_medium
+							fixed_frame_weapon_slot_1=medium_bomb_bay
+							fixed_frame_weapon_slot_2=medium_bomb_bay
+							engine_type_slot=radial_engine_7_2x
+							fuel_tank_type_slot=self_sealing_fuel_tanks_medium
+							special_type_slot_1=early_turbocharger
+							special_type_slot_2=water_injection
+							special_type_slot_3=pressurized_cockpit_med
+							special_type_slot_4=high_octane_fuel
+							special_type_slot_5=auto_extinguisher_system_medium
+							special_type_slot_8=bomb_sights_2
+							special_type_slot_9=air_ground_radar_2
+							special_type_slot_10=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_medium_range_upgrade = 12
+						}
+					}
+					create_equipment_variant = {
+						name = "Avro 683 Lancaster"
+						type = large_plane_airframe_2
+						modules={
+							role_type_slot=role_large_bomber
+							fixed_frame_weapon_slot_1=large_bomb_bay
+							fixed_frame_weapon_slot_2=large_bomb_bay
+							fixed_turret_weapon_slot_1=hmg_defense_turret
+							fixed_turret_weapon_slot_2=hmg_defense_turret
+							engine_type_slot=radial_engine_6_4x
+							fuel_tank_type_slot=fuel_tanks_large
+							special_type_slot_1=early_turbocharger
+							special_type_slot_2=auto_extinguisher_system_large
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_8=bomb_sights_2
+							special_type_slot_9=air_ground_radar_2
+							special_type_slot_10=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_large_range_upgrade = 12
+						}
+					}
+				}
+			}
+			if = {
+				limit = { ITA = { is_ai = yes } }
+				ITA = {
+					set_technology = { improved_small_airframe = 1 }
+					set_technology = { improved_medium_airframe = 1 }
+					create_equipment_variant = {
+						name = "C.202 Folgore"
+						type = small_plane_airframe_2
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_engine_mounted_cannon_1
+							fixed_wing_weapon_slot_1=wing_aircraft_cannon_1_1x
+							fixed_wing_weapon_slot_2=wing_aircraft_cannon_1_1x
+							
+							engine_type_slot=engine_6_1x
+							fuel_tank_type_slot=self_sealing_fuel_tanks_small
+							special_type_slot_1=early_supercharger
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_4=auto_extinguisher_system_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=gyro_gunsight_1
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_small_range_upgrade = 12
+						}
+					}
+					create_equipment_variant = {
+						name = "CANT Z.1007 Alcione"
+						type = medium_plane_airframe_2
+						modules={
+							role_type_slot=role_medium_bomber
+							fixed_wing_weapon_slot_1=drop_tanks_medium
+							fixed_frame_weapon_slot_1=medium_bomb_bay
+							fixed_frame_weapon_slot_2=medium_bomb_bay
+							engine_type_slot=radial_engine_7_2x
+							fuel_tank_type_slot=self_sealing_fuel_tanks_medium
+							special_type_slot_1=early_turbocharger
+							special_type_slot_2=water_injection
+							special_type_slot_3=pressurized_cockpit_med
+							special_type_slot_4=high_octane_fuel
+							special_type_slot_5=auto_extinguisher_system_medium
+							special_type_slot_8=bomb_sights_2
+							special_type_slot_9=air_ground_radar_2
+							special_type_slot_10=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_medium_range_upgrade = 12
+						}
+					}
+				}
+			}
+			if = {
+				limit = { USA = { is_ai = yes } }
+				USA = {
+					set_technology = { improved_small_airframe = 1 }
+					set_technology = { improved_medium_airframe = 1 }
+					set_technology = { improved_large_airframe = 1 }
+					create_equipment_variant = {
+						name = "P-39 Aircobra"
+						type = small_plane_airframe_2
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_engine_mounted_cannon_1
+							fixed_wing_weapon_slot_1=wing_aircraft_cannon_1_1x
+							fixed_wing_weapon_slot_2=wing_aircraft_cannon_1_1x
+							
+							engine_type_slot=engine_6_1x
+							fuel_tank_type_slot=self_sealing_fuel_tanks_small
+							special_type_slot_1=early_supercharger
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_4=auto_extinguisher_system_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=gyro_gunsight_1
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_small_range_upgrade = 12
+						}
+						design_team = mio:USA_north_american_aviation_organization
+					}
+					create_equipment_variant = {
+						name = "A-20"
+						type = small_plane_cas_airframe_2
+						modules={
+							role_type_slot=role_small_cas
+							fixed_wing_weapon_slot_1=tank_buster_1
+							fixed_wing_weapon_slot_2=tank_buster_1
+							fixed_wing_weapon_slot_3=rocket_rails
+							engine_type_slot=engine_6_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_1=early_supercharger
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=dive_brakes_small
+							special_type_slot_4=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=air_ground_radar_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_small_range_upgrade = 12
+						}
+					}
+					create_equipment_variant = {
+						name = "Grumman TBF Avenger"
+						type = cv_small_plane_naval_bomber_airframe_2
+						modules={
+							role_type_slot=role_small_torpedo_bomber
+							fixed_capot_weapon_slot_1=heavy_mg_2x
+							fixed_capot_weapon_slot_2=imp_heavy_mg_2x
+							fixed_wing_weapon_slot_1=drop_tanks
+							fixed_wing_weapon_slot_2=drop_tanks
+							fixed_frame_weapon_slot_1=torpedo_mounting_2
+							fixed_turret_weapon_slot_1=hmg_defense_turret
+							engine_type_slot=radial_engine_6_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_1=early_supercharger
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_small_range_upgrade = 12
+						}
+					}
+					create_equipment_variant = {
+						name = "Grumman F4F Wildcat"
+						type = cv_small_plane_airframe_2
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=heavy_mg_2x
+							fixed_capot_weapon_slot_2=heavy_mg_2x
+							fixed_wing_weapon_slot_1=wing_aircraft_cannon_1_1x
+							fixed_wing_weapon_slot_2=wing_aircraft_cannon_1_1x
+							engine_type_slot=radial_engine_6_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_1=early_supercharger
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=gyro_gunsight_1
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_small_range_upgrade = 12
+						}
+						design_team = mio:USA_north_american_aviation_organization
+					}
+					create_equipment_variant = {
+						name = "Douglas SBD Dauntless"
+						type = cv_small_plane_cas_airframe_2
+						modules={
+							role_type_slot=role_small_cas
+							fixed_capot_weapon_slot_1=light_mg_2x
+							fixed_frame_weapon_slot_1=armor_piercing_bomb_locks
+							fixed_frame_weapon_slot_2=armor_piercing_bomb_locks
+							engine_type_slot=radial_engine_6_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_1=early_supercharger
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_4=auto_extinguisher_system_small
+							special_type_slot_5=dive_brakes_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_small_range_upgrade = 12
+						}
+					}
+					create_equipment_variant = {
+						name = "North American B-25 Mitchell"
+						type = medium_plane_airframe_2
+						modules={
+							role_type_slot=role_medium_bomber
+							fixed_wing_weapon_slot_1=drop_tanks_medium
+							fixed_frame_weapon_slot_1=medium_bomb_bay
+							fixed_frame_weapon_slot_2=medium_bomb_bay
+							engine_type_slot=radial_engine_7_2x
+							fuel_tank_type_slot=self_sealing_fuel_tanks_medium
+							special_type_slot_1=early_turbocharger
+							special_type_slot_2=water_injection
+							special_type_slot_3=pressurized_cockpit_med
+							special_type_slot_4=high_octane_fuel
+							special_type_slot_5=auto_extinguisher_system_medium
+							special_type_slot_8=bomb_sights_2
+							special_type_slot_9=air_ground_radar_2
+							special_type_slot_10=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_medium_range_upgrade = 12
+						}
+					}
+					create_equipment_variant = {
+						name = "Boeing B-17 Flying Fortress"
+						type = large_plane_airframe_2
+						modules={
+							role_type_slot=role_large_bomber
+							fixed_frame_weapon_slot_1=large_bomb_bay
+							fixed_frame_weapon_slot_2=large_bomb_bay
+							fixed_turret_weapon_slot_1=hmg_defense_turret
+							fixed_turret_weapon_slot_2=hmg_defense_turret
+							engine_type_slot=radial_engine_6_4x
+							fuel_tank_type_slot=fuel_tanks_large
+							special_type_slot_1=early_turbocharger
+							special_type_slot_2=auto_extinguisher_system_large
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_8=bomb_sights_2
+							special_type_slot_9=air_ground_radar_2
+							special_type_slot_10=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_large_range_upgrade = 12
+						}
+					}
+					add_equipment_to_stockpile = {
+						type = large_plane_airframe_2
+						variant_name = "Boeing B-17 Flying Fortress"
+						amount = 400
+						producer = USA
+					}
+				}
+			}
+			if = {
+				limit = { SOV = { is_ai = yes } }
+				SOV = {
+					set_technology = { improved_small_airframe = 1 }
+					set_technology = { improved_medium_airframe = 1 }
+					create_equipment_variant = {
+						name = "MiG-3"
+						type = small_plane_airframe_2
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_engine_mounted_cannon_1
+							fixed_wing_weapon_slot_1=wing_aircraft_cannon_1_1x
+							fixed_wing_weapon_slot_2=wing_aircraft_cannon_1_1x
+							
+							engine_type_slot=engine_6_1x
+							fuel_tank_type_slot=self_sealing_fuel_tanks_small
+							special_type_slot_1=early_supercharger
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_4=auto_extinguisher_system_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=gyro_gunsight_1
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_small_range_upgrade = 12
+						}
+						design_team = mio:SOV_mig_design_bureau_organization
+					}
+					create_equipment_variant = {
+						name = "Il-2"
+						type = small_plane_cas_airframe_2
+						modules={
+							role_type_slot=role_small_cas
+							fixed_wing_weapon_slot_1=tank_buster_1
+							fixed_wing_weapon_slot_2=tank_buster_1
+							fixed_wing_weapon_slot_3=rocket_rails
+							engine_type_slot=engine_6_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_1=early_supercharger
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=dive_brakes_small
+							special_type_slot_4=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=air_ground_radar_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_small_range_upgrade = 12
+						}
+						design_team = mio:SOV_ilyushin_design_bureau_organization
+					}
+					create_equipment_variant = {
+						name = "Tu-2"
+						type = medium_plane_airframe_2
+						modules={
+							role_type_slot=role_medium_bomber
+							fixed_wing_weapon_slot_1=drop_tanks_medium
+							fixed_frame_weapon_slot_1=medium_bomb_bay
+							fixed_frame_weapon_slot_2=medium_bomb_bay
+							engine_type_slot=radial_engine_7_2x
+							fuel_tank_type_slot=self_sealing_fuel_tanks_medium
+							special_type_slot_1=early_turbocharger
+							special_type_slot_2=water_injection
+							special_type_slot_3=pressurized_cockpit_med
+							special_type_slot_4=high_octane_fuel
+							special_type_slot_5=auto_extinguisher_system_medium
+							special_type_slot_8=bomb_sights_2
+							special_type_slot_9=air_ground_radar_2
+							special_type_slot_10=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_medium_range_upgrade = 12
+						}
+					}
+				}
+			}
+			if = {
+				limit = { JAP = { is_ai = yes } }
+				JAP = {
+					set_technology = { improved_small_airframe = 1 }
+					set_technology = { improved_medium_airframe = 1 }
+					set_technology = { improved_large_airframe = 1 }
+					create_equipment_variant = {
+						name = "Ki-47"
+						type = small_plane_airframe_2
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_engine_mounted_cannon_1
+							fixed_wing_weapon_slot_1=wing_aircraft_cannon_1_1x
+							fixed_wing_weapon_slot_2=wing_aircraft_cannon_1_1x
+							
+							engine_type_slot=engine_6_1x
+							fuel_tank_type_slot=self_sealing_fuel_tanks_small
+							special_type_slot_1=early_supercharger
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_4=auto_extinguisher_system_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=gyro_gunsight_1
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_small_range_upgrade = 12
+						}
+					}
+					create_equipment_variant = {
+						name = "Ki-51"
+						type = small_plane_cas_airframe_2
+						modules={
+							role_type_slot=role_small_cas
+							fixed_wing_weapon_slot_1=tank_buster_1
+							fixed_wing_weapon_slot_2=tank_buster_1
+							fixed_wing_weapon_slot_3=rocket_rails
+							engine_type_slot=engine_6_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_1=early_supercharger
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=dive_brakes_small
+							special_type_slot_4=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=air_ground_radar_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_small_range_upgrade = 12
+						}
+					}
+					create_equipment_variant = {
+						name = "Nakajima B6N Tenzan"
+						type = cv_small_plane_naval_bomber_airframe_2
+						modules={
+							role_type_slot=role_small_torpedo_bomber
+							fixed_capot_weapon_slot_1=heavy_mg_2x
+							fixed_capot_weapon_slot_2=imp_heavy_mg_2x
+							fixed_wing_weapon_slot_1=drop_tanks
+							fixed_wing_weapon_slot_2=drop_tanks
+							fixed_frame_weapon_slot_1=torpedo_mounting_2
+							fixed_turret_weapon_slot_1=hmg_defense_turret
+							engine_type_slot=radial_engine_6_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_1=early_supercharger
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_small_range_upgrade = 12
+						}
+					}
+					create_equipment_variant = {
+						name = "Mitsubishi A6M Zero"
+						type = cv_small_plane_airframe_2
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=heavy_mg_2x
+							fixed_capot_weapon_slot_2=heavy_mg_2x
+							fixed_wing_weapon_slot_1=wing_aircraft_cannon_1_1x
+							fixed_wing_weapon_slot_2=wing_aircraft_cannon_1_1x
+							engine_type_slot=radial_engine_6_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_1=early_supercharger
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=gyro_gunsight_1
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_small_range_upgrade = 12
+						}
+					}
+					create_equipment_variant = {
+						name = "Aichi D3A"
+						type = cv_small_plane_cas_airframe_2
+						modules={
+							role_type_slot=role_small_cas
+							fixed_capot_weapon_slot_1=light_mg_2x
+							fixed_frame_weapon_slot_1=armor_piercing_bomb_locks
+							fixed_frame_weapon_slot_2=armor_piercing_bomb_locks
+							engine_type_slot=radial_engine_6_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_1=early_supercharger
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_4=auto_extinguisher_system_small
+							special_type_slot_5=dive_brakes_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_small_range_upgrade = 12
+						}
+					}
+					create_equipment_variant = {
+						name = "Ki-48"
+						type = medium_plane_airframe_2
+						modules={
+							role_type_slot=role_medium_bomber
+							fixed_wing_weapon_slot_1=drop_tanks_medium
+							fixed_frame_weapon_slot_1=medium_bomb_bay
+							fixed_frame_weapon_slot_2=medium_bomb_bay
+							engine_type_slot=radial_engine_7_2x
+							fuel_tank_type_slot=self_sealing_fuel_tanks_medium
+							special_type_slot_1=early_turbocharger
+							special_type_slot_2=water_injection
+							special_type_slot_3=pressurized_cockpit_med
+							special_type_slot_4=high_octane_fuel
+							special_type_slot_5=auto_extinguisher_system_medium
+							special_type_slot_8=bomb_sights_2
+							special_type_slot_9=air_ground_radar_2
+							special_type_slot_10=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_medium_range_upgrade = 12
+						}
+					}
+					create_equipment_variant = {
+						name = "Ki-49"
+						type = large_plane_airframe_2
+						modules={
+							role_type_slot=role_large_bomber
+							fixed_frame_weapon_slot_1=large_bomb_bay
+							fixed_frame_weapon_slot_2=large_bomb_bay
+							fixed_turret_weapon_slot_1=hmg_defense_turret
+							fixed_turret_weapon_slot_2=hmg_defense_turret
+							engine_type_slot=radial_engine_6_4x
+							fuel_tank_type_slot=fuel_tanks_large
+							special_type_slot_1=early_turbocharger
+							special_type_slot_2=auto_extinguisher_system_large
+							special_type_slot_3=high_octane_fuel
+							special_type_slot_8=bomb_sights_2
+							special_type_slot_9=air_ground_radar_2
+							special_type_slot_10=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 14
+							air_bba_large_range_upgrade = 12
+						}
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	AI_1943_designs = {
+	
+		fire_only_once = yes
+		
+		cost = 0
+		
+		available = {
+			date > 1943.6.1
+			is_ai = yes
+			tag = BRA
+		}
+		
+		visible = {
+			date > 1943.6.1
+			is_ai = yes
+			tag = BRA
+		}
+		
+		complete_effect = {
+			if = {
+				limit = { GER = { is_ai = yes } }
+				GER = {
+					set_technology = { advanced_small_airframe = 1 }
+					set_technology = { advanced_medium_airframe = 1 }
+					set_technology = { advanced_large_airframe = 1 }
+					create_equipment_variant = {
+						name = "BF-109 G-14"
+						type = small_plane_airframe_3
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_engine_mounted_cannon_2
+							fixed_wing_weapon_slot_1=wing_aircraft_cannon_2_1x
+							fixed_wing_weapon_slot_2=wing_aircraft_cannon_2_1x
+							
+							engine_type_slot=engine_8_1x
+							fuel_tank_type_slot=self_sealing_fuel_tanks_small
+							special_type_slot_1=supercharger
+							special_type_slot_2=fuel_injection
+							special_type_slot_3=pressurized_cockpit
+							special_type_slot_4=water_injection
+							special_type_slot_5=auto_extinguisher_system_small
+							special_type_slot_6=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=gyro_gunsight_2
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 20
+							air_bba_small_range_upgrade = 19
+						}
+						design_team = mio:GER_messerschmitt_organization
+					}
+				}
+			}
+			if = {
+				limit = { ENG = { is_ai = yes } }
+				ENG = {
+					set_technology = { advanced_small_airframe = 1 }
+					set_technology = { advanced_medium_airframe = 1 }
+					set_technology = { advanced_large_airframe = 1 }
+					create_equipment_variant = {
+						name = "Hawker Tempest"
+						type = small_plane_airframe_3
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_engine_mounted_cannon_2
+							fixed_wing_weapon_slot_1=wing_aircraft_cannon_2_1x
+							fixed_wing_weapon_slot_2=wing_aircraft_cannon_2_1x
+							
+							engine_type_slot=engine_8_1x
+							fuel_tank_type_slot=self_sealing_fuel_tanks_small
+							special_type_slot_1=supercharger
+							special_type_slot_2=fuel_injection
+							special_type_slot_3=pressurized_cockpit
+							special_type_slot_4=water_injection
+							special_type_slot_5=auto_extinguisher_system_small
+							special_type_slot_6=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=gyro_gunsight_2
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 20
+							air_bba_small_range_upgrade = 19
+						}
+						design_team = mio:ENG_supermarine_organization
+					}
+					create_equipment_variant = {
+						name = "Avro Lincoln"
+						type = large_plane_airframe_3
+						modules={
+							role_type_slot=role_large_bomber
+							fixed_frame_weapon_slot_1=large_bomb_bay
+							fixed_frame_weapon_slot_2=large_bomb_bay
+							fixed_frame_weapon_slot_3=large_bomb_bay
+							fixed_turret_weapon_slot_1=cannon_defense_turret
+							fixed_turret_weapon_slot_2=cannon_defense_turret
+							engine_type_slot=radial_engine_8_4x
+							fuel_tank_type_slot=self_sealing_fuel_tanks_large
+							special_type_slot_1=turbocharger
+							special_type_slot_2=high_octane_fuel
+							special_type_slot_3=armor_plate_large
+							special_type_slot_4=empty
+							special_type_slot_5=auto_extinguisher_system_large
+							special_type_slot_8=bomb_sights_2
+							special_type_slot_9=radio_navigation_2
+							special_type_slot_10=air_ground_radar_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 20
+							air_bba_large_range_upgrade = 12
+						}
+					}
+					create_equipment_variant = {
+						name = "De Havilland Mosquito"
+						type = medium_plane_airframe_3
+						modules={
+							role_type_slot=role_medium_bomber
+							fixed_wing_weapon_slot_1=wing_bomb_locks
+							fixed_wing_weapon_slot_2=wing_bomb_locks
+							fixed_frame_weapon_slot_1=medium_bomb_bay
+							fixed_frame_weapon_slot_2=medium_bomb_bay
+							fixed_frame_weapon_slot_3=medium_bomb_bay_cluster_bombs
+							fixed_turret_weapon_slot_1=hmg_defense_turret
+							fixed_turret_weapon_slot_2=hmg_defense_turret
+							engine_type_slot=radial_engine_8_2x
+							fuel_tank_type_slot=fuel_tanks_medium
+							special_type_slot_1=supercharger
+							special_type_slot_2=high_octane_fuel
+							special_type_slot_3=pressurized_cockpit_med
+							special_type_slot_4=NACA_cowling
+							special_type_slot_5=auto_extinguisher_system_medium
+							special_type_slot_7=aircraft_lightweight_construction_medium
+							special_type_slot_8=bomb_sights_2
+							special_type_slot_9=radio_navigation_2
+							special_type_slot_10=air_ground_radar_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 20
+							air_bba_medium_range_upgrade = 10
+						}
+					}
+					create_equipment_variant = {
+						name = "Blackburn Firebrand"
+						type = cv_small_plane_naval_bomber_airframe_3
+						modules={
+							role_type_slot=role_small_torpedo_bomber
+							fixed_capot_weapon_slot_1=imp_heavy_mg_2x
+							fixed_capot_weapon_slot_2=imp_heavy_mg_2x
+							fixed_wing_weapon_slot_1=drop_tanks
+							fixed_wing_weapon_slot_2=drop_tanks
+							fixed_frame_weapon_slot_1=torpedo_mounting_3
+							engine_type_slot=radial_engine_8_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_1=supercharger
+							special_type_slot_2=high_octane_fuel
+							special_type_slot_3=pressurized_cockpit
+							special_type_slot_4=water_injection
+							special_type_slot_5=fuel_injection
+							special_type_slot_6=auto_extinguisher_system_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 20
+							air_bba_small_range_upgrade = 20
+						}
+					}
+				}
+			}
+			if = {
+				limit = { ITA = { is_ai = yes } }
+				ITA = {
+					set_technology = { advanced_small_airframe = 1 }
+					set_technology = { advanced_medium_airframe = 1 }
+					set_technology = { advanced_large_airframe = 1 }
+					create_equipment_variant = {
+						name = "Fiat G.55 Centauro"
+						type = small_plane_airframe_3
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_engine_mounted_cannon_2
+							fixed_wing_weapon_slot_1=wing_aircraft_cannon_2_1x
+							fixed_wing_weapon_slot_2=wing_aircraft_cannon_2_1x
+							
+							engine_type_slot=engine_8_1x
+							fuel_tank_type_slot=self_sealing_fuel_tanks_small
+							special_type_slot_1=supercharger
+							special_type_slot_2=fuel_injection
+							special_type_slot_3=pressurized_cockpit
+							special_type_slot_4=water_injection
+							special_type_slot_5=auto_extinguisher_system_small
+							special_type_slot_6=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=gyro_gunsight_2
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 20
+							air_bba_small_range_upgrade = 19
+						}
+					}
+				}
+			}
+			if = {
+				limit = { USA = { is_ai = yes } }
+				USA = {
+					set_technology = { advanced_small_airframe = 1 }
+					set_technology = { advanced_medium_airframe = 1 }
+					set_technology = { advanced_large_airframe = 1 }
+					create_equipment_variant = {
+						name = "North American P-51 Mustang"
+						type = small_plane_airframe_3
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_engine_mounted_cannon_2
+							fixed_wing_weapon_slot_1=wing_aircraft_cannon_2_1x
+							fixed_wing_weapon_slot_2=wing_aircraft_cannon_2_1x
+							
+							engine_type_slot=engine_8_1x
+							fuel_tank_type_slot=self_sealing_fuel_tanks_small
+							special_type_slot_1=supercharger
+							special_type_slot_2=fuel_injection
+							special_type_slot_3=pressurized_cockpit
+							special_type_slot_4=water_injection
+							special_type_slot_5=auto_extinguisher_system_small
+							special_type_slot_6=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=gyro_gunsight_2
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 20
+							air_bba_small_range_upgrade = 19
+						}
+						design_team = mio:USA_north_american_aviation_organization
+					}
+					create_equipment_variant = {
+						name = "Grumman F6F Hellcat"
+						type = cv_small_plane_airframe_3
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_2=imp_heavy_mg_2x
+							fixed_capot_weapon_slot_3=imp_heavy_mg_2x
+							fixed_wing_weapon_slot_1=wing_aircraft_cannon_2_1x
+							fixed_wing_weapon_slot_2=wing_aircraft_cannon_2_1x
+							engine_type_slot=radial_engine_8_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_1=supercharger
+							special_type_slot_2=fuel_injection
+							special_type_slot_3=NACA_cowling
+							special_type_slot_4=pressurized_cockpit
+							special_type_slot_5=water_injection
+							special_type_slot_6=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=gyro_gunsight_2
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 20
+							air_bba_small_range_upgrade = 20
+						}
+						design_team = mio:USA_north_american_aviation_organization
+					}
+					create_equipment_variant = {
+						name = "Curtiss SB2C-1C Helldiver"
+						type = cv_small_plane_cas_airframe_3
+						modules={
+							role_type_slot=role_small_cas
+							fixed_capot_weapon_slot_1=imp_heavy_mg_2x
+							fixed_wing_weapon_slot_1=drop_tanks
+							fixed_wing_weapon_slot_2=drop_tanks
+							fixed_frame_weapon_slot_1=armor_piercing_bomb_locks
+							fixed_frame_weapon_slot_2=armor_piercing_bomb_locks
+							engine_type_slot=engine_8_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_1=supercharger
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=dive_brakes_small
+							special_type_slot_4=water_injection
+							special_type_slot_5=fuel_injection
+							special_type_slot_6=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=air_ground_radar_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 20
+							air_bba_small_range_upgrade = 16
+						}
+					}
+					create_equipment_variant = {
+						name = "Boeing B-29 Superfortress"
+						type = large_plane_airframe_3
+						modules={
+							role_type_slot=role_large_bomber
+							fixed_frame_weapon_slot_1=large_bomb_bay
+							fixed_frame_weapon_slot_2=large_bomb_bay
+							fixed_frame_weapon_slot_3=large_bomb_bay
+							fixed_turret_weapon_slot_1=cannon_defense_turret
+							fixed_turret_weapon_slot_2=cannon_defense_turret
+							engine_type_slot=radial_engine_8_4x
+							fuel_tank_type_slot=self_sealing_fuel_tanks_large
+							special_type_slot_1=turbocharger
+							special_type_slot_2=high_octane_fuel
+							special_type_slot_3=armor_plate_large
+							special_type_slot_4=empty
+							special_type_slot_5=auto_extinguisher_system_large
+							special_type_slot_8=bomb_sights_2
+							special_type_slot_9=radio_navigation_2
+							special_type_slot_10=air_ground_radar_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 20
+							air_bba_large_range_upgrade = 12
+						}
+					}
+					create_equipment_variant = {
+						name = "Douglas BTD Destroyer"
+						type = cv_small_plane_naval_bomber_airframe_3
+						modules={
+							role_type_slot=role_small_torpedo_bomber
+							fixed_capot_weapon_slot_1=imp_heavy_mg_2x
+							fixed_capot_weapon_slot_2=imp_heavy_mg_2x
+							fixed_wing_weapon_slot_1=drop_tanks
+							fixed_wing_weapon_slot_2=drop_tanks
+							fixed_frame_weapon_slot_1=torpedo_mounting_3
+							engine_type_slot=radial_engine_8_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_1=supercharger
+							special_type_slot_2=high_octane_fuel
+							special_type_slot_3=pressurized_cockpit
+							special_type_slot_4=water_injection
+							special_type_slot_5=fuel_injection
+							special_type_slot_6=auto_extinguisher_system_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 20
+							air_bba_small_range_upgrade = 20
+						}
+					}
+				}
+			}
+			if = {
+				limit = { SOV = { is_ai = yes } }
+				SOV = {
+					set_technology = { advanced_small_airframe = 1 }
+					set_technology = { advanced_medium_airframe = 1 }
+					set_technology = { advanced_large_airframe = 1 }
+					create_equipment_variant = {
+						name = "Yakovlev Yak-9"
+						type = small_plane_airframe_3
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_engine_mounted_cannon_2
+							fixed_wing_weapon_slot_1=wing_aircraft_cannon_2_1x
+							fixed_wing_weapon_slot_2=wing_aircraft_cannon_2_1x
+							
+							engine_type_slot=engine_8_1x
+							fuel_tank_type_slot=self_sealing_fuel_tanks_small
+							special_type_slot_1=supercharger
+							special_type_slot_2=fuel_injection
+							special_type_slot_3=pressurized_cockpit
+							special_type_slot_4=water_injection
+							special_type_slot_5=auto_extinguisher_system_small
+							special_type_slot_6=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=gyro_gunsight_2
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 20
+							air_bba_small_range_upgrade = 19
+						}
+						design_team = mio:SOV_mig_design_bureau_organization
+					}
+				}
+			}
+			if = {
+				limit = { JAP = { is_ai = yes } }
+				JAP = {
+					set_technology = { advanced_small_airframe = 1 }
+					set_technology = { advanced_medium_airframe = 1 }
+					set_technology = { advanced_large_airframe = 1 }
+					create_equipment_variant = {
+						name = "Nakajima Ki-84 Hayate"
+						type = small_plane_airframe_3
+						modules={
+							role_type_slot=role_small_fighter
+							fixed_capot_weapon_slot_1=aircraft_engine_mounted_cannon_2
+							fixed_wing_weapon_slot_1=wing_aircraft_cannon_2_1x
+							fixed_wing_weapon_slot_2=wing_aircraft_cannon_2_1x
+							
+							engine_type_slot=engine_8_1x
+							fuel_tank_type_slot=self_sealing_fuel_tanks_small
+							special_type_slot_1=supercharger
+							special_type_slot_2=fuel_injection
+							special_type_slot_3=pressurized_cockpit
+							special_type_slot_4=water_injection
+							special_type_slot_5=auto_extinguisher_system_small
+							special_type_slot_6=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=gyro_gunsight_2
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 20
+							air_bba_small_range_upgrade = 19
+						}
+					}
+					create_equipment_variant = {
+						name = "Yokosuka D4Y Suisei"
+						type = cv_small_plane_cas_airframe_3
+						modules={
+							role_type_slot=role_small_cas
+							fixed_capot_weapon_slot_1=imp_heavy_mg_2x
+							fixed_wing_weapon_slot_1=drop_tanks
+							fixed_wing_weapon_slot_2=drop_tanks
+							fixed_frame_weapon_slot_1=armor_piercing_bomb_locks
+							fixed_frame_weapon_slot_2=armor_piercing_bomb_locks
+							engine_type_slot=engine_8_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_1=supercharger
+							special_type_slot_2=pressurized_cockpit
+							special_type_slot_3=dive_brakes_small
+							special_type_slot_4=water_injection
+							special_type_slot_5=fuel_injection
+							special_type_slot_6=high_octane_fuel
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=air_ground_radar_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 20
+							air_bba_small_range_upgrade = 16
+						}
+					}
+					create_equipment_variant = {
+						name = "Yokosuka P1Y Ginga"
+						type = medium_plane_airframe_3
+						modules={
+							role_type_slot=role_medium_bomber
+							fixed_wing_weapon_slot_1=wing_bomb_locks
+							fixed_wing_weapon_slot_2=wing_bomb_locks
+							fixed_frame_weapon_slot_1=medium_bomb_bay
+							fixed_frame_weapon_slot_2=medium_bomb_bay
+							fixed_frame_weapon_slot_3=medium_bomb_bay_cluster_bombs
+							fixed_turret_weapon_slot_1=hmg_defense_turret
+							fixed_turret_weapon_slot_2=hmg_defense_turret
+							engine_type_slot=radial_engine_8_2x
+							fuel_tank_type_slot=fuel_tanks_medium
+							special_type_slot_1=supercharger
+							special_type_slot_2=high_octane_fuel
+							special_type_slot_3=pressurized_cockpit_med
+							special_type_slot_4=NACA_cowling
+							special_type_slot_5=auto_extinguisher_system_medium
+							special_type_slot_7=aircraft_lightweight_construction_medium
+							special_type_slot_8=bomb_sights_2
+							special_type_slot_9=radio_navigation_2
+							special_type_slot_10=air_ground_radar_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 20
+							air_bba_medium_range_upgrade = 10
+						}
+					}
+					create_equipment_variant = {
+						name = "Aichi B7A Ryusei"
+						type = cv_small_plane_naval_bomber_airframe_3
+						modules={
+							role_type_slot=role_small_torpedo_bomber
+							fixed_capot_weapon_slot_1=imp_heavy_mg_2x
+							fixed_capot_weapon_slot_2=imp_heavy_mg_2x
+							fixed_wing_weapon_slot_1=drop_tanks
+							fixed_wing_weapon_slot_2=drop_tanks
+							fixed_frame_weapon_slot_1=torpedo_mounting_3
+							engine_type_slot=radial_engine_8_1x
+							fuel_tank_type_slot=fuel_tanks_small
+							special_type_slot_1=supercharger
+							special_type_slot_2=high_octane_fuel
+							special_type_slot_3=pressurized_cockpit
+							special_type_slot_4=water_injection
+							special_type_slot_5=fuel_injection
+							special_type_slot_6=auto_extinguisher_system_small
+							special_type_slot_7=aircraft_lightweight_construction_small
+							special_type_slot_8=cas_reflex_gunsight_2
+							special_type_slot_9=radio_navigation_2
+						}
+						upgrades={
+							air_bba_engine_upgrade = 20
+							air_bba_small_range_upgrade = 20
+						}
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	AI_lt_flag = {
+	
+		fire_only_once = yes
+		
+		cost = 0
+		
+		available = {
+			date < 1936.6.1
+			is_ai = yes
+		}
+		
+		visible = {
+			date < 1936.6.1
+			is_ai = yes
+		}
+		
+		complete_effect = {
+			set_country_flag = light_tanks_ai
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	AI_CHI_infantry_template = {
+	
+		fire_only_once = yes
+		
+		cost = 0
+		
+		available = {
+			tag = CHI
+			is_ai = yes
+		}
+		
+		visible = {
+			tag = CHI
+			is_ai = yes
+		}
+		
+		complete_effect = {
+			division_template = {
+				name = "Infantry Division"
+				priority = 0
+
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+					
+					infantry = { x = 3 y = 0 }
+					infantry = { x = 3 y = 1 }
+					infantry = { x = 3 y = 2 }
+					
+					infantry = { x = 4 y = 0 }
+					infantry = { x = 4 y = 1 }
+					infantry = { x = 4 y = 2 }
+				}
+				support = {
+				}
+			}
+		}
+		ai_will_do = { factor = 100 }
+	}
+	AI_infantry_template = {
+	
+		fire_only_once = yes
+		
+		cost = 0
+		
+		available = {
+			NOT = { tag = CHI }
+			is_ai = yes
+			potential_playeble_countries = yes
+		}
+		
+		visible = {
+			NOT = { tag = CHI }
+			is_ai = yes
+			potential_playeble_countries = yes
+		}
+		
+		complete_effect = {
+			division_template = {
+				name = "Infantry Division"
+				priority = 0
+
+				regiments = {
+					heavy_infantry = { x = 0 y = 0 }
+					heavy_infantry = { x = 0 y = 1 }
+					heavy_infantry = { x = 0 y = 2 }
+
+					heavy_infantry = { x = 1 y = 0 }
+					heavy_infantry = { x = 1 y = 1 }
+					heavy_infantry = { x = 1 y = 2 }
+					
+					heavy_infantry = { x = 2 y = 0 }
+					heavy_infantry = { x = 2 y = 1 }
+					heavy_infantry = { x = 2 y = 2 }
+					
+					heavy_infantry = { x = 3 y = 0 }
+					heavy_infantry = { x = 3 y = 1 }
+					heavy_infantry = { x = 3 y = 2 }
+				}
+				support = {	
+					engineer = { x = 0 y = 0 }
+				}
+			}
+		}
+		ai_will_do = { factor = 100 }
+	}
+	AI_tank_design_MT_1 = {
+		
+		fire_only_once = yes
+		
+		cost = 0
+		
+		available = {
+			is_ai = yes
+			has_tech = basic_medium_tank_chassis
+		}
+		
+		visible = {
+			is_ai = yes
+		}
+		
+		complete_effect = {
+			if = {
+				limit = {
+					tag = SOV
+				}
+				SOV = {
+					set_country_flag = medium_tanks_ai
+					create_equipment_variant = {
+						name = "T-34/76"
+						type = medium_tank_chassis_1
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_medium_cannon
+							turret_type_slot = tank_medium_one_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor_2
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = empty
+							special_type_slot_1 = secondary_turret_hmg
+							special_type_slot_2 = sloped_armor
+							special_type_slot_3 = wet_ammo_storage
+						}
+						upgrades = {
+							tank_medium_nsb_armor_upgrade = 60
+							tank_nsb_tung_alloying_upgrade = 5
+							tank_nsb_chrom_alloying_upgrade = 5
+							tank_nsb_engine_upgrade = 10
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = GER
+				}
+				GER = {
+					set_country_flag = medium_tanks_ai
+					create_equipment_variant = {
+						name = "Pz.Kpfw. III Ausf. J"
+						type = medium_tank_chassis_1
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_high_velocity_cannon
+							turret_type_slot = tank_medium_one_man_tank_turret
+							suspension_type_slot = tank_torsion_bar_suspension
+							armor_type_slot = tank_cast_armor
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_2
+							special_type_slot_1 = secondary_turret_hmg_3
+							special_type_slot_2 = wet_ammo_storage
+							special_type_slot_3 = expanded_fuel_tank
+						}
+						upgrades = {
+							tank_medium_nsb_armor_upgrade = 40
+							tank_nsb_engine_upgrade = 10
+						}
+					}
+					create_equipment_variant = {
+						name = "StuG III Ausf. G"
+						type = medium_tank_destroyer_chassis_1
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_high_velocity_cannon_2
+							turret_type_slot = tank_light_fixed_superstructure_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_cast_armor
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_3
+							special_type_slot_1 = secondary_turret_hmg_3
+							special_type_slot_2 = wet_ammo_storage
+							special_type_slot_3 = expanded_fuel_tank
+						}
+						upgrades = {
+							tank_medium_nsb_armor_upgrade = 50
+							tank_nsb_engine_upgrade = 10
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = ENG
+				}
+				ENG = {
+					set_country_flag = medium_tanks_ai
+					create_equipment_variant = {
+						name = "Cruiser Mk.VI Crusader"
+						type = medium_tank_chassis_1
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_high_velocity_cannon
+							turret_type_slot = tank_medium_one_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_riveted_armor
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_2
+							special_type_slot_1 = secondary_turret_hmg_2
+							special_type_slot_2 = wet_ammo_storage
+							special_type_slot_3 = expanded_fuel_tank
+						}
+						upgrades = {
+							tank_medium_nsb_armor_upgrade = 25
+							tank_nsb_engine_upgrade = 5
+						}
+					}
+				}
+				every_country = {
+					limit = {
+						is_subject_of = ENG
+						is_ai = yes
+						NOT = { tag = MAL }
+						NOT = { tag = RAJ }
+					}
+					set_country_flag = medium_tanks_ai
+					create_equipment_variant = {
+						name = "Cruiser Mk.VI Crusader (L)"
+						type = medium_tank_chassis_1
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_high_velocity_cannon
+							turret_type_slot = tank_medium_one_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_riveted_armor
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_2
+							special_type_slot_1 = secondary_turret_hmg_2
+							special_type_slot_2 = wet_ammo_storage
+							special_type_slot_3 = expanded_fuel_tank
+						}
+						upgrades = {
+							tank_medium_nsb_armor_upgrade = 25
+							tank_nsb_engine_upgrade = 5
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = USA
+				}
+				USA = {
+					set_country_flag = medium_tanks_ai
+					create_equipment_variant = {
+						name = "M4A1 Sherman"
+						type = medium_tank_chassis_1
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_medium_cannon
+							turret_type_slot = tank_medium_one_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_1
+							special_type_slot_1 = secondary_turret_hmg
+							special_type_slot_2 = wet_ammo_storage
+							special_type_slot_3 = sloped_armor
+						}
+						upgrades = {
+							tank_medium_nsb_armor_upgrade = 45
+							tank_nsb_engine_upgrade = 5
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = HUN
+				}
+				HUN = {
+					set_country_flag = medium_tanks_ai
+					create_equipment_variant = {
+						name = "Turan I"
+						type = medium_tank_chassis_1
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_small_cannon_2
+							turret_type_slot = tank_medium_one_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_1
+							special_type_slot_1 = secondary_turret_hmg
+							special_type_slot_2 = wet_ammo_storage
+						}
+						upgrades = {
+							tank_medium_nsb_armor_upgrade = 35
+							tank_nsb_engine_upgrade = 5
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = FRA
+				}
+				FRA = {
+					set_country_flag = medium_tanks_ai
+					create_equipment_variant = {
+						name = "AMC 35"
+						type = medium_tank_chassis_1
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_small_cannon_2
+							turret_type_slot = tank_medium_one_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_cast_armor
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_1
+							special_type_slot_1 = secondary_turret_hmg_2
+							special_type_slot_2 = wet_ammo_storage
+							special_type_slot_3 = sloped_armor
+						}
+						upgrades = {
+							tank_medium_nsb_armor_upgrade = 40
+							tank_nsb_engine_upgrade = 5
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = JAP
+				}
+				JAP = {
+					set_country_flag = medium_tanks_ai
+					create_equipment_variant = {
+						name = "Chi-Nu"
+						type = medium_tank_chassis_1
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_medium_cannon
+							turret_type_slot = tank_medium_one_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_riveted_armor
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_1
+							special_type_slot_1 = secondary_turret_hmg_2
+							special_type_slot_2 = wet_ammo_storage
+						}
+						upgrades = {
+							tank_medium_nsb_armor_upgrade = 30
+							tank_nsb_engine_upgrade = 5
+						}
+					}
+				}
+			}
+		}
+		
+		ai_will_do = { factor = 100 }
+	}
+	
+	AI_tank_design_MT_2 = {
+		
+		fire_only_once = yes
+		
+		cost = 0
+		
+		available = {
+			is_ai = yes
+			has_tech = improved_medium_tank_chassis
+		}
+		
+		visible = {
+			is_ai = yes
+		}
+		
+		complete_effect = {
+			if = {
+				limit = {
+					tag = SOV
+				}
+				SOV = {
+					create_equipment_variant = {
+						name = "T-34/57"
+						type = medium_tank_chassis_2
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_medium_cannon_2
+							turret_type_slot = tank_medium_two_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor_2
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_1
+							special_type_slot_1 = secondary_turret_hmg_2
+							special_type_slot_2 = sloped_armor
+							special_type_slot_3 = wet_ammo_storage
+							special_type_slot_4 = stabilizer
+						}
+						upgrades = {
+							tank_medium_nsb_armor_upgrade = 60
+							tank_nsb_tung_alloying_upgrade = 5
+							tank_nsb_chrom_alloying_upgrade = 5
+							tank_nsb_engine_upgrade = 10
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = GER
+				}
+				GER = {
+					create_equipment_variant = {
+						name = "Pz.Kpfw. IV Ausf. G"
+						type = medium_tank_chassis_2
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_medium_cannon_2
+							turret_type_slot = tank_medium_two_man_tank_turret
+							suspension_type_slot = tank_torsion_bar_suspension
+							armor_type_slot = tank_cast_armor
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_3
+							special_type_slot_1 = secondary_turret_hmg_3
+							special_type_slot_2 = wet_ammo_storage
+							special_type_slot_3 = expanded_fuel_tank
+							special_type_slot_4 = stabilizer
+						}
+						upgrades = {
+							tank_medium_nsb_armor_upgrade = 80
+							tank_nsb_tung_alloying_upgrade = 5
+							tank_nsb_chrom_alloying_upgrade = 5
+							tank_nsb_engine_upgrade = 10
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = ENG
+				}
+				ENG = {
+					create_equipment_variant = {
+						name = "A27M Cromwell"
+						type = medium_tank_chassis_2
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_high_velocity_cannon_2
+							turret_type_slot = tank_medium_two_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_riveted_armor
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_2
+							special_type_slot_1 = secondary_turret_hmg_2
+							special_type_slot_2 = wet_ammo_storage
+							special_type_slot_3 = expanded_fuel_tank
+							special_type_slot_4 = stabilizer
+						}
+						upgrades = {
+							tank_medium_nsb_armor_upgrade = 50
+							tank_nsb_tung_alloying_upgrade = 5
+							tank_nsb_chrom_alloying_upgrade = 5
+							tank_nsb_engine_upgrade = 10
+						}
+					}
+				}
+				every_country = {
+					limit = {
+						is_subject_of = ENG
+						is_ai = yes
+						NOT = { tag = MAL }
+						NOT = { tag = RAJ }
+					}
+					create_equipment_variant = {
+						name = "A27M Cromwell (L)"
+						type = medium_tank_chassis_2
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_high_velocity_cannon_2
+							turret_type_slot = tank_medium_two_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_riveted_armor
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_2
+							special_type_slot_1 = secondary_turret_hmg_2
+							special_type_slot_2 = wet_ammo_storage
+							special_type_slot_3 = expanded_fuel_tank
+							special_type_slot_4 = stabilizer
+						}
+						upgrades = {
+							tank_medium_nsb_armor_upgrade = 50
+							tank_nsb_tung_alloying_upgrade = 5
+							tank_nsb_chrom_alloying_upgrade = 5
+							tank_nsb_engine_upgrade = 10
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = USA
+				}
+				USA = {
+					create_equipment_variant = {
+						name = "M4A2 Sherman"
+						type = medium_tank_chassis_2
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_medium_cannon_2
+							turret_type_slot = tank_medium_two_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_2
+							special_type_slot_1 = secondary_turret_hmg_3
+							special_type_slot_2 = wet_ammo_storage
+							special_type_slot_3 = sloped_armor
+							special_type_slot_4 = stabilizer
+						}
+						upgrades = {
+							tank_medium_nsb_armor_upgrade = 50
+							tank_nsb_tung_alloying_upgrade = 5
+							tank_nsb_chrom_alloying_upgrade = 5
+							tank_nsb_engine_upgrade = 10
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = HUN
+				}
+				HUN = {
+					create_equipment_variant = {
+						name = "Turan II"
+						type = medium_tank_chassis_2
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_medium_cannon_2
+							turret_type_slot = tank_medium_two_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_2
+							special_type_slot_1 = secondary_turret_hmg_2
+							special_type_slot_2 = wet_ammo_storage
+						}
+						upgrades = {
+							tank_medium_nsb_armor_upgrade = 40
+							tank_nsb_engine_upgrade = 5
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = { factor = 100 }
+	}
+	
+	AI_tank_design_MT_3 = {
+		
+		fire_only_once = yes
+		
+		cost = 0
+		
+		available = {
+			is_ai = yes
+			has_tech = advanced_medium_tank_chassis
+		}
+		
+		visible = {
+			is_ai = yes
+		}
+		
+		complete_effect = {
+			if = {
+				limit = {
+					tag = SOV
+				}
+				SOV = {
+					create_equipment_variant = {
+						name = "T-34/85"
+						type = medium_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_medium_cannon_3
+							turret_type_slot = tank_medium_three_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor_2
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_2
+							special_type_slot_1 = secondary_turret_hmg_3
+							special_type_slot_2 = sloped_armor
+							special_type_slot_3 = wet_ammo_storage
+							special_type_slot_4 = stabilizer
+							special_type_slot_5 = easy_maintenance
+						}
+						upgrades = {
+							tank_medium_nsb_armor_upgrade = 70
+							tank_nsb_tung_alloying_upgrade = 15
+							tank_nsb_chrom_alloying_upgrade = 15
+							tank_nsb_engine_upgrade = 15
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = GER
+				}
+				GER = {
+					create_equipment_variant = {
+						name = "Pz.Kpfw. V Panther"
+						type = medium_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_medium_cannon_3
+							turret_type_slot = tank_medium_three_man_tank_turret
+							suspension_type_slot = tank_torsion_bar_suspension
+							armor_type_slot = tank_cast_armor
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_3
+							special_type_slot_1 = secondary_turret_hmg_4
+							special_type_slot_2 = wet_ammo_storage
+							special_type_slot_3 = expanded_fuel_tank
+							special_type_slot_4 = stabilizer_2
+							special_type_slot_5 = sloped_armor
+						}
+						upgrades = {
+							tank_medium_nsb_armor_upgrade = 80
+							tank_nsb_tung_alloying_upgrade = 15
+							tank_nsb_chrom_alloying_upgrade = 15
+							tank_nsb_engine_upgrade = 20
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = ENG
+				}
+				ENG = {
+					create_equipment_variant = {
+						name = "Cruiser Tank «Comet»"
+						type = medium_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_high_velocity_cannon_3
+							turret_type_slot = tank_medium_three_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_3
+							special_type_slot_1 = secondary_turret_hmg_3
+							special_type_slot_2 = wet_ammo_storage
+							special_type_slot_3 = expanded_fuel_tank
+							special_type_slot_4 = stabilizer_2
+							special_type_slot_5 = easy_maintenance
+						}
+						upgrades = {
+							tank_medium_nsb_armor_upgrade = 70
+							tank_nsb_tung_alloying_upgrade = 10
+							tank_nsb_chrom_alloying_upgrade = 10
+							tank_nsb_engine_upgrade = 15
+						}
+					}
+				}
+				every_country = {
+					limit = {
+						is_subject_of = ENG
+						is_ai = yes
+						NOT = { tag = MAL }
+						NOT = { tag = RAJ }
+					}
+					create_equipment_variant = {
+						name = "Cruiser Tank «Comet (L)»"
+						type = medium_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_high_velocity_cannon_3
+							turret_type_slot = tank_medium_three_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_3
+							special_type_slot_1 = secondary_turret_hmg_3
+							special_type_slot_2 = wet_ammo_storage
+							special_type_slot_3 = expanded_fuel_tank
+							special_type_slot_4 = stabilizer_2
+							special_type_slot_5 = easy_maintenance
+						}
+						upgrades = {
+							tank_medium_nsb_armor_upgrade = 70
+							tank_nsb_tung_alloying_upgrade = 10
+							tank_nsb_chrom_alloying_upgrade = 10
+							tank_nsb_engine_upgrade = 15
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = USA
+				}
+				USA = {
+					create_equipment_variant = {
+						name = "M4A4 Sherman"
+						type = medium_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_medium_cannon_3
+							turret_type_slot = tank_medium_three_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_2
+							special_type_slot_1 = secondary_turret_hmg_3
+							special_type_slot_2 = wet_ammo_storage
+							special_type_slot_3 = sloped_armor
+							special_type_slot_4 = stabilizer_2
+							special_type_slot_5 = easy_maintenance
+						}
+						upgrades = {
+							tank_medium_nsb_armor_upgrade = 50
+							tank_nsb_tung_alloying_upgrade = 10
+							tank_nsb_chrom_alloying_upgrade = 10
+							tank_nsb_engine_upgrade = 15
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = { factor = 100 }
+	}
+	
+	AI_tank_design_HT_2 = {
+		
+		fire_only_once = yes
+		
+		cost = 0
+		
+		available = {
+			is_ai = yes
+			has_tech = improved_heavy_tank_chassis
+		}
+		
+		visible = {
+			is_ai = yes
+		}
+		
+		complete_effect = {
+			if = {
+				limit = {
+					tag = SOV
+				}
+				set_country_flag = heavy_tanks_ai
+				create_equipment_variant = {
+					name = "KV-1"
+					type = heavy_tank_chassis_2
+					parent_version = 0
+					modules = {
+						main_armament_slot = tank_medium_cannon
+						turret_type_slot = tank_heavy_two_man_tank_turret
+						suspension_type_slot = tank_torsion_bar_suspension
+						armor_type_slot = tank_welded_armor_2
+						engine_type_slot = tank_diesel_engine
+						radio_slot = tank_radio_1
+						special_type_slot_1 = secondary_turret_hmg_2
+						special_type_slot_2 = sloped_armor
+						special_type_slot_3 = wet_ammo_storage
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 75
+						tank_nsb_tung_alloying_upgrade = 10
+						tank_nsb_chrom_alloying_upgrade = 10
+						tank_nsb_engine_upgrade = 10
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = GER
+				}
+				set_country_flag = heavy_tanks_ai
+				create_equipment_variant = {
+					name = "Pz.Kpfw. VI Tiger"
+					type = heavy_tank_chassis_2
+					parent_version = 0
+					modules = {
+						main_armament_slot = tank_heavy_cannon_2
+						turret_type_slot = tank_heavy_two_man_tank_turret
+						suspension_type_slot = tank_interleaved_suspension
+						armor_type_slot = tank_welded_armor
+						engine_type_slot = tank_gasoline_engine
+						radio_slot = tank_radio_3
+						special_type_slot_1 = secondary_turret_hmg_4
+						special_type_slot_2 = wet_ammo_storage
+						special_type_slot_3 = sloped_armor
+						special_type_slot_4 = stabilizer_2
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 100
+						tank_nsb_tung_alloying_upgrade = 15
+						tank_nsb_chrom_alloying_upgrade = 15
+						tank_nsb_engine_upgrade = 15
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = ENG
+				}
+				set_country_flag = heavy_tanks_ai
+				create_equipment_variant = {
+					name = "Mk.IV «Churchill»"
+					type = heavy_tank_chassis_2
+					parent_version = 0
+					modules = {
+						main_armament_slot = tank_medium_cannon_2
+						turret_type_slot = tank_heavy_two_man_tank_turret
+						suspension_type_slot = tank_torsion_bar_suspension
+						armor_type_slot = tank_welded_armor
+						engine_type_slot = tank_gasoline_engine
+						radio_slot = tank_radio_1
+						special_type_slot_1 = secondary_turret_hmg_2
+						special_type_slot_2 = smoke_launchers
+						special_type_slot_3 = additional_machine_guns
+						special_type_slot_4 = stabilizer
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 90
+						tank_nsb_tung_alloying_upgrade = 10
+						tank_nsb_chrom_alloying_upgrade = 10
+						tank_nsb_engine_upgrade = 10
+					}
+				}
+				every_country = {
+					limit = {
+						is_subject_of = ENG
+						is_ai = yes
+						NOT = { tag = MAL }
+						NOT = { tag = RAJ }
+					}
+					set_country_flag = heavy_tanks_ai
+					create_equipment_variant = {
+						name = "Mk.IV «Churchill (L)»"
+						type = heavy_tank_chassis_2
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_medium_cannon_2
+							turret_type_slot = tank_heavy_two_man_tank_turret
+							suspension_type_slot = tank_torsion_bar_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_1
+							special_type_slot_1 = secondary_turret_hmg_2
+							special_type_slot_2 = smoke_launchers
+							special_type_slot_3 = additional_machine_guns
+							special_type_slot_4 = stabilizer
+						}
+						upgrades = {
+							tank_nsb_armor_upgrade = 90
+							tank_nsb_tung_alloying_upgrade = 10
+							tank_nsb_chrom_alloying_upgrade = 10
+							tank_nsb_engine_upgrade = 10
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = { factor = 100 }
+	}
+	
+	AI_tank_design_HT_3 = {
+		
+		fire_only_once = yes
+		
+		cost = 0
+		
+		available = {
+			is_ai = yes
+			has_tech = advanced_heavy_tank_chassis
+		}
+		
+		visible = {
+			is_ai = yes
+		}
+		
+		complete_effect = {
+			if = {
+				limit = {
+					tag = SOV
+				}
+				create_equipment_variant = {
+					name = "IS-2"
+					type = heavy_tank_chassis_3
+					parent_version = 0
+					modules = {
+						main_armament_slot = tank_heavy_cannon_3
+						turret_type_slot = tank_heavy_three_man_tank_turret
+						suspension_type_slot = tank_torsion_bar_suspension
+						armor_type_slot = tank_cast_armor
+						engine_type_slot = tank_diesel_engine
+						radio_slot = tank_radio_3
+						special_type_slot_1 = secondary_turret_hmg_4
+						special_type_slot_2 = sloped_armor
+						special_type_slot_3 = wet_ammo_storage
+						special_type_slot_4 = stabilizer_2
+						special_type_slot_5 = additional_machine_guns
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 120
+						tank_nsb_tung_alloying_upgrade = 20
+						tank_nsb_chrom_alloying_upgrade = 20
+						tank_nsb_engine_upgrade = 20
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = GER
+				}
+				create_equipment_variant = {
+					name = "Pz.Kpfw. VI Königstiger"
+					type = heavy_tank_chassis_3
+					parent_version = 0
+					modules = {
+						main_armament_slot = tank_high_velocity_cannon_3
+						turret_type_slot = tank_heavy_three_man_tank_turret
+						suspension_type_slot = tank_interleaved_suspension
+						armor_type_slot = tank_cast_armor
+						engine_type_slot = tank_gasoline_engine
+						radio_slot = tank_radio_3
+						special_type_slot_1 = secondary_turret_hmg_4
+						special_type_slot_2 = wet_ammo_storage
+						special_type_slot_3 = sloped_armor
+						special_type_slot_4 = stabilizer_2
+						special_type_slot_5 = armor_skirts
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 120
+						tank_nsb_tung_alloying_upgrade = 20
+						tank_nsb_chrom_alloying_upgrade = 20
+						tank_nsb_engine_upgrade = 15
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = ENG
+				}
+				create_equipment_variant = {
+					name = "Mk. VII «Churchill»"
+					type = heavy_tank_chassis_3
+					parent_version = 0
+					modules = {
+						main_armament_slot = tank_medium_cannon_3
+						turret_type_slot = tank_heavy_three_man_tank_turret
+						suspension_type_slot = tank_torsion_bar_suspension
+						armor_type_slot = tank_welded_armor
+						engine_type_slot = tank_gasoline_engine
+						radio_slot = tank_radio_3
+						special_type_slot_1 = secondary_turret_hmg_4
+						special_type_slot_2 = smoke_launchers
+						special_type_slot_3 = armor_skirts
+						special_type_slot_4 = stabilizer_2
+						special_type_slot_5 = additional_machine_guns
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 152
+						tank_nsb_tung_alloying_upgrade = 10
+							tank_nsb_chrom_alloying_upgrade = 10
+						tank_nsb_engine_upgrade = 20
+					}
+				}
+				every_country = {
+					limit = {
+						is_subject_of = ENG
+						is_ai = yes
+						NOT = { tag = MAL }
+						NOT = { tag = RAJ }
+					}
+					create_equipment_variant = {
+						name = "Mk. VII «Churchill (L)»"
+						type = heavy_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_medium_cannon_3
+							turret_type_slot = tank_heavy_three_man_tank_turret
+							suspension_type_slot = tank_torsion_bar_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_gasoline_engine
+							radio_slot = tank_radio_3
+							special_type_slot_1 = secondary_turret_hmg_4
+							special_type_slot_2 = smoke_launchers
+							special_type_slot_3 = armor_skirts
+							special_type_slot_4 = stabilizer_2
+							special_type_slot_5 = additional_machine_guns
+						}
+						upgrades = {
+							tank_nsb_armor_upgrade = 152
+							tank_nsb_tung_alloying_upgrade = 10
+							tank_nsb_chrom_alloying_upgrade = 10
+							tank_nsb_engine_upgrade = 20
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = { factor = 100 }
+	}
+}

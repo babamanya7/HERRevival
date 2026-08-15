@@ -1,0 +1,89 @@
+ROM_change_sides = {
+	ROM_change_sides_to_commintern = {
+
+		icon = decision_generic_nationalism
+
+		allowed = {
+			original_tag = ROM
+		}
+
+		available = {
+			is_faction_leader = no
+			has_capitulated = no
+			any_country = {
+				is_faction_leader = yes
+				has_war_with = ROM
+				tag = SOV
+			}
+			surrender_progress > 0.05
+			hidden_trigger = {
+				NOT = { has_country_flag = romania_has_flipped_sides } #Romania shouldn't be able to keep switching sides all the time
+			}
+		}
+		
+		visible = {
+			original_tag = ROM
+			NOT = { has_country_flag = romania_has_flipped_sides }
+			date > 1942.1.1
+		}
+
+		cost = 0
+		
+		fire_only_once = yes
+		
+		remove_effect = {
+			hidden_effect = { clr_country_flag = can_change_sides_com }
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				random_country = {
+					limit = {
+						is_in_faction_with = ROOT
+						is_faction_leader = yes
+					}
+					save_global_event_target_as = romania_former_ally_target
+				}
+				#news_event = { id = her_news.22 days = 7 hours = 8 }
+			}
+			#top priority is joining the Commintern if they still exist
+			if = {
+				limit = {
+					any_country = {
+						is_faction_leader = yes
+						has_war_with = ROM
+						has_government = communism
+						OR = {
+							original_tag = SOV
+							is_in_faction_with = SOV
+						}
+					}
+				}
+				random_enemy_country = {
+					limit = {
+						is_faction_leader = yes
+						has_war_with = ROM
+						has_government = communism
+						OR = {
+							original_tag = SOV
+							is_in_faction_with = SOV
+						}
+					}
+					save_event_target_as = romania_new_ally_target
+				}
+			}
+			event_target:romania_new_ally_target = {
+				country_event = { id = DOD_romania.16 }
+			}
+			hidden_effect = {
+				set_country_flag = romania_has_flipped_sides
+				ROM = { add_ideas = ROM_anti_german_military }
+			}
+		}
+
+		ai_will_do = {
+			factor = 10000
+			
+		}
+	}
+}

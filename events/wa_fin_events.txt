@@ -1,0 +1,155 @@
+add_namespace = fin_armor
+
+country_event = {
+	id = fin_armor.501
+	hidden = yes
+
+	mean_time_to_happen = { days = 2 }
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = FIN
+		has_war = yes
+	}
+
+	immediate = {
+		FIN = { set_country_flag = FIN_war_since_start }
+	}
+
+	option = {}
+}
+
+####################################### Kallio dies
+
+country_event = {
+	id = fin_armor.801
+	title = fin_armor.801.t
+	desc = fin_armor.801.d
+	picture = GFX_report_event_generic_military_parade
+
+	trigger = {
+		original_tag = FIN
+		date > 1940.12.19
+		has_country_leader = {
+		    name = "Kyösti Kallio"
+		    ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = fin_armor.801.a
+		kill_country_leader = yes
+		create_country_leader = {
+			name = "Risto Heikki Ryti"
+			desc = "POLITICS_RISTO_HEIKKI_RYT_DESC"
+			picture = "Portrait_Finland_Risto_Heikki_Ryti.dds"
+			expire = "1965.1.1"
+			ideology = liberalism
+			traits = {
+				#
+			}
+		}
+	}
+}
+
+####################################### win the winter war
+
+country_event = {
+	id = fin_armor.802
+	title = fin_armor.802.t
+	desc = fin_armor.802.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = fin_armor.802.a
+		add_stability = -0.2
+		add_war_support = -0.4
+		if = {
+			limit = {
+				has_country_flag = FIN_there_all_ours
+			}
+			FIN = { transfer_state = 213 }
+			FIN = { transfer_state = 215 }
+			FIN = { transfer_state = 216 }
+		}
+		else_if = {
+			limit = {
+				has_country_flag = FIN_murmansk_and_onega_are_ours
+			}
+			FIN = { transfer_state = 213 }
+			FIN = { transfer_state = 215 }
+		}
+		else_if = {
+			limit = {
+				has_country_flag = FIN_murmansk_is_ours
+			}
+			FIN = { transfer_state = 213 }
+		}
+		news_event = { id = afo_news.16 }
+		white_peace = FIN
+	}
+}
+
+####################################### devilish deal
+
+country_event = {
+	id = fin_armor.803
+	title = fin_armor.803.t
+	desc = fin_armor.803.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = fin_armor.803.a
+		FIN = { country_event = { id = fin_armor.804 days = 1 } }
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	option = {
+		name = fin_armor.803.b
+		FIN = { country_event = { id = fin_armor.805 days = 1 } }
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+country_event = {
+	id = fin_armor.804
+	title = fin_armor.804.t
+	desc = fin_armor.804.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = fin_armor.804.a
+		hidden_effect = {
+			set_country_flag = FIN_SOV_agreed
+		}
+	}
+}
+
+country_event = {
+	id = fin_armor.805
+	title = fin_armor.805.t
+	desc = fin_armor.805.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = fin_armor.805.a
+		hidden_effect = {
+			set_country_flag = FIN_SOV_did_not_agree
+		}
+	}
+}

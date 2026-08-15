@@ -1,0 +1,6989 @@
+#	Example:
+#
+#	example_effect = {
+#		add_political_power = 66
+#		add_popularity = {
+#			ideology = fascism
+#			popularity = 0.33
+#		}
+#	}
+#
+#
+#	In a script file:
+#
+#	effect = {
+#		example_effect = yes
+#	}
+#
+
+##### Italo-Ethiopian war
+
+ITA_end_the_italo_ethiopian_war = {
+	clr_global_flag = second_italo_ethiopian_war_flag
+	# check if Italian victory
+	IF = {
+		limit = {
+			any_country = {
+				OR = {
+					original_tag = ITA
+					is_subject_of = ITA
+				}
+				controls_state = 271
+			}
+		}
+		ITA = {
+			set_country_flag = ITA_victory_in_ethiopia_flag
+		}
+	}
+	ELSE = {
+		ITA = {
+			set_country_flag = ITA_defeat_in_ethiopia_flag
+		}
+	}
+}
+
+
+ITA_manage_italian_defeat_in_ethiopia_effect = {
+	#First missiolini focus (Struggle in ETH, AByssinian Fiasco and Solid Progress) are handled before this effect
+	if = {
+		limit = {
+			NOT = { has_completed_focus = ITA_servizio_informazione_militare }
+		}
+		unlock_national_focus = ITA_servizio_informazione_militare
+	}
+	unlock_national_focus = ITA_triumph_in_africa_bba
+	set_power_balance = {
+		id = ITA_power_balance
+		left_side = ITA_grand_council_side # will keep the last set side if not specified
+		right_side = ITA_mussolini_side # will keep the last set side if not specified
+		set_value = -0.15
+	}
+}
+
+
+##     ## ####  ######   ######  ####  #######  ##       #### ##    ## ####  ######
+###   ###  ##  ##    ## ##    ##  ##  ##     ## ##        ##  ###   ##  ##  ##    ##
+#### ####  ##  ##       ##        ##  ##     ## ##        ##  ####  ##  ##  ##
+## ### ##  ##   ######   ######   ##  ##     ## ##        ##  ## ## ##  ##   ######
+##     ##  ##        ##       ##  ##  ##     ## ##        ##  ##  ####  ##        ##
+##     ##  ##  ##    ## ##    ##  ##  ##     ## ##        ##  ##   ###  ##  ##    ##
+##     ## ####  ######   ######  ####  #######  ######## #### ##    ## ####  ######
+
+
+ITA_missiolinis_initialize_missiolinis_system = {
+	set_country_flag = ITA_missiolinis_system_active_flag
+}
+
+ITA_missiolinis_manage_next_mission = {
+	#log = "Managing next Mussolini, please hang on. Tack!"
+
+	#Check for pre-scripted vs randomized missions
+	if = {
+		limit = {
+			check_variable = { ITA_missiolinis_number_of_missions_triggered = 5 } # WARNING: 5 is the number of pre-scripted missions. If more pre-scripted missions are added or removed, adjust this value
+		}
+		set_country_flag = ITA_randomize_missiolinis_flag
+	}
+
+	if = { #PRE-SCRIPTED MISSIOLINIS
+		limit = {
+			NOT = {	has_country_flag = ITA_randomize_missiolinis_flag }
+		}
+		if = {
+			limit = {
+				check_variable = { ITA_missiolinis_number_of_missions_triggered = 1 } # WARNING: 5 is the number of pre-scripted missions. If more pre-scripted missions are added or removed, adjust this value
+			}
+
+
+			add_to_variable = { ITA_missiolinis_number_of_missions_triggered = 1 }
+		}
+
+
+	}
+	else = { #RANDOM MISSIOLINIS TIME
+
+	}
+}
+
+ITA_missiolinis_initialize_new_mission_effect = { #Sets flags and everything necessary to keep track of ongoing missions, last time a mission was issued, etc.
+	set_country_flag = { flag = ITA_missiolini_activated_recently_flag days = 30 } #WARNING THIS IS NOT SYNC WITH THE REST OF STUFF USING THE VAR ITA_missiolinis_min_cd_between_missions
+
+	add_to_variable = { ITA_missiolinis_active_missions = 1 }
+	add_to_variable = { ITA_missiolinis_number_of_missions_triggered = 1 }
+}
+
+ITA_missiolinis_revert_new_mission_initialization_effect = { #For when player chooses to re-roll for a new mission
+	clr_country_flag = ITA_missiolini_activated_recently_flag
+
+	add_to_variable = { ITA_missiolinis_active_missions = -1 }
+	add_to_variable = { ITA_missiolinis_number_of_missions_triggered = -1 }
+}
+
+ITA_missiolinis_finalize_mission_effect = { #Sets flags and everything necessary to end a mission and keep track of ongoing missions, etc.
+	add_to_variable = { ITA_missiolinis_active_missions = -1 }
+	add_to_variable = { ITA_missiolinis_number_of_missions_resolved = 1 }
+}
+
+ITA_missiolinis_add_to_successful_missions = {
+	add_to_variable = { ITA_missiolinis_successful_missions = 1 }
+	career_profile_step_missiolini = yes
+}
+
+ITA_missiolinis_add_to_failed_missions = {
+	add_to_variable = { ITA_missiolinis_failed_missions = 1 }
+}
+
+ITA_missiolinis_reroll_cost = {
+	add_political_power = -25
+	ITA_bop_very_low_decrease_effect = yes
+
+	custom_effect_tooltip = ITA_missiolinis_reroll_tt
+}
+
+ITA_mussolinis_reroll_cleanup_if_necessary = {
+	if = {
+		limit = {
+			has_country_flag = ITA_missiolinis_rerolling_flag
+		}
+		clr_country_flag = ITA_missiolinis_rerolling_flag
+	}
+}
+
+
+### PROGRESS IN ETHIOPIA ###
+ITA_missiolini_progress_in_ethiopia_failure_effect = {
+	add_war_support = -0.03
+	add_political_power = -15
+	if = {
+		limit = {
+			has_dlc = "By Blood Alone"
+		}
+		custom_effect_tooltip = ITA_war_escalation_inc_tt
+	}
+}
+
+ITA_missiolini_progress_in_ethiopia_success_effect = {
+	add_stability = 0.03
+	add_war_support = 0.03
+	army_experience = 15
+	add_command_power = 15
+
+	#Effects in Ethiopia
+	if = {
+		limit = {
+			has_dlc = "By Blood Alone"
+		}
+		effect_tooltip = { #With BBA this is handled in Ethiopian decisions
+			ETH = { add_war_support = -0.1 }
+		}
+	}
+
+	if = { #First mission to succeed
+		limit = {
+			NOT = { has_country_flag = ITA_missiolini_progress_in_ethiopia_one_mission_successful_flag }
+		}
+		set_country_flag = ITA_missiolini_progress_in_ethiopia_one_mission_successful_flag
+	}
+	else = { #Second mission to succeed
+		complete_national_focus = ITA_solid_progress
+	}
+}
+
+### CONQUER ETHIOPIA ###
+ITA_missiolini_conquer_ethiopia_failure_effect = {
+	add_political_power = -25
+	add_war_support = -0.05
+	add_stability = -0.05
+	every_controlled_state = {
+		limit = {
+			NOT = { is_owned_by = ROOT }
+			is_core_of = ETH
+		}
+		add_compliance = -5
+	}
+}
+
+ITA_missiolini_conquer_ethiopia_success_effect = {
+	add_political_power = 50
+	add_stability = 0.05
+	add_war_support = 0.05
+	army_experience = 25
+	add_command_power = 25
+}
+
+### PACIFY ETHIOPIA ###
+ITA_missiolini_pacify_ethiopia_failure_effect = {
+	add_political_power = -25
+	every_controlled_state = {
+		limit = {
+			NOT = { is_owned_by = ROOT }
+			is_core_of = ETH
+		}
+		add_compliance = -5
+	}
+}
+
+ITA_missiolini_pacify_ethiopia_success_effect = {
+	add_political_power = 75
+	add_stability = 0.05
+	add_command_power = 35
+	every_owned_state = {
+		limit = {
+			OR = {
+				is_core_of = ETH
+				is_core_of = ERI
+				is_core_of = SOM
+			}
+			is_fully_controlled_by = ROOT
+		}
+		add_dynamic_modifier = { modifier = ITA_pacified_italian_east_africa_modifier days = 730 }
+
+		if = {
+			limit = {
+				has_resistance = yes
+			}
+			add_resistance_target = -10
+		}
+	}
+}
+
+### STRENGTHEN HEAVY INDUSTRY ###
+ITA_missiolini_strengthen_heavy_industry_failure_effect = {
+	add_political_power = -25
+	add_stability = -0.03
+}
+
+ITA_missiolini_strengthen_heavy_industry_success_effect = {
+	add_political_power = 50
+	add_stability = 0.03
+
+	add_timed_idea = {
+		idea = ITA_strengthened_heavy_industry
+		days = 365
+	}
+}
+
+### STRENGTHEN THE ARMY ###
+ITA_missiolini_strengthen_the_army_failure_effect = {
+	add_political_power = -25
+	add_war_support = -0.03
+	add_timed_idea = {
+		idea = ITA_disgruntlement_in_the_army
+		days = 180
+	}
+}
+
+ITA_missiolini_strengthen_the_army_success_effect = {
+	army_experience = 50
+	add_command_power = 25
+	add_war_support = 0.03
+	add_timed_idea = {
+		idea = ITA_strengthened_the_army
+		days = 365
+	}
+}
+
+### STOCKPILE TRUCKS ###
+ITA_missiolini_stockpile_trucks_failure_effect = {
+	add_political_power = -25
+	add_war_support = -0.03
+}
+
+ITA_missiolini_stockpile_trucks_success_effect = {
+	if = { #DEFAULT
+		limit = {
+			NOT = { has_completed_focus = ITA_to_live_as_a_lion }
+		}
+		add_political_power = 50
+		add_war_support = 0.03
+		add_timed_idea = {
+			idea = ITA_efficient_supply_lines
+			days = 365
+		}
+	}
+	else = { # GREATER REWARD (from To Live as a Lion focus)
+		add_political_power = 75
+		add_war_support = 0.05
+		add_timed_idea = {
+			idea = ITA_efficient_supply_lines_lion_version
+			days = 365
+		}
+	}
+}
+
+### STOCKPILE FUEL ###
+ITA_missiolini_stockpile_fuel_failure_effect = {
+	add_political_power = -25
+	add_war_support = -0.03
+}
+
+ITA_missiolini_stockpile_fuel_success_effect = {
+	if = { #DEFAULT
+		limit = {
+			NOT = { has_completed_focus = ITA_to_live_as_a_lion }
+		}
+		army_experience = 25
+		navy_experience = 25
+		air_experience = 25
+		add_war_support = 0.03
+		add_timed_idea = {
+			idea = ITA_fuel_reserves
+			days = 365
+		}
+	}
+	else = { # GREATER REWARD (from To Live as a Lion focus)
+		army_experience = 30
+		navy_experience = 30
+		air_experience = 30
+		add_war_support = 0.05
+		add_timed_idea = {
+			idea = ITA_fuel_reserves_lion_version
+			days = 365
+		}
+	}
+}
+
+### STRENGTHEN THE AIRFORCE ###
+ITA_missiolini_strengthen_the_airforce_failure_effect = {
+	add_political_power = -25
+	add_war_support = -0.03
+	add_timed_idea = {
+		idea = ITA_disgruntlement_in_the_airforce
+		days = 365
+	}
+}
+
+ITA_missiolini_strengthen_the_airforce_success_effect = {
+	if = { #DEFAULT
+		limit = {
+			NOT = { has_completed_focus = ITA_to_live_as_a_lion }
+		}
+		air_experience = 50
+		add_command_power = 25
+		add_war_support = 0.03
+		add_timed_idea = {
+			idea = ITA_strengthened_the_airforce
+			days = 365
+		}
+	}
+	else = { # GREATER REWARD (from To Live as a Lion focus)
+		air_experience = 60
+		add_command_power = 35
+		add_war_support = 0.05
+		add_timed_idea = {
+			idea = ITA_strengthened_the_airforce_lion_Version
+			days = 365
+		}
+	}
+}
+
+### INDUSTRIAL RESEARCH ###
+ITA_missiolini_industrial_research_failure_effect = {
+	add_political_power = -25
+	add_popularity = {
+		ideology = ROOT
+		popularity = -0.05
+	}
+
+	#CLEAR FLAGS FOR NEXT TIME
+	if = {
+		limit = {
+			has_country_flag = ITA_missiolini_research_production_flag
+		}
+		clr_country_flag = ITA_missiolini_research_production_flag
+	}
+	if = {
+		limit = {
+			has_country_flag = ITA_missiolini_research_industry_flag
+		}
+		clr_country_flag = ITA_missiolini_research_industry_flag
+	}
+	if = {
+		limit = {
+			has_country_flag = ITA_missiolini_research_construction_flag
+		}
+		clr_country_flag = ITA_missiolini_research_construction_flag
+	}
+}
+
+ITA_missiolini_industrial_research_success_effect = {
+	if = { #DEFAULT
+		limit = {
+			NOT = { has_completed_focus = ITA_to_live_as_a_lion }
+		}
+		add_political_power = 25
+		add_tech_bonus = {
+			name = ITA_missiolini_industrial_research
+			bonus = 0.5
+			uses = 2
+			category = industry
+			category = air_equipment
+			category = naval_equipment
+			category = artillery
+			category = armor
+			category = motorized_equipment
+		}
+	}
+	else = { # GREATER REWARD (from To Live as a Lion focus)
+		add_political_power = 35
+		add_tech_bonus = {
+			name = ITA_missiolini_industrial_research
+			bonus = 0.75
+			uses = 2
+			category = industry
+			category = air_equipment
+			category = naval_equipment
+			category = artillery
+			category = armor
+			category = motorized_equipment
+		}
+	}
+
+	#CLEAR FLAGS FOR NEXT TIME
+	if = {
+		limit = {
+			has_country_flag = ITA_missiolini_research_production_flag
+		}
+		clr_country_flag = ITA_missiolini_research_production_flag
+	}
+	if = {
+		limit = {
+			has_country_flag = ITA_missiolini_research_industry_flag
+		}
+		clr_country_flag = ITA_missiolini_research_industry_flag
+	}
+	if = {
+		limit = {
+			has_country_flag = ITA_missiolini_research_construction_flag
+		}
+		clr_country_flag = ITA_missiolini_research_construction_flag
+	}
+}
+
+### EXPAND INTELLIGENCE SERVICE ###
+ITA_missiolini_expand_intelligence_service_failure_effect = {
+	add_political_power = -25
+	add_popularity = {
+		ideology = ROOT
+		popularity = -0.05
+	}
+
+	#CLEAR FLAG FOR NEXT TIME
+	clr_country_flag = ITA_missiolini_upgrade_agency_goal_flag
+}
+
+ITA_missiolini_expand_intelligence_service_success_effect = {
+	if = { #DEFAULT
+		limit = {
+			NOT = { has_completed_focus = ITA_to_live_as_a_lion }
+		}
+		add_political_power = 25
+		#ASSIGN APPROPRIATE REWARD
+		if = { #Upgrade - Passive Defense
+			limit = {
+				has_country_flag = { flag = ITA_missiolini_upgrade_agency_goal_flag value = 5 } #Need to do checks in inverted order (ie. if value = 5, checking for value = 1 also returns true apparently)
+			}
+			add_timed_idea = {
+				idea = ITA_expanded_intelligence_service_passive_defense
+				days = 365
+			}
+		}
+		else_if = { #Upgrade - Anti-Partisan
+			limit = {
+				has_country_flag = { flag = ITA_missiolini_research_production_flag value = 4 }
+			}
+			add_timed_idea = {
+				idea = ITA_expanded_intelligence_service_anti_partisan
+				days = 365
+			}
+		}
+		else_if = { #Upgrade - Form Army Department
+			limit = {
+				has_country_flag = { flag = ITA_missiolini_research_production_flag value = 3 }
+			}
+			add_timed_idea = {
+				idea = ITA_expanded_intelligence_service_army_department
+				days = 365
+			}
+		}
+		else_if = { #Upgrade - Form Cryptology Department
+			limit = {
+				has_country_flag = { flag = ITA_missiolini_research_production_flag value = 2 }
+			}
+			add_timed_idea = {
+				idea = ITA_expanded_intelligence_service_cryptology_department
+				days = 365
+			}
+		}
+		else = { #Create Intel Agency + Fallback
+			add_timed_idea = {
+				idea = ITA_expanded_intelligence_service_basic
+				days = 365
+			}
+		}
+	}
+	else = { # GREATER REWARD (from To Live as a Lion focus)
+		add_political_power = 25
+		#ASSIGN APPROPRIATE REWARD
+		if = { #Upgrade - Passive Defense
+			limit = {
+				has_country_flag = { flag = ITA_missiolini_upgrade_agency_goal_flag value = 5 } #Need to do checks in inverted order (ie. if value = 5, checking for value = 1 also returns true apparently)
+			}
+			add_timed_idea = {
+				idea = ITA_expanded_intelligence_service_passive_defense_lion_version
+				days = 365
+			}
+		}
+		else_if = { #Upgrade - Anti-Partisan
+			limit = {
+				has_country_flag = { flag = ITA_missiolini_research_production_flag value = 4 }
+			}
+			add_timed_idea = {
+				idea = ITA_expanded_intelligence_service_anti_partisan_lion_version
+				days = 365
+			}
+		}
+		else_if = { #Upgrade - Form Army Department
+			limit = {
+				has_country_flag = { flag = ITA_missiolini_research_production_flag value = 3 }
+			}
+			add_timed_idea = {
+				idea = ITA_expanded_intelligence_service_army_department_lion_version
+				days = 365
+			}
+		}
+		else_if = { #Upgrade - Form Cryptology Department
+			limit = {
+				has_country_flag = { flag = ITA_missiolini_research_production_flag value = 2 }
+			}
+			add_timed_idea = {
+				idea = ITA_expanded_intelligence_service_cryptology_department_lion_version
+				days = 365
+			}
+		}
+		else = { #Create Intel Agency + Fallback
+			add_timed_idea = {
+				idea = ITA_expanded_intelligence_service_basic_lion_version
+				days = 365
+			}
+		}
+	}
+
+	#CLEAR FLAG FOR NEXT TIME
+	clr_country_flag = ITA_missiolini_upgrade_agency_goal_flag
+}
+
+
+### OCCUPY ALBANIA ###
+ITA_missiolini_occupy_albania_failure_effect = {
+	add_political_power = -25
+	add_popularity = {
+		ideology = ROOT
+		popularity = -0.05
+	}
+}
+
+ITA_missiolini_occupy_albania_success_effect = {
+	if = { #DEFAULT
+		limit = {
+			NOT = { has_completed_focus = ITA_to_live_as_a_lion }
+		}
+		add_political_power = 50
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+		}
+		custom_effect_tooltip = ITA_missiolini_occupy_albania_occupation_effects
+		effect_tooltip = {
+			44 = { #ALBANIA
+				add_compliance = 5
+				add_resistance = -5
+			}
+			906 = { #NORTHERN EPIRUS
+				add_compliance = 5
+				add_resistance = -5
+			}
+		}
+
+		custom_effect_tooltip = ITA_missiolini_occupy_albania_subject_effects
+		effect_tooltip = {
+			ALB = {
+				add_autonomy_score = {
+					value = -35
+					localization = ITA_missiolini_firmly_established_italian_administration_autonomy_text
+				}
+			}
+		}
+
+		hidden_effect = {
+			if = {
+				limit = {
+					44 = {
+						is_fully_controlled_by = ROOT
+						has_resistance = yes
+					}
+				}
+				44 = { #ALBANIA
+					add_compliance = 5
+					add_resistance = -5
+				}
+			}
+			if = {
+				limit = {
+					906 = {
+						is_fully_controlled_by = ROOT
+						has_resistance = yes
+					}
+				}
+				906 = { #NORTHERN EPIRUS
+					add_compliance = 5
+					add_resistance = -5
+				}
+			}
+			if = {
+				limit = {
+					has_subject_autonomy_feature = yes
+					any_other_country = {
+						original_tag = ALB
+						is_subject_of = ROOT
+					}
+				}
+				random_subject_country = {
+					limit = {
+						original_tag = ALB
+						is_subject_of = ROOT
+					}
+					add_autonomy_score = {
+						value = -35
+						localization = ITA_missiolini_firmly_established_italian_administration_autonomy_text
+					}
+				}
+			}
+		}
+	}
+	else = { # GREATER REWARD (from To Live as a Lion focus)
+		add_political_power = 65
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.1
+		}
+		custom_effect_tooltip = ITA_missiolini_occupy_albania_occupation_effects
+		effect_tooltip = {
+			44 = { #ALBANIA
+				add_compliance = 5
+				add_resistance = -5
+			}
+			805 = { #NORTHERN EPIRUS
+				add_compliance = 5
+				add_resistance = -5
+			}
+		}
+
+		custom_effect_tooltip = ITA_missiolini_occupy_albania_subject_effects
+		effect_tooltip = {
+			ALB = {
+				add_autonomy_score = {
+					value = -50
+					localization = ITA_missiolini_firmly_established_italian_administration_autonomy_text
+				}
+			}
+		}
+
+		hidden_effect = {
+			if = {
+				limit = {
+					44 = {
+						is_fully_controlled_by = ROOT
+						has_resistance = yes
+					}
+				}
+				44 = { #ALBANIA
+					add_compliance = 5
+					add_resistance = -5
+				}
+			}
+			if = {
+				limit = {
+					805 = {
+						is_fully_controlled_by = ROOT
+						has_resistance = yes
+					}
+				}
+				805 = { #NORTHERN EPIRUS
+					add_compliance = 5
+					add_resistance = -5
+				}
+			}
+			if = {
+				limit = {
+					has_subject_autonomy_feature = yes
+					any_other_country = {
+						original_tag = ALB
+						is_subject_of = ROOT
+					}
+				}
+				random_subject_country = {
+					limit = {
+						original_tag = ALB
+						is_subject_of = ROOT
+					}
+					add_autonomy_score = {
+						value = -50
+						localization = ITA_missiolini_firmly_established_italian_administration_autonomy_text
+					}
+				}
+			}
+		}
+	}
+}
+
+
+### OCCUPY DALMATIA ###
+ITA_missiolini_occupy_dalmatia_failure_effect = {
+	add_political_power = -25
+	add_war_support = -0.03
+	add_popularity = {
+		ideology = ROOT
+		popularity = -0.05
+	}
+}
+
+ITA_missiolini_occupy_dalmatia_success_effect = {
+	if = { #DEFAULT
+		limit = {
+			NOT = { has_completed_focus = ITA_to_live_as_a_lion }
+		}
+		add_political_power = 50
+		add_war_support = 0.03
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+		}
+		if = {
+			limit = {
+				103 = {
+					is_fully_controlled_by = ROOT
+					has_resistance = yes
+				}
+			}
+			103 = { #DALMATIA
+				add_compliance = 5 #WARNING CHANGING THESE NUMBERS REQUIRES CHANGING THE TOOLTIPS
+				add_resistance = -5
+			}
+			every_controlled_state = {
+				limit = {
+					is_core_of = YUG
+					is_fully_controlled_by = ROOT
+					NOT = { state = 103 } #Dalmatia goes first above
+					has_resistance = yes
+				}
+				add_compliance = 5
+				add_resistance = -5
+			}
+		}
+		else = {
+			custom_effect_tooltip = ITA_missiolini_occupy_dalmatia_occupation_effects
+		}
+
+		if = {
+			limit = {
+				has_subject_autonomy_feature = yes
+			}
+			if = {
+				limit = {
+					103 = {
+						controller = {
+							has_full_control_of_state = PREV
+							is_subject_of = ROOT
+						}
+					}
+				}
+				103 = { #DALMATIA
+					controller = {
+						add_autonomy_score = {
+							value = -35
+							localization = ITA_missiolini_firmly_established_italian_administration_autonomy_text
+						}
+						every_other_country = { #Also apply effects to any other Italian puppets formerly Yugoslavian
+							limit = {
+								is_subject_of = ROOT
+								capital_scope = {
+									is_core_of = YUG
+									is_fully_controlled_by = PREV
+								}
+							}
+							add_autonomy_score = {
+								value = -35
+								localization = ITA_missiolini_firmly_established_italian_administration_autonomy_text
+							}
+						}
+					}
+				}
+			}
+			else = {
+				custom_effect_tooltip = ITA_missiolini_occupy_dalmatia_subject_effects
+				effect_tooltip = {
+					add_autonomy_score = {
+						value = -35
+						localization = ITA_missiolini_firmly_established_italian_administration_autonomy_text
+					}
+				}
+			}
+		}
+	}
+	else = { # GREATER REWARD (from To Live as a Lion focus)
+		add_political_power = 65
+		add_war_support = 0.05
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.1
+		}
+		if = {
+			limit = {
+				103 = {
+					is_fully_controlled_by = ROOT
+					has_resistance = yes
+				}
+			}
+			103 = { #DALMATIA
+				add_compliance = 5 #WARNING CHANGING THESE NUMBERS REQUIRES CHANGING THE TOOLTIPS
+				add_resistance = -5
+			}
+			every_controlled_state = {
+				limit = {
+					is_core_of = YUG
+					is_fully_controlled_by = ROOT
+					NOT = { state = 103 } #Dalmatia goes first above
+					has_resistance = yes
+				}
+				add_compliance = 5
+				add_resistance = -5
+			}
+		}
+		else = {
+			custom_effect_tooltip = ITA_missiolini_occupy_dalmatia_occupation_effects
+		}
+
+		if = {
+			limit = {
+				has_subject_autonomy_feature = yes
+			}
+			if = {
+				limit = {
+					103 = {
+						controller = {
+							has_full_control_of_state = PREV
+							is_subject_of = ROOT
+						}
+					}
+				}
+				103 = { #DALMATIA
+					controller = {
+						add_autonomy_score = {
+							value = -50
+							localization = ITA_missiolini_firmly_established_italian_administration_autonomy_text
+						}
+						every_other_country = { #Also apply effects to any other Italian puppets formerly Yugoslavian
+							limit = {
+								is_subject_of = ROOT
+								capital_scope = {
+									is_core_of = YUG
+									is_fully_controlled_by = PREV
+								}
+							}
+							add_autonomy_score = {
+								value = -50
+								localization = ITA_missiolini_firmly_established_italian_administration_autonomy_text
+							}
+						}
+					}
+				}
+			}
+			else = {
+				custom_effect_tooltip = ITA_missiolini_occupy_dalmatia_subject_effects
+				effect_tooltip = {
+					add_autonomy_score = {
+						value = -50
+						localization = ITA_missiolini_firmly_established_italian_administration_autonomy_text
+					}
+				}
+			}
+		}
+	}
+}
+
+### OCCUPY GREECE ###
+ITA_missiolini_occupy_greece_failure_effect = {
+	add_political_power = -25
+	add_war_support = -0.03
+	add_popularity = {
+		ideology = ROOT
+		popularity = -0.05
+	}
+}
+
+ITA_missiolini_occupy_greece_success_effect = {
+	if = { #DEFAULT
+		limit = {
+			NOT = { has_completed_focus = ITA_to_live_as_a_lion }
+		}
+		add_political_power = 50
+		add_war_support = 0.03
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+		}
+
+		custom_effect_tooltip = ITA_missiolini_occupy_greece_occupation_effects
+		every_controlled_state = {
+			limit = {
+				is_core_of = GRE
+				is_fully_controlled_by = ROOT
+				has_resistance = yes
+			}
+			add_compliance = 5 #WARNING CHANGING THESE NUMBERS REQUIRES CHANGING THE TOOLTIPS
+			add_resistance = -5
+		}
+
+		if = {
+			limit = {
+				has_subject_autonomy_feature = yes
+			}
+			if = {
+				limit = {
+					GRE = {
+						is_subject_of = ROOT
+					}
+				}
+				GRE = {
+					add_autonomy_score = {
+						value = -35
+						localization = ITA_missiolini_firmly_established_italian_administration_autonomy_text
+					}
+				}
+			}
+			else = {
+				custom_effect_tooltip = ITA_missiolini_occupy_greece_subject_effects
+				effect_tooltip = {
+					GRE = {
+						add_autonomy_score = {
+							value = -35
+							localization = ITA_missiolini_firmly_established_italian_administration_autonomy_text
+						}
+					}
+				}
+			}
+		}
+	}
+	else = { # GREATER REWARD (from To Live as a Lion focus)
+		add_political_power = 65
+		add_war_support = 0.05
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.1
+		}
+
+		custom_effect_tooltip = ITA_missiolini_occupy_greece_occupation_effects
+		every_controlled_state = {
+			limit = {
+				is_core_of = GRE
+				is_fully_controlled_by = ROOT
+				has_resistance = yes
+			}
+			add_compliance = 5 #WARNING CHANGING THESE NUMBERS REQUIRES CHANGING THE TOOLTIPS
+			add_resistance = -5
+		}
+
+		if = {
+			limit = {
+				has_subject_autonomy_feature = yes
+			}
+			if = {
+				limit = {
+					GRE = {
+						is_subject_of = ROOT
+					}
+				}
+				GRE = {
+					add_autonomy_score = {
+						value = -50
+						localization = ITA_missiolini_firmly_established_italian_administration_autonomy_text
+					}
+				}
+			}
+			else = {
+				custom_effect_tooltip = ITA_missiolini_occupy_greece_subject_effects
+				effect_tooltip = {
+					GRE = {
+						add_autonomy_score = {
+							value = -50
+							localization = ITA_missiolini_firmly_established_italian_administration_autonomy_text
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+### OCCUPY TICINO ###
+ITA_missiolini_occupy_ticino_failure_effect = {
+	add_political_power = -25
+	add_war_support = -0.03
+	add_popularity = {
+		ideology = ROOT
+		popularity = -0.05
+	}
+}
+
+### BOLSTER POLITICAL CABINET ###
+ITA_missiolini_bolster_political_cabinet_failure_effect = {
+	add_political_power = -25
+	add_stability = -0.03
+	add_popularity = {
+		ideology = ROOT
+		popularity = -0.05
+	}
+}
+
+ITA_missiolini_bolster_political_cabinet_success_effect = {
+	if = { #DEFAULT
+		limit = {
+			NOT = { has_completed_focus = ITA_to_live_as_a_lion }
+		}
+		add_political_power = 50
+		add_stability = 0.03
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+		}
+		add_timed_idea = {
+			idea = ITA_bolstered_political_cabinet
+			days = 365
+		}
+	}
+	else = { # GREATER REWARD (from To Live as a Lion focus)
+		add_political_power = 65
+		add_stability = 0.05
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.1
+		}
+		add_timed_idea = {
+			idea = ITA_bolstered_political_cabinet_lion_version
+			days = 365
+		}
+	}
+}
+
+### BOLSTER MILITARY HIGH COMMAND ###
+ITA_missiolini_bolster_military_high_command_failure_effect = {
+	add_political_power = -25
+	add_war_support = -0.03
+	add_popularity = {
+		ideology = ROOT
+		popularity = -0.05
+	}
+}
+
+ITA_missiolini_bolster_military_high_command_success_effect = {
+	if = { #DEFAULT
+		limit = {
+			NOT = { has_completed_focus = ITA_to_live_as_a_lion }
+		}
+		add_political_power = 25
+		add_command_power = 25
+		add_war_support = 0.03
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+		}
+		add_timed_idea = { #First so that CP doesn't stack in case it's maxed out
+			idea = ITA_bolstered_political_cabinet
+			days = 365
+		}
+	}
+	else = { # GREATER REWARD (from To Live as a Lion focus)
+		add_political_power = 35
+		add_command_power = 35
+		add_war_support = 0.05
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.1
+		}
+		add_timed_idea = { #First so that CP doesn't stack in case it's maxed out
+			idea = ITA_bolstered_political_cabinet_lion_version
+			days = 365
+		}
+	}
+}
+
+
+
+########   #######  ########
+##     ## ##     ## ##     ##
+##     ## ##     ## ##     ##
+########  ##     ## ########
+##     ## ##     ## ##
+##     ## ##     ## ##
+########   #######  ##
+
+
+ITA_initiate_balance_of_power_effect = {
+	set_power_balance = {
+		id = ITA_power_balance
+		left_side = ITA_grand_council_side # will keep the last set side if not specified
+		right_side = ITA_mussolini_side # will keep the last set side if not specified
+		set_default = yes # whether or not to reset the power balance to the initial value, default = no
+		#set_value = 0.25 # if specified will set the value of the power balance, this option will override the effect of set_default so the two options should not be used together. if neither set_default or set_value is specified the current value of the power balance will not change
+	}
+}
+
+ITA_bop_absurdly_high_increase_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 1
+	}
+}
+
+ITA_bop_very_high_increase_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.25
+	}
+}
+
+ITA_bop_high_increase_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.2
+	}
+}
+
+ITA_bop_medium_increase_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.15
+	}
+}
+
+ITA_bop_low_increase_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.1
+	}
+}
+
+ITA_bop_very_low_increase_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.05
+	}
+}
+
+ITA_bop_absurdly_high_decrease_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = -1
+	}
+}
+
+ITA_bop_very_high_decrease_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = -0.25
+	}
+}
+
+ITA_bop_high_decrease_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = -0.2
+	}
+}
+
+ITA_bop_medium_decrease_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = -0.15
+	}
+}
+
+ITA_bop_low_decrease_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = -0.1
+	}
+}
+
+ITA_bop_very_low_decrease_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = -0.05
+	}
+}
+
+ITA_bop_increase_lost_core_modifier = {
+	if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = ITA_power_balance
+				modifier = ITA_power_balance_lost_core_4
+			}
+		}
+		add_power_balance_modifier = {
+			id = ITA_power_balance
+			modifier = ITA_power_balance_lost_core_5
+		}
+	}
+	else_if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = ITA_power_balance
+				modifier = ITA_power_balance_lost_core_3
+			}
+		}
+		add_power_balance_modifier = {
+			id = ITA_power_balance
+			modifier = ITA_power_balance_lost_core_4
+		}
+	}
+	else_if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = ITA_power_balance
+				modifier = ITA_power_balance_lost_core_2
+			}
+		}
+		add_power_balance_modifier = {
+			id = ITA_power_balance
+			modifier = ITA_power_balance_lost_core_3
+		}
+	}
+	else_if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = ITA_power_balance
+				modifier = ITA_power_balance_lost_core_1
+			}
+		}
+		add_power_balance_modifier = {
+			id = ITA_power_balance
+			modifier = ITA_power_balance_lost_core_2
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = {
+				has_power_balance_modifier = {
+					id = ITA_power_balance
+					modifier = ITA_power_balance_lost_core_5
+				}
+			}
+		}
+		add_power_balance_modifier = {
+			id = ITA_power_balance
+			modifier = ITA_power_balance_lost_core_1
+		}
+	}
+}
+
+ITA_bop_decrease_lost_core_modifier = {
+	if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = ITA_power_balance
+				modifier = ITA_power_balance_lost_core_5
+			}
+		}
+		remove_power_balance_modifier = {
+			id = ITA_power_balance
+			modifier = ITA_power_balance_lost_core_5
+		}
+	}
+	else_if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = ITA_power_balance
+				modifier = ITA_power_balance_lost_core_4
+			}
+		}
+		remove_power_balance_modifier = {
+			id = ITA_power_balance
+			modifier = ITA_power_balance_lost_core_4
+		}
+	}
+	else_if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = ITA_power_balance
+				modifier = ITA_power_balance_lost_core_3
+			}
+		}
+		remove_power_balance_modifier = {
+			id = ITA_power_balance
+			modifier = ITA_power_balance_lost_core_3
+		}
+	}
+	else_if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = ITA_power_balance
+				modifier = ITA_power_balance_lost_core_2
+			}
+		}
+		remove_power_balance_modifier = {
+			id = ITA_power_balance
+			modifier = ITA_power_balance_lost_core_2
+		}
+	}
+	else_if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = ITA_power_balance
+				modifier = ITA_power_balance_lost_core_1
+			}
+		}
+		remove_power_balance_modifier = {
+			id = ITA_power_balance
+			modifier = ITA_power_balance_lost_core_1
+		}
+	}
+	else = {
+		#NOTHING cannot decrease
+	}
+}
+
+ITA_bop_remove_lost_core_modifier = {
+	if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = ITA_power_balance
+				modifier = ITA_power_balance_lost_core_5
+			}
+		}
+		remove_power_balance_modifier = {
+			id = ITA_power_balance
+			modifier = ITA_power_balance_lost_core_5
+		}
+	}
+	if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = ITA_power_balance
+				modifier = ITA_power_balance_lost_core_4
+			}
+		}
+		remove_power_balance_modifier = {
+			id = ITA_power_balance
+			modifier = ITA_power_balance_lost_core_4
+		}
+	}
+	if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = ITA_power_balance
+				modifier = ITA_power_balance_lost_core_3
+			}
+		}
+		remove_power_balance_modifier = {
+			id = ITA_power_balance
+			modifier = ITA_power_balance_lost_core_3
+		}
+	}
+	if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = ITA_power_balance
+				modifier = ITA_power_balance_lost_core_2
+			}
+		}
+		remove_power_balance_modifier = {
+			id = ITA_power_balance
+			modifier = ITA_power_balance_lost_core_2
+		}
+	}
+	if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = ITA_power_balance
+				modifier = ITA_power_balance_lost_core_1
+			}
+		}
+		remove_power_balance_modifier = {
+			id = ITA_power_balance
+			modifier = ITA_power_balance_lost_core_1
+		}
+	}
+}
+
+ITA_bop_remove_bop_effect = {
+	remove_power_balance = { id = ITA_power_balance }
+}
+
+
+
+ ######  #### ##     ## #### ##          ##      ##    ###    ########
+##    ##  ##  ##     ##  ##  ##          ##  ##  ##   ## ##   ##     ##
+##        ##  ##     ##  ##  ##          ##  ##  ##  ##   ##  ##     ##
+##        ##  ##     ##  ##  ##          ##  ##  ## ##     ## ########
+##        ##   ##   ##   ##  ##          ##  ##  ## ######### ##   ##
+##    ##  ##    ## ##    ##  ##          ##  ##  ## ##     ## ##    ##
+ ######  ####    ###    #### ########     ###  ###  ##     ## ##     ##
+
+
+ITA_start_civil_war_effect = { #The one triggered via BoP
+
+	ITA_bop_remove_bop_effect = yes
+
+	set_country_flag = ITA_rsi_cw_flag
+	set_cosmetic_tag = ITA_rsi
+
+	every_character = {
+		limit = {
+			OR = {
+				has_character_flag = ITA_cw_character_monarchist_side_flag
+				has_unit_leader_flag = ITA_cw_unit_leader_monarchist_side_flag
+				has_character_flag = ITA_cw_character_antifascist_side_flag
+				has_unit_leader_flag = ITA_cw_unit_leader_antifascist_side_flag
+			}
+		}
+		set_nationality = RDS
+	}
+	if = {
+		limit = {
+			has_global_flag = ITA_communist_cw_flag
+		}
+		clr_global_flag = ITA_communist_cw_flag
+	}
+	else_if = {
+		limit = {
+			has_global_flag = ITA_democratic_cw_flag
+		}
+		clr_global_flag = ITA_democratic_cw_flag
+	}
+}
+
+ITA_cw_manage_states_split_effect = {
+	#log = "MANAGE STATES EFFECT"
+
+	set_variable = { ITA_cw_rds_capital = 0 }
+
+	#SOUTH GETS PRIORITIZED, THEN NORTHWEST, NORTHEAST, CENTRE
+	if = { #FALLBACK
+		if = { #Set a random core state occupied by enemies
+			limit = {
+				any_owned_state = {
+					is_core_of = ROOT
+					NOT = { is_controlled_by = ROOT }
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_core_of = ROOT
+					NOT = { is_controlled_by = ROOT }
+				}
+				set_state_flag = ITA_cw_state_split
+			}
+		}
+		else = { #Fallback of the fallback, just pick a random state in the South
+			random_owned_state = {
+				limit = {
+					ITA_is_southern_state_for_cw = yes
+				}
+				set_state_flag = ITA_cw_state_split
+			}
+		}
+	}
+
+	#Set fallback capital
+	if = {
+		limit = {
+			check_variable = { ITA_cw_rds_capital = 0 }
+		}
+		random_owned_state = {
+			limit = {
+				has_state_flag = ITA_cw_state_split
+			}
+			ROOT = { set_variable = { ITA_cw_rds_capital = PREV } }
+		}
+	}
+}
+
+ITA_cw_set_sides_and_overlords = {
+	#log = "SET SIDES EFFECT"
+
+	#RSI OVERLORD
+	if = { #FACTION LEADER IF AVAILABLE
+		limit = {
+			any_allied_country = {
+				is_faction_leader = yes
+			}
+		}
+		random_other_country = {
+			limit = {
+				is_in_faction_with = ROOT
+				is_faction_leader = yes
+			}
+			ITA_set_RSI_overlord_effect = yes
+		}
+	}
+	else_if = { #MAJOR ALLY
+		limit = {
+			any_allied_country = {
+				is_major = yes
+			}
+		}
+		random_other_country = {
+			limit = {
+				is_in_faction_with = ROOT
+				is_major = yes
+			}
+			ITA_set_RSI_overlord_effect = yes
+		}
+	}
+
+	#RDS OVERLORD
+	if = { #PLAYER FACTION LEADER
+		limit = {
+			any_enemy_country = {
+				is_faction_leader = yes
+				is_ai = no
+				ROOT = {
+					any_core_state = {
+						is_controlled_by = PREV.PREV
+					}
+				}
+			}
+		}
+		random_enemy_country = {
+			limit = {
+				is_faction_leader = yes
+				is_ai = no
+				ROOT = {
+					any_core_state = {
+						is_controlled_by = PREV.PREV
+					}
+				}
+			}
+			set_country_flag = ITA_rds_overlord_flag
+			ROOT = {
+				set_variable = { ITA_rds_overlord = PREV } # This gets transferred to the actual RDS when spawned, tack
+			}
+		}
+		#log = "Going for player faction leader"
+	}
+	else_if = { #PLAYER OCCUPYING
+		limit = {
+			any_enemy_country = {
+				is_ai = no
+				ROOT = {
+					any_core_state = {
+						is_controlled_by = PREV.PREV
+					}
+				}
+			}
+		}
+		random_enemy_country = {
+			limit = {
+				is_ai = no
+				ROOT = {
+					any_core_state = {
+						is_controlled_by = PREV.PREV
+					}
+				}
+			}
+			set_country_flag = ITA_rds_overlord_flag
+			ROOT = {
+				set_variable = { ITA_rds_overlord = PREV }
+			}
+		}
+		#log = "Going for player occupying"
+	}
+	else_if = { #AI FACTION LEADER
+		limit = {
+			any_enemy_country = {
+				is_faction_leader = yes
+				OR = {
+					ROOT = {
+						any_core_state = {
+							is_controlled_by = PREV.PREV
+						}
+					}
+					any_allied_country = {
+						ROOT = {
+							any_core_state = {
+								is_controlled_by = PREV.PREV
+							}
+						}
+					}
+				}
+			}
+		}
+		random_enemy_country = {
+			limit = {
+				is_faction_leader = yes
+				OR = {
+					ROOT = {
+						any_core_state = {
+							is_controlled_by = PREV.PREV
+						}
+					}
+					any_allied_country = {
+						ROOT = {
+							any_core_state = {
+								is_controlled_by = PREV.PREV
+							}
+						}
+					}
+				}
+			}
+			set_country_flag = ITA_rds_overlord_flag
+			ROOT = {
+				set_variable = { ITA_rds_overlord = PREV }
+			}
+		}
+		#log = "Going for AI faction leader"
+	}
+	else_if = { #AI OCCUPIER
+		limit = {
+			any_enemy_country = {
+				ROOT = {
+					any_core_state = {
+						is_controlled_by = PREV.PREV
+					}
+				}
+			}
+		}
+		random_enemy_country = {
+			limit = {
+				ROOT = {
+					any_core_state = {
+						is_controlled_by = PREV.PREV
+					}
+				}
+			}
+			ITA_set_rds_overlord_effect = yes
+		}
+		#log = "Going for AI occupier"
+	}
+
+	#log = "(SET SIDES Effect) RSI OVERLORD IS: [?ITA_rsi_overlord.GetName] // RDS OVERLORD IS: [?ITA_rds_overlord.GetName]"
+}
+
+ITA_log_the_shit = {
+	#log = "(Event) I am in [THIS.GetName] /// RSI OVERLORD IS: [?RSI.ITA_rsi_overlord.GetName] // RDS OVERLORD IS: [?RSI.ITA_rds_overlord.GetName]"
+}
+
+ITA_set_rds_overlord_effect = {
+	set_country_flag = ITA_rds_overlord_flag
+	ROOT = {
+		set_variable = { ITA_rds_overlord = PREV }
+		#log = "Setting RDS overlord - [?ITA_rds_overlord.GetName]"
+	}
+}
+
+ITA_set_RSI_overlord_effect = {
+	set_country_flag = ITA_rsi_overlord_flag
+	ROOT = {
+		set_variable = { ITA_rsi_overlord = PREV }
+		#log = "Setting RSI overlord - [?ITA_rsi_overlord.GetName]"
+	}
+}
+
+##     ## ####  ######   ######
+###   ###  ##  ##    ## ##    ##
+#### ####  ##  ##       ##
+## ### ##  ##   ######  ##
+##     ##  ##        ## ##
+##     ##  ##  ##    ## ##    ##
+##     ## ####  ######   ######
+
+
+ITA_remove_king_vittorio_emanuele_as_idea = {
+	if = {
+		limit = {
+			has_idea = vittorio_emanuele
+		}
+		remove_ideas = vittorio_emanuele
+	}
+	else_if = {
+		limit = {
+			has_idea = vittorio_emanuele_king_of_albania
+		}
+		remove_ideas = vittorio_emanuele_king_of_albania
+	}
+	else_if = {
+		limit = {
+			has_idea = vittorio_emanuele_emperor_of_ethiopia
+		}
+		remove_ideas = vittorio_emanuele_emperor_of_ethiopia
+	}
+	else_if = {
+		limit = {
+			has_idea = vittorio_emanuele_albania_ethiopia
+		}
+		remove_ideas = vittorio_emanuele_albania_ethiopia
+	}
+	set_country_flag = ITA_deposed_the_king
+}
+
+ITA_add_correct_mafia_rising_modifier_version = {
+	if = {
+		limit = {
+			has_dlc = "La Resistance"
+		}
+		add_dynamic_modifier = { modifier = ITA_mafia_on_the_rise }
+	}
+	else = {
+		add_dynamic_modifier = { modifier = ITA_mafia_on_the_rise_no_lar }
+	}
+}
+
+
+##    ##    ###    ##     ## ########     ######  ##     ##    ###    ##    ##  ######   ########  ######
+###   ##   ## ##   ###   ### ##          ##    ## ##     ##   ## ##   ###   ## ##    ##  ##       ##    ##
+####  ##  ##   ##  #### #### ##          ##       ##     ##  ##   ##  ####  ## ##        ##       ##
+## ## ## ##     ## ## ### ## ######      ##       ######### ##     ## ## ## ## ##   #### ######    ######
+##  #### ######### ##     ## ##          ##       ##     ## ######### ##  #### ##    ##  ##             ##
+##   ### ##     ## ##     ## ##          ##    ## ##     ## ##     ## ##   ### ##    ##  ##       ##    ##
+##    ## ##     ## ##     ## ########     ######  ##     ## ##     ## ##    ##  ######   ########  ######
+
+
+#Change name of States and VPs when appropriate. Expected to be used inside on_state_control_changed. FROM.FROM is state / ROOT is new controller / FROM is former controller
+ITA_change_name_of_state_or_vp = {
+	if = { # Fiume / Rijeka
+		limit = {
+			FROM.FROM = {
+				state = 852 #ISTRIA
+			}
+		}
+		if = { #ITALY CONTROLLER
+			limit = {
+				ROOT = { original_tag = ITA }
+			}
+			set_province_name = { id = 11564 name = VICTORY_POINTS_11564_ITA }
+		}
+		else_if = { #OTHER CONTROLLER
+			limit = {
+				FROM = { original_tag = ITA }
+			}
+			reset_province_name = 11564
+		}
+	}
+	else_if = { # ZARA / ZADAR // Zara / Zadar
+		limit = {
+			FROM.FROM = {
+				state = 163 #ZARA
+			}
+		}
+		if = { #ITALY CONTROLLER
+			limit = {
+				ROOT = { original_tag = ITA }
+			}
+			FROM.FROM = { set_state_name = STATE_163_ITA }
+			set_province_name = { id = 3943 name = VICTORY_POINTS_3943_ITA }
+		}
+		else_if = { #OTHER CONTROLLER
+			limit = {
+				FROM = { original_tag = ITA }
+			}
+			FROM.FROM = { reset_state_name = yes }
+			reset_province_name = 3943
+		}
+	}
+	else_if = { # DODECANESO / DODECANESE // Rodi / Rhodes
+		limit = {
+			FROM.FROM = {
+				state = 164 #DODECANESO
+			}
+		}
+		if = { #ITALY CONTROLLER
+			limit = {
+				ROOT = { original_tag = ITA }
+			}
+			FROM.FROM = { set_state_name = VICTORY_POINTS_10007_ITA }
+			set_province_name = { id = 10007 name = VICTORY_POINTS_10007_ITA }
+		}
+		else_if = { #OTHER CONTROLLER
+			limit = {
+				FROM = { original_tag = ITA }
+			}
+			FROM.FROM = { reset_state_name = yes }
+			reset_province_name = 10007
+		}
+	}
+}
+
+#Sets flag for characters to be purged
+ITA_characters_to_purge_effect = {
+	#ADVISORS
+	if = {#First alternative for purge
+		limit = {
+			has_character = ITA_achille_starace
+			ITA_achille_starace = { has_character_flag = ITA_character_can_be_purged }
+		}
+		ITA_achille_starace = { set_character_flag = ITA_purge_advisor }
+	}
+	else_if = {#Second alternative if the first one isn't available
+		limit = {
+			has_character = ITA_carlo_scorza
+			ITA_carlo_scorza = { has_character_flag = ITA_character_can_be_purged }
+		}
+		ITA_carlo_scorza = { set_character_flag = ITA_purge_advisor }
+	}
+	else = {#Third, random alternative if the first two aren't available
+		random_character = {
+			limit = {
+				has_character_flag = ITA_character_can_be_purged
+				is_character_slot = political_advisor
+			}
+			set_character_flag = ITA_purge_advisor
+		}
+	}
+	if = {#First alternative for purge
+		limit = {
+			has_character = ITA_renato_ricci
+			ITA_renato_ricci = { has_character_flag = ITA_character_can_be_purged }
+		}
+		ITA_renato_ricci = { set_character_flag = ITA_purge_advisor }
+	}
+	else_if = {#Second alternative if the first one isn't available
+		limit = {
+			has_character = ITA_roberto_farinacci
+			ITA_roberto_farinacci = { has_character_flag = ITA_character_can_be_purged }
+		}
+		ITA_roberto_farinacci = { set_character_flag = ITA_purge_advisor }
+	}
+	else = {#Third, random alternative if the first two aren't available
+		random_character = {
+			limit = {
+				has_character_flag = ITA_character_can_be_purged
+				is_character_slot = political_advisor
+				NOT = { has_character_flag = ITA_purge_advisor }
+			}
+			set_character_flag = ITA_purge_advisor
+		}
+	}
+	#GENERALS
+	if = {#First alternative for purge
+		limit = {
+			has_character = ITA_rodolfo_graziani
+			ITA_rodolfo_graziani = { has_character_flag = ITA_character_can_be_purged }
+		}
+		ITA_rodolfo_graziani = { set_character_flag = ITA_purge_general }
+	}
+	else_if = {#Second alternative if the first one isn't available
+		limit = {
+			has_character = ITA_ugo_cavallero
+			ITA_ugo_cavallero = { has_character_flag = ITA_character_can_be_purged }
+		}
+		ITA_ugo_cavallero = { set_character_flag = ITA_purge_general }
+	}
+	else = {#Third, random alternative if the first two aren't available
+		random_character = {
+			limit = {
+				has_character_flag = ITA_character_can_be_purged
+				is_unit_leader = yes
+			}
+			set_character_flag = ITA_purge_general
+		}
+	}
+	if = {#First alternative for purge
+		limit = {
+			has_character = ITA_ubaldo_soddu
+			ITA_ubaldo_soddu = { has_character_flag = ITA_character_can_be_purged }
+		}
+		ITA_ubaldo_soddu = { set_character_flag = ITA_purge_general }
+	}
+	else_if = {#Second alternative if the first one isn't available
+		limit = {
+			has_character = ITA_francesco_zingales
+			ITA_francesco_zingales = { has_character_flag = ITA_character_can_be_purged }
+		}
+		ITA_francesco_zingales = { set_character_flag = ITA_purge_general }
+	}
+	else = {#Third, random alternative if the first two aren't available
+		random_character = {
+			limit = {
+				has_character_flag = ITA_character_can_be_purged
+				is_unit_leader = yes
+				NOT = { has_character_flag = ITA_purge_general }
+			}
+			set_character_flag = ITA_purge_general
+		}
+	}
+}
+
+#Retire characters with the flag from the game OR remove the flag but keep the character
+ITA_purge_advisors_effect = {
+	every_character = {
+		limit = {
+			has_character_flag = ITA_purge_advisor
+		}
+		retire = yes
+	}
+	every_character = {
+		limit = {
+			has_character_flag = ITA_purge_general
+		}
+		clr_character_flag = ITA_character_can_be_purged
+	}
+}
+
+#Retire characters with the flag from the game OR remove the flag but keep the character
+ITA_purge_generals_effect = {
+	every_character = {
+		limit = {
+			has_character_flag = ITA_purge_advisor
+		}
+		clr_character_flag = ITA_character_can_be_purged
+	}
+	every_character = {
+		limit = {
+			has_character_flag = ITA_purge_general
+		}
+		retire = yes
+	}
+}
+
+#Removes the purge flag from characters that was spared the purge
+ITA_dont_purge_effect = {
+	every_character = {
+		limit = {
+			has_character_flag = ITA_purge_advisor
+		}
+
+		clr_character_flag = ITA_character_can_be_purged
+		clr_character_flag = ITA_purge_advisor
+	}
+	every_character = {
+		limit = {
+			has_character_flag = ITA_purge_general
+		}
+
+		clr_character_flag = ITA_character_can_be_purged
+		clr_character_flag = ITA_purge_general
+	}
+}
+
+#Removes purge flags
+ITA_clear_purge_flag_effect = {
+	every_character = {
+		limit = {
+			has_character_flag = ITA_purge_advisor
+		}
+
+		clr_character_flag = ITA_purge_advisor
+	}
+	every_character = {
+		limit = {
+			has_character_flag = ITA_purge_general
+		}
+
+		clr_character_flag = ITA_purge_general
+	}
+}
+
+ITA_anglo_italian_cooperation_effect = {
+	ENG = {
+		add_opinion_modifier = {
+			target = ITA
+			modifier = ITA_military_cooperation_acceptance
+		}
+	}
+	ITA = {
+		add_opinion_modifier = {
+			target = ENG
+			modifier = ITA_military_cooperation_acceptance
+		}
+	}
+	if = {
+		limit = {
+			has_tech_sharing_feature = yes
+		}
+		ENG = {
+			add_to_tech_sharing_group = ITA_anglo_italian_tech_sharing
+			add_tech_bonus = {
+				name = ITA_anglo_italian_tech_sharing_name
+				bonus = 0.50
+				uses = 2
+				category = air_equipment
+			}
+			add_tech_bonus = {
+				name = ITA_anglo_italian_tech_sharing_name
+				bonus = 0.50
+				uses = 2
+				category = naval_equipment
+			}
+		}
+		ITA = {
+			add_to_tech_sharing_group = ITA_anglo_italian_tech_sharing
+			add_tech_bonus = {
+				name = ITA_anglo_italian_tech_sharing_name
+				bonus = 0.50
+				uses = 2
+				category = air_equipment
+			}
+			add_tech_bonus = {
+				name = ITA_anglo_italian_tech_sharing_name
+				bonus = 0.50
+				uses = 2
+				category = naval_equipment
+			}
+		}
+	}
+	else = {
+		ENG = {
+			add_tech_bonus = {
+				name = ITA_anglo_italian_tech_sharing_name
+				bonus = 0.75
+				uses = 2
+				category = air_equipment
+			}
+			add_tech_bonus = {
+				name = ITA_anglo_italian_tech_sharing_name
+				bonus = 0.75
+				uses = 2
+				category = naval_equipment
+			}
+
+		}
+		ITA = {
+			add_tech_bonus = {
+				name = ITA_anglo_italian_tech_sharing_name
+				bonus = 0.75
+				uses = 2
+				category = air_equipment
+			}
+			add_tech_bonus = {
+				name = ITA_anglo_italian_tech_sharing_name
+				bonus = 0.75
+				uses = 2
+				category = naval_equipment
+			}
+		}
+	}
+}
+
+ITA_franco_italian_cooperation_effect = {
+	FRA = {
+		add_opinion_modifier = {
+			target = ITA
+			modifier = ITA_military_cooperation_acceptance
+		}
+	}
+	ITA = {
+		add_opinion_modifier = {
+			target = FRA
+			modifier = ITA_military_cooperation_acceptance
+		}
+	}
+	if = {
+		limit = {
+			has_tech_sharing_feature = yes
+		}
+		FRA = {
+			add_to_tech_sharing_group = ITA_franco_italian_tech_sharing
+			add_tech_bonus = {
+					name = ITA_franco_italian_tech_sharing_name
+					bonus = 0.5
+					uses = 2
+					category = armor
+			}
+			add_tech_bonus = {
+				name = ITA_franco_italian_tech_sharing_name
+				bonus = 0.5
+				uses = 2
+				category = infantry_weapons
+			}
+		}
+		ITA = {
+			add_to_tech_sharing_group = ITA_franco_italian_tech_sharing
+			add_tech_bonus = {
+				name = ITA_franco_italian_tech_sharing_name
+				bonus = 0.5
+				uses = 2
+				category = armor
+			}
+			add_tech_bonus = {
+				name = ITA_franco_italian_tech_sharing_name
+				bonus = 0.5
+				uses = 2
+				category = infantry_weapons
+			}
+		}
+	}
+	else = {
+		FRA = {
+			add_tech_bonus = {
+				name = ITA_franco_italian_tech_sharing_name
+				bonus = 0.75
+				uses = 2
+				category = armor
+			}
+			add_tech_bonus = {
+				name = ITA_franco_italian_tech_sharing_name
+				bonus = 0.75
+				uses = 2
+				category = infantry_weapons
+			}
+		}
+		ITA = {
+			add_tech_bonus = {
+				name = ITA_franco_italian_tech_sharing_name
+				bonus = 0.75
+				uses = 2
+				category = armor
+			}
+			add_tech_bonus = {
+				name = ITA_franco_italian_tech_sharing_name
+				bonus = 0.75
+				uses = 2
+				category = infantry_weapons
+			}
+		}
+	}
+}
+
+ITA_non_aggression_pact_effect = {
+	diplomatic_relation = {
+		country = FROM
+		relation = non_aggression_pact
+		active = yes
+	}
+}
+
+ITA_recognize_the_empire_effect = {
+	if = {
+		limit = {
+			ROOT = {
+				has_non_aggression_pact_with = FROM
+			}
+		}
+		FROM = { give_guarantee = ROOT }
+		give_guarantee = FROM
+	}
+}
+
+ITA_promote_umberto_to_country_leader = {
+	if = {
+		limit = {
+			ITA_prince_umberto = {
+				can_be_country_leader = yes
+			}
+		}
+		if = {
+			limit = {
+				ITA_prince_umberto = {
+					has_ideology_group = neutrality
+				}
+			}
+			ITA_prince_umberto = { promote_character = { ideology = despotism } }
+		}
+		else_if = {
+			limit = {
+				ITA_prince_umberto = {
+					has_ideology_group = democratic
+				}
+			}
+			ITA_prince_umberto = { promote_character = { ideology = conservatism } }
+		}
+	}
+	else_if = {
+		limit = {
+			has_completed_focus = ITA_democratic_king
+		}
+		add_country_leader_role = {
+			character =  ITA_prince_umberto
+			promote_leader = yes
+			country_leader = {
+				ideology = conservatism
+				traits = { inexperienced_monarch eager_commander }
+				expire = "1965.1.1.1"
+				id = -1
+			}
+		}
+		add_country_leader_role = { #Add the Non-Aligned role too, but without promoting
+			character =  ITA_prince_umberto
+			country_leader = {
+				ideology = despotism
+				traits = { inexperienced_monarch eager_commander }
+				expire = "1965.1.1.1"
+				id = -1
+			}
+		}
+		set_character_name = {
+			character = ITA_prince_umberto
+			name = ITA_prince_umberto_king
+		}
+		#BoP
+		set_power_balance = {
+			id = ITA_power_balance
+			right_side = ITA_king_umberto_side
+		}
+	}
+	else = {
+		add_country_leader_role = {
+			character =  ITA_prince_umberto
+			promote_leader = yes
+			country_leader = {
+				ideology = despotism
+				traits = { inexperienced_monarch eager_commander }
+				expire = "1965.1.1.1"
+				id = -1
+			}
+		}
+		set_character_name = {
+			character = ITA_prince_umberto
+			name = ITA_prince_umberto_king
+		}
+		#BoP
+		set_power_balance = {
+			id = ITA_power_balance
+			right_side = ITA_king_umberto_side
+		}
+
+	}
+
+	if = {
+		limit = {
+			has_character = ITA_vittorio_emanuele_iii
+		}
+		retire_character = ITA_vittorio_emanuele_iii
+	}
+}
+
+ITA_mobilize_railway_guns = {
+	custom_effect_tooltip = ITA_mobilize_railway_guns_tt
+	hidden_effect = {
+		create_railway_gun = {
+			equipment = railway_gun_equipment_1
+			name = "1o Cannone da 381/40"
+		}
+		create_railway_gun = {
+			equipment = railway_gun_equipment_1
+			name = "2o Cannone da 381/40"
+		}
+		create_railway_gun = {
+			equipment = railway_gun_equipment_1
+			name = "3o Cannone da 381/40"
+		}
+		create_railway_gun = {
+			equipment = railway_gun_equipment_1
+			name = "4o Cannone da 381/40"
+		}
+	}
+}
+
+ITA_check_for_cooperatives_and_add_dm = {
+	hidden_effect = {
+		if = {
+			limit = {
+				is_on_continent = africa
+				is_controlled_by = ROOT
+				state_has_any_resource = yes
+				NOT = { has_dynamic_modifier = { modifier = ITA_cooperatives_for_intensive_exploitation_dm } }
+			}
+			add_dynamic_modifier = { modifier = ITA_cooperatives_for_intensive_exploitation_dm }
+		}
+	}
+}
+
+ITA_increase_resource_amount_in_state = { #THIS is state
+	custom_effect_tooltip = ITA_increase_resource_amount_in_state_tt
+	hidden_effect = { #This does not generate tt anyways, but just in case. If changing values below, update tooltip above
+		if = {
+			limit = {
+				has_resources_amount = {
+					resource = oil
+					amount > 0
+				}
+			}
+			add_resource = {
+				type = oil
+				amount = 2
+			}
+		}
+		if = {
+			limit = {
+				has_resources_amount = {
+					resource = aluminium
+					amount > 0
+				}
+			}
+			add_resource = {
+				type = aluminium
+				amount = 2
+			}
+		}
+		if = {
+			limit = {
+				has_resources_amount = {
+					resource = rubber
+					amount > 0
+				}
+			}
+			add_resource = {
+				type = rubber
+				amount = 2
+			}
+		}
+		if = {
+			limit = {
+				has_resources_amount = {
+					resource = tungsten
+					amount > 0
+				}
+			}
+			add_resource = {
+				type = tungsten
+				amount = 2
+			}
+		}
+		if = {
+			limit = {
+				has_resources_amount = {
+					resource = steel
+					amount > 0
+				}
+			}
+			add_resource = {
+				type = steel
+				amount = 2
+			}
+		}
+		if = {
+			limit = {
+				has_resources_amount = {
+					resource = chromium
+					amount > 0
+				}
+			}
+			add_resource = {
+				type = chromium
+				amount = 2
+			}
+		}
+	}
+}
+
+ITA_peace_out_eth_on_startup_effect = {
+	ITA = {
+		white_peace = {
+			tag = ETH
+		}
+		unlock_national_focus = ITA_solid_progress
+	}
+	set_global_flag = ITA_peace_with_eth_on_startup_flag
+}
+
+
+ITA_replace_designers_by_improved_version_north = {
+	if = {
+		limit = {
+			has_dlc = "Arms Against Tyranny"
+		}
+		every_military_industrial_organization = {
+			limit = {
+				OR = {
+					is_military_industrial_organization = ITA_fiat_organization
+					is_military_industrial_organization = ITA_crda_organization
+					is_military_industrial_organization = ITA_cantiere_oto_organization
+					is_military_industrial_organization = ITA_macchi_organization
+					is_military_industrial_organization = ITA_savoia_marchetti_organization
+					is_military_industrial_organization = ITA_caproni_organization
+					is_military_industrial_organization = ITA_piaggio_organization
+					is_military_industrial_organization = ITA_crda_cant_organization
+					is_military_industrial_organization = ITA_fiat_aviazione_organization
+					is_military_industrial_organization = ITA_beretta_organization
+					is_military_industrial_organization = ITA_lancia_organization
+					is_military_industrial_organization = ITA_breda_organization
+					is_military_industrial_organization = ITA_brescia_arsenal_organization
+				}
+			}
+			complete_mio_trait = ITA_mio_trait_new_industrialization_program
+		}
+	}
+	else = {
+		#ARMOR
+		if = {
+			limit = {
+				has_idea =  fiat
+			}
+			swap_ideas = {
+				remove_idea = fiat
+				add_idea = ITA_fiat_improved
+			}
+		}
+
+		#NAVAL
+		if = {
+			limit = {
+				has_idea =  crda
+			}
+			swap_ideas = {
+				remove_idea = crda
+				add_idea = ITA_crda_improved
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = ITA_cantiere_oto
+			}
+			swap_ideas = {
+				remove_idea = ITA_cantiere_oto
+				add_idea = ITA_cantiere_oto_improved
+			}
+		}
+
+		#AIRCRAFT
+		if = {
+			limit = {
+				has_idea = macchi
+			}
+			swap_ideas = {
+				remove_idea = macchi
+				add_idea = ITA_macchi_improved
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = savoia_marchetti
+			}
+			swap_ideas = {
+				remove_idea = savoia_marchetti
+				add_idea = ITA_savoia_marchetti_improved
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = caproni
+			}
+			swap_ideas = {
+				remove_idea = caproni
+				add_idea = ITA_caproni_improved
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = piaggio
+			}
+			swap_ideas = {
+				remove_idea = piaggio
+				add_idea = ITA_piaggio_improved
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = ITA_crda_cant
+			}
+			swap_ideas = {
+				remove_idea = ITA_crda_cant
+				add_idea = ITA_crda_cant_improved
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = ITA_fiat_aviazione
+			}
+			swap_ideas = {
+				remove_idea = ITA_fiat_aviazione
+				add_idea = ITA_fiat_aviazione_improved
+			}
+		}
+
+		#MATERIEL
+		if = {
+			limit = {
+				has_idea = beretta
+			}
+			swap_ideas = {
+				remove_idea = beretta
+				add_idea = ITA_beretta_improved
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = lancia
+			}
+			swap_ideas = {
+				remove_idea = lancia
+				add_idea = ITA_lancia_improved
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = breda
+			}
+			swap_ideas = {
+				remove_idea = breda
+				add_idea = ITA_breda_improved
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = ITA_brescia_arsenal
+			}
+			swap_ideas = {
+				remove_idea = ITA_brescia_arsenal
+				add_idea = ITA_brescia_arsenal_improved
+			}
+		}
+
+	}
+
+	#INDUSTRIAL (Always regardless of AAT)
+	if = {
+		limit = {
+			has_idea = danieli
+		}
+		swap_ideas = {
+			remove_idea = danieli
+			add_idea = ITA_danieli_improved
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = ITA_italcementi
+		}
+		swap_ideas = {
+			remove_idea = ITA_italcementi
+			add_idea = ITA_italcementi_improved
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = ITA_ducati_energia
+		}
+		swap_ideas = {
+			remove_idea = ITA_ducati_energia
+			add_idea = ITA_ducati_energia_improved
+		}
+	}
+}
+
+ITA_replace_designers_by_improved_version_south = {
+	if = {
+		limit = {
+			has_dlc = "Arms Against Tyranny"
+		}
+		every_military_industrial_organization = {
+			limit = {
+				OR = {
+					is_military_industrial_organization = ITA_navalmeccanica_organization
+					is_military_industrial_organization = ITA_cantiere_navale_di_ancona_organization
+					is_military_industrial_organization = ITA_cantieri_navali_tosi_organization
+					is_military_industrial_organization = ITA_imam_organization
+				}
+			}
+			complete_mio_trait = ITA_mio_trait_new_industrialization_program
+		}
+	}
+	else = {
+		#NAVAL
+		if = {
+			limit = {
+				has_idea =  ITA_navalmeccanica
+			}
+			swap_ideas = {
+				remove_idea = ITA_navalmeccanica
+				add_idea = ITA_navalmeccanica_improved
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = ITA_cantiere_navale_di_ancona
+			}
+			swap_ideas = {
+				remove_idea = ITA_cantiere_navale_di_ancona
+				add_idea = ITA_cantiere_navale_di_ancona_improved
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = ITA_cantieri_navali_tosi
+			}
+			swap_ideas = {
+				remove_idea = ITA_cantieri_navali_tosi
+				add_idea = ITA_cantieri_navali_tosi_improved
+			}
+		}
+
+		#AIRCRAFT
+		if = {
+			limit = {
+				has_idea = ITA_imam
+			}
+			swap_ideas = {
+				remove_idea = ITA_imam
+				add_idea = ITA_imam_improved
+			}
+		}
+	}
+
+	#INDUSTRIAL (Always regardless of AAT)
+	if = {
+		limit = {
+			has_idea = ITA_terni_industria_ed_elettricita
+		}
+		swap_ideas = {
+			remove_idea = ITA_terni_industria_ed_elettricita
+			add_idea = ITA_terni_industria_ed_elettricita_improved
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = ITA_astaldi
+		}
+		swap_ideas = {
+			remove_idea = ITA_astaldi
+			add_idea = ITA_astaldi_improved
+		}
+	}
+}
+
+########  ##          ###    ##    ## ########    ######## ######## ##     ## ########  ##          ###    ######## ########  ######
+##     ## ##         ## ##   ###   ## ##             ##    ##       ###   ### ##     ## ##         ## ##      ##    ##       ##    ##
+##     ## ##        ##   ##  ####  ## ##             ##    ##       #### #### ##     ## ##        ##   ##     ##    ##       ##
+########  ##       ##     ## ## ## ## ######         ##    ######   ## ### ## ########  ##       ##     ##    ##    ######    ######
+##        ##       ######### ##  #### ##             ##    ##       ##     ## ##        ##       #########    ##    ##             ##
+##        ##       ##     ## ##   ### ##             ##    ##       ##     ## ##        ##       ##     ##    ##    ##       ##    ##
+##        ######## ##     ## ##    ## ########       ##    ######## ##     ## ##        ######## ##     ##    ##    ########  ######
+
+
+ITA_add_citta_dell_aria_templates = {
+	create_equipment_variant = {
+		name = "Ro.57"
+		type = medium_plane_fighter_airframe_1
+		parent_version = 0
+		modules = {
+				fixed_main_weapon_slot = heavy_mg_2x
+				fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_1x
+				fixed_auxiliary_weapon_slot_2 = bomb_locks
+				engine_type_slot = engine_2_2x
+			}
+		icon = "GFX_ITA_heavy_fighter1_medium"
+	}
+
+	create_equipment_variant = {
+		name = "C.200 Saetta"
+		type = small_plane_airframe_1
+		parent_version = 0
+		modules = {
+				fixed_main_weapon_slot = heavy_mg_2x
+				engine_type_slot = engine_2_1x
+			}
+		icon = "GFX_ITA_fighter1_medium"
+	}
+
+	create_equipment_variant = {
+		name = "Ca.310"
+		type = small_plane_cas_airframe_1
+		parent_version = 0
+		modules = {
+				fixed_main_weapon_slot = bomb_locks
+				fixed_auxiliary_weapon_slot_1 = recon_camera
+				engine_type_slot = engine_1_2x
+				special_type_slot_1 = fuel_tanks_small
+			}
+		icon = "GFX_ITA_CAS2_medium"
+	}
+}
+
+ITA_add_reggianes_exports_templates = {
+
+	create_equipment_variant = {
+		name = "Re.2000"
+		type = small_plane_airframe_1
+		parent_version = 0
+		modules = {
+				fixed_main_weapon_slot = heavy_mg_2x
+				engine_type_slot = engine_1_1x
+			}
+		icon = "GFX_ITA_fighter1_medium"
+	}
+}
+
+ITA_naval_air_coordination_templates = {
+
+	create_equipment_variant = {
+		name = "CANT Z.1007 Alcione"
+		type = medium_plane_airframe_1
+		parent_version = 0
+		modules = {
+				fixed_main_weapon_slot = medium_bomb_bay
+				fixed_auxiliary_weapon_slot_1 = bomb_locks
+				fixed_auxiliary_weapon_slot_2 = torpedo_mounting
+				fixed_auxiliary_weapon_slot_3 = torpedo_mounting
+				special_type_slot_1 = lmg_defense_turret
+				special_type_slot_2 = hmg_defense_turret
+				engine_type_slot = engine_1_3x
+			}
+		icon = "GFX_ITA_tactical_bomber1_medium"
+	}
+}
+
+ITA_add_long_range_aircraft_templates = {
+
+	create_equipment_variant = {
+		name = "Ro.58"
+		type = small_plane_airframe_2
+		parent_version = 0
+		modules = {
+				fixed_main_weapon_slot = aircraft_cannon_1_1x
+				fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_1x
+				fixed_auxiliary_weapon_slot_2 = aircraft_cannon_1_1x
+				engine_type_slot = engine_3_2x
+				special_type_slot_1 = fuel_tanks_small
+				special_type_slot_2 = hmg_defense_turret
+			}
+		icon = "GFX_ITA_heavy_fighter2_medium"
+	}
+
+	create_equipment_variant = {
+		name = "P.108"
+		type = large_plane_airframe_2
+		parent_version = 0
+		modules = {
+				fixed_main_weapon_slot = large_bomb_bay
+				fixed_auxiliary_weapon_slot_1 = large_bomb_bay
+				special_type_slot_1 = hmg_defense_turret
+				special_type_slot_2 = hmg_defense_turret
+				engine_type_slot = engine_3_4x
+			}
+		icon = "GFX_ITA_strategic_bomber3_medium"
+	}
+
+	create_equipment_variant = {
+		name = "CANTZ.511"
+		type = large_plane_maritime_patrol_plane_airframe_2
+		parent_version = 0
+		modules = {
+				fixed_main_weapon_slot = torpedo_mounting
+				fixed_auxiliary_weapon_slot_1 = torpedo_mounting
+				fixed_auxiliary_weapon_slot_2 = torpedo_mounting
+				fixed_auxiliary_weapon_slot_3 = large_bomb_bay
+				special_type_slot_1 = hmg_defense_turret
+				special_type_slot_2 = hmg_defense_turret
+				special_type_slot_3 = hmg_defense_turret
+				special_type_slot_4 = flying_boat_large
+				engine_type_slot = engine_3_4x
+
+			}
+		icon = "GFX_ITA_strategic_bomber1_medium"
+	}
+}
+
+ITA_add_bomber_designs_templates = {
+
+	create_equipment_variant = {
+		name = "Ba.201"
+		type = small_plane_cas_airframe_2
+		parent_version = 0
+		modules = {
+				fixed_main_weapon_slot = bomb_locks
+				fixed_auxiliary_weapon_slot_1 = heavy_mg_2x
+				engine_type_slot = engine_2_1x
+			}
+		icon = "GFX_ITA_CAS2_medium"
+	}
+
+	create_equipment_variant = {
+		name = "CANT Z.1007 Alcione"
+		type = medium_plane_airframe_1
+		parent_version = 0
+		modules = {
+				fixed_main_weapon_slot = medium_bomb_bay
+				fixed_auxiliary_weapon_slot_1 = bomb_locks
+				fixed_auxiliary_weapon_slot_2 = torpedo_mounting
+				fixed_auxiliary_weapon_slot_3 = torpedo_mounting
+				special_type_slot_1 = lmg_defense_turret
+				special_type_slot_2 = hmg_defense_turret
+				engine_type_slot = engine_2_3x
+			}
+		icon = "GFX_ITA_tactical_bomber1_medium"
+	}
+}
+
+ITA_add_fighter_designs_templates = {
+
+	create_equipment_variant = {
+		name = "C.202 Folgore"
+		type = small_plane_airframe_2
+		parent_version = 0
+		modules = {
+				fixed_main_weapon_slot = light_mg_2x
+				fixed_auxiliary_weapon_slot_1 = heavy_mg_2x
+				fixed_auxiliary_weapon_slot_2 = bomb_locks
+				engine_type_slot = engine_2_1x
+				special_type_slot_1 = drop_tanks
+			}
+		icon = "GFX_ITA_fighter2_medium"
+	}
+
+	create_equipment_variant = {
+		name = "G.55 Centauro"
+		type = small_plane_airframe_3
+		parent_version = 0
+		modules = {
+				fixed_main_weapon_slot = aircraft_cannon_1_1x
+				fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_1x
+				fixed_auxiliary_weapon_slot_2 = heavy_mg_2x
+				fixed_auxiliary_weapon_slot_3 = bomb_locks
+				engine_type_slot = engine_3_1x
+			}
+		icon = "GFX_ITA_fighter3_medium"
+	}
+
+}
+
+ITA_add_multirole_aircraft_templates = {
+
+	create_equipment_variant = {
+		name = "Cant.Z506"
+		type = medium_plane_airframe_2
+		parent_version = 0
+		modules = {
+				fixed_main_weapon_slot = medium_bomb_bay
+				fixed_auxiliary_weapon_slot_1 = torpedo_mounting
+				engine_type_slot = engine_1_3x
+				special_type_slot_1 = flying_boat_medium
+				special_type_slot_2 = hmg_defense_turret
+			}
+		icon = "GFX_ITA_fighter2_medium"
+	}
+
+	create_equipment_variant = {
+		name = "Ca.311"
+		type = small_plane_cas_airframe_1
+		parent_version = 0
+		modules = {
+				fixed_main_weapon_slot = bomb_locks
+				fixed_auxiliary_weapon_slot_1 = light_mg_2x
+				engine_type_slot = engine_1_2x
+				special_type_slot_1 = lmg_defense_turret
+				special_type_slot_2 = armor_plate_small
+			}
+		icon = "GFX_ITA_fighter3_medium"
+	}
+
+}
+
+ITA_add_supremacy_in_the_skies_templates = {
+
+	create_equipment_variant = {
+		name = "SM.84"
+		type = medium_plane_airframe_2
+		parent_version = 0
+		modules = {
+				fixed_main_weapon_slot = medium_bomb_bay
+				fixed_auxiliary_weapon_slot_1 = torpedo_mounting
+				fixed_auxiliary_weapon_slot_2 = torpedo_mounting
+				engine_type_slot = engine_2_3x
+				special_type_slot_1 = hmg_defense_turret
+				special_type_slot_2 = hmg_defense_turret
+				special_type_slot_3 = armor_plate_medium
+			}
+		icon = "GFX_ITA_tactical_bomber2_medium"
+	}
+
+	create_equipment_variant = {
+		name = "Campini N.1"
+		type = small_plane_airframe_4
+		parent_version = 0
+		modules = {
+				fixed_main_weapon_slot = aircraft_cannon_2_1x
+				fixed_auxiliary_weapon_slot_1 = aircraft_cannon_2_1x
+				engine_type_slot = jet_engine_1x
+				special_type_slot_1 = armor_plate_small
+				special_type_slot_2 = self_sealing_fuel_tanks_small
+			}
+		icon = "GFX_ITA_jet_plane_1_medium"
+	}
+
+}
+
+
+
+########    ###    ##    ## ##    ##    ######## ######## ##     ## ########  ##          ###    ######## ########  ######
+   ##      ## ##   ###   ## ##   ##        ##    ##       ###   ### ##     ## ##         ## ##      ##    ##       ##    ##
+   ##     ##   ##  ####  ## ##  ##         ##    ##       #### #### ##     ## ##        ##   ##     ##    ##       ##
+   ##    ##     ## ## ## ## #####          ##    ######   ## ### ## ########  ##       ##     ##    ##    ######    ######
+   ##    ######### ##  #### ##  ##         ##    ##       ##     ## ##        ##       #########    ##    ##             ##
+   ##    ##     ## ##   ### ##   ##        ##    ##       ##     ## ##        ##       ##     ##    ##    ##       ##    ##
+   ##    ##     ## ##    ## ##    ##       ##    ######## ##     ## ##        ######## ##     ##    ##    ########  ######
+
+
+
+ITA_add_basic_light_flamethrower_template = {
+	create_equipment_variant = {
+		name = "L3 Lf"
+		type = light_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = flamethrower
+			turret_type_slot = tank_light_fixed_superstructure_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 1
+			tank_nsb_armor_upgrade = 1
+		}
+		icon = "GFX_ITA_basic_light_tank_medium"
+	}
+}
+
+ITA_add_improved_light_tank_templates = {
+	#L6/40
+	create_equipment_variant = {
+		name = "L6/40"
+		type = light_tank_chassis_2
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_auto_cannon
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 2
+			tank_nsb_armor_upgrade = 4
+		}
+		icon = "GFX_ITA_improved_light_tank_medium"
+	}
+
+	if = {
+		limit = {
+			has_dlc = "Axis Armor Pack"
+		}
+		#L40 da 47/32
+		create_equipment_variant = {
+			name = "Semovente L40 da 47/32"
+			type = light_tank_destroyer_chassis_1
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_medium_cannon
+				turret_type_slot = tank_light_fixed_superstructure_turret
+				suspension_type_slot = tank_bogie_suspension
+				armor_type_slot = tank_riveted_armor
+				engine_type_slot = tank_gasoline_engine
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 2
+				tank_nsb_armor_upgrade = 4
+			}
+			icon = "GFX_ITA_improved_light_td_medium"
+		}
+	}
+	else = {
+		#L40 da 47/32
+		create_equipment_variant = {
+			name = "Semovente L40 da 47/32"
+			type = light_tank_destroyer_chassis_1
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_medium_cannon
+				turret_type_slot = tank_light_fixed_superstructure_turret
+				suspension_type_slot = tank_bogie_suspension
+				armor_type_slot = tank_riveted_armor
+				engine_type_slot = tank_gasoline_engine
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 2
+				tank_nsb_armor_upgrade = 4
+			}
+			icon = "GFX_generic_light_BBA_camo"
+		}
+	}
+}
+
+ITA_add_basic_medium_tank_templates = {
+	#M11/39
+	create_equipment_variant = {
+		name = "M11/39"
+		type = medium_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_high_velocity_cannon
+			turret_type_slot = tank_medium_fixed_superstructure_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = secondary_turret_hmg
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 2
+			tank_nsb_armor_upgrade = 3
+		}
+		icon = "GFX_ITA_basic_medium_tank_medium"
+	}
+	#M11/40
+	create_equipment_variant = {
+		name = "M13/40"
+		type = medium_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_medium_cannon
+			turret_type_slot = tank_medium_two_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = additional_machine_guns
+			special_type_slot_2 = tank_radio_1
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 2
+			tank_nsb_armor_upgrade = 3
+		}
+		icon = "GFX_ITA_basic_medium_tank_medium"
+	}
+	#SEMOVENTE da 75/18 (SPG)
+	if = {
+		limit = {
+			has_dlc = "Axis Armor Pack"
+		}
+		create_equipment_variant = {
+			name = "Semovente da 75/18"
+			type = medium_tank_chassis_1
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_close_support_gun
+				turret_type_slot = tank_medium_fixed_superstructure_turret
+				suspension_type_slot = tank_bogie_suspension
+				armor_type_slot = tank_riveted_armor
+				engine_type_slot = tank_gasoline_engine
+				special_type_slot_1 = tank_radio_1
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 3
+				tank_nsb_armor_upgrade = 4
+			}
+			icon = "GFX_ITA_improved_medium_art_medium"
+		}
+	}
+	else = {
+		create_equipment_variant = {
+			name = "Semovente da 75/18"
+			type = medium_tank_chassis_1
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_close_support_gun
+				turret_type_slot = tank_medium_fixed_superstructure_turret
+				suspension_type_slot = tank_bogie_suspension
+				armor_type_slot = tank_riveted_armor
+				engine_type_slot = tank_gasoline_engine
+				special_type_slot_1 = tank_radio_1
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 3
+				tank_nsb_armor_upgrade = 4
+			}
+			icon = "GFX_ITA_medium_BBA_camo"
+		}
+	}
+
+	#SEMOVENTE da 90/53 (AT)
+	if = {
+		limit = {
+			has_dlc = "Axis Armor Pack"
+		}
+		create_equipment_variant = {
+			name = "Semovente da 90/53"
+			type = medium_tank_chassis_1
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_high_velocity_cannon_2
+				turret_type_slot = tank_medium_fixed_superstructure_turret
+				suspension_type_slot = tank_bogie_suspension
+				armor_type_slot = tank_riveted_armor
+				engine_type_slot = tank_gasoline_engine
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 3
+				tank_nsb_armor_upgrade = 3
+			}
+			icon = "GFX_ITA_advanced_medium_td_medium"
+		}
+	}
+	else = {
+		create_equipment_variant = {
+			name = "Semovente da 90/53"
+			type = medium_tank_chassis_1
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_high_velocity_cannon_2
+				turret_type_slot = tank_medium_fixed_superstructure_turret
+				suspension_type_slot = tank_bogie_suspension
+				armor_type_slot = tank_riveted_armor
+				engine_type_slot = tank_gasoline_engine
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 3
+				tank_nsb_armor_upgrade = 3
+			}
+			icon = "GFX_ITA_heavy_CCB_camo"
+		}
+	}
+}
+
+ITA_add_improved_medium_tank_templates = {
+	#M14/41
+	create_equipment_variant = {
+		name = "M14/41"
+		type = medium_tank_chassis_2
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_medium_cannon
+			turret_type_slot = tank_medium_two_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = additional_machine_guns
+			special_type_slot_2 = tank_radio_1
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 3
+			tank_nsb_armor_upgrade = 3
+		}
+		icon = "GFX_ITA_basic_medium_tank_medium"
+	}
+	#M15/42
+	create_equipment_variant = {
+		name = "M15/42"
+		type = medium_tank_chassis_2
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_medium_cannon_2
+			turret_type_slot = tank_medium_two_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = additional_machine_guns
+			special_type_slot_2 = tank_radio_1
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 4
+			tank_nsb_armor_upgrade = 5
+		}
+		icon = "GFX_ITA_basic_medium_tank_medium"
+	}
+
+	#SEMOVENTE da 75/34 (SPG-AT)
+	if = {
+		limit = {
+			has_dlc = "Axis Armor Pack"
+		}
+		create_equipment_variant = {
+			name = "Semovente da 75/34"
+			type = medium_tank_chassis_2
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_high_velocity_cannon
+				turret_type_slot = tank_medium_fixed_superstructure_turret
+				suspension_type_slot = tank_bogie_suspension
+				armor_type_slot = tank_riveted_armor
+				engine_type_slot = tank_gasoline_engine
+				special_type_slot_1 = tank_radio_1
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 4
+				tank_nsb_armor_upgrade = 4
+			}
+			icon = "GFX_ITA_basic_light_td_medium"
+		}
+	}
+	else = {
+		create_equipment_variant = {
+			name = "Semovente da 75/34"
+			type = medium_tank_chassis_2
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_high_velocity_cannon
+				turret_type_slot = tank_medium_fixed_superstructure_turret
+				suspension_type_slot = tank_bogie_suspension
+				armor_type_slot = tank_riveted_armor
+				engine_type_slot = tank_gasoline_engine
+				special_type_slot_1 = tank_radio_1
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 4
+				tank_nsb_armor_upgrade = 4
+			}
+			icon = "GFX_ITA_medium_BAA_camo"
+		}
+	}
+
+	#SEMOVENTE da 105/25 (SPG)
+	if = {
+		limit = {
+			has_dlc = "Axis Armor Pack"
+		}
+		create_equipment_variant = {
+			name = "Semovente da 105/25"
+			type = medium_tank_chassis_2
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_high_velocity_cannon_2
+				turret_type_slot = tank_medium_fixed_superstructure_turret
+				suspension_type_slot = tank_bogie_suspension
+				armor_type_slot = tank_welded_armor
+				engine_type_slot = tank_gasoline_engine
+				special_type_slot_1 = tank_radio_1
+				special_type_slot_2 = additional_machine_guns
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 4
+				tank_nsb_armor_upgrade = 6
+			}
+			icon = "GFX_ITA_improved_medium_td_medium"
+		}
+	}
+	else = {
+		create_equipment_variant = {
+			name = "Semovente da 105/25"
+			type = medium_tank_chassis_2
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_high_velocity_cannon_2
+				turret_type_slot = tank_medium_fixed_superstructure_turret
+				suspension_type_slot = tank_bogie_suspension
+				armor_type_slot = tank_welded_armor
+				engine_type_slot = tank_gasoline_engine
+				special_type_slot_1 = tank_radio_1
+				special_type_slot_2 = additional_machine_guns
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 4
+				tank_nsb_armor_upgrade = 6
+			}
+			icon = "GFX_ITA_medium_ABB_camo"
+		}
+	}
+
+	#SEMOVENTE da 20/70 Quadruplo (AA)
+	if = {
+		limit = {
+			has_dlc = "Axis Armor Pack"
+		}
+		create_equipment_variant = {
+			name = "Semovente da 20/70 Quadruplo"
+			type = medium_tank_aa_chassis_2
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_anti_air_cannon
+				turret_type_slot = tank_medium_two_man_tank_turret
+				suspension_type_slot = tank_bogie_suspension
+				armor_type_slot = tank_riveted_armor
+				engine_type_slot = tank_gasoline_engine
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 4
+				tank_nsb_armor_upgrade = 4
+			}
+			icon = "GFX_ITA_advanced_medium_spaa_medium"
+		}
+	}
+	else = {
+		create_equipment_variant = {
+			name = "Semovente da 20/70 Quadruplo"
+			type = medium_tank_aa_chassis_2
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_anti_air_cannon
+				turret_type_slot = tank_medium_two_man_tank_turret
+				suspension_type_slot = tank_bogie_suspension
+				armor_type_slot = tank_riveted_armor
+				engine_type_slot = tank_gasoline_engine
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 4
+				tank_nsb_armor_upgrade = 4
+			}
+			icon = "GFX_ITA_basic_medium_tank_medium"
+		}
+	}
+}
+
+ITA_add_improved_heavy_tank_templates = {
+	#P26/40 (Heavy tank)
+	create_equipment_variant = {
+		name = "P26/40"
+		type = heavy_tank_chassis_2
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_cannon
+			turret_type_slot = tank_heavy_two_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = tank_radio_1
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 6
+			tank_nsb_armor_upgrade = 6
+		}
+		icon = "GFX_ITA_improved_heavy_tank_medium"
+	}
+}
+
+ITA_add_advanced_medium_tank_templates = {
+	#SEMOVENTE da 75/46 (Nedium AT)
+	if = {
+		limit = {
+			has_dlc = "Axis Armor Pack"
+		}
+		create_equipment_variant = {
+			name = "Semovente da 75/46"
+			type = medium_tank_destroyer_chassis_3
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_heavy_cannon
+				turret_type_slot = tank_medium_fixed_superstructure_turret
+				suspension_type_slot = tank_bogie_suspension
+				armor_type_slot = tank_riveted_armor
+				engine_type_slot = tank_diesel_engine
+				special_type_slot_1 = tank_radio_1
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 4
+				tank_nsb_armor_upgrade = 7
+			}
+			icon = "GFX_ITA_advanced_medium_art_medium"
+		}
+	}
+	else = {
+		create_equipment_variant = {
+			name = "Semovente da 75/46"
+			type = medium_tank_destroyer_chassis_3
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_heavy_cannon
+				turret_type_slot = tank_medium_fixed_superstructure_turret
+				suspension_type_slot = tank_bogie_suspension
+				armor_type_slot = tank_riveted_armor
+				engine_type_slot = tank_diesel_engine
+				special_type_slot_1 = tank_radio_1
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 4
+				tank_nsb_armor_upgrade = 7
+			}
+			icon = "GFX_ITA_medium_BAA_camo"
+		}
+	}
+
+	#SEMOVENTE DA 149/40 (Medium SPG)
+	if = {
+		limit = {
+			has_dlc = "Axis Armor Pack"
+		}
+		create_equipment_variant = {
+			name = "Semovente da 149/40"
+			type = medium_tank_artillery_chassis_3
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_medium_howitzer_2
+				turret_type_slot = tank_medium_fixed_superstructure_turret
+				suspension_type_slot = tank_bogie_suspension
+				armor_type_slot = tank_riveted_armor
+				engine_type_slot = tank_gasoline_engine
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 5
+				tank_nsb_armor_upgrade = 1
+			}
+			icon = "GFX_ITA_improved_heavy_art_medium"
+		}
+	}
+	else = {
+		create_equipment_variant = {
+			name = "Semovente da 149/40"
+			type = medium_tank_artillery_chassis_3
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_medium_howitzer_2
+				turret_type_slot = tank_medium_fixed_superstructure_turret
+				suspension_type_slot = tank_bogie_suspension
+				armor_type_slot = tank_riveted_armor
+				engine_type_slot = tank_gasoline_engine
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 5
+				tank_nsb_armor_upgrade = 1
+			}
+			icon = "GFX_ITA_heavy_CBC"
+		}
+	}
+
+	#M16/43 Sahariano (Medium Tank)
+	create_equipment_variant = {
+		name = "M16/43"
+		type = medium_tank_chassis_3
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_medium_cannon
+			turret_type_slot = tank_medium_two_man_tank_turret
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 6
+			tank_nsb_armor_upgrade = 3
+		}
+		icon = "GFX_ITA_basic_medium_tank_medium"
+	}
+}
+
+ITA_add_advanced_heavy_tank_templates = {
+	#P43 (Heavy Tank)
+	create_equipment_variant = {
+		name = "P43"
+		type = heavy_tank_chassis_3
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_cannon_2
+			turret_type_slot = tank_heavy_three_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = tank_radio_1
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 8
+			tank_nsb_armor_upgrade = 10
+		}
+		icon = "GFX_ITA_advanced_heavy_tank_medium"
+	}
+}
+
+ITA_add_il_duce_sh_tank_template_and_production = {
+}
+
+ITA_add_modern_musculus_sh_tank_template_and_production = {
+}
+
+ITA_add_hand_of_god_sh_tank_template_and_production = {
+}
+
+
+### TEMPLATES
+ITA_add_redshirts_div_template = {
+	division_template = { #Redshirts
+		name = "Camicie Rosse"
+		division_names_group = ITA_INF_02 #TODO_Manu
+		override_model = ITA_militia_alt_0_entity
+		template_counter = 68
+		is_locked = yes
+		force_allow_recruiting = yes
+		division_cap = 12
+
+		regiments = {
+			militia = { x = 0 y = 0 }
+			militia = { x = 0 y = 1 }
+			militia = { x = 1 y = 0 }
+			militia = { x = 1 y = 1 }
+			militia = { x = 2 y = 0 }
+			militia = { x = 2 y = 1 }
+		}
+		support = {
+			engineer = { x = 0 y = 0 }
+		}
+	}
+}
+
+
+### OPERATIVES
+ITA_create_francesco_de_martini_operative = { #INITIAL
+	create_operative_leader = {
+		name = "Francesco de Martini"
+		GFX = GFX_portrait_ITA_francesco_de_martini
+		traits = { operative_commando operative_demolition_expert operative_linguist }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { ITA ETH }
+	}
+}
+
+ITA_create_paolo_caccia_dominioni_operative = { #INITIAL
+	create_operative_leader = {
+		name = "Paolo Caccia Dominioni"
+		GFX = GFX_portrait_ITA_paolo_caccia_dominioni
+		traits = { operative_safe_cracker operative_tough operative_escape_artist }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { ITA }
+	}
+}
+
+ITA_create_rosa_dainelli_operative = { #SIM
+	create_operative_leader = {
+		name = "Rosa Dainelli"
+		GFX = GFX_portrait_ITA_rosa_dainelli
+		traits = { operative_commando operative_demolition_expert }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { ITA ETH }
+	}
+}
+
+ITA_create_padre_ildefonso_operative = { #FASCIST
+	create_operative_leader = {
+		name = "Padre Ildefonso" #Alfredo Epaminonda Troya
+		GFX = GFX_portrait_ITA_epaminonda_troya
+		traits = { operative_master_interrogator operative_natural_orator }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { ITA }
+	}
+}
+
+ITA_create_pietro_koch_operative = { #FASCIST
+	create_operative_leader = {
+		name = "Pietro Koch"
+		GFX = GFX_portrait_ITA_pietro_koch
+		traits = { operative_master_interrogator operative_tough operative_well_groomed }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { ITA GER }
+	}
+}
+
+ITA_create_carmelo_borg_pisani_operative = { #FASCIST/MONARCHIST
+	create_operative_leader = {
+		name = "Carmelo Borg Pisani"
+		GFX = GFX_portrait_ITA_carmelo_borg_pisani
+		traits = { operative_natural_orator operative_well_groomed }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { ITA ENG }
+	}
+}
+
+ITA_create_hugh_o_flaherty_operative = { #MONARCHIST (PAPAL)
+	create_operative_leader = {
+		name = "Hugh O'Flaherty" #"The Scarlet Pimpernel of the Vatican"
+		GFX = GFX_portrait_ITA_hugh_o_flaherty
+		traits = { operative_escape_artist operative_natural_orator operative_linguist }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { ITA IRE }
+	}
+}
+
+ITA_create_maurizio_giglio_operative = { #DEMOCRATIC
+	create_operative_leader = { #This guy worked for the allies
+		name = "Maurizio Giglio"
+		GFX = GFX_portrait_ITA_maurizio_giglio
+		traits = { operative_infiltrator operative_tough operative_double_agent }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { ITA }
+	}
+}
+
+ITA_create_emilio_faldella_operative = { #DEMOCRATIC
+	create_operative_leader = { #This guy worked for the allies
+		name = "Emilio Faldella"
+		GFX = GFX_portrait_ITA_emilio_faldella
+		traits = { operative_well_groomed operative_commando operative_double_agent }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { ITA SPR }
+	}
+}
+
+ITA_create_edgardo_sogno_operative = { #DEMOCRATIC (Liberal)
+	create_operative_leader = {
+		name = "Edgardo Sogno"
+		GFX = GFX_portrait_ITA_edgardo_sogno
+		traits = { operative_linguist operative_natural_orator }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { ITA }
+	}
+}
+
+ITA_create_laura_garroni_operative = { #COMMUNIST (Gappisti)
+	create_operative_leader = {
+		name = "Laura Garroni"
+		GFX = GFX_portrait_ITA_laura_garroni
+		traits = { operative_demolition_expert operative_commando }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { ITA }
+	}
+}
+
+ITA_create_stefanina_moro_operative = { #COMMUNIST
+	create_operative_leader = {
+		name = "Stefanina Moro"
+		GFX = GFX_portrait_ITA_stefanina_moro
+		traits = { operative_infiltrator operative_tough }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { ITA }
+	}
+}
+
+
+
+
+
+#########################
+########## BOP ##########
+#########################
+
+########## INCREASE/DECREASE WITH TOOLTIPS FOR OTHER SIDES ##########
+
+# COMMUNISM (Negative since Communist side is on the left)
+ITA_bop_absurdly_high_increase_communism_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = -1
+		tooltip_side = ITA_communism_side
+	}
+}
+
+ITA_bop_very_high_increase_communism_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = -0.25
+		tooltip_side = ITA_communism_side
+	}
+}
+
+ITA_bop_high_increase_communism_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = -0.2
+		tooltip_side = ITA_communism_side
+	}
+}
+
+ITA_bop_medium_increase_communism_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = -0.15
+		tooltip_side = ITA_communism_side
+	}
+}
+
+ITA_bop_low_increase_communism_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = -0.1
+		tooltip_side = ITA_communism_side
+	}
+}
+
+ITA_bop_very_low_increase_communism_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = -0.05
+		tooltip_side = ITA_communism_side
+	}
+}
+
+# DEMOCRATIC
+ITA_bop_absurdly_high_increase_democratic_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 1
+		tooltip_side = ITA_democratic_side
+	}
+}
+
+ITA_bop_very_high_increase_democratic_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.25
+		tooltip_side = ITA_democratic_side
+	}
+}
+
+ITA_bop_high_increase_democratic_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.2
+		tooltip_side = ITA_democratic_side
+	}
+}
+
+ITA_bop_medium_increase_democratic_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.15
+		tooltip_side = ITA_democratic_side
+	}
+}
+
+ITA_bop_low_increase_democratic_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.1
+		tooltip_side = ITA_democratic_side
+	}
+}
+
+ITA_bop_very_low_increase_democratic_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.05
+		tooltip_side = ITA_democratic_side
+	}
+}
+
+#MONARCHIST - VITTORIO
+ITA_bop_absurdly_high_increase_king_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 1
+		tooltip_side = ITA_king_side
+	}
+}
+
+ITA_bop_very_high_increase_king_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.25
+		tooltip_side = ITA_king_side
+	}
+}
+
+ITA_bop_high_increase_king_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.2
+		tooltip_side = ITA_king_side
+	}
+}
+
+ITA_bop_medium_increase_king_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.15
+		tooltip_side = ITA_king_side
+	}
+}
+
+ITA_bop_low_increase_king_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.1
+		tooltip_side = ITA_king_side
+	}
+}
+
+ITA_bop_very_low_increase_king_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.05
+		tooltip_side = ITA_king_side
+	}
+}
+
+# MONARCHIST - UMBERTO
+ITA_bop_absurdly_high_increase_king_umberto_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 1
+		tooltip_side = ITA_king_umberto_side
+	}
+}
+
+ITA_bop_very_high_increase_king_umberto_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.25
+		tooltip_side = ITA_king_umberto_side
+	}
+}
+
+ITA_bop_high_increase_king_umberto_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.2
+		tooltip_side = ITA_king_umberto_side
+	}
+}
+
+ITA_bop_medium_increase_king_umberto_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.15
+		tooltip_side = ITA_king_umberto_side
+	}
+}
+
+ITA_bop_low_increase_king_umberto_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.1
+		tooltip_side = ITA_king_umberto_side
+	}
+}
+
+ITA_bop_very_low_increase_king_umberto_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.05
+		tooltip_side = ITA_king_umberto_side
+	}
+}
+
+# POPE (NEGATIVE BECAUSE IT'S ON THE LEFT SIDE)
+ITA_bop_absurdly_high_increase_pope_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = -1
+		tooltip_side = ITA_pope_side
+	}
+}
+
+ITA_bop_very_high_increase_pope_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = -0.25
+		tooltip_side = ITA_pope_side
+	}
+}
+
+ITA_bop_high_increase_pope_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = -0.2
+		tooltip_side = ITA_pope_side
+	}
+}
+
+ITA_bop_medium_increase_pope_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = -0.15
+		tooltip_side = ITA_pope_side
+	}
+}
+
+ITA_bop_low_increase_pope_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = -0.1
+		tooltip_side = ITA_pope_side
+	}
+}
+
+ITA_bop_very_low_increase_pope_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = -0.05
+		tooltip_side = ITA_pope_side
+	}
+}
+
+#BALBO
+ITA_bop_absurdly_high_increase_balbo_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 1
+		tooltip_side = ITA_balbo_side
+	}
+}
+
+ITA_bop_very_high_increase_balbo_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.25
+		tooltip_side = ITA_balbo_side
+	}
+}
+
+ITA_bop_high_increase_balbo_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.2
+		tooltip_side = ITA_balbo_side
+	}
+}
+
+ITA_bop_medium_increase_balbo_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.15
+		tooltip_side = ITA_balbo_side
+	}
+}
+
+ITA_bop_low_increase_balbo_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.1
+		tooltip_side = ITA_balbo_side
+	}
+}
+
+ITA_bop_very_low_increase_balbo_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.05
+		tooltip_side = ITA_balbo_side
+	}
+}
+
+# GRANDI
+ITA_bop_absurdly_high_increase_grandi_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 1
+		tooltip_side = ITA_grandi_side
+	}
+}
+
+ITA_bop_very_high_increase_grandi_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.25
+		tooltip_side = ITA_grandi_side
+	}
+}
+
+ITA_bop_high_increase_grandi_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.2
+		tooltip_side = ITA_grandi_side
+	}
+}
+
+ITA_bop_medium_increase_grandi_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.15
+		tooltip_side = ITA_grandi_side
+	}
+}
+
+ITA_bop_low_increase_grandi_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.1
+		tooltip_side = ITA_grandi_side
+	}
+}
+
+ITA_bop_very_low_increase_grandi_side_effect = {
+	add_power_balance_value = {
+		id = ITA_power_balance
+		value = 0.05
+		tooltip_side = ITA_grandi_side
+	}
+}
+
+
+###########################################
+########## IDEOLOGY NAMES FOR NS ##########
+###########################################
+
+
+ITA_replace_stuff_based_on_ideology_effect = {
+}
+
+ITA_political_instability_update_effect = {
+	hidden_effect = {
+		if = {
+			limit = {
+				check_variable = { ITA_Bourgeoisie_political_power_gain = 2 compare = equals }
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Bourgeoisie_political_power_gain_8 }
+				}
+				add_ideas = ITA_Bourgeoisie_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_7
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_5
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_4
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_3
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_2
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_1
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Bourgeoisie_political_power_gain = 1 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_8
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_8
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Bourgeoisie_political_power_gain_7 }
+				}
+				add_ideas = ITA_Bourgeoisie_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_5
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_4
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_3
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_2
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_1
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Bourgeoisie_political_power_gain = -1 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_8
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_7
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_7
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Bourgeoisie_political_power_gain_5 }
+				}
+				add_ideas = ITA_Bourgeoisie_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_4
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_3
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_2
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_1
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Bourgeoisie_political_power_gain = -2 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_8
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_7
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_5
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_5
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Bourgeoisie_political_power_gain_4 }
+				}
+				add_ideas = ITA_Bourgeoisie_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_3
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_2
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_1
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Bourgeoisie_political_power_gain = -3 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_8
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_7
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_5
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_4
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_4
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Bourgeoisie_political_power_gain_3 }
+				}
+				add_ideas = ITA_Bourgeoisie_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_2
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_1
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Bourgeoisie_political_power_gain = -4 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_8
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_7
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_5
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_4
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_3
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_3
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Bourgeoisie_political_power_gain_2 }
+				}
+				add_ideas = ITA_Bourgeoisie_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_1
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Bourgeoisie_political_power_gain = -5 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_8
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_7
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_5
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_4
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_3
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_2
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_2
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Bourgeoisie_political_power_gain_1 }
+				}
+				add_ideas = ITA_Bourgeoisie_political_power_gain_1
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_8
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_7
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_5
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_4
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_3
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_2
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_political_power_gain_1
+				}
+				remove_ideas = ITA_Bourgeoisie_political_power_gain_1
+			}
+		}
+
+		if = {
+			limit = {
+				check_variable = { ITA_Proletariat_political_power_gain = 2 compare = equals }
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Proletariat_political_power_gain_8 }
+				}
+				add_ideas = ITA_Proletariat_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_7
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_5
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_4
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_3
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_2
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_1
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Proletariat_political_power_gain = 1 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_8
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_8
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Proletariat_political_power_gain_7 }
+				}
+				add_ideas = ITA_Proletariat_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_5
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_4
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_3
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_2
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_1
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Proletariat_political_power_gain = -1 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_8
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_7
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_7
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Proletariat_political_power_gain_5 }
+				}
+				add_ideas = ITA_Proletariat_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_4
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_3
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_2
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_1
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Proletariat_political_power_gain = -2 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_8
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_7
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_5
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_5
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Proletariat_political_power_gain_4 }
+				}
+				add_ideas = ITA_Proletariat_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_3
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_2
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_1
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Proletariat_political_power_gain = -3 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_8
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_7
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_5
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_4
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_4
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Proletariat_political_power_gain_3 }
+				}
+				add_ideas = ITA_Proletariat_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_2
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_1
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Proletariat_political_power_gain = -4 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_8
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_7
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_5
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_4
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_3
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_3
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Proletariat_political_power_gain_2 }
+				}
+				add_ideas = ITA_Proletariat_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_1
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Proletariat_political_power_gain = -5 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_8
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_7
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_5
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_4
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_3
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_2
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_2
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Proletariat_political_power_gain_1 }
+				}
+				add_ideas = ITA_Proletariat_political_power_gain_1
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_8
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_7
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_5
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_4
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_3
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_2
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_political_power_gain_1
+				}
+				remove_ideas = ITA_Proletariat_political_power_gain_1
+			}
+		}
+
+		if = {
+			limit = {
+				check_variable = { ITA_Vatican_political_power_gain = 2 compare = equals }
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Vatican_political_power_gain_8 }
+				}
+				add_ideas = ITA_Vatican_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_7
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_5
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_4
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_3
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_2
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_1
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Vatican_political_power_gain = 1 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_8
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_8
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Vatican_political_power_gain_7 }
+				}
+				add_ideas = ITA_Vatican_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_5
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_4
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_3
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_2
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_1
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Vatican_political_power_gain = -1 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_8
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_7
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_7
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Vatican_political_power_gain_5 }
+				}
+				add_ideas = ITA_Vatican_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_4
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_3
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_2
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_1
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Vatican_political_power_gain = -2 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_8
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_7
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_5
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_5
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Vatican_political_power_gain_4 }
+				}
+				add_ideas = ITA_Vatican_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_3
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_2
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_1
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Vatican_political_power_gain = -3 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_8
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_7
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_5
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_4
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_4
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Vatican_political_power_gain_3 }
+				}
+				add_ideas = ITA_Vatican_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_2
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_1
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Vatican_political_power_gain = -4 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_8
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_7
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_5
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_4
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_3
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_3
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Vatican_political_power_gain_2 }
+				}
+				add_ideas = ITA_Vatican_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_1
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Vatican_political_power_gain = -5 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_8
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_7
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_5
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_4
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_3
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_2
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_2
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Vatican_political_power_gain_1 }
+				}
+				add_ideas = ITA_Vatican_political_power_gain_1
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_8
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_7
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_5
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_4
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_3
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_2
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_political_power_gain_1
+				}
+				remove_ideas = ITA_Vatican_political_power_gain_1
+			}
+		}
+
+		if = {
+			limit = {
+				check_variable = { ITA_Communists_political_power_gain = 2 compare = equals }
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Communists_political_power_gain_8 }
+				}
+				add_ideas = ITA_Communists_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_7
+				}
+				remove_ideas = ITA_Communists_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_5
+				}
+				remove_ideas = ITA_Communists_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_4
+				}
+				remove_ideas = ITA_Communists_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_3
+				}
+				remove_ideas = ITA_Communists_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_2
+				}
+				remove_ideas = ITA_Communists_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_1
+				}
+				remove_ideas = ITA_Communists_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Communists_political_power_gain = 1 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_8
+				}
+				remove_ideas = ITA_Communists_political_power_gain_8
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Communists_political_power_gain_7 }
+				}
+				add_ideas = ITA_Communists_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_5
+				}
+				remove_ideas = ITA_Communists_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_4
+				}
+				remove_ideas = ITA_Communists_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_3
+				}
+				remove_ideas = ITA_Communists_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_2
+				}
+				remove_ideas = ITA_Communists_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_1
+				}
+				remove_ideas = ITA_Communists_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Communists_political_power_gain = -1 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_8
+				}
+				remove_ideas = ITA_Communists_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_7
+				}
+				remove_ideas = ITA_Communists_political_power_gain_7
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Communists_political_power_gain_5 }
+				}
+				add_ideas = ITA_Communists_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_4
+				}
+				remove_ideas = ITA_Communists_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_3
+				}
+				remove_ideas = ITA_Communists_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_2
+				}
+				remove_ideas = ITA_Communists_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_1
+				}
+				remove_ideas = ITA_Communists_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Communists_political_power_gain = -2 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_8
+				}
+				remove_ideas = ITA_Communists_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_7
+				}
+				remove_ideas = ITA_Communists_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_5
+				}
+				remove_ideas = ITA_Communists_political_power_gain_5
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Communists_political_power_gain_4 }
+				}
+				add_ideas = ITA_Communists_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_3
+				}
+				remove_ideas = ITA_Communists_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_2
+				}
+				remove_ideas = ITA_Communists_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_1
+				}
+				remove_ideas = ITA_Communists_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Communists_political_power_gain = -3 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_8
+				}
+				remove_ideas = ITA_Communists_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_7
+				}
+				remove_ideas = ITA_Communists_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_5
+				}
+				remove_ideas = ITA_Communists_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_4
+				}
+				remove_ideas = ITA_Communists_political_power_gain_4
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Communists_political_power_gain_3 }
+				}
+				add_ideas = ITA_Communists_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_2
+				}
+				remove_ideas = ITA_Communists_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_1
+				}
+				remove_ideas = ITA_Communists_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Communists_political_power_gain = -4 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_8
+				}
+				remove_ideas = ITA_Communists_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_7
+				}
+				remove_ideas = ITA_Communists_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_5
+				}
+				remove_ideas = ITA_Communists_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_4
+				}
+				remove_ideas = ITA_Communists_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_3
+				}
+				remove_ideas = ITA_Communists_political_power_gain_3
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Communists_political_power_gain_2 }
+				}
+				add_ideas = ITA_Communists_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_1
+				}
+				remove_ideas = ITA_Communists_political_power_gain_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Communists_political_power_gain = -5 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_8
+				}
+				remove_ideas = ITA_Communists_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_7
+				}
+				remove_ideas = ITA_Communists_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_5
+				}
+				remove_ideas = ITA_Communists_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_4
+				}
+				remove_ideas = ITA_Communists_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_3
+				}
+				remove_ideas = ITA_Communists_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_2
+				}
+				remove_ideas = ITA_Communists_political_power_gain_2
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Communists_political_power_gain_1 }
+				}
+				add_ideas = ITA_Communists_political_power_gain_1
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_8
+				}
+				remove_ideas = ITA_Communists_political_power_gain_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_7
+				}
+				remove_ideas = ITA_Communists_political_power_gain_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_5
+				}
+				remove_ideas = ITA_Communists_political_power_gain_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_4
+				}
+				remove_ideas = ITA_Communists_political_power_gain_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_3
+				}
+				remove_ideas = ITA_Communists_political_power_gain_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_2
+				}
+				remove_ideas = ITA_Communists_political_power_gain_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_political_power_gain_1
+				}
+				remove_ideas = ITA_Communists_political_power_gain_1
+			}
+		}
+
+		if = {
+			limit = {
+				check_variable = { ITA_Bourgeoisie_stability = 2 compare = equals }
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Bourgeoisie_stability_8 }
+				}
+				add_ideas = ITA_Bourgeoisie_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_7
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_5
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_4
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_3
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_2
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_1
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Bourgeoisie_stability = 1 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_8
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_8
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Bourgeoisie_stability_7 }
+				}
+				add_ideas = ITA_Bourgeoisie_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_5
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_4
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_3
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_2
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_1
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Bourgeoisie_stability = -1 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_8
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_7
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_7
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Bourgeoisie_stability_5 }
+				}
+				add_ideas = ITA_Bourgeoisie_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_4
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_3
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_2
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_1
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Bourgeoisie_stability = -2 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_8
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_7
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_5
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_5
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Bourgeoisie_stability_4 }
+				}
+				add_ideas = ITA_Bourgeoisie_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_3
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_2
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_1
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Bourgeoisie_stability = -3 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_8
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_7
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_5
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_4
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_4
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Bourgeoisie_stability_3 }
+				}
+				add_ideas = ITA_Bourgeoisie_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_2
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_1
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Bourgeoisie_stability = -4 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_8
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_7
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_5
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_4
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_3
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_3
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Bourgeoisie_stability_2 }
+				}
+				add_ideas = ITA_Bourgeoisie_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_1
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Bourgeoisie_stability = -5 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_8
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_7
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_5
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_4
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_3
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_2
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_2
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Bourgeoisie_stability_1 }
+				}
+				add_ideas = ITA_Bourgeoisie_stability_1
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_8
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_7
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_5
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_4
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_3
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_2
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Bourgeoisie_stability_1
+				}
+				remove_ideas = ITA_Bourgeoisie_stability_1
+			}
+		}
+
+		if = {
+			limit = {
+				check_variable = { ITA_Proletariat_stability = 2 compare = equals }
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Proletariat_stability_8 }
+				}
+				add_ideas = ITA_Proletariat_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_7
+				}
+				remove_ideas = ITA_Proletariat_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_5
+				}
+				remove_ideas = ITA_Proletariat_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_4
+				}
+				remove_ideas = ITA_Proletariat_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_3
+				}
+				remove_ideas = ITA_Proletariat_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_2
+				}
+				remove_ideas = ITA_Proletariat_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_1
+				}
+				remove_ideas = ITA_Proletariat_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Proletariat_stability = 1 compare = equals }
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Proletariat_stability_8 }
+				}
+				remove_ideas = ITA_Proletariat_stability_8
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Proletariat_stability_7 }
+				}
+				add_ideas = ITA_Proletariat_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_5
+				}
+				remove_ideas = ITA_Proletariat_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_4
+				}
+				remove_ideas = ITA_Proletariat_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_3
+				}
+				remove_ideas = ITA_Proletariat_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_2
+				}
+				remove_ideas = ITA_Proletariat_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_1
+				}
+				remove_ideas = ITA_Proletariat_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Proletariat_stability = -1 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_8
+				}
+				remove_ideas = ITA_Proletariat_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_7
+				}
+				remove_ideas = ITA_Proletariat_stability_7
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Proletariat_stability_5 }
+				}
+				add_ideas = ITA_Proletariat_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_4
+				}
+				remove_ideas = ITA_Proletariat_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_3
+				}
+				remove_ideas = ITA_Proletariat_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_2
+				}
+				remove_ideas = ITA_Proletariat_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_1
+				}
+				remove_ideas = ITA_Proletariat_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Proletariat_stability = -2 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_8
+				}
+				remove_ideas = ITA_Proletariat_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_7
+				}
+				remove_ideas = ITA_Proletariat_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_5
+				}
+				remove_ideas = ITA_Proletariat_stability_5
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Proletariat_stability_4 }
+				}
+				add_ideas = ITA_Proletariat_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_3
+				}
+				remove_ideas = ITA_Proletariat_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_2
+				}
+				remove_ideas = ITA_Proletariat_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_1
+				}
+				remove_ideas = ITA_Proletariat_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Proletariat_stability = -3 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_8
+				}
+				remove_ideas = ITA_Proletariat_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_7
+				}
+				remove_ideas = ITA_Proletariat_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_5
+				}
+				remove_ideas = ITA_Proletariat_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_4
+				}
+				remove_ideas = ITA_Proletariat_stability_4
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Proletariat_stability_3 }
+				}
+				add_ideas = ITA_Proletariat_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_2
+				}
+				remove_ideas = ITA_Proletariat_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_1
+				}
+				remove_ideas = ITA_Proletariat_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Proletariat_stability = -4 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_8
+				}
+				remove_ideas = ITA_Proletariat_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_7
+				}
+				remove_ideas = ITA_Proletariat_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_5
+				}
+				remove_ideas = ITA_Proletariat_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_4
+				}
+				remove_ideas = ITA_Proletariat_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_3
+				}
+				remove_ideas = ITA_Proletariat_stability_3
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Proletariat_stability_2 }
+				}
+				add_ideas = ITA_Proletariat_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_1
+				}
+				remove_ideas = ITA_Proletariat_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Proletariat_stability = -5 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_8
+				}
+				remove_ideas = ITA_Proletariat_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_7
+				}
+				remove_ideas = ITA_Proletariat_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_5
+				}
+				remove_ideas = ITA_Proletariat_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_4
+				}
+				remove_ideas = ITA_Proletariat_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_3
+				}
+				remove_ideas = ITA_Proletariat_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_2
+				}
+				remove_ideas = ITA_Proletariat_stability_2
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Proletariat_stability_1 }
+				}
+				add_ideas = ITA_Proletariat_stability_1
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_8
+				}
+				remove_ideas = ITA_Proletariat_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_7
+				}
+				remove_ideas = ITA_Proletariat_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_5
+				}
+				remove_ideas = ITA_Proletariat_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_4
+				}
+				remove_ideas = ITA_Proletariat_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_3
+				}
+				remove_ideas = ITA_Proletariat_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_2
+				}
+				remove_ideas = ITA_Proletariat_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Proletariat_stability_1
+				}
+				remove_ideas = ITA_Proletariat_stability_1
+			}
+		}
+		if = {
+			limit = {
+				check_variable = { ITA_Vatican_stability = 2 compare = equals }
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Vatican_stability_8 }
+				}
+				add_ideas = ITA_Vatican_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_7
+				}
+				remove_ideas = ITA_Vatican_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_5
+				}
+				remove_ideas = ITA_Vatican_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_4
+				}
+				remove_ideas = ITA_Vatican_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_3
+				}
+				remove_ideas = ITA_Vatican_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_2
+				}
+				remove_ideas = ITA_Vatican_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_1
+				}
+				remove_ideas = ITA_Vatican_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Vatican_stability = 1 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_8
+				}
+				remove_ideas = ITA_Vatican_stability_8
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Vatican_stability_7 }
+				}
+				add_ideas = ITA_Vatican_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_5
+				}
+				remove_ideas = ITA_Vatican_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_4
+				}
+				remove_ideas = ITA_Vatican_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_3
+				}
+				remove_ideas = ITA_Vatican_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_2
+				}
+				remove_ideas = ITA_Vatican_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_1
+				}
+				remove_ideas = ITA_Vatican_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Vatican_stability = -1 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_8
+				}
+				remove_ideas = ITA_Vatican_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_7
+				}
+				remove_ideas = ITA_Vatican_stability_7
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Vatican_stability_5 }
+				}
+				add_ideas = ITA_Vatican_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_4
+				}
+				remove_ideas = ITA_Vatican_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_3
+				}
+				remove_ideas = ITA_Vatican_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_2
+				}
+				remove_ideas = ITA_Vatican_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_1
+				}
+				remove_ideas = ITA_Vatican_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Vatican_stability = -2 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_8
+				}
+				remove_ideas = ITA_Vatican_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_7
+				}
+				remove_ideas = ITA_Vatican_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_5
+				}
+				remove_ideas = ITA_Vatican_stability_5
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Vatican_stability_4 }
+				}
+				add_ideas = ITA_Vatican_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_3
+				}
+				remove_ideas = ITA_Vatican_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_2
+				}
+				remove_ideas = ITA_Vatican_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_1
+				}
+				remove_ideas = ITA_Vatican_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Vatican_stability = -3 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_8
+				}
+				remove_ideas = ITA_Vatican_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_7
+				}
+				remove_ideas = ITA_Vatican_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_5
+				}
+				remove_ideas = ITA_Vatican_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_4
+				}
+				remove_ideas = ITA_Vatican_stability_4
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Vatican_stability_3 }
+				}
+				add_ideas = ITA_Vatican_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_2
+				}
+				remove_ideas = ITA_Vatican_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_1
+				}
+				remove_ideas = ITA_Vatican_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Vatican_stability = -4 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_8
+				}
+				remove_ideas = ITA_Vatican_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_7
+				}
+				remove_ideas = ITA_Vatican_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_5
+				}
+				remove_ideas = ITA_Vatican_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_4
+				}
+				remove_ideas = ITA_Vatican_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_3
+				}
+				remove_ideas = ITA_Vatican_stability_3
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Vatican_stability_2 }
+				}
+				add_ideas = ITA_Vatican_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_1
+				}
+				remove_ideas = ITA_Vatican_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Vatican_stability = -5 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_8
+				}
+				remove_ideas = ITA_Vatican_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_7
+				}
+				remove_ideas = ITA_Vatican_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_5
+				}
+				remove_ideas = ITA_Vatican_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_4
+				}
+				remove_ideas = ITA_Vatican_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_3
+				}
+				remove_ideas = ITA_Vatican_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_2
+				}
+				remove_ideas = ITA_Vatican_stability_2
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Vatican_stability_1 }
+				}
+				add_ideas = ITA_Vatican_stability_1
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_8
+				}
+				remove_ideas = ITA_Vatican_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_7
+				}
+				remove_ideas = ITA_Vatican_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_5
+				}
+				remove_ideas = ITA_Vatican_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_4
+				}
+				remove_ideas = ITA_Vatican_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_3
+				}
+				remove_ideas = ITA_Vatican_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_2
+				}
+				remove_ideas = ITA_Vatican_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Vatican_stability_1
+				}
+				remove_ideas = ITA_Vatican_stability_1
+			}
+		}
+		if = {
+			limit = {
+				check_variable = { ITA_Communists_stability = 2 compare = equals }
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Communists_stability_8 }
+				}
+				add_ideas = ITA_Communists_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_7
+				}
+				remove_ideas = ITA_Communists_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_5
+				}
+				remove_ideas = ITA_Communists_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_4
+				}
+				remove_ideas = ITA_Communists_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_3
+				}
+				remove_ideas = ITA_Communists_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_2
+				}
+				remove_ideas = ITA_Communists_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_1
+				}
+				remove_ideas = ITA_Communists_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Communists_stability = 1 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_8
+				}
+				remove_ideas = ITA_Communists_stability_8
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Communists_stability_7 }
+				}
+				add_ideas = ITA_Communists_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_5
+				}
+				remove_ideas = ITA_Communists_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_4
+				}
+				remove_ideas = ITA_Communists_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_3
+				}
+				remove_ideas = ITA_Communists_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_2
+				}
+				remove_ideas = ITA_Communists_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_1
+				}
+				remove_ideas = ITA_Communists_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Communists_stability = -1 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_8
+				}
+				remove_ideas = ITA_Communists_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_7
+				}
+				remove_ideas = ITA_Communists_stability_7
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Communists_stability_5 }
+				}
+				add_ideas = ITA_Communists_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_4
+				}
+				remove_ideas = ITA_Communists_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_3
+				}
+				remove_ideas = ITA_Communists_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_2
+				}
+				remove_ideas = ITA_Communists_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_1
+				}
+				remove_ideas = ITA_Communists_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Communists_stability = -2 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_8
+				}
+				remove_ideas = ITA_Communists_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_7
+				}
+				remove_ideas = ITA_Communists_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_5
+				}
+				remove_ideas = ITA_Communists_stability_5
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Communists_stability_4 }
+				}
+				add_ideas = ITA_Communists_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_3
+				}
+				remove_ideas = ITA_Communists_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_2
+				}
+				remove_ideas = ITA_Communists_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_1
+				}
+				remove_ideas = ITA_Communists_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Communists_stability = -3 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_8
+				}
+				remove_ideas = ITA_Communists_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_7
+				}
+				remove_ideas = ITA_Communists_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_5
+				}
+				remove_ideas = ITA_Communists_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_4
+				}
+				remove_ideas = ITA_Communists_stability_4
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Communists_stability_3 }
+				}
+				add_ideas = ITA_Communists_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_2
+				}
+				remove_ideas = ITA_Communists_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_1
+				}
+				remove_ideas = ITA_Communists_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Communists_stability = -4 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_8
+				}
+				remove_ideas = ITA_Communists_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_7
+				}
+				remove_ideas = ITA_Communists_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_5
+				}
+				remove_ideas = ITA_Communists_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_4
+				}
+				remove_ideas = ITA_Communists_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_3
+				}
+				remove_ideas = ITA_Communists_stability_3
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Communists_stability_2 }
+				}
+				add_ideas = ITA_Communists_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_1
+				}
+				remove_ideas = ITA_Communists_stability_1
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { ITA_Communists_stability = -5 compare = equals }
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_8
+				}
+				remove_ideas = ITA_Communists_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_7
+				}
+				remove_ideas = ITA_Communists_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_5
+				}
+				remove_ideas = ITA_Communists_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_4
+				}
+				remove_ideas = ITA_Communists_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_3
+				}
+				remove_ideas = ITA_Communists_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_2
+				}
+				remove_ideas = ITA_Communists_stability_2
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = ITA_Communists_stability_1 }
+				}
+				add_ideas = ITA_Communists_stability_1
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_8
+				}
+				remove_ideas = ITA_Communists_stability_8
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_7
+				}
+				remove_ideas = ITA_Communists_stability_7
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_5
+				}
+				remove_ideas = ITA_Communists_stability_5
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_4
+				}
+				remove_ideas = ITA_Communists_stability_4
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_3
+				}
+				remove_ideas = ITA_Communists_stability_3
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_2
+				}
+				remove_ideas = ITA_Communists_stability_2
+			}
+			if = {
+				limit = {
+					has_idea = ITA_Communists_stability_1
+				}
+				remove_ideas = ITA_Communists_stability_1
+			}
+		}
+	}
+}

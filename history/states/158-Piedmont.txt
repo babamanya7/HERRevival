@@ -1,0 +1,43 @@
+
+state={
+	id=158
+	name="STATE_158"
+	manpower = 4765476
+	
+	state_category = metropolis
+	resources={
+		iron = 34
+		chromium = 56
+		tungsten = 18
+		coal = 9
+	}
+
+	history={
+		owner = ITA
+		victory_points = {
+			14878 10 
+		}
+		victory_points = {
+			9388 1
+		}
+		victory_points = {
+			13320 5 
+		}
+		buildings = {
+			infrastructure = 7
+			arms_factory = 8
+			industrial_complex = 4
+			steel_refinery = 2
+			dockyard = 4
+			air_base = 14
+			14878 = {
+				naval_base = 6
+			}
+		}
+		add_core_of = ITA
+	}
+
+	provinces={
+		4078 4116 4641 5053 5291 6241 6449 6573 6611 6648 9388 9456 9471 9509 9976 11287 13320 14773 14807 14815 14826 14847 14855 14867 14876 14877 14878 14918 14919 14925 14926 14927 
+	}
+}

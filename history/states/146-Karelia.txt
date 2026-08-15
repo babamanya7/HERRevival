@@ -1,0 +1,49 @@
+state={
+	id=146
+	name="STATE_146"
+
+	state_category = town
+
+	history={
+		owner = FIN
+		add_core_of = FIN
+		victory_points = {
+			9206 5 
+		}
+		victory_points = {
+			13290 1 
+		}
+		buildings = {
+			infrastructure = 2
+			industrial_complex = 4
+
+			#Mannerheim Line
+			9100 = {
+				bunker = 3
+			}
+			9105 = {
+				bunker = 3
+			}
+			9206 = {
+				coastal_bunker = 2
+				bunker = 3
+			}
+			13290 = {
+				naval_base = 1
+			}
+			13820 = {
+				bunker = 3
+			}
+			13821 = {
+				bunker = 3
+			}
+		}
+	}
+
+	provinces={
+		3050 3060 3133 3187 6052 6150 6153 9100 9105 9150 9176 9206 11046 11156 11162 13290 13822 13820 13821 13819
+		12379 7550 8253 8216 8195 11001 12942 11021 5219 8215 10992 12928 2215 
+	}
+	manpower=418635
+	buildings_max_level_factor=1.000
+}

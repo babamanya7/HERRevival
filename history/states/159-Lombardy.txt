@@ -1,0 +1,35 @@
+
+state={
+	id=159
+	name="STATE_159"
+	manpower = 5597704
+	state_category = megalopolis
+	
+	resources = {
+		coal = 27
+	}
+
+	history={
+		owner = ITA
+		victory_points = {
+			13360 25 
+		}
+		victory_points = {
+			6600 1
+		}
+		victory_points = {
+			6298 3
+		}
+		buildings = {
+			infrastructure = 8
+			arms_factory = 8
+			industrial_complex = 10
+			air_base = 12
+		}
+		add_core_of = ITA
+	}
+
+	provinces={
+		3629 4109 4178 6263 6298 6440 6488 6600 6634 6940 7206 9862 10013 11402 11542 11754 11969 13360 
+	}
+}

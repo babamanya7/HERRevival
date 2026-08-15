@@ -1,0 +1,34 @@
+
+state={
+	id=59
+	name="STATE_59"
+	resources={
+		oil = 2
+		coal = 27
+		iron = 9
+	}
+
+	history={
+		owner = GER
+		victory_points = {
+			13260 5 
+		}
+		victory_points = {
+			13519 10 
+		}
+		buildings = {
+			infrastructure = 7
+			arms_factory = 4
+			industrial_complex = 4
+			dockyard = 5
+		}
+		add_core_of = GER
+	}
+
+	provinces={
+		629 711 902 2064 3680 3692 3908 3943 6678 6680 6843 7040 7091 9510 9557 9644 9751 9992 10026 10082 10749 11407 11516 11556 12888 13260 13519 
+	}
+	manpower=2038286
+	buildings_max_level_factor=1.000
+	state_category=large_city
+}

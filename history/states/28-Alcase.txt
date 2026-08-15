@@ -1,0 +1,65 @@
+
+state={
+	id=28
+	name="STATE_28" # Alsace-Lorraine
+	manpower = 1915600
+	
+	state_category = large_city
+	resources={
+		iron = 344 #removed 100
+		coal = 70
+	}
+
+	history={
+		owner = FRA
+		victory_points = { 6982 5 }
+		victory_points = { 13347 5 }
+		victory_points = { 13259 10 }
+		buildings = {
+			infrastructure = 7
+			industrial_complex = 5
+			steel_refinery = 5
+			13259 = {
+				bunker = 3
+			}
+			3740 = {
+				bunker = 5
+			}
+			9495 = {
+				bunker = 10
+			}
+			3639 = {
+				bunker = 10
+			}
+			965 = {
+				bunker = 10
+			}
+			11790 = {
+				bunker = 10
+			}
+			12771 = {
+				bunker = 10
+			}
+			13347 = {
+				bunker = 10
+			}
+			9964 = {
+				bunker = 10
+			}
+			6982 = {
+				bunker = 10
+			}
+			3713 = {
+				bunker = 10
+			}
+			anti_air_building = 1
+			air_base = 10
+
+		}
+		add_core_of = FRA
+	}
+
+	provinces={
+		965 3639 3709 3713 3740 3758 6572 6647 6982 9495 9692 9964 11790 12771 13259 13347 
+	}
+}

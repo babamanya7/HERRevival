@@ -1,0 +1,787 @@
+upgrades = {
+
+	tank_nsb_engine_upgrade = {
+		abbreviation = "eng"
+		max_level = 20 #each level represents ~50HP
+		cost = land
+		
+		linear_cost = {
+			cost_by_level = 1
+			cost_by_level_for_licensed_equipment = 3
+		}
+		
+		level_requirements = {
+			1 = {
+				has_tech = engine_tech_1
+			}
+			6 = {
+				has_tech = engine_tech_2
+			}
+			11 = {
+				has_tech = engine_tech_3
+			}
+			16 = { 
+				has_tech = engine_tech_4
+			}
+		}
+		
+		resource_cost_thresholds = {
+		}
+		
+		maximum_speed = 0.08
+		reliability = -0.004
+		add_stats = {
+			fuel_consumption = 0.05
+			build_cost_ic = 0.3
+		}
+		multiply_stats = {
+			breakthrough = 0.02
+		}
+	}
+
+	tank_nsb_armor_upgrade = {
+		abbreviation = "arm"
+		max_level = 200
+		cost = land
+		
+		linear_cost = {
+			cost_by_level = 0.2
+			cost_by_level_for_licensed_equipment = 0.4
+		}
+		
+		level_requirements = {
+			21 = {
+				has_tech = armor_tech_1
+			}
+            41 = {
+				has_tech = armor_tech_2
+			}
+			81 = {
+				has_tech = armor_tech_3
+			}
+			121 = {
+				has_tech = armor_tech_4
+			}
+		}
+		resource_cost_thresholds = {
+			6 = {
+				steel = 1
+			}
+			11 = {
+				steel = 2
+			}
+			16 = {
+				steel = 3
+			}
+			21 = {
+				steel = 4
+			}
+			26 = {
+				steel = 5
+			}
+			31 = {
+				steel = 6
+			}
+			36 = {
+				steel = 7
+			}
+			41 = {
+				steel = 8
+			}
+			46 = {
+				steel = 9
+			}
+			51 = {
+				steel = 10
+			}
+			
+			56 = {
+				steel = 11
+			}
+			61 = {
+				steel = 12
+			}
+			66 = {
+				steel = 13
+			}
+			71 = {
+				steel = 14
+			}
+			76 = {
+				steel = 15
+			}
+			81 = {
+				steel = 16
+			}
+			86 = {
+				steel = 17
+			}
+			91 = {
+				steel = 18
+			}
+			96 = {
+				steel = 19
+			}
+			101 = {
+				steel = 20
+			}
+			
+			106 = {
+				steel = 21
+			}
+			111 = {
+				steel = 22
+			}
+			116 = {
+				steel = 23
+			}
+			121 = {
+				steel = 24
+			}
+			126 = {
+				steel = 25
+			}
+			131 = {
+				steel = 26
+			}
+			136 = {
+				steel = 27
+			}
+			141 = {
+				steel = 28
+			}
+			146 = {
+				steel = 29
+			}
+			151 = {
+				steel = 30
+			}
+			
+			156 = {
+				steel = 31
+			}
+			161 = {
+				steel = 32
+			}
+			166 = {
+				steel = 33
+			}
+			171 = {
+				steel = 34
+			}
+			176 = {
+				steel = 35
+			}
+			181 = {
+				steel = 36
+			}
+			186 = {
+				steel = 37
+			}
+			191 = {
+				steel = 38
+			}
+			196 = {
+				steel = 39
+			}
+		}
+		
+		maximum_speed = -0.0125
+		reliability = -0.0015
+		
+		add_stats = {
+            armor_value = 1
+			build_cost_ic = 0.05
+		}
+		multiply_stats = {
+			soft_attack = 0.002
+			hard_attack = 0.002
+			build_cost_ic = 0.001
+		}
+	}
+	
+	tank_medium_nsb_armor_upgrade = {
+		abbreviation = "arm"
+		max_level = 200
+		cost = land
+		
+		linear_cost = {
+			cost_by_level = 0.2
+			cost_by_level_for_licensed_equipment = 0.4
+		}
+		
+		level_requirements = {
+			21 = {
+				has_tech = armor_tech_1
+			}
+            41 = {
+				has_tech = armor_tech_2
+			}
+			81 = {
+				has_tech = armor_tech_3
+			}
+			121 = {
+				has_tech = armor_tech_4
+			}
+		}
+		resource_cost_thresholds = {
+			6 = {
+				steel = 1
+			}
+			11 = {
+				steel = 2
+			}
+			16 = {
+				steel = 3
+			}
+			21 = {
+				steel = 4
+			}
+			26 = {
+				steel = 5
+			}
+			31 = {
+				steel = 6
+			}
+			36 = {
+				steel = 7
+			}
+			41 = {
+				steel = 8
+			}
+			46 = {
+				steel = 9
+			}
+			51 = {
+				steel = 10
+			}
+			
+			56 = {
+				steel = 11
+			}
+			61 = {
+				steel = 12
+			}
+			66 = {
+				steel = 13
+			}
+			71 = {
+				steel = 14
+			}
+			76 = {
+				steel = 15
+			}
+			81 = {
+				steel = 16
+			}
+			86 = {
+				steel = 17
+			}
+			91 = {
+				steel = 18
+			}
+			96 = {
+				steel = 19
+			}
+			101 = {
+				steel = 20
+			}
+			
+			106 = {
+				steel = 21
+			}
+			111 = {
+				steel = 22
+			}
+			116 = {
+				steel = 23
+			}
+			121 = {
+				steel = 24
+			}
+			126 = {
+				steel = 25
+			}
+			131 = {
+				steel = 26
+			}
+			136 = {
+				steel = 27
+			}
+			141 = {
+				steel = 28
+			}
+			146 = {
+				steel = 29
+			}
+			151 = {
+				steel = 30
+			}
+			
+			156 = {
+				steel = 31
+			}
+			161 = {
+				steel = 32
+			}
+			166 = {
+				steel = 33
+			}
+			171 = {
+				steel = 34
+			}
+			176 = {
+				steel = 35
+			}
+			181 = {
+				steel = 36
+			}
+			186 = {
+				steel = 37
+			}
+			191 = {
+				steel = 38
+			}
+			196 = {
+				steel = 39
+			}
+		}
+		
+		maximum_speed = -0.0125
+		reliability = -0.0015
+		
+		add_stats = {
+            armor_value = 0.8
+			build_cost_ic = 0.05
+		}
+		multiply_stats = {
+			soft_attack = 0.002
+			hard_attack = 0.002
+			build_cost_ic = 0.001
+		}
+	}
+	
+	tank_light_nsb_armor_upgrade = {
+		abbreviation = "arm"
+		max_level = 200
+		cost = land
+		
+		linear_cost = {
+			cost_by_level = 0.2
+			cost_by_level_for_licensed_equipment = 0.4
+		}
+		
+		level_requirements = {
+			21 = {
+				has_tech = armor_tech_1
+			}
+            41 = {
+				has_tech = armor_tech_2
+			}
+			81 = {
+				has_tech = armor_tech_3
+			}
+			121 = {
+				has_tech = armor_tech_4
+			}
+		}
+		resource_cost_thresholds = {
+			6 = {
+				steel = 1
+			}
+			11 = {
+				steel = 2
+			}
+			16 = {
+				steel = 3
+			}
+			21 = {
+				steel = 4
+			}
+			26 = {
+				steel = 5
+			}
+			31 = {
+				steel = 6
+			}
+			36 = {
+				steel = 7
+			}
+			41 = {
+				steel = 8
+			}
+			46 = {
+				steel = 9
+			}
+			51 = {
+				steel = 10
+			}
+			
+			56 = {
+				steel = 11
+			}
+			61 = {
+				steel = 12
+			}
+			66 = {
+				steel = 13
+			}
+			71 = {
+				steel = 14
+			}
+			76 = {
+				steel = 15
+			}
+			81 = {
+				steel = 16
+			}
+			86 = {
+				steel = 17
+			}
+			91 = {
+				steel = 18
+			}
+			96 = {
+				steel = 19
+			}
+			101 = {
+				steel = 20
+			}
+			
+			106 = {
+				steel = 21
+			}
+			111 = {
+				steel = 22
+			}
+			116 = {
+				steel = 23
+			}
+			121 = {
+				steel = 24
+			}
+			126 = {
+				steel = 25
+			}
+			131 = {
+				steel = 26
+			}
+			136 = {
+				steel = 27
+			}
+			141 = {
+				steel = 28
+			}
+			146 = {
+				steel = 29
+			}
+			151 = {
+				steel = 30
+			}
+			
+			156 = {
+				steel = 31
+			}
+			161 = {
+				steel = 32
+			}
+			166 = {
+				steel = 33
+			}
+			171 = {
+				steel = 34
+			}
+			176 = {
+				steel = 35
+			}
+			181 = {
+				steel = 36
+			}
+			186 = {
+				steel = 37
+			}
+			191 = {
+				steel = 38
+			}
+			196 = {
+				steel = 39
+			}
+		}
+		
+		maximum_speed = -0.0125
+		reliability = -0.0015
+		
+		add_stats = {
+            armor_value = 0.5
+			build_cost_ic = 0.05
+		}
+		multiply_stats = {
+			soft_attack = 0.002
+			hard_attack = 0.002
+			build_cost_ic = 0.001
+		}
+	}
+	
+	tank_nsb_tung_alloying_upgrade = {
+		abbreviation = "tal"
+		max_level = 20
+		cost = land
+		
+		linear_cost = {
+			cost_by_level = 0.5
+			cost_by_level_for_licensed_equipment = 1.5
+		}
+		
+		level_requirements = {
+			1 = {
+				has_tech = alloying_tech_1
+			}
+			6 = {
+				has_tech = alloying_tech_2
+			}
+			11 = {
+				has_tech = alloying_tech_3
+			}
+			16 = {
+				has_tech = alloying_tech_4
+			}
+		}
+		
+		resource_cost_thresholds = {
+            1 = {
+				tungsten = 1
+			}
+			2 = {
+				tungsten = 2
+			}
+			3 = {
+				tungsten = 3
+			}
+			4 = {
+				tungsten = 4
+			}
+			5 = {
+				tungsten = 5
+			}
+			6 = {
+				tungsten = 6
+			}
+			7 = {
+				tungsten = 7
+			}
+			8 = {
+				tungsten = 8
+			}
+			9 = {
+				tungsten = 9
+			}
+			10 = {
+				tungsten = 10
+			}
+			11 = {
+				tungsten = 11
+			}
+			12 = {
+				tungsten = 12
+			}
+			13 = {
+				tungsten = 13
+			}
+			14 = {
+				tungsten = 14
+			}
+			15 = {
+				tungsten = 15
+			}
+			16 = {
+				tungsten = 16
+			}
+			17 = {
+				tungsten = 17
+			}
+			18 = {
+				tungsten = 18
+			}
+			19 = {
+				tungsten = 19
+			}
+			20 = {
+				tungsten = 20
+			}
+		}
+		
+		#maximum_speed = -0.002
+		reliability = -0.002
+		armor_value = 0.02
+		add_stats = {
+			build_cost_ic = 0.3
+			max_strength = 0.02
+		}
+		multiply_stats = {
+			build_cost_ic = 0.01
+			hardness = 0.004
+		}
+	}
+	
+	tank_nsb_chrom_alloying_upgrade = {
+		abbreviation = "cal"
+		max_level = 20
+		cost = land
+		
+		linear_cost = {
+			cost_by_level = 0.5
+			cost_by_level_for_licensed_equipment = 1.5
+		}
+		
+		level_requirements = {
+			1 = {
+				has_tech = alloying_tech_1
+			}
+			6 = {
+				has_tech = alloying_tech_2
+			}
+			11 = {
+				has_tech = alloying_tech_3
+			}
+			16 = {
+				has_tech = alloying_tech_4
+			}
+		}
+		
+		resource_cost_thresholds = {
+            1 = {
+				chromium = 1
+			}
+			2 = {
+				chromium = 2
+			}
+			3 = {
+				chromium = 3
+			}
+			4 = {
+				chromium = 4
+			}
+			5 = {
+				chromium = 5
+			}
+			6 = {
+				chromium = 6
+			}
+			7 = {
+				chromium = 7
+			}
+			8 = {
+				chromium = 8
+			}
+			9 = {
+				chromium = 9
+			}
+			10 = {
+				chromium = 10
+			}
+			11 = {
+				chromium = 11
+			}
+			12 = {
+				chromium = 12
+			}
+			13 = {
+				chromium = 13
+			}
+			14 = {
+				chromium = 14
+			}
+			15 = {
+				chromium = 15
+			}
+			16 = {
+				chromium = 16
+			}
+			17 = {
+				chromium = 17
+			}
+			18 = {
+				chromium = 18
+			}
+			19 = {
+				chromium = 19
+			}
+			20 = {
+				chromium = 20
+			}
+		}
+		
+		#maximum_speed = -0.003
+		reliability = -0.003
+		armor_value = 0.03
+		add_stats = {
+			build_cost_ic = 0.2
+			max_strength = 0.01
+		}
+		multiply_stats = {
+			build_cost_ic = 0.01
+			hardness = 0.008
+		}
+	}
+
+	tank_gun_upgrade = {
+		max_level = 5
+		cost = land
+		soft_attack = 0.05
+		hard_attack = 0.05
+		ap_attack = 0.05
+		maximum_speed = -0.03
+		reliability = -0.04
+	}
+	tank_armor_upgrade = {
+		max_level = 5
+		cost = land
+		armor_value = 0.1
+		maximum_speed = -0.03
+		reliability = -0.04
+	}
+	tank_engine_upgrade = {
+		max_level = 5
+		cost = land
+		maximum_speed = 0.04
+	}	
+	ac_engine_upgrade = {
+		max_level = 5
+		cost = land
+		maximum_speed = 0.04
+	}	
+	tank_reliability_upgrade = {
+		max_level = 5
+		cost = land
+		reliability = 0.08
+	}
+	mech_cost_upgrade = {
+		max_level = 5
+		cost = land
+		build_cost_ic = -0.05
+		reliability = -0.05
+	}
+	tank_aa_upgrade = {
+		max_level = 5
+		cost = land
+		air_attack = 0.1
+		maximum_speed = -0.03
+		reliability = -0.03
+	}
+	tank_at_upgrade = {
+		max_level = 5
+		cost = land
+		soft_attack = 0.1
+		hard_attack = 0.1
+		ap_attack = 0.05
+		maximum_speed = -0.02
+		reliability = -0.05
+	}
+	tank_art_upgrade = {
+		max_level = 5
+		cost = land
+		soft_attack = 0.03
+		maximum_speed = -0.02
+		reliability = -0.05
+	}
+}

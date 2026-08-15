@@ -1,0 +1,727 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			every_country = {
+				set_technology = { starting_tech = 1 popup = no }
+				update_state_info = yes
+				set_variable = { var = production_efficiency_start_value value = 1 }
+			}
+			every_country = {
+				every_army_leader = {
+					limit = {
+						is_corps_commander = yes
+						skill < 4
+						NOT = { has_trait = gen_lt }
+						NOT = { has_trait = gen_pk }
+						NOT = { has_trait = gen_arm }
+						NOT = { has_trait = gen_fm }
+						NOT = { has_trait = tank_gen_lt }
+						NOT = { has_trait = tank_gen_pk }
+						NOT = { has_trait = tank_gen_arm }
+						NOT = { has_trait = tank_gen_fm }
+					}
+					add_unit_leader_trait = gen_lt
+				}
+				every_army_leader = {
+					limit = {
+						is_corps_commander = yes
+						skill < 7
+						skill > 3
+						NOT = { has_trait = gen_lt }
+						NOT = { has_trait = gen_pk }
+						NOT = { has_trait = gen_arm }
+						NOT = { has_trait = gen_fm }
+						NOT = { has_trait = tank_gen_lt }
+						NOT = { has_trait = tank_gen_pk }
+						NOT = { has_trait = tank_gen_arm }
+						NOT = { has_trait = tank_gen_fm }
+					}
+					add_unit_leader_trait = gen_pk
+				}
+				every_army_leader = {
+					limit = {
+						is_corps_commander = yes
+						skill > 6
+						NOT = { has_trait = gen_lt }
+						NOT = { has_trait = gen_pk }
+						NOT = { has_trait = gen_arm }
+						NOT = { has_trait = gen_fm }
+						NOT = { has_trait = tank_gen_lt }
+						NOT = { has_trait = tank_gen_pk }
+						NOT = { has_trait = tank_gen_arm }
+						NOT = { has_trait = tank_gen_fm }
+					}
+					add_unit_leader_trait = gen_arm
+				}
+				every_army_leader = {
+					limit = {
+						is_field_marshal = yes
+						NOT = { has_trait = gen_lt }
+						NOT = { has_trait = gen_pk }
+						NOT = { has_trait = gen_arm }
+						NOT = { has_trait = gen_fm }
+						NOT = { has_trait = tank_gen_lt }
+						NOT = { has_trait = tank_gen_pk }
+						NOT = { has_trait = tank_gen_arm }
+						NOT = { has_trait = tank_gen_fm }
+					}
+					add_unit_leader_trait = gen_fm
+				}
+			}
+		}
+		effect = {
+			every_country = {
+				limit = {
+					OR = {
+						TAG = GER
+						tag = SOV
+						tag = ENG
+						tag = FRA
+						tag = ITA
+						tag = JAP
+						tag = USA
+						tag = CAN
+						tag = CHI
+						tag = AST
+						tag = ROM
+						tag = HUN
+						tag = BEL
+						tag = HOL
+						tag = FIN
+						tag = RAJ
+					}
+				}
+				set_technology = { heavy_industry = 1 popup = no }
+			}
+		}
+		effect = {
+			every_country = {
+				limit = {
+					is_minor = yes
+				}
+				add_ideas = minor_nation
+			}
+		}
+		effect = {
+			SOV = {
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_0
+					variant_name = "T-27"
+					amount = 3300
+					producer = SOV
+				}
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_1
+					variant_name = "T-26"
+					amount = 4600
+					producer = SOV
+				}
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_1
+					variant_name = "BT-2"
+					amount = 617
+					producer = SOV
+				}
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_1
+					variant_name = "BT-5"
+					amount = 1103
+					producer = SOV
+				}
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_2
+					variant_name = "BT-7"
+					amount = 40
+					producer = SOV
+				}
+				add_equipment_to_stockpile = {
+					type = medium_tank_chassis_0
+					variant_name = "T-28"
+					amount = 123
+					producer = SOV
+				}
+				add_equipment_to_stockpile = {
+					type = heavy_tank_chassis_0
+					variant_name = "T-35"
+					amount = 12
+					producer = SOV
+				}
+				add_equipment_to_stockpile = {
+					type = light_tank_amphibious_chassis_1
+					variant_name = "T-37A"
+					amount = 400
+					producer = SOV
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_0
+					amount = 300000
+					producer = SOV
+				}
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_1
+					variant_name = "Panzer I"
+					amount = 300
+					producer = GER
+				}
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_2
+					variant_name = "Panzer II"
+					amount = 20
+					producer = GER
+				}
+			}
+			CZE = {
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_1
+					variant_name = "AH-IV"
+					amount = 80
+					producer = CZE
+				}
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_1
+					variant_name = "Praga"
+					amount = 30
+					producer = CZE
+				}
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_2
+					variant_name = "LT vz. 34"
+					amount = 51
+					producer = CZE
+				}
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_2
+					variant_name = "LT vz. 35"
+					amount = 60
+					producer = CZE
+				}
+			}
+			USA = {
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_1
+					variant_name = "M1 Combat Car"
+					amount = 10
+					producer = USA
+				}
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_1
+					variant_name = "M2A2"
+					amount = 9
+					producer = USA
+				}
+			}
+			ENG = {
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_1
+					variant_name = "Light Tank Mk. II"
+					amount = 70
+					producer = ENG
+				}
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_1
+					variant_name = "Light Tank Mk. III"
+					amount = 30
+					producer = ENG
+				}
+				add_equipment_to_stockpile = {
+					type = medium_tank_chassis_0
+					variant_name = "Medium Mk. II"
+					amount = 150
+					producer = ENG
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_0
+					amount = 40000
+					producer = ENG
+				}
+				add_equipment_to_stockpile = {
+					type = mortar_1
+					amount = 7000
+					producer = ENG
+				}
+				add_equipment_to_stockpile = {
+					type = machinegun_1
+					amount = 21500
+					producer = ENG
+				}
+				add_equipment_to_stockpile = {
+					type = ammunition_equipment_0
+					amount = 19000
+					producer = ENG
+				}
+			}
+			ITA = {
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_0
+					variant_name = "Fiat 3000"
+					amount = 40
+					producer = ITA
+				}
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_0
+					variant_name = "L3/33"
+					amount = 150
+					producer = ITA
+				}
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_1
+					variant_name = "L3/35"
+					amount = 50
+					producer = ITA
+				}
+			}
+			JAP = {
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_0
+					variant_name = "Type 92 Jyu-Sokosha"
+					amount = 30
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = medium_tank_chassis_0
+					variant_name = "Type 89 I-Go"
+					amount = 90
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_1
+					variant_name = "Type 95 Ha-Go"
+					amount = 80
+					producer = JAP
+				}
+			}
+			FRA = {
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_0
+					variant_name = "Renault FT (HMG)"
+					amount = 275
+					producer = FRA
+				}
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_0
+					variant_name = "Renault FT (SC)"
+					amount = 140
+					producer = FRA
+				}
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_0
+					variant_name = "Renault R35"
+					amount = 350
+					producer = FRA
+				}
+				add_equipment_to_stockpile = {
+					type = medium_tank_chassis_0
+					variant_name = "SOUMUA S35"
+					amount = 60
+					producer = FRA
+				}
+				add_equipment_to_stockpile = {
+					type = heavy_tank_chassis_0
+					variant_name = "Char B1"
+					amount = 10
+					producer = FRA
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_0
+					amount = 75000
+					producer = FRA
+				}
+				add_equipment_to_stockpile = {
+					type = mortar_1
+					amount = 13500
+					producer = FRA
+				}
+				add_equipment_to_stockpile = {
+					type = machinegun_1
+					amount = 40500
+					producer = FRA
+				}
+				add_equipment_to_stockpile = {
+					type = ammunition_equipment_0
+					amount = 36000
+					producer = FRA
+				}
+			}
+			POL = {
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_0
+					variant_name = "Renault FT (HMG)"
+					amount = 30
+					producer = FRA
+				}
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_0
+					variant_name = "Renault FT (SC)"
+					amount = 20
+					producer = FRA
+				}
+				add_equipment_to_stockpile = {
+					type = light_tank_chassis_0
+					variant_name = "TKS"
+					amount = 422
+					producer = FRA
+				}
+			}
+		}
+		effect = {
+			#France faction set-up
+			FRA = {
+				set_country_flag = FRA_factions_unlocked
+				set_variable = { var  = FRA_National_bloc_attitude value = -3 }
+				set_variable = { var  = FRA_CGT_attitude value = -3 }
+				set_variable = { var  = FRA_French_Industrialists_attitude value = -1 }
+				set_variable = { var  = FRA_French_Army_attitude value = 0 }
+				set_variable = { var  = FRA_National_bloc_influence value = 3 }
+				set_variable = { var  = FRA_CGT_influence value = 3 }
+				set_variable = { var  = FRA_French_Industrialists_influence value = 4 }
+				set_variable = { var  = FRA_French_Army_influence value = 1 }
+				set_variable = { var  = FRA_National_bloc_political_power_gain value = -5 }
+				set_variable = { var  = FRA_CGT_political_power_gain value = -5 }
+				set_variable = { var  = FRA_French_Industrialists_political_power_gain value = 0 }
+				set_variable = { var  = FRA_French_Army_political_power_gain value = 0 }
+				set_variable = { var  = FRA_National_bloc_factory_output value = -2 }
+				set_variable = { var  = FRA_CGT_factory_output value = -1 }
+				set_variable = { var  = FRA_French_Industrialists_factory_output value = -2 }
+				set_variable = { var  = FRA_French_Army_factory_output value = -2 }
+				set_variable = { var  = FRA_National_bloc_stability value = -3 }
+				set_variable = { var  = FRA_CGT_stability value = -3 }
+				set_variable = { var  = FRA_French_Industrialists_stability value = 0 }
+				set_variable = { var  = FRA_French_Army_stability value = -1 }
+				FRA_political_instability_update_effect = yes
+				FRA_disjointed_government_level = yes
+			}
+			#Italy faction set-up
+			ITA = {
+				set_country_flag = ITA_factions_unlocked
+				set_variable = { var  = ITA_Bourgeoisie_attitude value = -2 }
+				set_variable = { var  = ITA_Proletariat_attitude value = 1 }
+				set_variable = { var  = ITA_Vatican_attitude value = 0 }
+				set_variable = { var  = ITA_Communists_attitude value = -3 }
+				set_variable = { var  = ITA_Bourgeoisie_influence value = 1 }
+				set_variable = { var  = ITA_Proletariat_influence value = 4 }
+				set_variable = { var  = ITA_Vatican_influence value = 3 }
+				set_variable = { var  = ITA_Communists_influence value = 1 }
+				set_variable = { var  = ITA_Bourgeoisie_political_power_gain value = -1 }
+				set_variable = { var  = ITA_Proletariat_political_power_gain value = 0 }
+				set_variable = { var  = ITA_Vatican_political_power_gain value = 0 }
+				set_variable = { var  = ITA_Communists_political_power_gain value = -1 }
+				set_variable = { var  = ITA_Bourgeoisie_stability value = -1 }
+				set_variable = { var  = ITA_Proletariat_stability value = 1 }
+				set_variable = { var  = ITA_Vatican_stability value = 2 }
+				set_variable = { var  = ITA_Communists_stability value = 0 }
+				ITA_political_instability_update_effect = yes
+			}
+			#Japan faction set-up
+			JAP = {
+				set_country_flag = JAP_factions_unlocked
+				set_variable = { var  = JAP_Kantaiha_influence value = 3 }
+				set_variable = { var  = JAP_Toseiha_influence value = 3 }
+				set_variable = { var  = JAP_Kodoha_influence value = 3 }
+				set_variable = { var  = JAP_Zaibatsus_influence value = 5 }
+				set_variable = { var  = JAP_Kantaiha_construction_speed_military value = 0 }
+				set_variable = { var  = JAP_Toseiha_construction_speed_military value = 0 }
+				set_variable = { var  = JAP_Kodoha_construction_speed_military value = 0 }
+				set_variable = { var  = JAP_Kantaiha_construction_speed_dockyard value = 0 }
+				set_variable = { var  = JAP_Toseiha_construction_speed_dockyard value = 0 }
+				set_variable = { var  = JAP_Kodoha_construction_speed_dockyard value = 0 }
+				set_variable = { var  = JAP_Zaibatsus_construction_speed_civilian value = -2 }
+				set_variable = { var  = JAP_Kantaiha_factory_output value = 0 }
+				set_variable = { var  = JAP_Toseiha_factory_output value = 0 }
+				set_variable = { var  = JAP_Kodoha_factory_output value = 0 }
+				set_variable = { var  = JAP_Kantaiha_dockyard_output value = 0 }
+				set_variable = { var  = JAP_Toseiha_dockyard_output value = 0 }
+				set_variable = { var  = JAP_Kodoha_dockyard_output value = 0 }
+				set_variable = { var  = JAP_Zaibatsus_consumer_goods value = -2 }
+				set_variable = { var  = JAP_Kantaiha_stability value = 0 }
+				set_variable = { var  = JAP_Toseiha_stability value = 0 }
+				set_variable = { var  = JAP_Kodoha_stability value = 0 }
+				set_variable = { var  = JAP_Zaibatsus_political_power_gain value = -1 }
+				
+				set_variable = { var  = ZAIBATSUS_REENABLE_TIMER value = 0 }
+				JAP_political_instability_update_effect = yes
+				SOV = {
+					give_resource_rights = {
+						receiver = JAP
+						state = 655
+						resources = { oil }
+					}
+					give_resource_rights = {
+						receiver = JAP
+						state = 655
+						resources = { coal }
+					}
+				}
+			}
+			#Germany faction set-up
+			GER = {
+				set_country_flag = GER_factions_unlocked
+				set_variable = { var  = GER_Wehrmacht_attitude value = 0 }
+				set_variable = { var  = GER_SS_attitude value = 5 }
+				set_variable = { var  = GER_Industrialists_attitude value = 0 }
+				set_variable = { var  = GER_Public_Support_attitude value = 0 }
+				set_variable = { var  = GER_Wehrmacht_influence value = 35 }
+				set_variable = { var  = GER_SS_influence value = 5 }
+				set_variable = { var  = GER_Industrialists_influence value = 0 }
+				set_variable = { var  = GER_Public_Support_influence value = 1 }
+				set_variable = { var  = GER_Wehrmacht_political_power_gain value = 0 }
+				set_variable = { var  = GER_SS_political_power_gain value = 0 }
+				set_variable = { var  = GER_Industrialists_research_speed value = 0 }
+				set_variable = { var  = GER_Public_Support_war_support value = 0 }
+				set_variable = { var  = GER_Wehrmacht_stability value = 0 }
+				set_variable = { var  = GER_SS_stability value = 0 }
+				set_variable = { var  = GER_Industrialists_stability value = 0 }
+				set_variable = { var  = GER_Public_Support_stability value = 0 }
+				GER_political_instability_update_effect = yes
+			}
+			#Soviet faction set-up
+			SOV = {
+				set_country_flag = SOV_factions_unlocked
+				set_variable = { var  = SOV_Commissars_attitude value = 1 }
+				set_variable = { var  = SOV_Army_attitude value = 0 }
+				set_variable = { var  = SOV_Workers_attitude value = 1 }
+				set_variable = { var  = SOV_Peasants_attitude value = -1 }
+				set_variable = { var  = SOV_Commissars_influence value = 3 }
+				set_variable = { var  = SOV_Army_influence value = 4 }
+				set_variable = { var  = SOV_Workers_influence value = 0 }
+				set_variable = { var  = SOV_Peasants_influence value = 0 }
+				set_variable = { var  = SOV_Commissars_political_power_gain value = -2 }
+				set_variable = { var  = SOV_Army_political_power_gain value = -2 }
+				set_variable = { var  = SOV_Army_research_speed value = 0 }
+				set_variable = { var  = SOV_Workers_factory_output value = 0 }
+				set_variable = { var  = SOV_Peasants_consumer_goods value = -1 }
+				set_variable = { var  = SOV_Commissars_stability value = 0 }
+				set_variable = { var  = SOV_Army_stability value = 0 }
+				set_variable = { var  = SOV_Workers_stability value = 1 }
+				set_variable = { var  = SOV_Peasants_stability value = -1 }
+				SOV_political_instability_update_effect = yes
+			}
+			#UK faction set-up
+			ENG = { 
+				set_country_flag = ENG_factions_unlocked
+				set_variable = { var  = ENG_Labour_attitude value = 1 }
+				set_variable = { var  = ENG_Conservative_attitude value = 1 }
+				set_variable = { var  = ENG_British_Royalists_attitude value = 0 }
+				set_variable = { var  = ENG_British_Radicalists_attitude value = 0 }
+				set_variable = { var  = ENG_Labour_influence value = 4 }
+				set_variable = { var  = ENG_Conservative_influence value = 4 }
+				set_variable = { var  = ENG_British_Royalists_influence value = 1 }
+				set_variable = { var  = ENG_British_Radicalists_influence value = 1 }
+				set_variable = { var  = ENG_Labour_political_power_gain value = 0 }
+				set_variable = { var  = ENG_Conservative_political_power_gain value = 0 }
+				set_variable = { var  = ENG_British_Royalists_political_power_gain value = 0 }
+				set_variable = { var  = ENG_British_Radicalists_political_power_gain value = 0 }
+				set_variable = { var  = ENG_Labour_stability value = 2 }
+				set_variable = { var  = ENG_Conservative_stability value = 2 }
+				set_variable = { var  = ENG_British_Royalists_stability value = 1 }
+				set_variable = { var  = ENG_British_Radicalists_stability value = 0 }
+				ENG_political_instability_update_effect = yes
+				RAJ = {
+					give_resource_rights = {
+						receiver = ENG
+						state = 425
+						resources = { tungsten }
+					}
+					give_resource_rights = {
+						receiver = ENG
+						state = 433
+						resources = { tungsten }
+					}
+					give_resource_rights = {
+						receiver = ENG
+						state = 288
+						resources = { oil }
+					}
+					give_resource_rights = {
+						receiver = ENG
+						state = 432
+						resources = { oil }
+					}
+				}
+			}
+			#USA faction set-up
+			USA = { 
+				set_country_flag = USA_factions_unlocked
+				set_variable = { var  = USA_Kaiser_attitude value = 1 }
+				set_variable = { var  = USA_Ford_Chrysler_attitude value = -2 }
+				set_variable = { var  = USA_GM_Dupont_attitude value = -2 }
+				set_variable = { var  = USA_JPMorgan_attitude value = -2 }
+				set_variable = { var  = USA_Public_attitude value = -3 }
+				set_variable = { var  = USA_Kaiser_influence value = 2 }
+				set_variable = { var  = USA_Ford_Chrysler_influence value = 4 }
+				set_variable = { var  = USA_GM_Dupont_influence value = 4 }
+				set_variable = { var  = USA_JPMorgan_influence value = 4 }
+				set_variable = { var  = USA_Public_influence value = 5 }
+				set_variable = { var  = USA_Kaiser_dockyard_output value = -5 }
+				set_variable = { var  = USA_Ford_Chrysler_factory_output value = -5 }
+				set_variable = { var  = USA_GM_Dupont_construction_speed_military value = -5 }
+				set_variable = { var  = USA_JPMorgan_consumer_goods value = -3 }
+				set_variable = { var  = USA_Public_political_power_gain value = -3 }
+				set_variable = { var  = USA_Kaiser_construction_speed value = -1 }
+				set_variable = { var  = USA_Ford_Chrysler_civilian_construction_speed value = -2 }
+				set_variable = { var  = USA_GM_Dupont_civilian_construction_speed value = -2 }
+				set_variable = { var  = USA_JPMorgan_stability value = -2 }
+				set_variable = { var  = USA_Public_stability value = -3 }
+				USA_political_instability_update_effect = yes
+			}
+		}
+	}
+	on_weekly = {
+		effect = {
+			every_country = {
+				limit = {
+					is_ai = no
+				}
+				set_variable = { var = production_efficiency_start_value value = 1 }
+				set_variable = { var = production_efficiency_start_value_modifier value = modifier@production_factory_start_efficiency_factor }
+				multiply_variable = { production_efficiency_start_value_modifier = 100 }
+				add_to_variable = { production_efficiency_start_value = production_efficiency_start_value_modifier }
+			}
+		}
+	}
+	on_weekly_GER = {
+		effect = {
+			if = {
+				limit = {
+					has_completed_focus = GER_hivi
+				}
+				set_variable = { var = all_hivi_weekly_gain value = 0 }
+				set_variable = { var = state_hivi_weekly_gain value = 0 }
+				set_variable = { var = casualties_hivi_weekly_gain value = SOV.casualties_k }
+				set_variable = { var = states_pop value = 0 }
+				every_controlled_state = {
+					limit = {
+						is_core_of = SOV
+						is_fully_controlled_by = GER
+					}
+					set_temp_variable = { var = sov_occ_state_pop value = state_population_k }
+					add_to_variable = { PREV.states_pop = sov_occ_state_pop }
+				}
+				multiply_variable = { var = states_pop value = 0.08 }
+				add_to_variable = { var = state_hivi_weekly_gain value = states_pop }
+				add_to_variable = { var = all_hivi_weekly_gain value = state_hivi_weekly_gain }
+				
+				multiply_variable = { var = casualties_hivi_weekly_gain value = 1.4 }
+				if = {
+					limit = {
+						date > 1942.6.1
+					}
+					multiply_variable = { var = casualties_hivi_weekly_gain value = 0.9 }
+				}
+				if = {
+					limit = {
+						date > 1942.8.1
+					}
+					multiply_variable = { var = casualties_hivi_weekly_gain value = 0.9 }
+				}
+				if = {
+					limit = {
+						date > 1942.10.1
+					}
+					multiply_variable = { var = casualties_hivi_weekly_gain value = 0.9 }
+				}
+				if = {
+					limit = {
+						date > 1942.12.1
+					}
+					multiply_variable = { var = casualties_hivi_weekly_gain value = 0.9 }
+				}
+				if = {
+					limit = {
+						date > 1943.2.1
+					}
+					multiply_variable = { var = casualties_hivi_weekly_gain value = 0.8 }
+				}
+				if = {
+					limit = {
+						date > 1943.4.1
+					}
+					multiply_variable = { var = casualties_hivi_weekly_gain value = 0.8 }
+				}
+				if = {
+					limit = {
+						date > 1943.6.1
+					}
+					multiply_variable = { var = casualties_hivi_weekly_gain value = 0.75 }
+				}
+				if = {
+					limit = {
+						date > 1943.8.1
+					}
+					multiply_variable = { var = casualties_hivi_weekly_gain value = 0.75 }
+				}
+				if = {
+					limit = {
+						date > 1943.10.1
+					}
+					multiply_variable = { var = casualties_hivi_weekly_gain value = 0.7 }
+				}
+				if = {
+					limit = {
+						date > 1943.12.1
+					}
+					multiply_variable = { var = casualties_hivi_weekly_gain value = 0.65 }
+				}
+				if = {
+					limit = {
+						date > 1944.2.1
+					}
+					multiply_variable = { var = casualties_hivi_weekly_gain value = 0.6 }
+				}
+				if = {
+					limit = {
+						date > 1944.4.1
+					}
+					multiply_variable = { var = casualties_hivi_weekly_gain value = 0.55 }
+				}
+				if = {
+					limit = {
+						date > 1944.6.1
+					}
+					multiply_variable = { var = casualties_hivi_weekly_gain value = 0.5 }
+				}
+				add_to_variable = { var = all_hivi_weekly_gain value = casualties_hivi_weekly_gain }
+				set_variable = { var = GER_industrial_weekly_manpower_gain value = all_hivi_weekly_gain }
+			}
+		}
+	}
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				update_state_info = yes
+			}
+		}
+	}
+	on_war = {
+		effect = {
+			if = {
+				limit = {
+					tag = USA
+					has_completed_focus = USA_selective_service_act
+				}
+				if = {
+					limit = {
+						OR = {
+							has_idea = disarmed_nation
+							has_idea = volunteer_only
+						}
+					}
+					add_ideas = USA_selective_service
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						tag = YUG
+						tag = GRE
+					}
+				}
+				ENG = { add_to_faction = FROM }
+			}
+		}
+	}
+}

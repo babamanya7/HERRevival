@@ -1,0 +1,27 @@
+
+state={
+	id=655
+	name="STATE_655"
+	manpower = 94759
+	
+	resources={
+		oil = 6
+		coal = 14
+	}
+	
+	state_category = pastoral
+	history={
+		owner = SOV
+		add_core_of = SOV
+		add_claim_by = JAP
+		buildings = {
+			infrastructure = 3
+			industrial_complex = 1
+			air_base = 2
+		}
+	}
+
+	provinces={
+		855 1742 1755 
+	}
+}

@@ -246,7 +246,7 @@ country_event = {
 				factor = 3
 			}
 			modifier = {
-				ROM = { has_completed_focus = ROM_appoint_soviet_friendly_government }
+				ROM = { always = no }
 				factor = 3
 			}
 		}
@@ -899,7 +899,7 @@ country_event = {
 			factor = 80
 				modifier = {
 					factor = 10 #that sounds great!	
-					has_completed_focus = ITA_slovenia_dalmatia_claims
+					always = no
 				}
 		}
 		if = {

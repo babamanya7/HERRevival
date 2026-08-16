@@ -45,10 +45,10 @@ characters = {
 		}
 		corps_commander = {
 			traits = { gen_lt infantry_leader infantry_officer war_hero inflexible_strategist }
-			skill = 5
+			skill = 4
 			attack_skill = 2
-			defense_skill = 9
-			planning_skill = 6
+			defense_skill = 7
+			planning_skill = 4
 			logistics_skill = 3
 			legacy_id = 0
 			visible = { has_completed_focus = SOV_development_of_the_shock_army } #1942
@@ -122,8 +122,8 @@ characters = {
 		corps_commander = {
 			traits = { tank_gen_lt armor_officer panzer_leader war_hero inflexible_strategist }
 			skill = 7
-			attack_skill = 11
-			defense_skill = 3
+			attack_skill = 10
+			defense_skill = 4
 			planning_skill = 7
 			logistics_skill = 7
 			legacy_id = 0
@@ -387,10 +387,10 @@ characters = {
 		}
 		corps_commander = {
 			traits = { brilliant_strategist gen_pk politically_connected trait_reckless harsh_leader hill_fighter media_personality organizer infantry_leader inspirational_leader }
-			skill = 9
+			skill = 8
 			attack_skill = 4
-			defense_skill = 14
-			planning_skill = 12
+			defense_skill = 12
+			planning_skill = 10
 			logistics_skill = 6
 			legacy_id = 0
 			visible = { has_completed_focus = SOV_they_will_know_fear } #1943 - late
@@ -445,9 +445,9 @@ characters = {
 		corps_commander = {
 			traits = { career_officer good_logist trait_cautious brilliant_strategist infantry_officer gen_lt }
 			skill = 6
-			attack_skill = 1
-			defense_skill = 9
-			planning_skill = 9
+			attack_skill = 2
+			defense_skill = 8
+			planning_skill = 8
 			logistics_skill = 6
 			legacy_id = 0
 			visible = { has_completed_focus = SOV_development_of_the_shock_army } #focus1942
@@ -485,10 +485,10 @@ characters = {
 		corps_commander = {
 			traits = { infantry_officer gen_lt }
 			skill = 4
-			attack_skill = 2
-			defense_skill = 7
-			planning_skill = 2
-			logistics_skill = 5
+			attack_skill = 3
+			defense_skill = 6
+			planning_skill = 3
+			logistics_skill = 4
 			legacy_id = 0
 			visible = { has_country_flag = SOV_army_reform_1 } #focus1941 - early
 		}
@@ -568,7 +568,7 @@ characters = {
 			attack_skill = 1
 			defense_skill = 3
 			planning_skill = 2
-			logistics_skill = 3
+			logistics_skill = 2
 			legacy_id = 0
 		}
 	}
@@ -742,11 +742,11 @@ characters = {
 		}
 		corps_commander = {
 			traits = { infantry_officer organizer gen_lt }
-			skill = 3
+			skill = 4
 			attack_skill = 1
-			defense_skill = 4
+			defense_skill = 7
 			planning_skill = 4
-			logistics_skill = 3
+			logistics_skill = 4
 			legacy_id = 0
 			visible = { has_country_flag = SOV_army_reform_1  } #focus1940
 		}
@@ -804,11 +804,11 @@ characters = {
 
 		corps_commander = {
 			traits = { myasnik good_logist winter_specialist organizer skilled_staffer infantry_officer harsh_leader trickster gen_arm inflexible_strategist media_personality }
-			skill = 8
-			attack_skill = 4
-			defense_skill = 12
-			planning_skill = 9
-			logistics_skill = 7
+			skill = 7
+			attack_skill = 7
+			defense_skill = 7
+			planning_skill = 8
+			logistics_skill = 6
 			legacy_id = 410
 			visible = { has_country_flag = SOV_army_reform_1  } #focus1940
 		}
@@ -827,10 +827,10 @@ characters = {
 		corps_commander = {
 			traits = { brilliant_strategist trait_cautious gen_lt }
 			skill = 6
-			attack_skill = 2
-			defense_skill = 8
+			attack_skill = 4
+			defense_skill = 6
 			planning_skill = 8
-			logistics_skill = 7
+			logistics_skill = 6
 			legacy_id = 402
 			visible = { has_completed_focus = SOV_war_heroes   } #focus1941 - late
 		}
@@ -935,9 +935,9 @@ characters = {
 		corps_commander = {
 			traits = { trait_reckless infantry_officer career_officer gen_lt }
 			skill = 4
-			attack_skill = 1
-			defense_skill = 7
-			planning_skill = 4
+			attack_skill = 2
+			defense_skill = 4
+			planning_skill = 6
 			logistics_skill = 4
 			legacy_id = 0
 			visible = { 
@@ -982,7 +982,7 @@ characters = {
 		corps_commander = {
 			traits = { inflexible_strategist harsh_leader politically_connected gen_lt }
 			skill = 5
-			attack_skill = 3
+			attack_skill = 4
 			defense_skill = 6
 			planning_skill = 6
 			logistics_skill = 4
@@ -1016,10 +1016,10 @@ characters = {
 
 		corps_commander = {
 			traits = { skilled_staffer politically_connected career_officer gen_arm }
-			skill = 4
+			skill = 5
 			attack_skill = 2
-			defense_skill = 7
-			planning_skill = 5
+			defense_skill = 8
+			planning_skill = 6
 			logistics_skill = 4
 			legacy_id = 404
 		}
@@ -1089,10 +1089,10 @@ characters = {
 		field_marshal = {
 			traits = { armor_officer brilliant_strategist career_officer trait_reckless offensive_doctrine gen_fm }
 			skill = 5
-			attack_skill = 6
+			attack_skill = 8
 			defense_skill = 4
-			planning_skill = 4
-			logistics_skill = 2
+			planning_skill = 5
+			logistics_skill = 3
 			legacy_id = 401
 		}
 	}
@@ -1127,10 +1127,10 @@ characters = {
 		corps_commander = {
 			traits = { armor_officer career_officer brilliant_strategist gen_lt }
 			skill = 6
-			attack_skill = 5
-			defense_skill = 5
+			attack_skill = 6
+			defense_skill = 4
 			planning_skill = 8
-			logistics_skill = 7
+			logistics_skill = 6
 			legacy_id = 413
 			visible = { has_completed_focus = SOV_development_of_the_shock_army } #focus1942
 		}
@@ -1185,7 +1185,7 @@ characters = {
 			attack_skill = 1
 			defense_skill = 7
 			planning_skill = 4
-			logistics_skill = 5
+			logistics_skill = 4
 			legacy_id = 0
 			visible = { has_country_flag = SOV_army_reform_1 } #focus1940
 		}
@@ -1220,10 +1220,10 @@ characters = {
 		}
 		corps_commander = {
 			traits = { trait_reckless infantry_officer gen_pk }
-			skill = 4
-			attack_skill = 1
-			defense_skill = 6
-			planning_skill = 4
+			skill = 5
+			attack_skill = 2
+			defense_skill = 7
+			planning_skill = 6
 			logistics_skill = 5
 			legacy_id = 0
 		}
@@ -1416,10 +1416,10 @@ characters = {
 		}
 		corps_commander = {
 			traits = { infantry_officer career_officer war_hero gen_lt }
-			skill = 5
+			skill = 4
 			attack_skill = 2
-			defense_skill = 8
-			planning_skill = 5
+			defense_skill = 4
+			planning_skill = 6
 			logistics_skill = 4
 			legacy_id = 0
 			visible = { has_completed_focus = SOV_war_heroes } #focus1941 - late
@@ -1456,11 +1456,11 @@ characters = {
 		}
 		corps_commander = {
 			traits = { infantry_officer trickster urban_assault_specialist gen_lt }
-			skill = 4
+			skill = 5
 			attack_skill = 2
-			defense_skill = 7
-			planning_skill = 4
-			logistics_skill = 3
+			defense_skill = 9
+			planning_skill = 5
+			logistics_skill = 4
 			legacy_id = 0
 			visible = { has_completed_focus = SOV_deep_battle } #focus1943
 		}
@@ -1612,7 +1612,7 @@ characters = {
 			skill = 3
 			attack_skill = 1
 			defense_skill = 5
-			planning_skill = 5
+			planning_skill = 4
 			logistics_skill = 2
 			legacy_id = 0
 			visible = { has_country_flag = SOV_army_reform_1 } #focus1940
@@ -1658,11 +1658,11 @@ characters = {
 		}
 		corps_commander = {
 			traits = { career_officer infantry_leader war_hero gen_lt }
-			skill = 5
+			skill = 6
 			attack_skill = 2
-			defense_skill = 8
-			planning_skill = 5
-			logistics_skill = 5
+			defense_skill = 10
+			planning_skill = 6
+			logistics_skill = 6
 			legacy_id = 0
 			visible = { has_completed_focus = SOV_deep_battle } #focus1943
 		}
@@ -1700,9 +1700,9 @@ characters = {
 			traits = { trait_reckless armor_officer tank_gen_lt }
 			skill = 3
 			attack_skill = 5
-			defense_skill = 1
+			defense_skill = 2
 			planning_skill = 3
-			logistics_skill = 3
+			logistics_skill = 2
 			legacy_id = 0
 			visible = { has_country_flag = SOV_army_reform_1  } #focus1940
 		}
@@ -1738,11 +1738,11 @@ characters = {
 		}
 		corps_commander = {
 			traits = { inflexible_strategist career_officer trait_cautious politically_connected gen_lt }
-			skill = 3
-			attack_skill = 1
-			defense_skill = 5
-			planning_skill = 3
-			logistics_skill = 3
+			skill = 4
+			attack_skill = 2
+			defense_skill = 6
+			planning_skill = 4
+			logistics_skill = 4
 			legacy_id = 0
 			visible = { has_country_flag = SOV_army_reform_1 } #focus1941 - early
 		}
@@ -1809,8 +1809,8 @@ characters = {
 			traits = { career_officer trait_reckless gen_fm }
 			skill = 3
 			attack_skill = 2
-			defense_skill = 2
-			planning_skill = 4
+			defense_skill = 3
+			planning_skill = 5
 			logistics_skill = 2
 			legacy_id = 0
 		}	
@@ -1842,8 +1842,8 @@ characters = {
 		field_marshal = {
 			traits = { old_guard career_officer infantry_officer organizer gen_fm }
 			skill = 3
-			attack_skill = 2
-			defense_skill = 1
+			attack_skill = 3
+			defense_skill = 2
 			planning_skill = 3
 			logistics_skill = 4
 			legacy_id = 0
@@ -2065,7 +2065,7 @@ characters = {
 			traits = { cavalry_officer trait_reckless trickster cavalry_leader gen_lt }
 			skill = 3
 			attack_skill = 4
-			defense_skill = 4
+			defense_skill = 3
 			planning_skill = 2
 			logistics_skill = 3
 			legacy_id = 0
@@ -2087,10 +2087,10 @@ characters = {
 		corps_commander = {
 			traits = { armor_officer panzer_leader panzer_expert tank_gen_lt }
 			skill = 6
-			attack_skill = 8
-			defense_skill = 2
-			planning_skill = 7
-			logistics_skill = 8
+			attack_skill = 9
+			defense_skill = 3
+			planning_skill = 5
+			logistics_skill = 7
 			legacy_id = 0
 			visible = {
 				has_completed_focus = SOV_development_of_the_shock_army
@@ -2111,9 +2111,9 @@ characters = {
 			traits = { brilliant_strategist armor_officer panzer_leader tank_gen_lt }
 			skill = 6
 			attack_skill = 9
-			defense_skill = 2
-			planning_skill = 6
-			logistics_skill = 8
+			defense_skill = 3
+			planning_skill = 5
+			logistics_skill = 7
 			legacy_id = 0
 			visible = {
 				has_completed_focus = SOV_development_of_the_shock_army
@@ -2152,11 +2152,11 @@ characters = {
 
 		corps_commander = {
 			traits = { inflexible_strategist armor_officer panzer_leader war_hero harsh_leader tank_gen_lt }
-			skill = 6
-			attack_skill = 11
-			defense_skill = 1
+			skill = 7
+			attack_skill = 12
+			defense_skill = 3
 			planning_skill = 5
-			logistics_skill = 7
+			logistics_skill = 8
 			legacy_id = 0
 			visible = { has_completed_focus = SOV_deep_battle } #focus1943 - early
 		}
@@ -2175,9 +2175,9 @@ characters = {
 			traits = { armor_officer panzer_leader war_hero tank_gen_lt }
 			skill = 5
 			attack_skill = 9
-			defense_skill = 1
-			planning_skill = 6
-			logistics_skill = 7
+			defense_skill = 2
+			planning_skill = 4
+			logistics_skill = 5
 			legacy_id = 0
 			visible = {
 				has_completed_focus = SOV_development_of_the_shock_army

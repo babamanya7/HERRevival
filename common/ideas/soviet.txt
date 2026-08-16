@@ -10462,5 +10462,77 @@ ideas = {
 				stability_factor = -0.25
 			}
 		}
+
+		# Compatibility ideas used by retained NSB decisions and events.
+		SOV_anti_capitalist_campaign_eng = {
+			name = SOV_anti_capitalist_campaign_generic
+			removal_cost = -1
+			allowed = { always = no }
+			picture = eng_tackle_capitalism
+			targeted_modifier = { tag = ENG attack_bonus_against = 0.1 defense_bonus_against = 0.1 }
+		}
+		SOV_anti_capitalist_campaign_fra = {
+			name = SOV_anti_capitalist_campaign_generic
+			removal_cost = -1
+			allowed = { always = no }
+			picture = eng_tackle_capitalism
+			targeted_modifier = { tag = FRA attack_bonus_against = 0.1 defense_bonus_against = 0.1 }
+		}
+		SOV_anti_capitalist_campaign_ger = {
+			name = SOV_anti_capitalist_campaign_generic
+			removal_cost = -1
+			allowed = { always = no }
+			picture = eng_tackle_capitalism
+			targeted_modifier = { tag = GER attack_bonus_against = 0.1 defense_bonus_against = 0.1 }
+		}
+		SOV_anti_capitalist_campaign_ita = {
+			name = SOV_anti_capitalist_campaign_generic
+			removal_cost = -1
+			allowed = { always = no }
+			picture = eng_tackle_capitalism
+			targeted_modifier = { tag = ITA attack_bonus_against = 0.1 defense_bonus_against = 0.1 }
+		}
+		SOV_anti_capitalist_campaign_usa = {
+			name = SOV_anti_capitalist_campaign_generic
+			removal_cost = -1
+			allowed = { always = no }
+			picture = eng_tackle_capitalism
+			targeted_modifier = { tag = USA attack_bonus_against = 0.1 defense_bonus_against = 0.1 }
+		}
+		SOV_anti_capitalist_campaign_jap = {
+			name = SOV_anti_capitalist_campaign_generic
+			removal_cost = -1
+			allowed = { always = no }
+			picture = eng_tackle_capitalism
+			targeted_modifier = { tag = JAP attack_bonus_against = 0.1 defense_bonus_against = 0.1 }
+		}
+		SOV_purged_junior_navy_officers_1 = {
+			removal_cost = -1
+			allowed = { always = no }
+			picture = SOV_purged_junior_navy_officers
+			modifier = { critical_receive_chance = 0.1 naval_doctrine_cost_factor = 0.2 experience_gain_navy_factor = -0.1 positioning = -0.1 }
+		}
+		SOV_purged_junior_navy_officers_2 = {
+			name = SOV_purged_junior_navy_officers_1
+			removal_cost = -1
+			allowed = { always = no }
+			picture = SOV_purged_junior_navy_officers
+			modifier = { critical_receive_chance = 0.2 naval_doctrine_cost_factor = 0.4 experience_gain_navy_factor = -0.2 positioning = -0.2 }
+		}
+		SOV_purged_junior_navy_officers_3 = {
+			name = SOV_purged_junior_navy_officers_1
+			removal_cost = -1
+			allowed = { always = no }
+			picture = SOV_purged_junior_navy_officers
+			modifier = { critical_receive_chance = 0.3 naval_doctrine_cost_factor = 0.6 experience_gain_navy_factor = -0.3 positioning = -0.3 }
+		}
+		SOV_preparations_for_soviet_japanese_war_china = {
+			name = SOV_preparations_for_soviet_japanese_war
+			removal_cost = -1
+			allowed = { always = no }
+			picture = CZE_planning_bonus
+			modifier = { army_core_defence_factor = 0.1 max_dig_in_factor = 0.1 }
+		}
+
 	}
 }

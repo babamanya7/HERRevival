@@ -509,7 +509,7 @@ country_event = {
 		custom_effect_tooltip = sov_armor.806_tt
 		every_controlled_state = {
 			limit = {
-				every_neighbor_state = {
+				any_neighbor_state = {
 					is_controlled_by = ROOT
 				}
 				is_on_continent = asia

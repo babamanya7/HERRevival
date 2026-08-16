@@ -123,10 +123,10 @@ characters={
 		corps_commander = {
 			traits = { gen_pk politically_connected war_hero infantry_officer infantry_leader }
 			skill = 8
-			attack_skill = 2
-			defense_skill = 14
+			attack_skill = 3
+			defense_skill = 12
 			planning_skill = 9
-			logistics_skill = 7
+			logistics_skill = 8
 			visible = { has_completed_focus = GER_ostfront_veteranen }
 		}
 	}
@@ -180,10 +180,10 @@ characters={
 		corps_commander = {
 			traits = { gen_pk media_personality skilled_staffer war_hero organizer infantry_leader infantry_officer career_officer adaptable }
 			skill = 12
-			attack_skill = 7
-			defense_skill = 20
-			planning_skill = 12
-			logistics_skill = 9
+			attack_skill = 5
+			defense_skill = 16
+			planning_skill = 16
+			logistics_skill = 11
 			visible = { has_country_flag = defense_of_fatherland }
 		}
 	}
@@ -445,10 +445,10 @@ characters={
 		corps_commander = {
 			traits = { myasnik inflexible_strategist war_hero trait_mountaineer infantry_leader politically_connected organizer harsh_leader gen_arm }
 			skill = 14
-			attack_skill = 8
+			attack_skill = 7
 			defense_skill = 22
-			planning_skill = 16
-			logistics_skill = 10
+			planning_skill = 13
+			logistics_skill = 14
 			visible = { has_completed_focus = GER_ostfront_veteranen }
 		}
 	}
@@ -579,10 +579,10 @@ characters={
 		corps_commander={
 			traits={ skilled_staffer nobleman expert_delegator organizer old_guard trait_cautious gen_arm }
 			skill=6
-			attack_skill=3
-			defense_skill=7
-			planning_skill=8
-			logistics_skill=6
+			attack_skill=2
+			defense_skill=8
+			planning_skill=9
+			logistics_skill=5
 			legacy_id=1
 			visible = { NOT = { has_unit_leader_flag = retired_character } }
 		}
@@ -618,9 +618,9 @@ characters={
 		corps_commander={
 			traits={ trait_cautious career_officer armor_officer brilliant_strategist tank_gen_arm organizer skilled_staffer }
 			skill=7
-			attack_skill=4
-			defense_skill=9
-			planning_skill=10
+			attack_skill=3
+			defense_skill=7
+			planning_skill=13
 			logistics_skill=5
 			legacy_id=3
 			visible = { has_country_flag = reichenau_dead }
@@ -639,8 +639,8 @@ characters={
 		corps_commander={
 			traits={ trickster trait_reckless war_hero armor_officer media_personality panzer_leader desert_fox gen_lt brilliant_strategist career_officer }
 			skill=9
-			attack_skill=14
-			defense_skill=4
+			attack_skill=13
+			defense_skill=5
 			planning_skill=5
 			logistics_skill=13
 			legacy_id=4
@@ -660,8 +660,8 @@ characters={
 		corps_commander={
 			traits={ trickster nobleman engineer_officer brilliant_strategist trait_engineer expert_improviser gen_lt good_logist }
 			skill=8
-			attack_skill=5
-			defense_skill=9
+			attack_skill=8
+			defense_skill=6
 			planning_skill=10
 			logistics_skill=8
 			legacy_id=5
@@ -816,10 +816,10 @@ characters={
 		corps_commander={
 			traits = { career_officer harsh_leader artillery_officer defensive_doctrine inflexible_strategist unyielding_defender trait_cautious politically_connected gen_lt }
 			skill=10
-			attack_skill = 7
-			defense_skill = 12
-			planning_skill = 13
-			logistics_skill = 9
+			attack_skill = 5
+			defense_skill = 14
+			planning_skill = 12
+			logistics_skill = 10
 			legacy_id=10
 			visible = { has_completed_focus = GER_durchbruchwagen }
 		}
@@ -991,8 +991,8 @@ characters={
 		corps_commander={
 			traits={ brilliant_strategist armor_officer panzer_leader politically_connected harsh_leader cavalry_leader organizer gen_lt }
 			skill=13
-			attack_skill=19
-			defense_skill=9
+			attack_skill=17
+			defense_skill=11
 			planning_skill=11
 			logistics_skill=13
 			visible = {
@@ -1012,10 +1012,10 @@ characters={
 		corps_commander={
 			traits={ brilliant_strategist trait_reckless panzer_leader armor_officer politically_connected trickster gen_lt }
 			skill=11
-			attack_skill=17
-			defense_skill=9
+			attack_skill=14
+			defense_skill=10
 			planning_skill=4
-			logistics_skill=14
+			logistics_skill=16
 			visible = {
 				has_completed_focus = GER_ss_armycorps
 			}
@@ -1149,10 +1149,10 @@ characters={
 		corps_commander={
 			traits={ war_hero trait_cautious infantry_officer career_officer trait_engineer gen_lt }
 			skill=6
-			attack_skill=1
-			defense_skill=10
+			attack_skill=2
+			defense_skill=11
 			planning_skill=8
-			logistics_skill=5
+			logistics_skill=3
 			legacy_id=33
 			visible = { has_completed_focus = GER_reorganize_the_wehrmacht }
 		}

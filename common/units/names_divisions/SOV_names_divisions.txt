@@ -1457,7 +1457,7 @@ SOV_CAV_02 = #COSSACK CAVALRY
 		OR = {
 			AND = {
 				tag = SOV
-				has_completed_focus = SOV_restore_cossack_units
+				always = no
 			}
 			tag = UKR
 		}

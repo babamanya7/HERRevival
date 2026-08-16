@@ -2794,8 +2794,8 @@ news_event = {
 	major = yes
 
 	trigger = {
-		982 = { is_controlled_by = GER }
-		982 = { is_owned_by = SOV }
+		980 = { is_controlled_by = GER }
+		980 = { is_owned_by = SOV }
 		GER = { has_war_with = SOV }
 		NOT = { has_global_flag = fall_of_sevastopol }
 	}

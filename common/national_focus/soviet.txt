@@ -237,7 +237,7 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-			982 = {
+			980 = {
 				set_state_category = large_city
 				add_building_construction = {
 					type = infrastructure
@@ -1386,7 +1386,7 @@ focus_tree = {
 
 		available = {
 			OR = {
-				982 = { is_controlled_by = SOV }
+				980 = { is_controlled_by = SOV }
 				195 = { is_controlled_by = SOV }
 				408 = { is_controlled_by = SOV }
 			}
@@ -1416,9 +1416,9 @@ focus_tree = {
 			}
 			if = {
 				limit = {
-					982 = { is_controlled_by = SOV }
+					980 = { is_controlled_by = SOV }
 				}
-				982 = {
+				980 = {
 					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 						type = dockyard
@@ -1725,7 +1725,7 @@ focus_tree = {
 				192 = { #ODESSA
 					is_owned_and_controlled_by = ROOT
 				}
-				982 = { #SEVASTOPOL
+				980 = { #SEVASTOPOL
 					is_owned_and_controlled_by = ROOT
 				}
 				218 = { #ROSTOV
@@ -1785,9 +1785,9 @@ focus_tree = {
 			}
 			if = { #SEVASTOPOL (CRIMEA) - Extra AA + coastal fort
 				limit = {
-					has_full_control_of_state = 982
+					has_full_control_of_state = 980
 				}
-				982 = {
+				980 = {
 					add_building_construction = {
 						type = anti_air_building
 						level = 2
@@ -7080,9 +7080,9 @@ focus_tree = {
 
 			if = {
 				limit = {
-					has_full_control_of_state = 982 #SEVASTOPOL
+					has_full_control_of_state = 980 #SEVASTOPOL
 				}
-				982 = { #SEVASTOPOL
+				980 = { #SEVASTOPOL
 					add_building_construction = {
 						type = anti_air_building
 						level = 1

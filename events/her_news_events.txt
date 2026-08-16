@@ -1260,7 +1260,7 @@ news_event = {
 		hidden = yes
 
 		trigger = {
-			NOT = { 982 = { is_controlled_by = SOV } }
+			NOT = { 980 = { is_controlled_by = SOV } }
 			NOT = { has_global_flag = sevastopol_fallen }
 			GER = { has_war_with = SOV }
 		}
@@ -1269,7 +1269,7 @@ news_event = {
 			set_global_flag = sevastopol_fallen
 			hidden_effect = {
 				random_country = {
-					limit = { controls_state = 982 }
+					limit = { controls_state = 980 }
 					save_global_event_target_as = sevastopol_occupier
 				}
 				GER = {
@@ -1295,7 +1295,7 @@ news_event = {
 		mean_time_to_happen = { days = 2 }
 
 		trigger = {
-			982 = { is_controlled_by = SOV }
+			980 = { is_controlled_by = SOV }
 			has_global_flag = sevastopol_fallen
 			GER = { has_war_with = SOV }
 		}

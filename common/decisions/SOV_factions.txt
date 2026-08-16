@@ -935,7 +935,7 @@ SOV_internal_factions = {
 		}
 	}
 
-	#982 "Sevastopol"
+	#980 "Sevastopol"
 	SOV_hold_sevastapol = {
 
 		icon = generic_civil_support
@@ -946,7 +946,7 @@ SOV_internal_factions = {
 
 		#Fail trigger
 		available = {
-			NOT = { controls_state = 982 }
+			NOT = { controls_state = 980 }
 		}
 
 		days_mission_timeout = 120
@@ -963,12 +963,12 @@ SOV_internal_factions = {
 		timeout_effect = {
 			add_stability = 0.05
 			add_war_support = 0.05
-			982 = { save_event_target_as = soviet_city }
+			980 = { save_event_target_as = soviet_city }
 			country_event = wtt_soviet_hold_city.11
 		}
 		#Fail
 		complete_effect = {
-			982 = { save_event_target_as = soviet_city }
+			980 = { save_event_target_as = soviet_city }
 			country_event = wtt_soviet_hold_city.12
 			add_stability = -0.05
 			add_war_support = -0.05

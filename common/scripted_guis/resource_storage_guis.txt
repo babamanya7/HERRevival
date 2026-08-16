@@ -22,27 +22,12 @@ scripted_gui = {
 		window_name = "rubber_toogle_window"
 		parent_window_token = trade_tab
 		effects = {
+			# Idempotent actions are safer than toggles when commands are delayed in MP.
 			rubber_off_button_click = {
-				if = {
-					limit = {
-						has_country_flag = rubber_storage_use
-					}
-					clr_country_flag = rubber_storage_use
-				}
-				else = {
-					set_country_flag = rubber_storage_use
-				}
+				set_country_flag = rubber_storage_use
 			}
 			rubber_on_button_click = {
-				if = {
-					limit = {
-						has_country_flag = rubber_storage_use
-					}
-					clr_country_flag = rubber_storage_use
-				}
-				else = {
-					set_country_flag = rubber_storage_use
-				}
+				clr_country_flag = rubber_storage_use
 			}
 		}
 		triggers = {
@@ -68,27 +53,12 @@ scripted_gui = {
 		window_name = "aluminium_toogle_window"
 		parent_window_token = trade_tab
 		effects = {
+			# Idempotent actions are safer than toggles when commands are delayed in MP.
 			aluminium_off_button_click = {
-				if = {
-					limit = {
-						has_country_flag = aluminium_storage_use
-					}
-					clr_country_flag = aluminium_storage_use
-				}
-				else = {
-					set_country_flag = aluminium_storage_use
-				}
+				set_country_flag = aluminium_storage_use
 			}
 			aluminium_on_button_click = {
-				if = {
-					limit = {
-						has_country_flag = aluminium_storage_use
-					}
-					clr_country_flag = aluminium_storage_use
-				}
-				else = {
-					set_country_flag = aluminium_storage_use
-				}
+				clr_country_flag = aluminium_storage_use
 			}
 		}
 		triggers = {
@@ -114,27 +84,12 @@ scripted_gui = {
 		window_name = "chromium_toogle_window"
 		parent_window_token = trade_tab
 		effects = {
+			# Idempotent actions are safer than toggles when commands are delayed in MP.
 			chromium_off_button_click = {
-				if = {
-					limit = {
-						has_country_flag = chromium_storage_use
-					}
-					clr_country_flag = chromium_storage_use
-				}
-				else = {
-					set_country_flag = chromium_storage_use
-				}
+				set_country_flag = chromium_storage_use
 			}
 			chromium_on_button_click = {
-				if = {
-					limit = {
-						has_country_flag = chromium_storage_use
-					}
-					clr_country_flag = chromium_storage_use
-				}
-				else = {
-					set_country_flag = chromium_storage_use
-				}
+				clr_country_flag = chromium_storage_use
 			}
 		}
 		triggers = {
@@ -160,27 +115,12 @@ scripted_gui = {
 		window_name = "tungsten_toogle_window"
 		parent_window_token = trade_tab
 		effects = {
+			# Idempotent actions are safer than toggles when commands are delayed in MP.
 			tungsten_off_button_click = {
-				if = {
-					limit = {
-						has_country_flag = tungsten_storage_use
-					}
-					clr_country_flag = tungsten_storage_use
-				}
-				else = {
-					set_country_flag = tungsten_storage_use
-				}
+				set_country_flag = tungsten_storage_use
 			}
 			tungsten_on_button_click = {
-				if = {
-					limit = {
-						has_country_flag = tungsten_storage_use
-					}
-					clr_country_flag = tungsten_storage_use
-				}
-				else = {
-					set_country_flag = tungsten_storage_use
-				}
+				clr_country_flag = tungsten_storage_use
 			}
 		}
 		triggers = {
@@ -206,27 +146,12 @@ scripted_gui = {
 		window_name = "steel_toogle_window"
 		parent_window_token = trade_tab
 		effects = {
+			# Idempotent actions are safer than toggles when commands are delayed in MP.
 			steel_off_button_click = {
-				if = {
-					limit = {
-						has_country_flag = steel_storage_use
-					}
-					clr_country_flag = steel_storage_use
-				}
-				else = {
-					set_country_flag = steel_storage_use
-				}
+				set_country_flag = steel_storage_use
 			}
 			steel_on_button_click = {
-				if = {
-					limit = {
-						has_country_flag = steel_storage_use
-					}
-					clr_country_flag = steel_storage_use
-				}
-				else = {
-					set_country_flag = steel_storage_use
-				}
+				clr_country_flag = steel_storage_use
 			}
 		}
 		triggers = {
@@ -252,27 +177,12 @@ scripted_gui = {
 		window_name = "coal_toogle_window"
 		parent_window_token = trade_tab
 		effects = {
+			# Idempotent actions are safer than toggles when commands are delayed in MP.
 			coal_off_button_click = {
-				if = {
-					limit = {
-						has_country_flag = coal_storage_use
-					}
-					clr_country_flag = coal_storage_use
-				}
-				else = {
-					set_country_flag = coal_storage_use
-				}
+				set_country_flag = coal_storage_use
 			}
 			coal_on_button_click = {
-				if = {
-					limit = {
-						has_country_flag = coal_storage_use
-					}
-					clr_country_flag = coal_storage_use
-				}
-				else = {
-					set_country_flag = coal_storage_use
-				}
+				clr_country_flag = coal_storage_use
 			}
 		}
 		triggers = {
@@ -298,27 +208,12 @@ scripted_gui = {
 		window_name = "bauxite_toogle_window"
 		parent_window_token = trade_tab
 		effects = {
+			# Idempotent actions are safer than toggles when commands are delayed in MP.
 			bauxite_off_button_click = {
-				if = {
-					limit = {
-						has_country_flag = bauxite_storage_use
-					}
-					clr_country_flag = bauxite_storage_use
-				}
-				else = {
-					set_country_flag = bauxite_storage_use
-				}
+				set_country_flag = bauxite_storage_use
 			}
 			bauxite_on_button_click = {
-				if = {
-					limit = {
-						has_country_flag = bauxite_storage_use
-					}
-					clr_country_flag = bauxite_storage_use
-				}
-				else = {
-					set_country_flag = bauxite_storage_use
-				}
+				clr_country_flag = bauxite_storage_use
 			}
 		}
 		triggers = {
@@ -344,27 +239,12 @@ scripted_gui = {
 		window_name = "iron_toogle_window"
 		parent_window_token = trade_tab
 		effects = {
+			# Idempotent actions are safer than toggles when commands are delayed in MP.
 			iron_off_button_click = {
-				if = {
-					limit = {
-						has_country_flag = iron_storage_use
-					}
-					clr_country_flag = iron_storage_use
-				}
-				else = {
-					set_country_flag = iron_storage_use
-				}
+				set_country_flag = iron_storage_use
 			}
 			iron_on_button_click = {
-				if = {
-					limit = {
-						has_country_flag = iron_storage_use
-					}
-					clr_country_flag = iron_storage_use
-				}
-				else = {
-					set_country_flag = iron_storage_use
-				}
+				clr_country_flag = iron_storage_use
 			}
 		}
 		triggers = {

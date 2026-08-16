@@ -32,68 +32,7 @@ focus_tree = {
 
 
 
-	focus = {
-		id = GER_auxiliary_autobahn
-		icon = GFX_goal_roads
-		prerequisite = { focus = GER_autobahn }
-		x = 0
-		y = 1
-		relative_position_id = GER_autobahn
-		cost = 2
-		ai_will_do = {
-			factor = 12
-		}
 
-		available = {
-			has_completed_focus = GER_end_of_czechoslovakia
-		}
-		
-		completion_reward = {
-			economy_fatigue_level_down_4 = yes
-			add_tech_bonus = {
-				name = GER_auxiliary_autobahn
-				bonus = 1.0
-				uses = 1
-				category = industry
-			}
-			custom_effect_tooltip = GER_auxiliary_autobahn_tt
-			hidden_effect = {
-				every_state = {
-					limit = {
-						is_controlled_by = GER
-						is_core_of = AUS
-					}
-					add_building_construction = {
-						type = infrastructure
-						level = 3
-						instant_build = yes
-					}
-				}
-				every_state = {
-					limit = {
-						is_controlled_by = GER
-						is_core_of = CZE
-					}
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-				}
-				every_state = {
-					limit = {
-						is_controlled_by = CZE
-						CZE = { is_subject_of = GER }
-					}
-					add_building_construction = {
-						type = infrastructure
-						level = 3
-						instant_build = yes
-					}
-				}
-			}
-		}
-	}
 
 	############################################
 	############## GORING BRANCH ###############
@@ -242,6 +181,69 @@ focus_tree = {
 					add_building_construction = {
 						type = infrastructure
 						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GER_auxiliary_autobahn
+		icon = GFX_goal_roads
+		prerequisite = { focus = GER_autobahn }
+		x = 0
+		y = 1
+		relative_position_id = GER_autobahn
+		cost = 2
+		ai_will_do = {
+			factor = 12
+		}
+
+		available = {
+			has_completed_focus = GER_end_of_czechoslovakia
+		}
+		
+		completion_reward = {
+			economy_fatigue_level_down_4 = yes
+			add_tech_bonus = {
+				name = GER_auxiliary_autobahn
+				bonus = 1.0
+				uses = 1
+				category = industry
+			}
+			custom_effect_tooltip = GER_auxiliary_autobahn_tt
+			hidden_effect = {
+				every_state = {
+					limit = {
+						is_controlled_by = GER
+						is_core_of = AUS
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 3
+						instant_build = yes
+					}
+				}
+				every_state = {
+					limit = {
+						is_controlled_by = GER
+						is_core_of = CZE
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+				every_state = {
+					limit = {
+						is_controlled_by = CZE
+						CZE = { is_subject_of = GER }
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 3
 						instant_build = yes
 					}
 				}
@@ -1461,55 +1463,7 @@ focus_tree = {
 	
 
 	
-	focus = {
-		id = GER_establish_the_afrikakorps
-		icon = GFX_focus_GER_afrikakorps
-		prerequisite = { focus = GER_instill_auftragstaktik }
 
-		x = -2
-		y = 2
-		relative_position_id = GER_instill_auftragstaktik
-		cost = 2
-		available = {
-			OR = {
-				AND = {
-					any_controlled_state = {
-						is_fully_controlled_by = ROOT
-						OR =  {
-							is_on_continent = africa
-							is_on_continent = asia
-						}
-					}
-				}
-				AND = {
-					any_subject_country = {
-						any_controlled_state = {
-							is_fully_controlled_by = PREV
-							OR =  {
-								is_on_continent = africa
-								is_on_continent = asia
-							}
-						}
-					}
-				}
-				AND = {
-					any_allied_country = {
-						any_controlled_state = {
-							is_fully_controlled_by = PREV
-							OR =  {
-								is_on_continent = africa
-								is_on_continent = asia
-							}
-						}
-					}
-				}
-			}
-		}
-
-		completion_reward = {
-			custom_effect_tooltip = GER_establish_the_afrikakorps_tt
-		}
-	}
 
 	focus = {
 		id = GER_adopt_new_panzer_doctrine
@@ -1640,6 +1594,56 @@ focus_tree = {
 					can_be_fired = no
 				}
 			}
+		}
+	}
+
+	focus = {
+		id = GER_establish_the_afrikakorps
+		icon = GFX_focus_GER_afrikakorps
+		prerequisite = { focus = GER_instill_auftragstaktik }
+
+		x = -2
+		y = 2
+		relative_position_id = GER_instill_auftragstaktik
+		cost = 2
+		available = {
+			OR = {
+				AND = {
+					any_controlled_state = {
+						is_fully_controlled_by = ROOT
+						OR =  {
+							is_on_continent = africa
+							is_on_continent = asia
+						}
+					}
+				}
+				AND = {
+					any_subject_country = {
+						any_controlled_state = {
+							is_fully_controlled_by = PREV
+							OR =  {
+								is_on_continent = africa
+								is_on_continent = asia
+							}
+						}
+					}
+				}
+				AND = {
+					any_allied_country = {
+						any_controlled_state = {
+							is_fully_controlled_by = PREV
+							OR =  {
+								is_on_continent = africa
+								is_on_continent = asia
+							}
+						}
+					}
+				}
+			}
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = GER_establish_the_afrikakorps_tt
 		}
 	}
 

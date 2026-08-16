@@ -135,17 +135,15 @@ leader_traits = {
 		}
 		modifier = {
 			cas_damage_reduction = 0.2
-		}
-		sub_unit_modifiers = {
-			anti_air = { units = { anti_air_attack = 0.3 } }
-			anti_air_brigade = { units = { anti_air_attack = 0.3 } }
-			mot_anti_air_brigade = { units = { anti_air_attack = 0.3 } }
-			mechanized_anti_air_brigade = { units = { anti_air_attack = 0.3 } }
-			light_sp_anti_air_brigade = { units = { anti_air_attack = 0.3 } }
-			medium_sp_anti_air_brigade = { units = { anti_air_attack = 0.3 } }
-			heavy_sp_anti_air_brigade = { units = { anti_air_attack = 0.3 } }
-			super_heavy_sp_anti_air_brigade = { units = { anti_air_attack = 0.3 } }
-			modern_sp_anti_air_brigade = { units = { anti_air_attack = 0.3 } }
+			modifier_army_sub_unit_anti_air_attack_factor = 0.3
+			modifier_army_sub_unit_anti_air_brigade_attack_factor = 0.3
+			modifier_army_sub_unit_mot_anti_air_brigade_attack_factor = 0.3
+			modifier_army_sub_unit_mechanized_anti_air_brigade_attack_factor = 0.3
+			modifier_army_sub_unit_light_sp_anti_air_brigade_attack_factor = 0.3
+			modifier_army_sub_unit_medium_sp_anti_air_brigade_attack_factor = 0.3
+			modifier_army_sub_unit_heavy_sp_anti_air_brigade_attack_factor = 0.3
+			modifier_army_sub_unit_super_heavy_sp_anti_air_brigade_attack_factor = 0.3
+			modifier_army_sub_unit_modern_sp_anti_air_brigade_attack_factor = 0.3
 		}
 		new_commander_weight = { factor = 0 }
 	}

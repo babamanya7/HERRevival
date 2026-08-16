@@ -2693,22 +2693,12 @@ focus_tree = {
 					limit = {
 						any_owned_state = {
 							infrastructure < 3
-							free_building_slots = {
-								building = fuel_silo
-								size > 2
-								include_locked = yes
-							}
 							NOT = { has_state_flag = SOV_increase_state_reserves_flag }
 						}
 					}
 					random_owned_controlled_state = {
 						limit = {
 							infrastructure < 3
-							free_building_slots = {
-								building = fuel_silo
-								size > 2
-								include_locked = yes
-							}
 							NOT = { has_state_flag = SOV_increase_state_reserves_flag }
 						}
 						set_state_flag = SOV_increase_state_reserves_flag
@@ -2723,11 +2713,6 @@ focus_tree = {
 				else = {
 					random_owned_controlled_state = {
 						limit = {
-							free_building_slots = {
-								building = fuel_silo
-								size > 2
-								include_locked = yes
-							}
 							NOT = { has_state_flag = SOV_increase_state_reserves_flag }
 						}
 						set_state_flag = SOV_increase_state_reserves_flag

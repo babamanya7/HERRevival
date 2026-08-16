@@ -153,7 +153,7 @@ characters = {
 		}
 		corps_commander = {
 			visible = {
-				has_completed_focus = POL_soviet_military_staff
+				always = no
 			}
 			traits = { JAP_communist_sympathizer old_guard }
 			skill = 3
@@ -387,7 +387,7 @@ characters = {
 			logistics_skill = 4
 			legacy_id=-1
 			visible = {
-				has_completed_focus = POL_restore_bermontians
+				always = no
 			}
 		}
 	}

@@ -12,7 +12,9 @@ update_state_info = {
 			add_to_temp_variable = { PREV.num_non_active_hydro_steel_refineries = building_level@hydro_steel_refinery_inactive }
 			add_to_temp_variable = { PREV.num_non_active_aluminium_refineries = building_level@aluminium_refinery_inactive }
 			add_to_temp_variable = { PREV.num_non_active_hydro_aluminium_refineries = building_level@hydro_aluminium_refinery_inactive }
-			add_to_temp_variable = { PREV.num_non_active_synthetic_refineries = building_level@synthetic_refinery_inactive }
+			# Synthetic refineries use a dedicated state slot, so read the level
+			# directly from the current state rather than the shared-slot token.
+			add_to_temp_variable = { PREV.num_non_active_synthetic_refineries = non_damaged_building_level@synthetic_refinery_inactive }
 		}
 		set_variable = { var = total_non_active_steel_refineries value = 0 }
 		add_to_variable = { var = total_non_active_steel_refineries value = num_non_active_steel_refineries }

@@ -6,7 +6,7 @@ has_sanation_left_opposition = {
 			has_idea = POL_sanation_left_opposition_2
 			has_idea = POL_sanation_left_opposition_3
 			has_idea = POL_sanation_left_opposition_4
-			has_completed_focus = POL_the_left_chairman
+			always = no
 		}
 	}
 }
@@ -19,7 +19,7 @@ has_sanation_right_opposition = {
 			has_idea = POL_sanation_right_opposition_2
 			has_idea = POL_sanation_right_opposition_3
 			has_idea = POL_sanation_right_opposition_4
-			has_completed_focus = POL_second_man_of_the_state
+			always = no
 		}
 	}
 }
@@ -32,7 +32,7 @@ POL_is_valid_to_boost_monarchy = {
 	}
 	if = {
 		limit = {
-			has_completed_focus = POL_support_monarchy_in_CZE
+			always = no
 		}
 		NOT = { has_country_flag = attempted_royal_takeover_in_CZE }			
 		FROM = {
@@ -41,7 +41,7 @@ POL_is_valid_to_boost_monarchy = {
 	}
 	if = {
 		limit = {
-			has_completed_focus = POL_internal_romanian_support
+			always = no
 		}
 		NOT = { has_country_flag = attempted_royal_takeover_in_ROM }
 		FROM = {
@@ -75,7 +75,7 @@ POL_is_valid_to_reject_monarchy = {
 			original_tag = CZE
 		}
 		POL = {
-			has_completed_focus = POL_support_monarchy_in_CZE
+			always = no
 			NOT = { has_country_flag = attempted_royal_takeover_in_CZE }
 		}
 		FROM = {
@@ -87,7 +87,7 @@ POL_is_valid_to_reject_monarchy = {
 			original_tag = ROM
 		}
 		POL = {
-			has_completed_focus = POL_internal_romanian_support
+			always = no
 			NOT = { has_country_flag = attempted_royal_takeover_in_ROM }
 		}
 		FROM = {

@@ -1263,7 +1263,7 @@ ITA_missiolinis = {
 				tooltip = ITA_missiolini_bolster_military_high_command_trigger_tt
 				amount_taken_ideas = {
 					amount > 2
-					slots = { high_command }
+					categories = { military_staff }
 				}
 			}
 		}

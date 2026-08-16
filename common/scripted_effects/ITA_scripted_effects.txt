@@ -6989,42 +6989,6 @@ ITA_political_instability_update_effect = {
 }
 
 # Compatibility effects restored from the BBA Italy script.
-ITA_add_the_king_of_the_skies_template_production_and_wing = {
-	create_equipment_variant = {
-		name = "Aquila Magna"
-		type = large_plane_airframe_3
-		parent_version = 0
-		modules = {
-			fixed_main_weapon_slot = large_bomb_bay
-			fixed_auxiliary_weapon_slot_1 = large_bomb_bay
-			fixed_auxiliary_weapon_slot_2 = large_bomb_bay
-			fixed_auxiliary_weapon_slot_3 = torpedo_mounting
-			fixed_auxiliary_weapon_slot_4 = torpedo_mounting
-			engine_type_slot = engine_4_6x
-			special_type_slot_1 = cannon_defense_turret_2x
-			special_type_slot_2 = cannon_defense_turret_2x
-			special_type_slot_3 = flying_boat_large
-			special_type_slot_4 = armor_plate_large
-			special_type_slot_5 = self_sealing_fuel_tanks_large
-			special_type_slot_6 = fuel_tanks_large
-		}
-		icon = "GFX_ITA_strategic_bomber3_medium"
-	}
-	add_equipment_production = {
-		equipment = {
-			type = large_plane_airframe_3
-			creator = "ITA"
-			version_name = "Aquila Magna"
-		}
-		requested_factories = 1
-		progress = 0.6
-		efficiency = 50
-	}
-	custom_effect_tooltip = ITA_aquila_magna_tt
-	hidden_effect = {
-		load_oob = ITA_aquila_magna
-	}
-}
 
 ITA_pope_takes_over = {
 	if = {

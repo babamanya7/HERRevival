@@ -233,11 +233,6 @@ focus_tree = {
 			random_core_state = {
 				limit = {
 					is_fully_controlled_by = ROOT
-					free_building_slots = {
-						building = synthetic_refinery
-						size > 2
-						include_locked = yes
-					}
 				}
 				prioritize = { 57 }
 				add_extra_state_shared_building_slots = 2

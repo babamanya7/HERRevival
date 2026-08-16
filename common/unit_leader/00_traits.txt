@@ -122,6 +122,33 @@ leader_traits = {
 			factor = 0
 		}
 	}
+
+	luftwaffe_field_commander = {
+		type = land
+		trait_type = personality_trait
+		attack_skill = -1
+		defense_skill = -1
+		planning_skill = -1
+		logistics_skill = -1
+		non_shared_modifier = {
+			experience_gain_factor = -0.15
+		}
+		modifier = {
+			cas_damage_reduction = 0.2
+		}
+		sub_unit_modifiers = {
+			anti_air = { anti_air_attack = 0.3 }
+			anti_air_brigade = { anti_air_attack = 0.3 }
+			mot_anti_air_brigade = { anti_air_attack = 0.3 }
+			mechanized_anti_air_brigade = { anti_air_attack = 0.3 }
+			light_sp_anti_air_brigade = { anti_air_attack = 0.3 }
+			medium_sp_anti_air_brigade = { anti_air_attack = 0.3 }
+			heavy_sp_anti_air_brigade = { anti_air_attack = 0.3 }
+			super_heavy_sp_anti_air_brigade = { anti_air_attack = 0.3 }
+			modern_sp_anti_air_brigade = { anti_air_attack = 0.3 }
+		}
+		new_commander_weight = { factor = 0 }
+	}
 	gen_arm = {
  		type = land
 		trait_type = personality_trait

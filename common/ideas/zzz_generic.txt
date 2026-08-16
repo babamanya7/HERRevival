@@ -1,6 +1,13 @@
 ideas = {
 	
 	hidden_ideas = {
+		peacetime_supply_reduction = {
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				supply_consumption_factor = -0.5
+			}
+		}
 		GER_no_oberkomando_stab_leader = {
 			allowed = {
 			}

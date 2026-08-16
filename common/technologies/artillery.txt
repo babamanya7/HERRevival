@@ -1612,7 +1612,6 @@ technologies = {
 		enable_equipment_modules = {
 			tank_medium_cannon_2
 			tank_high_velocity_cannon_2
-			tank_buster_2
 		}
 		category_all_at = {
 			hard_attack = 0.05
@@ -1687,6 +1686,7 @@ technologies = {
 		}
 		enable_equipment_modules = {
 			tank_heavy_cannon_2
+			tank_buster_2
 		}
 		research_cost = 1.5
 		on_research_complete = {

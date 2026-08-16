@@ -2716,7 +2716,32 @@ economy_decisions = {
 			}
 			add_stability = -0.05
 		}
-	}			
+	}
+
+	requisition_civilian_aircraft = {
+		visible = {
+			has_war = yes
+		}
+		available = {
+			has_equipment = { transport_plane_equipment < 101 }
+			has_tech = bba_early_transport_plane
+		}
+		days_remove = 180
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_stability > 0.74
+			}
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = transport_plane_equipment
+				amount = 30
+			}
+			add_stability = -0.05
+		}
+	}
 }
 
 propaganda_efforts = {

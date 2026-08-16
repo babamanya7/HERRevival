@@ -4920,6 +4920,47 @@ operations = {
 }
 
 SOV_military_reform = {
+
+	SOV_prepare_karelian_offensive = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = SOV
+		}
+		visible = {
+			has_country_flag = SOV_army_reform_1
+			has_country_flag = SOV_army_reform_3
+			any_state = {
+				OR = {
+					is_core_of = FIN
+					state = 215
+					state = 213
+					state = 216
+					state = 146
+				}
+				has_dynamic_modifier = { modifier = unplanned_offensive }
+			}
+		}
+		available = {
+			has_war_with = FIN
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						is_core_of = FIN
+						state = 215
+						state = 213
+						state = 216
+						state = 146
+					}
+					has_dynamic_modifier = { modifier = unplanned_offensive }
+				}
+				remove_dynamic_modifier = { modifier = unplanned_offensive }
+			}
+		}
+	}
 	
 	SOV_army_recovery = {
 		

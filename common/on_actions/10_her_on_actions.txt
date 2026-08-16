@@ -3,6 +3,10 @@ on_actions = {
 		effect = {
 			every_country = {
 				set_technology = { starting_tech = 1 popup = no }
+				if = {
+					limit = { has_war = no }
+					add_ideas = peacetime_supply_reduction
+				}
 				update_state_info = yes
 				set_variable = { var = production_efficiency_start_value value = 1 }
 			}
@@ -688,6 +692,22 @@ on_actions = {
 	}
 	on_weekly = {
 		effect = {
+			every_country = {
+				if = {
+					limit = {
+						has_war = no
+						NOT = { has_idea = peacetime_supply_reduction }
+					}
+					add_ideas = peacetime_supply_reduction
+				}
+				else_if = {
+					limit = {
+						has_war = yes
+						has_idea = peacetime_supply_reduction
+					}
+					remove_ideas = peacetime_supply_reduction
+				}
+			}
 			if = {
 				limit = {
 					is_ai = no
@@ -698,6 +718,8 @@ on_actions = {
 	}
 	on_war = {
 		effect = {
+			remove_ideas = peacetime_supply_reduction
+			FROM = { remove_ideas = peacetime_supply_reduction }
 			if = {
 				limit = {
 					tag = USA
@@ -721,6 +743,14 @@ on_actions = {
 					}
 				}
 				ENG = { add_to_faction = FROM }
+			}
+		}
+	}
+	on_peaceconference_ended = {
+		effect = {
+			if = {
+				limit = { has_war = no }
+				add_ideas = peacetime_supply_reduction
 			}
 		}
 	}

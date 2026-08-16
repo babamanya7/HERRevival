@@ -524,6 +524,10 @@ focus_tree = {
 			factor = 1
 		}
 
+		available = {
+			is_special_project_completed = sp:sp_air_radar
+		}
+
 		available_if_capitulated = yes
 
 		completion_reward = {
@@ -4900,4 +4904,3 @@ focus_tree = {
 
 }
 	
-

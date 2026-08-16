@@ -197,7 +197,7 @@ characters={
 		}
 
 		corps_commander = {
-			traits = { gen_arm war_hero camouflage_expert skilled_staffer paratrooper harsh_leader }
+			traits = { gen_arm war_hero camouflage_expert skilled_staffer paratrooper harsh_leader luftwaffe_field_commander }
 			skill = 8
 			attack_skill = 4
 			defense_skill = 9
@@ -912,7 +912,7 @@ characters={
 		}
 		
 		corps_commander={
-			traits={ trait_reckless commando war_hero commando gen_lt }
+			traits={ trait_reckless commando war_hero commando gen_lt luftwaffe_field_commander }
 			skill=4
 			attack_skill=1
 			defense_skill=5
@@ -1127,7 +1127,7 @@ characters={
 		}
 		
 		corps_commander={
-			traits={ media_personality harsh_leader brilliant_strategist politically_connected war_hero commando camouflage_expert skilled_staffer gen_fm }
+			traits={ media_personality harsh_leader brilliant_strategist politically_connected war_hero commando camouflage_expert skilled_staffer gen_fm luftwaffe_field_commander }
 			skill = 8
 			attack_skill = 3
 			defense_skill = 10

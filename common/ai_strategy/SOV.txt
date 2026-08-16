@@ -83,6 +83,11 @@ SOV_second_fyp_4 = {
 	}
 	ai_strategy = {
 		type = factory_build_score_factor
+		target = 982
+		value = 50
+	}
+	ai_strategy = {
+		type = factory_build_score_factor
 		target = 202
 		value = 50
 	}
@@ -1450,6 +1455,7 @@ SOV_defense_of_sevastapol = {
 		# south_russia
 		states = {
 			137
+			982
 		}
 
 		ratio = 0.05

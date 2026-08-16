@@ -644,7 +644,7 @@ buildings = {
 	}
 
 	steel_refinery = {
-		show_on_map = 1
+		show_on_map = 0
 		base_cost = 10000
 		per_level_extra_cost = -50
 		icon_frame = 28
@@ -665,7 +665,7 @@ buildings = {
 		}
 	}
 	hydro_steel_refinery = {
-		show_on_map = 1
+		show_on_map = 0
 		base_cost = 12500
 		per_level_extra_cost = -50
 		icon_frame = 29
@@ -687,7 +687,7 @@ buildings = {
 	}
 	
 	aluminium_refinery = {
-		show_on_map = 1
+		show_on_map = 0
 		base_cost = 10000
 		per_level_extra_cost = -50
 		icon_frame = 30
@@ -708,7 +708,7 @@ buildings = {
 		}
 	}
 	hydro_aluminium_refinery = {
-		show_on_map = 1
+		show_on_map = 0
 		base_cost = 12500
 		per_level_extra_cost = -50
 		icon_frame = 31
@@ -799,7 +799,7 @@ buildings = {
 	}
 	
 	rubber_storage = {
-		show_on_map = 1
+		show_on_map = 0
 		base_cost = 12000
 		icon_frame = 37
 		local_resources_rubber = 0
@@ -811,7 +811,7 @@ buildings = {
 		}
 	}
 	aluminium_storage = {
-		show_on_map = 1
+		show_on_map = 0
 		base_cost = 8000
 		icon_frame = 38
 		local_resources_aluminium = 0
@@ -823,7 +823,7 @@ buildings = {
 		}
 	}
 	steel_storage = {
-		show_on_map = 1
+		show_on_map = 0
 		base_cost = 6500
 		icon_frame = 39
 		local_resources_steel = 0
@@ -835,7 +835,7 @@ buildings = {
 		}
 	}
 	tungsten_storage = {
-		show_on_map = 1
+		show_on_map = 0
 		base_cost = 14000
 		icon_frame = 40
 		local_resources_tungsten = 0
@@ -847,7 +847,7 @@ buildings = {
 		}
 	}
 	chromium_storage = {
-		show_on_map = 1
+		show_on_map = 0
 		base_cost = 16000
 		icon_frame = 41
 		local_resources_chromium = 0
@@ -859,7 +859,7 @@ buildings = {
 		}
 	}
 	coal_storage = {
-		show_on_map = 1
+		show_on_map = 0
 		base_cost = 3000
 		icon_frame = 42
 		local_resources_coal = 0
@@ -871,7 +871,7 @@ buildings = {
 		}
 	}
 	bauxite_storage = {
-		show_on_map = 1
+		show_on_map = 0
 		base_cost = 4000
 		icon_frame = 43
 		local_resources_bauxite = 0
@@ -883,7 +883,7 @@ buildings = {
 		}
 	}
 	iron_storage = {
-		show_on_map = 1
+		show_on_map = 0
 		base_cost = 4000
 		icon_frame = 44
 		local_resources_iron = 0

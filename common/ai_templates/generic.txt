@@ -2,7 +2,7 @@ armor_generic = {
 	
 	role = armor
 	
-	enable = {
+	allowed = {
 		has_country_flag = light_tanks_ai
 	}
 	
@@ -45,7 +45,7 @@ armor_generic = {
 				mot_field_hospital = 1
 				
 				mot_maintenance_company = 1
-				heavy_artillery = 1
+				heavy_artillery_brigade = 1
 				artillery = 1
 				anti_air = 1
 				motorbike_recon = 1
@@ -81,7 +81,7 @@ armor_generic = {
 				mot_field_hospital = 1
 				
 				mot_maintenance_company = 1
-				heavy_artillery = 1
+				heavy_artillery_brigade = 1
 				artillery = 1
 				anti_air = 1
 				motorbike_recon = 1
@@ -119,7 +119,7 @@ armor_generic = {
 				mot_field_hospital = 1
 				
 				mot_maintenance_company = 1
-				heavy_artillery = 1
+				heavy_artillery_brigade = 1
 				artillery = 1
 				anti_air = 1
 				motorbike_recon = 1
@@ -129,7 +129,7 @@ armor_generic = {
 				medium_armor = 3
 				mechanized = 6
 				mechanized_anti_air_brigade = 1
-				mechanized_anti_tank_brigade = 2
+				medium_tank_destroyer_brigade = 2
 				mechanized_sp_artillery_brigade = 3
 			}
 		}
@@ -157,7 +157,7 @@ armor_generic = {
 				mot_field_hospital = 1
 				
 				mot_maintenance_company = 1
-				heavy_artillery = 1
+				heavy_artillery_brigade = 1
 				artillery = 1
 				anti_air = 1
 				motorbike_recon = 1
@@ -167,7 +167,7 @@ armor_generic = {
 				medium_armor = 3
 				mechanized = 6
 				mechanized_anti_air_brigade = 1
-				mechanized_anti_tank_brigade = 2
+				medium_tank_destroyer_brigade = 2
 				mechanized_sp_artillery_brigade = 3
 			}
 		}
@@ -194,7 +194,7 @@ armor_generic = {
 				mot_field_hospital = 1
 				
 				mot_maintenance_company = 1
-				heavy_artillery = 1
+				heavy_artillery_brigade = 1
 				artillery = 1
 				anti_air = 1
 				motorbike_recon = 1
@@ -247,7 +247,7 @@ garrison_generic = {
 
 panzergrenadier = {
 
-	enable = {
+	allowed = {
 		has_country_flag = medium_tanks_ai
 	}
 	
@@ -283,7 +283,7 @@ panzergrenadier = {
 				mot_signal_company = 1
 				mot_field_hospital = 1
 				logistics_company = 1
-				heavy_artillery = 1
+				heavy_artillery_brigade = 1
 				anti_tank = 1
 			}
 			
@@ -321,7 +321,7 @@ panzergrenadier = {
 				mot_signal_company = 1
 				mot_field_hospital = 1
 				logistics_company = 1
-				heavy_artillery = 1
+				heavy_artillery_brigade = 1
 				anti_tank = 1
 			}
 			
@@ -413,8 +413,8 @@ infantry_generic = {
 				anti_tank = 1
 				anti_air = 1
 				artillery = 1
-				heavy_artillery = 1
-				rocket_artillery = 1
+				heavy_artillery_brigade = 1
+				rocket_artillery_brigade = 1
 				signal_company = 1
 				field_hospital = 1
 			}
@@ -444,8 +444,8 @@ infantry_generic = {
 				anti_tank = 1
 				anti_air = 1
 				artillery = 1
-				heavy_artillery = 1
-				rocket_artillery = 1
+				heavy_artillery_brigade = 1
+				rocket_artillery_brigade = 1
 				signal_company = 1
 				field_hospital = 1
 			}
@@ -478,8 +478,8 @@ infantry_generic = {
 				anti_tank = 1
 				anti_air = 1
 				artillery = 1
-				heavy_artillery = 1
-				rocket_artillery = 1
+				heavy_artillery_brigade = 1
+				rocket_artillery_brigade = 1
 				signal_company = 1
 				field_hospital = 1
 				motorbike_recon = 1
@@ -527,8 +527,8 @@ mountaineers_generic = {
 				anti_tank = 1
 				anti_air = 1
 				artillery = 1
-				heavy_artillery = 1
-				rocket_artillery = 1
+				heavy_artillery_brigade = 1
+				rocket_artillery_brigade = 1
 				signal_company = 1
 				field_hospital = 1
 			}
@@ -591,8 +591,8 @@ marines_generic = {
 				anti_tank = 1
 				anti_air = 1
 				artillery = 1
-				heavy_artillery = 1
-				rocket_artillery = 1
+				heavy_artillery_brigade = 1
+				rocket_artillery_brigade = 1
 				signal_company = 1
 				field_hospital = 1
 				
@@ -601,7 +601,7 @@ marines_generic = {
 			}
 			
 			regiments = {
-				marines = 12
+				marine = 12
 				artillery_brigade = 3
 			}
 		}
@@ -641,7 +641,7 @@ paratrooper_generic = {
 				anti_tank = 1
 				anti_air = 1
 				artillery = 1
-				rocket_artillery = 1
+				rocket_artillery_brigade = 1
 				signal_company = 1
 				field_hospital = 1
 				maintenance_company = 1

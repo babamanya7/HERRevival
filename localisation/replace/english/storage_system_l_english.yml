@@ -1,0 +1,78 @@
+﻿l_english:
+
+ local_logicist_center:0  "Strategic Supply Base"
+ local_logicist_center_plural:0  "Strategic Supply Bases"
+ local_logicist_center_desc:0  "Advance planning and construction of strategic supply bases improves local supply, increases the number of troops that can be supported in a region, and reduces excessive dependence on deliveries from the capital. They are usually built in strategically vital areas that require large forces to defend. Each completed base doubles the local supply ceiling, up to a maximum tenfold increase.\n§g(The effect will take up to one week after construction is completed.)§!"
+ 
+ rubber_storage:0  "Rubber Storage"
+ steel_storage:0  "Steel Storage"
+ chromium_storage:0  "Chromium Storage"
+ tungsten_storage:0  "Tungsten Storage"
+ aluminium_storage:0  "Aluminium Storage"
+ coal_storage:0  "Coal Storage"
+ bauxite_storage:0  "Bauxite Storage"
+ iron_storage:0  "Iron Storage"
+ rubber_storage_plural:0  "Rubber Storage Facilities"
+ steel_storage_plural:0  "Steel Storage Facilities"
+ chromium_storage_plural:0  "Chromium Storage Facilities"
+ tungsten_storage_plural:0  "Tungsten Storage Facilities"
+ aluminium_storage_plural:0  "Aluminium Storage Facilities"
+ coal_storage_plural:0  "Coal Storage Facilities"
+ bauxite_storage_plural:0  "Bauxite Storage Facilities"
+ iron_storage_plural:0  "Iron Storage Facilities"
+ rubber_storage_desc:0 " -Increases the rubber storage capacity of each facility by §H100000§!.\n -Increases the amount of stored rubber available from each facility by §H500§!."
+ steel_storage_desc:0 " -Increases the steel storage capacity of each facility by §H120000§!.\n -Increases the amount of stored steel available from each facility by §H1000§!."
+ chromium_storage_desc:0 " -Increases the chromium storage capacity of each facility by §H75000§!.\n -Increases the amount of stored chromium available from each facility by §H600§!."
+ tungsten_storage_desc:0 " -Increases the tungsten storage capacity of each facility by §H90000§!.\n -Increases the amount of stored tungsten available from each facility by §H600§!."
+ aluminium_storage_desc:0 " -Increases the aluminium storage capacity of each facility by §H100000§!.\n -Increases the amount of stored aluminium available from each facility by §H300§!."
+ coal_storage_desc:0 " -Increases the coal storage capacity of each facility by §H120000§!.\n -Increases the amount of stored coal available from each facility by §H400§!."
+ bauxite_storage_desc:0 " -Increases the bauxite storage capacity of each facility by §H50000§!.\n -Increases the amount of stored bauxite available from each facility by §H200§!."
+ iron_storage_desc:0 " -Increases the iron storage capacity of each facility by §H50000§!.\n -Increases the amount of stored iron available from each facility by §H150§!."
+ 
+ rubber_stroage_put_out:0  "Use rubber from storage"
+ aluminium_stroage_put_out:0  "Use aluminium from storage"
+ chromium_stroage_put_out:0  "Use chromium from storage"
+ tungsten_stroage_put_out:0  "Use tungsten from storage"
+ steel_stroage_put_out:0  "Use steel from storage"
+ coal_stroage_put_out:0  "Use coal from storage"
+ bauxite_stroage_put_out:0  "Use bauxite from storage"
+ iron_stroage_put_out:0  "Use iron from storage"
+ 
+ S_TEXT:0 "§HStockpile:§!"
+ 
+ rubber_num_desc:0 "[?left_rubber|0]"
+ aluminium_num_desc:0 "[?left_aluminium|0]"
+ chromium_num_desc:0 "[?left_chromium|0]"
+ tungsten_num_desc:0 "[?left_tungsten|0]"
+ steel_num_desc:0 "[?left_steel|0]"
+ coal_num_desc:0 "[?left_coal|0]"
+ bauxite_num_desc:0 "[?left_bauxite|0]"
+ iron_num_desc:0 "[?left_iron|0]"
+ 
+ 
+ left_rubber_text:0  "§MDetailed Strategic Rubber Stockpile Information§!"
+ left_rubber_desc:0  "Current rubber stockpile: [?left_rubber|0] (Capacity: [?rubber_cap|0])\n§g(Capacity depends on the number of rubber storage facilities × 100000)§!\nDaily throughput: [?rubber_speed|0H]\n§g(Throughput depends on the number of storage facilities × 500)§!\nIn use: [?rubber_storage_withdrawal|0R]\nSent to storage: [?daily_left_rubber|0G]\n§g------------§!\n§gWhen production demand exceeds extraction, resources will automatically be withdrawn from storage.\nWhen rubber extraction exceeds current demand, the surplus will be transferred to storage.§!"
+ 
+ left_aluminium_text:0  "§MDetailed Strategic Aluminium Stockpile Information§!"
+ left_aluminium_desc:0  "Current aluminium stockpile: [?left_aluminium|0] (Capacity: [?aluminium_cap|0])\n§g(Capacity depends on the number of aluminium storage facilities × 100000)§!\nDaily throughput: [?aluminium_speed|0H]\n§g(Throughput depends on the number of storage facilities × 300)§!\nIn use: [?aluminium_storage_withdrawal|0R]\nSent to storage: [?daily_left_aluminium|0G]\n§g------------§!\n§gWhen production demand exceeds extraction, resources will automatically be withdrawn from storage.\nWhen aluminium extraction exceeds current demand, the surplus will be transferred to storage.§!"
+ 
+ left_chromium_text:0  "§MDetailed Strategic Chromium Stockpile Information§!"
+ left_chromium_desc:0  "Current chromium stockpile: [?left_chromium|0] (Capacity: [?chromium_cap|0])\n§g(Capacity depends on the number of chromium storage facilities × 75000)§!\nDaily throughput: [?chromium_speed|0H]\n§g(Throughput depends on the number of storage facilities × 600)§!\nIn use: [?chromium_storage_withdrawal|0R]\nSent to storage: [?daily_left_chromium|0G]\n§g------------§!\n§gWhen production demand exceeds extraction, resources will automatically be withdrawn from storage.\nWhen chromium extraction exceeds current demand, the surplus will be transferred to storage.§!"
+ 
+ left_tungsten_text:0  "§MDetailed Strategic Tungsten Stockpile Information§!"
+ left_tungsten_desc:0  "Current tungsten stockpile: [?left_tungsten|0] (Capacity: [?tungsten_cap|0])\n§g(Capacity depends on the number of tungsten storage facilities × 90000)§!\nDaily throughput: [?tungsten_speed|0H]\n§g(Throughput depends on the number of storage facilities × 600)§!\nIn use: [?tungsten_storage_withdrawal|0R]\nSent to storage: [?daily_left_tungsten|0G]\n§g------------§!\n§gWhen production demand exceeds extraction, resources will automatically be withdrawn from storage.\nWhen tungsten extraction exceeds current demand, the surplus will be transferred to storage.§!"
+ 
+ left_steel_text:0  "§MDetailed Strategic Steel Stockpile Information§!"
+ left_steel_desc:0  "Current steel stockpile: [?left_steel|0] (Capacity: [?steel_cap|0])\n§g(Capacity depends on the number of steel storage facilities × 120000)§!\nDaily throughput: [?steel_speed|0H]\n§g(Throughput depends on the number of storage facilities × 1000)§!\nIn use: [?steel_storage_withdrawal|0R]\nSent to storage: [?daily_left_steel|0G]\n§g------------§!\n§gWhen production demand exceeds extraction, resources will automatically be withdrawn from storage.\nWhen steel extraction exceeds current demand, the surplus will be transferred to storage.§!"
+ 
+ left_coal_text:0  "§MDetailed Strategic Coal Stockpile Information§!"
+ left_coal_desc:0  "Current coal stockpile: [?left_coal|0] (Capacity: [?coal_cap|0])\n§g(Capacity depends on the number of coal storage facilities × 120000)§!\nDaily throughput: [?coal_speed|0H]\n§g(Throughput depends on the number of storage facilities × 400)§!\nIn use: [?coal_storage_withdrawal|0R]\nSent to storage: [?daily_left_coal|0G]\n§g------------§!\n§gWhen production demand exceeds extraction, resources will automatically be withdrawn from storage.\nWhen coal extraction exceeds current demand, the surplus will be transferred to storage.§!"
+ 
+ left_bauxite_text:0  "§MDetailed Strategic Bauxite Stockpile Information§!"
+ left_bauxite_desc:0  "Current bauxite stockpile: [?left_bauxite|0] (Capacity: [?bauxite_cap|0])\n§g(Capacity depends on the number of bauxite storage facilities × 50000)§!\nDaily throughput: [?bauxite_speed|0H]\n§g(Throughput depends on the number of storage facilities × 200)§!\nIn use: [?bauxite_storage_withdrawal|0R]\nSent to storage: [?daily_left_bauxite|0G]\n§g------------§!\n§gWhen production demand exceeds extraction, resources will automatically be withdrawn from storage.\nWhen bauxite extraction exceeds current demand, the surplus will be transferred to storage.§!"
+ 
+ left_iron_text:0  "§MDetailed Strategic Iron Stockpile Information§!"
+ left_iron_desc:0  "Current iron stockpile: [?left_iron|0] (Capacity: [?iron_cap|0])\n§g(Capacity depends on the number of iron storage facilities × 50000)§!\nDaily throughput: [?iron_speed|0H]\n§g(Throughput depends on the number of storage facilities × 150)§!\nIn use: [?iron_storage_withdrawal|0R]\nSent to storage: [?daily_left_iron|0G]\n§g------------§!\n§gWhen production demand exceeds extraction, resources will automatically be withdrawn from storage.\nWhen iron extraction exceeds current demand, the surplus will be transferred to storage.§!"
+ 
+ 
+

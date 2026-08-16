@@ -28,99 +28,9 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = GER_autobahn
-		icon = GFX_goal_roads
-		prerequisite = { focus = GER_deutsche_albriet_front }
-		x = -1
-		y = 2
-		relative_position_id = GER_deutsche_albriet_front
-		cost = 2
-		ai_will_do = {
-			factor = 12
-		}
-		
-		completion_reward = {
-			economy_fatigue_level_down_4 = yes
-			add_tech_bonus = {
-				name = GER_autobahn
-				bonus = 1.0
-				uses = 2
-				category = industry
-			}
-			custom_effect_tooltip = GER_autobahn_tt
-			hidden_effect = {
-				every_state = {
-					limit = {
-						is_core_of = GER
-						is_controlled_by = GER
-						free_building_slots = {
-							building = infrastructure
-							size < 1
-							include_locked = no
-						}
-					}
-					add_building_construction = {
-						type = infrastructure
-						level = 1
-						instant_build = yes
-					}
-				}
-				every_state = {
-					limit = {
-						is_core_of = GER
-						is_controlled_by = GER
-						infrastructure > 6
-						free_building_slots = {
-							building = infrastructure
-							size > 0
-							include_locked = no
-						}
-					}
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-				}
-				every_state = {
-					limit = {
-						is_core_of = GER
-						is_controlled_by = GER
-						infrastructure < 7
-					}
-					add_building_construction = {
-						type = infrastructure
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-		}
-	}
 
-	focus = {
-		id = GER_grosraumwirtschaft
-		icon = GFX_focus_generic_road_investment
-		prerequisite = { focus = GER_deutsche_albriet_front }
-		x = 0
-		y = 1
-		relative_position_id = GER_deutsche_albriet_front
-		cost = 2
-		ai_will_do = {
-			factor = 1
-		}
-		
-		completion_reward = {
-			add_ideas = GER_grosraumwirtschaft
-			add_tech_bonus = {
-				name = GER_gros
-				bonus = 0.5
-				uses = 2
-				category = industry
-			}
-		}
-	}
+
+
 
 	focus = {
 		id = GER_auxiliary_autobahn
@@ -213,43 +123,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = GER_subsidize_hoesch_benzin
-		icon = GFX_focus_GER_subsidize_hoesch_benzin
-		prerequisite = { focus = GER_continue_autarky }
-		prerequisite = { focus = GER_institute_price_controls }
-		x = 1
-		y = 2
-		relative_position_id = GER_continue_autarky
-		cost = 5
-		available = {
-			has_tech = oil_processing
-		}
 
-		continue_if_invalid = yes
-
-		completion_reward = {
-
-			random_core_state = {
-				limit = {
-					is_fully_controlled_by = ROOT
-				}
-				prioritize = { 57 }
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = synthetic_refinery
-					level = 2
-					instant_build = yes
-				}
-			}
-			add_tech_bonus = {
-				name = GER_subsidize_hoesch_benzin
-				bonus = 1
-				uses = 1
-				category = synth_resources
-			}
-		}
-	}
 
 	focus = {
 		id = GER_deutsche_albriet_front
@@ -278,6 +152,100 @@ focus_tree = {
 				}
 			}
 			add_ideas = ger_daf
+		}
+	}
+
+	focus = {
+		id = GER_grosraumwirtschaft
+		icon = GFX_focus_generic_road_investment
+		prerequisite = { focus = GER_deutsche_albriet_front }
+		x = 0
+		y = 1
+		relative_position_id = GER_deutsche_albriet_front
+		cost = 2
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			add_ideas = GER_grosraumwirtschaft
+			add_tech_bonus = {
+				name = GER_gros
+				bonus = 0.5
+				uses = 2
+				category = industry
+			}
+		}
+	}
+
+	focus = {
+		id = GER_autobahn
+		icon = GFX_goal_roads
+		prerequisite = { focus = GER_deutsche_albriet_front }
+		x = -1
+		y = 2
+		relative_position_id = GER_deutsche_albriet_front
+		cost = 2
+		ai_will_do = {
+			factor = 12
+		}
+		
+		completion_reward = {
+			economy_fatigue_level_down_4 = yes
+			add_tech_bonus = {
+				name = GER_autobahn
+				bonus = 1.0
+				uses = 2
+				category = industry
+			}
+			custom_effect_tooltip = GER_autobahn_tt
+			hidden_effect = {
+				every_state = {
+					limit = {
+						is_core_of = GER
+						is_controlled_by = GER
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+							include_locked = no
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+				every_state = {
+					limit = {
+						is_core_of = GER
+						is_controlled_by = GER
+						infrastructure > 6
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+							include_locked = no
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+				every_state = {
+					limit = {
+						is_core_of = GER
+						is_controlled_by = GER
+						infrastructure < 7
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
 		}
 	}
 
@@ -319,6 +287,44 @@ focus_tree = {
 			swap_ideas = {
 				remove_idea = GER_autarky_idea
 				add_idea = GER_autarky_idea_2
+			}
+		}
+	}
+
+	focus = {
+		id = GER_subsidize_hoesch_benzin
+		icon = GFX_focus_GER_subsidize_hoesch_benzin
+		prerequisite = { focus = GER_continue_autarky }
+		prerequisite = { focus = GER_institute_price_controls }
+		x = 1
+		y = 2
+		relative_position_id = GER_continue_autarky
+		cost = 5
+		available = {
+			has_tech = oil_processing
+		}
+
+		continue_if_invalid = yes
+
+		completion_reward = {
+
+			random_core_state = {
+				limit = {
+					is_fully_controlled_by = ROOT
+				}
+				prioritize = { 57 }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = GER_subsidize_hoesch_benzin
+				bonus = 1
+				uses = 1
+				category = synth_resources
 			}
 		}
 	}
@@ -524,6 +530,76 @@ focus_tree = {
 
 	
 
+
+
+	focus = {
+		id = GER_hermann_goring_werke
+		icon = GFX_goal_large_civilian_economy
+		prerequisite = { focus = GER_nazi_economics }
+		x = 4
+		y = 1
+		relative_position_id = GER_nazi_economics
+		cost = 5
+		
+		available = {
+			has_full_control_of_state = 799
+			has_full_control_of_state = 51
+			has_full_control_of_state = 42
+			has_full_control_of_state = 800
+			has_full_control_of_state = 802
+			799 = { is_demilitarized_zone = no }
+			51 = { is_demilitarized_zone = no }
+			42 = { is_demilitarized_zone = no }
+			800 = { is_demilitarized_zone = no }
+			801 = { is_demilitarized_zone = no }
+		}
+
+		ai_will_do = {
+			factor = 9
+		}
+
+		available_if_capitulated = no
+
+		completion_reward = {
+			economy_fatigue_level_up_5 = yes
+			799 = {
+				add_building_construction = {
+					type = steel_refinery
+					level = 2
+					instant_build = yes
+				}
+			}
+			51 = {
+				add_building_construction = {
+					type = steel_refinery
+					level = 2
+					instant_build = yes
+				}
+			}
+			42 = {
+				add_building_construction = {
+					type = steel_refinery
+					level = 2
+					instant_build = yes
+				}
+			}
+			800 = {
+				add_building_construction = {
+					type = steel_refinery
+					level = 2
+					instant_build = yes
+				}
+			}
+			802 = {
+				add_building_construction = {
+					type = steel_refinery
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
 	focus = {
 		id = GER_kdf_wagen_scheme_mil
 		icon = GFX_focus_GER_kdf_wagen
@@ -587,74 +663,6 @@ focus_tree = {
 				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
-			}
-		}
-	}
-
-	focus = {
-		id = GER_hermann_goring_werke
-		icon = GFX_goal_large_civilian_economy
-		prerequisite = { focus = GER_nazi_economics }
-		x = 4
-		y = 1
-		relative_position_id = GER_nazi_economics
-		cost = 5
-		
-		available = {
-			has_full_control_of_state = 799
-			has_full_control_of_state = 51
-			has_full_control_of_state = 42
-			has_full_control_of_state = 800
-			has_full_control_of_state = 802
-			799 = { is_demilitarized_zone = no }
-			51 = { is_demilitarized_zone = no }
-			42 = { is_demilitarized_zone = no }
-			800 = { is_demilitarized_zone = no }
-			801 = { is_demilitarized_zone = no }
-		}
-
-		ai_will_do = {
-			factor = 9
-		}
-
-		available_if_capitulated = no
-
-		completion_reward = {
-			economy_fatigue_level_up_5 = yes
-			799 = {
-				add_building_construction = {
-					type = steel_refinery
-					level = 2
-					instant_build = yes
-				}
-			}
-			51 = {
-				add_building_construction = {
-					type = steel_refinery
-					level = 2
-					instant_build = yes
-				}
-			}
-			42 = {
-				add_building_construction = {
-					type = steel_refinery
-					level = 2
-					instant_build = yes
-				}
-			}
-			800 = {
-				add_building_construction = {
-					type = steel_refinery
-					level = 2
-					instant_build = yes
-				}
-			}
-			802 = {
-				add_building_construction = {
-					type = steel_refinery
 					level = 2
 					instant_build = yes
 				}
@@ -1417,31 +1425,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = GER_war_of_movement
-		icon = GFX_goal_generic_army_motorized
-		prerequisite = { focus = GER_reorganize_the_wehrmacht }
-		x = 2
-		y = 1
-		relative_position_id = GER_reorganize_the_wehrmacht
-		cost = 2
-		ai_will_do = {
-			factor = 1
-		}
 
-		available_if_capitulated = yes
-
-		completion_reward = {
-			add_doctrine_cost_reduction = {
-				name = GER_war_of_movement
-				cost_reduction = 0.5
-				uses = 1
-				category = cat_mobile_warfare
-			}
-			add_to_variable = { GER_wehrmacht_armor_speed_factor = 0.05 }
-			custom_effect_tooltip = GER_war_of_movement_tt
-		}
-	}
 
 	############################################
 	############### TANK BRANCH ################
@@ -1475,42 +1459,7 @@ focus_tree = {
 		}
 	}
 	
-	focus = {
-		id = GER_instill_auftragstaktik
-		icon = GFX_goal_generic_axis_build_infantry
-		prerequisite = { focus = GER_reorganize_the_wehrmacht }
-		x = -1
-		y = 1
-		relative_position_id = GER_reorganize_the_wehrmacht
-		cost = 2
-		available = {
-		}
 
-		completion_reward = {
-			add_doctrine_cost_reduction = {
-				name = GER_instill_auftragstaktik
-				cost_reduction = 0.5
-				uses = 1
-				category = cat_mobile_warfare
-			}
-			custom_effect_tooltip = GER_instill_auftragstaktik_tt
-			add_to_variable = { GER_wehrmacht_initiative_factor = 0.15 }
-			add_to_variable = { GER_wehrmacht_coordination_bonus = 0.03 }
-			add_advisor_role = {
-				character = GER_alfred_jodl
-				activate = yes
-				advisor = {
-					slot = operativ_chief
-					cost = 50
-					idea_token = GER_alfred_jodl
-					traits = {
-						okw_oper_stab
-					}
-					can_be_fired = no
-				}
-			}
-		}
-	}
 	
 	focus = {
 		id = GER_establish_the_afrikakorps
@@ -1654,6 +1603,69 @@ focus_tree = {
 			}
 
 			custom_effect_tooltip = GER_reorganize_the_wehrmacht_tt
+		}
+	}
+
+	focus = {
+		id = GER_instill_auftragstaktik
+		icon = GFX_goal_generic_axis_build_infantry
+		prerequisite = { focus = GER_reorganize_the_wehrmacht }
+		x = -1
+		y = 1
+		relative_position_id = GER_reorganize_the_wehrmacht
+		cost = 2
+		available = {
+		}
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = GER_instill_auftragstaktik
+				cost_reduction = 0.5
+				uses = 1
+				category = cat_mobile_warfare
+			}
+			custom_effect_tooltip = GER_instill_auftragstaktik_tt
+			add_to_variable = { GER_wehrmacht_initiative_factor = 0.15 }
+			add_to_variable = { GER_wehrmacht_coordination_bonus = 0.03 }
+			add_advisor_role = {
+				character = GER_alfred_jodl
+				activate = yes
+				advisor = {
+					slot = operativ_chief
+					cost = 50
+					idea_token = GER_alfred_jodl
+					traits = {
+						okw_oper_stab
+					}
+					can_be_fired = no
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GER_war_of_movement
+		icon = GFX_goal_generic_army_motorized
+		prerequisite = { focus = GER_reorganize_the_wehrmacht }
+		x = 2
+		y = 1
+		relative_position_id = GER_reorganize_the_wehrmacht
+		cost = 2
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = GER_war_of_movement
+				cost_reduction = 0.5
+				uses = 1
+				category = cat_mobile_warfare
+			}
+			add_to_variable = { GER_wehrmacht_armor_speed_factor = 0.05 }
+			custom_effect_tooltip = GER_war_of_movement_tt
 		}
 	}
 
@@ -1872,6 +1884,40 @@ focus_tree = {
 		}
 	}
 
+
+	focus = {
+		id = GER_expand_kummersdorfs_capacity
+		icon = GFX_focus_generic_heavy_tank
+		prerequisite = { focus = GER_panzer_troops_school }
+		prerequisite = { focus = GER_a_mechanized_army }
+		x = 1
+		y = 1
+		relative_position_id = GER_panzer_troops_school
+		cost = 5
+		available = {
+			has_war_with_major = yes
+			has_completed_focus = GER_an_invincible_army
+		}
+
+		continue_if_invalid = yes
+
+		completion_reward = {
+			add_research_slot = 1
+			add_breakthrough_progress = {
+				specialization = specialization_land
+				value = 0.5
+			}
+			mio:GER_porsche_organization = {
+				add_mio_size = 1
+				add_mio_funds_gain_factor = 0.45
+			}
+			mio:GER_henschel_organization = {
+				add_mio_size = 1
+				add_mio_funds_gain_factor = 0.2
+			}
+		}
+	}
+
 	focus = {
 		id = GER_refinement_of_bewegungskrieg
 		icon = GFX_goal_bewegungskrieg
@@ -1903,38 +1949,6 @@ focus_tree = {
 			add_to_variable = { GER_wehrmacht_experience_gain_army_factor = -0.05 }
 			add_to_variable = { GER_wehrmacht_army_org_factor = 0.02 }
 			custom_effect_tooltip = GER_refinement_of_bewegungskrieg_tt
-		}
-	}
-	focus = {
-		id = GER_expand_kummersdorfs_capacity
-		icon = GFX_focus_generic_heavy_tank
-		prerequisite = { focus = GER_panzer_troops_school }
-		prerequisite = { focus = GER_a_mechanized_army }
-		x = 1
-		y = 1
-		relative_position_id = GER_panzer_troops_school
-		cost = 5
-		available = {
-			has_war_with_major = yes
-			has_completed_focus = GER_an_invincible_army
-		}
-
-		continue_if_invalid = yes
-
-		completion_reward = {
-			add_research_slot = 1
-			add_breakthrough_progress = {
-				specialization = specialization_land
-				value = 0.5
-			}
-			mio:GER_porsche_organization = {
-				add_mio_size = 1
-				add_mio_funds_gain_factor = 0.45
-			}
-			mio:GER_henschel_organization = {
-				add_mio_size = 1
-				add_mio_funds_gain_factor = 0.2
-			}
 		}
 	}
 
@@ -2769,39 +2783,7 @@ focus_tree = {
 		}		
 	}
 
-	focus = {
-		id = GER_anti_comitern_pact
-		icon = GFX_goal_anti_comintern_pact
-		prerequisite = { focus = GER_proclaim_the_axis_powers }
-		x = 0
-		y = 2
-		relative_position_id = GER_proclaim_the_axis_powers
-		cost = 1
-		available = {
-			is_puppet = no
-			NOT = { has_government = communism }
-			NOT = { is_in_faction_with = SOV }
-			JAP = { 
-				NOT = { has_war_with = GER }
-				NOT = { is_in_faction_with = SOV }
-				is_subject = no
-				NOT = { has_government = communism }
-			}
-		}
-		bypass = {
-			NOT = { has_government = fascism }
-		}
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			SOV = { add_opinion_modifier = { target = ROOT modifier = pact_against_us } }
-			add_named_threat = { threat = 2 name = GER_anti_comitern_pact }
-			JAP = {
-				country_event = germany.5
-			}
-		}
-	}
+
 
 	focus = {
 		id = GER_anschluss
@@ -2981,36 +2963,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = GER_western_war_plans
-		icon = GFX_focus_generic_strike_at_democracy3
-		prerequisite = { focus = GER_danzig_or_war }
-		x = 0
-		y = 1
-		relative_position_id = GER_danzig_or_war
 
-		available = {
-			date > 1939.12.14
-		}
-
-		cancel_if_invalid = yes
-		cost = 3
-
-		ai_will_do = {
-			factor = 10
-
-			modifier = {
-				factor = 0
-				GER = { has_war_with = SOV }
-			}
-		}
-		
-		completion_reward = {
-			unlock_decision_tooltip = GER_weserubung
-			unlock_decision_tooltip = GER_gelb
-			unlock_decision_tooltip = GER_fall_rot
-		}
-	}
 
 	focus = {
 		id = GER_danzig_or_war
@@ -3041,6 +2994,37 @@ focus_tree = {
 			POL = {
 				country_event = { id = germany.86 }
 			}
+		}
+	}
+
+	focus = {
+		id = GER_western_war_plans
+		icon = GFX_focus_generic_strike_at_democracy3
+		prerequisite = { focus = GER_danzig_or_war }
+		x = 0
+		y = 1
+		relative_position_id = GER_danzig_or_war
+
+		available = {
+			date > 1939.12.14
+		}
+
+		cancel_if_invalid = yes
+		cost = 3
+
+		ai_will_do = {
+			factor = 10
+
+			modifier = {
+				factor = 0
+				GER = { has_war_with = SOV }
+			}
+		}
+		
+		completion_reward = {
+			unlock_decision_tooltip = GER_weserubung
+			unlock_decision_tooltip = GER_gelb
+			unlock_decision_tooltip = GER_fall_rot
 		}
 	}
 
@@ -3960,6 +3944,40 @@ focus_tree = {
 	}
 
 	focus = {
+		id = GER_anti_comitern_pact
+		icon = GFX_goal_anti_comintern_pact
+		prerequisite = { focus = GER_proclaim_the_axis_powers }
+		x = 0
+		y = 2
+		relative_position_id = GER_proclaim_the_axis_powers
+		cost = 1
+		available = {
+			is_puppet = no
+			NOT = { has_government = communism }
+			NOT = { is_in_faction_with = SOV }
+			JAP = { 
+				NOT = { has_war_with = GER }
+				NOT = { is_in_faction_with = SOV }
+				is_subject = no
+				NOT = { has_government = communism }
+			}
+		}
+		bypass = {
+			NOT = { has_government = fascism }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			SOV = { add_opinion_modifier = { target = ROOT modifier = pact_against_us } }
+			add_named_threat = { threat = 2 name = GER_anti_comitern_pact }
+			JAP = {
+				country_event = germany.5
+			}
+		}
+	}
+
+	focus = {
 		id = GER_collaborations_with_the_japanese
 		icon = GFX_focus_chi_collaboration_with_the_japanese
 		prerequisite = { focus = GER_anti_comitern_pact }
@@ -4003,6 +4021,30 @@ focus_tree = {
 			}
 			send_equipment = { equipment = small_plane_airframe amount = 240 target = JAP }
 			send_equipment = { equipment = small_plane_cas_airframe amount = 120 target = JAP }
+		}
+	}
+
+
+	
+	focus = {
+		id = GER_celebration_of_the_olympics
+		icon = GFX_goal_celebration_of_the_olympics
+		prerequisite = { focus = GER_proclaim_the_axis_powers }
+		available = {
+			has_global_flag = olympics_1936
+		}
+		x = 1
+		y = 1
+		relative_position_id = GER_proclaim_the_axis_powers
+		cost = 4
+
+		ai_will_do = {
+			factor = 100
+		}	
+
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = 150
 		}
 	}
 
@@ -4056,28 +4098,6 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-		}
-	}
-	
-	focus = {
-		id = GER_celebration_of_the_olympics
-		icon = GFX_goal_celebration_of_the_olympics
-		prerequisite = { focus = GER_proclaim_the_axis_powers }
-		available = {
-			has_global_flag = olympics_1936
-		}
-		x = 1
-		y = 1
-		relative_position_id = GER_proclaim_the_axis_powers
-		cost = 4
-
-		ai_will_do = {
-			factor = 100
-		}	
-
-		completion_reward = {
-			add_stability = 0.1
-			add_political_power = 150
 		}
 	}
 

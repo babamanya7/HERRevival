@@ -1171,20 +1171,11 @@ USA_think_about_retaliation = {
 
 	ai_strategy = {
 		type = area_priority
-		id = home_islands
-		value = 100
-	}
-	ai_strategy = {
-		type = area_priority
 		id = japan_routs
 		value = 75
 	}
 	
 	
-	ai_strategy = {
-		type = naval_invasion_supremacy_weight
-		value = 50
-	}
 
 }
 
@@ -1207,11 +1198,6 @@ USA_go_time = {
 		value = 200
 	}
 
-	ai_strategy = {
-		type = front_unit_request
-		area = home_islands
-		value = 50
-	}
 
 	ai_strategy = {
 		type = consider_weak
@@ -1219,10 +1205,6 @@ USA_go_time = {
 		value = 100
 	}
 	
-	ai_strategy = {
-		type = naval_invasion_supremacy_weight
-		value = 40
-	}
 
 }
 
@@ -1245,15 +1227,6 @@ USA_start_buffering_in_pacific = {
 		subtract_fronts_from_need = no
 	}
 
-	ai_strategy = {
-		type = put_unit_buffers
-
-		ratio = 0.05
-		area = home_islands
-
-		subtract_invasions_from_need = yes
-		subtract_fronts_from_need = no
-	}
 	
 	ai_strategy = {
 		type = front_unit_request
@@ -1261,9 +1234,5 @@ USA_start_buffering_in_pacific = {
 		value = 25
 	}
 	
-	ai_strategy = {
-		type = naval_invasion_supremacy_weight
-		value = 40
-	}
 }
 

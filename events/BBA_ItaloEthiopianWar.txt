@@ -218,7 +218,7 @@ country_event = {
 			}
 			modifier = { # Kodoha - Ethiopian Friendship
 				factor = 5
-				has_completed_focus = JAP_support_the_kodoha_faction
+				always = no
 			}
 			modifier = { # If we really like them
 				factor = var_opinion

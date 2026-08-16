@@ -127,6 +127,10 @@ on_actions = {
 						else = {
 							set_variable = { rubber_storage_withdrawal = left_rubber }
 							set_variable = { left_rubber = 0 }
+							if = {
+								limit = { NOT = { has_country_flag = rubber_storage_empty } }
+								country_event = { id = her_storage.1 }
+							}
 							set_country_flag = rubber_storage_empty
 						}
 					}
@@ -291,6 +295,10 @@ on_actions = {
 						else = {
 							set_variable = { steel_storage_withdrawal = left_steel }
 							set_variable = { left_steel = 0 }
+							if = {
+								limit = { NOT = { has_country_flag = steel_storage_empty } }
+								country_event = { id = her_storage.2 }
+							}
 							set_country_flag = steel_storage_empty
 						}
 					}
@@ -455,6 +463,10 @@ on_actions = {
 						else = {
 							set_variable = { aluminium_storage_withdrawal = left_aluminium }
 							set_variable = { left_aluminium = 0 }
+							if = {
+								limit = { NOT = { has_country_flag = aluminium_storage_empty } }
+								country_event = { id = her_storage.3 }
+							}
 							set_country_flag = aluminium_storage_empty
 						}
 					}
@@ -620,6 +632,10 @@ on_actions = {
 						else = {
 							set_variable = { tungsten_storage_withdrawal = left_tungsten }
 							set_variable = { left_tungsten = 0 }
+							if = {
+								limit = { NOT = { has_country_flag = tungsten_storage_empty } }
+								country_event = { id = her_storage.4 }
+							}
 							set_country_flag = tungsten_storage_empty
 						}
 					}
@@ -785,6 +801,10 @@ on_actions = {
 						else = {
 							set_variable = { chromium_storage_withdrawal = left_chromium }
 							set_variable = { left_chromium = 0 }
+							if = {
+								limit = { NOT = { has_country_flag = chromium_storage_empty } }
+								country_event = { id = her_storage.5 }
+							}
 							set_country_flag = chromium_storage_empty
 						}
 					}
@@ -949,6 +969,10 @@ on_actions = {
 						else = {
 							set_variable = { coal_storage_withdrawal = left_coal }
 							set_variable = { left_coal = 0 }
+							if = {
+								limit = { NOT = { has_country_flag = coal_storage_empty } }
+								country_event = { id = her_storage.6 }
+							}
 							set_country_flag = coal_storage_empty
 						}
 					}
@@ -1113,6 +1137,10 @@ on_actions = {
 						else = {
 							set_variable = { bauxite_storage_withdrawal = left_bauxite }
 							set_variable = { left_bauxite = 0 }
+							if = {
+								limit = { NOT = { has_country_flag = bauxite_storage_empty } }
+								country_event = { id = her_storage.7 }
+							}
 							set_country_flag = bauxite_storage_empty
 						}
 					}
@@ -1277,6 +1305,10 @@ on_actions = {
 						else = {
 							set_variable = { iron_storage_withdrawal = left_iron }
 							set_variable = { left_iron = 0 }
+							if = {
+								limit = { NOT = { has_country_flag = iron_storage_empty } }
+								country_event = { id = her_storage.8 }
+							}
 							set_country_flag = iron_storage_empty
 						}
 					}

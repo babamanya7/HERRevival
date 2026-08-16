@@ -412,9 +412,10 @@ leader_traits = {
 		type = land
 		trait_type = personality_trait
 		
-		logistics_skill = 4
 		defense_skill = 2
-		logistics_skill_factor = 3
+		planning_skill = 2
+		logistics_skill = -2
+		defense_skill_factor = 3
 		planning_skill_factor = 1
 		
 		modifier = {

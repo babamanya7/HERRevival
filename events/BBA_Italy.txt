@@ -832,7 +832,7 @@ country_event = {
 							OR = {
 								amount_taken_ideas = {
 									amount > 2
-									category = { military_staff }
+									categories = { military_staff }
 								}
 								has_country_flag = ITA_missiolini_bolster_military_high_command_triggered_flag #Trigger only once
 							}
@@ -842,7 +842,7 @@ country_event = {
 							date > 1942.1.1
 							amount_taken_ideas = {
 								amount < 2
-								category = { military_staff }
+								categories = { military_staff }
 							}
 						}
 						modifier = { #Do not re-roll same missiolini

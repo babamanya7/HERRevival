@@ -2686,11 +2686,6 @@ focus_tree = {
 					check_variable = { temp_targets_index = 3 compare = less_than }
 					any_owned_state = {
 						infrastructure < 3
-						free_building_slots = {
-							building = fuel_silo
-							size > 0
-							include_locked = yes
-						}
 						NOT = { has_state_flag = SOV_increase_state_reserves_flag }
 					}
 				}

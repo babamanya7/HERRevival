@@ -119,7 +119,14 @@ on_actions = {
 					ROOT = { check_variable = { rubber_storage_use > 0 } }
 				}
 				if = {
-					limit = { ROOT = { check_variable = { left_rubber > rubber_speed } } }
+					limit = {
+						ROOT = {
+							OR = {
+								check_variable = { left_rubber > rubber_storage_use }
+								check_variable = { left_rubber = rubber_storage_use }
+							}
+						}
+					}
 					subtract_from_variable = { left_rubber = rubber_storage_use }
 				}
 				else = {
@@ -303,7 +310,14 @@ on_actions = {
 					ROOT = { check_variable = { steel_storage_use > 0 } }
 				}
 				if = {
-					limit = { ROOT = { check_variable = { left_steel > steel_speed } } }
+					limit = {
+						ROOT = {
+							OR = {
+								check_variable = { left_steel > steel_storage_use }
+								check_variable = { left_steel = steel_storage_use }
+							}
+						}
+					}
 					subtract_from_variable = { left_steel = steel_storage_use }
 				}
 				else = {
@@ -487,7 +501,14 @@ on_actions = {
 					ROOT = { check_variable = { aluminium_storage_use > 0 } }
 				}
 				if = {
-					limit = { ROOT = { check_variable = { left_aluminium > aluminium_speed } } }
+					limit = {
+						ROOT = {
+							OR = {
+								check_variable = { left_aluminium > aluminium_storage_use }
+								check_variable = { left_aluminium = aluminium_storage_use }
+							}
+						}
+					}
 					subtract_from_variable = { left_aluminium = aluminium_storage_use }
 				}
 				else = {
@@ -672,7 +693,14 @@ on_actions = {
 					ROOT = { check_variable = { tungsten_storage_use > 0 } }
 				}
 				if = {
-					limit = { ROOT = { check_variable = { left_tungsten > tungsten_speed } } }
+					limit = {
+						ROOT = {
+							OR = {
+								check_variable = { left_tungsten > tungsten_storage_use }
+								check_variable = { left_tungsten = tungsten_storage_use }
+							}
+						}
+					}
 					subtract_from_variable = { left_tungsten = tungsten_storage_use }
 				}
 				else = {
@@ -857,7 +885,14 @@ on_actions = {
 					ROOT = { check_variable = { chromium_storage_use > 0 } }
 				}
 				if = {
-					limit = { ROOT = { check_variable = { left_chromium > chromium_speed } } }
+					limit = {
+						ROOT = {
+							OR = {
+								check_variable = { left_chromium > chromium_storage_use }
+								check_variable = { left_chromium = chromium_storage_use }
+							}
+						}
+					}
 					subtract_from_variable = { left_chromium = chromium_storage_use }
 				}
 				else = {
@@ -1041,7 +1076,14 @@ on_actions = {
 					ROOT = { check_variable = { coal_storage_use > 0 } }
 				}
 				if = {
-					limit = { ROOT = { check_variable = { left_coal > coal_speed } } }
+					limit = {
+						ROOT = {
+							OR = {
+								check_variable = { left_coal > coal_storage_use }
+								check_variable = { left_coal = coal_storage_use }
+							}
+						}
+					}
 					subtract_from_variable = { left_coal = coal_storage_use }
 				}
 				else = {
@@ -1225,7 +1267,14 @@ on_actions = {
 					ROOT = { check_variable = { bauxite_storage_use > 0 } }
 				}
 				if = {
-					limit = { ROOT = { check_variable = { left_bauxite > bauxite_speed } } }
+					limit = {
+						ROOT = {
+							OR = {
+								check_variable = { left_bauxite > bauxite_storage_use }
+								check_variable = { left_bauxite = bauxite_storage_use }
+							}
+						}
+					}
 					subtract_from_variable = { left_bauxite = bauxite_storage_use }
 				}
 				else = {
@@ -1409,7 +1458,14 @@ on_actions = {
 					ROOT = { check_variable = { iron_storage_use > 0 } }
 				}
 				if = {
-					limit = { ROOT = { check_variable = { left_iron > iron_speed } } }
+					limit = {
+						ROOT = {
+							OR = {
+								check_variable = { left_iron > iron_storage_use }
+								check_variable = { left_iron = iron_storage_use }
+							}
+						}
+					}
 					subtract_from_variable = { left_iron = iron_storage_use }
 				}
 				else = {

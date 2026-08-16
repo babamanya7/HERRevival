@@ -2596,7 +2596,7 @@ country_event = {
 			}
 			modifier = { #Is going non-aligned (kill SOV in focus branch)
 				factor = 0
-				has_completed_focus = JAP_support_the_kodoha_faction
+				always = no
 			}
 		}
 

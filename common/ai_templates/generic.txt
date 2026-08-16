@@ -2,11 +2,7 @@ armor_generic = {
 	
 	role = armor
 	
-	allowed = {
-		has_country_flag = light_tanks_ai
-	}
-	
-	upgrade_prio = {
+upgrade_prio = {
 		factor = 1
 		modifier = {
 			factor = 10
@@ -247,11 +243,7 @@ garrison_generic = {
 
 panzergrenadier = {
 
-	allowed = {
-		has_country_flag = medium_tanks_ai
-	}
-	
-	role = mechanized_assault
+role = mechanized_assault
 	front_role_override = offence
 	
 	upgrade_prio = {

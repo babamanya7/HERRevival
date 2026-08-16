@@ -850,16 +850,6 @@ GER_force_concentration_through_maginot_hurts_too_much = {
 	abort_when_not_enabled = yes
 	
 	
-	ai_strategy = {
-		type = front_unit_request
-		states = {
-			800
-			42
-			801
-			28
-		}
-		value = -75
-	}
 
 	ai_strategy = {
 		type = force_concentration_front_factor
@@ -1047,7 +1037,7 @@ GER_area_priority = {
 
 	ai_strategy = {
 		type = area_priority
-		id = scandinavia
+		id = norway
 		value = 80
 	}
 
@@ -1065,7 +1055,7 @@ GER_area_priority = {
 
 	ai_strategy = {
 		type = area_priority
-		id = asia
+		id = north_china
 		value = 75
 	}
 
@@ -1088,13 +1078,13 @@ GER_area_priority = {
 
 	ai_strategy = {
 		type = area_priority
-		id = pacific
+		id = pacific_front
 		value = -120 #less focus here
 	}
 
 	ai_strategy = {
 		type = area_priority
-		id = oceania
+		id = australia_new_zealand
 		value = -80
 	}
 }

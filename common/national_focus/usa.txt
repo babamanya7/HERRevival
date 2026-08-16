@@ -3520,6 +3520,30 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
+			add_ace = {
+				name = Richard
+				surname = Bong
+				callsign = Dick
+				type = fighter_god
+			}
+			add_ace = {
+				name = Thomas
+				surname = McGuire
+				callsign = Tommy
+				type = fighter_genius
+			}
+			add_ace = {
+				name = David
+				surname = McCampbell
+				callsign = Dave
+				type = fighter_genius
+			}
+			add_ace = {
+				name = Francis
+				surname = Gabreski
+				callsign = Gabby
+				type = fighter_genius
+			}
 			add_doctrine_cost_reduction = {
 				name = USA_us_army_airforce
 				cost_reduction = 0.5

@@ -3023,6 +3023,30 @@ focus_tree = {
 
 		completion_reward = {
 			add_ideas = ENG_british_commonwealth_air_training_plan
+			add_ace = {
+				name = Marmaduke
+				surname = Pattle
+				callsign = Pat
+				type = fighter_god
+			}
+			add_ace = {
+				name = James
+				surname = Johnson
+				callsign = Johnnie
+				type = fighter_genius
+			}
+			add_ace = {
+				name = Brendan
+				surname = Finucane
+				callsign = Paddy
+				type = fighter_genius
+			}
+			add_ace = {
+				name = Robert
+				surname = Tuck
+				callsign = Bob
+				type = fighter_genius
+			}
 			every_country = {
 				limit = {
 					is_subject_of = ROOT

@@ -2023,8 +2023,8 @@ country_event = {
 			}
 			modifier = {
 				tag = GER
-				has_completed_focus = GER_oppose_hitler
-				HUN = { has_completed_focus = HUN_invite_the_habsburg_prince }
+				always = no
+				HUN = { always = no }
 				factor = 0
 			}
 		}
@@ -4110,7 +4110,7 @@ country_event = {
 			factor = 75 #if available
 		}
 		trigger = {
-			NOT = { has_completed_focus = ROM_appoint_soviet_friendly_government }
+			NOT = { always = no }
 		}
 		SOV = { country_event = DOD_hungary.114 }
 		

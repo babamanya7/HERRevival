@@ -204,7 +204,7 @@ GER_increase_submarine_ratio = {
 		OR = {
 			AND = {
 				NOT = {
-					has_completed_focus = GER_plan_z
+					always = no
 				}
 				has_completed_focus = GER_trade_interdiction
 			}
@@ -219,7 +219,7 @@ GER_increase_submarine_ratio = {
 		}
 	}
 	abort = {
-		has_completed_focus = GER_plan_z
+		always = no
 	}
 
 	ai_strategy = {
@@ -238,7 +238,7 @@ GER_screen_ratio = {
 		OR = {
 			AND = {
 				NOT = {
-					has_completed_focus = GER_plan_z
+					always = no
 				}
 				has_completed_focus = GER_trade_interdiction
 			}
@@ -253,7 +253,7 @@ GER_screen_ratio = {
 		}
 	}
 	abort = {
-		has_completed_focus = GER_plan_z
+		always = no
 	}
 
 	ai_strategy = {
@@ -678,7 +678,7 @@ GER_war_with_poland = {
 		original_tag = GER
 	}
 	enable = {
-		has_completed_focus = GER_reassert_eastern_claims
+		always = no
 		country_exists = POL
 	}
 	abort = {
@@ -799,7 +799,7 @@ GER_war_with_soviets = {
 		original_tag = GER
 	}
 	enable = {
-		has_completed_focus = GER_war_with_the_ussr
+		always = no
 		country_exists = SOV
 	}
 	abort = {
@@ -1312,7 +1312,7 @@ GER_dont_take_claims_on_POL_we_got_focus = {
 	enable = {
 		country_exists = POL
 		has_war = no
-		has_completed_focus = GER_reassert_eastern_claims
+		always = no
 	}
 
 	abort = {

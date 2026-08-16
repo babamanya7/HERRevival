@@ -4406,7 +4406,7 @@ SOV_industry_relocation = {
 		ai_will_do = {
 			factor = 10
 			modifier = {
-				FROM = { any_neighbor_state = { is_core_of = ROOT any_neighbor_state = { limit = { is_core_of = ROOT } NOT = { is_fully_controlled_by = ROOT } } } }
+				FROM = { any_neighbor_state = { is_core_of = ROOT any_neighbor_state = { is_core_of = ROOT NOT = { is_fully_controlled_by = ROOT } } } }
 				factor = 100
 			}
 		}

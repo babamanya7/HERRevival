@@ -832,7 +832,7 @@ country_event = {
 							OR = {
 								amount_taken_ideas = {
 									amount > 2
-									slots = { army_h_command }
+									category = { military_staff }
 								}
 								has_country_flag = ITA_missiolini_bolster_military_high_command_triggered_flag #Trigger only once
 							}
@@ -842,7 +842,7 @@ country_event = {
 							date > 1942.1.1
 							amount_taken_ideas = {
 								amount < 2
-								slots = { army_h_command }
+								category = { military_staff }
 							}
 						}
 						modifier = { #Do not re-roll same missiolini
@@ -3390,16 +3390,12 @@ country_event = {
 						advisor = {
 							slot = air_chief
 							idea_token = ITA_aldo_pellegrini
-							allowed = {
-								original_tag = ITA
-							}
+
 							traits = {
 								air_chief_ground_support_2
 							}
 							cost = 100
-							ai_will_do = {
-								factor = 1.000
-							}
+
 						}
 						activate = yes
 					}
@@ -3417,16 +3413,12 @@ country_event = {
 						advisor = {
 							slot = air_chief
 							idea_token = ITA_aldo_pellegrini
-							allowed = {
-								original_tag = ITA
-							}
+
 							traits = {
 								air_chief_ground_support_2
 							}
 							cost = 100
-							ai_will_do = {
-								factor = 1.000
-							}
+
 						}
 					}
 				}

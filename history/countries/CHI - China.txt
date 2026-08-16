@@ -273,6 +273,8 @@ set_popularities = {
         }
         obsolete = yes
     }
+    set_technology = { naval_combat_support = 1 }
+
     create_equipment_variant = {
         name = "Chen Hai Class"
 		parent_version = 0

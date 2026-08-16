@@ -1,56 +1,56 @@
 ﻿  l_english:
   
-  GER_ss_modify_intro:0 "§Y$GER_ss_modifier$§! изменится на:"
+  GER_ss_modify_intro:0 "§Y$GER_ss_modifier$§! will be modified by:"
   
-  GER_ss_modifier:0 "Главное управление СС"
-  GER_ss_rsha_modifier:0 "Главное управление СС и РСХА"
+  GER_ss_modifier:0 "SS Main Office"
+  GER_ss_rsha_modifier:0 "SS Main Office and RSHA"
   
-  GER_allgemine_ss:0 "Внутренние дела СС"
+  GER_allgemine_ss:0 "SS Internal Affairs"
   GER_allgemine_ss_desc:0 ""
-  GER_allgemine_ss_tt:0 "\n$GER_ss_modify_intro$ \n£political_power_texticon  Прирост политической власти: §G+10.00%§! \n£surrender_texticon  Лимит капитуляции: §G+10.00%§!\n\n"
+  GER_allgemine_ss_tt:0 "\n$GER_ss_modify_intro$ \n£political_power_texticon  Political Power Gain: §G+10.00%§! \n£surrender_texticon  Surrender Limit: §G+10.00%§!\n\n"
   
-  GER_form_the_rsha:0 "Создать Главное управление имперской безопасности"
+  GER_form_the_rsha:0 "Establish the Reich Main Security Office"
   GER_form_the_rsha_desc:0 ""
-  GER_form_the_rsha_tt:0 "$GER_ss_modify_intro$ \n£counter_intelligence_texticon  Контрразведка: §G+0.5§!\n\n"
+  GER_form_the_rsha_tt:0 "$GER_ss_modify_intro$ \n£counter_intelligence_texticon  Counterintelligence: §G+0.5§!\n\n"
   
-  GER_ss_secret_operations:0 "Тайные операции СС"
+  GER_ss_secret_operations:0 "SS Covert Operations"
   GER_ss_secret_operations_desc:0 ""
-  GER_ss_secret_operations_tt:0 "$GER_ss_modify_intro$ \n£operatives_targeted_sabotage_cost_texticon  Стоимость операции: §G-15.00%§! \n£operatives_targeted_sabotage_risk_texticon  Риск при операции: §G-10.00%§!\n\nРазблокирует Тайные операции СС в решениях"
+  GER_ss_secret_operations_tt:0 "$GER_ss_modify_intro$ \n£operatives_targeted_sabotage_cost_texticon  Operation Cost: §G-15.00%§! \n£operatives_targeted_sabotage_risk_texticon  Operation Risk: §G-10.00%§!\n\nUnlocks §YSS Covert Operations§! decisions"
   
-  GER_subj_abwehr:0 "Подчинить Абвер"
+  GER_subj_abwehr:0 "Subordinate the Abwehr"
   GER_subj_abwehr_desc:0 ""
-  GER_subj_abwehr_tt:0 "$GER_ss_modify_intro$ \n£time_texticon  Время улучшения агентства: §G-15.00%§!\n\n"
+  GER_subj_abwehr_tt:0 "$GER_ss_modify_intro$ \n£time_texticon  Agency Upgrade Time: §G-15.00%§!\n\n"
   
-  GER_ordnungspolizei:0 "Учредить ОрПо"
+  GER_ordnungspolizei:0 "Establish the OrPo"
   GER_ordnungspolizei_desc:0 ""
-  GER_ordnungspolizei_tt:0 "$GER_ss_modify_intro$ \n£garrison_texticon  Требования к гарнизонам: §G-10.00%§! \n£manpower_noncore_texticon  Людские ресурсы не национальной провинции: §G+5.00%§!\n\n"
+  GER_ordnungspolizei_tt:0 "$GER_ss_modify_intro$ \n£garrison_texticon  Garrison Requirements: §G-10.00%§! \n£manpower_noncore_texticon  Non-Core Manpower: §G+5.00%§!\n\n"
   
-  GER_feuerschutzpolizei:0 "Подчинить пожарную службу ОрПо"
+  GER_feuerschutzpolizei:0 "Place the Fire Service under the OrPo"
   GER_feuerschutzpolizei_desc:0 ""
-  GER_feuerschutzpolizei_tt:0 "$GER_ss_modify_intro$ \n£industry_repair_texticon  Бесплатный ремонт: §G+20.00%§!\n\n"
+  GER_feuerschutzpolizei_tt:0 "$GER_ss_modify_intro$ \n£industry_repair_texticon  Free Repair: §G+20.00%§!\n\n"
   
-  GER_einzatsgruppen:0 "Создание Айнзацгрупп"
+  GER_einzatsgruppen:0 "Form the Einsatzgruppen"
   GER_einzatsgruppen_desc:0 ""
-  GER_einzatsgruppen_tt:0 "Разблокирует оккупационный закон §RАйнзацгруппы§! на территориях СССР"
-  einzats_grupp:0 "§RАйнзацгруппы§!"
+  GER_einzatsgruppen_tt:0 "Unlocks the §REinsatzgruppen§! occupation law in Soviet territories"
+  einzats_grupp:0 "§REinsatzgruppen§!"
    
-  GER_form_the_waffen_ss:0 "Сформировать Войска СС"
-  GER_form_the_waffen_ss_desc:0 "The Waffen-SS is the military branch of the Schutzstaffel. They are loyal to the party и will fight fiercely in combat to defend our ideals."
-  GER_formation_of_the_waffen_ss:0 "$GER_ss_modify_intro$ \n£stability_texticon Стабильность: §R-5.00%§! \n\nРазблокирует §Yрешения§!, связанные с набором £faction_ger_ss §YВаффен-СС§! "
+  GER_form_the_waffen_ss:0 "Form the Waffen-SS"
+  GER_form_the_waffen_ss_desc:0 "The Waffen-SS is the military branch of the Schutzstaffel. They are loyal to the party and will fight fiercely in combat to defend our ideals."
+  GER_formation_of_the_waffen_ss:0 "$GER_ss_modify_intro$ \n£stability_texticon Stability: §R-5.00%§! \n\nUnlocks §Ydecisions§! related to recruiting the £faction_ger_ss §YWaffen-SS§! "
   
-  GER_foreign_recruitment:0 "Сформировать национальные дивизии СС"
+  GER_foreign_recruitment:0 "Form National SS Divisions"
   GER_foreign_recruitment_desc:0 "There are many ethnic German present in conquered territories that we can recruit to our cause. Additionally, our war against the Bolsheviks has won us sympathy from those who are opposed to the Soviet Union."
-  GER_foreign_recruitment_ss:0 "Разрешит вербовку §Yиностранцев§! в £faction_ger_ss §YВаффен-СС§!"
+  GER_foreign_recruitment_ss:0 "Allows the recruitment of §Yforeigners§! into the £faction_ger_ss §YWaffen-SS§!"
   
-  SOV_they_will_know_fear_tt:0 "В качестве командующих станут доступны следующие Богатыри:\n §YКонстантин Коротеев§!\n §YИван Масленников§!\n §YНиколай Крылов§!\n §YНиколай Гаген§!\n §YИван Гришин§!\n §YИван Манагаров§!\n §YСемён Богданов§!\n §YВладимир Глуздовский§!\n §YАфанасий Белобородов§!\n §YИван Шлёмин§!\n"
+  SOV_they_will_know_fear_tt:0 "The following distinguished commanders will become available:\n §YKonstantin Koroteyev§!\n §YIvan Maslennikov§!\n §YNikolai Krylov§!\n §YNikolai Gagen§!\n §YIvan Grishin§!\n §YIvan Managarov§!\n §YSemyon Bogdanov§!\n §YVladimir Gluzdovsky§!\n §YAfanasy Beloborodov§!\n §YIvan Shlyomin§!\n"
 
-  GER_ss_armycorps:0 "Сформировать корпуса СС"
+  GER_ss_armycorps:0 "Form SS Corps"
   GER_ss_armycorps_desc:0 ""
-  GER_ss_armycorps_tt:0 "§YФеликс Штайнер§!, §YПауль Хауссер§!, §YГерберт Гилле§! и §YЗепп Дитрих§! станут доступны в качестве командующих §YВаффен-СС§!\n"
+  GER_ss_armycorps_tt:0 "§YFelix Steiner§!, §YPaul Hausser§!, §YHerbert Gille§! and §YSepp Dietrich§! will become available as §YWaffen-SS§! commanders\n"
   
-  GER_ostfront_veteranen:0 "Ветераны восточного фронта"
+  GER_ostfront_veteranen:0 "Eastern Front Veterans"
   GER_ostfront_veteranen_desc:0 ""
-  GER_ostfront_veteranen_tt:0 "Ветераны восточного фронта §YГерман Бальк§!, §YХассо фон Мантойфель§!, §YОтто Вёлер§!, §YЙоханнес Фриснер§!, §YФридрих Хоссбах§!, §YМаксимилиан Фреттер-Пико§!, §YЭрих Бранденбергер§! и §YФердинанд Шёрнер§! станут доступны в качестве генералов"
+  GER_ostfront_veteranen_tt:0 "Eastern Front Veterans §YHermann Balck§!, §YHasso von Manteuffel§!, §YOtto Wöhler§!, §YJohannes Friessner§!, §YFriedrich Hossbach§!, §YMaximilian Fretter-Pico§!, §YErich Brandenberger§! and §YFerdinand Schörner§! will become available as generals"
   
   GER_economy_of_conquest: "Экономика завоевания"
   GER_hivi: "Вербовка Хиви"
@@ -66,14 +66,14 @@
   SOV_development_of_the_shock_army_tt:0 "\nПоставить в должности командующих танковыми армиями §YРыбалко§!, §YКравченко§! и §YРоманенко§! \nПоявится §Y15§! талантливых генерал-лейтенантов"
   SOV_deep_battle_tt:0 "\n§YПавел Ротмистров§!, §YМихаил Катуков§!, §YАлександр Горбатов§! и §YИван Людников§! вступят в должности командующих армиями\n"
   
-  GER_creation_of_the_panzertruppe_tt:0 "§YЭрих фон Манштейн§!, §YГеорг Ганс Рейнгардт§! и §YГенрих фон Фитингоф§! станут доступны в качестве генералов\n"
+  GER_creation_of_the_panzertruppe_tt:0 "§YЭрих фон Манштейн§!, §YГеорг Ганс Рейнгардт§! и §YГенрих фон Фитингоф§! will become available as generals\n"
   GER_fallschirmjager_tt:0 "§YКурт Штудент§! станет доступен в качестве генерала\n\n"
-  GER_an_invincible_army_tt:0 "§YГанс фон Зальмут§!, §YГеорг Линдеман§!, §YЭберхард фон Макензен§!, §YФранц Бёме§! и §YЭдуард Дитль§! станут доступны в качестве генералов\n\n"
-  GER_reorganize_the_wehrmacht_tt:0 "§YГотхард Хейнреци§!, §YРихард Руофф§! и §YОйген фон Шоберт§! станут доступны в качестве генералов\n"
+  GER_an_invincible_army_tt:0 "§YГанс фон Зальмут§!, §YГеорг Линдеман§!, §YЭберхард фон Макензен§!, §YФранц Бёме§! и §YЭдуард Дитль§! will become available as generals\n\n"
+  GER_reorganize_the_wehrmacht_tt:0 "§YГотхард Хейнреци§!, §YРихард Руофф§! и §YОйген фон Шоберт§! will become available as generals\n"
   GER_establish_the_afrikakorps_tt:0 "§YЭрвин Роммель§! станет доступен в качестве генерала\n\n"
   GER_durchbruchwagen_tt:0 "§YВальтер Модель§! станет доступен в качестве генерала\n\n"
   GER_refinement_of_bewegungskrieg_tt:0 "§YВернер Кемпф§! станет доступен в качестве генерала\n\n"
-  GER_plan_the_third_generation_tt:0 "Опытные танковые командиры §YГанс Валентин Хубе§!, §YЭрхард Раус§! и §YЙозеф Харпе§!,а также не менее опытные командующие §YВальтер Вайс§!, §YКарл Холлидт§! и §YЛотар Рендулич§! станут доступны в качестве генералов\n\n"
+  GER_plan_the_third_generation_tt:0 "Опытные танковые командиры §YГанс Валентин Хубе§!, §YЭрхард Раус§! и §YЙозеф Харпе§!,а также не менее опытные командующие §YВальтер Вайс§!, §YКарл Холлидт§! и §YЛотар Рендулич§! will become available as generals\n\n"
   
   GER_autobahn_tt:0 "\nРегионы с §GМаксимальным§! уровнем §YИнфраструктуры§!:\nБудет получено §G1§! ед. сооружения §YИнфраструктура§!.\n\nРегионы с уровнем §YИнфраструктуры§! больше §G7§!, но меньше §Gмаксимума§!:\nБудет получено §G2§! ед. сооружения §YИнфраструктура§!.\n\nРегионы уровнем §YИнфраструктуры§! ниже §G7§!:\nБудет получено §G1§! ед. сооружения §YИнфраструктура§!.\n"
   GER_auxiliary_autobahn_tt:0 "\nВсе регионы §YАвстрии§!:\nБудет получено §G3§! ед. сооружения §YИнфраструктура§!.\n\nВсе регионы §YСудетской области§!, подконтрольные Германии:\nБудет получено §G2§! ед. сооружения §YИнфраструктура§!.\n\nВсе регионы, подконтрольные §YПротекторату Богемия и Моравия§!:\nБудет получено §G3§! ед. сооружения §YИнфраструктура§!.\n"
@@ -82,7 +82,7 @@
   GER_ostarbieter:0 "Рабочая сила с Востока"
   GER_blitz_loses:0 "Провал операции Барбаросса"
   GER_industry_intro:0 "§Y$GER_economy_of_conquest_modifier$§! изменится на:"
-  GER_appoint_albert_speer_tt:0 "$GER_industry_intro$ \n£consumer_goods_texticon  Ожидаемое количество заводов, перепрофилированных на товары народного потребления: §Y-0.04%§! \n£industry_repair_texticon  Бесплатный ремонт: §G+100%§! \n£repair_civ_factory_texticon  Скорость восстановления фабрик: §G+100%§! \n£construction_speed_radar_texticon  Скорость строительства §Yрадарных станций§!: §G+20.00%§! \n£construction_speed_rocket_texticon  Скорость строительства §Yракетных площадок§!: §G+20.00%§! \n£construction_speed_antiair_texticon  Скорость строительства §Yбатарей ПВО§!: §G+20.00%§! \n£war_support_modifiericons_texticon  Поддержка войны в неделю: §R-0.10%§!\n\n"
+  GER_appoint_albert_speer_tt:0 "$GER_industry_intro$ \n£consumer_goods_texticon  Ожидаемое количество заводов, перепрофилированных на товары народного потребления: §Y-0.04%§! \n£industry_repair_texticon  Free Repair: §G+100%§! \n£repair_civ_factory_texticon  Скорость восстановления фабрик: §G+100%§! \n£construction_speed_radar_texticon  Скорость строительства §Yрадарных станций§!: §G+20.00%§! \n£construction_speed_rocket_texticon  Скорость строительства §Yракетных площадок§!: §G+20.00%§! \n£construction_speed_antiair_texticon  Скорость строительства §Yбатарей ПВО§!: §G+20.00%§! \n£war_support_modifiericons_texticon  Поддержка войны в неделю: §R-0.10%§!\n\n"
   
   ROM_appoint_german_friendly_government:0 "Курс на Германию"
   ROM_iron_guard_focus:0 "Поставить Иона Антонеску премьер-министром"
@@ -146,9 +146,9 @@
 
   SOV_modify_the_politburo_ns_intro:0 "§Y$SOV_the_politburo_good_dynamic_modifier$§! изменится на:"
   SOV_the_centre_ns_tt:0 "Добавляется §Y$SOV_the_politburo_good_dynamic_modifier$§!, что даст (ежедневная поддержка коммунизма: §G+0.05§!) \n\n"
-  SOV_the_stalin_constitution_ns_tt:0 "$SOV_modify_the_politburo_ns_intro$ \nЗащита от смены идеологии: §G+5.0%§! \nПрирост политической власти: §G+5%§! \n\n"
+  SOV_the_stalin_constitution_ns_tt:0 "$SOV_modify_the_politburo_ns_intro$ \nЗащита от смены идеологии: §G+5.0%§! \nPolitical Power Gain: §G+5%§! \n\n"
   SOV_secure_the_administration_ns_tt:0 "$SOV_modify_the_politburo_ns_intro$ \nЗатраты на законы об экономике: §G-20%§! \nЗатраты на законы, регулирующие торговлю: §G-20%§! \nЗатраты на законы о призыве: §G-20%§! \n\n"
-  SOV_the_workers_dictatorship_ns_tt:0 "$SOV_modify_the_politburo_ns_intro$ \nПрирост политической власти: §G+5%§! \nФактор фабрик народного потребления: §Y-5.00%§! \n\n"
+  SOV_the_workers_dictatorship_ns_tt:0 "$SOV_modify_the_politburo_ns_intro$ \nPolitical Power Gain: §G+5%§! \nФактор фабрик народного потребления: §Y-5.00%§! \n\n"
   SOV_organization_centralization_discipline_ns_tt:0 "$SOV_modify_the_politburo_ns_intro$ \nИзменение максимума командного ресурса: §G+50§! \nСкорость мобилизации: §G+20%§! \n\n"
   SOV_behead_the_snake_ns_tt:0 "$SOV_modify_the_politburo_ns_intro$ \nЯчейки для агентов: §G+1§! \n\n"
   SOV_freedom_of_debate_unity_of_action_ns_tt:0 "$SOV_modify_the_politburo_ns_intro$ \nЗатраты на политического советника: §G-10%§! \n\n"
@@ -172,7 +172,7 @@
   SOV_modify_second_fyp_intro:0 "§Y$SOV_second_five_year_plan_dynamic_modifier$§! изменится на:"
   
   SOV_finish_the_second_five_year_plan_tt:0 "$SOV_modify_second_fyp_intro$ \nСкорость строительства: §G+20%§!\n\nВторой пятилетний план завершается, его модификаторы удаляются и остается унаследованный модификатор §G10%§! Скорость строительства гражданских заводов и §G10%§! Скорость строительства инфраструктуры"
-  SOV_start_the_third_five_year_plan_tt:0 "§YСоветская промышленность§! начинает реализацию третьего пятилетнего плана.\n$SOV_modify_second_fyp_intro$ \nПрирост политической власти: §R-0.6§! \nСкорость строительства военных заводов на §G+20%§! \nФабрики товаров народного потребления: §Y+5%§!"
+  SOV_start_the_third_five_year_plan_tt:0 "§YСоветская промышленность§! начинает реализацию третьего пятилетнего плана.\n$SOV_modify_second_fyp_intro$ \nPolitical Power Gain: §R-0.6§! \nСкорость строительства военных заводов на §G+20%§! \nФабрики товаров народного потребления: §Y+5%§!"
   
   peoples_commissariat_focus_tt:0 "$SOV_modify_second_fyp_intro$ \nОбъёмы заводского производства: §G+5%§!"
   SOV_lower_workers_minimum_wage_tt:0 "§RУдаляет идею "Предлагать более высокую заработную плату", если такова имеется§!"
@@ -216,35 +216,35 @@
 
   FRA_revive_the_national_bloc_tt:1 "£faction_fra_cgt §YВКТ§! станет §RЖестоким§!. \n£faction_fra_national_bloc §YНациональный блок§! станет §YТревожным§!.\n"
 
-  FRA_laissez_faire_tt:1 "£faction_fra_French_Industrialists §YПромышленники§! станут более §GДружелюбными§! увеличивая §YПроизводительность завода и верфи§! на §G10%§!, увеличивая §YПрирост политической власти§! на §G5%§!, и §Yстабильность§! на §G5%§!."
+  FRA_laissez_faire_tt:1 "£faction_fra_French_Industrialists §YПромышленники§! станут более §GДружелюбными§! увеличивая §YПроизводительность завода и верфи§! на §G10%§!, увеличивая §YPolitical Power Gain§! на §G5%§!, и §Yстабильность§! на §G5%§!."
 
-  FRA_French_Army_Positive_1_tt:1 "£faction_fra_French_Army §YАрмия§! станет более §GНадёжной§! уменьшая штраф к §Yпроизводству бронетехники§! на §G5%§!, увеличивая §YПрирост политической власти§! на §G5%§!, и §Yстабильность§! на §G5%§!."
+  FRA_French_Army_Positive_1_tt:1 "£faction_fra_French_Army §YАрмия§! станет более §GНадёжной§! уменьшая штраф к §Yпроизводству бронетехники§! на §G5%§!, увеличивая §YPolitical Power Gain§! на §G5%§!, и §Yстабильность§! на §G5%§!."
 
-  FRA_review_foreign_policy_tt:1 "£faction_fra_French_Army §YАрмия§! станет более §GНадёжной§! уменьшая штраф к §Yпроизводству бронетехники§! на §G5%§!, увеличивая §YПрирост политической власти§! на §G5%§!, и §Yстабильность§! на §G5%§!."  
+  FRA_review_foreign_policy_tt:1 "£faction_fra_French_Army §YАрмия§! станет более §GНадёжной§! уменьшая штраф к §Yпроизводству бронетехники§! на §G5%§!, увеличивая §YPolitical Power Gain§! на §G5%§!, и §Yстабильность§! на §G5%§!."  
 
-  FRA_Industrialists_Positive_1_tt:1 "£faction_fra_French_Industrialists §YПромышленники§! станут более §GДружелюбными§! и §GВлиятельными§! увеличивая §YПроизводительность завода и верфи§! на §G10%§!, увеличивая §YПрирост политической власти§! на §G5%§!, и §Yстабильность§! на §G5%§!."
+  FRA_Industrialists_Positive_1_tt:1 "£faction_fra_French_Industrialists §YПромышленники§! станут более §GДружелюбными§! и §GВлиятельными§! увеличивая §YПроизводительность завода и верфи§! на §G10%§!, увеличивая §YPolitical Power Gain§! на §G5%§!, и §Yстабильность§! на §G5%§!."
 
-  FRA_Industrialists_Negative_1_tt:1 "£faction_fra_French_Industrialists §YПромышленники§! станут более §RНедружелюбными§! уменьшая §YПроизводительность завода и верфи§! на §R10%§!, уменьшая §YПрирост политической власти§! на §R5%§!, и §Yстабильность§! на §R5%§!."
+  FRA_Industrialists_Negative_1_tt:1 "£faction_fra_French_Industrialists §YПромышленники§! станут более §RНедружелюбными§! уменьшая §YПроизводительность завода и верфи§! на §R10%§!, уменьшая §YPolitical Power Gain§! на §R5%§!, и §Yстабильность§! на §R5%§!."
 
-  FRA_National_Bloc_Negative_tt:1 "£faction_fra_national_bloc §YНациональный блок§! станут более §RНедружелюбными§! увеличивая §YФабрики народного потребления§! на §R5%§!, уменьшая §YПрирост политической власти§! на §R5%§!, и §Yстабильность§! на §R5%§!."
+  FRA_National_Bloc_Negative_tt:1 "£faction_fra_national_bloc §YНациональный блок§! станут более §RНедружелюбными§! увеличивая §YФабрики народного потребления§! на §R5%§!, уменьшая §YPolitical Power Gain§! на §R5%§!, и §Yстабильность§! на §R5%§!."
 
-  FRA_CGT_Positive_1_tt:1 "£faction_fra_cgt §YВКТ§! станут более §GДружелюбными§! увеличивая §YПроизводительность завода и верфи§! на §G10%§!, увеличивая §YПрирост политической власти§! на §G5%§!, и §Yстабильность§! на §G5%§!."
+  FRA_CGT_Positive_1_tt:1 "£faction_fra_cgt §YВКТ§! станут более §GДружелюбными§! увеличивая §YПроизводительность завода и верфи§! на §G10%§!, увеличивая §YPolitical Power Gain§! на §G5%§!, и §Yстабильность§! на §G5%§!."
 
-  FRA_National_Bloc_Positive_1_tt:1 "£faction_fra_national_bloc §YНациональный блок§! станет более §GДружелюбным§! уменьшая §YФабрики народного потребления§! на §G5%§!, увеличивая §YПрирост политической власти§! на §G5%§!, и §Yстабильность§! на §G5%§!."
+  FRA_National_Bloc_Positive_1_tt:1 "£faction_fra_national_bloc §YНациональный блок§! станет более §GДружелюбным§! уменьшая §YФабрики народного потребления§! на §G5%§!, увеличивая §YPolitical Power Gain§! на §G5%§!, и §Yстабильность§! на §G5%§!."
 
   FRA_dirigisme_tt:1 "Повлияет на £faction_fra_national_bloc §YНациональный блок§!, уменьшая §YФабрики народного потребления§! на §G5%§!, и увеличивя §Yстабильность§! на §G5%§!."
 
-  FRA_economic_devolution_tt:1 "£faction_fra_French_Industrialists §YПромышленники§! станут более §GДружелюбными§! увеличивая §YПроизводительность завода и верфи§! на §G20%§! и увеличивая §YПрирост политической власти§! на §G5%§!.\n£faction_fra_cgt §YВКТ§! станет §Yнамного§! менее §Rвлиятельным§!"
+  FRA_economic_devolution_tt:1 "£faction_fra_French_Industrialists §YПромышленники§! станут более §GДружелюбными§! увеличивая §YПроизводительность завода и верфи§! на §G20%§! и увеличивая §YPolitical Power Gain§! на §G5%§!.\n£faction_fra_cgt §YВКТ§! станет §Yнамного§! менее §Rвлиятельным§!"
 
-  FRA_promote_entrepeneurship_tt:1 "£faction_fra_national_bloc §YНациональный блок§! станут более §GДружелюбными§! и §GВлиятельными§! уменьшая §YФабрики народного потребления§! на §G5%§!, увеличивая §YПрирост политической власти§! на §G5%§!, и §Yстабильность§! на §G5%§!."
+  FRA_promote_entrepeneurship_tt:1 "£faction_fra_national_bloc §YНациональный блок§! станут более §GДружелюбными§! и §GВлиятельными§! уменьшая §YФабрики народного потребления§! на §G5%§!, увеличивая §YPolitical Power Gain§! на §G5%§!, и §Yстабильность§! на §G5%§!."
 
   FRA_nationalize_key_industry_tt:1 "£faction_fra_French_Industrialists §YПромышленники§! потеряет влияние на экономику уменьшая §YПроизводительность завода и верфи§! на §R-20%§! и станут более §RЗлыми§!. £faction_fra_cgt §YВКТ§! станет §Yнамного§! более §GВлиятельным§!\n"
 
   FRA_reform_the_labour_laws_tt:1 "£faction_fra_cgt §YВКТ§! станет §GДружелюбным§! меняя §Yстабильность§! на §G+5%§! и §GУстраняет любые потери политической власти.§!\n£faction_fra_French_Industrialists §YПромышленники§! станут более §RЗлыми§!.\n"
 
-  FRA_revoke_the_matignon_agreements_tt:1 " £faction_fra_cgt §YВКТ§! станет более §Rзлым§! меняя §YПрирост политической власти§! на §R-15%§!"
+  FRA_revoke_the_matignon_agreements_tt:1 " £faction_fra_cgt §YВКТ§! станет более §Rзлым§! меняя §YPolitical Power Gain§! на §R-15%§!"
 
-  FRA_general_work_council_tt:1 "£faction_fra_cgt §YВКТ§! станет более §GДружелюбным§! увеличивая §YПроизводительность завода и верфи§! на §G+20%§! и §Yстабильность§! на §G+5%§!. \n£faction_fra_French_Industrialists §YПромышленники§! потеряют §YВлияние§! уменьшая §YПрирост политической власти§! на §R5%§!\n"
+  FRA_general_work_council_tt:1 "£faction_fra_cgt §YВКТ§! станет более §GДружелюбным§! увеличивая §YПроизводительность завода и верфи§! на §G+20%§! и §Yстабильность§! на §G+5%§!. \n£faction_fra_French_Industrialists §YПромышленники§! потеряют §YВлияние§! уменьшая §YPolitical Power Gain§! на §R5%§!\n"
   
   FRA_national_champions_tt:1 "£faction_fra_French_Industrialists §YПромышленники§! станут §Yнамного§! более §GДружелюбными§!\n"
 
@@ -774,7 +774,7 @@
   SOV_navy_reform_1_tt:0 "$SOV_modify_red_fleet_ns_intro$ \n£attack_texticon  Атака палубной авиации: §G+20.00%§! \n£attack_battleship_texticon  Атака крупных кораблей: §G+10.00%§! \n£defence_battleship_texticon  Броня крупных кораблей: §G+5.00%§! \n£attack_submarine_texticon  Атака подводных лодок: §G+10.00%§! \n£defence_submarine_texticon  Защита подводных лодок: §G+5.00%§! \n£attack_screen_texticon  Атака охранения: §G+10.00%§! \n£defence_screen_texticon  Защита охранения: §G+5.00%§! \n£navy_doctrine_cost_texticon  Стоимость морской доктрины: §G-50.00%§!\n\n"
   SOV_navy_reform_2_tt:0 "$SOV_modify_red_fleet_ns_intro$ \n£attack_texticon  Атака палубной авиации: §G+20.00%§! \n£attack_battleship_texticon  Атака крупных кораблей: §G+10.00%§! \n£defence_battleship_texticon  Броня крупных кораблей: §G+5.00%§! \n£attack_submarine_texticon  Атака подводных лодок: §G+10.00%§! \n£defence_submarine_texticon  Защита подводных лодок: §G+5.00%§! \n£attack_screen_texticon  Атака охранения: §G+10.00%§! \n£defence_screen_texticon  Защита охранения: §G+5.00%§! \n£navy_doctrine_cost_texticon  Стоимость морской доктрины: §G-50.00%§!\n\n"
 
-  SOV_socialism_in_one_country_tt:0 "$SOV_modify_the_politburo_ns_intro$ \nПрирост политической власти: §G+5.00%§! \nМодификатор стабильности от штрафа за оборонительную войну: §G+10.00%§! \n\n"
+  SOV_socialism_in_one_country_tt:0 "$SOV_modify_the_politburo_ns_intro$ \nPolitical Power Gain: §G+5.00%§! \nМодификатор стабильности от штрафа за оборонительную войну: §G+10.00%§! \n\n"
   SOV_the_glory_of_the_red_army_tt:0 "$SOV_modify_the_red_army_ns_intro$ \nМножитель сил специального назначения: §G+3%§!"
   
   

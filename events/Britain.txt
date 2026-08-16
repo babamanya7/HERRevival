@@ -587,7 +587,7 @@ country_event = {
 
 	trigger = {
 		NOT = {
-			has_completed_focus = uk_free_india_focus
+			always = no
 		}
 		RAJ = {
 			is_puppet_of = ENG

@@ -74,43 +74,33 @@ on_actions = {
 				
 				### Above, to count the total cap of rubber storages. ###
 			}
+			# Closed-loop controller. resource@ includes yesterday's storage output:
+			# negative balance increases output, positive balance removes obsolete output.
 			if = {
 				limit = {
 					is_ai = no
 					ROOT = { has_country_flag = rubber_storage_use }
-					ROOT = { check_variable = { resource@rubber < 0 } }
 				}
 				ROOT = {
-					set_variable = { rubber_storage_use_temp = 0 }
-					add_to_variable = { rubber_storage_use_temp = resource@rubber }
+					set_variable = { rubber_storage_use_temp = resource@rubber }
 					multiply_variable = { rubber_storage_use_temp = -1 }
+
+					set_variable = { res_eff_size_modifier = 1 }
+					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
 					clamp_variable = {
-						var = rubber_storage_use_temp
-						min = 0
-						max = rubber_speed
+						var = res_eff_size_modifier
+						min = 0.01
+						max = 100
 					}
+					divide_variable = { rubber_storage_use_temp = res_eff_size_modifier }
+
 					add_to_variable = { rubber_storage_use = rubber_storage_use_temp }
 					clamp_variable = {
 						var = rubber_storage_use
 						min = 0
 						max = rubber_speed
 					}
-					set_variable = { res_eff_size_modifier = 1 }
-					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
-					divide_variable = { rubber_storage_use = res_eff_size_modifier }
-					round_variable = rubber_storage_use
-					### rubber_storage_use, This var will be used in dynamic modifier. ###
 				}
-			}
-			if = {
-				limit = {
-					is_ai = no
-					ROOT = { has_country_flag = rubber_storage_use }
-					ROOT = { check_variable = { resource@rubber > 0 } }
-				}
-				set_variable = { rubber_storage_use_temp = 0 }
-				add_to_variable = { rubber_storage_use_temp = resource@rubber }
-				subtract_from_variable = { rubber_storage_use = rubber_storage_use_temp }
 			}
 			if = {
 				limit = {
@@ -265,43 +255,33 @@ on_actions = {
 				
 				### Above, to count the total cap of steel storages. ###
 			}
+			# Closed-loop controller. resource@ includes yesterday's storage output:
+			# negative balance increases output, positive balance removes obsolete output.
 			if = {
 				limit = {
 					is_ai = no
 					ROOT = { has_country_flag = steel_storage_use }
-					ROOT = { check_variable = { resource@steel < 0 } }
 				}
 				ROOT = {
-					set_variable = { steel_storage_use_temp = 0 }
-					add_to_variable = { steel_storage_use_temp = resource@steel }
+					set_variable = { steel_storage_use_temp = resource@steel }
 					multiply_variable = { steel_storage_use_temp = -1 }
+
+					set_variable = { res_eff_size_modifier = 1 }
+					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
 					clamp_variable = {
-						var = steel_storage_use_temp
-						min = 0
-						max = steel_speed
+						var = res_eff_size_modifier
+						min = 0.01
+						max = 100
 					}
+					divide_variable = { steel_storage_use_temp = res_eff_size_modifier }
+
 					add_to_variable = { steel_storage_use = steel_storage_use_temp }
 					clamp_variable = {
 						var = steel_storage_use
 						min = 0
 						max = steel_speed
 					}
-					set_variable = { res_eff_size_modifier = 1 }
-					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
-					divide_variable = { steel_storage_use = res_eff_size_modifier }
-					round_variable = steel_storage_use
-					### steel_storage_use, This var will be used in dynamic modifier. ###
 				}
-			}
-			if = {
-				limit = {
-					is_ai = no
-					ROOT = { has_country_flag = steel_storage_use }
-					ROOT = { check_variable = { resource@steel > 0 } }
-				}
-				set_variable = { steel_storage_use_temp = 0 }
-				add_to_variable = { steel_storage_use_temp = resource@steel }
-				subtract_from_variable = { steel_storage_use = steel_storage_use_temp }
 			}
 			if = {
 				limit = {
@@ -456,43 +436,33 @@ on_actions = {
 				
 				### Above, to count the total cap of aluminium storages. ###
 			}
+			# Closed-loop controller. resource@ includes yesterday's storage output:
+			# negative balance increases output, positive balance removes obsolete output.
 			if = {
 				limit = {
 					is_ai = no
 					ROOT = { has_country_flag = aluminium_storage_use }
-					ROOT = { check_variable = { resource@aluminium < 0 } }
 				}
 				ROOT = {
-					set_variable = { aluminium_storage_use_temp = 0 }
-					add_to_variable = { aluminium_storage_use_temp = resource@aluminium }
+					set_variable = { aluminium_storage_use_temp = resource@aluminium }
 					multiply_variable = { aluminium_storage_use_temp = -1 }
+
+					set_variable = { res_eff_size_modifier = 1 }
+					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
 					clamp_variable = {
-						var = aluminium_storage_use_temp
-						min = 0
-						max = aluminium_speed
+						var = res_eff_size_modifier
+						min = 0.01
+						max = 100
 					}
+					divide_variable = { aluminium_storage_use_temp = res_eff_size_modifier }
+
 					add_to_variable = { aluminium_storage_use = aluminium_storage_use_temp }
 					clamp_variable = {
 						var = aluminium_storage_use
 						min = 0
 						max = aluminium_speed
 					}
-					set_variable = { res_eff_size_modifier = 1 }
-					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
-					divide_variable = { aluminium_storage_use = res_eff_size_modifier }
-					round_variable = aluminium_storage_use
-					### aluminium_storage_use, This var will be used in dynamic modifier. ###
 				}
-			}
-			if = {
-				limit = {
-					is_ai = no
-					ROOT = { has_country_flag = aluminium_storage_use }
-					ROOT = { check_variable = { resource@aluminium > 0 } }
-				}
-				set_variable = { aluminium_storage_use_temp = 0 }
-				add_to_variable = { aluminium_storage_use_temp = resource@aluminium }
-				subtract_from_variable = { aluminium_storage_use = aluminium_storage_use_temp }
 			}
 			if = {
 				limit = {
@@ -648,43 +618,33 @@ on_actions = {
 				
 				### Above, to count the total cap of tungsten storages. ###
 			}
+			# Closed-loop controller. resource@ includes yesterday's storage output:
+			# negative balance increases output, positive balance removes obsolete output.
 			if = {
 				limit = {
 					is_ai = no
 					ROOT = { has_country_flag = tungsten_storage_use }
-					ROOT = { check_variable = { resource@tungsten < 0 } }
 				}
 				ROOT = {
-					set_variable = { tungsten_storage_use_temp = 0 }
-					add_to_variable = { tungsten_storage_use_temp = resource@tungsten }
+					set_variable = { tungsten_storage_use_temp = resource@tungsten }
 					multiply_variable = { tungsten_storage_use_temp = -1 }
+
+					set_variable = { res_eff_size_modifier = 1 }
+					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
 					clamp_variable = {
-						var = tungsten_storage_use_temp
-						min = 0
-						max = tungsten_speed
+						var = res_eff_size_modifier
+						min = 0.01
+						max = 100
 					}
+					divide_variable = { tungsten_storage_use_temp = res_eff_size_modifier }
+
 					add_to_variable = { tungsten_storage_use = tungsten_storage_use_temp }
 					clamp_variable = {
 						var = tungsten_storage_use
 						min = 0
 						max = tungsten_speed
 					}
-					set_variable = { res_eff_size_modifier = 1 }
-					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
-					divide_variable = { tungsten_storage_use = res_eff_size_modifier }
-					round_variable = tungsten_storage_use
-					### tungsten_storage_use, This var will be used in dynamic modifier. ###
 				}
-			}
-			if = {
-				limit = {
-					is_ai = no
-					ROOT = { has_country_flag = tungsten_storage_use }
-					ROOT = { check_variable = { resource@tungsten > 0 } }
-				}
-				set_variable = { tungsten_storage_use_temp = 0 }
-				add_to_variable = { tungsten_storage_use_temp = resource@tungsten }
-				subtract_from_variable = { tungsten_storage_use = tungsten_storage_use_temp }
 			}
 			if = {
 				limit = {
@@ -840,43 +800,33 @@ on_actions = {
 				
 				### Above, to count the total cap of chromium storages. ###
 			}
+			# Closed-loop controller. resource@ includes yesterday's storage output:
+			# negative balance increases output, positive balance removes obsolete output.
 			if = {
 				limit = {
 					is_ai = no
 					ROOT = { has_country_flag = chromium_storage_use }
-					ROOT = { check_variable = { resource@chromium < 0 } }
 				}
 				ROOT = {
-					set_variable = { chromium_storage_use_temp = 0 }
-					add_to_variable = { chromium_storage_use_temp = resource@chromium }
+					set_variable = { chromium_storage_use_temp = resource@chromium }
 					multiply_variable = { chromium_storage_use_temp = -1 }
+
+					set_variable = { res_eff_size_modifier = 1 }
+					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
 					clamp_variable = {
-						var = chromium_storage_use_temp
-						min = 0
-						max = chromium_speed
+						var = res_eff_size_modifier
+						min = 0.01
+						max = 100
 					}
+					divide_variable = { chromium_storage_use_temp = res_eff_size_modifier }
+
 					add_to_variable = { chromium_storage_use = chromium_storage_use_temp }
 					clamp_variable = {
 						var = chromium_storage_use
 						min = 0
 						max = chromium_speed
 					}
-					set_variable = { res_eff_size_modifier = 1 }
-					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
-					divide_variable = { chromium_storage_use = res_eff_size_modifier }
-					round_variable = chromium_storage_use
-					### chromium_storage_use, This var will be used in dynamic modifier. ###
 				}
-			}
-			if = {
-				limit = {
-					is_ai = no
-					ROOT = { has_country_flag = chromium_storage_use }
-					ROOT = { check_variable = { resource@chromium > 0 } }
-				}
-				set_variable = { chromium_storage_use_temp = 0 }
-				add_to_variable = { chromium_storage_use_temp = resource@chromium }
-				subtract_from_variable = { chromium_storage_use = chromium_storage_use_temp }
 			}
 			if = {
 				limit = {
@@ -1031,43 +981,33 @@ on_actions = {
 				
 				### Above, to count the total cap of coal storages. ###
 			}
+			# Closed-loop controller. resource@ includes yesterday's storage output:
+			# negative balance increases output, positive balance removes obsolete output.
 			if = {
 				limit = {
 					is_ai = no
 					ROOT = { has_country_flag = coal_storage_use }
-					ROOT = { check_variable = { resource@coal < 0 } }
 				}
 				ROOT = {
-					set_variable = { coal_storage_use_temp = 0 }
-					add_to_variable = { coal_storage_use_temp = resource@coal }
+					set_variable = { coal_storage_use_temp = resource@coal }
 					multiply_variable = { coal_storage_use_temp = -1 }
+
+					set_variable = { res_eff_size_modifier = 1 }
+					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
 					clamp_variable = {
-						var = coal_storage_use_temp
-						min = 0
-						max = coal_speed
+						var = res_eff_size_modifier
+						min = 0.01
+						max = 100
 					}
+					divide_variable = { coal_storage_use_temp = res_eff_size_modifier }
+
 					add_to_variable = { coal_storage_use = coal_storage_use_temp }
 					clamp_variable = {
 						var = coal_storage_use
 						min = 0
 						max = coal_speed
 					}
-					set_variable = { res_eff_size_modifier = 1 }
-					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
-					divide_variable = { coal_storage_use = res_eff_size_modifier }
-					round_variable = coal_storage_use
-					### coal_storage_use, This var will be used in dynamic modifier. ###
 				}
-			}
-			if = {
-				limit = {
-					is_ai = no
-					ROOT = { has_country_flag = coal_storage_use }
-					ROOT = { check_variable = { resource@coal > 0 } }
-				}
-				set_variable = { coal_storage_use_temp = 0 }
-				add_to_variable = { coal_storage_use_temp = resource@coal }
-				subtract_from_variable = { coal_storage_use = coal_storage_use_temp }
 			}
 			if = {
 				limit = {
@@ -1222,43 +1162,33 @@ on_actions = {
 				
 				### Above, to count the total cap of bauxite storages. ###
 			}
+			# Closed-loop controller. resource@ includes yesterday's storage output:
+			# negative balance increases output, positive balance removes obsolete output.
 			if = {
 				limit = {
 					is_ai = no
 					ROOT = { has_country_flag = bauxite_storage_use }
-					ROOT = { check_variable = { resource@bauxite < 0 } }
 				}
 				ROOT = {
-					set_variable = { bauxite_storage_use_temp = 0 }
-					add_to_variable = { bauxite_storage_use_temp = resource@bauxite }
+					set_variable = { bauxite_storage_use_temp = resource@bauxite }
 					multiply_variable = { bauxite_storage_use_temp = -1 }
+
+					set_variable = { res_eff_size_modifier = 1 }
+					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
 					clamp_variable = {
-						var = bauxite_storage_use_temp
-						min = 0
-						max = bauxite_speed
+						var = res_eff_size_modifier
+						min = 0.01
+						max = 100
 					}
+					divide_variable = { bauxite_storage_use_temp = res_eff_size_modifier }
+
 					add_to_variable = { bauxite_storage_use = bauxite_storage_use_temp }
 					clamp_variable = {
 						var = bauxite_storage_use
 						min = 0
 						max = bauxite_speed
 					}
-					set_variable = { res_eff_size_modifier = 1 }
-					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
-					divide_variable = { bauxite_storage_use = res_eff_size_modifier }
-					round_variable = bauxite_storage_use
-					### bauxite_storage_use, This var will be used in dynamic modifier. ###
 				}
-			}
-			if = {
-				limit = {
-					is_ai = no
-					ROOT = { has_country_flag = bauxite_storage_use }
-					ROOT = { check_variable = { resource@bauxite > 0 } }
-				}
-				set_variable = { bauxite_storage_use_temp = 0 }
-				add_to_variable = { bauxite_storage_use_temp = resource@bauxite }
-				subtract_from_variable = { bauxite_storage_use = bauxite_storage_use_temp }
 			}
 			if = {
 				limit = {
@@ -1413,43 +1343,33 @@ on_actions = {
 				
 				### Above, to count the total cap of iron storages. ###
 			}
+			# Closed-loop controller. resource@ includes yesterday's storage output:
+			# negative balance increases output, positive balance removes obsolete output.
 			if = {
 				limit = {
 					is_ai = no
 					ROOT = { has_country_flag = iron_storage_use }
-					ROOT = { check_variable = { resource@iron < 0 } }
 				}
 				ROOT = {
-					set_variable = { iron_storage_use_temp = 0 }
-					add_to_variable = { iron_storage_use_temp = resource@iron }
+					set_variable = { iron_storage_use_temp = resource@iron }
 					multiply_variable = { iron_storage_use_temp = -1 }
+
+					set_variable = { res_eff_size_modifier = 1 }
+					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
 					clamp_variable = {
-						var = iron_storage_use_temp
-						min = 0
-						max = iron_speed
+						var = res_eff_size_modifier
+						min = 0.01
+						max = 100
 					}
+					divide_variable = { iron_storage_use_temp = res_eff_size_modifier }
+
 					add_to_variable = { iron_storage_use = iron_storage_use_temp }
 					clamp_variable = {
 						var = iron_storage_use
 						min = 0
 						max = iron_speed
 					}
-					set_variable = { res_eff_size_modifier = 1 }
-					add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
-					divide_variable = { iron_storage_use = res_eff_size_modifier }
-					round_variable = iron_storage_use
-					### iron_storage_use, This var will be used in dynamic modifier. ###
 				}
-			}
-			if = {
-				limit = {
-					is_ai = no
-					ROOT = { has_country_flag = iron_storage_use }
-					ROOT = { check_variable = { resource@iron > 0 } }
-				}
-				set_variable = { iron_storage_use_temp = 0 }
-				add_to_variable = { iron_storage_use_temp = resource@iron }
-				subtract_from_variable = { iron_storage_use = iron_storage_use_temp }
 			}
 			if = {
 				limit = {

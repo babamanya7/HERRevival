@@ -251,12 +251,12 @@ on_actions = {
 				### Above, to count the number of steel storages. ###
 				
 				set_variable = { steel_speed = num_of_steel_storage }
-				multiply_variable = { steel_speed = 500 }
+				multiply_variable = { steel_speed = 1000 }
 				
 				### Above, to count the speed of steel storages putting out. ###
 				
 				set_variable = { steel_cap = num_of_steel_storage }
-				multiply_variable = { steel_cap = 100000 }
+				multiply_variable = { steel_cap = 120000 }
 				
 				set_variable = { storage_size_modifier = modifier@storage_size_factor }
 				add_to_variable = { storage_size_modifier = 1 }
@@ -442,7 +442,7 @@ on_actions = {
 				### Above, to count the number of aluminium storages. ###
 				
 				set_variable = { aluminium_speed = num_of_aluminium_storage }
-				multiply_variable = { aluminium_speed = 500 }
+				multiply_variable = { aluminium_speed = 300 }
 				
 				### Above, to count the speed of aluminium storages putting out. ###
 				
@@ -634,12 +634,12 @@ on_actions = {
 				### Above, to count the number of tungsten storages. ###
 				
 				set_variable = { tungsten_speed = num_of_tungsten_storage }
-				multiply_variable = { tungsten_speed = 500 }
+				multiply_variable = { tungsten_speed = 600 }
 				
 				### Above, to count the speed of tungsten storages putting out. ###
 				
 				set_variable = { tungsten_cap = num_of_tungsten_storage }
-				multiply_variable = { tungsten_cap = 100000 }
+				multiply_variable = { tungsten_cap = 90000 }
 				
 				set_variable = { storage_size_modifier = modifier@storage_size_factor }
 				add_to_variable = { storage_size_modifier = 1 }
@@ -826,12 +826,12 @@ on_actions = {
 				### Above, to count the number of chromium storages. ###
 				
 				set_variable = { chromium_speed = num_of_chromium_storage }
-				multiply_variable = { chromium_speed = 500 }
+				multiply_variable = { chromium_speed = 600 }
 				
 				### Above, to count the speed of chromium storages putting out. ###
 				
 				set_variable = { chromium_cap = num_of_chromium_storage }
-				multiply_variable = { chromium_cap = 100000 }
+				multiply_variable = { chromium_cap = 75000 }
 				
 				set_variable = { storage_size_modifier = modifier@storage_size_factor }
 				add_to_variable = { storage_size_modifier = 1 }
@@ -1017,12 +1017,12 @@ on_actions = {
 				### Above, to count the number of coal storages. ###
 				
 				set_variable = { coal_speed = num_of_coal_storage }
-				multiply_variable = { coal_speed = 500 }
+				multiply_variable = { coal_speed = 400 }
 				
 				### Above, to count the speed of coal storages putting out. ###
 				
 				set_variable = { coal_cap = num_of_coal_storage }
-				multiply_variable = { coal_cap = 100000 }
+				multiply_variable = { coal_cap = 120000 }
 				
 				set_variable = { storage_size_modifier = modifier@storage_size_factor }
 				add_to_variable = { storage_size_modifier = 1 }
@@ -1208,12 +1208,12 @@ on_actions = {
 				### Above, to count the number of bauxite storages. ###
 				
 				set_variable = { bauxite_speed = num_of_bauxite_storage }
-				multiply_variable = { bauxite_speed = 500 }
+				multiply_variable = { bauxite_speed = 200 }
 				
 				### Above, to count the speed of bauxite storages putting out. ###
 				
 				set_variable = { bauxite_cap = num_of_bauxite_storage }
-				multiply_variable = { bauxite_cap = 100000 }
+				multiply_variable = { bauxite_cap = 50000 }
 				
 				set_variable = { storage_size_modifier = modifier@storage_size_factor }
 				add_to_variable = { storage_size_modifier = 1 }
@@ -1399,12 +1399,12 @@ on_actions = {
 				### Above, to count the number of iron storages. ###
 				
 				set_variable = { iron_speed = num_of_iron_storage }
-				multiply_variable = { iron_speed = 500 }
+				multiply_variable = { iron_speed = 150 }
 				
 				### Above, to count the speed of iron storages putting out. ###
 				
 				set_variable = { iron_cap = num_of_iron_storage }
-				multiply_variable = { iron_cap = 100000 }
+				multiply_variable = { iron_cap = 50000 }
 				
 				set_variable = { storage_size_modifier = modifier@storage_size_factor }
 				add_to_variable = { storage_size_modifier = 1 }

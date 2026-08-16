@@ -1106,68 +1106,7 @@ shared_focus = {
 }
 
 
-shared_focus = {
-	id = CHI_guarantee_the_hanoi_route
-	icon = GFX_goal_generic_intelligence_exchange
-	prerequisite = { focus = CHI_reach_out_to_france }
-	x = 0
-	y = 1
-	relative_position_id = CHI_reach_out_to_france
-
-	cost = 10
-
-	ai_will_do = {
-		factor = 1
-		modifier = {
-			FRA = {
-				has_war = yes
-			}
-			factor = 0
-		}
-	}
-
-	available = {
-		all_other_country = { NOT = { has_completed_focus = CHI_guarantee_the_hanoi_route } }
-		FRA_will_support = yes
-		325 = { #Yunnan
-			CONTROLLER = {
-				OR = {
-					tag = ROOT
-					is_subject_of = ROOT
-					is_in_faction_with = ROOT
-				}
-			}
-		}
-		671 = { #Tonkin
-			CONTROLLER = {
-				NOT = { has_war_with = ROOT }
-				OR = {
-					original_tag = FRA
-					is_subject_of = FRA
-				}
-			}
-		}
-	}
-
-	bypass = {
-
-	}
-
-	cancel_if_invalid = yes
-	continue_if_invalid = no
-	available_if_capitulated = no
-
-	completion_reward = {
-		671 = { #Tonkin
-			set_state_flag = CHI_needed_for_hanoi_route
-		}
-		325 = { #Yunnan
-			set_state_flag = CHI_needed_for_hanoi_route
-		}	
-		set_variable = { CHI_hanoi_route_current_level = 3 }
-		add_offsite_building = { type = arms_factory level = 3 }
-	}
-}
+shared_
 
 shared_focus = {
 	id = CHI_construction_battalions
@@ -1392,40 +1331,7 @@ shared_focus = {
 	}
 }
 
-shared_focus = {
-	id = CHI_renegotiate_the_unequal_treaties
-	icon = GFX_focus_renounce_the_treaty_of_trianon
-	prerequisite = { focus = CHI_modern_logistics focus = CHI_combined_arms_warfare focus = CHI_naval_aviation } 
-	x = 0
-	y = 1
-	relative_position_id = CHI_modern_logistics
-
-	cost = 10
-
-	ai_will_do = {
-		factor = 1
-		modifier = {
-			factor = 4
-			tag = PRC			
-		}
-	}
-
-	available = {
-	}
-
-	bypass = {
-		NOT = { has_idea = CHI_nine_power_treaty }
-
-	}
-
-	cancel_if_invalid = yes
-	continue_if_invalid = no
-	available_if_capitulated = yes
-
-	completion_reward = {
-		remove_ideas = CHI_nine_power_treaty
-	}
-}
+shared_
 
 shared_focus = {
 	id = CHI_one_china_policy
@@ -2512,89 +2418,7 @@ shared_focus = {
 	}
 }
 
-shared_focus = {
-	id = CHI_the_hump
-	icon = GFX_goal_generic_air_production
-	prerequisite = { focus = CHI_camco }
-	prerequisite = { focus = CHI_hire_chennault }
-	x = 1
-	y = 3
-	relative_position_id = CHI_fighter_purchases
-
-	cost = 10
-
-	ai_will_do = {
-		factor = 1
-		modifier = {
-			factor = 4
-			tag = CHI
-		}
-		modifier = {
-			RAJ = {
-				exists = yes
-				NOT = {
-					is_in_faction_with = ENG
-				}
-			}
-			factor = 0
-		}
-	}
-
-	available = {
-		OR = {
-			is_subject = no
-			is_subject_of = ENG
-		}
-		all_other_country = { NOT = { has_completed_focus = CHI_the_hump } }
-		OR = {
-			AND = {
-				has_completed_focus = CHI_british_cooperation
-				ENG_will_support = yes
-			}
-			AND = {
-				has_completed_focus = CHI_mission_to_the_us
-				USA_will_support = yes
-			}
-		}
-		601 = { #Xikang
-			CONTROLLER = {
-				OR = {
-					tag = ROOT
-					is_subject_of = ROOT
-					is_in_faction_with = ROOT
-				}
-			}
-		}
-		434 = { #Arunachal Pradesh
-			CONTROLLER = {
-				NOT = { has_war_with = ROOT }
-				OR = {
-					original_tag = ENG
-					is_subject_of = ENG
-				}				
-			}
-		}
-	}
-
-	bypass = {
-
-	}
-
-	cancel_if_invalid = yes
-	continue_if_invalid = no
-	available_if_capitulated = no
-
-	completion_reward = {		
-		434 = { #Arunachal Pradesh
-			set_state_flag = CHI_needed_for_the_hump
-		}
-		601 = { #Xikang
-			set_state_flag = CHI_needed_for_the_hump
-		}	
-		set_variable = { CHI_the_hump_current_level = 1 }
-		add_offsite_building = { type = arms_factory level = 1 }
-	}
-}
+shared_
 
 shared_focus = {
 	id = CHI_chinese_expeditionary_force

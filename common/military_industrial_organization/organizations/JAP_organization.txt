@@ -33,6 +33,10 @@ JAP_hitachi_organization = {
 		equipment_bonus = {
 			armor_value = -0.2
 			build_cost_ic = -0.05
+			soft_attack = 0.08
+			hard_attack = 0.08
+			ap_attack = 0.08
+			defense = -0.05
 		}
 	}
 	
@@ -82,8 +86,9 @@ JAP_hitachi_organization = {
 		mutually_exclusive = { mio_hitachi_105mmgun }
 		
 		equipment_bonus = {
-			soft_attack = 0.05
-			hard_attack = 0.05
+			soft_attack = 0.08
+			hard_attack = 0.15
+			ap_attack = 0.18
 			defense = 0.03
 			breakthrough = 0.03
 		}
@@ -104,6 +109,7 @@ JAP_hitachi_organization = {
 		
 		equipment_bonus = {
 			soft_attack = 0.08
+			hard_attack = 0.05
 			defense = 0.05
 			breakthrough = 0.05
 		}
@@ -142,8 +148,9 @@ JAP_hitachi_organization = {
 		relative_position_id = mio_hitachi_diesel_engine
 		
 		equipment_bonus = {
-			hard_attack = 0.05
-			ap_attack = 0.05
+			soft_attack = 0.03
+			hard_attack = 0.15
+			ap_attack = 0.18
 		}
 	}
 	
@@ -192,6 +199,14 @@ JAP_isuzu_organization = {
 		production_bonus = {
 			production_resource_need_factor = 0.1
 			production_efficiency_gain_factor = 0.15
+		}
+		equipment_bonus = {
+			soft_attack = 0.05
+			hard_attack = 0.05
+			ap_attack = 0.05
+			maximum_speed = 0.08
+			armor_value = 0.05
+			breakthrough = -0.05
 		}
 	}
 	
@@ -252,9 +267,9 @@ JAP_isuzu_organization = {
 		relative_position_id = mio_isuzu_benz_engine
 		
 		equipment_bonus = {
-			soft_attack = 0.03
-			hard_attack = 0.03
-			ap_attack = 0.03
+			soft_attack = 0.05
+			hard_attack = 0.12
+			ap_attack = 0.15
 		}
 	}
 }
@@ -391,6 +406,14 @@ JAP_mitsubishi_organization = {
 			production_resource_need_factor = -0.05
 			production_cost_factor = -0.05
 		}
+		equipment_bonus = {
+			soft_attack = 0.05
+			hard_attack = -0.05
+			ap_attack = -0.05
+			reliability = 0.05
+			maximum_speed = 0.03
+			armor_value = -0.08
+		}
 	}
 	
 	add_trait = {
@@ -400,7 +423,7 @@ JAP_mitsubishi_organization = {
 
 		position = { x=1 y=0 }
 		
-		limit_to_equipment_type = { light_tank_chassis_1 light_tank_chassis_2 medium_tank_chassis medium_tank_artillery_chassis_1 }
+		limit_to_equipment_type = { light_tank_chassis_1 light_tank_chassis_2 medium_tank_chassis }
 		
 		equipment_bonus = {
 			defense = 0.02
@@ -431,7 +454,7 @@ JAP_mitsubishi_organization = {
 
 		position = { x=0 y=1 }
 		
-		limit_to_equipment_type = { light_tank_chassis_1 light_tank_chassis_2 medium_tank_chassis medium_tank_artillery_chassis_1 }
+		limit_to_equipment_type = { light_tank_chassis_1 light_tank_chassis_2 medium_tank_chassis }
 		all_parents = { mio_mitsubishi_asbest }
 		relative_position_id = mio_mitsubishi_asbest
 		
@@ -488,7 +511,9 @@ JAP_mitsubishi_organization = {
 		
 		equipment_bonus = {
 			soft_attack = 0.05
-			hard_attack = 0.03
+			hard_attack = 0.18
+			ap_attack = 0.2
+			breakthrough = 0.05
 		}
 	}
 	
@@ -504,8 +529,9 @@ JAP_mitsubishi_organization = {
 		relative_position_id = mio_mitsubishi_hara_transmission
 		
 		equipment_bonus = {
-			hard_attack = 0.03
-			ap_attack = 0.03
+			soft_attack = 0.05
+			hard_attack = 0.12
+			ap_attack = 0.12
 		}
 	}
 	
@@ -516,7 +542,7 @@ JAP_mitsubishi_organization = {
 
 		position = { x=0 y=1 }
 		
-		limit_to_equipment_type = { medium_tank_chassis_1 medium_tank_artillery_chassis_1 }
+		limit_to_equipment_type = { medium_tank_chassis_1 }
 		all_parents = { mio_mitsubishi_57mmhvgun }
 		relative_position_id = mio_mitsubishi_57mmhvgun
 		
@@ -539,25 +565,9 @@ JAP_mitsubishi_organization = {
 		
 		equipment_bonus = {
 			armor_value = 0.05
-			soft_attack = 0.03
-			hard_attack = 0.03
-		}
-	}
-	
-	add_trait = {
-		token = mio_mitsubishi_120mmgun
-		name = mio_mitsubishi_120mmgun
-		icon = GFX_generic_mio_department_icon_tank_medium_tank_spg
-
-		position = { x=0 y=1 }
-		
-		limit_to_equipment_type = { medium_tank_artillery_chassis_1 }
-		all_parents = { mio_mitsubishi_shinshoto }
-		relative_position_id = mio_mitsubishi_shinshoto
-		
-		equipment_bonus = {
-			soft_attack = 0.1
-			breakthrough = 0.1
+			soft_attack = 0.08
+			hard_attack = 0.08
+			ap_attack = 0.08
 		}
 	}
 	
@@ -610,8 +620,9 @@ JAP_mitsubishi_organization = {
 		relative_position_id = mio_mitsubishi_diesel_enigne
 		
 		equipment_bonus = {
-			ap_attack = 0.05
-			hard_attack = 0.03
+			soft_attack = 0.1
+			ap_attack = 0.18
+			hard_attack = 0.18
 		}
 	}
 	

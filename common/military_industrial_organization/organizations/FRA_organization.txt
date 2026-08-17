@@ -10,81 +10,125 @@
 
 
 FRA_renault_organization = {
-	include = generic_infantry_tank_organization
 	icon = GFX_idea_renault
-	allowed = {	
-		tag = FRA 
-	}
-
+	allowed = { tag = FRA }
+	equipment_type = { mio_cat_fra_renault_tanks }
+	research_categories = { mio_cat_tech_light_armor_and_modules mio_cat_tech_heavy_armor_and_modules }
+	tree_header_text = { text = FRA_mio_header_renault_light x = 1 }
+	tree_header_text = { text = FRA_mio_header_char_b x = 4 }
+	tree_header_text = { text = FRA_mio_header_arl x = 7 }
 	initial_trait = {
-		organization_modifier = {
-			military_industrial_organization_research_bonus = 0.05
-		}
+		name = FRA_mio_renault_initial_trait
+		organization_modifier = { military_industrial_organization_research_bonus = 0.1 military_industrial_organization_funds_gain = 0.75 }
+		equipment_bonus = { soft_attack = 0.08 hard_attack = 0.05 ap_attack = 0.05 armor_value = 0.1 breakthrough = -0.05 maximum_speed = -0.05 build_cost_ic = -0.03 }
 	}
-
-	add_trait = { 
+	add_trait = {
+		token = FRA_mio_trait_r35
+		name = FRA_mio_trait_r35
+		icon = GFX_generic_mio_department_icon_tank_light_tank_armor
+		position = { x=1 y=0 }
+		limit_to_equipment_type = { light_tank_chassis_2 }
+		equipment_bonus = { soft_attack = 0.08 hard_attack = 0.05 ap_attack = 0.05 armor_value = 0.12 maximum_speed = -0.08 build_cost_ic = -0.03 }
+	}
+	add_trait = {
+		token = FRA_mio_trait_sa38
+		name = FRA_mio_trait_sa38
+		icon = GFX_generic_mio_trait_icon_ap_attack
+		position = { x=0 y=1 }
+		relative_position_id = FRA_mio_trait_r35
+		all_parents = { FRA_mio_trait_r35 }
+		limit_to_equipment_type = { light_tank_chassis_2 light_tank_chassis_3 }
+		equipment_bonus = { soft_attack = 0.03 hard_attack = 0.15 ap_attack = 0.18 build_cost_ic = 0.04 }
+	}
+	add_trait = {
 		token = FRA_mio_trait_automitrailleuses
 		name = FRA_mio_trait_automitrailleuses
 		icon = GFX_generic_mio_trait_icon_maximum_speed
 		special_trait_background = yes
-		
-		position = { x=6 y=0 }  
-		
-		limit_to_equipment_type = { medium_tank_chassis }
-		
-		equipment_bonus = {
-			maximum_speed = 0.1
-			armor_value = -0.05
-		} 
-
+		position = { x=0 y=1 }
+		relative_position_id = FRA_mio_trait_sa38
+		all_parents = { FRA_mio_trait_sa38 }
+		limit_to_equipment_type = { light_tank_chassis_3 }
+		equipment_bonus = { soft_attack = 0.05 hard_attack = 0.05 ap_attack = 0.05 maximum_speed = 0.1 armor_value = -0.05 }
+	}
+	add_trait = {
+		token = FRA_mio_trait_char_b1
+		name = FRA_mio_trait_char_b1
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_armor
+		position = { x=4 y=0 }
+		limit_to_equipment_type = { heavy_tank_chassis_2 }
+		equipment_bonus = { soft_attack = 0.18 hard_attack = 0.08 ap_attack = 0.08 armor_value = 0.18 breakthrough = 0.08 maximum_speed = -0.1 build_cost_ic = 0.1 reliability = -0.06 }
 	}
 	add_trait = {
 		token = FRA_mio_trait_b1_bis_suspension
 		name = FRA_mio_trait_b1_bis_suspension
 		icon = GFX_generic_mio_trait_icon_breakthrough
 		special_trait_background = yes
-		
-		position = { x=0 y=4 }  
-		relative_position_id = generic_mio_trait_heavy_tank_improvements
-		
-		any_parent = { generic_mio_trait_heavy_tank_improvements }
-		
-		limit_to_equipment_type = { heavy_tank_chassis }
-		
-		equipment_bonus = {
-			maximum_speed = 0.05
-			breakthrough = 0.1 
-		} 
+		position = { x=0 y=1 }
+		relative_position_id = FRA_mio_trait_char_b1
+		all_parents = { FRA_mio_trait_char_b1 }
+		limit_to_equipment_type = { heavy_tank_chassis_2 }
+		equipment_bonus = { soft_attack = 0.05 hard_attack = 0.05 maximum_speed = 0.05 breakthrough = 0.1 reliability = 0.05 }
+	}
+	add_trait = {
+		token = FRA_mio_trait_arl44
+		name = FRA_mio_trait_arl44
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_at
+		position = { x=7 y=0 }
+		limit_to_equipment_type = { heavy_tank_destroyer_chassis_2 }
+		equipment_bonus = { soft_attack = 0.05 hard_attack = 0.22 ap_attack = 0.25 armor_value = 0.15 breakthrough = -0.08 build_cost_ic = 0.12 reliability = -0.05 }
 	}
 }
 
 FRA_hotchkiss_organization = {
-	include = generic_mobile_tank_organization
 	icon = GFX_idea_generic_tank_manufacturer_3
-	allowed = {	
-		tag = FRA
+	allowed = { tag = FRA }
+	equipment_type = { light_tank_chassis_2 light_tank_chassis_3 }
+	research_categories = { mio_cat_tech_light_armor_and_modules }
+	tree_header_text = { text = FRA_mio_header_hotchkiss x = 2 }
+	initial_trait = {
+		name = FRA_mio_hotchkiss_initial_trait
+		organization_modifier = { military_industrial_organization_funds_gain = 0.75 }
+		equipment_bonus = { soft_attack = 0.05 hard_attack = 0.05 ap_attack = 0.05 armor_value = 0.1 maximum_speed = -0.03 reliability = 0.05 build_cost_ic = -0.05 }
 	}
-	add_trait = { 
+	add_trait = {
+		token = FRA_mio_trait_h35_cast_hull
+		name = FRA_mio_trait_h35_cast_hull
+		icon = GFX_generic_mio_trait_icon_armor_value
+		position = { x=2 y=0 }
+		equipment_bonus = { armor_value = 0.12 defense = 0.05 maximum_speed = -0.03 }
+	}
+	add_trait = {
+		token = FRA_mio_trait_h39_engine
+		name = FRA_mio_trait_h39_engine
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+		position = { x=0 y=1 }
+		relative_position_id = FRA_mio_trait_h35_cast_hull
+		all_parents = { FRA_mio_trait_h35_cast_hull }
+		equipment_bonus = { maximum_speed = 0.08 reliability = 0.05 soft_attack = 0.03 hard_attack = 0.03 }
+	}
+	add_trait = {
 		token = FRA_mio_trait_l_35
 		name = FRA_mio_trait_l_35
 		icon = GFX_generic_mio_department_icon_tank_general_weapons
-		any_parent = { generic_mio_enlarged_breech }
-		relative_position_id = generic_mio_enlarged_breech
-		position = { x=1 y=2 }  
-		equipment_bonus = {
-			hard_attack = 0.05
-			ap_attack = 0.05
-		}  
+		position = { x=0 y=1 }
+		relative_position_id = FRA_mio_trait_h39_engine
+		all_parents = { FRA_mio_trait_h39_engine }
+		equipment_bonus = { soft_attack = 0.05 hard_attack = 0.15 ap_attack = 0.18 breakthrough = 0.05 build_cost_ic = 0.04 }
 	}
-
-	override_trait = {
-		token = generic_mio_gunner_sight_improvements
-		position = { x=-1 y=2}
+	add_trait = {
+		token = FRA_mio_trait_hotchkiss_mass_production
+		name = FRA_mio_trait_hotchkiss_mass_production
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		position = { x=0 y=1 }
+		relative_position_id = FRA_mio_trait_l_35
+		all_parents = { FRA_mio_trait_l_35 }
+		production_bonus = { production_cost_factor = -0.08 production_efficiency_gain_factor = 0.1 }
 	}
 }
 
 FRA_apx_organization = {
-	include = generic_medium_tank_organization
+	include = generic_tank_refurbishment_plant_organization
 	icon = GFX_idea_FRA_atelier_puteaux
 	allowed = {	
 		tag = FRA 
@@ -210,17 +254,70 @@ FRA_panhard_organization = {
 }
 
 FRA_somua_organization = {
-	include = generic_motorized_mechanized_organization
 	icon = GFX_idea_somua
-	
-	allowed = {	
-		tag = FRA 
+	allowed = { tag = FRA }
+	equipment_type = { mio_cat_fra_somua_tanks }
+	research_categories = { mio_cat_tech_medium_armor_and_modules }
+	tree_header_text = { text = FRA_mio_header_s35 x = 1 }
+	tree_header_text = { text = FRA_mio_header_s40 x = 4 }
+	tree_header_text = { text = FRA_mio_header_amx x = 7 }
+	initial_trait = {
+		name = FRA_mio_somua_initial_trait
+		organization_modifier = { military_industrial_organization_research_bonus = 0.1 military_industrial_organization_funds_gain = 0.75 }
+		equipment_bonus = { soft_attack = 0.08 hard_attack = 0.08 ap_attack = 0.08 armor_value = 0.12 maximum_speed = 0.03 reliability = 0.03 breakthrough = -0.05 build_cost_ic = 0.05 }
 	}
-
-	visible = {
+	add_trait = {
+		token = FRA_mio_trait_s35_cast_armor
+		name = FRA_mio_trait_s35_cast_armor
+		icon = GFX_generic_mio_trait_icon_armor_value
+		position = { x=1 y=0 }
+		limit_to_equipment_type = { medium_tank_chassis_1 }
+		equipment_bonus = { armor_value = 0.15 defense = 0.05 maximum_speed = -0.03 build_cost_ic = 0.05 }
 	}
-
-	available = {
+	add_trait = {
+		token = FRA_mio_trait_sa35
+		name = FRA_mio_trait_sa35
+		icon = GFX_generic_mio_trait_icon_ap_attack
+		position = { x=0 y=1 }
+		relative_position_id = FRA_mio_trait_s35_cast_armor
+		all_parents = { FRA_mio_trait_s35_cast_armor }
+		limit_to_equipment_type = { medium_tank_chassis_1 medium_tank_chassis_2 }
+		equipment_bonus = { soft_attack = 0.05 hard_attack = 0.15 ap_attack = 0.18 build_cost_ic = 0.04 }
+	}
+	add_trait = {
+		token = FRA_mio_trait_one_man_turret
+		name = FRA_mio_trait_one_man_turret
+		icon = GFX_generic_mio_trait_icon_defense
+		position = { x=0 y=1 }
+		relative_position_id = FRA_mio_trait_sa35
+		all_parents = { FRA_mio_trait_sa35 }
+		equipment_bonus = { soft_attack = -0.05 hard_attack = -0.05 breakthrough = -0.08 defense = -0.05 build_cost_ic = -0.03 }
+	}
+	add_trait = {
+		token = FRA_mio_trait_s40
+		name = FRA_mio_trait_s40
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+		position = { x=4 y=0 }
+		limit_to_equipment_type = { medium_tank_chassis_2 }
+		equipment_bonus = { soft_attack = 0.08 hard_attack = 0.1 ap_attack = 0.1 maximum_speed = 0.08 reliability = 0.05 armor_value = 0.05 build_cost_ic = 0.05 }
+	}
+	add_trait = {
+		token = FRA_mio_trait_three_man_turret
+		name = FRA_mio_trait_three_man_turret
+		icon = GFX_generic_mio_trait_icon_breakthrough
+		position = { x=0 y=1 }
+		relative_position_id = FRA_mio_trait_s40
+		all_parents = { FRA_mio_trait_s40 }
+		limit_to_equipment_type = { medium_tank_chassis_2 medium_tank_chassis_3 }
+		equipment_bonus = { soft_attack = 0.08 hard_attack = 0.08 breakthrough = 0.12 defense = 0.08 build_cost_ic = 0.05 }
+	}
+	add_trait = {
+		token = FRA_mio_trait_amx50
+		name = FRA_mio_trait_amx50
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+		position = { x=7 y=0 }
+		limit_to_equipment_type = { medium_tank_chassis_3 medium_tank_destroyer_chassis }
+		equipment_bonus = { soft_attack = 0.1 hard_attack = 0.22 ap_attack = 0.25 armor_value = 0.12 breakthrough = 0.1 build_cost_ic = 0.12 reliability = -0.05 }
 	}
 }
 

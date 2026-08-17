@@ -47,7 +47,7 @@ mio_cat_mitsubishi_designer = {
 		light_tank_amphibious_chassis_1
 		light_tank_chassis_2
 		medium_tank_chassis
-		medium_tank_artillery_chassis_1
+		medium_tank_destroyer_chassis
 		
 		transport_plane_equipment
 		medium_plane_scout_plane_airframe_1
@@ -70,7 +70,10 @@ mio_cat_hitachi_designer = {
 
 mio_cat_isuzu_designer = {
 	equipment_type = {
+		light_tank_chassis_2
 		light_tank_chassis_3
+		light_tank_destroyer_chassis
+		light_tank_aa_chassis
 	}
 }
 
@@ -78,31 +81,70 @@ mio_cat_aod_designer = {
 	equipment_type = {
 		light_tank_chassis_2
 		light_tank_chassis_3
-		light_tank_artillery_chassis_2
+		light_tank_destroyer_chassis_2
+		light_tank_destroyer_chassis_3
 		medium_tank_chassis_1
 		medium_tank_chassis_2
+		medium_tank_chassis_3
 		medium_tank_destroyer_chassis_1
 		medium_tank_destroyer_chassis_2
 		medium_tank_destroyer_chassis_3
-		medium_tank_artillery_chassis_2
-		medium_tank_artillery_chassis_3
 		heavy_tank_chassis_2
 		heavy_tank_chassis_3
+		heavy_tank_destroyer_chassis_3
 	}
 }
 
 mio_cat_porsche_designer = {
 	equipment_type = {
 		heavy_tank_destroyer_chassis_2
+		super_heavy_tank_chassis
+		super_heavy_tank_destroyer_chassis
 	}
 }
 
 mio_cat_henschel_designer = {
 	equipment_type = {
 		heavy_tank_chassis_2
-		heavy_tank_artillery_chassis_2
 		heavy_tank_chassis_3
 		heavy_tank_destroyer_chassis_3
+	}
+}
+
+mio_cat_eng_vickers_tanks = {
+	equipment_type = {
+		light_tank_chassis_2
+		light_tank_chassis_3
+		medium_tank_chassis_2
+		medium_tank_chassis_3
+		light_tank_destroyer_chassis
+		medium_tank_destroyer_chassis
+	}
+}
+
+mio_cat_eng_infantry_tanks = {
+	equipment_type = {
+		heavy_tank_chassis_2
+		heavy_tank_chassis_3
+		heavy_tank_destroyer_chassis
+	}
+}
+
+mio_cat_fra_renault_tanks = {
+	equipment_type = {
+		light_tank_chassis_2
+		light_tank_chassis_3
+		heavy_tank_chassis_2
+		heavy_tank_destroyer_chassis_2
+	}
+}
+
+mio_cat_fra_somua_tanks = {
+	equipment_type = {
+		medium_tank_chassis_1
+		medium_tank_chassis_2
+		medium_tank_chassis_3
+		medium_tank_destroyer_chassis
 	}
 }
 

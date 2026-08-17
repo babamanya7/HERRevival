@@ -8,79 +8,159 @@
    ##    ##     ## ##    ## ##    ##  ######  
 
 ENG_vickers_armstrong_eng_organization = {
-	include = generic_medium_tank_organization
 	icon = GFX_idea_vickers_armstrong_eng
-	
-	allowed = {
-		tag = ENG 
-	}
-	
+	allowed = { tag = ENG }
+	equipment_type = { mio_cat_eng_vickers_tanks }
+	research_categories = { mio_cat_tech_light_armor_and_modules mio_cat_tech_medium_armor_and_modules }
+	tree_header_text = { text = ENG_mio_header_cruiser_tanks x = 1 }
+	tree_header_text = { text = ENG_mio_header_cromwell_comet x = 4 }
+	tree_header_text = { text = ENG_mio_header_tank_destroyers x = 7 }
 	initial_trait = {
+		name = ENG_mio_vickers_initial_trait
 		organization_modifier = {
-			military_industrial_organization_research_bonus = 0.05
+			military_industrial_organization_research_bonus = 0.1
+			military_industrial_organization_funds_gain = 0.75
 		}
 		equipment_bonus = {
-			maximum_speed = 0.1
+			soft_attack = 0.05
+			hard_attack = 0.05
+			ap_attack = 0.05
+			breakthrough = 0.05
+			maximum_speed = 0.05
 			reliability = 0.05
-			armor_value = -0.1
+			armor_value = -0.05
 		}
 	}
-
-	add_trait = { 
+	add_trait = {
+		token = ENG_mio_trait_cruiser_doctrine
+		name = ENG_mio_trait_cruiser_doctrine
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+		position = { x=1 y=0 }
+		limit_to_equipment_type = { light_tank_chassis_2 light_tank_chassis_3 medium_tank_chassis_2 }
+		equipment_bonus = { soft_attack = 0.08 hard_attack = 0.05 ap_attack = 0.05 maximum_speed = 0.08 armor_value = -0.05 }
+	}
+	add_trait = {
+		token = ENG_mio_trait_two_pounder
+		name = ENG_mio_trait_two_pounder
+		icon = GFX_generic_mio_trait_icon_ap_attack
+		position = { x=0 y=1 }
+		relative_position_id = ENG_mio_trait_cruiser_doctrine
+		all_parents = { ENG_mio_trait_cruiser_doctrine }
+		equipment_bonus = { soft_attack = -0.05 hard_attack = 0.12 ap_attack = 0.15 }
+	}
+	add_trait = {
+		token = ENG_mio_trait_six_pounder
+		name = ENG_mio_trait_six_pounder
+		icon = GFX_generic_mio_trait_icon_hard_attack
+		position = { x=0 y=1 }
+		relative_position_id = ENG_mio_trait_two_pounder
+		all_parents = { ENG_mio_trait_two_pounder }
+		equipment_bonus = { soft_attack = 0.03 hard_attack = 0.15 ap_attack = 0.18 build_cost_ic = 0.04 }
+	}
+	add_trait = {
+		token = ENG_mio_trait_cromwell
+		name = ENG_mio_trait_cromwell
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+		position = { x=4 y=0 }
+		limit_to_equipment_type = { medium_tank_chassis_2 medium_tank_chassis_3 }
+		equipment_bonus = { soft_attack = 0.08 hard_attack = 0.08 ap_attack = 0.08 maximum_speed = 0.1 reliability = 0.05 armor_value = -0.05 }
+	}
+	add_trait = {
+		token = ENG_mio_trait_comet_77mm
+		name = ENG_mio_trait_comet_77mm
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+		position = { x=0 y=1 }
+		relative_position_id = ENG_mio_trait_cromwell
+		all_parents = { ENG_mio_trait_cromwell }
+		limit_to_equipment_type = { medium_tank_chassis_3 }
+		equipment_bonus = { soft_attack = 0.08 hard_attack = 0.18 ap_attack = 0.2 breakthrough = 0.08 build_cost_ic = 0.05 }
+	}
+	add_trait = {
 		token = ENG_mio_trait_expanded_turret_capacity
 		name = ENG_mio_trait_expanded_turret_capacity
 		icon = GFX_generic_mio_department_icon_tank_medium_tank_engine
 		special_trait_background = yes
-
-		position = { x=1 y=1 }
-		relative_position_id = generic_mio_trait_all_round_cupola
-
-		any_parent = { generic_mio_trait_all_round_cupola }
-		limit_to_equipment_type = { mio_cat_eq_all_medium_tank }
-
-		equipment_bonus = {
-			reliability = 0.05
-			armor_value = 0.05
-			breakthrough = 0.05
-		}
+		position = { x=0 y=1 }
+		relative_position_id = ENG_mio_trait_comet_77mm
+		all_parents = { ENG_mio_trait_comet_77mm }
+		limit_to_equipment_type = { medium_tank_chassis_3 }
+		equipment_bonus = { soft_attack = 0.05 hard_attack = 0.05 breakthrough = 0.08 defense = 0.05 reliability = 0.05 }
 	}
-
-	add_trait = { 
+	add_trait = {
+		token = ENG_mio_trait_achilles
+		name = ENG_mio_trait_achilles
+		icon = GFX_generic_mio_trait_icon_ap_attack
+		position = { x=7 y=0 }
+		limit_to_equipment_type = { light_tank_destroyer_chassis medium_tank_destroyer_chassis }
+		equipment_bonus = { soft_attack = -0.05 hard_attack = 0.18 ap_attack = 0.22 armor_value = -0.08 maximum_speed = 0.05 }
+	}
+	add_trait = {
 		token = ENG_mio_trait_expanded_production_facilities
 		name = ENG_mio_trait_expanded_production_facilities
 		icon = GFX_generic_mio_department_icon_tank_medium_tank_technology
 		special_trait_background = yes
-
-		position = { x=2 y=1 }
-		relative_position_id = generic_mio_trait_simplified_turret_design
-
-		all_parents = { generic_mio_trait_simplified_turret_design generic_mio_trait_armor_steel_working }
-		production_bonus = {
-			production_efficiency_cap_factor = 0.1
-			production_efficiency_gain_factor = 0.1
-		}
-		
+		position = { x=0 y=2 }
+		relative_position_id = ENG_mio_trait_achilles
+		all_parents = { ENG_mio_trait_achilles }
+		production_bonus = { production_efficiency_cap_factor = 0.1 production_efficiency_gain_factor = 0.1 production_cost_factor = -0.05 }
 	}
 }
 
 ENG_vauxhall_organization = {
-	include = generic_infantry_tank_organization
 	icon = GFX_idea_vauxhall
-
-	allowed = {	
-		tag = ENG
-	}
-
-	visible = {
-	}
-
-	available = {
-	}
-
+	allowed = { tag = ENG }
+	equipment_type = { mio_cat_eng_infantry_tanks }
+	research_categories = { mio_cat_tech_heavy_armor_and_modules }
+	tree_header_text = { text = ENG_mio_header_churchill x = 1 }
+	tree_header_text = { text = ENG_mio_header_black_prince x = 4 }
+	tree_header_text = { text = ENG_mio_header_heavy_tank_destroyers x = 7 }
 	initial_trait = {
-		equipment_bonus = {
-			armor_value = 0.05
-		}
+		name = ENG_mio_vauxhall_initial_trait
+		organization_modifier = { military_industrial_organization_funds_gain = 0.75 }
+		equipment_bonus = { soft_attack = 0.1 hard_attack = 0.05 ap_attack = 0.05 armor_value = 0.15 breakthrough = 0.1 maximum_speed = -0.08 build_cost_ic = 0.08 }
+	}
+	add_trait = {
+		token = ENG_mio_trait_churchill_infantry_support
+		name = ENG_mio_trait_churchill_infantry_support
+		icon = GFX_generic_mio_trait_icon_soft_attack
+		position = { x=1 y=0 }
+		limit_to_equipment_type = { heavy_tank_chassis_2 }
+		equipment_bonus = { soft_attack = 0.15 breakthrough = 0.12 hard_attack = -0.05 ap_attack = -0.05 maximum_speed = -0.04 }
+	}
+	add_trait = {
+		token = ENG_mio_trait_churchill_mk_iii
+		name = ENG_mio_trait_churchill_mk_iii
+		icon = GFX_generic_mio_trait_icon_hard_attack
+		position = { x=0 y=1 }
+		relative_position_id = ENG_mio_trait_churchill_infantry_support
+		all_parents = { ENG_mio_trait_churchill_infantry_support }
+		limit_to_equipment_type = { heavy_tank_chassis_2 }
+		equipment_bonus = { soft_attack = 0.05 hard_attack = 0.15 ap_attack = 0.18 armor_value = 0.05 build_cost_ic = 0.04 }
+	}
+	add_trait = {
+		token = ENG_mio_trait_churchill_reliability
+		name = ENG_mio_trait_churchill_reliability
+		icon = GFX_generic_mio_trait_icon_reliability
+		position = { x=0 y=1 }
+		relative_position_id = ENG_mio_trait_churchill_mk_iii
+		all_parents = { ENG_mio_trait_churchill_mk_iii }
+		equipment_bonus = { reliability = 0.1 soft_attack = 0.03 hard_attack = 0.03 defense = 0.08 }
+	}
+	add_trait = {
+		token = ENG_mio_trait_black_prince
+		name = ENG_mio_trait_black_prince
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_at
+		position = { x=4 y=0 }
+		limit_to_equipment_type = { heavy_tank_chassis_3 }
+		equipment_bonus = { soft_attack = 0.08 hard_attack = 0.2 ap_attack = 0.22 armor_value = 0.15 breakthrough = 0.08 maximum_speed = -0.08 build_cost_ic = 0.1 }
+	}
+	add_trait = {
+		token = ENG_mio_trait_tortoise
+		name = ENG_mio_trait_tortoise
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_at
+		position = { x=7 y=0 }
+		limit_to_equipment_type = { heavy_tank_destroyer_chassis }
+		equipment_bonus = { soft_attack = 0.08 hard_attack = 0.25 ap_attack = 0.28 armor_value = 0.2 defense = 0.1 breakthrough = -0.12 maximum_speed = -0.12 build_cost_ic = 0.15 reliability = -0.08 }
 	}
 }
 

@@ -80,7 +80,7 @@ SOV_morozov_design_bureau_organization = {
 		tag = SOV
 	}
 	
-	equipment_type = { mio_cat_eq_all_medium_tank }
+	equipment_type = { mio_cat_eq_all_medium_tank light_tank_chassis_2 medium_tank_destroyer_chassis_2 medium_tank_destroyer_chassis_3 }
 	research_categories = { mio_cat_tech_medium_armor_and_modules }
 
 	tree_header_text = {
@@ -103,6 +103,14 @@ SOV_morozov_design_bureau_organization = {
 		
 		production_bonus = {
 			production_capacity_factor = 0.1
+		}
+		equipment_bonus = {
+			soft_attack = 0.05
+			hard_attack = 0.05
+			ap_attack = 0.05
+			armor_value = 0.08
+			maximum_speed = 0.05
+			defense = -0.05
 		}
 	}
 
@@ -212,9 +220,10 @@ SOV_morozov_design_bureau_organization = {
 		}
 		
 		equipment_bonus = {
-			ap_attack = 0.05
+			ap_attack = 0.22
 			soft_attack = -0.05
-			hard_attack = 0.05
+			hard_attack = 0.18
+			build_cost_ic = 0.05
 		}
 	}
 
@@ -231,7 +240,7 @@ SOV_morozov_design_bureau_organization = {
 		limit_to_equipment_type = { mio_cat_eq_all_medium_tank }
 		
 		equipment_bonus = {
-			soft_attack = 0.04
+			soft_attack = 0.08
 			breakthrough = 0.02
 			defense = 0.02
 		}
@@ -256,8 +265,11 @@ SOV_morozov_design_bureau_organization = {
 		}
 		
 		equipment_bonus = {
-			ap_attack = 0.05
-			hard_attack = 0.05
+			soft_attack = 0.08
+			ap_attack = 0.15
+			hard_attack = 0.15
+			breakthrough = 0.05
+			build_cost_ic = 0.05
 		}
 	}
 
@@ -499,7 +511,8 @@ SOV_morozov_design_bureau_organization = {
 		
 		equipment_bonus = {
 			ap_attack = 0.1
-			hard_attack = 0.1
+			hard_attack = 0.15
+			soft_attack = 0.05
 		}
 	}
 }
@@ -511,7 +524,7 @@ SOV_astrov_design_bureau_organization = {
 		original_tag = SOV
 	}
 	
-	equipment_type = { light_tank_chassis }
+	equipment_type = { light_tank_chassis light_tank_destroyer_chassis light_tank_aa_chassis }
 	research_categories = { mio_cat_tech_light_armor_and_modules }
 
 	tree_header_text = {
@@ -520,7 +533,7 @@ SOV_astrov_design_bureau_organization = {
 	}
 
 	tree_header_text = {
-		text = mio_astrov_su76
+		text = mio_astrov_light_specialists
 		x = 5
 	}
 
@@ -537,6 +550,10 @@ SOV_astrov_design_bureau_organization = {
 			reliability = 0.04
 			maximum_speed = 0.07
 			fuel_consumption = 0.1
+			soft_attack = 0.08
+			hard_attack = -0.05
+			ap_attack = -0.05
+			breakthrough = -0.08
 		}
 	}
 
@@ -570,7 +587,9 @@ SOV_astrov_design_bureau_organization = {
 		all_parents = { mio_astrov_disel_engine }
 		
 		equipment_bonus = {
-			soft_attack = 0.03
+			soft_attack = 0.15
+			hard_attack = 0.03
+			ap_attack = 0.02
 		}
 	}
 
@@ -605,7 +624,9 @@ SOV_astrov_design_bureau_organization = {
 			armor_value = 0.1
 			reliability = 0.02
 			breakthrough = 0.05
-			soft_attack = 0.03
+			soft_attack = 0.08
+			hard_attack = 0.05
+			ap_attack = 0.05
 		}
 	}
 
@@ -714,33 +735,10 @@ SOV_astrov_design_bureau_organization = {
 		}
 		equipment_bonus = {
 			armor_value = 0.2
-			soft_attack = 0.04
-			hard_attack = 0.04
-			build_cost_ic = 0.08
-		}
-	}
-	
-	trait = {
-		token = mio_astrov_su76
-		name = mio_astrov_su76
-		icon = GFX_generic_mio_department_icon_tank_light_tank_spg
-
-		position = { x=4 y=3 }
-		
-		limit_to_equipment_type = { light_tank_artillery_chassis_3 }
-		
-		all_parents = { mio_astrov_t60_mob_tank }
-		
-		production_bonus = {
-			production_efficiency_gain_factor = 0.05
-			production_cost_factor = -0.03
-		}
-		equipment_bonus = {
-			armor_value = -0.2
 			soft_attack = 0.08
-			hard_attack = 0.15
-			ap_attack = 0.15
-			reliability = 0.04
+			hard_attack = 0.12
+			ap_attack = 0.12
+			build_cost_ic = 0.08
 		}
 	}
 	
@@ -774,7 +772,7 @@ SOV_kirov_organization = {
 		original_tag = SOV
 	}
 
-	equipment_type = { heavy_tank_chassis }
+	equipment_type = { medium_tank_chassis_1 heavy_tank_chassis heavy_tank_destroyer_chassis }
 	research_categories = { mio_cat_tech_heavy_armor_and_modules }
 
 	tree_header_text = {
@@ -800,6 +798,10 @@ SOV_kirov_organization = {
 			reliability = -0.1
 			maximum_speed = -0.08
 			fuel_consumption = 0.05
+			soft_attack = 0.08
+			hard_attack = 0.08
+			ap_attack = 0.08
+			breakthrough = 0.08
 		}
 	}
 	
@@ -809,7 +811,7 @@ SOV_kirov_organization = {
 		icon = GFX_generic_mio_department_icon_tank_heavy_tank
 
 		position = { x=8 y=0 }
-		limit_to_equipment_type = { heavy_tank_artillery_chassis heavy_tank_destroyer_chassis }
+		limit_to_equipment_type = { heavy_tank_destroyer_chassis }
 		equipment_bonus = {
 			reliability = 0.03
 			armor_value = 0.1
@@ -824,7 +826,7 @@ SOV_kirov_organization = {
 		position = { x=-1 y=1 }
 		relative_position_id = mio_kirov_sau_na_baze
 		any_parent = { mio_kirov_sau_na_baze }
-		limit_to_equipment_type = { heavy_tank_artillery_chassis }
+		limit_to_equipment_type = { heavy_tank_destroyer_chassis }
 		
 		equipment_bonus = {
 			hard_attack = 0.25
@@ -860,7 +862,7 @@ SOV_kirov_organization = {
 		position = { x=0 y=2 }
 		relative_position_id = mio_kirov_sau_na_baze
 		any_parent = { mio_kirov_sau_na_baze }
-		limit_to_equipment_type = { heavy_tank_artillery_chassis heavy_tank_destroyer_chassis }
+		limit_to_equipment_type = { heavy_tank_destroyer_chassis }
 
 		production_bonus = {
 			production_cost_factor = -0.03
@@ -909,8 +911,9 @@ SOV_kirov_organization = {
 		}
 		
 		equipment_bonus = {
-			soft_attack = 0.03
-			hard_attack = 0.03
+			soft_attack = 0.1
+			hard_attack = 0.1
+			ap_attack = 0.1
 		}
 	}
 	
@@ -986,32 +989,9 @@ SOV_kirov_organization = {
 		}
 		
 		equipment_bonus = {
-			ap_attack = 0.08
-			hard_attack = 0.03
-		}
-	}
-	
-	trait = {
-		token = mio_kirov_zis5_gun
-		name = mio_kirov_zis5_gun
-		icon = GFX_generic_mio_department_icon_tank_heavy_tank_at
-
-		position = { x=0 y=1 }
-		
-		relative_position_id = mio_kirov_screens
-		any_parent = { mio_kirov_screens }
-		
-		limit_to_equipment_type = { heavy_tank_chassis_2 }
-		
-		available = {
-			FROM = {
-				has_tech = antitank3
-			}
-		}
-		
-		equipment_bonus = {
-			ap_attack = 0.08
-			hard_attack = 0.03
+			soft_attack = 0.05
+			ap_attack = 0.12
+			hard_attack = 0.1
 		}
 	}
 	
@@ -1037,6 +1017,9 @@ SOV_kirov_organization = {
 			reliability = 0.04
 			maximum_speed = 0.02
 			armor_value = 0.05
+			soft_attack = 0.08
+			hard_attack = 0.12
+			ap_attack = 0.12
 		}
 	}
 	

@@ -44,7 +44,12 @@ GER_porsche_organization = {
 		equipment_bonus = {
 			armor_value = 0.2
 			breakthrough = 0.15
-			reliability = -0.05
+			soft_attack = 0.05
+			hard_attack = 0.2
+			ap_attack = 0.22
+			reliability = -0.15
+			build_cost_ic = 0.15
+			fuel_consumption = 0.15
 		}
 	}
 
@@ -57,7 +62,8 @@ GER_porsche_organization = {
 		
 		equipment_bonus = {
 			reliability = 0.05
-			build_cost_ic = 0.03
+			breakthrough = 0.05
+			build_cost_ic = 0.08
 		}
 	}
 
@@ -89,8 +95,9 @@ GER_porsche_organization = {
 		all_parents = { mio_porsche_simplified_transmission_system }
 		
 		equipment_bonus = {
-			armor_value = 0.25
+			armor_value = 0.15
 			defense = 0.05
+			hard_attack = 0.05
 		}
 	}
 
@@ -122,7 +129,7 @@ GER_porsche_organization = {
 		mutually_exclusive = { mio_porsche_apcr_hvap_shells }
 		
 		equipment_bonus = {
-			soft_attack = 0.2
+			soft_attack = 0.15
 			breakthrough = 0.1
 		}
 	}
@@ -140,8 +147,10 @@ GER_porsche_organization = {
 		mutually_exclusive = { mio_porsche_high_explosive_shells }
 		
 		equipment_bonus = {
-			ap_attack = 0.1
-			hard_attack = 0.12
+			ap_attack = 0.25
+			hard_attack = 0.2
+			soft_attack = -0.05
+			build_cost_ic = 0.07
 		}
 	}
 	
@@ -156,7 +165,7 @@ GER_porsche_organization = {
 		any_parent = { mio_porsche_high_explosive_shells mio_porsche_apcr_hvap_shells }
 		
 		equipment_bonus = {
-			soft_attack = 0.07
+			soft_attack = 0.12
 			breakthrough = 0.03
 			defense = 0.03
 		}
@@ -198,6 +207,12 @@ GER_henschel_organization = {
 		equipment_bonus = {
 			reliability = -0.1
 			armor_value = 0.2
+			soft_attack = 0.08
+			hard_attack = 0.12
+			ap_attack = 0.12
+			breakthrough = 0.1
+			build_cost_ic = 0.1
+			fuel_consumption = 0.1
 		}
 	}
 	
@@ -298,7 +313,8 @@ GER_henschel_organization = {
 		
 		equipment_bonus = {
 			reliability = 0.01
-			hard_attack = 0.10
+			soft_attack = 0.12
+			hard_attack = 0.15
 			ap_attack = 0.15
 		}
 	}
@@ -396,8 +412,9 @@ GER_henschel_organization = {
 		}
 		
 		equipment_bonus = {
-			ap_attack = 0.2
-			hard_attack = 0.2
+			soft_attack = 0.08
+			ap_attack = 0.25
+			hard_attack = 0.22
 			reliability = -0.08
 			build_cost_ic = 0.06
 		}
@@ -466,7 +483,7 @@ GER_krupp_organization = {
 		tag = GER 
 	}
 
-	equipment_type = { light_tank_chassis_2 medium_tank_chassis_2 medium_tank_destroyer_chassis_2 medium_tank_aa_chassis_2 }
+	equipment_type = { medium_tank_chassis_2 medium_tank_destroyer_chassis_2 medium_tank_aa_chassis_2 }
 	research_categories = { mio_cat_tech_medium_armor_and_modules mio_cat_tech_light_armor_and_modules }
 
 	tree_header_text = {
@@ -497,6 +514,10 @@ GER_krupp_organization = {
 		equipment_bonus = {
 			reliability = 0.02
 			armor_value = -0.05
+			soft_attack = 0.12
+			hard_attack = -0.05
+			ap_attack = -0.05
+			breakthrough = 0.1
 		}
 	}
 	
@@ -622,10 +643,10 @@ GER_krupp_organization = {
 		position = { x=4 y=0 }
 		
 		equipment_bonus = {
-			soft_attack = 0.1
+			soft_attack = 0.15
 			breakthrough = 0.15
-			hard_attack = -0.2
-			ap_attack = -0.2
+			hard_attack = -0.1
+			ap_attack = -0.1
 		}
 	}
 
@@ -662,10 +683,10 @@ GER_krupp_organization = {
 		}
 		
 		equipment_bonus = {
-			soft_attack = -0.07
-			breakthrough = -0.12
-			hard_attack = 0.23
-			ap_attack = 0.23
+			soft_attack = -0.05
+			breakthrough = -0.05
+			hard_attack = 0.2
+			ap_attack = 0.22
 			build_cost_ic = 0.03
 		}
 	}
@@ -681,7 +702,9 @@ GER_krupp_organization = {
 		limit_to_equipment_type = { medium_tank_chassis_2 }
 		
 		equipment_bonus = {
-			ap_attack = 0.1
+			soft_attack = 0.02
+			hard_attack = 0.1
+			ap_attack = 0.12
 			build_cost_ic = 0.02
 		}
 	}
@@ -790,8 +813,9 @@ GER_krupp_organization = {
 		}
 		
 		equipment_bonus = {
-			ap_attack = 0.07
-			hard_attack = 0.04
+			soft_attack = 0.03
+			ap_attack = 0.15
+			hard_attack = 0.12
 			build_cost_ic = 0.02
 		}
 	}
@@ -836,7 +860,7 @@ GER_man_organization = {
 		tag = GER 
 	}
 
-	equipment_type = { medium_tank_chassis_3 medium_tank_destroyer_chassis_3 }
+	equipment_type = { light_tank_chassis_2 light_tank_chassis_3 light_tank_destroyer_chassis medium_tank_chassis_3 medium_tank_destroyer_chassis_3 }
 	research_categories = { mio_cat_tech_medium_armor_and_modules }
 
 	tree_header_text = {
@@ -855,6 +879,11 @@ GER_man_organization = {
 		equipment_bonus = {
 			reliability = -0.05
 			armor_value = 0.2
+			soft_attack = 0.05
+			hard_attack = 0.1
+			ap_attack = 0.12
+			breakthrough = 0.1
+			build_cost_ic = 0.08
 		}
 	}
 
@@ -903,9 +932,10 @@ GER_man_organization = {
 		}
 		
 		equipment_bonus = {
+			soft_attack = 0.05
 			build_cost_ic = 0.05
-			hard_attack = 0.06
-			ap_attack = 0.08
+			hard_attack = 0.15
+			ap_attack = 0.18
 		}
 	}
 
@@ -920,8 +950,8 @@ GER_man_organization = {
 		all_parents = { mio_man_kwk42 }
 		
 		equipment_bonus = {
-			hard_attack = 0.05
-			soft_attack = 0.05
+			hard_attack = 0.08
+			soft_attack = 0.08
 			breakthrough = 0.05
 			defense = 0.05
 		}
@@ -1030,6 +1060,7 @@ GER_daimler_benz_organization = {
 			hard_attack = -0.1
 			ap_attack = -0.15
 			armor_value = -0.1
+			breakthrough = 0.08
 		}
 	}
 
@@ -1099,7 +1130,8 @@ GER_daimler_benz_organization = {
 		}
 		
 		equipment_bonus = {
-			hard_attack = 0.1
+			soft_attack = 0.03
+			hard_attack = 0.12
 			ap_attack = 0.15
 		}
 

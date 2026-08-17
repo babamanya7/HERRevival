@@ -156,6 +156,13 @@ USA_army_ordnance_department_organization = {
 		production_bonus = {
 			production_cost_factor = -0.03
 		}
+		equipment_bonus = {
+			soft_attack = 0.05
+			hard_attack = 0.05
+			ap_attack = 0.05
+			breakthrough = 0.05
+			reliability = 0.05
+		}
 	}
 	
 	add_trait = {
@@ -168,8 +175,10 @@ USA_army_ordnance_department_organization = {
 		limit_to_equipment_type = { light_tank_chassis_2 }
 		
 		equipment_bonus = {
-			breakthrough = 0.03
-			defense = 0.03
+			soft_attack = 0.05
+			hard_attack = 0.05
+			breakthrough = 0.08
+			defense = 0.05
 			reliability = -0.02
 		}
 	}
@@ -181,7 +190,7 @@ USA_army_ordnance_department_organization = {
 
 		position = { x=0 y=1 }
 		
-		limit_to_equipment_type = { light_tank_chassis_2 light_tank_artillery_chassis_2 }
+		limit_to_equipment_type = { light_tank_chassis_2 light_tank_destroyer_chassis_2 }
 		
 		any_parent = { mio_aod_stabilizator mio_aod_cumulativ_shell }
 		relative_position_id = mio_aod_stabilizator
@@ -198,7 +207,7 @@ USA_army_ordnance_department_organization = {
 		name = mio_aod_engine_radiator
 		icon = GFX_generic_mio_trait_icon_reliability
 		
-		limit_to_equipment_type = { light_tank_chassis_2 light_tank_artillery_chassis_2 }
+		limit_to_equipment_type = { light_tank_chassis_2 light_tank_destroyer_chassis_2 }
 
 		position = { x=0 y=1 }
 		
@@ -216,7 +225,7 @@ USA_army_ordnance_department_organization = {
 		name = mio_aod_open_rubka_3
 		icon = GFX_generic_mio_department_icon_tank_general_armor
 		
-		limit_to_equipment_type = { light_tank_artillery_chassis_2 }
+		limit_to_equipment_type = { light_tank_destroyer_chassis_2 }
 		
 		position = { x=0 y=0 }
 		
@@ -233,7 +242,7 @@ USA_army_ordnance_department_organization = {
 		name = mio_aod_cumulativ_shell
 		icon = GFX_generic_mio_trait_icon_ap_attack
 		
-		limit_to_equipment_type = { light_tank_artillery_chassis_2 }
+		limit_to_equipment_type = { light_tank_destroyer_chassis_2 }
 		
 		available = {
 			FROM = {
@@ -313,8 +322,9 @@ USA_army_ordnance_department_organization = {
 		position = { x=2 y=0 }
 		
 		equipment_bonus = {
-			hard_attack = 0.12
-			soft_attack = 0.12
+			hard_attack = 0.08
+			ap_attack = 0.08
+			soft_attack = 0.15
 			armor_value = -0.15
 			reliability = -0.1
 		}
@@ -367,6 +377,9 @@ USA_army_ordnance_department_organization = {
 			breakthrough = 0.2
 			defense = -0.4
 			maximum_speed = 0.05
+			soft_attack = 0.03
+			hard_attack = 0.12
+			ap_attack = 0.15
 		}
 	}
 	
@@ -404,7 +417,9 @@ USA_army_ordnance_department_organization = {
 		
 		equipment_bonus = {
 			breakthrough = 0.04
-			hard_attack = 0.07
+			soft_attack = 0.03
+			hard_attack = 0.12
+			ap_attack = 0.12
 		}
 	}
 	
@@ -466,7 +481,9 @@ USA_army_ordnance_department_organization = {
 		position = { x=0 y=1 }
 		
 		equipment_bonus = {
-			ap_attack = 0.1
+			soft_attack = -0.03
+			hard_attack = 0.15
+			ap_attack = 0.2
 			hard_attack = -0.03
 		}
 	}
@@ -482,6 +499,10 @@ USA_army_ordnance_department_organization = {
 		
 		equipment_bonus = {
 			armor_value = 0.15
+			soft_attack = 0.08
+			hard_attack = 0.08
+			ap_attack = 0.08
+			breakthrough = 0.1
 		}
 	}
 	
@@ -498,8 +519,10 @@ USA_army_ordnance_department_organization = {
 		position = { x=0 y=1 }
 		
 		equipment_bonus = {
-			breakthrough = 0.03
-			defense = 0.03
+			soft_attack = 0.05
+			hard_attack = 0.05
+			breakthrough = 0.08
+			defense = 0.05
 			reliability = -0.02
 		}
 	}
@@ -610,7 +633,10 @@ USA_army_ordnance_department_organization = {
 		relative_position_id = mio_aod_mod_tracks
 		
 		equipment_bonus = {
-			hard_attack = 0.05
+			soft_attack = -0.05
+			hard_attack = 0.18
+			ap_attack = 0.2
+			build_cost_ic = 0.05
 			ap_attack = 0.05
 		}
 	}
@@ -706,7 +732,9 @@ USA_army_ordnance_department_organization = {
 		position = { x=0 y=1 }
 		
 		equipment_bonus = {
-			ap_attack = 0.1
+			soft_attack = -0.03
+			hard_attack = 0.15
+			ap_attack = 0.2
 			hard_attack = -0.03
 		}
 	}
@@ -1087,4 +1115,3 @@ USA_rock_island_arsenal_organization = {
 		tag = USA 
 	}
 }
-

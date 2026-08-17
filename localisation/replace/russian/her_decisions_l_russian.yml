@@ -1,60 +1,60 @@
 ﻿l_russian:
     support_china: "Поддержка китая"
-    
+
     FRA_activate_Dyle_plan: "План Дайла"
-    
+
     SOV_propaganda_more_metal_tt: "Дается §G+40§! §Y$state_resource_coal$§!, §G+25§! §Y$state_resource_aluminium$§!, §G+80§! §Y$state_resource_tungsten$§!, §G+45§! §Y$state_resource_steel$§! и §G+60§! §Y$state_resource_chromium$§! за каждый регион, производящий эти ресурсы."
-    
+
     SOV_add_hspg_companies_to_guards:0 "£faction_sov_army Придать гвардейским частям тяжёлые САУ"
     SOV_add_mspg_companies_to_guards:0 "£faction_sov_army Придать гвардейским частям средние САУ"
     SOV_add_htd_companies_to_guards:0 "£faction_sov_army Придать гвардейским частям тяжёлые ПТ-САУ"
     SOV_add_mtd_companies_to_guards:0 "£faction_sov_army Придать гвардейским частям средние ПТ-САУ"
-    
+
     SOV_military_offensive_name_generic: "Наступление на регион города [FROM.GetName]"
     SOV_peoples_militia_reform: "Реформа народного ополчения"
-    
+
     SOV_glory_to_partisans_tt:0 "§GУвеличится§! влияние §RПартизан§!"
     SOV_propaganda_death_to_invaders_no_invaders_tt: "Каждая национальная территория, имеющее более чем §RНезначительное§! влияние партизан и контролируемая противником: \nДобавить модификатор: §Y$SOV_invaders_must_die$§!\n\n"
     SOV_propaganda_death_to_invaders_state_modifier_tt: "\n§Y$SOV_invaders_must_die$§!:\n$MODIFIER_ARMY_SPEED_FACTOR_FOR_CONTROLLER$: §R-30%§! \n$MODIFIER_LOCAL_SUPPLIES_FOR_CONTROLLER$: §R-30%§! \n$MODIFIER_STRATEGIC_REDEPLOYMENT_DISABLED$: §RДа§! \n"
     europe_exploited:0 "Европа эксплуатирована"
     GER_forced_labor_camps_system:0 "Принудительный труд"
     GER_forced_labor_camps_system_desc:0 "TODO"
-    
+
     GER_ostarbieter_tt:0 "Разблокирует §Yрешения§! по угону рабочей силы с оккупированных регионов СССР в Германию, §Gулучшая§! национальный дух §R$GER_economy_of_conquest_modifier$§!"
     GER_evac_ost:0 "Депортирует остарбайтеров в Германию"
     GER_ostarbieter_generic_decision:0 "Угон остарбайтеров в Германию из города [FROM.GetName]"
     GER_evac_ost_1tt:0 "§O~20000§! жителей региона будет вывезено на принудительные работы в §RГерманию§! \nРегион [FROM.GetName]:\n£political_violence_texticon  Цель сопротивления: §R+5.00%§!"
     GER_evac_ost_2tt:0 "Прибывшая рабочая сила §Gувеличивает§! бонусы от национального духа §Y$GER_economy_of_conquest_modifier$§!"
-    
+
     GER_ui_inmates_header:0 "Кол-во"
     GER_case_blue_activated:0 "Операция «Блау» началась"
     forced_labor_state_add_mission:0 "Интеграция подневольного труда"
     GER_foreign_workers_name:0 "Иностранные рабочие"
-    foreign_workers_inmates_amount:0 "[?total_labor|0Y]"    
-    
+    foreign_workers_inmates_amount:0 "[?total_labor|0Y]"
+
     SS_lssah_early_refit:0 "Переформировать «LSSAH» в моторизированную бригаду"
     SS_lssah_middle_refit:0 "Переформировать «LSSAH» в моторизированную дивизию"
     SS_lssah_late_refit:0 "Переформировать «LSSAH» в танковую дивизию"
-    
+
     SS_dasreich_early_refit:0 "Переформировать дивизию усиления СС"
     SS_dasreich_middle_refit:0 "Переформировать «Das Reich» в панцергренадерcкую дивизию"
     SS_dasreich_late_refit:0 "Переформировать «Das Reich» в танковую дивизию"
-    
+
     SS_totenkopf_early_refit:0 "Переформировать «Totenkopf» в моторизированную дивизию"
     SS_totenkopf_middle_refit:0 "Переформировать «Totenkopf» в панцергренадерcкую дивизию"
     SS_totenkopf_late_refit:0 "Переформировать «Totenkopf» в танковую дивизию"
-    
+
     SS_polizei_early_refit:0 "Переформировать полицейскую дивизию СС"
     SS_polizei_middle_refit:0 "Переформировать полицейскую дивизию в панцергренадерcкую дивизию"
-    
+
     SS_wiking_early_refit:0 "Переформировать «Wiking» в панцергренадерcкую дивизию"
     SS_wiking_middle_refit:0 "Переформировать «Wiking» в танковую дивизию"
-    
+
     decision_cost_CP_10:0 "£command_power §Y10§!"
     decision_cost_CP_10_blocked:0 "£command_power §R10§!"
-    
+
     SOV_GER_partisans:0 "Партизанская война"
-    
+
     generic_partisans:0 "Увеличить влияние партизан в регионе [FROM.GetName]"
     SOV_partisan_influence_trigger_tt: "Влияние партизан в регионе не §Yполное§!."
     SOV_partisan_influence_trigger_2_tt: "Не увеличивает влияние в 3-х регионах"
@@ -63,41 +63,41 @@
     SOV_partisan_influence_weak_tt: "§LТекущее влияние партизан в регионе:§! §Rслабое§!\n"
     SOV_partisan_influence_strong_tt: "§LТекущее влияние партизан в регионе:§! §Rсильное§!\n"
     SOV_partisan_influence_total_tt: "§LТекущее влияние партизан в регионе:§! §Rполное§!\n"
-    
+
     generic_anti_partisans:0 "Антипартизанская операция в регионе [FROM.GetName]"
     GER_anti_partisan_operations_tt: "Открывает решения по антипартизанским операциям на территории СССР"
     GER_partisan_influence_trigger_tt: "Имеется партизанская активность в регионе."
     GER_partisan_influence_trigger_2_tt: "Не подваляет влияние в 3-х регионах."
     GER_down_partisan_influence_tt: "Подавляет влияние партизан в регионе на один шаг.\n\n"
-    
+
     GER_anti_partisan_operation:0 "Антипартизанская операция"
     SOV_partisans_activity_1:0 "Слабая партизанская активность"
     SOV_partisans_activity_2:0 "Средняя партизанская активность"
     SOV_partisans_activity_3:0 "Сильная партизанская активность"
-    
-    
+
+
     ROM_change_sides_to_commintern:0 "Переворот короля Михая"
-    
+
     SOV_complete_second_five_year_plan:0 "Завершение второго пятилетнего плана"
-    
+
     SOV_winter_counterattack:0 "Провести зимнее контрнаступление"
-    
+
     SOV_fyp_azovsteel:0 "Стройка Азовстали"
     SOV_fyp_zaporozhsteel:0 "Стройка Запорожстали"
     SOV_fyp_ural_heavy_industry:0 "Стройка Уральского завода тяжёлого машиностроения"
     SOV_fyp_donbass_heavy_industry:0 "Стройка Краматорского завода тяжёлого станкостроения"
     SOV_fyp_chelyabinsk_heavy_industry:0 "Стройка Челябинского тракторного завода"
     SOV_fyp_dneproges:0 "Стройка Днепрогэс"
-    
+
     azov_complete:0 "Азовсталь построена"
     zaporozh_complete:0 "Запорожсталь построена"
     ural_complete:0 "УЗТМ построен"
     donbass_complete:0 "КЗТС построен"
     chtz_complete:0 "ЧТЗ построен"
     dneproges_complete:0 "Днепрогэс построена"
-    
+
     MAN_raid_otw:0 "Уже проводим рейд"
-    
+
     MAN_raid_chita:0 "Налёт на Читу"
     MAN_chita_raid_launched:0 "Начался рейд на Читу"
     SOV_chita_raid_underway:0 "Чита подвергается налету"
@@ -118,7 +118,7 @@
     MAN_vladivostok_raid_launched:0 "Начался рейд на Владивосток"
     SOV_vladivostok_raid_underway:0 "Владивосток подвергается налету"
 
-    MAN_army_reform:0 "Army Reform"
+    MAN_army_reform:0 "Реформа армии"
 
     MAN_manchu_soviet_category:0 "Манчжурско-Советская граница"
     MAN_manchu_soviet_category_desc:0 ""
@@ -132,13 +132,13 @@
     GER_reichskommissariat_niederlande:0 "Рейхскомиссариат Нидерланды"
     GER_reichskommissariat_danemark:0 "Рейхскомиссариат Дания"
     GER_reichskommissariat_cze:0 "Протекторат Богемии и Моравии"
-    
-    
-    
-    
-    
+
+
+
+
+
     GER_holocaust:0 "Решение еврейского вопроса"
-    
+
     form_ainzats_groups:0 "Создать Айнзацгруппы"
     form_ainzats_groups_desc:0 "Военизированные эскадроны смерти будут осуществлять массовые убийства унтерменшей на завоеванных территориях стран Европы и СССР и сыграют главную роль в «окончательном решении еврейского вопроса»."
     create_extermination_camps:0 "Создание лагерей смерти на территории Польши"
@@ -146,22 +146,22 @@
     operation_reinhard_desc:0 "Операция Рейнхард - государственная программа по систематическому истреблению евреев и цыган в генерал-губернаторстве."
     jew_deportation:0 "Депортация евреев в Генерал-губернаторство"
     generic_jew_holocaust:0 "Уничтожение евреев в провинции [FROM.GetName]"
-    
-    
+
+
     GER_case_blue_tt:0 "Начать наступление на южном направлении Восточного фронта с целью захвата нефтяных месторождений Северного Кавказа и Баку"
     GER_case_typhoon_tt:0 "Мощными ударами крупных группировок окружить основные силы войск Красной Армии, прикрывавшие столицу, и уничтожить их в районах Брянска и Вязьмы, а затем стремительно обойти Москву с севера и юга с целью её захвата"
-    
+
     GER_exploit:0 "Эксплуатация СССР"
-    
+
     exploited_terr:0 "Эксплуатировано"
     generic_exploit:0 "Эксплуатация промышленности города [FROM.GetName]"
     generic_exploit_jap:0 "Эксплуатация региона [FROM.GetName]"
-    
-    
-    
-    
+
+
+
+
     lend_lease_to_sov:0 "Ленд-Лиз по трансиранскому маршруту"
-    
+
     send_inf_eq:0 "Отправить пехотное снаряжение"
     send_med_tanks:0 "Отправить средние танки"
     send_hev_tanks:0 "Отправить тяжёлые танки"
@@ -176,34 +176,34 @@
     build_motor_factories_in_iran:0 "Построить автомобильные заводы в Иране"
     motor_production_from_iran:0 "Производство автомобилей в Иране"
     motor_factories_in_iran:0 "Автозаводы в Иране построены"
-    
+
     ENG_crusader:0 "Операция Крусейдер"
-    
+
     SOV_GAZ_factory_recovery:0 "Восстановление автозаводов ГАЗ"
-    
+
     SOV_raise_guards_units:0 "Сформировать Гвардейские дивизии"
     GER_case_blue_activation:0 "Операция Блау"
     GER_case_typhoon_activation:0 "Операция Тайфун"
-    
+
     guide:0 "Служебность"
     guide_on:0 "Гайд на [From.GetName]"
     payback_of_war_bonds:0 "Возврат военных облигаций"
-    Lost_our_tech_tree_partnership:0 "Loss of our Techtree Partnership"
+    Lost_our_tech_tree_partnership:0 "Утрата технологического сотрудничества"
 
-    demobilization_economic_fatigue:0 "Handle Economic Fatigue"
-    demob_economic_fatigue_mission:0 "Handle Economic Fatigue"
-    
+    demobilization_economic_fatigue:0 "Преодолеть экономическую усталость"
+    demob_economic_fatigue_mission:0 "Преодолеть экономическую усталость"
+
     iron_shortage:0 "Нехватка железа"
-    iron_shortage_desc:0 "Our Steel Mills are lacking Iron to function correctly. We will be forced to shut them down until we make up the deficit. We can avoid this by either taking or trading for more resources"
+    iron_shortage_desc:0 "Нашим сталелитейным заводам не хватает железа для нормальной работы. Мы будем вынуждены закрыть их до устранения дефицита. Этого можно избежать, захватив дополнительные ресурсы или закупив их."
 
     iron_prosperity:0 "Достаток железа"
     bauxite_prosperity:0 "Достаток Бокситов"
-    
+
     bauxite_shortage:0 "Нехватка Бокситов"
-    bauxite_shortage_desc:0 "Our Aluminium Smelters are lacking Bauxite to function correctly. We will be forced to shut them down until we make up the deficit. We can avoid this by either taking or trading for more resources"
+    bauxite_shortage_desc:0 "Нашим алюминиевым заводам не хватает бокситов для нормальной работы. Мы будем вынуждены закрыть их до устранения дефицита. Этого можно избежать, захватив дополнительные ресурсы или закупив их."
 
     coal_shortage:0 "Нехватка Угля"
-    coal_shortage_desc:0 "Our Synthetic Refineries are lacking Coal to function correctly. We will be forced to shut them down until we make up the deficit. We can avoid this by either taking or trading for more resources"
+    coal_shortage_desc:0 "Нашим заводам синтетического топлива не хватает угля для нормальной работы. Мы будем вынуждены закрыть их до устранения дефицита. Этого можно избежать, захватив дополнительные ресурсы или закупив их."
 
     trigger_has_30_iron:0 "Иметь в наличии не менее 30 единиц железа"
     trigger_has_60_iron:0 "Иметь в наличии не менее 60 единиц железа"
@@ -255,19 +255,19 @@
 
     develop_chengdu_oil_deposits:0 "Исследовать нефтяные месторождения Чэнду"
     develop_magnitogorsk_coal_deposits:0 "Разработка месторождения угля в Магнитогорске"
-    
-    CHI_yellow_river_flood:0 "Flood the Yellow River"
-    CHI_yellow_river_flood_desc:0 "Flooding the Yellow river can help us hinder the Japanese progress into China, allowing us to have a defensive line from the Yellow to the Yangtze"
-    CHI_yellow_river_flooded:0 "Yellow River Flooded"
 
-    china_militia_recruitment_effort_6:0 "Exhausted Recruitment Efforts\n"
-    military_affairs_commission_relocated:0 "Military Affairs Commission Relocated\n"
+    CHI_yellow_river_flood:0 "Разрушить дамбы на Хуанхэ"
+    CHI_yellow_river_flood_desc:0 "Разлив Хуанхэ поможет замедлить продвижение японцев вглубь Китая и позволит создать оборонительный рубеж от Хуанхэ до Янцзы."
+    CHI_yellow_river_flooded:0 "Разлив Хуанхэ"
 
-    CHI_emergency_procuration_of_weapons:0 "Emergency Procuration of Weapons"
+    china_militia_recruitment_effort_6:0 "Возможности призыва исчерпаны\n"
+    military_affairs_commission_relocated:0 "Военная комиссия эвакуирована\n"
+
+    CHI_emergency_procuration_of_weapons:0 "Экстренная закупка оружия"
 
     FRA_internal_factions:0 "Внутренние фракции"
     FRA_internal_factions_desc:1 "Состояние французской политики далеко от стабильного. Хотя реформы необходимы и приветствуются, нация разделена, и втягивание в конфликт подвергнет ее большому риску. Мы можем попытаться умилостивить различные группировки, господствующие в стране, или выбрать сторону и сокрушить оппозицию.\n\n"
-    
+
     FRA_national_bloc_name_text:0 "Нац блок"
     FRA_cgt_name_text:0 "ВКТ"
     FRA_french_industrialists_name_text:0 "Промышленники"
@@ -459,7 +459,7 @@
     FRA_Industrialists_subsidize_the_companies_tt:0 "T£faction_fra_French_Industrialists Промышленники дружелюбны и имеют влияние\nУвеличивает длительность на §Y7 Дней§! за каждый уровень влияния"
 
     FRA_revoke_the_matignon_agreements: "£faction_fra_cgt Отозвать Матиньонские соглашения"
-    
+
     FRA_professional_army_decision:0 "£faction_fra_French_Army Перевод профессиональных солдат в мобильные подразделения"
 
     FRA_professional_army:0 "Опытные мобильные части"
@@ -477,14 +477,14 @@
 
     FRA_fulfill_the_hotchkiss_contract:0 "Контракт Гочкисc"
     FRA_fulfill_the_hotchkiss_contract_tt:0 "Иметь §G750§! §YЛегких танков в армии§!"
-    
+
     FRA_professional_army_decision_tt:0 "Выполнены контракты от Рено и Гочкисс"
-    
-    topple_the_vichy_regime:0 "Topple the Vichy Regime"
+
+    topple_the_vichy_regime:0 "Свергнуть режим Виши"
 
     ITA_internal_factions:0 "Внутренние Фракции"
     ITA_internal_factions_desc:1 "Италия имеет сильную власть над своими фракциями, и поддержание счастья Ватикана является ключом к тому, чтобы люди поддерживали нашу политику. Однако растущий подъем коммунистов угрожает стабильности нации, и мы должны решить, принять их или подавить.\n\n"
-    
+
     ITA_bourgeoisie_name_text:0 "Буржуазия"
     ITA_proletariat_name_text:0 "Пролетариат"
     ITA_vatican_name_text:0 "Ватикан"
@@ -639,7 +639,7 @@
 
     ITA_Communists_more_power_to_the_unions:0 "£faction_ita_communists Больше власти профсоюзам"
     ITA_Communists_more_power_to_the_unions_tt:0 "£faction_ita_communists Коммунисты дружелюбны и имеют влияние\nБонус увеличивается с каждым уровнем влияния"
-    
+
     ITA_modernization_of_the_Regio_esercito:0 "Модернизация Королевской Итальянской Армии"
     ITA_modernization_of_the_Regio_esercito_tt:0 "Имеет §G400§! §YСредних танков§! или §YЛёгких танков§! в армии\n"
 
@@ -662,7 +662,7 @@
 
     JAP_internal_factions:0 "Внутренние Фракции"
     JAP_internal_factions_desc:1 "Япония получает выгоду от лояльного населения, готового выполнять любые приказы Императора. Однако различные военные группировки Японии ведут ожесточенное соперничество, которое приносит больше вреда, чем пользы. Дзайбацу крепко контролируют экономику и открыты для нашего Влияния, чтобы компенсировать наши стратегические слабости..\n\n"
-    
+
     JAP_kantaiha_name_text:0 "Фракция флота"
     JAP_toseiha_name_text:0 "Фракция контроля"
     JAP_kodoha_name_text:0 "Кодоха"
@@ -708,8 +708,8 @@
     JAP_faction_low_influence:0 "§YНизкое§!"
     JAP_faction_tiny_influence:0 "Крошечное"
     JAP_faction_no_influence:0 "§gНет§!"
-    
-    
+
+
     JAP_faction_loyal_construction_speed_military:0 "§G+20%§!"
     JAP_faction_trusting_construction_speed_military:0 "§G+15%§!"
     JAP_faction_cooperative_construction_speed_military:0 "§G+10%§!"
@@ -985,12 +985,12 @@
     JAP_Zaibatsus_fund_r_and_d_tt:0 "£faction_jap_zaibatsus Дзайбацу Дружелюбны и имеют какое-либо влияние\nЗа каждый уровень влияния длительность решения возрастает на §Y14 Дней§!"
 
     JAP_Zaibatsus_issue_material_contracts:0 "£faction_jap_zaibatsus Выдача существенных контрактов"
-    JAP_Zaibatsus_issue_material_contracts_tt:0 "The £faction_jap_zaibatsus Дзайбацу Дружелюбны и имеют какое-либо влияние\nЗа каждый уровень влияния длительность решения возрастает на §Y14 Дней§!"
+    JAP_Zaibatsus_issue_material_contracts_tt:0 "£faction_jap_zaibatsus Дзайбацу настроены дружелюбно и обладают влиянием.\nЗа каждый уровень влияния длительность решения возрастает на §Y14 дней§!."
 
     JAP_Zaibatsus_economic_measures:0 "£faction_jap_zaibatsus Усиление конгломератов"
     JAP_Zaibatsus_economic_measures_tt:0 "£faction_jap_zaibatsus Дзайбацу Дружелюбны и имеют какое-либо влияние\nЗа каждое последующую активацию решения длительность его возрастает на §Y30 Дней§!"
     JAP_Zaibatsus_construction_speed_civilian_tt:0 "£faction_jap_zaibatsus §YДзайбацу§! станут более §GЭффективнее§! увеличивая §YСкорость строительства§! на §G5%§! и уменьшает §YФактор фабрик народного потребления§! на §G10%§!"
-    
+
     JAP_steel_for_guns: "£faction_jap_toseiha Сталь для орудий"
     JAP_steel_for_ships: "£faction_jap_kantaiha Сталь для кораблей"
     JAP_raiding_regiments: "£faction_jap_toseiha Формирование рейдерских подразделений"
@@ -1001,7 +1001,7 @@
     JAP_prioritize_army_aircraft_construction: "£faction_jap_toseiha Приоритет армейской авиации"
     JAP_favor_navy: "£faction_jap_kantaiha Приоритет ВМФ"
     JAP_favor_army: "£faction_jap_toseiha Приоритет армии"
-    
+
     JAP_young_officers_coup:0 "Путч Молодых офицеров"
     young_officers_coup_fired:0 "Молодые офицеры предприняли попытку государственного переворота"
 
@@ -1013,7 +1013,7 @@
 
     GER_internal_factions:0 "Внутренние Фракции"
     GER_internal_factions_desc:1 "СС и Вермахт соперничают за господство в немецкой армии, и оба не потерпят параллельной командной структуры, нам придется осторожно ориентироваться, чтобы предотвратить враждебные действия, или просто выбрать одну сторону и очистить другую. Немецкий народ жаждет, чтобы Германия обрела свой законный статус великой державы, и с помощью промышленников мы можем сделать это реальностью.\n\n"
-    
+
     GER_whermacht_name_text:0 "Вермахт"
     GER_ss_name_text:0 "СС"
     GER_industrialists_name_text:0 "Промышленники"
@@ -1189,12 +1189,12 @@
 
     GER_SS_special_orders:0 "£faction_ger_ss Государственные заказы"
     GER_SS_special_orders_tt:0 "£faction_ger_ss СС лоялен и имеет влияние\nУвеличивает длительность на §Y30 Дней§! за каждый уровень влияния"
-    
+
     GER_SS_oak_operation:0 "£faction_ger_ss Операция Дуб"
     GER_SS_oak_operation_tt:0 "Операция по спасению Муссолини"
     GER_SS_grief_operation:0 "£faction_ger_ss Операция Гриф"
     GER_SS_grief_operation_tt:0 "Сформирует 150-ю Танковую бригаду СС"
-    
+
     GER_Industrialists_invest_in_porsche:0 "£faction_ger_industrialists Инвестиции в Порше"
     GER_Industrialists_invest_in_henschel:0 "£faction_ger_industrialists Инвестиции в Хеншель"
     GER_Industrialists_invest_in_krupp:0 "£faction_ger_industrialists Инвестиции в Крупп"
@@ -1210,18 +1210,18 @@
 
     GER_Public_Support_mobilize_the_public:0 "£faction_ger_public_support Мобилизовать людей"
     GER_Public_Support_mobilize_the_public_tt:0 "£faction_ger_public_support Народ должен быть дружелюбен и иметь влияние\nУвеличивает длительность на §Y7 Дней§! за каждый уровень §YВлияния§!"
-    
+
     GER_creation_of_the_panzer_core:0 "Создание танкового корпуса"
     GER_creation_of_the_panzer_core_tt:0 "Имейте §G400§! §YСредних танков§! и §G800§! §YЛегких танков§! в армии\n"
 
     GER_creation_of_the_panzer_core_tt2:1 "£faction_ger_whermacht §YВермахт§! станет более §GУверенным§! увеличивая §YСтабильность§! на §G10%§!"
-    
-    
+
+
     SS_himmler_wants_field_command_tt:0 "§YСС§! станет §Gболее дружелюбным§!"
 
     SS_form_SS_high_command:0 "£faction_ger_ss Сформировать высшее командование СС"
     SS_form_SS_high_command_desc:0 "Гиммлер получил одобрение Ваффен-СС на формирование собственного высшего командования, Kommandoamt der Waffen-SS в рамках SS-Führungshauptamt, которое было создано в августе 1940 года. Оно получило командование SS-VT (Leibstandarte и Verfügungs-Division). , переименованная в Das Reich) и вооруженные полки SS-TV (Totenkopf-Division вместе с несколькими независимыми Totenkopf-Standarten)."
-    SS_form_SS_high_command_tt:0 "§YCC§! станет §RБольше злостным§!"
+    SS_form_SS_high_command_tt:0 "§YСС§! станет §Rвраждебнее§!."
     SS_form_SS_high_command_tt2:0 "§YСС§! станет §Gгораздо более влиятельным§! и §YВермахт§! станет §Rменее влиятельным§!"
 
     GER_danzig_speech_tt:1 "£faction_ger_public_support §YНарод§! станет §Gподдерживать§! войну увеличив §YПоддержку войны§! на §G10%§!"
@@ -1248,7 +1248,7 @@
 
     GER_keep_up_with_air_research:0 "Новаторская технология самолётов"
     GER_keep_up_with_air_research_tt:0 "£faction_ger_industrialists Промышленники станут более §Gэффективными§! §Gувеличивая§! §YСкорость исследования§! на §G4%§!"
-    GER_keep_up_with_air_research_tt2:0 "£faction_ger_industrialists IПромышленники потеряют §YJunkers§!, §YHeinkel§! и §YDornier§! из-за отсутствия финансирования §Rуменьшая§! §YСкорость исследования§! на §R4%§!"
+    GER_keep_up_with_air_research_tt2:0 "£faction_ger_industrialists Промышленники потеряют §YJunkers§!, §YHeinkel§! и §YDornier§! из-за отсутствия финансирования, §Rснизив§! §Yскорость исследований§! на §R4%§!."
 
     krupp_lost:0 "Крупп обанкротился"
     daimler_lost:0 "Даймлер-бенц обанкротился"
@@ -1341,7 +1341,7 @@
 
     SS_recruitment_31:0 "Сформировать 31-ю добровольческую гренадерскую дивизию СС 'Бачка'"
     SS_31_recruitment_tt:0 "В Берлине будет создана 31-я добровольческая гренадерская дивизия СС 'Бачка'"
-    
+
     grossdeutschland_recruitment:0 "Сформировать моторизированную дивизию 'Гроссдойчланд'"
     grossdeutschland_recruitment_tt:0 "В Берлине будет создана моторизированная дивизия 'Гроссдойчланд'"
     
@@ -1353,7 +1353,7 @@
     
     dirlevanger_recruitment:0 "Сформировать карательное подразделение СС"
     dirlevanger_recruitment_tt:0 "В Берлине будет создано карательное подразделение СС под командованием Оскара Дирлевангера"
-    
+
     SS_recruitment_france:0 "Сформировать 33-ю гренадерскую дивизию СС 'Карл Великий'"
     SS_recruitment_france_tt:0 "В Берлине будет создана 33-я гренадерская дивизия СС 'Карл Великий' (французкая №1)"
 
@@ -1374,22 +1374,22 @@
 
     GER_fall_weiss:0 "План Вайс"
     GER_fall_weiss_desc:0 ""
-    
+
     GER_weserubung:0 "Операция Везерюбунг"
     GER_weserubung_desc:0 ""
     GER_operation_weserubung_tt:0 "Хотя нам еще предстоит выступить против другой страны, у нас есть элемент неожиданности. Если мы хотим повторить это в матче с Норвегией, то нам могут сойти с рук амбициозные вторжения, но мы должны действовать быстро."
 
     GER_gelb:0 "План Гельб"
     GER_gelb_desc:0 ""
-    
+
     GER_fall_rot:0 "План Рот"
     GER_fall_rot_desc:0 ""
-    
+
     GER_hammerkopf:0 "Второе арденское наступление"
     GER_hammerkopf_desc:0 ""
 
     GER_barbarossa:0 "Операция 'Барбаросса'"
-    GER_barbarossa_desc:0 "We have prepared extra supplies for our grand offensive, the time is now to strike the final victory against the communist threat!"
+    GER_barbarossa_desc:0 "Мы подготовили дополнительные запасы для великого наступления. Настало время нанести решающий удар по коммунистической угрозе!"
 
     GER_me262_1943:0 "£faction_ger_industrialists Первый реактивный самолёт"
     GER_me262_1943_desc:0 "Наша реактивная техника далеко продвинулась вперед, и мы уже проектируем наш первый реактивный истребитель. Потребуется много политических маневров и благосклонности, чтобы подтолкнуть люфтваффе к внедрению этой неизвестной технологии"
@@ -1399,6 +1399,12 @@
 
     GER_close_off_sweden:0 "Ограничить торговлю Швеции"
     GER_close_off_sweden_desc:0 "Теперь, когда мы контролируем Норвегию, мы имеем полную свободу заставить Швецию торговать только со странами Оси."
+
+    GER_secure_portuguese_wolfram:0 "Монополизировать португальский вольфрам"
+    GER_secure_portuguese_wolfram_desc:0 "После капитуляции Франции наше господство в Западной Европе позволяет усилить давление на Лиссабон. Мы можем потребовать, чтобы Португалия прекратила продажу стратегически важного вольфрама государствам вне Оси."
+
+    GER_secure_turkish_chromium:0 "Монополизировать турецкий хром"
+    GER_secure_turkish_chromium_desc:0 "После решения судьбы Греции Ось господствует на Балканах и может усилить экономическое давление на Турцию. Анкара должна направить свой стратегически важный хром в германскую военную промышленность, а не нашим противникам."
 
     GER_volkssturm_battalion_des:0 "Разблокирует шаблон дивизии фольксштурма."
 
@@ -1483,7 +1489,7 @@
 
     GER_ostwall_baltic:0 "Северная часть линии 'Пантера'"
     GER_ostwall_baltic_dd:0 "Постройка §Y2ед Укреплений§! в каждой провинции на линии Нарва-Псков-Витебск.\n"
-    
+
     GER_ostwall_belarus:0 "Южная часть линии 'Пантера'"
     GER_ostwall_belarus_dd:0 "Постройка §Y2ед Укреплений§! в каждой провинции на линии Витебск-Могилёв-Бобруйск.\n"
 
@@ -1491,9 +1497,9 @@
     GER_ostwall_ukraine_dd:0 "Постройка §Y2-6ед Укреплений§! в каждой провинции на линии Киев-Запорожье-Мелитополь.\n"
 
     atlantikwall_afo_tooltip:0 "Построит §YПрибрежные укрепления§! в каждом из следующих прибрежных регионов Атлантического побережья, которые полностью контролируются вами.:\n"
-    atlantikwall_afo_tooltip_2:0 "§YOstlandet§!\n§YVestlandet§!\n§YTrondelag§!\n§YNord-Norge§!\n"
-    atlantikwall_afo_tooltip_3:0 "§YVlaanderen§!\n§YHolland§!\n§YFriesland§!\n§YWeser-Ems§!\n§YHannover§!\n§YSchleswig-Holstein§!\n§YJutland§!\n"
-    atlantikwall_afo_tooltip_4:0 "§YAquitaine§!\n§YPoitou§!\n§YLoire§!\n§YBrittany§!\n§YNormandy§!\n§YPas de Calais§!\n"
+    atlantikwall_afo_tooltip_2:0 "§YЭстланн§!\n§YВестланн§!\n§YТрёнделаг§!\n§YСеверная Норвегия§!\n"
+    atlantikwall_afo_tooltip_3:0 "§YФландрия§!\n§YГолландия§!\n§YФрисландия§!\n§YВезер-Эмс§!\n§YГанновер§!\n§YШлезвиг-Гольштейн§!\n§YЮтландия§!\n"
+    atlantikwall_afo_tooltip_4:0 "§YАквитания§!\n§YПуату§!\n§YЛуара§!\n§YБретань§!\n§YНормандия§!\n§YПа-де-Кале§!\n"
 
     GER_festung_paris:0 "[FRA.GetFlag] Крепость Париж"
     GER_festung_brest:0 "[FRA.GetFlag] Крепость Брест"
@@ -1530,7 +1536,7 @@
 
     SOV_internal_factions:0 "Внутренние Фракции"
     SOV_internal_factions_desc:1 "Людям России нужна сильная рука, чтобы вести их к величию. Пятилетние планы гарантируют, что эпоха процветания не за горами, и нам нужно, чтобы все народы страны гарантировали свою поддержку, для максимальной реализации наших ресурсов.\n\n"
-    
+
     SOV_commissars_name_text:0 "Коммисары"
     SOV_army_name_text:0 "Армия"
     SOV_workers_name_text:0 "Рабочие"
@@ -1616,10 +1622,10 @@
     SOV_faction_angry_stability:0 "§R-15%§!"
     SOV_faction_violent_stability:0 "§R-20%§!"
     SOV_faction_rebellious_stability:0 "§R-25%§!"
-    
-    
-    
-    
+
+
+
+
     SOV_faction_rebellious_research_speed:0 "§R-10%§!"
     SOV_faction_violent_research_speed:0 "§R-8%§!"
     SOV_faction_angry_research_speed:0 "§R-4%§!"
@@ -1635,14 +1641,14 @@
     SOV_faction_trusting_2_research_speed:0 "§G+8%§!"
     SOV_faction_loyal_2_research_speed:0 "§G+10%§!"
     SOV_faction_loyal_research_speed:0 "§G+10%§!"
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
     SOV_Commissars_political_power_gain_10:0 "£faction_sov_commissars Коммисары"
     SOV_Commissars_political_power_gain_9:0 "£faction_sov_commissars Коммисары"
     SOV_Commissars_political_power_gain_8:0 "£faction_sov_commissars Коммисары"
@@ -1700,7 +1706,7 @@
     SOV_Army_stability_6:0 "£faction_sov_army Армия"
     SOV_Army_stability_7:0 "£faction_sov_army Армия"
     SOV_Army_stability_8:0 "£faction_sov_army Армия"
-    
+
     SOV_Army_research_speed_1:0 "£faction_sov_army Армия"
     SOV_Army_research_speed_2:0 "£faction_sov_army Армия"
     SOV_Army_research_speed_3:0 "£faction_sov_army Армия"
@@ -1709,7 +1715,7 @@
     SOV_Army_research_speed_6:0 "£faction_sov_army Армия"
     SOV_Army_research_speed_7:0 "£faction_sov_army Армия"
     SOV_Army_research_speed_8:0 "£faction_sov_army Армия"
-    
+
     SOV_Workers_stability_1:0 "£faction_sov_workers Рабочие"
     SOV_Workers_stability_2:0 "£faction_sov_workers Рабочие"
     SOV_Workers_stability_4:0 "£faction_sov_workers Рабочие"
@@ -1733,9 +1739,9 @@
 
     SOV_Army_free_thinking:0 "£faction_sov_army Свободомыслие"
     SOV_Army_free_thinking_tt:0 "£faction_sov_army Армия лояльна и имеет немного влияния\nУвеличивает длительность на §Y30 Дней§! за каждый уровень влияния"
-    
+
     SOV_Army_seizure_weapons:0 "£faction_sov_army Изъятие вооружения из небоевых частей"
-    
+
     SOV_Army_modernization_efforts:0 "£faction_sov_army Усилия по модернизации"
     SOV_Army_modernization_efforts_tt:0 "£faction_sov_army Армия дружелюбна и имеет немного влияния\nБонус увеличивается за каждый уровень влияния"
 
@@ -1755,11 +1761,11 @@
     SOV_pay_for_new_agricultural_equipment_tt:1 "£faction_sov_peasants §YКрестьяне§! станут более §GЭффективными§! уменьшая §YФактор фабрик товаров народного потребления§! на §G6%§!"
 
     SOV_military_reform:0 "Военные реформы"
-    
+
     SOV_army_reform_cost_tt:0 "£army_experience §Y150§!"
     SOV_air_reform_cost_tt:0 "£air_experience §Y200§!"
     SOV_navy_reform_cost_tt:0 "£navy_experience §Y200§!"
-    
+
     SOV_army_reform_cost_tt_blocked:0 "£army_experience §R150§!"
     SOV_air_reform_cost_tt_blocked:0 "£air_experience §R200§!"
     SOV_navy_reform_cost_tt_blocked:0 "£navy_experience §R200§!"
@@ -1808,7 +1814,7 @@
 
     ENG_internal_factions:0 "Внутренние Фракции"
     ENG_internal_factions_desc:1 "Великобритания стоит на прочном фундаменте демократии и давнем наследии военной доблести и традиций. Пока есть разногласия, курс вперед стабилен, пока она идет, если только Общество не станет извращенным.\n\n"
-    
+
     ENG_labour_name_text:0 "Рабочие"
     ENG_conservative_name_text:0 "Консерваторы"
     ENG_british_royalists_name_text:0 "Роялисты"
@@ -1939,7 +1945,7 @@
 
     ENG_conservative_political_favours:0 "£faction_eng_conservative Политические льготы"
     ENG_conservative_political_favours_tt:0 "£faction_eng_conservative Консерваторы дружелюбны и имеют немного влияния.\nУвеличивает длительность на §Y30 Дней§! за каждый уровень влияния"
- 
+
     ENG_royalists_donations_of_consumer_goods:0 "£faction_eng_british_royalists Пожертвования потребительских товаров"
     ENG_royalists_donations_of_consumer_goods_tt:0 "£faction_eng_british_royalists Роялисты дружелюбны и имеют хотя бы §YКрошечное§! влияние"
 
@@ -1969,7 +1975,7 @@
     ###############################################################################################
 
     ENG_sterling_reserve_loans:0 "Займы из резерва в фунтах стерлингов"
-    
+
     ENG_imperial_conference_timer:0 "Имперская конференция 1937 года"
 
     loans_from_canada:0 "Канадские займы"
@@ -1980,7 +1986,7 @@
     loans_from_the_empire_desc:0 ""
     empty_the_treasuary:0 "Опустошить казну"
     empty_the_treasuary_desc:0 ""
-    
+
     USA_operation_torch:0 "Операция Факел"
     USA_operation_torch_desc:0 "Свергнуть режим Виши"
 
@@ -2164,7 +2170,7 @@
     USA_JPMorgan_consumer_goods_3:0 "£faction_usa_jpmorgan Дж П Морган"
     USA_JPMorgan_consumer_goods_2:0 "£faction_usa_jpmorgan Дж П Морган"
     USA_JPMorgan_consumer_goods_1:0 "£faction_usa_jpmorgan Дж П Морган"
-    USA_JPMorgan_stability_8:0 "£faction_usa_jpmorgan Дж П Морган" 
+    USA_JPMorgan_stability_8:0 "£faction_usa_jpmorgan Дж П Морган"
     USA_JPMorgan_stability_7:0 "£faction_usa_jpmorgan Дж П Морган"
     USA_JPMorgan_stability_6:0 "£faction_usa_jpmorgan Дж П Морган"
     USA_JPMorgan_stability_5:0 "£faction_usa_jpmorgan Дж П Морган"
@@ -2284,11 +2290,11 @@
     USA_operation_overlord:0 "Операция Оверлорд"
     ENG_operation_overlord:0 "Операция Оверлорд"
     FRA_operation_overlord:0 "Операция Оверлорд"
-    USA_operation_overlord_tt:0 "Activates operation Overlord for France and England"
-    
+    USA_operation_overlord_tt:0 "Активирует операцию «Оверлорд» для Франции и Великобритании"
+
     war_propaganda_against_enemy_minor:0 "Демонизировать врага"
     war_propaganda_against_enemy_minor_desc:0 ""
-    
+
     war_propaganda_against_enemy_major:0 "Демонизировать врага"
     war_propaganda_against_enemy_major_desc:0 ""
 
@@ -2328,13 +2334,13 @@
     payback_war_bond_G:0 "Выплаты по облигациям"
 
     develop_western_rhineland_coal_mines:0 "Развитие угольных шахт Западного Рейнланда"
-    develop_western_rhineland_coal_mines_desc:0 "" 
+    develop_western_rhineland_coal_mines_desc:0 ""
 
     develop_eastern_rhineland_coal_mines:0 "Развитие угольных шахт Восточного Рейнланда"
-    develop_eastern_rhineland_coal_mines_desc:0 "" 
+    develop_eastern_rhineland_coal_mines_desc:0 ""
 
     develop_tuscany_coal_mines:0 "Развитие угольных шахт Тосканы"
-    develop_tuscany_coal_mines_desc:0 "" 
+    develop_tuscany_coal_mines_desc:0 ""
 
     develop_champagne_coal_mines:0 "Развивать угольные шахты в регионе Шампань"
     develop_champagne_coal_mines_desc:0 ""
@@ -2353,18 +2359,18 @@
 
     develop_gulf_province_coal_mines:0 "Разработка угольных шахт в провинции Персидского залива."
     develop_gulf_province_coal_mines_desc:0 ""
-    
+
     develop_hannover_iron_mines:0 "Разработка железорудных месторождений Зальцгиттер"
     develop_hannover_iron_mines_desc:0 ""
-    
+
     develop_styria_iron_mines:0 "Создание Эрцбергских железорудных шахт"
     develop_styria_iron_mines_desc:0 ""
-    
+
     develop_hessen_iron_mines:0 "Создание железорудных рудников в Брунсвике и Линце"
     develop_hessen_iron_mines_desc:0 ""
 
     develop_hubei_iron_mines:0 "Развитие железорудных месторождений провинции Хубэй"
-    develop_hubei_iron_mines_desc:0 "" 
+    develop_hubei_iron_mines_desc:0 ""
 
     custom_cost_100_cp:0 "£command_power  §Y100§!"
     custom_cost_100_cp_blocked:0 "£command_power  §R100§!"
@@ -2398,7 +2404,7 @@
 
     custom_cost_5_cp:0 "£command_power  §Y5§!"
     custom_cost_5_cp_blocked:0 "£command_power  §R5§!"
-    
+
 
 
 
@@ -2417,13 +2423,13 @@
 
     STRATEGIC_REGION_5_g_tt:0 "Даст §Y5§! очков"
     STRATEGIC_REGION_5_l_tt:0 "Потеря §Y5§! очков"
-    
+
     STRATEGIC_REGION_10_g_tt:0 "Даст §Y10§! очков"
     STRATEGIC_REGION_10_l_tt:0 "Потеря §Y10§! очков"
-    
+
     STRATEGIC_REGION_15_g_tt:0 "Даст §Y15§! очков"
     STRATEGIC_REGION_15_l_tt:0 "Потеря §Y15§! очков"
-    
+
     STRATEGIC_REGION_20_g_tt:0 "Даст §Y20§! очков"
     STRATEGIC_REGION_20_l_tt:0 "Потеря §Y20§! очков"
 
@@ -2431,7 +2437,7 @@
     STRATEGIC_REGION_25_l_tt:0 "Потеря §Y25§! очков"
 
     USA_power_projection:0 "Тихоокеанская проекция силы"
-    USA_power_projection_desc:0 "Мы должны переместить наш штаб Тихоокеанского флота в Перл-Харбор, на Гавайи, чтобы улучшить нашу проекцию силы через Тихий океан. Без него японское эмбарго невозможно.\n\nРазместите Тихоокеанский флот, состоящий как минимум из §Y8 линкоров§!, §Y8 крейсеров§! и §Y30 эсминцев§! в Перл-Харборе, Гавайи, чтобы дать отпор японским провокациям."  
+    USA_power_projection_desc:0 "Мы должны переместить наш штаб Тихоокеанского флота в Перл-Харбор, на Гавайи, чтобы улучшить нашу проекцию силы через Тихий океан. Без него японское эмбарго невозможно.\n\nРазместите Тихоокеанский флот, состоящий как минимум из §Y8 линкоров§!, §Y8 крейсеров§! и §Y30 эсминцев§! в Перл-Харборе, Гавайи, чтобы дать отпор японским провокациям."
     USA_power_projection_tt:0 "§RМы не сможем ввести эмбарго на Японию!"
     USA_power_projection_fail:0 "Тихоокеанская проекция силы"
     USA_embargo_japan_tt:0 "Имейте адекватную проекцию силы через Тихий океан через Тихоокеанский флот в Перл-Харборе."
@@ -2714,13 +2720,13 @@
     reserve_divisions:0 "Резервные дивизии"
     recruit_more_reserves:0 "Набирать больше резервных дивизий"
     recruiting_reserves:0 "Создаст запас из §Y10 обученных пехотных дивизий§!, которые будут доступны для развертывания во время войны с §Y5% оборудования§!\n"
-    
+
     recruiting_reserves_40:0 "Создаст запас из §Y40 обученных пехотных дивизий§!, которые будут доступны для развертывания во время войны с §Y5% оборудования§!\n"
-  
+
     deploy_reserves_infantry:0 "Развернуть резерв §OПехотных§! дивизий"
     deploying_reserves_infantry:0 "Развернуть §G10§! Пехотных дивизий в столице"
 
-    
+
 
     finish_recruitment_of_reserves:0 "Завершить мобилизацию резервов (НАЖИМАТЬ ПОСЛЕ МОБИЛИЗАЦИИ ВСЕХ ДИВИЗИЙ)"
 

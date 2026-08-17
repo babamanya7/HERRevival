@@ -11,22 +11,22 @@
  EQ_MOD_CAT_tank_engine_type_TITLE:0 "Тип двигателя"
  EQ_MOD_CAT_tank_armor_type_TITLE:0 "Тип брони"
  EQ_MOD_CAT_tank_suspension_type_TITLE:1 "Гусеничный ход"
- 
+
  EQ_MOD_CAT_tank_light_turret_type_1_TITLE:0 "Базовая легкая башня"
  EQ_MOD_CAT_tank_medium_turret_type_1_TITLE:0 "Модернизированная легкая башня"
  EQ_MOD_CAT_tank_heavy_turret_type_1_TITLE:0 "Современная легкая башня"
- 
+
  EQ_MOD_CAT_tank_light_turret_type_2_TITLE:0 "Базовая средняя башня"
  EQ_MOD_CAT_tank_medium_turret_type_2_TITLE:0 "Модернизированная средняя башня"
  EQ_MOD_CAT_tank_heavy_turret_type_2_TITLE:0 "Современная средняя башня"
 
  EQ_MOD_CAT_tank_medium_turret_type_3_TITLE:0 "Базовая тяжёлая башня"
  EQ_MOD_CAT_tank_heavy_turret_type_3_TITLE:0 "Модернизированная тяжёлая башня"
- 
+
  EQ_MOD_CAT_ss_1_TITLE: "Базовая фиксированная башня"
  EQ_MOD_CAT_ss_2_TITLE: "Модернизированная Фиксированная башня"
  EQ_MOD_CAT_ss_3_TITLE: "Современная Фиксированная башня"
- 
+
  EQ_MOD_CAT_tank_super_heavy_turret_type_TITLE:0 "Сверхтяжелое орудие"
  EQ_MOD_CAT_tank_modern_turret_type_TITLE:0 "Современное орудие"
  EQ_MOD_CAT_tank_small_main_armament_TITLE:0 "Малое вооружение"
@@ -39,7 +39,7 @@
  EQ_MOD_CAT_tank_radio_module_TITLE:0 "Радио"
  EQ_MOD_CAT_tank_secondary_turret_TITLE:0 "Вспомогательное орудие"
  EQ_MOD_CAT_tank_non_tracked_suspension_type_TITLE:0 "Колесный ход"
- 
+
  ### EQUIPMENT MODULE SLOTS ###
  EQ_MOD_SLOT_main_armament_slot_TITLE:0 "Главное вооружение"
  EQ_MOD_SLOT_turret_type_slot_TITLE:0 "Орудие"
@@ -402,20 +402,20 @@
  additional_machine_guns_desc:0 "Дополнительные пулеметы на боковых выступах и специальных вертлюгах повышают эффективность обороны машины от атак пехоты на малой дистанции."
 
  GER_light_tank_flame_equipment_0:0 "Versuchsflammpanzer"
- GER_medium_tank_flame_equipment_0:0 "Versuchsflammpanzer (Mittelschwer)"
- GER_heavy_tank_flame_equipment_0:0 "Versuchsflammpanzer (schwer)"
+ GER_medium_tank_flame_equipment_0:0 "Опытный средний огнемётный танк"
+ GER_heavy_tank_flame_equipment_0:0 "Опытный тяжёлый огнемётный танк"
  GER_light_tank_flame_equipment_1:0 "Flammpanzer I"
  GER_light_tank_flame_equipment_2:0 "Flammpanzer II"
- GER_light_tank_flame_equipment_3:0 "Flammpanzer Leopard"
- GER_medium_tank_flame_equipment_1:0 "Flammpanzer III"
+ GER_light_tank_flame_equipment_3:0 "Огнемётный танк «Леопард»"
+ GER_medium_tank_flame_equipment_1:0 "Огнемётный танк III"
  GER_medium_tank_flame_equipment_2:0 "Flammpanzer IV"
- GER_medium_tank_flame_equipment_3:0 "Flammpanzer Panther"
- GER_heavy_tank_flame_equipment_1:0 "Flammpanzer (Schwer)"
- GER_heavy_tank_flame_equipment_2:0 "Flammpanzer Tiger"
- GER_heavy_tank_flame_equipment_3:0 "Flammpanzer Tiger II"
+ GER_medium_tank_flame_equipment_3:0 "Огнемётный танк «Пантера»"
+ GER_heavy_tank_flame_equipment_1:0 "Тяжёлый огнемётный танк"
+ GER_heavy_tank_flame_equipment_2:0 "Огнемётный танк «Тигр»"
+ GER_heavy_tank_flame_equipment_3:0 "Огнемётный танк «Тигр II»"
  GER_light_tank_amphibious_equipment_0:0 "Versuchsschwimmpanzer"
- GER_medium_tank_amphibious_equipment_0:0 "Versuchschwimmpanzer (Mittelschwer)"
- GER_heavy_tank_amphibious_equipment_0:0 "Versuchsschwimmpanzer (Schwer)"
+ GER_medium_tank_amphibious_equipment_0:0 "Опытный средний плавающий танк"
+ GER_heavy_tank_amphibious_equipment_0:0 "Опытный тяжёлый плавающий танк"
  GER_light_tank_amphibious_equipment_1:0 "«Швиммпанцер» I"
  GER_light_tank_amphibious_equipment_2:0 "«Швиммпанцер» II"
  GER_light_tank_amphibious_equipment_3:0 "«Швиммпанцер Леопард»"
@@ -442,9 +442,9 @@
  heavy_tank_artillery_equipment_0:0 "МВ тяжелая САУ"
 
 
- GER_heavy_tank_equipment_0:0 "Versuchspanzerkampfwagen (schwer)"
- GER_light_tank_equipment_0:0 "Leichttraktor"
- GER_medium_tank_equipment_0:0 "Mittlerer Traktor"
+ GER_heavy_tank_equipment_0:0 "Опытный тяжёлый танк"
+ GER_light_tank_equipment_0:0 "Лёгкий трактор"
+ GER_medium_tank_equipment_0:0 "Средний трактор"
 
  EQUIPMENT_AMPHIBIOUS:0 "Плавающий танк"
 
@@ -455,7 +455,7 @@
  heavy_flame_tank:0 "Тяжелая огнеметная танковая рота"
  heavy_flame_tank_desc:0 "Рота тяжелых огнеметных боевых машин для поддержки при штурме городов и укреплений."
 
- 
+
  light_tank_amphibious_chassis_desc:0 "Легкий танк, снабженный устройствами для плавания и пропеллером."
  medium_tank_amphibious_chassis_desc:0 "Средний танк, снабженный устройствами для плавания и пропеллером."
  heavy_tank_amphibious_chassis_desc:0 "Тяжелый танк, снабженный устройствами для плавания и пропеллером."

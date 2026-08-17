@@ -6368,6 +6368,15 @@ guiTypes = {
 			format = "UPPER_LEFT"
 		}
 
+		gridboxtype = {
+			name = "support_category_multipliers_grid"
+			position = { x = 0 y = 15 }
+			size = { width = 400 height = 400 }
+			slotsize = { width = 200 height = 30 }
+			max_slots_horizontal = 2
+			format = "UPPER_LEFT"
+		}
+
 		iconType = {
 			name = "unit_icon"
 			position = { x = 0 y = 15 }

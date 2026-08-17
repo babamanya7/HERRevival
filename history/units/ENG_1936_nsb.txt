@@ -23,9 +23,9 @@
 	support = {
        	engineer = { x = 0 y = 0 }
        	signal_company = { x = 0 y = 1 }
-		field_hospital = { x = 1 y = 0 }
-		recon = { x = 1 y = 1 }
-       	logistics_company = { x = 1 y = 2 }
+		field_hospital = { x = 0 y = 2 }
+		recon = { x = 0 y = 3 }
+       	logistics_company = { x = 0 y = 4 }
 	}
 }
 division_template = {
@@ -503,6 +503,16 @@ instant_effect = {
 	
 	add_equipment_production = {
 		equipment = {
+			type = anti_tank_equipment_1
+			creator = "ENG" 
+		}
+		requested_factories = 2
+		progress = 0.3
+		efficiency = 50
+	}
+	
+	add_equipment_production = {
+		equipment = {
 			type = support_equipment_1
 			creator = "ENG" 
 		}
@@ -537,6 +547,15 @@ instant_effect = {
 			creator = "ENG" 
 		}
 		requested_factories = 2
+		progress = 0.4
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = motorbike_equipment_1
+			creator = "ENG" 
+		}
+		requested_factories = 1
 		progress = 0.4
 		efficiency = 50
 	}

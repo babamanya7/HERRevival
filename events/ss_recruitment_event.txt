@@ -52,7 +52,7 @@ country_event = {
 				limit = { ROOT = { has_full_control_of_state = PREV } }
 				prioritize = { 64 }
 				create_unit = {
-					division = "name = \"6.SS-Gebirgs-Division 'Nord'\" division_template = \"SS-Gebirgs-Division\" start_experience_factor = 0.1 start_equipment_factor = 0.03" 
+					division = "name = \"6.SS-Gebirgs-Division 'Nord'\" division_template = \"SS-Nord-Division\" start_experience_factor = 0.1 start_equipment_factor = 0.03" 
 					owner = GER
 				}
 			}
@@ -167,6 +167,19 @@ country_event = {
 		custom_effect_tooltip = GER_division_germany_1_armored_tt
 		hidden_effect = {
 			set_country_flag = SS_recruitment_flag_1
+			add_units_to_division_template = {	
+				template_name = "SS-Infanterie-Regiment(mot) «LSSAH»"
+				regiments = {
+					ss_motorized = 0
+					ss_artillery_brigade = 2
+					ss_artillery_brigade = 2
+				}
+				support = {
+				    mot_recon = 0
+					anti_air_battery = 0
+					logistics_company = 0
+		        }
+			}
 			random_owned_controlled_state = {
 				limit = { ROOT = { has_full_control_of_state = PREV } }
 				prioritize = { 64 }
@@ -1791,7 +1804,7 @@ country_event = {
 				limit = { ROOT = { has_full_control_of_state = PREV } }
 				prioritize = { 64 }
 				create_unit = {
-					division = "name = \"Luftwaffen-Panzer-Division 'Hermann Göring'\" division_template = \"Luftwaffen-Panzer-Division\" start_experience_factor = 0.95 start_equipment_factor = 0.03" 
+					division = "name = \"Luftwaffen-Division 'Hermann Göring'\" division_template = \"Luftwaffen-Division\" start_experience_factor = 0.90 start_equipment_factor = 0.03" 
 					owner = GER
 				}
 			}

@@ -2063,4 +2063,19 @@ technologies = {
 
 		special_project_specialization = { specialization_land specialization_air }
 	}
+	
+	GER_army_innovations_tech = {
+ 		allow = { always = no }
+		enable_subunits = {
+			anti_tank_company
+		}
+		
+		enable_subunits = {
+			artillery_company
+		}
+
+		research_cost = 1
+		start_year = 1936
+
+	}
 }

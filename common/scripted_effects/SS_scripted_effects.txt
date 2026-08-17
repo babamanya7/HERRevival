@@ -4,6 +4,7 @@ SS_set_templates = {
 	SS_wiking_early = yes
 	
 	SS_infantry_division = yes
+	SS_nord_division = yes
 	SS_mountain_division = yes
 	SS_cavalry_division = yes
 	SS_mechanised_division = yes
@@ -30,13 +31,19 @@ SS_LSSAH_middle = {
 			ss_motorized = { x = 2 y = 2 }
 			
 			ss_artillery_brigade = { x = 3 y = 0 }
+			ss_artillery_brigade = { x = 3 y = 1 }
+			ss_artillery_brigade = { x = 3 y = 2 }
+			ss_heavy_artillery_brigade = { x = 3 y = 3 }
+			
+			ss_anti_tank_brigade = { x = 4 y = 0 }
+			light_tank_destroyer_brigade = { x = 4 y = 1 }
 		}
 		regimental_support = {
-			artillery = { x = 1 y = 0 }
-			anti_tank = { x = 1 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
 		}
 		support = {
 			engineer = { x = 0 y = 0 }
@@ -57,36 +64,39 @@ SS_LSSAH_late = {
 		is_locked = yes
 		
 		regiments = {
-			ss_heavy_armor_regiment = { x = 0 y = 0 }
+			ss_medium_armor_regiment = { x = 0 y = 0 }
 			ss_medium_armor_regiment = { x = 0 y = 1 }
 			ss_medium_armor_regiment = { x = 0 y = 2 }
-			ss_medium_armor_regiment = { x = 0 y = 3 }
 			
 			ss_motorized = { x = 1 y = 0 }
 			ss_motorized = { x = 1 y = 1 }
 			ss_motorized = { x = 1 y = 2 }
-			ss_motorized = { x = 1 y = 3 }
 			
 			ss_motorized = { x = 2 y = 0 }
 			ss_motorized = { x = 2 y = 1 }
 			ss_motorized = { x = 2 y = 2 }
-			ss_motorized = { x = 2 y = 3 }
 			
 			ss_artillery_brigade = { x = 3 y = 0 }
-			medium_tank_destroyer_brigade = { x = 3 y = 1 }
-			medium_tank_destroyer_brigade = { x = 3 y = 2 }
+			medium_sp_artillery_brigade = { x = 3 y = 1 }
+			ss_heavy_artillery_brigade = { x = 3 y = 2 }
+			
+			ss_anti_tank_brigade = { x = 4 y = 0 }
+			light_tank_destroyer_brigade = { x = 4 y = 1 }
+			medium_tank_destroyer_brigade = { x = 4 y = 2 }
 		}
 		regimental_support = {
 			armored_signal = { x = 0 y = 0 }
 			armored_maintenance = { x = 0 y = 1 }
+			heavy_infantry_support_armor = { x = 0 y = 2 }
 			
-			artillery = { x = 1 y = 0 }
-			anti_tank = { x = 1 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
 			
-			heavy_tank_destroyer = { x = 3 y = 0 }
+			heavy_tank_destroyer = { x = 4 y = 0 }
+			anti_air = { x = 4 y = 1 }
 		}
 		support = {
 			assault_engineer = { x = 0 y = 0 }
@@ -108,41 +118,39 @@ SS_LSSAH_panzer = {
 		is_locked = yes
 		
 		regiments = {
-			ss_heavy_armor_regiment = { x = 0 y = 0 }
+			ss_medium_armor_regiment = { x = 0 y = 0 }
 			ss_medium_armor_regiment = { x = 0 y = 1 }
 			ss_medium_armor_regiment = { x = 0 y = 2 }
 			
-			ss_medium_armor_regiment = { x = 1 y = 0 }
-			ss_medium_armor_regiment = { x = 1 y = 1 }
-			ss_medium_armor_regiment = { x = 1 y = 2 }
+			ss_mechanized = { x = 1 y = 0 }
+			ss_mechanized = { x = 1 y = 1 }
+			ss_mechanized = { x = 1 y = 2 }
 			
 			ss_mechanized = { x = 2 y = 0 }
 			ss_mechanized = { x = 2 y = 1 }
 			ss_mechanized = { x = 2 y = 2 }
-			ss_mechanized = { x = 2 y = 3 }
 			
-			ss_motorized = { x = 3 y = 0 }
-			ss_motorized = { x = 3 y = 1 }
-			ss_motorized = { x = 3 y = 2 }
-			ss_motorized = { x = 3 y = 3 }
+			ss_artillery_brigade = { x = 3 y = 0 }
+			medium_sp_artillery_brigade = { x = 3 y = 1 }
+			ss_heavy_artillery_brigade = { x = 3 y = 2 }
 			
-			ss_artillery_brigade = { x = 4 y = 0 }
-			medium_tank_destroyer_brigade = { x = 4 y = 1 }
+			ss_anti_tank_brigade = { x = 4 y = 0 }
+			ss_anti_tank_brigade = { x = 4 y = 1 }
+			medium_tank_destroyer_brigade = { x = 4 y = 2 }
 		}
 		regimental_support = {
 			armored_signal = { x = 0 y = 0 }
 			armored_maintenance = { x = 0 y = 1 }
+			heavy_infantry_support_armor = { x = 0 y = 2 }
 			
-			armored_signal = { x = 1 y = 0 }
-			armored_maintenance = { x = 1 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
-			
-			artillery = { x = 3 y = 0 }
-			anti_tank = { x = 3 y = 1 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
 			
 			heavy_tank_destroyer = { x = 4 y = 0 }
+			anti_air = { x = 4 y = 1 }
 		}
 		support = {
 			assault_engineer = { x = 0 y = 0 }
@@ -178,16 +186,21 @@ SS_das_reich_middle = {
 			
 			ss_artillery_brigade = { x = 3 y = 0 }
 			ss_artillery_brigade = { x = 3 y = 1 }
+			ss_artillery_brigade = { x = 3 y = 2 }
+			ss_heavy_artillery_brigade = { x = 3 y = 3 }
+			
+			ss_anti_tank_brigade = { x = 4 y = 0 }
+			ss_anti_tank_brigade = { x = 4 y = 1 }
 		}
 		regimental_support = {
-			artillery = { x = 0 y = 0 }
-			anti_tank = { x = 0 y = 1 }
+			artillery_company = { x = 0 y = 0 }
+			anti_tank_company = { x = 0 y = 1 }
 			
-			artillery = { x = 1 y = 0 }
-			anti_tank = { x = 1 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
 		}
 		support = {
 			assault_engineer = { x = 0 y = 0 }
@@ -222,18 +235,23 @@ SS_das_reich_late = {
 			
 			ss_artillery_brigade = { x = 3 y = 0 }
 			ss_artillery_brigade = { x = 3 y = 1 }
+			ss_artillery_brigade = { x = 3 y = 2 }
+			ss_heavy_artillery_brigade = { x = 3 y = 3 }
+			
+			ss_anti_tank_brigade = { x = 4 y = 0 }
+			ss_anti_tank_brigade = { x = 4 y = 1 }
 		}
 		regimental_support = {
-			artillery = { x = 0 y = 0 }
-			anti_tank = { x = 0 y = 1 }
+			artillery_company = { x = 0 y = 0 }
+			anti_tank_company = { x = 0 y = 1 }
 			
-			artillery = { x = 1 y = 0 }
-			anti_tank = { x = 1 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
 			
-			medium_tank_destroyer = { x = 3 y = 0 }
+			medium_tank_destroyer = { x = 4 y = 0 }
 		}
 		support = {
 			assault_engineer = { x = 0 y = 0 }
@@ -255,41 +273,39 @@ SS_das_reich_panzer = {
 		is_locked = yes
 
 		regiments = {
-			ss_heavy_armor_regiment = { x = 0 y = 0 }
+			ss_medium_armor_regiment = { x = 0 y = 0 }
 			ss_medium_armor_regiment = { x = 0 y = 1 }
 			ss_medium_armor_regiment = { x = 0 y = 2 }
 			
-			ss_medium_armor_regiment = { x = 1 y = 0 }
-			ss_medium_armor_regiment = { x = 1 y = 1 }
-			ss_medium_armor_regiment = { x = 1 y = 2 }
+			ss_mechanized = { x = 1 y = 0 }
+			ss_mechanized = { x = 1 y = 1 }
+			ss_mechanized = { x = 1 y = 2 }
 			
-			ss_mechanized = { x = 2 y = 0 }
-			ss_mechanized = { x = 2 y = 1 }
-			ss_mechanized = { x = 2 y = 2 }
-			ss_mechanized = { x = 2 y = 3 }
-			
-			ss_mechanized = { x = 3 y = 0 }
-			ss_mechanized = { x = 3 y = 1 }
-			ss_mechanized = { x = 3 y = 2 }
-			ss_mechanized = { x = 3 y = 3 }
+			ss_motorized = { x = 2 y = 0 }
+			ss_motorized = { x = 2 y = 1 }
+			ss_motorized = { x = 2 y = 2 }
 
-			ss_artillery_brigade = { x = 4 y = 0 }
-			medium_tank_destroyer_brigade = { x = 4 y = 1 }
+			ss_artillery_brigade = { x = 3 y = 0 }
+			medium_sp_artillery_brigade = { x = 3 y = 1 }
+			ss_heavy_artillery_brigade = { x = 3 y = 2 }
+			
+			ss_anti_tank_brigade = { x = 4 y = 0 }
+			ss_anti_tank_brigade = { x = 4 y = 1 }
+			medium_tank_destroyer_brigade = { x = 4 y = 2 }
 		}
 		regimental_support = {
 			armored_signal = { x = 0 y = 0 }
-			#armored_maintenance = { x = 0 y = 1 }
+			armored_maintenance = { x = 0 y = 1 }
+			heavy_infantry_support_armor = { x = 0 y = 2 }
 			
-			armored_signal = { x = 1 y = 0 }
-			#armored_maintenance = { x = 1 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
-			
-			artillery = { x = 3 y = 0 }
-			anti_tank = { x = 3 y = 1 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
 			
 			medium_tank_destroyer = { x = 4 y = 0 }
+			anti_air = { x = 4 y = 1 }
 		}
 		support = {
 			pontoneer_support = { x = 0 y = 0 }
@@ -314,29 +330,32 @@ SS_totenkopf_early = {
 			ss_heavy_infantry = { x = 0 y = 0 }
 			ss_heavy_infantry = { x = 0 y = 1 }
 			ss_heavy_infantry = { x = 0 y = 2 }
-			ss_heavy_infantry = { x = 0 y = 3 }
 			
 			ss_heavy_infantry = { x = 1 y = 0 }
 			ss_heavy_infantry = { x = 1 y = 1 }
 			ss_heavy_infantry = { x = 1 y = 2 }
-			ss_heavy_infantry = { x = 1 y = 3 }
 			
 			ss_heavy_infantry = { x = 2 y = 0 }
 			ss_heavy_infantry = { x = 2 y = 1 }
 			ss_heavy_infantry = { x = 2 y = 2 }
-			ss_heavy_infantry = { x = 2 y = 3 }
 			
 			ss_artillery_brigade = { x = 3 y = 0 }
+			ss_artillery_brigade = { x = 3 y = 1 }
+			ss_artillery_brigade = { x = 3 y = 2 }
+			ss_heavy_artillery_brigade = { x = 3 y = 3 }
+			
+			ss_anti_tank_brigade = { x = 4 y = 0 }
+			ss_anti_tank_brigade = { x = 4 y = 1 }
 		}
 		regimental_support = {
-			artillery = { x = 0 y = 0 }
-			anti_tank = { x = 0 y = 1 }
+			artillery_company = { x = 0 y = 0 }
+			anti_tank_company = { x = 0 y = 1 }
 			
-			artillery = { x = 1 y = 0 }
-			anti_tank = { x = 1 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
 		}
 		support = {
 			engineer = { x = 0 y = 0 }
@@ -360,29 +379,32 @@ SS_totenkopf_middle = {
 			ss_motorized = { x = 0 y = 0 }
 			ss_motorized = { x = 0 y = 1 }
 			ss_motorized = { x = 0 y = 2 }
-			ss_motorized = { x = 0 y = 3 }
 			
 			ss_motorized = { x = 1 y = 0 }
 			ss_motorized = { x = 1 y = 1 }
 			ss_motorized = { x = 1 y = 2 }
-			ss_motorized = { x = 1 y = 3 }
 			
 			ss_motorized = { x = 2 y = 0 }
 			ss_motorized = { x = 2 y = 1 }
 			ss_motorized = { x = 2 y = 2 }
-			ss_motorized = { x = 2 y = 3 }
 			
 			ss_artillery_brigade = { x = 3 y = 0 }
+			ss_artillery_brigade = { x = 3 y = 1 }
+			ss_artillery_brigade = { x = 3 y = 2 }
+			ss_heavy_artillery_brigade = { x = 3 y = 3 }
+			
+			ss_anti_tank_brigade = { x = 4 y = 0 }
+			ss_anti_tank_brigade = { x = 4 y = 1 }
 		}
 		regimental_support = {
-			artillery = { x = 0 y = 0 }
-			anti_tank = { x = 0 y = 1 }
+			artillery_company = { x = 0 y = 0 }
+			anti_tank_company = { x = 0 y = 1 }
 			
-			artillery = { x = 1 y = 0 }
-			anti_tank = { x = 1 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
 		}
 		support = {
 			assault_engineer = { x = 0 y = 0 }
@@ -407,32 +429,33 @@ SS_totenkopf_late = {
 			ss_medium_armor_regiment = { x = 0 y = 0 }
 			ss_medium_armor_regiment = { x = 0 y = 1 }
 			ss_medium_armor_regiment = { x = 0 y = 2 }
-			ss_medium_armor_regiment = { x = 0 y = 3 }
 			
 			ss_mechanized = { x = 1 y = 0 }
 			ss_mechanized = { x = 1 y = 1 }
 			ss_mechanized = { x = 1 y = 2 }
-			ss_mechanized = { x = 1 y = 3 }
-			ss_mechanized = { x = 1 y = 4 }
 			
 			ss_motorized = { x = 2 y = 0 }
 			ss_motorized = { x = 2 y = 1 }
 			ss_motorized = { x = 2 y = 2 }
-			ss_motorized = { x = 2 y = 3 }
-			ss_motorized = { x = 2 y = 4 }
-
+			
 			ss_artillery_brigade = { x = 3 y = 0 }
-			medium_tank_destroyer_brigade = { x = 3 y = 1 }
+			ss_artillery_brigade = { x = 3 y = 1 }
+			ss_heavy_artillery_brigade = { x = 3 y = 2 }
+			
+			ss_anti_tank_brigade = { x = 4 y = 0 }
+			ss_anti_tank_brigade = { x = 4 y = 1 }
+			medium_tank_destroyer_brigade = { x = 4 y = 2 }
 		}
 		regimental_support = {
 			armored_signal = { x = 0 y = 0 }
 			armored_maintenance = { x = 0 y = 1 }
+			heavy_infantry_support_armor = { x = 0 y = 2 }
 			
-			artillery = { x = 1 y = 0 }
-			anti_tank = { x = 1 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
 		}
 		support = {
 			assault_engineer = { x = 0 y = 0 }
@@ -458,35 +481,35 @@ SS_totenkopf_panzer = {
 			ss_medium_armor_regiment = { x = 0 y = 1 }
 			ss_medium_armor_regiment = { x = 0 y = 2 }
 			
-			ss_medium_armor_regiment = { x = 1 y = 0 }
-			ss_medium_armor_regiment = { x = 1 y = 1 }
-			ss_medium_armor_regiment = { x = 1 y = 2 }
+			ss_mechanized = { x = 1 y = 0 }
+			ss_mechanized = { x = 1 y = 1 }
+			ss_mechanized = { x = 1 y = 2 }
 			
-			ss_mechanized = { x = 2 y = 0 }
-			ss_mechanized = { x = 2 y = 1 }
-			ss_mechanized = { x = 2 y = 2 }
-			ss_mechanized = { x = 2 y = 3 }
-			
-			ss_motorized = { x = 3 y = 0 }
-			ss_motorized = { x = 3 y = 1 }
-			ss_motorized = { x = 3 y = 2 }
-			ss_motorized = { x = 3 y = 3 }
+			ss_motorized = { x = 2 y = 0 }
+			ss_motorized = { x = 2 y = 1 }
+			ss_motorized = { x = 2 y = 2 }
 
-			ss_artillery_brigade = { x = 4 y = 0 }
-			medium_tank_destroyer_brigade = { x = 4 y = 1 }
+			ss_artillery_brigade = { x = 3 y = 0 }
+			ss_artillery_brigade = { x = 3 y = 1 }
+			ss_heavy_artillery_brigade = { x = 3 y = 2 }
+			
+			ss_anti_tank_brigade = { x = 4 y = 0 }
+			ss_anti_tank_brigade = { x = 4 y = 1 }
+			medium_tank_destroyer_brigade = { x = 4 y = 2 }
 		}
 		regimental_support = {
 			armored_signal = { x = 0 y = 0 }
 			armored_maintenance = { x = 0 y = 1 }
+			heavy_infantry_support_armor = { x = 0 y = 2 }
 			
-			armored_signal = { x = 1 y = 0 }
-			armored_maintenance = { x = 1 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
 			
-			artillery = { x = 3 y = 0 }
-			anti_tank = { x = 3 y = 1 }
+			artillery_company = { x = 3 y = 0 }
+			anti_tank_company = { x = 3 y = 1 }
 		}
 		support = {
 			assault_engineer = { x = 0 y = 0 }
@@ -525,14 +548,14 @@ SS_polizei_early = {
 			artillery_brigade = { x = 3 y = 2 }
 		}
 		regimental_support = {
-			artillery = { x = 0 y = 0 }
-			anti_tank = { x = 0 y = 1 }
+			artillery_company = { x = 0 y = 0 }
+			anti_tank_company = { x = 0 y = 1 }
 			
-			artillery = { x = 1 y = 0 }
-			anti_tank = { x = 1 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
 		}
 		support = {
 			engineer = { x = 0 y = 0 }
@@ -567,16 +590,21 @@ SS_polizei_middle = {
 			
 			ss_artillery_brigade = { x = 3 y = 0 }
 			ss_artillery_brigade = { x = 3 y = 1 }
+			ss_artillery_brigade = { x = 3 y = 2 }
+			ss_heavy_artillery_brigade = { x = 3 y = 3 }
+			
+			ss_anti_tank_brigade = { x = 4 y = 0 }
+			ss_anti_tank_brigade = { x = 4 y = 1 }
 		}
 		regimental_support = {
-			artillery = { x = 0 y = 0 }
-			anti_tank = { x = 0 y = 1 }
+			artillery_company = { x = 0 y = 0 }
+			anti_tank_company = { x = 0 y = 1 }
 			
-			artillery = { x = 1 y = 0 }
-			anti_tank = { x = 1 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
 		}
 		support = {
 			engineer = { x = 0 y = 0 }
@@ -598,34 +626,33 @@ SS_polizei_late = {
 
 		regiments = {
 			ss_medium_armor_regiment = { x = 0 y = 0 }
-			ss_medium_armor_regiment = { x = 0 y = 1 }
 			
 			ss_mechanized = { x = 1 y = 0 }
 			ss_mechanized = { x = 1 y = 1 }
 			ss_mechanized = { x = 1 y = 2 }
-			ss_mechanized = { x = 1 y = 3 }
 			
-			ss_mechanized = { x = 2 y = 0 }
-			ss_mechanized = { x = 2 y = 1 }
-			ss_mechanized = { x = 2 y = 2 }
-			ss_mechanized = { x = 2 y = 3 }
+			ss_motorized = { x = 2 y = 0 }
+			ss_motorized = { x = 2 y = 1 }
+			ss_motorized = { x = 2 y = 2 }
 			
-			ss_motorized = { x = 3 y = 0 }
-			ss_motorized = { x = 3 y = 1 }
-			ss_motorized = { x = 3 y = 2 }
+			ss_artillery_brigade = { x = 3 y = 0 }
+			ss_artillery_brigade = { x = 3 y = 1 }
+			ss_heavy_artillery_brigade = { x = 3 y = 2 }
 			
-			ss_artillery_brigade = { x = 4 y = 0 }
+			ss_anti_tank_brigade = { x = 4 y = 0 }
+			ss_anti_tank_brigade = { x = 4 y = 1 }
+			medium_tank_destroyer_brigade = { x = 4 y = 2 }
 		}
 		regimental_support = {
 			
-			artillery = { x = 1 y = 0 }
-			anti_tank = { x = 1 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
 			
-			artillery = { x = 3 y = 0 }
-			anti_tank = { x = 3 y = 1 }
+			artillery_company = { x = 3 y = 0 }
+			anti_tank_company = { x = 3 y = 1 }
 			
 			medium_tank_destroyer = { x = 4 y = 0 }
 		}
@@ -663,16 +690,21 @@ SS_wiking_early = {
 			
 			ss_artillery_brigade = { x = 3 y = 0 }
 			ss_artillery_brigade = { x = 3 y = 1 }
+			ss_artillery_brigade = { x = 3 y = 2 }
+			ss_heavy_artillery_brigade = { x = 3 y = 3 }
+			
+			ss_anti_tank_brigade = { x = 4 y = 0 }
+			ss_anti_tank_brigade = { x = 4 y = 1 }
 		}
 		regimental_support = {
-			artillery = { x = 0 y = 0 }
-			anti_tank = { x = 0 y = 1 }
+			artillery_company = { x = 0 y = 0 }
+			anti_tank_company = { x = 0 y = 1 }
 			
-			artillery = { x = 1 y = 0 }
-			anti_tank = { x = 1 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
 			
 			medium_tank_destroyer = { x = 3 y = 0 }
 		}
@@ -697,29 +729,37 @@ SS_wiking_middle = {
 
 		regiments = {
 			ss_medium_armor_regiment = { x = 0 y = 0 }
-			ss_medium_armor_regiment = { x = 0 y = 1 }
 			
 			ss_mechanized = { x = 1 y = 0 }
 			ss_mechanized = { x = 1 y = 1 }
 			ss_mechanized = { x = 1 y = 2 }
-			ss_mechanized = { x = 1 y = 3 }
 			
 			ss_motorized = { x = 2 y = 0 }
 			ss_motorized = { x = 2 y = 1 }
 			ss_motorized = { x = 2 y = 2 }
-			ss_motorized = { x = 2 y = 3 }
 			
-			ss_artillery_brigade = { x = 3 y = 0 }
-			ss_artillery_brigade = { x = 3 y = 1 }
+			ss_motorized = { x = 3 y = 0 }
+			ss_motorized = { x = 3 y = 1 }
+			ss_motorized = { x = 3 y = 2 }
+			
+			ss_artillery_brigade = { x = 4 y = 0 }
+			ss_artillery_brigade = { x = 4 y = 1 }
+			ss_heavy_artillery_brigade = { x = 4 y = 2 }
+			
+			ss_anti_tank_brigade = { x = 5 y = 0 }
+			medium_tank_destroyer_brigade = { x = 5 y = 1 }
 		}
 		regimental_support = {
-			artillery = { x = 1 y = 0 }
-			anti_tank = { x = 1 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
 			
-			medium_tank_destroyer = { x = 3 y = 0 }
+			artillery_company = { x = 3 y = 0 }
+			anti_tank_company = { x = 3 y = 1 }
+			
+			medium_tank_destroyer = { x = 4 y = 0 }
 		}
 		support = {
 			assault_engineer = { x = 0 y = 0 }
@@ -745,35 +785,32 @@ SS_wiking_panzer = {
 			ss_medium_armor_regiment = { x = 0 y = 1 }
 			ss_medium_armor_regiment = { x = 0 y = 2 }
 			
-			ss_medium_armor_regiment = { x = 1 y = 0 }
-			ss_medium_armor_regiment = { x = 1 y = 1 }
-			ss_medium_armor_regiment = { x = 1 y = 2 }
+			ss_mechanized = { x = 1 y = 0 }
+			ss_mechanized = { x = 1 y = 1 }
+			ss_mechanized = { x = 1 y = 2 }
 			
-			ss_mechanized = { x = 2 y = 0 }
-			ss_mechanized = { x = 2 y = 1 }
-			ss_mechanized = { x = 2 y = 2 }
-			ss_mechanized = { x = 2 y = 3 }
-			
-			ss_motorized = { x = 3 y = 0 }
-			ss_motorized = { x = 3 y = 1 }
-			ss_motorized = { x = 3 y = 2 }
-			ss_motorized = { x = 3 y = 3 }
+			ss_motorized = { x = 2 y = 0 }
+			ss_motorized = { x = 2 y = 1 }
+			ss_motorized = { x = 2 y = 2 }
 
-			ss_artillery_brigade = { x = 4 y = 0 }
-			medium_tank_destroyer_brigade = { x = 4 y = 1 }
+			ss_artillery_brigade = { x = 3 y = 0 }
+			ss_artillery_brigade = { x = 3 y = 1 }
+			ss_heavy_artillery_brigade = { x = 3 y = 2 }
+			
+			ss_anti_tank_brigade = { x = 4 y = 0 }
+			ss_anti_tank_brigade = { x = 4 y = 1 }
+			medium_tank_destroyer_brigade = { x = 4 y = 2 }
 		}
 		regimental_support = {
 			armored_signal = { x = 0 y = 0 }
 			armored_maintenance = { x = 0 y = 1 }
+			heavy_infantry_support_armor = { x = 0 y = 2 }
 			
-			armored_signal = { x = 1 y = 0 }
-			armored_maintenance = { x = 1 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
-			
-			artillery = { x = 3 y = 0 }
-			anti_tank = { x = 3 y = 1 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
 			
 			medium_tank_destroyer = { x = 4 y = 0 }
 		}
@@ -810,16 +847,21 @@ SS_infantry_division = {
 
 			ss_artillery_brigade = { x = 3 y = 0 }
 			ss_artillery_brigade = { x = 3 y = 1 }
+			ss_artillery_brigade = { x = 3 y = 2 }
+			ss_heavy_artillery_brigade = { x = 3 y = 3 }
+			
+			ss_anti_tank_brigade = { x = 4 y = 0 }
+			ss_anti_tank_brigade = { x = 4 y = 1 }
 		}
 		regimental_support = {
-			artillery = { x = 0 y = 0 }
-			anti_tank = { x = 0 y = 1 }
+			artillery_company = { x = 0 y = 0 }
+			anti_tank_company = { x = 0 y = 1 }
 			
-			artillery = { x = 1 y = 0 }
-			anti_tank = { x = 1 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
 		}
 		support = {
 			engineer = { x = 0 y = 0 }
@@ -828,6 +870,58 @@ SS_infantry_division = {
 			field_hospital = { x = 0 y = 3 }
 			maintenance_company = { x = 0 y = 4 }
 			motorbike_recon = { x = 0 y = 5 }
+			anti_air = { x = 0 y = 6 }
+		}
+	}
+}
+
+SS_nord_division = {
+	division_template = {
+		name = "SS-Nord-Division"
+		priority = 2
+		division_names_group = GER_SS_01
+		template_counter = 153
+		is_locked = yes
+		regiments = {
+			ss_mountaineers = { x = 0 y = 0 }
+			ss_mountaineers = { x = 0 y = 1 }
+			ss_mountaineers = { x = 0 y = 2 }
+
+			ss_mountaineers = { x = 1 y = 0 }
+			ss_mountaineers = { x = 1 y = 1 }
+			ss_mountaineers = { x = 1 y = 2 }
+			
+			ss_heavy_infantry = { x = 2 y = 0 }
+			ss_motorized = { x = 2 y = 1 }
+			ss_motorized = { x = 2 y = 2 }
+
+			ss_artillery_brigade = { x = 3 y = 0 }
+			ss_artillery_brigade = { x = 3 y = 1 }
+			ss_artillery_brigade = { x = 3 y = 2 }
+			ss_artillery_brigade = { x = 3 y = 3 }
+			
+			ss_anti_tank_brigade = { x = 4 y = 0 }
+			medium_tank_destroyer_brigade = { x = 4 y = 1 }
+		}
+		regimental_support = {
+			
+			artillery_company = { x = 0 y = 0 }
+			anti_tank_company = { x = 0 y = 1 }
+			
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
+			
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
+		}
+		support = {
+			engineer = { x = 0 y = 0 }
+			armored_car_recon = { x = 0 y = 1 }
+			signal_company = { x = 0 y = 2 }
+			field_hospital = { x = 0 y = 3 }
+			motorbike_recon = { x = 0 y = 4 }
+			maintenance_company = { x = 0 y = 5 }
+			anti_air_battery = { x = 0 y = 6 }
 		}
 	}
 }
@@ -837,6 +931,7 @@ SS_mountain_division = {
 		name = "SS-Gebirgs-Division"
 		priority = 2
 		division_names_group = GER_SS_01
+		template_counter = 153
 		is_locked = yes
 		regiments = {
 			ss_mountaineers = { x = 0 y = 0 }
@@ -847,21 +942,21 @@ SS_mountain_division = {
 			ss_mountaineers = { x = 1 y = 1 }
 			ss_mountaineers = { x = 1 y = 2 }
 
-			ss_mountaineers = { x = 2 y = 0 }
-			ss_mountaineers = { x = 2 y = 1 }
-			ss_mountaineers = { x = 2 y = 2 }
-
-			artillery_brigade = { x = 3 y = 0 }
+			ss_artillery_brigade = { x = 2 y = 0 }
+			ss_artillery_brigade = { x = 2 y = 1 }
+			ss_artillery_brigade = { x = 2 y = 2 }
+			ss_artillery_brigade = { x = 2 y = 3 }
+			
+			ss_anti_tank_brigade = { x = 3 y = 0 }
+			ss_anti_tank_brigade = { x = 3 y = 1 }
 		}
 		regimental_support = {
-			artillery = { x = 0 y = 0 }
-			anti_tank = { x = 0 y = 1 }
 			
-			artillery = { x = 1 y = 0 }
-			anti_tank = { x = 1 y = 1 }
+			artillery_company = { x = 0 y = 0 }
+			anti_tank_company = { x = 0 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 		}
 		support = {
 			engineer = { x = 0 y = 0 }
@@ -870,6 +965,7 @@ SS_mountain_division = {
 			field_hospital = { x = 0 y = 3 }
 			motorbike_recon = { x = 0 y = 4 }
 			maintenance_company = { x = 0 y = 5 }
+			anti_air_battery = { x = 0 y = 6 }
 		}
 	}
 }
@@ -893,25 +989,24 @@ SS_cavalry_division = {
 			ss_cavalry = { x = 2 y = 0 }
 			ss_cavalry = { x = 2 y = 1 }
 			ss_cavalry = { x = 2 y = 2 }
-
-			ss_cavalry = { x = 3 y = 0 }
-			ss_cavalry = { x = 3 y = 1 }
-			ss_cavalry = { x = 3 y = 2 }
 			
-			ss_artillery_brigade = { x = 4 y = 0 }
+			ss_artillery_brigade = { x = 3 y = 0 }
+			ss_artillery_brigade = { x = 3 y = 1 }
+			ss_artillery_brigade = { x = 3 y = 2 }
+			
+			ss_anti_tank_brigade = { x = 4 y = 0 }
+			ss_anti_tank_brigade = { x = 4 y = 1 }
+			light_tank_destroyer_brigade = { x = 4 y = 2 }
 		}
 		regimental_support = {
-			artillery = { x = 0 y = 0 }
-			anti_tank = { x = 0 y = 1 }
+			artillery_company = { x = 0 y = 0 }
+			anti_tank_company = { x = 0 y = 1 }
 			
-			artillery = { x = 1 y = 0 }
-			anti_tank = { x = 1 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
-			
-			artillery = { x = 3 y = 0 }
-			anti_tank = { x = 3 y = 1 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
 			
 			medium_tank_destroyer = { x = 4 y = 0 }
 		}
@@ -922,6 +1017,7 @@ SS_cavalry_division = {
 			mot_field_hospital = { x = 0 y = 3 }
 			logistics_company = { x = 0 y = 4 }
 			mot_maintenance_company = { x = 0 y = 5 }
+			anti_air_battery = { x = 0 y = 6 }
 		}
 	}
 }
@@ -934,26 +1030,31 @@ SS_volont_mechanised_division = {
 		is_locked = yes
 		regiments = {
 			ss_medium_armor_regiment = { x = 0 y = 0 }
-			ss_medium_armor_regiment = { x = 0 y = 1 }
 			
-			ss_mechanized = { x = 1 y = 0 }
-			ss_mechanized = { x = 1 y = 1 }
-			ss_mechanized = { x = 1 y = 2 }
+			ss_motorized = { x = 1 y = 0 }
+			ss_motorized = { x = 1 y = 1 }
+			ss_motorized = { x = 1 y = 2 }
 			
-			ss_mechanized = { x = 2 y = 0 }
-			ss_mechanized = { x = 2 y = 1 }
-			ss_mechanized = { x = 2 y = 2 }
+			ss_motorized = { x = 2 y = 0 }
+			ss_motorized = { x = 2 y = 1 }
+			ss_motorized = { x = 2 y = 2 }
 			
 			ss_artillery_brigade = { x = 3 y = 0 }
+			ss_artillery_brigade = { x = 3 y = 1 }
+			ss_heavy_artillery_brigade = { x = 3 y = 2 }
+			
+			ss_anti_tank_brigade = { x = 4 y = 0 }
+			ss_anti_tank_brigade = { x = 4 y = 1 }
+			medium_tank_destroyer_brigade = { x = 4 y = 2 }
 		}
 		regimental_support = {
-			artillery = { x = 1 y = 0 }
-			anti_tank = { x = 1 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
 			
-			medium_tank_destroyer = { x = 3 y = 0 }
+			anti_air = { x = 4 y = 0 }
 		}
 		support = {
 			assault_engineer = { x = 0 y = 0 }
@@ -974,9 +1075,7 @@ SS_mechanised_division = {
 		division_names_group = GER_SS_01
 		is_locked = yes
 		regiments = {
-			ss_mechanized = { x = 0 y = 0 }
-			ss_mechanized = { x = 0 y = 1 }
-			ss_mechanized = { x = 0 y = 2 }
+			ss_medium_armor_regiment = { x = 0 y = 0 }
 			
 			ss_mechanized = { x = 1 y = 0 }
 			ss_mechanized = { x = 1 y = 1 }
@@ -987,24 +1086,22 @@ SS_mechanised_division = {
 			ss_mechanized = { x = 2 y = 2 }
 			
 			ss_artillery_brigade = { x = 3 y = 0 }
-			medium_tank_destroyer_brigade = { x = 3 y = 1 }
+			ss_artillery_brigade = { x = 3 y = 1 }
+			ss_heavy_artillery_brigade = { x = 3 y = 2 }
 			
-			ss_medium_armor_regiment = { x = 4 y = 0 }
-			ss_medium_armor_regiment = { x = 4 y = 1 }
-			ss_medium_armor_regiment = { x = 4 y = 2 }
-			ss_medium_armor_regiment = { x = 4 y = 3 }
+			ss_anti_tank_brigade = { x = 4 y = 0 }
+			ss_anti_tank_brigade = { x = 4 y = 1 }
+			medium_tank_destroyer_brigade = { x = 4 y = 2 }
 		}
 		regimental_support = {
-			artillery = { x = 0 y = 0 }
-			anti_tank = { x = 0 y = 1 }
 			
-			artillery = { x = 1 y = 0 }
-			anti_tank = { x = 1 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
 			
-			heavy_infantry_support_armor = { x = 4 y = 0 }
+			anti_air = { x = 4 y = 0 }
 		}
 		support = {
 			assault_engineer = { x = 0 y = 0 }
@@ -1029,41 +1126,38 @@ SS_armored_division = {
 			ss_medium_armor_regiment = { x = 0 y = 1 }
 			ss_medium_armor_regiment = { x = 0 y = 2 }
 			
-			ss_medium_armor_regiment = { x = 1 y = 0 }
-			ss_medium_armor_regiment = { x = 1 y = 1 }
-			ss_medium_armor_regiment = { x = 1 y = 2 }
+			ss_mechanized = { x = 1 y = 0 }
+			ss_mechanized = { x = 1 y = 1 }
+			ss_mechanized = { x = 1 y = 2 }
 			
 			ss_mechanized = { x = 2 y = 0 }
 			ss_mechanized = { x = 2 y = 1 }
 			ss_mechanized = { x = 2 y = 2 }
 			
-			ss_mechanized = { x = 3 y = 0 }
-			ss_mechanized = { x = 3 y = 1 }
-			ss_mechanized = { x = 3 y = 2 }
+			ss_artillery_brigade = { x = 3 y = 0 }
+			medium_sp_artillery_brigade = { x = 3 y = 1 }
+			ss_heavy_artillery_brigade = { x = 3 y = 2 }
 			
-			ss_mechanized = { x = 4 y = 0 }
-			ss_mechanized = { x = 4 y = 1 }
-			ss_mechanized = { x = 4 y = 2 }
+			ss_anti_tank_brigade = { x = 4 y = 0 }
+			ss_anti_tank_brigade = { x = 4 y = 1 }
+			medium_tank_destroyer_brigade = { x = 4 y = 2 }
 			
-			ss_artillery_brigade = { x = 5 y = 0 }
 		}
 		regimental_support = {
 			armored_signal = { x = 0 y = 0 }
-			heavy_infantry_support_armor = { x = 0 y = 1 }
+			armored_maintenance = { x = 0 y = 1 }
 			
 			armored_signal = { x = 1 y = 0 }
 			armored_maintenance = { x = 1 y = 1 }
 		
-			artillery = { x = 2 y = 0 }
-			anti_tank = { x = 2 y = 1 }
+			artillery_company = { x = 1 y = 0 }
+			anti_tank_company = { x = 1 y = 1 }
 			
-			artillery = { x = 3 y = 0 }
-			anti_tank = { x = 3 y = 1 }
-			
-			artillery = { x = 4 y = 0 }
-			anti_tank = { x = 4 y = 1 }
-			
-			medium_tank_destroyer = { x = 5 y = 0 }
+			artillery_company = { x = 2 y = 0 }
+			anti_tank_company = { x = 2 y = 1 }
+
+			medium_tank_destroyer = { x = 4 y = 0 }
+			anti_air = { x = 4 y = 1 }
 		}
 		support = {
 			assault_engineer = { x = 0 y = 0 }

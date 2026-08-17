@@ -731,9 +731,9 @@ technologies = {
 			max_organisation = 5
 		}
 		
-		on_research_complete = {
-			add_ideas = GEN_cheaper_amphib
-		}
+		#on_research_complete = {
+		#	add_ideas = GEN_cheaper_amphib
+		#}
 		
 		doctrine = yes	
 		research_cost = 2.25

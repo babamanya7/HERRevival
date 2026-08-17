@@ -886,6 +886,96 @@ political_actions = {
 		}
 	}
 
+	GER_secure_portuguese_wolfram = {
+		icon = generic_prepare_civil_war
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			has_war = yes
+			is_faction_leader = yes
+			FRA = { has_capitulated = yes }
+			POR = {
+				exists = yes
+				has_war = no
+				is_in_faction = no
+			}
+		}
+
+		visible = {
+			has_war = yes
+			NOT = { has_war_with = POR }
+			POR = {
+				exists = yes
+				is_in_faction = no
+			}
+		}
+
+		cost = 0
+		fire_only_once = yes
+		days_remove = 14
+		is_good = yes
+
+		modifier = {
+			political_power_cost = 1.0
+		}
+
+		remove_effect = {
+			POR = { country_event = { id = ger_armor.848 hours = 6 } }
+		}
+
+		ai_will_do = {
+			factor = 700
+		}
+	}
+
+	GER_secure_turkish_chromium = {
+		icon = generic_prepare_civil_war
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			has_war = yes
+			is_faction_leader = yes
+			has_completed_focus = GER_fate_of_greece
+			TUR = {
+				exists = yes
+				has_war = no
+				is_in_faction = no
+			}
+		}
+
+		visible = {
+			has_war = yes
+			NOT = { has_war_with = TUR }
+			TUR = {
+				exists = yes
+				is_in_faction = no
+			}
+		}
+
+		cost = 0
+		fire_only_once = yes
+		days_remove = 14
+		is_good = yes
+
+		modifier = {
+			political_power_cost = 1.0
+		}
+
+		remove_effect = {
+			TUR = { country_event = { id = ger_armor.851 hours = 6 } }
+		}
+
+		ai_will_do = {
+			factor = 700
+		}
+	}
+
 	GER_reopen_trade_with_sweden = {
 		icon = generic_prepare_civil_war
 		allowed = {

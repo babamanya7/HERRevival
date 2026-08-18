@@ -273,6 +273,31 @@
  mio_aod_detroit_arsenal_production_lines: "Детройтский танковый арсенал"
  mio_aod_ford_production_lines: "Производственные линии Ford"
  
+ ####### СССР — T-54 #######
+
+ mio_morozov_t54: "Т-54"
+ mio_morozov_t54_sloped_armor: "Рациональные углы бронирования"
+ mio_morozov_t54_low_profile: "Низкопрофильная компоновка"
+ mio_morozov_t54_d10t: "100-мм пушка Д-10Т"
+ mio_morozov_t54_ammunition_layout: "Улучшенная укладка боекомплекта"
+ mio_morozov_t54_v54_engine: "Дизель В-54"
+ mio_morozov_t54_running_gear: "Усовершенствованная ходовая часть"
+ mio_morozov_mature_t54: "Отработанная конструкция Т-54"
+
+
+####### США — M46 PATTON #######
+
+ mio_header_aod_patton: "M46 Patton"
+
+ mio_aod_m46_patton: "M46 Patton"
+ mio_aod_patton_improved_armor: "Усиленная бронезащита"
+ mio_aod_patton_90mm: "90-мм пушка M3A1"
+ mio_aod_patton_optics: "Усовершенствованные прицелы"
+ mio_aod_patton_av1790: "Двигатель Continental AV-1790"
+ mio_aod_patton_cd850: "Трансмиссия CD-850"
+ mio_aod_patton_fighting_compartment: "Улучшенное боевое отделение"
+ mio_aod_mature_patton: "Отработанная конструкция Patton"
+ 
  #######MITSUBISHI#######
  mio_header_mitsubishi_hago: "Ha-Go/Ke-Nu"
  mio_header_mitsubishi_chiha: "Chi-Ha/Chi-He/Chi-Nu"
@@ -285,7 +310,7 @@
  mio_mitsubishi_late_hago: "Поздние модификации Ha-Go"
 
  mio_mitsubishi_kenu: "Type 4 Ke-Nu"
- mio_mitsubishi_kenu_47mmgun: "47-мм пушка Type 1"
+ mio_mitsubishi_kenu_47mmgun: "57-мм пушка Type 97"
  mio_mitsubishi_kenu_running_gear: "Доработанная ходовая часть"
  mio_mitsubishi_late_kenu: "Поздние модификации Ke-Nu"
 
@@ -500,7 +525,7 @@
  ENG_mio_header_valentine: "Valentine"
  ENG_mio_header_crusader_cromwell_comet: "Crusader|Cromwell|Comet"
  ENG_mio_header_centurion: "Centurion"
-
+ ENG_mio_vickers_initial_trait: "Крейсерские танки"
  ENG_mio_trait_valentine: "Пехотный танк «Valentine»"
  ENG_mio_trait_valentine_reliable_chassis: "Надёжное шасси"
  ENG_mio_trait_valentine_simplified_production: "Отлаженное производство"
@@ -541,6 +566,7 @@
  ENG_mio_trait_achilles_improved_ammunition: "Улучшенные бронебойные боеприпасы"
 
 #########VAXHALL###############################
+ ENG_mio_vauxhall_initial_trait: "Пехотные танки"
  ENG_mio_header_matilda: "Matilda II"
  ENG_mio_header_churchill: "Churchill"
  ENG_mio_header_black_prince: "Black Prince"

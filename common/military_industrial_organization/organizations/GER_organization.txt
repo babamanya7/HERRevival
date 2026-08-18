@@ -42,7 +42,7 @@ GER_porsche_organization = {
 		name = mio_porsche_inital_trait
 
 		organization_modifier = {
-			military_industrial_organization_funds_gain = 1.0
+			military_industrial_organization_funds_gain = 2.0
 		}
 
 		equipment_bonus = {
@@ -608,9 +608,9 @@ GER_henschel_organization = {
 
 		position = { x=6 y=0 }
 
-		all_parents = {
-			mio_henschel_late_tiger_i
-		}
+		#all_parents = {
+		#	mio_henschel_late_tiger_i
+		#}
 
 		limit_to_equipment_type = {
 			heavy_tank_chassis_3
@@ -700,8 +700,8 @@ GER_henschel_organization = {
 
 		equipment_bonus = {
 			soft_attack = 0.03
-			hard_attack = 0.16
-			ap_attack = 0.20
+			hard_attack = 0.18
+			ap_attack = 0.22
 			reliability = -0.03
 			build_cost_ic = 0.04
 		}
@@ -893,7 +893,7 @@ GER_krupp_organization = {
 
 		organization_modifier = {
 			military_industrial_organization_research_bonus = 0.05
-			military_industrial_organization_funds_gain = 0.75
+			military_industrial_organization_funds_gain = 0.5
 		}
 
 		production_bonus = {
@@ -1332,7 +1332,7 @@ GER_man_organization = {
 
 		organization_modifier = {
 			military_industrial_organization_research_bonus = 0.05
-			military_industrial_organization_funds_gain = 1.0
+			military_industrial_organization_funds_gain = 1.00
 		}
 
 		equipment_bonus = {
@@ -1623,8 +1623,8 @@ GER_man_organization = {
 
 		equipment_bonus = {
 			soft_attack = 0.03
-			hard_attack = 0.12
-			ap_attack = 0.15
+			hard_attack = 0.14
+			ap_attack = 0.17
 			build_cost_ic = 0.04
 		}
 	}

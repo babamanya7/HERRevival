@@ -86,6 +86,7 @@ SOV_morozov_design_bureau_organization = {
 		medium_tank_destroyer_chassis_2
 		medium_tank_destroyer_chassis_3
 		medium_tank_artillery_chassis_2
+		modern_tank_chassis
 	}
 
 	research_categories = {
@@ -112,7 +113,7 @@ SOV_morozov_design_bureau_organization = {
 
 		organization_modifier = {
 			military_industrial_organization_research_bonus = 0.10
-			military_industrial_organization_funds_gain = 0.50
+			military_industrial_organization_funds_gain = 0.75
 		}
 
 		production_bonus = {
@@ -261,7 +262,7 @@ SOV_morozov_design_bureau_organization = {
 		}
 
 		equipment_bonus = {
-			armor_value = 0.05
+			armor_value = 0.02
 			build_cost_ic = 0.02
 		}
 	}
@@ -286,9 +287,11 @@ SOV_morozov_design_bureau_organization = {
 
 		equipment_bonus = {
 			reliability = 0.03
-			armor_value = 0.03
+			armor_value = 0.02
 			breakthrough = 0.03
 			soft_attack = 0.03
+			hard_attack = 0.07
+			ap_attack = 0.08
 		}
 	}
 
@@ -838,6 +841,200 @@ SOV_morozov_design_bureau_organization = {
 			soft_attack = @tank_soft_attack
 		}
 	}
+	
+	########################
+	######## T-54 ##########
+	########################
+
+	add_trait = {
+		token = mio_morozov_t54
+		name = mio_morozov_t54
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_quality
+
+		position = { x=2 y=4 }
+
+		limit_to_equipment_type = {
+			modern_tank_chassis
+		}
+
+		equipment_bonus = {
+			armor_value = 0.04
+			maximum_speed = 0.03
+			reliability = 0.03
+			breakthrough = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_morozov_t54_sloped_armor
+		name = mio_morozov_t54_sloped_armor
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
+
+		position = { x=-1 y=1 }
+		relative_position_id = mio_morozov_t54
+
+		all_parents = {
+			mio_morozov_t54
+		}
+
+		limit_to_equipment_type = {
+			modern_tank_chassis
+		}
+
+		equipment_bonus = {
+			armor_value = 0.07
+			defense = 0.03
+			build_cost_ic = 0.01
+		}
+	}
+
+	add_trait = {
+		token = mio_morozov_t54_low_profile
+		name = mio_morozov_t54_low_profile
+		icon = GFX_generic_mio_trait_icon_armor_value
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_morozov_t54_sloped_armor
+
+		all_parents = {
+			mio_morozov_t54_sloped_armor
+		}
+
+		limit_to_equipment_type = {
+			modern_tank_chassis
+		}
+
+		equipment_bonus = {
+			armor_value = 0.05
+			defense = 0.03
+			breakthrough = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_morozov_t54_d10t
+		name = mio_morozov_t54_d10t
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_morozov_t54
+
+		all_parents = {
+			mio_morozov_t54
+		}
+
+		limit_to_equipment_type = {
+			modern_tank_chassis
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.05
+			hard_attack = 0.11
+			ap_attack = 0.13
+			build_cost_ic = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_morozov_t54_ammunition_layout
+		name = mio_morozov_t54_ammunition_layout
+		icon = GFX_generic_mio_trait_icon_breakthrough
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_morozov_t54_d10t
+
+		all_parents = {
+			mio_morozov_t54_d10t
+		}
+
+		limit_to_equipment_type = {
+			modern_tank_chassis
+		}
+
+		equipment_bonus = {
+			hard_attack = 0.04
+			ap_attack = 0.04
+			breakthrough = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_morozov_t54_v54_engine
+		name = mio_morozov_t54_v54_engine
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_engine
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_morozov_t54
+
+		all_parents = {
+			mio_morozov_t54
+		}
+
+		limit_to_equipment_type = {
+			modern_tank_chassis
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.04
+			reliability = 0.04
+			fuel_consumption = -0.04
+		}
+	}
+
+	add_trait = {
+		token = mio_morozov_t54_running_gear
+		name = mio_morozov_t54_running_gear
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_morozov_t54_v54_engine
+
+		all_parents = {
+			mio_morozov_t54_v54_engine
+		}
+
+		limit_to_equipment_type = {
+			modern_tank_chassis
+		}
+
+		equipment_bonus = {
+			reliability = 0.04
+			maximum_speed = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_morozov_mature_t54
+		name = mio_morozov_mature_t54
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_technology
+		special_trait_background = yes
+
+		position = { x=0 y=2 }
+		relative_position_id = mio_morozov_t54
+
+		all_parents = {
+			mio_morozov_t54_low_profile
+			mio_morozov_t54_ammunition_layout
+			mio_morozov_t54_running_gear
+		}
+
+		limit_to_equipment_type = {
+			modern_tank_chassis
+		}
+
+		equipment_bonus = {
+			armor_value = 0.03
+			reliability = 0.03
+			breakthrough = 0.03
+			hard_attack = 0.02
+			ap_attack = 0.02
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.05
+			production_efficiency_gain_factor = 0.08
+		}
+	}
 }
 
 SOV_astrov_design_bureau_organization = {
@@ -878,7 +1075,7 @@ SOV_astrov_design_bureau_organization = {
 
 		organization_modifier = {
 			military_industrial_organization_research_bonus = 0.1
-			military_industrial_organization_funds_gain = 0.75
+			military_industrial_organization_funds_gain = 1.25
 		}
 
 		production_bonus = {
@@ -1147,8 +1344,8 @@ SOV_astrov_design_bureau_organization = {
 
 		equipment_bonus = {
 			soft_attack = 0.04
-			hard_attack = 0.08
-			ap_attack = 0.09
+			hard_attack = 0.06
+			ap_attack = 0.07
 			build_cost_ic = 0.02
 		}
 	}
@@ -1200,8 +1397,8 @@ SOV_astrov_design_bureau_organization = {
 		equipment_bonus = {
 			armor_value = 0.03
 			reliability = 0.03
-			hard_attack = 0.03
-			ap_attack = 0.03
+			hard_attack = 0.02
+			ap_attack = 0.02
 		}
 	}
 
@@ -1455,7 +1652,7 @@ SOV_kirov_organization = {
 
 		organization_modifier = {
 			military_industrial_organization_research_bonus = 0.10
-			military_industrial_organization_funds_gain = 0.75
+			military_industrial_organization_funds_gain = 1.00
 		}
 
 		equipment_bonus = {
@@ -1761,9 +1958,9 @@ SOV_kirov_organization = {
 
 		position = { x=4 y=0 }
 
-		all_parents = {
-			mio_kirov_kv1s
-		}
+		#all_parents = {
+		#	mio_kirov_kv1s
+		#}
 
 		limit_to_equipment_type = {
 			heavy_tank_chassis_3
@@ -1801,7 +1998,7 @@ SOV_kirov_organization = {
 		}
 
 		equipment_bonus = {
-			armor_value = 0.10
+			armor_value = 0.06
 			defense = 0.04
 			build_cost_ic = 0.02
 		}
@@ -1825,8 +2022,8 @@ SOV_kirov_organization = {
 
 		equipment_bonus = {
 			soft_attack = 0.04
-			hard_attack = 0.10
-			ap_attack = 0.11
+			hard_attack = 0.07
+			ap_attack = 0.08
 			breakthrough = 0.02
 		}
 	}
@@ -1901,9 +2098,9 @@ SOV_kirov_organization = {
 		}
 
 		equipment_bonus = {
+			hard_attack = 0.08
+			ap_attack = 0.09
 			soft_attack = 0.07
-			hard_attack = 0.14
-			ap_attack = 0.16
 			breakthrough = 0.04
 			build_cost_ic = 0.03
 		}
@@ -1926,7 +2123,7 @@ SOV_kirov_organization = {
 		}
 
 		equipment_bonus = {
-			armor_value = 0.08
+			armor_value = 0.05
 			defense = 0.04
 			build_cost_ic = 0.02
 		}
@@ -1951,7 +2148,7 @@ SOV_kirov_organization = {
 		}
 
 		equipment_bonus = {
-			armor_value = 0.04
+			armor_value = 0.02
 			reliability = 0.04
 			breakthrough = 0.04
 			hard_attack = 0.03

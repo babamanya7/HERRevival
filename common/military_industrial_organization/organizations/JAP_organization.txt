@@ -867,7 +867,7 @@ JAP_mitsubishi_organization = {
 	add_trait = {
 		token = mio_mitsubishi_kenu_47mmgun
 		name = mio_mitsubishi_kenu_47mmgun
-		icon = GFX_generic_mio_department_icon_tank_light_tank_at
+		icon = GFX_generic_mio_department_icon_tank_light_tank_weapons
 
 		position = { x=0 y=1 }
 		relative_position_id = mio_mitsubishi_kenu
@@ -881,10 +881,11 @@ JAP_mitsubishi_organization = {
 		}
 
 		equipment_bonus = {
-			soft_attack = 0.04
-			hard_attack = 0.10
-			ap_attack = 0.12
-			build_cost_ic = 0.02
+			soft_attack = 0.08
+			hard_attack = 0.03
+			ap_attack = 0.02
+			breakthrough = 0.02
+			build_cost_ic = 0.01
 		}
 	}
 
@@ -1261,9 +1262,9 @@ JAP_mitsubishi_organization = {
 		}
 
 		equipment_bonus = {
-			soft_attack = 0.05
-			hard_attack = 0.13
-			ap_attack = 0.15
+			soft_attack = 0.04
+			hard_attack = 0.06
+			ap_attack = 0.05
 			build_cost_ic = 0.03
 		}
 	}
@@ -1332,10 +1333,10 @@ JAP_mitsubishi_organization = {
 		}
 
 		equipment_bonus = {
-			reliability = 0.03
-			hard_attack = 0.03
-			ap_attack = 0.03
-			breakthrough = 0.03
+			reliability = 0.02
+			hard_attack = 0.02
+			ap_attack = 0.02
+			breakthrough = 0.02
 		}
 
 		production_bonus = {

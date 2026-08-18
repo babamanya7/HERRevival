@@ -209,6 +209,7 @@ SS_das_reich_middle = {
 			pontoneer_support = { x = 0 y = 3 }
 			motorbike_recon = { x = 0 y = 4 }
 			mot_field_hospital = { x = 0 y = 5 }
+			anti_air_battery = { x = 0 y = 6 }
 		}
 	}
 }
@@ -221,25 +222,26 @@ SS_das_reich_late = {
 		is_locked = yes
 
 		regiments = {
-			ss_mechanized = { x = 0 y = 0 }
-			ss_mechanized = { x = 0 y = 1 }
-			ss_mechanized = { x = 0 y = 2 }
+			ss_medium_armor_regiment = { x = 0 y = 0 }
 			
 			ss_mechanized = { x = 1 y = 0 }
 			ss_mechanized = { x = 1 y = 1 }
 			ss_mechanized = { x = 1 y = 2 }
 			
-			ss_mechanized = { x = 2 y = 0 }
-			ss_mechanized = { x = 2 y = 1 }
-			ss_mechanized = { x = 2 y = 2 }
+			ss_motorized = { x = 2 y = 0 }
+			ss_motorized = { x = 2 y = 1 }
+			ss_motorized = { x = 2 y = 2 }
 			
-			ss_artillery_brigade = { x = 3 y = 0 }
-			ss_artillery_brigade = { x = 3 y = 1 }
-			ss_artillery_brigade = { x = 3 y = 2 }
-			ss_heavy_artillery_brigade = { x = 3 y = 3 }
+			ss_motorized = { x = 3 y = 0 }
+			ss_motorized = { x = 3 y = 1 }
 			
-			ss_anti_tank_brigade = { x = 4 y = 0 }
-			ss_anti_tank_brigade = { x = 4 y = 1 }
+			ss_artillery_brigade = { x = 4 y = 0 }
+			ss_artillery_brigade = { x = 4 y = 1 }
+			ss_artillery_brigade = { x = 4 y = 2 }
+			ss_heavy_artillery_brigade = { x = 4 y = 3 }
+			
+			ss_anti_tank_brigade = { x = 5 y = 0 }
+			ss_anti_tank_brigade = { x = 5 y = 1 }
 		}
 		regimental_support = {
 			artillery_company = { x = 0 y = 0 }
@@ -250,8 +252,6 @@ SS_das_reich_late = {
 			
 			artillery_company = { x = 2 y = 0 }
 			anti_tank_company = { x = 2 y = 1 }
-			
-			medium_tank_destroyer = { x = 4 y = 0 }
 		}
 		support = {
 			assault_engineer = { x = 0 y = 0 }
@@ -260,7 +260,7 @@ SS_das_reich_late = {
 			motorbike_recon = { x = 0 y = 3 }
 			mot_maintenance_company = { x = 0 y = 4 }
 			mot_field_hospital = { x = 0 y = 5 }
-			pontoneer_support = { x = 0 y = 6 }
+			anti_air_battery = { x = 0 y = 6 }
 		}
 	}
 }
@@ -1082,8 +1082,8 @@ SS_mechanised_division = {
 			ss_mechanized = { x = 1 y = 2 }
 			
 			ss_mechanized = { x = 2 y = 0 }
-			ss_mechanized = { x = 2 y = 1 }
-			ss_mechanized = { x = 2 y = 2 }
+			ss_motorized = { x = 2 y = 1 }
+			ss_motorized = { x = 2 y = 2 }
 			
 			ss_artillery_brigade = { x = 3 y = 0 }
 			ss_artillery_brigade = { x = 3 y = 1 }
@@ -1131,8 +1131,8 @@ SS_armored_division = {
 			ss_mechanized = { x = 1 y = 2 }
 			
 			ss_mechanized = { x = 2 y = 0 }
-			ss_mechanized = { x = 2 y = 1 }
-			ss_mechanized = { x = 2 y = 2 }
+			ss_motorized = { x = 2 y = 1 }
+			ss_motorized = { x = 2 y = 2 }
 			
 			ss_artillery_brigade = { x = 3 y = 0 }
 			medium_sp_artillery_brigade = { x = 3 y = 1 }

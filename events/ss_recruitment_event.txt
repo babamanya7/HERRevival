@@ -1755,6 +1755,66 @@ country_event = {
 }
 
 country_event = {
+	id = ss_recruitment_event.58
+	title = ss_recruitment_event.58.t
+	desc = ss_recruitment_event.58.desc
+	picture = GFX_report_event_german_volunteers
+
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_recruitment_event.58.a #historical
+		ai_chance = {
+			base = 50
+		}
+		add_to_variable = { var = GER_Wehrmacht_attitude value = 2 }
+		subtract_from_variable = { var = GER_SS_attitude value = 2}
+        add_to_variable = { var = GER_SS_influence value = 2}
+		 
+		SS_resolve_effects_wehrmacht = yes
+		custom_effect_tooltip = SS_32_recruitment_tt
+		hidden_effect = {
+			if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_10
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \32.SS-Freiwilligen-Grenadier-Division '30. Januar'\" division_template = \"Waffen-Grenadier-Division der SS\" start_experience_factor = 0.22 start_equipment_factor = 0.6" 
+						owner = GER
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = SS_redirection_of_production_5
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"32.SS-Freiwilligen-Grenadier-Division '30. Januar'\" division_template = \"Waffen-Grenadier-Division der SS\" start_experience_factor = 0.22 start_equipment_factor = 0.3" 
+						owner = GER
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 64 }
+					create_unit = {
+						division = "name = \"32.SS-Freiwilligen-Grenadier-Division '30. Januar'\" division_template = \"Waffen-Grenadier-Division der SS\" start_experience_factor = 0.22 start_equipment_factor = 0.03" 
+						owner = GER
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
 	id = ss_recruitment_event.55
 	title = ss_recruitment_event.55.t
 	desc = ss_recruitment_event.55.desc

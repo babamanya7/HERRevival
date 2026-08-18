@@ -109,6 +109,7 @@ sub_units = {
 		essential = {
 			ammunition_equipment
 		}
+		same_support_type = regimental_anti_tank
 		
 		soft_attack = -0.66
 		hard_attack = -0.66
@@ -168,6 +169,8 @@ sub_units = {
 			ammunition_equipment
 		}
 		
+		same_support_type = regimental_artillery
+		
 		soft_attack = -0.66
 		hard_attack = -0.66
 		defense = -0.66
@@ -222,5 +225,116 @@ sub_units = {
 		essential = {
 			ammunition_equipment
 		}
+	}
+	#GER only
+	anti_tank_company = {
+		abbreviation = "ATA"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+		affects_speed = no
+
+		type = {
+			infantry
+			support
+		}
+
+		group = support
+		
+		allowed_battalion_groups = { infantry mobile }
+
+		categories = {
+			category_support_battalions
+			category_army
+			category_anti_tank
+			category_all_at
+		}
+
+		divisional = no
+		combat_width = 0
+
+		can_be_parachuted = yes
+		
+		###STATS###
+		manpower = 450
+		max_organisation = 20
+		max_strength = 15
+		default_morale = 0
+		weight = 0.4
+		supply_consumption = 0.2
+		training_time = 120
+	
+		need = {
+			anti_tank_equipment = 12
+			motorized_equipment = 12
+			ammunition_equipment = 60
+		}
+		
+		essential = {
+			ammunition_equipment
+		}
+		same_support_type = regimental_anti_tank
+	}
+	
+	artillery_company = {
+		abbreviation = "ART"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+		affects_speed = no
+		is_artillery_brigade = yes
+
+		type = {
+			infantry
+			support
+		}
+
+		group = support
+		
+		allowed_battalion_groups = { infantry mobile }
+
+		categories = {
+			category_support_battalions
+			category_army
+			category_artillery
+			category_all_art
+		}
+		
+		divisional = no
+		combat_width = 0
+
+		can_be_parachuted = yes
+		
+		###STATS###
+		manpower = 550
+		max_organisation = 20
+		max_strength = 10
+		default_morale = 0
+		weight = 0.1
+		supply_consumption = 0.06
+		training_time = 120
+	
+		need = {
+			artillery_equipment = 6
+			heavy_artillery_equipment = 2
+			motorized_equipment = 8
+			ammunition_equipment = 100
+		}
+		
+		essential = {
+			ammunition_equipment
+		}
+		same_support_type = regimental_artillery
+		
+		soft_attack = -0.65
+		hard_attack = -0.65
+		defense = -0.45
+		breakthrough = -0.45
+		air_attack = -0.65
+		ap_attack = -0.45
 	}
 }

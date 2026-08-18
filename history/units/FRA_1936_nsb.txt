@@ -18,13 +18,21 @@ division_template = {
 		artillery_brigade = { x = 3 y = 1 }
 		heavy_artillery_brigade = { x = 3 y = 2 }
 	}
+	regimental_support = {
+		artillery = { x = 0 y = 0 }
+		artillery = { x = 1 y = 0 }
+		artillery = { x = 2 y = 0 }
+		anti_tank = { x = 0 y = 1 }
+		anti_tank = { x = 1 y = 1 }
+		anti_tank = { x = 2 y = 1 }
+	}
 	
 	support = {
         engineer = { x = 0 y = 0 }
         field_hospital = { x = 0 y = 1 }
 		signal_company = { x = 0 y = 2 }
-		recon = { x = 1 y = 0 }
-		logistics_company = { x = 1 y = 1 }
+		recon = { x = 0 y = 3 }
+		logistics_company = { x = 0 y = 4 }
 	}
 }
 division_template = {
@@ -46,13 +54,21 @@ division_template = {
 		artillery_brigade = { x = 3 y = 1 }
 		artillery_brigade = { x = 3 y = 2 }
 	}
+	regimental_support = {
+		artillery = { x = 0 y = 0 }
+		artillery = { x = 1 y = 0 }
+		artillery = { x = 2 y = 0 }
+		anti_tank = { x = 0 y = 1 }
+		anti_tank = { x = 1 y = 1 }
+		anti_tank = { x = 2 y = 1 }
+	}
 	
 	support = {
         engineer = { x = 0 y = 0 }
         field_hospital = { x = 0 y = 1 }
 		signal_company = { x = 0 y = 2 }
-		recon = { x = 1 y = 0 }
-		logistics_company = { x = 1 y = 1 }
+		recon = { x = 0 y = 3 }
+		logistics_company = { x = 0 y = 4 }
 	}
 }
 division_template = {
@@ -73,13 +89,21 @@ division_template = {
 		mot_artillery_brigade = { x = 3 y = 1 }
 		mot_artillery_brigade = { x = 3 y = 2 }
 	}
+	regimental_support = {
+		artillery = { x = 0 y = 0 }
+		artillery = { x = 1 y = 0 }
+		artillery = { x = 2 y = 0 }
+		anti_tank = { x = 0 y = 1 }
+		anti_tank = { x = 1 y = 1 }
+		anti_tank = { x = 2 y = 1 }
+	}
 	
 	support = {
         engineer = { x = 0 y = 0 }
         mot_field_hospital = { x = 0 y = 1 }
 		mot_signal_company = { x = 0 y = 2 }
-		mot_recon = { x = 1 y = 0 }
-		logistics_company = { x = 1 y = 1 }
+		mot_recon = { x = 0 y = 3 }
+		logistics_company = { x = 0 y = 4 }
 	}
 }
 division_template = {
@@ -1035,6 +1059,15 @@ instant_effect = {
 		progress = 0.3
 		efficiency = 50
 	}
+	add_equipment_production = {
+		equipment = {
+			type = anti_tank_equipment_1
+			creator = "FRA" 
+		}
+		requested_factories = 2
+		progress = 0.3
+		efficiency = 50
+	}
 	
 	add_equipment_production = {
 		equipment = {
@@ -1072,6 +1105,15 @@ instant_effect = {
 			creator = "FRA" 
 		}
 		requested_factories = 1
+		progress = 0.4
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = motorbike_equipment_1
+			creator = "FRA" 
+		}
+		requested_factories = 2
 		progress = 0.4
 		efficiency = 50
 	}

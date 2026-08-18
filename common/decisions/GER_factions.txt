@@ -436,11 +436,11 @@ GER_internal_factions = {
 				regimental_support = {
 					medium_tank_destroyer = { x = 0 y = 0 }
 					
-					artillery = { x = 1 y = 0 }
-					anti_tank = { x = 1 y = 1 }
+					artillery_company = { x = 1 y = 0 }
+					anti_tank_company = { x = 1 y = 1 }
 					
-					artillery = { x = 2 y = 0 }
-					anti_tank = { x = 2 y = 1 }
+					artillery_company = { x = 2 y = 0 }
+					anti_tank_company = { x = 2 y = 1 }
 				}
 				support = {
 					engineer = { x = 0 y = 0 }
@@ -3039,7 +3039,7 @@ GER_internal_factions = {
 		cost = 5
 		fire_only_once = yes
 		ai_will_do = {
-			factor = 10
+			factor = 100
 		}
 		
 		days_remove = 30
@@ -3047,11 +3047,12 @@ GER_internal_factions = {
 		remove_effect = {
 			division_template = {
 				name = "Großdeutschland Motorisierte-Division"
-				template_counter = 155
 				priority = 3
 				is_locked = yes
 				
 				regiments = {
+					medium_armor = { x = 0 y = 0 }
+					medium_armor = { x = 0 y = 0 }
 					medium_armor = { x = 0 y = 0 }
 					
 					motorized = { x = 1 y = 0 }
@@ -3062,30 +3063,25 @@ GER_internal_factions = {
 					motorized = { x = 2 y = 1 }
 					motorized = { x = 2 y = 2 }
 					
-					motorized = { x = 3 y = 0 }
-					motorized = { x = 3 y = 1 }
-					motorized = { x = 3 y = 2 }
+					mot_artillery_brigade = { x = 3 y = 0 }
+					mot_artillery_brigade = { x = 3 y = 1 }
+					motorized_heavy_artillery_brigade = { x = 3 y = 2 }
 					
-					mot_artillery_brigade = { x = 4 y = 0 }
-					mot_artillery_brigade = { x = 4 y = 1 }
-					mot_artillery_brigade = { x = 4 y = 2 }
-					
-					mot_anti_tank_brigade = { x = 5 y = 0 }
+					mot_anti_tank_brigade = { x = 4 y = 0 }
+					mot_anti_tank_brigade = { x = 4 y = 1 }
+					medium_tank_destroyer_brigade = { x = 4 y = 2 }
 				}
 				regimental_support = {
 					armored_signal = { x = 0 y = 0 }
 					armored_maintenance = { x = 0 y = 1 }
+			
+					artillery_company = { x = 1 y = 0 }
+					anti_tank_company = { x = 1 y = 1 }
 					
-					artillery = { x = 1 y = 0 }
-					anti_tank = { x = 1 y = 1 }
+					artillery_company = { x = 2 y = 0 }
+					anti_tank_company = { x = 2 y = 1 }
 					
-					artillery = { x = 2 y = 0 }
-					anti_tank = { x = 2 y = 1 }
-					
-					artillery = { x = 3 y = 0 }
-					anti_tank = { x = 3 y = 1 }
-					
-					medium_tank_destroyer = { x = 5 y = 0 }
+					medium_tank_destroyer = { x = 4 y = 0 }
 				}
 				support = {
 					assault_engineer = { x = 0 y = 0 }
@@ -3108,14 +3104,14 @@ GER_internal_factions = {
 
 		available = {
 			OR = {
-				date > 1943.4.1
+				date > 1942.6.1
 				hidden_trigger = {has_country_flag = general_debug}
 			}
 		}
 		
 		visible = {
 			OR = {
-				date > 1943.1.1
+				date > 1942.2.1
 				hidden_trigger = {has_country_flag = general_debug}
 			}
 		}
@@ -3130,43 +3126,44 @@ GER_internal_factions = {
 		
 		remove_effect = {
 			division_template = {
-				name = "Luftwaffen-Panzer-Division"
-				template_counter = 155
+				name = "Luftwaffen-Division"
 				priority = 3
 				is_locked = yes
 				
 				regiments = {
 					medium_armor = { x = 0 y = 0 }
-					medium_armor = { x = 0 y = 1 }
-					medium_armor = { x = 0 y = 2 }
-					medium_armor = { x = 0 y = 3 }
 					
 					motorized = { x = 1 y = 0 }
 					motorized = { x = 1 y = 1 }
 					motorized = { x = 1 y = 2 }
-					motorized = { x = 1 y = 3 }
 					
 					motorized = { x = 2 y = 0 }
 					motorized = { x = 2 y = 1 }
 					motorized = { x = 2 y = 2 }
-					motorized = { x = 2 y = 3 }
 					
-					mot_anti_tank_brigade = { x = 3 y = 1 }
-					mot_artillery_brigade = { x = 3 y = 2 }
-					mot_artillery_brigade = { x = 3 y = 3 }
+					motorized = { x = 3 y = 0 }
+					motorized = { x = 3 y = 1 }
+					motorized = { x = 3 y = 2 }
+					
+					mot_artillery_brigade = { x = 4 y = 0 }
+					mot_artillery_brigade = { x = 4 y = 1 }
+					motorized_heavy_artillery_brigade = { x = 4 y = 2 }
+					
+					mot_anti_tank_brigade = { x = 5 y = 0 }
+					mot_anti_tank_brigade = { x = 5 y = 1 }
 				}
-				regimental_support = {
-					armored_signal = { x = 0 y = 0 }
-					armored_maintenance = { x = 0 y = 1 }
+				regimental_support = {				
+					artillery_company = { x = 1 y = 0 }
+					anti_tank_company = { x = 1 y = 1 }
 					
-					artillery = { x = 1 y = 0 }
-					anti_tank = { x = 1 y = 1 }
+					artillery_company = { x = 2 y = 0 }
+					anti_tank_company = { x = 2 y = 1 }
 					
-					artillery = { x = 2 y = 0 }
-					anti_tank = { x = 2 y = 1 }
+					artillery_company = { x = 3 y = 0 }
+					anti_tank_company = { x = 3 y = 1 }
 					
-					medium_tank_destroyer = { x = 3 y = 0 }
-					anti_air_battery = { x = 3 y = 1 }
+					medium_tank_destroyer = { x = 5 y = 0 }
+					anti_air_battery = { x = 5 y = 1 }
 				}
 				support = {
 					assault_engineer = { x = 0 y = 0 }
@@ -3180,6 +3177,118 @@ GER_internal_factions = {
 			}
 			custom_effect_tooltip = herman_goering_recruitment_tt
 			country_event = ss_recruitment_event.56
+			set_country_flag = hermann_goring_done
+		}
+	}
+	
+	
+	hermann_goering_refit = {
+
+		icon = GFX_decision_ss_icon
+
+		allowed = {
+			original_tag = GER
+		}
+		
+		available = {
+			OR = {
+				date > 1943.4.1
+				hidden_trigger = {has_country_flag = general_debug}
+			}
+		}
+		
+		visible = {
+			has_country_flag = hermann_goring_done
+		}
+		
+		visible = {
+			AND = {
+				has_idea = heinrich_himmler
+				hidden_trigger = {
+					OR = {
+						date > 1943.2.1
+						has_country_flag = general_debug
+					}
+				}
+			}
+		}
+
+		cost = 5
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 14
+		
+		complete_effect = {
+			hidden_effect = {
+				GER = {
+					delete_unit_template_and_units = {
+						division_template = "Luftwaffen-Division"
+						disband = yes
+					}
+				}
+			}
+			division_template = {
+				name = "Luftwaffen-Panzer-Division"
+				priority = 3
+				is_locked = yes
+				
+				regiments = {
+					medium_armor = { x = 0 y = 0 }
+					medium_armor = { x = 0 y = 1 }
+					medium_armor = { x = 0 y = 2 }
+					
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+					
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+					
+					mot_artillery_brigade = { x = 3 y = 0 }
+					mot_artillery_brigade = { x = 3 y = 1 }
+					motorized_heavy_artillery_brigade = { x = 3 y = 2 }
+					
+					mot_anti_tank_brigade = { x = 4 y = 0 }
+					mot_anti_tank_brigade = { x = 4 y = 1 }
+					mot_anti_tank_brigade = { x = 4 y = 2 }
+				}
+				regimental_support = {	
+					armored_signal = { x = 0 y = 0 }
+					armored_maintenance = { x = 0 y = 1 }
+					
+					artillery_company = { x = 1 y = 0 }
+					anti_tank_company = { x = 1 y = 1 }
+					
+					artillery_company = { x = 2 y = 0 }
+					anti_tank_company = { x = 2 y = 1 }
+					
+					medium_tank_destroyer = { x = 4 y = 0 }
+					anti_air_battery = { x = 4 y = 1 }
+				}
+				support = {
+					assault_engineer = { x = 0 y = 0 }
+					motorbike_recon = { x = 0 y = 1 }
+					armored_car_recon = { x = 0 y = 2 }
+					mot_field_hospital = { x = 0 y = 3 }
+					mot_maintenance_company = { x = 0 y = 4 }
+					pontoneer_support = { x = 0 y = 5 }
+					logistics_company = { x = 0 y = 6 }
+				}
+			}
+		}
+		remove_effect = {
+			set_country_flag = luftwaffen_early_refit_done
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 64 }
+				create_unit = {
+					division = "name = \"Luftwaffen-Panzer-Division\" division_template = \"Luftwaffen-Panzer-Division\" start_experience_factor = 1 start_equipment_factor = 0.4" 
+					owner = GER
+				}
+			}
 		}
 	}
 	
@@ -3252,7 +3361,7 @@ GER_internal_factions = {
 				}
 			}
 			OR = {
-				date > 1940.8.1
+				date > 1941.3.1
 				hidden_trigger = { has_country_flag = general_debug }
 			}
 		}
@@ -3262,7 +3371,7 @@ GER_internal_factions = {
 				has_idea = heinrich_himmler
 				hidden_trigger = {
 					OR = {
-						date > 1940.5.1
+						date > 1941.3.1
 						has_country_flag = general_debug
 					}
 				}
@@ -3344,7 +3453,7 @@ GER_internal_factions = {
 				}
 			}
 			OR = {
-				date > 1942.6.1
+				date > 1942.2.1
 				hidden_trigger = { has_country_flag = general_debug }
 			}
 		}
@@ -3355,7 +3464,7 @@ GER_internal_factions = {
 				has_idea = heinrich_himmler
 				hidden_trigger = {
 					OR = {
-						date > 1942.3.1
+						date > 1942.2.1
 						has_country_flag = general_debug
 					}
 				}

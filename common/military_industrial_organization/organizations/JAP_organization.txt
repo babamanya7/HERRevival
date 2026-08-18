@@ -31,11 +31,8 @@ JAP_hitachi_organization = {
 		}
 
 		equipment_bonus = {
-			armor_value = -0.2
+			armor_value = -0.08
 			build_cost_ic = -0.05
-			soft_attack = 0.08
-			hard_attack = 0.08
-			ap_attack = 0.08
 			defense = -0.05
 		}
 	}
@@ -201,12 +198,9 @@ JAP_isuzu_organization = {
 			production_efficiency_gain_factor = 0.15
 		}
 		equipment_bonus = {
-			soft_attack = 0.05
-			hard_attack = 0.05
-			ap_attack = 0.05
 			maximum_speed = 0.08
-			armor_value = 0.05
 			breakthrough = -0.05
+			reliability = 0.04
 		}
 	}
 	
@@ -408,8 +402,6 @@ JAP_mitsubishi_organization = {
 		}
 		equipment_bonus = {
 			soft_attack = 0.05
-			hard_attack = -0.05
-			ap_attack = -0.05
 			reliability = 0.05
 			maximum_speed = 0.03
 			armor_value = -0.08

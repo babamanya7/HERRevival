@@ -42,14 +42,10 @@ GER_porsche_organization = {
 		}
 		
 		equipment_bonus = {
-			armor_value = 0.2
-			breakthrough = 0.15
-			soft_attack = 0.05
-			hard_attack = 0.2
-			ap_attack = 0.22
-			reliability = -0.15
-			build_cost_ic = 0.15
-			fuel_consumption = 0.15
+			armor_value = 0.08
+			breakthrough = 0.05
+			reliability = -0.08
+			build_cost_ic = 0.08
 		}
 	}
 
@@ -205,14 +201,10 @@ GER_henschel_organization = {
 		}
 		
 		equipment_bonus = {
-			reliability = -0.1
-			armor_value = 0.2
-			soft_attack = 0.08
-			hard_attack = 0.12
-			ap_attack = 0.12
-			breakthrough = 0.1
-			build_cost_ic = 0.1
-			fuel_consumption = 0.1
+			reliability = -0.05
+			armor_value = 0.08
+			breakthrough = 0.05
+			build_cost_ic = 0.05
 		}
 	}
 	
@@ -513,11 +505,8 @@ GER_krupp_organization = {
 		}
 		equipment_bonus = {
 			reliability = 0.02
-			armor_value = -0.05
-			soft_attack = 0.12
-			hard_attack = -0.05
-			ap_attack = -0.05
-			breakthrough = 0.1
+			soft_attack = 0.05
+			breakthrough = 0.04
 		}
 	}
 	
@@ -566,71 +555,6 @@ GER_krupp_organization = {
 		production_bonus = {
 			production_cost_factor = -0.05
 			production_capacity_factor = 0.25
-		}
-	}
-
-	trait = {
-		token = mio_krupp_kwk30_gun
-		name = mio_krupp_kwk30_gun
-		icon = GFX_generic_mio_department_icon_tank_light_tank_weapons
-
-		position = { x=0 y=0 }
-		
-		limit_to_equipment_type = { light_tank_chassis_2 }
-		
-		equipment_bonus = {
-			breakthrough = 0.03
-			soft_attack = 0.04
-		}
-	}
-
-	trait = {
-		token = mio_krupp_simplified_suspension
-		name = mio_krupp_simplified_suspension
-		icon = GFX_generic_mio_trait_icon_reliability
-
-		position = { x=0 y=1 }
-		relative_position_id = mio_krupp_kwk30_gun
-		limit_to_equipment_type = { light_tank_chassis_2 }
-
-		all_parents = { mio_krupp_kwk30_gun }
-		
-		equipment_bonus = {
-			reliability = 0.05
-		}
-	}
-
-	trait = {
-		token = mio_krupp_standartization
-		name = mio_krupp_standartization
-		icon = GFX_generic_mio_trait_icon_production_capacity
-
-		position = { x=0 y=1 }
-		relative_position_id = mio_krupp_simplified_suspension
-		limit_to_equipment_type = { light_tank_chassis_2 }
-
-		all_parents = { mio_krupp_simplified_suspension }
-		
-		production_bonus = {
-			production_efficiency_cap_factor = 0.05
-			production_cost_factor = -0.03
-		}
-	}
-
-	trait = {
-		token = mio_krupp_kwk38_gun
-		name = mio_krupp_kwk38_gun
-		icon = GFX_generic_mio_trait_icon_hard_attack
-
-		position = { x=0 y=1 }
-		relative_position_id = mio_krupp_standartization
-		limit_to_equipment_type = { light_tank_chassis_2 }
-
-		all_parents = { mio_krupp_standartization }
-		
-		equipment_bonus = {
-			hard_attack = 0.04
-			ap_attack = 0.04
 		}
 	}
 
@@ -865,8 +789,10 @@ GER_man_organization = {
 
 	tree_header_text = {
 		text = mio_man_pz_v
-		x = 2
+		x = 5
 	}
+	tree_header_text = { text = mio_man_pz_ii x = 0 }
+	tree_header_text = { text = mio_man_luchs x = 2 }
 	
 	initial_trait = {
 		name = mio_man_initial_trait
@@ -876,15 +802,64 @@ GER_man_organization = {
 			military_industrial_organization_funds_gain = 1.0
 		}
 
-		equipment_bonus = {
-			reliability = -0.05
-			armor_value = 0.2
-			soft_attack = 0.05
-			hard_attack = 0.1
-			ap_attack = 0.12
-			breakthrough = 0.1
-			build_cost_ic = 0.08
-		}
+		equipment_bonus = { reliability = 0.03 maximum_speed = 0.03 breakthrough = 0.03 }
+	}
+
+	trait = {
+		token = mio_man_pz_ii_autocannon
+		name = mio_man_pz_ii_autocannon
+		icon = GFX_generic_mio_department_icon_tank_light_tank_weapons
+		position = { x=0 y=0 }
+		limit_to_equipment_type = { light_tank_chassis_2 }
+		equipment_bonus = { soft_attack = 0.05 breakthrough = 0.03 }
+	}
+	trait = {
+		token = mio_man_pz_ii_suspension
+		name = mio_man_pz_ii_suspension
+		icon = GFX_generic_mio_trait_icon_reliability
+		position = { x=0 y=1 }
+		relative_position_id = mio_man_pz_ii_autocannon
+		all_parents = { mio_man_pz_ii_autocannon }
+		limit_to_equipment_type = { light_tank_chassis_2 }
+		equipment_bonus = { reliability = 0.06 maximum_speed = 0.03 }
+	}
+	trait = {
+		token = mio_man_pz_ii_standardization
+		name = mio_man_pz_ii_standardization
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		position = { x=0 y=1 }
+		relative_position_id = mio_man_pz_ii_suspension
+		all_parents = { mio_man_pz_ii_suspension }
+		limit_to_equipment_type = { light_tank_chassis_2 }
+		production_bonus = { production_efficiency_cap_factor = 0.05 production_cost_factor = -0.03 }
+	}
+	trait = {
+		token = mio_man_pz_ii_kwk38
+		name = mio_man_pz_ii_kwk38
+		icon = GFX_generic_mio_trait_icon_hard_attack
+		position = { x=0 y=1 }
+		relative_position_id = mio_man_pz_ii_standardization
+		all_parents = { mio_man_pz_ii_standardization }
+		limit_to_equipment_type = { light_tank_chassis_2 }
+		equipment_bonus = { hard_attack = 0.06 ap_attack = 0.07 }
+	}
+	trait = {
+		token = mio_man_luchs_reconnaissance
+		name = mio_man_luchs_reconnaissance
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+		position = { x=2 y=0 }
+		limit_to_equipment_type = { light_tank_chassis_3 }
+		equipment_bonus = { maximum_speed = 0.08 breakthrough = 0.04 }
+	}
+	trait = {
+		token = mio_man_luchs_compact_armor
+		name = mio_man_luchs_compact_armor
+		icon = GFX_generic_mio_trait_icon_armor_value
+		position = { x=0 y=1 }
+		relative_position_id = mio_man_luchs_reconnaissance
+		all_parents = { mio_man_luchs_reconnaissance }
+		limit_to_equipment_type = { light_tank_chassis_3 }
+		equipment_bonus = { armor_value = 0.06 defense = 0.04 }
 	}
 
 	trait = {
@@ -892,7 +867,7 @@ GER_man_organization = {
 		name = mio_man_welded_armor
 		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
 
-		position = { x=2 y=0 }
+		position = { x=5 y=0 }
 		
 		equipment_bonus = {
 			armor_value = 0.15

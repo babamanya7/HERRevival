@@ -157,11 +157,9 @@ USA_army_ordnance_department_organization = {
 			production_cost_factor = -0.03
 		}
 		equipment_bonus = {
-			soft_attack = 0.05
-			hard_attack = 0.05
-			ap_attack = 0.05
-			breakthrough = 0.05
 			reliability = 0.05
+			breakthrough = 0.03
+			build_cost_ic = -0.02
 		}
 	}
 	

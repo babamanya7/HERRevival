@@ -105,12 +105,9 @@ SOV_morozov_design_bureau_organization = {
 			production_capacity_factor = 0.1
 		}
 		equipment_bonus = {
-			soft_attack = 0.05
-			hard_attack = 0.05
-			ap_attack = 0.05
-			armor_value = 0.08
+			armor_value = 0.05
 			maximum_speed = 0.05
-			defense = -0.05
+			breakthrough = 0.03
 		}
 	}
 
@@ -546,14 +543,10 @@ SOV_astrov_design_bureau_organization = {
 		}
 		
 		equipment_bonus = {
-			armor_value = -0.1
+			armor_value = -0.05
 			reliability = 0.04
 			maximum_speed = 0.07
-			fuel_consumption = 0.1
-			soft_attack = 0.08
-			hard_attack = -0.05
-			ap_attack = -0.05
-			breakthrough = -0.08
+			breakthrough = -0.04
 		}
 	}
 
@@ -794,14 +787,10 @@ SOV_kirov_organization = {
 		}
 		
 		equipment_bonus = {
-			armor_value = 0.2
-			reliability = -0.1
-			maximum_speed = -0.08
-			fuel_consumption = 0.05
-			soft_attack = 0.08
-			hard_attack = 0.08
-			ap_attack = 0.08
-			breakthrough = 0.08
+			armor_value = 0.08
+			reliability = -0.05
+			maximum_speed = -0.05
+			breakthrough = 0.05
 		}
 	}
 	

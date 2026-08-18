@@ -115,6 +115,7 @@ mio_cat_eng_vickers_tanks = {
 	equipment_type = {
 		light_tank_chassis_2
 		light_tank_chassis_3
+		medium_tank_chassis_1
 		medium_tank_chassis_2
 		medium_tank_chassis_3
 		light_tank_destroyer_chassis
@@ -124,6 +125,7 @@ mio_cat_eng_vickers_tanks = {
 
 mio_cat_eng_infantry_tanks = {
 	equipment_type = {
+		heavy_tank_chassis_1
 		heavy_tank_chassis_2
 		heavy_tank_chassis_3
 		heavy_tank_destroyer_chassis
@@ -132,9 +134,12 @@ mio_cat_eng_infantry_tanks = {
 
 mio_cat_fra_renault_tanks = {
 	equipment_type = {
+		light_tank_chassis_1
 		light_tank_chassis_2
 		light_tank_chassis_3
+		heavy_tank_chassis_1
 		heavy_tank_chassis_2
+		heavy_tank_chassis_3
 		heavy_tank_destroyer_chassis_2
 	}
 }

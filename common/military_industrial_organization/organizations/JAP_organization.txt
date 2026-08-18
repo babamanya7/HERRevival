@@ -10,260 +10,553 @@
 
 JAP_hitachi_organization = {
 	icon = GFX_idea_hitachi
-	allowed = {	
+
+	allowed = {
 		tag = JAP
 	}
-	
-	equipment_type = { mio_cat_hitachi_designer }
-	research_categories = { cat_medium_armor }
-	
+
+	equipment_type = {
+		medium_tank_destroyer_chassis_1
+		medium_tank_destroyer_chassis_2
+		medium_tank_artillery_chassis_1
+	}
+
+	research_categories = {
+		cat_medium_armor
+	}
+
 	tree_header_text = {
 		text = mio_header_honi
-		x = 4
+		x = 2
 	}
-	
+
+	tree_header_text = {
+		text = mio_header_chiha_120
+		x = 6
+	}
+
 	initial_trait = {
 		name = mio_hitachi_inital_trait
 
-		limit_to_equipment_type = { mio_cat_hitachi_designer }
-		
 		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+			military_industrial_organization_funds_gain = 0.75
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.03
 		}
 
 		equipment_bonus = {
-			armor_value = -0.08
-			build_cost_ic = -0.05
-			defense = -0.05
+			reliability = 0.03
+			armor_value = -0.04
+			build_cost_ic = -0.02
 		}
 	}
-	
-	add_trait = {
-		token = mio_hitachi_hara_transmission
-		name = mio_hitachi_hara_transmission
-		icon = GFX_generic_mio_trait_icon_reliability
 
-		position = { x=4 y=0 }
-		
-		limit_to_equipment_type = { mio_cat_hitachi_designer }
-		
-		equipment_bonus = {
-			reliability = 0.04
-			breakthrough = 0.05
-		}
-	}
-	
-	add_trait = {
-		token = mio_hitachi_diesel_engine
-		name = mio_hitachi_diesel_engine
-		icon = GFX_generic_mio_department_icon_tank_medium_tank_engine
+	########################
+	######## HO-NI I #######
+	########################
 
-		position = { x=0 y=1 }
-		
-		limit_to_equipment_type = { mio_cat_hitachi_designer }
-		all_parents = { mio_hitachi_hara_transmission }
-		relative_position_id = mio_hitachi_hara_transmission
-		
+	add_trait = {
+		token = mio_hitachi_honi1
+		name = mio_hitachi_honi1
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+
+		position = { x=2 y=0 }
+
+		limit_to_equipment_type = {
+			medium_tank_destroyer_chassis_1
+		}
+
 		equipment_bonus = {
-			reliability = 0.05
-			maximum_speed = 0.02
+			hard_attack = 0.06
+			ap_attack = 0.07
+			soft_attack = 0.03
+			build_cost_ic = -0.02
 		}
 	}
-	
+
 	add_trait = {
-		token = mio_hitachi_75mmfieldgun
-		name = mio_hitachi_75mmfieldgun
+		token = mio_hitachi_honi1_type90
+		name = mio_hitachi_honi1_type90
 		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
 
 		position = { x=-1 y=1 }
-		
-		limit_to_equipment_type = { medium_tank_destroyer_chassis_1 }
-		
-		all_parents = { mio_hitachi_diesel_engine }
-		relative_position_id = mio_hitachi_diesel_engine
-		mutually_exclusive = { mio_hitachi_105mmgun }
-		
-		equipment_bonus = {
-			soft_attack = 0.08
-			hard_attack = 0.15
-			ap_attack = 0.18
-			defense = 0.03
-			breakthrough = 0.03
-		}
-	}
-	
-	add_trait = {
-		token = mio_hitachi_105mmgun
-		name = mio_hitachi_105mmgun
-		icon = GFX_generic_mio_department_icon_tank_medium_tank_spg
+		relative_position_id = mio_hitachi_honi1
 
-		position = { x=0 y=1 }
-		
-		limit_to_equipment_type = { medium_tank_destroyer_chassis_1 }
-		
-		all_parents = { mio_hitachi_diesel_engine }
-		relative_position_id = mio_hitachi_diesel_engine
-		mutually_exclusive = { mio_hitachi_75mmfieldgun }
-		
+		all_parents = {
+			mio_hitachi_honi1
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_destroyer_chassis_1
+		}
+
 		equipment_bonus = {
-			soft_attack = 0.08
-			hard_attack = 0.05
-			defense = 0.05
-			breakthrough = 0.05
+			soft_attack = 0.04
+			hard_attack = 0.11
+			ap_attack = 0.13
 		}
 	}
-	
+
 	add_trait = {
-		token = mio_hitachi_open_kazemat
-		name = mio_hitachi_open_kazemat
+		token = mio_hitachi_honi1_open_casemate
+		name = mio_hitachi_honi1_open_casemate
 		icon = GFX_generic_mio_department_icon_tank_medium_tank_quality
 
 		position = { x=1 y=1 }
-		
-		limit_to_equipment_type = { medium_tank_destroyer_chassis_1 }
-		
-		any_parent = { mio_hitachi_105mmgun mio_hitachi_75mmfieldgun }
-		relative_position_id = mio_hitachi_75mmfieldgun
-		
-		equipment_bonus = {
-			armor_value = -0.15
-			defense = 0.03
-			breakthrough = 0.03
-			hardness = -0.2
-		}
-	}
-	
-	add_trait = {
-		token = mio_hitachi_75mmtankgun
-		name = mio_hitachi_75mmtankgun
-		icon = GFX_generic_mio_department_icon_tank_medium_tank_weapons
+		relative_position_id = mio_hitachi_honi1
 
-		position = { x=1 y=1 }
-		
-		limit_to_equipment_type = { medium_tank_destroyer_chassis_2 }
-		
-		all_parents = { mio_hitachi_diesel_engine }
-		relative_position_id = mio_hitachi_diesel_engine
-		
+		all_parents = {
+			mio_hitachi_honi1
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_destroyer_chassis_1
+		}
+
 		equipment_bonus = {
-			soft_attack = 0.03
-			hard_attack = 0.15
-			ap_attack = 0.18
+			defense = -0.03
+			armor_value = -0.04
+			build_cost_ic = -0.05
 		}
 	}
-	
+
 	add_trait = {
-		token = mio_hitachi_kazemat
-		name = mio_hitachi_kazemat
+		token = mio_hitachi_honi1_production
+		name = mio_hitachi_honi1_production
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+
+		position = { x=1 y=0 }
+		relative_position_id = mio_hitachi_honi1_type90
+
+		all_parents = {
+			mio_hitachi_honi1_type90
+			mio_hitachi_honi1_open_casemate
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_destroyer_chassis_1
+		}
+
+		equipment_bonus = {
+			reliability = 0.03
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.05
+			production_efficiency_gain_factor = 0.05
+		}
+	}
+
+	########################
+	####### HO-NI II #######
+	########################
+
+	add_trait = {
+		token = mio_hitachi_honi2
+		name = mio_hitachi_honi2
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+
+		position = { x=2 y=2 }
+
+		all_parents = {
+			mio_hitachi_honi1_production
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_destroyer_chassis_2
+		}
+
+		equipment_bonus = {
+			armor_value = 0.04
+			reliability = 0.03
+			hard_attack = 0.07
+			ap_attack = 0.08
+			build_cost_ic = 0.01
+		}
+	}
+
+	add_trait = {
+		token = mio_hitachi_honi2_gun
+		name = mio_hitachi_honi2_gun
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+
+		position = { x=-1 y=1 }
+		relative_position_id = mio_hitachi_honi2
+
+		all_parents = {
+			mio_hitachi_honi2
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_destroyer_chassis_2
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.05
+			hard_attack = 0.11
+			ap_attack = 0.13
+		}
+	}
+
+	add_trait = {
+		token = mio_hitachi_honi2_casemate
+		name = mio_hitachi_honi2_casemate
 		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
 
-		position = { x=0 y=1 }
-		
-		limit_to_equipment_type = { medium_tank_destroyer_chassis_2 }
-		
-		all_parents = { mio_hitachi_75mmtankgun }
-		relative_position_id = mio_hitachi_75mmtankgun
-		
+		position = { x=1 y=1 }
+		relative_position_id = mio_hitachi_honi2
+
+		all_parents = {
+			mio_hitachi_honi2
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_destroyer_chassis_2
+		}
+
 		equipment_bonus = {
-			armor_value = 0.15
-			hardness = 0.2
+			armor_value = 0.06
+			defense = 0.04
+			breakthrough = -0.02
 		}
 	}
-	
+
+	add_trait = {
+		token = mio_hitachi_late_honi2
+		name = mio_hitachi_late_honi2
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_technology
+		special_trait_background = yes
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_hitachi_honi2_gun
+
+		all_parents = {
+			mio_hitachi_honi2_gun
+			mio_hitachi_honi2_casemate
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_destroyer_chassis_2
+		}
+
+		equipment_bonus = {
+			reliability = 0.04
+			hard_attack = 0.03
+			ap_attack = 0.03
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.03
+		}
+	}
+
+	########################
+	##### CHI-HA 120 #######
+	########################
+
+	add_trait = {
+		token = mio_hitachi_chiha120
+		name = mio_hitachi_chiha120
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_spg
+
+		position = { x=6 y=0 }
+
+		limit_to_equipment_type = {
+			medium_tank_artillery_chassis_1
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.10
+			breakthrough = 0.05
+			reliability = -0.02
+			build_cost_ic = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_hitachi_chiha120_naval_gun
+		name = mio_hitachi_chiha120_naval_gun
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_spg
+
+		position = { x=-1 y=1 }
+		relative_position_id = mio_hitachi_chiha120
+
+		all_parents = {
+			mio_hitachi_chiha120
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_artillery_chassis_1
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.15
+			breakthrough = 0.07
+			hard_attack = 0.03
+			build_cost_ic = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_hitachi_chiha120_assault
+		name = mio_hitachi_chiha120_assault
+		icon = GFX_generic_mio_trait_icon_soft_attack
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_hitachi_chiha120
+
+		all_parents = {
+			mio_hitachi_chiha120
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_artillery_chassis_1
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.07
+			breakthrough = 0.05
+			defense = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_hitachi_chiha120_limited_production
+		name = mio_hitachi_chiha120_limited_production
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_hitachi_chiha120_naval_gun
+
+		all_parents = {
+			mio_hitachi_chiha120_naval_gun
+			mio_hitachi_chiha120_assault
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_artillery_chassis_1
+		}
+
+		equipment_bonus = {
+			reliability = 0.03
+		}
+
+		production_bonus = {
+			production_efficiency_gain_factor = -0.03
+			production_cost_factor = 0.02
+		}
+	}
 }
 
 JAP_isuzu_organization = {
 	icon = GFX_idea_isuzu
-	allowed = {	
+
+	allowed = {
 		tag = JAP
 	}
-	
-	equipment_type = { mio_cat_isuzu_designer }
-	research_categories = { cat_light_armor }
-	
+
+	equipment_type = {
+		light_tank_chassis_3
+	}
+
+	research_categories = {
+		cat_light_armor
+	}
+
 	tree_header_text = {
 		text = mio_header_keni
-		x = 4
+		x = 2
 	}
-	
+
 	initial_trait = {
 		name = mio_isuzu_inital_trait
 
-		limit_to_equipment_type = { mio_cat_isuzu_designer }
-		
 		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+			military_industrial_organization_funds_gain = 0.75
 		}
 
 		production_bonus = {
-			production_resource_need_factor = 0.1
-			production_efficiency_gain_factor = 0.15
+			production_efficiency_gain_factor = 0.05
 		}
-		equipment_bonus = {
-			maximum_speed = 0.08
-			breakthrough = -0.05
-			reliability = 0.04
-		}
-	}
-	
-	add_trait = {
-		token = mio_isuzu_armor
-		name = mio_isuzu_armor
-		icon = GFX_generic_mio_department_icon_tank_light_tank_armor
 
-		position = { x=2 y=1 }
-		
-		limit_to_equipment_type = { mio_cat_isuzu_designer }
-		
-		equipment_bonus = {
-			armor_value = 0.2
-			hardness = 0.1
-		}
-	}
-	
-	add_trait = {
-		token = mio_isuzu_benz_engine
-		name = mio_isuzu_benz_engine
-		icon = GFX_generic_mio_department_icon_tank_light_tank_engine
-
-		position = { x=4 y=1 }
-		
-		limit_to_equipment_type = { mio_cat_isuzu_designer }
-		
 		equipment_bonus = {
 			maximum_speed = 0.05
+			reliability = 0.04
+			armor_value = -0.02
 		}
 	}
-	
+
+	########################
+	######## KE-NI #########
+	########################
+
 	add_trait = {
-		token = mio_isuzu_newpodveska
-		name = mio_isuzu_newpodveska
+		token = mio_isuzu_keni
+		name = mio_isuzu_keni
 		icon = GFX_generic_mio_department_icon_tank_light_tank_quality
 
-		position = { x=6 y=1 }
-		
-		limit_to_equipment_type = { mio_cat_isuzu_designer }
-		
+		position = { x=2 y=0 }
+
+		limit_to_equipment_type = {
+			light_tank_chassis_3
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.04
+			reliability = 0.03
+			breakthrough = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_isuzu_keni_diesel
+		name = mio_isuzu_keni_diesel
+		icon = GFX_generic_mio_department_icon_tank_light_tank_engine
+
+		position = { x=-1 y=1 }
+		relative_position_id = mio_isuzu_keni
+
+		all_parents = {
+			mio_isuzu_keni
+		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_3
+		}
+
+		equipment_bonus = {
+			reliability = 0.04
+			maximum_speed = 0.03
+			fuel_consumption = -0.04
+		}
+	}
+
+	add_trait = {
+		token = mio_isuzu_keni_suspension
+		name = mio_isuzu_keni_suspension
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_isuzu_keni
+
+		all_parents = {
+			mio_isuzu_keni
+		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_3
+		}
+
 		equipment_bonus = {
 			reliability = 0.05
 			maximum_speed = 0.03
-			build_cost_ic = 0.02
 		}
 	}
-	
+
+	add_trait = {
+		token = mio_isuzu_keni_armor
+		name = mio_isuzu_keni_armor
+		icon = GFX_generic_mio_department_icon_tank_light_tank_armor
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_isuzu_keni_diesel
+
+		all_parents = {
+			mio_isuzu_keni_diesel
+			mio_isuzu_keni_suspension
+		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_3
+		}
+
+		equipment_bonus = {
+			armor_value = 0.05
+			defense = 0.03
+			build_cost_ic = 0.01
+		}
+	}
+
 	add_trait = {
 		token = mio_isuzu_37mmgun
 		name = mio_isuzu_37mmgun
-		icon = GFX_generic_mio_department_icon_tank_light_tank_weapons
+		icon = GFX_generic_mio_department_icon_tank_light_tank_at
 
-		position = { x=0 y=2 }
-		
-		limit_to_equipment_type = { mio_cat_isuzu_designer }
-		any_parent = { mio_isuzu_newpodveska mio_isuzu_benz_engine mio_isuzu_armor }
-		relative_position_id = mio_isuzu_benz_engine
-		
+		position = { x=-1 y=1 }
+		relative_position_id = mio_isuzu_keni_armor
+
+		all_parents = {
+			mio_isuzu_keni_armor
+		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_3
+		}
+
 		equipment_bonus = {
-			soft_attack = 0.05
-			hard_attack = 0.12
-			ap_attack = 0.15
+			soft_attack = 0.03
+			hard_attack = 0.08
+			ap_attack = 0.10
+			breakthrough = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_isuzu_keni_lightweight
+		name = mio_isuzu_keni_lightweight
+		icon = GFX_generic_mio_department_icon_tank_light_tank_engine
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_isuzu_keni_armor
+
+		all_parents = {
+			mio_isuzu_keni_armor
+		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_3
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.04
+			reliability = 0.02
+			armor_value = -0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_isuzu_late_keni
+		name = mio_isuzu_late_keni
+		icon = GFX_generic_mio_department_icon_tank_light_tank_technology
+		special_trait_background = yes
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_isuzu_37mmgun
+
+		all_parents = {
+			mio_isuzu_37mmgun
+			mio_isuzu_keni_lightweight
+		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_3
+		}
+
+		equipment_bonus = {
+			reliability = 0.04
+			maximum_speed = 0.02
+			breakthrough = 0.03
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.03
+			production_efficiency_gain_factor = 0.05
 		}
 	}
 }
@@ -332,338 +625,868 @@ JAP_sasebo_naval_arsenal_organization = {
 
 JAP_mitsubishi_organization = {
 	icon = GFX_idea_mitsubishi
-	allowed = {	
+
+	allowed = {
 		tag = JAP
 	}
-	
-	
-	equipment_type = { mio_cat_mitsubishi_designer }
-	research_categories = { air_equipment mio_cat_tech_light_armor_and_modules }
-	
+
+	equipment_type = {
+		mio_cat_mitsubishi_designer
+	}
+
+	research_categories = {
+		air_equipment
+		mio_cat_tech_light_armor_and_modules
+		mio_cat_tech_medium_armor_and_modules
+	}
+
+	################################
+	######## TANK HEADERS ##########
+	################################
+
 	tree_header_text = {
-		text = mio_header_mitsubishi_lt_st1
+		text = mio_header_mitsubishi_hago
 		x = 0
 	}
+
 	tree_header_text = {
-		text = mio_header_mitsubishi_lt_st2
-		x = 1
-	}
-	tree_header_text = {
-		text = mio_header_mitsubishi_lt_st3
+		text = mio_header_mitsubishi_chiha
 		x = 2
 	}
+
 	tree_header_text = {
-		text = mio_header_mitsubishi_lt_st4
+		text = mio_header_mitsubishi_kami
 		x = 3
 	}
-	
+
+	################################
+	######## AIR HEADERS ###########
+	################################
+
 	tree_header_text = {
 		text = mio_header_mitsubishi_cvf1
 		x = 4
 	}
-	
+
 	tree_header_text = {
 		text = mio_header_mitsubishi_cvf2
 		x = 5
 	}
-	
+
 	tree_header_text = {
 		text = mio_header_mitsubishi_cvf3
 		x = 6
 	}
-	
+
 	tree_header_text = {
 		text = mio_header_mitsubishi_nb
 		x = 7
 	}
-	
+
 	tree_header_text = {
 		text = mio_header_mitsubishi_tb1
 		x = 8
 	}
-	
+
 	tree_header_text = {
 		text = mio_header_mitsubishi_tb2
 		x = 9
 	}
-	
+
 	initial_trait = {
 		name = mio_mitsubishi_inital_trait
 
-		limit_to_equipment_type = { mio_cat_mitsubishi_designer }
-		
+		limit_to_equipment_type = {
+			mio_cat_mitsubishi_designer
+		}
+
 		organization_modifier = {
 			military_industrial_organization_funds_gain = 0.5
 		}
 
 		production_bonus = {
-			production_resource_need_factor = -0.05
-			production_cost_factor = -0.05
+			production_resource_need_factor = -0.04
+			production_cost_factor = -0.03
 		}
+
 		equipment_bonus = {
-			soft_attack = 0.05
-			reliability = 0.05
-			maximum_speed = 0.03
-			armor_value = -0.08
+			reliability = 0.04
+			maximum_speed = 0.02
+			armor_value = -0.04
 		}
 	}
-	
+
+	################################
+	########## HA-GO ###############
+	################################
+
 	add_trait = {
-		token = mio_mitsubishi_asbest
-		name = mio_mitsubishi_asbest
+		token = mio_mitsubishi_hago
+		name = mio_mitsubishi_hago
 		icon = GFX_generic_mio_department_icon_tank_light_tank_quality
 
-		position = { x=1 y=0 }
-		
-		limit_to_equipment_type = { light_tank_chassis_1 light_tank_chassis_2 medium_tank_chassis }
-		
-		equipment_bonus = {
-			defense = 0.02
-			reliability = 0.02
-		}
-	}
-	
-	add_trait = {
-		token = mio_mitsubishi_luchki
-		name = mio_mitsubishi_luchki
-		icon = GFX_generic_mio_department_icon_tank_light_tank_quality
+		position = { x=0 y=0 }
 
-		position = { x=-1 y=1 }
-		
-		limit_to_equipment_type = { light_tank_chassis_1 light_tank_chassis_2 medium_tank_chassis_1 }
-		all_parents = { mio_mitsubishi_asbest }
-		relative_position_id = mio_mitsubishi_asbest
-		
+		limit_to_equipment_type = {
+			light_tank_chassis_1
+		}
+
 		equipment_bonus = {
-			reliability = 0.05
+			maximum_speed = 0.04
+			reliability = 0.03
+			breakthrough = 0.02
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_mitsubishi_hara_transmission
 		name = mio_mitsubishi_hara_transmission
 		icon = GFX_generic_mio_department_icon_tank_light_tank_engine
 
 		position = { x=0 y=1 }
-		
-		limit_to_equipment_type = { light_tank_chassis_1 light_tank_chassis_2 medium_tank_chassis }
-		all_parents = { mio_mitsubishi_asbest }
-		relative_position_id = mio_mitsubishi_asbest
-		
+		relative_position_id = mio_mitsubishi_hago
+
+		all_parents = {
+			mio_mitsubishi_hago
+		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_1
+		}
+
 		equipment_bonus = {
-			reliability = 0.04
-			breakthrough = 0.05
+			reliability = 0.05
+			maximum_speed = 0.03
 		}
 	}
-	
+
 	add_trait = {
-		token = mio_mitsubishi_transmission_mod
-		name = mio_mitsubishi_transmission_mod
-		icon = GFX_generic_mio_trait_icon_reliability
+		token = mio_mitsubishi_hago_37mm
+		name = mio_mitsubishi_hago_37mm
+		icon = GFX_generic_mio_department_icon_tank_light_tank_weapons
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_mitsubishi_hago
+
+		all_parents = {
+			mio_mitsubishi_hago
+		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_1
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.04
+			hard_attack = 0.05
+			ap_attack = 0.05
+		}
+	}
+
+	add_trait = {
+		token = mio_mitsubishi_hago_diesel
+		name = mio_mitsubishi_hago_diesel
+		icon = GFX_generic_mio_department_icon_tank_light_tank_engine
 
 		position = { x=0 y=1 }
-		
-		limit_to_equipment_type = { light_tank_chassis_1 light_tank_chassis_2 light_tank_amphibious_chassis_1 }
-		all_parents = { mio_mitsubishi_hara_transmission }
 		relative_position_id = mio_mitsubishi_hara_transmission
-		
+
+		all_parents = {
+			mio_mitsubishi_hara_transmission
+			mio_mitsubishi_hago_37mm
+		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_1
+		}
+
 		equipment_bonus = {
-			maximum_speed = 0.04
+			reliability = 0.04
+			fuel_consumption = -0.05
+			maximum_speed = 0.01
 		}
 	}
-	
+
 	add_trait = {
-		token = mio_mitsubishi_kami
-		name = mio_mitsubishi_kami
+		token = mio_mitsubishi_late_hago
+		name = mio_mitsubishi_late_hago
+		icon = GFX_generic_mio_department_icon_tank_light_tank_technology
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_mitsubishi_hago_diesel
+
+		all_parents = {
+			mio_mitsubishi_hago_diesel
+		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_1
+		}
+
+		equipment_bonus = {
+			reliability = 0.03
+			maximum_speed = 0.02
+			breakthrough = 0.02
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.04
+			production_efficiency_gain_factor = 0.05
+		}
+	}
+
+	################################
+	########## KE-NU ###############
+	################################
+
+	add_trait = {
+		token = mio_mitsubishi_kenu
+		name = mio_mitsubishi_kenu
 		icon = GFX_generic_mio_department_icon_tank_light_tank_quality
 
-		position = { x=-1 y=0 }
-		
-		limit_to_equipment_type = { light_tank_amphibious_chassis_1 }
-		any_parent = { mio_mitsubishi_transmission_mod mio_mitsubishi_luchki }
-		relative_position_id = mio_mitsubishi_transmission_mod
-		
+		position = { x=0 y=1 }
+		relative_position_id = mio_mitsubishi_late_hago
+
+		all_parents = {
+			mio_mitsubishi_late_hago
+		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_2
+		}
+
 		equipment_bonus = {
-			breakthrough = 0.05
-			defense = 0.05
-			build_cost_ic = 0.02
+			armor_value = 0.04
+			reliability = 0.03
+			breakthrough = 0.03
+			build_cost_ic = 0.01
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_mitsubishi_kenu_47mmgun
 		name = mio_mitsubishi_kenu_47mmgun
-		icon = GFX_generic_mio_department_icon_tank_light_tank_spg
+		icon = GFX_generic_mio_department_icon_tank_light_tank_at
 
-		position = { x=1 y=1 }
-		
-		limit_to_equipment_type = { light_tank_chassis_2 }
-		any_parent = { mio_mitsubishi_kami mio_mitsubishi_transmission_mod }
-		relative_position_id = mio_mitsubishi_kami
-		
-		equipment_bonus = {
-			soft_attack = 0.05
-			hard_attack = 0.18
-			ap_attack = 0.2
-			breakthrough = 0.05
+		position = { x=0 y=1 }
+		relative_position_id = mio_mitsubishi_kenu
+
+		all_parents = {
+			mio_mitsubishi_kenu
 		}
-	}
-	
-	add_trait = {
-		token = mio_mitsubishi_57mmhvgun
-		name = mio_mitsubishi_57mmhvgun
-		icon = GFX_generic_mio_department_icon_tank_light_tank_weapons
 
-		position = { x=1 y=0 }
-		
-		limit_to_equipment_type = { medium_tank_chassis_1 }
-		all_parents = { mio_mitsubishi_hara_transmission }
-		relative_position_id = mio_mitsubishi_hara_transmission
-		
+		limit_to_equipment_type = {
+			light_tank_chassis_2
+		}
+
 		equipment_bonus = {
-			soft_attack = 0.05
-			hard_attack = 0.12
+			soft_attack = 0.04
+			hard_attack = 0.10
 			ap_attack = 0.12
+			build_cost_ic = 0.02
 		}
 	}
-	
+
 	add_trait = {
-		token = mio_mitsubishi_small_tracks
-		name = mio_mitsubishi_small_tracks
+		token = mio_mitsubishi_kenu_running_gear
+		name = mio_mitsubishi_kenu_running_gear
 		icon = GFX_generic_mio_trait_icon_reliability
 
-		position = { x=0 y=1 }
-		
-		limit_to_equipment_type = { medium_tank_chassis_1 }
-		all_parents = { mio_mitsubishi_57mmhvgun }
-		relative_position_id = mio_mitsubishi_57mmhvgun
-		
+		position = { x=1 y=1 }
+		relative_position_id = mio_mitsubishi_kenu
+
+		all_parents = {
+			mio_mitsubishi_kenu
+		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_2
+		}
+
 		equipment_bonus = {
-			reliability = 0.02
-			maximum_speed = 0.04
+			reliability = 0.04
+			maximum_speed = 0.03
 		}
 	}
-	
+
 	add_trait = {
-		token = mio_mitsubishi_shinshoto
-		name = mio_mitsubishi_shinshoto
+		token = mio_mitsubishi_late_kenu
+		name = mio_mitsubishi_late_kenu
+		icon = GFX_generic_mio_department_icon_tank_light_tank_technology
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_mitsubishi_kenu_47mmgun
+
+		all_parents = {
+			mio_mitsubishi_kenu_47mmgun
+			mio_mitsubishi_kenu_running_gear
+		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_2
+		}
+
+		equipment_bonus = {
+			reliability = 0.03
+			hard_attack = 0.03
+			ap_attack = 0.03
+			breakthrough = 0.02
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.03
+		}
+	}
+
+	################################
+	########## CHI-HA ##############
+	################################
+
+	add_trait = {
+		token = mio_mitsubishi_chiha
+		name = mio_mitsubishi_chiha
 		icon = GFX_generic_mio_department_icon_tank_medium_tank_quality
 
-		position = { x=0 y=1 }
-		
-		limit_to_equipment_type = { medium_tank_chassis_1 }
-		all_parents = { mio_mitsubishi_small_tracks }
-		relative_position_id = mio_mitsubishi_small_tracks
-		
+		position = { x=1 y=2 }
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_1
+		}
+
 		equipment_bonus = {
-			armor_value = 0.05
-			soft_attack = 0.08
-			hard_attack = 0.08
-			ap_attack = 0.08
+			reliability = 0.03
+			maximum_speed = 0.03
+			breakthrough = 0.03
+			armor_value = 0.02
 		}
 	}
-	
-	add_trait = {
-		token = mio_mitsubishi_weld_armor
-		name = mio_mitsubishi_weld_armor
-		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
 
-		position = { x=2 y=0 }
-		
-		limit_to_equipment_type = { medium_tank_chassis_2 }
-		
-		
-		all_parents = { mio_mitsubishi_hara_transmission }
-		relative_position_id = mio_mitsubishi_hara_transmission
-		
-		equipment_bonus = {
-			armor_value = 0.1
-		}
-	}
-	
 	add_trait = {
-		token = mio_mitsubishi_diesel_enigne
-		name = mio_mitsubishi_diesel_enigne
-		icon = GFX_generic_mio_department_icon_tank_medium_tank_engine
+		token = mio_mitsubishi_chiha_57mm
+		name = mio_mitsubishi_chiha_57mm
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_weapons
 
 		position = { x=0 y=1 }
-		
-		limit_to_equipment_type = { medium_tank_chassis_2 }
-		
-		all_parents = { mio_mitsubishi_weld_armor }
-		relative_position_id = mio_mitsubishi_weld_armor
-		
+		relative_position_id = mio_mitsubishi_chiha
+
+		all_parents = {
+			mio_mitsubishi_chiha
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_1
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.07
+			breakthrough = 0.04
+			hard_attack = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_mitsubishi_chiha_hara
+		name = mio_mitsubishi_chiha_hara
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		position = { x=1 y=0 }
+		relative_position_id = mio_mitsubishi_chiha
+
+		all_parents = {
+			mio_mitsubishi_chiha
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_1
+		}
+
 		equipment_bonus = {
 			reliability = 0.05
 			maximum_speed = 0.02
 		}
 	}
-	
+
+	################################
+	#### SHINHOTO CHI-HA ###########
+	################################
+
+	add_trait = {
+		token = mio_mitsubishi_shinshoto
+		name = mio_mitsubishi_shinshoto
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_quality
+
+		position = { x=1 y=0 }
+		relative_position_id = mio_mitsubishi_chiha_57mm
+
+		all_parents = {
+			mio_mitsubishi_chiha_57mm
+			mio_mitsubishi_chiha_hara
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_1
+		}
+
+		equipment_bonus = {
+			breakthrough = 0.04
+			hard_attack = 0.05
+			ap_attack = 0.05
+			armor_value = 0.02
+			build_cost_ic = 0.01
+		}
+	}
+
+	add_trait = {
+		token = mio_mitsubishi_shinshoto_47mm
+		name = mio_mitsubishi_shinshoto_47mm
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+
+		position = { x=-1 y=1 }
+		relative_position_id = mio_mitsubishi_shinshoto
+
+		all_parents = {
+			mio_mitsubishi_shinshoto
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_1
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.03
+			hard_attack = 0.10
+			ap_attack = 0.12
+			build_cost_ic = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_mitsubishi_late_chiha
+		name = mio_mitsubishi_late_chiha
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_technology
+		special_trait_background = yes
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_mitsubishi_shinshoto
+
+		all_parents = {
+			mio_mitsubishi_shinshoto
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_1
+		}
+
+		equipment_bonus = {
+			reliability = 0.04
+			breakthrough = 0.03
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.04
+			production_efficiency_gain_factor = 0.05
+		}
+	}
+
+	################################
+	########## CHI-HE ##############
+	################################
+
+	add_trait = {
+		token = mio_mitsubishi_chihe
+		name = mio_mitsubishi_chihe
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_quality
+
+		position = { x=2 y=4 }
+
+		all_parents = {
+			mio_mitsubishi_shinshoto_47mm
+			mio_mitsubishi_late_chiha
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_2
+		}
+
+		equipment_bonus = {
+			armor_value = 0.05
+			reliability = 0.03
+			breakthrough = 0.04
+			build_cost_ic = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_mitsubishi_weld_armor
+		name = mio_mitsubishi_weld_armor
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_mitsubishi_chihe
+
+		all_parents = {
+			mio_mitsubishi_chihe
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_2
+		}
+
+		equipment_bonus = {
+			armor_value = 0.07
+			defense = 0.03
+			build_cost_ic = 0.01
+		}
+	}
+
+	add_trait = {
+		token = mio_mitsubishi_diesel_enigne
+		name = mio_mitsubishi_diesel_enigne
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_engine
+
+		position = { x=2 y=1 }
+		relative_position_id = mio_mitsubishi_chihe
+
+		all_parents = {
+			mio_mitsubishi_chihe
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_2
+		}
+
+		equipment_bonus = {
+			reliability = 0.05
+			maximum_speed = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_mitsubishi_chihe_47mm
+		name = mio_mitsubishi_chihe_47mm
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+
+		position = { x=1 y=0 }
+		relative_position_id = mio_mitsubishi_weld_armor
+
+		all_parents = {
+			mio_mitsubishi_weld_armor
+			mio_mitsubishi_diesel_enigne
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_2
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.03
+			hard_attack = 0.08
+			ap_attack = 0.09
+			breakthrough = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_mitsubishi_late_chihe
+		name = mio_mitsubishi_late_chihe
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_technology
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_mitsubishi_chihe_47mm
+
+		all_parents = {
+			mio_mitsubishi_chihe_47mm
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_2
+		}
+
+		equipment_bonus = {
+			reliability = 0.03
+			armor_value = 0.03
+			breakthrough = 0.03
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.03
+		}
+	}
+
+	################################
+	########## CHI-NU ##############
+	################################
+
+	add_trait = {
+		token = mio_mitsubishi_chinu
+		name = mio_mitsubishi_chinu
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_quality
+
+		position = { x=2 y=6 }
+
+		all_parents = {
+			mio_mitsubishi_late_chihe
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_3
+		}
+
+		equipment_bonus = {
+			armor_value = 0.04
+			breakthrough = 0.04
+			hard_attack = 0.04
+			ap_attack = 0.05
+			build_cost_ic = 0.03
+		}
+	}
+
 	add_trait = {
 		token = mio_mitsubishi_75mmgun
 		name = mio_mitsubishi_75mmgun
-		icon = GFX_generic_mio_department_icon_tank_medium_tank_weapons
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
 
-		position = { x=0 y=1 }
-		
-		limit_to_equipment_type = { medium_tank_chassis_3 }
-		
-		all_parents = { mio_mitsubishi_diesel_enigne }
-		relative_position_id = mio_mitsubishi_diesel_enigne
-		
+		position = { x=-1 y=1 }
+		relative_position_id = mio_mitsubishi_chinu
+
+		all_parents = {
+			mio_mitsubishi_chinu
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_3
+		}
+
 		equipment_bonus = {
-			soft_attack = 0.1
-			ap_attack = 0.18
-			hard_attack = 0.18
+			soft_attack = 0.05
+			hard_attack = 0.13
+			ap_attack = 0.15
+			build_cost_ic = 0.03
 		}
 	}
-	
+
 	add_trait = {
-		token = mio_mitsubishi_tracks
-		name = mio_mitsubishi_tracks
+		token = mio_mitsubishi_chinu_armor
+		name = mio_mitsubishi_chinu_armor
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_mitsubishi_chinu
+
+		all_parents = {
+			mio_mitsubishi_chinu
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_3
+		}
+
+		equipment_bonus = {
+			armor_value = 0.06
+			defense = 0.03
+			build_cost_ic = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_mitsubishi_chinu_running_gear
+		name = mio_mitsubishi_chinu_running_gear
 		icon = GFX_generic_mio_trait_icon_reliability
 
-		position = { x=0 y=1 }
-		
-		limit_to_equipment_type = { medium_tank_chassis_3 }
-		
-		all_parents = { mio_mitsubishi_75mmgun }
+		position = { x=1 y=0 }
 		relative_position_id = mio_mitsubishi_75mmgun
-		
+
+		all_parents = {
+			mio_mitsubishi_75mmgun
+			mio_mitsubishi_chinu_armor
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_3
+		}
+
 		equipment_bonus = {
 			reliability = 0.04
+			maximum_speed = 0.02
 		}
 	}
-	
+
+	add_trait = {
+		token = mio_mitsubishi_late_chinu
+		name = mio_mitsubishi_late_chinu
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_technology
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_mitsubishi_chinu_running_gear
+
+		all_parents = {
+			mio_mitsubishi_chinu_running_gear
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_3
+		}
+
+		equipment_bonus = {
+			reliability = 0.03
+			hard_attack = 0.03
+			ap_attack = 0.03
+			breakthrough = 0.03
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.02
+		}
+	}
+
+	################################
+	########### KA-MI ##############
+	################################
+
+	add_trait = {
+		token = mio_mitsubishi_kami
+		name = mio_mitsubishi_kami
+		icon = GFX_generic_mio_department_icon_tank_light_tank_quality
+
+		position = { x=2 y=0 }
+
+		limit_to_equipment_type = {
+			light_tank_amphibious_chassis_1
+		}
+
+		equipment_bonus = {
+			reliability = 0.03
+			maximum_speed = 0.02
+			breakthrough = 0.04
+			build_cost_ic = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_mitsubishi_kami_flotation
+		name = mio_mitsubishi_kami_flotation
+		icon = GFX_generic_mio_department_icon_tank_light_tank_quality
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_mitsubishi_kami
+
+		all_parents = {
+			mio_mitsubishi_kami
+		}
+
+		limit_to_equipment_type = {
+			light_tank_amphibious_chassis_1
+		}
+
+		equipment_bonus = {
+			reliability = 0.04
+			defense = 0.03
+			build_cost_ic = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_mitsubishi_kami_37mm
+		name = mio_mitsubishi_kami_37mm
+		icon = GFX_generic_mio_department_icon_tank_light_tank_weapons
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_mitsubishi_kami
+
+		all_parents = {
+			mio_mitsubishi_kami
+		}
+
+		limit_to_equipment_type = {
+			light_tank_amphibious_chassis_1
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.04
+			hard_attack = 0.05
+			ap_attack = 0.05
+		}
+	}
+
+	add_trait = {
+		token = mio_mitsubishi_late_kami
+		name = mio_mitsubishi_late_kami
+		icon = GFX_generic_mio_department_icon_tank_light_tank_technology
+		special_trait_background = yes
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_mitsubishi_kami_flotation
+
+		all_parents = {
+			mio_mitsubishi_kami_flotation
+			mio_mitsubishi_kami_37mm
+		}
+
+		limit_to_equipment_type = {
+			light_tank_amphibious_chassis_1
+		}
+
+		equipment_bonus = {
+			reliability = 0.04
+			breakthrough = 0.03
+			defense = 0.03
+		}
+	}
+
+	################################
+	######## AIRCRAFT TREE #########
+	################################
+
 	add_trait = {
 		token = mio_mitsubishi_a5n1
 		name = mio_mitsubishi_a5n1
 		icon = GFX_generic_mio_department_icon_plane_cv_fighter_engine
 
 		position = { x=4 y=0 }
-		
-		limit_to_equipment_type = { cv_small_plane_airframe_1 }
-		
-		available = { FROM = { has_tech = basic_small_airframe } }
-		
+
+		limit_to_equipment_type = {
+			cv_small_plane_airframe_1
+		}
+
+		available = {
+			FROM = {
+				has_tech = basic_small_airframe
+			}
+		}
+
 		equipment_bonus = {
 			air_agility = 0.06
 			maximum_speed = 0.02
 		}
 	}
+
 	add_trait = {
 		token = mio_mitsubishi_a5n2
 		name = mio_mitsubishi_a5n2
 		icon = GFX_generic_mio_department_icon_plane_cv_fighter_quality
 
 		position = { x=0 y=1 }
-		
-		available = { FROM = { has_tech = basic_small_airframe } }
-		
-		limit_to_equipment_type = { cv_small_plane_airframe_1 }
-		all_parents = { mio_mitsubishi_a5n1 }
+
+		available = {
+			FROM = {
+				has_tech = basic_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			cv_small_plane_airframe_1
+		}
+
+		all_parents = {
+			mio_mitsubishi_a5n1
+		}
+
 		relative_position_id = mio_mitsubishi_a5n1
-		
+
 		equipment_bonus = {
 			air_agility = 0.06
 			maximum_speed = 0.02
@@ -673,72 +1496,111 @@ JAP_mitsubishi_organization = {
 			naval_strike_attack = 0.05
 		}
 	}
+
 	add_trait = {
 		token = mio_mitsubishi_a5n3
 		name = mio_mitsubishi_a5n3
 		icon = GFX_generic_mio_department_icon_plane_cv_fighter_engine
 
 		position = { x=0 y=1 }
-		
-		available = { FROM = { has_tech = basic_small_airframe } }
-		
-		limit_to_equipment_type = { cv_small_plane_airframe_1 }
-		all_parents = { mio_mitsubishi_a5n2 }
+
+		available = {
+			FROM = {
+				has_tech = basic_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			cv_small_plane_airframe_1
+		}
+
+		all_parents = {
+			mio_mitsubishi_a5n2
+		}
+
 		relative_position_id = mio_mitsubishi_a5n2
-		
+
 		equipment_bonus = {
 			air_agility = 0.06
 			maximum_speed = 0.02
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_mitsubishi_a6m1
 		name = mio_mitsubishi_a6m1
 		icon = GFX_generic_mio_department_icon_plane_general_quality
 
 		position = { x=5 y=0 }
-		
-		available = { FROM = { has_tech = improved_small_airframe } }
-		
-		limit_to_equipment_type = { cv_small_plane_airframe_2 }
-		
+
+		available = {
+			FROM = {
+				has_tech = improved_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			cv_small_plane_airframe_2
+		}
+
 		equipment_bonus = {
 			air_agility = 0.06
 			maximum_speed = 0.02
 		}
 	}
+
 	add_trait = {
 		token = mio_mitsubishi_a6m2
 		name = mio_mitsubishi_a6m2
 		icon = GFX_generic_mio_department_icon_plane_cv_fighter_engine
 
 		position = { x=0 y=1 }
-		
-		available = { FROM = { has_tech = improved_small_airframe } }
-		
-		limit_to_equipment_type = { cv_small_plane_airframe_2 }
-		all_parents = { mio_mitsubishi_a6m1 }
+
+		available = {
+			FROM = {
+				has_tech = improved_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			cv_small_plane_airframe_2
+		}
+
+		all_parents = {
+			mio_mitsubishi_a6m1
+		}
+
 		relative_position_id = mio_mitsubishi_a6m1
-		
+
 		equipment_bonus = {
 			air_agility = 0.06
 			maximum_speed = 0.02
 		}
 	}
+
 	add_trait = {
 		token = mio_mitsubishi_a6m3
 		name = mio_mitsubishi_a6m3
 		icon = GFX_generic_mio_department_icon_plane_cv_fighter_quality
 
 		position = { x=0 y=1 }
-		
-		available = { FROM = { has_tech = improved_small_airframe } }
-		
-		limit_to_equipment_type = { cv_small_plane_airframe_2 }
-		all_parents = { mio_mitsubishi_a6m2 }
+
+		available = {
+			FROM = {
+				has_tech = improved_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			cv_small_plane_airframe_2
+		}
+
+		all_parents = {
+			mio_mitsubishi_a6m2
+		}
+
 		relative_position_id = mio_mitsubishi_a6m2
-		
+
 		equipment_bonus = {
 			air_agility = 0.06
 			maximum_speed = 0.02
@@ -746,130 +1608,193 @@ JAP_mitsubishi_organization = {
 			air_range = 0.1
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_mitsubishi_a6m4
 		name = mio_mitsubishi_a6m4
 		icon = GFX_generic_mio_department_icon_plane_cv_fighter_technology
 
 		position = { x=0 y=1 }
-		
-		available = { FROM = { has_tech = improved_small_airframe } }
-		
-		limit_to_equipment_type = { cv_small_plane_airframe_2 }
-		all_parents = { mio_mitsubishi_a6m3 }
+
+		available = {
+			FROM = {
+				has_tech = improved_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			cv_small_plane_airframe_2
+		}
+
+		all_parents = {
+			mio_mitsubishi_a6m3
+		}
+
 		relative_position_id = mio_mitsubishi_a6m3
-		
+
 		production_bonus = {
 			production_efficiency_gain_factor = 0.05
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_mitsubishi_a6m5
 		name = mio_mitsubishi_a6m5
 		icon = GFX_generic_mio_department_icon_plane_cv_fighter_conversion
 
 		position = { x=0 y=1 }
-		
-		available = { FROM = { has_tech = improved_small_airframe } }
-		
-		limit_to_equipment_type = { cv_small_plane_airframe_2 }
-		all_parents = { mio_mitsubishi_a6m4 }
+
+		available = {
+			FROM = {
+				has_tech = improved_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			cv_small_plane_airframe_2
+		}
+
+		all_parents = {
+			mio_mitsubishi_a6m4
+		}
+
 		relative_position_id = mio_mitsubishi_a6m4
-		
+
 		equipment_bonus = {
 			air_agility = 0.06
 			maximum_speed = 0.02
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_mitsubishi_a6m6
 		name = mio_mitsubishi_a6m6
 		icon = GFX_generic_mio_department_icon_plane_cv_fighter_engine
 
 		position = { x=0 y=1 }
-		
-		available = { FROM = { has_tech = improved_small_airframe } }
-		
-		limit_to_equipment_type = { cv_small_plane_airframe_2 }
-		all_parents = { mio_mitsubishi_a6m5 }
+
+		available = {
+			FROM = {
+				has_tech = improved_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			cv_small_plane_airframe_2
+		}
+
+		all_parents = {
+			mio_mitsubishi_a6m5
+		}
+
 		relative_position_id = mio_mitsubishi_a6m5
-		
+
 		equipment_bonus = {
 			air_agility = 0.06
 			maximum_speed = 0.02
 			air_defence = 0.1
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_mitsubishi_a7m1
 		name = mio_mitsubishi_a7m1
 		icon = GFX_generic_mio_department_icon_plane_cv_fighter_engine
 
 		position = { x=6 y=0 }
-		
-		available = { FROM = { has_tech = advanced_small_airframe } }
-		
-		limit_to_equipment_type = { cv_small_plane_airframe_3 }
-		
+
+		available = {
+			FROM = {
+				has_tech = advanced_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			cv_small_plane_airframe_3
+		}
+
 		equipment_bonus = {
 			air_agility = 0.06
 			maximum_speed = 0.02
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_mitsubishi_a7m2
 		name = mio_mitsubishi_a7m2
 		icon = GFX_generic_mio_department_icon_plane_cv_fighter_engine
 
 		position = { x=0 y=1 }
-		available = { FROM = { has_tech = advanced_small_airframe } }
-		
-		limit_to_equipment_type = { cv_small_plane_airframe_3 }
-		all_parents = { mio_mitsubishi_a7m1 }
+
+		available = {
+			FROM = {
+				has_tech = advanced_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			cv_small_plane_airframe_3
+		}
+
+		all_parents = {
+			mio_mitsubishi_a7m1
+		}
+
 		relative_position_id = mio_mitsubishi_a7m1
-		
+
 		equipment_bonus = {
 			air_agility = 0.06
 			maximum_speed = 0.02
 			air_attack = 0.05
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_mitsubishi_g3m1
 		name = mio_mitsubishi_g3m1
 		icon = GFX_generic_mio_department_icon_plane_general_quality
 
 		position = { x=7 y=0 }
-		
-		available = { FROM = { has_tech = basic_small_airframe } }
-		
-		limit_to_equipment_type = { small_plane_naval_bomber_airframe_1 }
-		
+
+		available = {
+			FROM = {
+				has_tech = basic_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			small_plane_naval_bomber_airframe_1
+		}
+
 		equipment_bonus = {
 			air_agility = 0.04
 			maximum_speed = 0.02
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_mitsubishi_g3m2
 		name = mio_mitsubishi_g3m2
 		icon = GFX_generic_mio_department_icon_plane_naval_bomber_combat
 
 		position = { x=0 y=1 }
-		
-		available = { FROM = { has_tech = basic_small_airframe } }
-		
-		limit_to_equipment_type = { small_plane_naval_bomber_airframe_1 }
-		all_parents = { mio_mitsubishi_g3m1 }
+
+		available = {
+			FROM = {
+				has_tech = basic_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			small_plane_naval_bomber_airframe_1
+		}
+
+		all_parents = {
+			mio_mitsubishi_g3m1
+		}
+
 		relative_position_id = mio_mitsubishi_g3m1
-		
+
 		equipment_bonus = {
 			air_agility = 0.04
 			maximum_speed = 0.02
@@ -878,38 +1803,56 @@ JAP_mitsubishi_organization = {
 			air_range = 0.2
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_mitsubishi_g4m1
 		name = mio_mitsubishi_g3m1
 		icon = GFX_generic_mio_department_icon_plane_naval_bomber_quality
 
 		position = { x=0 y=1 }
-		
-		available = { FROM = { has_tech = improved_small_airframe } }
-		
-		limit_to_equipment_type = { small_plane_naval_bomber_airframe_2 }
+
+		available = {
+			FROM = {
+				has_tech = improved_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			small_plane_naval_bomber_airframe_2
+		}
+
 		relative_position_id = mio_mitsubishi_g3m2
-		
+
 		equipment_bonus = {
 			air_agility = 0.04
 			maximum_speed = 0.02
 			air_defence = 0.1
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_mitsubishi_g4m2
 		name = mio_mitsubishi_g4m2
 		icon = GFX_generic_mio_department_icon_plane_naval_bomber_combat
 
 		position = { x=0 y=1 }
-		available = { FROM = { has_tech = improved_small_airframe } }
-		
-		limit_to_equipment_type = { small_plane_naval_bomber_airframe_2 }
-		all_parents = { mio_mitsubishi_g4m1 }
+
+		available = {
+			FROM = {
+				has_tech = improved_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			small_plane_naval_bomber_airframe_2
+		}
+
+		all_parents = {
+			mio_mitsubishi_g4m1
+		}
+
 		relative_position_id = mio_mitsubishi_g4m1
-		
+
 		equipment_bonus = {
 			air_agility = 0.04
 			maximum_speed = 0.02
@@ -917,19 +1860,30 @@ JAP_mitsubishi_organization = {
 			air_defence = 0.05
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_mitsubishi_g4m3
 		name = mio_mitsubishi_g4m3
 		icon = GFX_generic_mio_department_icon_plane_naval_bomber_quality
 
 		position = { x=0 y=1 }
-		available = { FROM = { has_tech = improved_small_airframe } }
-		
-		limit_to_equipment_type = { small_plane_naval_bomber_airframe_2 }
-		all_parents = { mio_mitsubishi_g4m2 }
+
+		available = {
+			FROM = {
+				has_tech = improved_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			small_plane_naval_bomber_airframe_2
+		}
+
+		all_parents = {
+			mio_mitsubishi_g4m2
+		}
+
 		relative_position_id = mio_mitsubishi_g4m2
-		
+
 		equipment_bonus = {
 			air_agility = 0.04
 			maximum_speed = 0.02
@@ -937,18 +1891,24 @@ JAP_mitsubishi_organization = {
 			air_range = -0.35
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_mitsubishi_ki51
 		name = mio_mitsubishi_ki51
 		icon = GFX_generic_mio_department_icon_plane_cas
 
 		position = { x=4 y=3 }
-		
-		available = { FROM = { has_tech = improved_small_airframe } }
-		
-		limit_to_equipment_type = { small_plane_cas_airframe_2 }
-		
+
+		available = {
+			FROM = {
+				has_tech = improved_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			small_plane_cas_airframe_2
+		}
+
 		equipment_bonus = {
 			air_agility = 0.04
 			maximum_speed = 0.02
@@ -956,92 +1916,134 @@ JAP_mitsubishi_organization = {
 			air_ground_attack = 0.15
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_mitsubishi_ki21i
 		name = mio_mitsubishi_ki21i
 		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_quality
 
 		position = { x=8 y=0 }
-		
-		available = { FROM = { has_tech = basic_medium_airframe } }
-		
-		limit_to_equipment_type = { medium_plane_airframe_1 }
-		
+
+		available = {
+			FROM = {
+				has_tech = basic_medium_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_1
+		}
+
 		equipment_bonus = {
 			air_range = 0.1
 			air_defence = 0.1
 			air_ground_attack = 0.05
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_mitsubishi_ki21ii
 		name = mio_mitsubishi_ki21ii
 		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_quality
 
 		position = { x=0 y=1 }
-		
-		available = { FROM = { has_tech = basic_medium_airframe } }
-		
-		limit_to_equipment_type = { medium_plane_airframe_1 }
-		all_parents = { mio_mitsubishi_ki21i }
+
+		available = {
+			FROM = {
+				has_tech = basic_medium_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_1
+		}
+
+		all_parents = {
+			mio_mitsubishi_ki21i
+		}
+
 		relative_position_id = mio_mitsubishi_ki21i
-		
+
 		equipment_bonus = {
 			air_defence = 0.1
 			air_ground_attack = 0.15
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_mitsubishi_ki67i
 		name = mio_mitsubishi_ki67i
 		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_quality
 
 		position = { x=9 y=0 }
-		
-		available = { FROM = { has_tech = advanced_medium_airframe } }
-		
-		limit_to_equipment_type = { medium_plane_airframe_3 }
-		
+
+		available = {
+			FROM = {
+				has_tech = advanced_medium_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_3
+		}
+
 		equipment_bonus = {
 			naval_strike_attack = 0.1
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_mitsubishi_ki67ii
 		name = mio_mitsubishi_ki67ii
 		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_combat
 
 		position = { x=0 y=1 }
-		
-		available = { FROM = { has_tech = advanced_medium_airframe } }
-		
-		limit_to_equipment_type = { medium_plane_airframe_3 }
-		all_parents = { mio_mitsubishi_ki67i }
+
+		available = {
+			FROM = {
+				has_tech = advanced_medium_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_3
+		}
+
+		all_parents = {
+			mio_mitsubishi_ki67i
+		}
+
 		relative_position_id = mio_mitsubishi_ki67i
-		
+
 		equipment_bonus = {
 			air_attack = 0.1
 			air_defence = 0.05
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_mitsubishi_ki67iii
 		name = mio_mitsubishi_ki67iii
 		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_conversion
 
 		position = { x=0 y=1 }
-		
-		available = { FROM = { has_tech = advanced_medium_airframe } }
-		
-		limit_to_equipment_type = { medium_plane_airframe_3 }
-		all_parents = { mio_mitsubishi_ki67ii }
+
+		available = {
+			FROM = {
+				has_tech = advanced_medium_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_3
+		}
+
+		all_parents = {
+			mio_mitsubishi_ki67ii
+		}
+
 		relative_position_id = mio_mitsubishi_ki67ii
-		
+
 		equipment_bonus = {
 			air_range = 0.15
 			air_ground_attack = -0.1

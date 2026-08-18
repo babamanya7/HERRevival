@@ -75,1002 +75,2124 @@
 
 SOV_morozov_design_bureau_organization = {
 	icon = GFX_idea_morozov_design_bureau
-	
-	allowed = {	
+
+	allowed = {
 		tag = SOV
 	}
-	
-	equipment_type = { mio_cat_eq_all_medium_tank light_tank_chassis_2 medium_tank_destroyer_chassis_2 medium_tank_destroyer_chassis_3 }
-	research_categories = { mio_cat_tech_medium_armor_and_modules }
+
+	equipment_type = {
+		medium_tank_chassis_2
+		medium_tank_chassis_3
+		medium_tank_destroyer_chassis_2
+		medium_tank_destroyer_chassis_3
+		medium_tank_artillery_chassis_2
+	}
+
+	research_categories = {
+		mio_cat_tech_medium_armor_and_modules
+	}
 
 	tree_header_text = {
-		text = mio_morozov_t34
+		text = mio_morozov_t34_76
 		x = 1
 	}
 
 	tree_header_text = {
-		text = mio_morozov_su85
-		x = 8
+		text = mio_morozov_t34_85
+		x = 4
+	}
+
+	tree_header_text = {
+		text = mio_morozov_su
+		x = 7
 	}
 
 	initial_trait = {
 		name = mio_morozov_initial_trait
 
 		organization_modifier = {
-			military_industrial_organization_research_bonus = 0.1
-			military_industrial_organization_funds_gain = 0.5
+			military_industrial_organization_research_bonus = 0.10
+			military_industrial_organization_funds_gain = 0.50
 		}
-		
+
 		production_bonus = {
-			production_capacity_factor = 0.1
+			production_capacity_factor = 0.08
 		}
+
 		equipment_bonus = {
-			armor_value = 0.05
-			maximum_speed = 0.05
-			breakthrough = 0.03
+			armor_value = 0.04
+			maximum_speed = 0.04
+			reliability = 0.03
 		}
 	}
 
-	trait = {
+	########################
+	###### T-34/76 #########
+	########################
+
+	add_trait = {
+		token = mio_morozov_t34_76
+		name = mio_morozov_t34_76
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_quality
+
+		position = { x=1 y=0 }
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_2
+		}
+
+		equipment_bonus = {
+			armor_value = 0.04
+			maximum_speed = 0.03
+			breakthrough = 0.03
+			reliability = 0.02
+		}
+	}
+
+	add_trait = {
 		token = mio_morozov_rational_armor
 		name = mio_morozov_rational_armor
 		icon = GFX_generic_mio_trait_icon_armor_value
 
-		position = { x=0 y=0 }
-		
-		limit_to_equipment_type = { mio_cat_eq_all_medium_tank }
-		
+		position = { x=-1 y=1 }
+		relative_position_id = mio_morozov_t34_76
+
+		all_parents = {
+			mio_morozov_t34_76
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_2
+		}
+
 		equipment_bonus = {
-			armor_value = 0.05
+			armor_value = 0.07
+			defense = 0.03
+			build_cost_ic = -0.01
 		}
 	}
 
-	trait = {
-		token = mio_morozov_cast_turret
-		name = mio_morozov_cast_turret
-		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
+	add_trait = {
+		token = mio_morozov_t34_running_gear
+		name = mio_morozov_t34_running_gear
+		icon = GFX_generic_mio_trait_icon_reliability
 
-		position = { x=0 y=1 }
-		relative_position_id = mio_morozov_rational_armor
+		position = { x=1 y=1 }
+		relative_position_id = mio_morozov_t34_76
 
-		all_parents = { mio_morozov_rational_armor }
-		
-		limit_to_equipment_type = { mio_cat_eq_all_medium_tank }
-		
-		equipment_bonus = {
-			armor_value = 0.05
+		all_parents = {
+			mio_morozov_t34_76
 		}
-		production_bonus = {
-			production_cost_factor = -0.02
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_2
+		}
+
+		equipment_bonus = {
+			reliability = 0.05
+			maximum_speed = 0.03
 		}
 	}
 
-	trait = {
+	add_trait = {
 		token = mio_morozov_gaika
 		name = mio_morozov_gaika
 		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
 
 		position = { x=0 y=1 }
-		relative_position_id = mio_morozov_cast_turret
+		relative_position_id = mio_morozov_rational_armor
 
-		limit_to_equipment_type = { mio_cat_eq_all_medium_tank }
+		all_parents = {
+			mio_morozov_rational_armor
+			mio_morozov_t34_running_gear
+		}
 
-		all_parents = { mio_morozov_cast_turret }
-		
+		limit_to_equipment_type = {
+			medium_tank_chassis_2
+		}
+
 		equipment_bonus = {
 			armor_value = 0.05
-		}
-	}
-	
-	trait = {
-		token = mio_morozov_cast_tracks
-		name = mio_morozov_cast_tracks
-		icon = GFX_generic_mio_trait_icon_reliability
-
-		position = { x=2 y=0 }
-		
-		limit_to_equipment_type = { mio_cat_eq_all_medium_tank }
-		
-		equipment_bonus = {
-			reliability = 0.03
-			maximum_speed = 0.03
-		}
-		production_bonus = {
-			production_cost_factor = -0.01
-		}
-	}
-
-	trait = {
-		token = mio_morozov_screens
-		name = mio_morozov_screens
-		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
-
-		position = { x=0 y=1 }
-		relative_position_id = mio_morozov_cast_tracks
-
-		all_parents = { mio_morozov_cast_tracks }
-		
-		limit_to_equipment_type = { mio_cat_eq_all_medium_tank }
-		
-		equipment_bonus = {
-			armor_value = 0.05
-			build_cost_ic = 0.03
-		}
-	}
-
-	trait = {
-		token = mio_morozov_zis4
-		name = mio_morozov_zis4
-		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
-
-		position = { x=0 y=1 }
-		relative_position_id = mio_morozov_screens
-
-		all_parents = { mio_morozov_screens }
-		
-		limit_to_equipment_type = { mio_cat_eq_all_medium_tank }
-		
-		available = {
-			FROM = {
-				has_tech = antitank2
-			}
-		}
-		
-		equipment_bonus = {
-			ap_attack = 0.22
-			soft_attack = -0.05
-			hard_attack = 0.18
-			build_cost_ic = 0.05
-		}
-	}
-
-	trait = {
-		token = mio_morozov_hmg
-		name = mio_morozov_hmg
-		icon = GFX_generic_mio_trait_icon_soft_attack
-
-		position = { x=-1 y=1 }
-		relative_position_id = mio_morozov_zis4
-
-		any_parent = { mio_morozov_zis4 mio_morozov_gaika }
-		
-		limit_to_equipment_type = { mio_cat_eq_all_medium_tank }
-		
-		equipment_bonus = {
-			soft_attack = 0.08
-			breakthrough = 0.02
+			breakthrough = 0.03
 			defense = 0.02
 		}
 	}
-	
-	trait = {
+
+	add_trait = {
+		token = mio_morozov_t34_76_mass_production
+		name = mio_morozov_t34_76_mass_production
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_morozov_gaika
+
+		all_parents = {
+			mio_morozov_gaika
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_2
+		}
+
+		equipment_bonus = {
+			reliability = 0.03
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.06
+			production_efficiency_gain_factor = 0.08
+		}
+	}
+
+	add_trait = {
+		token = mio_morozov_t34_76_armor
+		name = mio_morozov_t34_76_armor
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
+
+		position = { x=2 y=1 }
+		relative_position_id = mio_morozov_gaika
+
+		all_parents = {
+			mio_morozov_gaika
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_2
+		}
+
+		equipment_bonus = {
+			armor_value = 0.05
+			build_cost_ic = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_morozov_late_t34_76
+		name = mio_morozov_late_t34_76
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_technology
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_morozov_t34_76_mass_production
+
+		all_parents = {
+			mio_morozov_t34_76_mass_production
+			mio_morozov_t34_76_armor
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_2
+		}
+
+		equipment_bonus = {
+			reliability = 0.03
+			armor_value = 0.03
+			breakthrough = 0.03
+			soft_attack = 0.03
+		}
+	}
+
+	########################
+	###### T-34/85 #########
+	########################
+
+	add_trait = {
+		token = mio_morozov_t34_85
+		name = mio_morozov_t34_85
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_quality
+
+		position = { x=4 y=0 }
+
+		all_parents = {
+			mio_morozov_late_t34_76
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_3
+		}
+
+		equipment_bonus = {
+			armor_value = 0.04
+			breakthrough = 0.05
+			hard_attack = 0.04
+			ap_attack = 0.04
+			build_cost_ic = 0.02
+		}
+	}
+
+	add_trait = {
 		token = mio_morozov_85mmgun
 		name = mio_morozov_85mmgun
 		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
 
-		position = { x=0 y=1 }
-		relative_position_id = mio_morozov_hmg
+		position = { x=-1 y=1 }
+		relative_position_id = mio_morozov_t34_85
 
-		all_parents = { mio_morozov_hmg }
-		
-		limit_to_equipment_type = { mio_cat_eq_all_medium_tank }
-		
+		all_parents = {
+			mio_morozov_t34_85
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_3
+		}
+
 		available = {
 			FROM = {
 				has_tech = antitank5
 			}
 		}
-		
+
 		equipment_bonus = {
-			soft_attack = 0.08
-			ap_attack = 0.15
-			hard_attack = 0.15
+			soft_attack = 0.05
+			hard_attack = 0.11
+			ap_attack = 0.13
+			breakthrough = 0.03
+			build_cost_ic = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_morozov_t34_85_turret
+		name = mio_morozov_t34_85_turret
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_morozov_t34_85
+
+		all_parents = {
+			mio_morozov_t34_85
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_3
+		}
+
+		equipment_bonus = {
 			breakthrough = 0.05
-			build_cost_ic = 0.05
+			defense = 0.04
+			armor_value = 0.03
 		}
 	}
 
-	trait = {
-		token = mio_morozov_gorky_prod_lines
-		name = mio_morozov_gorky_prod_lines
+	add_trait = {
+		token = mio_morozov_t34_85_reliability
+		name = mio_morozov_t34_85_reliability
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_morozov_85mmgun
+
+		all_parents = {
+			mio_morozov_85mmgun
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_3
+		}
+
+		equipment_bonus = {
+			reliability = 0.05
+			maximum_speed = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_morozov_t34_85_mass_production
+		name = mio_morozov_t34_85_mass_production
 		icon = GFX_generic_mio_trait_icon_production_capacity
 
-		position = { x=0 y=2 }
-		relative_position_id = SOV_mio_trait_merge_plant_no_174
-		
-		any_parent = { SOV_mio_trait_merge_plant_no_174 SOV_mio_trait_merge_plant_no_112 SOV_mio_trait_merge_ural_heavy_machine_building_plant }
-		
-		organization_modifier = {
-			military_industrial_organization_funds_gain = 0.3
+		position = { x=0 y=1 }
+		relative_position_id = mio_morozov_t34_85_turret
+
+		all_parents = {
+			mio_morozov_t34_85_turret
 		}
-		
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_3
+		}
+
 		production_bonus = {
-			production_cost_factor = -0.02
+			production_cost_factor = -0.05
+			production_efficiency_gain_factor = 0.08
 		}
 	}
 
-	trait = {
-		token = mio_morozov_tagil_prod_lines
-		name = mio_morozov_tagil_prod_lines
-		icon = GFX_generic_mio_trait_icon_production_capacity
+	add_trait = {
+		token = mio_morozov_late_t34_85
+		name = mio_morozov_late_t34_85
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_technology
+		special_trait_background = yes
 
-		position = { x=0 y=2 }
-		relative_position_id = SOV_mio_trait_merge_plant_no_112
+		position = { x=1 y=2 }
+		relative_position_id = mio_morozov_t34_85_reliability
 
-		any_parent = { SOV_mio_trait_merge_plant_no_174 SOV_mio_trait_merge_plant_no_112 SOV_mio_trait_merge_ural_heavy_machine_building_plant }
-		
-		organization_modifier = {
-			military_industrial_organization_funds_gain = 0.3
+		all_parents = {
+			mio_morozov_t34_85_reliability
+			mio_morozov_t34_85_mass_production
 		}
-		
-		production_bonus = {
-			production_cost_factor = -0.02
+
+		limit_to_equipment_type = {
+			medium_tank_chassis_3
+		}
+
+		equipment_bonus = {
+			reliability = 0.03
+			armor_value = 0.03
+			breakthrough = 0.04
+			hard_attack = 0.03
+			ap_attack = 0.03
+		}
+	}
+
+	########################
+	######## SU-122 ########
+	########################
+
+	add_trait = {
+		token = mio_morozov_su122
+		name = mio_morozov_su122
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_spg
+
+		position = { x=7 y=0 }
+
+		limit_to_equipment_type = {
+			medium_tank_artillery_chassis_2
+		}
+
+		equipment_bonus = {
+			armor_value = 0.04
+			soft_attack = 0.08
+			breakthrough = 0.04
+			build_cost_ic = -0.02
 		}
 	}
 
-	trait = {
-		token = mio_morozov_tankograd_prod_lines
-		name = mio_morozov_tankograd_prod_lines
-		icon = GFX_generic_mio_trait_icon_production_capacity		
-
-		position = { x=0 y=2 }
-		relative_position_id = SOV_mio_trait_merge_ural_heavy_machine_building_plant
-
-		any_parent = { SOV_mio_trait_merge_plant_no_174 SOV_mio_trait_merge_plant_no_112 SOV_mio_trait_merge_ural_heavy_machine_building_plant }
-		
-		organization_modifier = {
-			military_industrial_organization_funds_gain = 0.3
-		}
-		
-		production_bonus = {
-			production_cost_factor = -0.02
-		}
-	}
-	
-	trait = {
-		token = mio_morozov_fluid_autowelding
-		name = mio_morozov_fluid_autowelding
-		icon = GFX_generic_mio_trait_icon_production_capacity		
+	add_trait = {
+		token = mio_morozov_su122_m30
+		name = mio_morozov_su122_m30
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_spg
 
 		position = { x=-1 y=1 }
-		relative_position_id = mio_morozov_tankograd_prod_lines
+		relative_position_id = mio_morozov_su122
 
-		any_parent = { mio_morozov_tankograd_prod_lines mio_morozov_tagil_prod_lines mio_morozov_gorky_prod_lines }
-		
-		production_bonus = {
-			production_efficiency_gain_factor = 0.1
-			production_efficiency_cap_factor = 0.1
-			production_cost_factor = -0.08
+		all_parents = {
+			mio_morozov_su122
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_artillery_chassis_2
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.10
+			breakthrough = 0.05
+			hard_attack = 0.02
 		}
 	}
 
-	add_trait = { 
+	add_trait = {
+		token = mio_morozov_su122_mass_production
+		name = mio_morozov_su122_mass_production
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_morozov_su122
+
+		all_parents = {
+			mio_morozov_su122
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_artillery_chassis_2
+		}
+
+		equipment_bonus = {
+			reliability = 0.03
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.05
+			production_efficiency_gain_factor = 0.06
+		}
+	}
+
+	########################
+	######## SU-85 #########
+	########################
+
+	add_trait = {
+		token = mio_morozov_su85
+		name = mio_morozov_su85
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+
+		position = { x=7 y=1 }
+
+		all_parents = {
+			mio_morozov_late_t34_76
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_destroyer_chassis_2
+		}
+
+		equipment_bonus = {
+			armor_value = 0.04
+			reliability = 0.03
+			hard_attack = 0.07
+			ap_attack = 0.08
+			build_cost_ic = -0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_morozov_su85_d5s
+		name = mio_morozov_su85_d5s
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+
+		position = { x=-1 y=1 }
+		relative_position_id = mio_morozov_su85
+
+		all_parents = {
+			mio_morozov_su85
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_destroyer_chassis_2
+		}
+
+		equipment_bonus = {
+			hard_attack = 0.11
+			ap_attack = 0.13
+			soft_attack = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_morozov_su85_low_profile
+		name = mio_morozov_su85_low_profile
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_morozov_su85
+
+		all_parents = {
+			mio_morozov_su85
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_destroyer_chassis_2
+		}
+
+		equipment_bonus = {
+			defense = 0.05
+			armor_value = 0.04
+			breakthrough = -0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_morozov_mature_su85
+		name = mio_morozov_mature_su85
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_quality
+		special_trait_background = yes
+
+		position = { x=1 y=0 }
+		relative_position_id = mio_morozov_su85_d5s
+
+		all_parents = {
+			mio_morozov_su85_d5s
+			mio_morozov_su85_low_profile
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_destroyer_chassis_2
+		}
+
+		equipment_bonus = {
+			reliability = 0.04
+			hard_attack = 0.03
+			ap_attack = 0.03
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.03
+		}
+	}
+
+	########################
+	######## SU-100 ########
+	########################
+
+	add_trait = {
+		token = mio_morozov_su100
+		name = mio_morozov_su100
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+
+		position = { x=7 y=3 }
+
+		all_parents = {
+			mio_morozov_mature_su85
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_destroyer_chassis_3
+		}
+
+		equipment_bonus = {
+			armor_value = 0.05
+			hard_attack = 0.08
+			ap_attack = 0.10
+			build_cost_ic = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_morozov_su100_d10s
+		name = mio_morozov_su100_d10s
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+
+		position = { x=-1 y=1 }
+		relative_position_id = mio_morozov_su100
+
+		all_parents = {
+			mio_morozov_su100
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_destroyer_chassis_3
+		}
+
+		equipment_bonus = {
+			hard_attack = 0.14
+			ap_attack = 0.17
+			soft_attack = 0.03
+			build_cost_ic = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_morozov_su100_armor
+		name = mio_morozov_su100_armor
+		icon = GFX_generic_mio_trait_icon_armor_value
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_morozov_su100
+
+		all_parents = {
+			mio_morozov_su100
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_destroyer_chassis_3
+		}
+
+		equipment_bonus = {
+			armor_value = 0.07
+			defense = 0.04
+		}
+	}
+
+	add_trait = {
+		token = mio_morozov_late_su100
+		name = mio_morozov_late_su100
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_technology
+		special_trait_background = yes
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_morozov_su100_d10s
+
+		all_parents = {
+			mio_morozov_su100_d10s
+			mio_morozov_su100_armor
+		}
+
+		limit_to_equipment_type = {
+			medium_tank_destroyer_chassis_3
+		}
+
+		equipment_bonus = {
+			reliability = 0.04
+			armor_value = 0.03
+			hard_attack = 0.04
+			ap_attack = 0.04
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.03
+		}
+	}
+
+	################################
+	###### MERGED TANK PLANTS ######
+	################################
+
+	add_trait = {
 		token = SOV_mio_trait_merge_plant_no_174
 		name = SOV_merge_tank_plant
 		icon = GFX_generic_mio_trait_icon_maximum_speed
 		special_trait_background = yes
-		position = { x=4 y=0 }
+
+		position = { x=9 y=0 }
+
 		visible = {
-			FROM = { original_tag = SOV }
-		}
-		available = { #Two FROM blocs to provide two different check marks in the UI
 			FROM = {
-				has_full_control_of_state = 195 #LENINGRAD
+				original_tag = SOV
 			}
+		}
+
+		available = {
+			FROM = {
+				has_full_control_of_state = 195
+			}
+
 			FROM = {
 				has_completed_focus = SOV_merge_tank_and_materiel_plants
 			}
 		}
+
 		on_complete = {
 			custom_effect_tooltip = SOV_trait_will_not_be_available_in_other_organizations
+
 			FROM = {
 				set_country_flag = SOV_merge_plant_no_174_flag
 			}
 		}
+
 		equipment_bonus = {
 			maximum_speed = @tank_max_speed
 		}
 	}
 
-	add_trait = { 
+	add_trait = {
 		token = SOV_mio_trait_merge_plant_no_112
 		name = SOV_merge_tank_plant_2
-		#icon = GFX_generic_mio_department_icon_facilities
 		icon = GFX_generic_mio_trait_icon_production_capacity
 		special_trait_background = yes
-		position = { x=5 y=0 }
+
+		position = { x=9 y=2 }
+
 		visible = {
-			FROM = { original_tag = SOV }
+			FROM = {
+				original_tag = SOV
+			}
 		}
+
 		available = {
 			FROM = {
-				has_full_control_of_state = 252 #GORKY
+				has_full_control_of_state = 252
 			}
+
 			FROM = {
 				has_completed_focus = SOV_merge_tank_and_materiel_plants
 			}
 		}
+
 		on_complete = {
 			custom_effect_tooltip = SOV_trait_will_not_be_available_in_other_organizations
+
 			FROM = {
 				set_country_flag = SOV_merge_plant_no_112_flag
 			}
 		}
+
 		production_bonus = {
 			production_capacity_factor = @tank_production_capacity_factor
 		}
 	}
 
-	add_trait = { 
+	add_trait = {
 		token = SOV_mio_trait_merge_ural_heavy_machine_building_plant
 		name = SOV_merge_tank_plant_3
-		#icon = GFX_generic_mio_department_icon_facilities
 		icon = GFX_generic_mio_trait_icon_soft_attack
 		special_trait_background = yes
 
-		position = { x=6 y=0 }
-		
+		position = { x=9 y=4 }
+
 		visible = {
-			FROM = { original_tag = SOV }
+			FROM = {
+				original_tag = SOV
+			}
 		}
+
 		available = {
 			FROM = {
-				has_full_control_of_state = 653 #SVERDLOVSK
+				has_full_control_of_state = 653
 			}
+
 			FROM = {
 				has_completed_focus = SOV_merge_tank_and_materiel_plants
 			}
 		}
+
 		on_complete = {
 			custom_effect_tooltip = SOV_trait_will_not_be_available_in_other_organizations
+
 			FROM = {
 				set_country_flag = SOV_merge_ural_heavy_machine_building_plant_flag
 			}
 		}
+
 		equipment_bonus = {
 			soft_attack = @tank_soft_attack
-		}
-	}
-	
-	trait = {
-		token = mio_morozov_su_based_on_t34
-		name = mio_morozov_su_based_on_t34
-		icon = GFX_generic_mio_department_icon_tank_medium_tank
-
-		position = { x=8 y=0 }
-		
-		limit_to_equipment_type = { medium_tank_destroyer_chassis }
-		
-		equipment_bonus = {
-			armor_value = 0.05
-			reliability = 0.03
-		}
-		production_bonus = {
-			production_cost_factor = -0.03
-		}
-	}
-	
-	trait = {
-		token = mio_morozov_comander_cupola
-		name = mio_morozov_comander_cupola
-		icon = GFX_generic_mio_trait_icon_breakthrough
-
-		position = { x=-1 y=1 }
-		
-		relative_position_id = mio_morozov_su_based_on_t34
-		
-		all_parents = { mio_morozov_su_based_on_t34 }
-		
-		limit_to_equipment_type = { medium_tank_destroyer_chassis }
-		
-		equipment_bonus = {
-			breakthrough = 0.05
-			defense = 0.05
-		}
-	}
-	
-	trait = {
-		token = mio_morozov_armor_up
-		name = mio_morozov_armor_up
-		icon = GFX_generic_mio_trait_icon_armor_value
-
-		position = { x=1 y=1 }
-		
-		relative_position_id = mio_morozov_su_based_on_t34
-		
-		all_parents = { mio_morozov_su_based_on_t34 }
-		
-		limit_to_equipment_type = { medium_tank_destroyer_chassis }
-		
-		equipment_bonus = {
-			armor_value = 0.15
-		}
-	}
-	
-	trait = {
-		token = mio_morozov_d5c85a
-		name = mio_morozov_d5c85a
-		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
-
-		position = { x=0 y=2 }
-		
-		relative_position_id = mio_morozov_su_based_on_t34
-		
-		all_parents = { mio_morozov_su_based_on_t34 }
-		
-		limit_to_equipment_type = { medium_tank_destroyer_chassis }
-		
-		available = {
-			FROM = {
-				has_tech = antitank5
-			}
-		}
-		
-		equipment_bonus = {
-			ap_attack = 0.1
-			hard_attack = 0.15
-			soft_attack = 0.05
 		}
 	}
 }
 
 SOV_astrov_design_bureau_organization = {
 	icon = GFX_idea_astrov_design_bureau
-	
-	allowed = {	
+
+	allowed = {
 		original_tag = SOV
 	}
-	
-	equipment_type = { light_tank_chassis light_tank_destroyer_chassis light_tank_aa_chassis }
-	research_categories = { mio_cat_tech_light_armor_and_modules }
+
+	equipment_type = {
+		light_tank_chassis_2
+		light_tank_chassis_3
+		light_tank_destroyer_chassis_2
+		light_tank_destroyer_chassis_3
+	}
+
+	research_categories = {
+		mio_cat_tech_light_armor_and_modules
+	}
 
 	tree_header_text = {
-		text = mio_astrov_bt7_t60_t70
+		text = mio_astrov_bt7
 		x = 1
 	}
 
 	tree_header_text = {
-		text = mio_astrov_light_specialists
-		x = 5
+		text = mio_astrov_t60_t70
+		x = 4
+	}
+
+	tree_header_text = {
+		text = mio_astrov_light_destroyers
+		x = 7
 	}
 
 	initial_trait = {
 		name = mio_astrov_initial_trait
-		
+
 		organization_modifier = {
 			military_industrial_organization_research_bonus = 0.1
 			military_industrial_organization_funds_gain = 0.75
 		}
-		
+
+		production_bonus = {
+			production_cost_factor = -0.03
+		}
+
 		equipment_bonus = {
-			armor_value = -0.05
 			reliability = 0.04
-			maximum_speed = 0.07
-			breakthrough = -0.04
+			maximum_speed = 0.05
+			armor_value = -0.03
 		}
 	}
 
-	trait = {
-		token = mio_astrov_disel_engine
-		name = mio_astrov_disel_engine
-		icon = GFX_generic_mio_department_icon_tank_light_tank_engine
+	####################
+	####### BT-7 #######
+	####################
 
-		position = { x=0 y=0 }
-		
-		limit_to_equipment_type = { light_tank_chassis_2 }
-		
-		equipment_bonus = {
-			maximum_speed = -0.02
-			reliability = 0.03
-			fuel_consumption = -0.05
-		}
-	}
-	
-	trait = {
-		token = mio_astrov_mg
-		name = mio_astrov_mg
-		icon = GFX_generic_mio_trait_icon_breakthrough
-
-		position = { x=0 y=1 }
-		
-		relative_position_id = mio_astrov_disel_engine
-		
-		limit_to_equipment_type = { light_tank_chassis_2 }
-
-		all_parents = { mio_astrov_disel_engine }
-		
-		equipment_bonus = {
-			soft_attack = 0.15
-			hard_attack = 0.03
-			ap_attack = 0.02
-		}
-	}
-
-	trait = {
-		token = mio_astrov_transmission
-		name = mio_astrov_transmission
-		icon = GFX_generic_mio_trait_icon_reliability
-
-		position = { x=2 y=0 }
-		
-		limit_to_equipment_type = { light_tank_chassis_2 }
-		
-		equipment_bonus = {
-			reliability = 0.02
-			maximum_speed = 0.02
-		}
-	}
-
-	trait = {
-		token = mio_astrov_modernization
-		name = mio_astrov_modernization
+	add_trait = {
+		token = mio_astrov_bt7
+		name = mio_astrov_bt7
 		icon = GFX_generic_mio_department_icon_tank_light_tank_quality
 
-		position = { x=0 y=1 }
-		relative_position_id = mio_astrov_transmission
-		
-		#limit_to_equipment_type = { light_tank_chassis_2 }
+		position = { x=1 y=0 }
 
-		any_parent = { mio_astrov_transmission mio_astrov_disel_engine }
-		
+		limit_to_equipment_type = {
+			light_tank_chassis_2
+		}
+
 		equipment_bonus = {
-			armor_value = 0.1
+			maximum_speed = 0.04
+			breakthrough = 0.03
 			reliability = 0.02
-			breakthrough = 0.05
-			soft_attack = 0.08
+		}
+	}
+
+	add_trait = {
+		token = mio_astrov_bt7_diesel
+		name = mio_astrov_bt7_diesel
+		icon = GFX_generic_mio_department_icon_tank_light_tank_engine
+
+		position = { x=-1 y=1 }
+		relative_position_id = mio_astrov_bt7
+
+		all_parents = {
+			mio_astrov_bt7
+		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_2
+		}
+
+		equipment_bonus = {
+			reliability = 0.04
+			fuel_consumption = -0.06
+			maximum_speed = 0.01
+		}
+	}
+
+	add_trait = {
+		token = mio_astrov_bt7_transmission
+		name = mio_astrov_bt7_transmission
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_astrov_bt7
+
+		all_parents = {
+			mio_astrov_bt7
+		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_2
+		}
+
+		equipment_bonus = {
+			reliability = 0.04
+			maximum_speed = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_astrov_bt7_45mm
+		name = mio_astrov_bt7_45mm
+		icon = GFX_generic_mio_department_icon_tank_light_tank_weapons
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_astrov_bt7_diesel
+
+		all_parents = {
+			mio_astrov_bt7_diesel
+			mio_astrov_bt7_transmission
+		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_2
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.04
 			hard_attack = 0.05
 			ap_attack = 0.05
 		}
 	}
 
-	trait = {
-		token = mio_astrov_t60_mob_tank
-		name = mio_astrov_t60_mob_tank
+	add_trait = {
+		token = mio_astrov_late_bt7
+		name = mio_astrov_late_bt7
 		icon = GFX_generic_mio_department_icon_tank_light_tank_technology
+		special_trait_background = yes
 
 		position = { x=0 y=1 }
-		relative_position_id = mio_astrov_modernization
-		
-		all_parents = { mio_astrov_modernization }
-		
-		limit_to_equipment_type = { light_tank_chassis_3 }
-		
-		available = {
-			FROM = { has_war_with = GER }
+		relative_position_id = mio_astrov_bt7_45mm
+
+		all_parents = {
+			mio_astrov_bt7_45mm
 		}
-		
-		on_complete = {
-			FROM = {
-				set_technology = { advanced_light_tank_chassis = 1 }
-			}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_2
 		}
-		
+
+		equipment_bonus = {
+			reliability = 0.03
+			maximum_speed = 0.02
+			breakthrough = 0.03
+		}
+
 		production_bonus = {
-			production_efficiency_gain_factor = 0.1
-			production_cost_factor = -0.12
+			production_cost_factor = -0.03
+			production_efficiency_gain_factor = 0.05
 		}
 	}
-	
-	trait = {
-		token = mio_astrov_shvak_autocannon
-		name = mio_astrov_shvak_autocannon
+
+	####################
+	####### T-60 #######
+	####################
+
+	add_trait = {
+		token = mio_astrov_t60
+		name = mio_astrov_t60
+		icon = GFX_generic_mio_department_icon_tank_light_tank_technology
+		special_trait_background = yes
+
+		position = { x=4 y=0 }
+
+		limit_to_equipment_type = {
+			light_tank_chassis_3
+		}
+
+		available = {
+			FROM = {
+				has_war_with = GER
+			}
+		}
+
+		on_complete = {
+			FROM = {
+				set_technology = {
+					advanced_light_tank_chassis = 1
+				}
+			}
+		}
+
+		equipment_bonus = {
+			reliability = 0.03
+			maximum_speed = 0.02
+			armor_value = 0.03
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.08
+			production_efficiency_gain_factor = 0.08
+		}
+	}
+
+	add_trait = {
+		token = mio_astrov_tnsh20
+		name = mio_astrov_tnsh20
 		icon = GFX_generic_mio_trait_icon_soft_attack
 
 		position = { x=-1 y=1 }
-		relative_position_id = mio_astrov_t60_mob_tank
-		
-		limit_to_equipment_type = { light_tank_chassis_3 }
-		
-		all_parents = { mio_astrov_t60_mob_tank }
-		
-		production_bonus = {
-			production_efficiency_gain_factor = 0.05
+		relative_position_id = mio_astrov_t60
+
+		all_parents = {
+			mio_astrov_t60
 		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_3
+		}
+
 		equipment_bonus = {
-			soft_attack = 0.04
+			soft_attack = 0.06
+			hard_attack = 0.02
 			breakthrough = 0.02
 		}
 	}
-	
-	trait = {
-		token = mio_astrov_armor_t60
-		name = mio_astrov_armor_t60
+
+	add_trait = {
+		token = mio_astrov_t60_armor
+		name = mio_astrov_t60_armor
 		icon = GFX_generic_mio_trait_icon_armor_value
 
-		position = { x=0 y=1 }
-		relative_position_id = mio_astrov_t60_mob_tank
-		
-		limit_to_equipment_type = { light_tank_chassis_3 }
-		
-		all_parents = { mio_astrov_t60_mob_tank }
-		
-		production_bonus = {
-			production_efficiency_gain_factor = 0.05
-		}
-		equipment_bonus = {
-			armor_value = 0.1
-			defense = 0.03
-		}
-	}
-	
-	trait = {
-		token = mio_astrov_t70_development
-		name = mio_astrov_t70_development
-		icon = GFX_generic_mio_department_icon_tank_light_tank
-
 		position = { x=1 y=1 }
-		relative_position_id = mio_astrov_t60_mob_tank
-		
-		limit_to_equipment_type = { light_tank_chassis_3 }
-		
-		all_parents = { mio_astrov_t60_mob_tank }
-		
-		production_bonus = {
-			production_efficiency_gain_factor = 0.05
-			production_cost_factor = -0.03
+		relative_position_id = mio_astrov_t60
+
+		all_parents = {
+			mio_astrov_t60
+		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_3
+		}
+
+		equipment_bonus = {
+			armor_value = 0.06
+			defense = 0.03
+			build_cost_ic = 0.01
 		}
 	}
-	
-	trait = {
+
+	####################
+	####### T-70 #######
+	####################
+
+	add_trait = {
 		token = mio_astrov_t70
 		name = mio_astrov_t70
 		icon = GFX_generic_mio_department_icon_tank_light_tank_quality
 
 		position = { x=0 y=1 }
-		relative_position_id = mio_astrov_t70_development
-		
-		limit_to_equipment_type = { light_tank_chassis_3 }
-		
-		all_parents = { mio_astrov_t70_development }
-		
-		production_bonus = {
-			production_efficiency_gain_factor = 0.05
+		relative_position_id = mio_astrov_tnsh20
+
+		all_parents = {
+			mio_astrov_tnsh20
+			mio_astrov_t60_armor
 		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_3
+		}
+
 		equipment_bonus = {
-			armor_value = 0.2
-			soft_attack = 0.08
-			hard_attack = 0.12
-			ap_attack = 0.12
-			build_cost_ic = 0.08
+			armor_value = 0.05
+			reliability = 0.03
+			breakthrough = 0.03
+			build_cost_ic = 0.02
 		}
 	}
-	
-	trait = {
-		token = mio_astrov_zsu37
-		name = mio_astrov_zsu37
-		icon = GFX_generic_mio_department_icon_tank_light_tank_aa
 
-		position = { x=5 y=3 }
-		
-		limit_to_equipment_type = { light_tank_aa_chassis_3 }
-		
-		all_parents = { mio_astrov_t60_mob_tank }
-		
-		production_bonus = {
-			production_efficiency_gain_factor = 0.05
-			production_cost_factor = -0.03
+	add_trait = {
+		token = mio_astrov_t70_45mm
+		name = mio_astrov_t70_45mm
+		icon = GFX_generic_mio_department_icon_tank_light_tank_at
+
+		position = { x=-1 y=1 }
+		relative_position_id = mio_astrov_t70
+
+		all_parents = {
+			mio_astrov_t70
 		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_3
+		}
+
 		equipment_bonus = {
-			armor_value = -0.1
-			air_attack = 0.07
+			soft_attack = 0.04
+			hard_attack = 0.08
+			ap_attack = 0.09
+			build_cost_ic = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_astrov_t70_mass_production
+		name = mio_astrov_t70_mass_production
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_astrov_t70
+
+		all_parents = {
+			mio_astrov_t70
+		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_3
+		}
+
+		equipment_bonus = {
 			reliability = 0.03
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.05
+			production_efficiency_gain_factor = 0.08
+		}
+	}
+
+	add_trait = {
+		token = mio_astrov_late_t70
+		name = mio_astrov_late_t70
+		icon = GFX_generic_mio_department_icon_tank_light_tank_technology
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_astrov_t70_45mm
+
+		all_parents = {
+			mio_astrov_t70_45mm
+			mio_astrov_t70_mass_production
+		}
+
+		limit_to_equipment_type = {
+			light_tank_chassis_3
+		}
+
+		equipment_bonus = {
+			armor_value = 0.03
+			reliability = 0.03
+			hard_attack = 0.03
+			ap_attack = 0.03
+		}
+	}
+
+	####################
+	###### ZIS-30 ######
+	####################
+
+	add_trait = {
+		token = mio_astrov_zis30
+		name = mio_astrov_zis30
+		icon = GFX_generic_mio_department_icon_tank_light_tank_at
+
+		position = { x=7 y=0 }
+
+		limit_to_equipment_type = {
+			light_tank_destroyer_chassis_2
+		}
+
+		equipment_bonus = {
+			hard_attack = 0.08
+			ap_attack = 0.10
+			reliability = -0.03
+			armor_value = -0.04
+			build_cost_ic = -0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_astrov_zis30_zis2
+		name = mio_astrov_zis30_zis2
+		icon = GFX_generic_mio_department_icon_tank_light_tank_at
+
+		position = { x=-1 y=1 }
+		relative_position_id = mio_astrov_zis30
+
+		all_parents = {
+			mio_astrov_zis30
+		}
+
+		limit_to_equipment_type = {
+			light_tank_destroyer_chassis_2
+		}
+
+		available = {
+			FROM = {
+				has_tech = antitank2
+			}
+		}
+
+		equipment_bonus = {
+			hard_attack = 0.12
+			ap_attack = 0.15
+			soft_attack = -0.02
+			build_cost_ic = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_astrov_zis30_emergency_production
+		name = mio_astrov_zis30_emergency_production
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_astrov_zis30
+
+		all_parents = {
+			mio_astrov_zis30
+		}
+
+		limit_to_equipment_type = {
+			light_tank_destroyer_chassis_2
+		}
+
+		equipment_bonus = {
+			reliability = -0.02
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.06
+			production_efficiency_gain_factor = 0.06
+		}
+	}
+
+	add_trait = {
+		token = mio_astrov_mature_zis30
+		name = mio_astrov_mature_zis30
+		icon = GFX_generic_mio_department_icon_tank_light_tank_quality
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_astrov_zis30_zis2
+
+		all_parents = {
+			mio_astrov_zis30_zis2
+			mio_astrov_zis30_emergency_production
+		}
+
+		limit_to_equipment_type = {
+			light_tank_destroyer_chassis_2
+		}
+
+		equipment_bonus = {
+			reliability = 0.04
+			hard_attack = 0.03
+			ap_attack = 0.03
+		}
+	}
+
+	####################
+	###### SU-76 #######
+	####################
+
+	add_trait = {
+		token = mio_astrov_su76
+		name = mio_astrov_su76
+		icon = GFX_generic_mio_department_icon_tank_light_tank_at
+
+		position = { x=7 y=3 }
+
+		all_parents = {
+			mio_astrov_late_t70
+		}
+
+		limit_to_equipment_type = {
+			light_tank_destroyer_chassis_3
+		}
+
+		equipment_bonus = {
+			reliability = 0.03
+			soft_attack = 0.05
+			hard_attack = 0.05
+			ap_attack = 0.05
+			build_cost_ic = -0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_astrov_su76_zis3
+		name = mio_astrov_su76_zis3
+		icon = GFX_generic_mio_department_icon_tank_light_tank_at
+
+		position = { x=-1 y=1 }
+		relative_position_id = mio_astrov_su76
+
+		all_parents = {
+			mio_astrov_su76
+		}
+
+		limit_to_equipment_type = {
+			light_tank_destroyer_chassis_3
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.07
+			hard_attack = 0.07
+			ap_attack = 0.08
+			build_cost_ic = 0.01
+		}
+	}
+
+	add_trait = {
+		token = mio_astrov_su76_open_compartment
+		name = mio_astrov_su76_open_compartment
+		icon = GFX_generic_mio_department_icon_tank_light_tank_quality
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_astrov_su76
+
+		all_parents = {
+			mio_astrov_su76
+		}
+
+		limit_to_equipment_type = {
+			light_tank_destroyer_chassis_3
+		}
+
+		equipment_bonus = {
+			defense = -0.03
+			reliability = 0.03
+			build_cost_ic = -0.04
+		}
+	}
+
+	add_trait = {
+		token = mio_astrov_su76m
+		name = mio_astrov_su76m
+		icon = GFX_generic_mio_department_icon_tank_light_tank_technology
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_astrov_su76_zis3
+
+		all_parents = {
+			mio_astrov_su76_zis3
+			mio_astrov_su76_open_compartment
+		}
+
+		limit_to_equipment_type = {
+			light_tank_destroyer_chassis_3
+		}
+
+		equipment_bonus = {
+			reliability = 0.05
+			soft_attack = 0.03
+			hard_attack = 0.03
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.04
+			production_efficiency_gain_factor = 0.06
 		}
 	}
 }
 
 SOV_kirov_organization = {
 	icon = GFX_idea_SOV_kirov
-	
-	allowed = {	
+
+	allowed = {
 		original_tag = SOV
 	}
 
-	equipment_type = { medium_tank_chassis_1 heavy_tank_chassis heavy_tank_destroyer_chassis }
-	research_categories = { mio_cat_tech_heavy_armor_and_modules }
+	equipment_type = {
+		heavy_tank_chassis_2
+		heavy_tank_chassis_3
+		heavy_tank_artillery_chassis_2
+		heavy_tank_artillery_chassis_3
+		heavy_tank_destroyer_chassis_3
+	}
+
+	research_categories = {
+		mio_cat_tech_heavy_armor_and_modules
+	}
 
 	tree_header_text = {
-		text = mio_kirov_kv_is
+		text = mio_kirov_kv
 		x = 1
 	}
 
 	tree_header_text = {
-		text = mio_kirov_sau
-		x = 8
+		text = mio_kirov_is
+		x = 4
+	}
+
+	tree_header_text = {
+		text = mio_kirov_heavy_sau
+		x = 7
 	}
 
 	initial_trait = {
 		name = mio_kirov_initial_trait
-		
+
 		organization_modifier = {
-			military_industrial_organization_research_bonus = 0.1
+			military_industrial_organization_research_bonus = 0.10
 			military_industrial_organization_funds_gain = 0.75
 		}
-		
-		equipment_bonus = {
-			armor_value = 0.08
-			reliability = -0.05
-			maximum_speed = -0.05
-			breakthrough = 0.05
-		}
-	}
-	
-	trait = {
-		token = mio_kirov_sau_na_baze
-		name = mio_kirov_sau_na_baze
-		icon = GFX_generic_mio_department_icon_tank_heavy_tank
 
-		position = { x=8 y=0 }
-		limit_to_equipment_type = { heavy_tank_destroyer_chassis }
 		equipment_bonus = {
-			reliability = 0.03
-			armor_value = 0.1
+			armor_value = 0.06
+			breakthrough = 0.04
+			reliability = -0.03
+			maximum_speed = -0.03
 		}
 	}
-	
-	trait = {
-		token = mio_kirov_sturmguns
-		name = mio_kirov_sturmguns
-		icon = GFX_generic_mio_department_icon_tank_heavy_tank_spg
+
+	########################
+	######## KV-1 ##########
+	########################
+
+	add_trait = {
+		token = mio_kirov_kv1
+		name = mio_kirov_kv1
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_quality
+
+		position = { x=1 y=0 }
+
+		limit_to_equipment_type = {
+			heavy_tank_chassis_2
+		}
+
+		equipment_bonus = {
+			armor_value = 0.07
+			breakthrough = 0.04
+			defense = 0.03
+			reliability = -0.02
+			maximum_speed = -0.02
+			build_cost_ic = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_kirov_kv_heavy_armor
+		name = mio_kirov_kv_heavy_armor
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_armor
 
 		position = { x=-1 y=1 }
-		relative_position_id = mio_kirov_sau_na_baze
-		any_parent = { mio_kirov_sau_na_baze }
-		limit_to_equipment_type = { heavy_tank_destroyer_chassis }
-		
+		relative_position_id = mio_kirov_kv1
+
+		all_parents = {
+			mio_kirov_kv1
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_chassis_2
+		}
+
 		equipment_bonus = {
-			hard_attack = 0.25
-			breakthrough = 0.1
-			armor_value = 0.1
-			reliability = -0.07
-		}
-	}
-	
-	trait = {
-		token = mio_kirov_ptsau
-		name = mio_kirov_ptsau
-		icon = GFX_generic_mio_department_icon_tank_heavy_tank_at
-		
-		limit_to_equipment_type = { heavy_tank_destroyer_chassis }
-		relative_position_id = mio_kirov_sau_na_baze
-		any_parent = { mio_kirov_sau_na_baze }
-		position = { x=1 y=1 }
-		
-		equipment_bonus = {
-			ap_attack = 0.15
-			hard_attack = 0.05
-			reliability = -0.04
-			armor_value = 0.1
-		}
-	}
-	
-	trait = {
-		token = mio_kirov_sau_output
-		name = mio_kirov_sau_output
-		icon = GFX_generic_mio_department_icon_facilities
-
-		position = { x=0 y=2 }
-		relative_position_id = mio_kirov_sau_na_baze
-		any_parent = { mio_kirov_sau_na_baze }
-		limit_to_equipment_type = { heavy_tank_destroyer_chassis }
-
-		production_bonus = {
-			production_cost_factor = -0.03
-			production_efficiency_cap_factor = 0.1
+			armor_value = 0.10
+			defense = 0.04
+			maximum_speed = -0.02
+			build_cost_ic = 0.03
 		}
 	}
 
-	trait = {
+	add_trait = {
 		token = mio_kirov_individual_torsion_suspension
 		name = mio_kirov_individual_torsion_suspension
 		icon = GFX_generic_mio_trait_icon_reliability
 
-		position = { x=0 y=0 }
-		limit_to_equipment_type = { heavy_tank_chassis_2 heavy_tank_chassis_3 }
-		equipment_bonus = {
-			reliability = 0.03
-		}
-	}
-	
-	trait = {
-		token = mio_kirov_diesel_engine
-		name = mio_kirov_diesel_engine
-		icon = GFX_generic_mio_department_icon_tank_heavy_tank_engine
-
-		position = { x=1 y=0 }
-		limit_to_equipment_type = { heavy_tank_chassis_2 heavy_tank_chassis_3 }
-		equipment_bonus = {
-			reliability = 0.03
-			maximum_speed = 0.03
-		}
-	}
-	
-	trait = {
-		token = mio_kirov_universal_gun
-		name = mio_kirov_universal_gun
-		icon = GFX_generic_mio_department_icon_tank_heavy_tank_weapons
-		
-		limit_to_equipment_type = { heavy_tank_chassis_2 }
-		
-		position = { x=2 y=0 }
-		
-		available = {
-			FROM = {
-				has_tech = antitank2
-			}
-		}
-		
-		equipment_bonus = {
-			soft_attack = 0.1
-			hard_attack = 0.1
-			ap_attack = 0.1
-		}
-	}
-	
-	trait = {
-		token = mio_kirov_cast_torsions
-		name = mio_kirov_cast_torsions
-		icon = GFX_generic_mio_trait_icon_reliability
-
 		position = { x=0 y=1 }
-		
-		relative_position_id = mio_kirov_individual_torsion_suspension
-		any_parent = { mio_kirov_individual_torsion_suspension mio_kirov_diesel_engine }
-		
-		limit_to_equipment_type = { heavy_tank_chassis_2 heavy_tank_chassis_3 }
-		
+		relative_position_id = mio_kirov_kv1
+
+		all_parents = {
+			mio_kirov_kv1
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_chassis_2
+		}
+
 		equipment_bonus = {
-			reliability = 0.02
+			reliability = 0.05
 			maximum_speed = 0.02
 		}
 	}
-	
-	trait = {
-		token = mio_kirov_screens
-		name = mio_kirov_screens
-		icon = GFX_generic_mio_department_icon_tank_heavy_tank_armor
 
-		position = { x=0 y=1 }
-		
-		relative_position_id = mio_kirov_diesel_engine
-		all_parents = { mio_kirov_individual_torsion_suspension mio_kirov_diesel_engine mio_kirov_universal_gun }
-		
-		limit_to_equipment_type = { heavy_tank_chassis_2 heavy_tank_chassis_3 }
-		
-		equipment_bonus = {
-			armor_value = 0.05
-		}
-	}
-	
-	trait = {
-		token = mio_kirov_tele_scope
-		name = mio_kirov_tele_scope
-		icon = GFX_generic_mio_trait_icon_breakthrough
-
-		position = { x=0 y=1 }
-		
-		relative_position_id = mio_kirov_universal_gun
-		any_parent = { mio_kirov_diesel_engine mio_kirov_universal_gun }
-		
-		limit_to_equipment_type = { heavy_tank_chassis_2 heavy_tank_chassis_3 }
-		
-		equipment_bonus = {
-			breakthrough = 0.02
-			defense = 0.04
-		}
-	}
-	
-	trait = {
+	add_trait = {
 		token = mio_kirov_zis5_gun
 		name = mio_kirov_zis5_gun
 		icon = GFX_generic_mio_department_icon_tank_heavy_tank_at
 
 		position = { x=0 y=1 }
-		
-		relative_position_id = mio_kirov_screens
-		any_parent = { mio_kirov_screens }
-		
-		limit_to_equipment_type = { heavy_tank_chassis_2 }
-		
+		relative_position_id = mio_kirov_kv_heavy_armor
+
+		all_parents = {
+			mio_kirov_kv_heavy_armor
+			mio_kirov_individual_torsion_suspension
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_chassis_2
+		}
+
 		available = {
 			FROM = {
 				has_tech = antitank3
 			}
 		}
-		
+
 		equipment_bonus = {
-			soft_attack = 0.05
-			ap_attack = 0.12
-			hard_attack = 0.1
+			soft_attack = 0.04
+			hard_attack = 0.09
+			ap_attack = 0.10
+			breakthrough = 0.02
 		}
 	}
-	
-	trait = {
-		token = mio_kirov_is2
-		name = mio_kirov_is2
-		icon = GFX_generic_mio_department_icon_tank_heavy_tank
+
+	add_trait = {
+		token = mio_kirov_kv_diesel
+		name = mio_kirov_kv_diesel
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_engine
 
 		position = { x=0 y=1 }
-		
 		relative_position_id = mio_kirov_zis5_gun
-		any_parent = { mio_kirov_zis5_gun }
-		
-		limit_to_equipment_type = { heavy_tank_chassis_3 }
-		
+
+		all_parents = {
+			mio_kirov_zis5_gun
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_chassis_2
+		}
+
+		equipment_bonus = {
+			reliability = 0.04
+			maximum_speed = 0.02
+			fuel_consumption = -0.04
+		}
+	}
+
+	add_trait = {
+		token = mio_kirov_kv_improved_armor
+		name = mio_kirov_kv_improved_armor
+		icon = GFX_generic_mio_trait_icon_armor_value
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_kirov_zis5_gun
+
+		all_parents = {
+			mio_kirov_zis5_gun
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_chassis_2
+		}
+
+		equipment_bonus = {
+			armor_value = 0.06
+			defense = 0.03
+			build_cost_ic = 0.02
+		}
+	}
+
+	########################
+	######## KV-1S #########
+	########################
+
+	add_trait = {
+		token = mio_kirov_kv1s
+		name = mio_kirov_kv1s
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_engine
+		special_trait_background = yes
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_kirov_kv_diesel
+
+		all_parents = {
+			mio_kirov_kv_diesel
+			mio_kirov_kv_improved_armor
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_chassis_2
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.06
+			reliability = 0.05
+			armor_value = -0.03
+			breakthrough = 0.04
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.03
+			production_efficiency_gain_factor = 0.05
+		}
+	}
+
+	########################
+	######## KV-2 ##########
+	########################
+
+	add_trait = {
+		token = mio_kirov_kv2
+		name = mio_kirov_kv2
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_spg
+
+		position = { x=2 y=1 }
+
+		all_parents = {
+			mio_kirov_kv1
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_artillery_chassis_2
+		}
+
+		equipment_bonus = {
+			armor_value = 0.06
+			soft_attack = 0.10
+			breakthrough = 0.06
+			maximum_speed = -0.05
+			reliability = -0.04
+			build_cost_ic = 0.05
+		}
+	}
+
+	add_trait = {
+		token = mio_kirov_kv2_m10
+		name = mio_kirov_kv2_m10
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_spg
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_kirov_kv2
+
+		all_parents = {
+			mio_kirov_kv2
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_artillery_chassis_2
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.14
+			breakthrough = 0.07
+			hard_attack = 0.03
+			build_cost_ic = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_kirov_kv2_turret
+		name = mio_kirov_kv2_turret
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_armor
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_kirov_kv2
+
+		all_parents = {
+			mio_kirov_kv2
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_artillery_chassis_2
+		}
+
+		equipment_bonus = {
+			armor_value = 0.07
+			defense = 0.04
+			maximum_speed = -0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_kirov_mature_kv2
+		name = mio_kirov_mature_kv2
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_quality
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_kirov_kv2_m10
+
+		all_parents = {
+			mio_kirov_kv2_m10
+			mio_kirov_kv2_turret
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_artillery_chassis_2
+		}
+
+		equipment_bonus = {
+			reliability = 0.03
+			soft_attack = 0.03
+			breakthrough = 0.03
+		}
+	}
+
+	########################
+	######## IS-1 ##########
+	########################
+
+	add_trait = {
+		token = mio_kirov_is1
+		name = mio_kirov_is1
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_quality
+
+		position = { x=4 y=0 }
+
+		all_parents = {
+			mio_kirov_kv1s
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_chassis_3
+		}
+
 		available = {
 			FROM = {
 				has_completed_focus = SOV_they_will_know_fear
 			}
 		}
-		
-		equipment_bonus = {
-			reliability = 0.04
-			maximum_speed = 0.02
-			armor_value = 0.05
-			soft_attack = 0.08
-			hard_attack = 0.12
-			ap_attack = 0.12
-		}
-	}
-	
-	trait = {
-		token = mio_kirov_122mm_gun
-		name = mio_kirov_122mm_gun
-		icon = GFX_generic_mio_department_icon_tank_heavy_tank_weapons
 
-		position = { x=1 y=1 }
-		
-		relative_position_id = mio_kirov_is2
-		any_parent = { mio_kirov_is2 }
-		
-		limit_to_equipment_type = { heavy_tank_chassis_3 }
-		
-		available = {
-		}
-		
 		equipment_bonus = {
-			hard_attack = 0.08
-			ap_attack = 0.12
+			armor_value = 0.07
+			breakthrough = 0.05
+			reliability = 0.03
+			maximum_speed = 0.03
+			build_cost_ic = 0.03
 		}
 	}
-	
-	trait = {
+
+	add_trait = {
 		token = mio_kirov_is_armor
 		name = mio_kirov_is_armor
 		icon = GFX_generic_mio_department_icon_tank_heavy_tank_armor
 
-		position = { x=-1 y=1 }
-		
-		relative_position_id = mio_kirov_is2
-		any_parent = { mio_kirov_is2 }
-		
-		limit_to_equipment_type = { heavy_tank_chassis_3 }
-		
-		available = {
+		position = { x=0 y=1 }
+		relative_position_id = mio_kirov_is1
+
+		all_parents = {
+			mio_kirov_is1
 		}
-		
+
+		limit_to_equipment_type = {
+			heavy_tank_chassis_3
+		}
+
 		equipment_bonus = {
-			armor_value = 0.25
-			reliability = 0.02
+			armor_value = 0.10
+			defense = 0.04
+			build_cost_ic = 0.02
 		}
 	}
 
-	add_trait = { 
+	add_trait = {
+		token = mio_kirov_is_d5t
+		name = mio_kirov_is_d5t
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_at
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_kirov_is1
+
+		all_parents = {
+			mio_kirov_is1
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_chassis_3
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.04
+			hard_attack = 0.10
+			ap_attack = 0.11
+			breakthrough = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_kirov_is_running_gear
+		name = mio_kirov_is_running_gear
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_kirov_is_armor
+
+		all_parents = {
+			mio_kirov_is_armor
+			mio_kirov_is_d5t
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_chassis_3
+		}
+
+		equipment_bonus = {
+			reliability = 0.05
+			maximum_speed = 0.03
+			fuel_consumption = -0.03
+		}
+	}
+
+	########################
+	######## IS-2 ##########
+	########################
+
+	add_trait = {
+		token = mio_kirov_is2
+		name = mio_kirov_is2
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_quality
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_kirov_is_running_gear
+
+		all_parents = {
+			mio_kirov_is_running_gear
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_chassis_3
+		}
+
+		equipment_bonus = {
+			armor_value = 0.04
+			breakthrough = 0.05
+			hard_attack = 0.04
+			ap_attack = 0.04
+			build_cost_ic = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_kirov_122mm_gun
+		name = mio_kirov_122mm_gun
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_at
+
+		position = { x=1 y=0 }
+		relative_position_id = mio_kirov_is2
+
+		all_parents = {
+			mio_kirov_is2
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_chassis_3
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.07
+			hard_attack = 0.14
+			ap_attack = 0.16
+			breakthrough = 0.04
+			build_cost_ic = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_kirov_is2_straightened_nose
+		name = mio_kirov_is2_straightened_nose
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_armor
+
+		position = { x=-1 y=0 }
+		relative_position_id = mio_kirov_is2
+
+		all_parents = {
+			mio_kirov_is2
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_chassis_3
+		}
+
+		equipment_bonus = {
+			armor_value = 0.08
+			defense = 0.04
+			build_cost_ic = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_kirov_late_is2
+		name = mio_kirov_late_is2
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_technology
+		special_trait_background = yes
+
+		position = { x=-1 y=1 }
+		relative_position_id = mio_kirov_122mm_gun
+
+		all_parents = {
+			mio_kirov_122mm_gun
+			mio_kirov_is2_straightened_nose
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_chassis_3
+		}
+
+		equipment_bonus = {
+			armor_value = 0.04
+			reliability = 0.04
+			breakthrough = 0.04
+			hard_attack = 0.03
+			ap_attack = 0.03
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.03
+		}
+	}
+
+	########################
+	####### ISU-122 ########
+	########################
+
+	add_trait = {
+		token = mio_kirov_isu122
+		name = mio_kirov_isu122
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_at
+
+		position = { x=7 y=1 }
+
+		all_parents = {
+			mio_kirov_is1
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_destroyer_chassis_3
+		}
+
+		equipment_bonus = {
+			armor_value = 0.06
+			reliability = 0.02
+			hard_attack = 0.09
+			ap_attack = 0.10
+			build_cost_ic = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_kirov_isu122_a19
+		name = mio_kirov_isu122_a19
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_at
+
+		position = { x=-1 y=1 }
+		relative_position_id = mio_kirov_isu122
+
+		all_parents = {
+			mio_kirov_isu122
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_destroyer_chassis_3
+		}
+
+		equipment_bonus = {
+			hard_attack = 0.14
+			ap_attack = 0.16
+			soft_attack = 0.04
+			build_cost_ic = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_kirov_isu122_casemate
+		name = mio_kirov_isu122_casemate
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_armor
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_kirov_isu122
+
+		all_parents = {
+			mio_kirov_isu122
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_destroyer_chassis_3
+		}
+
+		equipment_bonus = {
+			armor_value = 0.07
+			defense = 0.05
+			breakthrough = -0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_kirov_late_isu122
+		name = mio_kirov_late_isu122
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_quality
+		special_trait_background = yes
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_kirov_isu122_a19
+
+		all_parents = {
+			mio_kirov_isu122_a19
+			mio_kirov_isu122_casemate
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_destroyer_chassis_3
+		}
+
+		equipment_bonus = {
+			reliability = 0.04
+			hard_attack = 0.04
+			ap_attack = 0.04
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.03
+		}
+	}
+
+	########################
+	####### ISU-152 ########
+	########################
+
+	add_trait = {
+		token = mio_kirov_isu152
+		name = mio_kirov_isu152
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_spg
+
+		position = { x=8 y=2 }
+
+		all_parents = {
+			mio_kirov_is1
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_artillery_chassis_3
+		}
+
+		equipment_bonus = {
+			armor_value = 0.06
+			soft_attack = 0.10
+			breakthrough = 0.06
+			build_cost_ic = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_kirov_isu152_ml20s
+		name = mio_kirov_isu152_ml20s
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_spg
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_kirov_isu152
+
+		all_parents = {
+			mio_kirov_isu152
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_artillery_chassis_3
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.15
+			hard_attack = 0.07
+			breakthrough = 0.08
+			build_cost_ic = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_kirov_isu152_casemate
+		name = mio_kirov_isu152_casemate
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_armor
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_kirov_isu152
+
+		all_parents = {
+			mio_kirov_isu152
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_artillery_chassis_3
+		}
+
+		equipment_bonus = {
+			armor_value = 0.07
+			defense = 0.05
+			breakthrough = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_kirov_late_isu152
+		name = mio_kirov_late_isu152
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_technology
+		special_trait_background = yes
+
+		position = { x=-1 y=1 }
+		relative_position_id = mio_kirov_isu152_ml20s
+
+		all_parents = {
+			mio_kirov_isu152_ml20s
+			mio_kirov_isu152_casemate
+		}
+
+		limit_to_equipment_type = {
+			heavy_tank_artillery_chassis_3
+		}
+
+		equipment_bonus = {
+			reliability = 0.04
+			soft_attack = 0.04
+			breakthrough = 0.03
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.03
+		}
+	}
+
+	################################
+	###### MERGED TANK PLANTS ######
+	################################
+
+	add_trait = {
 		token = SOV_mio_trait_merge_plant_no_174
 		name = SOV_merge_tank_plant
-		#icon = GFX_generic_mio_department_icon_facilities
 		icon = GFX_generic_mio_trait_icon_maximum_speed
 		special_trait_background = yes
 
-		position = { x=4 y=0 }
-		
+		position = { x=9 y=0 }
+
 		visible = {
-			FROM = { original_tag = SOV }
+			FROM = {
+				original_tag = SOV
+			}
 		}
 
-		available = { #Two FROM blocs to provide two different check marks in the UI
+		available = {
 			FROM = {
-				has_full_control_of_state = 195 #LENINGRAD
+				has_full_control_of_state = 195
 			}
+
 			FROM = {
 				has_completed_focus = SOV_merge_tank_and_materiel_plants
 			}
@@ -1078,6 +2200,7 @@ SOV_kirov_organization = {
 
 		on_complete = {
 			custom_effect_tooltip = SOV_trait_will_not_be_available_in_other_organizations
+
 			FROM = {
 				set_country_flag = SOV_merge_plant_no_174_flag
 			}
@@ -1088,23 +2211,25 @@ SOV_kirov_organization = {
 		}
 	}
 
-	add_trait = { 
+	add_trait = {
 		token = SOV_mio_trait_merge_plant_no_112
 		name = SOV_merge_tank_plant_2
-		#icon = GFX_generic_mio_department_icon_facilities
 		icon = GFX_generic_mio_trait_icon_production_capacity
 		special_trait_background = yes
 
-		position = { x=5 y=0 }
-		
+		position = { x=9 y=2 }
+
 		visible = {
-			FROM = { original_tag = SOV }
+			FROM = {
+				original_tag = SOV
+			}
 		}
 
 		available = {
 			FROM = {
-				has_full_control_of_state = 252 #GORKY
+				has_full_control_of_state = 252
 			}
+
 			FROM = {
 				has_completed_focus = SOV_merge_tank_and_materiel_plants
 			}
@@ -1112,6 +2237,7 @@ SOV_kirov_organization = {
 
 		on_complete = {
 			custom_effect_tooltip = SOV_trait_will_not_be_available_in_other_organizations
+
 			FROM = {
 				set_country_flag = SOV_merge_plant_no_112_flag
 			}
@@ -1122,23 +2248,25 @@ SOV_kirov_organization = {
 		}
 	}
 
-	add_trait = { 
+	add_trait = {
 		token = SOV_mio_trait_merge_ural_heavy_machine_building_plant
 		name = SOV_merge_tank_plant_3
-		#icon = GFX_generic_mio_department_icon_facilities
 		icon = GFX_generic_mio_trait_icon_soft_attack
 		special_trait_background = yes
 
-		position = { x=6 y=0 }
-		
+		position = { x=9 y=4 }
+
 		visible = {
-			FROM = { original_tag = SOV }
+			FROM = {
+				original_tag = SOV
+			}
 		}
 
 		available = {
 			FROM = {
-				has_full_control_of_state = 653 #SVERDLOVSK
+				has_full_control_of_state = 653
 			}
+
 			FROM = {
 				has_completed_focus = SOV_merge_tank_and_materiel_plants
 			}
@@ -1146,6 +2274,7 @@ SOV_kirov_organization = {
 
 		on_complete = {
 			custom_effect_tooltip = SOV_trait_will_not_be_available_in_other_organizations
+
 			FROM = {
 				set_country_flag = SOV_merge_ural_heavy_machine_building_plant_flag
 			}
@@ -1153,61 +2282,6 @@ SOV_kirov_organization = {
 
 		equipment_bonus = {
 			soft_attack = @tank_soft_attack
-		}
-	}
-	
-	trait = {
-		token = mio_kirov_leningrad_prod_lines
-		name = mio_kirov_leningrad_prod_lines
-		icon = GFX_generic_mio_trait_icon_production_capacity
-
-		position = { x=0 y=2 }
-		relative_position_id = SOV_mio_trait_merge_plant_no_174
-
-		any_parent = { SOV_mio_trait_merge_plant_no_174 SOV_mio_trait_merge_plant_no_112 SOV_mio_trait_merge_ural_heavy_machine_building_plant }
-		
-		organization_modifier = {
-			military_industrial_organization_funds_gain = 0.3
-		}
-		
-		production_bonus = {
-			production_cost_factor = -0.02
-		}
-	}
-
-	trait = {
-		token = mio_kirov_chtz_prod_lines
-		name = mio_kirov_chtz_prod_lines
-		icon = GFX_generic_mio_trait_icon_production_capacity		
-
-		position = { x=0 y=2 }
-		relative_position_id = SOV_mio_trait_merge_ural_heavy_machine_building_plant
-
-		any_parent = { SOV_mio_trait_merge_plant_no_174 SOV_mio_trait_merge_plant_no_112 SOV_mio_trait_merge_ural_heavy_machine_building_plant }
-		
-		organization_modifier = {
-			military_industrial_organization_funds_gain = 0.3
-		}
-		
-		production_bonus = {
-			production_cost_factor = -0.02
-		}
-	}
-	
-	trait = {
-		token = mio_morozov_fluid_autowelding
-		name = mio_morozov_fluid_autowelding
-		icon = GFX_generic_mio_trait_icon_production_capacity		
-
-		position = { x=-1 y=1 }
-		relative_position_id = mio_kirov_chtz_prod_lines
-
-		any_parent = { mio_kirov_chtz_prod_lines mio_kirov_leningrad_prod_lines }
-		
-		production_bonus = {
-			production_efficiency_gain_factor = 0.1
-			production_efficiency_cap_factor = 0.1
-			production_cost_factor = -0.08
 		}
 	}
 }

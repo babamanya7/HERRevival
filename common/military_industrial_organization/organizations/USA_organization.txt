@@ -121,38 +121,35 @@ USA_marmon_herrington_organization = {
 
 USA_army_ordnance_department_organization = {
 	icon = GFX_idea_army_ordnance_department
-	
-	allowed = {	
+	allowed = {
 		tag = USA
 	}
-	
 	equipment_type = { mio_cat_aod_designer }
 	research_categories = { armor }
-	
+
 	tree_header_text = {
 		text = mio_header_aod_lt
-		x = 1
+		x = 0
 	}
-	
 	tree_header_text = {
 		text = mio_header_aod_st
-		x = 4
+		x = 3
 	}
-	
 	tree_header_text = {
 		text = mio_header_aod_tt
+		x = 5
+	}
+	tree_header_text = {
+		text = mio_header_aod_td
 		x = 7
 	}
-	
+
 	initial_trait = {
 		name = mio_aod_inital_trait
-
 		limit_to_equipment_type = { mio_cat_aod_designer }
-		
 		organization_modifier = {
 			military_industrial_organization_funds_gain = 0.5
 		}
-
 		production_bonus = {
 			production_cost_factor = -0.03
 		}
@@ -162,649 +159,536 @@ USA_army_ordnance_department_organization = {
 			build_cost_ic = -0.02
 		}
 	}
-	
+
+	# LIGHT TANKS
+
 	add_trait = {
-		token = mio_aod_stabilizator
-		name = mio_aod_stabilizator
+		token = mio_aod_stuart
+		name = mio_aod_stuart
 		icon = GFX_generic_mio_department_icon_tank_light_tank_quality
-
-		position = { x=1 y=0 }
-		
-		limit_to_equipment_type = { light_tank_chassis_2 }
-		
-		equipment_bonus = {
-			soft_attack = 0.05
-			hard_attack = 0.05
-			breakthrough = 0.08
-			defense = 0.05
-			reliability = -0.02
-		}
-	}
-	
-	add_trait = {
-		token = mio_aod_two_engines
-		name = mio_aod_two_engines
-		icon = GFX_generic_mio_department_icon_tank_light_tank_engine
-
-		position = { x=0 y=1 }
-		
-		limit_to_equipment_type = { light_tank_chassis_2 light_tank_destroyer_chassis_2 }
-		
-		any_parent = { mio_aod_stabilizator mio_aod_cumulativ_shell }
-		relative_position_id = mio_aod_stabilizator
-		
-		equipment_bonus = {
-			reliability = -0.04
-			maximum_speed = 0.05
-			build_cost_ic = 0.03
-		}
-	}
-	
-	add_trait = {
-		token = mio_aod_engine_radiator
-		name = mio_aod_engine_radiator
-		icon = GFX_generic_mio_trait_icon_reliability
-		
-		limit_to_equipment_type = { light_tank_chassis_2 light_tank_destroyer_chassis_2 }
-
-		position = { x=0 y=1 }
-		
-		all_parents = { mio_aod_two_engines }
-		relative_position_id = mio_aod_two_engines
-		
-		equipment_bonus = {
-			reliability = 0.02
-			maximum_speed = 0.02
-		}
-	}
-	
-	add_trait = {
-		token = mio_aod_open_rubka_3
-		name = mio_aod_open_rubka_3
-		icon = GFX_generic_mio_department_icon_tank_general_armor
-		
-		limit_to_equipment_type = { light_tank_destroyer_chassis_2 }
-		
 		position = { x=0 y=0 }
-		
+		limit_to_equipment_type = { light_tank_chassis_2 }
 		equipment_bonus = {
-			armor_value = -0.15
-			breakthrough = 0.05
-			defense = -0.05
-			hardness = -0.1
+			maximum_speed = 0.04
+			reliability = 0.03
+			breakthrough = 0.02
 		}
 	}
-	
-	add_trait = {
-		token = mio_aod_cumulativ_shell
-		name = mio_aod_cumulativ_shell
-		icon = GFX_generic_mio_trait_icon_ap_attack
-		
-		limit_to_equipment_type = { light_tank_destroyer_chassis_2 }
-		
-		available = {
-			FROM = {
-				has_tech = antitank4
-			}
-		}
 
+	add_trait = {
+		token = mio_aod_stuart_stabilizer
+		name = mio_aod_stuart_stabilizer
+		icon = GFX_generic_mio_department_icon_tank_light_tank_quality
 		position = { x=0 y=1 }
-		
-		all_parents = { mio_aod_open_rubka_3 }
-		relative_position_id = mio_aod_open_rubka_3
-		
+		relative_position_id = mio_aod_stuart
+		all_parents = { mio_aod_stuart }
+		limit_to_equipment_type = { light_tank_chassis_2 }
 		equipment_bonus = {
-			hard_attack = 0.35
-			ap_attack = 0.75
+			soft_attack = 0.04
+			hard_attack = 0.03
+			breakthrough = 0.05
 		}
 	}
-	
-	add_trait = {
-		token = mio_aod_three_man_turret
-		name = mio_aod_three_man_turret
-		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
-		
-		limit_to_equipment_type = { light_tank_chassis_3 }
 
-		position = { x=0 y=2 }
-		
+	add_trait = {
+		token = mio_aod_stuart_powerplant
+		name = mio_aod_stuart_powerplant
+		icon = GFX_generic_mio_department_icon_tank_light_tank_engine
+		position = { x=1 y=1 }
+		relative_position_id = mio_aod_stuart
+		all_parents = { mio_aod_stuart }
+		limit_to_equipment_type = { light_tank_chassis_2 }
 		equipment_bonus = {
-			breakthrough = 0.05
-			reliability = -0.03
+			maximum_speed = 0.05
+			reliability = 0.04
+			fuel_consumption = -0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_aod_chaffee
+		name = mio_aod_chaffee
+		icon = GFX_generic_mio_department_icon_tank_light_tank_quality
+		special_trait_background = yes
+		position = { x=0 y=2 }
+		relative_position_id = mio_aod_stuart
+		any_parent = { mio_aod_stuart_stabilizer mio_aod_stuart_powerplant }
+		limit_to_equipment_type = { light_tank_chassis_3 }
+		equipment_bonus = {
+			maximum_speed = 0.04
+			reliability = 0.03
+			breakthrough = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_aod_chaffee_torsion_bar
+		name = mio_aod_chaffee_torsion_bar
+		icon = GFX_generic_mio_trait_icon_reliability
+		position = { x=0 y=1 }
+		relative_position_id = mio_aod_chaffee
+		all_parents = { mio_aod_chaffee }
+		limit_to_equipment_type = { light_tank_chassis_3 }
+		equipment_bonus = {
+			reliability = 0.06
+			maximum_speed = 0.03
+			breakthrough = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_aod_chaffee_75mm
+		name = mio_aod_chaffee_75mm
+		icon = GFX_generic_mio_department_icon_tank_general_weapons
+		position = { x=1 y=1 }
+		relative_position_id = mio_aod_chaffee
+		all_parents = { mio_aod_chaffee }
+		limit_to_equipment_type = { light_tank_chassis_3 }
+		equipment_bonus = {
+			soft_attack = 0.07
+			hard_attack = 0.05
+			ap_attack = 0.05
 			build_cost_ic = 0.02
 		}
 	}
-	
-	add_trait = {
-		token = mio_aod_smoke_granades
-		name = mio_aod_smoke_granades
-		icon = GFX_generic_mio_trait_icon_defense
-		
-		limit_to_equipment_type = { light_tank_chassis_3 }
 
-		position = { x=0 y=1 }
-		
-		all_parents = { mio_aod_three_man_turret }
-		relative_position_id = mio_aod_three_man_turret
-		
-		equipment_bonus = {
-			defense = 0.05
-		}
-	}
-	
-	add_trait = {
-		token = mio_aod_aa_machinegun
-		name = mio_aod_aa_machinegun
-		icon = GFX_generic_mio_trait_icon_anti_air_attack
-		
-		limit_to_equipment_type = { light_tank_chassis_2 light_tank_chassis_3 }
+	# MEDIUM TANKS
 
-		position = { x=1 y=0 }
-		
-		any_parent = { mio_aod_smoke_granades mio_aod_engine_radiator }
-		relative_position_id = mio_aod_smoke_granades
-		
-		equipment_bonus = {
-			air_attack = 0.35
-			soft_attack = 0.02
-		}
-	}
-	
 	add_trait = {
-		token = mio_aod_two_turrets_guns
-		name = mio_aod_two_turrets_guns
+		token = mio_aod_m3_lee
+		name = mio_aod_m3_lee
 		icon = GFX_generic_mio_department_icon_tank_medium_tank_weapons
-		
+		position = { x=3 y=0 }
 		limit_to_equipment_type = { medium_tank_chassis_1 }
-
-		position = { x=2 y=0 }
-		
 		equipment_bonus = {
-			hard_attack = 0.08
-			ap_attack = 0.08
-			soft_attack = 0.15
-			armor_value = -0.15
-			reliability = -0.1
+			soft_attack = 0.06
+			hard_attack = 0.03
+			breakthrough = 0.02
+			reliability = -0.03
 		}
 	}
-	
-	add_trait = {
-		token = mio_aod_seven_mans
-		name = mio_aod_seven_mans
-		icon = GFX_generic_mio_trait_icon_hardness
-		
-		limit_to_equipment_type = { medium_tank_chassis_1 }
 
-		position = { x=0 y=1 }
-		
-		all_parents = { mio_aod_two_turrets_guns }
-		relative_position_id = mio_aod_two_turrets_guns
-		
+	add_trait = {
+		token = mio_aod_lee_75mm
+		name = mio_aod_lee_75mm
+		icon = GFX_generic_mio_department_icon_tank_general_weapons
+		position = { x=-1 y=1 }
+		relative_position_id = mio_aod_m3_lee
+		all_parents = { mio_aod_m3_lee }
+		limit_to_equipment_type = { medium_tank_chassis_1 }
 		equipment_bonus = {
+			soft_attack = 0.08
+			hard_attack = 0.04
+			ap_attack = 0.04
+			build_cost_ic = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_aod_lee_crew_and_optics
+		name = mio_aod_lee_crew_and_optics
+		icon = GFX_generic_mio_trait_icon_breakthrough
+		position = { x=1 y=1 }
+		relative_position_id = mio_aod_m3_lee
+		all_parents = { mio_aod_m3_lee }
+		limit_to_equipment_type = { medium_tank_chassis_1 }
+		equipment_bonus = {
+			breakthrough = 0.05
+			defense = 0.03
+			reliability = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_aod_m4_sherman
+		name = mio_aod_m4_sherman
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_quality
+		special_trait_background = yes
+		position = { x=0 y=2 }
+		relative_position_id = mio_aod_m3_lee
+		all_parents = { mio_aod_lee_75mm mio_aod_lee_crew_and_optics }
+		limit_to_equipment_type = { medium_tank_chassis_2 }
+		equipment_bonus = {
+			reliability = 0.04
+			breakthrough = 0.04
+			armor_value = 0.03
+			build_cost_ic = -0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_aod_sherman_stabilizer
+		name = mio_aod_sherman_stabilizer
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_quality
+		position = { x=-1 y=1 }
+		relative_position_id = mio_aod_m4_sherman
+		all_parents = { mio_aod_m4_sherman }
+		limit_to_equipment_type = { medium_tank_chassis_2 }
+		equipment_bonus = {
+			soft_attack = 0.04
+			hard_attack = 0.04
+			breakthrough = 0.06
+		}
+	}
+
+	add_trait = {
+		token = mio_aod_sherman_standardized_design
+		name = mio_aod_sherman_standardized_design
+		icon = GFX_generic_mio_department_icon_tank_general_production
+		position = { x=1 y=1 }
+		relative_position_id = mio_aod_m4_sherman
+		all_parents = { mio_aod_m4_sherman }
+		limit_to_equipment_type = { medium_tank_chassis_2 }
+		equipment_bonus = {
+			reliability = 0.05
+			build_cost_ic = -0.03
+		}
+		production_bonus = {
+			production_efficiency_gain_factor = 0.06
+		}
+	}
+
+	add_trait = {
+		token = mio_aod_late_sherman
+		name = mio_aod_late_sherman
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_technology
+		special_trait_background = yes
+		position = { x=0 y=2 }
+		relative_position_id = mio_aod_m4_sherman
+		all_parents = { mio_aod_sherman_stabilizer mio_aod_sherman_standardized_design }
+		limit_to_equipment_type = { medium_tank_chassis_2 }
+		equipment_bonus = {
+			armor_value = 0.03
+			reliability = 0.03
+			hard_attack = 0.04
+			ap_attack = 0.04
+			breakthrough = 0.04
+		}
+	}
+
+	add_trait = {
+		token = mio_aod_m26_pershing
+		name = mio_aod_m26_pershing
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
+		position = { x=0 y=1 }
+		relative_position_id = mio_aod_late_sherman
+		all_parents = { mio_aod_late_sherman }
+		limit_to_equipment_type = { medium_tank_chassis_3 }
+		equipment_bonus = {
+			armor_value = 0.06
+			hard_attack = 0.04
+			breakthrough = 0.04
+			build_cost_ic = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_aod_pershing_90mm
+		name = mio_aod_pershing_90mm
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+		position = { x=-1 y=1 }
+		relative_position_id = mio_aod_m26_pershing
+		all_parents = { mio_aod_m26_pershing }
+		limit_to_equipment_type = { medium_tank_chassis_3 }
+		equipment_bonus = {
+			hard_attack = 0.11
+			ap_attack = 0.13
+			soft_attack = 0.03
+			build_cost_ic = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_aod_pershing_torsion_bar
+		name = mio_aod_pershing_torsion_bar
+		icon = GFX_generic_mio_trait_icon_reliability
+		position = { x=1 y=1 }
+		relative_position_id = mio_aod_m26_pershing
+		all_parents = { mio_aod_m26_pershing }
+		limit_to_equipment_type = { medium_tank_chassis_3 }
+		equipment_bonus = {
+			reliability = 0.05
+			maximum_speed = 0.03
+			breakthrough = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_aod_mature_pershing
+		name = mio_aod_mature_pershing
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_quality
+		special_trait_background = yes
+		position = { x=0 y=2 }
+		relative_position_id = mio_aod_m26_pershing
+		all_parents = { mio_aod_pershing_90mm mio_aod_pershing_torsion_bar }
+		limit_to_equipment_type = { medium_tank_chassis_3 }
+		equipment_bonus = {
+			armor_value = 0.03
+			hard_attack = 0.03
+			breakthrough = 0.04
 			reliability = 0.03
 		}
 	}
-	
-	add_trait = {
-		token = mio_aod_bokovaya_optics
-		name = mio_aod_bokovaya_optics
-		icon = GFX_generic_mio_trait_icon_breakthrough
-		
-		limit_to_equipment_type = { medium_tank_chassis_1 }
 
-		position = { x=0 y=1 }
-		
-		all_parents = { mio_aod_seven_mans }
-		relative_position_id = mio_aod_seven_mans
-		
+	# HEAVY SHERMAN
+
+	add_trait = {
+		token = mio_aod_sherman_jumbo
+		name = mio_aod_sherman_jumbo
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_armor
+		position = { x=5 y=2 }
+		limit_to_equipment_type = { heavy_tank_chassis_2 }
+		any_parent = { mio_aod_m4_sherman }
 		equipment_bonus = {
-			breakthrough = 0.07
+			armor_value = 0.10
+			defense = 0.04
+			breakthrough = 0.04
+			maximum_speed = -0.04
+			build_cost_ic = 0.04
 		}
 	}
-	
+
+	add_trait = {
+		token = mio_aod_jumbo_heavy_armor
+		name = mio_aod_jumbo_heavy_armor
+		icon = GFX_generic_mio_trait_icon_armor_value
+		position = { x=0 y=1 }
+		relative_position_id = mio_aod_sherman_jumbo
+		all_parents = { mio_aod_sherman_jumbo }
+		limit_to_equipment_type = { heavy_tank_chassis_2 }
+		equipment_bonus = {
+			armor_value = 0.08
+			defense = 0.05
+			maximum_speed = -0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_aod_jumbo_assault_tank
+		name = mio_aod_jumbo_assault_tank
+		icon = GFX_generic_mio_trait_icon_breakthrough
+		special_trait_background = yes
+		position = { x=0 y=1 }
+		relative_position_id = mio_aod_jumbo_heavy_armor
+		all_parents = { mio_aod_jumbo_heavy_armor }
+		limit_to_equipment_type = { heavy_tank_chassis_2 }
+		equipment_bonus = {
+			armor_value = 0.04
+			defense = 0.04
+			breakthrough = 0.06
+			reliability = 0.03
+		}
+	}
+
+	# SUPER PERSHING
+
+	add_trait = {
+		token = mio_aod_super_pershing
+		name = mio_aod_super_pershing
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_at
+		position = { x=5 y=5 }
+		any_parent = { mio_aod_m26_pershing }
+		limit_to_equipment_type = { heavy_tank_chassis_3 }
+		equipment_bonus = {
+			armor_value = 0.06
+			hard_attack = 0.06
+			ap_attack = 0.07
+			maximum_speed = -0.03
+			build_cost_ic = 0.05
+		}
+	}
+
+	add_trait = {
+		token = mio_aod_super_pershing_long_90mm
+		name = mio_aod_super_pershing_long_90mm
+		icon = GFX_generic_mio_department_icon_tank_heavy_tank_at
+		position = { x=0 y=1 }
+		relative_position_id = mio_aod_super_pershing
+		all_parents = { mio_aod_super_pershing }
+		limit_to_equipment_type = { heavy_tank_chassis_3 }
+		equipment_bonus = {
+			hard_attack = 0.12
+			ap_attack = 0.15
+			build_cost_ic = 0.04
+		}
+	}
+
+	add_trait = {
+		token = mio_aod_super_pershing_additional_armor
+		name = mio_aod_super_pershing_additional_armor
+		icon = GFX_generic_mio_trait_icon_armor_value
+		special_trait_background = yes
+		position = { x=0 y=1 }
+		relative_position_id = mio_aod_super_pershing_long_90mm
+		all_parents = { mio_aod_super_pershing_long_90mm }
+		limit_to_equipment_type = { heavy_tank_chassis_3 }
+		equipment_bonus = {
+			armor_value = 0.10
+			defense = 0.04
+			maximum_speed = -0.03
+			reliability = -0.02
+		}
+	}
+
+	# TANK DESTROYERS
+
 	add_trait = {
 		token = mio_aod_mobile_tank_destroyers
 		name = mio_aod_mobile_tank_destroyers
 		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
-		
-		limit_to_equipment_type = { medium_tank_destroyer_chassis_1 medium_tank_destroyer_chassis_2 medium_tank_destroyer_chassis_3 }
-
-		position = { x=4 y=0 }
-		
-		equipment_bonus = {
-			breakthrough = 0.2
-			defense = -0.4
-			maximum_speed = 0.05
-			soft_attack = 0.03
-			hard_attack = 0.12
-			ap_attack = 0.15
+		position = { x=7 y=0 }
+		limit_to_equipment_type = {
+			medium_tank_destroyer_chassis_1
+			medium_tank_destroyer_chassis_2
+			medium_tank_destroyer_chassis_3
 		}
-	}
-	
-	add_trait = {
-		token = mio_aod_open_rubka
-		name = mio_aod_open_rubka
-		icon = GFX_generic_mio_department_icon_tank_general_armor
-		
-		limit_to_equipment_type = { medium_tank_destroyer_chassis_1 medium_tank_destroyer_chassis_2 medium_tank_destroyer_chassis_3 }
-
-		position = { x=1 y=1 }
-		
-		all_parents = { mio_aod_mobile_tank_destroyers }
-		relative_position_id = mio_aod_mobile_tank_destroyers
-		
 		equipment_bonus = {
-			armor_value = -0.15
-			breakthrough = 0.05
-			defense = -0.05
-			hardness = -0.1
-		}
-	}
-	
-	add_trait = {
-		token = mio_aod_dulny_tormoz
-		name = mio_aod_dulny_tormoz
-		icon = GFX_generic_mio_department_icon_tank_medium_tank_weapons
-		
-		limit_to_equipment_type = { medium_tank_destroyer_chassis_2 medium_tank_destroyer_chassis_3 }
-
-		all_parents = { mio_aod_mobile_tank_destroyers }
-		relative_position_id = mio_aod_mobile_tank_destroyers
-		
-		position = { x=0 y=1 }
-		
-		equipment_bonus = {
-			breakthrough = 0.04
-			soft_attack = 0.03
-			hard_attack = 0.12
-			ap_attack = 0.12
-		}
-	}
-	
-	add_trait = {
-		token = mio_aod_fiftycal_2
-		name = mio_aod_fiftycal_2
-		icon = GFX_generic_mio_trait_icon_anti_air_attack
-		
-		limit_to_equipment_type = { medium_tank_destroyer_chassis_2 medium_tank_destroyer_chassis_3 medium_tank_chassis_2 }
-		
-		any_parent = { mio_aod_mobile_tank_destroyers mio_aod_cast_armor }
-		relative_position_id = mio_aod_mobile_tank_destroyers
-		
-		position = { x=-1 y=1 }
-		
-		equipment_bonus = {
-			air_attack = 0.5
-			soft_attack = 0.03
-		}
-	}
-	
-	add_trait = {
-		token = mio_aod_boeukladka_pervoi_ocheredi
-		name = mio_aod_boeukladka_pervoi_ocheredi
-		icon = GFX_generic_mio_trait_icon_breakthrough
-		
-		limit_to_equipment_type = { medium_tank_destroyer_chassis_2 medium_tank_destroyer_chassis_3 }
-		
-		all_parents = { mio_aod_fiftycal_2 mio_aod_dulny_tormoz mio_aod_open_rubka }
-		relative_position_id = mio_aod_dulny_tormoz
-		
-		position = { x=0 y=1 }
-		
-		equipment_bonus = {
-			breakthrough = 0.04
-			defense = 0.04
-			soft_attack = 0.04
-			hard_attack = 0.04
-			reliability = -0.05
-		}
-	}
-	
-	add_trait = {
-		token = mio_aod_armorpiercingshells
-		name = mio_aod_armorpiercingshells
-		icon = GFX_generic_mio_department_icon_tank_general_weapons
-		
-		limit_to_equipment_type = { medium_tank_destroyer_chassis_3 }
-		
-		all_parents = { mio_aod_boeukladka_pervoi_ocheredi }
-		relative_position_id = mio_aod_boeukladka_pervoi_ocheredi
-		
-		available = {
-			FROM = {
-				has_tech = antitank4
-			}
-		}
-		
-		position = { x=0 y=1 }
-		
-		equipment_bonus = {
-			soft_attack = -0.03
-			hard_attack = 0.15
-			ap_attack = 0.2
-			hard_attack = -0.03
-		}
-	}
-	
-	add_trait = {
-		token = mio_aod_cast_armor
-		name = mio_aod_cast_armor
-		icon = GFX_generic_mio_trait_icon_armor_value
-		
-		limit_to_equipment_type = { medium_tank_chassis_2 }
-
-		position = { x=3 y=0 }
-		
-		equipment_bonus = {
-			armor_value = 0.15
-			soft_attack = 0.08
-			hard_attack = 0.08
-			ap_attack = 0.08
-			breakthrough = 0.1
-		}
-	}
-	
-	add_trait = {
-		token = mio_aod_stabilizator_3
-		name = mio_aod_stabilizator_3
-		icon = GFX_generic_mio_department_icon_tank_medium_tank_quality
-		
-		limit_to_equipment_type = { medium_tank_chassis_2 }
-
-		any_parent = { mio_aod_pogon_bashni mio_aod_bokovaya_optics }
-		relative_position_id = mio_aod_pogon_bashni
-		
-		position = { x=0 y=1 }
-		
-		equipment_bonus = {
-			soft_attack = 0.05
+			maximum_speed = 0.03
 			hard_attack = 0.05
-			breakthrough = 0.08
-			defense = 0.05
-			reliability = -0.02
-		}
-	}
-	
-	add_trait = {
-		token = mio_aod_pogon_bashni
-		name = mio_aod_pogon_bashni
-		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
-		
-		limit_to_equipment_type = { medium_tank_chassis_2 }
-
-		all_parents = { mio_aod_fiftycal_2 }
-		relative_position_id = mio_aod_fiftycal_2
-		
-		position = { x=0 y=1 }
-		
-		equipment_bonus = {
-			armor_value = 0.1
-			defense = 0.03
-		}
-	}
-	
-	add_trait = {
-		token = mio_aod_cast_turret
-		name = mio_aod_cast_turret
-		icon = GFX_generic_mio_department_icon_tank_heavy_tank_armor
-		
-		limit_to_equipment_type = { heavy_tank_chassis_2 }
-		
-		position = { x=6 y=0 }
-		
-		equipment_bonus = {
-			armor_value = 0.25
-		}
-	}
-	
-	add_trait = {
-		token = mio_aod_zashishennaya_transmission
-		name = mio_aod_zashishennaya_transmission
-		icon = GFX_generic_mio_trait_icon_armor_value
-		
-		limit_to_equipment_type = { heavy_tank_chassis_2 }
-		
-		position = { x=1 y=0 }
-		
-		relative_position_id = mio_aod_cast_turret
-		
-		equipment_bonus = {
-			reliability = 0.03
-			armor_value = 0.05
-		}
-	}
-	
-	add_trait = {
-		token = mio_aod_fiftycal_4
-		name = mio_aod_fiftycal_4
-		icon = GFX_generic_mio_trait_icon_anti_air_attack
-		
-		limit_to_equipment_type = { heavy_tank_chassis_2 heavy_tank_chassis_3 }
-		
-		position = { x=0 y=1 }
-		
-		any_parent = { mio_aod_cast_turret mio_aod_zashishennaya_transmission mio_aod_zadneprivodniy mio_aod_cast_chassis }
-		relative_position_id = mio_aod_zashishennaya_transmission
-		mutually_exclusive = { mio_aod_mg_v_soske }
-		
-		equipment_bonus = {
-			air_attack = 0.5
-			soft_attack = 0.03
-		}
-	}
-	
-	add_trait = {
-		token = mio_aod_mod_tracks
-		name = mio_aod_mod_tracks
-		icon = GFX_generic_mio_trait_icon_reliability
-		
-		limit_to_equipment_type = { heavy_tank_chassis_2 }
-		
-		position = { x=0 y=1 }
-		
-		any_parent = { mio_aod_fiftycal_4 mio_aod_mg_v_soske }
-		all_parents = { mio_aod_cast_turret mio_aod_zashishennaya_transmission }
-		relative_position_id = mio_aod_fiftycal_4
-		
-		equipment_bonus = {
-			reliability = 0.04
-			maximum_speed = 0.03
-		}
-	}
-	
-	add_trait = {
-		token = mio_aod_76mmm1gun
-		name = mio_aod_76mmm1gun
-		icon = GFX_generic_mio_department_icon_tank_heavy_tank_weapons
-		
-		limit_to_equipment_type = { heavy_tank_chassis_2 }
-		
-		position = { x=0 y=1 }
-		
-		available = {
-			FROM = {
-				has_tech = antitank3
-			}
-		}
-		
-		all_parents = { mio_aod_mod_tracks }
-		relative_position_id = mio_aod_mod_tracks
-		
-		equipment_bonus = {
-			soft_attack = -0.05
-			hard_attack = 0.18
-			ap_attack = 0.2
-			build_cost_ic = 0.05
 			ap_attack = 0.05
+			defense = -0.03
 		}
 	}
-	
+
 	add_trait = {
-		token = mio_aod_cast_chassis
-		name = mio_aod_cast_chassis
-		icon = GFX_generic_mio_department_icon_tank_general_armor
-		
-		limit_to_equipment_type = { medium_tank_chassis_3 heavy_tank_chassis_3 }
-		
-		position = { x=9 y=0 }
-		
+		token = mio_aod_m10_wolverine
+		name = mio_aod_m10_wolverine
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+		position = { x=-1 y=1 }
+		relative_position_id = mio_aod_mobile_tank_destroyers
+		all_parents = { mio_aod_mobile_tank_destroyers }
+		limit_to_equipment_type = { medium_tank_destroyer_chassis_1 }
 		equipment_bonus = {
-			armor_value = 0.2
+			hard_attack = 0.08
+			ap_attack = 0.10
+			armor_value = -0.03
 		}
 	}
-	
+
 	add_trait = {
-		token = mio_aod_zadneprivodniy
-		name = mio_aod_zadneprivodniy
-		icon = GFX_generic_mio_department_icon_tank_heavy_tank_engine
-		
-		limit_to_equipment_type = { medium_tank_chassis_3 heavy_tank_chassis_3 }
-		
-		relative_position_id = mio_aod_cast_chassis
-		
-		position = { x=-1 y=0 }
-		
-		equipment_bonus = {
-			maximum_speed = 0.03
-			reliability = 0.02
-		}
-	}
-	
-	add_trait = {
-		token = mio_aod_mg_v_soske
-		name = mio_aod_mg_v_soske
-		icon = GFX_generic_mio_trait_icon_soft_attack
-		
-		limit_to_equipment_type = { medium_tank_chassis_3 heavy_tank_chassis_3 }
-		
-		any_parent = { mio_aod_cast_turret mio_aod_zashishennaya_transmission mio_aod_zadneprivodniy mio_aod_cast_chassis }
-		relative_position_id = mio_aod_zadneprivodniy
-		mutually_exclusive = { mio_aod_fiftycal_4 }
-		
-		position = { x=0 y=1 }
-		
-		equipment_bonus = {
-			soft_attack = 0.02
-			armor_value = 0.05
-		}
-	}
-	
-	add_trait = {
-		token = mio_aod_boeukladka_pervoi_ocheredi_3
-		name = mio_aod_boeukladka_pervoi_ocheredi_3
-		icon = GFX_generic_mio_trait_icon_breakthrough
-		
-		limit_to_equipment_type = { medium_tank_chassis_3 heavy_tank_chassis_3 }
-		
-		any_parent = { mio_aod_fiftycal_4 mio_aod_mg_v_soske }
-		all_parents = { mio_aod_cast_chassis mio_aod_zadneprivodniy }
-		relative_position_id = mio_aod_mg_v_soske
-		
-		position = { x=0 y=1 }
-		
-		equipment_bonus = {
-			breakthrough = 0.04
-			defense = 0.04
-			soft_attack = 0.04
-			hard_attack = 0.04
-			reliability = -0.05
-		}
-	}
-	
-	add_trait = {
-		token = mio_aod_armorpiercingshells_3
-		name = mio_aod_armorpiercingshells_3
+		token = mio_aod_m10_open_turret
+		name = mio_aod_m10_open_turret
 		icon = GFX_generic_mio_department_icon_tank_general_weapons
-		
-		limit_to_equipment_type = { medium_tank_chassis_3 heavy_tank_chassis_3 }
-		
-		available = {
-			FROM = {
-				has_tech = antitank4
-			}
-		}
-		
-		any_parent = { mio_aod_boeukladka_pervoi_ocheredi_3 mio_aod_76mmm1gun }
-		relative_position_id = mio_aod_boeukladka_pervoi_ocheredi_3
-		
 		position = { x=0 y=1 }
-		
+		relative_position_id = mio_aod_m10_wolverine
+		all_parents = { mio_aod_m10_wolverine }
+		limit_to_equipment_type = { medium_tank_destroyer_chassis_1 }
 		equipment_bonus = {
-			soft_attack = -0.03
-			hard_attack = 0.15
-			ap_attack = 0.2
-			hard_attack = -0.03
+			hard_attack = 0.07
+			ap_attack = 0.08
+			maximum_speed = 0.02
+			defense = -0.04
 		}
 	}
-	
+
 	add_trait = {
-		token = mio_aod_super_pershing
-		name = mio_aod_super_pershing
-		icon = GFX_generic_mio_department_icon_tank_general_quality
-		special_trait_background = yes
-		
-		limit_to_equipment_type = { heavy_tank_chassis_3 }
-		
-		all_parents = { mio_aod_armorpiercingshells_3 mio_aod_boeukladka_pervoi_ocheredi_3 }
-		relative_position_id = mio_aod_armorpiercingshells_3
-		
-		position = { x=0 y=1 }
-		
+		token = mio_aod_m18_hellcat
+		name = mio_aod_m18_hellcat
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_engine
+		position = { x=1 y=1 }
+		relative_position_id = mio_aod_m10_wolverine
+		all_parents = { mio_aod_m10_wolverine mio_aod_mobile_tank_destroyers }
+		limit_to_equipment_type = { medium_tank_destroyer_chassis_2 }
 		equipment_bonus = {
-			reliability = 0.1
-			maximum_speed = 0.03
-			armor_value = 0.2
-			hardness = 0.2
+			maximum_speed = 0.10
+			reliability = 0.03
+			armor_value = -0.07
+			defense = -0.04
 		}
 	}
-	
+
+	add_trait = {
+		token = mio_aod_hellcat_mobility
+		name = mio_aod_hellcat_mobility
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+		position = { x=0 y=1 }
+		relative_position_id = mio_aod_m18_hellcat
+		all_parents = { mio_aod_m18_hellcat }
+		limit_to_equipment_type = { medium_tank_destroyer_chassis_2 }
+		equipment_bonus = {
+			maximum_speed = 0.07
+			breakthrough = 0.03
+			fuel_consumption = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_aod_m36_jackson
+		name = mio_aod_m36_jackson
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_at
+		position = { x=1 y=1 }
+		relative_position_id = mio_aod_m18_hellcat
+		all_parents = { mio_aod_m18_hellcat }
+		limit_to_equipment_type = { medium_tank_destroyer_chassis_3 }
+		equipment_bonus = {
+			hard_attack = 0.08
+			ap_attack = 0.10
+			armor_value = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_aod_m36_90mm
+		name = mio_aod_m36_90mm
+		icon = GFX_generic_mio_department_icon_tank_general_weapons
+		special_trait_background = yes
+		position = { x=0 y=1 }
+		relative_position_id = mio_aod_m36_jackson
+		all_parents = { mio_aod_m36_jackson mio_aod_mobile_tank_destroyers }
+		limit_to_equipment_type = { medium_tank_destroyer_chassis_3 }
+		equipment_bonus = {
+			hard_attack = 0.13
+			ap_attack = 0.16
+			build_cost_ic = 0.03
+		}
+	}
+
+	# INDUSTRIAL PRODUCTION
+
 	add_trait = {
 		token = mio_aod_general_motors_production_lines
 		name = mio_aod_general_motors_production_lines
 		icon = GFX_generic_mio_department_icon_tank_general_production
 		special_trait_background = yes
-		
-		position = { x=0 y=4 }
-		
+		position = { x=9 y=1 }
 		limit_to_equipment_type = { mio_cat_aod_designer }
-		
 		production_bonus = {
-			production_efficiency_cap_factor = 0.2
+			production_efficiency_cap_factor = 0.10
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_aod_detroit_arsenal_production_lines
 		name = mio_aod_detroit_arsenal_production_lines
 		icon = GFX_generic_mio_department_icon_tank_general_line_efficiency
 		special_trait_background = yes
-		
-		position = { x=2 y=4 }
-		
-		available = { FROM = { has_country_flag = USA_chrysler_build_tank_factory } }
-		
+		position = { x=9 y=2 }
+		available = {
+			FROM = {
+				has_country_flag = USA_chrysler_build_tank_factory
+			}
+		}
 		limit_to_equipment_type = { mio_cat_aod_designer }
-		
 		production_bonus = {
-			production_cost_factor = -0.15
+			production_cost_factor = -0.08
 		}
 	}
-	
+
 	add_trait = {
 		token = mio_aod_ford_production_lines
 		name = mio_aod_ford_production_lines
 		icon = GFX_generic_mio_department_icon_facilities
 		special_trait_background = yes
-		
-		position = { x=4 y=4 }
-		
-		available = { FROM = { has_country_flag = USA_ford_build_tank_factory } }
-		
+		position = { x=9 y=3 }
+		available = {
+			FROM = {
+				has_country_flag = USA_ford_build_tank_factory
+			}
+		}
 		limit_to_equipment_type = { mio_cat_aod_designer }
-		
 		production_bonus = {
-			production_efficiency_gain_factor = 0.35
-			production_resource_need_factor = -0.1
+			production_efficiency_gain_factor = 0.20
+			production_resource_need_factor = -0.05
 		}
 	}
 }

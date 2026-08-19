@@ -343,10 +343,12 @@ operations = {
 		}
 		cost = 25
 		fire_only_once = yes
-		days_remove = 120
+		days_remove = 112
 		modifier = {
 			air_range_factor = 0.1
 			air_strategic_bomber_bombing_factor = 0.2
+			naval_invasion_prep_speed = 0.25
+			extra_paratrooper_supply_grace = 1152
 		}
 		ai_will_do = {
 			factor = 5000

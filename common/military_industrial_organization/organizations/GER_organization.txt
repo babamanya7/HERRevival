@@ -3077,867 +3077,3602 @@ GER_kriegsmarinewerft_wilhelmshaven_organization = {
 ###########################
 
 GER_messerschmitt_organization = {
-	include = generic_light_aircraft_organization
 	icon = GFX_idea_messerschmitt
-	
-	allowed = {	
-		original_tag = GER
+
+	allowed = {
+		tag = GER
+	}
+
+	equipment_type = {
+		small_plane_airframe_1
+		small_plane_airframe_2
+		small_plane_airframe_3
+		small_plane_airframe_4
+
+		medium_plane_fighter_airframe_1
+		medium_plane_fighter_airframe_2
+		medium_plane_fighter_airframe_3
+	}
+
+	research_categories = {
+		light_fighter
+		cat_heavy_fighter
+		jet_technology
+	}
+
+	tree_header_text = {
+		text = mio_header_messerschmitt_bf109E
+		x = 0
+	}
+	tree_header_text = {
+		text = mio_header_messerschmitt_bf109F
+		x = 1
+	}
+	tree_header_text = {
+		text = mio_header_messerschmitt_bf109G
+		x = 2
+	}
+	tree_header_text = {
+		text = mio_header_messerschmitt_bf109K
+		x = 3
+	}
+
+	tree_header_text = {
+		text = mio_header_messerschmitt_zerstorer
+		x = 5
+	}
+
+	tree_header_text = {
+		text = mio_header_messerschmitt_jet
+		x = 8
+	}
+
+	initial_trait = {
+		name = mio_messerschmitt_initial_trait
+
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 1.0
+			military_industrial_organization_research_bonus = 0.03
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.02
+			thrust = 0.02
+			air_agility = 0.02
+			reliability = 0.02
+		}
+	}
+
+
+	##################################################
+	##################################################
+	#################### BF 109 ######################
+	##################################################
+	##################################################
+
+
+	#################### BF 109 E ####################
+
+	add_trait = {
+		token = mio_messerschmitt_bf109e
+		name = mio_messerschmitt_bf109e
+		icon = GFX_generic_mio_department_icon_plane_fighter_combat
+
+		position = { x=0 y=0 }
+
+		available = {
+			FROM = {
+				has_tech = basic_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_1
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.03
+			air_attack = 0.04
+			thrust = 0.02
+		}
 	}
 
 	add_trait = {
-		token = GER_mio_trait_maintenance_first_design
-		name = GER_mio_trait_maintenance_first_design
+		token = mio_messerschmitt_db601a
+		name = mio_messerschmitt_db601a
+		icon = GFX_generic_mio_department_icon_plane_fighter_engine
 
-		icon = GFX_generic_mio_department_icon_plane_fighter_line_efficiency
-		special_trait_background = yes
-		
-		position = { x=-2 y=1 }
-		relative_position_id = generic_mio_trait_expanded_production_facilities
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_bf109e
 
-		all_parents = { generic_mio_trait_expanded_production_facilities }
+		all_parents = {
+			mio_messerschmitt_bf109e
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_1
+		}
 
 		equipment_bonus = {
-			reliability = 0.05
+			thrust = 0.04
+			maximum_speed = 0.02
+			reliability = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_emil_armament
+		name = mio_messerschmitt_emil_armament
+		icon = GFX_generic_mio_department_icon_plane_fighter_combat
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_db601a
+
+		all_parents = {
+			mio_messerschmitt_db601a
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_1
+		}
+
+		equipment_bonus = {
+			air_attack = 0.07
+			weight = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_emil_combat_refinement
+		name = mio_messerschmitt_emil_combat_refinement
+		icon = GFX_generic_mio_department_icon_plane_fighter_quality
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_emil_armament
+
+		all_parents = {
+			mio_messerschmitt_emil_armament
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_1
+		}
+
+		equipment_bonus = {
+			reliability = 0.04
+			air_defence = 0.03
 		}
 
 		production_bonus = {
-			production_efficiency_gain_factor = 0.05
+			production_cost_factor = -0.02
+			production_efficiency_gain_factor = 0.03
+		}
+	}
+
+
+	#################### BF 109 F ####################
+
+	add_trait = {
+		token = mio_messerschmitt_bf109f
+		name = mio_messerschmitt_bf109f
+		icon = GFX_generic_mio_department_icon_plane_fighter_quality
+		special_trait_background = yes
+
+		position = { x=1 y=-3 }
+		relative_position_id = mio_messerschmitt_emil_combat_refinement
+
+		all_parents = {
+			mio_messerschmitt_emil_combat_refinement
+		}
+
+		available = {
+			FROM = {
+				has_tech = improved_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.04
+			air_agility = 0.03
+			weight = -0.02
 		}
 	}
 
 	add_trait = {
-		token = GER_mio_trait_fuselage_based_weapons
-		name = GER_mio_trait_fuselage_based_weapons
+		token = mio_messerschmitt_friedrich_aerodynamics
+		name = mio_messerschmitt_friedrich_aerodynamics
+		icon = GFX_generic_mio_department_icon_plane_fighter_materials
 
-		icon = GFX_generic_mio_trait_icon_anti_air_attack
-		special_trait_background = yes
-		
-		position = { x=1 y=1 }
-		relative_position_id = generic_mio_trait_gun_pods
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_bf109f
 
-		any_parent = { generic_mio_trait_heavier_airframe generic_mio_trait_maximum_wing_loads generic_mio_trait_gun_pods }
+		all_parents = {
+			mio_messerschmitt_bf109f
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.04
+			air_agility = 0.04
+			weight = -0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_db601e
+		name = mio_messerschmitt_db601e
+		icon = GFX_generic_mio_department_icon_plane_fighter_engine
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_friedrich_aerodynamics
+
+		all_parents = {
+			mio_messerschmitt_friedrich_aerodynamics
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			thrust = 0.05
+			maximum_speed = 0.02
+			fuel_consumption = -0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_friedrich_motorkanone
+		name = mio_messerschmitt_friedrich_motorkanone
+		icon = GFX_generic_mio_department_icon_plane_fighter_combat
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_db601e
+
+		all_parents = {
+			mio_messerschmitt_db601e
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_2
+		}
 
 		equipment_bonus = {
 			air_attack = 0.05
-			air_agility = 0.05
-		} 
+			air_agility = 0.02
+			weight = -0.01
+		}
 	}
 
 	add_trait = {
-		token = GER_mio_trait_hamburger_flugzeugbau
-		name = GER_mio_trait_hamburger_flugzeugbau
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		token = mio_messerschmitt_mature_friedrich
+		name = mio_messerschmitt_mature_friedrich
+		icon = GFX_generic_mio_department_icon_plane_fighter_quality
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_friedrich_motorkanone
+
+		all_parents = {
+			mio_messerschmitt_friedrich_motorkanone
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.02
+			air_agility = 0.03
+			air_defence = 0.03
+			reliability = 0.03
+		}
+	}
+
+
+	#################### BF 109 G ####################
+
+	add_trait = {
+		token = mio_messerschmitt_bf109g
+		name = mio_messerschmitt_bf109g
+		icon = GFX_generic_mio_department_icon_plane_fighter_combat
 		special_trait_background = yes
 
-		position = { x=@aircraft_hamburger_X y=@aircraft_hamburger_Y }  
-		
-		visible = {
-			FROM = { original_tag = GER }
+		position = { x=1 y=-4 }
+		relative_position_id = mio_messerschmitt_mature_friedrich
+
+		all_parents = {
+			mio_messerschmitt_mature_friedrich
 		}
 
 		available = {
 			FROM = {
-				mio:GER_blohm_und_voss_organization = {
-					has_mio_size > 4
-				}
-				NOT = { has_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag }
+				has_tech = advanced_small_airframe
 			}
 		}
 
-		on_complete = {
-			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
-			FROM = {
-				set_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag
-			}
+		limit_to_equipment_type = {
+			small_plane_airframe_3
+		}
+
+		equipment_bonus = {
+			thrust = 0.04
+			maximum_speed = 0.02
+			air_attack = 0.05
+			weight = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_db605a
+		name = mio_messerschmitt_db605a
+		icon = GFX_generic_mio_department_icon_plane_fighter_engine
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_bf109g
+
+		all_parents = {
+			mio_messerschmitt_bf109g
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_3
+		}
+
+		equipment_bonus = {
+			thrust = 0.06
+			maximum_speed = 0.03
+			reliability = -0.01
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_gustav_armament
+		name = mio_messerschmitt_gustav_armament
+		icon = GFX_generic_mio_department_icon_plane_fighter_combat
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_db605a
+
+		all_parents = {
+			mio_messerschmitt_db605a
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_3
+		}
+
+		equipment_bonus = {
+			air_attack = 0.08
+			weight = 0.03
+			air_agility = -0.01
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_high_altitude_gustav
+		name = mio_messerschmitt_high_altitude_gustav
+		icon = GFX_generic_mio_department_icon_plane_fighter_engine
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_gustav_armament
+
+		all_parents = {
+			mio_messerschmitt_gustav_armament
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_3
+		}
+
+		equipment_bonus = {
+			thrust = 0.03
+			maximum_speed = 0.03
+			air_defence = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_late_gustav
+		name = mio_messerschmitt_late_gustav
+		icon = GFX_generic_mio_department_icon_plane_fighter_quality
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_high_altitude_gustav
+
+		all_parents = {
+			mio_messerschmitt_high_altitude_gustav
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_3
+		}
+
+		equipment_bonus = {
+			reliability = 0.04
+			air_defence = 0.02
 		}
 
 		production_bonus = {
-			production_capacity_factor = 0.05
+			production_cost_factor = -0.03
+			production_efficiency_gain_factor = 0.04
+		}
+	}
+
+
+	#################### BF 109 K ####################
+
+	add_trait = {
+		token = mio_messerschmitt_bf109k
+		name = mio_messerschmitt_bf109k
+		icon = GFX_generic_mio_department_icon_plane_fighter_quality
+		special_trait_background = yes
+
+		position = { x=1 y=-4 }
+		relative_position_id = mio_messerschmitt_late_gustav
+
+		all_parents = {
+			mio_messerschmitt_late_gustav
 		}
 
-		ai_will_do = {
-			base = 2
+		limit_to_equipment_type = {
+			small_plane_airframe_3
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.03
+			thrust = 0.03
+			reliability = 0.02
+			build_cost_ic = 0.01
 		}
 	}
 
 	add_trait = {
-		token = GER_mio_trait_aerodynamic_research_insitute
-		name = GER_mio_trait_aerodynamic_research_insitute
-		icon = GFX_generic_mio_department_icon_facilities
+		token = mio_messerschmitt_db605d
+		name = mio_messerschmitt_db605d
+		icon = GFX_generic_mio_department_icon_plane_fighter_engine
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_bf109k
+
+		all_parents = {
+			mio_messerschmitt_bf109k
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_3
+		}
+
+		equipment_bonus = {
+			thrust = 0.05
+			maximum_speed = 0.03
+			reliability = -0.01
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_kurfurst_aerodynamics
+		name = mio_messerschmitt_kurfurst_aerodynamics
+		icon = GFX_generic_mio_department_icon_plane_fighter_materials
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_db605d
+
+		all_parents = {
+			mio_messerschmitt_db605d
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_3
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.03
+			air_agility = 0.02
+			weight = -0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_mature_kurfurst
+		name = mio_messerschmitt_mature_kurfurst
+		icon = GFX_generic_mio_department_icon_plane_fighter_quality
 		special_trait_background = yes
 
-		relative_position_id = generic_mio_trait_advanced_aerodynamics
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_kurfurst_aerodynamics
 
-		position = { x = 2 y = 0 }  
-		
-		visible = {
-			FROM = { original_tag = GER }
+		all_parents = {
+			mio_messerschmitt_kurfurst_aerodynamics
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_3
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.02
+			air_attack = 0.04
+			air_defence = 0.03
+			air_agility = 0.02
+			reliability = 0.03
+		}
+	}
+
+
+	##################################################
+	############ BF 110 / ME 210 / ME 410 ############
+	##################################################
+
+	add_trait = {
+		token = mio_messerschmitt_bf110c
+		name = mio_messerschmitt_bf110c
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_combat
+
+		position = { x=4 y=0 }
+
+		available = {
+			FROM = {
+				has_tech = basic_medium_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_1
+		}
+
+		equipment_bonus = {
+			air_attack = 0.05
+			range = 0.05
+			air_defence = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_bf110_db601
+		name = mio_messerschmitt_bf110_db601
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_engine
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_bf110c
+
+		all_parents = {
+			mio_messerschmitt_bf110c
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_1
+		}
+
+		equipment_bonus = {
+			thrust = 0.05
+			maximum_speed = 0.03
+			reliability = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_zerstorer_armament
+		name = mio_messerschmitt_zerstorer_armament
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_combat
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_bf110_db601
+
+		all_parents = {
+			mio_messerschmitt_bf110_db601
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_1
+		}
+
+		equipment_bonus = {
+			air_attack = 0.09
+			weight = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_long_range_zerstorer
+		name = mio_messerschmitt_long_range_zerstorer
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_quality
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_zerstorer_armament
+
+		all_parents = {
+			mio_messerschmitt_zerstorer_armament
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_1
+		}
+
+		equipment_bonus = {
+			range = 0.08
+			fuel_consumption = -0.04
+			reliability = 0.02
+		}
+	}
+
+
+	#################### BF 110 G ####################
+
+	add_trait = {
+		token = mio_messerschmitt_bf110g
+		name = mio_messerschmitt_bf110g
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_engine
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_long_range_zerstorer
+
+		all_parents = {
+			mio_messerschmitt_long_range_zerstorer
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_1
+		}
+
+		equipment_bonus = {
+			thrust = 0.04
+			air_attack = 0.06
+			air_defence = 0.04
+			reliability = 0.03
+			weight = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_late_bf110g
+		name = mio_messerschmitt_late_bf110g
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_quality
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_bf110g
+
+		all_parents = {
+			mio_messerschmitt_bf110g
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_1
+		}
+
+		equipment_bonus = {
+			reliability = 0.05
+			air_defence = 0.04
+			range = 0.04
+			maximum_speed = 0.02
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.02
+		}
+	}
+
+
+	##################### ME 210 ######################
+
+	add_trait = {
+		token = mio_messerschmitt_me210
+		name = mio_messerschmitt_me210
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_conversion
+		special_trait_background = yes
+
+		position = { x=1 y=-3 }
+		relative_position_id = mio_messerschmitt_long_range_zerstorer
+
+		all_parents = {
+			mio_messerschmitt_long_range_zerstorer
 		}
 
 		available = {
 			FROM = {
-				has_completed_focus = GER_aerodynamic_research_institute
-				NOT = { has_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag }
+				has_tech = improved_medium_airframe
 			}
 		}
 
-		on_complete = {
-			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_2
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.04
+			thrust = 0.03
+			range = 0.04
+			reliability = -0.06
+			air_agility = -0.03
+			build_cost_ic = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_me210_redesign
+		name = mio_messerschmitt_me210_redesign
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_quality
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_me210
+
+		all_parents = {
+			mio_messerschmitt_me210
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_2
+		}
+
+		equipment_bonus = {
+			reliability = 0.05
+			air_agility = 0.03
+			air_defence = 0.03
+			maximum_speed = 0.01
+		}
+	}
+
+
+	##################### ME 410 ######################
+
+	add_trait = {
+		token = mio_messerschmitt_me410
+		name = mio_messerschmitt_me410
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_quality
+		special_trait_background = yes
+
+		position = { x=1 y=-1 }
+		relative_position_id = mio_messerschmitt_me210_redesign
+
+		all_parents = {
+			mio_messerschmitt_me210_redesign
+		}
+
+		available = {
 			FROM = {
-				set_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag
+				has_tech = advanced_medium_airframe
 			}
 		}
 
-		organization_modifier = {
-		    military_industrial_organization_research_bonus = 0.1
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_3
 		}
 
-		ai_will_do = {
-			base = 2
+		equipment_bonus = {
+			maximum_speed = 0.04
+			thrust = 0.04
+			range = 0.05
+			reliability = 0.04
+			air_defence = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_db603
+		name = mio_messerschmitt_db603
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_engine
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_me410
+
+		all_parents = {
+			mio_messerschmitt_me410
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_3
+		}
+
+		equipment_bonus = {
+			thrust = 0.06
+			maximum_speed = 0.03
+			reliability = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_me410_heavy_armament
+		name = mio_messerschmitt_me410_heavy_armament
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_combat
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_db603
+
+		all_parents = {
+			mio_messerschmitt_db603
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_3
+		}
+
+		equipment_bonus = {
+			air_attack = 0.10
+			air_defence = 0.03
+			weight = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_mature_hornisse
+		name = mio_messerschmitt_mature_hornisse
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_quality
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_me410_heavy_armament
+
+		all_parents = {
+			mio_messerschmitt_me410_heavy_armament
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_3
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.02
+			air_attack = 0.04
+			range = 0.04
+			air_defence = 0.03
+			reliability = 0.03
+		}
+	}
+
+
+	##################################################
+	##################################################
+	#################### ME 262 ######################
+	##################################################
+	##################################################
+
+	add_trait = {
+		token = mio_messerschmitt_me262
+		name = mio_messerschmitt_me262
+		icon = GFX_generic_mio_department_icon_plane_fighter_quality
+		special_trait_background = yes
+
+		position = { x=8 y=0 }
+
+		available = {
+			FROM = {
+				has_tech = modern_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_4
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.05
+			thrust = 0.05
+			air_attack = 0.05
+			reliability = -0.03
+			build_cost_ic = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_jumo004
+		name = mio_messerschmitt_jumo004
+		icon = GFX_generic_mio_department_icon_plane_general_engine
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_me262
+
+		all_parents = {
+			mio_messerschmitt_me262
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_4
+		}
+
+		equipment_bonus = {
+			thrust = 0.07
+			maximum_speed = 0.03
+			reliability = -0.04
+			build_cost_ic = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_mk108_battery
+		name = mio_messerschmitt_mk108_battery
+		icon = GFX_generic_mio_department_icon_plane_fighter_combat
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_jumo004
+
+		all_parents = {
+			mio_messerschmitt_jumo004
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_4
+		}
+
+		equipment_bonus = {
+			air_attack = 0.10
+			weight = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_high_speed_aerodynamics
+		name = mio_messerschmitt_high_speed_aerodynamics
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_mk108_battery
+
+		all_parents = {
+			mio_messerschmitt_mk108_battery
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_4
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.04
+			thrust = 0.03
+			air_agility = 0.03
+			weight = -0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_jet_series_refinement
+		name = mio_messerschmitt_jet_series_refinement
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_high_speed_aerodynamics
+
+		all_parents = {
+			mio_messerschmitt_high_speed_aerodynamics
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_4
+		}
+
+		equipment_bonus = {
+			reliability = 0.06
+			air_defence = 0.03
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.03
+			production_efficiency_gain_factor = 0.03
+		}
+	}
+
+
+	##################################################
+	######### INNOVATIVE MESSERSCHMITT SCHOOL ########
+	##################################################
+
+	add_trait = {
+		token = mio_messerschmitt_advanced_jet_projects
+		name = mio_messerschmitt_advanced_jet_projects
+		icon = GFX_generic_mio_department_icon_plane_fighter_materials
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_jet_series_refinement
+
+		all_parents = {
+			mio_messerschmitt_jet_series_refinement
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_4
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.04
+			thrust = 0.04
+			air_agility = 0.02
+			build_cost_ic = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_messerschmitt_future_fighter_concepts
+		name = mio_messerschmitt_future_fighter_concepts
+		icon = GFX_generic_mio_department_icon_plane_fighter_quality
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_messerschmitt_advanced_jet_projects
+
+		all_parents = {
+			mio_messerschmitt_advanced_jet_projects
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_4
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.03
+			thrust = 0.03
+			air_agility = 0.03
+			air_defence = 0.03
+			reliability = 0.02
 		}
 	}
 }
 
 GER_junkers_organization = {
-	include = generic_cas_aircraft_organization
 	icon = GFX_idea_junkers
-	
+
 	allowed = {
-		original_tag = GER 
+		tag = GER
 	}
 
-	add_trait = {
-		token = GER_mio_trait_psychological_warfare
-		name = GER_mio_trait_psychological_warfare
+	equipment_type = {
+		small_plane_cas_airframe_1
+		small_plane_cas_airframe_2
 
-		icon = GFX_generic_mio_trait_icon_fuel_consumption
-		special_trait_background = yes
-		
-		position = { x=2 y=0 }
-		relative_position_id = generic_mio_trait_reinforced_wings
+		medium_plane_airframe_2
+		medium_plane_airframe_3
 
-		equipment_bonus = {
-			fuel_consumption = -0.05
-		} 
+		medium_plane_fighter_airframe_2
+		medium_plane_fighter_airframe_3
 	}
 
-	add_trait = {
-		token = GER_mio_trait_90_degree_dives
-		name = GER_mio_trait_90_degree_dives
-
-		icon = GFX_generic_mio_department_icon_plane_cas_quality
-		special_trait_background = yes
-		
-		position = { x=0 y=1 }
-		relative_position_id = generic_mio_trait_automatic_pull_out
-		all_parents = { generic_mio_trait_automatic_pull_out }
-
-		equipment_bonus = {
-			air_ground_attack = 0.05
-		} 
+	research_categories = {
+		cas_bomber
+		tactical_bomber
+		cat_heavy_fighter
 	}
 
-	add_trait = {
-		token = GER_mio_trait_hamburger_flugzeugbau
-		name = GER_mio_trait_hamburger_flugzeugbau
-		icon = GFX_generic_mio_trait_icon_production_capacity
-		special_trait_background = yes
+	tree_header_text = {
+		text = mio_header_junkers_ju87
+		x = 1
+	}
 
-		position = { x=@aircraft_hamburger_X y=@aircraft_hamburger_Y }  
-		
-		visible = {
-			FROM = { original_tag = GER }
-		}
+	tree_header_text = {
+		text = mio_header_junkers_ju88_bomber
+		x = 4
+	}
 
-		available = {
-			FROM = {
-				mio:GER_blohm_und_voss_organization = {
-					has_mio_size > 4
-				}
-				NOT = { has_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag }
-			}
-		}
+	tree_header_text = {
+		text = mio_header_junkers_ju88_fighter
+		x = 8
+	}
 
-		on_complete = {
-			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
-			FROM = {
-				set_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag
-			}
+	initial_trait = {
+		name = mio_junkers_initial_trait
+
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 0.75
+			military_industrial_organization_research_bonus = 0.03
 		}
 
 		production_bonus = {
-			production_capacity_factor = 0.05
+			production_cost_factor = -0.02
 		}
 
-		ai_will_do = {
-			base = 2
+		equipment_bonus = {
+			reliability = 0.03
+			air_ground_attack = 0.03
+			air_defence = 0.02
+		}
+	}
+
+
+	##################################################
+	##################################################
+	#################### JU 87 B #####################
+	##################################################
+	##################################################
+
+	add_trait = {
+		token = mio_junkers_ju87b
+		name = mio_junkers_ju87b
+		icon = GFX_generic_mio_department_icon_plane_cas
+		special_trait_background = yes
+
+		position = { x=0 y=0 }
+
+		available = {
+			FROM = {
+				has_tech = basic_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			small_plane_cas_airframe_1
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.08
+			reliability = 0.03
+			air_defence = 0.02
 		}
 	}
 
 	add_trait = {
-		token = GER_mio_trait_aerodynamic_research_insitute
-		name = GER_mio_trait_aerodynamic_research_insitute
-		icon = GFX_generic_mio_department_icon_facilities
+		token = mio_junkers_ju87_dive_brakes
+		name = mio_junkers_ju87_dive_brakes
+		icon = GFX_generic_mio_department_icon_plane_cas
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_junkers_ju87b
+
+		all_parents = {
+			mio_junkers_ju87b
+		}
+
+		limit_to_equipment_type = {
+			small_plane_cas_airframe_1
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.10
+			air_agility = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_ju87_precision_dive
+		name = mio_junkers_ju87_precision_dive
+		icon = GFX_generic_mio_department_icon_plane_cas
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_junkers_ju87_dive_brakes
+
+		all_parents = {
+			mio_junkers_ju87_dive_brakes
+		}
+
+		limit_to_equipment_type = {
+			small_plane_cas_airframe_1
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.12
+			reliability = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_ju87_reinforced_airframe
+		name = mio_junkers_ju87_reinforced_airframe
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_junkers_ju87_precision_dive
+
+		all_parents = {
+			mio_junkers_ju87_precision_dive
+		}
+
+		limit_to_equipment_type = {
+			small_plane_cas_airframe_1
+		}
+
+		equipment_bonus = {
+			reliability = 0.05
+			air_defence = 0.04
+			weight = 0.02
+		}
+	}
+
+
+	##################################################
+	#################### JU 87 D #####################
+	##################################################
+
+	add_trait = {
+		token = mio_junkers_ju87d
+		name = mio_junkers_ju87d
+		icon = GFX_generic_mio_department_icon_plane_cas
 		special_trait_background = yes
 
-		relative_position_id = generic_mio_trait_reinforced_wings
+		position = { x=1 y=-3 }
+		relative_position_id = mio_junkers_ju87_reinforced_airframe
 
-		position = { x = 2 y = 1 }  
-		
-		visible = {
-			FROM = { original_tag = GER }
+		all_parents = {
+			mio_junkers_ju87_reinforced_airframe
 		}
 
 		available = {
 			FROM = {
-				has_completed_focus = GER_aerodynamic_research_institute
-				NOT = { has_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag }
+				has_tech = improved_small_airframe
 			}
 		}
 
-		on_complete = {
-			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
+		limit_to_equipment_type = {
+			small_plane_cas_airframe_2
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.08
+			air_defence = 0.04
+			reliability = 0.04
+			weight = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_ju87d_armor
+		name = mio_junkers_ju87d_armor
+		icon = GFX_generic_mio_department_icon_plane_cas
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_junkers_ju87d
+
+		all_parents = {
+			mio_junkers_ju87d
+		}
+
+		limit_to_equipment_type = {
+			small_plane_cas_airframe_2
+		}
+
+		equipment_bonus = {
+			air_defence = 0.07
+			reliability = 0.03
+			weight = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_ju87d_bombload
+		name = mio_junkers_ju87d_bombload
+		icon = GFX_generic_mio_department_icon_plane_cas
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_junkers_ju87d_armor
+
+		all_parents = {
+			mio_junkers_ju87d_armor
+		}
+
+		limit_to_equipment_type = {
+			small_plane_cas_airframe_2
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.12
+			weight = 0.03
+			maximum_speed = -0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_mature_stuka
+		name = mio_junkers_mature_stuka
+		icon = GFX_generic_mio_trait_icon_reliability
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_junkers_ju87d_bombload
+
+		all_parents = {
+			mio_junkers_ju87d_bombload
+		}
+
+		limit_to_equipment_type = {
+			small_plane_cas_airframe_2
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.05
+			air_defence = 0.03
+			reliability = 0.05
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.02
+			production_efficiency_gain_factor = 0.03
+		}
+	}
+
+
+	##################################################
+	#################### JU 87 G #####################
+	##################################################
+
+	add_trait = {
+		token = mio_junkers_ju87g
+		name = mio_junkers_ju87g
+		icon = GFX_generic_mio_department_icon_plane_cas
+		special_trait_background = yes
+
+		position = { x=1 y=-3 }
+		relative_position_id = mio_junkers_mature_stuka
+
+		all_parents = {
+			mio_junkers_mature_stuka
+		}
+
+		limit_to_equipment_type = {
+			small_plane_cas_airframe_2
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.10
+			air_defence = 0.02
+			weight = 0.03
+			maximum_speed = -0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_bk37
+		name = mio_junkers_bk37
+		icon = GFX_generic_mio_department_icon_plane_cas
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_junkers_ju87g
+
+		all_parents = {
+			mio_junkers_ju87g
+		}
+
+		limit_to_equipment_type = {
+			small_plane_cas_airframe_2
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.16
+			weight = 0.04
+			air_agility = -0.02
+			maximum_speed = -0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_tank_hunter
+		name = mio_junkers_tank_hunter
+		icon = GFX_generic_mio_department_icon_plane_cas
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_junkers_bk37
+
+		all_parents = {
+			mio_junkers_bk37
+		}
+
+		limit_to_equipment_type = {
+			small_plane_cas_airframe_2
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.10
+			reliability = 0.03
+			air_defence = 0.02
+		}
+	}
+
+
+	##################################################
+	##################################################
+	################ JU 88 PLATFORM ##################
+	##################################################
+	##################################################
+
+	add_trait = {
+		token = mio_junkers_ju88_platform
+		name = mio_junkers_ju88_platform
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_quality
+		special_trait_background = yes
+
+		position = { x=6 y=0 }
+
+		available = {
 			FROM = {
-				set_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag
+				has_tech = improved_medium_airframe
 			}
 		}
 
-		organization_modifier = {
-		    military_industrial_organization_research_bonus = 0.1
+		limit_to_equipment_type = {
+			medium_plane_airframe_2
+			medium_plane_fighter_airframe_2
 		}
 
-		ai_will_do = {
-			base = 2
+		equipment_bonus = {
+			maximum_speed = 0.03
+			air_range = 0.05
+			reliability = 0.03
+			air_defence = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_ju88_jumo211
+		name = mio_junkers_ju88_jumo211
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_quality
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_junkers_ju88_platform
+
+		all_parents = {
+			mio_junkers_ju88_platform
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_2
+			medium_plane_fighter_airframe_2
+		}
+
+		equipment_bonus = {
+			thrust = 0.05
+			maximum_speed = 0.03
+			reliability = 0.02
+		}
+	}
+
+
+	##################################################
+	#################### JU 88 A #####################
+	##################################################
+
+	add_trait = {
+		token = mio_junkers_ju88a
+		name = mio_junkers_ju88a
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_combat
+		special_trait_background = yes
+
+		position = { x=-2 y=-1 }
+		relative_position_id = mio_junkers_ju88_jumo211
+
+		all_parents = {
+			mio_junkers_ju88_jumo211
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.07
+			air_range = 0.04
+			air_defence = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_schnellbomber
+		name = mio_junkers_schnellbomber
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_junkers_ju88a
+
+		all_parents = {
+			mio_junkers_ju88a
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.05
+			thrust = 0.03
+			air_defence = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_ju88_bomb_bay
+		name = mio_junkers_ju88_bomb_bay
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_combat
+
+		position = { x=1 y=0 }
+		relative_position_id = mio_junkers_schnellbomber
+
+		all_parents = {
+			mio_junkers_schnellbomber
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.10
+			weight = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_ju88_multirole
+		name = mio_junkers_ju88_multirole
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_conversion
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_junkers_ju88_bomb_bay
+
+		all_parents = {
+			mio_junkers_ju88_bomb_bay
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.05
+			air_range = 0.05
+			reliability = 0.04
+			air_defence = 0.03
+		}
+	}
+
+
+	##################################################
+	#################### JU 188 ######################
+	##################################################
+
+	add_trait = {
+		token = mio_junkers_ju188
+		name = mio_junkers_ju188
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_quality
+		special_trait_background = yes
+
+		position = { x=-1 y=0 }
+		relative_position_id = mio_junkers_ju88_multirole
+
+		all_parents = {
+			mio_junkers_ju88_multirole
+		}
+
+		available = {
+			FROM = {
+				has_tech = advanced_medium_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_3
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.04
+			air_range = 0.06
+			air_ground_attack = 0.05
+			reliability = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_ju188_aerodynamics
+		name = mio_junkers_ju188_aerodynamics
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_quality
+
+		position = { x=-1 y=1 }
+		relative_position_id = mio_junkers_ju188
+
+		all_parents = {
+			mio_junkers_ju188
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_3
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.04
+			air_range = 0.04
+			weight = -0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_ju188_engines
+		name = mio_junkers_ju188_engines
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_quality
+
+		position = { x=2 y=0 }
+		relative_position_id = mio_junkers_ju188_aerodynamics
+
+		all_parents = {
+			mio_junkers_ju188_aerodynamics
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_3
+		}
+
+		equipment_bonus = {
+			thrust = 0.06
+			maximum_speed = 0.03
+			reliability = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_ju188_range
+		name = mio_junkers_ju188_range
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_conversion
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_junkers_ju188_engines
+
+		all_parents = {
+			mio_junkers_ju188_engines
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_3
+		}
+
+		equipment_bonus = {
+			air_range = 0.10
+			fuel_consumption = -0.04
+			reliability = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_mature_ju188
+		name = mio_junkers_mature_ju188
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_combat
+		special_trait_background = yes
+
+		position = { x=-1 y=0 }
+		relative_position_id = mio_junkers_ju188_range
+
+		all_parents = {
+			mio_junkers_ju188_range
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_3
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.08
+			air_defence = 0.04
+			reliability = 0.04
+			air_range = 0.03
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.02
+			production_efficiency_gain_factor = 0.03
+		}
+	}
+
+
+	##################################################
+	##################################################
+	#################### JU 88 C #####################
+	##################################################
+	##################################################
+
+	add_trait = {
+		token = mio_junkers_ju88c
+		name = mio_junkers_ju88c
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_conversion
+		special_trait_background = yes
+
+		position = { x=2 y=-1 }
+		relative_position_id = mio_junkers_ju88_jumo211
+
+		all_parents = {
+			mio_junkers_ju88_jumo211
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_2
+		}
+
+		equipment_bonus = {
+			air_attack = 0.07
+			air_defence = 0.04
+			air_range = 0.05
+			weight = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_ju88c_forward_armament
+		name = mio_junkers_ju88c_forward_armament
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_combat
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_junkers_ju88c
+
+		all_parents = {
+			mio_junkers_ju88c
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_2
+		}
+
+		equipment_bonus = {
+			air_attack = 0.10
+			weight = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_ju88c_night_fighter
+		name = mio_junkers_ju88c_night_fighter
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_quality
+
+		position = { x=-1 y=0 }
+		relative_position_id = mio_junkers_ju88c_forward_armament
+
+		all_parents = {
+			mio_junkers_ju88c_forward_armament
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_2
+		}
+
+		equipment_bonus = {
+			air_attack = 0.05
+			air_defence = 0.05
+			air_range = 0.05
+			reliability = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_ju88c_refinement
+		name = mio_junkers_ju88c_refinement
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_quality
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_junkers_ju88c_night_fighter
+
+		all_parents = {
+			mio_junkers_ju88c_night_fighter
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_2
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.03
+			reliability = 0.04
+			air_defence = 0.03
+		}
+	}
+
+
+	##################################################
+	#################### JU 88 G #####################
+	##################################################
+
+	add_trait = {
+		token = mio_junkers_ju88g
+		name = mio_junkers_ju88g
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_quality
+		special_trait_background = yes
+
+		position = { x=1 y=0 }
+		relative_position_id = mio_junkers_ju88c_refinement
+
+		all_parents = {
+			mio_junkers_ju88c_refinement
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_2
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.04
+			thrust = 0.04
+			air_attack = 0.06
+			air_defence = 0.05
+			air_range = 0.04
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_ju88g_engines
+		name = mio_junkers_ju88g_engines
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_engine
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_junkers_ju88g
+
+		all_parents = {
+			mio_junkers_ju88g
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_2
+		}
+
+		equipment_bonus = {
+			thrust = 0.06
+			maximum_speed = 0.03
+			reliability = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_ju88g_radar
+		name = mio_junkers_ju88g_radar
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_quality
+
+		position = { x=-2 y=0 }
+		relative_position_id = mio_junkers_ju88g_engines
+
+		all_parents = {
+			mio_junkers_ju88g_engines
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_2
+		}
+
+		equipment_bonus = {
+			air_attack = 0.05
+			air_defence = 0.05
+			reliability = 0.03
+			weight = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_schrage_musik
+		name = mio_junkers_schrage_musik
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_combat
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_junkers_ju88g_radar
+
+		all_parents = {
+			mio_junkers_ju88g_radar
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_2
+		}
+
+		equipment_bonus = {
+			air_attack = 0.10
+			weight = 0.02
+			air_agility = -0.01
+		}
+	}
+
+	add_trait = {
+		token = mio_junkers_mature_night_fighter
+		name = mio_junkers_mature_night_fighter
+		icon = GFX_generic_mio_department_icon_plane_heavy_fighter_quality
+		special_trait_background = yes
+
+		position = { x=1 y=0 }
+		relative_position_id = mio_junkers_schrage_musik
+
+		all_parents = {
+			mio_junkers_schrage_musik
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_fighter_airframe_2
+		}
+
+		equipment_bonus = {
+			air_attack = 0.05
+			air_defence = 0.04
+			reliability = 0.04
+			air_range = 0.03
 		}
 	}
 }
 
 GER_focke_wulf_organization = {
-	include = generic_range_focused_aircraft_organization
 	icon = GFX_idea_focke_wulf
+
+	allowed = {
+		tag = GER
+	}
+
+	equipment_type = {
+		small_plane_airframe_2
+		small_plane_interceptor_airframe_2
+		small_plane_interceptor_airframe_3
+		medium_plane_scout_plane_airframe_2
+	}
+
+	research_categories = {
+		light_air
+		light_fighter
+		medium_air
+	}
+
+	tree_header_text = {
+		text = mio_header_focke_wulf_fw190a
+		x = 0
+	}
 	
-	allowed = {	
-		original_tag = GER 
+	tree_header_text = {
+		text = mio_header_focke_wulf_fw190f
+		x = 1
 	}
 
-	override_trait = {
-		token = generic_mio_trait_extra_cargo_doors
-
-		position = { x=8 y=0 }
+	tree_header_text = {
+		text = mio_header_focke_wulf_fw190d
+		x = 3
 	}
 
-	add_trait = {
-		token = GER_mio_trait_work_horse_design_philosophy
-		name = GER_mio_trait_work_horse_design_philosophy
+	tree_header_text = {
+		text = mio_header_focke_wulf_ta152
+		x = 5
+	}
 
-		icon = GFX_generic_mio_department_icon_plane_medium_engine
-		special_trait_background = yes
-		
-		position = { x=0 y=1 }
-		relative_position_id = GER_mio_trait_hamburger_flugzeugbau
+	tree_header_text = {
+		text = mio_header_focke_wulf_fw189
+		x = 7
+	}
 
-		limit_to_equipment_type = { mio_cat_eq_all_small_plane mio_cat_eq_all_medium_plane }
+	initial_trait = {
+		name = mio_focke_wulf_initial_trait
+
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 0.75
+			military_industrial_organization_research_bonus = 0.03
+		}
 
 		equipment_bonus = {
-			reliability = 0.05
-			air_defence = 0.03
-		} 
+			air_defence = 0.04
+			reliability = 0.04
+			thrust = 0.02
+			weight = 0.01
+		}
 	}
 
+
+	##################################################
+	##################################################
+	################### FW 190 A/F ###################
+	##################################################
+	##################################################
+
 	add_trait = {
-		token = GER_mio_trait_aerodynamic_research_insitute
-		name = GER_mio_trait_aerodynamic_research_insitute
-		icon = GFX_generic_mio_department_icon_facilities
+		token = mio_focke_wulf_fw190a
+		name = mio_focke_wulf_fw190a
+		icon = GFX_generic_mio_department_icon_plane_fighter_combat
 		special_trait_background = yes
 
-		relative_position_id = GER_mio_trait_work_horse_design_philosophy
-
-		position = { x = 0 y = 1 }  
-		
-		visible = {
-			FROM = { original_tag = GER }
-		}
+		position = { x=0 y=0 }
 
 		available = {
 			FROM = {
-				has_completed_focus = GER_aerodynamic_research_institute
-				NOT = { has_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag }
+				has_tech = improved_small_airframe
 			}
 		}
 
-		on_complete = {
-			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
-			FROM = {
-				set_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag
-			}
+		limit_to_equipment_type = {
+			small_plane_airframe_2
 		}
 
-		organization_modifier = {
-		    military_industrial_organization_research_bonus = 0.1
-		}
-
-		ai_will_do = {
-			base = 2
+		equipment_bonus = {
+			air_attack = 0.05
+			air_ground_attack = 0.06
+			air_defence = 0.04
+			weight = 0.02
 		}
 	}
 
 	add_trait = {
-		token = GER_mio_trait_bomber_destroyer
-		name = GER_mio_trait_bomber_destroyer
+		token = mio_focke_wulf_bmw801
+		name = mio_focke_wulf_bmw801
+		icon = GFX_generic_mio_department_icon_plane_fighter_engine
 
-		icon = GFX_generic_mio_department_icon_plane_light_combat
-		special_trait_background = yes
-		
-		position = { x=-0 y=1 }
-		relative_position_id = generic_mio_trait_strafing_techniques
-		all_parents = { generic_mio_trait_strafing_techniques }
+		position = { x=0 y=1 }
+		relative_position_id = mio_focke_wulf_fw190a
 
-		limit_to_equipment_type = { mio_cat_eq_all_small_plane mio_cat_eq_all_medium_plane }
+		all_parents = {
+			mio_focke_wulf_fw190a
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_2
+		}
 
 		equipment_bonus = {
-			air_attack = 0.05
+			thrust = 0.06
+			maximum_speed = 0.03
+			reliability = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_focke_wulf_fw190a_armament
+		name = mio_focke_wulf_fw190a_armament
+		icon = GFX_generic_mio_department_icon_plane_fighter_combat
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_focke_wulf_bmw801
+
+		all_parents = {
+			mio_focke_wulf_bmw801
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			air_attack = 0.08
+			air_ground_attack = 0.04
+			weight = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_focke_wulf_fw190a_armor
+		name = mio_focke_wulf_fw190a_armor
+		icon = GFX_generic_mio_department_icon_plane_fighter_materials
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_focke_wulf_fw190a_armament
+
+		all_parents = {
+			mio_focke_wulf_fw190a_armament
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			air_defence = 0.08
+			reliability = 0.04
+			weight = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_focke_wulf_fw190f
+		name = mio_focke_wulf_fw190f
+		icon = GFX_generic_mio_department_icon_plane_fighter_combat
+
+		position = { x=1 y=0 }
+		relative_position_id = mio_focke_wulf_fw190a_armor
+
+		all_parents = {
+			mio_focke_wulf_fw190a_armor
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.10
+			air_defence = 0.04
+			reliability = 0.03
+			weight = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_focke_wulf_jabo_refinement
+		name = mio_focke_wulf_jabo_refinement
+		icon = GFX_generic_mio_department_icon_plane_fighter_quality
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_focke_wulf_fw190f
+
+		all_parents = {
+			mio_focke_wulf_fw190f
+		}
+
+		limit_to_equipment_type = {
+			small_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.05
+			air_attack = 0.03
+			reliability = 0.04
+			air_defence = 0.03
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.02
+			production_efficiency_gain_factor = 0.04
+		}
+	}
+
+
+	##################################################
+	##################################################
+	################### FW 190 D #####################
+	##################################################
+	##################################################
+
+	add_trait = {
+		token = mio_focke_wulf_fw190d
+		name = mio_focke_wulf_fw190d
+		icon = GFX_generic_mio_department_icon_plane_fighter_quality
+		special_trait_background = yes
+
+		position = { x=3 y=0 }
+
+		available = {
+			FROM = {
+				has_tech = improved_small_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			small_plane_interceptor_airframe_2
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.04
+			thrust = 0.04
+			air_attack = 0.04
+			air_defence = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_focke_wulf_jumo213
+		name = mio_focke_wulf_jumo213
+		icon = GFX_generic_mio_department_icon_plane_fighter_engine
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_focke_wulf_fw190d
+
+		all_parents = {
+			mio_focke_wulf_fw190d
+		}
+
+		limit_to_equipment_type = {
+			small_plane_interceptor_airframe_2
+		}
+
+		equipment_bonus = {
+			thrust = 0.07
+			maximum_speed = 0.04
+			reliability = -0.01
+		}
+	}
+
+	add_trait = {
+		token = mio_focke_wulf_dora_aerodynamics
+		name = mio_focke_wulf_dora_aerodynamics
+		icon = GFX_generic_mio_department_icon_plane_fighter_materials
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_focke_wulf_jumo213
+
+		all_parents = {
+			mio_focke_wulf_jumo213
+		}
+
+		limit_to_equipment_type = {
+			small_plane_interceptor_airframe_2
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.04
+			air_agility = 0.03
+			weight = -0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_focke_wulf_dora_interceptor
+		name = mio_focke_wulf_dora_interceptor
+		icon = GFX_generic_mio_department_icon_plane_fighter_combat
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_focke_wulf_dora_aerodynamics
+
+		all_parents = {
+			mio_focke_wulf_dora_aerodynamics
+		}
+
+		limit_to_equipment_type = {
+			small_plane_interceptor_airframe_2
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.03
+			air_attack = 0.06
+			air_defence = 0.04
+		}
+	}
+
+	add_trait = {
+		token = mio_focke_wulf_mature_dora
+		name = mio_focke_wulf_mature_dora
+		icon = GFX_generic_mio_department_icon_plane_fighter_quality
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_focke_wulf_dora_interceptor
+
+		all_parents = {
+			mio_focke_wulf_dora_interceptor
+		}
+
+		limit_to_equipment_type = {
+			small_plane_interceptor_airframe_2
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.03
+			thrust = 0.02
+			air_agility = 0.03
+			reliability = 0.04
+		}
+	}
+
+
+	##################################################
+	##################################################
+	#################### TA 152 ######################
+	##################################################
+	##################################################
+
+	add_trait = {
+		token = mio_focke_wulf_ta152
+		name = mio_focke_wulf_ta152
+		icon = GFX_generic_mio_department_icon_plane_fighter_quality
+		special_trait_background = yes
+
+		position = { x=4 y=0 }
+
+		available = {
+			FROM = {
+				has_tech = advanced_small_airframe
+			}
+		}
+		
+		all_parents = {
+			mio_focke_wulf_mature_dora
+		}
+
+		limit_to_equipment_type = {
+			small_plane_interceptor_airframe_3
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.05
+			thrust = 0.05
+			air_defence = 0.04
+			air_range = 0.05
+		}
+	}
+
+	add_trait = {
+		token = mio_focke_wulf_ta152_long_wing
+		name = mio_focke_wulf_ta152_long_wing
+		icon = GFX_generic_mio_department_icon_plane_fighter_materials
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_focke_wulf_ta152
+
+		all_parents = {
+			mio_focke_wulf_ta152
+		}
+
+		limit_to_equipment_type = {
+			small_plane_interceptor_airframe_3
+		}
+
+		equipment_bonus = {
+			air_agility = 0.04
+			air_range = 0.08
+			air_defence = 0.03
+			weight = -0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_focke_wulf_ta152_jumo213e
+		name = mio_focke_wulf_ta152_jumo213e
+		icon = GFX_generic_mio_department_icon_plane_fighter_engine
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_focke_wulf_ta152_long_wing
+
+		all_parents = {
+			mio_focke_wulf_ta152_long_wing
+		}
+
+		limit_to_equipment_type = {
+			small_plane_interceptor_airframe_3
+		}
+
+		equipment_bonus = {
+			thrust = 0.07
+			maximum_speed = 0.04
+			reliability = 0.01
+		}
+	}
+
+	add_trait = {
+		token = mio_focke_wulf_ta152_high_altitude
+		name = mio_focke_wulf_ta152_high_altitude
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_focke_wulf_ta152_jumo213e
+
+		all_parents = {
+			mio_focke_wulf_ta152_jumo213e
+		}
+
+		limit_to_equipment_type = {
+			small_plane_interceptor_airframe_3
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.04
+			thrust = 0.03
+			air_attack = 0.04
+			air_defence = 0.04
+		}
+	}
+
+	add_trait = {
+		token = mio_focke_wulf_ta152h
+		name = mio_focke_wulf_ta152h
+		icon = GFX_generic_mio_department_icon_plane_fighter_combat
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_focke_wulf_ta152_high_altitude
+
+		all_parents = {
+			mio_focke_wulf_ta152_high_altitude
+		}
+
+		limit_to_equipment_type = {
+			small_plane_interceptor_airframe_3
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.03
+			air_attack = 0.06
+			air_agility = 0.03
+			air_defence = 0.04
+			reliability = 0.03
+		}
+	}
+
+
+	##################################################
+	##################################################
+	#################### FW 189 ######################
+	##################################################
+	##################################################
+
+	add_trait = {
+		token = mio_focke_wulf_fw189
+		name = mio_focke_wulf_fw189
+		icon = GFX_generic_mio_department_icon_plane_scout_quality
+		special_trait_background = yes
+
+		position = { x=7 y=0 }
+
+		available = {
+			FROM = {
+				has_tech = improved_medium_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_scout_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			air_range = 0.08
+			reliability = 0.05
+			air_defence = 0.05
+			weight = -0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_focke_wulf_fw189_glazed_cockpit
+		name = mio_focke_wulf_fw189_glazed_cockpit
+		icon = GFX_generic_mio_department_icon_plane_scout_quality
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_focke_wulf_fw189
+
+		all_parents = {
+			mio_focke_wulf_fw189
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_scout_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			air_range = 0.06
+			air_defence = 0.03
+			reliability = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_focke_wulf_fw189_twin_boom
+		name = mio_focke_wulf_fw189_twin_boom
+		icon = GFX_generic_mio_department_icon_plane_scout_quality
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_focke_wulf_fw189_glazed_cockpit
+
+		all_parents = {
+			mio_focke_wulf_fw189_glazed_cockpit
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_scout_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			reliability = 0.05
+			air_defence = 0.05
 			air_agility = 0.03
 		}
 	}
 
 	add_trait = {
-		token = GER_mio_trait_radial_engine
-		name = GER_mio_trait_radial_engine
+		token = mio_focke_wulf_fw189_battlefield_observer
+		name = mio_focke_wulf_fw189_battlefield_observer
+		icon = GFX_generic_mio_department_icon_plane_scout_combat
 
-		icon = GFX_generic_mio_trait_icon_air_agility
-		special_trait_background = yes
-		
-		position = { x=-0 y=1 }
-		relative_position_id = GER_mio_trait_long_nose_design
-		all_parents = { GER_mio_trait_long_nose_design }
+		position = { x=0 y=1 }
+		relative_position_id = mio_focke_wulf_fw189_twin_boom
 
-		limit_to_equipment_type = { mio_cat_eq_all_small_plane }
+		all_parents = {
+			mio_focke_wulf_fw189_twin_boom
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_scout_plane_airframe_2
+		}
 
 		equipment_bonus = {
-			air_defence = 0.05
-			air_agility = 0.05
+			air_range = 0.10
+			reliability = 0.03
+			air_defence = 0.04
 		}
 	}
 
 	add_trait = {
-		token = GER_mio_trait_long_nose_design
-		name = GER_mio_trait_long_nose_design
-
-		icon = GFX_generic_mio_department_icon_plane_light_engine
+		token = mio_focke_wulf_fw189_survivability
+		name = mio_focke_wulf_fw189_survivability
+		icon = GFX_generic_mio_trait_icon_reliability
 		special_trait_background = yes
-		
-		position = { x=0 y=1 }
-		relative_position_id = generic_mio_trait_large_rudders_and_flaps
-		all_parents = { generic_mio_trait_large_rudders_and_flaps }
 
-		limit_to_equipment_type = { mio_cat_eq_all_small_plane }
+		position = { x=0 y=1 }
+		relative_position_id = mio_focke_wulf_fw189_battlefield_observer
+
+		all_parents = {
+			mio_focke_wulf_fw189_battlefield_observer
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_scout_plane_airframe_2
+		}
 
 		equipment_bonus = {
-			air_range = 0.05
-			air_defence = 0.05
-		} 
-	} 
-
-	add_trait = {
-		token = GER_mio_trait_hamburger_flugzeugbau
-		name = GER_mio_trait_hamburger_flugzeugbau
-		icon = GFX_generic_mio_trait_icon_production_capacity
-		special_trait_background = yes
-
-		position = { x=@aircraft_hamburger_X y=@aircraft_hamburger_Y }  
-		
-		visible = {
-			FROM = { original_tag = GER }
-		}
-
-		available = {
-			FROM = {
-				mio:GER_blohm_und_voss_organization = {
-					has_mio_size > 4
-				}
-				NOT = { has_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag }
-			}
-		}
-
-		on_complete = {
-			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
-			FROM = {
-				set_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag
-			}
+			reliability = 0.06
+			air_defence = 0.06
+			weight = -0.02
 		}
 
 		production_bonus = {
-			production_capacity_factor = 0.05
-		}
-
-		ai_will_do = {
-			base = 2
+			production_cost_factor = -0.02
 		}
 	}
 }
 
 GER_heinkel_organization = {
-	include = generic_heavy_aircraft_organization
 	icon = GFX_idea_heinkel
-	
+
 	allowed = {
-		original_tag = GER 
+		tag = GER
+	}
+
+	equipment_type = {
+		medium_plane_airframe_1
+		large_plane_airframe_2
+	}
+
+	research_categories = {
+		tactical_bomber
+		strategic_bomber
 	}
 
 	tree_header_text = {
-		text = mio_header_design_department
-		x = 2
+		text = mio_header_heinkel_he111
+		x = 1
 	}
 
 	tree_header_text = {
-		text = mio_header_operational_department
-		x = 7
+		text = mio_header_heinkel_he177
+		x = 5
 	}
 
-	override_trait = {
-		token = generic_mio_trait_advanced_turbochargers
+	initial_trait = {
+		name = mio_heinkel_initial_trait
+
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 0.75
+			military_industrial_organization_research_bonus = 0.03
+		}
+
+		equipment_bonus = {
+			air_range = 0.04
+			reliability = 0.03
+			air_defence = 0.02
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.02
+		}
+	}
+
+
+	##################################################
+	##################################################
+	#################### HE 111 ######################
+	##################################################
+	##################################################
+
+	################### HE 111 B/P ###################
+
+	add_trait = {
+		token = mio_heinkel_he111_early
+		name = mio_heinkel_he111_early
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_quality
+		special_trait_background = yes
+
+		position = { x=0 y=0 }
+
+		available = {
+			FROM = {
+				has_tech = basic_medium_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_1
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.03
+			air_range = 0.05
+			reliability = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_heinkel_he111_streamlined_design
+		name = mio_heinkel_he111_streamlined_design
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_quality
 
 		position = { x=0 y=1 }
-	}
+		relative_position_id = mio_heinkel_he111_early
 
-	override_trait = {
-		token = generic_mio_trait_extended_rear_fuselage
+		all_parents = {
+			mio_heinkel_he111_early
+		}
 
-		position = { x=5 y=0 }
-	}
-
-	override_trait = {
-		token = generic_mio_trait_pressurized_cockpit
-
-		position = { x=2 y=1 }
-	}
-
-	add_trait = {
-		token = GER_mio_trait_doppel_blitz
-		name = GER_mio_trait_doppel_blitz
-		icon = GFX_generic_mio_department_icon_plane_heavy_engine
-		special_trait_background = yes
-		
-		position = { x=3 y=0 }
-		relative_position_id = generic_mio_trait_reinforced_frames
+		limit_to_equipment_type = {
+			medium_plane_airframe_1
+		}
 
 		equipment_bonus = {
-			maximum_speed = 0.05
-		} 
-	} 
+			maximum_speed = 0.04
+			air_range = 0.03
+			weight = -0.02
+		}
+	}
 
 	add_trait = {
-		token = GER_mio_trait_advanced_night_equipment
-		name = GER_mio_trait_advanced_night_equipment
-		icon = GFX_generic_mio_trait_icon_detection
-		special_trait_background = yes
-		
-		position = { x=-1 y=1 }
-		relative_position_id = generic_mio_trait_pressurized_cockpit
-		all_parents = { generic_mio_trait_pressurized_cockpit }
+		token = mio_heinkel_he111_bombload
+		name = mio_heinkel_he111_bombload
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_combat
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_heinkel_he111_streamlined_design
+
+		all_parents = {
+			mio_heinkel_he111_streamlined_design
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_1
+		}
 
 		equipment_bonus = {
-			night_penalty = -0.05
-		} 
-	} 
+			air_bombing = 0.08
+			weight = 0.02
+		}
+	}
 
 	add_trait = {
-		token = GER_mio_trait_stepless_cockpit
-		name = GER_mio_trait_stepless_cockpit
-		icon = GFX_generic_mio_trait_icon_strategic_attack
+		token = mio_heinkel_he111_early_series
+		name = mio_heinkel_he111_early_series
+		icon = GFX_generic_mio_trait_icon_production_capacity
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_heinkel_he111_bombload
+
+		all_parents = {
+			mio_heinkel_he111_bombload
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_1
+		}
+
+		equipment_bonus = {
+			reliability = 0.04
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.03
+			production_efficiency_gain_factor = 0.04
+		}
+	}
+
+
+	##################################################
+	#################### HE 111 H ####################
+	##################################################
+
+	add_trait = {
+		token = mio_heinkel_he111h
+		name = mio_heinkel_he111h
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_quality
 		special_trait_background = yes
-		
+
+		position = { x=1 y=-3 }
+		relative_position_id = mio_heinkel_he111_early_series
+
+		all_parents = {
+			mio_heinkel_he111_early_series
+		}
+
+		available = {
+			FROM = {
+				has_tech = improved_medium_airframe
+			}
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_1
+		}
+
+		equipment_bonus = {
+			air_range = 0.05
+			air_bombing = 0.06
+			air_defence = 0.03
+			reliability = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_heinkel_he111_jumo211
+		name = mio_heinkel_he111_jumo211
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_quality
+
 		position = { x=1 y=1 }
-		relative_position_id = generic_mio_trait_pressurized_cockpit
-		all_parents = { generic_mio_trait_pressurized_cockpit }
+		relative_position_id = mio_heinkel_he111h
 
-		limit_to_equipment_type = { mio_cat_eq_only_strategic_bomber }
+		all_parents = {
+			mio_heinkel_he111h
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_1
+		}
+
+		equipment_bonus = {
+			thrust = 0.05
+			maximum_speed = 0.03
+			reliability = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_heinkel_he111h_bombload
+		name = mio_heinkel_he111h_bombload
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_combat
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_heinkel_he111_jumo211
+
+		all_parents = {
+			mio_heinkel_he111_jumo211
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_1
+		}
+
+		equipment_bonus = {
+			air_bombing = 0.10
+			weight = 0.03
+			maximum_speed = -0.01
+		}
+	}
+
+	add_trait = {
+		token = mio_heinkel_he111_defensive_armament
+		name = mio_heinkel_he111_defensive_armament
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_combat
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_heinkel_he111h_bombload
+
+		all_parents = {
+			mio_heinkel_he111h_bombload
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_1
+		}
+
+		equipment_bonus = {
+			air_defence = 0.06
+			air_attack = 0.04
+			weight = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_heinkel_he111_long_range
+		name = mio_heinkel_he111_long_range
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_conversion
+
+		position = { x=-1 y=0 }
+		relative_position_id = mio_heinkel_he111_defensive_armament
+
+		all_parents = {
+			mio_heinkel_he111_defensive_armament
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_1
+		}
+
+		equipment_bonus = {
+			air_range = 0.10
+			fuel_consumption = -0.04
+			reliability = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_heinkel_mature_he111
+		name = mio_heinkel_mature_he111
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_quality
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_heinkel_he111_long_range
+
+		all_parents = {
+			mio_heinkel_he111_long_range
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_1
+		}
 
 		equipment_bonus = {
 			air_bombing = 0.05
-		} 
-	} 
-
-	add_trait = {
-		token = GER_mio_trait_hamburger_flugzeugbau
-		name = GER_mio_trait_hamburger_flugzeugbau
-		icon = GFX_generic_mio_trait_icon_production_capacity
-		special_trait_background = yes
-
-		position = { x=@aircraft_hamburger_X y=@aircraft_hamburger_Y }  
-
-		visible = {
-			FROM = { original_tag = GER }
-		}
-
-		available = {
-			FROM = {
-				mio:GER_blohm_und_voss_organization = {
-					has_mio_size > 4
-				}
-				NOT = { has_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag }
-			}
-		}
-
-		on_complete = {
-			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
-			FROM = {
-				set_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag
-			}
+			air_range = 0.03
+			air_defence = 0.03
+			reliability = 0.04
 		}
 
 		production_bonus = {
-			production_capacity_factor = 0.05
-		}
-
-		ai_will_do = {
-			base = 2
+			production_cost_factor = -0.03
+			production_efficiency_gain_factor = 0.04
 		}
 	}
 
+
+	##################################################
+	##################################################
+	#################### HE 177 ######################
+	##################################################
+	##################################################
+
 	add_trait = {
-		token = GER_mio_trait_aerodynamic_research_insitute
-		name = GER_mio_trait_aerodynamic_research_insitute
-		icon = GFX_generic_mio_department_icon_facilities
+		token = mio_heinkel_he177
+		name = mio_heinkel_he177
+		icon = GFX_generic_mio_department_icon_plane_strategic_bomber_technology
 		special_trait_background = yes
 
-		relative_position_id = generic_mio_trait_air_deployed_sonobuoys
-
-		position = { x = 1 y = 0 }  
-		
-		visible = {
-			FROM = { original_tag = GER }
-		}
+		position = { x=4 y=0 }
 
 		available = {
 			FROM = {
-				has_completed_focus = GER_aerodynamic_research_institute
-				NOT = { has_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag }
+				has_tech = improved_large_airframe
 			}
 		}
 
-		on_complete = {
-			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
-			FROM = {
-				set_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag
-			}
+		limit_to_equipment_type = {
+			large_plane_airframe_2
 		}
-
-		organization_modifier = {
-		    military_industrial_organization_research_bonus = 0.1
-		}
-
-		ai_will_do = {
-			base = 2
-		}
-	}
-}
-
-GER_dornier_organization = {
-	include = generic_medium_aircraft_organization
-	icon = GFX_idea_dornier
-	
-	allowed = {	
-		original_tag = GER 
-	}
-
-	add_trait = {
-		token = GER_mio_trait_flying_boat_specialist
-		name = GER_mio_trait_flying_boat_specialist
-		icon = GFX_generic_mio_trait_icon_torpedo_attack
-		special_trait_background = yes
-		
-		position = { x=-1 y=1 }
-		relative_position_id = generic_mio_trait_skip_bombing
-		all_parents = { generic_mio_trait_skip_bombing }
-
-		limit_to_equipment_type = { mio_cat_eq_all_medium_plane }
 
 		equipment_bonus = {
-			surface_detection = 0.03
-			naval_strike_attack = 0.05
-		} 
+			air_bombing = 0.10
+			air_range = 0.06
+			air_defence = 0.04
+
+			reliability = -0.06
+			build_cost_ic = 0.04
+			weight = 0.03
+		}
 	}
 
 	add_trait = {
-		token = GER_mio_trait_schnellbomber_doctrine
-		name = GER_mio_trait_schnellbomber_doctrine
-		icon = GFX_generic_mio_department_icon_plane_medium_engine
-		special_trait_background = yes
-		
-		position = { x=-1 y=1 }
-		relative_position_id = generic_mio_trait_refined_engines
-		all_parents = { generic_mio_trait_refined_engines }
+		token = mio_heinkel_db606
+		name = mio_heinkel_db606
+		icon = GFX_generic_mio_department_icon_plane_strategic_bomber_engine
 
-		limit_to_equipment_type = { mio_cat_eq_all_medium_plane }
+		position = { x=1 y=0 }
+		relative_position_id = mio_heinkel_he177
+
+		all_parents = {
+			mio_heinkel_he177
+		}
+
+		limit_to_equipment_type = {
+			large_plane_airframe_2
+		}
 
 		equipment_bonus = {
-			maximum_speed = 0.1
-		} 
-	} 
+			thrust = 0.07
+			maximum_speed = 0.03
+
+			reliability = -0.05
+			build_cost_ic = 0.02
+		}
+	}
 
 	add_trait = {
-		token = GER_mio_trait_hamburger_flugzeugbau
-		name = GER_mio_trait_hamburger_flugzeugbau
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		token = mio_heinkel_he177_heavy_bombload
+		name = mio_heinkel_he177_heavy_bombload
+		icon = GFX_generic_mio_department_icon_plane_strategic_bomber_combat
+
+		position = { x=1 y=0 }
+		relative_position_id = mio_heinkel_db606
+
+		all_parents = {
+			mio_heinkel_db606
+		}
+
+		limit_to_equipment_type = {
+			large_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			air_bombing = 0.15
+			weight = 0.05
+			build_cost_ic = 0.02
+			maximum_speed = -0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_heinkel_he177_long_range
+		name = mio_heinkel_he177_long_range
+		icon = GFX_generic_mio_department_icon_plane_strategic_bomber_technology
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_heinkel_he177_heavy_bombload
+
+		all_parents = {
+			mio_heinkel_he177_heavy_bombload
+		}
+
+		limit_to_equipment_type = {
+			large_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			air_range = 0.12
+			fuel_consumption = -0.05
+			weight = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_heinkel_he177_defensive_armament
+		name = mio_heinkel_he177_defensive_armament
+		icon = GFX_generic_mio_department_icon_plane_strategic_bomber_combat
+
+		position = { x=-2 y=0 }
+		relative_position_id = mio_heinkel_he177_long_range
+
+		all_parents = {
+			mio_heinkel_he177_long_range
+		}
+
+		limit_to_equipment_type = {
+			large_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			air_defence = 0.08
+			air_attack = 0.06
+			weight = 0.03
+		}
+	}
+
+
+	##################################################
+	############### GREIF RELIABILITY ################
+	##################################################
+
+	add_trait = {
+		token = mio_heinkel_db610
+		name = mio_heinkel_db610
+		icon = GFX_generic_mio_department_icon_plane_strategic_bomber_engine
+
+		position = { x=1 y=1 }
+		relative_position_id = mio_heinkel_he177_defensive_armament
+
+		all_parents = {
+			mio_heinkel_he177_defensive_armament
+		}
+
+		limit_to_equipment_type = {
+			large_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			thrust = 0.04
+			maximum_speed = 0.02
+			reliability = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_heinkel_he177_engine_cooling
+		name = mio_heinkel_he177_engine_cooling
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		position = { x=1 y=0 }
+		relative_position_id = mio_heinkel_db610
+
+		all_parents = {
+			mio_heinkel_db610
+		}
+
+		limit_to_equipment_type = {
+			large_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			reliability = 0.06
+			air_defence = 0.02
+			weight = 0.01
+		}
+	}
+
+	add_trait = {
+		token = mio_heinkel_he177_fire_protection
+		name = mio_heinkel_he177_fire_protection
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_heinkel_he177_engine_cooling
+
+		all_parents = {
+			mio_heinkel_he177_engine_cooling
+		}
+
+		limit_to_equipment_type = {
+			large_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			reliability = 0.05
+			air_defence = 0.04
+			weight = 0.02
+		}
+	}
+
+
+	##################################################
+	################ LATE HE 177 #####################
+	##################################################
+
+	add_trait = {
+		token = mio_heinkel_he177a5
+		name = mio_heinkel_he177a5
+		icon = GFX_generic_mio_department_icon_plane_strategic_bomber_technology
 		special_trait_background = yes
 
-		position = { x=@aircraft_hamburger_X y=@aircraft_hamburger_Y }  
-		
-		visible = {
-			FROM = { original_tag = GER }
+		position = { x=-2 y=0 }
+		relative_position_id = mio_heinkel_he177_fire_protection
+
+		all_parents = {
+			mio_heinkel_he177_fire_protection
 		}
 
-		available = {
-			FROM = {
-				mio:GER_blohm_und_voss_organization = {
-					has_mio_size > 4
-				}
-				NOT = { has_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag }
-			}
+		limit_to_equipment_type = {
+			large_plane_airframe_2
 		}
 
-		on_complete = {
-			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
-			FROM = {
-				set_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag
-			}
+		equipment_bonus = {
+			air_bombing = 0.08
+			air_range = 0.05
+			air_defence = 0.03
+			reliability = 0.04
+		}
+	}
+
+	add_trait = {
+		token = mio_heinkel_greif_strategic_bomber
+		name = mio_heinkel_greif_strategic_bomber
+		icon = GFX_generic_mio_department_icon_plane_strategic_bomber_combat
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_heinkel_he177a5
+
+		all_parents = {
+			mio_heinkel_he177a5
+		}
+
+		limit_to_equipment_type = {
+			large_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			air_bombing = 0.12
+			air_range = 0.05
+			air_defence = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_heinkel_mature_greif
+		name = mio_heinkel_mature_greif
+		icon = GFX_generic_mio_department_icon_plane_strategic_bomber_technology
+		special_trait_background = yes
+
+		position = { x=1 y=0 }
+		relative_position_id = mio_heinkel_greif_strategic_bomber
+
+		all_parents = {
+			mio_heinkel_greif_strategic_bomber
+		}
+
+		limit_to_equipment_type = {
+			large_plane_airframe_2
+		}
+
+		equipment_bonus = {
+			air_bombing = 0.05
+			air_range = 0.03
+			reliability = 0.04
+			air_defence = 0.02
 		}
 
 		production_bonus = {
-			production_capacity_factor = 0.05
-		}
-
-		ai_will_do = {
-			base = 2
-		}
-	}
-
-	add_trait = {
-		token = GER_mio_trait_aerodynamic_research_insitute
-		name = GER_mio_trait_aerodynamic_research_insitute
-		icon = GFX_generic_mio_department_icon_facilities
-		special_trait_background = yes
-
-		relative_position_id = GER_mio_trait_flying_boat_specialist
-
-		position = { x = 2 y = 0 }  
-		
-		visible = {
-			FROM = { original_tag = GER }
-		}
-
-		available = {
-			FROM = {
-				has_completed_focus = GER_aerodynamic_research_institute
-				NOT = { has_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag }
-			}
-		}
-
-		on_complete = {
-			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
-			FROM = {
-				set_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag
-			}
-		}
-
-		organization_modifier = {
-		    military_industrial_organization_research_bonus = 0.1
-		}
-
-		ai_will_do = {
-			base = 2
+			production_cost_factor = -0.02
+			production_efficiency_gain_factor = 0.03
 		}
 	}
 }
 
 GER_arado_flugzeugwerke_organization = {
-	include = generic_multi_role_aircraft_organization
 	icon = GFX_idea_GER_arado_flugzeugwerke
 	
-	allowed = {	
-		original_tag = GER 
+	allowed = {
+		tag = GER
 	}
 
-	add_trait = {
-		token = GER_mio_trait_jet_bomber_innovator
-		name = GER_mio_trait_jet_bomber_innovator
-		icon = GFX_generic_mio_department_icon_plane_medium_engine
-		special_trait_background = yes
-		
-		position = { x=0 y=1 }
-		relative_position_id = GER_mio_trait_hamburger_flugzeugbau
+	equipment_type = {
+		small_plane_maritime_patrol_plane_airframe_1
+		medium_plane_airframe_4
+	}
 
-		available = {
-			FROM = {
-				is_special_project_completed = sp:sp_air_axial_jet_engine
-			}
+	research_categories = {
+		naval_air
+		tactical_bomber
+		medium_air
+	}
+
+	tree_header_text = {
+		text = mio_header_arado_ar196
+		x = 2
+	}
+
+	tree_header_text = {
+		text = mio_header_arado_ar234
+		x = 7
+	}
+
+	initial_trait = {
+		name = mio_arado_initial_trait
+
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 0.5
+			military_industrial_organization_research_bonus = 0.04
 		}
-
-		limit_to_equipment_type = { mio_cat_eq_all_medium_plane }
 
 		equipment_bonus = {
-			maximum_speed = 0.1
-		} 
-	} 
+			maximum_speed = 0.03
+			air_range = 0.04
+			reliability = 0.02
+		}
+	}
+
+
+	##################################################
+	##################################################
+	#################### AR 196 ######################
+	##################################################
+	##################################################
 
 	add_trait = {
-		token = GER_mio_trait_hamburger_flugzeugbau
-		name = GER_mio_trait_hamburger_flugzeugbau
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		token = mio_arado_ar196
+		name = mio_arado_ar196
+		icon = GFX_generic_mio_department_icon_plane_scout_quality
 		special_trait_background = yes
-		
-		position = { x=@aircraft_hamburger_X y=@aircraft_hamburger_Y }  
 
-		visible = {
-			FROM = { original_tag = GER }
-		}
+		position = { x=2 y=0 }
 
 		available = {
 			FROM = {
-				mio:GER_blohm_und_voss_organization = {
-					has_mio_size > 4
-				}
-				NOT = { has_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag }
+				has_tech = basic_small_airframe
 			}
 		}
 
-		on_complete = {
-			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
-			FROM = {
-				set_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag
-			}
+		limit_to_equipment_type = {
+			small_plane_maritime_patrol_plane_airframe_1
+		}
+
+		equipment_bonus = {
+			air_range = 0.06
+			reliability = 0.04
+			air_defence = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_arado_ar196_floatplane
+		name = mio_arado_ar196_floatplane
+		icon = GFX_generic_mio_department_icon_plane_scout_quality
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_arado_ar196
+
+		all_parents = {
+			mio_arado_ar196
+		}
+
+		limit_to_equipment_type = {
+			small_plane_maritime_patrol_plane_airframe_1
+		}
+
+		equipment_bonus = {
+			reliability = 0.05
+			air_defence = 0.03
+			weight = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_arado_ar196_maritime_recon
+		name = mio_arado_ar196_maritime_recon
+		icon = GFX_generic_mio_department_icon_plane_scout_combat
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_arado_ar196_floatplane
+
+		all_parents = {
+			mio_arado_ar196_floatplane
+		}
+
+		limit_to_equipment_type = {
+			small_plane_maritime_patrol_plane_airframe_1
+		}
+
+		equipment_bonus = {
+			air_range = 0.08
+			surface_detection = 0.10
+			sub_detection = 0.05
+		}
+	}
+
+	add_trait = {
+		token = mio_arado_ar196_endurance
+		name = mio_arado_ar196_endurance
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		position = { x=-1 y=0 }
+		relative_position_id = mio_arado_ar196_maritime_recon
+
+		all_parents = {
+			mio_arado_ar196_maritime_recon
+		}
+
+		limit_to_equipment_type = {
+			small_plane_maritime_patrol_plane_airframe_1
+		}
+
+		equipment_bonus = {
+			air_range = 0.08
+			reliability = 0.05
+			fuel_consumption = -0.04
+		}
+	}
+
+	add_trait = {
+		token = mio_arado_ar196_observer
+		name = mio_arado_ar196_observer
+		icon = GFX_generic_mio_department_icon_plane_scout_combat
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_arado_ar196_endurance
+
+		all_parents = {
+			mio_arado_ar196_endurance
+		}
+
+		limit_to_equipment_type = {
+			small_plane_maritime_patrol_plane_airframe_1
+		}
+
+		equipment_bonus = {
+			surface_detection = 0.10
+			sub_detection = 0.05
+			air_defence = 0.03
+		}
+	}
+
+	add_trait = {
+		token = mio_arado_mature_ar196
+		name = mio_arado_mature_ar196
+		icon = GFX_generic_mio_department_icon_plane_scout_quality
+		special_trait_background = yes
+
+		position = { x=2 y=0 }
+		relative_position_id = mio_arado_ar196_observer
+
+		all_parents = {
+			mio_arado_ar196_observer
+		}
+
+		limit_to_equipment_type = {
+			small_plane_maritime_patrol_plane_airframe_1
+		}
+
+		equipment_bonus = {
+			air_range = 0.05
+			reliability = 0.04
+			air_defence = 0.03
+			surface_detection = 0.05
 		}
 
 		production_bonus = {
-			production_capacity_factor = 0.05
+			production_cost_factor = -0.02
+		}
+	}
+
+
+	##################################################
+	##################################################
+	#################### AR 234 ######################
+	##################################################
+	##################################################
+
+	add_trait = {
+		token = mio_arado_ar234
+		name = mio_arado_ar234
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_quality
+		special_trait_background = yes
+
+		position = { x=7 y=0 }
+
+		available = {
+			FROM = {
+				has_tech = modern_medium_airframe
+			}
 		}
 
-		ai_will_do = {
-			base = 2
+		limit_to_equipment_type = {
+			medium_plane_airframe_4
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.06
+			thrust = 0.05
+			air_range = 0.05
+
+			reliability = -0.03
+			build_cost_ic = 0.03
 		}
 	}
 
 	add_trait = {
-		token = GER_mio_trait_aerodynamic_research_insitute
-		name = GER_mio_trait_aerodynamic_research_insitute
-		icon = GFX_generic_mio_department_icon_facilities
-		special_trait_background = yes
+		token = mio_arado_ar234_jumo004
+		name = mio_arado_ar234_jumo004
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_quality
 
-		relative_position_id = GER_mio_trait_hamburger_flugzeugbau
+		position = { x=0 y=1 }
+		relative_position_id = mio_arado_ar234
 
-		position = { x = -1 y = 0 }  
-		
-		visible = {
-			FROM = { original_tag = GER }
+		all_parents = {
+			mio_arado_ar234
 		}
 
-		available = {
-			FROM = {
-				has_completed_focus = GER_aerodynamic_research_institute
-				NOT = { has_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag }
-			}
+		limit_to_equipment_type = {
+			medium_plane_airframe_4
 		}
 
-		on_complete = {
-			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
-			FROM = {
-				set_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag
-			}
+		equipment_bonus = {
+			thrust = 0.08
+			maximum_speed = 0.05
+			reliability = -0.03
 		}
-
-		organization_modifier = {
-		    military_industrial_organization_research_bonus = 0.1
-		}
-
-		ai_will_do = {
-			base = 2
-		}
-	}
-}
-
-GER_fieseler_organization = {
-	include = generic_naval_aircraft_organization
-	icon = GFX_idea_GER_fieseler
-	
-	allowed = {	
-		original_tag = GER 
 	}
 
 	add_trait = {
-		token = GER_mio_trait_hamburger_flugzeugbau
-		name = GER_mio_trait_hamburger_flugzeugbau
-		icon = GFX_generic_mio_trait_icon_production_capacity
+		token = mio_arado_ar234_aerodynamics
+		name = mio_arado_ar234_aerodynamics
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_quality
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_arado_ar234_jumo004
+
+		all_parents = {
+			mio_arado_ar234_jumo004
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_4
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.05
+			air_range = 0.03
+			weight = -0.03
+		}
+	}
+
+
+	##################################################
+	############### AR 234 RECON BRANCH ##############
+	##################################################
+
+	add_trait = {
+		token = mio_arado_ar234_recon
+		name = mio_arado_ar234_recon
+		icon = GFX_generic_mio_department_icon_plane_scout_quality
 		special_trait_background = yes
 
-		position = { x=@aircraft_hamburger_X y=@aircraft_hamburger_Y }  
-		
-		visible = {
-			FROM = { original_tag = GER }
+		position = { x=-1 y=0 }
+		relative_position_id = mio_arado_ar234_aerodynamics
+
+		all_parents = {
+			mio_arado_ar234_aerodynamics
 		}
 
-		available = {
-			FROM = {
-				mio:GER_blohm_und_voss_organization = {
-					has_mio_size > 4
-				}
-				NOT = { has_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag }
-			}
+		limit_to_equipment_type = {
+			medium_plane_airframe_4
 		}
 
-		on_complete = {
-			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
-			FROM = {
-				set_country_flag = GER_hamburger_flugzeugbau_trait_taken_flag
-			}
+		equipment_bonus = {
+			air_range = 0.08
+			maximum_speed = 0.03
+			reliability = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_arado_ar234_camera_installation
+		name = mio_arado_ar234_camera_installation
+		icon = GFX_generic_mio_department_icon_plane_scout_combat
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_arado_ar234_recon
+
+		all_parents = {
+			mio_arado_ar234_recon
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_4
+		}
+
+		equipment_bonus = {
+			air_range = 0.05
+			reliability = 0.03
+			air_defence = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_arado_ar234_high_speed_recon
+		name = mio_arado_ar234_high_speed_recon
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_arado_ar234_camera_installation
+
+		all_parents = {
+			mio_arado_ar234_camera_installation
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_4
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.05
+			air_range = 0.05
+			air_defence = 0.03
+		}
+	}
+
+
+	##################################################
+	############## AR 234 BOMBER BRANCH ##############
+	##################################################
+
+	add_trait = {
+		token = mio_arado_ar234_bomber
+		name = mio_arado_ar234_bomber
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_combat
+		special_trait_background = yes
+
+		position = { x=1 y=0 }
+		relative_position_id = mio_arado_ar234_aerodynamics
+
+		all_parents = {
+			mio_arado_ar234_aerodynamics
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_4
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.07
+			air_bombing = 0.04
+			air_range = 0.04
+			weight = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_arado_ar234_external_bombload
+		name = mio_arado_ar234_external_bombload
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_combat
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_arado_ar234_bomber
+
+		all_parents = {
+			mio_arado_ar234_bomber
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_4
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.08
+			air_bombing = 0.06
+			weight = 0.03
+			maximum_speed = -0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_arado_ar234_blitz_attack
+		name = mio_arado_ar234_blitz_attack
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_combat
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_arado_ar234_external_bombload
+
+		all_parents = {
+			mio_arado_ar234_external_bombload
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_4
+		}
+
+		equipment_bonus = {
+			air_ground_attack = 0.07
+			air_bombing = 0.04
+			maximum_speed = 0.03
+			air_defence = 0.03
+		}
+	}
+
+
+	##################################################
+	################ LATE AR 234 #####################
+	##################################################
+
+	add_trait = {
+		token = mio_arado_ar234_engine_refinement
+		name = mio_arado_ar234_engine_refinement
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		position = { x=0 y=2 }
+		relative_position_id = mio_arado_ar234_aerodynamics
+
+		all_parents = {
+			mio_arado_ar234_high_speed_recon
+			mio_arado_ar234_blitz_attack
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_4
+		}
+
+		equipment_bonus = {
+			reliability = 0.05
+			thrust = 0.03
+			maximum_speed = 0.02
+		}
+	}
+
+	add_trait = {
+		token = mio_arado_mature_ar234
+		name = mio_arado_mature_ar234
+		icon = GFX_generic_mio_department_icon_plane_tactical_bomber_quality
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = mio_arado_ar234_engine_refinement
+
+		all_parents = {
+			mio_arado_ar234_engine_refinement
+		}
+
+		limit_to_equipment_type = {
+			medium_plane_airframe_4
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.03
+			air_range = 0.03
+			reliability = 0.04
+			air_defence = 0.03
 		}
 
 		production_bonus = {
-			production_capacity_factor = 0.1
-		}
-
-		ai_will_do = {
-			base = 2
+			production_cost_factor = -0.02
+			production_efficiency_gain_factor = 0.03
 		}
 	}
-
-	add_trait = {
-		token = GER_mio_trait_aerodynamic_research_insitute
-		name = GER_mio_trait_aerodynamic_research_insitute
-		icon = GFX_generic_mio_department_icon_facilities
-		special_trait_background = yes
-
-		relative_position_id = GER_mio_trait_hamburger_flugzeugbau
-
-		position = { x = 0 y = 1 }  
-		
-		visible = {
-			FROM = { original_tag = GER }
-		}
-
-		available = {
-			FROM = {
-				has_completed_focus = GER_aerodynamic_research_institute
-				NOT = { has_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag }
-			}
-		}
-
-		on_complete = {
-			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
-			FROM = {
-				set_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag
-			}
-		}
-
-		organization_modifier = {
-		    military_industrial_organization_research_bonus = 0.1
-		}
-
-		ai_will_do = {
-			base = 2
-		}
-	}
-
 }
 
 ################################### 

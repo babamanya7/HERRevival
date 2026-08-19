@@ -381,86 +381,105 @@
   ###AIR DESIGNERS###
   ###################
 
-  ###KAWASAKI###
-  JAP_kawasaki_organization: "Кавасаки"
-  mio_cat_kawasaki_designer: "Авиация Сухопутных войск"
-  mio_kawasaki_inital_trait: "Тяжёлые истребители и Пикирующие бомбардировщики"
+   ###KAWASAKI###
+  JAP_kawasaki_organization: "Kawasaki"
+  mio_cat_kawasaki_designer: "Тяжёлые истребители и ударная авиация"
+  mio_kawasaki_inital_trait: "Школа тяжёлой авиации Kawasaki"
 
-  mio_header_kawasaki_hf: "Тяж. истребители Ki-45/ki-102"
-  mio_kawasaki_ki45i: "Радиальный двигатель Mitsubishi Zuisei, синхронизированная крупнокалиберная пулеметная пара, авиапушка АП-2"
-  mio_kawasaki_ki45ii: "Опытная 37 мм авиапушка Хо-203, удлинение носового обтекателя"
-  mio_kawasaki_ki45iii: "Закабинная установка 20мм пушечной пары Хо-5 вместо верхнего топливного бака"
+  mio_header_kawasaki_hf: "Ki-45/Ki-102"
+  mio_header_kawasaki_mb: "Ki-48"
+  mio_header_kawasaki_cas: "Ki-32/Ki-66"
 
-  mio_kawasaki_ki102i: "Двигатели с турбонагнетателями, замена 57-мм пушки на 37-мм"
-  mio_kawasaki_ki102ii: "Крыло увеличенного размаха, удлиненние фюзеляжа, новое хвостовое оперение"
+  ### KI-45 TORYU ###
+  mio_kawasaki_ki45i: "Тяжёлый истребитель Ki-45 Toryū"
+  mio_kawasaki_ki45ii: "Крупнокалиберное пушечное вооружение"
+  mio_kawasaki_ki45iii: "Перехватчик тяжёлых бомбардировщиков"
 
-  mio_header_kawasaki_mb: "Такт. бомбардировщик Ki-48"
-  mio_kawasaki_ki48i: "Увеличение бомбовой нагрузки, модернизация авиаоборудования"
-  mio_kawasaki_ki48ii: "Усиленние фюзеляжа, протектирование баков, бронирование лётной кабины и боезапаса, перфорированные тормозные щитки"
+  ### KI-102 ###
+  mio_kawasaki_ki102i: "Мощная силовая установка Ki-102"
+  mio_kawasaki_ki102ii: "Доведённая конструкция Ki-102"
 
-  mio_header_kawasaki_cas: "Пик. бомбардировщики Ki-32/Ki-66"
-  mio_kawasaki_ki32: "Пикирующий бомбардировщик Ki-32"
-  mio_kawasaki_ki66: "Пикирующий бомбардировщик Ki-66"
+  ### KI-48 ###
+  mio_kawasaki_ki48i: "Скоростной бомбардировщик Ki-48"
+  mio_kawasaki_ki48ii: "Усиленная конструкция и защищённые баки"
+
+  ### KI-32 ###
+  mio_kawasaki_ki32: "Лёгкий армейский бомбардировщик Ki-32"
+
+  ### KI-66 ###
+  mio_kawasaki_ki66: "Скоростной пикирующий бомбардировщик Ki-66"
 
   ###AICHI###
-  mio_cat_aichi_designer: "Палубные ударные самолёты"
-  mio_aichi_inital_trait: "Палубные пикирующие бомбардировщики"
+  mio_cat_aichi_designer: "Палубная ударная авиация"
+  mio_aichi_inital_trait: "Школа палубной ударной авиации Aichi"
 
-  mio_header_aichi_b7a: "Торпедоносец B7A"
-  mio_aichi_b7a: "Тяжёлый торпедоносец B7A"
+  mio_header_aichi_b7a: "B7A Ryūsei"
+  mio_header_aichi_d1a: "D1A"
+  mio_header_aichi_d3a: "D3A"
 
-  mio_header_aichi_d1a: "Палубный пик. бомбард. D1A"
-  mio_aichi_d1a1: "Совместная разработка с Heinkel"
-  mio_aichi_d1a2: "Радиальный двигатель Nakajima Hikari-1, увеличение размаха крыла"
+  ### B7A RYUSEI ###
+  mio_aichi_b7a: "Универсальный палубный ударный самолёт B7A Ryūsei"
 
-  mio_header_aichi_d3a: "Палубный пик. бомбард. D3A"
-  mio_aichi_d3a1: "Радиальный двигатель Mitsubishi Kinsei 4, вертикальный стабилизатор"
-  mio_aichi_d3a2: "Радиальный двигатель Mitsubishi Kinsei 5, дополнительные топливные баки"
+  ### D1A ###
+  mio_aichi_d1a1: "Палубный пикирующий бомбардировщик D1A"
+  mio_aichi_d1a2: "Доведённая силовая установка D1A"
+
+  ### D3A ###
+  mio_aichi_d3a1: "Высокоточное пикирование D3A"
+  mio_aichi_d3a2: "Поздние модификации D3A"
 
   ###MITSUBISHI (AIR)###
   mio_cat_mitsubishi_designer: "Палубные истребители/Бронетехника/Тактическая авиация"
   mio_mitsubishi_inital_trait: "Промышленный конгломерат"
 
-  mio_header_mitsubishi_cvf1: "A5N/Ki-51"
-  mio_header_mitsubishi_cvf2: "A6N"
-  mio_header_mitsubishi_cvf3: "A7N"
+  mio_header_mitsubishi_cvf1: "A5M"
+  mio_header_mitsubishi_cvf2: "A6M"
+  mio_header_mitsubishi_cvf3: "A7M"
   mio_header_mitsubishi_nb: "G3M/G4M"
   mio_header_mitsubishi_tb1: "Ki-21"
   mio_header_mitsubishi_tb2: "Ki-67"
 
-  mio_mitsubishi_a5n1: "Радиальный двигатель Nakajima Kotobuki-2"
-  mio_mitsubishi_a5n2: "Радиальный двигатель Nakajima Kotobuki-3, закрытая кабина, пилоны для ОФАБ-30/ПТБ 210л"
-  mio_mitsubishi_a5n3: "Радиальный двигатель Nakajima Kotobuki-4M"
+  ### A5M ###
+  mio_mitsubishi_a5n1: "Облегчённая конструкция A5M"
+  mio_mitsubishi_a5n2: "Увеличенный радиус действия A5M"
+  mio_mitsubishi_a5n3: "Двигатель Nakajima Kotobuki 41"
 
-  mio_mitsubishi_a6m1: "Воздушный винт с изменяемым в полете шагом"
-  mio_mitsubishi_a6m2: "Радиальный двигатель Nakajima Sakae 12, складывающиеся законцовки крыльев"
-  mio_mitsubishi_a6m3: "Nakajima Sakae 21 с двухступенчатым нагнетателем, пушки Тип 99 2-3, крыльевые топливные баки по 45 л"
-  mio_mitsubishi_a6m4: "Экспериментальная модель двигателя Sakae с газотурбинным нагнетателем"
-  mio_mitsubishi_a6m5: "Крыло меньшего размаха, переработка системы выхлопа"
-  mio_mitsubishi_a6m6: "Радиальный двигатель Nakajima Sakae 31a с системой впрыска водно-метаноловой смеси, протектированный крыльевые баки"
+  ### A6M ZERO ###
+  mio_mitsubishi_a6m1: "Концепция двенадцатиси"
+  mio_mitsubishi_a6m2: "Двигатель Nakajima Sakae 12"
+  mio_mitsubishi_a6m3: "Двигатель Sakae 21 и усиленное вооружение"
+  mio_mitsubishi_a6m4: "Серийное производство A6M"
+  mio_mitsubishi_a6m5: "Переработанное крыло и реактивные патрубки"
+  mio_mitsubishi_a6m6: "Протектированные топливные баки"
 
-  mio_mitsubishi_a7m1: "Радиальный двигатель Nakajima Homare 4"
-  mio_mitsubishi_a7m2: "Радиальный двигатель  Mitsubishi Kinsei 8, 6 пушек АП-99"
+  ### A7M REPPU ###
+  mio_mitsubishi_a7m1: "Мощная силовая установка A7M"
+  mio_mitsubishi_a7m2: "Mitsubishi A7M2 Reppū"
 
-  mio_mitsubishi_g3m1: "Радиальный двигатель Mitsubishi Kinsei 3, регулируемая юбкой капота, воздушный винт изменяемого шага"
-  mio_mitsubishi_g3m2: "Радиальный двигатель Mitsubishi Kinsei 5, увеличенный бак, короткоствольная пушка АП-99 и парой пушек АП-97 в блистерах"
+  ### G3M ###
+  mio_mitsubishi_g3m1: "Дальний морской бомбардировщик G3M"
+  mio_mitsubishi_g3m2: "Увеличенный запас топлива и ударное вооружение"
 
-  mio_mitsubishi_g4m1: "Радиальный двигатель Mitsubishi Kasei 5, топливные баки с резиновым протектором"
-  mio_mitsubishi_g4m2: "Радиальный двигатель Mitsubishi Kasei 21, замена боковых блистеров на сдвижные панели, 20-мм пушка в башенке с электроприводом"
-  mio_mitsubishi_g4m3: "Радиальный двигатель Mitsubishi Kasei 25, снижение объема топливных баков, протектирование топливных баков"
+  ### G4M ###
+  mio_mitsubishi_g4m1: "Предельная дальность G4M"
+  mio_mitsubishi_g4m2: "Усиленное оборонительное и ударное вооружение"
+  mio_mitsubishi_g4m3: "Защищённые топливные баки G4M3"
 
-  mio_mitsubishi_ki51: "Лёгкий штурмовик Ki-51"
+  ### KI-51 ###
+  mio_mitsubishi_ki51: "Mitsubishi Ki-51"
 
-  mio_mitsubishi_ki21i: "Топливный бак в бомбоотсеке, наружные бомбодержатели, бронирование лётной кабины"
-  mio_mitsubishi_ki21ii: "Бомбовая нагрузка до 1т., усиленная бронезащита лётной кабины"
+  ### KI-21 ###
+  mio_mitsubishi_ki21i: "Дальний бомбардировщик Ki-21"
+  mio_mitsubishi_ki21ii: "Усиленное вооружение и бронезащита"
 
-  mio_mitsubishi_ki67i: "Торпедная подвеска"
-  mio_mitsubishi_ki67ii: "Спаренная хвостовая пушечная турель"
-  mio_mitsubishi_ki67iii: "Увеличение размаха крыла, снижение бомбовой нагрузки"
+  ### KI-67 ###
+  mio_mitsubishi_ki67i: "Скоростной бомбардировщик Ki-67"
+  mio_mitsubishi_ki67ii: "Усиленное оборонительное вооружение"
+  mio_mitsubishi_ki67iii: "Торпедоносная модификация"
 
-  ###NAKAJIMA###
-  mio_cat_nakajima_designer: "Истребители/Торпедоносцы"
-  mio_nakajima_inital_trait: "Палубных торпедоносцы и армейские истребители"
+###NAKAJIMA###
+  mio_cat_nakajima_designer: "Истребители и палубные торпедоносцы"
+  mio_nakajima_inital_trait: "Школа мощных силовых установок Nakajima"
 
   mio_header_nakajima_f1: "Ki-27"
   mio_header_nakajima_f2: "Ki-43"
@@ -471,51 +490,62 @@
   mio_header_nakajima_b5n: "B5N"
   mio_header_nakajima_b6n: "B6N"
 
-  mio_nakajima_ki27i: "Радиальный двигатель Nakajima Kotobuki-1"
-  mio_nakajima_ki27ii: "Подкрыльевые пилоны"
+  ### KI-27 ###
+  mio_nakajima_ki27i: "Облегчённая конструкция Ki-27"
+  mio_nakajima_ki27ii: "Доведённая силовая установка Ki-27"
 
-  mio_nakajima_ki43i: "Крупнокалиберная пулеметная пара, подкрыльевые пилоны"
-  mio_nakajima_ki43ii: "Крыло меньшего размаха, двигатель с двухскоростным нагнетателем, протектированные баки, бронеспинка"
-  mio_nakajima_ki43iii: "Улучшенный воздухозаборник и маслорадиатор, вынос узлов бомбовой подвески за стойки шасси"
+  ### KI-43 HAYABUSA ###
+  mio_nakajima_ki43i: "Облегчённая конструкция Ki-43"
+  mio_nakajima_ki43ii: "Двигатель с двухскоростным нагнетателем"
+  mio_nakajima_ki43iii: "Поздние модификации Ki-43"
 
-  mio_nakajima_ki84i: "Две 20мм авиапушки АП-2 и два тяжёлых 12,7мм пулемета Хо-103"
-  mio_nakajima_ki84ii: "Компоненты фезюляжа из дерева и фанеры"
-  mio_nakajima_ki84iii: "Монтирование турбонагнетателя под фезюляжем"
+  ### KI-84 HAYATE ###
+  mio_nakajima_ki84i: "Мощная силовая установка Ki-84"
+  mio_nakajima_ki84ii: "Усиленная конструкция и бронезащита"
+  mio_nakajima_ki84iii: "Доведённый двигатель Homare"
 
-  mio_nakajima_j1nc: "Снижение массы самолёта, установка подвесных баков, снятие вооружения"
-  mio_nakajima_j1ns: "Пушки в фюзеляже под углом к горизонту, локаторы с антенной в носовой части"
+  ### J1N GEKKO ###
+  mio_nakajima_j1nc: "Дальний разведчик J1N1-C"
+  mio_nakajima_j1ns: "Ночной истребитель J1N1-S Gekkō"
 
-  mio_nakajima_ki49i: "Радиальный двигатель Nakajima Kotobuki-5"
-  mio_nakajima_ki49ii: "Радиальный двигатель Nakajima Kotobuki-109, протектированные герметизирующиеся баки"
-  mio_nakajima_ki49iii: "Усиление вооружения"
+  ### KI-49 DONRYU ###
+  mio_nakajima_ki49i: "Защищённый бомбардировщик Ki-49"
+  mio_nakajima_ki49ii: "Протектированные баки и усиленное оборонительное вооружение"
+  mio_nakajima_ki49iii: "Усиленная бомбовая нагрузка"
 
-  mio_nakajima_g8n: "Экспериментальный тяжёлый бомбардировщик „Рэнзан“"
+  ### G8N RENZAN ###
+  mio_nakajima_g8n: "Тяжёлый бомбардировщик G8N Renzan"
 
-  mio_nakajima_b5n1: "Радиальный двигатель Nakajima Hikari-3, 800кг бомбовой нагрузки"
-  mio_nakajima_b5n2: "Радиальный двигатель Nakajima Sakae-11"
+  ### B5N KATE ###
+  mio_nakajima_b5n1: "Торпедоносец B5N"
+  mio_nakajima_b5n2: "Двигатель Nakajima Sakae 11"
 
-  mio_nakajima_b6n1: "Радиальный двигатель Nakajima Mamoru-11, четырёхлопастной винт"
-  mio_nakajima_b6n2: "Радиальный двигатель Mitsubishi Kasei-11, замена пулемётов 7,7мм Тип 92 на 13мм крупнокалиберный пулемёт"
-  mio_nakajima_b6n3: "Радиальный двигатель Mitsubishi Kasei-25, модифицированное шасси для работы с наземных баз"
+  ### B6N TENZAN ###
+  mio_nakajima_b6n1: "Мощная силовая установка B6N"
+  mio_nakajima_b6n2: "Усиленное торпедное и оборонительное вооружение"
+  mio_nakajima_b6n3: "Поздние модификации B6N"
 
-  ###YOKOSUKA###
+ ###YOKOSUKA###
   mio_cat_yokosuka_designer: "Авиатехнический арсенал флота"
-  mio_yokosuka_inital_trait: "Современная палубная авиация"
+  mio_yokosuka_inital_trait: "Школа скоростной морской авиации"
 
-  mio_header_yokosuka_oka: "Камикадзе MXY7 Ohka"
-  mio_header_yokosuka_d4y: "Пикировщик Комета D4Y"
-  mio_header_yokosuka_p1y: "Морской бомбардировщик P1Y"
+  mio_header_yokosuka_oka: "MXY7 Ohka"
+  mio_header_yokosuka_d4y: "D4Y Suisei"
+  mio_header_yokosuka_p1y: "P1Y Ginga"
 
-  mio_yokosuka_okai: "Три твердотопливных ракетных двигателя"
-  mio_yokosuka_okaii: "Термореактивный двигатель Ishikawajima Tsu-11"
-  mio_yokosuka_okaiii: "Боеголовка массой 800 кг"
+  ### MXY7 OHKA ###
+  mio_yokosuka_okai: "Ракетный самолёт-снаряд MXY7 Ohka"
+  mio_yokosuka_okaii: "Усовершенствованная ракетная силовая установка"
+  mio_yokosuka_okaiii: "Тяжёлая боевая часть"
 
-  mio_yokosuka_d4y1: "Рядный двигатель Aichi Atsuta-3, крупнокалиберный турельный авиапулемёт АП-3, подкрыльевые пилоны"
-  mio_yokosuka_d4y2: "АП-99 в гаргроте"
-  mio_yokosuka_d4y3: "Радиальный двигатель Mitsubishi Kinsei-6, уменьшенный запас топлива"
+  ### D4Y SUISEI ###
+  mio_yokosuka_d4y1: "Скоростной пикирующий бомбардировщик D4Y Suisei"
+  mio_yokosuka_d4y2: "Усиленное ударное вооружение"
+  mio_yokosuka_d4y3: "Радиальная силовая установка D4Y"
 
-  mio_yokosuka_p1y1: "Радиальный двигатель Nakajima Homare-12, крупнокалиберный пулемёт в задней оборонительной позиции"
-  mio_yokosuka_p1y2: "Радиальный двигатель Mitsubishi Kasei-25, пушечное вооружение"
+  ### P1Y GINGA ###
+  mio_yokosuka_p1y1: "Скоростной морской бомбардировщик P1Y Ginga"
+  mio_yokosuka_p1y2: "Усиленное оборонительное вооружение"
 
   ###IAR###
   mio_iar_inital_trait: "Разработчик истребителей-бомбардировщиков"
@@ -634,5 +664,679 @@
  FRA_mio_trait_arl44_90mm: "90-мм орудие"
  FRA_mio_trait_arl44_assault: "Штурмовой тяжёлый танк"
  
+ ###CURTISS###
+  USA_curtiss_organization: "Curtiss-Wright"
+  USA_mio_curtiss_initial_trait: "Школа армейских истребителей Curtiss"
+
+  USA_mio_header_curtiss_p36: "P-36 Hawk"
+  USA_mio_header_curtiss_p39_p40: "P-39 Airacobra / P-40 Warhawk"
+
+  ### P-36 ###
+  USA_mio_curtiss_p36a: "Лёгкая конструкция P-36A"
+  USA_mio_curtiss_p36c: "Усиленное вооружение P-36C"
+
+  ### P-39 / P-40 ###
+  USA_mio_curtiss_allison_v1710: "Двигатель Allison V-1710"
+
+  ### P-39 AIRACOBRA ###
+  USA_mio_curtiss_p39: "P-39 Airacobra"
+  USA_mio_curtiss_p39_cannon: "Крупнокалиберное вооружение Airacobra"
+  USA_mio_curtiss_p39_late: "Поздние модификации P-39"
+
+  ### P-40 WARHAWK ###
+  USA_mio_curtiss_p40: "P-40 Warhawk"
+  USA_mio_curtiss_p40e: "Усиленное вооружение P-40E"
+  USA_mio_curtiss_p40n: "Облегчённая конструкция P-40N"
+  
+USA_republic_organization: "Republic Aviation"
+
+  mio_header_republic_p35: "P-35"
+  mio_header_republic_p43: "P-43"
+  mio_header_republic_p47: "P-47 Thunderbolt"
+
+  mio_republic_initial_trait: "Школа Republic Aviation"
+
+  ### P-35 ###
+  mio_republic_p35: "Seversky P-35"
+  mio_republic_p35_engine: "Мощная силовая установка"
+  mio_republic_p35_metal_construction: "Цельнометаллическая конструкция"
+
+  ### P-43 ###
+  mio_republic_p43: "P-43 Lancer"
+  mio_republic_p43_turbo: "Турбонаддув"
+  mio_republic_p43_high_altitude: "Высотная оптимизация"
+
+  ### P-47 ###
+  mio_republic_p47: "P-47 Thunderbolt"
+  mio_republic_r2800: "Pratt & Whitney R-2800"
+  mio_republic_p47_armament: "Восемь крупнокалиберных пулемётов"
+  mio_republic_p47_rugged: "Прочная конструкция Thunderbolt"
+
+  ### Fighter-bomber ###
+  mio_republic_p47_fighter_bomber: "Истребитель-бомбардировщик"
+  mio_republic_p47_external_ordnance: "Усиленная внешняя подвеска"
+  mio_republic_p47_ground_attack: "Удары по наземным целям"
+
+  ### Late Thunderbolt ###
+  mio_republic_p47_late: "Поздний Thunderbolt"
+  mio_republic_p47m: "P-47M"
+  mio_republic_p47n: "P-47N"
+  
+   ###NORTH AMERICAN AVIATION###
+  USA_north_american_aviation_organization: "North American Aviation"
+  USA_mio_naa_initial_trait: "Школа аэродинамически эффективных самолётов"
+
+  USA_mio_header_naa_p51: "P-51 Mustang"
+  USA_mio_header_naa_b25: "B-25 Mitchell"
+
+  ### P-51 MUSTANG ###
+  USA_mio_naa_p51a: "Аэродинамическая конструкция P-51A"
+  USA_mio_naa_p51_merlin: "Двигатель Packard Merlin"
+  USA_mio_naa_p51d: "P-51D Mustang"
+
+  ### B-25 MITCHELL ###
+  USA_mio_naa_b25c: "B-25C Mitchell"
+  USA_mio_naa_b25d: "Доведённая конструкция B-25D"
+
+  ### LATE B-25 ###
+  USA_mio_naa_late_b25: "Усовершенствованная силовая установка Mitchell"
+  USA_mio_naa_b25j: "Универсальный бомбардировщик B-25J"
+  USA_mio_naa_b25h: "Тяжеловооружённый B-25H"
+  
+  ###LOCKHEED###
+  USA_lockheed_organization: "Lockheed"
+  USA_mio_lockheed_initial_trait: "Школа скоростных дальних самолётов Lockheed"
+
+  USA_mio_header_lockheed_p38: "P-38 Lightning"
+  USA_mio_header_lockheed_ventura: "Ventura / Harpoon"
+
+  ### P-38 LIGHTNING ###
+  USA_mio_lockheed_p38e: "P-38E Lightning"
+  USA_mio_lockheed_p38g: "Усиленное вооружение P-38G"
+  USA_mio_lockheed_p38h: "Доведённая конструкция P-38H"
+  USA_mio_lockheed_p38j: "P-38J Lightning"
+  USA_mio_lockheed_p38l: "Поздний P-38L"
+
+  ### VENTURA / HARPOON ###
+  USA_mio_lockheed_ventura: "PV-1 Ventura"
+  USA_mio_lockheed_ventura_armament: "Усиленное вооружение Ventura"
+  USA_mio_lockheed_harpoon: "PV-2 Harpoon"
+  USA_mio_lockheed_harpoon_strike: "Ударная модификация Harpoon"
+  
+   ###DOUGLAS###
+  USA_douglas_aircraft_company_organization: "Douglas Aircraft Company"
+  USA_mio_douglas_initial_trait: "Школа универсальной ударной авиации Douglas"
+
+  USA_mio_header_douglas_sbd: "SBD Dauntless"
+  USA_mio_header_douglas_sb2c: "SB2C Helldiver"
+  USA_mio_header_douglas_a20: "A-20 Havoc"
+  USA_mio_header_douglas_a26: "A-26 Invader"
+
+  ### SBD DAUNTLESS ###
+  USA_mio_douglas_sbd3: "Пикирующий бомбардировщик SBD-3"
+  USA_mio_douglas_sbd5: "Доведённый SBD-5 Dauntless"
+
+  ### SB2C HELLDIVER ###
+  USA_mio_douglas_sb2c1: "Тяжёлый палубный ударный самолёт SB2C"
+  USA_mio_douglas_sb2c3: "Доведённая силовая установка SB2C-3"
+  USA_mio_douglas_sb2c5: "Поздний SB2C-5 Helldiver"
+
+  ### A-20 HAVOC ###
+  USA_mio_douglas_a20g: "Ударный A-20G Havoc"
+  USA_mio_douglas_a20_late: "Поздние модификации A-20"
+
+  ### A-26 INVADER ###
+  USA_mio_douglas_a26b: "Скоростной ударный A-26B Invader"
+  USA_mio_douglas_a26_armament: "Усиленное носовое вооружение A-26"
+  USA_mio_douglas_a26c: "Универсальный A-26C Invader"
+  
+  ###GRUMMAN###
+  USA_grumman_organization: "Grumman"
+  USA_mio_grumman_initial_trait: "Школа прочной палубной авиации Grumman"
+
+  USA_mio_header_grumman_f4f: "F4F Wildcat"
+  USA_mio_header_grumman_f6f_f4u: "F6F Hellcat / F4U Corsair"
+  USA_mio_header_grumman_avenger: "TBF/TBM Avenger"
+
+  ### F4F WILDCAT ###
+  USA_mio_grumman_f4f3: "F4F-3 Wildcat"
+  USA_mio_grumman_f4f4: "F4F-4 Wildcat"
+  USA_mio_grumman_fm2: "Облегчённый FM-2 Wildcat"
+
+  ### F6F HELLCAT ###
+  USA_mio_grumman_late_cv_fighter: "Мощная силовая установка палубного истребителя"
+  USA_mio_grumman_f6f3: "F6F-3 Hellcat"
+  USA_mio_grumman_f6f5: "F6F-5 Hellcat"
+
+  ### F4U CORSAIR ###
+  USA_mio_grumman_f4u1: "Vought F4U-1 Corsair"
+  USA_mio_grumman_f4u4: "Vought F4U-4 Corsair"
+
+  ### AVENGER ###
+  USA_mio_grumman_tbf1: "TBF-1 Avenger"
+  USA_mio_grumman_tbf1_late: "Доведённый TBF-1"
+  USA_mio_grumman_tbm3: "TBM-3 Avenger"
+  USA_mio_grumman_tbm3e: "Поздний TBM-3E"
+  
+  ###BOEING###
+  USA_boeing_organization: "Boeing"
+  USA_mio_boeing_initial_trait: "Школа тяжёлых стратегических бомбардировщиков Boeing"
+
+  USA_mio_header_boeing_b17: "B-17 Flying Fortress"
+  USA_mio_header_boeing_b29: "B-29 Superfortress"
+
+  ### B-17 FLYING FORTRESS ###
+  USA_mio_boeing_b17e: "B-17E Flying Fortress"
+  USA_mio_boeing_b17f: "Усиленное оборонительное вооружение B-17F"
+  USA_mio_boeing_b17g: "B-17G Flying Fortress"
+
+  ### B-29 SUPERFORTRESS ###
+  USA_mio_boeing_b29a: "Мощная силовая установка B-29"
+  USA_mio_boeing_b29_pressurization: "Герметичные кабины Superfortress"
+  USA_mio_boeing_b29_remote_turrets: "Дистанционно управляемые оборонительные установки"
+  USA_mio_boeing_b29b: "Облегчённый ударный B-29B"
+  USA_mio_boeing_b29_long_range: "Сверхдальний B-29"
  
  
+ ###CONSOLIDATED###
+  USA_consolidated_organization: "Consolidated Aircraft"
+  USA_mio_consolidated_initial_trait: "Школа дальних и экономичных самолётов Consolidated"
+
+  USA_mio_header_consolidated_b24: "B-24 Liberator"
+  USA_mio_header_consolidated_pby: "PBY Catalina"
+  USA_mio_header_consolidated_pb4y: "PB4Y Privateer"
+
+  ### B-24 LIBERATOR ###
+  USA_mio_consolidated_b24d: "B-24D Liberator"
+  USA_mio_consolidated_b24h: "Усиленная защита B-24H"
+  USA_mio_consolidated_b24j: "Серийный B-24J Liberator"
+
+  ### PBY CATALINA ###
+  USA_mio_consolidated_pby3: "Дальний патрульный PBY-3"
+  USA_mio_consolidated_pby4: "Усиленное морское вооружение PBY-4"
+
+  USA_mio_consolidated_pby5: "PBY-5 Catalina"
+  USA_mio_consolidated_pby5a: "Универсальный PBY-5A Catalina"
+
+  ### PB4Y PRIVATEER ###
+  USA_mio_consolidated_pb4y2: "PB4Y-2 Privateer"
+  USA_mio_consolidated_pb4y2_armament: "Усиленное вооружение Privateer"
+  USA_mio_consolidated_pb4y2_patrol: "Дальнее океанское патрулирование"
+  
+  ###MARTIN###
+  USA_martin_organization: "Glenn L. Martin Company"
+  USA_mio_martin_initial_trait: "Школа скоростных средних бомбардировщиков Martin"
+
+  USA_mio_header_martin_b26: "B-26 Marauder"
+  USA_mio_header_martin_pbm: "PBM Mariner"
+
+  ### B-26 MARAUDER ###
+  USA_mio_martin_b26b: "Скоростной B-26B Marauder"
+  USA_mio_martin_b26c: "Доведённая конструкция B-26C"
+  USA_mio_martin_b26_midwar: "Усиленная бомбовая и оборонительная система"
+  USA_mio_martin_b26f: "B-26F Marauder"
+  USA_mio_martin_b26g: "Поздний B-26G Marauder"
+
+  ### PBM MARINER ###
+  USA_mio_martin_pbm3: "PBM-3 Mariner"
+  USA_mio_martin_pbm3_armament: "Усиленное вооружение PBM-3"
+  USA_mio_martin_pbm5: "PBM-5 Mariner"
+  USA_mio_martin_pbm5_strike: "Ударное оснащение PBM-5"
+  
+    #### MESSERSCHMITT ####
+  GER_messerschmitt_organization: "Messerschmitt"
+
+  mio_header_messerschmitt_bf109E: "Bf 109E"
+  mio_header_messerschmitt_bf109F: "Bf 109F"
+  mio_header_messerschmitt_bf109G: "Bf 109G"
+  mio_header_messerschmitt_bf109K: "Bf 109K"
+  mio_header_messerschmitt_zerstorer: "Zerstörer"
+  mio_header_messerschmitt_jet: "Реактивная авиация"
+
+  mio_messerschmitt_initial_trait: "Школа Messerschmitt"
+
+  # Bf 109 E
+  mio_messerschmitt_bf109e: "Bf 109 E «Emil»"
+  mio_messerschmitt_db601a: "Daimler-Benz DB 601A"
+  mio_messerschmitt_emil_armament: "Пушечное вооружение «Эмиля»"
+  mio_messerschmitt_emil_combat_refinement: "Боевая доводка Bf 109 E"
+
+  # Bf 109 F
+  mio_messerschmitt_bf109f: "Bf 109 F «Friedrich»"
+  mio_messerschmitt_friedrich_aerodynamics: "Аэродинамика «Фридриха»"
+  mio_messerschmitt_db601e: "Daimler-Benz DB 601E"
+  mio_messerschmitt_friedrich_motorkanone: "Мотор-пушка"
+  mio_messerschmitt_mature_friedrich: "Зрелый «Friedrich»"
+
+  # Bf 109 G
+  mio_messerschmitt_bf109g: "Bf 109 G «Gustav»"
+  mio_messerschmitt_db605a: "Daimler-Benz DB 605A"
+  mio_messerschmitt_gustav_armament: "Усиленное вооружение «Густава»"
+  mio_messerschmitt_high_altitude_gustav: "Высотные модификации"
+  mio_messerschmitt_late_gustav: "Поздний «Gustav»"
+
+  # Bf 109 K
+  mio_messerschmitt_bf109k: "Bf 109 K «Kurfürst»"
+  mio_messerschmitt_db605d: "Daimler-Benz DB 605D"
+  mio_messerschmitt_kurfurst_aerodynamics: "Аэродинамическая доводка «Курфюрста»"
+  mio_messerschmitt_mature_kurfurst: "Вершина развития Bf 109"
+
+  mio_messerschmitt_bf110c: "Bf 110 C «Zerstörer»"
+  mio_messerschmitt_bf110_db601: "Спаренные DB 601"
+  mio_messerschmitt_zerstorer_armament: "Тяжёлое вооружение Zerstörer"
+  mio_messerschmitt_long_range_zerstorer: "Дальний эскорт"
+
+  mio_messerschmitt_bf110g: "Bf 110 G"
+  mio_messerschmitt_late_bf110g: "Поздняя доводка Bf 110 G"
+
+  mio_messerschmitt_me210: "Me 210"
+  mio_messerschmitt_me210_redesign: "Переработка конструкции Me 210"
+
+  mio_messerschmitt_me410: "Me 410 «Hornisse»"
+  mio_messerschmitt_db603: "Daimler-Benz DB 603"
+  mio_messerschmitt_me410_heavy_armament: "Тяжёлое вооружение Me 410"
+  mio_messerschmitt_mature_hornisse: "Зрелый «Hornisse»"
+  
+  # Me 262
+  mio_messerschmitt_me262: "Me 262 «Schwalbe»"
+  mio_messerschmitt_jumo004: "Junkers Jumo 004"
+  mio_messerschmitt_mk108_battery: "Батарея MK 108"
+  mio_messerschmitt_high_speed_aerodynamics: "Высокоскоростная аэродинамика"
+  mio_messerschmitt_jet_series_refinement: "Доводка реактивной серии"
+
+  # Innovations
+  mio_messerschmitt_advanced_jet_projects: "Передовые реактивные проекты"
+  mio_messerschmitt_future_fighter_concepts: "Истребитель следующего поколения"
+  
+  GER_focke_wulf_organization: "Focke-Wulf"
+
+  mio_header_focke_wulf_fw190a: "Fw 190A"
+  mio_header_focke_wulf_fw190f: "Fw 190F"
+  mio_header_focke_wulf_fw190d: "Fw 190D"
+  mio_header_focke_wulf_ta152: "Ta 152"
+  mio_header_focke_wulf_fw189: "Fw 189"
+
+  mio_focke_wulf_initial_trait: "Прочная конструкция Focke-Wulf"
+
+  ### FW 190 A/F ###
+  mio_focke_wulf_fw190a: "Fw 190 A"
+  mio_focke_wulf_bmw801: "BMW 801"
+  mio_focke_wulf_fw190a_armament: "Усиленное вооружение Fw 190"
+  mio_focke_wulf_fw190a_armor: "Защита пилота и двигателя"
+  mio_focke_wulf_fw190f: "Fw 190 F"
+  mio_focke_wulf_jabo_refinement: "Истребитель-бомбардировщик"
+
+  ### FW 190 D ###
+  mio_focke_wulf_fw190d: "Fw 190 D «Dora»"
+  mio_focke_wulf_jumo213: "Junkers Jumo 213"
+  mio_focke_wulf_dora_aerodynamics: "Аэродинамическая доводка «Доры»"
+  mio_focke_wulf_dora_interceptor: "Скоростной перехватчик"
+  mio_focke_wulf_mature_dora: "Доводка Fw 190 D"
+
+  ### TA 152 ###
+  mio_focke_wulf_ta152: "Ta 152"
+  mio_focke_wulf_ta152_long_wing: "Крыло большого удлинения"
+  mio_focke_wulf_ta152_jumo213e: "Junkers Jumo 213E"
+  mio_focke_wulf_ta152_high_altitude: "Высотная оптимизация"
+  mio_focke_wulf_ta152h: "Ta 152 H"
+
+  ### FW 189 ###
+  mio_focke_wulf_fw189: "Fw 189 «Uhu»"
+  mio_focke_wulf_fw189_glazed_cockpit: "Панорамная кабина наблюдателя"
+  mio_focke_wulf_fw189_twin_boom: "Двухбалочная схема"
+  mio_focke_wulf_fw189_battlefield_observer: "Воздушный наблюдатель"
+  mio_focke_wulf_fw189_survivability: "Живучая разведывательная платформа"
+  
+  GER_junkers_organization: "Junkers"
+
+  mio_header_junkers_ju87: "Ju 87 Stuka"
+  mio_header_junkers_ju88_bomber: "Ju 88 / Ju 188"
+  mio_header_junkers_ju88_fighter: "Ночные истребители Ju 88"
+
+  mio_junkers_initial_trait: "Многоцелевая конструкция Junkers"
+
+  ### JU 87 B ###
+  mio_junkers_ju87b: "Ju 87 B «Stuka»"
+  mio_junkers_ju87_dive_brakes: "Воздушные тормоза"
+  mio_junkers_ju87_precision_dive: "Точное пикирование"
+  mio_junkers_ju87_reinforced_airframe: "Усиленная конструкция"
+
+  ### JU 87 D ###
+  mio_junkers_ju87d: "Ju 87 D"
+  mio_junkers_ju87d_armor: "Усиленная бронезащита"
+  mio_junkers_ju87d_bombload: "Увеличенная бомбовая нагрузка"
+  mio_junkers_mature_stuka: "Доводка «Штуки»"
+
+  ### JU 87 G ###
+  mio_junkers_ju87g: "Ju 87 G «Kanonenvogel»"
+  mio_junkers_bk37: "Пушки BK 3,7"
+  mio_junkers_tank_hunter: "Охотник за танками"
+
+  ### JU 88 ###
+  mio_junkers_ju88_platform: "Универсальная платформа Ju 88"
+  mio_junkers_ju88_jumo211: "Junkers Jumo 211"
+
+  ### JU 88 A ###
+  mio_junkers_ju88a: "Ju 88 A"
+  mio_junkers_schnellbomber: "Концепция Schnellbomber"
+  mio_junkers_ju88_bomb_bay: "Увеличенная бомбовая нагрузка"
+  mio_junkers_ju88_multirole: "Многоцелевой Ju 88"
+
+  ### JU 188 ###
+  mio_junkers_ju188: "Ju 188"
+  mio_junkers_ju188_aerodynamics: "Улучшенная аэродинамика"
+  mio_junkers_ju188_engines: "Усиленная силовая установка"
+  mio_junkers_ju188_range: "Дальний рейд"
+  mio_junkers_mature_ju188: "Доводка Ju 188"
+
+  ### JU 88 C ###
+  mio_junkers_ju88c: "Ju 88 C"
+  mio_junkers_ju88c_forward_armament: "Усиленное курсовое вооружение"
+  mio_junkers_ju88c_night_fighter: "Ночной истребитель"
+  mio_junkers_ju88c_refinement: "Доводка Ju 88 C"
+
+  ### JU 88 G ###
+  mio_junkers_ju88g: "Ju 88 G"
+  mio_junkers_ju88g_engines: "Усиленная силовая установка"
+  mio_junkers_ju88g_radar: "Бортовая РЛС"
+  mio_junkers_schrage_musik: "Schräge Musik"
+  mio_junkers_mature_night_fighter: "Зрелый ночной истребитель"
+  
+    GER_heinkel_organization: "Heinkel"
+
+  mio_header_heinkel_he111: "He 111"
+  mio_header_heinkel_he177: "He 177 Greif"
+
+  mio_heinkel_initial_trait: "Школа бомбардировочной авиации Heinkel"
+
+  ### HE 111 EARLY ###
+  mio_heinkel_he111_early: "He 111 B/P"
+  mio_heinkel_he111_streamlined_design: "Обтекаемая конструкция"
+  mio_heinkel_he111_bombload: "Увеличенная бомбовая нагрузка"
+  mio_heinkel_he111_early_series: "Освоение серийного производства"
+
+  ### HE 111 H ###
+  mio_heinkel_he111h: "He 111 H"
+  mio_heinkel_he111_jumo211: "Junkers Jumo 211"
+  mio_heinkel_he111h_bombload: "Усиленная бомбовая нагрузка"
+  mio_heinkel_he111_defensive_armament: "Оборонительное вооружение"
+  mio_heinkel_he111_long_range: "Дальние вылеты"
+  mio_heinkel_mature_he111: "Зрелый He 111"
+
+  ### HE 177 ###
+  mio_heinkel_he177: "He 177 «Greif»"
+  mio_heinkel_db606: "Спаренные DB 606"
+  mio_heinkel_he177_heavy_bombload: "Тяжёлая бомбовая нагрузка"
+  mio_heinkel_he177_long_range: "Дальний стратегический рейд"
+  mio_heinkel_he177_defensive_armament: "Усиленное оборонительное вооружение"
+
+  ### GREIF RELIABILITY ###
+  mio_heinkel_db610: "Daimler-Benz DB 610"
+  mio_heinkel_he177_engine_cooling: "Переработка охлаждения двигателей"
+  mio_heinkel_he177_fire_protection: "Противопожарная защита"
+
+  ### LATE HE 177 ###
+  mio_heinkel_he177a5: "He 177 A-5"
+  mio_heinkel_greif_strategic_bomber: "Стратегический «Greif»"
+  mio_heinkel_mature_greif: "Доводка He 177"
+  
+  GER_arado_organization: "Arado"
+
+  mio_header_arado_ar196: "Ar 196"
+  mio_header_arado_ar234: "Ar 234 Blitz"
+
+  mio_arado_initial_trait: "Специализированные конструкции Arado"
+
+  ### AR 196 ###
+  mio_arado_ar196: "Ar 196"
+  mio_arado_ar196_floatplane: "Морская поплавковая конструкция"
+  mio_arado_ar196_maritime_recon: "Морская разведка"
+  mio_arado_ar196_endurance: "Продолжительное патрулирование"
+  mio_arado_ar196_observer: "Подготовка воздушных наблюдателей"
+  mio_arado_mature_ar196: "Доводка Ar 196"
+
+  ### AR 234 ###
+  mio_arado_ar234: "Ar 234 «Blitz»"
+  mio_arado_ar234_jumo004: "Junkers Jumo 004"
+  mio_arado_ar234_aerodynamics: "Обтекаемая реактивная конструкция"
+
+  ### RECON ###
+  mio_arado_ar234_recon: "Разведывательный Ar 234"
+  mio_arado_ar234_camera_installation: "Аэрофоторазведывательное оборудование"
+  mio_arado_ar234_high_speed_recon: "Высокоскоростная разведка"
+
+  ### BOMBER ###
+  mio_arado_ar234_bomber: "Бомбардировочный Ar 234 B"
+  mio_arado_ar234_external_bombload: "Внешняя бомбовая подвеска"
+  mio_arado_ar234_blitz_attack: "Скоростной бомбовый удар"
+
+  ### LATE AR 234 ###
+  mio_arado_ar234_engine_refinement: "Доводка реактивной силовой установки"
+  mio_arado_mature_ar234: "Зрелый Ar 234"
+  
+    ### POLIKARPOV ###
+
+  SOV_polikarpov_organization: "ОКБ Поликарпова"
+
+  mio_header_polikarpov_i15: "И-15 / И-153"
+  mio_header_polikarpov_i16: "И-16"
+  mio_header_polikarpov_i185: "И-185"
+
+  mio_polikarpov_initial_trait: "Школа Поликарпова"
+
+  mio_polikarpov_i15_i153: "И-15 / И-153"
+  mio_polikarpov_biplane_maneuverability: "Манёвренная схема биплана"
+  mio_polikarpov_simple_biplane_production: "Простота серийного производства"
+
+  mio_polikarpov_i16: "И-16"
+  mio_polikarpov_i16_armament: "Усиленное вооружение И-16"
+  mio_polikarpov_i16_mass_production: "Массовый выпуск И-16"
+  mio_polikarpov_mature_i16: "Доведённый И-16"
+
+  mio_polikarpov_i185: "И-185"
+  mio_polikarpov_m71: "Двигатель М-71"
+  mio_polikarpov_i185_armament: "Вооружение И-185"
+  mio_polikarpov_mature_i185: "Доведённый И-185"
+  
+    ### YAKOVLEV ###
+
+  SOV_yakovlev_organization: "ОКБ Яковлева"
+
+  mio_header_yakovlev_yak1: "Як-1"
+  mio_header_yakovlev_yak7: "Як-7"
+  mio_header_yakovlev_yak9: "Як-9"
+  mio_header_yakovlev_yak3: "Як-3"
+
+  mio_yakovlev_initial_trait: "Школа лёгких фронтовых истребителей"
+
+  mio_yakovlev_yak1: "Як-1"
+  mio_yakovlev_light_construction: "Облегчённая конструкция"
+  mio_yakovlev_yak1_aerodynamics: "Аэродинамическая доводка Як-1"
+
+  mio_yakovlev_yak7: "Як-7"
+  mio_yakovlev_serial_construction: "Отработанная серийная технология"
+  mio_yakovlev_yak7_refinement: "Доводка конструкции Як-7"
+  mio_yakovlev_mature_yak7: "Доведённый Як-7"
+
+  mio_yakovlev_yak9: "Як-9"
+  mio_yakovlev_yak9_platform: "Универсальная платформа Як-9"
+  mio_yakovlev_yak9_armament: "Усиленное вооружение Як-9"
+  mio_yakovlev_yak9_range: "Увеличенный запас топлива"
+  mio_yakovlev_mature_yak9: "Доведённый Як-9"
+
+  mio_yakovlev_yak3: "Як-3"
+  mio_yakovlev_yak3_lightweight: "Облегчённая конструкция Як-3"
+  mio_yakovlev_yak3_aerodynamics: "Совершенная аэродинамика Як-3"
+  mio_yakovlev_mature_yak3: "Доведённый Як-3"
+  
+    ### LAVOCHKIN ###
+
+  SOV_lavochkin_organization: "ОКБ Лавочкина"
+
+  mio_header_lavochkin_lagg3: "ЛаГГ-3"
+  mio_header_lavochkin_la5: "Ла-5"
+  mio_header_lavochkin_la5fn: "Ла-5Ф / Ла-5ФН"
+  mio_header_lavochkin_la7: "Ла-7"
+
+  mio_lavochkin_initial_trait: "Школа мощных фронтовых истребителей"
+
+  mio_lavochkin_lagg3: "ЛаГГ-3"
+  mio_lavochkin_lagg3_inline_engine: "Доводка рядного двигателя"
+  mio_lavochkin_lagg3_fighter_bomber: "Истребитель-бомбардировщик"
+  mio_lavochkin_mature_lagg3: "Доведённый ЛаГГ-3"
+
+  mio_lavochkin_m82_conversion: "Переход на двигатель М-82"
+
+  mio_lavochkin_la5: "Ла-5"
+  mio_lavochkin_la5_powerplant: "Доводка силовой установки"
+  mio_lavochkin_la5_airframe: "Облегчение конструкции"
+
+  mio_lavochkin_la5fn: "Ла-5Ф / Ла-5ФН"
+  mio_lavochkin_ash82fn: "Двигатель АШ-82ФН"
+  mio_lavochkin_la5fn_armament: "Усиленное вооружение"
+  mio_lavochkin_mature_la5fn: "Доведённый Ла-5ФН"
+
+  mio_lavochkin_la7: "Ла-7"
+  mio_lavochkin_la7_lightweight: "Облегчённая конструкция Ла-7"
+  mio_lavochkin_la7_aerodynamics: "Аэродинамическая доводка Ла-7"
+  mio_lavochkin_mature_la7: "Доведённый Ла-7"
+  
+  ### MIKOYAN-GUREVICH ###
+
+  SOV_mikoyan_gurevich_organization: "ОКБ Микояна и Гуревича"
+
+  mio_header_mikoyan_mig1: "МиГ-1"
+  mio_header_mikoyan_mig3: "МиГ-3"
+  mio_header_mikoyan_mig9: "МиГ-9"
+
+  mio_mikoyan_initial_trait: "Школа скоростных перехватчиков"
+
+  mio_mikoyan_mig1: "МиГ-1"
+  mio_mikoyan_mig1_high_altitude_layout: "Высотная компоновка"
+  mio_mikoyan_mig1_refinement: "Доводка МиГ-1"
+
+  mio_mikoyan_mig3: "МиГ-3"
+  mio_mikoyan_mig3_high_altitude_engine: "Высотная силовая установка"
+  mio_mikoyan_mig3_armament: "Усиленное вооружение перехватчика"
+  mio_mikoyan_mature_mig3: "Доведённый МиГ-3"
+
+  mio_mikoyan_mig9: "МиГ-9"
+  mio_mikoyan_mig9_engines: "Доводка реактивной силовой установки"
+  mio_mikoyan_mig9_armament: "Тяжёлое пушечное вооружение"
+  mio_mikoyan_mature_mig9: "Доведённый МиГ-9"
+  
+  ### ILYUSHIN ###
+
+  SOV_ilyushin_organization: "ОКБ Ильюшина"
+
+  mio_header_ilyushin_il2: "Ил-2"
+  mio_header_ilyushin_il10: "Ил-10"
+
+  mio_ilyushin_initial_trait: "Школа бронированной штурмовой авиации"
+
+  mio_ilyushin_il2: "Ил-2"
+  mio_ilyushin_armored_hull: "Бронированный корпус"
+  mio_ilyushin_am38: "Двигатель АМ-38"
+  mio_ilyushin_vya23: "Пушки ВЯ-23"
+  mio_ilyushin_two_seat_il2: "Двухместный Ил-2"
+  mio_ilyushin_il2_mass_production: "Массовое производство Ил-2"
+  mio_ilyushin_mature_il2: "Доведённый Ил-2"
+
+  mio_ilyushin_il10: "Ил-10"
+  mio_ilyushin_am42: "Двигатель АМ-42"
+  mio_ilyushin_il10_armor: "Усовершенствованная бронезащита"
+  mio_ilyushin_il10_armament: "Усиленное вооружение Ил-10"
+  mio_ilyushin_il10_aerodynamics: "Аэродинамическая доводка Ил-10"
+  mio_ilyushin_mature_il10: "Доведённый Ил-10"
+  
+  ### SUKHOI ###
+
+  SOV_sukhoi_organization: "ОКБ Сухого"
+
+  mio_header_sukhoi_su2: "Су-2"
+  mio_header_sukhoi_su4: "Су-4"
+
+  mio_sukhoi_initial_trait: "Школа лёгкой ударной авиации"
+
+  mio_sukhoi_su2: "Су-2"
+  mio_sukhoi_su2_light_construction: "Лёгкая конструкция"
+  mio_sukhoi_su2_battlefield_support: "Поддержка сухопутных войск"
+  mio_sukhoi_mature_su2: "Доведённый Су-2"
+
+  mio_sukhoi_su4: "Су-4"
+  mio_sukhoi_su4_powerplant: "Усиленная силовая установка"
+  mio_sukhoi_su4_strike_load: "Увеличенная бомбовая нагрузка"
+  mio_sukhoi_mature_su4: "Доведённый Су-4"
+  
+  
+    ### TUPOLEV ###
+
+  SOV_tupolev_organization: "ОКБ Туполева"
+
+  mio_header_tupolev_sb: "СБ"
+  mio_header_tupolev_tu2_early: "Ту-2"
+  mio_header_tupolev_tu2_late: "Поздний Ту-2"
+
+  mio_tupolev_initial_trait: "Школа скоростных фронтовых бомбардировщиков"
+
+  mio_tupolev_sb: "СБ"
+  mio_tupolev_sb_high_speed: "Скоростная компоновка"
+  mio_tupolev_sb_bomb_load: "Увеличенная бомбовая нагрузка"
+  mio_tupolev_mature_sb: "Доведённый СБ"
+
+  mio_tupolev_tu2_early: "Ту-2"
+  mio_tupolev_tu2_engines: "Мощная силовая установка"
+  mio_tupolev_tu2_dive_attack: "Точная фронтовая бомбардировка"
+  mio_tupolev_mature_tu2_early: "Доведённый ранний Ту-2"
+
+  mio_tupolev_tu2_late: "Поздний Ту-2"
+  mio_tupolev_tu2_aerodynamics: "Аэродинамическая доводка"
+  mio_tupolev_tu2_heavy_load: "Увеличенная бомбовая нагрузка"
+  mio_tupolev_mature_tu2: "Доведённый Ту-2"
+  
+    ### PETLYAKOV ###
+
+  SOV_petlyakov_organization: "ОКБ Петлякова"
+
+  mio_header_petlyakov_pe2: "Пе-2"
+  mio_header_petlyakov_pe3: "Пе-3"
+  mio_header_petlyakov_pe8: "Пе-8"
+
+  mio_petlyakov_initial_trait: "Школа скоростных многомоторных самолётов"
+
+  mio_petlyakov_pe2: "Пе-2"
+  mio_petlyakov_pe2_dive_bombing: "Пикирующее бомбометание"
+  mio_petlyakov_pe2_aerodynamics: "Аэродинамическая доводка Пе-2"
+  mio_petlyakov_mature_pe2: "Доведённый Пе-2"
+
+  mio_petlyakov_pe3: "Пе-3"
+  mio_petlyakov_pe3_long_range: "Дальний перехват"
+  mio_petlyakov_pe3_armament: "Усиленное вооружение Пе-3"
+  mio_petlyakov_mature_pe3: "Доведённый Пе-3"
+
+  mio_petlyakov_pe8: "Пе-8"
+  mio_petlyakov_pe8_long_range: "Дальний радиус действия"
+  mio_petlyakov_pe8_bomb_load: "Тяжёлая бомбовая нагрузка"
+  mio_petlyakov_mature_pe8: "Доведённый Пе-8"
+  
+    ### BERIEV ###
+
+  SOV_beriev_organization: "ОКБ Бериева"
+
+  mio_header_beriev_mbr2: "МБР-2"
+  mio_header_beriev_be4: "Бе-4"
+
+  mio_beriev_initial_trait: "Школа морской авиации"
+
+  mio_beriev_mbr2: "МБР-2"
+  mio_beriev_mbr2_seaworthiness: "Приспособленность к морской эксплуатации"
+  mio_beriev_mbr2_patrol_range: "Дальний морской патруль"
+  mio_beriev_mature_mbr2: "Доведённый МБР-2"
+
+  mio_beriev_be4: "Бе-4"
+  mio_beriev_be4_powerplant: "Доводка силовой установки"
+  mio_beriev_be4_patrol_equipment: "Морское патрульное оборудование"
+  mio_beriev_mature_be4: "Доведённый Бе-4"
+  
+  
+  

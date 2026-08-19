@@ -1,5 +1,339 @@
 ﻿l_russian:
+  
+  ### USA AIRCRAFT ###
 
+  #=========================================
+  # LAND-BASED FIGHTERS
+  #=========================================
+
+  USA_fighter_equipment_1: "P-36 Hawk | P-35"
+  USA_fighter_equipment_1_short: "P-36 | P-35"
+
+  USA_fighter_equipment_2: "P-39 Airacobra/P-40 Warhawk | P-43 Lancer"
+  USA_fighter_equipment_2_short: "P-39/P-40 | P-43"
+
+  USA_fighter_equipment_3: "P-47 Thunderbolt | P-51 Mustang"
+  USA_fighter_equipment_3_short: "P-47 | P-51"
+
+
+  #=========================================
+  # CARRIER FIGHTERS
+  #=========================================
+
+  USA_cv_fighter_equipment_1: "F4F Wildcat"
+  USA_cv_fighter_equipment_1_short: "F4F"
+
+  USA_cv_fighter_equipment_2: "F4F Wildcat/FM-2 Wildcat"
+  USA_cv_fighter_equipment_2_short: "F4F/FM-2"
+
+  USA_cv_fighter_equipment_3: "F6F Hellcat | F4U Corsair"
+  USA_cv_fighter_equipment_3_short: "F6F | F4U"
+
+
+  #=========================================
+  # HEAVY FIGHTERS
+  #=========================================
+
+  USA_heavy_fighter_equipment_2: "P-38 Lightning"
+  USA_heavy_fighter_equipment_2_short: "P-38"
+
+  USA_heavy_fighter_equipment_3: "P-38J/L Lightning"
+  USA_heavy_fighter_equipment_3_short: "P-38J/L"
+
+
+  #=========================================
+  # CARRIER STRIKE / DIVE BOMBERS
+  #=========================================
+
+  USA_cv_CAS_equipment_2: "SBD Dauntless"
+  USA_cv_CAS_equipment_2_short: "SBD"
+
+  USA_cv_CAS_equipment_3: "SB2C Helldiver"
+  USA_cv_CAS_equipment_3_short: "SB2C"
+
+
+  #=========================================
+  # MEDIUM ATTACK AIRCRAFT
+  #=========================================
+
+  USA_CAS_equipment_2: "A-20 Havoc"
+  USA_CAS_equipment_2_short: "A-20"
+
+  USA_CAS_equipment_3: "A-26 Invader"
+  USA_CAS_equipment_3_short: "A-26"
+
+
+  #=========================================
+  # MEDIUM BOMBERS
+  #=========================================
+
+  USA_tac_bomber_equipment_2: "B-25 Mitchell | B-26 Marauder"
+  USA_tac_bomber_equipment_2_short: "B-25 | B-26"
+
+  USA_tac_bomber_equipment_3: "B-25J/H Mitchell | B-26F/G Marauder"
+  USA_tac_bomber_equipment_3_short: "B-25J/H | B-26F/G"
+
+
+  #=========================================
+  # STRATEGIC BOMBERS
+  #=========================================
+
+  USA_strat_bomber_equipment_1: "B-17 Flying Fortress"
+  USA_strat_bomber_equipment_1_short: "B-17"
+
+  USA_strat_bomber_equipment_2: "B-24 Liberator"
+  USA_strat_bomber_equipment_2_short: "B-24"
+
+  USA_strat_bomber_equipment_3: "B-29 Superfortress"
+  USA_strat_bomber_equipment_3_short: "B-29"
+
+
+  #=========================================
+  # NAVAL / MARITIME PATROL AIRCRAFT
+  #=========================================
+
+  USA_nav_bomber_equipment_1: "PBY Catalina"
+  USA_nav_bomber_equipment_1_short: "PBY"
+
+  USA_nav_bomber_equipment_2: "PV-1 Ventura | PBY Catalina | PBM Mariner"
+  USA_nav_bomber_equipment_2_short: "PV-1 | PBY | PBM"
+
+  USA_nav_bomber_equipment_3: "PV-2 Harpoon | PB4Y Privateer | PBM Mariner"
+  USA_nav_bomber_equipment_3_short: "PV-2 | PB4Y | PBM"
+
+
+  #=========================================
+  # CARRIER TORPEDO BOMBERS
+  #=========================================
+
+  USA_cv_nav_bomber_equipment_2: "TBF Avenger"
+  USA_cv_nav_bomber_equipment_2_short: "TBF"
+
+  USA_cv_nav_bomber_equipment_3: "TBM Avenger"
+  USA_cv_nav_bomber_equipment_3_short: "TBM"
+  
+  
+  ### JAPANESE AIRCRAFT ###
+
+  #=========================================
+  # LAND-BASED FIGHTERS
+  #=========================================
+
+  JAP_fighter_equipment_1: "Nakajima Ki-27"
+  JAP_fighter_equipment_1_short: "Ki-27"
+
+  JAP_fighter_equipment_2: "Nakajima Ki-43 Hayabusa"
+  JAP_fighter_equipment_2_short: "Ki-43"
+
+  JAP_fighter_equipment_3: "Nakajima Ki-84 Hayate"
+  JAP_fighter_equipment_3_short: "Ki-84"
+
+
+  #=========================================
+  # CARRIER FIGHTERS
+  #=========================================
+
+  JAP_cv_fighter_equipment_1: "Mitsubishi A5M"
+  JAP_cv_fighter_equipment_1_short: "A5M"
+
+  JAP_cv_fighter_equipment_2: "Mitsubishi A6M Zero"
+  JAP_cv_fighter_equipment_2_short: "A6M"
+
+  JAP_cv_fighter_equipment_3: "Mitsubishi A7M Reppū"
+  JAP_cv_fighter_equipment_3_short: "A7M"
+
+
+  #=========================================
+  # HEAVY FIGHTERS / INTERCEPTORS
+  #=========================================
+
+  JAP_heavy_fighter_equipment_1: "Kawasaki Ki-45 Toryū"
+  JAP_heavy_fighter_equipment_1_short: "Ki-45"
+
+  JAP_heavy_fighter_equipment_2: "Kawasaki Ki-102"
+  JAP_heavy_fighter_equipment_2_short: "Ki-102"
+
+  JAP_heavy_fighter_equipment_3: "Kawasaki Ki-108"
+  JAP_heavy_fighter_equipment_3_short: "Ki-108"
+
+
+  #=========================================
+  # CARRIER DIVE BOMBERS
+  #=========================================
+
+  JAP_cv_CAS_equipment_1: "Aichi D1A"
+  JAP_cv_CAS_equipment_1_short: "D1A"
+
+  JAP_cv_CAS_equipment_2: "Aichi D3A Val"
+  JAP_cv_CAS_equipment_2_short: "D3A"
+
+  JAP_cv_CAS_equipment_3: "Yokosuka D4Y Suisei"
+  JAP_cv_CAS_equipment_3_short: "D4Y"
+
+
+  #=========================================
+  # LAND-BASED ATTACK AIRCRAFT
+  #=========================================
+
+  JAP_CAS_equipment_1: "Kawasaki Ki-32"
+  JAP_CAS_equipment_1_short: "Ki-32"
+
+  JAP_CAS_equipment_2: "Kawasaki Ki-48"
+  JAP_CAS_equipment_2_short: "Ki-48"
+
+  JAP_CAS_equipment_3: "Kawasaki Ki-66"
+  JAP_CAS_equipment_3_short: "Ki-66"
+
+
+  #=========================================
+  # TACTICAL BOMBERS
+  #=========================================
+
+  JAP_tac_bomber_equipment_1: "Mitsubishi Ki-21"
+  JAP_tac_bomber_equipment_1_short: "Ki-21"
+
+  JAP_tac_bomber_equipment_2: "Mitsubishi Ki-67 Hiryū"
+  JAP_tac_bomber_equipment_2_short: "Ki-67"
+
+  JAP_tac_bomber_equipment_3: "Mitsubishi Ki-67-II"
+  JAP_tac_bomber_equipment_3_short: "Ki-67-II"
+
+
+  #=========================================
+  # LAND-BASED NAVAL BOMBERS
+  #=========================================
+
+  JAP_nav_bomber_equipment_1: "Mitsubishi G3M"
+  JAP_nav_bomber_equipment_1_short: "G3M"
+
+  JAP_nav_bomber_equipment_2: "Mitsubishi G4M"
+  JAP_nav_bomber_equipment_2_short: "G4M"
+
+  JAP_nav_bomber_equipment_3: "Yokosuka P1Y Ginga"
+  JAP_nav_bomber_equipment_3_short: "P1Y"
+
+
+  #=========================================
+  # CARRIER TORPEDO BOMBERS
+  #=========================================
+
+  JAP_cv_nav_bomber_equipment_1: "Nakajima B5N"
+  JAP_cv_nav_bomber_equipment_1_short: "B5N"
+
+  JAP_cv_nav_bomber_equipment_2: "Nakajima B6N Tenzan"
+  JAP_cv_nav_bomber_equipment_2_short: "B6N"
+
+  JAP_cv_nav_bomber_equipment_3: "Aichi B7A Ryūsei"
+  JAP_cv_nav_bomber_equipment_3_short: "B7A"
+
+
+  #=========================================
+  # RECON / NIGHT FIGHTER
+  #=========================================
+
+  JAP_scout_plane_equipment_1: "Mitsubishi Ki-46"
+  JAP_scout_plane_equipment_1_short: "Ki-46"
+
+  JAP_scout_plane_equipment_2: "Nakajima J1N Gekkō"
+  JAP_scout_plane_equipment_2_short: "J1N"
+
+
+  #=========================================
+  # STRATEGIC BOMBERS
+  #=========================================
+
+  JAP_strat_bomber_equipment_1: "Mitsubishi Ki-20"
+  JAP_strat_bomber_equipment_1_short: "Ki-20"
+
+  JAP_strat_bomber_equipment_2: "Nakajima G5N Shinzan"
+  JAP_strat_bomber_equipment_2_short: "G5N"
+
+  JAP_strat_bomber_equipment_3: "Nakajima G8N Renzan"
+  JAP_strat_bomber_equipment_3_short: "G8N"
+  
+  
+  
+   ### GERMAN AIRCRAFT ###
+
+  # MESSERSCHMITT / FOCKE-WULF
+
+  GER_fighter_equipment_1: "Messerschmitt Bf 109 E"
+  GER_fighter_equipment_1_short: "Bf 109 E"
+
+  GER_fighter_equipment_2: "Messerschmitt Bf 109 F | Focke-Wulf Fw 190 A/F"
+  GER_fighter_equipment_2_short: "Bf 109 F | Fw 190 A/F"
+
+  GER_fighter_equipment_3: "Messerschmitt Bf 109 G/K"
+  GER_fighter_equipment_3_short: "Bf 109 G/K"
+
+  GER_jet_fighter_equipment_1: "Messerschmitt Me 262"
+  GER_jet_fighter_equipment_1_short: "Me 262"
+
+
+  # INTERCEPTORS
+
+  GER_interceptor_equipment_2: "Focke-Wulf Fw 190 D"
+  GER_interceptor_equipment_2_short: "Fw 190 D"
+
+  GER_interceptor_equipment_3: "Focke-Wulf Ta 152 H"
+  GER_interceptor_equipment_3_short: "Ta 152 H"
+
+
+  # HEAVY FIGHTERS
+
+  GER_heavy_fighter_equipment_1: "Messerschmitt Bf 110 C/G"
+  GER_heavy_fighter_equipment_1_short: "Bf 110 C/G"
+
+  GER_heavy_fighter_equipment_2: "Messerschmitt Me 210 | Junkers Ju 88 C/G"
+  GER_heavy_fighter_equipment_2_short: "Me 210 | Ju 88 C/G"
+
+  GER_heavy_fighter_equipment_3: "Messerschmitt Me 410"
+  GER_heavy_fighter_equipment_3_short: "Me 410"
+
+
+  # CLOSE AIR SUPPORT
+
+  GER_CAS_equipment_1: "Junkers Ju 87 B"
+  GER_CAS_equipment_1_short: "Ju 87 B"
+
+  GER_CAS_equipment_2: "Junkers Ju 87 D/G"
+  GER_CAS_equipment_2_short: "Ju 87 D/G"
+
+
+  # TACTICAL BOMBERS
+
+  GER_tac_bomber_equipment_1: "Heinkel He 111 B/P/H"
+  GER_tac_bomber_equipment_1_short: "He 111 B/P/H"
+
+  GER_tac_bomber_equipment_2: "Junkers Ju 88 A"
+  GER_tac_bomber_equipment_2_short: "Ju 88 A"
+
+  GER_tac_bomber_equipment_3: "Junkers Ju 188"
+  GER_tac_bomber_equipment_3_short: "Ju 188"
+
+  GER_jet_tac_bomber_equipment_1: "Arado Ar 234 «Blitz»"
+  GER_jet_tac_bomber_equipment_1_short: "Ar 234"
+
+
+  # STRATEGIC BOMBERS
+
+  GER_strat_bomber_equipment_2: "Heinkel He 177 «Greif»"
+  GER_strat_bomber_equipment_2_short: "He 177"
+
+
+  # RECONNAISSANCE / MARITIME PATROL
+
+  GER_scout_plane_equipment_2: "Focke-Wulf Fw 189 «Uhu»"
+  GER_scout_plane_equipment_2_short: "Fw 189"
+
+  GER_nav_bomber_equipment_1: "Arado Ar 196"
+  GER_nav_bomber_equipment_1_short: "Ar 196"
+  
+  
+  
+  
+  #############################################################
+  
   mortar: "Миномёты"
   machinegun: "Пулемёты"
   antitank: "ПТ вооружение"
@@ -62,26 +396,6 @@
   
   JAP_medium_tank_artillery_equipment_1: "Тип 97 «Чи-Ха-120»"
   JAP_medium_tank_artillery_equipment_1_short: "«Чи-Ха-120»"
-
-  JAP_nav_bomber_equipment_1: "Мицубиси G3M"
-  JAP_nav_bomber_equipment_1_short: "G3M"
-
-  JAP_scout_plane_equipment_2: "Накадзима J1N"
-  JAP_scout_plane_equipment_2_short: "J1N"
-
-  JAP_cv_CAS_equipment_1: "Айти D1A"
-  JAP_cv_CAS_equipment_1_short: "D1A"
-  JAP_cv_CAS_equipment_2: "Айти D3A"
-  JAP_cv_CAS_equipment_2_short: "D3A"
-  JAP_cv_CAS_equipment_3: "Йокосука D4Y"
-  JAP_cv_CAS_equipment_3_short: "D4Y"
-
-  GER_fighter_equipment_1: "Мессершмитт Bf-109E"
-  GER_fighter_equipment_1_short: "Bf-109E"
-  GER_fighter_equipment_2: "Мессершмитт Bf-109F"
-  GER_fighter_equipment_2_short: "Bf-109F"
-  GER_fighter_equipment_3: "Мессершмитт Bf-109G"
-  GER_fighter_equipment_3_short: "Bf-109G"
 
   # Anti-tank
   antitank_1: "Противотанковые гранаты I"

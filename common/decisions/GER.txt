@@ -317,6 +317,41 @@ operations = {
 			factor = 5000
 		}
 	}
+	GER_battle_for_air_supremacy_over_britain = {
+		icon = generic_operation
+		allowed = {
+			always = yes
+		}
+		available = {
+			original_tag = GER
+			has_government = fascism
+			has_completed_focus = GER_western_war_plans
+			FRA = {
+				has_capitulated = yes
+			}
+			NOT = {
+				has_war_with = SOV
+			}
+		}
+		visible = {
+			original_tag = GER
+			has_government = fascism
+			has_completed_focus = GER_western_war_plans
+			FRA = {
+				has_capitulated = yes
+			}
+		}
+		cost = 25
+		fire_only_once = yes
+		days_remove = 120
+		modifier = {
+			air_range_factor = 0.1
+			air_strategic_bomber_bombing_factor = 0.2
+		}
+		ai_will_do = {
+			factor = 5000
+		}
+	}
 	GER_fall_rot_ai = {
 		icon = generic_operation
 		allowed = {

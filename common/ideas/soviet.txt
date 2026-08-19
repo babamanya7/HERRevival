@@ -282,6 +282,24 @@ ideas = {
 				consumer_goods_factor = -0.05
 			}
 		}
+
+		USA_railway_materials_lend_lease = {
+			picture = generic_build_infrastructure
+			removal_cost = -1
+
+			allowed = {
+				has_war = yes
+				NOT = { has_war_with = USA }
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				production_speed_rail_way_factor = 0.30
+			}
+		}
 		
 		sov_weak_industry = {
 		

@@ -566,10 +566,11 @@ USA_aid_soviet_union = {
 			has_completed_focus = USA_lend_lease_act
 			SOV = { has_war = yes }
 			NOT = { SOV = { has_war_with = USA } }
+			has_equipment = { convoy > 14 }
 		}
         
         modifier = {
-            civilian_factory_use = 40
+            civilian_factory_use = 3
         }
 
 		fire_only_once = yes
@@ -581,7 +582,20 @@ USA_aid_soviet_union = {
 			factor = 40000
 		}
 
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = -15
+				producer = ROOT
+			}
+		}
+
 		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = 15
+				producer = ROOT
+			}
             SOV = { country_event = { id = soviet.71 } }
             SOV = { add_ideas = USA_food_lend_lease }
 			add_opinion_modifier = { target = SOV modifier = guaranteed_aid_SOV } 
@@ -591,7 +605,347 @@ USA_aid_soviet_union = {
 		}
 	}
 
+	USA_monthly_steel_lend_lease_SOV = {
+		icon = generic_industry
+
+		allowed = {
+			original_tag = USA
+		}
+
+		available = {
+			original_tag = USA
+			has_completed_focus = USA_lend_lease_act
+			SOV = { has_war = yes }
+			NOT = { SOV = { has_war_with = USA } }
+			has_equipment = { convoy > 24 }
+			OR = {
+				is_ai = yes
+				check_variable = { left_steel > 59999 }
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		cost = 5
+		days_remove = 30
+		days_re_enable = 0
+
+		ai_will_do = {
+			factor = 40000
+		}
+
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = -25
+				producer = ROOT
+			}
+			if = {
+				limit = { is_ai = no }
+				subtract_from_variable = { left_steel = 60000 }
+			}
+		}
+
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = 25
+				producer = ROOT
+			}
+			custom_effect_tooltip = USA_monthly_steel_lend_lease_SOV_tt
+			hidden_effect = {
+				SOV = {
+					add_to_variable = { left_steel = 60000 }
+					clamp_variable = {
+						var = left_steel
+						min = 0
+						max = steel_cap
+					}
+				}
+			}
+		}
+	}
+
+	USA_monthly_aluminium_lend_lease_SOV = {
+		icon = generic_industry
+
+		allowed = {
+			original_tag = USA
+		}
+
+		available = {
+			original_tag = USA
+			has_completed_focus = USA_lend_lease_act
+			SOV = { has_war = yes }
+			NOT = { SOV = { has_war_with = USA } }
+			has_equipment = { convoy > 9 }
+			OR = {
+				is_ai = yes
+				check_variable = { left_aluminium > 7499 }
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 1
+		}
+
+		cost = 5
+		days_remove = 30
+		days_re_enable = 0
+
+		ai_will_do = {
+			factor = 40000
+		}
+
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = -10
+				producer = ROOT
+			}
+			if = {
+				limit = { is_ai = no }
+				subtract_from_variable = { left_aluminium = 7500 }
+			}
+		}
+
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = 10
+				producer = ROOT
+			}
+			custom_effect_tooltip = USA_monthly_aluminium_lend_lease_SOV_tt
+			hidden_effect = {
+				SOV = {
+					add_to_variable = { left_aluminium = 7500 }
+					clamp_variable = {
+						var = left_aluminium
+						min = 0
+						max = aluminium_cap
+					}
+				}
+			}
+		}
+	}
+
+	USA_monthly_petroleum_lend_lease_SOV = {
+		icon = generic_industry
+
+		allowed = {
+			original_tag = USA
+		}
+
+		available = {
+			original_tag = USA
+			has_completed_focus = USA_lend_lease_act
+			SOV = { has_war = yes }
+			NOT = { SOV = { has_war_with = USA } }
+			has_equipment = { convoy > 19 }
+			has_fuel > 60000
+		}
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		cost = 5
+		days_remove = 30
+		days_re_enable = 0
+
+		ai_will_do = {
+			factor = 40000
+		}
+
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = -20
+				producer = ROOT
+			}
+			add_fuel = -60000
+		}
+
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = 20
+				producer = ROOT
+			}
+			custom_effect_tooltip = USA_monthly_petroleum_lend_lease_SOV_tt
+			hidden_effect = {
+				SOV = { add_fuel = 60000 }
+			}
+		}
+	}
+
+	USA_monthly_rubber_lend_lease_SOV = {
+		icon = generic_industry
+
+		allowed = {
+			original_tag = USA
+		}
+
+		available = {
+			original_tag = USA
+			has_completed_focus = USA_lend_lease_act
+			SOV = { has_war = yes }
+			NOT = { SOV = { has_war_with = USA } }
+			has_equipment = { convoy > 9 }
+			OR = {
+				is_ai = yes
+				check_variable = { left_rubber > 2999 }
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 1
+		}
+
+		cost = 5
+		days_remove = 30
+		days_re_enable = 0
+
+		ai_will_do = {
+			factor = 40000
+		}
+
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = -10
+				producer = ROOT
+			}
+			if = {
+				limit = { is_ai = no }
+				subtract_from_variable = { left_rubber = 3000 }
+			}
+		}
+
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = 10
+				producer = ROOT
+			}
+			custom_effect_tooltip = USA_monthly_rubber_lend_lease_SOV_tt
+			hidden_effect = {
+				SOV = {
+					add_to_variable = { left_rubber = 3000 }
+					clamp_variable = {
+						var = left_rubber
+						min = 0
+						max = rubber_cap
+					}
+				}
+			}
+		}
+	}
+
+	USA_monthly_railway_lend_lease_SOV = {
+		icon = generic_construction
+
+		allowed = {
+			original_tag = USA
+		}
+
+		available = {
+			original_tag = USA
+			has_completed_focus = USA_lend_lease_act
+			SOV = { has_war = yes }
+			NOT = { SOV = { has_war_with = USA } }
+			has_equipment = { convoy > 14 }
+			OR = {
+				is_ai = yes
+				check_variable = { left_steel > 14999 }
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 2
+		}
+
+		cost = 5
+		days_remove = 30
+		days_re_enable = 0
+
+		ai_will_do = {
+			factor = 40000
+		}
+
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = -15
+				producer = ROOT
+			}
+			if = {
+				limit = { is_ai = no }
+				subtract_from_variable = { left_steel = 15000 }
+			}
+		}
+
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = 15
+				producer = ROOT
+			}
+			custom_effect_tooltip = USA_monthly_railway_lend_lease_SOV_tt
+			hidden_effect = {
+				SOV = {
+					add_timed_idea = {
+						idea = USA_railway_materials_lend_lease
+						days = 35
+					}
+				}
+			}
+		}
+	}
+
+	USA_open_iranian_corridor_SOV = {
+		icon = generic_construction
+
+		allowed = {
+			original_tag = USA
+		}
+
+		available = {
+			original_tag = USA
+			has_completed_focus = USA_lend_lease_act
+			SOV = { has_war = yes }
+			NOT = { SOV = { has_war_with = USA } }
+			NOT = { has_global_flag = iranian_corridor_is_builded }
+			OR = {
+				419 = { is_controlled_by = SOV }
+				420 = { is_controlled_by = SOV }
+				421 = { is_controlled_by = SOV }
+				413 = { is_controlled_by = SOV }
+			}
+		}
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		fire_only_once = yes
+		cost = 5
+		days_remove = 45
+
+		ai_will_do = {
+			factor = 60000
+		}
+
+		remove_effect = {
+			set_global_flag = iranian_corridor_is_builded
+			custom_effect_tooltip = USA_open_iranian_corridor_SOV_tt
+		}
+	}
+
 	USA_provide_infrastructure_SOV = {
+		visible = { always = no }
 
 		icon = generic_construction
 
@@ -686,6 +1040,7 @@ USA_aid_soviet_union = {
 	}
     
     USA_provide_synthetic_refineries_SOV = {
+		visible = { always = no }
 
 		icon = generic_construction
 
@@ -793,6 +1148,7 @@ USA_aid_soviet_union = {
 	}
     
     USA_provide_steel_and_aluminum_SOV = {
+		visible = { always = no }
 
 		icon = generic_construction
 
@@ -943,6 +1299,7 @@ USA_aid_soviet_union = {
 	}
     
     USA_provide_civilian_factories_SOV = {
+		visible = { always = no }
 
 		icon = generic_industry
 
@@ -1063,6 +1420,7 @@ USA_aid_soviet_union = {
 	}
     
     USA_provide_military_factories_SOV = {
+		visible = { always = no }
 
 		icon = ger_military_buildup
 
@@ -1183,6 +1541,7 @@ USA_aid_soviet_union = {
 	}
     
     USA_iranian_corridor = {
+		visible = { always = no }
 
 		icon = generic_industry
 

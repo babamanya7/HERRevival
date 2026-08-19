@@ -450,7 +450,7 @@ equipment_modules = {
 		gfx = ship_engine_nuclear
 		build_cost_resources = {
 			steel = 15
-			chromium = 10
+			chromium = 8
 			#tungsten = 10
 		}
 		add_stats = {
@@ -547,7 +547,7 @@ equipment_modules = {
 
 		build_cost_resources = {
 			steel = 14
-			chromium = 5
+			chromium = 4
 			#tungsten = 2
 		}
 		add_stats = {
@@ -580,7 +580,7 @@ equipment_modules = {
 
 		build_cost_resources = {
 			steel = 16
-			chromium = 6
+			chromium = 5
 			#tungsten = 3
 		}
 		add_stats = {
@@ -613,7 +613,7 @@ equipment_modules = {
 
 		build_cost_resources = {
 			steel = 18
-			chromium = 7
+			chromium = 6
 			#tungsten = 3
 		}
 		add_stats = {
@@ -656,7 +656,7 @@ equipment_modules = {
 		}
 		build_cost_resources = {
 			steel = 20
-			chromium = 10
+			chromium = 8
 		}
 		can_convert_from = {
 			module_category = cruiser_ship_engine
@@ -737,7 +737,7 @@ equipment_modules = {
 		}
 		build_cost_resources = {
 			steel = 18
-			chromium = 5
+			chromium = 4
 			#tungsten = 2
 		}
 		multiply_stats = {
@@ -768,7 +768,7 @@ equipment_modules = {
 
 		build_cost_resources = {
 			steel = 20
-			chromium = 6
+			chromium = 5
 			#tungsten = 2
 		}
 		add_stats = {
@@ -787,7 +787,7 @@ equipment_modules = {
 			convert_cost_ic = 2200
 			convert_cost_resources = {
 				steel = 10
-				chromium = 10
+				chromium = 8
 			}
 		}
 	}
@@ -801,7 +801,7 @@ equipment_modules = {
 
 		build_cost_resources = {
 			steel = 24
-			chromium = 8
+			chromium = 7
 			#tungsten = 3
 		}
 		add_stats = {
@@ -820,7 +820,7 @@ equipment_modules = {
 			convert_cost_ic = 2600
 			convert_cost_resources = {
 				steel = 10
-				chromium = 10
+				chromium = 8
 			}
 		}
 		can_convert_from = {
@@ -838,7 +838,7 @@ equipment_modules = {
 
 		build_cost_resources = {
 			steel = 28
-			chromium = 10
+			chromium = 8
 			#tungsten = 4
 		}
 		add_stats = {
@@ -856,7 +856,7 @@ equipment_modules = {
 			convert_cost_ic = 3000
 			convert_cost_resources = {
 				steel = 10
-				chromium = 10
+				chromium = 8
 			}
 		}
 		can_convert_from = {
@@ -873,7 +873,7 @@ equipment_modules = {
 
 		build_cost_resources = {
 			steel = 32
-			chromium = 12
+			chromium = 10
 			#tungsten = 5
 		}
 		add_stats = {
@@ -891,7 +891,7 @@ equipment_modules = {
 			convert_cost_ic = 4000
 			convert_cost_resources = {
 				steel = 10
-				chromium = 10
+				chromium = 8
 			}
 		}
 		can_convert_from = {
@@ -907,7 +907,7 @@ equipment_modules = {
 
 		build_cost_resources = {
 			steel = 36
-			chromium = 14
+			chromium = 12
 			#tungsten = 6
 		}
 		add_stats = {
@@ -925,7 +925,7 @@ equipment_modules = {
 			convert_cost_ic = 5000
 			convert_cost_resources = {
 				steel = 10
-				chromium = 10
+				chromium = 8
 			}
 		}
 		can_convert_from = {
@@ -939,7 +939,7 @@ equipment_modules = {
 		gfx = ship_diesel_engine_2
 		build_cost_resources = {
 			steel = 26
-			chromium = 7
+			chromium = 6
 			#tungsten = 3
 		}
 		add_stats = {
@@ -959,7 +959,7 @@ equipment_modules = {
 			convert_cost_ic = 2800
 			convert_cost_resources = {
 				steel = 10
-				chromium = 10
+				chromium = 8
 			}
 		}
 	}
@@ -971,7 +971,7 @@ equipment_modules = {
 		gfx = ship_diesel_engine_3
 		build_cost_resources = {
 			steel = 30
-			chromium = 9
+			chromium = 8
 			#tungsten = 4
 		}
 		add_stats = {
@@ -991,7 +991,7 @@ equipment_modules = {
 			convert_cost_ic = 3200
 			convert_cost_resources = {
 				steel = 10
-				chromium = 10
+				chromium = 8
 			}
 		}
 		can_convert_from = {
@@ -1006,7 +1006,7 @@ equipment_modules = {
 		gfx = ship_diesel_engine_4
 		build_cost_resources = {
 			steel = 34
-			chromium = 11
+			chromium = 9
 			#tungsten = 5
 		}
 		add_stats = {
@@ -1026,7 +1026,7 @@ equipment_modules = {
 			convert_cost_ic = 4200
 			convert_cost_resources = {
 				steel = 10
-				chromium = 10
+				chromium = 8
 			}
 		}
 		can_convert_from = {
@@ -1040,7 +1040,7 @@ equipment_modules = {
 		sfx = sfx_ui_sd_module_engine
 		build_cost_resources = {
 			steel = 30
-			chromium = 15
+			chromium = 12
 			#tungsten = 10
 		}
 		add_stats = {
@@ -1060,7 +1060,7 @@ equipment_modules = {
 			convert_cost_ic = 6000
 			convert_cost_resources = {
 				steel = 10
-				chromium = 10
+				chromium = 8
 			}
 		}
 	}
@@ -1083,7 +1083,7 @@ equipment_modules = {
 		}
 		build_cost_resources = {
 			steel = 30
-			chromium = 20
+			chromium = 16
 			#tungsten = 15
 		}
 		can_convert_from = {
@@ -1098,7 +1098,7 @@ equipment_modules = {
 		sfx = sfx_ui_sd_module_engine
 		build_cost_resources = {
 			steel = 30
-			chromium = 12
+			chromium = 10
 			#tungsten = 5
 		}
 		add_stats = {
@@ -1113,7 +1113,7 @@ equipment_modules = {
 			convert_cost_ic = 3000
 			convert_cost_resources = {
 				steel = 10
-				chromium = 10
+				chromium = 8
 			}
 		}
 	}
@@ -1125,7 +1125,7 @@ equipment_modules = {
 		parent = super_heavy_ship_engine_1
 		build_cost_resources = {
 			steel = 38
-			chromium = 16
+			chromium = 13
 			#tungsten = 8
 		}
 		add_stats = {
@@ -1140,7 +1140,7 @@ equipment_modules = {
 			convert_cost_ic = 4500
 			convert_cost_resources = {
 				steel = 10
-				chromium = 10
+				chromium = 8
 			}
 		}
 		can_convert_from = {
@@ -1156,7 +1156,7 @@ equipment_modules = {
 		parent = super_heavy_ship_engine_2
 		build_cost_resources = {
 			steel = 44
-			chromium = 20
+			chromium = 16
 			#tungsten = 10
 		}
 		add_stats = {
@@ -1171,7 +1171,7 @@ equipment_modules = {
 			convert_cost_ic = 5000
 			convert_cost_resources = {
 				steel = 10
-				chromium = 10
+				chromium = 8
 			}
 		}
 		can_convert_from = {
@@ -1192,7 +1192,7 @@ equipment_modules = {
 		
 		build_cost_resources = {
 			steel = 20
-			chromium = 6
+			chromium = 5
 			#tungsten = 2
 		}
 		add_stats = {
@@ -1211,7 +1211,7 @@ equipment_modules = {
 			convert_cost_ic = 1800
 			convert_cost_resources = {
 				steel = 10
-				chromium = 10
+				chromium = 8
 			}
 		}
 	}
@@ -1225,7 +1225,7 @@ equipment_modules = {
 
 		build_cost_resources = {
 			steel = 24
-			chromium = 8
+			chromium = 7
 			#tungsten = 3
 		}
 		add_stats = {
@@ -1244,7 +1244,7 @@ equipment_modules = {
 			convert_cost_ic = 2300
 			convert_cost_resources = {
 				steel = 10
-				chromium = 10
+				chromium = 8
 			}
 		}
 		can_convert_from = {
@@ -1262,7 +1262,7 @@ equipment_modules = {
 		
 		build_cost_resources = {
 			steel = 28
-			chromium = 10
+			chromium = 8
 			#tungsten = 4
 		}
 		add_stats = {
@@ -1281,7 +1281,7 @@ equipment_modules = {
 			convert_cost_ic = 2800
 			convert_cost_resources = {
 				steel = 10
-				chromium = 10
+				chromium = 8
 			}
 		}
 		can_convert_from = {
@@ -1298,7 +1298,7 @@ equipment_modules = {
 
 		build_cost_resources = {
 			steel = 32
-			chromium = 12
+			chromium = 10
 			#tungsten = 5
 		}
 		add_stats = {
@@ -1317,7 +1317,7 @@ equipment_modules = {
 			convert_cost_ic = 3300
 			convert_cost_resources = {
 				steel = 10
-				chromium = 10
+				chromium = 8
 			}
 		}
 		can_convert_from = {
@@ -1344,7 +1344,7 @@ equipment_modules = {
 		}
 		build_cost_resources = {
 			steel = 30
-			chromium = 15
+			chromium = 12
 			#tungsten = 15
 		}
 		can_convert_from = {
@@ -1365,7 +1365,7 @@ equipment_modules = {
 		}
 		build_cost_resources = {
 			steel = 26
-			chromium = 7
+			chromium = 6
 			#tungsten = 3
 		}
 		multiply_stats = {
@@ -1378,7 +1378,7 @@ equipment_modules = {
 			convert_cost_ic = 2500
 			convert_cost_resources = {
 				steel = 10
-				chromium = 10
+				chromium = 8
 			}
 		}
 	}
@@ -1397,7 +1397,7 @@ equipment_modules = {
 		}
 		build_cost_resources = {
 			steel = 30
-			chromium = 9
+			chromium = 8
 			#tungsten = 4
 		}
 		multiply_stats = {
@@ -1410,7 +1410,7 @@ equipment_modules = {
 			convert_cost_ic = 3000
 			convert_cost_resources = {
 				steel = 10
-				chromium = 10
+				chromium = 8
 			}
 		}
 		can_convert_from = {
@@ -1425,7 +1425,7 @@ equipment_modules = {
 		gfx = ship_diesel_engine_4
 		build_cost_resources = {
 			steel = 34
-			chromium = 11
+			chromium = 9
 			#tungsten = 5
 		}
 		add_stats = {
@@ -1445,7 +1445,7 @@ equipment_modules = {
 			convert_cost_ic = 3500
 			convert_cost_resources = {
 				steel = 10
-				chromium = 10
+				chromium = 8
 			}
 		}
 		can_convert_from = {

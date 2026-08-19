@@ -4848,6 +4848,9 @@ operations = {
 		}
 		complete_effect = {
 			set_global_flag = SOV_winter_counterattack
+			hidden_effect = {
+				sound_effect = SOV_moscow_counteroffensive_speech
+			}
 			#hidden_effect = { news_event = { id = her_news.21 hours = 4 } }
 		}
 	}

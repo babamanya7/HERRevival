@@ -564,16 +564,9 @@ USA_aid_soviet_union = {
 		available = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.10.1
 			SOV = { has_war = yes }
 			NOT = { SOV = { has_war_with = USA } }
 			has_equipment = { convoy > 14 }
-		}
-
-		visible = {
-			original_tag = USA
-			has_completed_focus = USA_lend_lease_act
-			date > 1941.10.1
 		}
         
         modifier = {
@@ -1346,7 +1339,6 @@ USA_aid_soviet_union = {
 		available = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.10.1
 			SOV = { has_war = yes }
 			NOT = { SOV = { has_war_with = USA } }
 			NOT = { has_global_flag = iranian_corridor_is_builded }
@@ -1356,12 +1348,6 @@ USA_aid_soviet_union = {
 				421 = { is_controlled_by = SOV }
 				413 = { is_controlled_by = SOV }
 			}
-		}
-
-		visible = {
-			original_tag = USA
-			has_completed_focus = USA_lend_lease_act
-			date > 1941.10.1
 		}
 
 		modifier = {

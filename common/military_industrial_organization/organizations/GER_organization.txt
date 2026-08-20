@@ -25,7 +25,7 @@ GER_porsche_organization = {
 	}
 
 	research_categories = {
-		mio_cat_porsche_designer
+		mio_cat_tech_heavy_armor_and_modules
 	}
 
 	tree_header_text = {
@@ -3082,8 +3082,9 @@ GER_messerschmitt_organization = {
 	}
 
 	research_categories = {
-		light_fighter
-		cat_heavy_fighter
+		mio_cat_all_light_fighter_and_modules
+		mio_cat_all_medium_aircraft_and_modules
+		mio_cat_all_heavy_aircraft_and_modules
 		jet_technology
 	}
 
@@ -4112,9 +4113,8 @@ GER_junkers_organization = {
 	}
 
 	research_categories = {
-		cas_bomber
-		tactical_bomber
-		cat_heavy_fighter
+		mio_cat_all_cas_and_modules
+		mio_cat_all_medium_aircraft_and_modules
 	}
 
 	tree_header_text = {
@@ -4972,9 +4972,9 @@ GER_focke_wulf_organization = {
 	}
 
 	research_categories = {
-		light_air
-		light_fighter
-		medium_air
+		mio_cat_all_light_fighter_and_modules
+		mio_cat_all_cas_and_modules
+		mio_cat_all_medium_aircraft_and_modules
 	}
 
 	tree_header_text = {
@@ -5580,8 +5580,8 @@ GER_heinkel_organization = {
 	}
 
 	research_categories = {
-		tactical_bomber
-		strategic_bomber
+		mio_cat_all_medium_aircraft_and_modules
+		mio_cat_all_heavy_aircraft_and_modules
 	}
 
 	tree_header_text = {
@@ -6177,9 +6177,8 @@ GER_arado_flugzeugwerke_organization = {
 	}
 
 	research_categories = {
-		naval_air
-		tactical_bomber
-		medium_air
+		mio_cat_all_medium_aircraft_and_modules
+		jet_technology
 	}
 
 	tree_header_text = {

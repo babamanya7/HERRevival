@@ -1302,8 +1302,7 @@ ENG_supermarine_organization = {
 	}
 
 	research_categories = {
-		fighter
-		cv_fighter
+		mio_cat_all_light_fighter_and_modules
 	}
 
 	tree_header_text = {
@@ -1608,7 +1607,8 @@ ENG_hawker_organization = {
 	}
 
 	research_categories = {
-		fighter
+		mio_cat_all_light_fighter_and_modules
+		mio_cat_all_cas_and_modules
 	}
 
 	tree_header_text = {
@@ -2318,9 +2318,8 @@ ENG_de_havilland_organization = {
 	}
 
 	research_categories = {
-		tactical_bomber
-		heavy_fighter
-		cas_bomber
+		mio_cat_all_cas_and_modules
+		mio_cat_all_medium_aircraft_and_modules
 	}
 
 	tree_header_text = {
@@ -2760,9 +2759,7 @@ ENG_bristol_organization = {
 	}
 
 	research_categories = {
-		tactical_bomber
-		naval_bomber
-		heavy_fighter
+		mio_cat_all_medium_aircraft_and_modules
 	}
 
 	tree_header_text = {

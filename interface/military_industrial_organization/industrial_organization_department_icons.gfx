@@ -12,6 +12,30 @@ spriteTypes = {
 	####### BABKA EQUIPMENT #######
 	###############################
 	
+	spriteType = {
+		name = "GFX_idea_gloster"
+		texturefile = "gfx/interface/ideas/FRA_ENG_mio/ENG_gloster.dds"
+	}
+
+	spriteType = {
+		name = "GFX_idea_bristol"
+		texturefile = "gfx/interface/ideas/FRA_ENG_mio/ENG_bristol.dds"
+	}
+
+	spriteType = {
+		name = "GFX_idea_potez"
+		texturefile = "gfx/interface/ideas/FRA_ENG_mio/FRA_potez.dds"
+	}
+
+	spriteType = {
+		name = "GFX_idea_dewoitine"
+		texturefile = "gfx/interface/ideas/FRA_ENG_mio/FRA_dewoitine.dds"
+	}
+
+	spriteType = {
+		name = "GFX_idea_breguet"
+		texturefile = "gfx/interface/ideas/FRA_ENG_mio/FRA_breguet.dds"
+	}
 	
 	spriteType = {
 		name = "GFX_idea_sukhoi_design_bureau"
@@ -37,7 +61,6 @@ spriteTypes = {
 		name = "GFX_idea_lavochkin_design_bureau"
 		texturefile = "gfx/interface/ideas/SOV_mio/idea_SOV_lavochkin.dds"
 	}
-	
 	
 	spriteType = {
 		name = "GFX_idea_curtiss"

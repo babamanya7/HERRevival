@@ -141,9 +141,9 @@ duplicate_archetypes = {
 		picture = archetype_CAS_equipment
 		sprite = medium_plane
 		variant_name = {
-			small_plane_tactical_bomber_airframe_1 = tac_bomber_equipment_1
-			small_plane_tactical_bomber_airframe_2 = tac_bomber_equipment_2
-			small_plane_tactical_bomber_airframe_3 = tac_bomber_equipment_3
+			small_plane_tactical_bomber_airframe_1 = small_tac_bomber_equipment_1
+			small_plane_tactical_bomber_airframe_2 = small_tac_bomber_equipment_2
+			small_plane_tactical_bomber_airframe_3 = small_tac_bomber_equipment_3
 		}
 		air_map_icon_frame = 5
 		interface_overview_category_index = 4
@@ -247,9 +247,9 @@ duplicate_archetypes = {
 		type = cas
 		picture = archetype_CAS_equipment
 		variant_name = {
-			medium_plane_cas_airframe_1 = CAS_equipment_1
-			medium_plane_cas_airframe_2 = CAS_equipment_2
-			medium_plane_cas_airframe_3 = CAS_equipment_3
+			medium_plane_cas_airframe_1 = medium_CAS_equipment_1
+			medium_plane_cas_airframe_2 = medium_CAS_equipment_2
+			medium_plane_cas_airframe_3 = medium_CAS_equipment_3
 		}
 		air_map_icon_frame = 25
 		interface_overview_category_index = 0

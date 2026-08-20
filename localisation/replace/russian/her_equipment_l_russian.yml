@@ -56,11 +56,11 @@
   # MEDIUM ATTACK AIRCRAFT
   #=========================================
 
-  USA_CAS_equipment_2: "A-20 Havoc"
-  USA_CAS_equipment_2_short: "A-20"
+  USA_medium_CAS_equipment_2: "A-20 Havoc"
+  USA_medium_CAS_equipment_2_short: "A-20"
 
-  USA_CAS_equipment_3: "A-26 Invader"
-  USA_CAS_equipment_3_short: "A-26"
+  USA_medium_CAS_equipment_3: "A-26 Invader"
+  USA_medium_CAS_equipment_3_short: "A-26"
 
 
   #=========================================
@@ -328,6 +328,269 @@
 
   GER_nav_bomber_equipment_1: "Arado Ar 196"
   GER_nav_bomber_equipment_1_short: "Ar 196"
+  
+    ### SOVIET AIRCRAFT ###
+
+  #=========================================
+  # LAND-BASED FIGHTERS
+  # POLIKARPOV / LAVOCHKIN / YAKOVLEV
+  #=========================================
+
+  SOV_fighter_equipment_0: "Поликарпов И-15 | И-153 «Чайка»"
+  SOV_fighter_equipment_0_short: "И-15 | И-153"
+
+  SOV_fighter_equipment_1: "Поликарпов И-16"
+  SOV_fighter_equipment_1_short: "И-16"
+
+  SOV_fighter_equipment_2: "Поликарпов И-185 | Лавочкин ЛаГГ-3 | Яковлев Як-1/Як-7"
+  SOV_fighter_equipment_2_short: "И-185 | ЛаГГ-3 | Як-1/Як-7"
+
+  SOV_fighter_equipment_3: "Лавочкин Ла-5/Ла-7 | Яковлев Як-9"
+  SOV_fighter_equipment_3_short: "Ла-5/Ла-7 | Як-9"
+
+
+  #=========================================
+  # INTERCEPTORS
+  # MIKOYAN-GUREVICH / YAKOVLEV
+  #=========================================
+
+  SOV_interceptor_equipment_1: "Микоян-Гуревич МиГ-1"
+  SOV_interceptor_equipment_1_short: "МиГ-1"
+
+  SOV_interceptor_equipment_2: "Микоян-Гуревич МиГ-3"
+  SOV_interceptor_equipment_2_short: "МиГ-3"
+
+  SOV_interceptor_equipment_3: "Яковлев Як-3"
+  SOV_interceptor_equipment_3_short: "Як-3"
+
+  SOV_jet_fighter_equipment_1: "Микоян-Гуревич МиГ-9"
+  SOV_jet_fighter_equipment_1_short: "МиГ-9"
+
+
+  #=========================================
+  # CLOSE AIR SUPPORT
+  # ILYUSHIN
+  #=========================================
+
+  SOV_CAS_equipment_2: "Ильюшин Ил-2"
+  SOV_CAS_equipment_2_short: "Ил-2"
+
+  SOV_CAS_equipment_3: "Ильюшин Ил-10"
+  SOV_CAS_equipment_3_short: "Ил-10"
+  
+  # =========================================
+  # LIGHT TACTICAL BOMBERS
+  # =========================================
+
+  SOV_small_tac_bomber_equipment_1: "Сухой Су-2"
+  SOV_small_tac_bomber_equipment_1_short: "Су-2"
+
+  SOV_small_tac_bomber_equipment_2: "Сухой Су-4"
+  SOV_small_tac_bomber_equipment_2_short: "Су-4"
+
+  #=========================================
+  # TACTICAL BOMBERS
+  # TUPOLEV
+  #=========================================
+
+  SOV_tac_bomber_equipment_1: "Туполев СБ"
+  SOV_tac_bomber_equipment_1_short: "СБ"
+
+  SOV_tac_bomber_equipment_2: "Туполев Ту-2"
+  SOV_tac_bomber_equipment_2_short: "Ту-2"
+
+  SOV_tac_bomber_equipment_3: "Туполев Ту-2С"
+  SOV_tac_bomber_equipment_3_short: "Ту-2С"
+
+
+  #=========================================
+  # MEDIUM DIVE BOMBERS
+  # PETLYAKOV
+  #=========================================
+
+  SOV_medium_CAS_equipment_2: "Петляков Пе-2"
+  SOV_medium_CAS_equipment_2_short: "Пе-2"
+
+
+  #=========================================
+  # HEAVY FIGHTERS
+  # PETLYAKOV
+  #=========================================
+
+  SOV_heavy_fighter_equipment_2: "Петляков Пе-3"
+  SOV_heavy_fighter_equipment_2_short: "Пе-3"
+
+
+  #=========================================
+  # STRATEGIC BOMBERS
+  # PETLYAKOV
+  #=========================================
+
+  SOV_strat_bomber_equipment_2: "Петляков Пе-8"
+  SOV_strat_bomber_equipment_2_short: "Пе-8"
+
+
+  #=========================================
+  # NAVAL / MARITIME PATROL AIRCRAFT
+  # BERIEV
+  #=========================================
+
+  SOV_nav_bomber_equipment_1: "Бериев МБР-2"
+  SOV_nav_bomber_equipment_1_short: "МБР-2"
+
+  SOV_nav_bomber_equipment_2: "Бериев Бе-4"
+  SOV_nav_bomber_equipment_2_short: "Бе-4"
+  
+  
+  
+    ### BRITISH AIRCRAFT ###
+
+  #=========================================
+  # LAND-BASED FIGHTERS
+  #=========================================
+
+  ENG_fighter_equipment_0: "Gloster Gladiator"
+  ENG_fighter_equipment_0_short: "Gladiator"
+
+  ENG_fighter_equipment_1: "Hawker Hurricane"
+  ENG_fighter_equipment_1_short: "Hurricane"
+
+  ENG_fighter_equipment_2: "Supermarine Spitfire | Hawker Typhoon"
+  ENG_fighter_equipment_2_short: "Spitfire | Typhoon"
+
+  ENG_fighter_equipment_3: "Hawker Tempest"
+  ENG_fighter_equipment_3_short: "Tempest"
+
+
+  #=========================================
+  # JET FIGHTERS
+  #=========================================
+
+  ENG_jet_fighter_equipment_1: "Gloster Meteor"
+  ENG_jet_fighter_equipment_1_short: "Meteor"
+
+
+  #=========================================
+  # CARRIER FIGHTERS
+  #=========================================
+
+  ENG_cv_fighter_equipment_1: "Fairey Fulmar"
+  ENG_cv_fighter_equipment_1_short: "Fulmar"
+
+  ENG_cv_fighter_equipment_2: "Supermarine Seafire | Fairey Firefly"
+  ENG_cv_fighter_equipment_2_short: "Seafire | Firefly"
+
+
+  #=========================================
+  # HEAVY FIGHTERS
+  #=========================================
+
+  ENG_heavy_fighter_equipment_1: "Bristol Beaufighter"
+  ENG_heavy_fighter_equipment_1_short: "Beaufighter"
+
+  ENG_heavy_fighter_equipment_2: "de Havilland Mosquito F/NF"
+  ENG_heavy_fighter_equipment_2_short: "Mosquito F/NF"
+
+  ENG_heavy_fighter_equipment_3: "de Havilland Hornet"
+  ENG_heavy_fighter_equipment_3_short: "Hornet"
+
+
+  #=========================================
+  # MEDIUM CAS / FIGHTER-BOMBERS
+  #=========================================
+
+  ENG_medium_CAS_equipment_2: "de Havilland Mosquito FB"
+  ENG_medium_CAS_equipment_2_short: "Mosquito FB"
+
+
+  #=========================================
+  # TACTICAL BOMBERS
+  #=========================================
+
+  ENG_tac_bomber_equipment_1: "Bristol Blenheim"
+  ENG_tac_bomber_equipment_1_short: "Blenheim"
+
+  ENG_tac_bomber_equipment_2: "de Havilland Mosquito B"
+  ENG_tac_bomber_equipment_2_short: "Mosquito B"
+
+
+  #=========================================
+  # NAVAL / MARITIME BOMBERS
+  #=========================================
+
+  ENG_nav_bomber_equipment_1: "Bristol Beaufort"
+  ENG_nav_bomber_equipment_1_short: "Beaufort"
+
+
+  #=========================================
+  # CARRIER TORPEDO / STRIKE AIRCRAFT
+  #=========================================
+
+  ENG_cv_nav_bomber_equipment_1: "Fairey Swordfish"
+  ENG_cv_nav_bomber_equipment_1_short: "Swordfish"
+
+  ENG_cv_nav_bomber_equipment_2: "Fairey Albacore"
+  ENG_cv_nav_bomber_equipment_2_short: "Albacore"
+
+  ENG_cv_nav_bomber_equipment_3: "Fairey Barracuda"
+  ENG_cv_nav_bomber_equipment_3_short: "Barracuda"
+
+
+  #=========================================
+  # STRATEGIC BOMBERS
+  #=========================================
+
+  ENG_strat_bomber_equipment_1: "Avro Manchester"
+  ENG_strat_bomber_equipment_1_short: "Manchester"
+
+  ENG_strat_bomber_equipment_2: "Avro Lancaster"
+  ENG_strat_bomber_equipment_2_short: "Lancaster"
+
+  ENG_strat_bomber_equipment_3: "Avro Lincoln"
+  ENG_strat_bomber_equipment_3_short: "Lincoln"
+  
+  
+    ### FRENCH AIRCRAFT ###
+
+  #=========================================
+  # LAND-BASED FIGHTERS
+  #=========================================
+
+  FRA_fighter_equipment_1: "Dewoitine D.500 | Morane-Saulnier M.S.405 | Bloch MB.150"
+  FRA_fighter_equipment_1_short: "D.500 | M.S.405 | MB.150"
+
+  FRA_fighter_equipment_2: "Dewoitine D.520"
+  FRA_fighter_equipment_2_short: "D.520"
+
+
+  #=========================================
+  # HEAVY FIGHTERS
+  #=========================================
+
+  FRA_heavy_fighter_equipment_1: "Potez 630/631"
+  FRA_heavy_fighter_equipment_1_short: "Potez 630/631"
+
+
+  #=========================================
+  # RECONNAISSANCE AIRCRAFT
+  #=========================================
+
+  FRA_scout_plane_equipment_1: "Potez 63.11"
+  FRA_scout_plane_equipment_1_short: "Potez 63.11"
+
+
+  #=========================================
+  # MEDIUM CAS / ATTACK AIRCRAFT
+  #=========================================
+
+  FRA_medium_CAS_equipment_1: "Breguet Br.691/Br.693"
+  FRA_medium_CAS_equipment_1_short: "Br.691/693"
+  
+  
+  
+  
+  
+  
   
   
   

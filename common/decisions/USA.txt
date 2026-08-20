@@ -575,7 +575,7 @@ USA_aid_soviet_union = {
 
 		fire_only_once = yes
 
-		cost = 5
+		cost = 0
 		days_remove = 30
 
 		ai_will_do = {
@@ -621,6 +621,7 @@ USA_aid_soviet_union = {
 				tooltip = USA_soviet_lend_lease_war_tt
 				AND = {
 					SOV = { has_war = yes }
+					SOV = { has_war_with = GER }
 					NOT = { SOV = { has_war_with = USA } }
 				}
 			}
@@ -637,7 +638,6 @@ USA_aid_soviet_union = {
 		visible = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.10.1
 		}
 
 		modifier = {
@@ -731,6 +731,7 @@ USA_aid_soviet_union = {
 				tooltip = USA_soviet_lend_lease_war_tt
 				AND = {
 					SOV = { has_war = yes }
+					SOV = { has_war_with = GER }
 					NOT = { SOV = { has_war_with = USA } }
 				}
 			}
@@ -747,7 +748,6 @@ USA_aid_soviet_union = {
 		visible = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.10.1
 		}
 
 		modifier = {
@@ -841,6 +841,7 @@ USA_aid_soviet_union = {
 				tooltip = USA_soviet_lend_lease_war_tt
 				AND = {
 					SOV = { has_war = yes }
+					SOV = { has_war_with = GER }
 					NOT = { SOV = { has_war_with = USA } }
 				}
 			}
@@ -854,7 +855,6 @@ USA_aid_soviet_union = {
 		visible = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.10.1
 		}
 
 		modifier = {
@@ -935,6 +935,7 @@ USA_aid_soviet_union = {
 				tooltip = USA_soviet_lend_lease_war_tt
 				AND = {
 					SOV = { has_war = yes }
+					SOV = { has_war_with = GER }
 					NOT = { SOV = { has_war_with = USA } }
 				}
 			}
@@ -951,7 +952,6 @@ USA_aid_soviet_union = {
 		visible = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.10.1
 		}
 
 		modifier = {
@@ -1045,6 +1045,7 @@ USA_aid_soviet_union = {
 				tooltip = USA_soviet_lend_lease_war_tt
 				AND = {
 					SOV = { has_war = yes }
+					SOV = { has_war_with = GER }
 					NOT = { SOV = { has_war_with = USA } }
 				}
 			}
@@ -1062,7 +1063,6 @@ USA_aid_soviet_union = {
 		visible = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.10.1
 		}
 
 		modifier = {
@@ -1156,6 +1156,7 @@ USA_aid_soviet_union = {
 				tooltip = USA_soviet_lend_lease_war_tt
 				AND = {
 					SOV = { has_war = yes }
+					SOV = { has_war_with = GER }
 					NOT = { SOV = { has_war_with = USA } }
 				}
 			}
@@ -1169,7 +1170,6 @@ USA_aid_soviet_union = {
 		visible = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.10.1
 		}
 
 		modifier = {

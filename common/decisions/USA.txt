@@ -564,7 +564,7 @@ USA_aid_soviet_union = {
 		available = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.3.10
+			date > 1941.10.1
 			SOV = { has_war = yes }
 			NOT = { SOV = { has_war_with = USA } }
 			has_equipment = { convoy > 14 }
@@ -573,7 +573,7 @@ USA_aid_soviet_union = {
 		visible = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.3.10
+			date > 1941.10.1
 		}
         
         modifier = {
@@ -622,7 +622,7 @@ USA_aid_soviet_union = {
 		available = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.3.10
+			date > 1941.10.1
 			NOT = { has_country_flag = USA_steel_lend_lease_cycle_active }
 			custom_trigger_tooltip = {
 				tooltip = USA_soviet_lend_lease_war_tt
@@ -644,7 +644,7 @@ USA_aid_soviet_union = {
 		visible = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.3.10
+			date > 1941.10.1
 		}
 
 		modifier = {
@@ -732,7 +732,7 @@ USA_aid_soviet_union = {
 		available = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.3.10
+			date > 1941.10.1
 			NOT = { has_country_flag = USA_aluminium_lend_lease_cycle_active }
 			custom_trigger_tooltip = {
 				tooltip = USA_soviet_lend_lease_war_tt
@@ -754,7 +754,7 @@ USA_aid_soviet_union = {
 		visible = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.3.10
+			date > 1941.10.1
 		}
 
 		modifier = {
@@ -842,7 +842,7 @@ USA_aid_soviet_union = {
 		available = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.3.10
+			date > 1941.10.1
 			NOT = { has_country_flag = USA_petroleum_lend_lease_cycle_active }
 			custom_trigger_tooltip = {
 				tooltip = USA_soviet_lend_lease_war_tt
@@ -861,7 +861,7 @@ USA_aid_soviet_union = {
 		visible = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.3.10
+			date > 1941.10.1
 		}
 
 		modifier = {
@@ -936,7 +936,7 @@ USA_aid_soviet_union = {
 		available = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.3.10
+			date > 1941.10.1
 			NOT = { has_country_flag = USA_rubber_lend_lease_cycle_active }
 			custom_trigger_tooltip = {
 				tooltip = USA_soviet_lend_lease_war_tt
@@ -958,7 +958,7 @@ USA_aid_soviet_union = {
 		visible = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.3.10
+			date > 1941.10.1
 		}
 
 		modifier = {
@@ -1046,7 +1046,7 @@ USA_aid_soviet_union = {
 		available = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.3.10
+			date > 1941.10.1
 			NOT = { has_country_flag = USA_railway_lend_lease_cycle_active }
 			custom_trigger_tooltip = {
 				tooltip = USA_soviet_lend_lease_war_tt
@@ -1069,7 +1069,7 @@ USA_aid_soviet_union = {
 		visible = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.3.10
+			date > 1941.10.1
 		}
 
 		modifier = {
@@ -1157,7 +1157,7 @@ USA_aid_soviet_union = {
 		available = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.3.10
+			date > 1941.10.1
 			NOT = { has_country_flag = USA_truck_lend_lease_cycle_active }
 			custom_trigger_tooltip = {
 				tooltip = USA_soviet_lend_lease_war_tt
@@ -1176,7 +1176,7 @@ USA_aid_soviet_union = {
 		visible = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.3.10
+			date > 1941.10.1
 		}
 
 		modifier = {
@@ -1346,7 +1346,7 @@ USA_aid_soviet_union = {
 		available = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.3.10
+			date > 1941.10.1
 			SOV = { has_war = yes }
 			NOT = { SOV = { has_war_with = USA } }
 			NOT = { has_global_flag = iranian_corridor_is_builded }
@@ -1361,7 +1361,7 @@ USA_aid_soviet_union = {
 		visible = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
-			date > 1941.3.10
+			date > 1941.10.1
 		}
 
 		modifier = {

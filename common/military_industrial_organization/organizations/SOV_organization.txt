@@ -3189,7 +3189,7 @@ SOV_polikarpov_organization = {
 	}
 
 	research_categories = {
-		light_fighter
+		mio_cat_all_light_fighter_and_modules
 	}
 
 	tree_header_text = {
@@ -3537,8 +3537,7 @@ SOV_mikoyan_gurevich_organization = {
 	}
 
 	research_categories = {
-		light_fighter
-		jet_technology
+		mio_cat_all_light_fighter_and_modules
 	}
 
 	tree_header_text = {
@@ -3873,7 +3872,7 @@ SOV_sukhoi_organization = {
 	}
 
 	research_categories = {
-		tactical_bomber
+		mio_cat_all_cas_and_modules
 	}
 
 	tree_header_text = {
@@ -4120,7 +4119,7 @@ SOV_ilyushin_organization = {
 	}
 
 	research_categories = {
-		cas_bomber
+		mio_cat_all_cas_and_modules
 	}
 
 	tree_header_text = {
@@ -4501,7 +4500,7 @@ SOV_lavochkin_organization = {
 	}
 
 	research_categories = {
-		light_fighter
+		mio_cat_all_light_fighter_and_modules
 	}
 
 	tree_header_text = {
@@ -4977,7 +4976,7 @@ SOV_yakovlev_organization = {
 	}
 
 	research_categories = {
-		light_fighter
+		mio_cat_all_light_fighter_and_modules
 	}
 
 	tree_header_text = {
@@ -5460,7 +5459,7 @@ SOV_tupolev_organization = {
 	}
 
 	research_categories = {
-		tactical_bomber
+		mio_cat_all_medium_aircraft_and_modules
 	}
 
 	tree_header_text = {
@@ -5813,9 +5812,8 @@ SOV_petlyakov_organization = {
 	}
 
 	research_categories = {
-		cas_bomber
-		heavy_fighter
-		strategic_bomber
+		mio_cat_all_medium_aircraft_and_modules
+		mio_cat_all_heavy_aircraft_and_modules
 	}
 
 	tree_header_text = {
@@ -6150,7 +6148,7 @@ SOV_beriev_organization = {
 	}
 
 	research_categories = {
-		naval_bomber
+		mio_cat_all_medium_aircraft_and_modules
 	}
 
 	tree_header_text = {

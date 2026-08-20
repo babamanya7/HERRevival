@@ -671,6 +671,7 @@ USA_aid_soviet_union = {
 		cancel_trigger = {
 			hidden_trigger = {
 				OR = {
+					NOT = { has_country_flag = USA_steel_lend_lease_cycle_active }
 					NOT = { SOV = { has_war = yes } }
 					SOV = { has_war_with = USA }
 					AND = {
@@ -710,7 +711,10 @@ USA_aid_soviet_union = {
 						max = steel_cap
 					}
 				}
-				activate_mission = USA_monthly_steel_lend_lease_SOV
+				if = {
+					limit = { has_country_flag = USA_steel_lend_lease_cycle_active }
+					activate_mission = USA_monthly_steel_lend_lease_SOV
+				}
 			}
 		}
 	}
@@ -781,6 +785,7 @@ USA_aid_soviet_union = {
 		cancel_trigger = {
 			hidden_trigger = {
 				OR = {
+					NOT = { has_country_flag = USA_aluminium_lend_lease_cycle_active }
 					NOT = { SOV = { has_war = yes } }
 					SOV = { has_war_with = USA }
 					AND = {
@@ -820,7 +825,10 @@ USA_aid_soviet_union = {
 						max = aluminium_cap
 					}
 				}
-				activate_mission = USA_monthly_aluminium_lend_lease_SOV
+				if = {
+					limit = { has_country_flag = USA_aluminium_lend_lease_cycle_active }
+					activate_mission = USA_monthly_aluminium_lend_lease_SOV
+				}
 			}
 		}
 	}
@@ -888,6 +896,7 @@ USA_aid_soviet_union = {
 		cancel_trigger = {
 			hidden_trigger = {
 				OR = {
+					NOT = { has_country_flag = USA_petroleum_lend_lease_cycle_active }
 					NOT = { SOV = { has_war = yes } }
 					SOV = { has_war_with = USA }
 					NOT = { has_fuel > 179999 }
@@ -914,7 +923,10 @@ USA_aid_soviet_union = {
 			hidden_effect = {
 				add_fuel = -180000
 				SOV = { add_fuel = 180000 }
-				activate_mission = USA_monthly_petroleum_lend_lease_SOV
+				if = {
+					limit = { has_country_flag = USA_petroleum_lend_lease_cycle_active }
+					activate_mission = USA_monthly_petroleum_lend_lease_SOV
+				}
 			}
 		}
 	}
@@ -985,6 +997,7 @@ USA_aid_soviet_union = {
 		cancel_trigger = {
 			hidden_trigger = {
 				OR = {
+					NOT = { has_country_flag = USA_rubber_lend_lease_cycle_active }
 					NOT = { SOV = { has_war = yes } }
 					SOV = { has_war_with = USA }
 					AND = {
@@ -1024,7 +1037,10 @@ USA_aid_soviet_union = {
 						max = rubber_cap
 					}
 				}
-				activate_mission = USA_monthly_rubber_lend_lease_SOV
+				if = {
+					limit = { has_country_flag = USA_rubber_lend_lease_cycle_active }
+					activate_mission = USA_monthly_rubber_lend_lease_SOV
+				}
 			}
 		}
 	}
@@ -1096,6 +1112,7 @@ USA_aid_soviet_union = {
 		cancel_trigger = {
 			hidden_trigger = {
 				OR = {
+					NOT = { has_country_flag = USA_railway_lend_lease_cycle_active }
 					NOT = { SOV = { has_war = yes } }
 					SOV = { has_war_with = USA }
 					AND = {
@@ -1135,7 +1152,10 @@ USA_aid_soviet_union = {
 					}
 				}
 				send_equipment = { equipment = train_equipment amount = 20 target = SOV }
-				activate_mission = USA_monthly_railway_lend_lease_SOV
+				if = {
+					limit = { has_country_flag = USA_railway_lend_lease_cycle_active }
+					activate_mission = USA_monthly_railway_lend_lease_SOV
+				}
 			}
 		}
 	}
@@ -1203,6 +1223,7 @@ USA_aid_soviet_union = {
 		cancel_trigger = {
 			hidden_trigger = {
 				OR = {
+					NOT = { has_country_flag = USA_truck_lend_lease_cycle_active }
 					NOT = { SOV = { has_war = yes } }
 					SOV = { has_war_with = USA }
 					has_equipment = { motorized_equipment < 200 }
@@ -1228,7 +1249,10 @@ USA_aid_soviet_union = {
 			custom_effect_tooltip = USA_monthly_truck_lend_lease_SOV_tt
 			hidden_effect = {
 				send_equipment = { equipment = motorized_equipment amount = 200 target = SOV }
-				activate_mission = USA_monthly_truck_lend_lease_SOV
+				if = {
+					limit = { has_country_flag = USA_truck_lend_lease_cycle_active }
+					activate_mission = USA_monthly_truck_lend_lease_SOV
+				}
 			}
 		}
 	}

@@ -1295,12 +1295,10 @@ ENG_supermarine_organization = {
 
 	allowed = {
 		tag = ENG
-		has_dlc = "Arms Against Tyranny"
 	}
 
 	equipment_type = {
-		small_plane_airframe_2
-		cv_small_plane_airframe_2
+		mio_cat_supermarine_designer
 	}
 
 	research_categories = {
@@ -1327,8 +1325,7 @@ ENG_supermarine_organization = {
 		}
 
 		equipment_bonus = {
-			maximum_speed = 0.03
-			air_agility = 0.04
+			maximum_speed = 0.02
 			weight = -0.02
 			build_cost_ic = 0.02
 		}
@@ -1413,9 +1410,9 @@ ENG_supermarine_organization = {
 		}
 
 		equipment_bonus = {
-			maximum_speed = 0.03
+			maximum_speed = 0.02
 			air_agility = 0.03
-			air_attack = 0.03
+			air_attack = 0.02
 			reliability = 0.02
 		}
 	}
@@ -1468,7 +1465,7 @@ ENG_supermarine_organization = {
 
 		equipment_bonus = {
 			thrust = 0.06
-			maximum_speed = 0.04
+			maximum_speed = 0.03
 			air_defence = 0.02
 			fuel_consumption = 0.02
 		}
@@ -1495,7 +1492,7 @@ ENG_supermarine_organization = {
 		}
 
 		equipment_bonus = {
-			maximum_speed = 0.03
+			maximum_speed = 0.02
 			air_agility = 0.03
 			air_defence = 0.03
 			reliability = 0.03
@@ -1523,7 +1520,7 @@ ENG_supermarine_organization = {
 		}
 
 		equipment_bonus = {
-			maximum_speed = 0.02
+			maximum_speed = 0.01
 			air_agility = 0.02
 			air_attack = 0.04
 			air_defence = 0.02
@@ -1604,13 +1601,10 @@ ENG_hawker_organization = {
 
 	allowed = {
 		tag = ENG
-		has_dlc = "Arms Against Tyranny"
 	}
 
 	equipment_type = {
-		small_plane_airframe_1
-		small_plane_airframe_2
-		small_plane_airframe_3
+		mio_cat_hawker_designer
 	}
 
 	research_categories = {
@@ -1675,7 +1669,7 @@ ENG_hawker_organization = {
 			maximum_speed = 0.02
 			air_agility = 0.02
 			air_attack = 0.03
-			air_defence = 0.02
+			air_defence = 0.03
 		}
 	}
 
@@ -1721,7 +1715,7 @@ ENG_hawker_organization = {
 
 		equipment_bonus = {
 			thrust = 0.04
-			maximum_speed = 0.03
+			maximum_speed = 0.04
 			reliability = 0.02
 		}
 	}
@@ -1744,7 +1738,7 @@ ENG_hawker_organization = {
 		}
 
 		equipment_bonus = {
-			air_attack = 0.06
+			air_attack = 0.07
 			weight = 0.02
 		}
 	}
@@ -2002,8 +1996,8 @@ ENG_hawker_organization = {
 		}
 
 		equipment_bonus = {
-			thrust = 0.08
-			maximum_speed = 0.04
+			thrust = 0.04
+			maximum_speed = 0.03
 			reliability = 0.03
 			fuel_consumption = 0.02
 		}
@@ -2029,7 +2023,7 @@ ENG_hawker_organization = {
 		equipment_bonus = {
 			air_attack = 0.10
 			air_ground_attack = 0.05
-			weight = 0.02
+			weight = 0.03
 		}
 	}
 
@@ -2052,9 +2046,8 @@ ENG_hawker_organization = {
 		}
 
 		equipment_bonus = {
-			maximum_speed = 0.04
-			thrust = 0.03
-			air_agility = 0.03
+			maximum_speed = 0.02
+			air_agility = 0.02
 			air_attack = 0.05
 			air_ground_attack = 0.05
 			air_defence = 0.04
@@ -2071,8 +2064,7 @@ ENG_gloster_organization = {
 	}
 
 	equipment_type = {
-		small_plane_airframe_0
-		small_plane_airframe_4
+		mio_cat_gloster_designer
 	}
 
 	research_categories = {
@@ -2322,10 +2314,7 @@ ENG_de_havilland_organization = {
 	}
 
 	equipment_type = {
-		medium_plane_airframe_2
-		medium_plane_fighter_airframe_2
-		medium_plane_cas_airframe_2
-		medium_plane_fighter_airframe_3
+		mio_cat_de_havilland_designer
 	}
 
 	research_categories = {
@@ -2767,9 +2756,7 @@ ENG_bristol_organization = {
 	}
 
 	equipment_type = {
-		medium_plane_airframe_1
-		medium_plane_naval_bomber_airframe_1
-		medium_plane_fighter_airframe_1
+		mio_cat_bristol_designer
 	}
 
 	research_categories = {
@@ -3117,12 +3104,7 @@ ENG_fairey_aviation_organization = {
 	}
 
 	equipment_type = {
-		cv_small_plane_naval_bomber_airframe_1
-		cv_small_plane_naval_bomber_airframe_2
-		cv_small_plane_naval_bomber_airframe_3
-
-		cv_small_plane_airframe_1
-		cv_small_plane_airframe_2
+		mio_cat_fairey_aviation_designer
 	}
 
 	research_categories = {
@@ -3731,9 +3713,7 @@ ENG_avro_organization = {
 	}
 
 	equipment_type = {
-		large_plane_airframe_1
-		large_plane_airframe_2
-		large_plane_airframe_3
+		mio_cat_avro_designer
 	}
 
 	research_categories = {

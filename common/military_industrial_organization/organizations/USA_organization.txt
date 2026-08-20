@@ -124,7 +124,7 @@ USA_army_ordnance_department_organization = {
 	allowed = {
 		tag = USA
 	}
-	equipment_type = { mio_cat_aod_designer modern_tank_chassis }
+	equipment_type = { mio_cat_aod_designer }
 	research_categories = { armor }
 
 	tree_header_text = {
@@ -949,8 +949,7 @@ USA_curtiss_organization = {
 	}
 
 	equipment_type = {
-		small_plane_airframe_1
-		small_plane_airframe_2
+		mio_cat_curtiss_designer
 	}
 
 	research_categories = {
@@ -1020,8 +1019,8 @@ USA_curtiss_organization = {
 
 		equipment_bonus = {
 			air_agility = 0.03
-			maximum_speed = 0.02
-			weight = -0.02
+			maximum_speed = 0.03
+			weight = -0.03
 		}
 	}
 
@@ -1048,7 +1047,7 @@ USA_curtiss_organization = {
 		}
 
 		equipment_bonus = {
-			air_attack = 0.05
+			air_attack = 0.07
 			air_defence = 0.05
 			reliability = 0.03
 			weight = 0.02
@@ -1291,9 +1290,7 @@ USA_republic_organization = {
 	}
 
 	equipment_type = {
-		small_plane_airframe_1
-		small_plane_airframe_2
-		small_plane_airframe_3
+		mio_cat_republic_designer
 	}
 
 	research_categories = {
@@ -1480,7 +1477,6 @@ USA_republic_organization = {
 		}
 
 		equipment_bonus = {
-			maximum_speed = 0.03
 			thrust = 0.03
 			air_defence = 0.03
 		}
@@ -1762,9 +1758,7 @@ USA_north_american_aviation_organization = {
 	}
 
 	equipment_type = {
-		small_plane_airframe_3
-		medium_plane_airframe_2
-		medium_plane_airframe_3
+		mio_cat_north_american_aviation_designer
 	}
 
 	research_categories = {
@@ -1864,9 +1858,9 @@ USA_north_american_aviation_organization = {
 		}
 
 		equipment_bonus = {
-			thrust = 0.07
-			maximum_speed = 0.05
-			air_range = 0.03
+			thrust = 0.09
+			maximum_speed = 0.06
+			air_range = 0.05
 			reliability = 0.02
 			fuel_consumption = -0.05
 		}
@@ -1895,8 +1889,8 @@ USA_north_american_aviation_organization = {
 		}
 
 		equipment_bonus = {
-			air_attack = 0.08
-			air_defence = 0.06
+			air_attack = 0.1
+			air_defence = 0.08
 			maximum_speed = 0.02
 			air_range = 0.05
 			weight = 0.02
@@ -2079,10 +2073,7 @@ USA_lockheed_organization = {
 	}
 
 	equipment_type = {
-		medium_plane_fighter_airframe_2
-		medium_plane_fighter_airframe_3
-		medium_plane_maritime_patrol_plane_airframe_2
-		medium_plane_maritime_patrol_plane_airframe_3
+		mio_cat_lockheed_designer
 	}
 
 	research_categories = {
@@ -2407,10 +2398,7 @@ USA_douglas_aircraft_company_organization = {
 	}
 
 	equipment_type = {
-		cv_small_plane_cas_airframe_2
-		cv_small_plane_cas_airframe_3
-		medium_plane_cas_airframe_2
-		medium_plane_cas_airframe_3
+		mio_cat_douglas_aircraft_company_designer
 	}
 
 	research_categories = {
@@ -2781,8 +2769,7 @@ USA_boeing_organization = {
 	}
 
 	equipment_type = {
-		large_plane_airframe_1
-		large_plane_airframe_3
+		mio_cat_boeing_designer
 	}
 
 	research_categories = {
@@ -3089,11 +3076,7 @@ USA_consolidated_organization = {
 	}
 
 	equipment_type = {
-		large_plane_airframe_2
-
-		large_plane_maritime_patrol_plane_airframe_1
-		large_plane_maritime_patrol_plane_airframe_2
-		large_plane_maritime_patrol_plane_airframe_3
+		mio_cat_consolidated_designer
 	}
 
 	research_categories = {
@@ -3468,11 +3451,7 @@ USA_martin_organization = {
 	}
 
 	equipment_type = {
-		medium_plane_airframe_2
-		medium_plane_airframe_3
-
-		large_plane_maritime_patrol_plane_airframe_2
-		large_plane_maritime_patrol_plane_airframe_3
+		mio_cat_martin_designer
 	}
 
 	research_categories = {
@@ -3805,11 +3784,7 @@ USA_grumman_organization = {
 	}
 
 	equipment_type = {
-		cv_small_plane_airframe_1
-		cv_small_plane_airframe_2
-		cv_small_plane_airframe_3
-		cv_small_plane_naval_bomber_airframe_2
-		cv_small_plane_naval_bomber_airframe_3
+		mio_cat_grumman_designer
 	}
 
 	research_categories = {

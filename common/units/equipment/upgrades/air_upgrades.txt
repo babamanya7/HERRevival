@@ -119,11 +119,10 @@ upgrades = {
 		}
 		
 		multiply_stats = {
-			maximum_speed = 0.01
+			maximum_speed = 0.005
 			#air_agility = 0.02
 			fuel_consumption = 0.02
 			thrust = 0.01
-			air_range = 0.01
 		}
 	}
 	
@@ -239,6 +238,7 @@ upgrades = {
 		}
 		multiply_stats = {
 			maximum_speed = -0.004
+			air_range = 0.015
 		}
 	}
 	
@@ -354,6 +354,7 @@ upgrades = {
 		}
 		multiply_stats = {
 			maximum_speed = -0.008
+			air_range = 0.015
 		}
 	}
 	
@@ -469,6 +470,7 @@ upgrades = {
 		}
 		multiply_stats = {
 			maximum_speed = -0.016
+			air_range = 0.015
 		}
 	}
 	

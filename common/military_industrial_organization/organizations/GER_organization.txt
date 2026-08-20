@@ -21,7 +21,7 @@ GER_porsche_organization = {
 	}
 
 	equipment_type = {
-		heavy_tank_destroyer_chassis_2
+		mio_cat_porsche_designer
 	}
 
 	research_categories = {
@@ -390,8 +390,7 @@ GER_henschel_organization = {
 	}
 
 	equipment_type = {
-		heavy_tank_chassis_2
-		heavy_tank_chassis_3
+		mio_cat_henschel_designer
 	}
 
 	research_categories = {
@@ -869,8 +868,7 @@ GER_krupp_organization = {
 	}
 
 	equipment_type = {
-		medium_tank_chassis_2
-		medium_tank_destroyer_chassis_2
+		mio_cat_krupp_designer
 	}
 
 	research_categories = {
@@ -1297,10 +1295,7 @@ GER_man_organization = {
 	}
 
 	equipment_type = {
-		light_tank_chassis_2
-		light_tank_chassis_3
-		medium_tank_chassis_3
-		medium_tank_destroyer_chassis_3
+		mio_cat_man_designer
 	}
 
 	research_categories = {
@@ -1871,8 +1866,7 @@ GER_daimler_benz_organization = {
 	}
 
 	equipment_type = {
-		medium_tank_chassis_1
-		medium_tank_destroyer_chassis_1
+		mio_cat_daimler_benz_designer
 	}
 
 	research_categories = {
@@ -3084,14 +3078,7 @@ GER_messerschmitt_organization = {
 	}
 
 	equipment_type = {
-		small_plane_airframe_1
-		small_plane_airframe_2
-		small_plane_airframe_3
-		small_plane_airframe_4
-
-		medium_plane_fighter_airframe_1
-		medium_plane_fighter_airframe_2
-		medium_plane_fighter_airframe_3
+		mio_cat_messerschmitt_designer
 	}
 
 	research_categories = {
@@ -3194,8 +3181,8 @@ GER_messerschmitt_organization = {
 		}
 
 		equipment_bonus = {
-			thrust = 0.04
-			maximum_speed = 0.02
+			thrust = 0.05
+			maximum_speed = 0.03
 			reliability = 0.02
 		}
 	}
@@ -3217,7 +3204,7 @@ GER_messerschmitt_organization = {
 		}
 
 		equipment_bonus = {
-			air_attack = 0.07
+			air_attack = 0.08
 			weight = 0.02
 		}
 	}
@@ -3240,7 +3227,7 @@ GER_messerschmitt_organization = {
 
 		equipment_bonus = {
 			reliability = 0.04
-			air_defence = 0.03
+			air_defence = 0.04
 		}
 
 		production_bonus = {
@@ -3527,7 +3514,7 @@ GER_messerschmitt_organization = {
 
 		equipment_bonus = {
 			maximum_speed = 0.02
-			thrust = 0.01
+			thrust = 0.02
 			reliability = 0.02
 			build_cost_ic = 0.01
 		}
@@ -3574,7 +3561,7 @@ GER_messerschmitt_organization = {
 
 		equipment_bonus = {
 			maximum_speed = 0.01
-			air_agility = 0.03
+			air_agility = 0.04
 			weight = -0.02
 		}
 	}
@@ -4121,14 +4108,7 @@ GER_junkers_organization = {
 	}
 
 	equipment_type = {
-		small_plane_cas_airframe_1
-		small_plane_cas_airframe_2
-
-		medium_plane_airframe_2
-		medium_plane_airframe_3
-
-		medium_plane_fighter_airframe_2
-		medium_plane_fighter_airframe_3
+		mio_cat_junkers_designer
 	}
 
 	research_categories = {
@@ -4988,10 +4968,7 @@ GER_focke_wulf_organization = {
 	}
 
 	equipment_type = {
-		small_plane_airframe_2
-		small_plane_interceptor_airframe_2
-		small_plane_interceptor_airframe_3
-		medium_plane_scout_plane_airframe_2
+		mio_cat_focke_wulf_designer
 	}
 
 	research_categories = {
@@ -5092,6 +5069,7 @@ GER_focke_wulf_organization = {
 
 		equipment_bonus = {
 			thrust = 0.07
+			air_agility = 0.04
 			maximum_speed = 0.07
 			reliability = 0.03
 		}
@@ -5354,7 +5332,7 @@ GER_focke_wulf_organization = {
 		}
 
 		equipment_bonus = {
-			maximum_speed = 0.03
+			maximum_speed = 0.04
 			thrust = 0.04
 			air_defence = 0.03
 			air_range = 0.05
@@ -5427,7 +5405,7 @@ GER_focke_wulf_organization = {
 
 		equipment_bonus = {
 			maximum_speed = 0.04
-			thrust = 0.02
+			thrust = 0.04
 			air_attack = 0.04
 			air_defence = 0.02
 		}
@@ -5452,8 +5430,8 @@ GER_focke_wulf_organization = {
 
 		equipment_bonus = {
 			maximum_speed = 0.03
-			air_attack = 0.06
-			air_agility = 0.03
+			air_attack = 0.08
+			air_agility = 0.04
 			air_defence = 0.02
 			reliability = 0.03
 		}
@@ -5598,8 +5576,7 @@ GER_heinkel_organization = {
 	}
 
 	equipment_type = {
-		medium_plane_airframe_1
-		large_plane_airframe_2
+		mio_cat_heinkel_designer
 	}
 
 	research_categories = {
@@ -6196,8 +6173,7 @@ GER_arado_flugzeugwerke_organization = {
 	}
 
 	equipment_type = {
-		small_plane_maritime_patrol_plane_airframe_1
-		medium_plane_airframe_4
+		mio_cat_arado_flugzeugwerke_designer
 	}
 
 	research_categories = {

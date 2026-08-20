@@ -4,13 +4,321 @@
 #############################################################################################################
 #############################################################################################################
 
+##############################################################################################
+mio_cat_somua_designer = {
+	equipment_type = { medium_tank_chassis_1 medium_tank_chassis_2 }
+}
+mio_cat_renault_designer = {
+	equipment_type = { light_tank_chassis_2 heavy_tank_chassis_1 heavy_tank_chassis_3 }
+}
+mio_cat_hotchkiss_designer = {
+	equipment_type = {
+		light_tank_chassis_1
+	}
+}
+mio_cat_dewoitine_designer = {
+	equipment_type = {
+		small_plane_airframe_1
+		small_plane_airframe_2
+	}
+}
+mio_cat_morane_saulnier_designer = {
+	equipment_type = {
+		small_plane_airframe_1
+	}
+}
+mio_cat_bloch_designer = {
+	equipment_type = {
+		small_plane_airframe_1
+	}
+}
+mio_cat_potez_designer = {
+	equipment_type = {
+		medium_plane_fighter_airframe_1
+		medium_plane_scout_plane_airframe_1
+	}
+}
+mio_cat_breguet_designer = {
+	equipment_type = {
+		medium_plane_cas_airframe_1
+	}
+}
+################################################################
+mio_cat_supermarine_designer = {
+	equipment_type = {
+		small_plane_airframe_2
+		cv_small_plane_airframe_2
+	}
+}
+mio_cat_hawker_designer = {
+	equipment_type = {
+		small_plane_airframe_1
+		small_plane_airframe_2
+		small_plane_airframe_3
+	}
+}
+mio_cat_gloster_designer = {
+	equipment_type = {
+		small_plane_airframe_0
+		small_plane_airframe_4
+	}
+}
+mio_cat_de_havilland_designer = {
+	equipment_type = {
+		medium_plane_airframe_2
+		medium_plane_fighter_airframe_2
+		medium_plane_cas_airframe_2
+		medium_plane_fighter_airframe_3
+	}
+}
+mio_cat_bristol_designer = {
+	equipment_type = {
+		medium_plane_airframe_1
+		medium_plane_naval_bomber_airframe_1
+		medium_plane_fighter_airframe_1
+	}
+}
+mio_cat_fairey_aviation_designer = {
+	equipment_type = {
+		cv_small_plane_naval_bomber_airframe_1
+		cv_small_plane_naval_bomber_airframe_2
+		cv_small_plane_naval_bomber_airframe_3
 
+		cv_small_plane_airframe_1
+		cv_small_plane_airframe_2
+	}
+}
+mio_cat_avro_designer = {
+	equipment_type = {
+		large_plane_airframe_1
+		large_plane_airframe_2
+		large_plane_airframe_3
+	}
+}
+########################################################
+mio_cat_curtiss_designer = {
+	equipment_type = {
+		small_plane_airframe_1
+		small_plane_airframe_2
+	}
+}
+mio_cat_republic_designer = {
+	equipment_type = {
+		small_plane_airframe_1
+		small_plane_airframe_2
+		small_plane_airframe_3
+	}
+}
+mio_cat_north_american_aviation_designer = {
+	equipment_type = {
+		small_plane_airframe_3
+		medium_plane_airframe_2
+		medium_plane_airframe_3
+	}
+}
+mio_cat_lockheed_designer = {
+	equipment_type = {
+		medium_plane_fighter_airframe_2
+		medium_plane_fighter_airframe_3
+		medium_plane_maritime_patrol_plane_airframe_2
+		medium_plane_maritime_patrol_plane_airframe_3
+	}
+}
+mio_cat_douglas_aircraft_company_designer = {
+	equipment_type = {
+		cv_small_plane_cas_airframe_2
+		cv_small_plane_cas_airframe_3
+		medium_plane_cas_airframe_2
+		medium_plane_cas_airframe_3
+	}
+}
+mio_cat_boeing_designer = {
+	equipment_type = {
+		large_plane_airframe_1
+		large_plane_airframe_3
+	}
+}
+mio_cat_consolidated_designer = {
+	equipment_type = {
+		large_plane_airframe_2
 
+		large_plane_maritime_patrol_plane_airframe_1
+		large_plane_maritime_patrol_plane_airframe_2
+		large_plane_maritime_patrol_plane_airframe_3
+	}
+}
+mio_cat_martin_designer = {
+	equipment_type = {
+		medium_plane_airframe_2
+		medium_plane_airframe_3
 
+		large_plane_maritime_patrol_plane_airframe_2
+		large_plane_maritime_patrol_plane_airframe_3
+	}
+}
+mio_cat_grumman_designer = {
+	equipment_type = {
+		cv_small_plane_airframe_1
+		cv_small_plane_airframe_2
+		cv_small_plane_airframe_3
+		cv_small_plane_naval_bomber_airframe_2
+		cv_small_plane_naval_bomber_airframe_3
+	}
+}
+#########################################################
+mio_cat_krupp_designer = {
+	equipment_type = {
+		medium_tank_chassis_2
+		medium_tank_destroyer_chassis_2
+	}
+}
+mio_cat_man_designer = {
+	equipment_type = {
+		light_tank_chassis_2
+		light_tank_chassis_3
+		medium_tank_chassis_3
+		medium_tank_destroyer_chassis_3
+	}
+}
+mio_cat_daimler_benz_designer = {
+	equipment_type = {
+		medium_tank_chassis_1
+		medium_tank_destroyer_chassis_1
+	}
+}
+mio_cat_messerschmitt_designer = {
+	equipment_type = {
+		small_plane_airframe_1
+		small_plane_airframe_2
+		small_plane_airframe_3
+		small_plane_airframe_4
 
+		medium_plane_fighter_airframe_1
+		medium_plane_fighter_airframe_2
+		medium_plane_fighter_airframe_3
+	}
+}
+mio_cat_junkers_designer = {
+	equipment_type = {
+		small_plane_cas_airframe_1
+		small_plane_cas_airframe_2
 
+		medium_plane_airframe_2
+		medium_plane_airframe_3
 
-
+		medium_plane_fighter_airframe_2
+		medium_plane_fighter_airframe_3
+		
+		transport_plane_equipment
+	}
+}
+mio_cat_focke_wulf_designer = {
+	equipment_type = {
+		small_plane_airframe_2
+		small_plane_interceptor_airframe_2
+		small_plane_interceptor_airframe_3
+		medium_plane_scout_plane_airframe_2
+	}
+}
+mio_cat_heinkel_designer = {
+	equipment_type = {
+		medium_plane_airframe_1
+		large_plane_airframe_2
+	}
+}
+mio_cat_arado_flugzeugwerke_designer = {
+	equipment_type = {
+		small_plane_maritime_patrol_plane_airframe_1
+		medium_plane_airframe_4
+	}
+}
+##########################################################
+mio_cat_morozov_designer = {
+	equipment_type = {
+		medium_tank_chassis_2
+		medium_tank_chassis_3
+		medium_tank_destroyer_chassis_2
+		medium_tank_destroyer_chassis_3
+		medium_tank_artillery_chassis_2
+		modern_tank_chassis
+	}
+}
+mio_cat_astrov_designer = {
+	equipment_type = {
+		light_tank_chassis_2
+		light_tank_chassis_3
+		light_tank_destroyer_chassis_2
+		light_tank_destroyer_chassis_3
+	}
+}
+mio_cat_kirov_designer = {
+	equipment_type = {
+		heavy_tank_chassis_2
+		heavy_tank_chassis_3
+		heavy_tank_artillery_chassis_2
+		heavy_tank_artillery_chassis_3
+		heavy_tank_destroyer_chassis_3
+	}
+}
+mio_cat_polikarpov_designer = {
+	equipment_type = {
+		small_plane_airframe_0
+		small_plane_airframe_1
+		small_plane_airframe_2
+	}
+}
+mio_cat_mikoyan_gurevich_designer = {
+	equipment_type = {
+		small_plane_interceptor_airframe_1
+		small_plane_interceptor_airframe_2
+		small_plane_airframe_4
+	}
+}
+mio_cat_sukhoi_designer = {
+	equipment_type = {
+		small_plane_tactical_bomber_airframe_1
+		small_plane_tactical_bomber_airframe_2
+	}
+}
+mio_cat_ilyushin_designer = {
+	equipment_type = {
+		small_plane_cas_airframe_2
+		small_plane_cas_airframe_3
+	}
+}
+mio_cat_lavochkin_designer = {
+	equipment_type = {
+		small_plane_airframe_2
+		small_plane_airframe_3
+	}
+}
+mio_cat_yakovlev_designer = {
+	equipment_type = {
+		small_plane_airframe_2
+		small_plane_airframe_3
+		small_plane_interceptor_airframe_3
+	}
+}
+mio_cat_tupolev_designer = {
+	equipment_type = {
+		medium_plane_airframe_1
+		medium_plane_airframe_2
+		medium_plane_airframe_3
+	}
+}
+mio_cat_petlyakov_designer = {
+	equipment_type = {
+		medium_plane_cas_airframe_2
+		medium_plane_fighter_airframe_2
+		strat_bomber_equipment_2
+	}
+}
+mio_cat_beriev_designer = {
+	equipment_type = {
+		small_plane_maritime_patrol_plane_airframe_1
+		medium_plane_maritime_patrol_plane_airframe_2
+	}
+}
 
 mio_cat_aichi_designer = {
 	equipment_type = {
@@ -74,15 +382,13 @@ mio_cat_hitachi_designer = {
 	equipment_type = {
 		medium_tank_destroyer_chassis_1
 		medium_tank_destroyer_chassis_2
+		medium_tank_artillery_chassis_1
 	}
 }
 
 mio_cat_isuzu_designer = {
 	equipment_type = {
-		light_tank_chassis_2
 		light_tank_chassis_3
-		light_tank_destroyer_chassis
-		light_tank_aa_chassis
 	}
 }
 
@@ -90,8 +396,6 @@ mio_cat_aod_designer = {
 	equipment_type = {
 		light_tank_chassis_2
 		light_tank_chassis_3
-		light_tank_destroyer_chassis_2
-		light_tank_destroyer_chassis_3
 		medium_tank_chassis_1
 		medium_tank_chassis_2
 		medium_tank_chassis_3
@@ -100,15 +404,13 @@ mio_cat_aod_designer = {
 		medium_tank_destroyer_chassis_3
 		heavy_tank_chassis_2
 		heavy_tank_chassis_3
-		heavy_tank_destroyer_chassis_3
+		modern_tank_chassis
 	}
 }
 
 mio_cat_porsche_designer = {
 	equipment_type = {
 		heavy_tank_destroyer_chassis_2
-		super_heavy_tank_chassis
-		super_heavy_tank_destroyer_chassis
 	}
 }
 

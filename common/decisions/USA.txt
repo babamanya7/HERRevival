@@ -564,6 +564,7 @@ USA_aid_soviet_union = {
 		available = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
+			date > 1942.6.10
 			SOV = { has_war = yes }
 			NOT = { SOV = { has_war_with = USA } }
 			has_equipment = { convoy > 14 }
@@ -668,8 +669,7 @@ USA_aid_soviet_union = {
 		}
 
 		activation = {
-			has_completed_focus = USA_lend_lease_act
-			has_country_flag = USA_steel_lend_lease_cycle_active
+			always = no
 		}
 
 		visible = {
@@ -800,8 +800,7 @@ USA_aid_soviet_union = {
 		}
 
 		activation = {
-			has_completed_focus = USA_lend_lease_act
-			has_country_flag = USA_aluminium_lend_lease_cycle_active
+			always = no
 		}
 
 		visible = {
@@ -929,8 +928,7 @@ USA_aid_soviet_union = {
 		}
 
 		activation = {
-			has_completed_focus = USA_lend_lease_act
-			has_country_flag = USA_petroleum_lend_lease_cycle_active
+			always = no
 		}
 
 		visible = {
@@ -1048,8 +1046,7 @@ USA_aid_soviet_union = {
 		}
 
 		activation = {
-			has_completed_focus = USA_lend_lease_act
-			has_country_flag = USA_rubber_lend_lease_cycle_active
+			always = no
 		}
 
 		visible = {
@@ -1181,8 +1178,7 @@ USA_aid_soviet_union = {
 		}
 
 		activation = {
-			has_completed_focus = USA_lend_lease_act
-			has_country_flag = USA_railway_lend_lease_cycle_active
+			always = no
 		}
 
 		visible = {
@@ -1310,8 +1306,7 @@ USA_aid_soviet_union = {
 		}
 
 		activation = {
-			has_completed_focus = USA_lend_lease_act
-			has_country_flag = USA_truck_lend_lease_cycle_active
+			always = no
 		}
 
 		visible = {

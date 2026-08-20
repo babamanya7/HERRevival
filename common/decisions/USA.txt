@@ -638,6 +638,37 @@ USA_aid_soviet_union = {
 		visible = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
+			NOT = { has_country_flag = USA_steel_lend_lease_cycle_active }
+		}
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 40000
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = USA_steel_lend_lease_cycle_active
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -25
+					producer = ROOT
+				}
+				activate_mission = USA_monthly_steel_lend_lease_cycle_SOV
+			}
+		}
+	}
+
+	USA_monthly_steel_lend_lease_cycle_SOV = {
+		icon = generic_industry
+
+		allowed = {
+			original_tag = USA
+		}
+
+		visible = {
+			has_country_flag = USA_steel_lend_lease_cycle_active
 		}
 
 		modifier = {
@@ -646,27 +677,7 @@ USA_aid_soviet_union = {
 
 		cost = 0
 		days_mission_timeout = 14
-		selectable_mission = yes
 		is_good = yes
-
-		ai_will_do = {
-			factor = 40000
-		}
-
-		complete_effect = {
-			hidden_effect = {
-				if = {
-					limit = { NOT = { has_country_flag = USA_steel_lend_lease_cycle_active } }
-					set_country_flag = USA_steel_lend_lease_cycle_active
-					add_political_power = -5
-					add_equipment_to_stockpile = {
-						type = convoy_1
-						amount = -25
-						producer = ROOT
-					}
-				}
-			}
-		}
 
 		cancel_trigger = {
 			hidden_trigger = {
@@ -713,7 +724,7 @@ USA_aid_soviet_union = {
 				}
 				if = {
 					limit = { has_country_flag = USA_steel_lend_lease_cycle_active }
-					activate_mission = USA_monthly_steel_lend_lease_SOV
+					activate_mission = USA_monthly_steel_lend_lease_cycle_SOV
 				}
 			}
 		}
@@ -752,6 +763,37 @@ USA_aid_soviet_union = {
 		visible = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
+			NOT = { has_country_flag = USA_aluminium_lend_lease_cycle_active }
+		}
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 40000
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = USA_aluminium_lend_lease_cycle_active
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -10
+					producer = ROOT
+				}
+				activate_mission = USA_monthly_aluminium_lend_lease_cycle_SOV
+			}
+		}
+	}
+
+	USA_monthly_aluminium_lend_lease_cycle_SOV = {
+		icon = generic_industry
+
+		allowed = {
+			original_tag = USA
+		}
+
+		visible = {
+			has_country_flag = USA_aluminium_lend_lease_cycle_active
 		}
 
 		modifier = {
@@ -760,27 +802,7 @@ USA_aid_soviet_union = {
 
 		cost = 0
 		days_mission_timeout = 14
-		selectable_mission = yes
 		is_good = yes
-
-		ai_will_do = {
-			factor = 40000
-		}
-
-		complete_effect = {
-			hidden_effect = {
-				if = {
-					limit = { NOT = { has_country_flag = USA_aluminium_lend_lease_cycle_active } }
-					set_country_flag = USA_aluminium_lend_lease_cycle_active
-					add_political_power = -5
-					add_equipment_to_stockpile = {
-						type = convoy_1
-						amount = -10
-						producer = ROOT
-					}
-				}
-			}
-		}
 
 		cancel_trigger = {
 			hidden_trigger = {
@@ -827,7 +849,7 @@ USA_aid_soviet_union = {
 				}
 				if = {
 					limit = { has_country_flag = USA_aluminium_lend_lease_cycle_active }
-					activate_mission = USA_monthly_aluminium_lend_lease_SOV
+					activate_mission = USA_monthly_aluminium_lend_lease_cycle_SOV
 				}
 			}
 		}
@@ -863,6 +885,37 @@ USA_aid_soviet_union = {
 		visible = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
+			NOT = { has_country_flag = USA_petroleum_lend_lease_cycle_active }
+		}
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 40000
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = USA_petroleum_lend_lease_cycle_active
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -60
+					producer = ROOT
+				}
+				activate_mission = USA_monthly_petroleum_lend_lease_cycle_SOV
+			}
+		}
+	}
+
+	USA_monthly_petroleum_lend_lease_cycle_SOV = {
+		icon = generic_industry
+
+		allowed = {
+			original_tag = USA
+		}
+
+		visible = {
+			has_country_flag = USA_petroleum_lend_lease_cycle_active
 		}
 
 		modifier = {
@@ -871,27 +924,7 @@ USA_aid_soviet_union = {
 
 		cost = 0
 		days_mission_timeout = 14
-		selectable_mission = yes
 		is_good = yes
-
-		ai_will_do = {
-			factor = 40000
-		}
-
-		complete_effect = {
-			hidden_effect = {
-				if = {
-					limit = { NOT = { has_country_flag = USA_petroleum_lend_lease_cycle_active } }
-					set_country_flag = USA_petroleum_lend_lease_cycle_active
-					add_political_power = -5
-					add_equipment_to_stockpile = {
-						type = convoy_1
-						amount = -60
-						producer = ROOT
-					}
-				}
-			}
-		}
 
 		cancel_trigger = {
 			hidden_trigger = {
@@ -925,7 +958,7 @@ USA_aid_soviet_union = {
 				SOV = { add_fuel = 180000 }
 				if = {
 					limit = { has_country_flag = USA_petroleum_lend_lease_cycle_active }
-					activate_mission = USA_monthly_petroleum_lend_lease_SOV
+					activate_mission = USA_monthly_petroleum_lend_lease_cycle_SOV
 				}
 			}
 		}
@@ -964,6 +997,37 @@ USA_aid_soviet_union = {
 		visible = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
+			NOT = { has_country_flag = USA_rubber_lend_lease_cycle_active }
+		}
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 40000
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = USA_rubber_lend_lease_cycle_active
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -10
+					producer = ROOT
+				}
+				activate_mission = USA_monthly_rubber_lend_lease_cycle_SOV
+			}
+		}
+	}
+
+	USA_monthly_rubber_lend_lease_cycle_SOV = {
+		icon = generic_industry
+
+		allowed = {
+			original_tag = USA
+		}
+
+		visible = {
+			has_country_flag = USA_rubber_lend_lease_cycle_active
 		}
 
 		modifier = {
@@ -972,27 +1036,7 @@ USA_aid_soviet_union = {
 
 		cost = 0
 		days_mission_timeout = 14
-		selectable_mission = yes
 		is_good = yes
-
-		ai_will_do = {
-			factor = 40000
-		}
-
-		complete_effect = {
-			hidden_effect = {
-				if = {
-					limit = { NOT = { has_country_flag = USA_rubber_lend_lease_cycle_active } }
-					set_country_flag = USA_rubber_lend_lease_cycle_active
-					add_political_power = -5
-					add_equipment_to_stockpile = {
-						type = convoy_1
-						amount = -10
-						producer = ROOT
-					}
-				}
-			}
-		}
 
 		cancel_trigger = {
 			hidden_trigger = {
@@ -1039,7 +1083,7 @@ USA_aid_soviet_union = {
 				}
 				if = {
 					limit = { has_country_flag = USA_rubber_lend_lease_cycle_active }
-					activate_mission = USA_monthly_rubber_lend_lease_SOV
+					activate_mission = USA_monthly_rubber_lend_lease_cycle_SOV
 				}
 			}
 		}
@@ -1079,6 +1123,37 @@ USA_aid_soviet_union = {
 		visible = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
+			NOT = { has_country_flag = USA_railway_lend_lease_cycle_active }
+		}
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 40000
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = USA_railway_lend_lease_cycle_active
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -15
+					producer = ROOT
+				}
+				activate_mission = USA_monthly_railway_lend_lease_cycle_SOV
+			}
+		}
+	}
+
+	USA_monthly_railway_lend_lease_cycle_SOV = {
+		icon = generic_construction
+
+		allowed = {
+			original_tag = USA
+		}
+
+		visible = {
+			has_country_flag = USA_railway_lend_lease_cycle_active
 		}
 
 		modifier = {
@@ -1087,27 +1162,7 @@ USA_aid_soviet_union = {
 
 		cost = 0
 		days_mission_timeout = 14
-		selectable_mission = yes
 		is_good = yes
-
-		ai_will_do = {
-			factor = 40000
-		}
-
-		complete_effect = {
-			hidden_effect = {
-				if = {
-					limit = { NOT = { has_country_flag = USA_railway_lend_lease_cycle_active } }
-					set_country_flag = USA_railway_lend_lease_cycle_active
-					add_political_power = -5
-					add_equipment_to_stockpile = {
-						type = convoy_1
-						amount = -15
-						producer = ROOT
-					}
-				}
-			}
-		}
 
 		cancel_trigger = {
 			hidden_trigger = {
@@ -1154,7 +1209,7 @@ USA_aid_soviet_union = {
 				send_equipment = { equipment = train_equipment amount = 20 target = SOV }
 				if = {
 					limit = { has_country_flag = USA_railway_lend_lease_cycle_active }
-					activate_mission = USA_monthly_railway_lend_lease_SOV
+					activate_mission = USA_monthly_railway_lend_lease_cycle_SOV
 				}
 			}
 		}
@@ -1190,6 +1245,37 @@ USA_aid_soviet_union = {
 		visible = {
 			original_tag = USA
 			has_completed_focus = USA_lend_lease_act
+			NOT = { has_country_flag = USA_truck_lend_lease_cycle_active }
+		}
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 40000
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = USA_truck_lend_lease_cycle_active
+				add_equipment_to_stockpile = {
+					type = convoy_1
+					amount = -10
+					producer = ROOT
+				}
+				activate_mission = USA_monthly_truck_lend_lease_cycle_SOV
+			}
+		}
+	}
+
+	USA_monthly_truck_lend_lease_cycle_SOV = {
+		icon = GFX_decision_generic_trucks
+
+		allowed = {
+			original_tag = USA
+		}
+
+		visible = {
+			has_country_flag = USA_truck_lend_lease_cycle_active
 		}
 
 		modifier = {
@@ -1198,27 +1284,7 @@ USA_aid_soviet_union = {
 
 		cost = 0
 		days_mission_timeout = 14
-		selectable_mission = yes
 		is_good = yes
-
-		ai_will_do = {
-			factor = 40000
-		}
-
-		complete_effect = {
-			hidden_effect = {
-				if = {
-					limit = { NOT = { has_country_flag = USA_truck_lend_lease_cycle_active } }
-					set_country_flag = USA_truck_lend_lease_cycle_active
-					add_political_power = -5
-					add_equipment_to_stockpile = {
-						type = convoy_1
-						amount = -10
-						producer = ROOT
-					}
-				}
-			}
-		}
 
 		cancel_trigger = {
 			hidden_trigger = {
@@ -1251,7 +1317,7 @@ USA_aid_soviet_union = {
 				send_equipment = { equipment = motorized_equipment amount = 200 target = SOV }
 				if = {
 					limit = { has_country_flag = USA_truck_lend_lease_cycle_active }
-					activate_mission = USA_monthly_truck_lend_lease_SOV
+					activate_mission = USA_monthly_truck_lend_lease_cycle_SOV
 				}
 			}
 		}
@@ -1264,7 +1330,7 @@ USA_aid_soviet_union = {
 		available = { has_country_flag = USA_steel_lend_lease_cycle_active }
 		cost = 0
 		complete_effect = {
-			remove_mission = USA_monthly_steel_lend_lease_SOV
+			remove_mission = USA_monthly_steel_lend_lease_cycle_SOV
 			if = {
 				limit = { has_country_flag = USA_steel_lend_lease_cycle_active }
 				clr_country_flag = USA_steel_lend_lease_cycle_active
@@ -1280,7 +1346,7 @@ USA_aid_soviet_union = {
 		available = { has_country_flag = USA_aluminium_lend_lease_cycle_active }
 		cost = 0
 		complete_effect = {
-			remove_mission = USA_monthly_aluminium_lend_lease_SOV
+			remove_mission = USA_monthly_aluminium_lend_lease_cycle_SOV
 			if = {
 				limit = { has_country_flag = USA_aluminium_lend_lease_cycle_active }
 				clr_country_flag = USA_aluminium_lend_lease_cycle_active
@@ -1296,7 +1362,7 @@ USA_aid_soviet_union = {
 		available = { has_country_flag = USA_petroleum_lend_lease_cycle_active }
 		cost = 0
 		complete_effect = {
-			remove_mission = USA_monthly_petroleum_lend_lease_SOV
+			remove_mission = USA_monthly_petroleum_lend_lease_cycle_SOV
 			if = {
 				limit = { has_country_flag = USA_petroleum_lend_lease_cycle_active }
 				clr_country_flag = USA_petroleum_lend_lease_cycle_active
@@ -1312,7 +1378,7 @@ USA_aid_soviet_union = {
 		available = { has_country_flag = USA_rubber_lend_lease_cycle_active }
 		cost = 0
 		complete_effect = {
-			remove_mission = USA_monthly_rubber_lend_lease_SOV
+			remove_mission = USA_monthly_rubber_lend_lease_cycle_SOV
 			if = {
 				limit = { has_country_flag = USA_rubber_lend_lease_cycle_active }
 				clr_country_flag = USA_rubber_lend_lease_cycle_active
@@ -1328,7 +1394,7 @@ USA_aid_soviet_union = {
 		available = { has_country_flag = USA_railway_lend_lease_cycle_active }
 		cost = 0
 		complete_effect = {
-			remove_mission = USA_monthly_railway_lend_lease_SOV
+			remove_mission = USA_monthly_railway_lend_lease_cycle_SOV
 			if = {
 				limit = { has_country_flag = USA_railway_lend_lease_cycle_active }
 				clr_country_flag = USA_railway_lend_lease_cycle_active
@@ -1344,7 +1410,7 @@ USA_aid_soviet_union = {
 		available = { has_country_flag = USA_truck_lend_lease_cycle_active }
 		cost = 0
 		complete_effect = {
-			remove_mission = USA_monthly_truck_lend_lease_SOV
+			remove_mission = USA_monthly_truck_lend_lease_cycle_SOV
 			if = {
 				limit = { has_country_flag = USA_truck_lend_lease_cycle_active }
 				clr_country_flag = USA_truck_lend_lease_cycle_active

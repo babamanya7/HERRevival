@@ -899,7 +899,7 @@ USA_aid_soviet_union = {
 			has_equipment = { convoy > 59 }
 			custom_trigger_tooltip = {
 				tooltip = USA_monthly_petroleum_lend_lease_SOV_stockpile_tt
-				has_fuel > 179999
+				has_fuel > 49999
 			}
 		}
 
@@ -963,7 +963,7 @@ USA_aid_soviet_union = {
 					NOT = { has_completed_focus = USA_lend_lease_act }
 					NOT = { SOV = { has_war = yes } }
 					SOV = { has_war_with = USA }
-					NOT = { has_fuel > 179999 }
+					NOT = { has_fuel > 49999 }
 				}
 			}
 		}
@@ -985,8 +985,8 @@ USA_aid_soviet_union = {
 		timeout_effect = {
 			custom_effect_tooltip = USA_monthly_petroleum_lend_lease_SOV_tt
 			hidden_effect = {
-				add_fuel = -180000
-				SOV = { add_fuel = 180000 }
+				add_fuel = -50000
+				SOV = { add_fuel = 50000 }
 				if = {
 					limit = { has_country_flag = USA_petroleum_lend_lease_cycle_active }
 					activate_mission = USA_monthly_petroleum_lend_lease_cycle_SOV

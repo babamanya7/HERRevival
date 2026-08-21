@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  audit:
+  trim:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,15 +18,54 @@ jobs:
           ref: vasya_dev
           fetch-depth: 0
 
-      - name: Audit focus branches
+      - name: Trim Finland focus branches
         shell: python
         run: |
           from pathlib import Path
           import re
-          from collections import defaultdict, deque
+          from collections import defaultdict
 
           path = Path('common/national_focus/finland.txt')
-          text = path.read_text(encoding='utf-8-sig')
+          raw = path.read_bytes()
+          had_bom = raw.startswith(b'\xef\xbb\xbf')
+          text = raw.decode('utf-8-sig')
+
+          FASCIST_BASE = {
+              'FIN_a_fascist_regime',
+              'FIN_academic_karelian_society',
+              'FIN_advanced_jaeger_training_program',
+              'FIN_bring_foreign_armor_experts',
+              'FIN_discredit_the_democratic_system',
+              'FIN_finnish_irredentism',
+              'FIN_finnish_legion_of_honor',
+              'FIN_finnish_supremacy_in_the_north',
+              'FIN_indoctrinate_the_workers',
+              'FIN_industrial_cooperation',
+              'FIN_intellectual_elite',
+              'FIN_join_axis',
+              'FIN_keepers_of_the_north',
+              'FIN_maan_turva',
+              'FIN_military_promotions',
+              'FIN_military_research',
+              'FIN_mustapaidat',
+              'FIN_national_fanatism',
+              'FIN_patriotic_peoples_movement',
+              'FIN_prepare_a_military_coup',
+              'FIN_right_wing_policies',
+              'FIN_seek_german_protection',
+              'FIN_sotilaalliset_kappalaiset',
+              'FIN_tactical_wargaming_department',
+              'FIN_take_over_the_suojeluskunta',
+          }
+
+          COMMUNIST_BASE = {
+              'FIN_cooperate_with_social_democrats',
+              'FIN_the_peoples_democratic_league',
+              'FIN_the_red_watch',
+              'FIN_the_second_finnish_civil_war',
+              'FIN_the_workers_state',
+              'FIN_towards_a_red_government',
+          }
 
           def mask_code(s):
               out = list(s)
@@ -52,8 +91,6 @@ jobs:
                       out[i] = ' '
               return ''.join(out)
 
-          masked = mask_code(text)
-
           def match_brace(src_mask, opening):
               depth = 0
               for i in range(opening, len(src_mask)):
@@ -63,30 +100,32 @@ jobs:
                       if depth == 0: return i
               raise RuntimeError(f'unmatched brace at {opening}')
 
-          ft_match = re.search(r'(?m)^\s*focus_tree\s*=\s*\{', masked)
-          if not ft_match: raise RuntimeError('focus_tree not found')
-          ft_open = masked.find('{', ft_match.start())
-          ft_end = match_brace(masked, ft_open)
+          def parse_focus_blocks(src):
+              sm = mask_code(src)
+              ft_match = re.search(r'(?m)^\s*focus_tree\s*=\s*\{', sm)
+              if not ft_match: raise RuntimeError('focus_tree not found')
+              ft_open = sm.find('{', ft_match.start())
+              ft_end = match_brace(sm, ft_open)
+              result = {}
+              depth = 1
+              pos = ft_open + 1
+              while pos < ft_end:
+                  if sm[pos] == '{': depth += 1; pos += 1; continue
+                  if sm[pos] == '}': depth -= 1; pos += 1; continue
+                  if depth == 1:
+                      m = re.match(r'[ \t\r\n]*focus\s*=\s*\{', sm[pos:])
+                      if m:
+                          opening = pos + m.group(0).rfind('{')
+                          end = match_brace(sm, opening)
+                          block = src[pos:end+1]
+                          mid = re.search(r'(?m)^\s*id\s*=\s*([A-Za-z0-9_.:-]+)', block)
+                          if mid: result[mid.group(1)] = (pos, end + 1, block)
+                          pos = end + 1
+                          continue
+                  pos += 1
+              return result, (ft_open, ft_end)
 
-          blocks = {}
-          depth = 1
-          pos = ft_open + 1
-          while pos < ft_end:
-              if masked[pos] == '{': depth += 1; pos += 1; continue
-              if masked[pos] == '}': depth -= 1; pos += 1; continue
-              if depth == 1:
-                  m = re.match(r'[ \t\r\n]*focus\s*=\s*\{', masked[pos:])
-                  if m:
-                      opening = pos + m.group(0).rfind('{')
-                      end = match_brace(masked, opening)
-                      block = text[pos:end+1]
-                      mid = re.search(r'(?m)^\s*id\s*=\s*([A-Za-z0-9_.:-]+)', block)
-                      if mid: blocks[mid.group(1)] = (pos, end + 1, block)
-                      pos = end + 1
-                      continue
-              pos += 1
-
-          def named_blocks(src, keyword):
+          def named_block_bodies(src, keyword):
               sm = mask_code(src)
               result = []
               for m in re.finditer(r'(?m)^\s*' + re.escape(keyword) + r'\s*=\s*\{', sm):
@@ -95,91 +134,147 @@ jobs:
                   result.append(src[opening+1:end])
               return result
 
+          blocks, ft_span = parse_focus_blocks(text)
+          all_ids = set(blocks)
+          missing_requested = sorted((FASCIST_BASE | COMMUNIST_BASE) - all_ids)
+          if missing_requested:
+              raise RuntimeError('Expected focus IDs missing before trim: ' + ', '.join(missing_requested))
+
           prerequisite_groups = defaultdict(list)
-          children = defaultdict(set)
           for fid, (_, _, block) in blocks.items():
-              for body in named_blocks(block, 'prerequisite'):
+              for body in named_block_bodies(block, 'prerequisite'):
                   group = set(re.findall(r'\bfocus\s*=\s*([A-Za-z0-9_.:-]+)', mask_code(body)))
-                  if group:
-                      prerequisite_groups[fid].append(group)
-                      for parent in group: children[parent].add(fid)
+                  if group: prerequisite_groups[fid].append(group)
 
-          def descendants(root, stop_expand=()):
-              stop_expand = set(stop_expand)
-              seen = {root}
-              q = deque([root])
-              while q:
-                  cur = q.popleft()
-                  if cur in stop_expand and cur != root: continue
-                  for child in children.get(cur, ()):
-                      if child not in seen:
-                          seen.add(child)
-                          q.append(child)
-              return seen
-
-          required = {
-              'FIN_right_wing_policies','FIN_keepers_of_the_north',
-              'FIN_finnish_neutrality','FIN_suomalainen_sosialismi',
-              'FIN_towards_a_red_government','FIN_social_democracy'
-          }
-          missing = sorted(required - set(blocks))
-          if missing: raise RuntimeError('missing expected focuses: ' + ', '.join(missing))
-
-          shared_nonfasc = descendants('FIN_finnish_neutrality') | descendants('FIN_suomalainen_sosialismi')
-          fasc = descendants('FIN_right_wing_policies', {'FIN_keepers_of_the_north'}) - shared_nonfasc
-          fasc |= {'FIN_right_wing_policies','FIN_keepers_of_the_north'}
-          fasc &= set(blocks)
-
-          shared_noncomm = descendants('FIN_social_democracy') | descendants('FIN_finnish_neutrality') | descendants('FIN_right_wing_policies')
-          comm = descendants('FIN_towards_a_red_government') - shared_noncomm
-          comm.add('FIN_towards_a_red_government')
-          comm &= set(blocks)
-
-          base_remove = fasc | comm
-          remove = set(base_remove)
+          # Seed with the audited ideological blocks, then remove focuses that become
+          # unreachable because an AND prerequisite group has lost every alternative.
+          remove = set(FASCIST_BASE | COMMUNIST_BASE)
           propagated = set()
-
-          # Multiple prerequisite blocks are AND; focus= entries inside one block are alternatives.
-          # If any prerequisite block loses all of its alternatives, the surviving focus is orphaned.
           changed = True
           while changed:
               changed = False
-              for fid in sorted(set(blocks) - remove):
+              for fid in sorted(all_ids - remove):
                   groups = prerequisite_groups.get(fid, [])
                   if any(group <= remove for group in groups):
                       remove.add(fid)
                       propagated.add(fid)
                       changed = True
 
-          nordic = re.findall(r'(?m)^\s*shared_focus\s*=\s*(NORDIC_[A-Za-z0-9_.:-]+)\s*$', text[ft_open:ft_end])
+          # Remove complete top-level focus blocks, preserving the rest of HER's file verbatim.
+          spans = [(blocks[fid][0], blocks[fid][1], fid) for fid in remove]
+          for start, end, fid in sorted(spans, reverse=True):
+              text = text[:start] + text[end:]
 
-          report = ['FASCIST BASE REMOVE:'] + [f'  {x}' for x in sorted(fasc)]
-          report += ['', 'COMMUNIST BASE REMOVE:'] + [f'  {x}' for x in sorted(comm)]
-          report += ['', 'ORPHANED/DEPENDENT FOCUSES ALSO REMOVE:'] + ([f'  {x}' for x in sorted(propagated)] or ['  (none)'])
-          report += ['', f'TOTAL REMOVE: {len(remove)}']
-          report += ['', 'NORDIC SHARED ROOTS:'] + ([f'  {x}' for x in nordic] or ['  (none)'])
+          # Detach the entire shared NORDIC branch from Finland. Shared definitions remain
+          # available to other Nordic countries; Finland simply no longer imports them.
+          text, nordic_count = re.subn(
+              r'(?m)^[ \t]*shared_focus\s*=\s*NORDIC_[A-Za-z0-9_.:-]+[ \t]*\r?\n',
+              '', text
+          )
 
-          # Surviving prerequisite groups that contain removed alternatives can be safely cleaned
-          # because at least one retained alternative remains in the same group.
-          report += ['', 'SURVIVING PREREQUISITE GROUPS TO CLEAN:']
-          cleanup = []
-          for fid in sorted(set(blocks) - remove):
-              for group in prerequisite_groups.get(fid, []):
-                  removed_here = sorted(group & remove)
-                  kept_here = sorted(group - remove)
-                  if removed_here:
-                      cleanup.append(f'  {fid}: remove [{", ".join(removed_here)}], keep [{", ".join(kept_here)}]')
-          report += cleanup or ['  (none)']
+          removed_alt_pattern = '|'.join(sorted(map(re.escape, remove), key=len, reverse=True))
 
-          Path('.github/finland_focus_audit.txt').write_text('\n'.join(report) + '\n', encoding='utf-8')
+          # Clean deleted alternatives from prerequisite/mutex groups.
+          text = re.sub(
+              rf'\bfocus\s*=\s*(?:{removed_alt_pattern})\b',
+              '', text
+          )
+
+          # Deleted focuses can also appear in branch-visibility/layout conditions.
+          # A negative completed-focus check becomes always true; a positive one always false.
+          text = re.sub(
+              rf'NOT\s*=\s*\{{\s*has_completed_focus\s*=\s*(?:{removed_alt_pattern})\s*\}}',
+              'always = yes', text
+          )
+          text = re.sub(
+              rf'has_completed_focus\s*=\s*(?:{removed_alt_pattern})\b',
+              'always = no', text
+          )
+
+          # Remove empty prerequisite/mutex blocks left after cleaning alternatives.
+          text = re.sub(
+              r'(?m)^[ \t]*(?:prerequisite|mutually_exclusive)\s*=\s*\{[ \t\r\n]*\}[ \t]*\r?\n',
+              '', text
+          )
+
+          # Re-anchor surviving focuses whose layout parent was deleted.
+          reanchors = []
+          surviving_blocks, _ = parse_focus_blocks(text)
+          for fid, (start, end, block) in sorted(surviving_blocks.items(), key=lambda kv: kv[1][0], reverse=True):
+              mrel = re.search(r'(?m)^(\s*relative_position_id\s*=\s*)([A-Za-z0-9_.:-]+)(\s*)$', block)
+              if not mrel or mrel.group(2) not in remove:
+                  continue
+              retained_parents = []
+              for body in named_block_bodies(block, 'prerequisite'):
+                  retained_parents += [
+                      x for x in re.findall(r'\bfocus\s*=\s*([A-Za-z0-9_.:-]+)', mask_code(body))
+                      if x not in remove
+                  ]
+              old = mrel.group(2)
+              if retained_parents:
+                  new = retained_parents[0]
+                  new_block = block[:mrel.start()] + mrel.group(1) + new + mrel.group(3) + block[mrel.end():]
+                  reanchors.append(f'{fid}: {old} -> {new}')
+              else:
+                  line_start = block.rfind('\n', 0, mrel.start()) + 1
+                  line_end = block.find('\n', mrel.end())
+                  if line_end == -1: line_end = mrel.end()
+                  else: line_end += 1
+                  new_block = block[:line_start] + block[line_end:]
+                  reanchors.append(f'{fid}: removed relative_position_id {old}')
+              text = text[:start] + new_block + text[end:]
+
+          # Final validation: balanced braces and no active exact references to removed focus IDs.
+          final_mask = mask_code(text)
+          depth = 0
+          min_depth = 0
+          for ch in final_mask:
+              if ch == '{': depth += 1
+              elif ch == '}': depth -= 1
+              min_depth = min(min_depth, depth)
+          if depth != 0 or min_depth < 0:
+              raise RuntimeError(f'Brace validation failed: depth={depth}, min_depth={min_depth}')
+
+          leftovers = []
+          exact_removed = re.compile(rf'\b(?:{removed_alt_pattern})\b')
+          for lineno, line in enumerate(final_mask.splitlines(), 1):
+              if exact_removed.search(line):
+                  leftovers.append(f'{lineno}: {text.splitlines()[lineno-1].strip()}')
+          if leftovers:
+              raise RuntimeError('Active references to removed focuses remain:\n' + '\n'.join(leftovers[:50]))
+
+          # Ensure requested roots are actually absent and Nordic branch is detached.
+          final_blocks, _ = parse_focus_blocks(text)
+          still_present = sorted(remove & set(final_blocks))
+          if still_present:
+              raise RuntimeError('Removed focus blocks still present: ' + ', '.join(still_present))
+          if re.search(r'(?m)^\s*shared_focus\s*=\s*NORDIC_', mask_code(text)):
+              raise RuntimeError('NORDIC shared focus attachment still present')
+
+          encoded = text.encode('utf-8-sig' if had_bom else 'utf-8')
+          path.write_bytes(encoded)
+
+          report = [
+              f'Fascist audited base removed: {len(FASCIST_BASE)}',
+              f'Communist audited base removed: {len(COMMUNIST_BASE)}',
+              f'Orphaned/dependent focuses additionally removed: {len(propagated)}',
+              f'Total focus blocks removed: {len(remove)}',
+              f'NORDIC shared_focus attachments removed: {nordic_count}',
+              '',
+              'ADDITIONAL ORPHANED/DEPENDENT FOCUSES:',
+          ]
+          report += [f'  {x}' for x in sorted(propagated)] or ['  (none)']
+          report += ['', 'LAYOUT REANCHORS:']
+          report += [f'  {x}' for x in reanchors] or ['  (none)']
+          Path('.github/finland_focus_apply_report.txt').write_text('\n'.join(report) + '\n', encoding='utf-8')
           print('\n'.join(report))
 
-      - name: Commit audit report
+      - name: Commit trimmed focus tree
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .github/finland_focus_audit.txt
-          git diff --cached --quiet && exit 0
-          git commit -m "Update Finland focus trim audit"
+          git add common/national_focus/finland.txt .github/finland_focus_apply_report.txt
+          git diff --cached --check
+          git commit -m "Trim Finland ideological and Nordic focus branches"
           git push origin HEAD:vasya_dev

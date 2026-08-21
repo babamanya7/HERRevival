@@ -1,0 +1,56 @@
+# Compatibility triggers required by the AAT Finland/Nordic content.
+
+is_baltic_country = {
+	OR = {
+		original_tag = LIT
+		original_tag = LAT
+		original_tag = EST
+	}
+}
+
+# State scope. Mirrors the AAT-era Baltic Sea coastline checks while retaining
+# the post-AAT Nordic state IDs used by the imported focus content.
+state_is_in_the_baltic_sea = {
+	OR = {
+		state = 37
+		state = 911
+		state = 912
+		state = 909
+		state = 58
+		state = 61
+		state = 62
+		state = 63
+		state = 807
+		state = 85
+		state = 5
+		state = 763
+		state = 188
+		state = 189
+		state = 190
+		state = 809
+		state = 808
+		state = 12
+		state = 13
+		state = 811
+		state = 812
+		state = 813
+		state = 208
+		state = 195
+		state = 146
+		state = 928
+		state = 111
+		state = 926
+		state = 145
+		state = 149
+		state = 929
+		state = 148
+		state = 666
+		state = 918
+		state = 38
+		state = 141
+		state = 913
+		state = 139
+		state = 138
+		state = 124
+	}
+}

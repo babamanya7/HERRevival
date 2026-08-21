@@ -2237,7 +2237,7 @@ focus_tree = {
 					tag = NOR
 					tag = DEN
 					tag = ICE
-					tag = SMI
+					tag =
 				}
 				FIN_country_can_be_invited_into_faction_socialist = yes
 			}
@@ -2260,7 +2260,7 @@ focus_tree = {
 						original_tag = NOR
 						original_tag = DEN
 						original_tag = ICE
-						original_tag = SMI
+						original_tag =
 					}
 					FIN_country_can_be_invited_into_faction_socialist = yes
 				}
@@ -2402,8 +2402,8 @@ focus_tree = {
 						}
 						custom_effect_tooltip = FIN_northern_defense_front_faction_tt
 					}
-					activate_targeted_decision = { target = SMI decision = FIN_pressure_country_government_nordic }
-					activate_targeted_decision = { target = SMI decision = FIN_promote_ideology_rallies_nordic }
+					activate_targeted_decision = { target = decision = FIN_pressure_country_government_nordic }
+					activate_targeted_decision = { target = decision = FIN_promote_ideology_rallies_nordic }
 				}
 			}
 		}
@@ -3820,7 +3820,7 @@ focus_tree = {
 					any_other_country = {
 						NOT = { has_war_with = ROOT }
 						any_controlled_state = {
-							is_core_of = SMI
+							is_core_of =
 						}
 					}
 				}
@@ -3829,7 +3829,7 @@ focus_tree = {
 					limit = {
 						NOT = { has_war_with = ROOT }
 						any_controlled_state = {
-							is_core_of = SMI
+							is_core_of =
 						}
 					}
 					country_event = { id = AAT_finland_diplomacy.05 hours = 8 random_hours = 6 }
@@ -3840,14 +3840,14 @@ focus_tree = {
 			if = {
 				limit = {
 					any_controlled_state = {
-						is_core_of = SMI
+						is_core_of =
 						NOT = { is_core_of = FIN }
 					}
 				}
 				custom_effect_tooltip = generic_current_effects
 				every_controlled_state = {
 					limit = {
-						is_core_of = SMI
+						is_core_of =
 						NOT = { is_core_of = FIN }
 					}
 					add_core_of = ROOT
@@ -6845,13 +6845,6 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = FIN_lotta_svard
 
-			hidden_effect = {
-				set_technology = {
-					lotta_svard_tech = 1
-					popup = no
-				}
-			}
-
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = FIN_hilja_riipinen
 
@@ -8209,7 +8202,6 @@ focus_tree = {
 						OR = {
 							is_baltic_country = yes
 							NORDIC_is_nordic = yes
-							tag = SMI
 						}
 						has_government = fascism
 						NOT = { has_war_with = ROOT }
@@ -8224,7 +8216,6 @@ focus_tree = {
 					OR = {
 						is_baltic_country = yes
 						NORDIC_is_nordic = yes
-						tag = SMI
 					}
 					has_government = fascism
 					NOT = { has_war_with = ROOT }
@@ -8260,7 +8251,7 @@ focus_tree = {
 						OR = {
 							is_baltic_country = yes
 							NORDIC_is_nordic = yes
-							tag = SMI
+							tag =
 						}
 						NOT = { has_government = fascism }
 						NOT = { has_war_with = ROOT }
@@ -8275,7 +8266,7 @@ focus_tree = {
 						OR = {
 							is_baltic_country = yes
 							NORDIC_is_nordic = yes
-							tag = SMI
+							tag =
 						}
 						NOT = { has_government = fascism }
 						NOT = { has_war_with = ROOT }
@@ -8626,8 +8617,8 @@ focus_tree = {
 										limit = {
 											OR = {
 												AND = {
-													is_core_of = SMI
-													is_owned_by = SMI
+													is_core_of =
+													is_owned_by =
 												}
 												AND = {
 													is_core_of = KAR
@@ -8735,8 +8726,8 @@ focus_tree = {
 										limit = {
 											OR = {
 												AND = {
-													is_core_of = SMI
-													is_owned_by = SMI
+													is_core_of =
+													is_owned_by =
 												}
 												AND = {
 													is_core_of = KAR
@@ -8844,8 +8835,8 @@ focus_tree = {
 										limit = {
 											OR = {
 												AND = {
-													is_core_of = SMI
-													is_owned_by = SMI
+													is_core_of =
+													is_owned_by =
 												}
 												AND = {
 													is_core_of = KAR
@@ -8980,8 +8971,8 @@ focus_tree = {
 										limit = {
 											OR = {
 												AND = {
-													is_core_of = SMI
-													is_owned_by = SMI
+													is_core_of =
+													is_owned_by =
 												}
 												AND = {
 													is_core_of = KAR
@@ -9120,8 +9111,8 @@ focus_tree = {
 										limit = {
 											OR = {
 												AND = {
-													is_core_of = SMI
-													is_owned_by = SMI
+													is_core_of =
+													is_owned_by =
 												}
 												AND = {
 													is_core_of = KAR
@@ -9260,8 +9251,8 @@ focus_tree = {
 										limit = {
 											OR = {
 												AND = {
-													is_core_of = SMI
-													is_owned_by = SMI
+													is_core_of =
+													is_owned_by =
 												}
 												AND = {
 													is_core_of = KAR
@@ -9376,7 +9367,7 @@ focus_tree = {
 				every_controlled_state = {
 					limit = {
 						OR = {
-							#No need to add SMI here
+							#No need to add here
 							is_core_of = ICE
 							is_core_of = SWE
 							is_core_of = NOR
@@ -10832,12 +10823,6 @@ focus_tree = {
 			add_war_support = 0.05
 
 			custom_effect_tooltip = FIN_oy_alkoholiliike_ns_tt
-			hidden_effect = {
-				set_technology = {
-					molotov_cocktails_tech = 1
-					popup = no
-				}
-			}
 		}
 	}
 
@@ -11269,8 +11254,6 @@ focus_tree = {
 		completion_reward = {
 			army_experience = 15
 
-			set_technology = { bicycle_infantry = 1 popup = no }
-
 			custom_effect_tooltip = FIN_modify_finnish_army_ns_intro
 			add_to_variable = { FIN_finnish_army_army_org_factor = 0.1 tooltip = army_org_factor_tt }
 			add_to_variable = { FIN_finnish_army_special_forces_cap = 0.15 tooltip = special_forces_cap_tt }
@@ -11431,14 +11414,6 @@ focus_tree = {
 			add_to_variable = { FIN_finnish_army_winter_attrition_factor = -0.15 tooltip = winter_attrition_factor_tt }
 			add_to_variable = { FIN_finnish_army_supply_combat_penalties_on_core_factor = -0.15 tooltip = supply_combat_penalties_on_core_factor_tt }
 
-			custom_effect_tooltip = FIN_winter_warfare_battalion_tt
-
-			hidden_effect = {
-				set_technology = {
-					winter_logistics_support_tech = 1
-					popup = no
-				}
-			}
 		}
 	}
 	
@@ -11895,12 +11870,6 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = FIN_sami_pathfinders
 
-			hidden_effect = {
-				set_technology = {
-					sami_pathfinders_tech = 1
-					popup = no
-				}
-			}
 		}
 	}
 
@@ -11920,14 +11889,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_HISTORICAL }
 
 		completion_reward = {
-			custom_effect_tooltip = FIN_long_range_patrols_battalion_tt
 
-			hidden_effect = {
-				set_technology = {
-					long_range_patrol_support_tech = 1
-					popup = no
-				}
-			}
 		}
 	}
 	

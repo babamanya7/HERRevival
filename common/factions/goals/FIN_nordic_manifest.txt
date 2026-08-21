@@ -1,0 +1,27 @@
+@manifest_fulfilled_value = 0.75
+
+faction_manifest_nordic_defence = {
+	name = nordic_defence_goal_name
+	description = nordic_defence_goal_desc
+	is_manifest = yes
+	ratio_progress = {
+		total_amount_collection = collection:states_in_the_nordics
+		completed_amount_collection = collection:faction_states_in_the_nordics
+		
+		scale = {
+			army_attack_against_major_factor = 0.10
+			army_breakthrough_against_major_factor = 0.10
+			army_defence_against_major_factor = 0.10
+		}
+		
+		progress_sections = {
+			manifest_fulfilled = {
+				min = @manifest_fulfilled_value
+	
+				modifier = {
+					compliance_growth = 0.10
+				}			
+			}
+		}
+	}
+}

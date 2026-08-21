@@ -1,0 +1,159 @@
+faction_goal_convoy_escort_force = {
+	name = convoy_escort_force_goal_name
+	description = convoy_escort_force_goal_desc
+	category = medium_term
+	group = FOCUS_FILTER_NAVY_XP
+	available = {
+
+	}
+	completed = {
+		count_in_collection = {
+			collection = {
+				input = game:scope
+				operators = { faction_members }
+				name = FACTION
+			}
+			unit = screen_ship
+			size > 99
+		}
+	}
+	complete_effect = {
+		add_faction_power_projection = 100
+		custom_effect_tooltip = generic_skip_one_line_tt
+		every_collection_element = {
+			input = {
+				input = game:scope
+				operators = { 
+					faction_members 
+					limit = {
+						has_navy_size = {
+							size > 24
+							type = screen_ship
+						}
+					}
+				}
+				name = ALL_FACTION_MEMBERS_WITH_25_SCREENING_SHIPS
+			}
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_convoy_escort_force } }
+				random_character = {
+					tooltip = ONE_ADMIRAL
+					visible_when_empty = yes
+					limit = {
+						is_navy_leader = yes
+						NOT = { has_trait = fleet_protector }
+						NOT = { has_trait = seawolf }
+						NOT = { has_trait = ironside }
+						NOT = { has_trait = battleship_adherent }
+						NOT = { has_trait = gunnery_expert }
+						NOT = { has_trait = aviation_enthusiast }
+					}
+					gain_xp = 400
+					add_attack = 1
+					add_trait = { trait = fleet_protector }
+				}
+				add_mastery = {
+					amount = 100
+					track = screens
+				}
+			}
+		}
+		custom_effect_tooltip = generic_skip_one_line_tt
+		custom_effect_tooltip = ALL_FACTION_MEMBERS
+		every_faction_member = {
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_convoy_escort_force } }
+				add_tech_bonus = {
+					name = convoy_escort_force_tech_bonus
+					bonus = 0.5
+					uses = 1
+					category = naval_equipment
+				}
+			}
+		}
+	}
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 1 # Powers with no dockyards should probably not care about navy
+			num_of_naval_factories > 0
+		}
+		modifier = {
+			add = 1 # Powers with threatened convoys should care more
+			convoy_threat > 0.2
+		}
+		modifier = {
+			add = 8 # Powers with very threatened convoys should care -a lot-
+			convoy_threat > 0.5
+		}
+	}
+}
+
+faction_goal_the_atomic_race = {
+	name = the_atomic_race_goal_name
+	description = the_atomic_race_goal_desc
+	group = FOCUS_FILTER_RESEARCH
+	category = long_term
+	visible = {
+		date > 1940.1.1
+	}
+	completed = {
+		custom_override_tooltip = {
+			tooltip = the_atomic_race_complete_trigger
+			has_variable = global.first_country_sp_nuclear_bomb
+			var:global.first_country_sp_nuclear_bomb = {
+				OR = {
+					is_in_faction_with = ROOT
+					tag = ROOT
+				}
+			}
+		}
+	}
+	cancel = {
+		custom_override_tooltip = {
+			tooltip = the_atomic_race_complete_trigger_fail
+			has_variable = global.first_country_sp_nuclear_bomb
+			NOT = {
+				var:global.first_country_sp_nuclear_bomb = {
+					is_in_faction_with = ROOT
+				}
+			}
+			NOT = {
+				var:global.first_country_sp_nuclear_bomb = {
+					tag = ROOT
+				}
+			}
+		}
+	}
+	complete_effect = {	
+		add_faction_power_projection = 1000
+		every_collection_element = {
+			input = {
+				input = game:scope
+				operators =  { 
+					faction_members 
+					limit = {
+						faction_influence_rank < 4
+					}
+				}
+				
+				name = INFLUENCE_TOP_THREE
+			}
+			add_faction_initiative = 1
+			IF = {
+				limit = { NOT = { has_completed_goal = faction_goal_the_atomic_race } }
+				add_breakthrough_progress = {
+					specialization = specialization_nuclear
+					value = 0.25
+				}
+			}
+		}
+	}
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 1
+			is_major = yes
+		}
+	}
+}

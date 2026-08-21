@@ -1,0 +1,47 @@
+states_in_the_nordics = {
+	input = game:all_states
+	operators = {
+		limit = {
+			OR = {
+				region = 275 
+				region = 10
+				region = 11
+				region = 192
+				region = 276
+				region = 191
+				region = 277
+				region = 278
+				region = 13
+				region = 161
+				region = 36 
+				region = 45 
+			}
+		}
+	}
+	name = COLLECTION_STATES_IN_NORDICS
+}
+
+faction_states_in_the_nordics = {
+	input = game:scope
+	operators = {
+		faction_members
+		controlled_states
+		limit = {
+			OR = {
+				region = 275 
+				region = 10
+				region = 11
+				region = 192
+				region = 276
+				region = 191
+				region = 277
+				region = 278
+				region = 13
+				region = 161
+				region = 36 
+				region = 45 
+			}
+		}
+	}
+	name = COLLECTION_FACTION_CONTROLLED_STATES_IN_NORDICS
+}

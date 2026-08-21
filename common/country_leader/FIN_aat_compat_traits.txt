@@ -1,0 +1,105 @@
+# Finland AAT leader traits referenced by the imported focus/character content
+# but missing from HER's replaced common/country_leader data.
+
+leader_traits = {
+	unbreakable_anti_fascist = {
+		random = no
+		opinion_gain_monthly_same_ideology_factor = 0.25
+		send_volunteer_size = 4
+		agency_upgrade_time = -0.3
+		drift_defence_factor = 0.5
+	}
+
+	unbreakable_anti_fascist_no_lar = {
+		random = no
+		opinion_gain_monthly_same_ideology_factor = 0.25
+		send_volunteer_size = 4
+		foreign_subversive_activites = -0.3
+		drift_defence_factor = 0.5
+	}
+
+	devoted_communist = {
+		random = no
+		industrial_capacity_factory = 0.1
+		resistance_activity = -0.1
+		compliance_gain = 0.05
+	}
+
+	international_communist = {
+		random = no
+		opinion_gain_monthly_same_ideology_factor = 1
+		subversive_activites_upkeep = -0.5
+		conscription = 0.02
+		war_support_factor = 0.05
+	}
+
+	champion_of_national_cooperation = {
+		random = no
+		party_popularity_stability_factor = 0.2
+		political_advisor_cost_factor = -0.2
+		communism_acceptance = -70
+		mobilization_laws_cost_factor = -0.33
+	}
+
+	member_of_the_suojeluskunta_improved = {
+		random = no
+		max_surrender_limit_offset = 0.3
+		stability_factor = -0.05
+		drift_defence_factor = 0.25
+		justify_war_goal_when_in_major_war_time = -0.35
+	}
+
+	paasikivi_doctrine_improved = {
+		random = no
+		war_support_factor = -0.05
+		stability_factor = 0.1
+		improve_relations_maintain_cost_factor = -0.2
+		democratic_acceptance = 50
+		communism_acceptance = 50
+	}
+
+	sotamarsalkka_improved = {
+		random = no
+		conscription = 0.02
+		war_support_factor = 0.1
+		stability_factor = -0.05
+		defensive_war_stability_factor = 0.2
+	}
+
+	white_liberal_leader_improved = {
+		random = no
+		political_power_factor = 0.1
+		production_factory_max_efficiency_factor = 0.1
+		neutrality_drift = 0.1
+	}
+
+	architect_of_finnish_coporatism = {
+		random = no
+		trade_laws_cost_factor = -0.33
+		economy_cost_factor = -0.33
+		consumer_goods_factor = -0.15
+		global_building_slots = 1
+	}
+
+	crown_prince_of_finland = {
+		random = no
+		custom_modifier_tooltip = FIN_crown_prince_of_finland_tt
+		fascism_acceptance = 75
+		political_power_factor = 0.1
+		stability_factor = 0.05
+		neutrality_drift = 0.1
+		conscription = 0.025
+	}
+
+	personal_agenda_von_hesse = {
+		random = no
+		custom_modifier_tooltip = FIN_personal_agenda_von_hesse_tt
+	}
+
+	expansionist_policies = {
+		random = no
+		generate_wargoal_tension = -0.25
+		justify_war_goal_time = -0.25
+		custom_modifier_tooltip = FIN_expansionist_policies_take_states_tt
+	}
+}

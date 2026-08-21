@@ -42,7 +42,9 @@ ideas = {
 			level = 4
 
 			modifier = {
-				stability_factor = 0.05
+				production_speed_buildings_factor = 0.10
+				industrial_capacity_dockyard = 0.10
+				industrial_capacity_factory = 0.10
 			}
 			
 			cancel_if_invalid = no

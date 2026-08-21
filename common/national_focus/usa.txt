@@ -55,6 +55,7 @@ focus_tree = {
 		
 		completion_reward = {
 			custom_effect_tooltip = USA_Public_positive_1_tt1
+			custom_effect_tooltip = USA_JPMorgan_new_deal_decisions_tt
 			hidden_effect = {
 				add_to_variable = { var = USA_Public_attitude value = 1 }
 				add_to_variable = { var = USA_Public_political_power_gain value = 1 }
@@ -461,9 +462,11 @@ focus_tree = {
 		
 		completion_reward = {
 			custom_effect_tooltip = USA_Ford_positive_1_tt1
+			custom_effect_tooltip = USA_TVA_Ford_faction_bonus_tt
 			hidden_effect = {
 				add_to_variable = { var = USA_Ford_Chrysler_attitude value = 1 }
 				add_to_variable = { var = USA_Ford_Chrysler_civilian_construction_speed value = 1 }
+				set_country_flag = USA_TVA_Ford_faction_bonus_unlocked
 				USA_political_instability_update_effect = yes
 			}
 			368 = {
@@ -876,6 +879,7 @@ focus_tree = {
 				add_to_variable = { var = USA_Ford_Chrysler_civilian_construction_speed value = 1 }
 				add_to_variable = { var = USA_GM_Dupont_civilian_construction_speed value = 1 }
 				add_to_variable = { var = USA_JPMorgan_stability value = 1 }
+				set_country_flag = USA_recession_faction_bonuses_unlocked
 				#add_to_variable = { var = USA_Public_attitude value = -1 }
 				#add_to_variable = { var = USA_Public_political_power_gain value = -1 }
 				#add_to_variable = { var = USA_Public_stability value = -1 }
@@ -3967,4 +3971,3 @@ focus_tree = {
 }
 
 
- 

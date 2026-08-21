@@ -39,7 +39,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				conscription = 0.03
+				conscription = 0.02
 				mobilization_speed = 0.85
 				winter_attrition_factor = -0.1
 				army_core_defence_factor = 0.1
@@ -60,8 +60,8 @@ ideas = {
 			
 			modifier = {
 				army_core_defence_factor = 0.05
-				army_attack_against_major_factor = 0.1
-				winter_attrition_factor = -0.2
+				army_attack_against_major_factor = 0.05
+				winter_attrition_factor = -0.05
 			}
 		}
 
@@ -82,11 +82,10 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				truck_attrition_factor = 0.1
-				attrition = 0.2
-				winter_attrition_factor = 0.25
-				army_attack_factor = -0.1
-				war_support_factor = -0.15
+				attrition = 0.1
+				winter_attrition_factor = 0.1
+				army_attack_factor = -0.03
+				war_support_factor = -0.03
 			}
 		}
 

@@ -38,7 +38,7 @@ FIN_valtion_panssaritehdas_organization = {
 		token = generic_mio_trait_light_tank_specialization
 
 		position = { x=-1 y=2 }
-		relative_position_id = generic_mio_trait_adaptable_chassis
+		relative_position_id = generic_mio_trait_modular_construction
 		mutually_exclusive= { generic_mio_trait_medium_tank_specialization }
 	}
 	
@@ -46,7 +46,7 @@ FIN_valtion_panssaritehdas_organization = {
 		token = generic_mio_trait_medium_tank_specialization
 
 		position = { x=1 y=2 }
-		relative_position_id = generic_mio_trait_adaptable_chassis
+		relative_position_id = generic_mio_trait_modular_construction
 		mutually_exclusive= { generic_mio_trait_light_tank_specialization }
 	}
 
@@ -77,9 +77,9 @@ FIN_valtion_panssaritehdas_organization = {
 		special_trait_background = yes
 
 		position = { x=0 y=1 }
-		relative_position_id = generic_mio_trait_adaptable_chassis
+		relative_position_id = generic_mio_trait_modular_construction
 		
-		any_parent = { generic_mio_trait_adaptable_chassis }
+		any_parent = { generic_mio_trait_modular_construction }
 		
 		available = {
 			owner = {

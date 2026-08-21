@@ -840,9 +840,8 @@ FIN_mannerheim_becomes_country_leader = {
 			}
 		}
 		set_power_balance = {
-				id = FIN_power_balance
-				set_value = 0.1
-			}
+			id = FIN_power_balance
+			set_value = 0.1
 		}
 	}
 }
@@ -878,9 +877,8 @@ FIN_check_and_manage_losing_cores_for_bop_effect = {
 			}
 		}
 		remove_power_balance_modifier = {
-				id = FIN_power_balance
-				modifier = FIN_bop_modifier_finnish_sovereignty_threatened
-			}
+			id = FIN_power_balance
+			modifier = FIN_bop_modifier_finnish_sovereignty_threatened
 		}
 	}
 }

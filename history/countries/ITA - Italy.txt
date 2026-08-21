@@ -278,15 +278,15 @@ set_technology = {
 	
 	bba_early_transport_plane = 1
 	aa_lmg = 1
+	engine_tuning_1 = 1
+	engine_tuning_2 = 1
 	early_bombs = 1
 	aircraft_construction = 1
 	engines_1 = 1
 	engines_2 = 1
 	engines_3 = 1
-	engines_4 = 1
 	radial_engines_2 = 1
 	radial_engines_3 = 1
-	radial_engines_4 = 1
 	iw_small_airframe = 1
 	iw_medium_airframe = 1
 	basic_small_airframe = 1
@@ -563,7 +563,7 @@ ITA_emilio_de_bono = { set_character_flag = ITA_character_can_be_purged }
 		type = medium_plane_airframe_0
 		modules = {
 			fixed_frame_weapon_slot_1 = small_bomb_bay
-			engine_type_slot = engine_4_1x
+			engine_type_slot = engine_3_1x
 			fuel_tank_type_slot = fuel_tanks_medium
 			role_type_slot = role_medium_bomber
 		}
@@ -589,7 +589,7 @@ ITA_emilio_de_bono = { set_character_flag = ITA_character_can_be_purged }
 		modules = {
 			fixed_frame_weapon_slot_1 = medium_bomb_bay
 			fixed_frame_weapon_slot_2 = medium_bomb_bay
-			engine_type_slot = radial_engine_4_3x
+			engine_type_slot = radial_engine_3_3x
 			fuel_tank_type_slot = fuel_tanks_medium
 			role_type_slot = role_medium_bomber
 		}
@@ -601,7 +601,7 @@ ITA_emilio_de_bono = { set_character_flag = ITA_character_can_be_purged }
 		modules = {
 			fixed_frame_weapon_slot_1 = medium_bomb_bay
 			fixed_wing_weapon_slot_1 = wing_torpedo_mounting
-			engine_type_slot = radial_engine_4_3x
+			engine_type_slot = radial_engine_3_3x
 			special_type_slot_1 = empty
 			fuel_tank_type_slot = fuel_tanks_medium
 			role_type_slot = role_medium_naval_bomber
@@ -614,7 +614,7 @@ ITA_emilio_de_bono = { set_character_flag = ITA_character_can_be_purged }
 		modules = {
 			fixed_frame_weapon_slot_1 = small_bomb_bay
 			fixed_capot_weapon_slot_1 = light_mg_2x
-			engine_type_slot = radial_engine_4_1x
+			engine_type_slot = radial_engine_3_1x
 			special_type_slot_1 = empty
 			fuel_tank_type_slot = fuel_tanks_small
 			role_type_slot = role_small_bomber

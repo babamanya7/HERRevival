@@ -1081,4 +1081,259 @@ USA_internal_factions = {
 	#		factor = 300
 	#	}
 	#}
+
+	############################################################################################################
+	# J.P. Morgan: economy-fatigue negotiations
+	############################################################################################################
+
+	USA_JPMorgan_economic_relief_agitated = {
+		icon = generic_operation
+
+		allowed = { tag = USA }
+
+		visible = {
+			tag = USA
+			has_completed_focus = USA_start
+			check_variable = { var = USA_JPMorgan_attitude value = -2 compare = equals }
+		}
+
+		available = {
+			NOT = { has_country_flag = USA_JPMorgan_economic_relief_cooldown }
+			NOT = { has_decision = USA_JPMorgan_improve_relations }
+			NOT = { has_idea = economy_fatigue_0 }
+			custom_trigger_tooltip = {
+				tooltip = USA_JPMorgan_negotiation_uses_available_tt
+				NOT = {
+					check_variable = { var = USA_JPMorgan_negotiation_uses value = 2 compare = greater_than_or_equals }
+				}
+			}
+		}
+
+		cost = 75
+		days_remove = 120
+		days_re_enable = 270
+		is_good = yes
+		fire_only_once = no
+
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = USA_JPMorgan_economic_relief_cooldown
+				USA_JPMorgan_economic_relief_complete_effect = yes
+			}
+		}
+
+		remove_effect = {
+			economy_fatigue_level_down_5 = yes
+			hidden_effect = {
+				set_country_flag = { flag = USA_JPMorgan_economic_relief_cooldown days = 270 }
+			}
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+
+	USA_JPMorgan_economic_relief_worried = {
+		icon = generic_operation
+
+		allowed = { tag = USA }
+
+		visible = {
+			tag = USA
+			has_completed_focus = USA_start
+			check_variable = { var = USA_JPMorgan_attitude value = -1 compare = equals }
+		}
+
+		available = {
+			NOT = { has_country_flag = USA_JPMorgan_economic_relief_cooldown }
+			NOT = { has_decision = USA_JPMorgan_improve_relations }
+			NOT = { has_idea = economy_fatigue_0 }
+			custom_trigger_tooltip = {
+				tooltip = USA_JPMorgan_negotiation_uses_available_tt
+				NOT = {
+					check_variable = { var = USA_JPMorgan_negotiation_uses value = 2 compare = greater_than_or_equals }
+				}
+			}
+		}
+
+		cost = 60
+		days_remove = 75
+		days_re_enable = 180
+		is_good = yes
+		fire_only_once = no
+
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = USA_JPMorgan_economic_relief_cooldown
+				USA_JPMorgan_economic_relief_complete_effect = yes
+			}
+		}
+
+		remove_effect = {
+			economy_fatigue_level_down_5 = yes
+			hidden_effect = {
+				set_country_flag = { flag = USA_JPMorgan_economic_relief_cooldown days = 180 }
+			}
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+
+	USA_JPMorgan_economic_relief_calm = {
+		icon = generic_operation
+
+		allowed = { tag = USA }
+
+		visible = {
+			tag = USA
+			has_completed_focus = USA_start
+			check_variable = { var = USA_JPMorgan_attitude value = 0 compare = equals }
+		}
+
+		available = {
+			NOT = { has_country_flag = USA_JPMorgan_economic_relief_cooldown }
+			NOT = { has_decision = USA_JPMorgan_improve_relations }
+			NOT = { has_idea = economy_fatigue_0 }
+			custom_trigger_tooltip = {
+				tooltip = USA_JPMorgan_negotiation_uses_available_tt
+				NOT = {
+					check_variable = { var = USA_JPMorgan_negotiation_uses value = 2 compare = greater_than_or_equals }
+				}
+			}
+		}
+
+		cost = 25
+		days_remove = 50
+		days_re_enable = 90
+		is_good = yes
+		fire_only_once = no
+
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = USA_JPMorgan_economic_relief_cooldown
+				USA_JPMorgan_economic_relief_complete_effect = yes
+			}
+		}
+
+		remove_effect = {
+			economy_fatigue_level_down_5 = yes
+			hidden_effect = {
+				set_country_flag = { flag = USA_JPMorgan_economic_relief_cooldown days = 90 }
+			}
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+
+	USA_JPMorgan_improve_relations = {
+		icon = generic_operation
+
+		allowed = { tag = USA }
+
+		visible = {
+			tag = USA
+			has_completed_focus = USA_start
+			check_variable = { var = USA_JPMorgan_attitude value = 0 compare = less_than }
+		}
+
+		available = {
+			check_variable = { var = USA_JPMorgan_attitude value = 0 compare = less_than }
+			NOT = { has_decision = USA_JPMorgan_economic_relief_agitated }
+			NOT = { has_decision = USA_JPMorgan_economic_relief_worried }
+			NOT = { has_decision = USA_JPMorgan_economic_relief_calm }
+		}
+
+		cost = 100
+		days_remove = 180
+		days_re_enable = 360
+		is_good = yes
+		fire_only_once = no
+
+		modifier = {
+			consumer_goods_factor = 0.10
+		}
+
+		remove_effect = {
+			USA_JPMorgan_improve_relations_complete_effect = yes
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+
+	############################################################################################################
+	# Sequential Ford/Chrysler investment program
+	############################################################################################################
+
+	USA_investments_in_Ford_Chrysler = {
+		icon = generic_industry
+
+		allowed = { tag = USA }
+
+		visible = {
+			tag = USA
+			has_completed_focus = USA_wait_out_the_recession
+			NOT = { has_country_flag = USA_Ford_Chrysler_investment_1_completed }
+		}
+
+		cost = 50
+		days_remove = 90
+		is_good = yes
+		fire_only_once = yes
+
+		remove_effect = {
+			add_ideas = USA_Ford_Chrysler_investment_1_bonus
+			hidden_effect = { set_country_flag = USA_Ford_Chrysler_investment_1_completed }
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+
+	USA_expand_support_for_american_entrepreneurs = {
+		icon = generic_industry
+
+		allowed = { tag = USA }
+
+		visible = {
+			tag = USA
+			has_completed_focus = USA_wait_out_the_recession
+			has_country_flag = USA_Ford_Chrysler_investment_1_completed
+			NOT = { has_country_flag = USA_Ford_Chrysler_investment_2_completed }
+		}
+
+		cost = 125
+		days_remove = 120
+		is_good = yes
+		fire_only_once = yes
+
+		remove_effect = {
+			add_ideas = USA_Ford_Chrysler_investment_2_bonus
+			hidden_effect = { set_country_flag = USA_Ford_Chrysler_investment_2_completed }
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+
+	USA_state_investments_in_defense_giants = {
+		icon = generic_industry
+
+		allowed = { tag = USA }
+
+		visible = {
+			tag = USA
+			has_completed_focus = USA_wait_out_the_recession
+			has_country_flag = USA_Ford_Chrysler_investment_2_completed
+			NOT = { has_country_flag = USA_Ford_Chrysler_investment_3_completed }
+		}
+
+		cost = 200
+		days_remove = 200
+		is_good = yes
+		fire_only_once = yes
+
+		remove_effect = {
+			add_ideas = USA_Ford_Chrysler_investment_3_bonus
+			hidden_effect = { set_country_flag = USA_Ford_Chrysler_investment_3_completed }
+		}
+
+		ai_will_do = { factor = 1 }
+	}
 }

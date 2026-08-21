@@ -1602,6 +1602,85 @@ ideas = {
 	}
 
 	hidden_ideas = {
+		## Focus-gated internal faction bonuses ##############################################################
+		USA_Ford_Chrysler_TVA_bonus = {
+			allowed = { always = no }
+			removal_cost = -1
+
+			modifier = {
+				production_factory_max_efficiency_factor = 0.075
+				production_speed_arms_factory_factor = 0.10
+				production_factory_efficiency_gain_factor = 0.10
+			}
+		}
+
+		USA_GM_Dupont_recession_bonus = {
+			allowed = { always = no }
+			removal_cost = -1
+
+			modifier = {
+				army_artillery_attack_factor = 0.10
+				synthetic_refinery_resource_output = 0.15
+			}
+
+			equipment_bonus = {
+				ammunition_equipment = {
+					build_cost_ic = -0.10
+					instant = yes
+				}
+			}
+		}
+
+		USA_Kaiser_recession_bonus = {
+			allowed = { always = no }
+			removal_cost = -1
+
+			modifier = {
+				production_speed_infrastructure_factor = 0.10
+				production_speed_dockyard_factor = 0.17
+			}
+		}
+
+		USA_home_of_the_free_financial_growth_bonus = {
+			allowed = { always = no }
+			removal_cost = -1
+
+			modifier = {
+				military_industrial_organization_funds_gain = 0.25
+			}
+		}
+
+		## Sequential Ford/Chrysler investment bonuses ######################################################
+		USA_Ford_Chrysler_investment_1_bonus = {
+			allowed = { always = no }
+			removal_cost = -1
+
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.05
+			}
+		}
+
+		USA_Ford_Chrysler_investment_2_bonus = {
+			allowed = { always = no }
+			removal_cost = -1
+
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.05
+				production_speed_arms_factory_factor = 0.10
+				conversion_cost_civ_to_mil_factor = -0.075
+			}
+		}
+
+		USA_Ford_Chrysler_investment_3_bonus = {
+			allowed = { always = no }
+			removal_cost = -1
+
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.15
+				production_factory_max_efficiency_factor = 0.075
+			}
+		}
+
 		## Kaiser Dockyard Output ###################################################################################
 		USA_Kaiser_dockyard_output_7 = {
 

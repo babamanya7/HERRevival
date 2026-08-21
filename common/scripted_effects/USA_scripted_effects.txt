@@ -7,6 +7,148 @@ USA_depression_clear_all = {
 	}
 }
 
+############################################################################################################
+# New Deal internal faction decisions and focus-gated bonuses
+############################################################################################################
+
+USA_JPMorgan_negotiation_counter_update_effect = {
+	if = {
+		limit = {
+			NOT = {
+				check_variable = {
+					var = USA_JPMorgan_negotiation_counter_attitude
+					value = USA_JPMorgan_attitude
+					compare = equals
+				}
+			}
+		}
+		set_variable = { var = USA_JPMorgan_negotiation_uses value = 0 }
+		set_variable = { var = USA_JPMorgan_negotiation_counter_attitude value = USA_JPMorgan_attitude }
+	}
+}
+
+USA_JPMorgan_economic_relief_complete_effect = {
+	USA_JPMorgan_negotiation_counter_update_effect = yes
+	add_to_variable = { var = USA_JPMorgan_negotiation_uses value = 1 }
+
+	if = {
+		limit = {
+			check_variable = { var = USA_JPMorgan_negotiation_uses value = 2 compare = greater_than_or_equals }
+		}
+		if = {
+			limit = {
+				OR = {
+					check_variable = { var = USA_JPMorgan_attitude value = 0 compare = equals }
+					check_variable = { var = USA_JPMorgan_attitude value = -1 compare = equals }
+				}
+			}
+			add_to_variable = { var = USA_JPMorgan_attitude value = -1 }
+			set_variable = { var = USA_JPMorgan_negotiation_uses value = 0 }
+			set_variable = { var = USA_JPMorgan_negotiation_counter_attitude value = USA_JPMorgan_attitude }
+		}
+		else_if = {
+			limit = {
+				check_variable = { var = USA_JPMorgan_negotiation_uses value = 2 compare = greater_than }
+			}
+			set_variable = { var = USA_JPMorgan_negotiation_uses value = 2 }
+		}
+	}
+
+	USA_political_instability_update_effect = yes
+}
+
+USA_JPMorgan_improve_relations_complete_effect = {
+	add_to_variable = { var = USA_JPMorgan_attitude value = 1 }
+	if = {
+		limit = {
+			check_variable = { var = USA_JPMorgan_attitude value = 0 compare = greater_than }
+		}
+		set_variable = { var = USA_JPMorgan_attitude value = 0 }
+	}
+	USA_political_instability_update_effect = yes
+}
+
+USA_internal_faction_focus_bonuses_update_effect = {
+	# Ford/Chrysler: unlocked by TVA-Ford cooperation and active from Friendly attitude upward.
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = USA_TVA_Ford_faction_bonus_unlocked
+				has_completed_focus = USA_tva_ford_cooperation
+			}
+			check_variable = { var = USA_Ford_Chrysler_attitude value = 1 compare = greater_than_or_equals }
+		}
+		if = {
+			limit = { NOT = { has_idea = USA_Ford_Chrysler_TVA_bonus } }
+			add_ideas = USA_Ford_Chrysler_TVA_bonus
+		}
+	}
+	else_if = {
+		limit = { has_idea = USA_Ford_Chrysler_TVA_bonus }
+		remove_ideas = USA_Ford_Chrysler_TVA_bonus
+	}
+
+	# GM/DuPont: unlocked by waiting out the recession and active from Calm attitude upward.
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = USA_recession_faction_bonuses_unlocked
+				has_completed_focus = USA_wait_out_the_recession
+			}
+			check_variable = { var = USA_GM_Dupont_attitude value = 0 compare = greater_than_or_equals }
+		}
+		if = {
+			limit = { NOT = { has_idea = USA_GM_Dupont_recession_bonus } }
+			add_ideas = USA_GM_Dupont_recession_bonus
+		}
+	}
+	else_if = {
+		limit = { has_idea = USA_GM_Dupont_recession_bonus }
+		remove_ideas = USA_GM_Dupont_recession_bonus
+	}
+
+	# Kaiser: unlocked by waiting out the recession and active from Friendly attitude upward.
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = USA_recession_faction_bonuses_unlocked
+				has_completed_focus = USA_wait_out_the_recession
+			}
+			check_variable = { var = USA_Kaiser_attitude value = 1 compare = greater_than_or_equals }
+		}
+		if = {
+			limit = { NOT = { has_idea = USA_Kaiser_recession_bonus } }
+			add_ideas = USA_Kaiser_recession_bonus
+		}
+	}
+	else_if = {
+		limit = { has_idea = USA_Kaiser_recession_bonus }
+		remove_ideas = USA_Kaiser_recession_bonus
+	}
+
+	# The national spirit keeps its original form; this hidden companion adds the requested funds growth.
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = USA_recession_faction_bonuses_unlocked
+				has_completed_focus = USA_wait_out_the_recession
+			}
+			OR = {
+				has_idea = home_of_the_free
+				has_idea = home_of_the_free_1
+			}
+		}
+		if = {
+			limit = { NOT = { has_idea = USA_home_of_the_free_financial_growth_bonus } }
+			add_ideas = USA_home_of_the_free_financial_growth_bonus
+		}
+	}
+	else_if = {
+		limit = { has_idea = USA_home_of_the_free_financial_growth_bonus }
+		remove_ideas = USA_home_of_the_free_financial_growth_bonus
+	}
+}
+
 #Important to put HIGHEST first
 USA_great_depression_level_up_2 = {
 	custom_effect_tooltip = USA_great_depression_up_large_2_tt
@@ -621,6 +763,9 @@ USA_set_president_effect = {
 
 USA_political_instability_update_effect = {
 	hidden_effect = {
+		USA_JPMorgan_negotiation_counter_update_effect = yes
+		USA_internal_faction_focus_bonuses_update_effect = yes
+
 		## Kaiser Dockyard Output ###################################################################################
 		if = {
 			limit = {

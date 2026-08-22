@@ -4609,6 +4609,30 @@ focus_tree = {
 					}
 					remove_unit_leader_trait =  trait_SOV_cowed_by_stalin_navy
 				}
+				set_portraits = {
+					character = SOV_georgy_zhukov
+					army = {
+						large = "gfx/leaders/SOV/Portrait_Soviet_Gregory_Zhukov.dds"
+					}
+				}
+				set_portraits = {
+					character = SOV_semyon_timoshenko
+					army = {
+						large = "gfx/leaders/SOV/SOV_semyon_timoshenko_late.dds"
+					}
+				}
+				set_portraits = {
+					character = SOV_konstantin_rokossovsky
+					army = {
+						large = "gfx/leaders/SOV/Portrait_Soviet_Konstantin_Rokossovsky_late.dds"
+					}
+				}
+				set_portraits = {
+					character = SOV_vasily_chuykov
+					army = {
+						large = "gfx/leaders/SOV/SOV_vasily_chuykov_late.dds"
+					}
+				}
 			}
 			#New
 			hidden_effect = {
@@ -6002,6 +6026,15 @@ focus_tree = {
 			}
 			hidden_effect = {
 				play_song = "comintern_war_1" #TODO_Manu: Too abrupt (just like speeches) -> Pending feedback for removal
+				set_portraits = {
+					character = SOV_iosif_stalin
+					civilian = {
+						large = "gfx/leaders/SOV/Joseph_stalin_late.dds"
+					}
+					army = {
+						large = "gfx/leaders/SOV/Joseph_stalin_late.dds"
+					}
+				}
 			}
 		}
 	}

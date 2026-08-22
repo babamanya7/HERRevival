@@ -2510,10 +2510,9 @@ focus_tree = {
 	focus = {
 		id = USA_market_capitalism
 		icon = GFX_goal_focus_USA_market_militarism
-		prerequisite = { focus = USA_wait_out_the_recession }
 		prerequisite = { focus = USA_build_the_pentagon }
 		mutually_exclusive = { focus = USA_keynesian_militarism }
-		x = 1
+		x = 2
 		y = 0
 		relative_position_id = USA_keynesian_militarism
 		cost = 10
@@ -2526,6 +2525,7 @@ focus_tree = {
 
 		available = {
 			has_idea = full_privatization
+			has_completed_focus = USA_wait_out_the_recession
 		}
 
 		completion_reward = {
@@ -2550,7 +2550,7 @@ focus_tree = {
 			focus = USA_keynesian_militarism
 			focus = USA_market_capitalism
 		}
-		x = 0
+		x = 1
 		y = 1
 		relative_position_id = USA_keynesian_militarism
 		cost = 5
@@ -3321,7 +3321,7 @@ focus_tree = {
 	focus = {
 		id = USA_air_war_plans_division
 		icon = GFX_goal_generic_build_airforce
-		x = 4
+		x = 5
 		y = 1
 		cost = 5
 		#ai_will_do = {
@@ -3642,7 +3642,7 @@ focus_tree = {
 	focus = {
 		id = USA_bureau_of_ships
 		icon = GFX_goal_generic_build_navy
-		x = 7
+		x = 8
 		y = 1
 		cost = 5
 		#ai_will_do = {

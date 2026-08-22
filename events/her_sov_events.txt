@@ -1,6 +1,92 @@
 add_namespace = sov_armor
 add_namespace = sov_her
 
+country_event = { # Death of Ivan Chernyakhovsky
+	id = sov_her.22
+	title = sov_her.22.t
+	desc = sov_her.22.d
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		date > 1942.4.1
+		has_war_with = GER
+		5 = { NOT = { is_fully_controlled_by = GER } }
+	}
+
+	immediate = {
+		set_country_flag = SOV_chernyakhovsky_dead
+	}
+
+	option = {
+		name = sov_her.22.a
+
+		retire_character = SOV_ivan_chernyakhovsky
+
+		country_event = {
+			id = sov_her.23
+			days = 2
+		}
+	}
+}
+
+
+country_event = { # Vasilevsky takes command of the 3rd Belorussian Front
+	id = sov_her.23
+	title = sov_her.23.t
+	desc = sov_her.23.d
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = sov_her.23.a
+
+		# Vasilevsky leaves the General Staff
+		remove_advisor_role = {
+			character = "SOV_aleksandr_vasilevsky"
+			slot = genstab_chief
+		}
+
+		# Antonov leaves the Operations Directorate
+		remove_advisor_role = {
+			character = "SOV_aleksey_antonov"
+			slot = operativ_chief
+		}
+
+		# Antonov becomes Chief of the General Staff
+		add_advisor_role = {
+			character = SOV_aleksey_antonov
+			activate = yes
+			advisor = {
+				slot = genstab_chief
+				cost = 0
+				idea_token = SOV_aleksey_antonov
+				traits = {
+					SOV_highcommand_genstab_2
+				}
+				can_be_fired = no
+			}
+		}
+
+		# Shtemenko takes Antonov's former position
+		add_advisor_role = {
+			character = SOV_sergei_shtemenko
+			activate = yes
+			advisor = {
+				slot = operativ_chief
+				cost = 0
+				idea_token = SOV_sergei_shtemenko
+				traits = {
+					SOV_highcommand_nachoper_2
+				}
+				can_be_fired = no
+			}
+		}
+	}
+}
+
 country_event = {
 	id = sov_her.1
 	title = sov_her.1.t

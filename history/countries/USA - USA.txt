@@ -420,7 +420,9 @@ create_operative_leader = {
 			role_type_slot = role_medium_bomber
 		}
 		icon = "GFX_USA_early_bomber_medium"
-		air_bba_engine_upgrade = 1
+		upgrades={
+			air_bba_engine_upgrade = 1
+		}
 	}
 	create_equipment_variant = {
 		name = "P2Y" #

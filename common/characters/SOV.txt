@@ -798,7 +798,7 @@ characters = {
 		portraits = {
 			army = {
 				small = "GFX_idea_georgy_zhukov"
-				large = "gfx/leaders/SOV/Portrait_Soviet_Gregory_Zhukov.dds"
+				large = "gfx/leaders/SOV/Portrait_Soviet_Gregory_Zhukov_early.dds"
 			}
 		}
 
@@ -841,18 +841,25 @@ characters = {
 		portraits = {
 			army = {
 				small = "gfx/interface/ideas/idea_SOV_aleksandr_vasilevsky.dds"
-				large = "gfx/leaders/SOV/SOV_aleksandr_vasilevsky.dds"
+				large = "gfx/leaders/SOV/SOV_aleksandr_vasilevsky_late.dds"
 			}
 		}
-		#corps_commander = { #ШТАБНОЙ
-		#	traits = { politically_connected career_officer infantry_officer gen_lt }
-		#	skill = 4
-		#	attack_skill = 2
-		#	defense_skill = 6
-		#	planning_skill = 3
-		#	logistics_skill = 2
-		#	legacy_id = 407
-		#}
+		field_marshal = { #ШТАБНОЙ
+			traits = {
+				gen_fm
+				career_officer
+				brilliant_strategist
+				organizer
+				infantry_officer
+				logistics_wizard
+			}
+			skill = 11
+			attack_skill = 7
+			defense_skill = 12
+			planning_skill = 17
+			logistics_skill = 12
+			visible = { has_country_flag = SOV_chernyakhovsky_dead } #event1944 - late
+		}
 
 		advisor = {
 			slot = operativ_chief
@@ -878,6 +885,16 @@ characters = {
 				large = "GFX_portrait_SOV_aleksandr_vasilevsky"
 			}
 		}	
+	}
+	
+	SOV_sergei_stemenko = {
+		name = SOV_sergei_stemenko
+		portraits = {
+			army = {
+				small = "gfx/interface/ideas/idea_sergei_stemenko.dds"
+				large = "GFX_portrait_SOV_aleksandr_vasilevsky"
+			}
+		}
 	}
 
 	SOV_boris_shaposhnikov = { #ШТАБНОЙ
@@ -1132,7 +1149,10 @@ characters = {
 			planning_skill = 8
 			logistics_skill = 6
 			legacy_id = 413
-			visible = { has_completed_focus = SOV_development_of_the_shock_army } #focus1942
+			visible = { #focus1942
+				has_completed_focus = SOV_development_of_the_shock_army
+				NOT = { has_country_flag = SOV_chernyakhovsky_dead }
+			}
 		}
 	}
 

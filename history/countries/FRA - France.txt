@@ -433,7 +433,9 @@ add_ideas = {
 			role_type_slot = role_large_bomber
 		}
 		icon = "GFX_FRA_strategic_bomber1_medium"
-		air_bba_engine_upgrade = 1
+		upgrades={
+			air_bba_engine_upgrade = 1
+		}
 	}
 	create_equipment_variant = {
 		name = "M.B. 200" #

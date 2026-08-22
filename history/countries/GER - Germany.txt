@@ -484,7 +484,9 @@ recruit_character = GER_henrich_focke
 			fuel_tank_type_slot = fuel_tanks_medium
 			role_type_slot = role_medium_bomber
 		}
-		air_bba_engine_upgrade = 1
+		upgrades={
+			air_bba_engine_upgrade = 1
+		}
 	}
 	create_equipment_variant = {
 		name = "He 111"

@@ -635,7 +635,8 @@ country_event = {
 
 	option = {
 		name = usa_armor.885.a
-		mio:USA_boeing_organization = { add_mio_funds = 5000 }
+		mio:USA_consolidated_organization = { add_mio_funds = 5000 }
+		mio:USA_boeing_organization = { add_mio_funds = 3000 }
 	}
 }
 

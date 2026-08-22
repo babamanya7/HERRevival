@@ -72,12 +72,12 @@ country_event = { # Vasilevsky takes command of the 3rd Belorussian Front
 
 		# Shtemenko takes Antonov's former position
 		add_advisor_role = {
-			character = SOV_sergei_shtemenko
+			character = SOV_sergei_stemenko
 			activate = yes
 			advisor = {
 				slot = operativ_chief
 				cost = 0
-				idea_token = SOV_sergei_shtemenko
+				idea_token = SOV_sergei_stemenko
 				traits = {
 					SOV_highcommand_nachoper_2
 				}

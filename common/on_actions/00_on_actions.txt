@@ -778,8 +778,6 @@ on_actions = {
 		}
 	}
 	
-	
-	
 	# From is owner country
 	on_army_leader_daily = {
 		effect = {
@@ -796,7 +794,6 @@ on_actions = {
 					trait = sick
 					days = 30
 				}
-				unit_leader_event = { id = generic.17 }
 			}
 		}
 	}
@@ -817,7 +814,6 @@ on_actions = {
 					trait = wounded
 					days = 90
 				}
-				unit_leader_event = { id = generic.18 }
 			}
 		}
 	}
@@ -838,7 +834,6 @@ on_actions = {
 					trait = wounded
 					days = 90
 				}
-				unit_leader_event = { id = generic.18 }
 			}
 			if = {
 				limit = {

@@ -342,6 +342,7 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
+			add_ideas = partial_economic_mobilisation
 			add_ideas = gaz_automobile_plants
 			219 = {
 				add_extra_state_shared_building_slots = 5
@@ -396,6 +397,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
+			add_ideas = war_economy
 			custom_effect_tooltip = SOV_start_the_third_five_year_plan_tt
 			hidden_effect = {
 				remove_dynamic_modifier = { modifier = SOV_second_five_year_plan_dynamic_modifier }
@@ -3178,7 +3180,7 @@ focus_tree = {
 		cost = 5
 
 		available = {
-			date > 1940.1.1
+			date > 1940.6.1
 		}
 		
 		search_filters = {FOCUS_FILTER_RESEARCH}
@@ -3186,6 +3188,8 @@ focus_tree = {
 		completion_reward = {
 			mio:SOV_kirov_organization = { add_mio_funds = 1000 }
 			set_technology = { improved_heavy_tank_chassis = 1 }
+			mio:SOV_morozov_design_bureau_organization = { add_mio_funds = 1000 }
+			set_technology = { improved_medium_tank_chassis = 1 }
 			create_equipment_variant = {
 				name = "KV-1"
 				type = heavy_tank_chassis_2
@@ -3469,6 +3473,40 @@ focus_tree = {
 			custom_effect_tooltip = SOV_foster_flying_clubs_tt
 
 			air_experience = 25
+			
+			add_advisor_role = {
+				character = SOV_nikolay_naumenko
+				advisor = {
+					slot = air_h_command
+					cost = 150
+					idea_token = SOV_nikolay_naumenko
+					traits = {
+						sov_air_fighter_chief
+					}
+				}
+			}
+			add_advisor_role = {
+				character = SOV_konstantin_vershinin
+				advisor = {
+					slot = air_h_command
+					cost = 150
+					idea_token = SOV_konstantin_vershinin
+					traits = {
+						sov_air_CAS_chief
+					}
+				}
+			}
+			add_advisor_role = {
+				character = SOV_aleksandr_golovanov
+				advisor = {
+					slot = air_h_command
+					cost = 150
+					idea_token = SOV_aleksandr_golovanov
+					traits = {
+						sov_air_range_chief
+					}
+				}
+			}
 
 			add_ace = {
 				name = Ivan
@@ -4631,6 +4669,12 @@ focus_tree = {
 					character = SOV_vasily_chuykov
 					army = {
 						large = "gfx/leaders/SOV/SOV_vasily_chuykov_late.dds"
+					}
+				}
+				set_portraits = {
+					character = SOV_Andrey_Vlasov
+					army = {
+						large = "gfx/leaders/SOV/SOV_Andrey_Vlasov_late.dds"
 					}
 				}
 			}

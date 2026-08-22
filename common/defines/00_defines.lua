@@ -625,7 +625,7 @@ NProduction = {
 	MAX_MIL_FACTORIES_VISIBLE_FOR_MIL_EQUIPMENT_LINE = 30,
 	RAILWAY_GUN_MAX_MIL_FACTORIES_PER_LINE = 5,
 	RAILWAY_GUN_REPAIR_SPEED = 8.0,			-- Railway gun strength repair speed per factory
-	EFFICIENCY_LOSS_PER_UNUSED_DAY = 3,		-- Daily loss of efficiency for unused factory slots ( efficiency is tracked per factory slot in the production line )
+	EFFICIENCY_LOSS_PER_UNUSED_DAY = 1.5,		-- Daily loss of efficiency for unused factory slots ( efficiency is tracked per factory slot in the production line )
 	RESOURCE_PENALTY_WARNING_CRITICAL_RATIO =  0.75, -- Switch to red progress bar if penalty is over threshold
 	RESOURCE_TO_ENERGY_COEFFICIENT = 2,		-- How much energy per coal produces
 	BASE_COUNTRY_ENERGY_PRODUCTION = 0, 			-- The base energy production of a country
@@ -763,7 +763,7 @@ NBuildings = {
 
 	INFRASTRUCTURE_RESOURCE_BONUS = 0.07, -- multiplicative resource bonus for each level of (non damaged) infrastructure
 	SUPPLY_ROUTE_RESOURCE_BONUS = 0.1,   -- multiplicative resource bonus for having a railway/naval connection to the capital
-	INFRASTRUCTURE_MUD_EFFECT = -0.99, -- multiplicative effect on mud growth for max infra
+	INFRASTRUCTURE_MUD_EFFECT = -0.95, -- multiplicative effect on mud growth for max infra
 },
 
 NDeployment = {
@@ -4454,7 +4454,7 @@ NSupply = {
 	TRAIN_ANTI_AIR_HIT_ROLL_COUNT = 12, -- The air_attack of all attacked trains are accumulated, and then we do this many random rolls each with the hit chance set above to determine the fraction of the accumulated air_attack that hits.
 	TRAIN_ANTI_AIR_ATTACK_TO_AMOUNT = 0.001, -- Balancing value to convert the hitting air_attack to a percentage value of the attacking planes that are killed.
 
-	MIN_TRAIN_SUPPLY_FACTOR = 0.4, -- Having 0 trains in stockpile only applies this penalty factor, scaling up to 1.0 when need is met
+	MIN_TRAIN_SUPPLY_FACTOR = 0.2, -- Having 0 trains in stockpile only applies this penalty factor, scaling up to 1.0 when need is met
 	MIN_TRAIN_REQUIREMENT = 20, -- If total train need <= this, then don't apply any supply penalty, even if stockpile is insufficient
 
 	SUPPLY_FLOW_REDUCTION_THRESHOLD = 0.1, -- if supply flow is lower than this, it is not applied

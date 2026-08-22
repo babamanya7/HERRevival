@@ -2533,7 +2533,16 @@ characters = {
 		name = SOV_konstantin_vershinin
 		portraits = {
 			army = {
-				small = "GFX_idea_konstantin_vershinin"
+				small = "gfx/interface/ideas/idea_SOV_konstantin_vershinin.dds"
+			}
+		}
+	}
+	
+	SOV_nikolay_naumenko = {
+		name = SOV_nikolay_naumenko
+		portraits = {
+			army = {
+				small = "gfx/interface/ideas/idea_SOV_nikolay_naumenko.dds"
 			}
 		}
 	}
@@ -2626,20 +2635,9 @@ characters = {
 		name = SOV_aleksandr_golovanov
 		portraits = {
 			army = {
-				small = "GFX_idea_alexander_golovanov"
+				small = "gfx/interface/ideas/idea_SOV_aleksandr_golovanov.dds"
 			}
-		}
-
-		advisor = {
-			cost = 100
-			slot = air_theorist
-			idea_token = alexander_golovanov
-			ledger = air
-			allowed = {
-				original_tag = SOV
-			}
-			traits = { air_warfare_theorist }
-		}		
+		}	
 	}
 
 	SOV_mikhail_frinovsky = {

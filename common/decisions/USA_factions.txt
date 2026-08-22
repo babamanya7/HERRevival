@@ -1336,4 +1336,131 @@ USA_internal_factions = {
 
 		ai_will_do = { factor = 1 }
 	}
+
+	############################################################################################################
+	# Market capitalism: J. P. Morgan assistance
+	############################################################################################################
+
+	USA_JPMorgan_market_assistance_calm = {
+		icon = generic_operation
+
+		allowed = { tag = USA }
+
+		visible = {
+			tag = USA
+			has_completed_focus = USA_market_capitalism
+			check_variable = { var = USA_JPMorgan_attitude value = 0 compare = equals }
+		}
+
+		available = {
+			NOT = { has_country_flag = USA_JPMorgan_market_assistance_cooldown }
+			NOT = { has_decision = USA_JPMorgan_market_assistance_worried }
+		}
+
+		cost = 0
+		days_remove = 120
+		days_re_enable = 180
+		is_good = yes
+		fire_only_once = no
+
+		modifier = {
+			political_power_gain = 0.25
+			consumer_goods_factor = -0.05
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = USA_JPMorgan_market_assistance_cooldown
+			}
+		}
+
+		remove_effect = {
+			custom_effect_tooltip = USA_JPMorgan_market_assistance_congress_support_tt
+			hidden_effect = {
+				add_to_variable = { senators_support = 10 }
+				clamp_variable = { var = senators_support max = senators_total min = 0 }
+				add_to_variable = { representatives_support = 25 }
+				clamp_variable = { var = representatives_support max = representatives_total min = 0 }
+				USA_recalc_congress_icon_frames = yes
+				set_country_flag = { flag = USA_JPMorgan_market_assistance_cooldown days = 180 }
+			}
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+
+	USA_JPMorgan_market_assistance_worried = {
+		icon = generic_operation
+
+		allowed = { tag = USA }
+
+		visible = {
+			tag = USA
+			has_completed_focus = USA_market_capitalism
+			check_variable = { var = USA_JPMorgan_attitude value = -1 compare = equals }
+		}
+
+		available = {
+			NOT = { has_country_flag = USA_JPMorgan_market_assistance_cooldown }
+			NOT = { has_decision = USA_JPMorgan_market_assistance_calm }
+		}
+
+		cost = 0
+		days_remove = 120
+		days_re_enable = 250
+		is_good = yes
+		fire_only_once = no
+
+		modifier = {
+			political_power_gain = 0.25
+			consumer_goods_factor = -0.05
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = USA_JPMorgan_market_assistance_cooldown
+			}
+		}
+
+		remove_effect = {
+			custom_effect_tooltip = USA_JPMorgan_market_assistance_congress_support_tt
+			hidden_effect = {
+				add_to_variable = { senators_support = 10 }
+				clamp_variable = { var = senators_support max = senators_total min = 0 }
+				add_to_variable = { representatives_support = 25 }
+				clamp_variable = { var = representatives_support max = representatives_total min = 0 }
+				USA_recalc_congress_icon_frames = yes
+				set_country_flag = { flag = USA_JPMorgan_market_assistance_cooldown days = 250 }
+			}
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+
+	USA_JPMorgan_market_assistance_agitated = {
+		icon = generic_operation
+
+		allowed = { tag = USA }
+
+		visible = {
+			tag = USA
+			has_completed_focus = USA_market_capitalism
+			check_variable = { var = USA_JPMorgan_attitude value = -2 compare = equals }
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = USA_JPMorgan_market_assistance_requires_worried_tt
+				check_variable = { var = USA_JPMorgan_attitude value = -1 compare = greater_than_or_equals }
+			}
+		}
+
+		cost = 0
+		days_remove = 120
+		is_good = yes
+		fire_only_once = no
+
+		ai_will_do = { factor = 0 }
+	}
+
 }

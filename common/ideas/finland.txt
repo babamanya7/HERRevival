@@ -419,8 +419,8 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				consumer_goods_factor = -0.15
-				production_speed_buildings_factor = 0.1
+				consumer_goods_factor = -0.05
+				production_speed_buildings_factor = 0.05
 			}
 		}
 
@@ -483,7 +483,6 @@ ideas = {
 				winter_attrition_factor = -0.15
 				supply_combat_penalties_on_core_factor = -0.1
 				initiative_factor = 0.02
-				custom_modifier_tooltip = FIN_sami_pathfinders_recon_bonus_tt
 			}
 		}
 
@@ -2075,10 +2074,6 @@ ideas = {
 			visible = {
 				NOT = { has_completed_focus = FIN_tire_factory_at_nokia }
 			}
-
-			available = {
-				controls_state = 927 #HÄME (Tampere - Nokia)
-			}
 			
 			cost = 150
 
@@ -2100,10 +2095,6 @@ ideas = {
 
 			visible = {
 				has_completed_focus = FIN_tire_factory_at_nokia
-			}
-			
-			available = {
-				controls_state = 927 #HÄME (Tampere - Nokia)
 			}
 
 			cost = 150

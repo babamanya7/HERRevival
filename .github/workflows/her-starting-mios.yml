@@ -1,0 +1,152 @@
+name: HER starting MIO assignments
+
+on:
+  push:
+    branches:
+      - work/start-designers-and-1944-retirements
+    paths:
+      - .github/workflows/her-starting-mios.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/start-designers-and-1944-retirements
+      - name: Apply starting MIO assignments
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          def blocks(text, marker):
+              out=[]; pos=0
+              while True:
+                  s=text.find(marker,pos)
+                  if s<0: break
+                  brace=text.find('{',s)
+                  if brace<0: break
+                  d=0; i=brace
+                  while i<len(text):
+                      if text[i]=='{': d+=1
+                      elif text[i]=='}':
+                          d-=1
+                          if d==0:
+                              out.append((s,i+1)); pos=i+1; break
+                      i+=1
+                  else: break
+              return out
+
+          def add_field_to_blocks(path, marker, chooser, field):
+              p=Path(path)
+              if not p.exists(): return 0
+              text=p.read_text(encoding='utf-8-sig')
+              edits=[]
+              for s,e in blocks(text,marker):
+                  b=text[s:e]
+                  if re.search(r'(?m)^\s*'+re.escape(field)+r'\s*=',b):
+                      continue
+                  value=chooser(b)
+                  if not value: continue
+                  close=e-1
+                  line_start=text.rfind('\n',s,close)+1
+                  # top-level block contents use one tab relative to marker in these files
+                  edits.append((close,'\n\t'+field+' = mio:'+value+'\n'))
+              for at,ins in reversed(edits): text=text[:at]+ins+text[at:]
+              if edits:
+                  p.write_text('\ufeff'+text,encoding='utf-8')
+              return len(edits)
+
+          # Exact model -> MIO mappings for the refreshed major-country KB sets.
+          air = {
+            'GER': {
+              'He 51':'GER_heinkel_organization','Ju 86':'GER_junkers_organization','He 111':'GER_heinkel_organization',
+            },
+            'SOV': {
+              'I-5':'SOV_polikarpov_organization','I-15':'SOV_polikarpov_organization','I-16':'SOV_polikarpov_organization','U-2':'SOV_polikarpov_organization','TB-3':'SOV_tupolev_organization',
+            },
+            'ENG': {
+              'Gloster Gauntlet':'ENG_gloster_organization','Gloster Gladiator':'ENG_gloster_organization','Hawker Fury':'ENG_hawker_organization','Hawker Nimrod':'ENG_hawker_organization','Hawker Demon':'ENG_hawker_organization',
+            },
+            'FRA': {'D.500/501':'FRA_dewoitine_organization','D.510':'FRA_dewoitine_organization','D.371':'FRA_dewoitine_organization'},
+            'JAP': {'Ki-10':'JAP_kawasaki_organization','Ki-2':'JAP_mitsubishi_organization','Ki-3':'JAP_kawasaki_organization','A4N':'JAP_nakajima_organization'},
+            'USA': {'P-36':'USA_curtiss_organization'},
+          }
+          tanks = {
+            'GER': {'Panzer II':'GER_man_organization'},
+            'ENG': {'Light Tank Mk. III':'ENG_vickers_armstrong_eng_organization','Medium Mk. II':'ENG_vickers_armstrong_eng_organization'},
+            'FRA': {'Renault R35':'FRA_renault_organization','Char B1':'FRA_renault_organization','SOUMUA S35':'FRA_somua_organization'},
+            'JAP': {'Type 95 Ha-Go':'JAP_isuzu_organization'},
+            'SOV': {'T-37A':'SOV_astrov_design_bureau_organization','BT-7':'SOV_morozov_design_bureau_organization','T-28':'SOV_kirov_organization','T-35':'SOV_kirov_organization'},
+            'USA': {},
+          }
+
+          air_oob={'GER':'GER_1936_air_bba.txt','SOV':'SOV_1936_air_bba.txt','ENG':'ENG_1936_air_bba.txt','FRA':'FRA_1936_air_bba.txt','JAP':'JAP_1936_air_bba.txt','USA':'USA_1936_air_bba.txt'}
+          tank_oob={'GER':'GER_1936_nsb.txt','SOV':'SOV_1936_nsb.txt','ENG':'ENG_1936_nsb.txt','FRA':'FRA_1936_nsb.txt','JAP':'JAP_1936_nsb.txt','USA':'USA_1936.txt'}
+
+          def exact_chooser(mapping):
+              def choose(b):
+                  m=re.search(r'version_name\s*=\s*"([^"]+)"',b)
+                  return mapping.get(m.group(1)) if m else None
+              return choose
+
+          changed=0
+          for tag,fn in air_oob.items():
+              changed += add_field_to_blocks('history/units/'+fn,'add_equipment_production =',exact_chooser(air[tag]),'industrial_manufacturer')
+          for tag,fn in tank_oob.items():
+              changed += add_field_to_blocks('history/units/'+fn,'add_equipment_production =',exact_chooser(tanks[tag]),'industrial_manufacturer')
+
+          # Starting equipment designs: put the same appropriate KB directly on the variant.
+          country_files={
+            'GER':'GER - Germany.txt','SOV':'SOV - Soviet union.txt','ENG':'ENG - Britain.txt','FRA':'FRA - France.txt','JAP':'JAP - Japan.txt','USA':'USA - USA.txt'
+          }
+          for tag,fn in country_files.items():
+              mapping={**air[tag],**tanks[tag]}
+              changed += add_field_to_blocks('history/countries/'+fn,'create_equipment_variant =',lambda b,m=mapping: m.get((re.search(r'(?m)^\s*name\s*=\s*"([^"]+)"',b) or [None,None])[1]),'design_team')
+
+          # Naval production: assign a compatible naval KB to every starting line of the seven major navies.
+          naval={
+            'GER': {'battle':'GER_germaniawerft_organization','task':'GER_deutsche_werke_organization','escort':'GER_deschimag_organization','raider':'GER_blohm_und_voss_organization'},
+            'ENG': {'battle':'ENG_cammell_laird_organization','task':'ENG_harland_wolff_organization','escort':'ENG_yarrow_shipbuilders_organization','raider':'ENG_john_brown_organization'},
+            'FRA': {'battle':'FRA_acl_organization','task':'FRA_aeb_organization','escort':'FRA_fcm_organization','raider':'FRA_acf_organization'},
+            'JAP': {'battle':'JAP_kure_naval_arsenal_organization','task':'JAP_yokosuka_naval_arsenal_organization','escort':'JAP_maizuru_naval_arsenal_organization','raider':'JAP_sasebo_naval_arsenal_organization'},
+            'USA': {'battle':'USA_norfolk_naval_yard_organization','task':'USA_newport_news_shipbuilding_organization','escort':'USA_brooklyn_naval_yard_organization','raider':'USA_electric_boat_company_organization'},
+            'SOV': {'battle':'SOV_nevskoye_design_bureau_organization','task':'SOV_nevskoye_design_bureau_organization','escort':'SOV_nevskoye_design_bureau_organization','raider':'SOV_rubin_design_bureau_organization'},
+            'ITA': {'battle':'ITA_crda_organization','task':'ITA_crda_organization','escort':'ITA_cantiere_oto_organization','raider':'ITA_cantieri_navali_tosi_organization'},
+          }
+          naval_files={t:f'00_{t}_vnr_naval.txt' for t in naval}
+          def naval_choose(tag):
+              def choose(b):
+                  m=re.search(r'(?m)^\s*type\s*=\s*([^\s#}]+)',b)
+                  if not m: return None
+                  typ=m.group(1).lower()
+                  if 'submarine' in typ: kind='raider'
+                  elif 'carrier' in typ: kind='task'
+                  elif 'heavy' in typ or 'battle' in typ or 'coastal' in typ: kind='battle'
+                  elif 'light' in typ or 'destroyer' in typ: kind='escort'
+                  elif 'cruiser' in typ: kind='task'
+                  else: kind='task'
+                  return naval[tag][kind]
+              return choose
+          for tag,fn in naval_files.items():
+              changed += add_field_to_blocks('history/units/'+fn,'add_equipment_production =',naval_choose(tag),'industrial_manufacturer')
+
+          print('Assignments added:',changed)
+          PY
+      - name: Commit generated OOB changes
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git config user.name "HER automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add history/units history/countries
+          git commit -m "Assign MIOs to starting aircraft, tanks and ship lines"
+          git push origin HEAD:work/start-designers-and-1944-retirements

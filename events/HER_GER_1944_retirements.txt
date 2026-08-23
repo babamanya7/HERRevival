@@ -1,0 +1,37 @@
+add_namespace = her_ger_retirements
+
+country_event = {
+	id = her_ger_retirements.1
+	title = her_ger_retirements.1.t
+	desc = her_ger_retirements.1.d
+	picture = GFX_report_event_generic_military
+
+	trigger = {
+		tag = GER
+		has_government = fascism
+		has_war_with = SOV
+		date > 1943.1.1
+		NOT = { has_country_flag = HER_manstein_kleist_retired_1944 }
+
+		# Collapse of the German position in Right-Bank Ukraine:
+		# Vinnytsia, Proskuriv and Mykolaiv are back under Soviet control.
+		SOV = {
+			controls_state = 198
+			controls_state = 199
+			controls_state = 197
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = her_ger_retirements.1.a
+		set_country_flag = HER_manstein_kleist_retired_1944
+		retire_character = GER_erich_von_manstein
+		retire_character = GER_ewald_von_kleist
+	}
+}

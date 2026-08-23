@@ -1280,7 +1280,9 @@
 
   USA_wait_out_the_recession:0 "Переждать рецессию"
   USA_wait_out_the_recession_desc:0 "Хотя рецессия может выглядеть ужасной, это просто ожидаемый результат перехода американской экономики от государственных расходов, и не о чем беспокоиться"
-  USA_wait_out_the_recession_tt:0 "§GЭтот фокус завершится, если вы переждете рецессию Рузвельта вместо того, чтобы пытаться исправить ее с помощью кейнсианской экономики.§!\n§RНе дает немедленных преимуществ, но может быть лучшим выбором в долгосрочной перспективе.§!"
+  USA_wait_out_the_recession_tt:0 "§GThis focus completes if we wait out the Roosevelt Recession instead of addressing it through Keynesian economics.§!\nUnlocks a sequential chain of §Y3 investment decisions§!.\n§YHome of the Free§!: §G+25%§! MIO Funds Gain.\nAt Calm attitude, §YGM/DuPont§! gains bonuses to ammunition, artillery, and refinery rubber.\nAt Friendly attitude, §YKaiser§! gains Infrastructure and Dockyard Construction Speed."
+  USA_JPMorgan_new_deal_decisions_tt:0 "Unlocks §YNegotiate with J.P. Morgan§! and §YImprove Relations with J.P. Morgan§! in the §YInternal Factions§! category."
+  USA_TVA_Ford_faction_bonus_tt:0 "At Friendly attitude, §YFord/Chrysler§! gains §G+7.5%§! Production Efficiency Cap, §G+10%§! Military Factory Construction Speed, and §G+10%§! Production Efficiency Growth."
 
   USA_keynesian_economics:0 "Кейнсианская экономика"
   USA_keynesian_economics_desc:0 "В условиях ухудшения состояния экономики после недавнего сокращения бюджета необходимо использовать другие варианты. Теория Джона Мейнарда Кейнса о том, что государственные расходы необходимы для стимулирования экономики, предлагает решение, включающее расширение многих государственных трудовых программ для перезапуска американской экономики."
@@ -1409,3 +1411,9 @@
  SOV_socialist_emulation_tt:0 "$SOV_modify_second_fyp_intro$ \nResearch Speed: §G+5%§! \nProduction Efficiency Growth: §G+10%§!"
  SOV_militarized_schools_tt:0 "$SOV_modify_the_politburo_ns_intro$ \nRecruitable Population: §Y+0.50%§! \nMobilization Speed: §G+20%§! \nStability Modifier from Defensive War Penalty: §G+10%§!"
  SOV_an_adaptable_army_ns_tt:0 "$SOV_modify_the_red_army_ns_intro$ \nWinter Attrition: §G-10.0%§! \nHeat Attrition: §G-10.0%§! \nCold Acclimatization Gain Factor: §G+25.0%§! \nHeat Acclimatization Gain Factor: §G+25.0%§! \nTerrain Penalty Reduction: §G+5.0%§! \n\n"
+
+  USA_market_capitalism:0 "Market Capitalism"
+  USA_market_capitalism_desc:0 "The federal government will mobilize the strength of private capital and industrial competition for national defense without replacing the market with permanent state direction."
+  USA_market_capitalism_congress_opposition_tt:0 "Up to §R15 Senators§! and §R75 Representatives§! move into opposition."
+  USA_market_capitalism_unlocks_jpmorgan_assistance_tt:0 "Unlocks the §YJ. P. Morgan Assistance§! decision in §YInternal Factions§!."
+

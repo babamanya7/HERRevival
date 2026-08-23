@@ -52,9 +52,10 @@ set_technology = {
 	engines_1 = 1
 	engines_2 = 1
 	engines_3 = 1
-	engines_4 = 1
 	radial_engines_2 = 1
 	radial_engines_3 = 1
+	engine_tuning_1 = 1
+	engine_tuning_2 = 1
 	early_bombs = 1
 	aircraft_construction = 1
 	iw_small_airframe = 1
@@ -322,8 +323,7 @@ recruit_character = ENG_nevil_shute
 		name = "Light Tank Mk. II"
 		type = light_tank_chassis_1
 		parent_version = 0
-		design_team = mio:ENG_vauxhall_organization
-		show_position = no
+show_position = no
 		modules = {
 			main_armament_slot = tank_heavy_machine_gun
 			turret_type_slot = tank_light_one_man_tank_turret
@@ -341,8 +341,7 @@ recruit_character = ENG_nevil_shute
 		name = "Light Tank Mk. III"
 		type = light_tank_chassis_1
 		parent_version = 1
-		design_team = mio:ENG_vauxhall_organization
-		show_position = no
+show_position = no
 		modules = {
 			main_armament_slot = tank_heavy_machine_gun
 			turret_type_slot = tank_light_one_man_tank_turret
@@ -361,8 +360,7 @@ recruit_character = ENG_nevil_shute
 	create_equipment_variant = {
 		name = "Medium Mk. II"
 		type = medium_tank_chassis_0
-		design_team = mio:ENG_vickers_armstrong_eng_organization
-		parent_version = 0
+parent_version = 0
 		show_position = no
 		modules = {
 			main_armament_slot = tank_small_cannon
@@ -390,7 +388,7 @@ recruit_character = ENG_nevil_shute
 				fuel_tank_type_slot = fuel_tanks_small
 				role_type_slot = role_small_fighter
 			}
-		}
+}
 		create_equipment_variant = {
 			name = "Gloster Gauntlet"
 			type = small_plane_airframe_0
@@ -402,7 +400,9 @@ recruit_character = ENG_nevil_shute
 				fuel_tank_type_slot = fuel_tanks_small
 				role_type_slot = role_small_fighter
 			}
-		}
+		
+	design_team = mio:ENG_gloster_organization
+}
 		create_equipment_variant = {
 			name = "Hawker Fury"
 			type = small_plane_airframe_0
@@ -414,7 +414,7 @@ recruit_character = ENG_nevil_shute
 				fuel_tank_type_slot = fuel_tanks_small
 				role_type_slot = role_small_fighter
 			}
-		}
+}
 		create_equipment_variant = {
 			name = "Hawker Demon"
 			type = small_plane_airframe_0
@@ -425,12 +425,11 @@ recruit_character = ENG_nevil_shute
 				fuel_tank_type_slot = fuel_tanks_small
 				role_type_slot = role_small_fighter
 			}
-		}
+}
 		create_equipment_variant = {
 			name = "Hawker Nimrod" 
 			type = cv_small_plane_airframe_0
-			design_team = mio:ENG_hawker_organization
-			modules = {
+modules = {
 				fixed_capot_weapon_slot_1 = light_mg_2x
 				engine_type_slot = engine_3_1x
 				special_type_slot_7 = aircraft_lightweight_construction_small
@@ -441,7 +440,7 @@ recruit_character = ENG_nevil_shute
 		create_equipment_variant = {
 			name = "Gloster Gladiator" 
 			type = small_plane_airframe_0
-			design_team = mio:ENG_supermarine_organization
+			design_team = mio:ENG_gloster_organization
 			modules = {
 				fixed_capot_weapon_slot_1 = light_mg_2x
 				fixed_capot_weapon_slot_2 = light_mg_2x
@@ -455,8 +454,7 @@ recruit_character = ENG_nevil_shute
 		create_equipment_variant = {
 			name = "Fairey Gordon" 
 			type = small_plane_cas_airframe_0
-			design_team = mio:ENG_hawker_organization
-			modules = {
+modules = {
 				fixed_frame_weapon_slot_1 = bomb_locks
 				fixed_capot_weapon_slot_1 = light_mg_2x
 				engine_type_slot = radial_engine_3_1x
@@ -470,8 +468,7 @@ recruit_character = ENG_nevil_shute
 		create_equipment_variant = {
 			name = "Vickers Vildebeest" 
 			type = small_plane_naval_bomber_airframe_0
-			design_team = mio:ENG_fairey_aviation_organization
-			modules = {
+modules = {
 				fixed_frame_weapon_slot_1 = torpedo_mounting
 				fixed_capot_weapon_slot_1 = light_mg_2x
 				engine_type_slot = radial_engine_3_1x
@@ -483,9 +480,8 @@ recruit_character = ENG_nevil_shute
 		}
 		create_equipment_variant = {
 			name = "Fairey Swordfish" 
-			type = cv_small_plane_naval_bomber_airframe_0
-			design_team = mio:ENG_fairey_aviation_organization
-			modules = {
+			type = cv_small_plane_naval_bomber_airframe_1
+modules = {
 				fixed_frame_weapon_slot_1 = torpedo_mounting
 				engine_type_slot = radial_engine_3_1x
 				special_type_slot_2 = NACA_cowling
@@ -497,10 +493,9 @@ recruit_character = ENG_nevil_shute
 		create_equipment_variant = {
 			name = "Handley Page Heyford" 
 			type = medium_plane_airframe_0
-			design_team = mio:ENG_de_havilland_organization
-			modules = {
+modules = {
 				fixed_frame_weapon_slot_1 = medium_bomb_bay
-				engine_type_slot = engine_4_2x
+				engine_type_slot = engine_3_2x
 				fuel_tank_type_slot = fuel_tanks_medium
 				role_type_slot = role_medium_bomber
 			}
@@ -508,10 +503,10 @@ recruit_character = ENG_nevil_shute
 		create_equipment_variant = {
 			name = "Bristol Blenheim" 
 			type = medium_plane_airframe_1
-			design_team = mio:ENG_de_havilland_organization
+			design_team = mio:ENG_bristol_organization
 			modules = {
 				fixed_frame_weapon_slot_1 = medium_bomb_bay
-				engine_type_slot = radial_engine_4_2x
+				engine_type_slot = radial_engine_3_2x
 				fuel_tank_type_slot = fuel_tanks_medium
 				role_type_slot = role_medium_bomber
 			}
@@ -520,10 +515,9 @@ recruit_character = ENG_nevil_shute
 		create_equipment_variant = {
 			name = "Vickers Wellington" 
 			type = medium_plane_airframe_1
-			design_team = mio:ENG_de_havilland_organization
-			modules = {
+modules = {
 				fixed_frame_weapon_slot_1 = medium_bomb_bay
-				engine_type_slot = radial_engine_4_2x
+				engine_type_slot = radial_engine_3_2x
 				special_type_slot_2 = NACA_cowling
 				fuel_tank_type_slot = fuel_tanks_medium
 				role_type_slot = role_medium_bomber

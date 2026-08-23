@@ -21,6 +21,30 @@
 
 leader_traits = {
 
+	sov_air_range_chief = {
+		random = no
+		sprite = 1
+		
+		air_range_factor = 0.05
+		air_strategic_bomber_bombing_factor = 0.1
+		air_strategic_bomber_night_penalty = -0.1
+	}
+	
+	sov_air_fighter_chief = {
+		random = no
+		sprite = 1
+		
+		air_superiority_detect_factor = 0.05
+		air_superiority_efficiency = 0.05
+	}
+	
+	sov_air_CAS_chief = {
+		random = no
+		sprite = 1
+		
+		air_cas_present_factor = 0.15
+	}
+
 	sov_air_chief_1 = {
 		random = no
 		sprite = 1

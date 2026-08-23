@@ -69,7 +69,7 @@ instant_effect = {
 		requested_factories = 2
 		progress = 0.15
 		efficiency = 50
-	}
+}
 	add_equipment_production = {
 		equipment = {
 			type = small_plane_cas_airframe_0
@@ -89,7 +89,7 @@ instant_effect = {
 		requested_factories = 1
 		progress = 0.2
 		efficiency = 50
-	}
+}
 	add_equipment_production = {
 		equipment = {
 			type = medium_plane_airframe_1
@@ -99,6 +99,7 @@ instant_effect = {
 		requested_factories = 3
 		progress = 0.1
 		efficiency = 50
+		industrial_manufacturer = mio:GER_heinkel_organization
 	}
 	add_equipment_production = {
 		equipment = {

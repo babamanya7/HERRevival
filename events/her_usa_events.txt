@@ -577,8 +577,8 @@ country_event = {
 		unlock_decision_tooltip = { decision = USA_gm_retooling_factories_slow show_effect_tooltip = yes }
 		set_country_flag = GM_NEGOTIATIONS_1
 		custom_effect_tooltip = USA_GM_positive_1_tt1
-		add_to_variable = { var = USA_GM_DuPont_attitude value = 1 }
-		add_to_variable = { var = USA_GM_DuPont_civilian_construction_speed value = 1 }
+		add_to_variable = { var = USA_GM_Dupont_attitude value = 1 }
+		add_to_variable = { var = USA_GM_Dupont_civilian_construction_speed value = 1 }
 		USA_political_instability_update_effect = yes
 	}
 }
@@ -635,7 +635,8 @@ country_event = {
 
 	option = {
 		name = usa_armor.885.a
-		mio:USA_boeing_organization = { add_mio_funds = 5000 }
+		mio:USA_consolidated_organization = { add_mio_funds = 5000 }
+		mio:USA_boeing_organization = { add_mio_funds = 3000 }
 	}
 }
 

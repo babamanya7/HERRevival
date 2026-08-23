@@ -4,11 +4,11 @@
 
 weather_rain_light = { # on Region 
 
-	air_detection = -0.4
+	air_detection = -0.35
 	air_accidents = 1
-	air_mission_efficiency = -0.4
-	ground_attack_factor = -0.4
-	air_bombing_targetting = -0.4
+	air_mission_efficiency = -0.35
+	ground_attack_factor = -0.35
+	air_bombing_targetting = -0.35
 	
 	carrier_traffic = -0.3
 	naval_detection = -0.3
@@ -49,14 +49,14 @@ weather_snow = { # on Region
 	naval_strike = -0.3
 	positioning = -0.15
 	
-	air_detection = -0.6
+	air_detection = -0.4
 	air_accidents = 1
-	air_mission_efficiency = -0.6
-	ground_attack_factor = -0.6
-	air_bombing_targetting = -0.6
+	air_mission_efficiency = -0.4
+	ground_attack_factor = -0.4
+	air_bombing_targetting = -0.4
 
 	org_loss_when_moving = 0.2
-	army_attack_factor = -0.2
+	army_attack_factor = -0.1
 	supply_consumption_factor = 0.2
 	supply_factor = -0.2
 	truck_attrition_factor = 0.5
@@ -83,7 +83,6 @@ weather_blizzard = { # on Region
 	supply_factor = -0.4
 	truck_attrition_factor = 1
 	amphibious_invasion = -0.9
-
 }
 weather_sandstorm = { # on Region 
 	
@@ -105,7 +104,7 @@ weather_sandstorm = { # on Region
 	army_attack_factor = -0.25
 	army_speed_factor = -0.25
 	local_org_regain = -0.3
-	truck_attrition_factor = 4.5
+	truck_attrition_factor = 2.5
 }
 
 weather_arctic_water = { # on Region
@@ -130,14 +129,14 @@ weather_extreme_cold = { # on Province
 	army_attack_factor = -0.4
 	army_speed_factor = -0.4
 	winter_attrition = 0.3
-	local_org_regain = -0.8
+	local_org_regain = -0.6
 }
 weather_very_cold = { # on Province
 	dig_in_speed_factor = -0.2
 	army_attack_factor = -0.2
 	army_speed_factor = -0.2
 	winter_attrition = 0.15
-	local_org_regain = -0.4
+	local_org_regain = -0.3
 }
 weather_extreme_hot = { # on Province
 	heat_attrition = 0.2
@@ -153,7 +152,7 @@ weather_ground_snow_high = { # on Province
 	breakthrough_factor = -0.4
 	local_supplies = -0.2
 	army_speed_factor = -0.4
-	army_attack_factor = -0.4
+	army_attack_factor = -0.3
 	winter_attrition = 0.4
 }
 weather_ground_snow_medium = { # on Province
@@ -161,7 +160,7 @@ weather_ground_snow_medium = { # on Province
 	local_supplies = -0.1
 	army_speed_factor = -0.2
 	winter_attrition = 0.2
-	army_attack_factor = -0.2
+	army_attack_factor = -0.15
 }
 
 flooded = { # on Province

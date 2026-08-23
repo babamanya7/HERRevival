@@ -88,12 +88,27 @@ jobs:
               if inc: out |= mio_types(inc.group(1),seen)
               return out
 
+          def generic_equipment_names(eq):
+              out={eq}
+              x=eq
+              if x.startswith('vnr_'):
+                  x=x[4:]
+                  out.add(x)
+              # VNR numbered hulls inherit the corresponding generic hull family.
+              x=re.sub(r'_\d+$','',x)
+              out.add(x)
+              # conversion/variant suffixes still inherit their main hull family.
+              for fam in ['ship_hull_carrier','ship_hull_cruiser','ship_hull_light','ship_hull_heavy','ship_hull_submarine']:
+                  if x.startswith(fam): out.add(fam)
+              return out
+
           def compatible(eq,allowed):
-              if eq in allowed:return True
-              # Archetype/category tokens without a year suffix cover their descendants.
-              for a in allowed:
-                  if eq.startswith(a+'_') and not re.search(r'_\d+$',a):
-                      return True
+              eqnames=generic_equipment_names(eq)
+              if eqnames & allowed:return True
+              for e in eqnames:
+                  for a in allowed:
+                      if e.startswith(a+'_') and not re.search(r'_\d+$',a):
+                          return True
               return False
 
           rows=[]

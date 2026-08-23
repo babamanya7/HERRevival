@@ -1,0 +1,89 @@
+name: VP map probe
+
+on:
+  push:
+    branches: [victory-points-expansion]
+    paths:
+      - '.github/workflows/vp_map_probe.yml'
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build province centroid index
+        shell: python
+        run: |
+          import csv, glob, os, re, struct
+          from collections import defaultdict
+
+          # Parse definition.csv: RGB -> province id
+          rgb_to_id = {}
+          with open('map/definition.csv', encoding='utf-8-sig', errors='replace') as f:
+              for row in csv.reader(f, delimiter=';'):
+                  if len(row) < 4 or not row[0].isdigit():
+                      continue
+                  pid = int(row[0]); r=int(row[1]); g=int(row[2]); b=int(row[3])
+                  rgb_to_id[(r,g,b)] = pid
+
+          # Parse state membership and active VPs
+          prov_state = {}
+          state_name = {}
+          active_vp = {}
+          for path in glob.glob('history/states/*.txt'):
+              txt = open(path, encoding='utf-8-sig', errors='replace').read()
+              m = re.search(r'\bid\s*=\s*(\d+)', txt)
+              if not m: continue
+              sid = int(m.group(1))
+              nm = re.search(r'\bname\s*=\s*"([^"]+)"', txt)
+              state_name[sid] = nm.group(1) if nm else os.path.basename(path)
+              pm = re.search(r'\bprovinces\s*=\s*\{([^}]*)\}', txt, re.S)
+              if pm:
+                  for x in re.findall(r'\d+', pm.group(1)):
+                      prov_state[int(x)] = sid
+              for vm in re.finditer(r'victory_points\s*=\s*\{\s*(\d+)\s+(\d+)\s*\}', txt):
+                  active_vp[int(vm.group(1))] = int(vm.group(2))
+
+          # Parse Russian VP names
+          names = {}
+          loc = 'localisation/russian/victory_points_l_russian.yml'
+          if os.path.exists(loc):
+              txt = open(loc, encoding='utf-8-sig', errors='replace').read()
+              for pid, name in re.findall(r'VICTORY_POINTS_(\d+)(?::0)?\s*:\s*"([^"]*)"', txt):
+                  names[int(pid)] = name
+
+          # Read 24-bit BMP manually and aggregate centroids.
+          with open('map/provinces.bmp','rb') as f:
+              header = f.read(54)
+              if header[:2] != b'BM': raise SystemExit('Not BMP')
+              off = struct.unpack_from('<I', header, 10)[0]
+              dib = struct.unpack_from('<I', header, 14)[0]
+              width = struct.unpack_from('<i', header, 18)[0]
+              height_raw = struct.unpack_from('<i', header, 22)[0]
+              bpp = struct.unpack_from('<H', header, 28)[0]
+              if bpp != 24: raise SystemExit(f'Expected 24-bit BMP, got {bpp}')
+              height = abs(height_raw)
+              bottom_up = height_raw > 0
+              stride = ((width*3 + 3)//4)*4
+              f.seek(off)
+              count=defaultdict(int); sx=defaultdict(int); sy=defaultdict(int)
+              for row in range(height):
+                  data=f.read(stride)
+                  y = height-1-row if bottom_up else row
+                  for x in range(width):
+                      b,g,r = data[x*3:x*3+3]
+                      pid = rgb_to_id.get((r,g,b))
+                      if pid is None: continue
+                      count[pid]+=1; sx[pid]+=x; sy[pid]+=y
+
+          target_states = set(range(1,34)) | {34,35,36,42,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,785,977,978,979,980}
+          print('PROBE_BEGIN')
+          print(f'MAP,{width},{height}')
+          for pid in sorted(count):
+              sid = prov_state.get(pid)
+              if sid not in target_states: continue
+              cx = sx[pid]/count[pid]; cy = sy[pid]/count[pid]
+              vp = active_vp.get(pid,0)
+              name = names.get(pid,'').replace(',', ' ')
+              print(f'P,{pid},{sid},{cx:.2f},{cy:.2f},{vp},{name}')
+          print('PROBE_END')

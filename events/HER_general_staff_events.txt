@@ -1,0 +1,275 @@
+add_namespace = her_general_staff
+
+# ============================================================================
+# FRANCE
+# ============================================================================
+country_event = {
+	id = her_general_staff.1
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_FRA_weygand_supreme
+		set_country_flag = HER_staff_FRA_weygand
+	}
+}
+
+# ============================================================================
+# UNITED KINGDOM
+# ============================================================================
+country_event = {
+	id = her_general_staff.10
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_ENG_gort_cigs
+		set_country_flag = HER_staff_ENG_gort
+	}
+}
+country_event = {
+	id = her_general_staff.11
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_ENG_newall_air
+		set_country_flag = HER_staff_ENG_newall
+	}
+}
+country_event = {
+	id = her_general_staff.12
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_ENG_pound_navy
+		set_country_flag = HER_staff_ENG_pound
+	}
+}
+country_event = {
+	id = her_general_staff.13
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_ENG_ironside_cigs
+		activate_advisor = HER_ENG_adam_vcigs
+		set_country_flag = HER_staff_ENG_wartime_staff
+	}
+}
+country_event = {
+	id = her_general_staff.14
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_ENG_dill_cigs
+		activate_advisor = HER_ENG_pownall_vcigs
+		set_country_flag = HER_staff_ENG_france_fallen
+	}
+}
+country_event = {
+	id = her_general_staff.15
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_ENG_portal_air
+		set_country_flag = HER_staff_ENG_portal
+	}
+}
+country_event = {
+	id = her_general_staff.16
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_ENG_brooke_cigs
+		activate_advisor = HER_ENG_nye_vcigs
+		set_country_flag = HER_staff_ENG_brooke
+	}
+}
+country_event = {
+	id = her_general_staff.17
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_ENG_brooke_chairman
+		set_country_flag = HER_staff_ENG_chairman
+	}
+}
+country_event = {
+	id = her_general_staff.18
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_ENG_cunningham_navy
+		set_country_flag = HER_staff_ENG_cunningham
+	}
+}
+
+# ============================================================================
+# UNITED STATES
+# ============================================================================
+country_event = {
+	id = her_general_staff.20
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_USA_marshall_army_staff
+		set_country_flag = HER_staff_USA_marshall
+	}
+}
+country_event = {
+	id = her_general_staff.21
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_USA_arnold_air
+		set_country_flag = HER_staff_USA_arnold
+	}
+}
+country_event = {
+	id = her_general_staff.22
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_USA_stark_cno
+		set_country_flag = HER_staff_USA_stark
+	}
+}
+country_event = {
+	id = her_general_staff.23
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_USA_eisenhower_operations
+		set_country_flag = HER_staff_USA_eisenhower
+	}
+}
+country_event = {
+	id = her_general_staff.24
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_USA_king_cominch
+		set_country_flag = HER_staff_USA_king_cominch
+	}
+}
+country_event = {
+	id = her_general_staff.25
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_USA_spaatz_air_staff
+		set_country_flag = HER_staff_USA_spaatz
+	}
+}
+country_event = {
+	id = her_general_staff.26
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_USA_mcnair_ground
+		activate_advisor = HER_USA_mcnarney_deputy
+		set_country_flag = HER_staff_USA_ground_forces
+	}
+}
+country_event = {
+	id = her_general_staff.27
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_USA_king_cno
+		set_country_flag = HER_staff_USA_king_cno
+	}
+}
+country_event = {
+	id = her_general_staff.28
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_USA_handy_operations
+		set_country_flag = HER_staff_USA_handy
+	}
+}
+country_event = {
+	id = her_general_staff.29
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_USA_leahy_supreme
+		set_country_flag = HER_staff_USA_leahy
+	}
+}
+
+# ============================================================================
+# JAPAN
+# ============================================================================
+country_event = {
+	id = her_general_staff.40
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_JAP_tojo_air_inspector
+		set_country_flag = HER_staff_JAP_tojo_air
+	}
+}
+country_event = {
+	id = her_general_staff.41
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_JAP_suzuki_air_inspector
+		set_country_flag = HER_staff_JAP_suzuki_air
+	}
+}
+country_event = {
+	id = her_general_staff.42
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_JAP_sugiyama_general_staff
+		set_country_flag = HER_staff_JAP_sugiyama
+	}
+}
+country_event = {
+	id = her_general_staff.43
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_JAP_nagano_naval_staff
+		set_country_flag = HER_staff_JAP_nagano
+	}
+}
+country_event = {
+	id = her_general_staff.44
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_JAP_doihara_air_inspector
+		set_country_flag = HER_staff_JAP_doihara_air
+	}
+}
+country_event = {
+	id = her_general_staff.45
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_JAP_yasuda_air_inspector
+		set_country_flag = HER_staff_JAP_yasuda_air
+	}
+}
+country_event = {
+	id = her_general_staff.46
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_JAP_tojo_general_staff
+		activate_advisor = HER_JAP_shimada_naval_staff
+		set_country_flag = HER_staff_JAP_wartime_crisis
+	}
+}
+country_event = {
+	id = her_general_staff.47
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		activate_advisor = HER_JAP_umezu_general_staff
+		activate_advisor = HER_JAP_oikawa_naval_staff
+		set_country_flag = HER_staff_JAP_defensive_crisis
+	}
+}

@@ -1,0 +1,146 @@
+name: HER staff chain and slot locks
+
+on:
+  push:
+    branches:
+      - feature/allied-japanese-general-staff
+    paths:
+      - .github/workflows/her_staff_chain_and_locks.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/allied-japanese-general-staff
+          fetch-depth: 0
+
+      - name: Guard staff rotations and lock unused slots
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('common/on_actions/HER_general_staff_progression_on_actions.txt')
+          s = p.read_text(encoding='utf-8-sig')
+
+          replacements = {
+              # UK direct-predecessor guards
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_ENG_wartime_staff }\n\t\t\t\t\t\thas_war_with = GER':
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_ENG_wartime_staff }\n\t\t\t\t\t\thas_country_flag = HER_staff_ENG_gort\n\t\t\t\t\t\thas_war_with = GER',
+
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_ENG_france_fallen }\n\t\t\t\t\t\thas_war = yes':
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_ENG_france_fallen }\n\t\t\t\t\t\thas_country_flag = HER_staff_ENG_wartime_staff\n\t\t\t\t\t\thas_war = yes',
+
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_ENG_portal }\n\t\t\t\t\t\thas_war = yes':
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_ENG_portal }\n\t\t\t\t\t\thas_country_flag = HER_staff_ENG_newall\n\t\t\t\t\t\thas_war = yes',
+
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_ENG_brooke }\n\t\t\t\t\t\thas_completed_focus = ENG_chiefs_of_staff_committee':
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_ENG_brooke }\n\t\t\t\t\t\thas_country_flag = HER_staff_ENG_france_fallen\n\t\t\t\t\t\thas_completed_focus = ENG_chiefs_of_staff_committee',
+
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_ENG_chairman }\n\t\t\t\t\t\thas_completed_focus = ENG_chiefs_of_staff_committee':
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_ENG_chairman }\n\t\t\t\t\t\thas_country_flag = HER_staff_ENG_brooke\n\t\t\t\t\t\thas_completed_focus = ENG_chiefs_of_staff_committee',
+
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_ENG_cunningham }\n\t\t\t\t\t\thas_war = yes':
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_ENG_cunningham }\n\t\t\t\t\t\thas_country_flag = HER_staff_ENG_pound\n\t\t\t\t\t\thas_war = yes',
+
+              # USA direct-predecessor guards
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_USA_eisenhower }\n\t\t\t\t\t\thas_war = yes':
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_USA_eisenhower }\n\t\t\t\t\t\thas_country_flag = HER_staff_USA_marshall\n\t\t\t\t\t\thas_war = yes',
+
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_USA_king_cominch }\n\t\t\t\t\t\tOR = {':
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_USA_king_cominch }\n\t\t\t\t\t\thas_country_flag = HER_staff_USA_stark\n\t\t\t\t\t\tOR = {',
+
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_USA_spaatz }\n\t\t\t\t\t\thas_war = yes':
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_USA_spaatz }\n\t\t\t\t\t\thas_country_flag = HER_staff_USA_arnold\n\t\t\t\t\t\thas_war = yes',
+
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_USA_ground_forces }\n\t\t\t\t\t\thas_war = yes':
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_USA_ground_forces }\n\t\t\t\t\t\thas_country_flag = HER_staff_USA_marshall\n\t\t\t\t\t\thas_war = yes',
+
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_USA_king_cno }\n\t\t\t\t\t\thas_war = yes':
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_USA_king_cno }\n\t\t\t\t\t\thas_country_flag = HER_staff_USA_stark\n\t\t\t\t\t\thas_country_flag = HER_staff_USA_king_cominch\n\t\t\t\t\t\thas_war = yes',
+
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_USA_handy }\n\t\t\t\t\t\thas_war = yes':
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_USA_handy }\n\t\t\t\t\t\thas_country_flag = HER_staff_USA_eisenhower\n\t\t\t\t\t\thas_war = yes',
+
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_USA_leahy }\n\t\t\t\t\t\thas_war = yes':
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_USA_leahy }\n\t\t\t\t\t\thas_country_flag = HER_staff_USA_handy\n\t\t\t\t\t\thas_country_flag = HER_staff_USA_king_cno\n\t\t\t\t\t\thas_war = yes',
+
+              # Japan direct-predecessor guards
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_JAP_suzuki_air }\n\t\t\t\t\t\thas_completed_focus = JAP_national_mobilization_law':
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_JAP_suzuki_air }\n\t\t\t\t\t\thas_country_flag = HER_staff_JAP_tojo_air\n\t\t\t\t\t\thas_completed_focus = JAP_national_mobilization_law',
+
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_JAP_doihara_air }\n\t\t\t\t\t\thas_completed_focus = JAP_supremacy_of_will':
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_JAP_doihara_air }\n\t\t\t\t\t\thas_country_flag = HER_staff_JAP_suzuki_air\n\t\t\t\t\t\thas_completed_focus = JAP_supremacy_of_will',
+
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_JAP_yasuda_air }\n\t\t\t\t\t\thas_war_with = USA':
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_JAP_yasuda_air }\n\t\t\t\t\t\thas_country_flag = HER_staff_JAP_doihara_air\n\t\t\t\t\t\thas_war_with = USA',
+
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_JAP_wartime_crisis }\n\t\t\t\t\t\thas_war_with = USA':
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_JAP_wartime_crisis }\n\t\t\t\t\t\thas_country_flag = HER_staff_JAP_sugiyama\n\t\t\t\t\t\thas_country_flag = HER_staff_JAP_nagano\n\t\t\t\t\t\thas_country_flag = HER_staff_JAP_yasuda_air\n\t\t\t\t\t\thas_war_with = USA',
+
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_JAP_defensive_crisis }\n\t\t\t\t\t\thas_war = yes':
+              '\t\t\t\t\t\tNOT = { has_country_flag = HER_staff_JAP_defensive_crisis }\n\t\t\t\t\t\thas_country_flag = HER_staff_JAP_wartime_crisis\n\t\t\t\t\t\thas_war = yes',
+          }
+
+          for old, new in replacements.items():
+              if old not in s:
+                  raise SystemExit(f'Missing expected progression block:\n{old}')
+              s = s.replace(old, new, 1)
+
+          p.write_text(s, encoding='utf-8')
+
+          Path('common/ideas/her_general_staff_slot_locks.txt').write_text('''ideas = {
+\thidden_ideas = {
+\t\tHER_FRA_unused_staff_slots = {
+\t\t\tmodifier = {
+\t\t\t\tgenstab_chief_cost_factor = 1000
+\t\t\t\tair_genstab_chief_cost_factor = 1000
+\t\t\t\tnavy_genstab_chief_cost_factor = 1000
+\t\t\t}
+\t\t}
+
+\t\tHER_ENG_unused_staff_slots = {
+\t\t\tmodifier = {
+\t\t\t\tarmy_chief_cost_factor = 1000
+\t\t\t\tarmy_genstab_chief_cost_factor = 1000
+\t\t\t\tair_genstab_chief_cost_factor = 1000
+\t\t\t\tnavy_genstab_chief_cost_factor = 1000
+\t\t\t}
+\t\t}
+
+\t\tHER_JAP_unused_staff_slots = {
+\t\t\tmodifier = {
+\t\t\t\toperativ_chief_cost_factor = 1000
+\t\t\t\tarmy_chief_cost_factor = 1000
+\t\t\t\tarmy_genstab_chief_cost_factor = 1000
+\t\t\t\tair_genstab_chief_cost_factor = 1000
+\t\t\t\tnavy_chief_cost_factor = 1000
+\t\t\t}
+\t\t}
+\t}
+}
+''', encoding='utf-8')
+
+          Path('common/on_actions/HER_general_staff_slot_locks_on_actions.txt').write_text('''on_actions = {
+\ton_startup = {
+\t\teffect = {
+\t\t\tFRA = { add_ideas = HER_FRA_unused_staff_slots }
+\t\t\tENG = { add_ideas = HER_ENG_unused_staff_slots }
+\t\t\tJAP = { add_ideas = HER_JAP_unused_staff_slots }
+\t\t}
+\t}
+}
+''', encoding='utf-8')
+          PY
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add common/on_actions/HER_general_staff_progression_on_actions.txt common/ideas/her_general_staff_slot_locks.txt common/on_actions/HER_general_staff_slot_locks_on_actions.txt
+          git commit -m "Guard staff rotation order and lock unused slots"
+          git push origin HEAD:feature/allied-japanese-general-staff

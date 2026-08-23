@@ -476,8 +476,7 @@ recruit_character = GER_henrich_focke
 	create_equipment_variant = {
 		name = "Ju 86"
 		type = medium_plane_airframe_0
-		design_team = mio:GER_junkers_organization
-		modules = {
+modules = {
 			fixed_frame_weapon_slot_1 = medium_bomb_bay
 			engine_type_slot = engine_3_2x
 			fixed_turret_weapon_slot_1 = lmg_defense_turret
@@ -512,8 +511,6 @@ recruit_character = GER_henrich_focke
 			role_type_slot = role_small_fighter
 		}
 		obsolete = yes
-	
-	design_team = mio:GER_heinkel_organization
 }
 	create_equipment_variant = {
 		name = "He 45"
@@ -525,8 +522,6 @@ recruit_character = GER_henrich_focke
 			fuel_tank_type_slot = fuel_tanks_small
 			role_type_slot = role_small_fighter
 		}
-	
-	design_team = mio:GER_heinkel_organization
 }
 	create_equipment_variant = {
 		name = "Ar 68"
@@ -581,8 +576,7 @@ recruit_character = GER_henrich_focke
 	create_equipment_variant = {
 		name = "Do 22"
 		type = small_plane_naval_bomber_airframe_1
-		design_team = mio:GER_dornier_organization
-		modules = {
+modules = {
 			fixed_frame_weapon_slot_1 = torpedo_mounting
 			engine_type_slot = engine_3_1x
 			#fixed_turret_weapon_slot_1 = lmg_defense_turret

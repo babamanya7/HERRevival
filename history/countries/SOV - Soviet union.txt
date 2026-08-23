@@ -812,8 +812,6 @@ add_ideas = {
 			tank_light_nsb_armor_upgrade = 8
 		}
 		icon = "GFX_SOV_basic_light_tank_medium"
-	
-	design_team = mio:SOV_astrov_design_bureau_organization
 }
 	create_equipment_variant = {
 		name = "BT-2"
@@ -865,8 +863,6 @@ add_ideas = {
 			tank_light_nsb_armor_upgrade = 20
 		}
 		icon = "GFX_SOV_improved_light_tank_medium"
-	
-	design_team = mio:SOV_morozov_design_bureau_organization
 }
 	create_equipment_variant = {
 		name = "T-28"
@@ -887,8 +883,6 @@ add_ideas = {
 			tank_nsb_engine_upgrade = 5
 		}
 		icon = "GFX_SOV_basic_heavy_tank_medium"
-	
-	design_team = mio:SOV_kirov_organization
 }
 	create_equipment_variant = {
 		name = "T-35"
@@ -909,8 +903,6 @@ add_ideas = {
 			tank_nsb_engine_upgrade = 5
 		}
 		icon = "GFX_SOV_basic_heavy_tank_medium"
-	
-	design_team = mio:SOV_kirov_organization
 }
 
 ### AIR VARIANTS ###
@@ -960,8 +952,7 @@ add_ideas = {
 	create_equipment_variant = {
 		name = "TB-3" #
 		type = large_plane_airframe_0
-		design_team = mio:SOV_tupolev_organization		
-		modules = {
+modules = {
 			fixed_frame_weapon_slot_1 = large_bomb_bay
 			engine_type_slot = engine_3_4x
 			special_type_slot_2 = auto_extinguisher_system_large
@@ -998,8 +989,6 @@ add_ideas = {
 			role_type_slot = role_medium_recon
 		}
 		icon = "GFX_scout_plane1_medium"
-	
-	design_team = mio:SOV_polikarpov_organization
 }
 	create_equipment_variant = {
 		name = "DB-3" #

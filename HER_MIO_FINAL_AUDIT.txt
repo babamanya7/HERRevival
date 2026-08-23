@@ -1,0 +1,343 @@
+# HER final starting MIO audit
+
+REMOVED_INVALID=253
+
+REMOVED	history/countries/ENG - Britain.txt	Light Tank Mk. II	light_tank_chassis_1	ENG_vickers_armstrong_eng_organization	MISMATCH
+REMOVED	history/countries/ENG - Britain.txt	Light Tank Mk. III	light_tank_chassis_1	ENG_vickers_armstrong_eng_organization	MISMATCH
+REMOVED	history/countries/ENG - Britain.txt	Medium Mk. II	medium_tank_chassis_0	ENG_vickers_armstrong_eng_organization	MISMATCH
+REMOVED	history/countries/ENG - Britain.txt	Bristol Bulldog	small_plane_airframe_0	ENG_bristol_organization	MISMATCH
+REMOVED	history/countries/ENG - Britain.txt	Hawker Fury	small_plane_airframe_0	ENG_hawker_organization	MISMATCH
+REMOVED	history/countries/ENG - Britain.txt	Hawker Demon	small_plane_airframe_0	ENG_hawker_organization	MISMATCH
+REMOVED	history/countries/ENG - Britain.txt	Hawker Nimrod	cv_small_plane_airframe_0	ENG_hawker_organization	MISMATCH
+REMOVED	history/countries/ENG - Britain.txt	Fairey Gordon	small_plane_cas_airframe_0	ENG_fairey_aviation_organization	MISMATCH
+REMOVED	history/countries/ENG - Britain.txt	Vickers Vildebeest	small_plane_naval_bomber_airframe_0	ENG_fairey_aviation_organization	MISMATCH
+REMOVED	history/countries/ENG - Britain.txt	Fairey Swordfish	cv_small_plane_naval_bomber_airframe_0	ENG_fairey_aviation_organization	MISMATCH
+REMOVED	history/countries/ENG - Britain.txt	Handley Page Heyford	medium_plane_airframe_0	ENG_de_havilland_organization	MISMATCH
+REMOVED	history/countries/ENG - Britain.txt	Vickers Wellington	medium_plane_airframe_1	ENG_vickers_armstrong_eng_organization	MISMATCH
+REMOVED	history/countries/FRA - France.txt	Renault FT (HMG)	light_tank_chassis_0	FRA_renault_organization	MISMATCH
+REMOVED	history/countries/FRA - France.txt	Renault FT (SC)	light_tank_chassis_0	FRA_renault_organization	MISMATCH
+REMOVED	history/countries/FRA - France.txt	Renault R35	light_tank_chassis_0	FRA_renault_organization	MISMATCH
+REMOVED	history/countries/FRA - France.txt	Char B1	heavy_tank_chassis_0	FRA_renault_organization	MISMATCH
+REMOVED	history/countries/FRA - France.txt	D.500/501	small_plane_airframe_0	FRA_dewoitine_organization	MISMATCH
+REMOVED	history/countries/FRA - France.txt	D.510	small_plane_airframe_0	FRA_dewoitine_organization	MISMATCH
+REMOVED	history/countries/FRA - France.txt	D.371	cv_small_plane_airframe_0	FRA_dewoitine_organization	MISMATCH
+REMOVED	history/countries/GER - Germany.txt	Ju 86	medium_plane_airframe_0	GER_junkers_organization	MISMATCH
+REMOVED	history/countries/GER - Germany.txt	He 51	small_plane_airframe_0	GER_heinkel_organization	MISMATCH
+REMOVED	history/countries/GER - Germany.txt	He 45	small_plane_airframe_0	GER_heinkel_organization	MISMATCH
+REMOVED	history/countries/GER - Germany.txt	Do 22	small_plane_naval_bomber_airframe_1	GER_dornier_organization	UNKNOWN
+REMOVED	history/countries/JAP - Japan.txt	Ki-10	small_plane_airframe_0	JAP_kawasaki_organization	MISMATCH
+REMOVED	history/countries/JAP - Japan.txt	Ki-2	medium_plane_airframe_0	JAP_mitsubishi_organization	MISMATCH
+REMOVED	history/countries/JAP - Japan.txt	Ki-3	small_plane_cas_airframe_0	JAP_kawasaki_organization	MISMATCH
+REMOVED	history/countries/JAP - Japan.txt	A4N	cv_small_plane_airframe_0	JAP_nakajima_organization	MISMATCH
+REMOVED	history/countries/SOV - Soviet union.txt	T-37A	light_tank_amphibious_chassis_1	SOV_astrov_design_bureau_organization	MISMATCH
+REMOVED	history/countries/SOV - Soviet union.txt	BT-7	light_tank_chassis_2	SOV_morozov_design_bureau_organization	MISMATCH
+REMOVED	history/countries/SOV - Soviet union.txt	T-28	medium_tank_chassis_0	SOV_kirov_organization	MISMATCH
+REMOVED	history/countries/SOV - Soviet union.txt	T-35	heavy_tank_chassis_0	SOV_kirov_organization	MISMATCH
+REMOVED	history/countries/SOV - Soviet union.txt	TB-3	large_plane_airframe_0	SOV_tupolev_organization	MISMATCH
+REMOVED	history/countries/SOV - Soviet union.txt	U-2	medium_plane_scout_plane_airframe_1	SOV_polikarpov_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	S Class	vnr_ship_hull_submarine_2	ENG_john_brown_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	S Class	vnr_ship_hull_submarine_2	ENG_john_brown_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	S Class	vnr_ship_hull_submarine_2	ENG_john_brown_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	Grampus Class	vnr_ship_hull_submarine_2	ENG_john_brown_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	Grampus Class	vnr_ship_hull_submarine_2	ENG_john_brown_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	Grampus Class	vnr_ship_hull_submarine_2	ENG_john_brown_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	E/F/G/H Class	vnr_ship_hull_light_3	ENG_yarrow_shipbuilders_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	E/F/G/H Class	vnr_ship_hull_light_3	ENG_yarrow_shipbuilders_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	E/F/G/H Class	vnr_ship_hull_light_3	ENG_yarrow_shipbuilders_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	E/F/G/H Class	vnr_ship_hull_light_3	ENG_yarrow_shipbuilders_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	E/F/G/H Class	vnr_ship_hull_light_3	ENG_yarrow_shipbuilders_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	E/F/G/H Class	vnr_ship_hull_light_3	ENG_yarrow_shipbuilders_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	E/F/G/H Class	vnr_ship_hull_light_3	ENG_yarrow_shipbuilders_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	E/F/G/H Class	vnr_ship_hull_light_3	ENG_yarrow_shipbuilders_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	E/F/G/H Class	vnr_ship_hull_light_3	ENG_yarrow_shipbuilders_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	E/F/G/H Class	vnr_ship_hull_light_3	ENG_yarrow_shipbuilders_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	E/F/G/H Class	vnr_ship_hull_light_3	ENG_yarrow_shipbuilders_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	E/F/G/H Class	vnr_ship_hull_light_3	ENG_yarrow_shipbuilders_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	E/F/G/H Class	vnr_ship_hull_light_3	ENG_yarrow_shipbuilders_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	E/F/G/H Class	vnr_ship_hull_light_3	ENG_yarrow_shipbuilders_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	E/F/G/H Class	vnr_ship_hull_light_3	ENG_yarrow_shipbuilders_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	E/F/G/H Class	vnr_ship_hull_light_3	ENG_yarrow_shipbuilders_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	E/F/G/H Class	vnr_ship_hull_light_3	ENG_yarrow_shipbuilders_organization	MISMATCH
+REMOVED	history/units/00_ENG_vnr_naval.txt	E/F/G/H Class	vnr_ship_hull_light_3	ENG_yarrow_shipbuilders_organization	MISMATCH
+REMOVED	history/units/00_FRA_vnr_naval.txt	Le Fantasque Class	vnr_ship_hull_light_3	FRA_fcm_organization	MISMATCH
+REMOVED	history/units/00_FRA_vnr_naval.txt	Le Fantasque Class	vnr_ship_hull_light_3	FRA_fcm_organization	MISMATCH
+REMOVED	history/units/00_FRA_vnr_naval.txt	Le Fantasque Class	vnr_ship_hull_light_3	FRA_fcm_organization	MISMATCH
+REMOVED	history/units/00_FRA_vnr_naval.txt	Le Fantasque Class	vnr_ship_hull_light_3	FRA_fcm_organization	MISMATCH
+REMOVED	history/units/00_FRA_vnr_naval.txt	Mogador Class	vnr_ship_hull_light_3	FRA_fcm_organization	MISMATCH
+REMOVED	history/units/00_FRA_vnr_naval.txt	Mogador Class	vnr_ship_hull_light_3	FRA_fcm_organization	MISMATCH
+REMOVED	history/units/00_FRA_vnr_naval.txt	Redoutable Class	vnr_ship_hull_submarine_2	FRA_acf_organization	MISMATCH
+REMOVED	history/units/00_FRA_vnr_naval.txt	Redoutable Class	vnr_ship_hull_submarine_2	FRA_acf_organization	MISMATCH
+REMOVED	history/units/00_FRA_vnr_naval.txt	Redoutable Class	vnr_ship_hull_submarine_2	FRA_acf_organization	MISMATCH
+REMOVED	history/units/00_FRA_vnr_naval.txt	Redoutable Class	vnr_ship_hull_submarine_2	FRA_acf_organization	MISMATCH
+REMOVED	history/units/00_FRA_vnr_naval.txt	Redoutable Class	vnr_ship_hull_submarine_2	FRA_acf_organization	MISMATCH
+REMOVED	history/units/00_FRA_vnr_naval.txt	Redoutable Class	vnr_ship_hull_submarine_2	FRA_acf_organization	MISMATCH
+REMOVED	history/units/00_FRA_vnr_naval.txt	Redoutable Class	vnr_ship_hull_submarine_2	FRA_acf_organization	MISMATCH
+REMOVED	history/units/00_FRA_vnr_naval.txt	Redoutable Class	vnr_ship_hull_submarine_2	FRA_acf_organization	MISMATCH
+REMOVED	history/units/00_FRA_vnr_naval.txt	Redoutable Class	vnr_ship_hull_submarine_2	FRA_acf_organization	MISMATCH
+REMOVED	history/units/00_FRA_vnr_naval.txt	Minerve Class	vnr_ship_hull_submarine_2	FRA_acf_organization	MISMATCH
+REMOVED	history/units/00_FRA_vnr_naval.txt	Minerve Class	vnr_ship_hull_submarine_2	FRA_acf_organization	MISMATCH
+REMOVED	history/units/00_FRA_vnr_naval.txt	Minerve Class	vnr_ship_hull_submarine_2	FRA_acf_organization	MISMATCH
+REMOVED	history/units/00_FRA_vnr_naval.txt	Minerve Class	vnr_ship_hull_submarine_2	FRA_acf_organization	MISMATCH
+REMOVED	history/units/00_FRA_vnr_naval.txt	Aurore Class	vnr_ship_hull_submarine_2	FRA_acf_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type 1934 Class	vnr_ship_hull_light_3	GER_deschimag_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type 1934 Class	vnr_ship_hull_light_3	GER_deschimag_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type 1934 Class	vnr_ship_hull_light_3	GER_deschimag_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type 1934 Class	vnr_ship_hull_light_3	GER_deschimag_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type 1934A Class	vnr_ship_hull_light_3	GER_deschimag_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type 1934A Class	vnr_ship_hull_light_3	GER_deschimag_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type 1934A Class	vnr_ship_hull_light_3	GER_deschimag_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type 1934A Class	vnr_ship_hull_light_3	GER_deschimag_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type 1934A Class	vnr_ship_hull_light_3	GER_deschimag_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type 1934A Class	vnr_ship_hull_light_3	GER_deschimag_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type 1934A Class	vnr_ship_hull_light_3	GER_deschimag_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type 1934A Class	vnr_ship_hull_light_3	GER_deschimag_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type 1934A Class	vnr_ship_hull_light_3	GER_deschimag_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type 1934A Class	vnr_ship_hull_light_3	GER_deschimag_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type 1934A Class	vnr_ship_hull_light_3	GER_deschimag_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type 1934A Class	vnr_ship_hull_light_3	GER_deschimag_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type IA Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type IA Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type IIB Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type IIB Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type IIB Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type IIB Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type IIB Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type VIIA Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type VIIA Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type VIIA Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type VIIA Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type VIIA Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type VIIA Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type VIIA Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type VIIA Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type VIIA Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type VIIA Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type IIB Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type IIB Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type IIB Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_GER_vnr_naval.txt	Type IIB Class	vnr_ship_hull_submarine_2	GER_blohm_und_voss_organization	MISMATCH
+REMOVED	history/units/00_ITA_vnr_naval.txt	Maestrale/Oriani Class	vnr_ship_hull_light_3	ITA_cantiere_oto_organization	MISMATCH
+REMOVED	history/units/00_ITA_vnr_naval.txt	Spica Class	vnr_ship_hull_light_2	ITA_cantiere_oto_organization	MISMATCH
+REMOVED	history/units/00_ITA_vnr_naval.txt	Spica Class	vnr_ship_hull_light_2	ITA_cantiere_oto_organization	MISMATCH
+REMOVED	history/units/00_ITA_vnr_naval.txt	Spica Class	vnr_ship_hull_light_2	ITA_cantiere_oto_organization	MISMATCH
+REMOVED	history/units/00_ITA_vnr_naval.txt	Spica Class	vnr_ship_hull_light_2	ITA_cantiere_oto_organization	MISMATCH
+REMOVED	history/units/00_ITA_vnr_naval.txt	Spica Class	vnr_ship_hull_light_2	ITA_cantiere_oto_organization	MISMATCH
+REMOVED	history/units/00_ITA_vnr_naval.txt	Spica Class	vnr_ship_hull_light_2	ITA_cantiere_oto_organization	MISMATCH
+REMOVED	history/units/00_ITA_vnr_naval.txt	Spica Class	vnr_ship_hull_light_2	ITA_cantiere_oto_organization	MISMATCH
+REMOVED	history/units/00_ITA_vnr_naval.txt	Spica Class	vnr_ship_hull_light_2	ITA_cantiere_oto_organization	MISMATCH
+REMOVED	history/units/00_ITA_vnr_naval.txt	Spica Class	vnr_ship_hull_light_2	ITA_cantiere_oto_organization	MISMATCH
+REMOVED	history/units/00_ITA_vnr_naval.txt	Spica Class	vnr_ship_hull_light_2	ITA_cantiere_oto_organization	MISMATCH
+REMOVED	history/units/00_ITA_vnr_naval.txt	Spica Class	vnr_ship_hull_light_2	ITA_cantiere_oto_organization	MISMATCH
+REMOVED	history/units/00_ITA_vnr_naval.txt	Spica Class	vnr_ship_hull_light_2	ITA_cantiere_oto_organization	MISMATCH
+REMOVED	history/units/00_ITA_vnr_naval.txt	Fieramosca/Calvi Class	vnr_ship_hull_cruiser_submarine	ITA_cantieri_navali_tosi_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Hatsuharu/Shiratsuyu Class	vnr_ship_hull_light_3	JAP_maizuru_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Hatsuharu/Shiratsuyu Class	vnr_ship_hull_light_3	JAP_maizuru_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Hatsuharu/Shiratsuyu Class	vnr_ship_hull_light_3	JAP_maizuru_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Hatsuharu/Shiratsuyu Class	vnr_ship_hull_light_3	JAP_maizuru_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Hatsuharu/Shiratsuyu Class	vnr_ship_hull_light_3	JAP_maizuru_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Hatsuharu/Shiratsuyu Class	vnr_ship_hull_light_3	JAP_maizuru_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Hatsuharu/Shiratsuyu Class	vnr_ship_hull_light_3	JAP_maizuru_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Hatsuharu/Shiratsuyu Class	vnr_ship_hull_light_3	JAP_maizuru_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Hatsuharu/Shiratsuyu Class	vnr_ship_hull_light_3	JAP_maizuru_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Hatsuharu/Shiratsuyu Class	vnr_ship_hull_light_3	JAP_maizuru_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Asashio Class	vnr_ship_hull_light_3	JAP_maizuru_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Asashio Class	vnr_ship_hull_light_3	JAP_maizuru_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Asashio Class	vnr_ship_hull_light_3	JAP_maizuru_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Otori Class	vnr_ship_hull_light_3	JAP_maizuru_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Otori Class	vnr_ship_hull_light_3	JAP_maizuru_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Otori Class	vnr_ship_hull_light_3	JAP_maizuru_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Otori Class	vnr_ship_hull_light_3	JAP_maizuru_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Kaidai VI Class	vnr_ship_hull_submarine_2	JAP_sasebo_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Kaidai VI Class	vnr_ship_hull_submarine_2	JAP_sasebo_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Kaidai VI Class	vnr_ship_hull_submarine_2	JAP_sasebo_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Kaidai VI Class	vnr_ship_hull_submarine_2	JAP_sasebo_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Junsen III Class	vnr_ship_hull_cruiser_submarine	JAP_sasebo_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Junsen III Class	vnr_ship_hull_cruiser_submarine	JAP_sasebo_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_JAP_vnr_naval.txt	Kaichū V Class	vnr_ship_hull_submarine_1	JAP_sasebo_naval_arsenal_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Leningrad Class	vnr_ship_hull_light_3	SOV_nevskoye_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Leningrad Class	vnr_ship_hull_light_3	SOV_nevskoye_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Leningrad Class	vnr_ship_hull_light_3	SOV_nevskoye_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Leningrad Class	vnr_ship_hull_light_3	SOV_nevskoye_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Leningrad Class	vnr_ship_hull_light_3	SOV_nevskoye_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Leningrad Class	vnr_ship_hull_light_3	SOV_nevskoye_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Gnevny Class	vnr_ship_hull_light_3	SOV_nevskoye_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Gnevny Class	vnr_ship_hull_light_3	SOV_nevskoye_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Gnevny Class	vnr_ship_hull_light_3	SOV_nevskoye_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Gnevny Class	vnr_ship_hull_light_3	SOV_nevskoye_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Gnevny Class	vnr_ship_hull_light_3	SOV_nevskoye_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Gnevny Class	vnr_ship_hull_light_3	SOV_nevskoye_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Gnevny Class	vnr_ship_hull_light_3	SOV_nevskoye_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Series V-bis Shchuka	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Series V-bis Shchuka	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Series V-bis Shchuka	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Series V-bis Shchuka	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Series V-bis Shchuka	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Series V-bis Shchuka	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Series X Shchuka	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Series X Shchuka	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Series X Shchuka	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Series X Shchuka	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Series X Shchuka	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Series X Shchuka	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Series X Shchuka	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Series X Shchuka	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Series X Shchuka	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Series X Shchuka	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Series X Shchuka	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Series X Shchuka	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Srednyaya Class	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Srednyaya Class	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_SOV_vnr_naval.txt	Srednyaya Class	vnr_ship_hull_submarine_2	SOV_rubin_design_bureau_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Porter/Somers Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Porter/Somers Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Porter/Somers Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Porter/Somers Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Porter/Somers Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Porter/Somers Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Porter/Somers Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Porter/Somers Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Porter/Somers Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Porter/Somers Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Porter/Somers Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Porter/Somers Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Porter/Somers Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Farragut/Mahan Class	vnr_ship_hull_light_2	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Farragut/Mahan Class	vnr_ship_hull_light_2	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Farragut/Mahan Class	vnr_ship_hull_light_2	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Farragut/Mahan Class	vnr_ship_hull_light_2	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Farragut/Mahan Class	vnr_ship_hull_light_2	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Farragut/Mahan Class	vnr_ship_hull_light_2	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Farragut/Mahan Class	vnr_ship_hull_light_2	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Farragut/Mahan Class	vnr_ship_hull_light_2	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Farragut/Mahan Class	vnr_ship_hull_light_2	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Farragut/Mahan Class	vnr_ship_hull_light_2	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Farragut/Mahan Class	vnr_ship_hull_light_2	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Farragut/Mahan Class	vnr_ship_hull_light_2	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Farragut/Mahan Class	vnr_ship_hull_light_2	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Farragut/Mahan Class	vnr_ship_hull_light_2	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Farragut/Mahan Class	vnr_ship_hull_light_2	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Farragut/Mahan Class	vnr_ship_hull_light_2	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Farragut/Mahan Class	vnr_ship_hull_light_2	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Farragut/Mahan Class	vnr_ship_hull_light_2	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Gridley/Bagley Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Gridley/Bagley Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Gridley/Bagley Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Gridley/Bagley Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Gridley/Bagley Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Gridley/Bagley Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Gridley/Bagley Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Gridley/Bagley Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Gridley/Bagley Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Gridley/Bagley Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Gridley/Bagley Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Gridley/Bagley Class	vnr_ship_hull_light_3	USA_brooklyn_naval_yard_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Porpoise Class	vnr_ship_hull_submarine_2	USA_electric_boat_company_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Porpoise Class	vnr_ship_hull_submarine_2	USA_electric_boat_company_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Porpoise Class	vnr_ship_hull_submarine_2	USA_electric_boat_company_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Porpoise Class	vnr_ship_hull_submarine_2	USA_electric_boat_company_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Porpoise Class	vnr_ship_hull_submarine_2	USA_electric_boat_company_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Porpoise Class	vnr_ship_hull_submarine_2	USA_electric_boat_company_organization	MISMATCH
+REMOVED	history/units/00_USA_vnr_naval.txt	Porpoise Class	vnr_ship_hull_submarine_2	USA_electric_boat_company_organization	MISMATCH
+REMOVED	history/units/ENG_1936_air_bba.txt	Hawker Nimrod	cv_small_plane_airframe_0	ENG_hawker_organization	MISMATCH
+REMOVED	history/units/ENG_1936_nsb.txt	Light Tank Mk. III	light_tank_chassis_1	ENG_vickers_armstrong_eng_organization	MISMATCH
+REMOVED	history/units/ENG_1936_nsb.txt	Medium Mk. II	medium_tank_chassis_0	ENG_vickers_armstrong_eng_organization	MISMATCH
+REMOVED	history/units/FRA_1936_air_bba.txt	D.510	small_plane_airframe_0	FRA_dewoitine_organization	MISMATCH
+REMOVED	history/units/FRA_1936_nsb.txt	Renault R35	light_tank_chassis_0	FRA_renault_organization	MISMATCH
+REMOVED	history/units/FRA_1936_nsb.txt	Char B1	heavy_tank_chassis_0	FRA_renault_organization	MISMATCH
+REMOVED	history/units/GER_1936_air_bba.txt	He 51	small_plane_airframe_0	GER_heinkel_organization	MISMATCH
+REMOVED	history/units/GER_1936_air_bba.txt	Ju 86	medium_plane_airframe_0	GER_junkers_organization	MISMATCH
+REMOVED	history/units/JAP_1936_air_bba.txt	Ki-10	small_plane_airframe_0	JAP_kawasaki_organization	MISMATCH
+REMOVED	history/units/JAP_1936_air_bba.txt	Ki-2	medium_plane_airframe_0	JAP_mitsubishi_organization	MISMATCH
+REMOVED	history/units/JAP_1936_air_bba.txt	Ki-3	small_plane_cas_airframe_0	JAP_kawasaki_organization	MISMATCH
+REMOVED	history/units/JAP_1936_air_bba.txt	A4N	cv_small_plane_airframe_0	JAP_nakajima_organization	MISMATCH
+REMOVED	history/units/SOV_1936_air_bba.txt	TB-3	large_plane_airframe_0	SOV_tupolev_organization	MISMATCH
+REMOVED	history/units/SOV_1936_nsb.txt	BT-7	light_tank_chassis_2	SOV_morozov_design_bureau_organization	MISMATCH
+REMOVED	history/units/SOV_1936_nsb.txt	T-37A	light_tank_amphibious_chassis_1	SOV_astrov_design_bureau_organization	MISMATCH
+REMOVED	history/units/SOV_1936_nsb.txt	T-28	medium_tank_chassis_0	SOV_kirov_organization	MISMATCH
+REMOVED	history/units/SOV_1936_nsb.txt	T-35	heavy_tank_chassis_0	SOV_kirov_organization	MISMATCH
+
+## Remaining assignments
+OK	history/countries/ENG - Britain.txt	create_equipment_variant	Gloster Gauntlet	small_plane_airframe_0	ENG_gloster_organization	['small_plane_airframe_0', 'small_plane_airframe_4']
+OK	history/countries/ENG - Britain.txt	create_equipment_variant	Gloster Gladiator	small_plane_airframe_0	ENG_gloster_organization	['small_plane_airframe_0', 'small_plane_airframe_4']
+OK	history/countries/ENG - Britain.txt	create_equipment_variant	Bristol Blenheim	medium_plane_airframe_1	ENG_bristol_organization	['medium_plane_airframe_1', 'medium_plane_fighter_airframe_1', 'medium_plane_naval_bomber_airframe_1']
+OK	history/countries/FRA - France.txt	create_equipment_variant	SOUMUA S35	medium_tank_chassis_1	FRA_somua_organization	['medium_tank_chassis_1', 'medium_tank_chassis_2']
+OK	history/countries/GER - Germany.txt	create_equipment_variant	Panzer II	light_tank_chassis_2	GER_man_organization	['light_tank_chassis_2', 'light_tank_chassis_3', 'medium_tank_chassis_3', 'medium_tank_destroyer_chassis_3']
+OK	history/countries/GER - Germany.txt	create_equipment_variant	He 111	medium_plane_airframe_1	GER_heinkel_organization	['large_plane_airframe_2', 'medium_plane_airframe_1']
+OK	history/countries/GER - Germany.txt	create_equipment_variant	Bf 109E	small_plane_airframe_1	GER_messerschmitt_organization	['medium_plane_fighter_airframe_1', 'medium_plane_fighter_airframe_2', 'medium_plane_fighter_airframe_3', 'small_plane_airframe_1', 'small_plane_airframe_2', 'small_plane_airframe_3', 'small_plane_airframe_4']
+OK	history/countries/GER - Germany.txt	create_equipment_variant	Ju 87	small_plane_cas_airframe_1	GER_junkers_organization	['medium_plane_airframe_2', 'medium_plane_airframe_3', 'medium_plane_fighter_airframe_2', 'medium_plane_fighter_airframe_3', 'small_plane_cas_airframe_1', 'small_plane_cas_airframe_2', 'transport_plane_equipment']
+OK	history/countries/JAP - Japan.txt	create_equipment_variant	Type 95 Ha-Go	light_tank_chassis_1	JAP_mitsubishi_organization	['cv_small_plane_airframe', 'large_plane_airframe_1', 'light_tank_amphibious_chassis_1', 'light_tank_chassis_1', 'light_tank_chassis_2', 'medium_plane_airframe_1', 'medium_plane_airframe_3', 'medium_plane_scout_plane_airframe_1', 'medium_tank_chassis', 'medium_tank_destroyer_chassis', 'small_plane_cas_airframe_2', 'small_plane_naval_bomber_airframe_1', 'small_plane_naval_bomber_airframe_2', 'transport_plane_equipment']
+OK	history/countries/SOV - Soviet union.txt	create_equipment_variant	I-5	small_plane_airframe_0	SOV_polikarpov_organization	['small_plane_airframe_0', 'small_plane_airframe_1', 'small_plane_airframe_2']
+OK	history/countries/SOV - Soviet union.txt	create_equipment_variant	I-15	small_plane_airframe_0	SOV_polikarpov_organization	['small_plane_airframe_0', 'small_plane_airframe_1', 'small_plane_airframe_2']
+OK	history/countries/SOV - Soviet union.txt	create_equipment_variant	I-16	small_plane_airframe_1	SOV_polikarpov_organization	['small_plane_airframe_0', 'small_plane_airframe_1', 'small_plane_airframe_2']
+OK	history/countries/USA - USA.txt	create_equipment_variant	P-36	small_plane_airframe_1	USA_curtiss_organization	['small_plane_airframe_1', 'small_plane_airframe_2']
+OK	history/units/00_ENG_vnr_naval.txt	add_equipment_production	Ark Royal Class	vnr_ship_hull_carrier_1	ENG_harland_wolff_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_ENG_vnr_naval.txt	add_equipment_production	Leander Class	vnr_ship_hull_cruiser_3	ENG_harland_wolff_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_ENG_vnr_naval.txt	add_equipment_production	Leander Class	vnr_ship_hull_cruiser_3	ENG_harland_wolff_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_ENG_vnr_naval.txt	add_equipment_production	Arethusa Class	vnr_ship_hull_cruiser_3	ENG_harland_wolff_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_ENG_vnr_naval.txt	add_equipment_production	Arethusa Class	vnr_ship_hull_cruiser_3	ENG_harland_wolff_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_ENG_vnr_naval.txt	add_equipment_production	Town Class	vnr_ship_hull_cruiser_3	ENG_harland_wolff_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_ENG_vnr_naval.txt	add_equipment_production	Town Class	vnr_ship_hull_cruiser_3	ENG_harland_wolff_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_ENG_vnr_naval.txt	add_equipment_production	Town Class	vnr_ship_hull_cruiser_3	ENG_harland_wolff_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_ENG_vnr_naval.txt	add_equipment_production	Town Class	vnr_ship_hull_cruiser_3	ENG_harland_wolff_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_ENG_vnr_naval.txt	add_equipment_production	Town Class	vnr_ship_hull_cruiser_3	ENG_harland_wolff_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_FRA_vnr_naval.txt	add_equipment_production	Dunkerque Class	vnr_ship_hull_heavy_3	FRA_acl_organization	['ship_hull_cruiser', 'ship_hull_heavy']
+OK	history/units/00_FRA_vnr_naval.txt	add_equipment_production	Dunkerque Class	vnr_ship_hull_heavy_3	FRA_acl_organization	['ship_hull_cruiser', 'ship_hull_heavy']
+OK	history/units/00_FRA_vnr_naval.txt	add_equipment_production	Richelieu Class	vnr_ship_hull_heavy_3	FRA_acl_organization	['ship_hull_cruiser', 'ship_hull_heavy']
+OK	history/units/00_FRA_vnr_naval.txt	add_equipment_production	La Galissonnière Class	vnr_ship_hull_cruiser_3	FRA_aeb_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_FRA_vnr_naval.txt	add_equipment_production	La Galissonnière Class	vnr_ship_hull_cruiser_3	FRA_aeb_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_FRA_vnr_naval.txt	add_equipment_production	La Galissonnière Class	vnr_ship_hull_cruiser_3	FRA_aeb_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_FRA_vnr_naval.txt	add_equipment_production	La Galissonnière Class	vnr_ship_hull_cruiser_3	FRA_aeb_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_FRA_vnr_naval.txt	add_equipment_production	La Galissonnière Class	vnr_ship_hull_cruiser_3	FRA_aeb_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_GER_vnr_naval.txt	add_equipment_production	Scharnhorst Class	vnr_ship_hull_heavy_3	GER_germaniawerft_organization	['ship_hull_cruiser', 'ship_hull_heavy']
+OK	history/units/00_GER_vnr_naval.txt	add_equipment_production	Scharnhorst Class	vnr_ship_hull_heavy_3	GER_germaniawerft_organization	['ship_hull_cruiser', 'ship_hull_heavy']
+OK	history/units/00_GER_vnr_naval.txt	add_equipment_production	Admiral Hipper Class	vnr_ship_hull_cruiser_3	GER_deutsche_werke_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_ITA_vnr_naval.txt	add_equipment_production	Andrea Doria Class	vnr_ship_hull_heavy_1	ITA_crda_organization	['ship_hull_cruiser', 'ship_hull_heavy']
+OK	history/units/00_ITA_vnr_naval.txt	add_equipment_production	Andrea Doria Class	vnr_ship_hull_heavy_1	ITA_crda_organization	['ship_hull_cruiser', 'ship_hull_heavy']
+OK	history/units/00_ITA_vnr_naval.txt	add_equipment_production	Littorio Class	vnr_ship_hull_heavy_3	ITA_crda_organization	['ship_hull_cruiser', 'ship_hull_heavy']
+OK	history/units/00_ITA_vnr_naval.txt	add_equipment_production	Littorio Class	vnr_ship_hull_heavy_3	ITA_crda_organization	['ship_hull_cruiser', 'ship_hull_heavy']
+OK	history/units/00_ITA_vnr_naval.txt	add_equipment_production	Montecuccoli/Duca d'Aosta Class	vnr_ship_hull_cruiser_3	ITA_crda_organization	['ship_hull_cruiser', 'ship_hull_heavy']
+OK	history/units/00_ITA_vnr_naval.txt	add_equipment_production	Duca degli Abruzzi Class	vnr_ship_hull_cruiser_3	ITA_crda_organization	['ship_hull_cruiser', 'ship_hull_heavy']
+OK	history/units/00_ITA_vnr_naval.txt	add_equipment_production	Duca degli Abruzzi Class	vnr_ship_hull_cruiser_3	ITA_crda_organization	['ship_hull_cruiser', 'ship_hull_heavy']
+OK	history/units/00_ITA_vnr_naval.txt	add_equipment_production	Sirena/Perla Class	vnr_ship_hull_submarine_2	ITA_cantieri_navali_tosi_organization	['ship_hull_submarine']
+OK	history/units/00_ITA_vnr_naval.txt	add_equipment_production	Sirena/Perla Class	vnr_ship_hull_submarine_2	ITA_cantieri_navali_tosi_organization	['ship_hull_submarine']
+OK	history/units/00_ITA_vnr_naval.txt	add_equipment_production	Sirena/Perla Class	vnr_ship_hull_submarine_2	ITA_cantieri_navali_tosi_organization	['ship_hull_submarine']
+OK	history/units/00_ITA_vnr_naval.txt	add_equipment_production	Sirena/Perla Class	vnr_ship_hull_submarine_2	ITA_cantieri_navali_tosi_organization	['ship_hull_submarine']
+OK	history/units/00_ITA_vnr_naval.txt	add_equipment_production	Sirena/Perla Class	vnr_ship_hull_submarine_2	ITA_cantieri_navali_tosi_organization	['ship_hull_submarine']
+OK	history/units/00_ITA_vnr_naval.txt	add_equipment_production	Sirena/Perla Class	vnr_ship_hull_submarine_2	ITA_cantieri_navali_tosi_organization	['ship_hull_submarine']
+OK	history/units/00_ITA_vnr_naval.txt	add_equipment_production	Sirena/Perla Class	vnr_ship_hull_submarine_2	ITA_cantieri_navali_tosi_organization	['ship_hull_submarine']
+OK	history/units/00_ITA_vnr_naval.txt	add_equipment_production	Sirena/Perla Class	vnr_ship_hull_submarine_2	ITA_cantieri_navali_tosi_organization	['ship_hull_submarine']
+OK	history/units/00_ITA_vnr_naval.txt	add_equipment_production	Sirena/Perla Class	vnr_ship_hull_submarine_2	ITA_cantieri_navali_tosi_organization	['ship_hull_submarine']
+OK	history/units/00_ITA_vnr_naval.txt	add_equipment_production	Sirena/Perla Class	vnr_ship_hull_submarine_2	ITA_cantieri_navali_tosi_organization	['ship_hull_submarine']
+OK	history/units/00_JAP_vnr_naval.txt	add_equipment_production	Kongo Class	vnr_ship_hull_heavy_1	JAP_kure_naval_arsenal_organization	['ship_hull_cruiser', 'ship_hull_heavy']
+OK	history/units/00_JAP_vnr_naval.txt	add_equipment_production	Soryu Class	vnr_ship_hull_carrier_1	JAP_yokosuka_naval_arsenal_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_JAP_vnr_naval.txt	add_equipment_production	Zuiho Class	vnr_ship_hull_carrier_1	JAP_yokosuka_naval_arsenal_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_JAP_vnr_naval.txt	add_equipment_production	Zuiho Class	vnr_ship_hull_carrier_1	JAP_yokosuka_naval_arsenal_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_JAP_vnr_naval.txt	add_equipment_production	Mogami Class	vnr_ship_hull_cruiser_3	JAP_yokosuka_naval_arsenal_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_JAP_vnr_naval.txt	add_equipment_production	Mogami Class	vnr_ship_hull_cruiser_3	JAP_yokosuka_naval_arsenal_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_JAP_vnr_naval.txt	add_equipment_production	Tone Class	vnr_ship_hull_cruiser_3	JAP_yokosuka_naval_arsenal_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_JAP_vnr_naval.txt	add_equipment_production	Tone Class	vnr_ship_hull_cruiser_3	JAP_yokosuka_naval_arsenal_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_JAP_vnr_naval.txt	add_equipment_production	Itsukushima/Okinoshima Class	vnr_ship_hull_cruiser_1	JAP_yokosuka_naval_arsenal_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_SOV_vnr_naval.txt	add_equipment_production	Kirov Class	vnr_ship_hull_cruiser_3	SOV_nevskoye_design_bureau_organization	['ship_hull_cruiser', 'ship_hull_heavy']
+OK	history/units/00_SOV_vnr_naval.txt	add_equipment_production	Kirov Class	vnr_ship_hull_cruiser_3	SOV_nevskoye_design_bureau_organization	['ship_hull_cruiser', 'ship_hull_heavy']
+OK	history/units/00_USA_vnr_naval.txt	add_equipment_production	Yorktown Class	vnr_ship_hull_carrier_1	USA_newport_news_shipbuilding_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_USA_vnr_naval.txt	add_equipment_production	Yorktown Class	vnr_ship_hull_carrier_1	USA_newport_news_shipbuilding_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_USA_vnr_naval.txt	add_equipment_production	Wasp Class	vnr_ship_hull_carrier_1	USA_newport_news_shipbuilding_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_USA_vnr_naval.txt	add_equipment_production	Portland/New Orleans Class	vnr_ship_hull_cruiser_3	USA_newport_news_shipbuilding_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_USA_vnr_naval.txt	add_equipment_production	Portland/New Orleans Class	vnr_ship_hull_cruiser_3	USA_newport_news_shipbuilding_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_USA_vnr_naval.txt	add_equipment_production	Wichita Class	vnr_ship_hull_cruiser_3	USA_newport_news_shipbuilding_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_USA_vnr_naval.txt	add_equipment_production	Brooklyn Class	vnr_ship_hull_cruiser_3	USA_newport_news_shipbuilding_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_USA_vnr_naval.txt	add_equipment_production	Brooklyn Class	vnr_ship_hull_cruiser_3	USA_newport_news_shipbuilding_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_USA_vnr_naval.txt	add_equipment_production	Brooklyn Class	vnr_ship_hull_cruiser_3	USA_newport_news_shipbuilding_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_USA_vnr_naval.txt	add_equipment_production	Brooklyn Class	vnr_ship_hull_cruiser_3	USA_newport_news_shipbuilding_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_USA_vnr_naval.txt	add_equipment_production	Brooklyn Class	vnr_ship_hull_cruiser_3	USA_newport_news_shipbuilding_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_USA_vnr_naval.txt	add_equipment_production	Brooklyn Class	vnr_ship_hull_cruiser_3	USA_newport_news_shipbuilding_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/00_USA_vnr_naval.txt	add_equipment_production	Brooklyn Class	vnr_ship_hull_cruiser_3	USA_newport_news_shipbuilding_organization	['ship_hull_carrier', 'ship_hull_cruiser', 'ship_hull_light']
+OK	history/units/ENG_1936_air_bba.txt	add_equipment_production	Gloster Gladiator	small_plane_airframe_0	ENG_gloster_organization	['small_plane_airframe_0', 'small_plane_airframe_4']
+OK	history/units/FRA_1936_nsb.txt	add_equipment_production	SOUMUA S35	medium_tank_chassis_1	FRA_somua_organization	['medium_tank_chassis_1', 'medium_tank_chassis_2']
+OK	history/units/GER_1936_air_bba.txt	add_equipment_production	He 111	medium_plane_airframe_1	GER_heinkel_organization	['large_plane_airframe_2', 'medium_plane_airframe_1']
+OK	history/units/GER_1936_nsb.txt	add_equipment_production	Panzer II	light_tank_chassis_2	GER_man_organization	['light_tank_chassis_2', 'light_tank_chassis_3', 'medium_tank_chassis_3', 'medium_tank_destroyer_chassis_3']
+OK	history/units/JAP_1936_nsb.txt	add_equipment_production	Type 95 Ha-Go	light_tank_chassis_1	JAP_mitsubishi_organization	['cv_small_plane_airframe', 'large_plane_airframe_1', 'light_tank_amphibious_chassis_1', 'light_tank_chassis_1', 'light_tank_chassis_2', 'medium_plane_airframe_1', 'medium_plane_airframe_3', 'medium_plane_scout_plane_airframe_1', 'medium_tank_chassis', 'medium_tank_destroyer_chassis', 'small_plane_cas_airframe_2', 'small_plane_naval_bomber_airframe_1', 'small_plane_naval_bomber_airframe_2', 'transport_plane_equipment']
+OK	history/units/SOV_1936_air_bba.txt	add_equipment_production	I-16	small_plane_airframe_1	SOV_polikarpov_organization	['small_plane_airframe_0', 'small_plane_airframe_1', 'small_plane_airframe_2']
+OK	history/units/USA_1936_air_bba.txt	add_equipment_production	P-36	small_plane_airframe_1	USA_curtiss_organization	['small_plane_airframe_1', 'small_plane_airframe_2']
+
+SUMMARY OK=82 MISMATCH=0 UNKNOWN=0 TOTAL=82

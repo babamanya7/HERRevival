@@ -302,7 +302,7 @@ recruit_character = JAP_kijiro_nambu
 		}
 		icon = "GFX_JAP_improved_light_tank_medium"
 	
-	design_team = mio:JAP_isuzu_organization
+	design_team = mio:JAP_mitsubishi_organization
 }
 
 ### AIR VARIANTS ###
@@ -317,8 +317,6 @@ recruit_character = JAP_kijiro_nambu
 			fuel_tank_type_slot = fuel_tanks_small
 			role_type_slot = role_small_fighter
 		}
-	
-	design_team = mio:JAP_kawasaki_organization
 }
 	create_equipment_variant = {
 		name = "Ki-2"
@@ -331,8 +329,6 @@ recruit_character = JAP_kijiro_nambu
 			role_type_slot = role_medium_bomber
 		}
 		icon = "GFX_JAP_CAS1_medium"
-	
-	design_team = mio:JAP_mitsubishi_organization
 }
 	create_equipment_variant = {
 		name = "Ki-1"
@@ -354,8 +350,6 @@ recruit_character = JAP_kijiro_nambu
 			role_type_slot = role_small_cas
 		}
 		icon = "GFX_JAP_CAS1_medium"
-	
-	design_team = mio:JAP_kawasaki_organization
 }
 	create_equipment_variant = {
 		name = "Aichi D1A"
@@ -392,8 +386,6 @@ recruit_character = JAP_kijiro_nambu
 			fuel_tank_type_slot = fuel_tanks_small
 			role_type_slot = role_small_fighter
 		}
-	
-	design_team = mio:JAP_nakajima_organization
 }
 	create_equipment_variant = {
 		name = "B2M"

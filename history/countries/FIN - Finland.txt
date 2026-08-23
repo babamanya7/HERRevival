@@ -57,7 +57,8 @@ set_variable = { FIN_finnish_navy_mines_planting_by_fleets_factor = 0.05 }
 set_variable = { FIN_finnish_navy_navy_anti_air_attack_factor = 0.05 }
 set_variable = { FIN_finnish_navy_navy_spirit_category_type_cost_factor = -0.1 }
 set_variable = { FIN_finnish_navy_convoy_retreat_speed = 0 }
-set_variable = { FIN_finnish_navy_navy_spotting_chance = 0 }
+set_variable = { FIN_finnish_navy_refit_speed = 0 }
+set_variable = { FIN_finnish_navy_spotting_chance = 0 }
 set_variable = { FIN_finnish_navy_repair_speed_factor = 0 }
 set_variable = { FIN_finnish_navy_production_speed_dockyard_factor = 0 }
 set_variable = { FIN_finnish_navy_industrial_capacity_dockyard = 0 }
@@ -120,7 +121,6 @@ set_variable = { FIN_subsidized_national_industrialization_factories_required = 
 set_variable = { FIN_basic_subsidies_value = 1000 }
 
 #FASCIST REGIME NS
-set_variable = { FIN_finnish_navy_refit_speed = 0 }
 set_variable = { FIN_fascist_regime_war_support_factor = 0.05 }
 set_variable = { FIN_fascist_regime_send_volunteer_size = 3 }
 set_variable = { FIN_fascist_regime_army_org_factor = 0 }
@@ -505,5 +505,51 @@ country_event = { id = AAT_finland_political.02 days = 426 }
 			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
+            fixed_ship_secondaries_slot = ship_secondaries_1
+			rear_1_custom_slot = ship_heavy_battery_small_1
+        }
+    }
+    # destroyer
+    create_equipment_variant = {
+        name = "Golub/Filin Class"
+		parent_version = 0
+		role_icon_index = 47
+        type = vnr_ship_hull_light_1
+        name_group = FIN_DD_HISTORICAL
+        modules = {
+            fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = empty
+            fixed_ship_role_slot = ship_hull_light_role_ff
+			rear_1_custom_slot = ship_light_battery_1
+        }
+    }
+    # submarine
+    create_equipment_variant = {
+        name = "Vesikko Class"
+		parent_version = 0
+		role_icon_index = 37
+        type = vnr_ship_hull_submarine_1
+        name_group = DEN_SS_HISTORICAL
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+            fixed_ship_armor_slot = pressure_hull_1
+			rear_1_custom_slot = ship_torpedo_sub_1
+        }
+    }
+    create_equipment_variant = {
+        name = "Vetehinen Class"
+		parent_version = 0
+		role_icon_index = 37
+        type = vnr_ship_hull_submarine_1
+        name_group = DEN_SS_HISTORICAL
+        modules = {
+            fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+            fixed_ship_armor_slot = pressure_hull_1
+			rear_1_custom_slot = empty
         }
     }

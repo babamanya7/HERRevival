@@ -1,0 +1,208 @@
+name: Fix starting MIO compatibility and French S35
+on:
+  push:
+    branches: [work/start-designers-and-1944-retirements]
+    paths: [.github/workflows/her-final-start-mio-fixes.yml]
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/start-designers-and-1944-retirements
+      - name: Fix assignments and audit
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          def block_range(text,start):
+              b=text.find('{',start)
+              if b<0:return None
+              d=0; q=False; esc=False
+              for i in range(b,len(text)):
+                  c=text[i]
+                  if q:
+                      if esc: esc=False
+                      elif c=='\\': esc=True
+                      elif c=='"': q=False
+                      continue
+                  if c=='"': q=True
+                  elif c=='{': d+=1
+                  elif c=='}':
+                      d-=1
+                      if d==0:return start,i+1
+              return None
+
+          def block(text,start):
+              r=block_range(text,start)
+              return text[r[0]:r[1]] if r else None
+
+          def named(text,name):
+              m=re.search(r'(?m)^\s*'+re.escape(name)+r'\s*=\s*\{',text)
+              return block(text,m.start()) if m else None
+
+          def field_tokens(b,field):
+              m=re.search(r'(?m)^\s*'+re.escape(field)+r'\s*=\s*\{',b or '')
+              if not m:return set()
+              sub=block(b,m.start()) or ''
+              sub=re.sub(r'#.*','',sub)
+              return {x for x in re.findall(r'\b[A-Za-z0-9_]+\b',sub) if x != field}
+
+          mio_text='\n'.join(p.read_text(encoding='utf-8-sig',errors='ignore') for p in Path('common/military_industrial_organization/organizations').glob('*.txt'))
+          grp_text=Path('common/equipment_groups/mio_equipment_groups.txt').read_text(encoding='utf-8-sig',errors='ignore')
+
+          def resolve_token(t,seen=None):
+              seen=seen or set()
+              if t in seen:return set()
+              seen.add(t)
+              b=named(grp_text,t)
+              if not b:return {t}
+              out=set()
+              for x in field_tokens(b,'equipment_type'):
+                  out |= resolve_token(x,seen.copy())
+              return out
+
+          def mio_types(name,seen=None):
+              seen=seen or set()
+              if name in seen:return set()
+              seen.add(name)
+              b=named(mio_text,name)
+              if not b:return set()
+              out=set()
+              for t in field_tokens(b,'equipment_type'):
+                  out |= resolve_token(t)
+              inc=re.search(r'(?m)^\s*include\s*=\s*([A-Za-z0-9_]+)',b)
+              if inc: out |= mio_types(inc.group(1),seen)
+              return out
+
+          def generic_names(eq):
+              out={eq}
+              x=eq
+              if x.startswith('vnr_'):
+                  x=x[4:]; out.add(x)
+              out.add(re.sub(r'_\d+$','',x))
+              for fam in ['ship_hull_carrier','ship_hull_cruiser','ship_hull_light','ship_hull_heavy','ship_hull_submarine']:
+                  if x.startswith(fam): out.add(fam)
+              return out
+
+          def compatible(eq,allowed):
+              ens=generic_names(eq)
+              if ens & allowed:return True
+              for e in ens:
+                  for a in allowed:
+                      if e.startswith(a+'_') and not re.search(r'_\d+$',a): return True
+              return False
+
+          # France: unlock basic medium chassis and move SOMUA S35 onto it.
+          fp=Path('history/countries/FRA - France.txt')
+          text=fp.read_text(encoding='utf-8-sig')
+          if 'basic_medium_tank_chassis = 1' not in text:
+              text=text.replace('\tbasic_light_tank_chassis = 1\n\tbasic_heavy_tank_chassis = 1', '\tbasic_light_tank_chassis = 1\n\tbasic_medium_tank_chassis = 1\n\tbasic_heavy_tank_chassis = 1',1)
+          # only alter S35 block
+          for m in list(re.finditer(r'(?m)^\s*create_equipment_variant\s*=\s*\{',text)):
+              r=block_range(text,m.start())
+              if not r: continue
+              b=text[r[0]:r[1]]
+              if re.search(r'(?m)^\s*name\s*=\s*"SOUMUA S35"',b):
+                  b=b.replace('type = medium_tank_chassis_0','type = medium_tank_chassis_1',1)
+                  text=text[:r[0]]+b+text[r[1]:]
+                  break
+          fp.write_text('\ufeff'+text,encoding='utf-8')
+
+          up=Path('history/units/FRA_1936_nsb.txt')
+          text=up.read_text(encoding='utf-8-sig')
+          for m in list(re.finditer(r'(?m)^\s*add_equipment_production\s*=\s*\{',text)):
+              r=block_range(text,m.start())
+              if not r: continue
+              b=text[r[0]:r[1]]
+              if 'version_name = "SOUMUA S35"' in b:
+                  b=b.replace('type = medium_tank_chassis_0','type = medium_tank_chassis_1',1)
+                  text=text[:r[0]]+b+text[r[1]:]
+                  break
+          up.write_text('\ufeff'+text,encoding='utf-8')
+
+          # Ha-Go: Isuzu does not accept chassis_1; Mitsubishi does.
+          for fn in ['history/countries/JAP - Japan.txt','history/units/JAP_1936_nsb.txt']:
+              p=Path(fn); text=p.read_text(encoding='utf-8-sig')
+              markers=['create_equipment_variant','add_equipment_production']
+              edits=[]
+              for marker in markers:
+                  for m in re.finditer(r'(?m)^\s*'+marker+r'\s*=\s*\{',text):
+                      r=block_range(text,m.start())
+                      if not r:continue
+                      b=text[r[0]:r[1]]
+                      if 'Type 95 Ha-Go' in b and 'mio:JAP_isuzu_organization' in b:
+                          nb=b.replace('mio:JAP_isuzu_organization','mio:JAP_mitsubishi_organization')
+                          edits.append((r[0],r[1],nb))
+              for a,b,rp in sorted(edits,reverse=True): text=text[:a]+rp+text[b:]
+              p.write_text('\ufeff'+text,encoding='utf-8')
+
+          scan=[]
+          for tag in ['GER','SOV','ENG','FRA','JAP','USA']:
+              scan += list(Path('history/countries').glob(f'{tag} - *.txt'))
+              scan += list(Path('history/units').glob(f'{tag}_1936_air_bba.txt'))
+              scan += list(Path('history/units').glob(f'{tag}_1936_nsb.txt'))
+          for tag in ['GER','ENG','FRA','ITA','JAP','SOV','USA']:
+              scan += list(Path('history/units').glob(f'00_{tag}_vnr_naval.txt'))
+
+          removed=[]
+          # Remove every assigned MIO that is actually outside that MIO's accepted equipment set.
+          for p in sorted(set(scan)):
+              text=p.read_text(encoding='utf-8-sig',errors='ignore')
+              edits=[]
+              for marker in ['create_equipment_variant','add_equipment_production']:
+                  for m in re.finditer(r'(?m)^\s*'+marker+r'\s*=\s*\{',text):
+                      r=block_range(text,m.start())
+                      if not r:continue
+                      b=text[r[0]:r[1]]
+                      mm=re.search(r'(?m)^\s*(design_team|industrial_manufacturer)\s*=\s*mio:([A-Za-z0-9_]+)\s*\n?',b)
+                      tm=re.search(r'(?m)^\s*type\s*=\s*([A-Za-z0-9_]+)',b)
+                      if not mm or not tm:continue
+                      eq=tm.group(1); mio=mm.group(2); allowed=mio_types(mio)
+                      if not allowed or not compatible(eq,allowed):
+                          nm=re.search(r'(?m)^\s*(?:version_name|name)\s*=\s*"([^"]+)"',b)
+                          label=nm.group(1) if nm else ''
+                          nb=b[:mm.start()]+b[mm.end():]
+                          edits.append((r[0],r[1],nb))
+                          removed.append((str(p),label,eq,mio,'UNKNOWN' if not allowed else 'MISMATCH'))
+              # overlapping block edits cannot happen here; one MIO assignment per block
+              for a,b,rp in sorted(edits,reverse=True): text=text[:a]+rp+text[b:]
+              if edits: p.write_text('\ufeff'+text,encoding='utf-8')
+
+          # Final audit of all assignments that remain after cleanup.
+          rows=[]
+          for p in sorted(set(scan)):
+              text=p.read_text(encoding='utf-8-sig',errors='ignore')
+              for marker in ['create_equipment_variant','add_equipment_production']:
+                  for m in re.finditer(r'(?m)^\s*'+marker+r'\s*=\s*\{',text):
+                      r=block_range(text,m.start())
+                      if not r:continue
+                      b=text[r[0]:r[1]]
+                      mm=re.search(r'(?m)^\s*(design_team|industrial_manufacturer)\s*=\s*mio:([A-Za-z0-9_]+)',b)
+                      tm=re.search(r'(?m)^\s*type\s*=\s*([A-Za-z0-9_]+)',b)
+                      if not mm or not tm:continue
+                      nm=re.search(r'(?m)^\s*(?:version_name|name)\s*=\s*"([^"]+)"',b)
+                      eq=tm.group(1); mio=mm.group(2); allowed=mio_types(mio)
+                      status='OK' if allowed and compatible(eq,allowed) else ('UNKNOWN' if not allowed else 'MISMATCH')
+                      rows.append((status,str(p),marker,nm.group(1) if nm else '',eq,mio,sorted(allowed)))
+
+          ok=sum(r[0]=='OK' for r in rows); bad=sum(r[0]=='MISMATCH' for r in rows); unk=sum(r[0]=='UNKNOWN' for r in rows)
+          out=['# HER final starting MIO audit','',f'REMOVED_INVALID={len(removed)}','']
+          for x in removed: out.append('REMOVED\t'+'\t'.join(x))
+          out += ['','## Remaining assignments']
+          for r in rows: out.append('\t'.join(map(str,r)))
+          out += ['',f'SUMMARY OK={ok} MISMATCH={bad} UNKNOWN={unk} TOTAL={len(rows)}']
+          Path('HER_MIO_FINAL_AUDIT.txt').write_text('\n'.join(out),encoding='utf-8')
+          PY
+      - name: Commit fixes
+        shell: bash
+        run: |
+          git config user.name "HER automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add history/countries history/units HER_MIO_FINAL_AUDIT.txt
+          git commit -m "Fix starting MIO compatibility and update SOMUA S35"
+          git push origin HEAD:work/start-designers-and-1944-retirements

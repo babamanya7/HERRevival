@@ -1,0 +1,9 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			FRA = { add_ideas = HER_FRA_unused_staff_slots }
+			ENG = { add_ideas = HER_ENG_unused_staff_slots }
+			JAP = { add_ideas = HER_JAP_unused_staff_slots }
+		}
+	}
+}

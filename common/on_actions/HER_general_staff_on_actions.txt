@@ -1,0 +1,100 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			# France: only the command actually in office in 1936 exists as advisors.
+			FRA = {
+				recruit_character = FRA_louis_colson
+
+				add_advisor_role = {
+					character = FRA_maurice_gamelin
+					advisor = { slot = oberkomando_chief idea_token = HER_FRA_gamelin_supreme ledger = army traits = { HER_FRA_gamelin_supreme } cost = 0 can_be_fired = no }
+					activate = yes
+				}
+				add_advisor_role = {
+					character = FRA_louis_colson
+					advisor = { slot = army_genstab_chief idea_token = HER_FRA_colson_army_staff ledger = army traits = { HER_FRA_colson_staff } cost = 0 can_be_fired = no }
+					activate = yes
+				}
+				add_advisor_role = {
+					character = FRA_Aime_Doumenc
+					advisor = { slot = operativ_chief idea_token = HER_FRA_doumenc_operations ledger = army traits = { HER_FRA_doumenc_operations } cost = 0 can_be_fired = no }
+					activate = yes
+				}
+				add_advisor_role = {
+					character = FRA_alphonse_georges
+					advisor = { slot = army_chief idea_token = HER_FRA_georges_army ledger = army traits = { HER_FRA_georges_army } cost = 0 can_be_fired = no }
+					activate = yes
+				}
+				add_advisor_role = {
+					character = FRA_joseph_vuillemin
+					advisor = { slot = air_chief idea_token = HER_FRA_vuillemin_air ledger = air traits = { HER_FRA_vuillemin_air } cost = 0 can_be_fired = no }
+					activate = yes
+				}
+				add_advisor_role = {
+					character = FRA_francois_darlan
+					advisor = { slot = navy_chief idea_token = HER_FRA_darlan_navy ledger = navy traits = { HER_FRA_darlan_navy } cost = 0 can_be_fired = no }
+					activate = yes
+				}
+			}
+
+			# United Kingdom: Deverell is the only member of our rotating structure
+			# already holding his represented office at the 1936 start.
+			ENG = {
+				recruit_character = ENG_cyril_deverell
+				recruit_character = ENG_ronald_adam
+				recruit_character = ENG_archibald_nye
+				recruit_character = ENG_john_dill
+
+				add_advisor_role = {
+					character = ENG_cyril_deverell
+					advisor = { slot = genstab_chief idea_token = HER_ENG_deverell_cigs ledger = army traits = { HER_ENG_deverell_cigs } cost = 0 can_be_fired = no }
+					activate = yes
+				}
+			}
+
+			# United States: Craig heads the Army staff and Westover the Air Corps.
+			USA = {
+				recruit_character = USA_malin_craig
+				recruit_character = USA_william_leahy
+				recruit_character = USA_joseph_mcnarney
+				recruit_character = USA_thomas_handy
+				recruit_character = USA_oscar_westover
+
+				add_advisor_role = {
+					character = USA_malin_craig
+					advisor = { slot = genstab_chief idea_token = HER_USA_craig_army_staff ledger = army traits = { HER_USA_craig_army_staff } cost = 0 can_be_fired = no }
+					activate = yes
+				}
+				add_advisor_role = {
+					character = USA_oscar_westover
+					advisor = { slot = air_chief idea_token = HER_USA_westover_air ledger = air traits = { HER_USA_westover_air } cost = 0 can_be_fired = no }
+					activate = yes
+				}
+			}
+
+			# Japan: the Emperor, Prince Kan'in and Prince Fushimi are the actual
+			# incumbents. Reuse the existing national characters instead of clones.
+			JAP = {
+				recruit_character = JAP_yorimichi_suzuki
+				recruit_character = JAP_takeo_yasuda
+				recruit_character = JAP_koshiro_oikawa
+
+				add_advisor_role = {
+					character = JAP_emperor_hirohito
+					advisor = { slot = oberkomando_chief idea_token = HER_JAP_hirohito_supreme ledger = military traits = { HER_JAP_hirohito_supreme } cost = 0 can_be_fired = no }
+					activate = yes
+				}
+				add_advisor_role = {
+					character = JAP_kanin_kotohito
+					advisor = { slot = genstab_chief idea_token = HER_JAP_kanin_general_staff ledger = army traits = { HER_JAP_kanin_general_staff } cost = 0 can_be_fired = no }
+					activate = yes
+				}
+				add_advisor_role = {
+					character = JAP_fushimi_hiroyasu
+					advisor = { slot = navy_genstab_chief idea_token = HER_JAP_fushimi_naval_staff ledger = navy traits = { HER_JAP_fushimi_naval_staff } cost = 0 can_be_fired = no }
+					activate = yes
+				}
+			}
+		}
+	}
+}

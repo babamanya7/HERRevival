@@ -317,10 +317,11 @@ add_ideas = {
 			tank_light_nsb_armor_upgrade = 45
 		}
 		icon = "GFX_FRA_basic_light_tank_medium"
+		design_team = mio:FRA_hotchkiss_organization
 	}
 	create_equipment_variant = {
 		name = "Char B1"
-		type = heavy_tank_chassis_0
+		type = heavy_tank_chassis_1
 		parent_version = 0
 		modules = {
 			main_armament_slot = tank_close_support_gun
@@ -337,6 +338,7 @@ add_ideas = {
 			tank_nsb_armor_upgrade = 60
 		}
 		icon = "GFX_FRA_basic_heavy_tank_medium"
+		design_team = mio:FRA_renault_organization
 }
 
 	create_equipment_variant = {
@@ -529,7 +531,7 @@ add_ideas = {
             fixed_ship_battery_slot = fra_11in_1931_quad
 			fixed_ship_anti_air_slot = ship_anti_air_2
 			fixed_ship_fire_control_system_slot = ship_fire_control_system_1
-			fixed_ship_engine_slot = heavy_ship_engine_2
+			fixed_ship_engine_slot = cruiser_ship_engine_2
 			fixed_ship_secondaries_slot = ship_secondaries_1
 			fixed_ship_armor_slot = ship_armor_bb_1
             fixed_ship_armor_scheme_slot = ship_scheme_mixed
@@ -636,7 +638,6 @@ add_ideas = {
         name = "Duquesne Class"
 		parent_version = 0
 		role_icon_index = 27
-		icon = "gfx/interface/technologies/France/FRA_heavy_cruiser_Duquesne.png"
         type = vnr_ship_hull_cruiser_2
         name_group = FRA_CA_HISTORICAL
         modules = {
@@ -905,7 +906,7 @@ add_ideas = {
         modules = {
             fixed_ship_torpedo_slot = ship_torpedo_sub_1
 			fixed_ship_engine_slot = sub_ship_engine_2
-            fixed_ship_armor_slot = pressure_hull_2
+            fixed_ship_armor_slot = pressure_hull_1
 			rear_1_custom_slot = ship_torpedo_sub_1
         }
     }

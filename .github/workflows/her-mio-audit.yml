@@ -1,0 +1,134 @@
+name: HER starting MIO compatibility audit
+
+on:
+  push:
+    branches:
+      - work/start-designers-and-1944-retirements
+    paths:
+      - .github/workflows/her-mio-audit.yml
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/start-designers-and-1944-retirements
+      - name: Audit assigned MIOs
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          ROOT=Path('.')
+          scan_files=[]
+          for tag in ['GER','SOV','ENG','FRA','JAP','USA']:
+              scan_files += list(Path('history/countries').glob(f'{tag} - *.txt'))
+              scan_files += list(Path('history/units').glob(f'{tag}_1936_air_bba.txt'))
+              scan_files += list(Path('history/units').glob(f'{tag}_1936_nsb.txt'))
+          for tag in ['GER','ENG','FRA','ITA','JAP','SOV','USA']:
+              scan_files += list(Path('history/units').glob(f'00_{tag}_vnr_naval.txt'))
+
+          def match_block(text, start):
+              b=text.find('{',start)
+              if b<0:return None
+              d=0; inq=False; esc=False
+              for i in range(b,len(text)):
+                  c=text[i]
+                  if inq:
+                      if esc: esc=False
+                      elif c=='\\': esc=True
+                      elif c=='"': inq=False
+                      continue
+                  if c=='"': inq=True; continue
+                  if c=='{': d+=1
+                  elif c=='}':
+                      d-=1
+                      if d==0:return (start,i+1)
+              return None
+
+          def named_block(text,name):
+              pat=re.compile(r'(?m)^\s*'+re.escape(name)+r'\s*=\s*\{')
+              m=pat.search(text)
+              return text[slice(*match_block(text,m.start()))] if m and match_block(text,m.start()) else None
+
+          # load all equipment and MIO source text
+          eq_text='\n'.join(p.read_text(encoding='utf-8-sig',errors='ignore') for p in Path('common/units/equipment').glob('*.txt'))
+          mio_files=list(Path('common/military_industrial_organization/organizations').glob('*.txt'))
+          mio_text='\n'.join(p.read_text(encoding='utf-8-sig',errors='ignore') for p in mio_files)
+
+          def tokens_in_braced_field(block, field):
+              m=re.search(r'(?m)^\s*'+re.escape(field)+r'\s*=\s*\{',block)
+              if not m:return set()
+              r=match_block(block,m.start())
+              if not r:return set()
+              sub=block[r[0]:r[1]]
+              sub=re.sub(r'#.*','',sub)
+              return {x for x in re.findall(r'\b[A-Za-z0-9_:.]+\b',sub) if x not in {field}}
+
+          def equipment_tags(eq):
+              b=named_block(eq_text,eq)
+              if not b:return set(), 'equipment definition not found'
+              tags=tokens_in_braced_field(b,'type')
+              return tags, ''
+
+          def mio_tags(name,seen=None):
+              seen=seen or set()
+              if name in seen:return set(),[]
+              seen.add(name)
+              b=named_block(mio_text,name)
+              if not b:return set(),[f'MIO definition not found: {name}']
+              tags=tokens_in_braced_field(b,'equipment_type')
+              notes=[]
+              inc=re.search(r'(?m)^\s*include\s*=\s*([A-Za-z0-9_]+)',b)
+              if inc:
+                  t,n=mio_tags(inc.group(1),seen)
+                  tags|=t;notes+=n
+              return tags,notes
+
+          assignments=[]
+          block_markers=['create_equipment_variant','add_equipment_production']
+          for p in sorted(set(scan_files)):
+              text=p.read_text(encoding='utf-8-sig',errors='ignore')
+              for marker in block_markers:
+                  for m in re.finditer(r'(?m)^\s*'+marker+r'\s*=\s*\{',text):
+                      r=match_block(text,m.start())
+                      if not r:continue
+                      b=text[r[0]:r[1]]
+                      mm=re.search(r'(?m)^\s*(design_team|industrial_manufacturer)\s*=\s*mio:([A-Za-z0-9_]+)',b)
+                      if not mm:continue
+                      mio=mm.group(2)
+                      tm=re.search(r'(?m)^\s*type\s*=\s*([A-Za-z0-9_]+)',b)
+                      if not tm:continue
+                      eq=tm.group(1)
+                      nm=re.search(r'(?m)^\s*(?:name|version_name)\s*=\s*"([^"]+)"',b)
+                      label=nm.group(1) if nm else ''
+                      assignments.append((str(p),marker,label,eq,mio))
+
+          lines=['# HER starting MIO compatibility audit','']
+          bad=0;unknown=0;ok=0
+          for p,kind,label,eq,mio in assignments:
+              et,en=equipment_tags(eq); mt,mn=mio_tags(mio)
+              inter=et & mt
+              if en or mn or not et or not mt:
+                  status='UNKNOWN'; unknown+=1
+              elif inter:
+                  status='OK'; ok+=1
+              else:
+                  status='MISMATCH'; bad+=1
+              lines.append(f'{status}\t{p}\t{kind}\t{label}\t{eq}\t{mio}\tEQ={sorted(et)}\tMIO={sorted(mt)}')
+          lines += ['',f'SUMMARY OK={ok} MISMATCH={bad} UNKNOWN={unknown} TOTAL={len(assignments)}']
+          Path('HER_MIO_AUDIT.txt').write_text('\n'.join(lines),encoding='utf-8')
+          PY
+      - name: Commit audit report
+        shell: bash
+        run: |
+          git config user.name "HER automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add HER_MIO_AUDIT.txt
+          git commit -m "Generate starting MIO compatibility audit"
+          git push origin HEAD:work/start-designers-and-1944-retirements

@@ -281,23 +281,6 @@ characters={
 				small="gfx/interface/ideas/idea_USA_lesley_mcnair.dds"
 			}
 		}
-		advisor = {
-			slot = army_h_command
-			idea_token = USA_leslie_mcnair
-			ledger = army
-			allowed = {
-				original_tag = USA
-			}
-			available = {
-			}
-			traits = {
-				army_armored_3
-			}
-			cost = 150
-			ai_will_do = {
-				factor = 20
-			}
-		}
 		corps_commander={
 			traits={ politically_connected career_officer armor_officer artillery_officer bearer_of_artillery }
 			skill=5
@@ -984,4 +967,11 @@ characters={
 		portraits={ army={ large=GFX_portrait_USA_vannevar_bush } }
 		scientist={ traits={ scientist_trait_electronics_specialist } skills={ specialization_air=4 } }
 	}
+
+	# HER general staff
+	USA_malin_craig = { name = USA_malin_craig }
+	USA_william_leahy = { name = USA_william_leahy }
+	USA_joseph_mcnarney = { name = USA_joseph_mcnarney }
+	USA_thomas_handy = { name = USA_thomas_handy }
+	USA_oscar_westover = { name = USA_oscar_westover }
 }

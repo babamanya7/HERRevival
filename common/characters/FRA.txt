@@ -103,25 +103,6 @@ characters={
 				small="gfx/interface/ideas/idea_FRA_alphonse_juin.dds"
 			}
 		}
-		advisor={
-			slot = army_genstab_chief
-			idea_token = alphonse_juin
-			ledger = army
-			allowed = {
-				original_tag = FRA
-			}
-			traits = {
-				army_chief_organizational_2
-			}
-			cost = 100
-			ai_will_do = {
-				base = 0
-				modifier = {
-					add = 80
-					date > 1940.5.10
-				}
-			}
-		}
 		corps_commander={
 			traits={ career_officer trait_cautious armor_officer }
 			skill=4
@@ -141,21 +122,6 @@ characters={
 			}
 			army={
 				large="gfx/leaders/FRA/Portrait_France_Maurice_Gamelin.dds"
-			}
-		}
-		advisor={
-			slot = oberkomando_chief
-			idea_token = FRA_maurice_gamelin
-			can_be_fired = no
-			allowed = {
-				original_tag = FRA
-			}
-			cost = 100
-			traits = {
-				army_chief_amateur_1
-			}
-			ai_will_do = {
-				factor = 0
 			}
 		}
 
@@ -180,30 +146,6 @@ characters={
 				large="gfx/leaders/FRA/Portrait_France_Maxime_Weygand.dds"
 			}
 		}
-		advisor={
-			slot = genstab_chief
-			idea_token = maxime_weygand
-			allowed = {
-				original_tag = FRA
-			}
-			cost = 100
-			traits = {
-				army_chief_defensive_2
-			}
-			ai_will_do = {
-				factor = 20
-				modifier = {
-					factor = 0
-					is_historical_focus_on = yes
-					date < 1939.12.1
-				}
-				modifier = {
-					factor = 4000
-					is_historical_focus_on = yes
-					date > 1939.12.1
-				}
-			}
-		}
 		
 		field_marshal={
 			traits={ old_guard inflexible_strategist career_officer defensive_doctrine }
@@ -224,20 +166,6 @@ characters={
 			}
 			army={
 				large="gfx/leaders/FRA/Portrait_France_Alphonse_Joseph_Georges.dds"
-			}
-		}
-		advisor={
-			slot = army_chief
-			idea_token = alphonse_georges
-			allowed = {
-				original_tag = FRA
-			}
-			traits = {
-				army_chief_maneuver_1
-			}
-			cost =  50
-			ai_will_do = {
-				factor = 0
 			}
 		}
 		
@@ -361,25 +289,6 @@ characters={
 			}
 			army={
 				large="gfx/leaders/FRA/portrait_france_charles_huntziger.dds"
-			}
-		}
-		advisor={	
-			slot = army_genstab_chief
-			idea_token = charles_huntziger
-			ledger = army
-			allowed = {
-				original_tag = FRA
-			}
-			traits = {
-				army_logistics_1
-			}
-			cost =  50
-			ai_will_do = {
-				base = 0
-				modifier = {
-					add = 40
-					date > 1940.5.10
-				}
 			}
 		}
 		
@@ -539,24 +448,6 @@ characters={
 			army={
 				large="gfx/leaders/FRA/Portrait_France_Francois_Darlan.dds"
 				small="GFX_idea_francois_darlan"
-			}
-		}
-		advisor={
-			slot = navy_genstab_chief
-			idea_token = francois_darlan
-			allowed = {
-				original_tag = FRA
-			}
-			traits = {
-				navy_chief_decisive_battle_2
-			}
-			cost = 100
-			ai_will_do = {
-				base = 0
-				modifier = {
-					add = 40
-					date > 1940.5.10
-				}
 			}
 		}
 
@@ -874,23 +765,6 @@ characters={
 				}
 			}
 		}
-		advisor={
-			slot = genstab_chief
-			idea_token = charles_de_gaulle
-			allowed = {
-				original_tag = FRA
-			}
-			available = {
-				has_completed_focus = FRA_aggressive_focus
-			}
-			traits = {
-				army_chief_offensive_2
-			}
-			cost =  100
-			ai_will_do = {
-				factor = 20
-			}
-		}	
 		corps_commander={
 			traits={ media_personality harsh_leader armor_officer }
 			skill=5
@@ -909,20 +783,6 @@ characters={
 				small="GFX_idea_generic_army_europe_3"
 			}
 		}
-		advisor={
-			slot = genstab_chief
-			idea_token = FRA_henri_marie_auguste_bineau
-			allowed = {
-				original_tag = FRA
-			}
-			traits = {
-				army_chief_offensive_1
-			}
-			cost =  50
-			ai_will_do = {
-				factor = 0
-			}
-		}		
 	}
 
 
@@ -937,20 +797,6 @@ characters={
 				small="GFX_idea_marcel_gensoul"
 			}
 		}
-		advisor={
-			slot = navy_genstab_chief
-			idea_token = marcel_gensoul
-			allowed = {
-				original_tag = FRA
-			}
-			traits = {
-				navy_chief_naval_aviation_1
-			}
-			cost =  50
-			ai_will_do = {
-				factor = 0
-			}
-		}
 	}
 	
 	FRA_jean_marie_abrial={
@@ -958,20 +804,6 @@ characters={
 		portraits={
 			army={
 				small="GFX_idea_jean_marie_abrial"
-			}
-		}
-		advisor={
-			slot = navy_genstab_chief
-			idea_token = jean_marie_abrial
-			allowed = {
-				original_tag = FRA
-			}
-			traits = {
-				navy_chief_commerce_raiding_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 0
 			}
 		}
 	}
@@ -986,25 +818,6 @@ characters={
 				small="GFX_idea_joseph_vuillemin"
 			}
 		}
-		advisor={
-			slot = air_genstab_chief
-			idea_token = joseph_vuillemin
-			allowed = {
-				original_tag = FRA
-			}
-			traits = {
-				air_chief_ground_support_1
-			}
-			cost =  50
-			ai_will_do = {
-				base = 0
-				
-				modifier = {
-					add = 40
-					date > 1940.5.10
-				}
-			}
-		}
 	}
 
 	FRA_robert_odic={
@@ -1014,20 +827,6 @@ characters={
 				small="GFX_idea_robert_odic"
 			}
 		}
-		advisor={
-			slot = air_genstab_chief
-			idea_token = robert_odic
-			allowed = {
-				original_tag = FRA
-			}
-			traits = {
-				air_chief_all_weather_1
-			}
-			cost =  50
-			ai_will_do = {
-				factor = 0
-			}
-		}
 	}
 
 	FRA_philippe_fequant={
@@ -1035,20 +834,6 @@ characters={
 		portraits={
 			army={
 				small="GFX_idea_philippe_fequant"
-			}
-		}
-		advisor={
-			slot = air_chief
-			idea_token = philippe_fequant
-			allowed = {
-				original_tag = FRA
-			}
-			traits = {
-				air_chief_reform_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 0
 			}
 		}
 	}
@@ -1127,21 +912,6 @@ characters={
 				small="GFX_idea_emile_muselier"
 			}
 		}
-		advisor={
-			slot = navy_genstab_chief
-			idea_token = emile_muselier
-			ledger = navy
-			allowed = {
-				original_tag = FRA
-			}
-			traits = {
-				navy_fleet_logistics_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 0
-			}
-		}
 	}
 	
 	FRA_alfred_heurtaux={
@@ -1149,21 +919,6 @@ characters={
 		portraits={
 			army={
 				small="GFX_idea_alfred_heurtaux"
-			}
-		}
-		advisor={
-			slot = air_genstab_chief
-			idea_token = alfred_heurtaux
-			ledger = air
-			allowed = {
-				original_tag = FRA
-			}
-			traits = {
-				air_air_combat_training_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 0
 			}
 		}
 	}
@@ -1804,5 +1559,10 @@ characters={
 				factor = 10
 			}
 		}
+	}
+
+	# HER general staff
+	FRA_louis_colson = {
+		name = FRA_louis_colson
 	}
 }

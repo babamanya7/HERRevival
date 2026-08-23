@@ -342,20 +342,6 @@ characters={
 				large="gfx/leaders/JAP/Portrait_Japan_Kenji_Doihara.dds"
 			}
 		}
-		advisor={
-			slot = air_genstab_chief
-			idea_token = kenji_doihara
-			allowed = {
-				original_tag = JAP
-			}
-			traits = {
-				air_chief_all_weather_1
-			}
-			cost =  50
-			ai_will_do = {
-				factor = 0
-			}
-		}
 		
 		corps_commander={
 			traits={ career_officer substance_abuser }
@@ -604,21 +590,6 @@ characters={
 			}
 			army={
 				large="gfx/leaders/JAP/Portrait_Japan_Hitoshi_Imamura.dds"
-			}
-		}
-		advisor={
-			slot = army_genstab_chief
-			idea_token = hitoshi_imamura
-			ledger = army
-			allowed = {
-				original_tag = JAP
-			}
-			traits = {
-				army_logistics_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 80
 			}
 		}
 		
@@ -1021,23 +992,6 @@ characters={
 				small="GFX_idea_kanin_kotohito"
 			}
 		}
-		advisor={
-			slot = genstab_chief
-			idea_token = kanin_kotohito
-			allowed = {
-				original_tag = JAP
-			}
-			traits = {
-				army_chief_offensive_1
-			}
-			cost =  50
-			ai_will_do = {
-				factor = 1.000
-			}
-			ai_will_do = {
-				factor = 120
-			}
-		}
 	}
 
 	JAP_hajime_sugiyama={
@@ -1045,23 +999,6 @@ characters={
 		portraits={
 			army={
 				small="GFX_idea_hajime_sugiyama"
-			}
-		}
-		advisor={
-			slot = oberkomando_chief
-			idea_token = hajime_sugiyama
-			allowed = {
-				original_tag = JAP
-			}
-			available = {
-				has_completed_focus = JAP_army_expansion
-			}
-			traits = {
-				army_chief_drill_3
-			}
-			cost = 150
-			ai_will_do = {
-				factor = 0
 			}
 		}
 	}
@@ -1076,20 +1013,6 @@ characters={
 				small="GFX_idea_hideki_tojo"
 			}
 		}
-		advisor={
-			slot = army_chief
-			idea_token = hideki_tojo
-			allowed = {
-				original_tag = JAP
-			}
-			traits = {
-				army_chief_morale_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 0
-			}
-		}
 	}
 
 	### NAVY CHIEFS ###
@@ -1101,20 +1024,6 @@ characters={
 				small="GFX_idea_fushimi_hiroyasu"
 			}
 		}
-		advisor={
-			slot = navy_genstab_chief
-			idea_token = fushimi_hiroyasu
-			allowed = {
-				original_tag = JAP
-			}
-			traits = {
-				navy_chief_naval_aviation_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 0
-			}
-		}
 	}
 
 	JAP_osami_nagano={
@@ -1124,20 +1033,6 @@ characters={
 				small="GFX_idea_osami_nagano"
 			}
 		}
-		advisor={
-			slot = navy_genstab_chief
-			idea_token = osami_nagano
-			allowed = {
-				original_tag = JAP
-			}
-			traits = {
-				navy_chief_commerce_raiding_1
-			}
-			cost =  50
-			ai_will_do = {
-				factor = 0
-			}
-		}
 	}
 
 	JAP_shigetaro_shimada={
@@ -1145,20 +1040,6 @@ characters={
 		portraits={
 			army={
 				small="GFX_idea_shigetaro_shimada"
-			}
-		}
-		advisor={
-			slot = navy_genstab_chief
-			idea_token = shigetaro_shimada
-			allowed = {
-				original_tag = JAP
-			}
-			traits = {
-				navy_chief_decisive_battle_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 1
 			}
 		}
 	}
@@ -1175,20 +1056,6 @@ characters={
 				small="GFX_idea_torashiro_kawabe"
 			}
 		}
-		advisor={
-			slot = air_genstab_chief
-			idea_token = torashiro_kawabe
-			allowed = {
-				original_tag = JAP
-			}
-			traits = {
-				air_chief_night_operations_1
-			}
-			cost =  50
-			ai_will_do = {
-				factor = 0
-			}
-		}
 	}
 
 	JAP_korechika_anami={
@@ -1196,20 +1063,6 @@ characters={
 		portraits={
 			army={
 				small="GFX_idea_korechika_anami"
-			}
-		}
-		advisor={
-			slot = air_genstab_chief
-			idea_token = korechika_anami
-			allowed = {
-				original_tag = JAP
-			}
-			traits = {
-				air_chief_ground_support_1
-			}
-			cost =  50
-			ai_will_do = {
-				factor = 1.000
 			}
 		}
 	}
@@ -1278,21 +1131,6 @@ characters={
 		portraits={
 			army={
 				small="GFX_idea_tateo_kato"
-			}
-		}
-		advisor={
-			slot = air_genstab_chief
-			idea_token = tateo_kato
-			ledger = air
-			allowed = {
-				original_tag = JAP
-			}
-			traits = {
-				air_air_combat_training_3
-			}
-			cost = 150
-			ai_will_do = {
-				factor = 0
 			}
 		}
 	}
@@ -1635,4 +1473,9 @@ characters={
 			}
 		}
 	}
+
+	# HER general staff
+	JAP_yorimichi_suzuki = { name = JAP_yorimichi_suzuki }
+	JAP_takeo_yasuda = { name = JAP_takeo_yasuda }
+	JAP_koshiro_oikawa = { name = JAP_koshiro_oikawa }
 }

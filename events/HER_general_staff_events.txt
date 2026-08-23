@@ -403,7 +403,7 @@ country_event = {
 	is_triggered_only = yes
 	immediate = {
 		deactivate_advisor = HER_JAP_kanin_general_staff
-		remove_advisor_role = { character = JAP_prince_kanin slot = genstab_chief }
+		remove_advisor_role = { character = JAP_kanin_kotohito slot = genstab_chief }
 		add_advisor_role = {
 			character = JAP_hajime_sugiyama
 			advisor = { slot = genstab_chief idea_token = HER_JAP_sugiyama_general_staff ledger = army traits = { HER_JAP_sugiyama_general_staff } cost = 0 can_be_fired = no }
@@ -420,7 +420,7 @@ country_event = {
 	is_triggered_only = yes
 	immediate = {
 		deactivate_advisor = HER_JAP_fushimi_naval_staff
-		remove_advisor_role = { character = JAP_prince_fushimi slot = navy_genstab_chief }
+		remove_advisor_role = { character = JAP_fushimi_hiroyasu slot = navy_genstab_chief }
 		add_advisor_role = {
 			character = JAP_osami_nagano
 			advisor = { slot = navy_genstab_chief idea_token = HER_JAP_nagano_naval_staff ledger = navy traits = { HER_JAP_nagano_naval_staff } cost = 0 can_be_fired = no }

@@ -1,0 +1,318 @@
+on_actions = {
+
+	# The first implementation used calendar dates as a temporary scheduler.
+	# Block those legacy transitions; all rotations below are driven by focuses,
+	# wars and the actual course of the campaign instead.
+	on_startup = {
+		effect = {
+			FRA = {
+				set_country_flag = HER_FRA_weygand_appointed
+			}
+			ENG = {
+				set_country_flag = HER_ENG_gort_cigs
+				set_country_flag = HER_ENG_adam_vcigs
+				set_country_flag = HER_ENG_newall_cas
+				set_country_flag = HER_ENG_pound_fsl
+				set_country_flag = HER_ENG_ironside_cigs
+				set_country_flag = HER_ENG_dill_cigs
+				set_country_flag = HER_ENG_portal_cas
+				set_country_flag = HER_ENG_pownall_vcigs
+				set_country_flag = HER_ENG_nye_vcigs
+				set_country_flag = HER_ENG_brooke_cigs
+				set_country_flag = HER_ENG_brooke_chairman
+				set_country_flag = HER_ENG_cunningham_fsl
+			}
+			USA = {
+				set_country_flag = HER_USA_arnold_air
+				set_country_flag = HER_USA_stark_cno
+				set_country_flag = HER_USA_marshall_cos
+				set_country_flag = HER_USA_eisenhower_wpd
+				set_country_flag = HER_USA_king_cominch
+				set_country_flag = HER_USA_spaatz_air_staff
+				set_country_flag = HER_USA_mcnair_ground
+				set_country_flag = HER_USA_king_cno
+				set_country_flag = HER_USA_handy_opd
+				set_country_flag = HER_USA_leahy_joint
+			}
+			JAP = {
+				set_country_flag = HER_JAP_tojo_air
+				set_country_flag = HER_JAP_suzuki_air
+				set_country_flag = HER_JAP_sugiyama_staff
+				set_country_flag = HER_JAP_nagano_staff
+				set_country_flag = HER_JAP_doihara_air
+				set_country_flag = HER_JAP_yasuda_air
+				set_country_flag = HER_JAP_tojo_staff
+				set_country_flag = HER_JAP_umezu_staff
+				set_country_flag = HER_JAP_oikawa_staff
+			}
+		}
+	}
+
+	on_monthly = {
+		effect = {
+
+			# ====================================================================
+			# FRANCE
+			# Gamelin is not removed because a date was reached. Weygand takes over
+			# if the player explicitly changes the army course, or if the German
+			# campaign has already broken the metropolitan command structure.
+			# ====================================================================
+			FRA = {
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_FRA_weygand }
+						OR = {
+							has_completed_focus = FRA_aggressive_focus
+							AND = {
+								has_war_with = GER
+								855 = { NOT = { is_controlled_by = FRA } }
+							}
+						}
+					}
+					country_event = { id = her_general_staff.1 }
+				}
+			}
+
+			# ====================================================================
+			# UNITED KINGDOM
+			# Rearmament focuses create the peacetime service structure. War with
+			# Germany, the fall of France and the later Allied coalition drive the
+			# wartime CIGS/VCIGS and Chiefs of Staff changes.
+			# ====================================================================
+			ENG = {
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_ENG_gort }
+						has_completed_focus = general_rearmament_focus
+					}
+					country_event = { id = her_general_staff.10 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_ENG_newall }
+						has_completed_focus = air_rearmament_focus
+					}
+					country_event = { id = her_general_staff.11 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_ENG_pound }
+						has_completed_focus = naval_rearmament_focus
+					}
+					country_event = { id = her_general_staff.12 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_ENG_wartime_staff }
+						has_war_with = GER
+					}
+					country_event = { id = her_general_staff.13 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_ENG_france_fallen }
+						has_war = yes
+						FRA = { has_capitulated = yes }
+					}
+					country_event = { id = her_general_staff.14 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_ENG_portal }
+						has_war = yes
+						has_completed_focus = ENG_chiefs_of_staff_committee
+					}
+					country_event = { id = her_general_staff.15 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_ENG_brooke }
+						has_completed_focus = ENG_chiefs_of_staff_committee
+						OR = {
+							has_war_with = JAP
+							USA = { is_in_faction_with = ENG }
+						}
+					}
+					country_event = { id = her_general_staff.16 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_ENG_chairman }
+						has_completed_focus = ENG_chiefs_of_staff_committee
+						has_war = yes
+						USA = { is_in_faction_with = ENG }
+					}
+					country_event = { id = her_general_staff.17 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_ENG_cunningham }
+						has_war = yes
+						ITA = { has_capitulated = yes }
+					}
+					country_event = { id = her_general_staff.18 }
+				}
+			}
+
+			# ====================================================================
+			# UNITED STATES
+			# The War Department, War Plans Division, air and naval rearmament
+			# focuses build the staff. Joint command only appears after the USA has
+			# actually entered a major coalition war.
+			# ====================================================================
+			USA = {
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_USA_marshall }
+						has_completed_focus = USA_war_department
+					}
+					country_event = { id = her_general_staff.20 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_USA_arnold }
+						has_completed_focus = USA_air_war_plans_division
+					}
+					country_event = { id = her_general_staff.21 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_USA_stark }
+						has_completed_focus = USA_naval_rearmament_act
+					}
+					country_event = { id = her_general_staff.22 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_USA_eisenhower }
+						has_war = yes
+						has_completed_focus = USA_war_plans_division
+					}
+					country_event = { id = her_general_staff.23 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_USA_king_cominch }
+						OR = {
+							has_war_with = JAP
+							has_war_with = GER
+						}
+					}
+					country_event = { id = her_general_staff.24 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_USA_spaatz }
+						has_war = yes
+						has_completed_focus = USA_us_army_airforce
+					}
+					country_event = { id = her_general_staff.25 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_USA_ground_forces }
+						has_war = yes
+						has_completed_focus = USA_army_of_the_united_states
+					}
+					country_event = { id = her_general_staff.26 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_USA_king_cno }
+						has_war = yes
+						has_completed_focus = USA_two_ocean_navy_act
+					}
+					country_event = { id = her_general_staff.27 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_USA_handy }
+						has_war = yes
+						has_completed_focus = USA_the_global_super_power
+					}
+					country_event = { id = her_general_staff.28 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_USA_leahy }
+						has_war = yes
+						has_completed_focus = USA_the_global_super_power
+						ENG = { is_in_faction_with = USA }
+					}
+					country_event = { id = her_general_staff.29 }
+				}
+			}
+
+			# ====================================================================
+			# JAPAN
+			# No independent Japanese air force is invented. The air slot remains
+			# the Army Aviation Inspectorate. Army/naval staff changes now follow
+			# political consolidation, mobilization and deterioration of the war.
+			# ====================================================================
+			JAP = {
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_JAP_tojo_air }
+						has_completed_focus = JAP_purge_the_kodoha_faction
+						has_completed_focus = JAP_army_expansion_law
+					}
+					country_event = { id = her_general_staff.40 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_JAP_suzuki_air }
+						has_completed_focus = JAP_national_mobilization_law
+					}
+					country_event = { id = her_general_staff.41 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_JAP_sugiyama }
+						has_completed_focus = JAP_army_expansion
+						has_war = yes
+					}
+					country_event = { id = her_general_staff.42 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_JAP_nagano }
+						has_completed_focus = JAP_new_naval_estimates
+					}
+					country_event = { id = her_general_staff.43 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_JAP_doihara_air }
+						has_completed_focus = JAP_supremacy_of_will
+						has_war = yes
+					}
+					country_event = { id = her_general_staff.44 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_JAP_yasuda_air }
+						has_war_with = USA
+						has_completed_focus = JAP_fighter_modernization
+					}
+					country_event = { id = her_general_staff.45 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_JAP_wartime_crisis }
+						has_war_with = USA
+						has_completed_focus = JAP_supremacy_of_will
+					}
+					country_event = { id = her_general_staff.46 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = HER_staff_JAP_defensive_crisis }
+						has_war = yes
+						surrender_progress > 0.1
+					}
+					country_event = { id = her_general_staff.47 }
+				}
+			}
+		}
+	}
+}

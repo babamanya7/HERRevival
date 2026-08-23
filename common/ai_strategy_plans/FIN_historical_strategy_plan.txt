@@ -4,20 +4,7 @@ FIN_historical_plan = {
 		original_tag = FIN
 	}
 	enable = {
-		OR = {
-			AND = {
-				is_historical_focus_on = yes
-				has_game_rule = {
-					rule = FIN_ai_behavior
-					option = DEFAULT
-				}
-			}
-			has_country_flag = FIN_AI_RANDOM_HISTORICAL
-			has_game_rule = {
-				rule = FIN_ai_behavior
-				option = HISTORICAL
-			}
-		}
+		always = yes
 	}
 
 	ai_national_focuses = {
@@ -35,51 +22,52 @@ FIN_historical_plan = {
 		FIN_mannerheim_line
 		FIN_national_unity
 		FIN_outokumpu_for_defence_industry
-		FIN_industrial_upgrade_in_harjavalta #35
-		FIN_janiskoski_power_plant #35 (1938 historically)
+		FIN_janiskoski_power_plant
+		FIN_expand_imatra_hydropower_plant
 
 		#1938
 		FIN_political_unity
+		FIN_align_the_agrarian_league
 		FIN_railways_and_infrastructure
 		FIN_repurpose_small_industries
+		FIN_expand_state_military_factories
 		FIN_extra_refresher_exercises # (ASAP - gated behind WT)
-		FIN_weapon_caches #35 (ASAP - gated behind WT)
 		FIN_the_cold_front #35
+		FIN_jaeger_movement
 		
 		#1939 (Nov -> Winter War)
-		FIN_a_cry_for_help #35 (ASAP - gated behind Winter War)
-		FIN_defense_in_depth
-		FIN_jaeger_movement
+		FIN_a_cry_for_help #7 (ASAP - gated behind Winter War)
+		FIN_winter_warfare
 		FIN_salvaged_and_retooled
 		FIN_motti_tactics #35
-		FIN_winter_warfare #35
 		FIN_oy_alkoholiliike #35
+		FIN_the_lone_wolf #35
 
 		#1940
 		FIN_underground_resistance_cells #35
 		FIN_foreign_armor #35
-		FIN_union_of_finnish_brothers_in_arms
+		FIN_tank_division
 		FIN_arm_the_lotta_svard
+		FIN_union_of_finnish_brothers_in_arms
+		FIN_suomen_ilmavoimat
+		FIN_expand_air_bases
 		FIN_helsinki_air_defense #35
-		FIN_finnish_radio_intelligence #35
 		FIN_bank_of_aland
+		FIN_suomen_akatemia
 
 		#1941 (Jun -> Continuation War)
-		FIN_suomen_akatemia
-		FIN_expand_imatra_hydropower_plant #35
-		FIN_the_lone_wolf #35
 		FIN_cooperation_with_germany #35
-		FIN_expand_state_military_factories
 		FIN_german_military_advisors #35
+		FIN_finnish_march_of_conquest
 		FIN_joint_scientific_program
-		FIN_long_range_patrols #35
 		FIN_utilize_the_sami #35
+		FIN_modernize_the_army
 
 		#1942
-		FIN_sissi
 		FIN_integrate_oy_tikkakoski
 		FIN_wartsila_engine_production # (1942 historically)
-		FIN_suomen_ilmavoimat
+		FIN_pilot_training
+		FIN_expand_air_force_academy
 		FIN_found_pohjolan_voima # (1943 historically)
 			
 		#1943
@@ -87,12 +75,11 @@ FIN_historical_plan = {
 		FIN_contract_with_yhteissisu # (1943 historically)
 		FIN_suomen_merivoimat
 		FIN_coastal_defense
-		FIN_expand_air_bases
+		FIN_weapon_caches #35 (ASAP - gated behind WT)
+		FIN_tornio_steel_factory
+		FIN_militarized_society
 
 		#1944 (Sep -> Lapland War)
-		FIN_pilot_training #35
-		FIN_expand_air_force_academy
-		FIN_modernize_the_army
 
 		#1945
 

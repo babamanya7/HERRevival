@@ -408,6 +408,21 @@ ideas = {
 				experience_gain_air = 0.05
 			}
 		}
+		
+		SPA_spanish_civil_war_commitments_ita = {
+
+			picture = generic_manpower_bonus
+
+			allowed = {
+				original_tag = ITA
+			}
+
+			modifier = {
+				experience_gain_army = 0.05
+				experience_gain_air = 0.05
+				send_volunteer_size = 1
+			}
+		}
 
 		SPA_foreign_training_staff = {
 

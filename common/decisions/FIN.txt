@@ -199,6 +199,51 @@ FIN_balance_of_power_category = {
 
 }
 
+operations = {
+
+	AI_FIN_promote_leaders = {
+	
+		fire_only_once = yes
+		
+		allowed = {
+			original_tag = FIN
+		}
+		
+		cost = 5
+		
+		available = {
+			is_ai = yes
+			any_army_leader = {
+				is_corps_commander = yes
+				skill > 4
+				NOT = { has_trait = gen_fm }
+			}
+		}
+		
+		visible = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 500
+		}
+		
+		complete_effect = {
+			add_manpower = 50000
+			add_ideas = {
+				fin_ai_1
+			}
+			every_army_leader = {
+				limit = {
+					NOT = { has_trait = ai_general_pt }
+				}
+				add_unit_leader_trait = ai_general_pt
+			}
+		}
+	}
+
+}
+
 
 
 ##     ##  #######  ######## ######## ####     ######  ##    ##  ######  ######## ######## ##     ## 
@@ -1562,6 +1607,40 @@ FIN_balance_of_power_category = {
 			#Increase cost
 			multiply_variable = { FIN_entice_the_masses_dec_cost = FIN_bop_decision_cost_multiplier }
 			custom_effect_tooltip = FIN_entice_the_masses_cost_increase_tt
+		}
+	}
+	
+	FIN_entice_the_masses_ai = {
+		priority = 38
+
+		icon = GFX_decision_eng_propaganda_campaigns
+
+		ai_will_do = {
+			base = 100
+		}
+
+		allowed = {
+			original_tag = FIN
+		}
+
+		available = {
+			
+		}
+
+		visible = {
+			
+		}
+
+		days_re_enable = 360
+
+		cost = 5
+
+		complete_effect = {
+			add_popularity = {
+				ideology = ROOT
+				popularity = 0.05
+			}
+			FIN_bop_medium_increase_effect = yes
 		}
 	}
 

@@ -812,7 +812,9 @@ add_ideas = {
 			tank_light_nsb_armor_upgrade = 8
 		}
 		icon = "GFX_SOV_basic_light_tank_medium"
-	}
+	
+	design_team = mio:SOV_astrov_design_bureau_organization
+}
 	create_equipment_variant = {
 		name = "BT-2"
 		type = light_tank_chassis_1
@@ -863,7 +865,9 @@ add_ideas = {
 			tank_light_nsb_armor_upgrade = 20
 		}
 		icon = "GFX_SOV_improved_light_tank_medium"
-	}
+	
+	design_team = mio:SOV_morozov_design_bureau_organization
+}
 	create_equipment_variant = {
 		name = "T-28"
 		type = medium_tank_chassis_0
@@ -883,7 +887,9 @@ add_ideas = {
 			tank_nsb_engine_upgrade = 5
 		}
 		icon = "GFX_SOV_basic_heavy_tank_medium"
-	}
+	
+	design_team = mio:SOV_kirov_organization
+}
 	create_equipment_variant = {
 		name = "T-35"
 		type = heavy_tank_chassis_0
@@ -903,7 +909,9 @@ add_ideas = {
 			tank_nsb_engine_upgrade = 5
 		}
 		icon = "GFX_SOV_basic_heavy_tank_medium"
-	}
+	
+	design_team = mio:SOV_kirov_organization
+}
 
 ### AIR VARIANTS ###
 	
@@ -918,7 +926,9 @@ add_ideas = {
 			role_type_slot = role_small_fighter
 		}
 		obsolete = yes
-	}
+	
+	design_team = mio:SOV_polikarpov_organization
+}
 	create_equipment_variant = {
 		name = "I-15" #
 		type = small_plane_airframe_0
@@ -931,7 +941,9 @@ add_ideas = {
 			role_type_slot = role_small_fighter
 		}
 		obsolete = yes
-	}
+	
+	design_team = mio:SOV_polikarpov_organization
+}
 	create_equipment_variant = {
 		name = "I-16" #
 		type = small_plane_airframe_1
@@ -986,7 +998,9 @@ add_ideas = {
 			role_type_slot = role_medium_recon
 		}
 		icon = "GFX_scout_plane1_medium"
-	}
+	
+	design_team = mio:SOV_polikarpov_organization
+}
 	create_equipment_variant = {
 		name = "DB-3" #
 		type = medium_plane_airframe_1

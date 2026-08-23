@@ -299,7 +299,9 @@ add_ideas = {
 			tank_light_nsb_armor_upgrade = 40
 		}
 		obsolete = yes
-	}
+	
+	design_team = mio:FRA_renault_organization
+}
 	create_equipment_variant = {
 		name = "H-35"
 		type = light_tank_chassis_1
@@ -336,7 +338,9 @@ add_ideas = {
 			tank_nsb_armor_upgrade = 60
 		}
 		icon = "GFX_FRA_basic_heavy_tank_medium"
-	}
+	
+	design_team = mio:FRA_renault_organization
+}
 
 	create_equipment_variant = {
 		name = "SOUMUA S35"
@@ -355,7 +359,9 @@ add_ideas = {
 			tank_medium_nsb_armor_upgrade = 36
 		}
 		icon = "GFX_FRA_improved_medium_tank_medium"
-	}
+	
+	design_team = mio:FRA_somua_organization
+}
 
 ### AIR VARIANTS ###
 
@@ -384,7 +390,9 @@ add_ideas = {
 		}
 		icon = "GFX_FRA_light_plane_2_medium"
 		obsolete = yes
-	}
+	
+	design_team = mio:FRA_dewoitine_organization
+}
 	create_equipment_variant = {
 		name = "D.510"
 		type = small_plane_airframe_0
@@ -397,7 +405,9 @@ add_ideas = {
 			role_type_slot = role_small_fighter
 		}
 		icon = "GFX_FRA_light_plane_2_medium"
-	}
+	
+	design_team = mio:FRA_dewoitine_organization
+}
 	create_equipment_variant = {
 		name = "Latécoère 296" #
 		type = small_plane_naval_bomber_airframe_0
@@ -461,7 +471,9 @@ add_ideas = {
 			role_type_slot = role_small_fighter
 		}
 		icon = "GFX_FRA_light_plane_2_medium"
-	}
+	
+	design_team = mio:FRA_dewoitine_organization
+}
 	create_equipment_variant = {
 		name = "PL.7" #
 		type = cv_small_plane_naval_bomber_airframe_0

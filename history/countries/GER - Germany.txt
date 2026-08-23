@@ -512,7 +512,9 @@ recruit_character = GER_henrich_focke
 			role_type_slot = role_small_fighter
 		}
 		obsolete = yes
-	}
+	
+	design_team = mio:GER_heinkel_organization
+}
 	create_equipment_variant = {
 		name = "He 45"
 		type = small_plane_airframe_0

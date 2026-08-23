@@ -1145,7 +1145,9 @@ instant_effect = {
 		requested_factories = 1
 		progress = 0.4
 		efficiency = 50
-	}
+	
+	industrial_manufacturer = mio:FRA_renault_organization
+}
 	add_equipment_production = {
 		equipment = {
 			type = heavy_tank_chassis_0
@@ -1155,7 +1157,9 @@ instant_effect = {
 		requested_factories = 1
 		progress = 0.4
 		efficiency = 50
-	}
+	
+	industrial_manufacturer = mio:FRA_renault_organization
+}
 	add_equipment_production = {
 		equipment = {
 			type = medium_tank_chassis_0
@@ -1165,5 +1169,7 @@ instant_effect = {
 		requested_factories = 1
 		progress = 0.4
 		efficiency = 50
-	}
+	
+	industrial_manufacturer = mio:FRA_somua_organization
+}
 ###################

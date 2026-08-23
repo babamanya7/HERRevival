@@ -403,7 +403,9 @@ recruit_character = ENG_nevil_shute
 				fuel_tank_type_slot = fuel_tanks_small
 				role_type_slot = role_small_fighter
 			}
-		}
+		
+	design_team = mio:ENG_gloster_organization
+}
 		create_equipment_variant = {
 			name = "Hawker Fury"
 			type = small_plane_airframe_0
@@ -415,7 +417,9 @@ recruit_character = ENG_nevil_shute
 				fuel_tank_type_slot = fuel_tanks_small
 				role_type_slot = role_small_fighter
 			}
-		}
+		
+	design_team = mio:ENG_hawker_organization
+}
 		create_equipment_variant = {
 			name = "Hawker Demon"
 			type = small_plane_airframe_0
@@ -426,7 +430,9 @@ recruit_character = ENG_nevil_shute
 				fuel_tank_type_slot = fuel_tanks_small
 				role_type_slot = role_small_fighter
 			}
-		}
+		
+	design_team = mio:ENG_hawker_organization
+}
 		create_equipment_variant = {
 			name = "Hawker Nimrod" 
 			type = cv_small_plane_airframe_0

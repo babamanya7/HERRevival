@@ -444,7 +444,7 @@ recruit_character = GER_henrich_focke
 	create_equipment_variant = {
 		name = "Panzer II"
 		type = light_tank_chassis_2
-		design_team = mio:GER_krupp_organization
+		design_team = mio:GER_man_organization
 		parent_version = 0
 		modules = {
 			main_armament_slot = tank_auto_cannon
@@ -525,7 +525,9 @@ recruit_character = GER_henrich_focke
 			fuel_tank_type_slot = fuel_tanks_small
 			role_type_slot = role_small_fighter
 		}
-	}
+	
+	design_team = mio:GER_heinkel_organization
+}
 	create_equipment_variant = {
 		name = "Ar 68"
 		type = small_plane_airframe_0

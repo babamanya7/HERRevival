@@ -1,0 +1,44 @@
+name: Trace custom MIO categories
+on:
+  push:
+    branches: [work/start-designers-and-1944-retirements]
+    paths: [.github/workflows/her-mio-token-scan.yml]
+permissions:
+  contents: write
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/start-designers-and-1944-retirements
+      - shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          toks=set()
+          for p in Path('common/military_industrial_organization/organizations').glob('*.txt'):
+              s=p.read_text(encoding='utf-8-sig',errors='ignore')
+              toks |= set(re.findall(r'\bmio_cat_[A-Za-z0-9_]+',s))
+          out=[]
+          files=[p for p in Path('.').rglob('*') if p.is_file() and p.suffix.lower() in {'.txt','.lua','.asset','.gui'} and '.git' not in p.parts]
+          for t in sorted(toks):
+              hits=[]
+              for p in files:
+                  try:s=p.read_text(encoding='utf-8-sig',errors='ignore')
+                  except:continue
+                  if t in s:
+                      for i,l in enumerate(s.splitlines(),1):
+                          if t in l: hits.append(f'{p}:{i}:{l.strip()}')
+              if len(hits)>1 or any('organizations/' not in h for h in hits):
+                  out.append('## '+t);out += hits;out.append('')
+          Path('HER_MIO_TOKEN_TRACE.txt').write_text('\n'.join(out),encoding='utf-8')
+          PY
+      - shell: bash
+        run: |
+          git config user.name "HER automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add HER_MIO_TOKEN_TRACE.txt
+          git commit -m "Trace custom MIO category usage" || exit 0
+          git push origin HEAD:work/start-designers-and-1944-retirements

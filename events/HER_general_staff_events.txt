@@ -1,16 +1,20 @@
 add_namespace = her_general_staff
 
+# Visible personnel events. Appointments are applied immediately; the popup informs the player.
+
 # ============================================================================
 # FRANCE
 # ============================================================================
 country_event = {
 	id = her_general_staff.1
-	hidden = yes
+	title = her_general_staff.1.t
+	desc = her_general_staff.1.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_FRA_weygand_supreme
 		set_country_flag = HER_staff_FRA_weygand
 	}
+	option = { name = her_general_staff.ack }
 }
 
 # ============================================================================
@@ -18,87 +22,105 @@ country_event = {
 # ============================================================================
 country_event = {
 	id = her_general_staff.10
-	hidden = yes
+	title = her_general_staff.10.t
+	desc = her_general_staff.10.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_ENG_gort_cigs
 		set_country_flag = HER_staff_ENG_gort
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.11
-	hidden = yes
+	title = her_general_staff.11.t
+	desc = her_general_staff.11.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_ENG_newall_air
 		set_country_flag = HER_staff_ENG_newall
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.12
-	hidden = yes
+	title = her_general_staff.12.t
+	desc = her_general_staff.12.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_ENG_pound_navy
 		set_country_flag = HER_staff_ENG_pound
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.13
-	hidden = yes
+	title = her_general_staff.13.t
+	desc = her_general_staff.13.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_ENG_ironside_cigs
 		activate_advisor = HER_ENG_adam_vcigs
 		set_country_flag = HER_staff_ENG_wartime_staff
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.14
-	hidden = yes
+	title = her_general_staff.14.t
+	desc = her_general_staff.14.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_ENG_dill_cigs
 		activate_advisor = HER_ENG_pownall_vcigs
 		set_country_flag = HER_staff_ENG_france_fallen
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.15
-	hidden = yes
+	title = her_general_staff.15.t
+	desc = her_general_staff.15.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_ENG_portal_air
 		set_country_flag = HER_staff_ENG_portal
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.16
-	hidden = yes
+	title = her_general_staff.16.t
+	desc = her_general_staff.16.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_ENG_brooke_cigs
 		activate_advisor = HER_ENG_nye_vcigs
 		set_country_flag = HER_staff_ENG_brooke
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.17
-	hidden = yes
+	title = her_general_staff.17.t
+	desc = her_general_staff.17.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_ENG_brooke_chairman
 		set_country_flag = HER_staff_ENG_chairman
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.18
-	hidden = yes
+	title = her_general_staff.18.t
+	desc = her_general_staff.18.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_ENG_cunningham_navy
 		set_country_flag = HER_staff_ENG_cunningham
 	}
+	option = { name = her_general_staff.ack }
 }
 
 # ============================================================================
@@ -106,94 +128,114 @@ country_event = {
 # ============================================================================
 country_event = {
 	id = her_general_staff.20
-	hidden = yes
+	title = her_general_staff.20.t
+	desc = her_general_staff.20.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_USA_marshall_army_staff
 		set_country_flag = HER_staff_USA_marshall
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.21
-	hidden = yes
+	title = her_general_staff.21.t
+	desc = her_general_staff.21.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_USA_arnold_air
 		set_country_flag = HER_staff_USA_arnold
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.22
-	hidden = yes
+	title = her_general_staff.22.t
+	desc = her_general_staff.22.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_USA_stark_cno
 		set_country_flag = HER_staff_USA_stark
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.23
-	hidden = yes
+	title = her_general_staff.23.t
+	desc = her_general_staff.23.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_USA_eisenhower_operations
 		set_country_flag = HER_staff_USA_eisenhower
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.24
-	hidden = yes
+	title = her_general_staff.24.t
+	desc = her_general_staff.24.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_USA_king_cominch
 		set_country_flag = HER_staff_USA_king_cominch
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.25
-	hidden = yes
+	title = her_general_staff.25.t
+	desc = her_general_staff.25.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_USA_spaatz_air_staff
 		set_country_flag = HER_staff_USA_spaatz
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.26
-	hidden = yes
+	title = her_general_staff.26.t
+	desc = her_general_staff.26.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_USA_mcnair_ground
 		activate_advisor = HER_USA_mcnarney_deputy
 		set_country_flag = HER_staff_USA_ground_forces
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.27
-	hidden = yes
+	title = her_general_staff.27.t
+	desc = her_general_staff.27.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_USA_king_cno
 		set_country_flag = HER_staff_USA_king_cno
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.28
-	hidden = yes
+	title = her_general_staff.28.t
+	desc = her_general_staff.28.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_USA_handy_operations
 		set_country_flag = HER_staff_USA_handy
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.29
-	hidden = yes
+	title = her_general_staff.29.t
+	desc = her_general_staff.29.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_USA_leahy_supreme
 		set_country_flag = HER_staff_USA_leahy
 	}
+	option = { name = her_general_staff.ack }
 }
 
 # ============================================================================
@@ -201,75 +243,91 @@ country_event = {
 # ============================================================================
 country_event = {
 	id = her_general_staff.40
-	hidden = yes
+	title = her_general_staff.40.t
+	desc = her_general_staff.40.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_JAP_tojo_air_inspector
 		set_country_flag = HER_staff_JAP_tojo_air
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.41
-	hidden = yes
+	title = her_general_staff.41.t
+	desc = her_general_staff.41.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_JAP_suzuki_air_inspector
 		set_country_flag = HER_staff_JAP_suzuki_air
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.42
-	hidden = yes
+	title = her_general_staff.42.t
+	desc = her_general_staff.42.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_JAP_sugiyama_general_staff
 		set_country_flag = HER_staff_JAP_sugiyama
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.43
-	hidden = yes
+	title = her_general_staff.43.t
+	desc = her_general_staff.43.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_JAP_nagano_naval_staff
 		set_country_flag = HER_staff_JAP_nagano
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.44
-	hidden = yes
+	title = her_general_staff.44.t
+	desc = her_general_staff.44.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_JAP_doihara_air_inspector
 		set_country_flag = HER_staff_JAP_doihara_air
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.45
-	hidden = yes
+	title = her_general_staff.45.t
+	desc = her_general_staff.45.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_JAP_yasuda_air_inspector
 		set_country_flag = HER_staff_JAP_yasuda_air
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.46
-	hidden = yes
+	title = her_general_staff.46.t
+	desc = her_general_staff.46.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_JAP_tojo_general_staff
 		activate_advisor = HER_JAP_shimada_naval_staff
 		set_country_flag = HER_staff_JAP_wartime_crisis
 	}
+	option = { name = her_general_staff.ack }
 }
 country_event = {
 	id = her_general_staff.47
-	hidden = yes
+	title = her_general_staff.47.t
+	desc = her_general_staff.47.d
 	is_triggered_only = yes
 	immediate = {
 		activate_advisor = HER_JAP_umezu_general_staff
 		activate_advisor = HER_JAP_oikawa_naval_staff
 		set_country_flag = HER_staff_JAP_defensive_crisis
 	}
+	option = { name = her_general_staff.ack }
 }

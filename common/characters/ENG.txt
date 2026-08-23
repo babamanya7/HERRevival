@@ -1,4 +1,4 @@
-characters={
+﻿characters={
 	ENG_winston_churchill={
 		name=ENG_winston_churchill
 		portraits={
@@ -647,6 +647,7 @@ characters={
 		portraits={
 			army={
 				large="gfx/leaders/ENG/Portrait_Britain_John_Dill.dds"
+				small="gfx/interface/ideas/idea_ENG_john_dill.dds"
 			}
 		}
 		corps_commander = {
@@ -2242,7 +2243,28 @@ characters={
 	
 
 	# HER general staff
-	ENG_cyril_deverell = { name = ENG_cyril_deverell }
-	ENG_ronald_adam = { name = ENG_ronald_adam }
-	ENG_archibald_nye = { name = ENG_archibald_nye }
+	ENG_cyril_deverell = {
+		name = ENG_cyril_deverell
+		portraits = {
+			army = {
+				small = "gfx/interface/ideas/idea_ENG_cyril_deverell.dds"
+			}
+		}
+	}
+	ENG_ronald_adam = {
+		name = ENG_ronald_adam
+		portraits = {
+			army = {
+				small = "gfx/interface/ideas/idea_ENG_ronald_adam.dds"
+			}
+		}
+	}
+	ENG_archibald_nye = {
+		name = ENG_archibald_nye
+		portraits = {
+			army = {
+				small = "gfx/interface/ideas/idea_ENG_archibald_nye.dds"
+			}
+		}
+	}
 }

@@ -1,9 +1,10 @@
-characters={
+﻿characters={
 	JAP_emperor_hirohito={
 		name=JAP_emperor_hirohito
 		portraits={
 			civilian={
 				large="gfx/leaders/JAP/Portrait_Japan_Hirohito.dds"
+				small="gfx/interface/ideas/idea_JAP_emperor_hirohito.dds"
 			}
 		}
 		country_leader={
@@ -1475,7 +1476,28 @@ characters={
 	}
 
 	# HER general staff
-	JAP_yorimichi_suzuki = { name = JAP_yorimichi_suzuki }
-	JAP_takeo_yasuda = { name = JAP_takeo_yasuda }
-	JAP_koshiro_oikawa = { name = JAP_koshiro_oikawa }
+	JAP_yorimichi_suzuki = {
+		name = JAP_yorimichi_suzuki
+		portraits = {
+			army = {
+				small = "gfx/interface/ideas/idea_JAP_yorimichi_suzuki.dds"
+			}
+		}
+	}
+	JAP_takeo_yasuda = {
+		name = JAP_takeo_yasuda
+		portraits = {
+			army = {
+				small = "gfx/interface/ideas/idea_JAP_takeo_yasuda.dds"
+			}
+		}
+	}
+	JAP_koshiro_oikawa = {
+		name = JAP_koshiro_oikawa
+		portraits = {
+			army = {
+				small = "gfx/interface/ideas/idea_JAP_koshiro_oikawa.dds"
+			}
+		}
+	}
 }

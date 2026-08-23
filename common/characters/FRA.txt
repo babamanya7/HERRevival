@@ -1,4 +1,4 @@
-characters={
+﻿characters={
 	FRA_pierre_laval={ #Democratic Leader
 		name=FRA_pierre_laval
 		portraits={
@@ -389,6 +389,7 @@ characters={
 			# }
 			army={
 				large="gfx/leaders/FRA/Portrait_France_Aime_Doumenc.dds"
+				small="gfx/interface/ideas/idea_FRA_Aime_Doumenc.dds"
 			}
 		}
 		corps_commander={
@@ -1564,5 +1565,10 @@ characters={
 	# HER general staff
 	FRA_louis_colson = {
 		name = FRA_louis_colson
+		portraits={
+			army={
+				small="gfx/interface/ideas/idea_FRA_louis_colson.dds"
+			}
+		}
 	}
 }

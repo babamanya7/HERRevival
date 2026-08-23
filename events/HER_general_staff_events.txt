@@ -1,6 +1,7 @@
 add_namespace = her_general_staff
 
-# Visible personnel events. Appointments are applied immediately; the popup informs the player.
+# Visible personnel events. Advisor roles are created only when the appointment
+# actually happens and removed from the officer who leaves the post.
 
 # ============================================================================
 # FRANCE
@@ -11,7 +12,13 @@ country_event = {
 	desc = her_general_staff.1.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_FRA_weygand_supreme
+		deactivate_advisor = HER_FRA_gamelin_supreme
+		remove_advisor_role = { character = FRA_maurice_gamelin slot = oberkomando_chief }
+		add_advisor_role = {
+			character = FRA_maxime_weygand
+			advisor = { slot = oberkomando_chief idea_token = HER_FRA_weygand_supreme ledger = army traits = { HER_FRA_weygand_supreme } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_FRA_weygand
 	}
 	option = { name = her_general_staff.ack }
@@ -26,7 +33,13 @@ country_event = {
 	desc = her_general_staff.10.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_ENG_gort_cigs
+		deactivate_advisor = HER_ENG_deverell_cigs
+		remove_advisor_role = { character = ENG_cyril_deverell slot = genstab_chief }
+		add_advisor_role = {
+			character = ENG_john_vereker
+			advisor = { slot = genstab_chief idea_token = HER_ENG_gort_cigs ledger = army traits = { HER_ENG_gort_cigs } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_ENG_gort
 	}
 	option = { name = her_general_staff.ack }
@@ -37,7 +50,11 @@ country_event = {
 	desc = her_general_staff.11.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_ENG_newall_air
+		add_advisor_role = {
+			character = ENG_cyril_newall
+			advisor = { slot = air_chief idea_token = HER_ENG_newall_air ledger = air traits = { HER_ENG_newall_air } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_ENG_newall
 	}
 	option = { name = her_general_staff.ack }
@@ -48,7 +65,11 @@ country_event = {
 	desc = her_general_staff.12.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_ENG_pound_navy
+		add_advisor_role = {
+			character = ENG_dudley_pound
+			advisor = { slot = navy_chief idea_token = HER_ENG_pound_navy ledger = navy traits = { HER_ENG_pound_navy } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_ENG_pound
 	}
 	option = { name = her_general_staff.ack }
@@ -59,8 +80,18 @@ country_event = {
 	desc = her_general_staff.13.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_ENG_ironside_cigs
-		activate_advisor = HER_ENG_adam_vcigs
+		deactivate_advisor = HER_ENG_gort_cigs
+		remove_advisor_role = { character = ENG_john_vereker slot = genstab_chief }
+		add_advisor_role = {
+			character = ENG_edmund_ironside
+			advisor = { slot = genstab_chief idea_token = HER_ENG_ironside_cigs ledger = army traits = { HER_ENG_ironside_cigs } cost = 0 can_be_fired = no }
+			activate = yes
+		}
+		add_advisor_role = {
+			character = ENG_ronald_adam
+			advisor = { slot = operativ_chief idea_token = HER_ENG_adam_vcigs ledger = army traits = { HER_ENG_adam_vcigs } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_ENG_wartime_staff
 	}
 	option = { name = her_general_staff.ack }
@@ -71,8 +102,20 @@ country_event = {
 	desc = her_general_staff.14.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_ENG_dill_cigs
-		activate_advisor = HER_ENG_pownall_vcigs
+		deactivate_advisor = HER_ENG_ironside_cigs
+		remove_advisor_role = { character = ENG_edmund_ironside slot = genstab_chief }
+		deactivate_advisor = HER_ENG_adam_vcigs
+		remove_advisor_role = { character = ENG_ronald_adam slot = operativ_chief }
+		add_advisor_role = {
+			character = ENG_john_dill
+			advisor = { slot = genstab_chief idea_token = HER_ENG_dill_cigs ledger = army traits = { HER_ENG_dill_cigs } cost = 0 can_be_fired = no }
+			activate = yes
+		}
+		add_advisor_role = {
+			character = ENG_henry_pownall
+			advisor = { slot = operativ_chief idea_token = HER_ENG_pownall_vcigs ledger = army traits = { HER_ENG_pownall_vcigs } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_ENG_france_fallen
 	}
 	option = { name = her_general_staff.ack }
@@ -83,7 +126,13 @@ country_event = {
 	desc = her_general_staff.15.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_ENG_portal_air
+		deactivate_advisor = HER_ENG_newall_air
+		remove_advisor_role = { character = ENG_cyril_newall slot = air_chief }
+		add_advisor_role = {
+			character = ENG_charles_portal
+			advisor = { slot = air_chief idea_token = HER_ENG_portal_air ledger = air traits = { HER_ENG_portal_air } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_ENG_portal
 	}
 	option = { name = her_general_staff.ack }
@@ -94,8 +143,20 @@ country_event = {
 	desc = her_general_staff.16.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_ENG_brooke_cigs
-		activate_advisor = HER_ENG_nye_vcigs
+		deactivate_advisor = HER_ENG_dill_cigs
+		remove_advisor_role = { character = ENG_john_dill slot = genstab_chief }
+		deactivate_advisor = HER_ENG_pownall_vcigs
+		remove_advisor_role = { character = ENG_henry_pownall slot = operativ_chief }
+		add_advisor_role = {
+			character = ENG_alan_brooke
+			advisor = { slot = genstab_chief idea_token = HER_ENG_brooke_cigs ledger = army traits = { HER_ENG_brooke_cigs } cost = 0 can_be_fired = no }
+			activate = yes
+		}
+		add_advisor_role = {
+			character = ENG_archibald_nye
+			advisor = { slot = operativ_chief idea_token = HER_ENG_nye_vcigs ledger = army traits = { HER_ENG_nye_vcigs } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_ENG_brooke
 	}
 	option = { name = her_general_staff.ack }
@@ -106,7 +167,11 @@ country_event = {
 	desc = her_general_staff.17.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_ENG_brooke_chairman
+		add_advisor_role = {
+			character = ENG_alan_brooke
+			advisor = { slot = oberkomando_chief idea_token = HER_ENG_brooke_chairman ledger = military traits = { HER_ENG_brooke_chairman } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_ENG_chairman
 	}
 	option = { name = her_general_staff.ack }
@@ -117,7 +182,13 @@ country_event = {
 	desc = her_general_staff.18.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_ENG_cunningham_navy
+		deactivate_advisor = HER_ENG_pound_navy
+		remove_advisor_role = { character = ENG_dudley_pound slot = navy_chief }
+		add_advisor_role = {
+			character = ENG_andrew_cunningham
+			advisor = { slot = navy_chief idea_token = HER_ENG_cunningham_navy ledger = navy traits = { HER_ENG_cunningham_navy } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_ENG_cunningham
 	}
 	option = { name = her_general_staff.ack }
@@ -132,7 +203,13 @@ country_event = {
 	desc = her_general_staff.20.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_USA_marshall_army_staff
+		deactivate_advisor = HER_USA_craig_army_staff
+		remove_advisor_role = { character = USA_malin_craig slot = genstab_chief }
+		add_advisor_role = {
+			character = USA_george_marshall
+			advisor = { slot = genstab_chief idea_token = HER_USA_marshall_army_staff ledger = army traits = { HER_USA_marshall_army_staff } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_USA_marshall
 	}
 	option = { name = her_general_staff.ack }
@@ -143,7 +220,13 @@ country_event = {
 	desc = her_general_staff.21.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_USA_arnold_air
+		deactivate_advisor = HER_USA_westover_air
+		remove_advisor_role = { character = USA_oscar_westover slot = air_chief }
+		add_advisor_role = {
+			character = USA_henry_arnold
+			advisor = { slot = air_chief idea_token = HER_USA_arnold_air ledger = air traits = { HER_USA_arnold_air } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_USA_arnold
 	}
 	option = { name = her_general_staff.ack }
@@ -154,7 +237,11 @@ country_event = {
 	desc = her_general_staff.22.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_USA_stark_cno
+		add_advisor_role = {
+			character = USA_harold_rainsford_stark
+			advisor = { slot = navy_genstab_chief idea_token = HER_USA_stark_cno ledger = navy traits = { HER_USA_stark_cno } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_USA_stark
 	}
 	option = { name = her_general_staff.ack }
@@ -165,7 +252,11 @@ country_event = {
 	desc = her_general_staff.23.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_USA_eisenhower_operations
+		add_advisor_role = {
+			character = USA_dwight_d_eisenhower
+			advisor = { slot = operativ_chief idea_token = HER_USA_eisenhower_operations ledger = army traits = { HER_USA_eisenhower_operations } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_USA_eisenhower
 	}
 	option = { name = her_general_staff.ack }
@@ -176,7 +267,11 @@ country_event = {
 	desc = her_general_staff.24.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_USA_king_cominch
+		add_advisor_role = {
+			character = USA_ernest_king
+			advisor = { slot = navy_chief idea_token = HER_USA_king_cominch ledger = navy traits = { HER_USA_king_cominch } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_USA_king_cominch
 	}
 	option = { name = her_general_staff.ack }
@@ -187,7 +282,11 @@ country_event = {
 	desc = her_general_staff.25.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_USA_spaatz_air_staff
+		add_advisor_role = {
+			character = USA_carl_spaatz
+			advisor = { slot = air_genstab_chief idea_token = HER_USA_spaatz_air_staff ledger = air traits = { HER_USA_spaatz_air_staff } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_USA_spaatz
 	}
 	option = { name = her_general_staff.ack }
@@ -198,8 +297,16 @@ country_event = {
 	desc = her_general_staff.26.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_USA_mcnair_ground
-		activate_advisor = HER_USA_mcnarney_deputy
+		add_advisor_role = {
+			character = USA_leslie_mcnair
+			advisor = { slot = army_chief idea_token = HER_USA_mcnair_ground ledger = army traits = { HER_USA_mcnair_ground } cost = 0 can_be_fired = no }
+			activate = yes
+		}
+		add_advisor_role = {
+			character = USA_joseph_mcnarney
+			advisor = { slot = army_genstab_chief idea_token = HER_USA_mcnarney_deputy ledger = army traits = { HER_USA_mcnarney_deputy } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_USA_ground_forces
 	}
 	option = { name = her_general_staff.ack }
@@ -210,7 +317,13 @@ country_event = {
 	desc = her_general_staff.27.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_USA_king_cno
+		deactivate_advisor = HER_USA_stark_cno
+		remove_advisor_role = { character = USA_harold_rainsford_stark slot = navy_genstab_chief }
+		add_advisor_role = {
+			character = USA_ernest_king
+			advisor = { slot = navy_genstab_chief idea_token = HER_USA_king_cno ledger = navy traits = { HER_USA_king_cno } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_USA_king_cno
 	}
 	option = { name = her_general_staff.ack }
@@ -221,7 +334,13 @@ country_event = {
 	desc = her_general_staff.28.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_USA_handy_operations
+		deactivate_advisor = HER_USA_eisenhower_operations
+		remove_advisor_role = { character = USA_dwight_d_eisenhower slot = operativ_chief }
+		add_advisor_role = {
+			character = USA_thomas_handy
+			advisor = { slot = operativ_chief idea_token = HER_USA_handy_operations ledger = army traits = { HER_USA_handy_operations } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_USA_handy
 	}
 	option = { name = her_general_staff.ack }
@@ -232,7 +351,11 @@ country_event = {
 	desc = her_general_staff.29.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_USA_leahy_supreme
+		add_advisor_role = {
+			character = USA_william_leahy
+			advisor = { slot = oberkomando_chief idea_token = HER_USA_leahy_supreme ledger = military traits = { HER_USA_leahy_supreme } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_USA_leahy
 	}
 	option = { name = her_general_staff.ack }
@@ -247,7 +370,11 @@ country_event = {
 	desc = her_general_staff.40.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_JAP_tojo_air_inspector
+		add_advisor_role = {
+			character = JAP_hideki_tojo
+			advisor = { slot = air_chief idea_token = HER_JAP_tojo_air_inspector ledger = air traits = { HER_JAP_tojo_air_inspector } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_JAP_tojo_air
 	}
 	option = { name = her_general_staff.ack }
@@ -258,7 +385,13 @@ country_event = {
 	desc = her_general_staff.41.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_JAP_suzuki_air_inspector
+		deactivate_advisor = HER_JAP_tojo_air_inspector
+		remove_advisor_role = { character = JAP_hideki_tojo slot = air_chief }
+		add_advisor_role = {
+			character = JAP_yorimichi_suzuki
+			advisor = { slot = air_chief idea_token = HER_JAP_suzuki_air_inspector ledger = air traits = { HER_JAP_suzuki_air_inspector } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_JAP_suzuki_air
 	}
 	option = { name = her_general_staff.ack }
@@ -269,7 +402,13 @@ country_event = {
 	desc = her_general_staff.42.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_JAP_sugiyama_general_staff
+		deactivate_advisor = HER_JAP_kanin_general_staff
+		remove_advisor_role = { character = JAP_prince_kanin slot = genstab_chief }
+		add_advisor_role = {
+			character = JAP_hajime_sugiyama
+			advisor = { slot = genstab_chief idea_token = HER_JAP_sugiyama_general_staff ledger = army traits = { HER_JAP_sugiyama_general_staff } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_JAP_sugiyama
 	}
 	option = { name = her_general_staff.ack }
@@ -280,7 +419,13 @@ country_event = {
 	desc = her_general_staff.43.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_JAP_nagano_naval_staff
+		deactivate_advisor = HER_JAP_fushimi_naval_staff
+		remove_advisor_role = { character = JAP_prince_fushimi slot = navy_genstab_chief }
+		add_advisor_role = {
+			character = JAP_osami_nagano
+			advisor = { slot = navy_genstab_chief idea_token = HER_JAP_nagano_naval_staff ledger = navy traits = { HER_JAP_nagano_naval_staff } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_JAP_nagano
 	}
 	option = { name = her_general_staff.ack }
@@ -291,7 +436,13 @@ country_event = {
 	desc = her_general_staff.44.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_JAP_doihara_air_inspector
+		deactivate_advisor = HER_JAP_suzuki_air_inspector
+		remove_advisor_role = { character = JAP_yorimichi_suzuki slot = air_chief }
+		add_advisor_role = {
+			character = JAP_kenji_doihara
+			advisor = { slot = air_chief idea_token = HER_JAP_doihara_air_inspector ledger = air traits = { HER_JAP_doihara_air_inspector } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_JAP_doihara_air
 	}
 	option = { name = her_general_staff.ack }
@@ -302,7 +453,13 @@ country_event = {
 	desc = her_general_staff.45.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_JAP_yasuda_air_inspector
+		deactivate_advisor = HER_JAP_doihara_air_inspector
+		remove_advisor_role = { character = JAP_kenji_doihara slot = air_chief }
+		add_advisor_role = {
+			character = JAP_takeo_yasuda
+			advisor = { slot = air_chief idea_token = HER_JAP_yasuda_air_inspector ledger = air traits = { HER_JAP_yasuda_air_inspector } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_JAP_yasuda_air
 	}
 	option = { name = her_general_staff.ack }
@@ -313,8 +470,20 @@ country_event = {
 	desc = her_general_staff.46.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_JAP_tojo_general_staff
-		activate_advisor = HER_JAP_shimada_naval_staff
+		deactivate_advisor = HER_JAP_sugiyama_general_staff
+		remove_advisor_role = { character = JAP_hajime_sugiyama slot = genstab_chief }
+		deactivate_advisor = HER_JAP_nagano_naval_staff
+		remove_advisor_role = { character = JAP_osami_nagano slot = navy_genstab_chief }
+		add_advisor_role = {
+			character = JAP_hideki_tojo
+			advisor = { slot = genstab_chief idea_token = HER_JAP_tojo_general_staff ledger = army traits = { HER_JAP_tojo_general_staff } cost = 0 can_be_fired = no }
+			activate = yes
+		}
+		add_advisor_role = {
+			character = JAP_shigetaro_shimada
+			advisor = { slot = navy_genstab_chief idea_token = HER_JAP_shimada_naval_staff ledger = navy traits = { HER_JAP_shimada_naval_staff } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_JAP_wartime_crisis
 	}
 	option = { name = her_general_staff.ack }
@@ -325,8 +494,20 @@ country_event = {
 	desc = her_general_staff.47.d
 	is_triggered_only = yes
 	immediate = {
-		activate_advisor = HER_JAP_umezu_general_staff
-		activate_advisor = HER_JAP_oikawa_naval_staff
+		deactivate_advisor = HER_JAP_tojo_general_staff
+		remove_advisor_role = { character = JAP_hideki_tojo slot = genstab_chief }
+		deactivate_advisor = HER_JAP_shimada_naval_staff
+		remove_advisor_role = { character = JAP_shigetaro_shimada slot = navy_genstab_chief }
+		add_advisor_role = {
+			character = JAP_yoshijiro_umezu
+			advisor = { slot = genstab_chief idea_token = HER_JAP_umezu_general_staff ledger = army traits = { HER_JAP_umezu_general_staff } cost = 0 can_be_fired = no }
+			activate = yes
+		}
+		add_advisor_role = {
+			character = JAP_koshiro_oikawa
+			advisor = { slot = navy_genstab_chief idea_token = HER_JAP_oikawa_naval_staff ledger = navy traits = { HER_JAP_oikawa_naval_staff } cost = 0 can_be_fired = no }
+			activate = yes
+		}
 		set_country_flag = HER_staff_JAP_defensive_crisis
 	}
 	option = { name = her_general_staff.ack }

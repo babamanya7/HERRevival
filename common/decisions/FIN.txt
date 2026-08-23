@@ -229,6 +229,7 @@ operations = {
 		}
 		
 		complete_effect = {
+			add_political_power = 1200
 			add_manpower = 50000
 			add_ideas = {
 				fin_ai_1
@@ -1538,7 +1539,7 @@ FIN_balance_of_power_category = {
 		icon = GFX_decision_eng_propaganda_campaigns
 
 		ai_will_do = {
-			base = 0.5
+			base = 10
 			modifier = {
 				factor = 10
 				OR = {

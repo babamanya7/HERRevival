@@ -123,7 +123,7 @@ characters = {
 			}
 			cost = 200
 			ai_will_do = {
-				base = 1.000
+				factor = 100
 			}
 		}
 	}
@@ -196,7 +196,7 @@ characters = {
 			}
 			cost = 200
 			ai_will_do = {
-				base = 1.000
+				factor = 100
 			}
 		}
 	}
@@ -720,7 +720,7 @@ characters = {
 			}
 			cost = 100
 			ai_will_do = {
-				base = 1.000
+				factor = 100
 			}
 		}
 	}
@@ -746,7 +746,7 @@ characters = {
 			}
 			cost = 50
 			ai_will_do = {
-				base = 1.000
+				factor = 100
 			}
 		}
 	}
@@ -979,7 +979,7 @@ characters = {
 			}
 			cost = 100
 			ai_will_do = {
-				base = 1.000
+				factor = 100
 			}
 		}
 	}
@@ -1006,7 +1006,7 @@ characters = {
 			}
 			cost = 100
 			ai_will_do = {
-				base = 1.000
+				factor = 10
 			}
 		}
 	}
@@ -1094,6 +1094,9 @@ characters = {
 			traits = {
 				captain_of_industry 
 			}
+			ai_will_do = {
+				base = 10
+			}
 		}
 	}
 
@@ -1112,6 +1115,9 @@ characters = {
 			}
 			traits = {
 				master_armorer
+			}
+			ai_will_do = {
+				base = 10
 			}
 		}
 	}
@@ -1149,6 +1155,10 @@ characters = {
 			}
 			traits = {
 				silent_workhorse 
+			}
+			
+			ai_will_do = {
+				base = 10
 			}
 		}
 	}
@@ -1268,11 +1278,7 @@ characters = {
 			}
 
 			ai_will_do = {
-				base = 1.000
-				modifier = {
-					factor = 100
-					FIN_is_historical_ai = yes
-				}
+				factor = 100
 			}
 		}
 	}
@@ -1306,11 +1312,7 @@ characters = {
 				white_liberal 
 			}
 			ai_will_do = {
-				base = 1.000
-				modifier = {
-					factor = 10
-					FIN_is_historical_ai = yes
-				}
+				factor = 100
 			}
 		}
 	}
@@ -1564,6 +1566,9 @@ characters = {
 			cost = 70
 			traits = {
 				white_chaplain
+			}
+			ai_will_do = {
+				base = 10
 			}
 		}
 	}

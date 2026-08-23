@@ -1,0 +1,30 @@
+ideas = {
+	hidden_ideas = {
+		HER_FRA_unused_staff_slots = {
+			modifier = {
+				genstab_chief_cost_factor = 1000
+				air_genstab_chief_cost_factor = 1000
+				navy_genstab_chief_cost_factor = 1000
+			}
+		}
+
+		HER_ENG_unused_staff_slots = {
+			modifier = {
+				army_chief_cost_factor = 1000
+				army_genstab_chief_cost_factor = 1000
+				air_genstab_chief_cost_factor = 1000
+				navy_genstab_chief_cost_factor = 1000
+			}
+		}
+
+		HER_JAP_unused_staff_slots = {
+			modifier = {
+				operativ_chief_cost_factor = 1000
+				army_chief_cost_factor = 1000
+				army_genstab_chief_cost_factor = 1000
+				air_genstab_chief_cost_factor = 1000
+				navy_chief_cost_factor = 1000
+			}
+		}
+	}
+}

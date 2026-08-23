@@ -1,4 +1,4 @@
-characters={
+﻿characters={
 	USA_franklin_delano_roosevelt={
 		name=USA_franklin_delano_roosevelt
 		portraits={
@@ -127,28 +127,6 @@ characters={
 				small="GFX_idea_dwight_eisenhower"
 			}
 		}
-		advisor={
-			slot = genstab_chief
-			idea_token = dwight_eisenhower
-			allowed = {
-				original_tag = USA
-			}
-			traits = {
-				army_chief_offensive_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 40
-				modifier = {
-					factor = 0
-					OR = {
-						has_war = no
-						date < 1941.8.1
-					}
-				}
-			}
-		}
-		
 		field_marshal={
 			traits={ logistics_wizard organizer offensive_doctrine aggressive_assaulter trait_cautious armor_officer panzer_leader politically_connected skilled_staffer }
 			skill=8
@@ -212,18 +190,17 @@ characters={
 			slot = army_h_command
 			idea_token = mark_clark
 			ledger = army
-				allowed = {
-					original_tag = USA
-				}
-				traits = {
-					army_infantry_2
-				}
-				cost = 100
-				ai_will_do = {
-					factor = 20
-				}
+			allowed = {
+				original_tag = USA
+			}
+			traits = {
+				army_infantry_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 20
+			}
 		}
-		
 		corps_commander={
 			traits={ trait_reckless infantry_officer war_hero artillery_officer }
 			skill=7
@@ -245,29 +222,6 @@ characters={
 				large="gfx/leaders/USA/Portrait_USA_Douglas_MacArthur.dds"
 			}
 		}
-		advisor={
-			slot = army_chief
-			idea_token = douglas_macarthur
-			allowed = {
-				original_tag = USA
-			}
-			available = {
-				NOT = {
-					has_country_leader = {
-						ruling_only = yes
-						character = USA_douglas_macarthur
-					}
-				}
-			}
-			traits = {
-				army_chief_morale_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 0
-			}
-		}
-		
 		field_marshal={
 			traits={ offensive_doctrine brilliant_strategist career_officer media_personality politically_connected war_hero }
 			skill=8
@@ -289,24 +243,6 @@ characters={
 				large="gfx/leaders/USA/Portrait_USA_Walter_Krueger.dds"
 			}
 		}
-		advisor={
-			slot = operativ_chief
-			idea_token = walter_krueger
-			allowed = {
-				original_tag = USA
-			}
-			available = {
-				has_completed_focus = USA_war_plans_division
-			}
-			traits = {
-				army_chief_planning_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 0
-			}
-		}
-
 		corps_commander={
 			traits={ brilliant_strategist career_officer armor_officer }
 			skill=5
@@ -343,23 +279,6 @@ characters={
 			army={
 				large="gfx/leaders/USA/Portrait_USA_Lesley_McNair.dds"
 				small="gfx/interface/ideas/idea_USA_lesley_mcnair.dds"
-			}
-		}
-		advisor = {
-			slot = army_h_command
-			idea_token = USA_leslie_mcnair
-			ledger = army
-			allowed = {
-				original_tag = USA
-			}
-			available = {
-			}
-			traits = {
-				army_armored_3
-			}
-			cost = 150
-			ai_will_do = {
-				factor = 20
 			}
 		}
 		corps_commander={
@@ -550,7 +469,6 @@ characters={
 				factor = 20
 			}
 		}
-		
 		corps_commander={
 			traits={ career_officer infantry_officer }
 			skill=5
@@ -572,27 +490,6 @@ characters={
 				large="gfx/leaders/USA/Portrait_USA_Joseph_Stilwell.dds"
 			}
 		}
-		advisor={
-			slot = army_genstab_chief
-			idea_token = joseph_stilwell
-			ledger = army
-			allowed = {
-				original_tag = USA
-			}
-			available = {
-				NOT = {
-					has_country_flag = joseph_stilwell_sent_to_china
-				}
-			}
-			traits = {
-				army_logistics_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 0
-			}
-		}
-		
 		corps_commander={
 			traits={ career_officer harsh_leader infantry_officer politically_connected }
 			skill=3
@@ -703,21 +600,6 @@ characters={
 				large="gfx/leaders/USA/Portrait_USA_Earnest_King.dds"
 			}
 		}
-		advisor={
-			slot = navy_chief
-			idea_token = ernest_king
-			allowed = {
-				original_tag = USA
-			}
-			traits = {
-				navy_chief_reform_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 0
-			}
-		}
-		
 		navy_leader={
 			traits={ navy_career_officer aviation_enthusiast caustic_personality blockade_runner superior_tactician }
 			skill=5
@@ -739,21 +621,6 @@ characters={
 				small="GFX_idea_chester_nimitz"
 			}
 		}
-		advisor={
-			slot = navy_genstab_chief
-			idea_token = chester_nimitz
-			allowed = {
-				original_tag = USA
-			}
-			traits = {
-				navy_chief_commerce_raiding_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 0
-			}
-		}
-		
 		navy_leader={
 			traits={ gentlemanly naval_lineage superior_tactician spotter blue_water_expert }
 			skill=5
@@ -809,7 +676,6 @@ characters={
 				factor = 0
 			}
 		}
-		
 		navy_leader={
 			traits={ gunnery_expert superior_tactician spotter }
 			skill=3
@@ -897,949 +763,250 @@ characters={
 		}
 	}
 
-
 	### THEORISTS ###
-
-	# Patton up there
-
-	# Bradley up there
-
-	
 	USA_dewitt_clinton_ramsey={
 		name=USA_dewitt_clinton_ramsey
-		portraits={
-			army={
-				small="GFX_idea_dewitt_clinton_ramsey"
-			}
-		}
+		portraits={ army={ small="GFX_idea_dewitt_clinton_ramsey" } }
 		advisor={
-			cost = 100
-			slot = navy_theorist
-			idea_token = dewitt_clinton_ramsey
-			ledger = navy
-			allowed = {
-				original_tag = USA
-			}
-			traits = { naval_theorist }
-			ai_will_do = {
-				factor = 0
-			}
+			cost=100
+			slot=navy_theorist
+			idea_token=dewitt_clinton_ramsey
+			ledger=navy
+			allowed={ original_tag=USA }
+			traits={ naval_theorist }
+			ai_will_do={ factor=0 }
 		}
 	}
-
 	USA_marc_mitscher={
 		name=USA_marc_mitscher
-		portraits={
-			army={
-				small="GFX_idea_marc_mitscher"
-			}
-		}
-		advisor={
-			cost = 100
-			slot = navy_theorist
-			idea_token = marc_mitscher
-			ledger = navy
-			allowed = {
-				original_tag = USA
-			}
-			traits = {
-				naval_aviation_pioneer
-			}
-			ai_will_do = {
-				factor = 20
-			}
-		}
+		portraits={ army={ small="GFX_idea_marc_mitscher" } }
+		advisor={ cost=100 slot=navy_theorist idea_token=marc_mitscher ledger=navy allowed={ original_tag=USA } traits={ naval_aviation_pioneer } ai_will_do={ factor=20 } }
 	}
-
 	USA_curtis_lemay={
 		name=USA_curtis_lemay
-		portraits={
-			army={
-				small="GFX_idea_curtis_lemay"
-			}
-		}
-		advisor={
-			cost = 100
-			slot = air_theorist
-			idea_token = curtis_lemay
-			ledger = air
-			allowed = {
-				original_tag = USA
-			}
-			traits = {
-				victory_through_airpower
-			}
-			ai_will_do = {
-				factor = 20
-			}
-		}
+		portraits={ army={ small="GFX_idea_curtis_lemay" } }
+		advisor={ cost=100 slot=air_theorist idea_token=curtis_lemay ledger=air allowed={ original_tag=USA } traits={ victory_through_airpower } ai_will_do={ factor=20 } }
 	}
-
 	USA_harold_mcclelland={
 		name=USA_harold_mcclelland
-		portraits={
-			army={
-				small="GFX_idea_harold_mcclelland"
-			}
-		}
-		advisor={
-			cost = 100	
-			slot = air_theorist
-			idea_token = harold_mcclelland
-			ledger = air
-			allowed = {
-				original_tag = USA
-			}
-			traits = { air_warfare_theorist }
-			ai_will_do = {
-				factor = 0
-			}
-		}
+		portraits={ army={ small="GFX_idea_harold_mcclelland" } }
+		advisor={ cost=100 slot=air_theorist idea_token=harold_mcclelland ledger=air allowed={ original_tag=USA } traits={ air_warfare_theorist } ai_will_do={ factor=0 } }
 	}
 
 	### ARMY CHIEFS ###
-
-	# Eisenhower up there
-
-	# MacArthur up there
-
-	# Krueger up there
-
 	USA_george_marshall={
 		name=USA_george_marshall
-		portraits={
-			army={
-				small="GFX_idea_george_marshall"
-			}
-		}
-		advisor={
-			slot = oberkomando_chief
-			idea_token = george_marshall
-			allowed = {
-				original_tag = USA
-			}
-			traits = {
-				army_chief_drill_3
-			}
-			cost = 150
-			ai_will_do = {
-				factor = 1
-				modifier = {
-					factor = 0
-					has_war = no
-					date > 1941.8.1
-				}
-			}
-		}
+		portraits={ army={ small="GFX_idea_george_marshall" } }
 	}
 
-	
 	### NAVY CHIEFS ###
-
-	# King up there
-
-	# Nimitz up there
-
 	USA_william_halsey={
 		name=USA_william_halsey
-		portraits={
-			army={
-				small="GFX_idea_william_halsey"
-			}
-		}
-		advisor={
-			slot = navy_genstab_chief
-			idea_token = william_halsey
-			allowed = {
-				original_tag = USA
-			}
-			traits = {
-				navy_chief_naval_aviation_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 20
-			}
-		}
+		portraits={ army={ small="GFX_idea_william_halsey" } }
 	}
 
-
-	### AIR CHIEFS
-
+	### AIR CHIEFS ###
 	USA_henry_arnold={
 		name=USA_henry_arnold
-		portraits={
-			army={
-				small="GFX_idea_henry_arnold"
-			}
-		}
-		advisor={
-			slot = air_chief
-			idea_token = henry_arnold
-			allowed = {
-				original_tag = USA
-			}
-			traits = {
-				air_chief_reform_3
-			}
-			cost = 150
-			ai_will_do = {
-				factor = 0
-			}
-		}
+		portraits={ army={ small="GFX_idea_henry_arnold" } }
 	}
-
 	USA_carl_spaatz={
 		name=USA_carl_spaatz
-		portraits={
-			army={
-				small="GFX_idea_carl_spaatz"
-			}
-		}
-		advisor={
-			slot = air_genstab_chief
-			idea_token = carl_spaatz
-			allowed = {
-				original_tag = USA
-			}
-			traits = {
-				air_chief_night_operations_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 0
-			}
-		}
+		portraits={ army={ small="GFX_idea_carl_spaatz" } }
 	}
-
 	USA_george_kenney={
 		name=USA_george_kenney
-		portraits={
-			army={
-				small="GFX_idea_george_kenney"
-			}
-		}
-		advisor={
-			slot = air_chief
-			idea_token = george_kenney
-			allowed = {
-				original_tag = USA
-			}
-			traits = {
-				air_chief_safety_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 10
-			}
-		}
+		portraits={ army={ small="GFX_idea_george_kenney" } }
 	}
-	
 	USA_charles_lindbergh={
 		name=USA_charles_lindbergh
-		portraits={
-			army={
-				small="gfx/interface/ideas/idea_USA_charles_lindbergh.dds"
-			}
-		}
-		advisor={
-			slot = air_chief
-			idea_token = USA_charles_lindbergh
-			allowed = {
-				original_tag = USA
-			}
-			available = {
-				always = no
-			}
-			visible = {
-				always = no
-			}
-			cost = 100.000
-			traits = {
-				air_pilot_training_3
-			}
-			cost = 150
-			ai_will_do = {
-				factor = 5
-			}
-		}
+		portraits={ army={ small="gfx/interface/ideas/idea_USA_charles_lindbergh.dds" } }
 	}
-
 
 	### MILITARY HIGH COMMAND ###
-
-	# Clark up there
-
-	# Hodges up there
-
-	# Stilwell up there
-
-	# Fletcher up there
-
 	USA_jimmy_doolittle={
 		name=USA_jimmy_doolittle
-		portraits={
-			army={
-				small="GFX_idea_jimmy_doolittle"
-			}
-		}
-		advisor={
-			slot = air_h_command
-			idea_token = jimmy_doolittle
-			ledger = air
-			allowed = {
-				original_tag = USA
-			}
-			traits = {
-				air_strategic_bombing_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 20
-			}
-		}
+		portraits={ army={ small="GFX_idea_jimmy_doolittle" } }
+		advisor={ slot=air_h_command idea_token=jimmy_doolittle ledger=air allowed={ original_tag=USA } traits={ air_strategic_bombing_2 } cost=100 ai_will_do={ factor=20 } }
 	}
-
 	USA_john_cannon={
 		name=USA_john_cannon
-		portraits={
-			army={
-				small="GFX_idea_john_cannon"
-			}
-		}
-		advisor={
-			slot = air_h_command
-			idea_token = john_cannon
-			ledger = air
-			allowed = {
-				original_tag = USA
-			}
-			traits = {
-				air_close_air_support_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 0
-			}
-		}
+		portraits={ army={ small="GFX_idea_john_cannon" } }
+		advisor={ slot=air_h_command idea_token=john_cannon ledger=air allowed={ original_tag=USA } traits={ air_close_air_support_2 } cost=100 ai_will_do={ factor=0 } }
 	}
-
 	USA_claire_lee_chennault={
 		name=USA_claire_lee_chennault
-		portraits={
-			army={
-				small="GFX_idea_claire_lee_chennault"
-			}
-		}
-		advisor={
-			slot = air_h_command
-			idea_token = claire_lee_chennault
-			ledger = air
-			allowed = {
-				original_tag = USA
-			}
-			traits = {
-				air_tactical_bombing_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 20
-			}
-		}
+		portraits={ army={ small="GFX_idea_claire_lee_chennault" } }
+		advisor={ slot=air_h_command idea_token=claire_lee_chennault ledger=air allowed={ original_tag=USA } traits={ air_tactical_bombing_2 } cost=100 ai_will_do={ factor=20 } }
 	}
-
 	USA_raymond_spruance={
 		name=USA_raymond_spruance
-		portraits={
-			army={
-				small="GFX_idea_raymond_spruance"
-			}
-		}
-		advisor={
-			slot = navy_h_command
-			idea_token = raymond_spruance
-			ledger = navy
-			allowed = {
-				original_tag = USA
-			}
-			traits = {
-				navy_naval_air_defense_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 20
-			}
-		}
+		portraits={ army={ small="GFX_idea_raymond_spruance" } }
+		advisor={ slot=navy_h_command idea_token=raymond_spruance ledger=navy allowed={ original_tag=USA } traits={ navy_naval_air_defense_2 } cost=100 ai_will_do={ factor=20 } }
 	}
-	
 	USA_thomas_kinkaid={
 		name=USA_thomas_kinkaid
-		portraits={
-			army={
-				small="GFX_idea_thomas_kinkaid"
-			}
-		}
-		advisor={
-			slot = army_h_command
-			idea_token = thomas_kinkaid
-			ledger = army
-			allowed = {
-				original_tag = USA
-			}
-			traits = {
-				navy_amphibious_assault_2
-			}
-			cost = 100
-			ai_will_do = {
-				factor = 0
-			}
-		}
+		portraits={ army={ small="GFX_idea_thomas_kinkaid" } }
+		advisor={ slot=army_h_command idea_token=thomas_kinkaid ledger=army allowed={ original_tag=USA } traits={ navy_amphibious_assault_2 } cost=100 ai_will_do={ factor=0 } }
 	}
-
 
 	### POLITICAL ADVISORS ###
-		
-	#Earl Bowder up there
-
 	USA_harry_white={
 		name=USA_harry_white
-		portraits={
-			army={
-				small="GFX_idea_USA_harry_white"
-			}
-		}
-		advisor={
-			slot = political_advisor
-			idea_token = harry_white
-			allowed  = {
-				original_tag  = USA
-			}
-			available = {
-				always = no
-			}
-			visible  = {
-				has_dlc = "Man the Guns"
-			}
-			traits  = {
-				financial_expert 
-			}
-			cost  = 0.000
-			do_effect  = {
-			}
-			ai_will_do  = {
-				factor  = 0.000
-			}
-		}
-		allowed_civil_war = {
-			has_government = communism 
-		}
+		portraits={ army={ small="GFX_idea_USA_harry_white" } }
+		advisor={ slot=political_advisor idea_token=harry_white allowed={ original_tag=USA } available={ always=no } visible={ has_dlc="Man the Guns" } traits={ financial_expert } cost=0.000 do_effect={} ai_will_do={ factor=0.000 } }
+		allowed_civil_war={ has_government=communism }
 	}
-
 	USA_victor_perlo={
 		name=USA_victor_perlo
-		portraits={
-			army={
-				small="gfx/interface/ideas/idea_USA_generic_land_1.dds"
-			}
-		}
-		advisor={
-			slot = political_advisor
-			idea_token = victor_perlo
-			allowed  = {
-				original_tag  = USA
-			}
-			available = {
-				always = no
-			}
-			visible  = {
-				has_dlc = "Man the Guns"
-			}
-			traits  = {
-				economist 
-			}
-			cost  = 0.000
-			do_effect  = {
-			}
-			ai_will_do  = {
-				factor  = 0.000
-			}
-		}
-		allowed_civil_war  = {
-			has_government  = communism 
-		}
+		portraits={ army={ small="gfx/interface/ideas/idea_USA_generic_land_1.dds" } }
+		advisor={ slot=political_advisor idea_token=victor_perlo allowed={ original_tag=USA } available={ always=no } visible={ has_dlc="Man the Guns" } traits={ economist } cost=0.000 do_effect={} ai_will_do={ factor=0.000 } }
+		allowed_civil_war={ has_government=communism }
 	}
-
 	USA_whittaker_chambers={
 		name=USA_whittaker_chambers
-		portraits={
-			army={
-				small="GFX_idea_USA_whittaker_chambers"
-			}
-		}
-		advisor={
-			slot = political_advisor
-			idea_token = whittaker_chambers
-			allowed  = {
-				original_tag  = USA
-			}
-			available = {
-				always = no
-			}
-			visible  = {
-				has_dlc = "Man the Guns"
-			}
-			traits  = {
-				editor 
-			}
-			cost  = 0.000
-			do_effect  = {
-			}
-			ai_will_do  = {
-				factor  = 0.000
-			}
-		}
-		allowed_civil_war  = {
-			has_government  = communism 
-		}
+		portraits={ army={ small="GFX_idea_USA_whittaker_chambers" } }
+		advisor={ slot=political_advisor idea_token=whittaker_chambers allowed={ original_tag=USA } available={ always=no } visible={ has_dlc="Man the Guns" } traits={ editor } cost=0.000 do_effect={} ai_will_do={ factor=0.000 } }
+		allowed_civil_war={ has_government=communism }
 	}
-
 	USA_harry_hopkins={
 		name=USA_harry_hopkins
-		portraits={
-			army={
-				small="GFX_idea_harry_hopkins"
-			}
-		}
-		advisor={
-			slot = political_advisor
-			idea_token = harry_hopkins
-			allowed = {
-				original_tag = "USA"
-			}
-			traits  = {
-				captain_of_industry 
-			}
-			cost  = 100
-			ai_will_do = {
-				base = 0
-				modifier = {
-					add = 4000
-					has_idea = USA_robert_taft
-				}
-			}
-		}
+		portraits={ army={ small="GFX_idea_harry_hopkins" } }
+		advisor={ slot=political_advisor idea_token=harry_hopkins allowed={ original_tag="USA" } traits={ captain_of_industry } cost=100 ai_will_do={ base=0 modifier={ add=4000 has_idea=USA_robert_taft } } }
 	}
-
 	USA_joseph_patterson={
 		name=USA_joseph_patterson
-		portraits={
-			army={
-				small="GFX_idea_generic_political_advisor_europe_4"
-			}
-		}
-		advisor={
-			slot = political_advisor
-			idea_token = USA_joseph_patterson
-			allowed  = {
-				original_tag  = USA
-			}
-			available = {
-				always = no
-			}
-			visible  = {
-				has_dlc = "Man the Guns"
-			}
-			traits  = {
-				editor 
-			}
-			cost  = 50.000
-			do_effect  = {
-			}
-			ai_will_do  = {
-				factor  = 1.000
-			}
-		}
-		allowed_civil_war  = {
-			NOT  = {
-				has_government  = communism 
-			}
-		}
+		portraits={ army={ small="GFX_idea_generic_political_advisor_europe_4" } }
+		advisor={ slot=political_advisor idea_token=USA_joseph_patterson allowed={ original_tag=USA } available={ always=no } visible={ has_dlc="Man the Guns" } traits={ editor } cost=50.000 do_effect={} ai_will_do={ factor=1.000 } }
+		allowed_civil_war={ NOT={ has_government=communism } }
 	}
-
 	USA_william_regnery={
 		name=USA_william_regnery
-		portraits={
-			army={
-				small="gfx/interface/ideas/idea_europe_generic_3.dds"
-			}
-		}
-		advisor={
-			slot = political_advisor
-			idea_token = USA_william_regnery
-			allowed  = {
-				original_tag  = USA
-			}
-			available = {
-				always = no
-			}
-			visible  = {
-				has_dlc = "Man the Guns"
-			}
-			traits  = {
-				captain_of_industry 
-			}
-			cost  = 50.000
-			do_effect  = {
-			}
-			ai_will_do  = {
-				factor  = 1.000
-			}
-		}
-		allowed_civil_war  = {
-			NOT  = {
-				has_government  = communism 
-			}
-		}
+		portraits={ army={ small="gfx/interface/ideas/idea_europe_generic_3.dds" } }
+		advisor={ slot=political_advisor idea_token=USA_william_regnery allowed={ original_tag=USA } available={ always=no } visible={ has_dlc="Man the Guns" } traits={ captain_of_industry } cost=50.000 do_effect={} ai_will_do={ factor=1.000 } }
+		allowed_civil_war={ NOT={ has_government=communism } }
 	}
-
 	USA_harold_ickes={
 		name=USA_harold_ickes
-		portraits={
-			army={
-				small="GFX_idea_harold_ickes"
-			}
-		}
-		advisor={
-			slot = political_advisor
-			idea_token = harold_ickes
-			allowed  = {
-				original_tag  = USA
-			}
-			available  = {
-			}
-			traits  = {
-				democratic_reformer 
-			}
-			do_effect  = {
-				NOT  = {
-					has_government  = democratic 
-				}
-			}
-			ai_will_do  = {
-				factor  = 0.000
-			}
-		}
+		portraits={ army={ small="GFX_idea_harold_ickes" } }
+		advisor={ slot=political_advisor idea_token=harold_ickes allowed={ original_tag=USA } available={} traits={ democratic_reformer } do_effect={ NOT={ has_government=democratic } } ai_will_do={ factor=0.000 } }
 	}
-
 	USA_robert_taft={
 		name=USA_robert_taft
-		portraits={
-			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
-			}
-		}
-		advisor={
-			slot = political_advisor
-			idea_token = USA_robert_taft
-			allowed  = {
-				original_tag  = USA
-			}
-			traits  = {
-				silent_workhorse 
-			}
-			ai_will_do = {
-				factor = 4000
-			}
-		}
+		portraits={ army={ small="GFX_idea_generic_political_advisor_europe_1" } }
+		advisor={ slot=political_advisor idea_token=USA_robert_taft allowed={ original_tag=USA } traits={ silent_workhorse } ai_will_do={ factor=4000 } }
 	}
 	USA_john_winant={
 		name=USA_john_winant
-		portraits={
-			army={
-				small="GFX_idea_generic_political_advisor_europe_5"
-			}
-		}
-		advisor={
-			slot = political_advisor
-			idea_token = USA_john_winant
-			allowed  = {
-				original_tag  = USA
-			}
-			traits  = {
-				compassionate_gentleman 
-			}
-			ai_will_do = {
-				factor = 0
-			}
-		}
+		portraits={ army={ small="GFX_idea_generic_political_advisor_europe_5" } }
+		advisor={ slot=political_advisor idea_token=USA_john_winant allowed={ original_tag=USA } traits={ compassionate_gentleman } ai_will_do={ factor=0 } }
 	}
-
 	USA_cordell_hull={
 		name=USA_cordell_hull
-		portraits={
-			army={
-				small="GFX_idea_generic_political_advisor_europe_6"
-			}
-		}
-		advisor={
-			slot = political_advisor
-			idea_token = USA_cordell_hull
-			allowed  = {
-				original_tag  = USA
-			}
-			traits  = {
-				smooth_talking_charmer 
-			}
-			ai_will_do = {
-				factor = 0
-			}
-		}		
+		portraits={ army={ small="GFX_idea_generic_political_advisor_europe_6" } }
+		advisor={ slot=political_advisor idea_token=USA_cordell_hull allowed={ original_tag=USA } traits={ smooth_talking_charmer } ai_will_do={ factor=0 } }
 	}
-
 	USA_henry_morgenthau={
 		name=USA_henry_morgenthau
-		portraits={
-			army={
-				small="gfx/interface/ideas/idea_USA_henry_morgenthau.dds"
-			}
-		}
-		advisor={
-			slot = political_advisor
-			idea_token = USA_henry_morgenthau
-			allowed  = {
-				original_tag  = USA
-			}
-			available  = {
-				has_completed_focus = USA_budget_balancing
-			}
-			traits  = {
-				financial_expert 
-			}
-			ai_will_do = {
-				base = 0
-				modifier = {
-					add = 4000
-					has_idea = harry_hopkins
-				}
-			}
-		}
+		portraits={ army={ small="gfx/interface/ideas/idea_USA_henry_morgenthau.dds" } }
+		advisor={ slot=political_advisor idea_token=USA_henry_morgenthau allowed={ original_tag=USA } available={ has_completed_focus=USA_budget_balancing } traits={ financial_expert } ai_will_do={ base=0 modifier={ add=4000 has_idea=harry_hopkins } } }
 	}
-
 	USA_henry_stimson={
 		name=USA_henry_stimson
-		portraits={
-			army={
-				small="gfx/interface/ideas/idea_USA_generic_3.dds"
-			}
-		}
-		advisor={
-			slot = political_advisor
-			idea_token = USA_henry_stimson
-			allowed  = {
-				original_tag  = USA
-			}
-			traits  = {
-				war_industrialist 
-			}
-			ai_will_do = {
-				factor = 40
-
-				modifier = {
-					factor = 0
-					NOT = { has_completed_focus = USA_limited_rearmament }
-				}
-			}
-		}
+		portraits={ army={ small="gfx/interface/ideas/idea_USA_generic_3.dds" } }
+		advisor={ slot=political_advisor idea_token=USA_henry_stimson allowed={ original_tag=USA } traits={ war_industrialist } ai_will_do={ factor=40 modifier={ factor=0 NOT={ has_completed_focus=USA_limited_rearmament } } } }
 	}
-
 	USA_donald_nelson={
 		name=USA_donald_nelson
-		portraits={
-			army={
-				small="GFX_idea_generic_political_advisor_europe_3"
-			}
-		}
-		advisor={
-			slot = political_advisor
-			idea_token = USA_donald_nelson
-			allowed  = {
-				original_tag  = USA
-			}
-			traits  = {
-				armaments_organizer 
-			}
-			ai_will_do = {
-				factor = 0
-			}
-		}
+		portraits={ army={ small="GFX_idea_generic_political_advisor_europe_3" } }
+		advisor={ slot=political_advisor idea_token=USA_donald_nelson allowed={ original_tag=USA } traits={ armaments_organizer } ai_will_do={ factor=0 } }
 	}
-
 	USA_william_donovan={
 		name=USA_william_donovan
-		portraits={
-			army={
-				small="GFX_idea_usa_william_donovan"
-			}
-		}
-		advisor={
-			slot = agency_chief
-			idea_token = usa_william_donovan
-			available  = {
-				has_intelligence_agency  = yes 
-				threat > 0.500
-			}
-			allowed  = {
-				original_tag  = USA
-				has_dlc = "La Resistance"
-			}
-			traits  = {
-				head_of_intelligence 
-			}
-			ai_will_do = {
-				factor = 0
-			}
-		}		
+		portraits={ army={ small="GFX_idea_usa_william_donovan" } }
+		advisor={ slot=agency_chief idea_token=usa_william_donovan available={ has_intelligence_agency=yes threat>0.500 } allowed={ original_tag=USA has_dlc="La Resistance" } traits={ head_of_intelligence } ai_will_do={ factor=0 } }
 	}
-	
-	
-  #####
- #     #   ####   #  ######  #    #  #####  #   ####   #####   ####
- #        #    #  #  #       ##   #    #    #  #         #    #
-  #####   #       #  #####   # #  #    #    #   ####     #     ####
-       #  #       #  #       #  # #    #    #       #    #         #
- #     #  #    #  #  #       #   ##    #    #  #    #    #    #    #
-  #####    ####   #  ######  #    #    #    #   ####     #     ####
 
+	USA_robert_oppenheimer={
+		name=USA_robert_oppenheimer
+		portraits={ army={ large=GFX_portrait_USA_robert_oppenheimer small=GFX_idea_robert_oppenheimer } }
+		scientist={ traits={ scientist_trait_nuclear_specialist scientist_trait_brilliant_theorist } skills={ specialization_nuclear=6 } }
+	}
+	USA_robert_goddard={
+		name=USA_robert_goddard
+		portraits={ army={ large=GFX_portrait_USA_robert_goddard } }
+		scientist={ traits={ scientist_trait_rocketry_specialist scientist_trait_bright } skills={ specialization_air=5 } }
+	}
+	USA_leslie_skinner={
+		name=USA_leslie_skinner
+		portraits={ army={ large=GFX_portrait_USA_leslie_skinner } }
+		scientist={ traits={ scientist_trait_rocketry_specialist scientist_trait_gifted_engineer } skills={ specialization_air=5 } }
+	}
+	USA_edward_curtis_wells={
+		name=USA_edward_curtis_wells
+		portraits={ army={ large=GFX_portrait_USA_edward_curtis_wells } }
+		scientist={ traits={ scientist_trait_aircraft_specialist } skills={ specialization_air=4 } }
+	}
+	USA_william_francis_gibbs={
+		name=USA_william_francis_gibbs
+		portraits={ army={ large=GFX_portrait_USA_william_francis_gibbs } }
+		scientist={ traits={ scientist_trait_surface_ship_specialist } skills={ specialization_naval=4 } }
+	}
+	USA_andrew_mckee={
+		name=USA_andrew_mckee
+		portraits={ army={ large=GFX_portrait_USA_andrew_mckee } }
+		scientist={ traits={ scientist_trait_submarine_specialist } skills={ specialization_naval=4 } }
+	}
+	USA_john_walter_christie={
+		name=USA_john_walter_christie
+		portraits={ army={ large=GFX_portrait_USA_john_walter_christie } }
+		scientist={ traits={ scientist_trait_armored_specialist scientist_trait_gifted_engineer } skills={ specialization_land=4 } }
+	}
+	USA_vannevar_bush={
+		name=USA_vannevar_bush
+		portraits={ army={ large=GFX_portrait_USA_vannevar_bush } }
+		scientist={ traits={ scientist_trait_electronics_specialist } skills={ specialization_air=4 } }
+	}
 
-
-	USA_robert_oppenheimer = {
-		name = USA_robert_oppenheimer
+	# HER general staff
+	USA_malin_craig = {
+		name = USA_malin_craig
 		portraits = {
 			army = {
-				large = GFX_portrait_USA_robert_oppenheimer
-				small = GFX_idea_robert_oppenheimer
-			}
-		}
-
-		scientist = {
-			traits = { scientist_trait_nuclear_specialist scientist_trait_brilliant_theorist }
-			skills = {
-				specialization_nuclear = 6
+				small = "gfx/interface/ideas/idea_USA_malin_craig.dds"
 			}
 		}
 	}
-
-	USA_robert_goddard = {
-		name = USA_robert_goddard
+	USA_william_leahy = {
+		name = USA_william_leahy
 		portraits = {
 			army = {
-				large = GFX_portrait_USA_robert_goddard
-				small = GFX_idea_robert_goddard
-			}
-		}
-
-		scientist = {
-			traits = { scientist_trait_rocketry_specialist scientist_trait_bright }
-			skills = {
-				specialization_air = 5
+				small = "gfx/interface/ideas/idea_USA_william_leahy.dds"
 			}
 		}
 	}
-
-	USA_leslie_skinner = {
-		name = USA_leslie_skinner
+	USA_joseph_mcnarney = {
+		name = USA_joseph_mcnarney
 		portraits = {
 			army = {
-				large = GFX_portrait_USA_leslie_skinner
-			}
-		}
-
-		scientist = {
-			traits = { scientist_trait_rocketry_specialist scientist_trait_gifted_engineer }
-			skills = {
-				specialization_air = 5
+				small = "gfx/interface/ideas/idea_USA_joseph_mcnarney.dds"
 			}
 		}
 	}
-
-	USA_edward_curtis_wells = {
-		name = USA_edward_curtis_wells
+	USA_thomas_handy = {
+		name = USA_thomas_handy
 		portraits = {
 			army = {
-				large = GFX_portrait_USA_edward_curtis_wells
-			}
-		}
-
-		scientist = {
-			traits = { scientist_trait_aircraft_specialist }
-			skills = {
-				specialization_air = 4
+				small = "gfx/interface/ideas/idea_USA_thomas_handy.dds"
 			}
 		}
 	}
-
-	USA_william_francis_gibbs = {
-		name = USA_william_francis_gibbs
+	USA_oscar_westover = {
+		name = USA_oscar_westover
 		portraits = {
 			army = {
-				large = GFX_portrait_USA_william_francis_gibbs
-			}
-		}
-
-		scientist = {
-			traits = { scientist_trait_surface_ship_specialist }
-			skills = {
-				specialization_naval = 4
+				small = "gfx/interface/ideas/idea_USA_oscar_westover.dds"
 			}
 		}
 	}
-
-	USA_andrew_mckee = {
-		name = USA_andrew_mckee
-		portraits = {
-			army = {
-				large = GFX_portrait_USA_andrew_mckee
-			}
-		}
-
-		scientist = {
-			traits = { scientist_trait_submarine_specialist }
-			skills = {
-				specialization_naval = 4
-			}
-		}
-	}
-
-	USA_john_walter_christie = {
-		name = USA_john_walter_christie
-		portraits = {
-			army = {
-				large = GFX_portrait_USA_john_walter_christie
-			}
-		}
-
-		scientist = {
-			traits = { scientist_trait_armored_specialist scientist_trait_gifted_engineer }
-			skills = {
-				specialization_land = 4
-			}
-		}
-	}
-
-	USA_vannevar_bush = {
-		name = USA_vannevar_bush
-		portraits = {
-			army = {
-				large = GFX_portrait_USA_vannevar_bush
-			}
-		}
-
-		scientist = {
-			traits = { scientist_trait_electronics_specialist }
-			skills = {
-				specialization_air = 4
-			}
-		}
-	}
-	
 }

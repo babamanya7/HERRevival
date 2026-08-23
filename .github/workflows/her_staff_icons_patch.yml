@@ -1,0 +1,149 @@
+name: Patch HER staff icon paths
+
+on:
+  push:
+    branches:
+      - feature/allied-japanese-general-staff
+    paths:
+      - .github/workflows/her_staff_icons_patch.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/allied-japanese-general-staff
+          fetch-depth: 0
+      - name: Patch character icon paths
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          targets = {
+              'common/characters/FRA.txt': [
+                  'FRA_louis_colson',
+                  'FRA_Aime_Doumenc',
+              ],
+              'common/characters/ENG.txt': [
+                  'ENG_cyril_deverell',
+                  'ENG_ronald_adam',
+                  'ENG_archibald_nye',
+                  'ENG_john_dill',
+              ],
+              'common/characters/USA.txt': [
+                  'USA_malin_craig',
+                  'USA_william_leahy',
+                  'USA_joseph_mcnarney',
+                  'USA_thomas_handy',
+                  'USA_oscar_westover',
+              ],
+              'common/characters/JAP.txt': [
+                  'JAP_emperor_hirohito',
+                  'JAP_yorimichi_suzuki',
+                  'JAP_takeo_yasuda',
+                  'JAP_koshiro_oikawa',
+              ],
+          }
+
+          def matching_brace(text, open_pos):
+              depth = 0
+              for i in range(open_pos, len(text)):
+                  if text[i] == '{':
+                      depth += 1
+                  elif text[i] == '}':
+                      depth -= 1
+                      if depth == 0:
+                          return i
+              raise RuntimeError('unbalanced braces')
+
+          missing = []
+          for path, ids in targets.items():
+              p = Path(path)
+              text = p.read_text(encoding='utf-8-sig')
+
+              for cid in ids:
+                  m = re.search(r'(?m)^([ \t]*)' + re.escape(cid) + r'\s*=\s*\{', text)
+                  if not m:
+                      missing.append(f'{path}: missing character {cid}')
+                      continue
+
+                  char_indent = m.group(1)
+                  copen = text.find('{', m.start())
+                  cend = matching_brace(text, copen)
+                  block = text[m.start():cend + 1]
+                  target = f'gfx/interface/ideas/idea_{cid}.dds'
+
+                  pm = re.search(r'(?m)^([ \t]*)portraits\s*=\s*\{', block)
+                  if pm:
+                      popen = block.find('{', pm.start())
+                      pend = matching_brace(block, popen)
+                      portraits = block[pm.start():pend + 1]
+
+                      sm = re.search(r'(?m)^(\s*)small\s*=\s*"[^"]*"', portraits)
+                      if sm:
+                          portraits2 = portraits[:sm.start()] + f'{sm.group(1)}small="{target}"' + portraits[sm.end():]
+                      else:
+                          lm = re.search(r'(?m)^(\s*)large\s*=\s*(?:"[^"]*"|[^\s#}]+)\s*(?:#.*)?$', portraits)
+                          if lm:
+                              indent = lm.group(1)
+                              portraits2 = portraits[:lm.end()] + f'\n{indent}small="{target}"' + portraits[lm.end():]
+                          else:
+                              # A portraits block exists but has no large/small entry: add an army small portrait.
+                              inner_indent = pm.group(1) + '\t'
+                              insert = popen + 1 - pm.start()
+                              portraits2 = portraits[:insert] + f'\n{inner_indent}army={{\n{inner_indent}\tsmall="{target}"\n{inner_indent}}}' + portraits[insert:]
+
+                      block = block[:pm.start()] + portraits2 + block[pend + 1:]
+                  else:
+                      # New HER staff characters may only have a name. Give them a minimal small portrait block.
+                      nm = re.search(r'(?m)^([ \t]*)name\s*=\s*' + re.escape(cid) + r'\s*$', block)
+                      if nm:
+                          insert = nm.end()
+                          indent = nm.group(1)
+                          portrait_block = (
+                              f'\n{indent}portraits={{\n'
+                              f'{indent}\tarmy={{\n'
+                              f'{indent}\t\tsmall="{target}"\n'
+                              f'{indent}\t}}\n'
+                              f'{indent}}}'
+                          )
+                          block = block[:insert] + portrait_block + block[insert:]
+                      else:
+                          # Handle one-line definitions such as: ID = { name = ID }
+                          one = re.search(r'\{\s*name\s*=\s*' + re.escape(cid) + r'\s*\}', block)
+                          if not one:
+                              missing.append(f'{path}: cannot patch portraits for {cid}')
+                              continue
+                          replacement = (
+                              '{\n'
+                              f'{char_indent}\tname = {cid}\n'
+                              f'{char_indent}\tportraits = {{\n'
+                              f'{char_indent}\t\tarmy = {{\n'
+                              f'{char_indent}\t\t\tsmall = "{target}"\n'
+                              f'{char_indent}\t\t}}\n'
+                              f'{char_indent}\t}}\n'
+                              f'{char_indent}}}'
+                          )
+                          block = block[:one.start()] + replacement + block[one.end():]
+
+                  text = text[:m.start()] + block + text[cend + 1:]
+
+              p.write_text(text, encoding='utf-8-sig')
+
+          if missing:
+              raise SystemExit('Patch errors:\n' + '\n'.join(missing))
+
+          Path('.github/workflows/her_staff_icons_patch.yml').unlink()
+
+      - name: Commit patched icon paths
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- common/characters/FRA.txt common/characters/ENG.txt common/characters/USA.txt common/characters/JAP.txt .github/workflows/her_staff_icons_patch.yml
+          git commit -m "Add icon paths for rotating general staff"
+          git push origin HEAD:feature/allied-japanese-general-staff

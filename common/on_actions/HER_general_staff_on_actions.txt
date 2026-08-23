@@ -1,255 +1,57 @@
 on_actions = {
 	on_startup = {
 		effect = {
-			# ========================================================
-			# FRANCE
-			# ========================================================
+			# France: only the command actually in office in 1936 exists as advisors.
 			FRA = {
 				recruit_character = FRA_louis_colson
-				recruit_character = FRA_aime_doumenc
 
 				add_advisor_role = {
 					character = FRA_maurice_gamelin
-					advisor = {
-						slot = oberkomando_chief
-						idea_token = HER_FRA_gamelin_supreme
-						ledger = army
-						traits = { HER_FRA_gamelin_supreme }
-						cost = 0
-						can_be_fired = no
-					}
+					advisor = { slot = oberkomando_chief idea_token = HER_FRA_gamelin_supreme ledger = army traits = { HER_FRA_gamelin_supreme } cost = 0 can_be_fired = no }
 					activate = yes
-				}
-				add_advisor_role = {
-					character = FRA_maxime_weygand
-					advisor = {
-						slot = oberkomando_chief
-						idea_token = HER_FRA_weygand_supreme
-						ledger = army
-						traits = { HER_FRA_weygand_supreme }
-						cost = 0
-						can_be_fired = no
-					}
 				}
 				add_advisor_role = {
 					character = FRA_louis_colson
-					advisor = {
-						slot = genstab_chief
-						idea_token = HER_FRA_colson_staff
-						ledger = army
-						traits = { HER_FRA_colson_staff }
-						cost = 0
-						can_be_fired = no
-					}
+					advisor = { slot = army_genstab_chief idea_token = HER_FRA_colson_army_staff ledger = army traits = { HER_FRA_colson_staff } cost = 0 can_be_fired = no }
 					activate = yes
 				}
 				add_advisor_role = {
-					character = FRA_aime_doumenc
-					advisor = {
-						slot = operativ_chief
-						idea_token = HER_FRA_doumenc_operations
-						ledger = army
-						traits = { HER_FRA_doumenc_operations }
-						cost = 0
-						can_be_fired = no
-					}
+					character = FRA_Aime_Doumenc
+					advisor = { slot = operativ_chief idea_token = HER_FRA_doumenc_operations ledger = army traits = { HER_FRA_doumenc_operations } cost = 0 can_be_fired = no }
 					activate = yes
 				}
 				add_advisor_role = {
 					character = FRA_alphonse_georges
-					advisor = {
-						slot = army_chief
-						idea_token = HER_FRA_georges_army
-						ledger = army
-						traits = { HER_FRA_georges_army }
-						cost = 0
-						can_be_fired = no
-					}
+					advisor = { slot = army_chief idea_token = HER_FRA_georges_army ledger = army traits = { HER_FRA_georges_army } cost = 0 can_be_fired = no }
 					activate = yes
 				}
 				add_advisor_role = {
 					character = FRA_joseph_vuillemin
-					advisor = {
-						slot = air_chief
-						idea_token = HER_FRA_vuillemin_air
-						ledger = air
-						traits = { HER_FRA_vuillemin_air }
-						cost = 0
-						can_be_fired = no
-					}
+					advisor = { slot = air_chief idea_token = HER_FRA_vuillemin_air ledger = air traits = { HER_FRA_vuillemin_air } cost = 0 can_be_fired = no }
 					activate = yes
 				}
 				add_advisor_role = {
 					character = FRA_francois_darlan
-					advisor = {
-						slot = navy_chief
-						idea_token = HER_FRA_darlan_navy
-						ledger = navy
-						traits = { HER_FRA_darlan_navy }
-						cost = 0
-						can_be_fired = no
-					}
+					advisor = { slot = navy_chief idea_token = HER_FRA_darlan_navy ledger = navy traits = { HER_FRA_darlan_navy } cost = 0 can_be_fired = no }
 					activate = yes
 				}
 			}
 
-			# ========================================================
-			# UNITED KINGDOM
-			# ========================================================
+			# United Kingdom: Deverell is the only member of our rotating structure
+			# already holding his represented office at the 1936 start.
 			ENG = {
 				recruit_character = ENG_cyril_deverell
 				recruit_character = ENG_ronald_adam
 				recruit_character = ENG_archibald_nye
 
 				add_advisor_role = {
-					character = ENG_alan_brooke
-					advisor = {
-						slot = oberkomando_chief
-						idea_token = HER_ENG_brooke_chairman
-						ledger = military
-						traits = { HER_ENG_brooke_chairman }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
 					character = ENG_cyril_deverell
-					advisor = {
-						slot = genstab_chief
-						idea_token = HER_ENG_deverell_cigs
-						ledger = army
-						traits = { HER_ENG_deverell_cigs }
-						cost = 0
-						can_be_fired = no
-					}
+					advisor = { slot = genstab_chief idea_token = HER_ENG_deverell_cigs ledger = army traits = { HER_ENG_deverell_cigs } cost = 0 can_be_fired = no }
 					activate = yes
-				}
-				add_advisor_role = {
-					character = ENG_john_vereker
-					advisor = {
-						slot = genstab_chief
-						idea_token = HER_ENG_gort_cigs
-						ledger = army
-						traits = { HER_ENG_gort_cigs }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = ENG_edmund_ironside
-					advisor = {
-						slot = genstab_chief
-						idea_token = HER_ENG_ironside_cigs
-						ledger = army
-						traits = { HER_ENG_ironside_cigs }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = ENG_john_dill
-					advisor = {
-						slot = genstab_chief
-						idea_token = HER_ENG_dill_cigs
-						ledger = army
-						traits = { HER_ENG_dill_cigs }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = ENG_alan_brooke
-					advisor = {
-						slot = genstab_chief
-						idea_token = HER_ENG_brooke_cigs
-						ledger = army
-						traits = { HER_ENG_brooke_cigs }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = ENG_ronald_adam
-					advisor = {
-						slot = operativ_chief
-						idea_token = HER_ENG_adam_vcigs
-						ledger = army
-						traits = { HER_ENG_adam_vcigs }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = ENG_henry_pownall
-					advisor = {
-						slot = operativ_chief
-						idea_token = HER_ENG_pownall_vcigs
-						ledger = army
-						traits = { HER_ENG_pownall_vcigs }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = ENG_archibald_nye
-					advisor = {
-						slot = operativ_chief
-						idea_token = HER_ENG_nye_vcigs
-						ledger = army
-						traits = { HER_ENG_nye_vcigs }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = ENG_cyril_newall
-					advisor = {
-						slot = air_chief
-						idea_token = HER_ENG_newall_air
-						ledger = air
-						traits = { HER_ENG_newall_air }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = ENG_charles_portal
-					advisor = {
-						slot = air_chief
-						idea_token = HER_ENG_portal_air
-						ledger = air
-						traits = { HER_ENG_portal_air }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = ENG_dudley_pound
-					advisor = {
-						slot = navy_chief
-						idea_token = HER_ENG_pound_navy
-						ledger = navy
-						traits = { HER_ENG_pound_navy }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = ENG_andrew_cunningham
-					advisor = {
-						slot = navy_chief
-						idea_token = HER_ENG_cunningham_navy
-						ledger = navy
-						traits = { HER_ENG_cunningham_navy }
-						cost = 0
-						can_be_fired = no
-					}
 				}
 			}
 
-			# ========================================================
-			# UNITED STATES
-			# ========================================================
+			# United States: Craig heads the Army staff and Westover the Air Corps.
 			USA = {
 				recruit_character = USA_malin_craig
 				recruit_character = USA_william_leahy
@@ -258,493 +60,38 @@ on_actions = {
 				recruit_character = USA_oscar_westover
 
 				add_advisor_role = {
-					character = USA_william_leahy
-					advisor = {
-						slot = oberkomando_chief
-						idea_token = HER_USA_leahy_supreme
-						ledger = military
-						traits = { HER_USA_leahy_supreme }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
 					character = USA_malin_craig
-					advisor = {
-						slot = genstab_chief
-						idea_token = HER_USA_craig_army_staff
-						ledger = army
-						traits = { HER_USA_craig_army_staff }
-						cost = 0
-						can_be_fired = no
-					}
+					advisor = { slot = genstab_chief idea_token = HER_USA_craig_army_staff ledger = army traits = { HER_USA_craig_army_staff } cost = 0 can_be_fired = no }
 					activate = yes
-				}
-				add_advisor_role = {
-					character = USA_george_marshall
-					advisor = {
-						slot = genstab_chief
-						idea_token = HER_USA_marshall_army_staff
-						ledger = army
-						traits = { HER_USA_marshall_army_staff }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = USA_dwight_d_eisenhower
-					advisor = {
-						slot = operativ_chief
-						idea_token = HER_USA_eisenhower_operations
-						ledger = army
-						traits = { HER_USA_eisenhower_operations }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = USA_thomas_handy
-					advisor = {
-						slot = operativ_chief
-						idea_token = HER_USA_handy_operations
-						ledger = army
-						traits = { HER_USA_handy_operations }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = USA_leslie_mcnair
-					advisor = {
-						slot = army_chief
-						idea_token = HER_USA_mcnair_ground
-						ledger = army
-						traits = { HER_USA_mcnair_ground }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = USA_joseph_mcnarney
-					advisor = {
-						slot = army_genstab_chief
-						idea_token = HER_USA_mcnarney_deputy
-						ledger = army
-						traits = { HER_USA_mcnarney_deputy }
-						cost = 0
-						can_be_fired = no
-					}
 				}
 				add_advisor_role = {
 					character = USA_oscar_westover
-					advisor = {
-						slot = air_chief
-						idea_token = HER_USA_westover_air
-						ledger = air
-						traits = { HER_USA_westover_air }
-						cost = 0
-						can_be_fired = no
-					}
+					advisor = { slot = air_chief idea_token = HER_USA_westover_air ledger = air traits = { HER_USA_westover_air } cost = 0 can_be_fired = no }
 					activate = yes
-				}
-				add_advisor_role = {
-					character = USA_henry_arnold
-					advisor = {
-						slot = air_chief
-						idea_token = HER_USA_arnold_air
-						ledger = air
-						traits = { HER_USA_arnold_air }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = USA_carl_spaatz
-					advisor = {
-						slot = air_genstab_chief
-						idea_token = HER_USA_spaatz_air_staff
-						ledger = air
-						traits = { HER_USA_spaatz_air_staff }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = USA_harold_rainsford_stark
-					advisor = {
-						slot = navy_genstab_chief
-						idea_token = HER_USA_stark_cno
-						ledger = navy
-						traits = { HER_USA_stark_cno }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = USA_ernest_king
-					advisor = {
-						slot = navy_genstab_chief
-						idea_token = HER_USA_king_cno
-						ledger = navy
-						traits = { HER_USA_king_cno }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = USA_ernest_king
-					advisor = {
-						slot = navy_chief
-						idea_token = HER_USA_king_cominch
-						ledger = navy
-						traits = { HER_USA_king_cominch }
-						cost = 0
-						can_be_fired = no
-					}
 				}
 			}
 
-			# ========================================================
-			# JAPAN
-			# ========================================================
+			# Japan: the Emperor, Prince Kan'in and Prince Fushimi are the actual
+			# incumbents. Reuse the existing national characters instead of clones.
 			JAP = {
-				recruit_character = JAP_prince_kanin
-				recruit_character = JAP_prince_fushimi
 				recruit_character = JAP_yorimichi_suzuki
 				recruit_character = JAP_takeo_yasuda
+				recruit_character = JAP_koshiro_oikawa
 
 				add_advisor_role = {
 					character = JAP_emperor_hirohito
-					advisor = {
-						slot = oberkomando_chief
-						idea_token = HER_JAP_hirohito_supreme
-						ledger = military
-						traits = { HER_JAP_hirohito_supreme }
-						cost = 0
-						can_be_fired = no
-					}
+					advisor = { slot = oberkomando_chief idea_token = HER_JAP_hirohito_supreme ledger = military traits = { HER_JAP_hirohito_supreme } cost = 0 can_be_fired = no }
 					activate = yes
 				}
 				add_advisor_role = {
-					character = JAP_prince_kanin
-					advisor = {
-						slot = genstab_chief
-						idea_token = HER_JAP_kanin_general_staff
-						ledger = army
-						traits = { HER_JAP_kanin_general_staff }
-						cost = 0
-						can_be_fired = no
-					}
+					character = JAP_kanin_kotohito
+					advisor = { slot = genstab_chief idea_token = HER_JAP_kanin_general_staff ledger = army traits = { HER_JAP_kanin_general_staff } cost = 0 can_be_fired = no }
 					activate = yes
 				}
 				add_advisor_role = {
-					character = JAP_hajime_sugiyama
-					advisor = {
-						slot = genstab_chief
-						idea_token = HER_JAP_sugiyama_general_staff
-						ledger = army
-						traits = { HER_JAP_sugiyama_general_staff }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = JAP_hideki_tojo
-					advisor = {
-						slot = genstab_chief
-						idea_token = HER_JAP_tojo_general_staff
-						ledger = army
-						traits = { HER_JAP_tojo_general_staff }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = JAP_yoshijiro_umezu
-					advisor = {
-						slot = genstab_chief
-						idea_token = HER_JAP_umezu_general_staff
-						ledger = army
-						traits = { HER_JAP_umezu_general_staff }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = JAP_hideki_tojo
-					advisor = {
-						slot = air_chief
-						idea_token = HER_JAP_tojo_air_inspector
-						ledger = air
-						traits = { HER_JAP_tojo_air_inspector }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = JAP_yorimichi_suzuki
-					advisor = {
-						slot = air_chief
-						idea_token = HER_JAP_suzuki_air_inspector
-						ledger = air
-						traits = { HER_JAP_suzuki_air_inspector }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = JAP_kenji_doihara
-					advisor = {
-						slot = air_chief
-						idea_token = HER_JAP_doihara_air_inspector
-						ledger = air
-						traits = { HER_JAP_doihara_air_inspector }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = JAP_takeo_yasuda
-					advisor = {
-						slot = air_chief
-						idea_token = HER_JAP_yasuda_air_inspector
-						ledger = air
-						traits = { HER_JAP_yasuda_air_inspector }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = JAP_prince_fushimi
-					advisor = {
-						slot = navy_genstab_chief
-						idea_token = HER_JAP_fushimi_naval_staff
-						ledger = navy
-						traits = { HER_JAP_fushimi_naval_staff }
-						cost = 0
-						can_be_fired = no
-					}
+					character = JAP_fushimi_hiroyasu
+					advisor = { slot = navy_genstab_chief idea_token = HER_JAP_fushimi_naval_staff ledger = navy traits = { HER_JAP_fushimi_naval_staff } cost = 0 can_be_fired = no }
 					activate = yes
-				}
-				add_advisor_role = {
-					character = JAP_osami_nagano
-					advisor = {
-						slot = navy_genstab_chief
-						idea_token = HER_JAP_nagano_naval_staff
-						ledger = navy
-						traits = { HER_JAP_nagano_naval_staff }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = JAP_shigetaro_shimada
-					advisor = {
-						slot = navy_genstab_chief
-						idea_token = HER_JAP_shimada_naval_staff
-						ledger = navy
-						traits = { HER_JAP_shimada_naval_staff }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-				add_advisor_role = {
-					character = JAP_koshiro_oikawa
-					advisor = {
-						slot = navy_genstab_chief
-						idea_token = HER_JAP_oikawa_naval_staff
-						ledger = navy
-						traits = { HER_JAP_oikawa_naval_staff }
-						cost = 0
-						can_be_fired = no
-					}
-				}
-			}
-		}
-	}
-
-	on_monthly = {
-		effect = {
-			# France: Gamelin is relieved after the German breakthrough.
-			FRA = {
-				if = {
-					limit = {
-						date > 1940.5.18
-						NOT = { has_country_flag = HER_FRA_weygand_appointed }
-					}
-					activate_advisor = HER_FRA_weygand_supreme
-					set_country_flag = HER_FRA_weygand_appointed
-				}
-			}
-
-			# Britain: CIGS, VCIGS and service chiefs follow historical appointments.
-			ENG = {
-				if = {
-					limit = { date > 1937.12.5 NOT = { has_country_flag = HER_ENG_gort_cigs } }
-					activate_advisor = HER_ENG_gort_cigs
-					set_country_flag = HER_ENG_gort_cigs
-				}
-				if = {
-					limit = { date > 1938.1.1 NOT = { has_country_flag = HER_ENG_adam_vcigs } }
-					activate_advisor = HER_ENG_adam_vcigs
-					set_country_flag = HER_ENG_adam_vcigs
-				}
-				if = {
-					limit = { date > 1937.8.31 NOT = { has_country_flag = HER_ENG_newall_cas } }
-					activate_advisor = HER_ENG_newall_air
-					set_country_flag = HER_ENG_newall_cas
-				}
-				if = {
-					limit = { date > 1939.6.11 NOT = { has_country_flag = HER_ENG_pound_fsl } }
-					activate_advisor = HER_ENG_pound_navy
-					set_country_flag = HER_ENG_pound_fsl
-				}
-				if = {
-					limit = { date > 1939.9.3 NOT = { has_country_flag = HER_ENG_ironside_cigs } }
-					activate_advisor = HER_ENG_ironside_cigs
-					set_country_flag = HER_ENG_ironside_cigs
-				}
-				if = {
-					limit = { date > 1940.5.25 NOT = { has_country_flag = HER_ENG_dill_cigs } }
-					activate_advisor = HER_ENG_dill_cigs
-					set_country_flag = HER_ENG_dill_cigs
-				}
-				if = {
-					limit = { date > 1940.10.24 NOT = { has_country_flag = HER_ENG_portal_cas } }
-					activate_advisor = HER_ENG_portal_air
-					set_country_flag = HER_ENG_portal_cas
-				}
-				if = {
-					limit = { date > 1941.5.18 NOT = { has_country_flag = HER_ENG_pownall_vcigs } }
-					activate_advisor = HER_ENG_pownall_vcigs
-					set_country_flag = HER_ENG_pownall_vcigs
-				}
-				if = {
-					limit = { date > 1941.12.4 NOT = { has_country_flag = HER_ENG_nye_vcigs } }
-					activate_advisor = HER_ENG_nye_vcigs
-					set_country_flag = HER_ENG_nye_vcigs
-				}
-				if = {
-					limit = { date > 1941.12.24 NOT = { has_country_flag = HER_ENG_brooke_cigs } }
-					activate_advisor = HER_ENG_brooke_cigs
-					set_country_flag = HER_ENG_brooke_cigs
-				}
-				if = {
-					limit = { date > 1942.2.28 NOT = { has_country_flag = HER_ENG_brooke_chairman } }
-					activate_advisor = HER_ENG_brooke_chairman
-					set_country_flag = HER_ENG_brooke_chairman
-				}
-				if = {
-					limit = { date > 1943.10.14 NOT = { has_country_flag = HER_ENG_cunningham_fsl } }
-					activate_advisor = HER_ENG_cunningham_navy
-					set_country_flag = HER_ENG_cunningham_fsl
-				}
-			}
-
-			# United States: the joint structure develops during mobilization and war.
-			USA = {
-				if = {
-					limit = { date > 1938.9.27 NOT = { has_country_flag = HER_USA_arnold_air } }
-					activate_advisor = HER_USA_arnold_air
-					set_country_flag = HER_USA_arnold_air
-				}
-				if = {
-					limit = { date > 1939.7.31 NOT = { has_country_flag = HER_USA_stark_cno } }
-					activate_advisor = HER_USA_stark_cno
-					set_country_flag = HER_USA_stark_cno
-				}
-				if = {
-					limit = { date > 1939.8.31 NOT = { has_country_flag = HER_USA_marshall_cos } }
-					activate_advisor = HER_USA_marshall_army_staff
-					set_country_flag = HER_USA_marshall_cos
-				}
-				if = {
-					limit = { date > 1941.12.13 NOT = { has_country_flag = HER_USA_eisenhower_wpd } }
-					activate_advisor = HER_USA_eisenhower_operations
-					set_country_flag = HER_USA_eisenhower_wpd
-				}
-				if = {
-					limit = { date > 1941.12.29 NOT = { has_country_flag = HER_USA_king_cominch } }
-					activate_advisor = HER_USA_king_cominch
-					set_country_flag = HER_USA_king_cominch
-				}
-				if = {
-					limit = { date > 1942.1.1 NOT = { has_country_flag = HER_USA_spaatz_air_staff } }
-					activate_advisor = HER_USA_spaatz_air_staff
-					set_country_flag = HER_USA_spaatz_air_staff
-				}
-				if = {
-					limit = { date > 1942.3.8 NOT = { has_country_flag = HER_USA_mcnair_ground } }
-					activate_advisor = HER_USA_mcnair_ground
-					activate_advisor = HER_USA_mcnarney_deputy
-					set_country_flag = HER_USA_mcnair_ground
-				}
-				if = {
-					limit = { date > 1942.3.25 NOT = { has_country_flag = HER_USA_king_cno } }
-					activate_advisor = HER_USA_king_cno
-					set_country_flag = HER_USA_king_cno
-				}
-				if = {
-					limit = { date > 1942.6.22 NOT = { has_country_flag = HER_USA_handy_opd } }
-					activate_advisor = HER_USA_handy_operations
-					set_country_flag = HER_USA_handy_opd
-				}
-				if = {
-					limit = { date > 1942.7.19 NOT = { has_country_flag = HER_USA_leahy_joint } }
-					activate_advisor = HER_USA_leahy_supreme
-					set_country_flag = HER_USA_leahy_joint
-				}
-			}
-
-			# Japan: no independent air force existed; the air slot represents
-			# the Inspectorate General of Army Aviation. Naval staff follows the
-			# Chief of the Imperial Japanese Navy General Staff.
-			JAP = {
-				if = {
-					limit = { date > 1938.1.1 NOT = { has_country_flag = HER_JAP_tojo_air } }
-					activate_advisor = HER_JAP_tojo_air_inspector
-					set_country_flag = HER_JAP_tojo_air
-				}
-				if = {
-					limit = { date > 1940.8.1 NOT = { has_country_flag = HER_JAP_suzuki_air } }
-					activate_advisor = HER_JAP_suzuki_air_inspector
-					set_country_flag = HER_JAP_suzuki_air
-				}
-				if = {
-					limit = { date > 1940.10.2 NOT = { has_country_flag = HER_JAP_sugiyama_staff } }
-					activate_advisor = HER_JAP_sugiyama_general_staff
-					set_country_flag = HER_JAP_sugiyama_staff
-				}
-				if = {
-					limit = { date > 1941.4.8 NOT = { has_country_flag = HER_JAP_nagano_staff } }
-					activate_advisor = HER_JAP_nagano_naval_staff
-					set_country_flag = HER_JAP_nagano_staff
-				}
-				if = {
-					limit = { date > 1941.6.1 NOT = { has_country_flag = HER_JAP_doihara_air } }
-					activate_advisor = HER_JAP_doihara_air_inspector
-					set_country_flag = HER_JAP_doihara_air
-				}
-				if = {
-					limit = { date > 1943.5.1 NOT = { has_country_flag = HER_JAP_yasuda_air } }
-					activate_advisor = HER_JAP_yasuda_air_inspector
-					set_country_flag = HER_JAP_yasuda_air
-				}
-				if = {
-					limit = { date > 1944.2.20 NOT = { has_country_flag = HER_JAP_tojo_staff } }
-					activate_advisor = HER_JAP_tojo_general_staff
-					activate_advisor = HER_JAP_shimada_naval_staff
-					set_country_flag = HER_JAP_tojo_staff
-				}
-				if = {
-					limit = { date > 1944.7.17 NOT = { has_country_flag = HER_JAP_umezu_staff } }
-					activate_advisor = HER_JAP_umezu_general_staff
-					set_country_flag = HER_JAP_umezu_staff
-				}
-				if = {
-					limit = { date > 1944.8.1 NOT = { has_country_flag = HER_JAP_oikawa_staff } }
-					activate_advisor = HER_JAP_oikawa_naval_staff
-					set_country_flag = HER_JAP_oikawa_staff
 				}
 			}
 		}

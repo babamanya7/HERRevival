@@ -1,0 +1,85 @@
+name: Restore compatible naval MIO assignments
+on:
+  push:
+    branches: [work/start-designers-and-1944-retirements]
+    paths: [.github/workflows/her-restore-valid-naval-mios.yml]
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/start-designers-and-1944-retirements
+      - shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          mios={
+            'ENG': {'light':'ENG_yarrow_shipbuilders_organization','cruiser':'ENG_harland_wolff_organization','heavy':'ENG_cammell_laird_organization','carrier':'ENG_harland_wolff_organization','submarine':'ENG_john_brown_organization'},
+            'FRA': {'light':'FRA_fcm_organization','cruiser':'FRA_aeb_organization','heavy':'FRA_acl_organization','carrier':'FRA_aeb_organization','submarine':'FRA_acf_organization'},
+            'GER': {'light':'GER_deschimag_organization','cruiser':'GER_deutsche_werke_organization','heavy':'GER_germaniawerft_organization','carrier':'GER_deutsche_werke_organization','submarine':'GER_blohm_und_voss_organization'},
+            'JAP': {'light':'JAP_maizuru_naval_arsenal_organization','cruiser':'JAP_yokosuka_naval_arsenal_organization','heavy':'JAP_kure_naval_arsenal_organization','carrier':'JAP_yokosuka_naval_arsenal_organization','submarine':'JAP_sasebo_naval_arsenal_organization'},
+            'SOV': {'light':'SOV_nevskoye_design_bureau_organization','cruiser':'SOV_nevskoye_design_bureau_organization','heavy':'SOV_nevskoye_design_bureau_organization','carrier':'SOV_nevskoye_design_bureau_organization','submarine':'SOV_rubin_design_bureau_organization'},
+            'USA': {'light':'USA_brooklyn_naval_yard_organization','cruiser':'USA_newport_news_shipbuilding_organization','heavy':'USA_norfolk_naval_yard_organization','carrier':'USA_newport_news_shipbuilding_organization','submarine':'USA_electric_boat_company_organization'},
+            'ITA': {'light':'ITA_cantiere_oto_organization','cruiser':'ITA_crda_organization','heavy':'ITA_crda_organization','carrier':'ITA_crda_organization','submarine':'ITA_cantieri_navali_tosi_organization'},
+          }
+          def brange(text,start):
+              b=text.find('{',start); d=0; q=False; esc=False
+              if b<0:return None
+              for i in range(b,len(text)):
+                  c=text[i]
+                  if q:
+                      if esc:esc=False
+                      elif c=='\\':esc=True
+                      elif c=='"':q=False
+                      continue
+                  if c=='"':q=True
+                  elif c=='{':d+=1
+                  elif c=='}':
+                      d-=1
+                      if d==0:return start,i+1
+          def family(eq):
+              if 'ship_hull_submarine' in eq:return 'submarine'
+              if 'ship_hull_carrier' in eq:return 'carrier'
+              if 'ship_hull_heavy' in eq:return 'heavy'
+              if 'ship_hull_cruiser' in eq:return 'cruiser'
+              if 'ship_hull_light' in eq:return 'light'
+              return None
+          count=0
+          for tag,mp in mios.items():
+              p=Path(f'history/units/00_{tag}_vnr_naval.txt')
+              if not p.exists():continue
+              text=p.read_text(encoding='utf-8-sig')
+              edits=[]
+              for m in re.finditer(r'(?m)^\s*add_equipment_production\s*=\s*\{',text):
+                  r=brange(text,m.start())
+                  if not r:continue
+                  b=text[r[0]:r[1]]
+                  tm=re.search(r'(?m)^\s*type\s*=\s*([A-Za-z0-9_]+)',b)
+                  if not tm:continue
+                  fam=family(tm.group(1))
+                  if not fam:continue
+                  wanted=mp[fam]
+                  mm=re.search(r'(?m)^\s*industrial_manufacturer\s*=\s*mio:[A-Za-z0-9_]+\s*\n?',b)
+                  if mm:
+                      nb=b[:mm.start()]+'\tindustrial_manufacturer = mio:'+wanted+'\n'+b[mm.end():]
+                  else:
+                      close=b.rfind('}')
+                      nb=b[:close]+'\n\tindustrial_manufacturer = mio:'+wanted+'\n'+b[close:]
+                  if nb!=b:
+                      edits.append((r[0],r[1],nb));count+=1
+              for a,z,nb in sorted(edits,reverse=True):text=text[:a]+nb+text[z:]
+              if edits:p.write_text('\ufeff'+text,encoding='utf-8')
+          print('naval assignments restored/normalized:',count)
+          PY
+      - shell: bash
+        run: |
+          git config user.name "HER automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add history/units
+          git commit -m "Restore compatible MIOs to starting naval lines" || exit 0
+          git push origin HEAD:work/start-designers-and-1944-retirements

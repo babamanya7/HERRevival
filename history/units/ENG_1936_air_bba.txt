@@ -36,7 +36,7 @@ air_wings = {
 			amount = 125
 			version_name = "Handley Page Heyford"
 		}
-		cv_small_plane_naval_bomber_airframe_0 = {
+		cv_small_plane_naval_bomber_airframe_1 = {
 			owner = "ENG" 
 			amount = 30
 			version_name = "Fairey Swordfish"
@@ -96,7 +96,7 @@ instant_effect = {
 }
 	add_equipment_production = {
 		equipment = {
-			type = cv_small_plane_naval_bomber_airframe_0
+			type = cv_small_plane_naval_bomber_airframe_1
 			creator = "ENG" 
 			version_name = "Fairey Swordfish"
 		}

@@ -1,0 +1,23 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			FRA = {
+				# Colson was chief of the Army staff, not a separate national
+				# inter-service general staff chief. Keep the central slot empty.
+				deactivate_advisor = HER_FRA_colson_staff
+				add_advisor_role = {
+					character = FRA_louis_colson
+					advisor = {
+						slot = army_genstab_chief
+						idea_token = HER_FRA_colson_army_staff
+						ledger = army
+						traits = { HER_FRA_colson_staff }
+						cost = 0
+						can_be_fired = no
+					}
+					activate = yes
+				}
+			}
+		}
+	}
+}

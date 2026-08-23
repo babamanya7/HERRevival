@@ -90,7 +90,7 @@ characters = {
 		name = FIN_carl_mannerheim
 		portraits = {
 			army = {
-				large = GFX_portrait_FIN_carl_mannerheim
+				large = "gfx/leaders/FIN/GFX_portrait_FIN_carl_mannerheim.dds"
 				small = GFX_idea_carl_mannerheim
 			}
 		}
@@ -101,16 +101,16 @@ characters = {
 			traits = { sotamarsalkka personal_agenda_mannerheim }
 		}
 		field_marshal = {
-			traits = { inflexible_strategist trait_cautious war_hero trickster winter_specialist defensive_doctrine }
+			traits = { inflexible_strategist career_officer trait_cautious war_hero trickster winter_specialist defensive_doctrine }
 			skill = 5
-			attack_skill = 3
-			defense_skill = 5
-			planning_skill = 5
-			logistics_skill = 3
+			attack_skill = 1
+			defense_skill = 8
+			planning_skill = 7
+			logistics_skill = 4
 			legacy_id = 58
 		}
 		advisor = {
-			slot = army_chief
+			slot = oberkomando_chief
 			idea_token = FIN_carl_mannerheim
 			allowed = {
 				original_tag = FIN
@@ -132,17 +132,17 @@ characters = {
 		name = FIN_erik_heinrichs
 		portraits = {
 			army = {
-				large = GFX_portrait_FIN_erik_heinrichs
+				large = "gfx/leaders/FIN/GFX_portrait_FIN_erik_heinrichs.dds"
 				small = GFX_portrait_FIN_erik_heinrichs_small
 			}
 		}
 		corps_commander = {
-			traits = { winter_specialist ranger jaeger }
-			skill = 4
-			attack_skill = 4
-			defense_skill = 4
-			planning_skill = 3
-			logistics_skill = 2
+			traits = { gen_lt career_officer infantry_officer winter_specialist skilled_staffer jaeger }
+			skill = 5
+			attack_skill = 1
+			defense_skill = 7
+			planning_skill = 8
+			logistics_skill = 4
 			legacy_id = -1
 			visible = {
 				NOT = { has_government = communism}
@@ -169,17 +169,18 @@ characters = {
 		name = FIN_vilho_petter_nenonen
 		portraits = {
 			army = {
-				large = GFX_portrait_FIN_vilho_petter_nenonen
+				large = "gfx/leaders/FIN/GFX_portrait_FIN_vilho_petter_nenonen.dds"
 				small = GFX_portrait_FIN_vilho_petter_nenonen_small
 			}
 		}
 		corps_commander = {
-			traits = { winter_specialist trait_engineer fortress_buster }
-			skill = 3
-			attack_skill = 3
-			defense_skill = 1
-			planning_skill = 4
-			logistics_skill = 2
+			traits = { gen_lt winter_specialist career_officer artillery_officer bearer_of_artillery jaeger }
+			
+			skill = 4
+			attack_skill = 1
+			defense_skill = 5
+			planning_skill = 6
+			logistics_skill = 5
 			legacy_id = -1
 		}
 
@@ -191,7 +192,7 @@ characters = {
 				original_tag = FIN
 			}
 			traits = {
-				army_artillery_2
+				army_artillery_3
 			}
 			cost = 200
 			ai_will_do = {
@@ -209,34 +210,12 @@ characters = {
 			}
 		}
 		corps_commander = {
-			traits = { trickster ranger jaeger }
-			skill = 3
+			traits = { gen_lt trickster ranger jaeger trait_cautious ambusher }
+			skill = 4
 			attack_skill = 1
-			defense_skill = 4
-			planning_skill = 3
-			logistics_skill = 2
-			legacy_id = -1
-			visible = {
-				NOT = { has_government = communism }
-			}
-		}
-	}
-
-	FIN_aarne_juutilainen = {
-		name = FIN_aarne_juutilainen
-		portraits = {
-			army = {
-				large = GFX_portrait_FIN_aarne_juutilainen
-				small = GFX_portrait_FIN_aarne_juutilainen_small
-			}
-		}
-		corps_commander = {
-			traits = { trait_mountaineer commando trickster trait_reckless }
-			skill = 3
-			attack_skill = 3
-			defense_skill = 3
-			planning_skill = 2
-			logistics_skill = 2
+			defense_skill = 5
+			planning_skill = 5
+			logistics_skill = 3
 			legacy_id = -1
 			visible = {
 				NOT = { has_government = communism }
@@ -253,11 +232,11 @@ characters = {
 			}
 		}
 		corps_commander = {
-			traits = { inflexible_strategist ranger jaeger }
-			skill = 2
+			traits = { inflexible_strategist jaeger }
+			skill = 3
 			attack_skill = 1
-			defense_skill = 2
-			planning_skill = 2
+			defense_skill = 5
+			planning_skill = 4
 			logistics_skill = 2
 			legacy_id = -1
 			visible = {
@@ -275,12 +254,12 @@ characters = {
 			}
 		}
 		corps_commander = {
-			traits = { commando winter_specialist infantry_officer jaeger } #Could replace infantry_officer by militias_officer
-			skill = 2
+			traits = { gen_lt commando winter_specialist infantry_officer jaeger } #Could replace infantry_officer by militias_officer
+			skill = 4
 			attack_skill = 1
-			defense_skill = 2
-			planning_skill = 2
-			logistics_skill = 2
+			defense_skill = 5
+			planning_skill = 6
+			logistics_skill = 4
 			legacy_id = -1
 			visible = {
 				NOT = { has_government = communism }
@@ -311,28 +290,28 @@ characters = {
 		}
 	}
 
-	FIN_fanni_luukkonen = {
-		name = FIN_fanni_luukkonen
-		portraits = {
-			army = {
-				large = GFX_portrait_FIN_fanni_luukkonen
-				small = GFX_portrait_FIN_fanni_luukkonen_small
-			}
-		}
-		corps_commander = {
-			traits = { infantry_officer organizer }
-			skill = 2
-			attack_skill = 1
-			defense_skill = 1
-			planning_skill = 2
-			logistics_skill = 3
-			legacy_id = -1
-			visible = {
-				has_completed_focus = FIN_arm_the_lotta_svard
-				NOT = { has_government = communism }
-			}
-		}
-	}
+	#FIN_fanni_luukkonen = {
+	#	name = FIN_fanni_luukkonen
+	#	portraits = {
+	#		army = {
+	#			large = GFX_portrait_FIN_fanni_luukkonen
+	#			small = GFX_portrait_FIN_fanni_luukkonen_small
+	#		}
+	#	}
+	#	corps_commander = {
+	#		traits = { infantry_officer organizer }
+	#		skill = 2
+	#		attack_skill = 1
+	#		defense_skill = 1
+	#		planning_skill = 2
+	#		logistics_skill = 3
+	#		legacy_id = -1
+	#		visible = {
+	#			has_completed_focus = FIN_arm_the_lotta_svard
+	#			NOT = { has_government = communism }
+	#		}
+	#	}
+	#}
 
 	FIN_paavo_talvela = {
 		name = FIN_paavo_talvela
@@ -343,12 +322,12 @@ characters = {
 			}
 		}
 		corps_commander = {
-			traits = { inflexible_strategist infantry_officer jaeger }
-			skill = 2
-			attack_skill = 3
-			defense_skill = 1
-			planning_skill = 2
-			logistics_skill = 1
+			traits = { gen_lt inflexible_strategist infantry_officer trait_reckless career_officer jaeger }
+			skill = 5
+			attack_skill = 1
+			defense_skill = 4
+			planning_skill = 6
+			logistics_skill = 9
 			legacy_id = -1
 			visible = {
 				has_completed_focus = FIN_union_of_finnish_brothers_in_arms
@@ -357,41 +336,21 @@ characters = {
 		}
 	}
 
-	FIN_hannu_hannuksela = {
-		name = FIN_hannu_hannuksela
-		portraits = {
-			army = {
-				large = GFX_portrait_FIN_hannu_hannuksela
-				small = GFX_portrait_FIN_hannu_hannuksela_small
-			}
-		}
-		corps_commander = {
-			traits = { inflexible_strategist winter_specialist ranger jaeger }
-			skill = 2
-			attack_skill = 3
-			defense_skill = 2
-			planning_skill = 1
-			logistics_skill = 1
-			legacy_id = -1
-			visible = { has_completed_focus = FIN_jaeger_movement }
-		}
-	}
-
 	FIN_hjalmar_siilasvuo = {
 		name = FIN_hjalmar_siilasvuo
 		portraits = {
 			army = {
-				large = GFX_portrait_FIN_hjalmar_siilasvuo
+				large = "gfx/leaders/FIN/GFX_portrait_FIN_hjalmar_siilasvuo.dds"
 				small = GFX_portrait_FIN_hjalmar_siilasvuo_small
 			}
 		}
 		corps_commander = {
-			traits = { trait_engineer scavenger ranger jaeger }
-			skill = 2
-			attack_skill = 3
-			defense_skill = 1
-			planning_skill = 1
-			logistics_skill = 2
+			traits = { gen_lt career_officer trait_engineer scavenger ranger jaeger war_hero }
+			skill = 6
+			attack_skill = 1
+			defense_skill = 9
+			planning_skill = 5
+			logistics_skill = 9
 			legacy_id = -1
 			visible = { has_completed_focus = FIN_jaeger_movement }
 		}
@@ -401,39 +360,19 @@ characters = {
 		name = FIN_taavetti_laatikainen
 		portraits = {
 			army = {
-				large = GFX_portrait_FIN_taavetti_laatikainen
+				large = "gfx/leaders/FIN/GFX_portrait_FIN_taavetti_laatikainenm.dds"
 				small = GFX_portrait_FIN_taavetti_laatikainen_small
 			}
 		}
 		corps_commander = {
-			traits = { brilliant_strategist ranger jaeger }
-			skill = 2
+			traits = { gen_lt brilliant_strategist career_officer ranger jaeger }
+			skill = 5
 			attack_skill = 1
-			defense_skill = 3
-			planning_skill = 2
-			logistics_skill = 1
+			defense_skill = 8
+			planning_skill = 6
+			logistics_skill = 5
 			legacy_id = -1
 			visible = { has_completed_focus = FIN_jaeger_movement }
-		}
-	}
-
-	FIN_matti_aarnio = {
-		name = FIN_matti_aarnio
-		portraits = {
-			army = {
-				large = GFX_portrait_FIN_matti_aarnio
-				small = GFX_portrait_FIN_matti_aarnio_small
-			}
-		}
-		corps_commander = {
-			traits = { commando winter_specialist trickster ranger jaeger }
-			skill = 3
-			attack_skill = 4
-			defense_skill = 3
-			planning_skill = 1
-			logistics_skill = 2
-			legacy_id = -1
-			visible = { has_completed_focus = FIN_motti_tactics }
 		}
 	}
 
@@ -529,45 +468,6 @@ characters = {
 		}
 	}
 
-	FIN_akseli_anttila = {
-		name = FIN_akseli_anttila
-		portraits = {
-			army = {
-				small = GFX_portrait_FIN_akseli_anttila_small
-				large = GFX_portrait_FIN_akseli_anttila
-			}
-		}
-		corps_commander = {
-			traits = { infantry_officer trait_reckless }
-			skill = 3
-			attack_skill = 2
-			defense_skill = 3
-			planning_skill = 3
-			logistics_skill = 2
-			legacy_id = -1
-			visible = {
-				has_completed_focus = FIN_the_second_finnish_civil_war
-			}
-		}
-		advisor = {
-			cost = 100
-			slot = army_theorist
-			idea_token = FIN_akseli_anttila
-			ledger = army
-			allowed = {
-				original_tag = FIN
-			}
-
-			available = {
-				has_completed_focus = FIN_the_second_finnish_civil_war
-			}
-			
-			traits = {
-				military_theorist
-			}
-		}
-	}
-
 	FIN_aksel_airo = {
 		name = FIN_aksel_airo
 		portraits = {
@@ -576,45 +476,21 @@ characters = {
 				small = GFX_portrait_FIN_aksel_airo_small
 			}
 		}
-		corps_commander = {
-			traits = { brilliant_strategist organizer winter_specialist }
-			skill = 3
-			attack_skill = 2
-			defense_skill = 2
-			planning_skill = 3
-			logistics_skill = 3
-			legacy_id = -1
-			visible = {
-				NOT = { has_government = communism }
-				if = {
-					limit = {
-						has_character_flag = FIN_anti_fascist_character_flag
-					}
-					NOT = { has_government = fascism }
-				}
-			}
-		}
 		advisor = {			
-			slot = army_chief
+			slot = operativ_chief
 			idea_token = FIN_aksel_airo
 			allowed = {
 				original_tag = FIN
 			}
 			available = {
 				NOT = { has_government = communism }
-				if = {
-					limit = {
-						has_character_flag = FIN_anti_fascist_character_flag
-					}
-					NOT = { has_government = fascism }
-				}
 			}
 			traits = {
 				army_chief_planning_2
 			}
 			cost = 100
 			ai_will_do = {
-				base = 1.000
+				base = 5
 			}
 		}
 	}
@@ -673,55 +549,6 @@ characters = {
 		}
 	}
 
-	FIN_toivo_antikainen = {
-		name = FIN_toivo_antikainen
-		portraits = {
-			army = {
-				large = GFX_portrait_FIN_toivo_antikainen
-				small = GFX_portrait_FIN_toivo_antikainen_small
-			}
-		}
-		corps_commander = {
-			traits = { infantry_officer militias_officer }
-			skill = 1
-			attack_skill = 1
-			defense_skill = 1
-			planning_skill = 1
-			logistics_skill = 1
-			legacy_id = -1
-			visible = {
-				OR = {
-					has_completed_focus = FIN_approach_the_soviets
-					has_completed_focus = FIN_confederated_finno_russian_republics
-				}
-				has_completed_focus = FIN_the_second_finnish_civil_war #So the character is available once the Civil War starts
-				has_government = communism
-			}
-		}
-		advisor = {			
-			slot = army_chief
-			idea_token = FIN_toivo_antikainen
-			allowed = {
-				original_tag = FIN
-			}
-			available = {
-				has_government = communism
-				OR = {
-					has_completed_focus = FIN_approach_the_soviets
-					has_completed_focus = FIN_confederated_finno_russian_republics
-				}
-				has_completed_focus = FIN_the_second_finnish_civil_war #So the character is available once the Civil War starts
-			}
-			traits = {
-				army_chief_planning_1
-			}
-			cost = 50
-			ai_will_do = {
-				base = 1.000
-			}
-		}
-	}
-
 
                                                                                            
  #    #    ##    #    #  #   #      #       ######    ##    #####   ######  #####    ####  
@@ -770,6 +597,18 @@ characters = {
 			legacy_id = 0
 			visible = { has_completed_focus = FIN_coastal_defense }
 		}
+		advisor = {
+			cost = 50
+			slot = navy_genstab_chief
+			idea_token = FIN_svante_sundman
+			ledger = navy
+			allowed = {
+				original_tag = FIN
+			}
+			traits = {
+				navy_chief_reform_1
+			}
+		}
 	}
 
 
@@ -814,7 +653,7 @@ characters = {
 		}
 		advisor = {
 			cost = 100
-			slot = navy_theorist
+			slot = air_theorist
 			idea_token = FIN_gustaf_magnusson
 			ledger = navy
 			allowed = {
@@ -835,7 +674,7 @@ characters = {
 		}
 		advisor = {
 			cost = 100
-			slot = navy_theorist
+			slot = air_theorist
 			idea_token = FIN_torsti_verkkola
 			ledger = navy
 			allowed = {
@@ -894,7 +733,7 @@ characters = {
 			}
 		}
 		advisor = {			
-			slot = army_chief
+			slot = genstab_chief
 			idea_token = FIN_hugo_osterman
 			allowed = {
 				original_tag = FIN
@@ -903,9 +742,9 @@ characters = {
 				NOT = { has_government = communism }
 			}
 			traits = {
-				army_chief_offensive_2
+				army_chief_offensive_1
 			}
-			cost = 100
+			cost = 50
 			ai_will_do = {
 				base = 1.000
 			}
@@ -1011,18 +850,19 @@ characters = {
 				small = GFX_portrait_FIN_olavi_sarko_small
 			}
 		}
-		advisor = {
-			slot = air_chief
+		advisor={
+			slot = air_h_command
 			idea_token = FIN_olavi_sarko
+			ledger = air
 			allowed = {
 				original_tag = FIN
 			}
 			traits = {
-				air_chief_ground_support_2
+				air_close_air_support_2
 			}
 			cost = 100
 			ai_will_do = {
-				base = 1.000
+				factor = 20
 			}
 		}
 	}
@@ -1041,41 +881,34 @@ characters = {
 		name = FIN_karl_oesch
 		portraits = {
 			army = {
-				large = GFX_portrait_FIN_karl_lennart_oesch
+				large = "gfx/leaders/FIN/GFX_portrait_FIN_karl_oesch.dds"
 				small = GFX_portrait_FIN_karl_oesch_small
 			}
 		}
 
 		corps_commander = {
-			traits = { jaeger inflexible_strategist career_officer organizer }
-			skill = 3
+			traits = { gen_lt jaeger inflexible_strategist career_officer defensive_doctrine war_hero organizer }
+			skill = 6
 			attack_skill = 2
-			defense_skill = 3
-			planning_skill = 3
-			logistics_skill = 2
+			defense_skill = 8
+			planning_skill = 8
+			logistics_skill = 6
 			legacy_id = -1
 			visible = {
 				NOT = { has_government = communism }
 			}
 		}
 
-		advisor = {
-			slot = army_h_command
+		advisor={
+			slot = army_genstab_chief
 			idea_token = FIN_karl_oesch
-			ledger = army
 			allowed = {
 				original_tag = FIN
-			}
-			available = {
-				NOT = { has_government = communism }
 			}
 			traits = {
 				army_regrouping_2
 			}
-			cost = 200
-			ai_will_do = {
-				base = 1.000
-			}
+			cost = 0
 		}
 	}
 
@@ -1178,57 +1011,6 @@ characters = {
 		}
 	}
 
-	FIN_alpo_marttinen = {
-		name = FIN_alpo_marttinen
-		portraits = {
-			army = {
-				small = GFX_portrait_FIN_alpo_marttinen_small
-			}
-		}
-		advisor = {
-			slot = army_h_command
-			idea_token = FIN_alpo_marttinen
-			ledger = army
-			allowed = {
-				original_tag = FIN
-			}
-			available = {
-				NOT = { has_government = communism }
-			}
-			traits = {
-				army_logistics_2
-			}
-			cost = 100
-			ai_will_do = {
-				base = 1.000
-			}
-		}
-	}
-
-	FIN_kaarlo_somerto = {
-		name = FIN_kaarlo_somerto
-		portraits = {
-			army = {
-				small = GFX_portrait_FIN_kaarlo_somerto_small
-			}
-		}
-		advisor = {
-			slot = army_h_command
-			idea_token = FIN_kaarlo_somerto
-			ledger = army
-			allowed = {
-				original_tag = FIN
-			}
-			traits = {
-				army_artillery_1
-			}
-			cost = 50
-			ai_will_do = {
-				base = 1.000
-			}
-		}
-	}
-
 	FIN_reino_hallamaa = {
 		name = FIN_reino_hallamaa
 		portraits = {
@@ -1244,14 +1026,10 @@ characters = {
 				original_tag = FIN
 			}
 			available = {
-				has_completed_focus = FIN_finnish_radio_intelligence
 				NOT = { has_government = communism }
 			}
 			traits = {
 				army_radio_intelligence_2
-			}
-			research_bonus = {
-				electronics = 0.10
 			}
 			cost = 100
 			ai_will_do = {
@@ -1579,7 +1357,7 @@ characters = {
 			}
 		}
 		advisor = {
-			slot = political_advisor
+			slot = agency_chief
 			idea_token = FIN_esko_riekki
 			allowed = {
 				original_tag = FIN
@@ -1601,11 +1379,7 @@ characters = {
 				head_of_intelligence #Watchdog of White Finland?
 			}
 			ai_will_do = {
-				base = 1.000
-				modifier = {
-					factor = 0.5
-					FIN_is_historical_ai = yes
-				}
+				base = 100
 			}
 		}
 	}
@@ -1785,7 +1559,6 @@ characters = {
 				has_dlc = "Arms Against Tyranny"
 			}
 			available = {
-				has_completed_focus = FIN_sotilaalliset_kappalaiset
 				NOT = { has_government = communism }
 			}
 			cost = 70
@@ -1809,19 +1582,7 @@ characters = {
 				original_tag = FIN
 			}
 			available = {
-				if = {
-					limit = {
-						has_dlc = "Arms Against Tyranny"
-					}
-					OR = {
-						has_completed_focus = FIN_political_unity
-						has_completed_focus = FIN_finnish_irredentism
-						has_completed_focus = FIN_intellectual_elite
-					}
-				}
-				else = {
-					has_completed_focus = FIN_political_unity
-				}
+				has_completed_focus = FIN_political_unity
 			}
 			cost = 70
 			traits = {
@@ -1856,11 +1617,7 @@ characters = {
 				}
 				available = {
 					is_country_leader = no
-					OR = {
-						has_completed_focus = FIN_social_democracy
-						has_completed_focus = FIN_cooperate_with_social_democrats
-						has_completed_focus = FIN_collaboration_with_the_left
-					}
+					has_completed_focus = FIN_collaboration_with_the_left
 				}
 				cost = 70
 				traits = {
@@ -1920,11 +1677,7 @@ characters = {
 					original_tag = FIN
 				}
 				available = {
-					OR = {
-						has_completed_focus = FIN_social_democracy
-						has_completed_focus = FIN_cooperate_with_social_democrats
-						has_completed_focus = FIN_collaboration_with_the_left
-					}
+					has_completed_focus = FIN_collaboration_with_the_left
 				}
 				cost = 70
 				traits = {
@@ -1968,34 +1721,6 @@ characters = {
 				ai_will_do = {
 					base = 0
 				}
-			}
-		}
-	}
-
-	FIN_otto_brusiin = {
-		name = FIN_otto_brusiin
-		portraits = {
-			civilian = {
-				small = GFX_portrait_FIN_otto_brusiin_small
-			}
-		}
-		advisor = {
-			slot = political_advisor #
-			idea_token = FIN_otto_brusiin
-			allowed = {
-				original_tag = FIN
-				has_dlc = "Arms Against Tyranny"
-				has_dlc = "La Resistance"
-			}
-			available = {
-				has_intelligence_agency = yes
-				OR = {
-					has_government = democratic
-					has_government = communism
-				}
-			}
-			traits = {
-				head_of_intelligence 
 			}
 		}
 	}

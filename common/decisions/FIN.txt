@@ -1359,6 +1359,7 @@ FIN_balance_of_power_category = {
 		available = {
 			has_war_with_major = yes
 			has_government = neutrality
+			date > 1944.08.04
 		}
 
 		visible = {
@@ -1408,6 +1409,7 @@ FIN_balance_of_power_category = {
 				character = FIN_carl_mannerheim
 			}
 			has_war = no
+			date > 1946.03.08
 		}
 
 		visible = {

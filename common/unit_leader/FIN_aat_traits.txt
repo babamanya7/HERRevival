@@ -8,26 +8,27 @@ jaeger = {
 		}
 				
 		trait_xp_factor = {
-			trickster = 1     #+100%
-			winter_specialist = 1     #+100%
-			commando = 1     #+100%
-			swamp_fox = 1     #+100%
-			ranger = 1     #+100%
-			hill_fighter = 1     #+100%
-			urban_assault_specialist = 1     #+100%
-			naval_invader = 1     #+100%
+			trickster = 0.5     #+100%
+			winter_specialist = 0.5      #+100%
+			commando = 0.5      #+100%
+			swamp_fox = 0.5      #+100%
+			ranger = 0.5      #+100%
+			hill_fighter = 0.5      #+100%
+			urban_assault_specialist = 0.5      #+100%
+			naval_invader = 0.5      #+100%
 		}
 
 		modifier = {
-			equipment_capture = 0.03
+			equipment_capture = 0.02
+			max_commander_army_size = -4
+		}
+		non_shared_modifier = {
+			promote_cost_factor = 100
 		}
 		
 		new_commander_weight = {
 			factor = 0			
 		}
-
-		attack_skill_factor = 1
-		logistics_skill_factor = 1
 	}
 
 militias_officer = { 

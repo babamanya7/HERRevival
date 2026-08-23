@@ -4076,11 +4076,11 @@ country_event = {
 
 		add_equipment_to_stockpile = { 
 			type = infantry_equipment
-			amount = -1400
+			amount = -100
 			producer = ROOT
 		}	
 
-		add_command_power = -25
+		add_command_power = -05
 
 		custom_effect_tooltip = FIN_we_will_be_more_likely_to_put_down_the_finnish_snipers_tt
 
@@ -4229,9 +4229,7 @@ country_event = {
 
 		add_political_power = 50
 
-		add_command_power = 20
-
-		add_manpower = 12000
+		add_manpower = 1000
 
 		hidden_effect = {
 			set_global_flag = FIN_simo_hayha_has_appeared_flag

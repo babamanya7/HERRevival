@@ -236,7 +236,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_BALANCE_OF_POWER FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_MILITARY_CHARACTER FOCUS_FILTER_MANPOWER FOCUS_FILTER_STABILITY }
 
 		completion_reward = {
-			add_political_power = 100
+			add_political_power = 50
 			FIN_bop_low_increase_effect = yes
 
 			add_popularity = {
@@ -472,7 +472,7 @@ focus_tree = {
 		x = -1
 		y = 1
 		relative_position_id = FIN_finnish_neutrality
-		cost = 5
+		cost = 1
 		available = {
 		}
 
@@ -577,90 +577,16 @@ focus_tree = {
 		y = 1
 		relative_position_id = FIN_the_lone_wolf
 		cost = 5
-		
-		bypass = {
-			OR = {
-				is_in_faction_with = GER
-				is_subject_of = GER
-				has_subject = SOV
-				has_subject = GER
-				NOT = { country_exists = GER }
-				GER = { has_capitulated = yes }
-				GER = { has_war_with = SOV }
-				SOV = { exists = no }
-				GER = { has_subject = SOV }
-				AND = {
-					has_war_with = SOV
-					NOT = { has_country_flag = FIN_winter_war_ongoing_flag }
-				}
-			}
-		}
 
 		available = {
 			date > 1940.6.1
 			is_subject = no
-			NOT = { has_government = communism }
-			NOT = { is_in_faction_with = SOV }
-			NOT = { has_non_aggression_pact_with = SOV }
-			NOT = { has_guaranteed = SOV }
-			NOT = { has_country_flag = FIN_winter_war_ongoing_flag }
-			GER = {
-				NOT = { has_war_with = ROOT }
-				NOT = { 
-					any_allied_country = {
-						has_war_with = ROOT
-					}
-				}
-			}
+			NOT = { has_war_with = SOV }
 		}
 
 		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_INTERNATIONAL_TRADE }
 
 		completion_reward = {
-			if = {
-				limit = {
-					has_dlc = "Arms Against Tyranny"	
-				}
-				custom_effect_tooltip = FIN_cooperation_with_germany_subsidies_tt
-
-				hidden_effect = {
-					add_equipment_subsidy = {
-						cic = FIN_basic_subsidies_value
-						equipment_type = small_plane_airframe
-						seller_tags = { GER } 
-					}
-					add_equipment_subsidy = {
-						cic = FIN_basic_subsidies_value
-						equipment_type = medium_plane_airframe
-						seller_tags = { GER } 
-					}
-					add_equipment_subsidy = {
-						cic = FIN_basic_subsidies_value
-						equipment_type = light_tank_chassis
-						seller_tags = { GER } 
-					}
-					add_equipment_subsidy = {
-						cic = FIN_basic_subsidies_value
-						equipment_type = medium_tank_chassis
-						seller_tags = { GER } 
-					}
-					add_equipment_subsidy = {
-						cic = FIN_basic_subsidies_value
-						equipment_type = artillery_equipment
-						seller_tags = { GER } 
-					}
-					add_equipment_subsidy = {
-						cic = FIN_basic_subsidies_value
-						equipment_type = anti_air_equipment
-						seller_tags = { GER } 
-					}
-					add_equipment_subsidy = {
-						cic = FIN_basic_subsidies_value
-						equipment_type = anti_tank_equipment
-						seller_tags = { GER } 
-					}
-				}
-			}
 
 			GER = {
 				country_event = { id = AAT_finland_continuation_war.01 hours = 8 random_hours = 4 }
@@ -670,39 +596,10 @@ focus_tree = {
 			effect_tooltip = {
 				FIN_pact_for_continuation_war_start = yes
 
-				if = {
-					limit = {
-						has_dlc = "No Step Back"
-					}
-					add_equipment_to_stockpile = { 
-						type = light_tank_chassis_1
-						amount = 50
-						producer = GER
-					}
-				}
-				else = {
-					add_equipment_to_stockpile = { 
-						type = light_tank_equipment_1
-						amount = 50
-						producer = GER
-					}
-				}
-				if = {
-					limit = {
-						has_dlc = "By Blood Alone"
-					}
-					add_equipment_to_stockpile = { 
-						type = small_plane_airframe_1
-						amount = 50
-						producer = GER
-					}
-				}
-				else = {
-					add_equipment_to_stockpile = { 
-						type = fighter_equipment_1
-						amount = 50
-						producer = GER
-					}
+				add_equipment_to_stockpile = { 
+					type = anti_tank_equipment_1
+					amount = 250
+					producer = GER
 				}
 				add_equipment_to_stockpile = { 
 					type = convoy_1
@@ -711,17 +608,22 @@ focus_tree = {
 				}
 				add_equipment_to_stockpile = { 
 					type = artillery_equipment_1
-					amount = 50
+					amount = 100
+					producer = GER
+				}
+				add_equipment_to_stockpile = { 
+					type = heavy_artillery_equipment_1
+					amount = 48
 					producer = GER
 				}
 				add_equipment_to_stockpile = { 
 					type = anti_air_equipment_1
-					amount = 25
+					amount = 116
 					producer = GER
 				}
 				add_equipment_to_stockpile = { 
-					type = infantry_equipment_1
-					amount = 3000
+					type = machinegun_1
+					amount = 1000
 					producer = GER
 				}
 				add_equipment_to_stockpile = { 
@@ -1301,7 +1203,7 @@ focus_tree = {
 		cost = 10
 		available = {
 			has_full_control_of_state = 111 #UUSIMAA (Helsinki)
-			has_full_control_of_state = 926 #TURKU
+			has_full_control_of_state = 879 #TURKU
 		}
 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -1318,7 +1220,7 @@ focus_tree = {
 			}
 
 			#TURKU
-			926 = {
+			879 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = infrastructure
@@ -1482,9 +1384,9 @@ focus_tree = {
 			#TURKU
 			if = {
 				limit = {
-					controls_state = 926
+					controls_state = 879
 				}
-				926 = { #TURKU
+				879 = { #TURKU
 					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 						type = industrial_complex
@@ -2749,6 +2651,63 @@ focus_tree = {
 	}
 	
 	focus = {
+		id = FIN_tank_division
+		icon = GFX_focus_FIN_foreign_anti_air
+		prerequisite = { focus = FIN_foreign_armor }
+
+		x = 0
+		y = 1
+		relative_position_id = FIN_foreign_armor
+		cost = 2
+		available = {
+			date > 1943.1.1
+		}
+
+
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+
+		completion_reward = {
+			division_template = {
+				name = "Panssaridivisioona"
+				priority = 3
+				division_names_group = FIN_ARM_01
+				
+				regiments = {
+					light_armor = { x = 0 y = 0 }
+					light_armor = { x = 0 y = 1 }
+					
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+					motorized = { x = 1 y = 3 }
+					
+					motorized_heavy_artillery_brigade = { x = 2 y = 0 }
+					
+					mot_anti_tank_brigade = { x = 3 y = 0 }
+					mot_anti_tank_brigade = { x = 3 y = 1 }
+					medium_tank_destroyer_brigade = { x = 3 y = 2 }
+				}
+				regimental_support = {
+
+				}
+				support = {
+					assault_engineer = { x = 0 y = 0 }
+					mot_field_hospital = { x = 0 y = 1 }
+					mot_maintenance_company = { x = 0 y = 2 }
+					anti_air_battery = { x = 0 y = 3 }
+					logistics_company = { x = 0 y = 4 }
+				}
+			}
+			capital_scope = {
+					create_unit = {
+						division = "division_template = \"Panssaridivisioona\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+						owner = ROOT
+					}
+				}
+		}
+	}
+	
+	focus = {
 		id = FIN_utilize_the_sami
 		icon = GFX_focus_FIN_utilize_the_sami
 		prerequisite = { focus = FIN_winter_warfare }
@@ -3161,12 +3120,12 @@ focus_tree = {
 			# TURKU (Pori)
 			if = {
 				limit = {
-					controls_state = 926
-					926 = {
+					controls_state = 879
+					879 = {
 						air_base < 9
 					}
 				}
-				926 = {
+				879 = {
 					add_building_construction = {
 						type = air_base
 						level = 2
@@ -3670,9 +3629,9 @@ focus_tree = {
 			air_experience = 25
 
 			custom_effect_tooltip = FIN_modify_finnish_airforce_ns_intro
-			add_to_variable = { FIN_finnish_airforce_air_weather_penalty = -0.1 tooltip = air_weather_penalty_tt }
-			add_to_variable = { FIN_finnish_airforce_air_ace_generation_chance_factor = 0.1 tooltip = air_ace_generation_chance_factor_tt }
-			add_to_variable = { FIN_finnish_airforce_air_home_defence_factor = 0.1 tooltip = air_home_defence_factor_tt }
+			add_to_variable = { FIN_finnish_airforce_air_weather_penalty = -0.05 tooltip = air_weather_penalty_tt }
+			add_to_variable = { FIN_finnish_airforce_air_ace_generation_chance_factor = 0.05 tooltip = air_ace_generation_chance_factor_tt }
+			add_to_variable = { FIN_finnish_airforce_air_home_defence_factor = 0.05 tooltip = air_home_defence_factor_tt }
 
 			add_ace = {
 				name = Eino, Eino Antero
@@ -4428,7 +4387,7 @@ focus_tree = {
 						include_locked = yes
 					}
 				}
-				prioritize = { 926 111 149 } #TURKU HELSINKI VAASA
+				prioritize = { 879 111 149 } #TURKU HELSINKI VAASA
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = dockyard
@@ -4720,7 +4679,7 @@ focus_tree = {
 						include_locked = yes
 					}
 				}
-				prioritize = { 926 111 149 } #TURKU HELSINKI VAASA
+				prioritize = { 879 111 149 } #TURKU HELSINKI VAASA
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = dockyard
@@ -5076,10 +5035,10 @@ focus_tree = {
 
 			if = {
 				limit = {
-					has_full_control_of_state = 926
+					has_full_control_of_state = 879
 				}
 				#TURKU
-				926 = {
+				879 = {
 					add_building_construction = {
 						type = naval_base
 						level = 2
@@ -5191,7 +5150,7 @@ focus_tree = {
 		relative_position_id = FIN_suomen_merivoimat
 		cost = 5
 		available = {
-			has_full_control_of_state = 926
+			has_full_control_of_state = 879
 		}
 
 		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
@@ -5205,7 +5164,7 @@ focus_tree = {
 
 			if = {
 				limit = {
-					926 = {
+					879 = {
 						free_building_slots = {
 							building = dockyard
 							size > 0
@@ -5213,7 +5172,7 @@ focus_tree = {
 						}
 					}
 				}
-				926 = {
+				879 = {
 					add_extra_state_shared_building_slots = 1
 					add_building_construction = {
 						type = dockyard

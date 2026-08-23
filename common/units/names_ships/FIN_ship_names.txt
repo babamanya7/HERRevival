@@ -6,23 +6,13 @@ FIN_DD_HISTORICAL = {
 	for_countries = { FIN }
 
 	type = ship
-	ship_types = { ship_hull_light destroyer  ship_hull_civilian }
+	ship_types = { ship_hull_light destroyer }			
 
-	prefix = ""
-	fallback_name = "Hävittäjä %d"
+	fallback_name = "Hävittäjä %d"					
 
-	unique = {
-		"Matti Kurki"
-		"Sisu"
-		"Hurja"
-		"Isku"
-		"Syöksy"
-		"Nuoli"
-		"Vinha"
-		"Raju"
-		"Vasama"
-		"Vihuri"
-		"Viima"
+	unique = {											
+		"Hämeenmaa" "Matti Kurki" "Uusimaa" "Karjala" "Turunmaa" "Sisu" "Hurja" "Isku" "Syöksy" 
+		"Nuoli" "Vinha" "Raju" "Vasama" "Vihuri" "Viima"
 	}
 }
 
@@ -34,22 +24,12 @@ FIN_CL_HISTORICAL = {
 
 	type = ship
 	ship_types = { ship_hull_cruiser light_cruiser }
-
-	prefix = ""
-	fallback_name = "Risteilijä %d"
+	
+	fallback_name = "Kevyt Risteilijä %d"
 
 	unique = {
-		"Tapio"
-		"Helsinki"
-		"Rauma"
-		"Turku"
-		"Kemi"
-		"Maarianhamina"
-		"Vaasa"
-		"Viipuri"
-		"Kotka"
-		"Oulu"
-		"Rauma"
+		"Joukahainen" "Tapio" "Lemminkäinen" "Helsinki" "Rauma" "Turku" "Kemi" "Maarianhamina" "Vaasa" 
+		"Viipuri" "Kotka" "Oulu" "Rauma" "Väinämöinen" "Ilmarinen" 
 	}
 }
 
@@ -60,19 +40,16 @@ FIN_CA_HISTORICAL = {
 	for_countries = { FIN }
 
 	type = ship
-	ship_types = { ship_hull_cruiser ship_hull_cruiser_coastal_defense_ship ship_hull_cruiser_panzerschiff heavy_cruiser battle_cruiser }
-
-	prefix = ""
-	fallback_name = "Panssarilaiva %d"
+	ship_types = { ship_hull_cruiser heavy_cruiser }
+	
+	fallback_name = "Raskas Risteilijä %d"
 
 	unique = {
-		"Ilmarinen"
-		"Väinämöinen"
-		"Lemminkäinen"
-		"Joukahainen"
-		"Kullervo"
+		"Väinämöinen" "Ilmarinen" "Joukahainen" "Tapio" "Lemminkäinen" "Helsinki" "Rauma" "Turku" "Kemi" "Maarianhamina" "Vaasa" 
+		"Viipuri" "Kotka" "Oulu" "Rauma" 
 	}
 }
+
 
 ### BATTLESHIP NAMES ###
 FIN_BB_HISTORICAL = {
@@ -82,15 +59,27 @@ FIN_BB_HISTORICAL = {
 
 	type = ship
 	ship_types = { ship_hull_heavy battleship }
-
-	prefix = ""
-	fallback_name = "Taistelulaiva %d"
+	
+	fallback_name = "Taistelulaiva %d"		
 
 	unique = {
-		"Pohjanmaa"
-		"Pietarsaari"
-		"Aura"
-		"Tampere"
+		"Uusimaa" "Karjala" "Pohjanmaa" "Rauma" "Turku" "Viipuri" "Pietarsaari" "Vaasa" "Oulu" "Aura" "Kemi" "Tampere" 
+	}
+}
+
+### BATTLECRUISER NAMES ###
+FIN_BC_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_BC
+
+	for_countries = { FIN }
+
+	type = ship
+	ship_types = { ship_hull_heavy battle_cruiser }
+	
+	fallback_name = "Taisteluristeilijä %d"		
+
+	unique = {
+		"Uusimaa" "Karjala" "Pohjanmaa" "Rauma" "Turku" "Viipuri" "Pietarsaari" "Vaasa" "Oulu" "Aura" "Kemi" "Tampere" 
 	}
 }
 
@@ -102,12 +91,12 @@ FIN_CV_HISTORICAL = {
 
 	type = ship
 	ship_types = { ship_hull_carrier carrier }
-
-	prefix = ""
-	fallback_name = "Tukialus %d"
+	
+	fallback_name = "Lentotukialus %d"	
 
 	unique = {
-		"Suomenmaa"
+		"Suur-Suomi" "Karjala" "Turku" "Pohjanmaa" "Mannerheim" "Viipuri" "Vaasa" "Uusimaa" "Ahvenanmaa" "Oulu" "Kemi" 
+		"Turku" "Pohjanmaa" "Mannerheim" "Viipuri" "Vaasa" "Uusimaa" "Ahvenanmaa" "Oulu" "Kemi" 
 	}
 }
 
@@ -119,16 +108,10 @@ FIN_SS_HISTORICAL = {
 
 	type = ship
 	ship_types = { ship_hull_submarine submarine }
-
-	prefix = ""
-	fallback_name = "Sukellusvene no. %d"
-
+	
+	fallback_name = "Sukellusvene %d"
+	
 	unique = {
-		"Iku-Turso"
-		"Saukko"
-		"Vesikko"
-		"Vetehinen"
-		"AG 12"
-		"AG 16"
+		"Vetehinen" "Vesihiisi" "Iku-Turso" "Vesikko" 
 	}
 }

@@ -1,0 +1,105 @@
+joining_rule_nordics_only = {
+	type = joining_rules
+	visible = {
+		capital_scope = {
+			OR = {
+				region = 275 
+				region = 10
+				region = 11
+				region = 192
+				region = 276
+				region = 191
+				region = 277
+				region = 278
+				region = 13
+				region = 161
+				region = 36 
+				region = 45 
+				region = 12
+				region = 265 
+			}
+		}
+	}
+	can_remove = {
+		faction_manifest_fulfillment > 0.85
+	}
+	ai_will_do = {
+		base = 0
+	}
+
+	modifier = {
+		army_core_defence_factor = 0.05
+	}
+
+	trigger = {
+		custom_trigger_tooltip = {
+			tooltip = has_nordic_capital_state_tt
+			capital_scope = {
+				OR = {
+					region = 275 
+					region = 10
+					region = 11
+					region = 192
+					region = 276
+					region = 191
+					region = 277
+					region = 278
+					region = 13
+					region = 161
+					region = 36 
+					region = 45 
+					region = 12
+					region = 265 
+				}
+			}
+		}
+	}
+}
+
+change_leader_rule_industry = {
+	type = change_leader_rules
+	trigger = {
+		has_industry_to_become_leader = yes
+	}
+	ai_will_do = {
+		base = 0
+		modifier = {  
+			add = 5 
+			is_faction_leader = yes 
+			OR = {
+				industrial_complex > 100
+				arms_factory > 100
+			}
+		}
+	}
+}
+
+change_leader_rule_manpower = {
+	type = change_leader_rules
+	trigger = {
+		has_manpower_to_become_leader = yes
+	}
+	ai_will_do = {
+		base = 0
+		modifier = {  
+			add = 5 
+			is_faction_leader = yes 
+			has_manpower > 1000000
+		}
+		modifier = {  
+			add = 5 
+			is_faction_leader = yes 
+			has_manpower > 2000000
+		}
+	}
+}
+
+change_leader_rule_manifest_below_35 = {
+	type = change_leader_rules
+	trigger = {
+		faction_manifest_fulfillment < 0.35
+	}
+	ai_will_do = {
+		base = 0
+	}
+}

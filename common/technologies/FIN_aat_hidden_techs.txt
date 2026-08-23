@@ -1,0 +1,40 @@
+technologies = {
+	# Hidden technologies granted by Finland's AAT focuses. They are deliberately
+	# not researchable from the tech tree; focuses/effects grant them directly.
+
+	winter_logistics_support_tech = {
+		allow = { always = no }
+		research_cost = 1
+		start_year = 1936
+		enable_subunits = {
+			winter_logistics_support
+		}
+	}
+
+	long_range_patrol_support_tech = {
+		allow = { always = no }
+		research_cost = 1
+		start_year = 1936
+		enable_subunits = {
+			long_range_patrol_support
+		}
+	}
+
+	sami_pathfinders_tech = {
+		allow = { always = no }
+		research_cost = 1
+		start_year = 1936
+	}
+
+	molotov_cocktails_tech = {
+		allow = { always = no }
+		research_cost = 1
+		start_year = 1936
+	}
+
+	lotta_svard_tech = {
+		allow = { always = no }
+		research_cost = 1
+		start_year = 1936
+	}
+}

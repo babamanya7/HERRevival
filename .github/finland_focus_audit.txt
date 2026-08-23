@@ -1,0 +1,55 @@
+FASCIST BASE REMOVE:
+  FIN_a_fascist_regime
+  FIN_academic_karelian_society
+  FIN_advanced_jaeger_training_program
+  FIN_bring_foreign_armor_experts
+  FIN_discredit_the_democratic_system
+  FIN_finnish_irredentism
+  FIN_finnish_legion_of_honor
+  FIN_finnish_supremacy_in_the_north
+  FIN_indoctrinate_the_workers
+  FIN_industrial_cooperation
+  FIN_intellectual_elite
+  FIN_join_axis
+  FIN_keepers_of_the_north
+  FIN_maan_turva
+  FIN_military_promotions
+  FIN_military_research
+  FIN_mustapaidat
+  FIN_national_fanatism
+  FIN_patriotic_peoples_movement
+  FIN_prepare_a_military_coup
+  FIN_right_wing_policies
+  FIN_seek_german_protection
+  FIN_sotilaalliset_kappalaiset
+  FIN_tactical_wargaming_department
+  FIN_take_over_the_suojeluskunta
+
+COMMUNIST BASE REMOVE:
+  FIN_cooperate_with_social_democrats
+  FIN_the_peoples_democratic_league
+  FIN_the_red_watch
+  FIN_the_second_finnish_civil_war
+  FIN_the_workers_state
+  FIN_towards_a_red_government
+
+ORPHANED/DEPENDENT FOCUSES ALSO REMOVE:
+  FIN_british_threat
+  FIN_finnish_autonomy
+  FIN_integrate_kola_and_karelia
+  FIN_join_the_comintern
+  FIN_keepers_of_the_baltic_countries
+  FIN_red_finland
+
+TOTAL REMOVE: 37
+
+NORDIC SHARED ROOTS:
+  NORDIC_form_joint_alliance
+
+SURVIVING PREREQUISITE GROUPS TO CLEAN:
+  FIN_antagonize_the_soviets: remove [FIN_towards_a_red_government], keep [FIN_social_democracy]
+  FIN_approach_the_soviets: remove [FIN_towards_a_red_government], keep [FIN_social_democracy]
+  FIN_finnish_influence_in_the_baltic: remove [FIN_join_the_comintern], keep [FIN_united_under_the_north_star]
+  FIN_greater_finland: remove [FIN_keepers_of_the_north], keep [FIN_finnish_march_of_conquest, FIN_militarized_society]
+  FIN_national_unity: remove [FIN_right_wing_policies], keep [FIN_finnish_neutrality]
+  FIN_weapon_caches: remove [FIN_right_wing_policies], keep [FIN_finnish_neutrality]

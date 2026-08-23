@@ -1,0 +1,219 @@
+add_namespace = NSB_soviet_nationalist
+
+country_event = {
+	id = NSB_soviet_nationalist.001
+	title = NSB_soviet_nationalist.001.t
+	desc = NSB_soviet_nationalist.001.desc
+	picture =  GFX_report_event_generic_rally2
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			every_country = {
+				limit = {
+					original_tag = SOV
+				}
+				every_owned_state = {
+					limit = { is_core_of = var:SOV.SOV_nationalist_country }
+					var:SOV.SOV_nationalist_country = { transfer_state = PREV }
+				}
+			}
+			# Capture any Stalinist soldiers in our territory
+			every_state = {
+				limit = { is_owned_by = var:SOV.SOV_nationalist_country}
+				SOS = { 
+					delete_unit = { 
+						state = PREV 
+						disband = no 
+					}
+				}
+			}
+			var:SOV.SOV_nationalist_country  = {
+				division_template = {
+				    name = "Resistance Fighters"
+					is_locked = yes
+					priority = 1
+					template_counter = 3
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+					}
+					is_locked = yes 
+				}
+				every_owned_state = {
+					limit = { is_core_of = var:SOV.SOV_nationalist_country }
+					create_unit = { 
+						division = "name = \"Resistance Fighters\" division_template = \"Resistance Fighters\" start_experience_factor = 0.05 start_equipment_factor = 0.95" owner = var:SOV.SOV_nationalist_country count = 2
+					}
+				}
+				random_owned_state = {
+					limit = { 
+						is_core_of = var:SOV.SOV_nationalist_country 
+						is_capital = yes
+					}
+					create_unit = { 
+						division = "name = \"Resistance Fighters\" division_template = \"Resistance Fighters\" start_experience_factor = 0.05 start_equipment_factor = 0.95" owner = var:SOV.SOV_nationalist_country count = 2
+					}
+				}
+
+
+			}
+			var:SOV.SOV_nationalist_country = {
+				set_politics = { 
+					ruling_party = democratic
+					elections_allowed = yes 
+				}
+				add_popularity = {
+					ideology = democratic 
+					popularity = 0.4
+				}
+				add_popularity = {
+					ideology = fascism  
+					popularity = 0.2
+				}
+				add_popularity = {
+					ideology = neutrality 
+					popularity = 0.2
+				}
+				set_country_flag = SOV_breakaway_country_flag
+				set_country_flag = SOV_unrecognized_country_flag 
+				set_rule = { can_join_factions = no }
+			}
+			# Renaming of cities where apropriate 
+			IF = {
+				limit = { var:SOV.SOV_nationalist_country = { tag = KYR }}
+				set_province_name = {
+					id = 12583
+					name = SOV_Bishkek
+				}
+			}
+			ELSE_IF = {
+				limit = { var:SOV.SOV_nationalist_country = { tag = MEL }}
+				set_province_name = {
+					id = 9402
+					name = SOV_Krasnokokshaysk
+				}
+			}
+		}
+	}
+
+	option = {
+		name = NSB_soviet_nationalist.001.a	
+		ai_chance = {
+			base = 5 # The AI needs all the help it can get
+		}
+		#Check for Karelian uprising since war against SOS (AI Stalin) is declared there
+		if = {
+			limit = {
+				check_variable = { SOV.SOV_nationalist_country = KAR }
+				FIN = {
+					exists = yes
+					has_capitulated = no
+					has_country_flag = FIN_full_support_for_karelia_flag
+				}
+			}
+			var:SOV.SOV_nationalist_country = {
+				add_named_threat = { 
+					threat = -1
+					name = indepence_war_threat
+				}
+				effect_tooltip = {
+					declare_war_on = {
+						target = SOS
+						type = independence_wargoal
+					}
+				}
+			}
+		}
+		else = {
+			var:SOV.SOV_nationalist_country = {
+				add_named_threat = { 
+					threat = -1
+					name = indepence_war_threat
+				}
+				declare_war_on = {
+					target = SOS
+					type = independence_wargoal
+				}
+			}
+		}
+
+		var:SOV.SOV_nationalist_country = {
+			give_military_access = ROOT
+		}
+		ROOT = {
+			give_military_access = var:SOV.SOV_nationalist_country
+		}
+	}
+
+	option = {
+		name = NSB_soviet_nationalist.001.b	
+		ai_chance = {
+			base = 1
+		}
+
+		#Check for Karelian uprising since war against SOS (AI Stalin) is declared there
+		if = {
+			limit = {
+				check_variable = { SOV.SOV_nationalist_country = KAR }
+				FIN = {
+					exists = yes
+					has_capitulated = no
+					has_country_flag = FIN_full_support_for_karelia_flag
+				}
+			}
+			effect_tooltip = {
+				var:SOV.SOV_nationalist_country = {
+					declare_war_on = {
+						target = SOS
+						type = independence_wargoal
+					}
+				}
+			}
+		}
+
+		var:SOV.SOV_nationalist_country = {
+			add_named_threat = { 
+				threat = -1.5
+				name = indepence_war_threat
+			}
+			declare_war_on = {
+				target = ROOT
+				type = independence_wargoal
+			}
+			declare_war_on = {
+				target = SOS
+				type = independence_wargoal
+			}
+		}
+
+		#Check for Karelian uprising and Finnish commitment to show in tooltip when appropriate
+		if = {
+			limit = {
+				check_variable = { SOV.SOV_nationalist_country = KAR }
+				FIN = {
+					exists = yes
+					has_capitulated = no
+					has_country_flag = FIN_full_support_for_karelia_flag
+				}
+			}
+			effect_tooltip = {
+				FIN = {
+					add_to_war = {
+						targeted_alliance = KAR
+						enemy = ROOT
+						hostility_reason = asked_to_join
+					}
+				}
+			}
+			hidden_effect = {
+				declare_war_on = {
+					target = FIN
+					type = independence_wargoal
+				}
+			}
+		}
+	}
+}

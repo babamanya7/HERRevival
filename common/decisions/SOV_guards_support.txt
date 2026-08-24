@@ -1,0 +1,127 @@
+SOV_guards_support_category = {
+	SOV_attach_light_spg_to_guards = {
+		icon = generic_industry
+		fire_only_once = yes
+		cost = 0
+		available = { has_tech = basic_light_art }
+		complete_effect = {
+			set_technology = { SOV_guards_light_sp_artillery_support_tech = 1 }
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Strelkoviy Korpus"
+				regimental_support = { guards_light_sp_artillery_support = 5 }
+			}
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Kavaleriyskiy Korpus"
+				regimental_support = { guards_light_sp_artillery_support = 0 }
+			}
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Mechanizovaniy Korpus"
+				regimental_support = { guards_light_sp_artillery_support = 3 }
+			}
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Tankoviy Korpus"
+				regimental_support = { guards_light_sp_artillery_support = 0 }
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_attach_medium_spg_to_guards = {
+		icon = generic_industry
+		fire_only_once = yes
+		cost = 0
+		available = { has_tech = basic_medium_art }
+		complete_effect = {
+			set_technology = { SOV_guards_medium_sp_artillery_support_tech = 1 }
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Kavaleriyskiy Korpus"
+				regimental_support = { guards_medium_sp_artillery_support = 1 }
+			}
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Mechanizovaniy Korpus"
+				regimental_support = { guards_medium_sp_artillery_support = 3 }
+			}
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Tankoviy Korpus"
+				regimental_support = { guards_medium_sp_artillery_support = 1 }
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_attach_heavy_spg_to_guards = {
+		icon = generic_industry
+		fire_only_once = yes
+		cost = 0
+		available = { has_tech = basic_heavy_art }
+		complete_effect = {
+			set_technology = { SOV_guards_heavy_sp_artillery_support_tech = 1 }
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Mechanizovaniy Korpus"
+				regimental_support = { guards_heavy_sp_artillery_support = 4 }
+			}
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Tankoviy Korpus"
+				regimental_support = { guards_heavy_sp_artillery_support = 2 }
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_attach_light_td_to_guards = {
+		icon = generic_industry
+		fire_only_once = yes
+		cost = 0
+		available = { has_tech = basic_light_td }
+		complete_effect = {
+			set_technology = { SOV_guards_light_tank_destroyer_support_tech = 1 }
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Mechanizovaniy Korpus"
+				regimental_support = { guards_light_tank_destroyer_support = 3 }
+			}
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Tankoviy Korpus"
+				regimental_support = { guards_light_tank_destroyer_support = 0 }
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_attach_medium_td_to_guards = {
+		icon = generic_industry
+		fire_only_once = yes
+		cost = 0
+		available = { has_tech = basic_medium_td }
+		complete_effect = {
+			set_technology = { SOV_guards_medium_tank_destroyer_support_tech = 1 }
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Mechanizovaniy Korpus"
+				regimental_support = { guards_medium_tank_destroyer_support = 4 }
+			}
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Tankoviy Korpus"
+				regimental_support = { guards_medium_tank_destroyer_support = 1 }
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_attach_heavy_td_to_guards = {
+		icon = generic_industry
+		fire_only_once = yes
+		cost = 0
+		available = { has_tech = basic_heavy_td }
+		complete_effect = {
+			set_technology = { SOV_guards_heavy_tank_destroyer_support_tech = 1 }
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Mechanizovaniy Korpus"
+				regimental_support = { guards_heavy_tank_destroyer_support = 4 }
+			}
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Tankoviy Korpus"
+				regimental_support = { guards_heavy_tank_destroyer_support = 2 }
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+}

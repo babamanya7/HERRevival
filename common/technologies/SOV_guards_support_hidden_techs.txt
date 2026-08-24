@@ -1,0 +1,38 @@
+technologies = {
+	SOV_guards_light_sp_artillery_support_tech = {
+		allow = { always = no }
+		research_cost = 1
+		start_year = 1936
+		enable_subunits = { guards_light_sp_artillery_support }
+	}
+	SOV_guards_medium_sp_artillery_support_tech = {
+		allow = { always = no }
+		research_cost = 1
+		start_year = 1936
+		enable_subunits = { guards_medium_sp_artillery_support }
+	}
+	SOV_guards_heavy_sp_artillery_support_tech = {
+		allow = { always = no }
+		research_cost = 1
+		start_year = 1936
+		enable_subunits = { guards_heavy_sp_artillery_support }
+	}
+	SOV_guards_light_tank_destroyer_support_tech = {
+		allow = { always = no }
+		research_cost = 1
+		start_year = 1936
+		enable_subunits = { guards_light_tank_destroyer_support }
+	}
+	SOV_guards_medium_tank_destroyer_support_tech = {
+		allow = { always = no }
+		research_cost = 1
+		start_year = 1936
+		enable_subunits = { guards_medium_tank_destroyer_support }
+	}
+	SOV_guards_heavy_tank_destroyer_support_tech = {
+		allow = { always = no }
+		research_cost = 1
+		start_year = 1936
+		enable_subunits = { guards_heavy_tank_destroyer_support }
+	}
+}

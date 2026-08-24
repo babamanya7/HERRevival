@@ -445,13 +445,98 @@ SOV_internal_factions = {
 		}
 	}
 
-	# Guards corps regimental SPG and tank-destroyer reinforcement
-	SOV_attach_light_spg_to_guards = {
+	# Guards corps template modification menu
+	SOV_modify_guards_rifle_corps = {
 		icon = generic_industry
 		allowed = { tag = SOV }
 		visible = {
 			tag = SOV
 			has_completed_focus = SOV_guards_units
+			NOT = { has_country_flag = SOV_guards_template_modification_active }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = SOV_guards_template_modification_active
+			set_country_flag = SOV_guards_modifying_rifle_corps
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_modify_guards_cavalry_corps = {
+		icon = generic_industry
+		allowed = { tag = SOV }
+		visible = {
+			tag = SOV
+			has_completed_focus = SOV_guards_units
+			NOT = { has_country_flag = SOV_guards_template_modification_active }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = SOV_guards_template_modification_active
+			set_country_flag = SOV_guards_modifying_cavalry_corps
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_modify_guards_mechanized_corps = {
+		icon = generic_industry
+		allowed = { tag = SOV }
+		visible = {
+			tag = SOV
+			has_completed_focus = SOV_guards_units
+			NOT = { has_country_flag = SOV_guards_template_modification_active }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = SOV_guards_template_modification_active
+			set_country_flag = SOV_guards_modifying_mechanized_corps
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_modify_guards_tank_corps = {
+		icon = generic_industry
+		allowed = { tag = SOV }
+		visible = {
+			tag = SOV
+			has_completed_focus = SOV_guards_units
+			NOT = { has_country_flag = SOV_guards_template_modification_active }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = SOV_guards_template_modification_active
+			set_country_flag = SOV_guards_modifying_tank_corps
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_guards_finish_template_modification = {
+		icon = generic_decision
+		allowed = { tag = SOV }
+		visible = { has_country_flag = SOV_guards_template_modification_active }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			clr_country_flag = SOV_guards_template_modification_active
+			clr_country_flag = SOV_guards_modifying_rifle_corps
+			clr_country_flag = SOV_guards_modifying_cavalry_corps
+			clr_country_flag = SOV_guards_modifying_mechanized_corps
+			clr_country_flag = SOV_guards_modifying_tank_corps
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	# Guards Rifle Corps
+	SOV_guards_rifle_attach_light_spg = {
+		icon = generic_industry
+		allowed = { tag = SOV }
+		visible = {
+			has_country_flag = SOV_guards_modifying_rifle_corps
+			NOT = { has_country_flag = SOV_guards_rifle_light_spg_added }
 		}
 		available = { has_tech = basic_light_art }
 		cost = 0
@@ -461,28 +546,38 @@ SOV_internal_factions = {
 				template_name = "Gvardeyskiy Strelkoviy Korpus"
 				regimental_support = { light_sp_artillery = 5 }
 			}
-			add_units_to_division_template = {
-				template_name = "Gvardeyskiy Kavaleriyskiy Korpus"
-				regimental_support = { light_sp_artillery = 4 }
-			}
-			add_units_to_division_template = {
-				template_name = "Gvardeyskiy Mechanizovaniy Korpus"
-				regimental_support = { light_sp_artillery = 5 }
-			}
-			add_units_to_division_template = {
-				template_name = "Gvardeyskiy Tankoviy Korpus"
-				regimental_support = { light_sp_artillery = 5 }
-			}
+			set_country_flag = SOV_guards_rifle_light_spg_added
 		}
 		ai_will_do = { factor = 0 }
 	}
 
-	SOV_attach_medium_spg_to_guards = {
+	# Guards Cavalry Corps
+	SOV_guards_cavalry_attach_light_spg = {
 		icon = generic_industry
 		allowed = { tag = SOV }
 		visible = {
-			tag = SOV
-			has_completed_focus = SOV_guards_units
+			has_country_flag = SOV_guards_modifying_cavalry_corps
+			NOT = { has_country_flag = SOV_guards_cavalry_light_spg_added }
+		}
+		available = { has_tech = basic_light_art }
+		cost = 0
+		fire_only_once = yes
+		complete_effect = {
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Kavaleriyskiy Korpus"
+				regimental_support = { light_sp_artillery = 4 }
+			}
+			set_country_flag = SOV_guards_cavalry_light_spg_added
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_guards_cavalry_attach_medium_spg = {
+		icon = generic_industry
+		allowed = { tag = SOV }
+		visible = {
+			has_country_flag = SOV_guards_modifying_cavalry_corps
+			NOT = { has_country_flag = SOV_guards_cavalry_medium_spg_added }
 		}
 		available = { has_tech = basic_medium_art }
 		cost = 0
@@ -492,24 +587,58 @@ SOV_internal_factions = {
 				template_name = "Gvardeyskiy Kavaleriyskiy Korpus"
 				regimental_support = { medium_sp_artillery = 4 }
 			}
-			add_units_to_division_template = {
-				template_name = "Gvardeyskiy Mechanizovaniy Korpus"
-				regimental_support = { medium_sp_artillery = 5 }
-			}
-			add_units_to_division_template = {
-				template_name = "Gvardeyskiy Tankoviy Korpus"
-				regimental_support = { medium_sp_artillery = 5 }
-			}
+			set_country_flag = SOV_guards_cavalry_medium_spg_added
 		}
 		ai_will_do = { factor = 0 }
 	}
 
-	SOV_attach_heavy_spg_to_guards = {
+	# Guards Mechanized Corps
+	SOV_guards_mechanized_attach_light_spg = {
 		icon = generic_industry
 		allowed = { tag = SOV }
 		visible = {
-			tag = SOV
-			has_completed_focus = SOV_guards_units
+			has_country_flag = SOV_guards_modifying_mechanized_corps
+			NOT = { has_country_flag = SOV_guards_mechanized_light_spg_added }
+		}
+		available = { has_tech = basic_light_art }
+		cost = 0
+		fire_only_once = yes
+		complete_effect = {
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Mechanizovaniy Korpus"
+				regimental_support = { light_sp_artillery = 5 }
+			}
+			set_country_flag = SOV_guards_mechanized_light_spg_added
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_guards_mechanized_attach_medium_spg = {
+		icon = generic_industry
+		allowed = { tag = SOV }
+		visible = {
+			has_country_flag = SOV_guards_modifying_mechanized_corps
+			NOT = { has_country_flag = SOV_guards_mechanized_medium_spg_added }
+		}
+		available = { has_tech = basic_medium_art }
+		cost = 0
+		fire_only_once = yes
+		complete_effect = {
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Mechanizovaniy Korpus"
+				regimental_support = { medium_sp_artillery = 5 }
+			}
+			set_country_flag = SOV_guards_mechanized_medium_spg_added
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_guards_mechanized_attach_heavy_spg = {
+		icon = generic_industry
+		allowed = { tag = SOV }
+		visible = {
+			has_country_flag = SOV_guards_modifying_mechanized_corps
+			NOT = { has_country_flag = SOV_guards_mechanized_heavy_spg_added }
 		}
 		available = { has_tech = basic_heavy_art }
 		cost = 0
@@ -519,20 +648,17 @@ SOV_internal_factions = {
 				template_name = "Gvardeyskiy Mechanizovaniy Korpus"
 				regimental_support = { heavy_sp_artillery = 5 }
 			}
-			add_units_to_division_template = {
-				template_name = "Gvardeyskiy Tankoviy Korpus"
-				regimental_support = { heavy_sp_artillery = 5 }
-			}
+			set_country_flag = SOV_guards_mechanized_heavy_spg_added
 		}
 		ai_will_do = { factor = 0 }
 	}
 
-	SOV_attach_light_td_to_guards = {
+	SOV_guards_mechanized_attach_light_td = {
 		icon = generic_industry
 		allowed = { tag = SOV }
 		visible = {
-			tag = SOV
-			has_completed_focus = SOV_guards_units
+			has_country_flag = SOV_guards_modifying_mechanized_corps
+			NOT = { has_country_flag = SOV_guards_mechanized_light_td_added }
 		}
 		available = { has_tech = basic_light_td }
 		cost = 0
@@ -542,20 +668,17 @@ SOV_internal_factions = {
 				template_name = "Gvardeyskiy Mechanizovaniy Korpus"
 				regimental_support = { light_tank_destroyer = 3 }
 			}
-			add_units_to_division_template = {
-				template_name = "Gvardeyskiy Tankoviy Korpus"
-				regimental_support = { light_tank_destroyer = 0 }
-			}
+			set_country_flag = SOV_guards_mechanized_light_td_added
 		}
 		ai_will_do = { factor = 0 }
 	}
 
-	SOV_attach_medium_td_to_guards = {
+	SOV_guards_mechanized_attach_medium_td = {
 		icon = generic_industry
 		allowed = { tag = SOV }
 		visible = {
-			tag = SOV
-			has_completed_focus = SOV_guards_units
+			has_country_flag = SOV_guards_modifying_mechanized_corps
+			NOT = { has_country_flag = SOV_guards_mechanized_medium_td_added }
 		}
 		available = { has_tech = basic_medium_td }
 		cost = 0
@@ -565,20 +688,17 @@ SOV_internal_factions = {
 				template_name = "Gvardeyskiy Mechanizovaniy Korpus"
 				regimental_support = { medium_tank_destroyer = 4 }
 			}
-			add_units_to_division_template = {
-				template_name = "Gvardeyskiy Tankoviy Korpus"
-				regimental_support = { medium_tank_destroyer = 1 }
-			}
+			set_country_flag = SOV_guards_mechanized_medium_td_added
 		}
 		ai_will_do = { factor = 0 }
 	}
 
-	SOV_attach_heavy_td_to_guards = {
+	SOV_guards_mechanized_attach_heavy_td = {
 		icon = generic_industry
 		allowed = { tag = SOV }
 		visible = {
-			tag = SOV
-			has_completed_focus = SOV_guards_units
+			has_country_flag = SOV_guards_modifying_mechanized_corps
+			NOT = { has_country_flag = SOV_guards_mechanized_heavy_td_added }
 		}
 		available = { has_tech = basic_heavy_td }
 		cost = 0
@@ -588,10 +708,128 @@ SOV_internal_factions = {
 				template_name = "Gvardeyskiy Mechanizovaniy Korpus"
 				regimental_support = { heavy_tank_destroyer = 3 }
 			}
+			set_country_flag = SOV_guards_mechanized_heavy_td_added
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	# Guards Tank Corps
+	SOV_guards_tank_attach_light_spg = {
+		icon = generic_industry
+		allowed = { tag = SOV }
+		visible = {
+			has_country_flag = SOV_guards_modifying_tank_corps
+			NOT = { has_country_flag = SOV_guards_tank_light_spg_added }
+		}
+		available = { has_tech = basic_light_art }
+		cost = 0
+		fire_only_once = yes
+		complete_effect = {
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Tankoviy Korpus"
+				regimental_support = { light_sp_artillery = 5 }
+			}
+			set_country_flag = SOV_guards_tank_light_spg_added
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_guards_tank_attach_medium_spg = {
+		icon = generic_industry
+		allowed = { tag = SOV }
+		visible = {
+			has_country_flag = SOV_guards_modifying_tank_corps
+			NOT = { has_country_flag = SOV_guards_tank_medium_spg_added }
+		}
+		available = { has_tech = basic_medium_art }
+		cost = 0
+		fire_only_once = yes
+		complete_effect = {
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Tankoviy Korpus"
+				regimental_support = { medium_sp_artillery = 5 }
+			}
+			set_country_flag = SOV_guards_tank_medium_spg_added
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_guards_tank_attach_heavy_spg = {
+		icon = generic_industry
+		allowed = { tag = SOV }
+		visible = {
+			has_country_flag = SOV_guards_modifying_tank_corps
+			NOT = { has_country_flag = SOV_guards_tank_heavy_spg_added }
+		}
+		available = { has_tech = basic_heavy_art }
+		cost = 0
+		fire_only_once = yes
+		complete_effect = {
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Tankoviy Korpus"
+				regimental_support = { heavy_sp_artillery = 5 }
+			}
+			set_country_flag = SOV_guards_tank_heavy_spg_added
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_guards_tank_attach_light_td = {
+		icon = generic_industry
+		allowed = { tag = SOV }
+		visible = {
+			has_country_flag = SOV_guards_modifying_tank_corps
+			NOT = { has_country_flag = SOV_guards_tank_light_td_added }
+		}
+		available = { has_tech = basic_light_td }
+		cost = 0
+		fire_only_once = yes
+		complete_effect = {
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Tankoviy Korpus"
+				regimental_support = { light_tank_destroyer = 0 }
+			}
+			set_country_flag = SOV_guards_tank_light_td_added
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_guards_tank_attach_medium_td = {
+		icon = generic_industry
+		allowed = { tag = SOV }
+		visible = {
+			has_country_flag = SOV_guards_modifying_tank_corps
+			NOT = { has_country_flag = SOV_guards_tank_medium_td_added }
+		}
+		available = { has_tech = basic_medium_td }
+		cost = 0
+		fire_only_once = yes
+		complete_effect = {
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Tankoviy Korpus"
+				regimental_support = { medium_tank_destroyer = 1 }
+			}
+			set_country_flag = SOV_guards_tank_medium_td_added
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_guards_tank_attach_heavy_td = {
+		icon = generic_industry
+		allowed = { tag = SOV }
+		visible = {
+			has_country_flag = SOV_guards_modifying_tank_corps
+			NOT = { has_country_flag = SOV_guards_tank_heavy_td_added }
+		}
+		available = { has_tech = basic_heavy_td }
+		cost = 0
+		fire_only_once = yes
+		complete_effect = {
 			add_units_to_division_template = {
 				template_name = "Gvardeyskiy Tankoviy Korpus"
 				regimental_support = { heavy_tank_destroyer = 2 }
 			}
+			set_country_flag = SOV_guards_tank_heavy_td_added
 		}
 		ai_will_do = { factor = 0 }
 	}
@@ -894,31 +1132,23 @@ SOV_internal_factions = {
 			original_tag = SOV
 		}
 
-		#Fail trigger
 		available = {
 			NOT = { controls_state = 217 }
 		}
 
 		days_mission_timeout = 180
-
 		fire_only_once = yes
-
 		is_good = yes
+		activation = { always = no }
 
-		activation = {
-			always = no
-		}
-
-		#Success
 		timeout_effect = {
 			add_stability = 0.05
 			add_war_support = 0.05
 			217 = { save_event_target_as = soviet_city }
 			country_event = wtt_soviet_hold_city.1
 		}
-		#Fail
 		complete_effect = {
-			217 = { save_event_target_as = soviet_city }			
+			217 = { save_event_target_as = soviet_city }
 			country_event = wtt_soviet_hold_city.2
 			add_stability = -0.05
 			add_war_support = -0.05
@@ -927,36 +1157,19 @@ SOV_internal_factions = {
 	
 	#195 "Leningrad"
 	SOV_hold_leningrad = {
-
 		icon = generic_civil_support
-
-		allowed = {
-			original_tag = SOV
-		}
-
-		#Fail trigger
-		available = {
-			NOT = { controls_state = 195 }
-		}
-
+		allowed = { original_tag = SOV }
+		available = { NOT = { controls_state = 195 } }
 		days_mission_timeout = 180
-
 		fire_only_once = yes
-
 		is_good = yes
-
-		activation = {
-			always = no
-		}
-
-		#Success
+		activation = { always = no }
 		timeout_effect = {
 			add_stability = 0.05
 			add_war_support = 0.05
 			195 = { save_event_target_as = soviet_city }
 			country_event = wtt_soviet_hold_city.3
 		}
-		#Fail
 		complete_effect = {
 			195 = { save_event_target_as = soviet_city }
 			country_event = wtt_soviet_hold_city.4
@@ -967,36 +1180,19 @@ SOV_internal_factions = {
 
 	#219 "Moscow"
 	SOV_hold_moscow = {
-
 		icon = generic_civil_support
-
-		allowed = {
-			original_tag = SOV
-		}
-
-		#Fail trigger
-		available = {
-			NOT = { controls_state = 219 }
-		}
-
+		allowed = { original_tag = SOV }
+		available = { NOT = { controls_state = 219 } }
 		days_mission_timeout = 180
-
 		fire_only_once = yes
-
 		is_good = yes
-
-		activation = {
-			always = no
-		}
-
-		#Success
+		activation = { always = no }
 		timeout_effect = {
 			add_stability = 0.05
 			add_war_support = 0.05
 			219 = { save_event_target_as = soviet_city }
 			country_event = wtt_soviet_hold_city.5
 		}
-		#Fail
 		complete_effect = {
 			219 = { save_event_target_as = soviet_city }
 			country_event = wtt_soviet_hold_city.6
@@ -1007,38 +1203,21 @@ SOV_internal_factions = {
 
 	#206 "Minsk"
 	SOV_hold_minsk = {
-
 		icon = generic_civil_support
-
-		allowed = {
-			original_tag = SOV
-		}
-
-		#Fail trigger
-		available = {
-			NOT = { controls_state = 206 }
-		}
-
+		allowed = { original_tag = SOV }
+		available = { NOT = { controls_state = 206 } }
 		days_mission_timeout = 60
-
 		fire_only_once = yes
-
 		is_good = yes
-
-		activation = {
-			always = no
-		}
-
-		#Success
+		activation = { always = no }
 		timeout_effect = {
 			add_stability = 0.05
 			add_war_support = 0.05
-			206 = { save_event_target_as = soviet_city }			
+			206 = { save_event_target_as = soviet_city }
 			country_event = wtt_soviet_hold_city.7
 		}
-		#Fail
 		complete_effect = {
-			206 = { save_event_target_as = soviet_city }	
+			206 = { save_event_target_as = soviet_city }
 			country_event = wtt_soviet_hold_city.8
 			add_stability = -0.05
 			add_war_support = -0.05
@@ -1048,38 +1227,21 @@ SOV_internal_factions = {
 
 	#202 "Kiev"
 	SOV_hold_kiev = {
-
 		icon = generic_civil_support
-
-		allowed = {
-			original_tag = SOV
-		}
-
-		#Fail trigger
-		available = {
-			NOT = { controls_state = 202 }
-		}
-
+		allowed = { original_tag = SOV }
+		available = { NOT = { controls_state = 202 } }
 		days_mission_timeout = 90
-
 		fire_only_once = yes
-
 		is_good = yes
-
-		activation = {
-			always = no
-		}
-
-		#Success
+		activation = { always = no }
 		timeout_effect = {
 			add_stability = 0.05
 			add_war_support = 0.05
-			202 = { save_event_target_as = soviet_city }			
+			202 = { save_event_target_as = soviet_city }
 			country_event = wtt_soviet_hold_city.9
 		}
-		#Fail
 		complete_effect = {
-			202 = { save_event_target_as = soviet_city }			
+			202 = { save_event_target_as = soviet_city }
 			country_event = wtt_soviet_hold_city.10
 			add_stability = -0.05
 			add_war_support = -0.05
@@ -1088,36 +1250,19 @@ SOV_internal_factions = {
 
 	#980 "Sevastopol"
 	SOV_hold_sevastapol = {
-
 		icon = generic_civil_support
-
-		allowed = {
-			original_tag = SOV
-		}
-
-		#Fail trigger
-		available = {
-			NOT = { controls_state = 980 }
-		}
-
+		allowed = { original_tag = SOV }
+		available = { NOT = { controls_state = 980 } }
 		days_mission_timeout = 120
-
 		fire_only_once = yes
-
 		is_good = yes
-
-		activation = {
-			always = no
-		}
-
-		#Success
+		activation = { always = no }
 		timeout_effect = {
 			add_stability = 0.05
 			add_war_support = 0.05
 			980 = { save_event_target_as = soviet_city }
 			country_event = wtt_soviet_hold_city.11
 		}
-		#Fail
 		complete_effect = {
 			980 = { save_event_target_as = soviet_city }
 			country_event = wtt_soviet_hold_city.12
@@ -1128,19 +1273,11 @@ SOV_internal_factions = {
 	
 	############################################################################################################
 	############################################################################################################
-
-
 	############################################################################################################
 	
 	SOV_complete_second_five_year_plan = {
-
 		icon = generic_construction
-
-		allowed = {
-			original_tag = SOV
-		}
-
-		#Success trigger
+		allowed = { original_tag = SOV }
 		available = {
 			has_completed_focus = SOV_finish_the_second_five_year_plan
 			num_of_civilian_factories > 350
@@ -1151,57 +1288,36 @@ SOV_internal_factions = {
 			has_country_flag = chtz_complete
 			has_country_flag = dneproges_complete
 		}
-
 		days_mission_timeout = 800
-
 		fire_only_once = yes
-
 		is_good = no
-
 		activation = {
 			has_completed_focus = SOV_start_the_second_five_year_plan
 			NOT = { has_completed_focus = SOV_finish_the_second_five_year_plan }
 		}
-
-		#Fail
 		timeout_effect = {
-			add_stability = -0.05		
+			add_stability = -0.05
 			country_event = sov_her.11
 		}
-		#Success
-		complete_effect = {
-			add_stability = 0.05
-		}
+		complete_effect = { add_stability = 0.05 }
 	}
 	
 	SOV_fyp_azovsteel = {
-
 		icon = generic_construction
-
-		allowed = {
-			original_tag = SOV
-		}
-
-		#Success trigger
+		allowed = { original_tag = SOV }
 		available = {
 			227 = {
 				steel_refinery > 3
 				infrastructure > 7
 			}
 		}
-
 		days_mission_timeout = 325
-
 		fire_only_once = yes
-
 		is_good = no
-
 		activation = {
 			has_completed_focus = SOV_start_the_second_five_year_plan
 			NOT = { has_completed_focus = SOV_finish_the_second_five_year_plan }
 		}
-
-		#Fail
 		timeout_effect = {
 			add_stability = -0.04
 			add_political_power = -20
@@ -1210,30 +1326,16 @@ SOV_internal_factions = {
 			add_stability = 0.02
 			add_political_power = 10
 			227 = {
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = steel_refinery
-					level = 2
-					instant_build = yes
-				}
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+				add_building_construction = { type = steel_refinery level = 2 instant_build = yes }
 			}
 			set_country_flag = azov_complete
 		}
 	}
 	
 	SOV_fyp_zaporozhsteel = {
-
 		icon = generic_construction
-
-		allowed = {
-			original_tag = SOV
-		}
-
-		#Success trigger
+		allowed = { original_tag = SOV }
 		available = {
 			200 = {
 				steel_refinery > 3
@@ -1241,19 +1343,13 @@ SOV_internal_factions = {
 				infrastructure > 5
 			}
 		}
-
 		days_mission_timeout = 400
-
 		fire_only_once = yes
-
 		is_good = no
-
 		activation = {
 			has_completed_focus = SOV_start_the_second_five_year_plan
 			NOT = { has_completed_focus = SOV_finish_the_second_five_year_plan }
 		}
-
-		#Fail
 		timeout_effect = {
 			add_stability = -0.04
 			add_political_power = -20
@@ -1262,49 +1358,29 @@ SOV_internal_factions = {
 			add_stability = 0.02
 			add_political_power = 10
 			200 = {
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = steel_refinery
-					level = 2
-					instant_build = yes
-				}
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+				add_building_construction = { type = steel_refinery level = 2 instant_build = yes }
 			}
 			set_country_flag = zaporozh_complete
 		}
 	}
 	
 	SOV_fyp_ural_heavy_industry = {
-
 		icon = generic_construction
-
-		allowed = {
-			original_tag = SOV
-		}
-
-		#Success trigger
+		allowed = { original_tag = SOV }
 		available = {
 			653 = {
 				industrial_complex > 3
 				infrastructure > 3
 			}
 		}
-
 		days_mission_timeout = 480
-
 		fire_only_once = yes
-
 		is_good = no
-
 		activation = {
 			has_completed_focus = SOV_start_the_second_five_year_plan
 			NOT = { has_completed_focus = SOV_finish_the_second_five_year_plan }
 		}
-
-		#Fail
 		timeout_effect = {
 			add_stability = -0.04
 			add_political_power = -20
@@ -1313,49 +1389,29 @@ SOV_internal_factions = {
 			add_stability = 0.02
 			add_political_power = 10
 			653 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = industrial_complex
-					level = 4
-					instant_build = yes
-				}
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+				add_building_construction = { type = industrial_complex level = 4 instant_build = yes }
 			}
 			set_country_flag = ural_complete
 		}
 	}
 	
 	SOV_fyp_donbass_heavy_industry = {
-
 		icon = generic_construction
-
-		allowed = {
-			original_tag = SOV
-		}
-
-		#Success trigger
+		allowed = { original_tag = SOV }
 		available = {
 			227 = {
 				industrial_complex > 13
 				infrastructure > 5
 			}
 		}
-
 		days_mission_timeout = 400
-
 		fire_only_once = yes
-
 		is_good = no
-
 		activation = {
 			has_completed_focus = SOV_start_the_second_five_year_plan
 			NOT = { has_completed_focus = SOV_finish_the_second_five_year_plan }
 		}
-
-		#Fail
 		timeout_effect = {
 			add_stability = -0.04
 			add_political_power = -20
@@ -1364,49 +1420,29 @@ SOV_internal_factions = {
 			add_stability = 0.02
 			add_political_power = 10
 			227 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = industrial_complex
-					level = 4
-					instant_build = yes
-				}
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+				add_building_construction = { type = industrial_complex level = 4 instant_build = yes }
 			}
 			set_country_flag = donbass_complete
 		}
 	}
 	
 	SOV_fyp_chelyabinsk_heavy_industry = {
-
 		icon = generic_construction
-
-		allowed = {
-			original_tag = SOV
-		}
-
-		#Success trigger
+		allowed = { original_tag = SOV }
 		available = {
 			572 = {
 				industrial_complex > 5
 				infrastructure > 5
 			}
 		}
-
 		days_mission_timeout = 540
-
 		fire_only_once = yes
-
 		is_good = no
-
 		activation = {
 			has_completed_focus = SOV_start_the_second_five_year_plan
 			NOT = { has_completed_focus = SOV_finish_the_second_five_year_plan }
 		}
-
-		#Fail
 		timeout_effect = {
 			add_stability = -0.04
 			add_political_power = -20
@@ -1415,53 +1451,27 @@ SOV_internal_factions = {
 			add_stability = 0.02
 			add_political_power = 10
 			572 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = industrial_complex
-					level = 4
-					instant_build = yes
-				}
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+				add_building_construction = { type = industrial_complex level = 4 instant_build = yes }
 			}
 			set_country_flag = chtz_complete
 		}
 	}
 	
 	SOV_fyp_dneproges = {
-
 		icon = generic_construction
-
-		allowed = {
-			original_tag = SOV
-		}
-
-		#Success trigger
+		allowed = { original_tag = SOV }
 		available = {
-			226 = {
-				industrial_complex > 4
-				infrastructure > 5
-			}
-			200 = {
-				industrial_complex > 4
-				infrastructure > 5
-			}
+			226 = { industrial_complex > 4 infrastructure > 5 }
+			200 = { industrial_complex > 4 infrastructure > 5 }
 		}
-
 		days_mission_timeout = 600
-
 		fire_only_once = yes
-
 		is_good = no
-
 		activation = {
 			has_completed_focus = SOV_start_the_second_five_year_plan
 			NOT = { has_completed_focus = SOV_finish_the_second_five_year_plan }
 		}
-
-		#Fail
 		timeout_effect = {
 			add_stability = -0.04
 			add_political_power = -20
@@ -1469,66 +1479,39 @@ SOV_internal_factions = {
 		complete_effect = {
 			226 = {
 				set_state_category = city
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = industrial_complex
-					level = 4
-					instant_build = yes
-				}
+				add_building_construction = { type = infrastructure level = 2 instant_build = yes }
+				add_building_construction = { type = industrial_complex level = 4 instant_build = yes }
 			}
 			200 = {
 				set_state_category = city
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = industrial_complex
-					level = 4
-					instant_build = yes
-				}
+				add_building_construction = { type = infrastructure level = 2 instant_build = yes }
+				add_building_construction = { type = industrial_complex level = 4 instant_build = yes }
 			}
 			set_country_flag = dneproges_complete
 		}
 	}
 
 	SOV_pay_for_new_agricultural_equipment = {
-
 		icon = generic_industry
-
 		available = {
 			tag = SOV
 			num_of_civilian_factories_available_for_projects > 4
 		}
-
 		visible = {
 			tag = SOV
 			has_completed_focus = SOV_start_the_second_five_year_plan
 		}
-
 		ai_will_do = {
 			factor = 10
-
 			modifier = {
 				factor = 0
-				
 				date < 1940.1.1
 			}
 		}
-
 		cost = 25
 		days_remove = 30
-        fire_only_once = yes
-
-		modifier = {
-			civilian_factory_use = 15
-		}
-
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 15 }
 		remove_effect = {
 			custom_effect_tooltip = SOV_pay_for_new_agricultural_equipment_tt
 			hidden_effect = {

@@ -2363,7 +2363,7 @@ NNavy = {
 },
 
 NRailwayGun = {
-	RAILWAY_GUN_POSSIBLE_RANGES = { 15, 15, 15 },	-- Possible values for railway gun range in pixel.
+	RAILWAY_GUN_POSSIBLE_RANGES = { 8, 8, 11 },	-- Possible values for railway gun range in pixel.
 													-- For optimization reasons, they are listed here and equipment DB must use one of those.
 													-- when writing railway gun in equipment, use the index in this array
 													-- the first value in array is the default value
@@ -3502,8 +3502,8 @@ NAI = {
 	ARMY_LEADER_ASSIGN_EXILED_LEADS_OWN_EXILED_TROOPS = 100,    -- If exiled leader, increase chance of leading army with exiled troops from same country as the leader
 	ARMY_LEADER_ASSIGN_WITHDRAW_DAYS = 7,						-- General will withdraw from HQ after that many days without an order HQ can influence (frontline or naval invasion)
 	ARMY_LEADER_MIN_DIVISIONS_FOR_HQ = 8,						-- Army must contain at least this many divisions before the AI will deploy an HQ unit for it
-	MAX_DEPLOYED_ARMY_HQS = 20,									-- AI will not deploy more than this many army HQs at once
-	MAX_CAPTURED_GENERALS_TO_STOP_HQ_DEPLOY = 10,				-- AI stops deploying new army HQs once this many of its army leaders are captured
+	MAX_DEPLOYED_ARMY_HQS = 40,									-- AI will not deploy more than this many army HQs at once
+	MAX_CAPTURED_GENERALS_TO_STOP_HQ_DEPLOY = 15,				-- AI stops deploying new army HQs once this many of its army leaders are captured
 
 	-- the following defines concern the general's modifiers
 	ARMY_LEADER_ASSIGN_DEFENSE_MAX_DIG_IN_FACTOR = 1.0,         -- If defensive army, importance of general's MAX_DIG_IN_FACTOR modifier
@@ -3531,7 +3531,7 @@ NAI = {
 	AREA_DEFENSE_SETTING_PORTS = true,
 	AREA_DEFENSE_SETTING_AIRBASES = false,
 	AREA_DEFENSE_SETTING_BORDERS = false,
-	AREA_DEFENSE_SETTING_FORTS = false,
+	AREA_DEFENSE_SETTING_FORTS = true,
 	AREA_DEFENSE_SETTING_COASTLINES = false,
 	AREA_DEFENSE_SETTING_RAILWAYS = false,
 	AREA_DEFENSE_SETTING_FACILITY = false,

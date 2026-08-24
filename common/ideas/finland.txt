@@ -287,6 +287,7 @@ ideas = {
 				attrition = -0.05
 				army_core_attack_factor = 0.05
 				army_core_defence_factor = 0.15
+				war_support_weekly = 0.0005
 			}
 		}
 
@@ -312,6 +313,7 @@ ideas = {
 				attrition = -0.1
 				army_core_attack_factor = 0.15
 				army_core_defence_factor = 0.2
+				war_support_weekly = 0.001
 			}
 		}
 
@@ -337,6 +339,7 @@ ideas = {
 				attrition = -0.15
 				army_core_attack_factor = 0.25
 				army_core_defence_factor = 0.25
+				war_support_weekly = 0.0015
 			}
 		}
 
@@ -629,15 +632,6 @@ ideas = {
 				NOT = { has_government = democratic }
 				NOT = { has_government = communism }
 			}
-			
-			on_add = {
-				set_rule = { 
-					desc = FIN_the_lone_wolf
-					can_create_factions = no
-					can_join_factions = no
-					can_send_volunteers = yes
-				}
-			}
 
 			modifier = {
 				conscription_factor = 0.05
@@ -646,7 +640,6 @@ ideas = {
 				weekly_casualties_war_support = 0.005
 				weekly_bombing_war_support = 0.005
 				fascism_acceptance = 50
-				custom_modifier_tooltip = FIN_the_lone_wolf_tt
 			}
 		}
 
@@ -1440,6 +1433,19 @@ ideas = {
 					instant = yes
 					build_cost_ic = -0.05
 				}
+			}
+		}
+		
+		fin_ai_1 = { 
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				attrition = -0.5
+				supply_consumption_factor = -0.4
 			}
 		}
 

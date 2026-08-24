@@ -1090,7 +1090,7 @@ SOV_internal_factions = {
 					limit = {
 						check_variable = { SOV_Peasants_influence > 3 }
 					}
-					set_variable = { SOV_Peasants_influence = 56 }
+					set_variable = { PEASANTS_INFLUENCE_LEVEL2 = 56 }
 				}
 				else_if = {
 					limit = {

@@ -203,29 +203,26 @@ guards_armored_division = {
 			guards_medium_armor_regiment = { x = 1 y = 2 }
 			guards_heavy_armor_regiment = { x = 1 y = 3 }
 			
-			guards_medium_armor_regiment = { x = 2 y = 0 }
-			guards_medium_armor_regiment = { x = 2 y = 1 }
-			guards_medium_armor_regiment = { x = 2 y = 2 }
-			guards_heavy_armor_regiment = { x = 2 y = 3 }
+			guards_motorized = { x = 2 y = 0 }
+			guards_motorized = { x = 2 y = 1 }
+			guards_motorized = { x = 2 y = 2 }
+			guards_motorized = { x = 2 y = 3 }
 			
 			guards_motorized = { x = 3 y = 0 }
 			guards_motorized = { x = 3 y = 1 }
 			guards_motorized = { x = 3 y = 2 }
+			guards_motorized = { x = 3 y = 3 }
 			
-			guards_motorized = { x = 4 y = 0 }
-			guards_motorized = { x = 4 y = 1 }
-			guards_motorized = { x = 4 y = 2 }
-			
-			guards_artillery_brigade = { x = 5 y = 0 }
+			guards_artillery_brigade = { x = 4 y = 0 }
 		}
 		regimental_support = {
+			artillery = { x = 2 y = 0 }
+			anti_tank = { x = 2 y = 1 }
+			
 			artillery = { x = 3 y = 0 }
 			anti_tank = { x = 3 y = 1 }
 			
-			artillery = { x = 4 y = 0 }
-			anti_tank = { x = 4 y = 1 }
-			
-			motorized_rocket_brigade = { x = 5 y = 0 }
+			motorized_rocket_brigade = { x = 4 y = 0 }
 		}
 		support = {
 			assault_engineer = { x = 0 y = 0 }

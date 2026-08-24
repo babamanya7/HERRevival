@@ -445,6 +445,157 @@ SOV_internal_factions = {
 		}
 	}
 
+	# Guards corps regimental SPG and tank-destroyer reinforcement
+	SOV_attach_light_spg_to_guards = {
+		icon = generic_industry
+		allowed = { tag = SOV }
+		visible = {
+			tag = SOV
+			has_completed_focus = SOV_guards_units
+		}
+		available = { has_tech = basic_light_art }
+		cost = 0
+		fire_only_once = yes
+		complete_effect = {
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Strelkoviy Korpus"
+				regimental_support = { light_sp_artillery = 5 }
+			}
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Kavaleriyskiy Korpus"
+				regimental_support = { light_sp_artillery = 4 }
+			}
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Mechanizovaniy Korpus"
+				regimental_support = { light_sp_artillery = 5 }
+			}
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Tankoviy Korpus"
+				regimental_support = { light_sp_artillery = 5 }
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_attach_medium_spg_to_guards = {
+		icon = generic_industry
+		allowed = { tag = SOV }
+		visible = {
+			tag = SOV
+			has_completed_focus = SOV_guards_units
+		}
+		available = { has_tech = basic_medium_art }
+		cost = 0
+		fire_only_once = yes
+		complete_effect = {
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Kavaleriyskiy Korpus"
+				regimental_support = { medium_sp_artillery = 4 }
+			}
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Mechanizovaniy Korpus"
+				regimental_support = { medium_sp_artillery = 5 }
+			}
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Tankoviy Korpus"
+				regimental_support = { medium_sp_artillery = 5 }
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_attach_heavy_spg_to_guards = {
+		icon = generic_industry
+		allowed = { tag = SOV }
+		visible = {
+			tag = SOV
+			has_completed_focus = SOV_guards_units
+		}
+		available = { has_tech = basic_heavy_art }
+		cost = 0
+		fire_only_once = yes
+		complete_effect = {
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Mechanizovaniy Korpus"
+				regimental_support = { heavy_sp_artillery = 5 }
+			}
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Tankoviy Korpus"
+				regimental_support = { heavy_sp_artillery = 5 }
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_attach_light_td_to_guards = {
+		icon = generic_industry
+		allowed = { tag = SOV }
+		visible = {
+			tag = SOV
+			has_completed_focus = SOV_guards_units
+		}
+		available = { has_tech = basic_light_td }
+		cost = 0
+		fire_only_once = yes
+		complete_effect = {
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Mechanizovaniy Korpus"
+				regimental_support = { light_tank_destroyer = 3 }
+			}
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Tankoviy Korpus"
+				regimental_support = { light_tank_destroyer = 0 }
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_attach_medium_td_to_guards = {
+		icon = generic_industry
+		allowed = { tag = SOV }
+		visible = {
+			tag = SOV
+			has_completed_focus = SOV_guards_units
+		}
+		available = { has_tech = basic_medium_td }
+		cost = 0
+		fire_only_once = yes
+		complete_effect = {
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Mechanizovaniy Korpus"
+				regimental_support = { medium_tank_destroyer = 4 }
+			}
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Tankoviy Korpus"
+				regimental_support = { medium_tank_destroyer = 1 }
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	SOV_attach_heavy_td_to_guards = {
+		icon = generic_industry
+		allowed = { tag = SOV }
+		visible = {
+			tag = SOV
+			has_completed_focus = SOV_guards_units
+		}
+		available = { has_tech = basic_heavy_td }
+		cost = 0
+		fire_only_once = yes
+		complete_effect = {
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Mechanizovaniy Korpus"
+				regimental_support = { heavy_tank_destroyer = 3 }
+			}
+			add_units_to_division_template = {
+				template_name = "Gvardeyskiy Tankoviy Korpus"
+				regimental_support = { heavy_tank_destroyer = 2 }
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+
 	SOV_Workers_fabricate_new_structures = {
 
 		icon = generic_decision

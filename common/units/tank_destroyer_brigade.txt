@@ -379,7 +379,7 @@ sub_units = {
 			category_all_at
 		}
 		
-		allowed_battalion_groups = { anti_tank_combat_support }
+		allowed_battalion_groups = { anti_tank_combat_support armor }
 		
 		divisional = no
 		combat_width = 0
@@ -442,7 +442,7 @@ sub_units = {
 			ammunition_equipment = 26
 		}
 		
-		allowed_battalion_groups = { anti_tank_combat_support }
+		allowed_battalion_groups = { anti_tank_combat_support armor }
 		
 		essential = {
 			ammunition_equipment
@@ -490,7 +490,7 @@ sub_units = {
 			category_all_at
 		}
 		
-		allowed_battalion_groups = { anti_tank_combat_support }
+		allowed_battalion_groups = { anti_tank_combat_support armor }
 
 		divisional = no
 		combat_width = 0

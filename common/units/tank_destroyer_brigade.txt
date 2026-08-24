@@ -379,7 +379,7 @@ sub_units = {
 			category_all_at
 		}
 		
-		allowed_battalion_groups = { anti_tank_combat_support armor }
+		allowed_battalion_groups = { anti_tank_combat_support }
 		
 		divisional = no
 		combat_width = 0
@@ -411,7 +411,7 @@ sub_units = {
 	}
 	
 	medium_tank_destroyer = {
-		sprite = "medium_armor"
+		sprite = medium_armor
 		map_icon_category = armored
 		priority = 0
 		ai_priority = 0
@@ -442,7 +442,7 @@ sub_units = {
 			ammunition_equipment = 26
 		}
 		
-		allowed_battalion_groups = { anti_tank_combat_support armor }
+		allowed_battalion_groups = { anti_tank_combat_support }
 		
 		essential = {
 			ammunition_equipment
@@ -466,7 +466,7 @@ sub_units = {
 	}
 	
 	heavy_tank_destroyer = {
-		sprite = "heavy_armor"
+		sprite = heavy_armor
 		map_icon_category = armored
 		priority = 0
 		ai_priority = 0
@@ -490,7 +490,7 @@ sub_units = {
 			category_all_at
 		}
 		
-		allowed_battalion_groups = { anti_tank_combat_support armor }
+		allowed_battalion_groups = { anti_tank_combat_support }
 
 		divisional = no
 		combat_width = 0

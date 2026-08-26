@@ -1,0 +1,107 @@
+# HER Naval Institute Rework
+# Propulsion engineering projects improve machinery performance without adding redundant engine tiers.
+
+sp_naval_propulsion_engineering_1 = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_surface_ship sp_tag_submarine }
+
+	available = {
+		FROM = {
+			OR = {
+				has_tech = interwar_ship_hull_light
+				has_tech = interwar_ship_hull_cruiser
+				has_tech = interwar_ship_hull_heavy
+				has_tech = interwar_ship_hull_submarine
+			}
+		}
+	}
+
+	breakthrough_cost = { specialization_naval = 2 }
+	resource_cost = {
+		resources = { steel = 60 chromium = 30 }
+	}
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.medium
+
+	project_output = {
+		country_effects = {
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_TECH
+				TECH = her_naval_propulsion_engineering_1
+			}
+			custom_override_tooltip = {
+				tooltip = sp_naval_propulsion_engineering_1_output_tt
+				set_technology = {
+					her_naval_propulsion_engineering_1 = 1
+					popup = no
+				}
+			}
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+	}
+}
+
+sp_naval_propulsion_engineering_2 = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_surface_ship sp_tag_submarine }
+
+	special_project_parent = {
+		sp_naval_propulsion_engineering_1
+	}
+
+	available = {
+		FROM = {
+			has_tech = her_naval_propulsion_engineering_1
+			OR = {
+				has_tech = improved_ship_hull_light
+				has_tech = improved_ship_hull_cruiser
+				has_tech = improved_ship_hull_heavy
+				has_tech = improved_ship_hull_submarine
+			}
+		}
+	}
+
+	breakthrough_cost = { specialization_naval = 3 }
+	resource_cost = {
+		resources = { steel = 80 chromium = 50 tungsten = 20 }
+	}
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.large
+
+	project_output = {
+		country_effects = {
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_TECH
+				TECH = her_naval_propulsion_engineering_2
+			}
+			custom_override_tooltip = {
+				tooltip = sp_naval_propulsion_engineering_2_output_tt
+				set_technology = {
+					her_naval_propulsion_engineering_2 = 1
+					popup = no
+				}
+			}
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_scientist_xp_3
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+		sp_naval_generic_reward_test_failure_2
+	}
+}

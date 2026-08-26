@@ -29,7 +29,10 @@ sp_naval_ship_radar_1 = {
 		country_effects = {
 			custom_override_tooltip = {
 				tooltip = sp_naval_ship_radar_1_output_tt
-				unlock_equipment_module = ship_radar_2
+				set_technology = {
+					her_naval_ship_radar_2 = 1
+					popup = no
+				}
 			}
 		}
 	}
@@ -78,7 +81,10 @@ sp_naval_ship_radar_2 = {
 		country_effects = {
 			custom_override_tooltip = {
 				tooltip = sp_naval_ship_radar_2_output_tt
-				unlock_equipment_module = ship_radar_3
+				set_technology = {
+					her_naval_ship_radar_3 = 1
+					popup = no
+				}
 			}
 		}
 	}
@@ -129,10 +135,12 @@ sp_naval_ship_radar_3 = {
 		country_effects = {
 			custom_override_tooltip = {
 				tooltip = sp_naval_ship_radar_3_output_tt
-				unlock_equipment_module = ship_radar_4
+				set_technology = {
+					her_naval_ship_radar_4 = 1
+					popup = no
+				}
 			}
 		}
-	}
 
 	generic_prototype_rewards = {
 		sp_naval_generic_reward_scientist_xp_1

@@ -131,4 +131,33 @@ technologies = {
 		special_project_specialization = { specialization_naval }
 		categories = { naval_equipment ship_modules_tech }
 	}
+
+	her_naval_carrier_operations_1 = {
+		research_cost = 1
+		start_year = 1938
+		allow = { always = no }
+
+		carrier = {
+			max_organisation = 5
+			reliability = 0.03
+		}
+
+		special_project_specialization = { specialization_naval }
+		categories = { naval_equipment cv_tech ship_modules_tech }
+	}
+
+	her_naval_carrier_operations_2 = {
+		research_cost = 1
+		start_year = 1941
+		allow = { always = no }
+
+		carrier = {
+			max_organisation = 5
+			reliability = 0.03
+			naval_speed = 0.02
+		}
+
+		special_project_specialization = { specialization_naval }
+		categories = { naval_equipment cv_tech ship_modules_tech }
+	}
 }

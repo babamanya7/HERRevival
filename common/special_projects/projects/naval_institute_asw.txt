@@ -1,6 +1,6 @@
 # HER Naval Institute Rework
 # Sonar and anti-submarine warfare project chains.
-# Existing technologies remain researchable during the validation pass.
+# Basic sonar and depth charges remain normal technologies; advanced applications are institute-only.
 
 sp_naval_sonar_1 = {
 	specialization = specialization_naval
@@ -27,18 +27,9 @@ sp_naval_sonar_1 = {
 	complexity = sp_complexity.medium
 
 	project_output = {
-		country_effects = {
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = improved_sonar
-			}
-			custom_override_tooltip = {
-				tooltip = sp_naval_sonar_1_output_tt
-				set_technology = {
-					improved_sonar = 1
-					popup = no
-				}
-			}
+		enable_equipment_modules = {
+			ship_sonar_2
+			ship_bulbous_bow
 		}
 	}
 
@@ -61,12 +52,6 @@ sp_naval_sonar_2 = {
 		sp_naval_sonar_1
 	}
 
-	available = {
-		FROM = {
-			has_tech = improved_sonar
-		}
-	}
-
 	breakthrough_cost = {
 		specialization_naval = 3
 	}
@@ -83,18 +68,8 @@ sp_naval_sonar_2 = {
 	complexity = sp_complexity.large
 
 	project_output = {
-		country_effects = {
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = advanced_sonar
-			}
-			custom_override_tooltip = {
-				tooltip = sp_naval_sonar_2_output_tt
-				set_technology = {
-					advanced_sonar = 1
-					popup = no
-				}
-			}
+		enable_equipment_modules = {
+			ship_sonar_3
 		}
 	}
 
@@ -136,18 +111,8 @@ sp_naval_depth_charges_1 = {
 	complexity = sp_complexity.small
 
 	project_output = {
-		country_effects = {
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = improved_depth_charges
-			}
-			custom_override_tooltip = {
-				tooltip = sp_naval_depth_charges_1_output_tt
-				set_technology = {
-					improved_depth_charges = 1
-					popup = no
-				}
-			}
+		enable_equipment_modules = {
+			ship_depth_charge_2
 		}
 	}
 
@@ -169,12 +134,6 @@ sp_naval_depth_charges_2 = {
 		sp_naval_depth_charges_1
 	}
 
-	available = {
-		FROM = {
-			has_tech = improved_depth_charges
-		}
-	}
-
 	breakthrough_cost = {
 		specialization_naval = 2
 	}
@@ -190,18 +149,8 @@ sp_naval_depth_charges_2 = {
 	complexity = sp_complexity.medium
 
 	project_output = {
-		country_effects = {
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = advanced_depth_charges
-			}
-			custom_override_tooltip = {
-				tooltip = sp_naval_depth_charges_2_output_tt
-				set_technology = {
-					advanced_depth_charges = 1
-					popup = no
-				}
-			}
+		enable_equipment_modules = {
+			ship_depth_charge_3
 		}
 	}
 
@@ -225,12 +174,6 @@ sp_naval_depth_charges_3 = {
 		sp_naval_depth_charges_2
 	}
 
-	available = {
-		FROM = {
-			has_tech = advanced_depth_charges
-		}
-	}
-
 	breakthrough_cost = {
 		specialization_naval = 3
 	}
@@ -246,18 +189,9 @@ sp_naval_depth_charges_3 = {
 	complexity = sp_complexity.large
 
 	project_output = {
-		country_effects = {
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = modern_depth_charges
-			}
-			custom_override_tooltip = {
-				tooltip = sp_naval_depth_charges_3_output_tt
-				set_technology = {
-					modern_depth_charges = 1
-					popup = no
-				}
-			}
+		enable_equipment_modules = {
+			ship_depth_charge_4
+			ship_asw_battery_1
 		}
 	}
 

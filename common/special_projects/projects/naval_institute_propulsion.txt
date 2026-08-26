@@ -25,10 +25,6 @@ sp_naval_propulsion_engineering_1 = {
 
 	project_output = {
 		country_effects = {
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = her_naval_propulsion_engineering_1
-			}
 			custom_override_tooltip = {
 				tooltip = sp_naval_propulsion_engineering_1_output_tt
 				set_technology = {
@@ -79,10 +75,6 @@ sp_naval_propulsion_engineering_2 = {
 
 	project_output = {
 		country_effects = {
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = her_naval_propulsion_engineering_2
-			}
 			custom_override_tooltip = {
 				tooltip = sp_naval_propulsion_engineering_2_output_tt
 				set_technology = {

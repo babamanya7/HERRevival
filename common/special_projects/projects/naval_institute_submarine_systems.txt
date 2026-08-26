@@ -1,0 +1,121 @@
+# HER Naval Institute Rework
+# Submarine stealth and underwater endurance systems.
+
+sp_naval_submarine_snorkel_1 = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_submarine }
+
+	available = {
+		FROM = {
+			has_tech = improved_ship_hull_submarine
+		}
+	}
+
+	breakthrough_cost = { specialization_naval = 1 }
+	resource_cost = {
+		resources = { steel = 30 aluminium = 20 }
+	}
+	prototype_time = sp_time.prototype.short
+	complexity = sp_complexity.small
+
+	project_output = {
+		enable_equipment_modules = {
+			ship_sub_snorkel_1
+		}
+		country_effects = {
+			custom_effect_tooltip = sp_naval_submarine_snorkel_1_output_tt
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+	}
+}
+
+sp_naval_submarine_snorkel_2 = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_submarine }
+
+	special_project_parent = {
+		sp_naval_submarine_snorkel_1
+	}
+
+	available = {
+		FROM = {
+			has_tech = advanced_ship_hull_submarine
+		}
+	}
+
+	breakthrough_cost = { specialization_naval = 2 }
+	resource_cost = {
+		resources = { steel = 40 aluminium = 30 tungsten = 20 }
+	}
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.medium
+
+	project_output = {
+		enable_equipment_modules = {
+			ship_sub_snorkel_2
+		}
+		country_effects = {
+			custom_effect_tooltip = sp_naval_submarine_snorkel_2_output_tt
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_scientist_xp_3
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+		sp_naval_generic_reward_test_failure_2
+	}
+}
+
+sp_naval_anechoic_tile = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_submarine }
+
+	available = {
+		FROM = {
+			has_tech = advanced_ship_hull_submarine
+		}
+	}
+
+	breakthrough_cost = { specialization_naval = 2 }
+	resource_cost = {
+		resources = { steel = 20 rubber = 60 }
+	}
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.medium
+
+	project_output = {
+		enable_equipment_modules = {
+			anechoic_tile_1
+		}
+		country_effects = {
+			custom_effect_tooltip = sp_naval_anechoic_tile_output_tt
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_scientist_xp_3
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+		sp_naval_generic_reward_test_failure_2
+	}
+}

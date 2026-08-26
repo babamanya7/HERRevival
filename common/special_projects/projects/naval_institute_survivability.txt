@@ -16,7 +16,7 @@ sp_naval_survivability_1 = {
 		}
 	}
 
-	breakthrough_cost = { specialization_naval = 2 }
+	breakthrough_cost = { specialization_naval = 1 }
 	resource_cost = {
 		resources = { steel = 80 chromium = 20 }
 	}
@@ -65,7 +65,7 @@ sp_naval_survivability_2 = {
 		}
 	}
 
-	breakthrough_cost = { specialization_naval = 3 }
+	breakthrough_cost = { specialization_naval = 1 }
 	resource_cost = {
 		resources = { steel = 120 chromium = 50 tungsten = 20 }
 	}
@@ -111,7 +111,7 @@ sp_naval_enhanced_torpedo_belt = {
 		}
 	}
 
-	breakthrough_cost = { specialization_naval = 2 }
+	breakthrough_cost = { specialization_naval = 1 }
 	resource_cost = {
 		resources = { steel = 100 chromium = 40 }
 	}

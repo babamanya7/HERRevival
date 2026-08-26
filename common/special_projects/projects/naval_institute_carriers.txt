@@ -1,0 +1,209 @@
+# HER Naval Institute Rework
+# Carrier aviation engineering and mutually exclusive flight-deck concepts.
+
+sp_naval_carrier_deck_operations = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_surface_ship }
+
+	available = {
+		FROM = {
+			has_tech = early_ship_hull_carrier
+		}
+	}
+
+	breakthrough_cost = {
+		specialization_naval = 2
+	}
+
+	resource_cost = {
+		resources = {
+			steel = 60
+			aluminium = 60
+		}
+	}
+
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.medium
+
+	project_output = {
+		country_effects = {
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_TECH
+				TECH = her_naval_carrier_operations_1
+			}
+			custom_override_tooltip = {
+				tooltip = sp_naval_carrier_deck_operations_output_tt
+				set_technology = {
+					her_naval_carrier_operations_1 = 1
+					popup = no
+				}
+			}
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+	}
+}
+
+sp_naval_carrier_flight_deck_systems = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_surface_ship }
+
+	special_project_parent = {
+		sp_naval_carrier_deck_operations
+	}
+
+	available = {
+		FROM = {
+			has_tech = interwar_ship_hull_carrier
+			has_tech = her_naval_carrier_operations_1
+		}
+	}
+
+	breakthrough_cost = {
+		specialization_naval = 3
+	}
+
+	resource_cost = {
+		resources = {
+			steel = 80
+			aluminium = 80
+			chromium = 20
+		}
+	}
+
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.large
+
+	project_output = {
+		country_effects = {
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_TECH
+				TECH = her_naval_carrier_operations_2
+			}
+			custom_override_tooltip = {
+				tooltip = sp_naval_carrier_flight_deck_systems_output_tt
+				set_technology = {
+					her_naval_carrier_operations_2 = 1
+					popup = no
+				}
+			}
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_scientist_xp_3
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_navy_xp_3
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+		sp_naval_generic_reward_test_failure_2
+	}
+}
+
+sp_naval_armored_flight_deck = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_surface_ship }
+
+	special_project_parent = {
+		sp_naval_carrier_flight_deck_systems
+	}
+
+	available = {
+		FROM = {
+			has_tech = her_naval_carrier_operations_2
+			NOT = { is_special_project_completed = sp:sp_naval_enlarged_air_group }
+		}
+	}
+
+	breakthrough_cost = {
+		specialization_naval = 3
+	}
+
+	resource_cost = {
+		resources = {
+			steel = 100
+			chromium = 60
+		}
+	}
+
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.large
+
+	project_output = {
+		enable_equipment_modules = {
+			ship_deck_space_armored
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_scientist_xp_3
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+		sp_naval_generic_reward_test_failure_2
+	}
+}
+
+sp_naval_enlarged_air_group = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_surface_ship }
+
+	special_project_parent = {
+		sp_naval_carrier_flight_deck_systems
+	}
+
+	available = {
+		FROM = {
+			has_tech = her_naval_carrier_operations_2
+			NOT = { is_special_project_completed = sp:sp_naval_armored_flight_deck }
+		}
+	}
+
+	breakthrough_cost = {
+		specialization_naval = 3
+	}
+
+	resource_cost = {
+		resources = {
+			steel = 80
+			aluminium = 100
+		}
+	}
+
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.large
+
+	project_output = {
+		enable_equipment_modules = {
+			ship_deck_space_more
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_scientist_xp_3
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+		sp_naval_generic_reward_test_failure_2
+	}
+}

@@ -1,0 +1,153 @@
+name: Temporary naval institute cleanup
+
+on:
+  push:
+    branches: [ naval-institute-rework ]
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    if: github.event.head_commit.message == 'Install naval institute cleanup workflow'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: naval-institute-rework
+          fetch-depth: 0
+      - name: Rewrite naval technology links
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('common/technologies/MTG_naval.txt')
+          text = path.read_text(encoding='utf-8')
+
+          def span_of(name):
+              m = re.search(r'(?m)^\t' + re.escape(name) + r'\s*=\s*\{', text)
+              if not m:
+                  raise RuntimeError(f'missing tech block: {name}')
+              start = m.start()
+              depth = 0
+              started = False
+              pos = m.start()
+              for line in text[m.start():].splitlines(keepends=True):
+                  code = line.split('#', 1)[0]
+                  for ch in code:
+                      if ch == '{':
+                          depth += 1; started = True
+                      elif ch == '}':
+                          depth -= 1
+                  pos += len(line)
+                  if started and depth == 0:
+                      return start, pos
+              raise RuntimeError(f'unclosed tech block: {name}')
+
+          def block(name):
+              a,b = span_of(name)
+              return text[a:b]
+
+          def replace(name, new):
+              global text
+              a,b = span_of(name)
+              text = text[:a] + new.rstrip() + '\n' + text[b:]
+
+          def mutate(name, fn):
+              replace(name, fn(block(name)))
+
+          def drop_path(src, target):
+              def f(s):
+                  pat = re.compile(r'\n\t\tpath\s*=\s*\{\s*\n\t\t\tleads_to_tech\s*=\s*' + re.escape(target) + r'\s*\n\t\t\tresearch_cost_coeff\s*=\s*1\s*\n\t\t\}', re.M)
+                  s2,n = pat.subn('', s)
+                  if n != 1:
+                      raise RuntimeError(f'{src}: expected one path to {target}, got {n}')
+                  return s2
+              mutate(src, f)
+
+          # Remove ordinary-tree arrows into institute-only ASW technologies.
+          drop_path('interwar_ship_hull_light', 'improved_depth_charges')
+          drop_path('improved_ship_hull_light', 'advanced_depth_charges')
+          drop_path('improved_ship_hull_light', 'improved_sonar')
+          drop_path('advanced_ship_hull_light', 'advanced_sonar')
+          drop_path('advanced_ship_hull_light', 'modern_depth_charges')
+
+          # Preserve the post-war ASW branch without exposing the moved techs.
+          def add_sound_path(s):
+              marker = '\n\t\tpath = {\n\t\t\tleads_to_tech = destroyer_missile_upgrade'
+              i = s.find(marker)
+              if i < 0:
+                  raise RuntimeError('advanced_ship_hull_light insertion point missing')
+              addition = '\n\t\tpath = {\n\t\t\tleads_to_tech = sound_surveillance_system\n\t\t\tresearch_cost_coeff = 1\n\t\t}\n'
+              return s[:i] + addition + s[i:]
+          mutate('advanced_ship_hull_light', add_sound_path)
+
+          # Module-only ASW techs become hidden compatibility IDs.
+          for name, year in [
+              ('improved_depth_charges',1936),
+              ('advanced_depth_charges',1940),
+              ('modern_depth_charges',1944),
+              ('improved_sonar',1940),
+              ('advanced_sonar',1944),
+          ]:
+              replace(name, f'\t{name} = {{\n\t\tresearch_cost = 1\n\t\tstart_year = {year}\n\t\tallow = {{ always = no }}\n\t}}')
+
+          def project_gate(name, project, old_dependency=None):
+              def f(s):
+                  if old_dependency:
+                      pat = re.compile(r'\n\t\tdependencies\s*=\s*\{\s*\n\t\t\t' + re.escape(old_dependency) + r'\s*=\s*1\s*\n\t\t\}', re.M)
+                      s,n = pat.subn('', s)
+                      if n != 1:
+                          raise RuntimeError(f'{name}: dependency {old_dependency} not found exactly once')
+                  insert = f'\n\t\tallow = {{\n\t\t\tROOT = {{\n\t\t\t\tis_special_project_completed = sp:{project}\n\t\t\t}}\n\t\t}}\n'
+                  p = s.find('\n\t\tfolder = {')
+                  if p < 0:
+                      raise RuntimeError(f'{name}: folder insertion point missing')
+                  return s[:p] + insert + s[p:]
+              mutate(name, f)
+
+          project_gate('rocket_depth_charges', 'sp_naval_depth_charges_3', 'modern_depth_charges')
+          project_gate('modern_sonar', 'sp_naval_sonar_2', 'advanced_sonar')
+          project_gate('sound_surveillance_system', 'sp_naval_sonar_2')
+
+          # Carrier deck concepts must be institute-exclusive.
+          def drop_module(name, module):
+              def f(s):
+                  s2,n = re.subn(r'(?m)^\t\t\t' + re.escape(module) + r'\s*\n', '', s)
+                  if n != 1:
+                      raise RuntimeError(f'{name}: expected one {module}, got {n}')
+                  return s2
+              mutate(name, f)
+          drop_module('early_carrier_study', 'ship_deck_space_more')
+          drop_module('early_ship_hull_carrier', 'ship_deck_space_armored')
+
+          # Assertions against accidental half-cleanup.
+          for src,target in [
+              ('interwar_ship_hull_light','improved_depth_charges'),
+              ('improved_ship_hull_light','advanced_depth_charges'),
+              ('improved_ship_hull_light','improved_sonar'),
+              ('advanced_ship_hull_light','advanced_sonar'),
+              ('advanced_ship_hull_light','modern_depth_charges'),
+          ]:
+              if re.search(r'leads_to_tech\s*=\s*' + re.escape(target), block(src)):
+                  raise RuntimeError(f'stale path remains: {src} -> {target}')
+          for name in ['improved_depth_charges','advanced_depth_charges','modern_depth_charges','improved_sonar','advanced_sonar']:
+              if 'folder =' in block(name):
+                  raise RuntimeError(f'{name} is still visible')
+          if 'ship_deck_space_more' in block('early_carrier_study'):
+              raise RuntimeError('ship_deck_space_more still leaks from ordinary carrier tech')
+          if 'ship_deck_space_armored' in block('early_ship_hull_carrier'):
+              raise RuntimeError('ship_deck_space_armored still leaks from ordinary carrier tech')
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+          git diff --check
+          git diff -- common/technologies/MTG_naval.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add common/technologies/MTG_naval.txt
+          git commit -m "Clean naval ASW and carrier tech tree [naval-cleanup-generated]"
+          git push origin HEAD:naval-institute-rework

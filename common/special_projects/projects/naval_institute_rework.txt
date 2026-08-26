@@ -1,0 +1,237 @@
+# HER Naval Institute Rework
+# First pass: naval ammunition development projects.
+# Existing technologies remain researchable for now; they will be removed from the normal tree
+# after the project chain is validated in-game.
+
+sp_naval_light_medium_shells_1 = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_surface_ship }
+
+	available = {
+		FROM = {
+			OR = {
+				has_tech = basic_light_battery
+				has_tech = basic_medium_battery
+			}
+		}
+	}
+
+	breakthrough_cost = {
+		specialization_naval = 1
+	}
+
+	resource_cost = {
+		resources = {
+			steel = 40
+			tungsten = 20
+		}
+	}
+
+	prototype_time = sp_time.prototype.short
+	complexity = sp_complexity.small
+
+	project_output = {
+		country_effects = {
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_TECH
+				TECH = basic_light_shell
+			}
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_TECH
+				TECH = basic_medium_shell
+			}
+			custom_override_tooltip = {
+				tooltip = sp_naval_light_medium_shells_1_output_tt
+				set_technology = {
+					basic_light_shell = 1
+					basic_medium_shell = 1
+					popup = no
+				}
+			}
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+	}
+}
+
+sp_naval_light_medium_shells_2 = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_surface_ship }
+
+	special_project_parent = {
+		sp_naval_light_medium_shells_1
+	}
+
+	available = {
+		FROM = {
+			OR = {
+				has_tech = improved_light_battery
+				has_tech = improved_medium_battery
+			}
+		}
+	}
+
+	breakthrough_cost = {
+		specialization_naval = 2
+	}
+
+	resource_cost = {
+		resources = {
+			steel = 60
+			tungsten = 40
+		}
+	}
+
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.medium
+
+	project_output = {
+		country_effects = {
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_TECH
+				TECH = improved_light_shell
+			}
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_TECH
+				TECH = improved_medium_shell
+			}
+			custom_override_tooltip = {
+				tooltip = sp_naval_light_medium_shells_2_output_tt
+				set_technology = {
+					improved_light_shell = 1
+					improved_medium_shell = 1
+					popup = no
+				}
+			}
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_scientist_xp_3
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+		sp_naval_generic_reward_test_failure_2
+	}
+}
+
+sp_naval_heavy_shells_1 = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_surface_ship }
+
+	available = {
+		FROM = {
+			has_tech = basic_heavy_battery
+		}
+	}
+
+	breakthrough_cost = {
+		specialization_naval = 1
+	}
+
+	resource_cost = {
+		resources = {
+			steel = 60
+			tungsten = 40
+		}
+	}
+
+	prototype_time = sp_time.prototype.short
+	complexity = sp_complexity.small
+
+	project_output = {
+		country_effects = {
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_TECH
+				TECH = basic_heavy_shell
+			}
+			custom_override_tooltip = {
+				tooltip = sp_naval_heavy_shells_1_output_tt
+				set_technology = {
+					basic_heavy_shell = 1
+					popup = no
+				}
+			}
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+	}
+}
+
+sp_naval_heavy_shells_2 = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_surface_ship }
+
+	special_project_parent = {
+		sp_naval_heavy_shells_1
+	}
+
+	available = {
+		FROM = {
+			has_tech = improved_heavy_battery
+		}
+	}
+
+	breakthrough_cost = {
+		specialization_naval = 2
+	}
+
+	resource_cost = {
+		resources = {
+			steel = 80
+			tungsten = 60
+			chromium = 20
+		}
+	}
+
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.medium
+
+	project_output = {
+		country_effects = {
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_TECH
+				TECH = improved_heavy_shell
+			}
+			custom_override_tooltip = {
+				tooltip = sp_naval_heavy_shells_2_output_tt
+				set_technology = {
+					improved_heavy_shell = 1
+					popup = no
+				}
+			}
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_scientist_xp_3
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+		sp_naval_generic_reward_test_failure_2
+	}
+}

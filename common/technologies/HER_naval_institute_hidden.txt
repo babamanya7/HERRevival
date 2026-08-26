@@ -1,5 +1,71 @@
 technologies = {
 
+	her_naval_light_medium_shells_1 = {
+		research_cost = 1
+		start_year = 1936
+		allow = { always = no }
+
+		destroyer = { lg_attack = 0.05 lg_armor_piercing = 0.05 }
+		light_cruiser = { lg_attack = 0.10 lg_armor_piercing = 0.10 }
+		medium_cruiser = { lg_attack = 0.05 lg_armor_piercing = 0.05 hg_attack = 0.05 hg_armor_piercing = 0.05 }
+		heavy_cruiser = { lg_attack = 0.05 lg_armor_piercing = 0.05 hg_attack = 0.05 hg_armor_piercing = 0.05 }
+		battleship = { lg_attack = 0.05 lg_armor_piercing = 0.05 }
+		battle_cruiser = { lg_attack = 0.05 lg_armor_piercing = 0.05 }
+		carrier = { lg_attack = 0.05 lg_armor_piercing = 0.05 }
+		SH_battleship = { lg_attack = 0.05 lg_armor_piercing = 0.05 }
+		battlecarrier = { lg_attack = 0.05 lg_armor_piercing = 0.05 }
+
+		special_project_specialization = { specialization_naval }
+		categories = { naval_equipment }
+	}
+
+	her_naval_light_medium_shells_2 = {
+		research_cost = 1
+		start_year = 1942
+		allow = { always = no }
+
+		destroyer = { lg_attack = 0.05 lg_armor_piercing = 0.05 }
+		light_cruiser = { lg_attack = 0.10 lg_armor_piercing = 0.10 }
+		medium_cruiser = { lg_attack = 0.05 lg_armor_piercing = 0.05 hg_attack = 0.05 hg_armor_piercing = 0.05 }
+		heavy_cruiser = { lg_attack = 0.05 lg_armor_piercing = 0.05 hg_attack = 0.05 hg_armor_piercing = 0.05 }
+		battleship = { lg_attack = 0.05 lg_armor_piercing = 0.05 }
+		battle_cruiser = { lg_attack = 0.05 lg_armor_piercing = 0.05 }
+		carrier = { lg_attack = 0.05 lg_armor_piercing = 0.05 }
+		SH_battleship = { lg_attack = 0.05 lg_armor_piercing = 0.05 }
+		battlecarrier = { lg_attack = 0.05 lg_armor_piercing = 0.05 }
+
+		special_project_specialization = { specialization_naval }
+		categories = { naval_equipment }
+	}
+
+	her_naval_heavy_shells_1 = {
+		research_cost = 1
+		start_year = 1936
+		allow = { always = no }
+
+		battleship = { hg_attack = 0.05 hg_armor_piercing = 0.05 }
+		battle_cruiser = { hg_attack = 0.05 hg_armor_piercing = 0.05 }
+		SH_battleship = { hg_attack = 0.05 hg_armor_piercing = 0.05 }
+		battlecarrier = { hg_attack = 0.05 hg_armor_piercing = 0.05 }
+
+		special_project_specialization = { specialization_naval }
+		categories = { naval_equipment }
+	}
+
+	her_naval_heavy_shells_2 = {
+		research_cost = 1
+		start_year = 1942
+		allow = { always = no }
+
+		battleship = { hg_attack = 0.05 hg_armor_piercing = 0.05 }
+		battle_cruiser = { hg_attack = 0.05 hg_armor_piercing = 0.05 }
+		SH_battleship = { hg_attack = 0.05 hg_armor_piercing = 0.05 }
+		battlecarrier = { hg_attack = 0.05 hg_armor_piercing = 0.05 }
+
+		special_project_specialization = { specialization_naval }
+		categories = { naval_equipment }
+	}
+
 	her_naval_propulsion_engineering_1 = {
 		research_cost = 1
 		start_year = 1938

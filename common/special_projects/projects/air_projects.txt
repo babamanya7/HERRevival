@@ -692,7 +692,7 @@ sp_air_engine_upgrades = {
 
 	available = {
 		FROM = {
-			has_tech = engine_tuning_5
+			has_tech = engine_tuning_4
 		}
 	}
 	
@@ -747,8 +747,8 @@ sp_air_engine_upgrades_2 = {
 	available = {
 		FROM = {
 			OR = {
-				has_tech = engines_7
-				has_tech = radial_engines_7
+				has_tech = engines_6
+				has_tech = radial_engines_6
 			}
 			is_special_project_completed = sp:sp_air_engine_upgrades
 		}
@@ -768,7 +768,7 @@ sp_air_engine_upgrades_2 = {
 
 	prototype_time = sp_time.prototype.medium
 
-	complexity = sp_complexity.medium
+	complexity = sp_complexity.large
 
 	project_output = {
 		enable_equipment_modules = {
@@ -1033,7 +1033,7 @@ sp_air_jet_engines_imrovements_supersonic_air_intake = {
 	}
 	
 	breakthrough_cost = {
-		specialization_air = 2
+		specialization_air = 3
 	}
 
 	resource_cost = {
@@ -1091,7 +1091,7 @@ sp_air_jet_engines_imrovements_swept_wings = {
 	}
 	
 	breakthrough_cost = {
-		specialization_air = 2
+		specialization_air = 3
 	}
 
 	resource_cost = {
@@ -1206,7 +1206,7 @@ sp_air_jet_engines_imrovements_afterburner = {
 	}
 	
 	breakthrough_cost = {
-		specialization_air = 3
+		specialization_air = 4
 	}
 
 	resource_cost = {

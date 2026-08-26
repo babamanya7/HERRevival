@@ -2485,7 +2485,7 @@ equipment_modules = {
 		sfx = sfx_ui_sd_module_turret
 		
 		add_stats = {
-			build_cost_ic = 4
+			build_cost_ic = 6
 		}
 		multiply_stats = {
 			thrust = 0.12
@@ -2496,7 +2496,7 @@ equipment_modules = {
 			chromium = 10
 		}		
 		xp_cost = 8
-		dismantle_cost_ic = 4
+		dismantle_cost_ic = 6
 	}
 	
 	supersonic_air_intake = {
@@ -2505,7 +2505,7 @@ equipment_modules = {
 		sfx = sfx_ui_sd_module_turret
 		
 		add_stats = {
-			build_cost_ic = 1
+			build_cost_ic = 3
 		}
 		multiply_stats = {	
 			maximum_speed = 0.04
@@ -2513,7 +2513,7 @@ equipment_modules = {
 			reliability = 0.05
 		}		
 		xp_cost = 8
-		dismantle_cost_ic = 4
+		dismantle_cost_ic = 3
 	}
 	
 	swept_wings = {
@@ -2522,14 +2522,14 @@ equipment_modules = {
 		sfx = sfx_ui_sd_module_turret
 		
 		add_stats = {
-			build_cost_ic = 1
+			build_cost_ic = 3
 		}
 		multiply_stats = {	
 			maximum_speed = 0.03
 			air_agility = 0.15
 		}		
 		xp_cost = 8
-		dismantle_cost_ic = 4
+		dismantle_cost_ic = 3
 	}
 	
 	improved_compressor = { 
@@ -2538,14 +2538,14 @@ equipment_modules = {
 		sfx = sfx_ui_sd_module_turret
 				
 		add_stats = {
-			build_cost_ic = 3
+			build_cost_ic = 4
 		}
 		multiply_stats = {
 			maximum_speed = 0.06
 			fuel_consumption = 0.2
 			thrust = 0.06			
 		}
-		dismantle_cost_ic = 1
+		dismantle_cost_ic = 4
 		xp_cost = 4
 	}
 

@@ -27,10 +27,6 @@ sp_naval_carrier_deck_operations = {
 
 	project_output = {
 		country_effects = {
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = her_naval_carrier_operations_1
-			}
 			custom_override_tooltip = {
 				tooltip = sp_naval_carrier_deck_operations_output_tt
 				set_technology = {
@@ -84,10 +80,6 @@ sp_naval_carrier_flight_deck_systems = {
 
 	project_output = {
 		country_effects = {
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = her_naval_carrier_operations_2
-			}
 			custom_override_tooltip = {
 				tooltip = sp_naval_carrier_flight_deck_systems_output_tt
 				set_technology = {

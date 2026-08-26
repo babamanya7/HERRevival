@@ -8,7 +8,6 @@ sp_naval_electric_torpedo = {
 	available = {
 		FROM = {
 			has_tech = magnetic_detonator
-			NOT = { has_tech = oxygen_torpedo }
 			NOT = { is_special_project_completed = sp:sp_naval_oxygen_torpedo }
 		}
 	}
@@ -30,14 +29,10 @@ sp_naval_electric_torpedo = {
 
 	project_output = {
 		country_effects = {
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = electric_torpedo
-			}
 			custom_override_tooltip = {
 				tooltip = sp_naval_electric_torpedo_output_tt
 				set_technology = {
-					electric_torpedo = 1
+					her_naval_electric_torpedo = 1
 					popup = no
 				}
 			}
@@ -63,7 +58,6 @@ sp_naval_oxygen_torpedo = {
 	available = {
 		FROM = {
 			has_tech = magnetic_detonator
-			NOT = { has_tech = electric_torpedo }
 			NOT = { is_special_project_completed = sp:sp_naval_electric_torpedo }
 		}
 	}
@@ -85,14 +79,10 @@ sp_naval_oxygen_torpedo = {
 
 	project_output = {
 		country_effects = {
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = oxygen_torpedo
-			}
 			custom_override_tooltip = {
 				tooltip = sp_naval_oxygen_torpedo_output_tt
 				set_technology = {
-					oxygen_torpedo = 1
+					her_naval_oxygen_torpedo = 1
 					popup = no
 				}
 			}
@@ -118,8 +108,8 @@ sp_naval_homing_torpedo = {
 	available = {
 		FROM = {
 			OR = {
-				has_tech = electric_torpedo
-				has_tech = oxygen_torpedo
+				is_special_project_completed = sp:sp_naval_electric_torpedo
+				is_special_project_completed = sp:sp_naval_oxygen_torpedo
 			}
 		}
 	}
@@ -141,14 +131,10 @@ sp_naval_homing_torpedo = {
 
 	project_output = {
 		country_effects = {
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = homing_torpedo
-			}
 			custom_override_tooltip = {
 				tooltip = sp_naval_homing_torpedo_output_tt
 				set_technology = {
-					homing_torpedo = 1
+					her_naval_homing_torpedo = 1
 					popup = no
 				}
 			}

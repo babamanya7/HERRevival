@@ -1,50 +1,5 @@
 technologies = {
 
-	her_naval_ship_radar_2 = {
-		research_cost = 1
-		start_year = 1938
-		allow = { always = no }
-		enable_equipment_modules = {
-			ship_radar_2
-		}
-		special_project_specialization = { specialization_naval }
-		categories = {
-			naval_equipment
-			ship_modules_tech
-			radar_tech
-		}
-	}
-
-	her_naval_ship_radar_3 = {
-		research_cost = 1
-		start_year = 1941
-		allow = { always = no }
-		enable_equipment_modules = {
-			ship_radar_3
-		}
-		special_project_specialization = { specialization_naval }
-		categories = {
-			naval_equipment
-			ship_modules_tech
-			radar_tech
-		}
-	}
-
-	her_naval_ship_radar_4 = {
-		research_cost = 1
-		start_year = 1942
-		allow = { always = no }
-		enable_equipment_modules = {
-			ship_radar_4
-		}
-		special_project_specialization = { specialization_naval }
-		categories = {
-			naval_equipment
-			ship_modules_tech
-			radar_tech
-		}
-	}
-
 	her_naval_propulsion_engineering_1 = {
 		research_cost = 1
 		start_year = 1938

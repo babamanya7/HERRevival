@@ -1,7 +1,6 @@
 # HER Naval Institute Rework
-# First pass: naval ammunition development projects.
-# Existing technologies remain researchable for now; they will be removed from the normal tree
-# after the project chain is validated in-game.
+# Naval ammunition development projects.
+# Stat effects are delivered through hidden HER technologies; module unlocks are granted directly.
 
 sp_naval_light_medium_shells_1 = {
 	specialization = specialization_naval
@@ -32,19 +31,10 @@ sp_naval_light_medium_shells_1 = {
 
 	project_output = {
 		country_effects = {
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = basic_light_shell
-			}
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = basic_medium_shell
-			}
 			custom_override_tooltip = {
 				tooltip = sp_naval_light_medium_shells_1_output_tt
 				set_technology = {
-					basic_light_shell = 1
-					basic_medium_shell = 1
+					her_naval_light_medium_shells_1 = 1
 					popup = no
 				}
 			}
@@ -95,19 +85,10 @@ sp_naval_light_medium_shells_2 = {
 
 	project_output = {
 		country_effects = {
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = improved_light_shell
-			}
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = improved_medium_shell
-			}
 			custom_override_tooltip = {
 				tooltip = sp_naval_light_medium_shells_2_output_tt
 				set_technology = {
-					improved_light_shell = 1
-					improved_medium_shell = 1
+					her_naval_light_medium_shells_2 = 1
 					popup = no
 				}
 			}
@@ -152,15 +133,14 @@ sp_naval_heavy_shells_1 = {
 	complexity = sp_complexity.small
 
 	project_output = {
+		enable_equipment_modules = {
+			ship_high_velocity_shell
+		}
 		country_effects = {
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = basic_heavy_shell
-			}
 			custom_override_tooltip = {
 				tooltip = sp_naval_heavy_shells_1_output_tt
 				set_technology = {
-					basic_heavy_shell = 1
+					her_naval_heavy_shells_1 = 1
 					popup = no
 				}
 			}
@@ -208,15 +188,14 @@ sp_naval_heavy_shells_2 = {
 	complexity = sp_complexity.medium
 
 	project_output = {
+		enable_equipment_modules = {
+			ship_super_heavy_weight_shell
+		}
 		country_effects = {
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = improved_heavy_shell
-			}
 			custom_override_tooltip = {
 				tooltip = sp_naval_heavy_shells_2_output_tt
 				set_technology = {
-					improved_heavy_shell = 1
+					her_naval_heavy_shells_2 = 1
 					popup = no
 				}
 			}

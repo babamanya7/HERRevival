@@ -16,7 +16,6 @@ sub_units = {
 		group = artillery_combat_support
 
 		categories = {
-			category_all_armor
 			category_army
 			category_self_propelled_artillery
 			category_all_art
@@ -25,17 +24,17 @@ sub_units = {
 		combat_width = 2
 
 		need = {
-			light_tank_artillery_chassis = 12
-			ammunition_equipment = 120
+			light_tank_artillery_chassis = 18
+			ammunition_equipment = 180
 		}
 		
 		essential = {
 			ammunition_equipment
 		}
 		###---### STATS ###---###
-		manpower = 300
+		manpower = 360
 		max_organisation = 10
-		max_strength = 10
+		max_strength = 12
 		default_morale = 0
 		weight = 1
 		supply_consumption = 0.42
@@ -103,7 +102,6 @@ sub_units = {
 		group = artillery_combat_support
 
 		categories = {
-			category_all_armor
 			category_army
 			category_self_propelled_artillery
 			category_all_art
@@ -111,8 +109,8 @@ sub_units = {
 		combat_width = 2
 
 		need = {
-			medium_tank_artillery_chassis = 12
-			ammunition_equipment = 120
+			medium_tank_artillery_chassis = 18
+			ammunition_equipment = 180
 		}
 		
 		essential = {
@@ -120,9 +118,9 @@ sub_units = {
 		}
 		
 		###---### STATS ###---###
-		manpower = 300
+		manpower = 360
 		max_organisation = 10
-		max_strength = 10
+		max_strength = 12
 		default_morale = 0
 		weight = 1.25
 		supply_consumption = 0.55
@@ -191,7 +189,6 @@ sub_units = {
 		group = artillery_combat_support
 		
 		categories = {
-			category_all_armor
 			category_army
 			category_self_propelled_artillery
 			category_all_art
@@ -200,8 +197,8 @@ sub_units = {
 		combat_width = 2
 
 		need = {
-			heavy_tank_artillery_chassis = 12
-			ammunition_equipment = 120
+			heavy_tank_artillery_chassis = 18
+			ammunition_equipment = 180
 		}
 		
 		essential = {
@@ -209,9 +206,9 @@ sub_units = {
 		}
 		
 		###---### STATS ###---###
-		manpower = 300
+		manpower = 360
 		max_organisation = 10
-		max_strength = 10
+		max_strength = 12
 		default_morale = 0
 		weight = 1.5
 		supply_consumption = 0.72
@@ -279,7 +276,6 @@ sub_units = {
 		group = artillery_combat_support
 		
 		categories = {
-			category_all_armor
 			category_army
 			category_self_propelled_artillery
 			category_all_art
@@ -288,8 +284,8 @@ sub_units = {
 		combat_width = 2
 
 		need = {
-			modern_tank_artillery_chassis = 12
-			ammunition_equipment = 120
+			modern_tank_artillery_chassis = 18
+			ammunition_equipment = 180
 		}
 		
 		essential = {
@@ -297,9 +293,9 @@ sub_units = {
 		}
 		
 		###---### STATS ###---###
-		manpower = 250
+		manpower = 360
 		max_organisation = 20
-		max_strength = 8
+		max_strength = 12
 		default_morale = 0
 		weight = 1.5
 		supply_consumption = 0.58
@@ -368,7 +364,6 @@ sub_units = {
 		group = support
 
 		categories = {
-			category_all_armor
 			category_army
 			category_self_propelled_artillery
 			category_support_battalions
@@ -380,22 +375,22 @@ sub_units = {
 		allowed_battalion_groups = { artillery_combat_support }
 
 		need = {
-			light_tank_artillery_chassis = 4
-			ammunition_equipment = 40
+			light_tank_artillery_chassis = 6
+			ammunition_equipment = 60
 		}
 		
 		essential = {
 			ammunition_equipment
 		}
 		###---### STATS ###---###
-		manpower = 100
+		manpower = 120
 		max_organisation = 10
-		max_strength = 3
+		max_strength = 4
 		default_morale = 0
 		weight = 0.25
 		supply_consumption = 0.14
 		training_time = 180
-		armor_value = -0.66
+		armor_value = -0.92
 		soft_attack = -0.66
 		hard_attack = -0.66
 		defense = -0.66
@@ -424,7 +419,6 @@ sub_units = {
 		group = support
 
 		categories = {
-			category_all_armor
 			category_army
 			category_self_propelled_artillery
 			category_support_battalions
@@ -436,8 +430,8 @@ sub_units = {
 		allowed_battalion_groups = { artillery_combat_support }
 
 		need = {
-			medium_tank_artillery_chassis = 4
-			ammunition_equipment = 40
+			medium_tank_artillery_chassis = 6
+			ammunition_equipment = 60
 		}
 		
 		essential = {
@@ -445,14 +439,14 @@ sub_units = {
 		}
 		
 		###---### STATS ###---###
-		manpower = 100
+		manpower = 120
 		max_organisation = 10
-		max_strength = 3
+		max_strength = 4
 		default_morale = 0
 		weight = 0.3
 		supply_consumption = 0.18
 		training_time = 180
-		armor_value = -0.66
+		armor_value = -0.92
 		soft_attack = -0.66
 		hard_attack = -0.66
 		defense = -0.66
@@ -482,7 +476,6 @@ sub_units = {
 		group = support
 		
 		categories = {
-			category_all_armor
 			category_army
 			category_self_propelled_artillery
 			category_support_battalions
@@ -494,8 +487,8 @@ sub_units = {
 		allowed_battalion_groups = { artillery_combat_support }
 
 		need = {
-			heavy_tank_artillery_chassis = 4
-			ammunition_equipment = 40
+			heavy_tank_artillery_chassis = 6
+			ammunition_equipment = 60
 		}
 		
 		essential = {
@@ -503,14 +496,14 @@ sub_units = {
 		}
 		
 		###---### STATS ###---###
-		manpower = 100
+		manpower = 120
 		max_organisation = 10
-		max_strength = 3
+		max_strength = 4
 		default_morale = 0
 		weight = 0.35
 		supply_consumption = 0.24
 		training_time = 180
-		armor_value = -0.66
+		armor_value = -0.92
 		soft_attack = -0.66
 		hard_attack = -0.66
 		defense = -0.66

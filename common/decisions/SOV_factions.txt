@@ -537,7 +537,6 @@ SOV_internal_factions = {
 			has_country_flag = SOV_guards_modifying_rifle_corps
 			NOT = { has_country_flag = SOV_guards_rifle_light_spg_added }
 		}
-		available = { has_tech = basic_light_art }
 		cost = 0
 		fire_only_once = yes
 		complete_effect = {
@@ -557,7 +556,6 @@ SOV_internal_factions = {
 			has_country_flag = SOV_guards_modifying_cavalry_corps
 			NOT = { has_country_flag = SOV_guards_cavalry_light_spg_added }
 		}
-		available = { has_tech = basic_light_art }
 		cost = 0
 		fire_only_once = yes
 		complete_effect = {
@@ -577,7 +575,6 @@ SOV_internal_factions = {
 			has_country_flag = SOV_guards_modifying_cavalry_corps
 			NOT = { has_country_flag = SOV_guards_cavalry_medium_spg_added }
 		}
-		available = { has_tech = basic_medium_art }
 		cost = 0
 		fire_only_once = yes
 		complete_effect = {
@@ -597,7 +594,6 @@ SOV_internal_factions = {
 			has_country_flag = SOV_guards_modifying_mechanized_corps
 			NOT = { has_country_flag = SOV_guards_mechanized_light_spg_added }
 		}
-		available = { has_tech = basic_light_art }
 		cost = 0
 		fire_only_once = yes
 		complete_effect = {
@@ -617,7 +613,6 @@ SOV_internal_factions = {
 			has_country_flag = SOV_guards_modifying_mechanized_corps
 			NOT = { has_country_flag = SOV_guards_mechanized_medium_spg_added }
 		}
-		available = { has_tech = basic_medium_art }
 		cost = 0
 		fire_only_once = yes
 		complete_effect = {
@@ -637,7 +632,6 @@ SOV_internal_factions = {
 			has_country_flag = SOV_guards_modifying_mechanized_corps
 			NOT = { has_country_flag = SOV_guards_mechanized_heavy_spg_added }
 		}
-		available = { has_tech = basic_heavy_art }
 		cost = 0
 		fire_only_once = yes
 		complete_effect = {
@@ -657,7 +651,6 @@ SOV_internal_factions = {
 			has_country_flag = SOV_guards_modifying_mechanized_corps
 			NOT = { has_country_flag = SOV_guards_mechanized_light_td_added }
 		}
-		available = { has_tech = basic_light_td }
 		cost = 0
 		fire_only_once = yes
 		complete_effect = {
@@ -677,7 +670,6 @@ SOV_internal_factions = {
 			has_country_flag = SOV_guards_modifying_mechanized_corps
 			NOT = { has_country_flag = SOV_guards_mechanized_medium_td_added }
 		}
-		available = { has_tech = basic_medium_td }
 		cost = 0
 		fire_only_once = yes
 		complete_effect = {
@@ -697,7 +689,6 @@ SOV_internal_factions = {
 			has_country_flag = SOV_guards_modifying_mechanized_corps
 			NOT = { has_country_flag = SOV_guards_mechanized_heavy_td_added }
 		}
-		available = { has_tech = basic_heavy_td }
 		cost = 0
 		fire_only_once = yes
 		complete_effect = {
@@ -717,7 +708,6 @@ SOV_internal_factions = {
 			has_country_flag = SOV_guards_modifying_tank_corps
 			NOT = { has_country_flag = SOV_guards_tank_light_spg_added }
 		}
-		available = { has_tech = basic_light_art }
 		cost = 0
 		fire_only_once = yes
 		complete_effect = {
@@ -737,7 +727,6 @@ SOV_internal_factions = {
 			has_country_flag = SOV_guards_modifying_tank_corps
 			NOT = { has_country_flag = SOV_guards_tank_medium_spg_added }
 		}
-		available = { has_tech = basic_medium_art }
 		cost = 0
 		fire_only_once = yes
 		complete_effect = {
@@ -757,7 +746,6 @@ SOV_internal_factions = {
 			has_country_flag = SOV_guards_modifying_tank_corps
 			NOT = { has_country_flag = SOV_guards_tank_heavy_spg_added }
 		}
-		available = { has_tech = basic_heavy_art }
 		cost = 0
 		fire_only_once = yes
 		complete_effect = {
@@ -777,7 +765,6 @@ SOV_internal_factions = {
 			has_country_flag = SOV_guards_modifying_tank_corps
 			NOT = { has_country_flag = SOV_guards_tank_light_td_added }
 		}
-		available = { has_tech = basic_light_td }
 		cost = 0
 		fire_only_once = yes
 		complete_effect = {
@@ -797,7 +784,6 @@ SOV_internal_factions = {
 			has_country_flag = SOV_guards_modifying_tank_corps
 			NOT = { has_country_flag = SOV_guards_tank_medium_td_added }
 		}
-		available = { has_tech = basic_medium_td }
 		cost = 0
 		fire_only_once = yes
 		complete_effect = {
@@ -817,7 +803,6 @@ SOV_internal_factions = {
 			has_country_flag = SOV_guards_modifying_tank_corps
 			NOT = { has_country_flag = SOV_guards_tank_heavy_td_added }
 		}
-		available = { has_tech = basic_heavy_td }
 		cost = 0
 		fire_only_once = yes
 		complete_effect = {

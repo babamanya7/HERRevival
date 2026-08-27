@@ -438,6 +438,9 @@ create_operative_leader = {
 			fuel_tank_type_slot = fuel_tanks_medium
 			role_type_slot = role_medium_bomber
 		}
+		upgrades={
+			air_bba_engine_upgrade = 3
+		}
 		obsolete = yes
 		icon = "GFX_USA_naval_bomber1_medium"
 	}

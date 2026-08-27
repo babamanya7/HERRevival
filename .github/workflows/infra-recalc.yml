@@ -1,0 +1,45 @@
+name: Soviet infrastructure recalculation
+
+on:
+  push:
+    branches:
+      - soviet-map-redraw-clean
+    paths:
+      - .github/workflows/infra-recalc.yml
+
+permissions:
+  contents: write
+
+jobs:
+  recalc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: soviet-map-redraw-clean
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install --disable-pip-version-check numpy pillow requests opencv-python-headless
+
+      - name: Recalculate Soviet infrastructure
+        run: python .github/infra_recalc.py
+
+      - name: Commit calculated infrastructure
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add history/states soviet-infra-report.csv
+          if git diff --cached --quiet; then
+            echo "No infrastructure changes to commit"
+            exit 0
+          fi
+          git commit -m "Recalculate Soviet infrastructure from road network [skip ci]"
+          git push origin HEAD:soviet-map-redraw-clean

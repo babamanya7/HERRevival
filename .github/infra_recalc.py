@@ -1,4 +1,5 @@
 import csv, math, re, time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 import cv2
@@ -12,21 +13,15 @@ PROVINCES_BMP = ROOT / 'map' / 'provinces.bmp'
 DEFINITION = ROOT / 'map' / 'definition.csv'
 REPORT = ROOT / 'soviet-infra-report.csv'
 
-# User-approved model:
-# S = 1.0*A + 0.7*H + 0.35*G + 0.1*D
-# Infra = floor(10*S/Smax)
 WEIGHTS = {'A': 1.0, 'H': 0.7, 'G': 0.35, 'D': 0.1}
-MAX_LON = 62.5
-MIN_LON = 18.0
-MIN_LAT = 38.0
-MAX_LAT = 72.5
-
+MIN_LON, MAX_LON = 18.0, 62.5
+MIN_LAT, MAX_LAT = 38.0, 72.5
+BATCH_SIZE = 12
+WORKERS = 3
 OVERPASS = [
     'https://overpass-api.de/api/interpreter',
     'https://overpass.kumi.systems/api/interpreter',
 ]
-
-# Province id -> (lon, lat). Used only to calibrate this branch's modified Miller projection.
 CONTROL = {
     3151: (30.3351, 59.9343), 6380: (37.6173, 55.7558),
     3529: (44.5133, 48.7080), 525: (30.5234, 50.4501),
@@ -38,17 +33,22 @@ CONTROL = {
     306: (32.0453, 54.7826), 9098: (28.3318, 57.8136),
     6474: (37.8028, 48.0159), 418: (36.2304, 49.9935),
 }
+ROAD_RE = {
+    'A': '^(motorway|motorway_link|trunk|trunk_link|primary|primary_link)$',
+    'H': '^(secondary|secondary_link|tertiary|tertiary_link)$',
+    'G': '^(unclassified|residential|living_street|service)$',
+    'D': '^track$',
+}
 
 
 def parse_definition(path):
-    rgb_by_pid = {}
-    max_pid = 0
+    rgb_by_pid, max_pid = {}, 0
     with path.open('r', encoding='latin-1', errors='ignore', newline='') as f:
         for row in csv.reader(f, delimiter=';'):
             if len(row) < 4:
                 continue
             try:
-                pid = int(row[0]); r = int(row[1]); g = int(row[2]); b = int(row[3])
+                pid, r, g, b = map(int, row[:4])
             except ValueError:
                 continue
             rgb_by_pid[pid] = (r, g, b)
@@ -59,7 +59,8 @@ def parse_definition(path):
 def parse_states():
     states = {}
     for path in STATE_DIR.glob('*.txt'):
-        text = path.read_text(encoding='utf-8-sig', errors='ignore')
+        raw = path.read_bytes()
+        text = raw.decode('utf-8-sig', errors='ignore')
         mid = re.search(r'(?m)^\s*id\s*=\s*(\d+)\s*$', text)
         mprov = re.search(r'\bprovinces\s*=\s*\{([^}]*)\}', text, re.S)
         mowner = re.search(r'\bowner\s*=\s*([A-Z0-9_]+)', text)
@@ -68,9 +69,8 @@ def parse_states():
             continue
         sid = int(mid.group(1))
         states[sid] = {
-            'id': sid,
-            'path': path,
-            'text': text,
+            'id': sid, 'path': path, 'text': text,
+            'bom': raw.startswith(b'\xef\xbb\xbf'),
             'pids': [int(x) for x in re.findall(r'\d+', mprov.group(1))],
             'owner': mowner.group(1) if mowner else '',
             'old_infra': int(minfra.group(1)) if minfra else None,
@@ -97,17 +97,15 @@ def projection_from_controls(prov):
         ys, xx = np.where(prov == pid)
         if len(xx) < 3:
             continue
-        xs.append(float(xx.mean()))
-        zs.append(float((h - 1) - ys.mean()))
-        lons.append(lon)
-        lats.append(lat)
+        xs.append(float(xx.mean())); zs.append(float((h - 1) - ys.mean()))
+        lons.append(lon); lats.append(lat)
     if len(xs) < 10:
-        raise RuntimeError(f'Only {len(xs)} projection controls found; need >=10')
-    lon_coef = np.polyfit(np.asarray(xs), np.asarray(lons), 1)
-    lat_coef = np.polyfit(np.asarray(zs), np.asarray(lats), 3)
-    lon_rmse = float(np.sqrt(np.mean((np.polyval(lon_coef, xs) - np.asarray(lons)) ** 2)))
-    lat_rmse = float(np.sqrt(np.mean((np.polyval(lat_coef, zs) - np.asarray(lats)) ** 2)))
-    print(f'Projection controls={len(xs)} lon_rmse={lon_rmse:.3f} lat_rmse={lat_rmse:.3f}')
+        raise RuntimeError(f'Only {len(xs)} projection controls found')
+    lon_coef = np.polyfit(xs, lons, 1)
+    lat_coef = np.polyfit(zs, lats, 3)
+    print('Projection controls=', len(xs),
+          'lon_rmse=', round(float(np.sqrt(np.mean((np.polyval(lon_coef, xs)-lons)**2))), 3),
+          'lat_rmse=', round(float(np.sqrt(np.mean((np.polyval(lat_coef, zs)-lats)**2))), 3), flush=True)
     return lon_coef, lat_coef
 
 
@@ -117,14 +115,11 @@ def xy_to_lonlat(x, y, height, lon_coef, lat_coef):
 
 
 def state_polygon(mask, lon_coef, lat_coef):
-    u8 = mask.astype(np.uint8) * 255
-    contours, _ = cv2.findContours(u8, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contours, _ = cv2.findContours(mask.astype(np.uint8) * 255, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     if not contours:
         return None
-    contours.sort(key=cv2.contourArea, reverse=True)
-    c = contours[0]
-    peri = cv2.arcLength(c, True)
-    c = cv2.approxPolyDP(c, max(1.5, 0.0025 * peri), True)
+    c = sorted(contours, key=cv2.contourArea, reverse=True)[0]
+    c = cv2.approxPolyDP(c, max(1.5, 0.0025 * cv2.arcLength(c, True)), True)
     h = mask.shape[0]
     pts = []
     for p in c[:, 0, :]:
@@ -132,43 +127,48 @@ def state_polygon(mask, lon_coef, lat_coef):
         pts.append((lat, lon))
     if len(pts) < 3:
         return None
-    if len(pts) > 120:
-        step = math.ceil(len(pts) / 120)
-        pts = pts[::step]
+    if len(pts) > 100:
+        pts = pts[::math.ceil(len(pts) / 100)]
     return pts
 
 
-def overpass_lengths(poly, sid):
-    poly_s = ' '.join(f'{lat:.5f} {lon:.5f}' for lat, lon in poly)
-    query = f'''[out:csv(class,length;false;";")][timeout:180];
-way["highway"~"^(motorway|motorway_link|trunk|trunk_link|primary|primary_link)$"](poly:"{poly_s}")->.a;
-make stat class="A",length=.a.sum(length()); out;
-way["highway"~"^(secondary|secondary_link|tertiary|tertiary_link)$"](poly:"{poly_s}")->.h;
-make stat class="H",length=.h.sum(length()); out;
-way["highway"~"^(unclassified|residential|living_street|service)$"](poly:"{poly_s}")->.g;
-make stat class="G",length=.g.sum(length()); out;
-way["highway"="track"](poly:"{poly_s}")->.d;
-make stat class="D",length=.d.sum(length()); out;'''
+def make_batch_query(batch):
+    lines = ['[out:csv(sid,class,length;false;";")][timeout:300];']
+    for item in batch:
+        sid = item['state_id']
+        poly = ' '.join(f'{lat:.5f} {lon:.5f}' for lat, lon in item['poly'])
+        for cls, regex in ROAD_RE.items():
+            setname = f's{sid}{cls.lower()}'
+            lines.append(f'way["highway"~"{regex}"](poly:"{poly}")->.{setname};')
+            lines.append(f'make stat sid="{sid}",class="{cls}",length=.{setname}.sum(length()); out;')
+    return '\n'.join(lines)
+
+
+def fetch_batch(batch, batch_no):
+    query = make_batch_query(batch)
     last = None
-    for attempt in range(5):
-        url = OVERPASS[attempt % len(OVERPASS)]
+    for attempt in range(4):
+        url = OVERPASS[(batch_no + attempt) % len(OVERPASS)]
         try:
-            r = requests.post(url, data={'data': query}, timeout=220,
-                              headers={'User-Agent': 'HER-Mod-infrastructure-audit/1.0'})
+            r = requests.post(url, data={'data': query}, timeout=360,
+                              headers={'User-Agent': 'HER-Mod-infrastructure-audit/2.0'})
             if r.status_code == 200 and r.text.strip():
-                vals = {'A': 0.0, 'H': 0.0, 'G': 0.0, 'D': 0.0}
+                out = {x['state_id']: {'A':0.0,'H':0.0,'G':0.0,'D':0.0} for x in batch}
                 for row in csv.reader(r.text.splitlines(), delimiter=';'):
-                    if len(row) >= 2 and row[0] in vals:
-                        try:
-                            vals[row[0]] = max(0.0, float(row[1])) / 1000.0
-                        except ValueError:
-                            pass
-                return vals
+                    if len(row) < 3:
+                        continue
+                    try:
+                        sid = int(row[0]); cls = row[1]; km = max(0.0, float(row[2])) / 1000.0
+                    except ValueError:
+                        continue
+                    if sid in out and cls in out[sid]:
+                        out[sid][cls] = km
+                return out
             last = RuntimeError(f'HTTP {r.status_code}: {r.text[:160]}')
         except Exception as e:
             last = e
-        time.sleep(4 + 3 * attempt)
-    raise RuntimeError(f'Overpass failed for state {sid}: {last}')
+        time.sleep(3 + 4 * attempt)
+    raise RuntimeError(f'Batch {batch_no} failed: {last}')
 
 
 def main():
@@ -180,92 +180,73 @@ def main():
     sid_lookup = np.zeros(max(max_pid, int(prov.max())) + 1, dtype=np.int32)
     for sid, st in states.items():
         for pid in st['pids']:
-            if 0 <= pid < len(sid_lookup):
-                sid_lookup[pid] = sid
+            if 0 <= pid < len(sid_lookup): sid_lookup[pid] = sid
     state_raster = sid_lookup[prov]
 
     targets = []
     for sid, st in states.items():
-        if st['owner'] != 'SOV' or st['old_infra'] is None:
-            continue
+        if st['owner'] != 'SOV' or st['old_infra'] is None: continue
         ys, xs = np.where(state_raster == sid)
-        if len(xs) == 0:
-            continue
+        if not len(xs): continue
         lon, lat = xy_to_lonlat(float(xs.mean()), float(ys.mean()), prov.shape[0], lon_coef, lat_coef)
-        if MIN_LON <= lon <= MAX_LON and MIN_LAT <= lat <= MAX_LAT:
-            targets.append((sid, st, lon, lat, len(xs)))
-    targets.sort()
-    print(f'Target Soviet states west of Urals: {len(targets)}')
-    if len(targets) < 25:
-        raise RuntimeError(f'Unexpectedly small target set: {len(targets)}')
+        if not (MIN_LON <= lon <= MAX_LON and MIN_LAT <= lat <= MAX_LAT): continue
+        poly = state_polygon(state_raster == sid, lon_coef, lat_coef)
+        if not poly: raise RuntimeError(f'No polygon for state {sid}')
+        targets.append({'state_id':sid, 'st':st, 'lon':lon, 'lat':lat, 'pixels':len(xs), 'poly':poly})
+    targets.sort(key=lambda x: x['state_id'])
+    print(f'Target Soviet states west of Urals: {len(targets)}', flush=True)
+    if len(targets) < 25: raise RuntimeError('Unexpectedly small target set')
+
+    batches = [targets[i:i+BATCH_SIZE] for i in range(0, len(targets), BATCH_SIZE)]
+    all_lengths = {}
+    print(f'Overpass batches: {len(batches)} x <= {BATCH_SIZE}, workers={WORKERS}', flush=True)
+    with ThreadPoolExecutor(max_workers=WORKERS) as ex:
+        futs = {ex.submit(fetch_batch, b, i): i for i, b in enumerate(batches, 1)}
+        for fut in as_completed(futs):
+            i = futs[fut]
+            data = fut.result()
+            all_lengths.update(data)
+            print(f'Batch {i}/{len(batches)} done ({len(data)} states)', flush=True)
 
     results = []
-    failures = []
-    for idx, (sid, st, lon, lat, pixels) in enumerate(targets, 1):
-        mask = state_raster == sid
-        poly = state_polygon(mask, lon_coef, lat_coef)
-        if not poly:
-            failures.append((sid, 'no polygon'))
-            continue
-        try:
-            lengths = overpass_lengths(poly, sid)
-        except Exception as e:
-            print(e)
-            failures.append((sid, str(e)))
-            continue
+    for item in targets:
+        sid, st = item['state_id'], item['st']
+        lengths = all_lengths.get(sid)
+        if lengths is None: raise RuntimeError(f'Missing result for state {sid}')
         nprov = max(1, len(st['pids']))
-        dens = {k: v / nprov for k, v in lengths.items()}
+        dens = {k: lengths[k] / nprov for k in WEIGHTS}
         score = sum(WEIGHTS[k] * dens[k] for k in WEIGHTS)
-        results.append({
-            'state_id': sid, 'name': st['name'], 'path': str(st['path']),
-            'lon': lon, 'lat': lat, 'provinces': nprov, 'pixels': pixels,
-            'A_km': lengths['A'], 'H_km': lengths['H'],
-            'G_km': lengths['G'], 'D_km': lengths['D'],
-            'A_pp': dens['A'], 'H_pp': dens['H'],
-            'G_pp': dens['G'], 'D_pp': dens['D'],
-            'S': score, 'old_infra': st['old_infra'],
-        })
-        print(f'[{idx}/{len(targets)}] {sid:>3} {st["name"][:28]:28} S={score:.2f}')
-        time.sleep(1.0)
-
-    if failures:
-        print('FAILURES:')
-        for f in failures:
-            print(f)
-        raise RuntimeError(f'{len(failures)} target states failed; refusing partial rewrite')
-    if not results:
-        raise RuntimeError('No infrastructure scores calculated')
+        results.append({'state_id':sid,'name':st['name'],'lon':item['lon'],'lat':item['lat'],
+                        'provinces':nprov,'pixels':item['pixels'],
+                        'A_km':lengths['A'],'H_km':lengths['H'],'G_km':lengths['G'],'D_km':lengths['D'],
+                        'A_pp':dens['A'],'H_pp':dens['H'],'G_pp':dens['G'],'D_pp':dens['D'],
+                        'S':score,'old_infra':st['old_infra']})
 
     smax = max(r['S'] for r in results)
-    if smax <= 0:
-        raise RuntimeError('Smax is zero')
+    if smax <= 0: raise RuntimeError('Smax is zero')
     for r in results:
-        r['new_infra'] = max(0, min(10, int(math.floor(10.0 * r['S'] / smax + 1e-12))))
+        r['new_infra'] = max(0, min(10, int(math.floor(10.0*r['S']/smax + 1e-12))))
 
-    fields = ['state_id', 'name', 'lon', 'lat', 'provinces', 'pixels',
-              'A_km', 'H_km', 'G_km', 'D_km', 'A_pp', 'H_pp', 'G_pp', 'D_pp',
-              'S', 'old_infra', 'new_infra']
+    fields = ['state_id','name','lon','lat','provinces','pixels','A_km','H_km','G_km','D_km',
+              'A_pp','H_pp','G_pp','D_pp','S','old_infra','new_infra']
     with REPORT.open('w', encoding='utf-8', newline='') as f:
-        w = csv.DictWriter(f, fieldnames=fields)
-        w.writeheader()
+        w = csv.DictWriter(f, fieldnames=fields); w.writeheader()
         for r in results:
-            w.writerow({k: (f'{r[k]:.6f}' if isinstance(r[k], float) else r[k]) for k in fields})
+            w.writerow({k:(f'{r[k]:.6f}' if isinstance(r[k],float) else r[k]) for k in fields})
 
-    print(f'Smax={smax:.6f}')
-    print('Distribution:', {i: sum(r['new_infra'] == i for r in results) for i in range(11)})
+    print(f'Smax={smax:.6f}', flush=True)
+    print('Distribution:', {i:sum(r['new_infra']==i for r in results) for i in range(11)}, flush=True)
+    print('Top:', [(r['state_id'], r['name'], round(r['S'],2), r['new_infra']) for r in sorted(results,key=lambda x:x['S'],reverse=True)[:12]], flush=True)
 
     changed = 0
     for r in results:
         st = states[r['state_id']]
-        old = st['text']
-        new, n = re.subn(r'(\binfrastructure\s*=\s*)\d+',
-                         lambda m: m.group(1) + str(r['new_infra']), old, count=1)
-        if n != 1:
-            raise RuntimeError(f'Infrastructure replacement failed for {st["path"]}')
-        if new != old:
-            st['path'].write_text(new, encoding='utf-8')
+        new, n = re.subn(r'(\binfrastructure\s*=\s*)\d+', lambda m:m.group(1)+str(r['new_infra']), st['text'], count=1)
+        if n != 1: raise RuntimeError(f'Infrastructure replacement failed for {st["path"]}')
+        if new != st['text']:
+            st['path'].write_text(new, encoding='utf-8-sig' if st['bom'] else 'utf-8')
             changed += 1
-    print(f'Changed state files: {changed}/{len(results)}')
+    print(f'Changed state files: {changed}/{len(results)}', flush=True)
 
 
 if __name__ == '__main__':

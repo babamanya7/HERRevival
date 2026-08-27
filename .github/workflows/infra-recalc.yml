@@ -30,7 +30,15 @@ jobs:
         run: pip install --disable-pip-version-check numpy pillow requests opencv-python-headless
 
       - name: Recalculate Soviet infrastructure
-        run: python .github/infra_recalc.py
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('.github/infra_recalc.py')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace("    contours.sort(key=cv2.contourArea, reverse=True)\n    c = contours[0]", "    contours = sorted(contours, key=cv2.contourArea, reverse=True)\n    c = contours[0]")
+          p.write_text(s, encoding='utf-8')
+          PY
+          python .github/infra_recalc.py
 
       - name: Commit calculated infrastructure
         run: |

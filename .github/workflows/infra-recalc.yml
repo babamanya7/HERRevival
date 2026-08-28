@@ -18,7 +18,7 @@ permissions:
 jobs:
   recalc:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 180
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4
@@ -33,12 +33,6 @@ jobs:
 
       - name: Install dependencies
         run: pip install --disable-pip-version-check numpy pillow opencv-python-headless osmium shapely pyproj
-
-      - name: Cache OSM extracts
-        uses: actions/cache@v4
-        with:
-          path: .osm-cache
-          key: soviet-infra-osm-pbf-v1
 
       - name: Download OSM PBF extracts
         shell: bash
@@ -60,20 +54,27 @@ jobs:
           https://download.geofabrik.de/asia/uzbekistan-latest.osm.pbf
           https://download.geofabrik.de/asia/turkmenistan-latest.osm.pbf
           EOF
-          download_one() {
-            url="$1"
-            file=".osm-cache/${url##*/}"
-            if [ -s "$file" ]; then
-              echo "cached: ${file##*/}"
-              return 0
+
+          while IFS= read -r url; do
+            [ -n "$url" ] || continue
+            name="${url##*/}"
+            final=".osm-cache/$name"
+            part="$final.part"
+            if [ -s "$final" ]; then
+              echo "already present: $name"
+              continue
             fi
-            echo "download: $url"
-            curl -L --fail --retry 6 --retry-all-errors --connect-timeout 30 --max-time 1800 \
-              -o "$file.part" "$url"
-            mv "$file.part" "$file"
-          }
-          export -f download_one
-          xargs -n1 -P4 -I{} bash -c 'download_one "$1"' _ {} < /tmp/osm_urls.txt
+            echo "=== downloading $name ==="
+            curl --fail --location \
+              --retry 12 --retry-delay 8 --retry-max-time 2400 --retry-all-errors \
+              --connect-timeout 45 --speed-time 180 --speed-limit 1024 \
+              --continue-at - --output "$part" "$url"
+            test -s "$part"
+            mv "$part" "$final"
+            ls -lh "$final"
+            df -h .
+          done < /tmp/osm_urls.txt
+          echo "=== all extracts downloaded ==="
           du -sh .osm-cache
 
       - name: Recalculate Soviet infrastructure locally

@@ -1,26 +1,37 @@
-import csv, math, re
+import csv
+import math
+import re
+from collections import defaultdict
 from pathlib import Path
 
-import cv2
 import numpy as np
-import osmium
 from PIL import Image
-from pyproj import Geod
-from shapely.geometry import LineString, Polygon
-from shapely.ops import unary_union
-from shapely.strtree import STRtree
 
-ROOT = Path('.')
-STATE_DIR = ROOT / 'history' / 'states'
-PROVINCES_BMP = ROOT / 'map' / 'provinces.bmp'
-DEFINITION = ROOT / 'map' / 'definition.csv'
-REPORT = ROOT / 'soviet-infra-report.csv'
-OSM_DIR = ROOT / '.osm-cache'
+ROOT = Path(".")
+STATE_DIR = ROOT / "history" / "states"
+PROVINCES_BMP = ROOT / "map" / "provinces.bmp"
+DEFINITION = ROOT / "map" / "definition.csv"
+RAILWAYS = ROOT / "map" / "railways.txt"
+SUPPLY_NODES = ROOT / "map" / "supply_nodes.txt"
+REPORT = ROOT / "soviet-infra-report.csv"
 
-WEIGHTS = {'A': 1.0, 'H': 0.7, 'G': 0.35, 'D': 0.1}
 MIN_LON, MAX_LON = 18.0, 62.5
 MIN_LAT, MAX_LAT = 38.0, 72.5
-GEOD = Geod(ellps='WGS84')
+
+COMPONENT_WEIGHTS = {"C": 0.40, "P": 0.25, "R": 0.15, "T": 0.20}
+
+TERRAIN_SUITABILITY = {
+    "urban": 1.00,
+    "plains": 0.95,
+    "desert": 0.82,
+    "hills": 0.72,
+    "forest": 0.62,
+    "jungle": 0.52,
+    "marsh": 0.35,
+    "mountain": 0.30,
+    "ocean": 0.00,
+    "unknown": 0.55,
+}
 
 CONTROL = {
     3151: (30.3351, 59.9343), 6380: (37.6173, 55.7558),
@@ -34,56 +45,56 @@ CONTROL = {
     6474: (37.8028, 48.0159), 418: (36.2304, 49.9935),
 }
 
-ROAD_CLASS = {}
-for x in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link'):
-    ROAD_CLASS[x] = 'A'
-for x in ('secondary','secondary_link','tertiary','tertiary_link'):
-    ROAD_CLASS[x] = 'H'
-for x in ('unclassified','residential','living_street','service'):
-    ROAD_CLASS[x] = 'G'
-ROAD_CLASS['track'] = 'D'
-
 
 def parse_definition(path):
-    rgb_by_pid, max_pid = {}, 0
-    with path.open('r', encoding='latin-1', errors='ignore', newline='') as f:
-        for row in csv.reader(f, delimiter=';'):
-            if len(row) < 4:
+    rgb_by_pid = {}
+    terrain_by_pid = {}
+    max_pid = 0
+    with path.open("r", encoding="latin-1", errors="ignore", newline="") as f:
+        for row in csv.reader(f, delimiter=";"):
+            if len(row) < 7:
                 continue
             try:
                 pid, r, g, b = map(int, row[:4])
             except ValueError:
                 continue
             rgb_by_pid[pid] = (r, g, b)
+            terrain_by_pid[pid] = row[6].strip().lower()
             max_pid = max(max_pid, pid)
-    return rgb_by_pid, max_pid
+    return rgb_by_pid, terrain_by_pid, max_pid
 
 
 def parse_states():
     states = {}
-    for path in STATE_DIR.glob('*.txt'):
+    vp_re = re.compile(r"\bvictory_points\s*=\s*\{\s*(\d+)\s+(\d+)", re.I)
+    for path in STATE_DIR.glob("*.txt"):
         raw = path.read_bytes()
-        text = raw.decode('utf-8-sig', errors='ignore')
-        mid = re.search(r'(?m)^\s*id\s*=\s*(\d+)\s*$', text)
-        mprov = re.search(r'\bprovinces\s*=\s*\{([^}]*)\}', text, re.S)
-        mowner = re.search(r'\bowner\s*=\s*([A-Z0-9_]+)', text)
-        minfra = re.search(r'\binfrastructure\s*=\s*(\d+)', text)
+        text = raw.decode("utf-8-sig", errors="ignore")
+        mid = re.search(r"(?m)^\s*id\s*=\s*(\d+)\s*$", text)
+        mprov = re.search(r"\bprovinces\s*=\s*\{([^}]*)\}", text, re.S)
+        mowner = re.search(r"\bowner\s*=\s*([A-Z0-9_]+)", text)
+        minfra = re.search(r"\binfrastructure\s*=\s*(\d+)", text)
+        manpower = re.search(r"(?m)^\s*manpower\s*=\s*(\d+)", text)
         if not (mid and mprov):
             continue
         sid = int(mid.group(1))
         states[sid] = {
-            'id': sid, 'path': path, 'text': text,
-            'bom': raw.startswith(b'\xef\xbb\xbf'),
-            'pids': [int(x) for x in re.findall(r'\d+', mprov.group(1))],
-            'owner': mowner.group(1) if mowner else '',
-            'old_infra': int(minfra.group(1)) if minfra else None,
-            'name': path.stem,
+            "id": sid,
+            "path": path,
+            "text": text,
+            "bom": raw.startswith(b"\xef\xbb\xbf"),
+            "pids": [int(x) for x in re.findall(r"\d+", mprov.group(1))],
+            "owner": mowner.group(1) if mowner else "",
+            "old_infra": int(minfra.group(1)) if minfra else None,
+            "manpower": int(manpower.group(1)) if manpower else 0,
+            "vps": [(int(pid), int(value)) for pid, value in vp_re.findall(text)],
+            "name": path.stem,
         }
     return states
 
 
 def build_province_raster(rgb_by_pid):
-    img = np.asarray(Image.open(PROVINCES_BMP).convert('RGB'), dtype=np.uint8)
+    img = np.asarray(Image.open(PROVINCES_BMP).convert("RGB"), dtype=np.uint8)
     code = ((img[:, :, 0].astype(np.uint32) << 16) |
             (img[:, :, 1].astype(np.uint32) << 8) |
             img[:, :, 2].astype(np.uint32))
@@ -100,15 +111,17 @@ def projection_from_controls(prov):
         ys, xx = np.where(prov == pid)
         if len(xx) < 3:
             continue
-        xs.append(float(xx.mean())); zs.append(float((h - 1) - ys.mean()))
-        lons.append(lon); lats.append(lat)
+        xs.append(float(xx.mean()))
+        zs.append(float((h - 1) - ys.mean()))
+        lons.append(lon)
+        lats.append(lat)
     if len(xs) < 10:
-        raise RuntimeError(f'Only {len(xs)} projection controls found')
+        raise RuntimeError(f"Only {len(xs)} projection controls found")
     lon_coef = np.polyfit(xs, lons, 1)
     lat_coef = np.polyfit(zs, lats, 3)
     lon_rmse = float(np.sqrt(np.mean((np.polyval(lon_coef, xs) - np.asarray(lons)) ** 2)))
     lat_rmse = float(np.sqrt(np.mean((np.polyval(lat_coef, zs) - np.asarray(lats)) ** 2)))
-    print(f'Projection controls={len(xs)} lon_rmse={lon_rmse:.3f} lat_rmse={lat_rmse:.3f}', flush=True)
+    print(f"Projection controls={len(xs)} lon_rmse={lon_rmse:.3f} lat_rmse={lat_rmse:.3f}", flush=True)
     return lon_coef, lat_coef
 
 
@@ -117,119 +130,94 @@ def xy_to_lonlat(x, y, height, lon_coef, lat_coef):
     return float(np.polyval(lon_coef, x)), float(np.polyval(lat_coef, z))
 
 
-def state_geometry(mask, lon_coef, lat_coef):
-    contours, _ = cv2.findContours(mask.astype(np.uint8) * 255, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    if not contours:
-        return None
-    h = mask.shape[0]
-    polys = []
-    for c in contours:
-        if cv2.contourArea(c) < 3:
+def parse_rail_connectivity():
+    degree = defaultdict(int)
+    presence = set()
+    if not RAILWAYS.exists():
+        return degree, presence
+    for line in RAILWAYS.read_text(encoding="utf-8-sig", errors="ignore").splitlines():
+        nums = [int(x) for x in re.findall(r"\d+", line)]
+        if len(nums) < 4:
             continue
-        c = cv2.approxPolyDP(c, max(1.0, 0.0015 * cv2.arcLength(c, True)), True)
-        coords = []
-        for p in c[:, 0, :]:
-            lon, lat = xy_to_lonlat(float(p[0]), float(p[1]), h, lon_coef, lat_coef)
-            coords.append((lon, lat))
-        if len(coords) < 3:
-            continue
-        poly = Polygon(coords)
-        if not poly.is_valid:
-            poly = poly.buffer(0)
-        if not poly.is_empty:
-            polys.append(poly)
-    if not polys:
-        return None
-    geom = unary_union(polys)
-    if not geom.is_valid:
-        geom = geom.buffer(0)
-    return geom
+        count = nums[1]
+        route = nums[2:2 + count]
+        for pid in route:
+            presence.add(pid)
+        for a, b in zip(route, route[1:]):
+            if a != b:
+                degree[a] += 1
+                degree[b] += 1
+    return degree, presence
 
 
-def geometry_km(geom):
-    if geom.is_empty:
-        return 0.0
-    try:
-        return abs(float(GEOD.geometry_length(geom))) / 1000.0
-    except Exception:
-        total = 0.0
-        parts = [geom] if geom.geom_type == 'LineString' else list(getattr(geom, 'geoms', []))
-        for part in parts:
-            if part.geom_type != 'LineString':
-                continue
-            pts = list(part.coords)
-            for a, b in zip(pts, pts[1:]):
-                _, _, m = GEOD.inv(a[0], a[1], b[0], b[1])
-                total += abs(m) / 1000.0
-        return total
+def parse_supply_nodes():
+    nodes = set()
+    if not SUPPLY_NODES.exists():
+        return nodes
+    for line in SUPPLY_NODES.read_text(encoding="utf-8-sig", errors="ignore").splitlines():
+        nums = [int(x) for x in re.findall(r"\d+", line)]
+        if len(nums) >= 2:
+            nodes.add(nums[1])
+    return nodes
 
 
-class RoadHandler(osmium.SimpleHandler):
-    def __init__(self, state_ids, geoms, tree):
-        super().__init__()
-        self.state_ids = state_ids
-        self.geoms = geoms
-        self.tree = tree
-        self.seen = set()
-        self.lengths = {sid: {'A':0.0,'H':0.0,'G':0.0,'D':0.0} for sid in state_ids}
-        self.relevant_ways = 0
-        self.clipped_hits = 0
+def winsor_norm(values, lo=5.0, hi=95.0):
+    arr = np.asarray(values, dtype=float)
+    qlo = float(np.percentile(arr, lo))
+    qhi = float(np.percentile(arr, hi))
+    if qhi <= qlo + 1e-12:
+        return [0.5 for _ in values], qlo, qhi
+    out = [max(0.0, min(1.0, (float(v) - qlo) / (qhi - qlo))) for v in values]
+    return out, qlo, qhi
 
-    def way(self, w):
-        if w.id in self.seen:
-            return
-        cls = ROAD_CLASS.get(w.tags.get('highway'))
-        if cls is None:
-            return
-        self.seen.add(w.id)
-        coords = []
-        for n in w.nodes:
-            if not n.location.valid():
-                return
-            coords.append((n.lon, n.lat))
-        if len(coords) < 2:
-            return
-        minx = min(x for x, _ in coords); maxx = max(x for x, _ in coords)
-        miny = min(y for _, y in coords); maxy = max(y for _, y in coords)
-        if maxx < MIN_LON - 1 or minx > MAX_LON + 1 or maxy < MIN_LAT - 1 or miny > MAX_LAT + 1:
-            return
-        line = LineString(coords)
-        if line.is_empty:
-            return
-        self.relevant_ways += 1
-        for idx in self.tree.query(line, predicate='intersects'):
-            geom = self.geoms[int(idx)]
-            inter = line.intersection(geom)
-            km = geometry_km(inter)
-            if km > 0:
-                sid = self.state_ids[int(idx)]
-                self.lengths[sid][cls] += km
-                self.clipped_hits += 1
+
+def rank_percentiles(rows):
+    order = sorted(range(len(rows)), key=lambda i: (rows[i]["score"], rows[i]["state_id"]))
+    n = len(order)
+    pct = [0.0] * n
+    for rank, idx in enumerate(order):
+        pct[idx] = 100.0 * (rank + 0.5) / n
+    return pct
+
+
+def infra_from_percentile(p):
+    if p <= 5:
+        return 1
+    if p <= 15:
+        return 2
+    if p <= 30:
+        return 3
+    if p <= 50:
+        return 4
+    if p <= 68:
+        return 5
+    if p <= 82:
+        return 6
+    if p <= 92:
+        return 7
+    if p <= 98:
+        return 8
+    return 9
 
 
 def main():
-    pbf_files = sorted(OSM_DIR.glob('*.osm.pbf'))
-    if not pbf_files:
-        raise RuntimeError(f'No PBF files found in {OSM_DIR}')
-    print(f'PBF extracts: {len(pbf_files)}', flush=True)
-    for p in pbf_files:
-        print(f'  {p.name}: {p.stat().st_size / (1024**2):.1f} MiB', flush=True)
-
-    rgb_by_pid, max_pid = parse_definition(DEFINITION)
+    rgb_by_pid, terrain_by_pid, max_pid = parse_definition(DEFINITION)
     states = parse_states()
     prov = build_province_raster(rgb_by_pid)
     lon_coef, lat_coef = projection_from_controls(prov)
+    rail_degree, rail_presence = parse_rail_connectivity()
+    supply_nodes = parse_supply_nodes()
 
     sid_lookup = np.zeros(max(max_pid, int(prov.max())) + 1, dtype=np.int32)
     for sid, st in states.items():
-        for pid in st['pids']:
+        for pid in st["pids"]:
             if 0 <= pid < len(sid_lookup):
                 sid_lookup[pid] = sid
     state_raster = sid_lookup[prov]
 
     targets = []
     for sid, st in states.items():
-        if st['owner'] != 'SOV' or st['old_infra'] is None:
+        if st["owner"] != "SOV" or st["old_infra"] is None:
             continue
         ys, xs = np.where(state_raster == sid)
         if not len(xs):
@@ -237,72 +225,80 @@ def main():
         lon, lat = xy_to_lonlat(float(xs.mean()), float(ys.mean()), prov.shape[0], lon_coef, lat_coef)
         if not (MIN_LON <= lon <= MAX_LON and MIN_LAT <= lat <= MAX_LAT):
             continue
-        geom = state_geometry(state_raster == sid, lon_coef, lat_coef)
-        if geom is None or geom.is_empty:
-            raise RuntimeError(f'No geometry for state {sid}')
-        targets.append({'state_id':sid, 'st':st, 'lon':lon, 'lat':lat, 'pixels':len(xs), 'geom':geom})
-    targets.sort(key=lambda x: x['state_id'])
-    print(f'Target Soviet states west of Urals: {len(targets)}', flush=True)
-    if len(targets) < 25:
-        raise RuntimeError('Unexpectedly small target set')
 
-    state_ids = [x['state_id'] for x in targets]
-    geoms = [x['geom'] for x in targets]
-    tree = STRtree(geoms)
-    handler = RoadHandler(state_ids, geoms, tree)
+        pids = st["pids"]
+        nprov = max(1, len(pids))
+        vp_weight = sum(math.sqrt(max(0, value)) for _, value in st["vps"])
+        urban_count = sum(terrain_by_pid.get(pid) == "urban" for pid in pids)
+        c_raw = (vp_weight + 1.25 * urban_count) / nprov
 
-    for i, pbf in enumerate(pbf_files, 1):
-        print(f'[{i}/{len(pbf_files)}] Reading {pbf.name}', flush=True)
-        handler.apply_file(str(pbf), locations=True, idx='flex_mem')
-        print(f'    relevant ways={handler.relevant_ways} clipped hits={handler.clipped_hits}', flush=True)
+        pop_per_prov = st["manpower"] / nprov
+        p_raw = math.log1p(max(0.0, pop_per_prov))
 
-    results = []
-    for item in targets:
-        sid, st = item['state_id'], item['st']
-        lengths = handler.lengths[sid]
-        nprov = max(1, len(st['pids']))
-        dens = {k: lengths[k] / nprov for k in WEIGHTS}
-        score = sum(WEIGHTS[k] * dens[k] for k in WEIGHTS)
-        results.append({
-            'state_id':sid, 'name':st['name'], 'lon':item['lon'], 'lat':item['lat'],
-            'provinces':nprov, 'pixels':item['pixels'],
-            'A_km':lengths['A'], 'H_km':lengths['H'], 'G_km':lengths['G'], 'D_km':lengths['D'],
-            'A_pp':dens['A'], 'H_pp':dens['H'], 'G_pp':dens['G'], 'D_pp':dens['D'],
-            'S':score, 'old_infra':st['old_infra']
+        rail_degree_sum = sum(rail_degree.get(pid, 0) for pid in pids)
+        rail_prov_count = sum(pid in rail_presence for pid in pids)
+        hub_count = sum(pid in supply_nodes for pid in pids)
+        r_raw = (rail_degree_sum + 0.75 * rail_prov_count + 2.5 * hub_count) / nprov
+
+        terrain_values = [TERRAIN_SUITABILITY.get(terrain_by_pid.get(pid, "unknown"), 0.55) for pid in pids]
+        t_raw = float(np.mean(terrain_values)) if terrain_values else 0.55
+
+        targets.append({
+            "state_id": sid, "name": st["name"], "lon": lon, "lat": lat,
+            "provinces": nprov, "manpower": st["manpower"], "vp_count": len(st["vps"]),
+            "vp_weight": vp_weight, "urban_count": urban_count,
+            "rail_degree": rail_degree_sum, "rail_provinces": rail_prov_count, "hubs": hub_count,
+            "C_raw": c_raw, "P_raw": p_raw, "R_raw": r_raw, "T_raw": t_raw,
+            "old_infra": st["old_infra"],
         })
 
-    smax = max(r['S'] for r in results)
-    if smax <= 0:
-        raise RuntimeError('Smax is zero')
-    for r in results:
-        r['new_infra'] = max(0, min(10, int(math.floor(10.0 * r['S'] / smax + 1e-12))))
+    targets.sort(key=lambda x: x["state_id"])
+    print(f"Target Soviet states west of Urals: {len(targets)}", flush=True)
+    if len(targets) < 25:
+        raise RuntimeError("Unexpectedly small target set")
 
-    fields = ['state_id','name','lon','lat','provinces','pixels','A_km','H_km','G_km','D_km',
-              'A_pp','H_pp','G_pp','D_pp','S','old_infra','new_infra']
-    with REPORT.open('w', encoding='utf-8', newline='') as f:
-        w = csv.DictWriter(f, fieldnames=fields)
-        w.writeheader()
-        for r in results:
-            w.writerow({k:(f'{r[k]:.6f}' if isinstance(r[k],float) else r[k]) for k in fields})
+    for component in ("C", "P", "R", "T"):
+        values = [x[f"{component}_raw"] for x in targets]
+        norm, qlo, qhi = winsor_norm(values)
+        print(f"{component}: p05={qlo:.6f} p95={qhi:.6f}", flush=True)
+        for row, value in zip(targets, norm):
+            row[component] = value
 
-    print(f'Smax={smax:.6f}', flush=True)
-    print('Distribution:', {i:sum(r['new_infra']==i for r in results) for i in range(11)}, flush=True)
-    print('Top:', [(r['state_id'], r['name'], round(r['S'],2), r['new_infra'])
-                   for r in sorted(results,key=lambda x:x['S'],reverse=True)[:12]], flush=True)
-    print('Bottom:', [(r['state_id'], r['name'], round(r['S'],2), r['new_infra'])
-                      for r in sorted(results,key=lambda x:x['S'])[:12]], flush=True)
+    for row in targets:
+        row["score"] = sum(COMPONENT_WEIGHTS[c] * row[c] for c in COMPONENT_WEIGHTS)
+
+    percentiles = rank_percentiles(targets)
+    for row, pct in zip(targets, percentiles):
+        row["percentile"] = pct
+        row["new_infra"] = infra_from_percentile(pct)
+
+    fields = [
+        "state_id", "name", "lon", "lat", "provinces", "manpower", "vp_count", "vp_weight",
+        "urban_count", "rail_degree", "rail_provinces", "hubs",
+        "C_raw", "P_raw", "R_raw", "T_raw", "C", "P", "R", "T",
+        "score", "percentile", "old_infra", "new_infra",
+    ]
+    with REPORT.open("w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fields)
+        writer.writeheader()
+        for row in targets:
+            writer.writerow({k: (f"{row[k]:.6f}" if isinstance(row[k], float) else row[k]) for k in fields})
+
+    print("Distribution:", {i: sum(r["new_infra"] == i for r in targets) for i in range(1, 10)}, flush=True)
+    print("Top:", [(r["state_id"], r["name"], round(r["score"], 3), round(r["percentile"], 1), r["new_infra"]) for r in sorted(targets, key=lambda x: x["score"], reverse=True)[:15]], flush=True)
+    print("Bottom:", [(r["state_id"], r["name"], round(r["score"], 3), round(r["percentile"], 1), r["new_infra"]) for r in sorted(targets, key=lambda x: x["score"])[:15]], flush=True)
 
     changed = 0
-    for r in results:
-        st = states[r['state_id']]
-        new, n = re.subn(r'(\binfrastructure\s*=\s*)\d+', lambda m:m.group(1)+str(r['new_infra']), st['text'], count=1)
+    for row in targets:
+        st = states[row["state_id"]]
+        new, n = re.subn(r"(\binfrastructure\s*=\s*)\d+", lambda m: m.group(1) + str(row["new_infra"]), st["text"], count=1)
         if n != 1:
             raise RuntimeError(f'Infrastructure replacement failed for {st["path"]}')
-        if new != st['text']:
-            st['path'].write_text(new, encoding='utf-8-sig' if st['bom'] else 'utf-8')
+        if new != st["text"]:
+            st["path"].write_text(new, encoding="utf-8-sig" if st["bom"] else "utf-8")
             changed += 1
-    print(f'Changed state files: {changed}/{len(results)}', flush=True)
+    print(f"Changed state files: {changed}/{len(targets)}", flush=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

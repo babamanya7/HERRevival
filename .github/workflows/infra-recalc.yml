@@ -38,9 +38,10 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .osm-cache
-          key: soviet-infra-osm-pbf-v3-${{ github.run_id }}
+          key: soviet-infra-osm-pbf-v4-${{ github.run_id }}
           restore-keys: |
             soviet-infra-osm-pbf-v3-
+            soviet-infra-osm-pbf-v4-
 
       - name: Download OSM PBF extracts
         shell: bash
@@ -51,8 +52,7 @@ jobs:
 
           download_one() {
             target="$1"
-            primary="$2"
-            fallback="${3:-}"
+            shift
             final=".osm-cache/$target"
             part="$final.part"
 
@@ -61,63 +61,72 @@ jobs:
               return 0
             fi
 
-            try_url() {
-              url="$1"
-              [ -n "$url" ] || return 1
-              echo "=== downloading $target from $url ==="
-              curl --fail --location \
-                --retry 5 --retry-delay 8 --retry-max-time 1200 --retry-all-errors \
-                --connect-timeout 45 --speed-time 180 --speed-limit 1024 \
-                --continue-at - --output "$part" "$url"
-            }
-
-            if ! try_url "$primary"; then
-              echo "primary failed: $primary"
+            success=0
+            for url in "$@"; do
+              [ -n "$url" ] || continue
               rm -f "$part"
-              if [ -n "$fallback" ] && try_url "$fallback"; then
-                echo "fallback succeeded for $target"
-              else
-                echo "FAILED: $target" | tee -a /tmp/osm_download_failed
-                rm -f "$part"
-                return 0
+              echo "=== downloading $target from $url ==="
+              if curl --fail --location \
+                --retry 3 --retry-delay 6 --retry-max-time 900 --retry-all-errors \
+                --connect-timeout 30 --speed-time 120 --speed-limit 1024 \
+                --output "$part" "$url"; then
+                if [ -s "$part" ]; then
+                  mv "$part" "$final"
+                  ls -lh "$final"
+                  success=1
+                  break
+                fi
               fi
-            fi
+              echo "source failed: $url"
+            done
 
-            if [ -s "$part" ]; then
-              mv "$part" "$final"
-              ls -lh "$final"
-            else
-              echo "FAILED empty file: $target" | tee -a /tmp/osm_download_failed
+            if [ "$success" -ne 1 ]; then
+              echo "FAILED: $target" | tee -a /tmp/osm_download_failed
+              rm -f "$part"
             fi
           }
 
           download_one central-fed-district-latest.osm.pbf \
-            https://download.geofabrik.de/russia/central-fed-district-latest.osm.pbf
+            https://download.geofabrik.de/russia/central-fed-district-latest.osm.pbf \
+            https://download-ext2.geofabrik.de/russia/central-fed-district-latest.osm.pbf
           download_one northwestern-fed-district-latest.osm.pbf \
-            https://download.geofabrik.de/russia/northwestern-fed-district-latest.osm.pbf
+            https://download.geofabrik.de/russia/northwestern-fed-district-latest.osm.pbf \
+            https://download-ext2.geofabrik.de/russia/northwestern-fed-district-latest.osm.pbf
           download_one south-fed-district-latest.osm.pbf \
             https://download.geofabrik.de/russia/south-fed-district-latest.osm.pbf \
-            https://download.geofabrik.de/russia/south-fed-district-260824.osm.pbf
+            https://download-ext2.geofabrik.de/russia/south-fed-district-latest.osm.pbf \
+            https://download.geofabrik.de/russia/south-fed-district-260824.osm.pbf \
+            https://download-ext2.geofabrik.de/russia/south-fed-district-260824.osm.pbf
           download_one volga-fed-district-latest.osm.pbf \
-            https://download.geofabrik.de/russia/volga-fed-district-latest.osm.pbf
+            https://download.geofabrik.de/russia/volga-fed-district-latest.osm.pbf \
+            https://download-ext2.geofabrik.de/russia/volga-fed-district-latest.osm.pbf
           download_one north-caucasus-fed-district-latest.osm.pbf \
-            https://download.geofabrik.de/russia/north-caucasus-fed-district-latest.osm.pbf
+            https://download.geofabrik.de/russia/north-caucasus-fed-district-latest.osm.pbf \
+            https://download-ext2.geofabrik.de/russia/north-caucasus-fed-district-latest.osm.pbf
           download_one ukraine-latest.osm.pbf \
-            https://download.geofabrik.de/europe/ukraine-latest.osm.pbf
+            https://download.geofabrik.de/europe/ukraine-latest.osm.pbf \
+            https://download-ext2.geofabrik.de/europe/ukraine-latest.osm.pbf
           download_one belarus-latest.osm.pbf \
-            https://download.geofabrik.de/europe/belarus-latest.osm.pbf
+            https://download.geofabrik.de/europe/belarus-latest.osm.pbf \
+            https://download-ext2.geofabrik.de/europe/belarus-latest.osm.pbf
           download_one georgia-latest.osm.pbf \
-            https://download.geofabrik.de/europe/georgia-latest.osm.pbf
+            https://download.geofabrik.de/europe/georgia-latest.osm.pbf \
+            https://download-ext2.geofabrik.de/europe/georgia-latest.osm.pbf
           download_one armenia-latest.osm.pbf \
-            https://download.geofabrik.de/asia/armenia-latest.osm.pbf
+            https://download.geofabrik.de/asia/armenia-latest.osm.pbf \
+            https://download-ext2.geofabrik.de/asia/armenia-latest.osm.pbf
           download_one azerbaijan-latest.osm.pbf \
-            https://download.geofabrik.de/asia/azerbaijan-latest.osm.pbf
+            https://download.geofabrik.de/asia/azerbaijan-latest.osm.pbf \
+            https://download-ext2.geofabrik.de/asia/azerbaijan-latest.osm.pbf
           download_one kazakhstan-latest.osm.pbf \
-            https://download.geofabrik.de/asia/kazakhstan-latest.osm.pbf
+            https://download.geofabrik.de/asia/kazakhstan-latest.osm.pbf \
+            https://download-ext2.geofabrik.de/asia/kazakhstan-latest.osm.pbf
           download_one uzbekistan-latest.osm.pbf \
-            https://download.geofabrik.de/asia/uzbekistan-latest.osm.pbf
+            https://download.geofabrik.de/asia/uzbekistan-latest.osm.pbf \
+            https://download-ext2.geofabrik.de/asia/uzbekistan-latest.osm.pbf
           download_one turkmenistan-latest.osm.pbf \
-            https://download.geofabrik.de/asia/turkmenistan-latest.osm.pbf
+            https://download.geofabrik.de/asia/turkmenistan-latest.osm.pbf \
+            https://download-ext2.geofabrik.de/asia/turkmenistan-latest.osm.pbf
 
           echo "=== download pass complete ==="
           du -sh .osm-cache || true
@@ -128,7 +137,7 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .osm-cache
-          key: soviet-infra-osm-pbf-v3-${{ github.run_id }}
+          key: soviet-infra-osm-pbf-v4-${{ github.run_id }}
 
       - name: Validate OSM downloads
         shell: bash

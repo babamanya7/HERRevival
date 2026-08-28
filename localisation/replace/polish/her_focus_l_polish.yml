@@ -1,0 +1,1429 @@
+﻿  l_polish:
+
+
+
+  GER_ss_modify_intro:0 "§Y$GER_ss_modifier$§! Зміна на:"
+
+  GER_ss_modifier:0 "Головне управління СС"
+  GER_ss_rsha_modifier:0 "Головне управління СС і РСАХА"
+
+  GER_allgemine_ss:0 "Внутрішні справи СС"
+  GER_allgemine_ss_desc:0 ""
+  GER_allgemine_ss_tt:0 "\n$GER_ss_modify_intro$ \n£political_power_texticon  Приріст політичної влади: §G+10.00%§! \n£surrender_texticon  Обмеження капітуляції: §G+10.00%§!\n\n"
+
+  GER_form_the_rsha:0 "Створити центр керування імперською безпекою"
+  GER_form_the_rsha_desc:0 ""
+  GER_form_the_rsha_tt:0 "$GER_ss_modify_intro$ \n£counter_intelligence_texticon  Контррозвідка: §G+0.5§!\n\n"
+
+  GER_ss_secret_operations:0 "Таємні операції СС"
+  GER_ss_secret_operations_desc:0 ""
+  GER_ss_secret_operations_tt:0 "$GER_ss_modify_intro$ \n£operatives_targeted_sabotage_cost_texticon  Рахунок операції: §G-15.00%§! \n£operatives_targeted_sabotage_risk_texticon  Ризик при операції: §G-10.00%§!\n\nРозблоковує Таємні операції СС у розв’ язанні"
+
+  GER_subj_abwehr:0 "Підпорядкувати Абвер"
+  GER_subj_abwehr_desc:0 ""
+  GER_subj_abwehr_tt:0 "$GER_ss_modify_intro$ \n£time_texticon  Час покращення агенції: §G-15.00%§!\n\n"
+
+  GER_ordnungspolizei:0 "Започаткувати Орпо"
+  GER_ordnungspolizei_desc:0 ""
+  GER_ordnungspolizei_tt:0 "$GER_ss_modify_intro$ \n£garrison_texticon  Вимоги до гарнізонів: §G-10.00%§! \n£manpower_noncore_texticon  Людські ресурси не є державною провінцією: §G+5.00%§!\n\n"
+
+  GER_feuerschutzpolizei:0 "Підпорядкувати пожежну службу Орпо"
+  GER_feuerschutzpolizei_desc:0 ""
+  GER_feuerschutzpolizei_tt:0 "$GER_ss_modify_intro$ \n£industry_repair_texticon  Безкоштовний ремонт: §G+20.00%§!\n\n"
+
+  GER_einzatsgruppen:0 "Створення Айнзацгруп"
+  GER_einzatsgruppen_desc:0 ""
+  GER_einzatsgruppen_tt:0 "Розблоковує закон окупації §RАйнзацгрупи§! на територіях СРСР"
+  einzats_grupp:0 "§RАйнзацгрупи§!"
+
+  GER_form_the_waffen_ss:0 "Створити Війску СС"
+  GER_form_the_waffen_ss_desc:0 "Waffen-SS є військовим відділенням Schutzstaffel."
+  GER_formation_of_the_waffen_ss:0 "$GER_ss_modify_intro$ \n£stability_texticon Стабільність: §R-5.00%§! \n\nРозблоковує §YРішення§!, пов' язані з набором £faction_ger_ss §YВаффен-С§! "
+
+  GER_foreign_recruitment:0 "Сформувати національні дивізії СС"
+  GER_foreign_recruitment_desc:0 "На завойованих територіях існує багато етнічних німців, яких ми можемо залучити до нашої справи, а також наша війна проти більшовиків принесла нам симпатію до тих, хто виступає проти Радянського Союзу."
+  GER_foreign_recruitment_ss:0 "Дозвольте вербовку §Yіноземців§! у £faction_ger_ss §YВаффен-С§!"
+
+  SOV_they_will_know_fear_tt:0 "Для команд будуть доступні такі Боговителі:\n §YКонстантин Коротеїв§!\n §YІван Масленник§!\n §YМикола Крил§!\n §YМикола Гаген§!\n §YІван Грішин§!\n §YІван Манагаров§!\n §YБогданів Сем.§!\n §YВолодимир Ґлуздовський§!\n §YАфанасій Білобородів§!\n §YІван Шлемін§!\n"
+
+  GER_ss_armycorps:0 "Створити корпус СС"
+  GER_ss_armycorps_desc:0 ""
+  GER_ss_armycorps_tt:0 "§YФелікс Штайнер§!, §YПауль Хауссер§!, §YГерберт Гілле§! і §YЗепп Дітріх§! Буде доступ до команд §YВаффен-С§!\n"
+
+  GER_ostfront_veteranen:0 "Вітерани східного фронту"
+  GER_ostfront_veteranen_desc:0 ""
+  GER_ostfront_veteranen_tt:0 "Вітерани східного фронту §YГерман Баль§!, §YХассо фон Мантоюфель§!, §YОтто Велер§!, §YЙоганнес Фріснер§!, §YФрідріх Хосбах§!, §YМаксиміліан Фреттер-Піко§!, §YЕріх Бранденбергер§! і §YФердінанд Шернер§! Буде знайдено генералів"
+
+  GER_economy_of_conquest: "Економіка завоювання"
+  GER_hivi: "Вербівка Хіві"
+  GER_hivi_tt:0 "Почати вербування Хіві - добровільних помічників Вермахту з окупованої частини СРСР та радянських військовополонених. \nЩотижневий набір хівіїв показано в національному стилі §R$GER_economy_of_conquest_modifier$§!\n\n £faction_ger_whermacht Вермахт стане §Yнебагато§! більше §GЛокальніше§!"
+  GER_economy_of_conquest_tt:0 "Додати модифікатор §R$GER_economy_of_conquest_modifier$§!\n\n £faction_ger_industrialists Промисли стануть більшими §GВпливовий§!"
+
+  GER_strengthen_the_kriegsmarine: "Всилити Кригсмарин"
+  GER_expand_kriegsmarinewerft: "Розширити верфі Кригсмані"
+  GER_airland_divisions: "Авіаполітні дивізії"
+  SOV_new_generals_tt:0 "\nЗ' явиться §Y27§! нових генерал-лейтенатів"
+  SOV_defense_of_the_motherland_tt:0 "\n§YІван Федюнінська§!, §YІван Петров§!, §YІван Баграмян§!, §YВасиль Казаків§!, §YКузьма Подлас§!, §YАлександр Черепанів§!, §YКрейзер§! і §YКонстанті Рокоссівський§! прибудуть на посаду командувачів\n"
+  SOV_perfecting_the_infantry_core_tt:0 "\n§YНікарандір Чибісів§!, §YПилип Жмаченко§! і §YКонстантин Леселедзе§! прибудуть на посаду командувачів\n"
+  SOV_development_of_the_shock_army_tt:0 "\nПоставити на посаду командувачів танків §YРибалко§!, §YКравченко§! і §YРоманенко§! \nЗ' явиться §Y15§! талановитих генерал-лейтенатів"
+  SOV_deep_battle_tt:0 "\n§YПавло Ротмістрів§!, §YМихаїл Катуків§!, §YАлександр Горбатів§! і §YІван Людників§! прибудуть на посаду командувачів\n"
+
+  GER_creation_of_the_panzertruppe_tt:0 "§YЕрих фон Манштейн§!, §YГеорг Ґанс Рейнгардт§! і §YГенріх фон Фітінгоф§! Буде знайдено генералів\n"
+  GER_fallschirmjager_tt:0 "§YКурт Штудент§! буде доступний як генерал\n\n"
+  GER_an_invincible_army_tt:0 "§YГанс фон Зальмут§!, §YГеорг Ліндеман§!, §YЕберхард фон Макензен§!, §YФранц Беме§! і §YЕдуард Дітль§! Буде знайдено генералів\n\n"
+  GER_reorganize_the_wehrmacht_tt:0 "§YҐотхард Хейнреці§!, §YРихард Руофф§! і §YОген фон Шоберт§! Буде знайдено генералів\n"
+  GER_establish_the_afrikakorps_tt:0 "§YЕрвін Роммель§! буде доступний як генерал\n\n"
+  GER_durchbruchwagen_tt:0 "§YВальтер Модель§! буде доступний як генерал\n\n"
+  GER_refinement_of_bewegungskrieg_tt:0 "§YВернер Кемпф§! буде доступний як генерал\n\n"
+  GER_plan_the_third_generation_tt:0 "Досвідчені танкові командири §YГанс Валентин Хубе.§!, §YЕрхард Раус§! і §YЙозеф Харпе§!,а також не менш досвідчені команди §YУолтер Вайс§!, §YКарл Холлід§! і §YЛотар Рендулі§! Буде знайдено генералів\n\n"
+
+  GER_autobahn_tt:0 "\nРегіон з §GМаксимальний§! рівень §YІнфраструктори§!:\nОтримано §G1§! Ед. споруди §YІнфраструктура§!.\n\nРегіон з рівнем §YІнфраструктори§! більше §G7§!, Але менше §Gмаксимальна§!:\nОтримано §G2§! Ед. споруди §YІнфраструктура§!.\n\nРегіони рівня §YІнфраструктори§! знизу §G7§!:\nОтримано §G1§! Ед. споруди §YІнфраструктура§!.\n"
+  GER_auxiliary_autobahn_tt:0 "\nВсі регіони §YАвстрії§!:\nОтримано §G3§! Ед. споруди §YІнфраструктура§!.\n\nВсі регіони §YСудетська область§!, Підконтрольні Німеччини:\nОтримано §G2§! Ед. споруди §YІнфраструктура§!.\n\nВсі регіони, підконтрольні §YБогемія і Моравія§!:\nОтримано §G3§! Ед. споруди §YІнфраструктура§!.\n"
+
+  GER_industrial_political_power_cost_tt:0 "\nЩоденна вартість політичної влади: §R+0.1§!\n"
+  GER_ostarbieter:0 "Робоча сила Сходу"
+  GER_blitz_loses:0 "Провал операції Барбаросса"
+  GER_industry_intro:0 "§Y$GER_economy_of_conquest_modifier$§! Зміна на:"
+  GER_appoint_albert_speer_tt:0 "$GER_industry_intro$ \n£consumer_goods_texticon  Очікувана кількість заводів, перепрофілованих на товари народного споживання: §Y-0.04%§! \n£industry_repair_texticon  Безкоштовний ремонт: §G+100%§! \n£repair_civ_factory_texticon  Швидкість відновлення фабрик: §G+100%§! \n£construction_speed_radar_texticon  Швидкість будівництва §Yрадарні станцій§!: §G+20.00%§! \n£construction_speed_rocket_texticon  Швидкість будівництва §Yракетні майданчики§!: §G+20.00%§! \n£construction_speed_antiair_texticon  Швидкість будівництва §Yбатарей ПВО§!: §G+20.00%§! \n£war_support_modifiericons_texticon  Підтримка війни в тиждень: §R-0.10%§!\n\n"
+
+  ROM_appoint_german_friendly_government:0 "Курс на Німеччину"
+  ROM_iron_guard_focus:0 "Поставити Іона Антонеску прем'єр-міністром"
+  ROM_lose_territories:0 "Груповий розділ Румунії"
+  ROM_destroy_iron_guard:0 "Розгромувати залізну гвардію"
+  ROM_destroy_iron_guard_desc:0 "Лакі"
+  ROM_fascism_party2_long:0 "Партія «Все для Отцівства»"
+  ROM_fascism_party2:0 "Партія «Все для Отцівства»"
+  ROM_fascism_party3_long:0 "Партія Антонеску"
+  ROM_fascism_party3:0 "Партія Антонеску"
+  iron_guard_rebelion:0 "Повстання Залізної Гвардії"
+
+  GER_anti_comitern_pact:0 "Анти-комінтновський пакт"
+
+  siberia_secured:0 "Захистити §GВійськові§! Об'єкти на Далекому Сході, запобігши їх пошкодження в результаті подальших нальотів, ми повинні зберігати повну присутність нашої армії, якщо хочемо повністю припинити провокації."
+  udet_dead:0 "Він наклав на себе руки"
+  geidrich_killed:0 "Гейдрих убитий."
+  operation_antropoid_has_been:0 "Операція антропоїд"
+  SOV_dneprges:0 "Підрив ДніпроГЕС"
+  SOV_dneprges_bam:0 "Дозвіл на ДнепрогЕС"
+
+  SOV_the_molotov_line:0 "Лінія Круголова"
+
+  SOV_increase_aircraft_production_ns_tt: "$SOV_modify_airforce_ns_intro$ \n§YВсі типи літаків§!: £production_cost Ціна виробництва: §G-10.00%§! \n\n"
+  SOV_upgrade_industrial_designer_tt:0 "Зміна таких конструкторів: \n\n§Y$stalingrad_tractor_factory$§!Темпи досліджень в промисловості: §G+20%§!, \nФабрики, що виробляють товари народного вжитку: §Y-2.0%§!, \nМаксимальна ефективність виробництва §G+5%§!, \nОсновна ефективність виробництва §G+5%§!, \nВиготовлення заводу §G+10%§! \n\n§Y$leningrad_polytechnical_institute$§!Темпи досліджень в електроніці: §G+20%§!, \nРозхід припасів: §G-5.0%§!, \nШтраф за нестачу ресурсів §G-10%§!, \nВиготовлення заводу §G+10%§! \n\n§Y$SOV_soviet_railways$§!Темпи досліджень потягів: §G+20%§!, \nШвидкість мобілізації: §G+15.0%§!, \nШвидкість конверсії заводу в воєнний завод: §G-20.00%§!, \nВиготовлення заводу §G+10%§!"
+
+  GER_wehrmacht_modify_intro:0 "§Y$GER_wehrmacht_modifier$§! Зміна на:"
+  GER_combined_arms_tt:0 "$GER_wehrmacht_modify_intro$ \n£attack_tank_texticon Атака бронетанкової дивізії: §G+5.0%§! \n£organization_texticon Організація дивізії: §G+5.00%§!\n\n"
+  GER_realization_of_the_wehrmacht_tt:0 "$GER_wehrmacht_modify_intro$ \n£army_doctrine_cost_texticon Вартість сухопутної доктрини: §G-15%§!\n\n"
+  GER_the_heers_new_era_tt:0 "$GER_wehrmacht_modify_intro$ \n£dig_in_speed_texticon Швидкість створення укріплень: §G+25.00%§! \n£dig_in_max_texticon Максимальна опора: §G+25.00%§! \n\n"
+  GER_instill_auftragstaktik_tt:0 "$GER_wehrmacht_modify_intro$ \n£initiative_texticon Ініціатива: §G+15.0%§! \n£coordination_texticon Координація: §G+3%§!\n\n"
+  GER_war_of_movement_tt:0 "$GER_wehrmacht_modify_intro$ \n£speed_tank_texticon Швидкість бронетехніки: §G+5.0%§! \n\n"
+  GER_panzer_troops_school_tt:0 "$GER_wehrmacht_modify_intro$ \n£attack_tank_texticon Атака бронетанкової дивізії: §G+5.0%§! \n£planning_speed_texticon Швидкість планування: §R-5.00%§! \n£organization_texticon Організація дивізії: §G+2.00%§!\n\n"
+  GER_panzergrenadier_tt:0 "$GER_wehrmacht_modify_intro$ \n£organization_texticon Організація дивізії: §G+5.00%§!\n\n"
+  GER_general_winter_tt:0 "$GER_wehrmacht_modify_intro$ \n£temperature_cold_texticon Приріст акліматизації до холоду: §G+1040.00%§! \n£experience_loss_texticon Втрати досвідчених бійців: §R+20.00%§! \n\n"
+  GER_airland_divisions_wehr_tt:0 "$GER_wehrmacht_modify_intro$ \n£experience_loss_texticon Втрати досвідчених бійців: §R+5.00%§! \n\n§YАльберт Кессельінг§! Буде доступно як фельдмаршала\n\n"
+
+  GER_luftwaffe_modify_intro:0 "§Y$GER_luftwaffe_modifier$§! Зміна на:"
+  GER_luftwaffe_innovations_tt:0 "$GER_luftwaffe_modify_intro$ \n£air_doctrine_cost_texticon Цінність повітряної доктрини: §G-20%§!\n\n"
+  GER_form_the_jagdwaffe_tt:0 "$GER_luftwaffe_modify_intro$ \n£ace_generation_texticon Ймовірність виникнення асу: §G+50.00%§! \n£speed_air_texticon Маневрність: §G+5.00%§!"
+  GER_reorganize_the_luftwaffe_tt:0 "$GER_luftwaffe_modify_intro$ \n£manpower_cost_texticon Вимога до людських ресурсів авіації: §G-20.00%§! \n£air_accidents_texticon Ймовірність летних випадків: §G-20.00%§!"
+  GER_the_great_sky_war_tt:0 "$GER_luftwaffe_modify_intro$ \n£experience_loss_texticon Втрата досвіду авіалінії під час знищення: §G-15.00%§!\n\n"
+  GER_sturzbomber_programm_tt:0 "$GER_luftwaffe_modify_intro$ \n£dive_bombing_texticon Точність наземного бомбардування: §G+10.00%§! \n£cas_texticon Коефіцієнт авіаштурми: §G+10.00%§!\n\n"
+  GER_long_range_escorts_tt:0 "$GER_luftwaffe_modify_intro$ \n£air_interception_efficiency_texticon Ефективність перехоплювачів: §G+15.00%§!\n\n"
+  GER_combined_arms_luft_tt:0 "$GER_luftwaffe_modify_intro$ \n£dive_bombing_texticon Точність наземного бомбардування: §G+10.00%§! \n£cas_texticon Коефіцієнт авіаштурми: §G+10.00%§!\n\n"
+  GER_airland_divisions_tt:0 "$GER_luftwaffe_modify_intro$ \n£manpower_cost_texticon Вимога до людських ресурсів авіації: §G-50.00%§!"
+
+  GER_kriegsmarine_modify_intro:0 "§Y$GER_kriegsmarine_modifier$§! Зміна на:"
+  GER_cruiser_warfare_tt:0 "$GER_kriegsmarine_modify_intro$ \n£armor_texticon Бонус до охорони при використанні тільки великих кораблів: §G+25.00%§! \n£armor_texticon Ефективність охорони: §G+10.00%§!\n\n"
+  GER_wolfpack_tactics_tt:0 "$GER_kriegsmarine_modify_intro$ \n£convoy_raiding_efficiency_texticon Ефективність перехоплення конвойв: §G+10.00%§! \n£naval_range_texticon Коефіцієнт радіусу дії флоту: §G+5.00%§!\n\n"
+  GER_panzerschiff_raiders_tt:0 "$GER_kriegsmarine_modify_intro$ \n£retreat_texticon Шанс на відступ після початкового етапу: §G+20.00%§! \n£retreat_texticon Швидкість відступу після початкового кроку: §G+20.00%§! \n£naval_battery2_texticon Випробовування важких гармат: §G+10.00%§!\n\n"
+  GER_u_boat_efforts_tt:0 "$GER_kriegsmarine_modify_intro$ \n£torpedo_texticon Ефективність торпедного загону: §G+20.00%§! \n£naval_range_texticon Коефіцієнт радіусу дії флоту: §G+10.00%§!\n\n"
+  GER_unrestricted_convoy_raiding_tt:0 "$GER_kriegsmarine_modify_intro$ \n£damage_control_texticon Ймовірність успіху морської атаки: §G+5.00%§! \n£convoy_raiding_efficiency_texticon Ефективність перехоплення конвойв: §G+15.00%§!\n\n"
+
+  SOV_oil_production_silo_tt:0 "Додається по одному §YНефтепереробна фабрика§! в ці регіони."
+  SOV_barrier_troops_ns_tt:0 "$SOV_modify_the_red_army_ns_intro$ \nВідновлення організації армії: §G+10.00%§! \n\n"
+
+  JAP_non_aggression_pact_with_the_soviet_union:0 "Лист про ненапад з СРСР"
+  JAP_establish_teishin_shudan:0 "ПОДВ Імператорської армії Японії"
+  GER_anti_partisan_operations:0 "Антипартизанські операції"
+
+  SOV_modify_the_politburo_ns_intro:0 "§Y$SOV_the_politburo_good_dynamic_modifier$§! Зміна на:"
+  SOV_the_centre_ns_tt:0 "Додається §Y$SOV_the_politburo_good_dynamic_modifier$§!, що дасть (щоденна підтримка комунізму: §G+0.05§!) \n\n"
+  SOV_the_stalin_constitution_ns_tt:0 "$SOV_modify_the_politburo_ns_intro$ \nЗахист від зміни ідеології: §G+5.0%§! \nПриріст політичної влади: §G+5%§! \n\n"
+  SOV_secure_the_administration_ns_tt:0 "$SOV_modify_the_politburo_ns_intro$ \nЗатрати на закони про економіку: §G-20%§! \nЗатрати на закони, що регулюють торгівлю: §G-20%§! \nЗатрати на закони про заклик: §G-20%§! \n\n"
+  SOV_the_workers_dictatorship_ns_tt:0 "$SOV_modify_the_politburo_ns_intro$ \nПриріст політичної влади: §G+5%§! \nФактор фабрики народного споживання: §Y-5.00%§! \n\n"
+  SOV_organization_centralization_discipline_ns_tt:0 "$SOV_modify_the_politburo_ns_intro$ \nЗміна максимуму командного ресурсу: §G+50§! \nШвидкість мобілізації: §G+20%§! \n\n"
+  SOV_behead_the_snake_ns_tt:0 "$SOV_modify_the_politburo_ns_intro$ \nКомірки для агентів: §G+1§! \n\n"
+  SOV_freedom_of_debate_unity_of_action_ns_tt:0 "$SOV_modify_the_politburo_ns_intro$ \nЗатрати на політичного радника: §G-10%§! \n\n"
+  SOV_the_construction_of_communism_ns_tt:0 "$SOV_modify_the_politburo_ns_intro$ \nЩомісячна думка загальної ідеології: §G+25.00%§! \n\n"
+  SOV_ban_excessive_hero_worship_dec_cost_tt:0 "Цінність рішень, пов’язаних з категоріями §YДипломатії§!: §G-50%§!"
+  SOV_the_construction_of_communism_railways_tt:0 "Побудувати залізницю рівня §Y1§! від §YМоскви§! до §YСтолиця кожної держави-маріонетки§!, доступного по суші."
+  SOV_the_construction_of_communism_puppet_autonomy_tt:0 "Кожна держава-маріонетка: \n Додає £autonomy_texticon §Y-100.00§!\n\n"
+
+  SOV_last_purge_focus_days_army_tt:0 "Зараз: [?SOV_third_moscow_trial_flag:days|Y0]"
+  SOV_last_purge_focus_days_academy_tt:0 "Зараз: [?SOV_third_moscow_trial_flag:days|Y0]"
+
+  USA_separate_tank_bats_tech:0 "Окремий танковий батальйон"
+  SOV_finish_the_second_five_year_plan:0 "Завершити другий п’ятирічний план"
+  SOV_finish_the_second_five_year_plan_desc:0 "Другий п'ятирічний план віддає перевагу розвитку важкої промисловості, і Радянський Союз повинен розвиватися швидко, щоб відповідати капіталістичним і фашистським силам Заходу."
+
+  SOV_start_the_third_five_year_plan:0 "Почати третій п'ятирічний план"
+  SOV_start_the_third_five_year_plan_desc:0 "Третім п'ятилітком є розвиток військової промисловості та озброєнь, і Радянський Союз повинен розвиватися швидко, щоб відповідати капіталістичним і фашистським силам Заходу."
+
+  SOV_second_five_year_plan_dynamic_modifier:0 "П’ятирічний план"
+  SOV_third_five_year_plan_dynamic_modifier:0 "П’ятирічний план"
+  SOV_modify_second_fyp_intro:0 "§Y$SOV_second_five_year_plan_dynamic_modifier$§! Зміна на:"
+
+  SOV_finish_the_second_five_year_plan_tt:0 "$SOV_modify_second_fyp_intro$ \nШвидкість будівництва: §G+20%§!\n\nДругий п’ятирічний план закінчується, його модифікатори видаляються і залишаються успадкованим модифікатором §G10%§! Швидкість будівництва цивільних заводів і §G10%§! Швидкість побудови інфраструктури"
+  SOV_start_the_third_five_year_plan_tt:0 "§YРадянська промисловість§! починає реалізацію третього п'ятирічного плану.\n$SOV_modify_second_fyp_intro$ \nПриріст політичної влади: §R-0.6§! \nШвидкість будівництва військових заводів на §G+20%§! \nФабрики товарів народного споживання: §Y+5%§!"
+
+  peoples_commissariat_focus_tt:0 "$SOV_modify_second_fyp_intro$ \nОбйоми заводського виробництва: §G+5%§!"
+  SOV_lower_workers_minimum_wage_tt:0 "§RВилучити ідею "Пропонувати вищу заробітну плату"Якщо таке є§!"
+  SOV_increase_state_reserves_tt:0 "$SOV_modify_second_fyp_intro$ \nЕфективність добування ресурсів: §G+15%§!"
+  SOV_optimize_production_lines_tt:0 "$SOV_modify_second_fyp_intro$ \nЗростання ефективності виробництва: §G+30%§!\nОсновна ефективність виробництва: §G+5%§!"
+
+  SOV_revive_the_stakhanovite_movement_tt:0 "$SOV_modify_second_fyp_intro$ \nОбйоми заводського виробництва: §G+10%§! \nШвидкодія верфі: §G+10%§!"
+  SOV_workers_culture_tt:0 "$SOV_modify_second_fyp_intro$ \nШвидкість будівництва: §G+10%§! \nОбйоми заводського виробництва: §G+10%§! \nЕфективність добування ресурсів: §G+5%§!"
+  SOV_socialist_emulation_tt:0 "$SOV_modify_second_fyp_intro$ \nТемпи досліджень: §G+5%§! \nЗростання ефективності виробництва: §G+10%§!"
+
+  SOV_militarized_schools_tt:0 "$SOV_modify_the_politburo_ns_intro$ \nВознооб’ єднане населення: §Y+0.50%§! \nШвидкість мобілізації: §G+20%§! \nМодифікатор безпеки від штрафу за оборонну війну: §G+10%§!"
+
+  SOV_the_collectivization_process_ns_tt:1 "$SOV_modify_second_fyp_intro$ \nФабрики товарів народного споживання: §Y-5%§! \nШвидкість будівництва: §G+15%§! \n\n"
+  SOV_focus_complete_reorg_tt:0 "Виконання фокусу видаляє негативний національний дух §YНезбережені війська§!"
+
+  NSB_soviet_five_year_plan.01.t: "Третьої п'ятилітки зірвано"
+  NSB_soviet_five_year_plan.01.desc: "Зараз, коли на Родину напав ворог, очевидно, що наші плани економічного розвитку безглузді, можливо, ми повернемося до них, коли знову прийде світ, але поки що треба зосередитися на військовому виробництві."
+  NSB_soviet_five_year_plan.01.a: "Будь вони несправні!"
+  NSB_soviet_five_year_plan_tt: "Третій п’ятирічний план закінчується, його модифікатори видаляються і залишаються модифікатором спадку §G10%§! Швидкість будівництва військових заводів"
+
+
+
+  0_economy_fatigue:0 "§OМає 0% економічної втоми§!"
+  more_than_0_economy_fatigue:0 "§OВтома економіки перевищує 0%§!"
+
+  less_than_10_economy_fatigue:0 "§OМає економічну втому менше 10%§!"
+  more_than_10_economy_fatigue:0 "§OМає більше 10% економічної втоми§!"
+
+  less_than_50_economy_fatigue:0 "§OМає економічну втому менше 50%§!"
+  more_than_50_economy_fatigue:0 "§OМає економічну втому понад 50%§!"
+
+  less_than_75_economy_fatigue:0 "§OМає економічну втому менше 75%§!"
+  more_than_75_economy_fatigue:0 "§OМає понад 75% економічної втоми§!"
+
+  less_than_90_economy_fatigue:0 "§OМає економічну втому менше 90%§!"
+  more_than_90_economy_fatigue:0 "§OМає економічну втому понад 90%§!"
+
+
+
+
+
+
+
+
+
+
+  FRA_form_the_popular_front_tt:1 "£faction_fra_cgt §YВКТ§! стане §YТривожний§!. \n£faction_fra_national_bloc §YНаціональний блок§! стане §RЖорстокі§!.\n"
+
+  FRA_revive_the_national_bloc_tt:1 "£faction_fra_cgt §YВКТ§! стане §RЖорстокі§!. \n£faction_fra_national_bloc §YНаціональний блок§! стане §YТривожний§!.\n"
+
+  FRA_laissez_faire_tt:1 "£faction_fra_French_Industrialists §YПромисловці§! Буде більше §GПрихильні§! збільшувати §YШвидкодія заводу та верфі§! на §G10%§!, збільшувати §YПриріст політичної влади§! на §G5%§!, і §Yстабільність§! на §G5%§!."
+
+  FRA_French_Army_Positive_1_tt:1 "£faction_fra_French_Army §YАрмія§! Буде більше §GНаднігтя§! зменшення штрафу до §Yбронетехніки.§! на §G5%§!, збільшувати §YПриріст політичної влади§! на §G5%§!, і §Yстабільність§! на §G5%§!."
+
+  FRA_review_foreign_policy_tt:1 "£faction_fra_French_Army §YАрмія§! Буде більше §GНаднігтя§! зменшення штрафу до §Yбронетехніки.§! на §G5%§!, збільшувати §YПриріст політичної влади§! на §G5%§!, і §Yстабільність§! на §G5%§!."
+
+  FRA_Industrialists_Positive_1_tt:1 "£faction_fra_French_Industrialists §YПромисловці§! Буде більше §GПрихильні§! і §GВпливовий§! збільшувати §YШвидкодія заводу та верфі§! на §G10%§!, збільшувати §YПриріст політичної влади§! на §G5%§!, і §Yстабільність§! на §G5%§!."
+
+  FRA_Industrialists_Negative_1_tt:1 "£faction_fra_French_Industrialists §YПромисловці§! Буде більше §RНедружні§! зменшити §YШвидкодія заводу та верфі§! на §R10%§!, зменшити §YПриріст політичної влади§! на §R5%§!, і §Yстабільність§! на §R5%§!."
+
+  FRA_National_Bloc_Negative_tt:1 "£faction_fra_national_bloc §YНаціональний блок§! Буде більше §RНедружні§! збільшувати §YФабрики народного споживання§! на §R5%§!, зменшити §YПриріст політичної влади§! на §R5%§!, і §Yстабільність§! на §R5%§!."
+
+  FRA_CGT_Positive_1_tt:1 "£faction_fra_cgt §YВКТ§! Буде більше §GПрихильні§! збільшувати §YШвидкодія заводу та верфі§! на §G10%§!, збільшувати §YПриріст політичної влади§! на §G5%§!, і §Yстабільність§! на §G5%§!."
+
+  FRA_National_Bloc_Positive_1_tt:1 "£faction_fra_national_bloc §YНаціональний блок§! Буде більше §GПрихильний§! зменшити §YФабрики народного споживання§! на §G5%§!, збільшувати §YПриріст політичної влади§! на §G5%§!, і §Yстабільність§! на §G5%§!."
+
+  FRA_dirigisme_tt:1 "Як впливає на £faction_fra_national_bloc §YНаціональний блок§!, зменшити §YФабрики народного споживання§! на §G5%§!, , і збільшити §Yстабільність§! на §G5%§!."
+
+  FRA_economic_devolution_tt:1 "£faction_fra_French_Industrialists §YПромисловці§! Буде більше §GПрихильні§! збільшувати §YШвидкодія заводу та верфі§! на §G20%§! і збільшувати §YПриріст політичної влади§! на §G5%§!.\n£faction_fra_cgt §YВКТ§! стане §Yнабагато§! менше §RВпливові§!"
+
+  FRA_promote_entrepeneurship_tt:1 "£faction_fra_national_bloc §YНаціональний блок§! Буде більше §GПрихильні§! і §GВпливовий§! зменшити §YФабрики народного споживання§! на §G5%§!, збільшувати §YПриріст політичної влади§! на §G5%§!, і §Yстабільність§! на §G5%§!."
+
+  FRA_nationalize_key_industry_tt:1 "£faction_fra_French_Industrialists §YПромисловці§! Втрата впливу на економіку зменшується §YШвидкодія заводу та верфі§! на §R-20%§! і стануть більш §RЗлі§!. £faction_fra_cgt §YВКТ§! стане §Yнабагато§! більше §GВпливовий§!\n"
+
+  FRA_reform_the_labour_laws_tt:1 "£faction_fra_cgt §YВКТ§! стане §GПрихильний§! зміна §Yстабільність§! на §G+5%§! і §GВін усуне будь - які політичні втрати.§!\n£faction_fra_French_Industrialists §YПромисловці§! Буде більше §RЗлі§!.\n"
+
+  FRA_revoke_the_matignon_agreements_tt:1 " £faction_fra_cgt §YВКТ§! Буде більше §Rлукавий§! зміна §YПриріст політичної влади§! на §R-15%§!"
+
+  FRA_general_work_council_tt:1 "£faction_fra_cgt §YВКТ§! Буде більше §GПрихильний§! збільшувати §YШвидкодія заводу та верфі§! на §G+20%§! і §Yстабільність§! на §G+5%§!. \n£faction_fra_French_Industrialists §YПромисловці§! Втратять §YВплив§! зменшити §YПриріст політичної влади§! на §R5%§!\n"
+
+  FRA_national_champions_tt:1 "£faction_fra_French_Industrialists §YПромисловці§! ♪ Вони стануть ♪ §Yнабагато§! більше §GПрихильні§!\n"
+
+  FRA_industrial_expansion_tt:1 "£faction_fra_French_Industrialists §YПромисловці§! Буде більше §GПрихильні§! і §YВпливовий§!\n"
+
+  FRA_colonial_industry_tt:1 "£faction_fra_French_Industrialists §YПромисловці§! Буде більше §GПрихильні§! і §YВпливовий§!\n"
+
+  FRA_strengthen_the_unions_tt:1 " £faction_fra_French_Industrialists Буде більше §Rлукаві§! і §ПВтратяє контроль над фабриками§! і їх §Влияння§! різке зменшення, предоставлюючи більше §YОб’ єднання§! £faction_fra_cgt ВКТ.\n"
+
+  FRA_reform_our_industry_tt:1 " £faction_fra_French_Industrialists Буде більше §GПрихильні§! збільшувати §YШвидкодія заводу та верфі§! to §G+10%§!.\n"
+
+  FRA_unify_the_government:0 "Об’ єднати уряд"
+  FRA_unify_the_government_desc:0 "Політика надто сильно залучена в військові справи, при сильному уряді ми можемо здобути більшу свободу для наших генералів і вчених."
+
+  FRA_national_centre_for_scientific_research:0 "Національний центр наукових досліджень"
+  FRA_national_centre_for_scientific_research_desc:0 "Ми зобов'язані об'єднати всі центри дослідників під одним дахом, збільшивши їх ефективність."
+
+  FRA_richelieu_tt:0 "Додає 2 лінза класу Richelieu Class в чергу виробництва з §Y50%§! і §Y35%§! Поступ відповідно до цього"
+
+  FRA_joffre_tt:0 "Додає один авіаносець класу Joffre Class в чергу виробництва з §Y40%§! Поступ"
+
+  FRA_industrial_expansion_effect_tt:0 "Додає 6 §YГражданських Фабрік§! у раніше проінформовані регіони метрополії."
+  FRA_military_factories_effect_her_tt:0 "Додає 6 §YВоєнних заводів§! у раніше проінвесовані регіони метрополії і 4 §YВоєнна фабрика§! у раніше проінвесовані колоніальні регіони."
+  FRA_colonial_industry_effect_her_tt:0 "Додає 4 §YГромадянські фабрики§! у раніше проінвесовані колоніальні регіони."
+
+  FRA_border_defense:0 "Оборона на кордонах"
+  FRA_border_defense_desc:0 "Ми повинні підготуватися до боротьби на нашій землі, використовуючи наші переваги землі, тоді ми зможемо вести битву з ворогом на наших умовах."
+
+  FRA_air_based_sea_supremacy:0 "Повітряно-морська перевага"
+  FRA_air_based_sea_supremacy_desc:0 "Вбити кораблі іншими кораблями - дорого, і дешевлі використовувати авіацію для знищення ворожого флоту, поки наші перебувають у відносній безпеці в порту."
+
+  FRA_develop_colonial_dockyards:0 "Розгорнути метрополітенові верфі"
+  FRA_develop_colonial_dockyards_desc:0 "У нас величезна колоніальна імперія, щоб переконатися, що наші води в безпеці, нам потрібно більше кораблів, і співвідповідно більше верфей."
+
+  FRA_send_officers_to_the_uk:0 "Надіслати офіцерів до Великобританії"
+  FRA_send_officers_to_the_uk_desc:0 "Британське найвище командування запропонувало нам тренування деяких наших офіцерів для спеціальних операцій."
+
+  FRA_special_forces_joint_training:0 "Приєднатися до тренування спец військ"
+  FRA_special_forces_joint_training_desc:0 "Нас запросили приєднатися до занять британських спец військ у Шотландії."
+
+  FRA_special_forces:0 "Реорганізувати Іноземний Легіон"
+  FRA_special_forces_desc:0 "Французький Іноземний Легіон - елітні війська, зібрані за допомогою волонтерів з усього світу, можливо ми зможемо покращити їх бойові якості, з'єднавши різні підрозділи в одну дивізію."
+
+  FRA_new_army_bureau:0 "Нове бюро армій"
+  FRA_new_army_bureau_desc:0 "Стратегії війни еволюціонували швидше, ніж ми могли собі уявити, нові сили були виділені армії, щоб поліпшити нашу стратегію і тактику."
+
+  FRA_aggressive_focus_tt:0 "£faction_fra_French_Army §YАрмія§! Повинно бути §GПрихильний§! Або краще."
+
+  FRA_ban_the_leagues_tt:0 "£faction_fra_French_Army §YНаціональний блок§! - відношення повинно бути §OСердитне§! Або гірше.\n"
+
+  FRA_ban_communism_tt:1 "£faction_fra_cgt §YВКТ§! - відношення повинно бути §OСердитне§! Або гірше.\n"
+
+
+
+  JAP_purge_the_kodoha_faction_tt:0 "£faction_jap_kodoha §YКодоха§! буде §Lзнищено§! і видалити всі свої модифікатори\n"
+
+  JAP_guide_the_zaibatsus_tt:1 "£faction_jap_zaibatsus §YДзайбацу§! Буде більше §GЕфективніше§! збільшувати §YШвидкість будівництва§! на §G10%§! і зменшує §YФактор фабрики народного споживання§! на §G20%§!"
+
+  JAP_interservice_rivalry_towards_kantaiha_1_tt:1 "£faction_jap_kantaiha §YФракція флоту§! Буде більше §GУповноважений§! збільшувати §YШвидкодія імітацій§! на §G10%§! і збільшувати §YШвидкість будівництва верфей§! на §G5%§!\n"
+
+  JAP_interservice_rivalry_towards_kantaiha_2_tt:1 "£faction_jap_kantaiha §YФракція флоту§! Буде більше §GУповноважений§! збільшувати §YШвидкодія імітацій§! на §G10%§! і збільшувати §YШвидкість будівництва верфей§! на §G5%§!\n"
+
+  JAP_interservice_rivalry_towards_kantaiha_3_tt:1 "£faction_jap_kantaiha §YФракція флоту§! Буде більше §GУповноважений§! збільшувати §YШвидкодія імітацій§! на §G10%§! і збільшувати §YШвидкість будівництва верфей§! на §G5%§!, §Yстабільність§! на §G10%§!\n"
+
+  JAP_interservice_rivalry_towards_kantaiha_4_tt:1 "£faction_jap_kantaiha §YФракція флоту§! Буде більше §GУповноважений§! збільшувати §YШвидкодія імітацій§! на §G10%§! і збільшувати §YШвидкість будівництва верфей§! на §G5%§!, §Yстабільність§! на §G15%§!\n"
+
+  JAP_interservice_rivalry_towards_toseiha_1_tt:1 "£faction_jap_toseiha §YФракція контролю§! Буде більше §GУповноважений§! збільшувати §YШвидкодія заводів§! на §G10%§! і збільшувати §YШвидкість будівництва заводів§! на §G5%§!\n"
+
+  JAP_interservice_rivalry_towards_toseiha_2_tt:1 "£faction_jap_toseiha §YФракція контролю§! Буде більше §GУповноважений§! збільшувати §YШвидкодія заводів§! на §G10%§! і збільшувати §YШвидкість будівництва заводів§! на §G5%§!\n"
+
+  JAP_interservice_rivalry_towards_toseiha_3_tt:1 "£faction_jap_toseiha §YФракція контролю§! Буде більше §GУповноважений§! збільшувати §YШвидкодія заводів§! на §G10%§!, збільшувати §YШвидкість будівництва заводів§! на §G5%§! і §Yстабільність§! на §G10%§!\n"
+
+  JAP_interservice_rivalry_towards_toseiha_4_tt:1 "£faction_jap_toseiha §YФракція контролю§! Буде більше §GУповноважений§! збільшувати §YШвидкодія заводів§! на §G10%§!, збільшувати §YШвидкість будівництва заводів§! на §G5%§! і §Yстабільність§! на §G15%§!\n"
+
+  JAP_interservice_rivalry_against_kantaiha_1_tt:1 "£faction_jap_kantaiha §YФракція флоту§! Буде більше §RОслабленою§! зменшити §YШвидкодія імітацій§! на §R10%§! і менша §YШвидкість будівництва верфей§! на §R5%§!\n"
+
+  JAP_interservice_rivalry_against_kantaiha_2_tt:1 "£faction_jap_kantaiha §YФракція флоту§! Буде більше §RОслабленою§! зменшити §YШвидкодія імітацій§! на §R10%§! і менша §YШвидкість будівництва верфей§! на §R5%§!\n"
+
+  JAP_interservice_rivalry_against_kantaiha_3_tt:1 "£faction_jap_kantaiha §YФракція флоту§! Буде більше §RОслабленою§! зменшити §YШвидкодія імітацій§! на §R10%§!, зменшити §YШвидкість будівництва верфей§! на §R5%§! і §Yстабільність§! на §R10%§!\n"
+
+  JAP_interservice_rivalry_against_kantaiha_4_tt:1 "£faction_jap_kantaiha §YФракція флоту§! Буде більше §RБунтівний§! зменшити §YШвидкодія імітацій§! на §R10%§!, зменшити §YШвидкість будівництва верфей§! на §R5%§! і §Yстабільність§! на §R15%§!\n"
+
+  JAP_interservice_rivalry_against_toseiha_1_tt:1 "£faction_jap_toseiha §YФракція контролю§! Буде більше §RОслабленою§! зменшити §YШвидкодія заводів§! на §R10%§! і менша §YШвидкість будівництва заводів§! на §R5%§!\n"
+
+  JAP_interservice_rivalry_against_toseiha_2_tt:1 "£faction_jap_toseiha §YФракція контролю§! Буде більше §RОслабленою§! зменшити §YШвидкодія заводів§! на §R10%§! і менша §YШвидкість будівництва заводів§! на §R5%§!\n"
+
+  JAP_interservice_rivalry_against_toseiha_3_tt:1 "£faction_jap_toseiha §YФракція контролю§! Буде більше §RОслабленою§! зменшити §YШвидкодія заводів§! на §R10%§!, зменшити §YШвидкість будівництва заводів§! на §R5%§! і §Yстабільність§! на §R10%§!\n"
+
+  JAP_interservice_rivalry_against_toseiha_4_tt:1 "£faction_jap_toseiha §YФракція контролю§! збунтується, знизивши §Yшвидкодія заводів§! на §R10%§!, §YШвидкість будівництва фабрик§! на §R5%§! і §Yстабільність§! на §R15%§!.\n"
+
+  JAP_preparations_to_secure_the_islands:0 "Підготовка до захоплення островів"
+  JAP_preparations_to_secure_the_islands_desc:0 "Багаті ресурси острова Голландської Ост-Індії є головною метою нашої війни в південній частині Тихого океану, а американські та їхні маріонетки на Філіппінах блокують нас від наших цілей. Наші солдати повинні бути навчені захоплювати і утримувати ці регіони."
+
+  JAP_tojos_cabinet:0 "Кабінет Тодзіо"
+  JAP_tojos_cabinet_desc:0 "Він був занадто слабким і боягузливим, щоб вести Японію проти Західних держав, і знає, що для майбутнього Японії немає надто багато грошей."
+
+  JAP_reform_the_officers:0 "Реформа офіцерів"
+  JAP_reform_the_officers_desc:0 "Тодзьо є популярним лідером в нашій армії, з його новими повноваженнями в уряді він може, нарешті, реформувати офіцерів і привести армію до п'ятки."
+
+  JAP_imperial_rule_association:0 "Імперська асоціація правління"
+  JAP_imperial_rule_association_desc:0 "Асоціація імперського правління під керівництвом Фумімаро Коное дасть йому платформу для просування цілей його руху «Новий порядок»Це дозволить нам мілітаризувати населення, щоб максимізувати ефективність спільних військових зусиль Японії."
+
+  JAP_konoes_cabinet:0 "Кабінет Коное"
+  JAP_konoes_cabinet_desc:0 "Японія більше не може заграти з декадентськими західними ідеями лібералізму. Янки і англо-американці показали, що вони не готові співпрацювати з Японією. Коное виведе Японію проти всього світу!"
+
+  JAP_strike_north_doctrine:0 "Північна доктрина"
+  JAP_strike_north_doctrine_desc:0 "Армія вважає, що вторгнення Радянського Союзу на Північ буде набагато простішим, ніж примушення себе до війни з західними державами, які реалізують Сибірську рівнину, даючи відповідь на нашу нестачу ресурсів."
+
+  JAP_german_technological_exchange:0 "Німецька технологічна біржа"
+  JAP_german_technological_exchange_desc:0 "Німці дуже далекі від нас, але вони виявили готовність до співпраці, і якщо ми хочемо співпрацювати, щоб знищити радянського ведмедя, то маємо сенс поділитися деякими нашими технологіями."
+
+  JAP_the_korean_project:0 "Корейський проект"
+  JAP_the_korean_project_desc:0 "Корея є воротами Японії на континент, і без цього наші мрії про імперію ніколи не здійсняться, вони повинні бути прив'язані до нас."
+
+  JAP_industrialize_the_north:0 "Індустріалізація Півночі"
+  JAP_industrialize_the_north_desc:0 "Північні регіони Кореї створюють сприятливі умови для індустріалізації, ми можемо використати цей простір для будівництва заводів, які ми не змогли б розмістити на наших рідних островах."
+
+  JAP_fully_integrate_korea:0 "Повністю інтегрувати Корею"
+  JAP_fully_integrate_korea_desc:0 "Корейці успішно пристосовувалися до японських традицій та культури, і їм треба було визнати свій статус у складі Японії."
+
+  JAP_industrialize_the_south:0 "Індустріалізація Півдня"
+  JAP_industrialize_the_south_desc:0 "Південний кінець Корейського півострова стане місцем для громадських промислових проектів, які ми не можемо знайти на внутрішніх островах."
+
+  JAP_support_menjiang_claims:0 "Підтримайте претензії Менцзяна"
+  JAP_support_menjiang_claims_desc:0 "Наша маріонетська маріонетка не мала легітимності, щоб нав'язати свої претензії всій Монголії, і з нашою допомогою вони зможуть знову заявити про себе на території, втраченій Кітаєм і Радам."
+
+  JAP_crush_the_remaining_warlords:0 "Ковчег позосталих воєначальників"
+  JAP_crush_the_remaining_warlords_desc:0 "Націоналісти зазнали поразки, а їхні дрібний Об'єднаний фронт в руїнах, і настав час заставити нашу владу над Китаєм!"
+
+  JAP_exploit_the_southern_resource_area:0 "Експлуатація завойованих територій"
+  JAP_exploit_china_desc:0 "Наші війни дорого коштують нашій економіці, і ми розробили плани використання підконтрольних нам районів Китаю, щоб краще контролювати нашу економічну ситуацію."
+
+  JAP_modernization_effort:0 "Зусилля модернізації"
+  JAP_modernization_effort_desc:0 "Війна продовжує розвиватися, і ми не можемо бути спіймані без неї, більш важкі броновані та транспортні варіанти дадуть нам перевагу в боротьбі з ворогами Японії."
+
+  JAP_kokura_arsenal:0 "Арсенал Кокура"
+  JAP_kokura_arsenal_desc:0 "Kokura Arsenal є одним з найбільших зарубіжних заводів Японії, які будуть розширені, щоб озброїти наших солдатів."
+
+  JAP_advanced_weaponary:0 "Розширена зброя"
+  JAP_advanced_weaponary_desc:0 "Хоча зайвою зброєю наших солдатів є арисака і багнет, ми потребуємо сучасної зброї для боротьби з сучасними ворогами. Для виконання цього завдання повинні бути розроблені більш важкі артилерійські та протитанкові платформи."
+
+  JAP_new_bomber_projections:0 "Нові проекти бомбардувальників"
+  JAP_new_bomber_projections_desc:0 "Наші сучасні бомбардувальники виявилися неефективними проти виснажливих морських і наземних цілей, а нові бомбардувальники, які можуть нести важчі боєприпаси."
+
+  JAP_the_imperial_japanese_air_force:0 "Імператорські ВС Японії"
+  JAP_the_imperial_japanese_air_force_desc:0 "Конфлікт між IJN та IJA призвів до розвитку двох різних військово-повітряних сил з їхньою власною тактикою і літаками. Ця дрібна конкуренція повинна бути зметена заради нашої імперії, і будуть сформовані нові об'єднані і незалежні військово-повітряні сили."
+
+  JAP_project_z:0 "Проект Z"
+  JAP_project_z_desc:0 "Американські бомбардувальники наших міст викликали тріщини у вірі нашого народу в імперію, ми повинні мати можливість помститися Сполученим Штатам і створити власний стратегічний бомбардувальник далекого вчинку."
+
+  JAP_synthetic_resource_studies:0 "Дослідження синтетичних ресурсів"
+  JAP_synthetic_resource_studies_desc:0 "У той час як брак нашої промисловості можна вирішити, просто збудувавши більше заводів, ми не можемо вирішити проблему нестачі природних ресурсів, просто створюючи їх."
+
+  JAP_imperial_synthetic_programme:0 "Імперська синтетична програма"
+  JAP_imperial_synthetic_programme_desc:0 "Ми досягли того, що раніше вважали неможливим, і тепер виготовили з вугілля Резіну та нафти, і Японія вимагає від нас розширення їх виробництва."
+
+  JAP_operation_ketsugo:0 "Операція Кецуго"
+  JAP_operation_ketsugo_desc:0 "Іноземні загарбники висадилися на нашій рідній землі, кожен громадянин Японії повинен бути готовий віддати своє життя за нашу країну."
+
+  JAP_strike_at_china:0 "Удар по Китаю"
+  JAP_strike_at_china_desc:0 "[Root.GetNameDefCap] Бідний ресурс, але наші сусіди - ні, ми повинні забрати у них те, чого нам не вистачає, і для цього нам потрібно лише привід. Таке виправдання могли дати кілька передбачливих солдатів, після чого імператор не матиме іншого вибору, окрім як погодитись на війну, як би погано вона не була підготовлена..."
+
+  JAP_hideo_iwakuros_order:0 "Заказ генерала Івагуро"
+  JAP_hideo_iwakuros_order_desc:0 "Генерал Івакуро попросив створити важкі танки більше, ніж ми коли-небудь бачили, ці сталеві звірі повернуть будь-яку битву на нашу користь."
+
+  JAP_kijiro_nambus_works:0 "Роботи Кідзіро Намбу"
+  JAP_kijiro_nambus_works_desc:0 "Kijrio Nambu - один з найбільш талановитих дизайнерів зброї. Його конструкції повинні мати додатковий пріоритет, щоб вони могли бути зроблені і відправлені на нашу лінію фронту раніше."
+
+  JAP_integrate_takasago_volunteers:0 "Інтеграція волонтерів Такасаго"
+  JAP_integrate_takasago_volunteers_desc:0 "Наші вірні піддані у Формозі більше підходять для тропічного клімату, ніж ми, і ми набрали багато добровольців, які будуть спеціально споряджені для бойових дій у суворих умовах південної частини Тихого океану."
+
+  JAP_investment:0 "Інвестиції"
+  JAP_investment_desc:0 "Зайбацус - наріжний камінь японської економіки, ми повинні інвестувати в важку промисловість і переробку ресурсів, щоб ці компанії могли працювати на піку продуктивності."
+
+  JAP_subsidize_the_okura:0 "Змінювати Okuragumi Shokai"
+  JAP_subsidize_the_okura_desc:0 "Компанія Okuragumi Shokai є одним з наших найбільших zaibatus."
+
+  JAP_nationalize_civilian_industry:0 "Націоналізувати громадянську промисловість"
+  JAP_nationalize_civilian_industry_desc:0 "Воля імператора є законом, тому що імперський контроль повинен здійснюватися над нашою громадянською промисловістю, щоб направити її на благо Японії."
+
+  JAP_torpedo_ships:0 "Торпедні кораблі"
+  JAP_torpedo_ships_desc:0 "Торпеда є цінним інструментом, який, керуючись волею імператора, може збивати найбільші з лінкорів кораблі."
+
+  JAP_auxiliary_carriers:0 "Допоміжні авіаносці"
+  JAP_auxiliary_carriers_desc:0 "Хоча літаки слабкі і крихкі, вони будуть корисними в наших військових таморських операціях, ми повинні зосередитися на створенні маленьких перевезень, щоб уникнути надмірних інвестицій."
+
+  JAP_super_submarines:0 "Супер підводні човни"
+  JAP_super_submarines_desc:0 "Коли ці підводні човни стікаються під воду, вони можуть порушувати ворожі зв’язки, аж поки основні сили флоту ведуть бій."
+
+  JAP_heavy_escorts:0 "Важкий ескорт"
+  JAP_heavy_escorts_desc:0 "Величезні океани навколо Японії представляють наші найсильніші сторони та наші найбільші слабкості, і ми повинні забезпечити безпеку наших морських шляхів від будь-якого іноземця."
+
+  JAP_island_bulwarks:0 "Острови Бастіони"
+  JAP_island_bulwarks_desc:0 "Наші острови забезпечують природну буферну зону між нашими островами та будь - якою потенційною загрозою, і нам потрібно зробити велику роботу, щоб запобігти нападам ворога."
+  JAP_island_bulwarks_tt:0 "§G Додає рішення, щоб продовжити оновлення можливостей цих островів.\n§!"
+
+  JAP_ensure_military_loyalty:0 "Забезпечити військову вірність"
+  JAP_ensure_military_loyalty_desc:0 "Незважаючи на те, що воєнна революція була бажаною, ми не можемо дозволити собі більш непередбачуваних дій з боку армії. З такою кількістю армійських офіцерів на урядових посадах ми повинні вжити рішучих заходів, щоб усунути їх вплив."
+
+  GER_issue_weapon_contracts_tt:1 "£faction_ger_industrialists §YПромисловці§! Буде більше §GЛокальніше§! і §GОб’ єм§!\n\n"
+
+  GER_death_before_defeat_tt:0 "\n£faction_ger_ss СС стане більш §GВпливовий§!, зростаючи зростанням §YПолітична влада§! на §G5%§! і §Yстабільність§! на §G5%§!"
+
+  GER_safeguard_the_balkans:0 "Захист Балкан"
+  GER_safeguard_the_balkans_desc0:0 "Балкани не випадково називають пороховою бочкою Європи, якщо комунізм спробує закріпитися в Європі, ймовірно, він почнеться саме там."
+
+  GER_four_year_plan:0 "Четвертий план"
+
+  GER_appoint_hermann_goring_tt:0 "§RТепер військові облігації відбуваються вдвічі швидше, але вони дають тільки половину зниження втоми економіки.§!"
+
+  GER_auxiliary_autobahn:0 "Стромочне автобан"
+  GER_auxiliary_autobahn_desc:0 "Тепер, коли ми сформували централізовану кільце інфраструктури між нашими великими містами, нам потрібно вийти і з'єднати наші другорядні міста і наші нові території і привести їх в лоно нашого промислового комплексу."
+
+  GER_invest_in_ig_farben_schact:0 "Інвестиції в І.Г. Фарбен"
+  GER_invest_in_ig_farben_desc:0 "Компанія I.G. Farben є основним виробником синтетичної продукції і розробила ефективну тактику виробництва цих виробів, ми відправимо фінансування у вигляді контрактів I.G. Farben, щоб дозволити їм розширити свої галузі і надати нам більше ресурсів, які вони можуть виробляти."
+
+  GER_nazi_economics:0 "Нацистська економіка"
+  GER_nazi_economics_desc:0 "Економічне міністерство може виступати тільки як знаряддя просування ідеалів партії і не бути перешкодою для опору волі фюрера. Заповнення цих економічних позицій людям в партії допоможе розмазати знаряддя перевозу."
+
+  GER_deutsche_albriet_front:0 "Німецький трудовий фронт"
+  GER_deutsche_albriet_front_desc:0 "Представники однієї організації можуть забезпечити простоту політичної організації і легкий вплив, щоб контролювати робочу політику робітника для запобігання страйку і Збільшуючи продуктивність і допомагаючи отримати більше матеріалів."
+
+  GER_reichsarbeitsdienst:0 "Служба праці Рейха"
+  GER_reichsarbeitsdienst_desc:0 "Імперська служба праці (Reichsarbeitsdienst/RAD) — велика організація, створена для пом’якшення наслідків безробіття для німецької економіки, мілітаризації робочої сили і привішення їй нацистської ідеології. Під час війни РАД буде займатися постачанням фронтових військ їжею та боєприпасами, ремонтом пошкоджених доріг і будівництвом і ремонтом злітно-посадкових смуг."
+
+  GER_expand_domestic_mining:0 "Удосконалення ресурсів"
+  GER_expand_domestic_mining_desc:0 "Сучасні гірничі роботи в наших регіонах повинні вміщати загублену територію і задовольнити вимоги автарки, для цього ми будемо використовувати DAF і нашу нову інфраструктуру."
+
+  GER_explotation_of_acquired_resources:0 "Експлуатація захоплених територій"
+  GER_explotation_of_acquired_resources_desc:0 "Тепер, коли ми знайшли нові території, ми повинні інтегрувати об'єкти гірничодобувної промисловості в нашу систему інфраструктури і забезпечити притік робочої сили для забезпечення продуктивності і використання Здобутих ресурсів."
+  GER_explotation_of_nations:0 "Розблоковує рішення щодо експлуатації завойованих країн §GЗниження економічної втоми§!"
+
+  GER_continue_autarky:0 "Продовжити автаркію"
+  GER_continue_autarky_desc:0 "Аутаркія - єдиний шлях уперед, щоб ми не торгували своїми промисловими потужностями з сільського світу. Ми повинні проковтнути таблетку, навіть якщо це болісно, щоб Німеччина могла залишатися самодостатньою."
+
+  GER_nationalize_synthetic_industries:0 "Націоналізація синтетичних похідів"
+  GER_nationalize_synthetic_industries_desc:0 "Незважаючи на те, що компанії досягли успіху в забезпеченні виробництва синтетичних ресурсів, нам потрібен прямий доступ до ресурсів, необхідних для нашої військової машини. Хоча вони будуть божевільними, нам потрібно націоналізувати їх об'єкти."
+
+  GER_invest_in_ig_farben:0 "Інвестиції в І.Г. Фарбен"
+  GER_invest_in_ig_farben_desc:0 "Компанія I.G. Farben є основним виробником синтетичної продукції і розробила ефективну тактику виробництва цих виробів, ми відправимо фінансування у вигляді контрактів I.G. Farben, щоб дозволити їм розширити свої галузі і надати нам більше ресурсів, які вони можуть виробляти."
+
+  GER_issue_more_oil_contracts:0 "Підписати більше нафтових контрактів"
+  GER_issue_more_oil_contracts_desc:0 "Наша контрактна система належним чином працює з I.G. farben, щоб отримати багато синтетичних ресурсів, тепер нам потрібно розширити їх з більш великими контрактами і дати їм вертикальну інтеграцію ресурсів."
+
+  GER_kdf_wagen_scheme_mil:0 "Схема «Сила через радість»"
+  GER_kdf_wagen_scheme_mil_desc:0 "Ми розробили схему для розвитку нашої військової промисловості, випустивши програму, щоб переконати німців купити наш Volkswagen або Народний автомобіль на майбутнє, але замість цього використовувати їх гроші для фінансування Наша зростаюча військова промисловість."
+
+  GER_hermann_goring_werke:0 "Рейхсверке «Герман Герінг»"
+  GER_hermann_goring_werke_desc:0 "Конгломерат Герінга-Верке здобуде і націоналізує нашу нескладну стальовану промисловість та інші фабрики і перетворить їх на засіб переозброєння Німеччини для досягнення цілей Гітлера для Вермахту."
+
+  GER_nationalize_german_arms_industries:0 "Націоналізація військової промисловості"
+  GER_nationalize_german_arms_industries_desc:0 "Компанії, які відповідають за покупки зброї, некомпетентні і сповільнюють економіку Німеччини, ми повинні діяти, щоб захопити їх фабрики і виробляти більш високими темпами, ніж будь-коли! Хоча нам доведеться розбити кілька яєць, це нам дуже допоможе."
+
+  GER_issue_weapon_contracts:0 "Видача контрактів на зброю"
+  GER_issue_weapon_contracts_desc:0 "Розвиток зброї — це завдання, яке вимагає організації. Керівні компанії ефективні, але повинні бути створені стимули для досягнення виробничих цілей, які змушують їх напружувати свої компанії до межі і за його межами для виробництва для Рейху. Платіжі будуть організовані, і зброя буде текти."
+
+  GER_a_continental_army:0 "Континентальна армія"
+  GER_a_continental_army_desc:0 "Тепер, коли ми придбали компанії, нам необхідно інтегрувати їх у нашу інфраструктуру, розширити їх потужність і забезпечити доступність всіх необхідних ресурсів для прискорення виробництва."
+
+  GER_Peenemunde_Army_Research_Centre:0 "Армейський дослідницький центр Пенемюнде"
+  GER_Peenemunde_Army_Research_Centre_desc:0 "Ми повинні знайти центр виключно військових досліджень, щоб бути на крок попереду наших ворогів."
+
+  GER_vertical_industrial_arms_integration:0 "Вертикальна інтеграція військової промисловості"
+  GER_vertical_industrial_arms_integration_desc:0 "Озброєна промисловість робить екстраординарну роботу з цією підвищеною швидкістю, але вузькі місця виникають на перехідних етапах від шахти до заводу, до навчання, до заводу, до запасів. Роздільна здатність цих компаній контролювати ці точки промисловості зменшить вузькі місця і допоможе нашій німецькій ефективності."
+
+  GER_organization_todt:0 "Організація Тодта"
+  GER_organization_todt_desc:0 "Організація Тодт відповідає за наші здобуті галузі і організацію деяких з наших власних, ми повинні закріпити його в якості контролера в цю епоху війни."
+
+  GER_rmbum:0 "Імперське міністерство озброєнь і боєприпасів"
+  GER_rmbum_desc:0 "qq"
+
+  GER_mobilize_the_workforce:0 "Мобілізація робочої сили"
+  GER_mobilize_the_workforce_desc:0 "Рейх більше не може дозволити своїм громадянам бути ледачими і слабкими, кожен громадянин повинен бути частиною військових зусиль."
+
+  GER_wehrmachtshelferinnen:0 "Помічниці Вермахту"
+  GER_wehrmachtshelferinnen_desc:0 "Хоча ми не можемо переконати фюрера дозволити жінкам служити на передових позиціях, але ми можемо вирішити деякі з наших кадрів, дозволяючи їм виконувати допоміжні функції."
+
+  GER_appoint_albert_speer:0 "Призначити Альберта Шпеєра"
+  GER_appoint_albert_speer_desc:0 "Альберт Шпеер займе пост міністра економіки і буде «використовувати» Люди, яких ми завоювали, щоб доповнити наші галузі до повної потужності, працюють 24/7, 365 днів на рік."
+  todt_died:0 "Тодт помер"
+
+  GER_expand_kummersdorf_research_centre:0 "Розширити дослідницький центр Куммерсдорф"
+  GER_expand_kummersdorf_research_centre_desc:0 "Куммерсдорф завжди був центром розробки зброї, інвестуючи більше коштів у обладнання і навчання персоналу, ми можемо значно збільшити темпи розвитку наших найновіших проектів."
+
+  GER_city_festungs:0 "Міста фортеці"
+  GER_city_festungs_desc:0 "Західна стіна повинна бути удосконалена, щоб включити будь-яку атаку з району Бенілюкса і зміцнити французьку лінію."
+  GER_city_festungs_tt:0 "§OВідкриває вирішення проблеми, пов’язаної з створенням укріплених районів для відчайдушної оборони.§!"
+
+  GER_flak_towers:0 "Зенітні башти"
+  GER_flak_towers_desc:0 "Наша сім'я вразлива для великомасштабних бомбардувань, інвестуючи у великімасштабні програми будівництва башт Flak, ми можемо знищити ворожі формування, які захищають наші промислові центри."
+
+  GER_realization_of_the_wehrmacht:0 "Розбудова Вермахту"
+  GER_realization_of_the_wehrmacht_desc:0 "Протягом десятиліть Німеччина не працювала без реальної армії, а сильна Німеччина потребувала сильної армії."
+
+  GER_reestablish_jager_training:0 "Відновити навчання Егерей"
+  GER_reestablish_jager_training_desc:0 "Ягери, або легкий піхота, мають особливу історію в німецькій армії, і їхні традиції будуть продовжуватися створення елітного та спеціалізованого гірського підрозділу «Гебіргсджагерс»."
+
+  GER_reestablish_jager_training_tt:0 "§YЛюдвіг Кюблер§! буде доступний як генерал\n\n"
+
+  GER_fallschirmjager:0 "Десантні дивізії"
+  GER_fallschirmjager_desc:0 "Створення елітного підрозділу, здатного проводити великі повітряно-десантні операції і атакувати противника з непохитною вірністю і високою майстерністю, необхідно для війни, які стоять Перед нами."
+
+  GER_the_heers_new_era:0 "Нова доба армії"
+  GER_the_heers_new_era_desc:0 "Наша армія опинилася в новій ері техніки і тактики, ми повинні вирішити, яким шляхом йти."
+
+  GER_war_of_movement:0 "Війна руху"
+  GER_war_of_movement_desc:0 "Наш досвід у Великій війні показав нам, що наступ, який припиняється, є початком, який зазнає невдачі."
+
+  GER_observations_from_spain:0 "Пошуки з Іспанії"
+  GER_observations_from_spain_desc:0 "Наш досвід перемоги в Іспанії був хорошим джерелом знання для наших теоретиків броні."
+
+  GER_creation_of_the_panzertruppe:0 "Створення танкової групи"
+  GER_creation_of_the_panzertruppe_desc:0 "З введенням у вермахт більшої кількості і різновидів бронетехніки стало очевидно, що необхідно створити нове спеціальне командування для наших бронетанкових військ."
+
+  GER_refinement_of_bewegungskrieg:0 "Уточнення війни руху"
+  GER_refinement_of_bewegungskrieg_desc:0 "Хоча ми досягли успіху без танків, ми не досягли досконалості, ми повинні постійно вивчати і поліпшуватись."
+
+  GER_a_mechanized_army:0 "Механізована армія"
+  GER_a_mechanized_army_desc:0 "Війна за рух є ключем до успіху, замість того щоб обмежувати наші танки швидкістю піхоти, ми повинні збільшити швидкість піхоти, щоб іти в ногу з танками!"
+
+  GER_establish_combined_arms:0 "Створення японських військ"
+  GER_establish_combined_arms_desc:0 "Хоча танки виглядають як центр бою, вони вразливі і слабі, коли їх використовують наодинці, але їхні слабкості повинні доповнюватися ефективною піхотою."
+
+  GER_aggressive_artillery:0 "Агресивна артилерія"
+  GER_aggressive_artillery_desc:0 "Мобільні артилерійські сили повинні бути в змозі йти в ногу з нашими бронетанковими колонами і постійно підтримувати їх."
+
+  GER_durchbruchwagen:0 "Машина просування"
+  GER_durchbruchwagen_desc:0 "Концепція важкого проривного танку почалася в 1930 з Durchbruchswagen, тепер, коли у нас достатньо досвіду, ми можемо, нарешті, перетворити цю концепцію в реальність."
+
+  GER_plan_the_third_generation:0 "План третього покоління"
+  GER_plan_the_third_generation_desc:0 "З повідомлень про те, що інші країни використовують шорсткі танки, ми повинні зробити те ж саме, але мати зброю, що відповідає цьому."
+
+  GER_luftwaffe_innovations:0 "Інновації ВВС"
+  GER_luftwaffe_innovations_desc:0 "Через обмеження Версаля ми були змушені таємно готувати наші військово-повітряні сили. Тепер, коли ми працюємо більш відкрито, ми можемо інвестувати значні ресурси в дослідження і розробки нових літаків і тактики."
+
+  GER_the_great_sky_war:0 "Велика небесна війна"
+  GER_the_great_sky_war_desc:0 "Ці знання допоможуть вам у підготовці люфтваффа."
+
+  GER_invest_in_GEMA:0 "Інвестиції в Товариство електроакустичних і механічних апаратів"
+  GER_invest_in_GEMA_desc:0 "Товариство електроакустичних і механічних приладів"
+
+  GER_aeronautic_funding:0 "Авіаційне фінансування"
+  GER_aeronautic_funding_desc:0 "Ніяких витрат на вирощування наших військово-повітряних сил не може бути, потрібно виділяти більше коштів, щоб ми могли випускати більше літаків."
+
+  GER_sturzbomber_programm:0 "Програма пікуючого бомбардувальника"
+  GER_sturzbomber_programm_desc:0 "Дав-бомбардування вимагає значних навичок і навчання, щоб здійснити, але забезпечити майже точну точність, наші пікуючі бомбардувальники стануть ключем до підтримки нашої армії у вирішальних битвах."
+
+  GER_long_range_escorts:0 "Винищувач-перехоплювач FW-190D"
+  GER_long_range_escorts_desc:0 ""
+
+  GER_air_fw:0 "Віддати перевагу Bf-109"
+  GER_air_fw_desc:0 ""
+
+  GER_air_bf:0 "Розвиток Bf-109"
+  GER_air_fw_desc:0 ""
+
+  GER_improve_the_enigma_machine:0 "Покращення Енігму"
+  GER_improve_the_enigma_machine_desc:0 "Наші розвідальні звіти показали, що союзники намагаються зламати нашу загадку і розшифрувати наші повідомлення."
+  lar_encryption_bonus_tt:0 "§G+1 криптологічний рівень§!"
+
+  GER_v_bomb_project:0 "Проект бомби V"
+  GER_v_bomb_project_desc:0 "Ці літаючі бомби V можуть досягти і знищувати ворожі цілі, не вимагаючи їх доставки, і таким чином вони можуть помститися тим, хто намагається бомбардувати німецький край."
+
+  GER_collaborations_with_the_japanese:0 "Співпраця з японцями"
+  GER_collaborations_with_the_japanese_desc:0 "Хоча Китай був союзником Німеччини протягом десятиліть, ми були б наївними, якби думали, що вони здатні допомогти нам в будь-якому випадку. З другого боку, японський флот досить великий, щоб загрожувати Західним державам і може допомогти полегшити частину тягаря для нас."
+
+  GER_german_luftwaffe_assistance:0 "Допомога Люфтваффі Німеччини"
+  GER_german_luftwaffe_assistance_desc:0 "Японії бракує промисловості для підтримки великої кількості літаків, необхідних для перемоги в Тихому океані, і ми допоможемо їм заповнити цю прогалину нашими власними літаками."
+
+  GER_explotation_of_annexed_nations:0 "Якщо ви досягнете успіху §GМасове зниження економічної втоми§!\n"
+
+  GER_western_war_plans:0 "Західні військові плани"
+  GER_western_war_plans_desc:0 "Ми спочатку не очікували, що Великобританія і Франція зберігатимуть свої зобов’язання по захисту Польщі. Тепер, коли наші генерали вже були готові, ми можемо вжити необхідних заходів, щоб захистити Західну Європу."
+
+
+  GER_fate_of_yugoslavia_required_states_tt:0 "§YВісь§! Потрібно контролювати всі югославські регіони."
+
+
+
+  GER_approach_turkey:0 "Підходить до Туреччини"
+  GER_approach_turkey_desc:0 "Туреччина існує в ключовій географічній позиції, як міст до наших північноафриканських володінь, бліжної нафти та південної підбрюшки Росії. Вони позиціонують себе як нейтральний гравець, але, можливо, ми можемо вплинути на них, щоб змінити їхню думку."
+
+  GER_prepare_barbarossa:0 "Підготувати Барбароссу"
+  GER_prepare_barbarossa_desc:0 "Наші вороги на Півночі, Півдні та Заході зазнали поразки, наш ворог на Сході величезний, і наша армія і логіка повинні підготуватися проти них."
+
+  GER_eastern_lebensraum:0 "Війна з СРСР"
+  GER_eastern_lebensraum_desc:0 "Гермахт не бачив нічого, крім перемоги, в той час як більше більшовіки тонуть у власній некомпетентності. ми повинні тільки вибити двері і вся гнила конструкція впаде."
+  GER_mol_rib_pact_des:0 "Викорінює злих ворогів з порадами"
+
+  GER_celebration_of_the_olympics:0 "Святкування Олімпійських ігор"
+  GER_celebration_of_the_olympics_desc:0 "Ігри мали величезний успіх, бо перевагу німецької раси та нації було виставлено на загальний огляд."
+  olympics_1936:0 "Олімпійські ігри 1936 року."
+
+
+
+  GER_recruit_from_the_hitler_youth:0 "Вербування з Гітлерюгенда"
+  GER_recruit_from_the_hitler_youth_desc:0 "Гітлерюгенд навчає німецьку молодь ідеалів нацистської партії, з багатьох потенційних новобранців ці діти є найбільш фанатичними і готові пожертвувати собою заради Речі."
+
+  GER_volkssturm:0 "Батальони фольксштурму"
+  GER_volkssturm_desc:0 "Ми можемо поспішно завербувати наших старих і наших молодих людей в дивізії і заповнити прогалини на лінії фронту."
+
+  GER_death_before_defeat:0 "Смерть перед поразкою"
+  GER_death_before_defeat_desc:0 "Ця війна є війною знищення, або ми знищимо капіталістів та більшевірків, або вони знищать Німеччину, ніякої капітуляції не може бути."
+  death_before_defeat:0 "Смерть перед поразкою"
+
+  SOV_father_of_nations:0 "Батько Русів"
+  SOV_father_of_nations_desc:0 "Наш союз - це велика сім'я русів, а в кожній сім'ї повинен бути голова, а цей керівник - товариш Сталін, який стежить за тим, щоб усі його діти навчалися соціалістичної думки, і веде нас у світле майбутнє. У разі потреби він буває суворим, але завжди справедливий і чесний."
+
+  GER_split_yugoslavia:0 "Розділ Югославії"
+  GER_split_yugoslavia_desc:0 "Після завоювання Югославії ми маємо розділити країну між Осою."
+
+  GER_split_greece:0 "Розділ Греції"
+  GER_split_greece_desc:0 "Після завоювання Греції ми маємо розділити країну між Осою."
+
+  GER_integrate_romanian_war_economies:0 "Інтегрувати Румунію"
+  GER_integrate_romanian_war_economies_desc:0 "Румунія перетворилася на сферу нашого впливу і стала залежною від німецької економіки, ми могли б використати це, щоб встановити контроль над їх економікою і забрати їх ресурси. Це вимагатиме німецьких інвестицій взамін, але отримання всіх прав на їхню нафту буде великою допомогою для нашої нафтової ситуації."
+
+  GER_integrate_hungarian_war_economies:0 "Інтегрувати Венгію"
+  GER_integrate_hungarian_war_economies_desc:0 "Угорщина перетворилася на сферу нашого впливу і стала залежною від німецької економіки, ми могли б використати це, щоб встановити контроль над їх економікою і забрати їх ресурси. Це вимагатиме німецьких інвестицій в обмін, але, отримавши всі права на угорські ресурси, ми вирішимо будь-які проблеми бокситів, які у нас можуть бути, і допоможемо нашій залізній ситуації."
+
+  GER_proclaim_the_axis_powers:0 "Проголосити Осі"
+  GER_proclaim_the_axis_powers_desc:0 "Немає сумніву, що в цей момент вісь європейської історії проходить через Берлін."
+
+  GER_condor_legion:0 "Легіон Кондор"
+  GER_condor_legion_desc:0 "Націоналістична революція Франко благоприйнятна для наших інтересів у регіоні, ми повинні направити їм військову допомогу, щоб вони перемогли комуністів."
+
+  GER_treaty_of_mutual_assistance:0 "Договір про взаємодопомоги"
+  GER_treaty_of_mutual_assistance_desc:0 "Італія, батьківина фашизму, може служити нам важливим союзником, ми повинні бути першими, хто покращить наші стосунки з ними."
+
+  GER_puppet_italy:0 "Кусольна Італія"
+  GER_puppet_italy_desc:0 "Ми повинні встановити остаточну владу в рамках альянсу осі і більше не можемо дозволити Італії діяти незалежно від нас, прийшов час висунути ультиматум. Чим більше проблем в Італії, тим більше шансів на успіх."
+
+  GER_puppet_hungary:0 "Лялькова Угорщина"
+  GER_puppet_hungary_desc:0 "Ми повинні встановити остаточну владу в рамках альянсу осі і більше не можемо дозволити Угорщині діяти незалежно від нас, прийшов час висунути ультиматум. Чим більше проблем у Угорщині, тим більше шансів на успіх."
+
+  GER_puppet_romania:0 "Кукольна Румунія"
+  GER_puppet_romania_desc:0 "Ми повинні встановити остаточну владу в рамках альянсу осі і більше не можемо дозволити Румунії діяти незалежно від нас, прийшов час висунути ультиматум. Чим більше проблем у Румунії, тим більше шансів на успіх."
+
+  GER_puppet_bulgaria:0 "Лялькова Болгарія"
+  GER_puppet_bulgaria_desc:0 "Ми повинні встановити остаточну владу в рамках альянсу осі і більше не можемо дозволити Болгарії діяти незалежно від нас, прийшов час висунути ультиматум. Чим більше проблем у Болгарії, тим більше шансів на успіх."
+
+  GER_befriend_sweden:0 "Захистити поставки шведського заліза"
+  GER_befriend_sweden_desc:0 "Шведське залізо дуже важливе для нашої військової машини, без нього ми спостерігаємо за за закриттям більшості наших сталелиць."
+
+  GER_alliance_with_finland:0 "Альянс з Фінляндією"
+  GER_alliance_with_finland_desc:0 "Фінляндія вважала себе компетентною військовою силою, навіть коли ми стикаємося з великими труднощами, і ми повинні достукатися до них, готуючись до війни проти Радянського Союзу."
+
+  GER_nationalist_spain_befriend:0 "Спілкування з Іспанією"
+  GER_nationalist_spain_befriend_desc:0 "Незважаючи на те, що ми ще далеко від війни, ми можемо поліпшити стосунки, забезпечуючи постійну економічну допомогу."
+
+  GER_amphibious_assault_crafts:0 "Амфібійна війна"
+  GER_amphibious_assault_crafts_desc:0 "Щоб взяти на себе Сполучені Штати, нам потрібно покращити наукове спеціалізоване обладнання для наших військово-морських вторгувань."
+
+  GER_endsieg:0 "Endsieg"
+  GER_endsieg_desc:0 "З нашим Лебенсраумом у польського і чеського народу немає іншого вибору, крім як прийняти постійний німецький контроль, і процес асиміляції може початися. Це, безсумнівно, дуже допоможе у відновленні нашої території від великого завоювання Сходу, і тепер ми можемо зосередитися на усуненні будь-яких загроз для Заходу."
+
+  GER_a_new_europe:0 "Нова Європа"
+  GER_a_new_europe_desc:0 ""
+  GER_reichsprotectorate_tt:0 "Дозволяє формувати нові супердержави на завойованих територіях §RC зараз не працює §!\n"
+
+  GER_naval_rearmament_tt:0 "§RПереозброєння флоту спізниться після початку війни§!"
+
+  GER_expand_the_naval_dockyards:0 "Розширте військово-морські верфі"
+  GER_expand_the_naval_dockyards_desc:0 "Наш флот блідне у порівнянні з західними державами, якщо ми хочемо мати можливість вести війну на воді, то наші верфі повинні бути розширені для задоволення попиту."
+
+  GER_surface_raiders:0 "Поверхні рейдери"
+  GER_surface_raiders_desc:0 "Наші швидко рухливі кораблі можуть переслідувати ворожі конвою і знищити стандартні флотилії. Використання цих доктрин змусить наших ворогів розміщати свої столичні кораблі, де їх можна буде легко перемогти в деталях."
+
+  GER_dipose_hitler:0 "Убити Гітлера"
+  GER_dipose_hitler_desc:0 "Гітлер веде країну до катастрофи, і ми не можемо більше чекати, щоб здобути остаточну перемогу, ми повинні очиститися від нацистів і направити нашу націю в іншому напрямку."
+
+  GER_form_the_reichskommissariats:0 "Створити Рейхскісаріати"
+  GER_mol_rib_pact:0 "Пакт Молотова-Ріббентропа"
+
+  GER_democratic_party_assassination:0 "Німецька імперія"
+
+  GER_reintegrate_wwi_territories:0 "Реінженерія Першої світової війни"
+  GER_reintegrate_wwi_territories_desc:0 "Версаль було відібрано, німецькі люди, які живуть на територіях, які були вкрадені у нас, тепер можуть бути повернені до Німеччини."
+
+  ENG_imperial_conference_tt:0 "Розблокувати§YІмператорська конференція§!Рішення для 40 днів.\n§GРозвиток промисловості в Співдружності гарантує там прийом імперських конференційних бонусів§!\n§OПереконайтеся, що у вас є політична влада, щоб використовувати їх!§!\n"
+
+  SOV_great_purge_tt3:1 "£faction_sov_army §YАрмія§! §Rвтратиш більшість впливу§!, Знизивши зростання §YПолітична влада§! на §R15%§!.\n"
+
+  SOV_emergency_powers_tt:1 "£Faction_sov_workers §YРобочі§! §GОтримую вплив§! і стають і стають §GВірніші льоди"
+
+
+
+
+
+
+  SOV_formation_of_the_nkvd_tt:0 "£faction_sov_commissars §YКомісари§! ставка §GВірні§! Підвищений §Yстабільність§! на §G5%§! і збільшувати §YПриріст політичної влади§! на §G20%§!."
+
+  SOV_nkvd_divisions_tt:1 "£faction_sov_commissars §YКомісари§! сталі §GЗначно могутніші§!\n"
+
+  SOV_socialist_science_tt:1 "£Faction_sov_workers §YРобочі§! стає більше §GМотивовано§! збільшувати §YПромисловий завод§! на §G20%§!"
+
+  SOV_progress_cult_tt:1 "£faction_sov_army §YАрмія§! Поширилося §Gмотивований і ефективний§! збільшувати §YШвидкість досліджень§! на §G8%§!"
+
+  SOV_reinstall_the_Patriarchate_tt:1 "£faction_sov_peasants §YСеляни§! ставка §GВірні§! §Yстабільність§! Збільшується до §G+10%§!"
+
+  SOV_great_patriotic_war_tt:1 "£faction_sov_army §YАрмія§! §Gмає вплив§! і стає §Gвірніша§!.\n"
+
+  SOV_form_the_stavka_tt:1 "\n£faction_sov_army §YАрмія§! §GПідвищить вплив§! і стане §Gвірніша§! Збільшений §YПриріст політичної влади§! на §G25%§!\n"
+
+  SOV_experts_in_camouflage_tt:0 "$SOV_modify_the_red_army_ns_intro$ \nШвидкість створення укріплень: §G+5%§! \nЗменшення урону проти штурмовиків: §G+5%§! \n\n"
+
+  SOV_an_adaptable_army_ns_tt: "$SOV_modify_the_red_army_ns_intro$ \nЗимові втрати від виснаження: §G-10.0%§! \nВтрати від спеки: §G-10.0%§! \nФактор росту акліматизації до холоду: §G+25.0%§! \nФактор росту акліматизації до жари: §G+25.0%§! \nЗменшення штрафу за місцевість: §G+5.0%§! \n\n"
+
+
+
+  SOV_has_civil_war_no_tt:0 "Не беруть участі у громадянській війні"
+
+  SOV_army_reform_1:0 "Одного разу реформував армію"
+  SOV_army_reform_3:0 "Двічі реформував армію"
+
+  SOV_air_reform_1:0 "Один раз реформував ВВС"
+  SOV_air_reform_2:0 "Двічі реформував ВВС"
+
+  SOV_navy_reform_1:0 "Одного разу реформував флот"
+  SOV_navy_reform_2:0 "Двічі реформував флот"
+
+  SOV_army_reform_tt:0 "Одного разу реформував армію"
+  SOV_army_reform_1_tt:0 "$SOV_modify_the_red_army_ns_intro$ \n£organization_texticon  Організація дивізії: §G+20.00%§! \n£attacker_speed_texticon  Швидкість дивізії: §G+20.00%§! \n£attack_texticon  Атака дивізії: §G+20.00%§! \n£experience_loss_texticon  Втрати досвідчених бійців: §G-25.00% §!\n£army_doctrine_cost_texticon  Вартість сухопутної доктрини: §G+50.00%§!\n\n"
+  SOV_army_reform_3_tt:0 "$SOV_modify_the_red_army_ns_intro$ \n£organization_texticon  Організація дивізії: §G+10.00%§! \n£army_experience  Отримуваний досвід армії: §G+10.00%§! \n£army_doctrine_cost_texticon  Вартість сухопутної доктрини: §G+50.00%§! \n\n"
+
+  SOV_cohesion_first_tt:0 "$SOV_modify_the_red_army_ns_intro$ \n£organization_texticon  Організація дивізії: §G+5.00%§! \n\n"
+
+  SOV_air_reform_1_tt:0 "$SOV_modify_airforce_ns_intro$ \n£experience_neutral_combat_texticon Експеримент з авіаперельотом: §G+30.00%§! \n£air_doctrine_cost_texticon Цінність повітряної доктрини: §G-10.00%§!\n\n"
+  SOV_air_reform_2_tt:0 "$SOV_modify_airforce_ns_intro$ \n£experience_neutral_combat_texticon Експеримент з авіаперельотом: §G+40.00%§! \n£air_doctrine_cost_texticon Цінність повітряної доктрини: §G-50.00%§! \n£speed_air_texticon Маневрність: §G+10.00%§! \n£attack_air_texticon Повітряна атака: §G+10.00%§! \n£defence_air_texticon Протипожежна охорона: §G+10.00%§! \n£cas_texticon Коефіцієнт авіаштурми: §G+20.00%§!\n£air_experience Отримуваний досвід авіації: §G+20.00%§! \n\n"
+
+  SOV_navy_reform_1_tt:0 "$SOV_modify_red_fleet_ns_intro$ \n£attack_texticon  Атака палубної авіації: §G+20.00%§! \n£attack_battleship_texticon  Атака великих кораблів: §G+10.00%§! \n£defence_battleship_texticon  Броня великих кораблів: §G+5.00%§! \n£attack_submarine_texticon  Атака підводних човнів: §G+10.00%§! \n£defence_submarine_texticon  Захист підводних човнів: §G+5.00%§! \n£attack_screen_texticon  Атака охорони: §G+10.00%§! \n£defence_screen_texticon  Захист охорони: §G+5.00%§! \n£navy_doctrine_cost_texticon  Коефіцієнт морської доктрини: §G-50.00%§!\n\n"
+  SOV_navy_reform_2_tt:0 "$SOV_modify_red_fleet_ns_intro$ \n£attack_texticon  Атака палубної авіації: §G+20.00%§! \n£attack_battleship_texticon  Атака великих кораблів: §G+10.00%§! \n£defence_battleship_texticon  Броня великих кораблів: §G+5.00%§! \n£attack_submarine_texticon  Атака підводних човнів: §G+10.00%§! \n£defence_submarine_texticon  Захист підводних човнів: §G+5.00%§! \n£attack_screen_texticon  Атака охорони: §G+10.00%§! \n£defence_screen_texticon  Захист охорони: §G+5.00%§! \n£navy_doctrine_cost_texticon  Коефіцієнт морської доктрини: §G-50.00%§!\n\n"
+
+  SOV_socialism_in_one_country_tt:0 "$SOV_modify_the_politburo_ns_intro$ \nПриріст політичної влади: §G+5.00%§! \nМодифікатор безпеки від штрафу за оборонну війну: §G+10.00%§! \n\n"
+  SOV_the_glory_of_the_red_army_tt:0 "$SOV_modify_the_red_army_ns_intro$ \nМножник сил спеціального призначення: §G+3%§!"
+
+
+  SOV_army_recovery_tooltip:0 "$SOV_modify_the_red_army_ns_intro$ \n£organization_texticon  Організація дивізії: §G+2%§! \n£attack_texticon  Атака дивізії: §G+2%§!"
+
+  SOV_the_glory_of_the_red_army:0 "Відновлення Червоного війська"
+  SOV_army_recovery:0 "Відновлення Червоного війська"
+
+  SOV_assert_soviet_naval_presence:0 "Затвердити присутність Радянського Союзу на морі"
+  SOV_assert_soviet_naval_presence_desc:0 "Радянський Союз не може дозволити іншим державам безроздільно панувати на морях. Розширення суднобудівних потужностей на наших узбережжях і розвиток військово-морських технологій закладуть основу флоту, здатного захищати інтереси країни."
+
+
+
+
+
+
+
+
+
+
+  SOV_foster_flying_clubs_tt:0 "$SOV_modify_airforce_ns_intro$ \nЙмовірність отримання асу: §G+25.00%§! \nПідлітковий досвід авіаперельоту: §G+5%§! \nЙмовірність авіаліній: §G-25.0%§! \nШтраф за погану погоду: §G-10.00%§!\n\n"
+  SOV_women_in_aviation_tt:0 "$SOV_modify_airforce_ns_intro$ \nПривчання авіакомпанії: §G+5%§! \nОтримання досвіду за місію літака: §G+5%§!\n\n"
+  SOV_raskovas_aviation_group_tt:0 "$SOV_modify_airforce_ns_intro$ \nВтрата досвіду авіаперельоту під час знищення: §G-10%§! \nШтраф за нічні стратегічні бомбардування: §G-10,00%§! \nШтраф за нічні операції: §G-10,00%§! \n\n"
+  SOV_intensify_pilot_training_program_tt:0 "$SOV_modify_airforce_ns_intro$ \nЙмовірність створення асу: §G+25%§! \nВтрата досвіду авіаперельоту під час знищення: §G-10%§! \nЙмовірність авіакатастроф: §G-25.0%§! \nШтраф за нічні операції: §G-10.00%§!\nШтраф за погану погоду: §G-10%§!\n\n"
+  SOV_expand_aviation_institutes_tt:0 "$SOV_modify_airforce_ns_intro$ \nВтрата досвіду авіаперельоту під час вбивства: §G-10%§! \nПривчання авіакомпанії: §G+5%§! \nЙмовірність авіакатастроф: §G-25%§! \nПоганий Штраф за погоду: §G-10.00%§!\n\n"
+
+  SOV_start_the_second_five_year_plan:0 "Почати другий п’ятирічний план"
+  SOV_start_the_second_five_year_plan_desc:0 "Після першого п'ятилітка Сталін наказав нам продовжити цей розвиток промисловості, щоб ми більше не тривожились і не покладалися на ці Капіталістичні Свині."
+  SOV_start_the_second_five_year_plan_tt:0 "§YРадянська промисловість§! починає реалізацію другого п'ятирічного плану, збільшуючи §YЦінність політичної влади§! на §R50%§!, §YШвидкість будівництва громадянських заводів§! на §G30%§! і §YШвидкість побудови інфраструктури§! на §G30%§!"
+
+  SOV_gaz_automobile_plants:0 "Автозаводи ГАЗ"
+  SOV_gaz_automobile_plants_desc:0 "Автомобілі та механізація є невід'ємною частиною індустріалізації, а радянські міста будуть заповнені легковими та вантажними автомобілями, якими керують звичайні громадяни."
+
+  SOV_every_man_must_do_their_duty:0 "Кожен чоловік повинен виконувати свій обов’язок"
+  SOV_every_man_must_do_their_duty_desc:0 "Комунізм завжди загрожує ревізіоністи, фашисти і реакціоністи, і ми досягнемо успіху тому, що у нас є воля народу, кожен повинен взяти в руки гвинтівку і служити Раді!"
+
+  SOV_trotsky_revolution:0 "§OЯкщо країна підтримує комунізм більше ніж на 30 відсотків, почнеться громадянська війна§!"
+
+  SOV_tankograd:0 "Танокград"
+  SOV_tankograd_desc:0 "Челябінськ - один з найбільших міст у околицях Урала, і ми повинні підготуватися до перенесення більшості наших танків у цей єдиний район з існуючими автозаводами."
+  SOV_tankograd_tt:0 "Додати максимум §YІнфраструктори§! у §YЧелябінську§!"
+
+  SOV_the_ussr_academy_of_sciences:0 "Академія наук СРСР"
+  SOV_the_ussr_academy_of_sciences_desc:0 ""
+
+  SOV_merge_her_tt:0 "\n§GОб'єднані заводи прокладуть шлях до поліпшення наших збройних сил, привівши їх у відповідність з сучасними стандартами§!\n"
+
+  SOV_national_academies_of_sciences:0 "Національні академії наук"
+  SOV_national_academies_of_sciences_desc:0 ""
+  SOV_national_academy_of_sciences_research_bonus_tt:0 "Змінить національний дух §Y$SOV_ussr_academy_of_sciences_dynamic_modifier$§! на\nШвидкість досліджень: §G+0.5%§!"
+
+  SOV_connection_of_the_interior:0 "Об’єднати промислову мережу"
+  SOV_connection_of_the_interior_desc:0 "Якщо ми хочемо підтримати розвиток важкої промисловості, ми повинні створити нові технології, які дозволять нам побудувати ці величезні мережі заводів. Нам потрібно більше ресурсів і машин, які стануть основою для масштабного будівництва."
+  SOV_connection_of_the_interior_info:0 "Додає §Yпо 1-2 рівня інфраструктури§! у Західній Європі.\n"
+
+  SOV_evolve_our_urban_centres:0 "Розвиток міського центру"
+  SOV_evolve_our_urban_centres_desc:0 "Якщо ми хочемо підтримати розвиток важкої промисловості, ми повинні створити нові технології, які дозволять нам будувати ці величезні мережі заводів. Нам потрібно більше ресурсів і машин, які забезпечують основу для масштабного будівництва."
+
+  SOV_lower_workers_minimum_wage:0 "Зниження мінімальної зарплати робітника"
+  SOV_lower_workers_minimum_wage_desc:0 "На щастя, кожен радянський громадянин готовий йти на жертви заради держави."
+
+  SOV_trans_siberian_railway:0 "Транссибірська магістраль"
+  SOV_trans_siberian_railway_desc:0 "Наш план на першу п'ятилітку виявився занадто успішним. Масштабне розвиток важкої промисловості дало Радянському Союзу набагато сильніші можливості для самозахисту, але радянська залізнична мережа зіткнулася з деякими серйозними вузькими місцями. Національний комісаріат шляхів повідомлення (НКПС) має амбіціозний план щодо усунення цих вузьких місць і забезпечення захисту Родину."
+  SOV_trans_siberian_railway_info:0 "Додає §Y2 рівні інфраструктури§! у містах Сибіру.\n"
+
+  SOV_urbanise_the_urals:0 "Урбанізувати Урал"
+  SOV_urbanise_the_urals_desc:0 "Якщо ми збираємося довести справу до кінця з передислокацією промисловості під час війни, життєво важливо, щоб Урал міг підтримувати цю нову промисловість. Ми повинні фінансувати нові інфраструктури, будувати фабрики і на них повинні працювати люди. "
+
+  SOV_bread_basket_of_the_soviet_union:0 "Житниця Радянського Союзу"
+  SOV_bread_basket_of_the_soviet_union_desc:0 "Ми повинні і далі індустріалізувати покинуті райони, Україна є ключовою сільськогосподарською територією, і ми повинні і надалі піднімати її ефективність, якщо хочемо отримати користь з родючого грунту. Урбанізація ключових міст принесе найбільшу користь."
+  SOV_bread_basket_of_the_soviet_union_tt:1 "£faction_sov_peasants §YСеляни§! стає набагато §GЕфективніше§! зменшити §YВигідні товари§! на §G12%§!"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  SOV_modernization_of_the_red_army:0 "Модернізація Красної Армії"
+  SOV_modernization_of_the_red_army_desc:0 "Наші вчені зосереджуються на дослідженні найновіших танкових технологій, щоб забезпечити перевагу в бою."
+
+  SOV_development_of_the_shock_army:0 "Створення ударних та танкових армій"
+  SOV_development_of_the_shock_army_desc:0 "Вдарна армія — це спеціально споряджена армія, яка призначена для знищення цілих ворожих форм за їхнім нападом. Висока вогняна міць і механізація дозволяють цим силам швидко і швидко наступати."
+
+  SOV_utilization_of_the_tulan_Arms_industry:0 "Озброєні промисловці Тули"
+  SOV_utilization_of_the_tulan_Arms_industry_desc:0 "Тульський збройний завод виробляв зброю для Росії ще в 1700-х роках, його близькість до Московської залізничної мережі дозволяє нам виробляти і доставляти зброю на фронт якомога швидше. Все для фронту, все за перемогу."
+
+  SOV_form_the_stavka:0 "Створити ставку"
+  SOV_form_the_stavka_desc:0 "Озброєні сили Радянського Союзу переповнені некомпетентністю, і це вже не може тривати. Сталін сформував Верховне командування, щоб взяти під безпосередній контроль наші війська і негайно виправити ситуацію."
+
+  SOV_guards_mortars:0 "Гвардейські міномети"
+  SOV_guards_mortars_desc:0 "Пісні наших ракетних бомб "Катюш" Рознесеться по полі бою, а смерть нацистам буде нездійсненна."
+
+  SOV_disband_the_cavalry_army_clique:0 "Розпочати кавалерійську кліку"
+  SOV_disband_the_cavalry_army_clique_desc:0 "Будівельний Кулик, ці три назви не пов' язані ні з чим, окрім невдачі і некомпетентності."
+
+  SOV_deep_battle:0 "Глибока битва"
+  SOV_deep_battle_desc:0 ""
+
+  SOV_guards_units:0 "Гвардейські дивізії"
+  SOV_guards_units_desc:0 "Ці підрозділи оснащені найпередовішим обладнанням, яке ми маємо. Незважаючи на обмежену кількість їх, вони повинні забезпечити посилення сили вогню, потрібне нам для успішного наступу на ворога."
+  SOV_guards_unit:0 "Розблокувати шаблон Елітної гвардейської дивізії"
+
+  SOV_perfecting_the_armour_core:0 "Покращення броні"
+  SOV_perfecting_the_armour_core_desc:0 "Хоча у нас багато танків, більшість з них застарілі і використовують неправомірну тактику, і будуть вкладені додаткові ресурси, щоб наш бронетанковий корпус діяв як сучасна частина нашої армії."
+
+  SOV_perfecting_the_infantry_core:0 "Покращення піхот"
+  SOV_perfecting_the_infantry_core_desc:0 "Радянський Армії бракує піхоти. Але більшість наших солдатів погано навчені або не мають потрібного спорядження для передової буде проведено загальне вдосконалення наших піхотних армій."
+
+  SOV_revitalise_the_airforce:0 "Оживити ВВС"
+  SOV_revitalise_the_airforce_desc:0 "Наші військово-повітряні сили дуже потребують модернізації. Нам потрібні нові винищувачі і модернізована інфраструктура, якщо ми хочемо підтримувати сучасні та боєздатні військово-повітряні сили, здатні витримати проти наших наймогутніших ворогів."
+
+  SOV_evolution_of_the_air_strategy:0 "Еволюція повітряної стратегії"
+  SOV_evolution_of_the_air_strategy_desc:0 "Наша авіація наповнена застарілими літаками, поганими тактиками і недосвідченими пілотами, і радянські ВВС повинні виховуватися культурою вищості, щоб наші пілоти могли впоратися з будь-якою загрозою Родині."
+
+
+
+
+
+
+
+
+
+
+
+  SOV_emergency_powers:0 "Екстрені повноваження"
+  SOV_emergency_powers_desc:0 "Не можна дозволити невірним гітлерівцям захопити наші цінні заводи в західній частині СРСР. Доклавши максимум зусиль і жертв, ми повинні бути в змозі швидко перекинути найцінніше важке обладнання і об'єкти в Челябінськ та інші місця в Урал."
+
+  SOV_emergency_production_committee:0 "Аварійний комітет"
+  SOV_emergency_production_committee_desc:0 "Нам не вдалося належним чином закупити значної кількості обладнання, але не все втрачено, якщо ми зріжемо деякі кути, ми зможемо повністю озброїти наші армії. Можуть бути скарги від наших солдатів, але нам потрібно кількість важливіші якості"
+
+  SOV_defense_of_the_motherland:0 "На захист Родини"
+  SOV_defense_of_the_motherland_desc:0 "Фашисти стукають у браму столиці! аби якомога швидше звістити нашу оборону!"
+  SOV_defense_of_the_motherland_forts:0 "Додати §Y60 сухопутних фортів§! У Москві, Ленінграді та Сталінграді та його околицях з зенітніми знаряддями.\n"
+
+  SOV_war_since_start:0 "Був або знаходиться в стані війни (не включає війну по пакту Молотова-Ріббентропа)"
+  SOV_great_patriotic_war:0 "Велика Остання війна"
+  SOV_great_patriotic_war_desc:0 "Ворог біля воріт, ми повинні зібрати всі свої сили, щоб відбити загарбників або зазнати повного знищення."
+
+  SOV_peoples_militia:0 "Створити народне ополчення"
+  SOV_peoples_militia_desc:0 "Армія добровольців готова зібратися в умовах надзвичайної ситуації в нашій країні, ми повинні призначити офіцерів і організувати їх в дивізії"
+
+  SOV_organized_partisans:0 "Організація наших партизан"
+  SOV_organized_partisans_desc:0 "Коли нас атакують, ми повинні дозволити людям створити організований опір, який буде включати саботаж інфраструктури та заводів, захоплених ворогом. Це може бути лише план, але ми ніколи не знаємо, коли він може виявитися корисним."
+
+  SOV_penal_battalions:0 "Штрафбати"
+  SOV_penal_battalions_desc:0 "У нашій відчайдушній охороні Родини ми зішлемо всіх наших трусів і зрадників, щоб сформувати штрафні батальйони і відправити їх на передову."
+
+  SOV_new_Soviet_woman:0 "Нова радянська жінка"
+  SOV_new_Soviet_woman_desc:0 "Щоб просувати ідею рівності у нашій великій угоді, ми повинні дозволити жінкам служити в армії, ми змушуємо їх працювати снайперами, ліками і бомбардувальниками."
+
+  SOV_new_Soviet_man:0 "Нова радянська людина"
+  SOV_new_Soviet_man_desc:0 "Радянський Союз - це народ різних національностей, мовних і культурних груп, але ми всі єдині, як авангард комунізму, і кожен повинен намагатися сприяти революції, бо це дає йому його особистість."
+
+  SOV_reinstall_the_Patriarchate:0 "Відновити Патріарха"
+  SOV_reinstall_the_Patriarchate_desc:0 "Один Сталін не може дати такої віри нашому народу, тому ми повинні відновити спільну релігію, російське православ’я. Це послабить владу, але дозволить людям об'єднатися під однією справою, для захисту релігії, якій вони дорожать."
+
+  SOV_collective_property:0 "Колективна власність"
+  SOV_collective_property_desc:0 "Розділяючи майно та активи на державну та особисту власність, ми можемо принести більше багатства під егідою Радянського Союзу"
+
+  SOV_soviet_acadamy_of_sciences:0 "Радянська академія наук"
+  SOV_soviet_acadamy_of_sciences_desc:0 "Ця академія відповідає за багато нових промислових технологій, створені нашою країною, ми повинні продовжувати інвестувати, якщо ми хочемо йти в ногу з прогресом"
+
+  SOV_air_research_reforms:0 "Реформи дослідження повітря"
+  SOV_air_research_reforms_desc:0 "Потрібно вкласти додаткові дослідження в розробку нових літаків для наших збройних сил. Він довів руйнівні можливості великих повітряних сил над німецьким небом, і ми не можемо повторити ту саму помилку."
+
+  SOV_synthetic_rubber_programme:0 "Програми штучного каучуку"
+  SOV_synthetic_rubber_programme_desc:0 ""
+
+  SOV_advancments_in_the_engineer_core:0 "Покращення в інженерному ядрі"
+  SOV_advancments_in_the_engineer_core_desc:0 ""
+
+  SOV_analyze_american_technology:0 "Аналіз американських технологій"
+  SOV_analyze_american_technology_desc:0 "Шепіт про новий грізний зброяр, розроблений Вашингтоном, доходить до наших вух, вони не бачать нас справжнього союзника, ми повинні забрати їх розробки, поки вони не нанесли нам удар в спину."
+
+  SOV_kurnatovs_experiments:0 "Досвіди Курчатова"
+  SOV_kurnatovs_experiments_desc:0 "Ігор Курчатів вже був провідним вченим у галузі ядерної фізики, і Сталін висловив свою думку, що він є найкращим кандидатом на роль керівника нашого проекту з створення атомної бомби."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  SOV_eyes_to_the_west:0 "Погляд на захід"
+  SOV_eyes_to_the_west_desc:0 "Промислований і сільськогосподарський центр Радянського Союзу лежить на Заході, і ми повинні забезпечити безпеку наших західних кордонів, перш ніж переслідувати будь-які інші геополітичні цілі."
+
+
+  ENG_advancments_in_convoy_defense:0 "Прогрес у захист конвойв"
+  ENG_advancments_in_convoy_defense_desc:0 ""
+
+  ENG_womans_land_army:0 "Жіноча землеробська армія"
+  ENG_womans_land_army_desc:0 ""
+
+  ENG_emergency_powers:0 "Нелегкі повноваження"
+  ENG_emergency_powers_desc:0 ""
+
+  ENG_reintroduce_elections:0 "Повторне введення виборів"
+  ENG_reintroduce_elections_desc:0 ""
+
+  home_guard_focus_tt:0 "\n Вербує людей як резервну силу §Y Home Guard§! до резервного пулу.\n"
+  home_guard_tt:0 "розвертати§G30§!§YГоловна Гвардія Легка піхотна дивізія§!у вашій столиці.\n"
+  home_guard_deployed:0 "Домашня гвардія розвернута"
+
+  ENG_ground_rearmament_focus:0 "Переозброєння армії"
+  ENG_ground_rearmament_focus_desc:0 "Армія є основою будь-якої країни, ми повинні забезпечити, щоб вона залишалася однією з найбільш сучасних бойових сил у світі."
+
+  ENG_modernize_the_royal_army:0 "Королівська армія"
+  ENG_modernize_the_royal_army_desc:0 "Королівська армія ніколи не буде найбільшою. Однак, вкладаючи кошти в інженерів Королівської армії, який обслуговує та медичний корпус, ми отримуємо перевагу, яку нам потрібно у майбутніх битвах."
+
+  ENG_royal_artillery:0 "Королівська артилерія"
+  ENG_royal_artillery_desc:0 "Оновлення наших гармат для досягнення чудової вогняної могутності - це те, що найбільше потрібно нашим солдатам на полі бою."
+
+  ENG_special_boat_service:0 "Особлива лодкова служба"
+  ENG_special_boat_service_desc:0 "Офіцер Роджер Кортні, як відомо, раніше звертався до адміралтейства з приводу своїх ідей про складну бригаду каяк. Незважаючи на те, що спочатку його ініціали були невдалими, знахідки на двері капітана найбільш охоронного корабля повністю переконали військово-морське командування в тому, що його ідеї про військово-морську війну заслуговують уваги, і що інвестиції в цю область мають велике значення."
+
+  ENG_bawdsey_research_centre:0 "Дослідницький центр Боудсі"
+  ENG_bawdsey_research_centre_desc:0 "Усада Bawdsey була використана нашим міністерством авіації в розробці нової технології, відомої як RADAR. На подальший розвиток цієї концепції повинні бути виділені додаткові вчені та інженери."
+
+  ENG_bletchley_park_focus:0 "Блетчлі Парк"
+  ENG_bletchley_park_focus_desc:0 "Для GCCCCS і SIS потрібно нове розташування, він має велику географію і близький до ключових інфраструктурних вузлів та комунікацій. Він також має багато можливостей для розширення, що робить його ідеальним місцем для подальших досліджень."
+
+  ENG_government_loans:0 "Державні кредити"
+  ENG_government_loans_desc:0 "Додаткові кредити для будівельних компаній сприятимуть подальшому економічному росту."
+
+  ENG_approve_new_construction_projects:0 "Твердження нових будівельних проектів"
+  ENG_approve_new_construction_projects_desc:0 "Ми зробили все можливе, щоб заохотити наші будівельні компанії почати більш масштабні роботи, і тільки утвердити їхні проекти та пожати плоди наших зусиль."
+
+  ENG_reignite_our_manufacturing_heartland:0 "Поновити наш промисловий центр"
+  ENG_reignite_our_manufacturing_heartland_desc:0 "Мідленди є центром промисловості, великі інвестиції відкриють північну економіку і повернуть людей на роботу."
+
+  ENG_empty_the_gold_reserves:0 "Опустити золотий запас"
+  ENG_empty_the_gold_reserves_desc:0 "Наші золоті резерви як з-за кордону, так і через кордони можуть бути використані для погашення наших поточних витрат, що дозволить більшій частині нашої промисловості зосередитися на військових зусиллях."
+
+  uk_bsa_company:0 "Бірмангемська зброя"
+
+  ENG_royal_tank_corps:0 "Королівський танковий корпус"
+  ENG_royal_tank_corps_desc:0 "Королівський танковий корпус бере коріння з Королівського танкового полку Першої світової війни, першого танкового підрозділу в світі. Корпус буде реорганізований в дивізії, що відповідають потребам сучасної війни."
+
+  ENG_modernize_the_royal_army:0 "Модернізація королівської армії"
+  ENG_modernize_the_royal_army_desc:0 "Наша армія затрималася протягом десятиліть після Великої війни через акцент на Королівський флот і ВВС. ми не можемо дозволити їм отримати всю славу; ми повинні бути готові відправити наших хлопчиків назад у бій."
+
+  ENG_combat_services:0 "Бойові служби"
+  ENG_combat_services_desc:0 "Армія, яка діє на полі бою, вимагає більше, ніж зброя та боєприпаси. Для підтримки засобів-техніки, умов життя та бойової готовності наших підрозділів потрібна спеціальна техніка і особистий склад."
+
+  ENG_royal_armoured_corps:0 "Королівський бронетанковий корпус"
+  ENG_royal_armoured_corps_desc:0 "Королівський бронетанковий корпус об'єднує нашу бронехніку і моторизовану кавалерію в єдиному організованому підрозділі. Ми повинні розширити наші розробки нових транспортних засобів і тактики, які будуть використані в цій новій силі."
+
+  ENG_armoured_fighting_vehicles_school:0 "Школа бойових бронованих машин"
+  ENG_armoured_fighting_vehicles_school_desc:0 "У міру того, як ми вводимо все більше і більше бронованих машин до нашої армії, наші інші армійські підрозділи повинні бути навчені того, як воювати разом з ними. Для перемоги потрібно використовувати комбіновану зброю."
+
+  ENG_aere:0 "AERE"
+  ENG_aere_desc:0 "Науково-дослідний установа з атомної енергії"
+
+  ENG_british_austerity:0 "Британська суворість"
+  ENG_british_austerity_desc:0 ""
+
+  ENG_committee_of_imperial_defence:0 "Комітет імператорської оборони"
+  ENG_committee_of_imperial_defence_desc:0 ""
+
+  ENG_military_training_act_tt:0 "§Yстабільність Penalties are reduced на 5% for every 5% World Tension§!"
+
+  ENG_mass_mechanization:0 "механізація"
+  ENG_mass_mechanization_desc:0 ""
+  ENG_mass_mechanization_tt:0 "§YУсі конструктори танків знизять вартість виробництва механізованої техніки на 10%.§!"
+
+  ENG_advancments_in_infantry_designs:0 "Досягнення у дизайні піхоти"
+  ENG_advancments_in_infantry_designs_desc:0 ""
+
+  ENG_development_of_modern_field_weapons:0 "Розробка сучасної польової зброї"
+  ENG_development_of_modern_field_weapons_desc:0 ""
+
+  ENG_adopt_foreign_designs:0 "Прийняти іноземні дизайни"
+  ENG_adopt_foreign_designs_desc:0 ""
+
+  ENG_mobalize_the_empire:0 "Мобалізувати імперію"
+  ENG_mobalize_the_empire_desc:0 ""
+
+  ENG_aluminium_company_of_canada:0 "Алюмінієва компанія Канади"
+  ENG_aluminium_company_of_canada_desc:0 ""
+
+  ENG_war_appropiation_act:0 "Закон про асигнання на війну"
+  ENG_war_appropiation_act_desc:0 ""
+
+  ENG_rations_from_india:0 "Індійські раці"
+  ENG_rations_from_india_desc:0 ""
+
+  ENG_create_unit_airborne_tt:0 "Отримати шаблон елітної повітряної дивізії."
+
+  ENG_mountaineers:0 "Королівські гірці"
+  ENG_mountaineers_desc:0 "Нам потрібен досвід воєнних дій у гірських районах. аби ми могли почати підготовку цілих дивізій."
+  ENG_create_unit_mountaineer_tt:0 "Отримати шаблон еластичної гірської дивізії."
+
+  ENG_disunite_the_french_union:0 "Роз' єднати французький Союз"
+  ENG_disunite_the_french_union_desc:0 ""
+
+  ENG_dismantle_the_italian_empire:0 "Руйнування Італійської імперії"
+  ENG_dismantle_the_italian_empire_desc:0 ""
+
+  ENG_pre_empt_the_eastern_threat:0 "Заборонення східної загрози"
+  ENG_pre_empt_the_eastern_threat_desc:0 ""
+
+  ENG_women_in_the_workforce:0 "Жінки у робочій силі"
+  ENG_women_in_the_workforce_desc:0 ""
+
+  ENG_hearts_of_oak:0 "Серця дуба"
+  ENG_hearts_of_oak_desc:0 ""
+
+  ENG_rip_up_the_london_naval_treaty:0 "Як розірвати морську угоду"
+  ENG_rip_up_the_london_naval_treaty_desc:0 ""
+
+  ENG_secure_the_atlantic_rise:0 "Забезпечити Атлантичний підйом"
+  ENG_secure_the_atlantic_rise_desc:0 ""
+
+  ENG_fuel_the_war_industry:0 "Топліво для військової промисловості"
+  ENG_fuel_the_war_industry_desc:0 ""
+
+  ENG_centralize_the_merchant_fleet:0 "Централізувати торговельний флот"
+  ENG_centralize_the_merchant_fleet_desc:0 ""
+
+  ENG_found_the_sas:0 "Знайдено SAS"
+  ENG_found_the_sas_desc:0 "Офіцер на ім'я Девід Старлінг (David Stirling) придумав ідею про те, що невеликий підрозділ спецназа може завдати противнику величезний урон. «Повітряна служба» Існує ще один привілей, який змушує противника думати, що він також повинен захищатися від десантників, і ця ідея може бути хорошою."
+
+  ENG_who_dares_wins:0 "Хто переможе Дар’є"
+  ENG_who_dares_wins_desc:0 ""
+
+  ENG_unrelenting_persuit_of_excellence:0 "Невміння до досконалості"
+
+  ENG_bedrock_of_prosperity:0 "Основи процвітання"
+  ENG_bedrock_of_prosperity_desc:0 ""
+  ENG_bedrock_of_prosperity_tt:0 "Ждав 270 днів, щоб маніфест Мослі приніс свої плоди."
+  upper_class_rebellion:0 "Повставання вищого класу"
+
+  ENG_no_further_appeasement_tt:1 "§YШтраф на стабільність зменшуються на 5% на кожні 5% світового стресу§! Після 10%."
+  ENG_no_further_appeasement_tt_1:1 "£faction_eng_labour Лейборісти і £faction_eng_conservative Консерватори стануть §Rменш привітні§!, Знизив §Yстабільність§! на §R15%§!."
+  ENG_no_further_appeasement_tt_2:1 "£faction_eng_labour Лейборісти і £faction_eng_conservative Консерватори стануть §Rменш привітні§!, Знизив §Yстабільність§! на §R10%§!."
+  ENG_no_further_appeasement_tt_3:1 "£faction_eng_labour Лейборісти і £faction_eng_conservative Консерватори стануть §Rменш привітні§!, Знизив §Yстабільність§! на §R15%§!."
+  ENG_no_further_appeasement_tt_4:1 "£faction_eng_labour Лейборісти і £faction_eng_conservative Консерватори стануть §Rменш привітні§!, Знизив §Yстабільність§! на §R20%§!."
+  ENG_no_further_appeasement_tt_5:1 "£faction_eng_labour Лейборісти і £faction_eng_conservative Консерватори стануть §Rменш привітні§!, Знизив §Yстабільність§! на §R25%§!."
+
+  ENG_kickstart_the_war_industry_tt:1 "§YМіцність Penalties are dependant on the War situation§!."
+
+  uk_mediterranean_focus_tt:0 "§GДає рішення для поліпшення можливостей цих островів.\n§!"
+
+  new_military_projections:0 "Нові військові прогнози"
+  new_military_projections_desc:0 "Наша сьогоднішня військова організація не відображає нової доктрини, яку ми розробляємо, і наш начальник штабу радить переглянути всі аспекти нашої військової стратегії, щоб дотримуватися нашого процесу перевозу."
+  new_military_projections_tt:1 "Надає §YШаблон довгої танкової дивізії§! і §YЗвичайний танковий стиль§!.\n"
+
+  shadow_scheme_focus_tt:1 "Надає §G12§! комірок для будівництва і будівництва §Y12 Військові фабрики§! всього в трьох регіонах, коли починається війна.\n"
+  CAN_shadow_scheme_focus_tt:1 "Надає §G6§! комірок для будівництва і будівництва §Y6 військових заводів§! всього в трьох регіонах, коли починається війна.\n"
+
+  USA_call_up_the_national_guard:0 "Назва Національної гвардії"
+  USA_call_up_the_national_guard_desc:0 "Буде розвертатися і ходити автоматично, якщо війна"
+  national_guard_tt:1 "розвертати§G18§!§Yдивізії Національної гвардії§!По всіх штатах.\n"
+  national_guard_deployed:0 "Національна гвардія вже розвернута"
+
+  USA_progress_the_wpa:0 "Продовжити ОРС"
+  USA_progress_the_wpa_desc:0 "Ми повинні продовжувати WPA і зосередитися на громадських парках, громадських будівлях, громадських послугах, аеропортах і транспорті, а також створити федеральний письменникський проект."
+
+  USA_modernize_the_army:0 "Модернізувати армію"
+  USA_modernize_the_army_desc:0 "Наша армія погано підготовлена і досі бореться тактикою Великої війни, ми консультувалися з нашими інженерами і тактиками, щоб покращити наше розуміння цих нових військових машин."
+
+  USA_restructure_the_national_army:0 "Реорганізувати національні війська"
+  USA_restructure_the_national_army_desc:0 "Наша армія десятиліттями перебувала в стані застою і сплячки, і прийшов час почати реорганізацію армії, щоб нові рекрути могли бути відведені в лоно."
+
+  USA_USACE_investments:0 "Інженерні війська США"
+  USA_USACE_investments_desc:0 "Інженерний корпус армії США має багату історію в Сполучених Штатах Америки у будівельних проектах як у мирний, так і в воєнний час. Оскільки складність воєнних дій продовжує зростати, ми можемо очікувати, що їх технічний досвід буде надзвичайно корисним."
+
+  USA_carpet_bombing:0 "Коврові бомбардування"
+  USA_carpet_bombing_desc:0 "Також відомий як бомбардування насиченням, килимове бомбардування призначено для знищення цілих ділянок землі, наші стратегічні бомбардувальники закриють сонце над небом наших ворогів. Вони не знатимуть ні безпеки, ні миру."
+
+  USA_morgenthau_plan:0 "План Моргентау"
+  USA_morgenthau_plan_desc:0 "Секретар казни Херні Моргентау-молодший розробив план ліквідації будь-якої спроможності Німеччини вести війну, видаливши всю свою промислову потужність. Тоді як радикальний, розслаблений варіант його плану може бути впроваджено, щоб обмежити військові можливості Німеччини."
+
+  USA_heavy_tank_doctrine:0 "Доктрина важких танків"
+  USA_heavy_tank_doctrine_desc:0 "Дивно, що ми, як найбільш індустріалізована країна у світі, не маємо можливості доставляти найбільші танки, а не як якості, якщо маємо і те, і інше."
+
+
+  USA_create_unit_airborne_tt:0 "Дає шаблон елітної дивізії парашутистів."
+
+  USA_the_global_super_power:0 "Глобальна супердержава"
+  USA_the_global_super_power_desc:0 "Сполучені Штати є опротестом демократії в західному світі, і, досягнувши від моря до сяючого моря, ми є маяком надії, що освітлює небо, як місто на пагорбі."
+
+  USA_focus_on_asia_tt:0 "Починає місію §Yпроекції сили§! в тихому океані, коли інша велика зухвала стає загрозою."
+
+  USA_intervention_mandate_tt:0 "Відкрити §YМандати на інтервенцію§!Завдяки Конгессу розпочати війну проти іншої країни."
+
+  USA_war_foundations:0 "Основи війни"
+  USA_war_foundations_desc:0 "Наша сьогоднішня армія недосвідчена і застаріла, спираючись на звіти про тривалу війну, ми зможемо інформувати про наші військові рішення."
+
+  USA_join_the_allies:0 "Приєднатися до союзників"
+  USA_join_the_allies_desc:0 "Америка досить довго залишалася байдужим спостерігачем, коли ви бачите гримучого змія, готового на удар, ви не чекаєте, поки він вдарить, щоб розчавити його. Американці захищатимуть свободу і свободу незалежно від того, де вони знаходяться."
+
+  USA_start:0 "Продовжити новий курс"
+  USA_start_desc:0 "З огляду на те, що країна в руїнах, Рузвельт зміг повернути США на ноги завдяки першому новому курсу. Однак Рузвельт втратив деяку підтримку, на відміну від широкої підтримки першого Нового курсу, хоча його мета у бізнесі почалася у Другому Новому Курсі. Однак, більшість населення все ще підтримує Рузвельта, незважаючи на зниження енергії Нового курсу."
+
+  USA_renew_the_neutrality_act:0 "Закон - угода про нейтралітет 1935 р."
+  USA_renew_the_neutrality_act_desc:0 "З ростом напруженості в Європі та Азії, а також великою історією ізоляціонізму здається природним, що Сполучені Штати продовжуватимуть йти шляхом невтручання, і обидві сторони підтримують ці заходи."
+
+  USA_spanish_civil_war_amendment:0 "Поправка до громадянської війни в Іспанії"
+  USA_spanish_civil_war_amendment_desc:0 "За допомогою лазів у діях законів про нейтралітет щодо громадянських війн американські компанії змогли продати величезну кількість зброї націоналістичним людям Іспанії, і це не може тривати."
+
+  USA_hatch_act:0 "Закон про запобігання згубній політичній діяльності"
+  USA_hatch_act_desc:0 "Щоб виправити корупцію в уряді, закон Гетча забороняє залякування або підкуп виборців і обмежує політичну діяльність федералів. Він забороняє використовувати будь-які державні кошти, призначені для допомоги або громадських робіт у виборчих цілях, і забороняє чиновникам, які отримують оплату з федеральних фондів, використовувати обіцянки про роботу, просування, фінансову допомогу, контракти чи будь-яку іншу вигоду для примусової кампанії або політичної підтримки."
+
+  USA_rural_electrification_act:0 "Керування електрикою солов"
+  USA_rural_electrification_act_desc:0 "З огляду на те, що пилова чаша росте на Великих рівнинах, а бідні фермери страждають у сільських місцевостях, необхідні інвестиції в ці райони. Адміністрація електрифікації сільських районів повинна розпочати амбітне амбітне амбіціозне планування сільської місцевості, що вважається непрактичним і дорогим."
+
+  USA_wagner_steagall_act:0 "Закон Вагнера-Стігалла"
+  USA_wagner_steagall_act_desc:0 "Закон про житло, або Закон Вагнера-Стігола, буде спиратися на попередні програми допомоги, такі як Національний житловий акт 1934, щоб полегшити фінансування і будівництво будинків для бідних сімей."
+
+  USA_WPA_roads:0 "Розширення сільських доріг"
+  USA_WPA_roads_desc:0 "Використовуючи ресурси ВПА і для надання допомоги Адміністрації по електрифікації сільських районів, ми створимо сільські дорожні мережі, щоб поліпшити ефективність транспортування сільськогосподарських культур і матеріалів Через сільські райони."
+
+  USA_robinson_patman_act:0 "Закон Робінсона Патмана"
+  USA_robinson_patman_act_desc:0 "Закон Робінсона Петмена і закон про боротьбу з ціновою дискримінацією покликані перешкодити постачальникам продавати на різні ринки за різними цінами для подальшої боротьби з трастами."
+
+  USA_boulder_dam:0 "Завершити будівництво дамби Боулдера"
+
+  USA_expand_tva:0 "Розширити Адміністрацію долини Теннессі"
+  USA_expand_tva_desc:0 "Управління долини Тенессі вже виявило життєздатність комунальних компаній у федеральній власності. Подальші інвестиції в цю корпорацію принесуть користь регіонам у долині Тенессі, які особливо постраждали від Великої депресії."
+
+  USA_napalm:0 "Перевірка напалмових бомб"
+  USA_napalm_desc:0 "Napalm був розроблений спочатку командою на чолі з хіміком Луї Фізером для Служби хімічної війни США в 1942 в таємній лабораторії Гарвардського університету. Це суміш гелеподібного агента і летючого нафтохімічного (зазвичай бензину (бензина) або дизельного палива."
+
+  USA_depression_fix:0 "§GПоступово зменшує наслідки Великої депресії§!\n"
+
+  USA_price_control_act:0 "Федеральний закон про справедливе ціни"
+  USA_price_control_act_desc:0 "Замість непрямого підходу до контролю над ринками ми можемо встановлювати прямі ціни на товари, щоб краще задовольняти потреби фермерів і уникати непотрібних відходів."
+
+  USA_second_agricultural_adjustment_act:0 "Другий закон щодо регулювання сільського господарства"
+  USA_second_agricultural_adjustment_act_desc:0 "Для того, щоб продовжити план FDR для полегшення фермерів і дотримуватися дозволу від США проти Батлера, другий закон про корегування сільського господарства буде фінансувати себе, використовуючи державне фінансування замість податків на переробників."
+
+  USA_federal_works_administration:0 "Створення Федерального агентства з роботи"
+  USA_federal_works_administration_desc:0 "Федеральне управління будівництва об'єднає декілька будівельних програм, в першу чергу WPA, в єдину адміністрацію, щоб спростити планування і адміністрування будівництва, а також відкрити більше Функціонування міжпрограмної співпраці."
+
+  USA_interstate_road_board:0 "Виготовлення Національної ради"
+  USA_interstate_road_board_desc:0 "Для надання допомоги адміністрації електрифікації сільських районів, а також подальшого з'єднання бідних фермерів до ринків було висунуто ідею створення великої міждержавної дорожнього мережі для полегшення Транспортувати товари."
+
+  USA_farmer_relief_act:0 "Закон про допомогу фермерів"
+  USA_farmer_relief_act_desc:0 "З курної чаші, яка тероризує Великі рівнини, пряме полегшення повинно бути доступним для борчих фермерів, щоб повернути їх на ноги."
+
+  USA_farm_bankruptcy_act:0 "Акт про банкрутство ферм"
+  USA_farm_bankruptcy_act_desc:0 "У перші роки свого президентства Рузвельт приділяв велику увагу захисту фермерів. Якщо ми хочемо зберегти їхню підтримку, нам потрібно буде пройти далекі заходи захисту, які будуть сприйняті як спірні деякі представники американської громадськості."
+  USA_farm_bankruptcy_act_tt:0 "§YЗапропонують освіту нейтрального блоку у випадку громадянської війни.§!"
+
+  USA_judicial_reform:0 "Законопровід про реформу судових процедур"
+  USA_judicial_reform_desc:0 "Оскільки консервативний Верховний суд скасовує життєво важливі нові програми угод, потрібно вжити заходів, щоб захистити американських людей і допомагати іншим органам влади 2. Запустивши амбітний план.\"Court Packing\\", Ми можемо отримати контроль над судом для забезпечення безпеки наших програм."
+
+  USA_nira_act:0 "NIRA акт"
+  USA_nira_act_desc:0 "Тепер, коли ми змогли зробити так багато радикальних змін у нашій країні, президент вважає, що настав час переглянути скасування NIRA. Якщо ми зможемо відновити його, це матиме великий і різний вплив у нашій країні."
+
+  USA_accumulated_wealth_tax:0 "Нагромадження грошей"
+  USA_accumulated_wealth_tax_desc:0 "Щоб фінансувати програми Нового курсу, багаті мусять платити свою частку американському народу, щоб підтримати їх. Для цього буде введено податок на стан понад 50 000 доларів, щоб запобігти величезній накопиченні цього багатства."
+
+  USA_fair_labor_standards_act:0 "Закон про справедливі трудові стандарти"
+  USA_fair_labor_standards_act_desc:0 "Щоб захистити права робітників і запобігти експлуататорним стосункам, робітники повинні мати чіткі права, в першу чергу мінімальну заробітну плату."
+
+  USA_worker_autonomy_act:0 "Закон про автономність робітників"
+  USA_worker_autonomy_act_desc:0 "Щоб краще представляти народ Америки, фабрики матимуть певні обмеження на те, як вони можуть контролювати поведінку заводів, в першу чергу заборона на вступ робітників у профспілки."
+
+  USA_union_recognition_act:0 "Закон про визнання Союзу"
+  USA_union_recognition_act_desc:0 "Щоб допомогти американському працівнику, повинен бути прийняти закон, який змусить власників фабрик визнавати профспілки, які становлять більше, ніж 25 відсотків усіх галузей."
+
+  USA_business_relations_act:0 "Закон про ділові справи"
+  USA_business_relations_act_desc:0 "Щоб налагодити тіснішу співпрацю між працівниками та бізнесом, потрібно прийняти закони, спрямовані на примирення цих двох сторін і відкритий діалог про те, як краще керувати промисловістю."
+
+  USA_board_of_business_management:0 "Поради щодо поліпшення бізнесу"
+  USA_board_of_business_management_desc:0 "Щоб розпочати подальше обговорення, потрібно створити пораду, яка представляє як профспілки, так і підприємства, для обговорення відповідних протоколів ведення бізнесу."
+
+  USA_cash_and_carry_act:0 "Програма «Кеш енд Керрі»"
+  USA_cash_and_carry_act_desc:0 "Тоді як колишні нейтральні акти перешкоджали продажу зброї країнам, що перебувають у стані війни, було зроблено виняток, що дозволяє продавати товари, поки ця країна оплачувала Хоча ця ситуація з тих пір закінчилась, ми можемо заохотити Конгрес відновити цю позицію для постачання союзників."
+  USA_cash_and_carry_act_tt:0 "§GЗакусити військову техніку у США - Британію§!"
+
+  USA_lend_lease_act:0 "Програма ленд-лізу"
+  USA_lend_lease_act_desc:0 "З успіхом програми грошових коштів і зростаючої громадської підтримки війни, подальші поставки повинні бути направлені союзниками за кордоном. Закон про ленд-ліз дасть таким країнам, як Великобританія та Радянський Союз, військові матеріали в обмін на оплату після війни."
+
+  USA_CRA:0 "Створення АРК"
+  USA_CRA_desc:0 "Після завершення будівництва дамби Боулдер район навколо річки може стати сільськогосподарським і, можливо, навіть великим містом. інвестиційні проекти"
+
+  USA_invest_in_junior_colleges:0 "Інвестиції в юнацькі коледжі"
+  USA_invest_in_junior_colleges_desc:0 "Закон Сміта-Хьюза 1917 року справив великий вплив на надання професійної освіти і навчання студентів до спеціалізованих робіт для збільшення фінансування цих програм через молодші коледжі, Ми можемо і далі піднімати людей з нижчих класів на високооплачувану і кваліфіковану роботу"
+
+  USA_wait_out_the_recession:0 "Перечекати рецесію"
+  USA_wait_out_the_recession_desc:0 "Хоча рецесія може виглядати жахливо, це просто очікуваний результат переходу американської економіки від державних витрат, і не про що турбуватися"
+  USA_wait_out_the_recession_tt:0 "§GЦей фокус закінчиться, якщо ви перечекаєте рецесію Рузвельта замість того, щоб намагатися виправити її за допомогою кейнсіанської економіки.§!\nВідкриває послідовний ланцюжок з §Y3 інвестиційні рішення§!.\n§YКраїна вільних людей§!: зростання фінансів §G+25%§!.\nБудьте врівноважені §YGM/DuPont§! отримує бонуси до боєприпасів, артилерії і гуми.\nУ дружніх стосунках §YKaiser§! отримує бонуси до будівництва інфраструктури і верфей."
+  USA_JPMorgan_new_deal_decisions_tt:0 "Відкриває вікно розв’ язку §YПереговори з J.P. Morgan§! і §YПоліпшити стосунки з J.P. Morgan§! на вкладці §YВнутрішні фракції§!."
+  USA_TVA_Ford_faction_bonus_tt:0 "У дружніх стосунках §YFord/Chrysler§! отримає §G+7,5%§! до максимальної ефективності виробництва, §G+10%§! до швидкості будівництва військових заводів і §G+10%§! до зростання ефективності виробництва."
+
+  USA_keynesian_economics:0 "Кейнсіанська економіка"
+  USA_keynesian_economics_desc:0 "В умовах погіршення стану економіки після недавнього скорочення бюджету потрібно використовувати інші варіанти. Теорія Джона Мейнарда Кейнса про те, що державні витрати необхідні для стимулювання економіки, пропонує рішення, що включає розширення багатьох державних робочих програм для перезапуску американської Економічна ситуація."
+
+  USA_budget_balancing:0 "Балансування бюджету"
+  USA_budget_balancing_desc:0 "Американська економіка, нарешті, повертається в потрібне русло, і настав час почати повільний процес переходу зайнятості з державного сектора в приватний, скорочення фінансування багатьох державних програм."
+  USA_budget_balancing_tt:0 "§RМоже викликати рецесію§!"
+
+  USA_limited_rearmament:0 "Обмежене переозброєння"
+  USA_limited_rearmament_desc:0 "Громадськість як і раніше категорично проти відсилання наших чоловіків вмирати в чужі країни. Недавній запит англійців на закупку американського обладнання дав нам привід збільшити виробництво З достатньою підтримкою ми можемо збільшити цю суму."
+
+  USA_selective_service_act:0 "Закон про виборчу службу"
+  USA_selective_service_act_desc:0 "Ця війна була набагато важливішою, ніж ми спочатку думали. З достатньою політичною підтримкою ми можемо провести заклик, який дозволить нам підготувати резервну армію, якщо конфлікт коли-небудь досягне берегів Америки."
+  USA_selective_service_act_tt:0 "§GМоже навчати до 50 резервістів\nКоли почнеться війна, закон про робочу силу переключиться на службу вибору.§!"
+  USA_selective_service_act_flag:0 "Є закон про виборчу службу"
+
+  USA_rubber_reserve_company:0 "Резінова резервація"
+  USA_rubber_reserve_company_desc:0 "Наш доступ до каучуку в Південно-Східній Азії з кожним днем стає все більш небезпечним, ми не можемо дозволити собі покладатися лише на запаси каучуку в Південній Америці, щоб годувати нашу військову машину. Ми повинні негайно приступити до створення програми виробництва синтетичного каучуку в США."
+
+  USA_naval_rearmament_act:0 "Закон про переозброєння військово-морського"
+  USA_naval_rearmament_act_desc:0 "Якщо війна коли-небудь переросте в глобальні масштаби, найбільшою перевагою Сполучених Штатів буде наш контроль над великими районами океану, які відділяють нас від конфлікту. Ми повинні гарантувати, що американські води завжди будуть у безпеці."
+
+  USA_flint_strike_support:0 "Не втручався в сидячий страйк Флінта"
+  USA_flint_strike_breakup:0 "Втрутився в сидячий страйк Флінта"
+
+  congress_massive_support_trigger_tt:0 "Потрібна підтримка як мінімум §Y65 Сенаторів§W (потрібні: [?senators_support|W0])§W і §Y303 Речники §W(потрібні: [?representatives_support|W0])"
+
+  USA_waited_out_roosevelt_recession:0 "Перечекала рецесію"
+  USA_delt_with_roosevelt_recession:0 "Втрутився в рецесію"
+
+
+  USA_undistributed_profits_tax:0 "Винаходи на нездійсненний прибуток"
+  USA_undistributed_profits_tax_desc:0 "Податок на незроблені прибутки був ще одним видом податку на багатство, включене в Закон про прибуток 1936 року. У законопроекті було встановлено принцип, згідно з яким підтримуваючий корпоративний прибуток може складатися податком. Ідея полягала в тому, щоб змусити великі підприємства розподіляти прибуток у вигляді дивідендів і заробітної плати, а не економити або реінфенсувати їх. Це було зроблено для отримання прибутку для оплати програм Нового курсу Рузвельту."
+
+  USA_banking_industry_loans:0 "Кредити банківської галузі"
+  USA_banking_industry_loans_desc:0 "З моменту обрання Рузвельт боровся з банківською рамкою, особливо з монополією на монополію J.P. Morgan. «Новий курс» Накопичуються, і федеральні уряди закінчують свої оплату, забираючи кредити в цих банках, збагатили б їх, але запобігали б тискові на бізнес через нові податки."
+
+  USA_emergency_shipbuilding_program:0 "Програма аварійного завершення"
+  USA_emergency_shipbuilding_program_desc:0 "Морська комісія бачить можливу загрозу війни між двома океанами, тому проводить програму, яка забезпечує Сполучені Штати Америки достатнім виробництвом торговельних та військових кораблів. Генрі Кайзеру призначено створити великі виробничі потужності для кораблів, яких ще не було в історії."
+
+  USA_veteran_employement:0 "Ретерани праці"
+  USA_veteran_employement_desc:0 "FDR намагався зупинити Скоректований закон про компенсацію через вето на тому розумінні, що до здорових ветеранів слід ставитися інакше, ніж до пересічного громадянина. Замість того, щоб платити ветеранам подачки, альтернатива є гарантією їхньої роботи, ми просто не можемо гарантувати їх лікування на вільному ринку."
+
+  USA_tva_ford_cooperation:0 "Співпраця TVA-Ford"
+  USA_tva_ford_cooperation_desc:0 "Хоча Форду було відмовлено в можливості побудувати енергетичну технологію для обслуговування долини Теннессі, їхній капітал і інженерний досвід можуть бути корисними. З роздуванням федерального бюджету і збільшенням боргу, приватна промисловість може допомогти, навіть якщо це дасть Титанам більше влади."
+
+  USA_appoint_william_knudsen:0 "Призначити Вільяма Кнудсена"
+  USA_appoint_william_knudsen_desc:0 "Вільям Кнудсен (William Knudsen) — колишній виконавчий директор автомобільної промисловості, який має досвід, необхідний, щоб переконати титанів галузі, таких як Ford, Chrysler і GM, внести свій вклад в їх Завдяки великим промисловим базам він може швидко наростати."
+
+  USA_keynesian_militarism:0 "Кейнсіанський мілітаризм"
+  USA_keynesian_militarism_desc:0 "З наближенням кейсіанства як початкової школи економічної думки в США, він також може бути використаний у військовому відношенні. Після відновлення Великої депресії всі робочі програми можуть бути переміщені в сторону підготовки США до майбутнього конфлікту. У дусі кейсіанства, так само як фінансовані урядом програми покращили країну для цивільних людей, вони можуть поліпшити нашу готовність до війська таким же чином."
+
+  USA_tva_alcoa_cooperation:0 "Співпраця з TVA-Alcoa"
+  USA_tva_alcoa_cooperation_desc:0 "Оскільки TVA є провідним постачальником енергії для долини річки Теннессі, приватні компанії, такі як Aluminum Company of America, Alcoa, можуть використовувати ці величезні можливості виробництва енергії для Будівництво найбільшої алюмінієвої фабрики у світі, це знадобиться під час конфлікту."
+
+  USA_Kaiser_Positive_1_tt1:1 "£faction_usa_kaiser §YKaiser's Industries§! стає більше §GВпливові§!, збільшувати £GFX_faction_construction_civilian_icon §YШвидкість будівництва§! на §G5%§! і збільшує ймовірність того, що вони внесуть свій внесок у майбутній війні."
+
+  USA_Kaiser_Dockyard_Swap_tt:1 "£faction_usa_kaiser §YKaiser's Industries§! стає більше §GВпливові§! і повністю перемикається на кораблябудівлі, §RУмить§! всі бонуси на £GFX_faction_construction_civilian_icon §YШвидкість будівництва§! і §GДає§! £GFX_faction_construction_dockyard_icon §YШвидкість будівництва верфей§! і £GFX_faction_dockyard_icon §Yшвидкодія верфі§!"
+
+  USA_Ford_Chrysler_negative_1_tt1:1 "£faction_usa_chrysler_ford §YFord/Chrysler§! стає більше §RВорожий§!, знижуючи £GFX_faction_construction_civilian_icon §YШвидкість будівництва фабрик§! на §R5%§! і ймовірність підтримки в майбутній війні."
+
+  USA_JPMorgan_Positive_1_tt1:1 "£faction_usa_jpmorgan §YJ.P. Morgan§! стає більше §GПрихильні§!, збільшувати £GFX_faction_stability_icon §Yстабільність§! на §G+5%§! і менша £GFX_faction_consumer_goods §Yфабрики, що виробляють товари для народного вжитку§! на §Y-4%§! і збільшує ймовірність того, що вони внесуть свій внесок у майбутній війні."
+
+  USA_Public_positive_1_tt1:1 "£faction_usa_public_support §YТовариство§! стає більше §GПрихильні§!, збільшувати £GFX_faction_pol_power_icon §YЗміна політичної влади§! на §G+0.10§! і £GFX_faction_stability_icon §Yстабільність§! на §G+5%§! і збільшує ймовірність того, що вони внесуть свій внесок у майбутній війні."
+
+  USA_Public_negative_1_tt1:1 "£faction_usa_public_support §YТовариство§! стає більше §RВорожий§!, зменшити £GFX_faction_pol_power_icon §YЗміна політичної влади§! на §R-0.10§! і £GFX_faction_stability_icon §Yстабільність§! на §R-5%§! і збільшує ймовірність того, що вони внесуть свій внесок у майбутній війні."
+
+  USA_Titan_negative_1_tt1:1 "£faction_usa_chrysler_ford §YFord/Chrysler§!, £faction_usa_gm_dupont §YGM/DuPont§! і £faction_usa_jpmorgan §YJ. P. Morgan§! стає більше §RВорожі§!, Разом знижуючи £GFX_faction_stability_icon §Yстабільність§! на §R5%§! і £GFX_faction_construction_civilian_icon §YШвидкість будівництва фабрик§! на §R10%§!, а також вища ймовірність їхніх виступів проти нас у майбутній війні."
+
+  USA_Titan_positive_1_tt1:1 "£faction_usa_chrysler_ford §YFord/Chrysler§!,£faction_usa_gm_dupont §YGM/Dupont§!, і £faction_usa_jpmorgan §YJ.P. Morgan§! стає більше §GПриязні§!, разом збільшуючи £GFX_faction_stability_icon §Yстабільність§! на §G+5%§! і£GFX_faction_construction_civilian_icon §YШвидкість будівництва фабрик§! на §G+10%§!І збільшує ймовірність того, що вони внесуть свій внесок у майбутній війні."
+
+  USA_Ford_GM_positive_1_tt1:1 "£faction_usa_chrysler_ford §YFord/Chrysler§! і £faction_usa_gm_dupont §YGM/Dupont§! стає більше §GПриязні§!, разом збільшуючи £GFX_faction_construction_civilian_icon §YШвидкість будівництва фабрик§! на §G+10%§! і збільшує ймовірність того, що вони внесуть свій внесок у майбутній війні."
+
+  USA_Ford_positive_1_tt1:1 "£faction_usa_chrysler_ford §YFord/Chrysler§! стає більше §GПрихильні§!, збільшувати £GFX_faction_construction_civilian_icon §YШвидкість будівництва фабрик§! на §G+5%§! і збільшує ймовірність того, що вони внесуть свій внесок у майбутній війні."
+
+  USA_GM_positive_1_tt1:1 "£faction_usa_gm_dupont §YGM/Dupont§! стає більше §GПрихильні§!, збільшувати £GFX_faction_construction_civilian_icon §YШвидкість будівництва фабрик§! на §G+5%§! і збільшує ймовірність того, що вони внесуть свій внесок у майбутній війні."
+
+  USA_Ford_swap_tt:1 "£faction_usa_chrysler_ford §YFord/Chrysler§! повністю переключається на воєнне виробництво, §RУмить§! весь бонус на £GFX_faction_construction_civilian_icon §YШвидкість будівництва фабрик§! і §GДає§! £GFX_faction_industry_icon Об'єм заводського виробництва і £GFX_faction_construction_military_icon Швидкість будівництва."
+
+  USA_GM_swap_tt:1 "£faction_usa_gm_dupont §YGM/Dupont§! повністю переключається на воєнне виробництво, §RУмить§! весь бонус на £GFX_faction_construction_civilian_icon §YШвидкість будівництва фабрик§! і §GДає§! £GFX_faction_research_icon Швидкість дослідження і £GFX_faction_efficiency_icon Швидкість зростання виробництва."
+
+  USA_JPMorgan_economic_reduction_tt:1 "£faction_usa_jpmorgan §YJ.P. Morgan§! пропонує покривати понад витрати, не оплачені урядом США, зменшуючи економічну втому."
+
+  USA_Kaiser_ford_cooperation_tt:1 "£faction_usa_kaiser §YKaiser's Industries§! отримує допомогу від £faction_usa_chrysler_ford §YFord/Chrysler§!, збільшувати £GFX_faction_construction_dockyard_icon §YШвидкість будівництва верфей§! і £GFX_faction_dockyard_icon §Yшвидкодія імітацій§! на §G+15%§!"
+
+  USA_appoint_william_knudsen_tt:0 "§GВідкриває рішення, щоб почати переговори з індустріальними фракціями для допомоги військовому виробництві."
+
+  uk_extra_tech_slot_2:0 "Доп. комірка для дослідження"
+  uk_extra_tech_slot_2_desc:0 "Більше досліджень"
+
+  FRA_reach_out_to_spain_tt:0 "У разі відмови, буде доступна мета війни проти всіх ворожих Іспаній."
+  FRA_invite_portugal_tt:0 "У разі відмови, буде доступна мета війни з Португалією."
+  No_faction_to_invite_countries_into_tt:0 "Не має жодного ефекту, бо не має фракції..."
+
+  uk_privatize_the_housing_market:0 "Приватизувати ринок житла"
+
+  uk_government_loans:0 "Державні позики"
+
+  uk_lower_interest_rates:0 "Зменшити відсоткові ставки"
+
+  CHI_hangyeng_steelworks:0 "Хен’янський сталелітейний завод"
+  CHI_hangyeng_steelworks_desc:0 ""
+
+  CHI_expand_the_mines:0 "Розширення видобутку ресурсів"
+  CHI_expand_the_mines_desc:0 ""
+
+  CHI_nationalize_key_industries:0 "Націоналізація важкої промисловості"
+  CHI_nationalize_key_industries_desc:0 ""
+
+  CHI_abandon_the_silver_standard:0 "Відмова від срібного стандарту"
+  CHI_abandon_the_silver_standard_desc:0 ""
+
+  CHI_local_district_police:0 "Місцева районна поліція"
+  CHI_local_district_police_desc:0 ""
+
+  CHI_enforce_the_new_life_movement:0 "Рух за нове життя"
+  CHI_enforce_the_new_life_movement_desc:0 ""
+
+  CHI_support_the_blue_shirt_society:0 "Підтримка синіх рубашок"
+  CHI_support_the_blue_shirt_society_desc:0 ""
+
+  CHI_cult_of_chang_kai_shek:0 "Культура Чана Кайші"
+  CHI_cult_of_chang_kai_shek_desc:0 ""
+
+  USA_market_capitalism:0 "Ринковий капіталізм"
+  USA_market_capitalism_desc:0 "Федеральний уряд заступить силу приватного капіталу і промислову конкуренцію на потреби національної оборони, не замінюючи ринок постійним державним управлінням."
+  USA_market_capitalism_congress_opposition_tt:0 "До §R15 сенаторів§! і §R75 членів Палати представників§! Переступають до опозиції."
+  USA_market_capitalism_unlocks_jpmorgan_assistance_tt:0 "Відкриває рішення §Y«Допомога J. P. Morgan»§! на вкладці §Y«Внутрішні фракції»§!."
+  
+  FIN_tank_division:0 "Перша фінська дивізія"
+

@@ -1,12 +1,12 @@
 ﻿l_polish:
- PRODUCTION_MATERIALS_COAL:0 "Кут"
+ PRODUCTION_MATERIALS_COAL:0 "Вугілля"
  coal_desc:0 "Вугілля — це пальне, а також найбільше джерело електроенергії, а також важливий компонент виробництва сталі."
  PRODUCTION_MATERIALS_IRON:0 "Залізо"
  iron_desc:0 "Металічне залізо має вирішальне значення для виробництва сталі, чугуни та інших сплавів."
  PRODUCTION_MATERIALS_BAUXITE:0 "Боксити"
  bauxite_desc:0 "Боксити - це руда, необхідна для виробництва алюмінію."
 
- arms_factory_desc:0 "Ця споруда забезпечує регіон новими військовими технологіями, і, якщо потрібно, її можна перетворити на фабрику з мирної продукції."
+ arms_factory_desc:0 "Ця споруда дає можливість виробляти в області нове військове спорядження. За потребою може бути перетворений у цивільний завод."
  
  industrial_complex_desc:0 "Ця споруда забезпечує територію товарним товаром і дає змогу будувати нові споруди, які можна перетворити на фабрику з виробництва військової продукції. §Y(ПОТРЕБЛЯЄ §!§R20 СТОЛІ)§!\n"
  
@@ -45,8 +45,8 @@
  modifier_production_speed_aluminium_refinery_factor:0 "§YАлюмінієвий завод§! Швидкість будівництва"
  modifier_production_speed_synthetic_rubber_refinery_factor:0 "§YНефтепереробний завод§! Швидкість будівництва"
  
- synthetic_refinery:0 "Нефтепереробний завод"
- synthetic_refinery_plural:0 "Нефтепереробні фабрики"
+ synthetic_refinery:0 "Синтетичний НПЗ"
+ synthetic_refinery_plural:0 "Синтетичні НПЗ"
  synthetic_refinery_desc:0 "Це будівля. §Y(ПОТРЕБЛЯЄ §!§R75 УГЛЯ§!§Y)§! і забезпечує держава"
  synthetic_refinery_amount:0 "$VALUE|Y0=$"
- synthetic_refinery_resource:0 "£resources_strip|$FRAME$"
+ synthetic_refinery_resource:0 "£resources_strip|$FRAME$£"

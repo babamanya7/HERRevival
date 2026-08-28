@@ -6,6 +6,7 @@ on:
       - soviet-map-redraw-clean
     paths:
       - .github/workflows/infra-recalc.yml
+      - .github/infra_recalc.py
 
 concurrency:
   group: soviet-infra-recalc
@@ -23,7 +24,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: soviet-map-redraw-clean
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -31,19 +32,61 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install --disable-pip-version-check numpy pillow requests opencv-python-headless
+        run: pip install --disable-pip-version-check numpy pillow opencv-python-headless osmium shapely pyproj
 
-      - name: Recalculate Soviet infrastructure
+      - name: Cache OSM extracts
+        uses: actions/cache@v4
+        with:
+          path: .osm-cache
+          key: soviet-infra-osm-pbf-v1
+
+      - name: Download OSM PBF extracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .osm-cache
+          cat > /tmp/osm_urls.txt <<'EOF'
+          https://download.geofabrik.de/russia/central-fed-district-latest.osm.pbf
+          https://download.geofabrik.de/russia/northwestern-fed-district-latest.osm.pbf
+          https://download.geofabrik.de/russia/south-fed-district-latest.osm.pbf
+          https://download.geofabrik.de/russia/volga-fed-district-latest.osm.pbf
+          https://download.geofabrik.de/russia/north-caucasus-fed-district-latest.osm.pbf
+          https://download.geofabrik.de/europe/ukraine-latest.osm.pbf
+          https://download.geofabrik.de/europe/belarus-latest.osm.pbf
+          https://download.geofabrik.de/europe/georgia-latest.osm.pbf
+          https://download.geofabrik.de/asia/armenia-latest.osm.pbf
+          https://download.geofabrik.de/asia/azerbaijan-latest.osm.pbf
+          https://download.geofabrik.de/asia/kazakhstan-latest.osm.pbf
+          https://download.geofabrik.de/asia/uzbekistan-latest.osm.pbf
+          https://download.geofabrik.de/asia/turkmenistan-latest.osm.pbf
+          EOF
+          download_one() {
+            url="$1"
+            file=".osm-cache/${url##*/}"
+            if [ -s "$file" ]; then
+              echo "cached: ${file##*/}"
+              return 0
+            fi
+            echo "download: $url"
+            curl -L --fail --retry 6 --retry-all-errors --connect-timeout 30 --max-time 1800 \
+              -o "$file.part" "$url"
+            mv "$file.part" "$file"
+          }
+          export -f download_one
+          xargs -n1 -P4 -I{} bash -c 'download_one "$1"' _ {} < /tmp/osm_urls.txt
+          du -sh .osm-cache
+
+      - name: Recalculate Soviet infrastructure locally
         run: python .github/infra_recalc.py
 
       - name: Commit calculated infrastructure
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add history/states soviet-infra-report.csv
+          git add -- history/states soviet-infra-report.csv
           if git diff --cached --quiet; then
             echo "No infrastructure changes to commit"
             exit 0
           fi
-          git commit -m "Recalculate Soviet infrastructure from road network [skip ci]"
+          git commit -m "Recalculate Soviet infrastructure from local OSM extracts [skip ci]"
           git push origin HEAD:soviet-map-redraw-clean

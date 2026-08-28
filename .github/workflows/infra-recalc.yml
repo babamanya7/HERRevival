@@ -34,17 +34,71 @@ jobs:
       - name: Install dependencies
         run: pip install --disable-pip-version-check numpy pillow
 
+      - name: Freeze absolute infrastructure thresholds
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('.github/infra_recalc.py')
+          s = p.read_text(encoding='utf-8')
+          old = '''def infra_from_percentile(p):
+              if p <= 5: return 1
+              if p <= 15: return 2
+              if p <= 30: return 3
+              if p <= 50: return 4
+              if p <= 68: return 5
+              if p <= 82: return 6
+              if p <= 92: return 7
+              if p <= 98: return 8
+              return 9
+          '''
+          old = old.replace('          ', '')
+          new = '''ABSOLUTE_INFRA_THRESHOLDS = [
+              (0.14, 1),
+              (0.235, 2),
+              (0.37, 3),
+              (0.49, 4),
+              (0.60, 5),
+              (0.72, 6),
+              (0.82, 7),
+              (0.97, 8),
+          ]
+
+          def infra_from_score(score):
+              for ceiling, infra in ABSOLUTE_INFRA_THRESHOLDS:
+                  if score < ceiling:
+                      return infra
+              return 9
+          '''
+          new = new.replace('          ', '')
+          if old not in s:
+              raise SystemExit('Expected percentile mapping function not found')
+          s = s.replace(old, new)
+          old2 = '''    percentiles = rank_percentiles(targets)
+              for row, pct in zip(targets, percentiles):
+                  row['percentile'] = pct
+                  row['new_infra'] = infra_from_percentile(pct)
+          '''.replace('              ', '')
+          new2 = '''    percentiles = rank_percentiles(targets)
+              for row, pct in zip(targets, percentiles):
+                  row['percentile'] = pct
+                  row['new_infra'] = infra_from_score(row['score'])
+          '''.replace('              ', '')
+          if old2 not in s:
+              raise SystemExit('Expected percentile assignment block not found')
+          s = s.replace(old2, new2)
+          p.write_text(s, encoding='utf-8')
+
       - name: Recalculate Soviet infrastructure locally
         run: python .github/infra_recalc.py
 
-      - name: Commit calculated infrastructure
+      - name: Commit calibration report
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- history/states soviet-infra-report.csv
+          git add -- .github/infra_recalc.py soviet-infra-report.csv
           if git diff --cached --quiet; then
-            echo "No infrastructure changes to commit"
+            echo "No calibration changes to commit"
             exit 0
           fi
-          git commit -m "Recalculate Soviet infrastructure from local historical proxies [skip ci]"
+          git commit -m "Freeze absolute Soviet infrastructure thresholds [skip ci]"
           git push origin HEAD:soviet-map-redraw-clean

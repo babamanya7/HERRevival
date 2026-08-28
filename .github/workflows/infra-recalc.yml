@@ -37,22 +37,13 @@ jobs:
       - name: Freeze absolute infrastructure thresholds
         shell: python
         run: |
+          import re
           from pathlib import Path
+
           p = Path('.github/infra_recalc.py')
           s = p.read_text(encoding='utf-8')
-          old = '''def infra_from_percentile(p):
-              if p <= 5: return 1
-              if p <= 15: return 2
-              if p <= 30: return 3
-              if p <= 50: return 4
-              if p <= 68: return 5
-              if p <= 82: return 6
-              if p <= 92: return 7
-              if p <= 98: return 8
-              return 9
-          '''
-          old = old.replace('          ', '')
-          new = '''ABSOLUTE_INFRA_THRESHOLDS = [
+
+          replacement = '''ABSOLUTE_INFRA_THRESHOLDS = [
               (0.14, 1),
               (0.235, 2),
               (0.37, 3),
@@ -69,23 +60,22 @@ jobs:
                       return infra
               return 9
           '''
-          new = new.replace('          ', '')
+
+          s, n1 = re.subn(
+              r'def infra_from_percentile\(p\):\n(?:    .*\n)+?\n(?=def main\(\):)',
+              replacement + '\n',
+              s,
+              count=1,
+          )
+          if n1 != 1:
+              raise SystemExit(f'Expected percentile mapping function once, got {n1}')
+
+          old = """    percentiles = rank_percentiles(targets)\n    for row, pct in zip(targets, percentiles):\n        row['percentile'] = pct\n        row['new_infra'] = infra_from_percentile(pct)\n"""
+          new = """    percentiles = rank_percentiles(targets)\n    for row, pct in zip(targets, percentiles):\n        row['percentile'] = pct\n        row['new_infra'] = infra_from_score(row['score'])\n"""
           if old not in s:
-              raise SystemExit('Expected percentile mapping function not found')
-          s = s.replace(old, new)
-          old2 = '''    percentiles = rank_percentiles(targets)
-              for row, pct in zip(targets, percentiles):
-                  row['percentile'] = pct
-                  row['new_infra'] = infra_from_percentile(pct)
-          '''.replace('              ', '')
-          new2 = '''    percentiles = rank_percentiles(targets)
-              for row, pct in zip(targets, percentiles):
-                  row['percentile'] = pct
-                  row['new_infra'] = infra_from_score(row['score'])
-          '''.replace('              ', '')
-          if old2 not in s:
               raise SystemExit('Expected percentile assignment block not found')
-          s = s.replace(old2, new2)
+          s = s.replace(old, new, 1)
+
           p.write_text(s, encoding='utf-8')
 
       - name: Recalculate Soviet infrastructure locally

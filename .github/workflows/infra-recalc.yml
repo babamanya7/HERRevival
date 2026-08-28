@@ -34,16 +34,17 @@ jobs:
       - name: Install dependencies
         run: pip install --disable-pip-version-check numpy pillow
 
-      - name: Freeze absolute infrastructure thresholds
+      - name: Recalculate Soviet infrastructure locally
+        run: python .github/infra_recalc.py
+
+      - name: Apply absolute infrastructure thresholds to report
         shell: python
         run: |
-          import re
+          import csv
           from pathlib import Path
 
-          p = Path('.github/infra_recalc.py')
-          s = p.read_text(encoding='utf-8')
-
-          replacement = '''ABSOLUTE_INFRA_THRESHOLDS = [
+          path = Path('soviet-infra-report.csv')
+          thresholds = [
               (0.14, 1),
               (0.235, 2),
               (0.37, 3),
@@ -55,40 +56,38 @@ jobs:
           ]
 
           def infra_from_score(score):
-              for ceiling, infra in ABSOLUTE_INFRA_THRESHOLDS:
+              for ceiling, infra in thresholds:
                   if score < ceiling:
                       return infra
               return 9
-          '''
 
-          s, n1 = re.subn(
-              r'def infra_from_percentile\(p\):\n(?:    .*\n)+?\n(?=def main\(\):)',
-              replacement + '\n',
-              s,
-              count=1,
-          )
-          if n1 != 1:
-              raise SystemExit(f'Expected percentile mapping function once, got {n1}')
+          with path.open('r', encoding='utf-8', newline='') as f:
+              rows = list(csv.DictReader(f))
+              fields = list(rows[0].keys()) if rows else []
 
-          old = """    percentiles = rank_percentiles(targets)\n    for row, pct in zip(targets, percentiles):\n        row['percentile'] = pct\n        row['new_infra'] = infra_from_percentile(pct)\n"""
-          new = """    percentiles = rank_percentiles(targets)\n    for row, pct in zip(targets, percentiles):\n        row['percentile'] = pct\n        row['new_infra'] = infra_from_score(row['score'])\n"""
-          if old not in s:
-              raise SystemExit('Expected percentile assignment block not found')
-          s = s.replace(old, new, 1)
+          for row in rows:
+              row['new_infra'] = str(infra_from_score(float(row['score'])))
 
-          p.write_text(s, encoding='utf-8')
+          with path.open('w', encoding='utf-8', newline='') as f:
+              writer = csv.DictWriter(f, fieldnames=fields)
+              writer.writeheader()
+              writer.writerows(rows)
 
-      - name: Recalculate Soviet infrastructure locally
-        run: python .github/infra_recalc.py
+          distribution = {i: sum(int(r['new_infra']) == i for r in rows) for i in range(1, 10)}
+          print('Absolute distribution:', distribution)
+          top = sorted(rows, key=lambda r: float(r['score']), reverse=True)[:15]
+          bottom = sorted(rows, key=lambda r: float(r['score']))[:15]
+          print('Absolute top:', [(r['state_id'], r['name'], round(float(r['score']), 3), int(r['new_infra'])) for r in top])
+          print('Absolute bottom:', [(r['state_id'], r['name'], round(float(r['score']), 3), int(r['new_infra'])) for r in bottom])
 
       - name: Commit calibration report
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- .github/infra_recalc.py soviet-infra-report.csv
+          git add -- soviet-infra-report.csv
           if git diff --cached --quiet; then
             echo "No calibration changes to commit"
             exit 0
           fi
-          git commit -m "Freeze absolute Soviet infrastructure thresholds [skip ci]"
+          git commit -m "Calibrate absolute Soviet infrastructure thresholds [skip ci]"
           git push origin HEAD:soviet-map-redraw-clean

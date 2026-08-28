@@ -17,11 +17,10 @@ REPORT = ROOT / 'soviet-infra-report.csv'
 
 MIN_LON, MAX_LON = 18.0, 62.5
 MIN_LAT, MAX_LAT = 38.0, 72.5
-
-# Calibration pass only. Do not rewrite state history until the report is approved.
 APPLY_CHANGES = False
 
 COMPONENT_WEIGHTS = {'C': 0.40, 'P': 0.25, 'R': 0.15, 'T': 0.20}
+MIN_EFFECTIVE_AREA = 300.0
 
 TERRAIN_SUITABILITY = {
     'urban': 1.00,
@@ -184,22 +183,14 @@ def rank_percentiles(rows):
 
 
 def infra_from_percentile(p):
-    if p <= 5:
-        return 1
-    if p <= 15:
-        return 2
-    if p <= 30:
-        return 3
-    if p <= 50:
-        return 4
-    if p <= 68:
-        return 5
-    if p <= 82:
-        return 6
-    if p <= 92:
-        return 7
-    if p <= 98:
-        return 8
+    if p <= 5: return 1
+    if p <= 15: return 2
+    if p <= 30: return 3
+    if p <= 50: return 4
+    if p <= 68: return 5
+    if p <= 82: return 6
+    if p <= 92: return 7
+    if p <= 98: return 8
     return 9
 
 
@@ -238,34 +229,40 @@ def main():
         pids = st['pids']
         nprov = max(1, len(pids))
         pixel_area = int(len(xs))
-        # Approximate physical area: longitude degrees shrink with latitude.
-        # Absolute units do not matter because every density is normalized later.
         area_proxy = max(1.0, pixel_area * max(0.20, math.cos(math.radians(lat))))
-        area_100k = area_proxy / 100000.0
+        effective_area = max(MIN_EFFECTIVE_AREA, area_proxy)
+        area_100k = effective_area / 100000.0
 
-        vp_weight = sum(math.sqrt(max(0, value)) for _, value in st['vps'])
+        vp_values = [value for _, value in st['vps']]
+        vp_weight = sum(math.sqrt(max(0, value)) for value in vp_values)
+        max_vp = max(vp_values, default=0)
         urban_count = sum(terrain_by_pid.get(pid) == 'urban' for pid in pids)
-        c_raw = (vp_weight + 1.25 * urban_count) / area_100k
 
-        pop_density = st['manpower'] / area_proxy
-        p_raw = math.log1p(max(0.0, pop_density))
+        city_density_raw = (vp_weight + 1.25 * urban_count) / area_100k
+        city_node_raw = math.log1p(max_vp) + 0.35 * math.log1p(len(vp_values)) + 0.45 * math.log1p(urban_count)
+
+        pop_density_raw = math.log1p(max(0.0, st['manpower'] / effective_area))
+        pop_mass_raw = math.log1p(max(0, st['manpower']))
 
         rail_degree_sum = sum(rail_degree.get(pid, 0) for pid in pids)
         rail_prov_count = sum(pid in rail_presence for pid in pids)
         hub_count = sum(pid in supply_nodes for pid in pids)
-        r_raw = (rail_degree_sum + 0.75 * rail_prov_count + 2.5 * hub_count) / area_100k
+        rail_density_raw = (rail_degree_sum + 0.75 * rail_prov_count + 2.5 * hub_count) / area_100k
+        rail_node_raw = math.log1p(rail_degree_sum + 2.0 * rail_prov_count + 6.0 * hub_count)
 
-        # Pixel-weighted terrain suitability; no dependence on province granularity.
         t_raw = float(np.mean(terrain_raster[ys, xs])) if len(xs) else TERRAIN_SUITABILITY['unknown']
 
         targets.append({
             'state_id': sid, 'name': st['name'], 'lon': lon, 'lat': lat,
             'provinces': nprov, 'pixels': pixel_area, 'area_proxy': area_proxy,
-            'manpower': st['manpower'], 'vp_count': len(st['vps']),
+            'effective_area': effective_area,
+            'manpower': st['manpower'], 'vp_count': len(st['vps']), 'max_vp': max_vp,
             'vp_weight': vp_weight, 'urban_count': urban_count,
             'rail_degree': rail_degree_sum, 'rail_provinces': rail_prov_count, 'hubs': hub_count,
-            'C_raw': c_raw, 'P_raw': p_raw, 'R_raw': r_raw, 'T_raw': t_raw,
-            'old_infra': st['old_infra'],
+            'C_density_raw': city_density_raw, 'C_node_raw': city_node_raw,
+            'P_density_raw': pop_density_raw, 'P_mass_raw': pop_mass_raw,
+            'R_density_raw': rail_density_raw, 'R_node_raw': rail_node_raw,
+            'T_raw': t_raw, 'old_infra': st['old_infra'],
         })
 
     targets.sort(key=lambda x: x['state_id'])
@@ -273,14 +270,23 @@ def main():
     if len(targets) < 25:
         raise RuntimeError('Unexpectedly small target set')
 
-    for component in ('C', 'P', 'R', 'T'):
-        values = [x[f'{component}_raw'] for x in targets]
+    norm_specs = [
+        ('C_density', 'C_density_raw'), ('C_node', 'C_node_raw'),
+        ('P_density', 'P_density_raw'), ('P_mass', 'P_mass_raw'),
+        ('R_density', 'R_density_raw'), ('R_node', 'R_node_raw'),
+        ('T', 'T_raw'),
+    ]
+    for out_name, raw_name in norm_specs:
+        values = [x[raw_name] for x in targets]
         norm, qlo, qhi = winsor_norm(values)
-        print(f'{component}: p05={qlo:.6f} p95={qhi:.6f}', flush=True)
+        print(f'{out_name}: p05={qlo:.6f} p95={qhi:.6f}', flush=True)
         for row, value in zip(targets, norm):
-            row[component] = value
+            row[out_name] = value
 
     for row in targets:
+        row['C'] = 0.72 * row['C_density'] + 0.28 * row['C_node']
+        row['P'] = 0.78 * row['P_density'] + 0.22 * row['P_mass']
+        row['R'] = 0.75 * row['R_density'] + 0.25 * row['R_node']
         row['score'] = sum(COMPONENT_WEIGHTS[c] * row[c] for c in COMPONENT_WEIGHTS)
 
     percentiles = rank_percentiles(targets)
@@ -289,11 +295,11 @@ def main():
         row['new_infra'] = infra_from_percentile(pct)
 
     fields = [
-        'state_id', 'name', 'lon', 'lat', 'provinces', 'pixels', 'area_proxy',
-        'manpower', 'vp_count', 'vp_weight', 'urban_count',
-        'rail_degree', 'rail_provinces', 'hubs',
-        'C_raw', 'P_raw', 'R_raw', 'T_raw', 'C', 'P', 'R', 'T',
-        'score', 'percentile', 'old_infra', 'new_infra',
+        'state_id','name','lon','lat','provinces','pixels','area_proxy','effective_area',
+        'manpower','vp_count','max_vp','vp_weight','urban_count','rail_degree','rail_provinces','hubs',
+        'C_density_raw','C_node_raw','P_density_raw','P_mass_raw','R_density_raw','R_node_raw','T_raw',
+        'C_density','C_node','P_density','P_mass','R_density','R_node','T','C','P','R',
+        'score','percentile','old_infra','new_infra'
     ]
     with REPORT.open('w', encoding='utf-8', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=fields)
@@ -302,8 +308,8 @@ def main():
             writer.writerow({k: (f'{row[k]:.6f}' if isinstance(row[k], float) else row[k]) for k in fields})
 
     print('Distribution:', {i: sum(r['new_infra'] == i for r in targets) for i in range(1, 10)}, flush=True)
-    print('Top:', [(r['state_id'], r['name'], round(r['score'], 3), round(r['percentile'], 1), r['new_infra']) for r in sorted(targets, key=lambda x: x['score'], reverse=True)[:15]], flush=True)
-    print('Bottom:', [(r['state_id'], r['name'], round(r['score'], 3), round(r['percentile'], 1), r['new_infra']) for r in sorted(targets, key=lambda x: x['score'])[:15]], flush=True)
+    print('Top:', [(r['state_id'], r['name'], round(r['score'],3), round(r['percentile'],1), r['new_infra']) for r in sorted(targets, key=lambda x:x['score'], reverse=True)[:15]], flush=True)
+    print('Bottom:', [(r['state_id'], r['name'], round(r['score'],3), round(r['percentile'],1), r['new_infra']) for r in sorted(targets, key=lambda x:x['score'])[:15]], flush=True)
 
     if not APPLY_CHANGES:
         print('Report-only calibration pass: state files were not modified.', flush=True)

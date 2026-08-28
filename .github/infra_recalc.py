@@ -7,30 +7,33 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
-ROOT = Path(".")
-STATE_DIR = ROOT / "history" / "states"
-PROVINCES_BMP = ROOT / "map" / "provinces.bmp"
-DEFINITION = ROOT / "map" / "definition.csv"
-RAILWAYS = ROOT / "map" / "railways.txt"
-SUPPLY_NODES = ROOT / "map" / "supply_nodes.txt"
-REPORT = ROOT / "soviet-infra-report.csv"
+ROOT = Path('.')
+STATE_DIR = ROOT / 'history' / 'states'
+PROVINCES_BMP = ROOT / 'map' / 'provinces.bmp'
+DEFINITION = ROOT / 'map' / 'definition.csv'
+RAILWAYS = ROOT / 'map' / 'railways.txt'
+SUPPLY_NODES = ROOT / 'map' / 'supply_nodes.txt'
+REPORT = ROOT / 'soviet-infra-report.csv'
 
 MIN_LON, MAX_LON = 18.0, 62.5
 MIN_LAT, MAX_LAT = 38.0, 72.5
 
-COMPONENT_WEIGHTS = {"C": 0.40, "P": 0.25, "R": 0.15, "T": 0.20}
+# Calibration pass only. Do not rewrite state history until the report is approved.
+APPLY_CHANGES = False
+
+COMPONENT_WEIGHTS = {'C': 0.40, 'P': 0.25, 'R': 0.15, 'T': 0.20}
 
 TERRAIN_SUITABILITY = {
-    "urban": 1.00,
-    "plains": 0.95,
-    "desert": 0.82,
-    "hills": 0.72,
-    "forest": 0.62,
-    "jungle": 0.52,
-    "marsh": 0.35,
-    "mountain": 0.30,
-    "ocean": 0.00,
-    "unknown": 0.55,
+    'urban': 1.00,
+    'plains': 0.95,
+    'desert': 0.82,
+    'hills': 0.72,
+    'forest': 0.62,
+    'jungle': 0.52,
+    'marsh': 0.35,
+    'mountain': 0.30,
+    'ocean': 0.00,
+    'unknown': 0.55,
 }
 
 CONTROL = {
@@ -50,8 +53,8 @@ def parse_definition(path):
     rgb_by_pid = {}
     terrain_by_pid = {}
     max_pid = 0
-    with path.open("r", encoding="latin-1", errors="ignore", newline="") as f:
-        for row in csv.reader(f, delimiter=";"):
+    with path.open('r', encoding='latin-1', errors='ignore', newline='') as f:
+        for row in csv.reader(f, delimiter=';'):
             if len(row) < 7:
                 continue
             try:
@@ -66,35 +69,35 @@ def parse_definition(path):
 
 def parse_states():
     states = {}
-    vp_re = re.compile(r"\bvictory_points\s*=\s*\{\s*(\d+)\s+(\d+)", re.I)
-    for path in STATE_DIR.glob("*.txt"):
+    vp_re = re.compile(r'\bvictory_points\s*=\s*\{\s*(\d+)\s+(\d+)', re.I)
+    for path in STATE_DIR.glob('*.txt'):
         raw = path.read_bytes()
-        text = raw.decode("utf-8-sig", errors="ignore")
-        mid = re.search(r"(?m)^\s*id\s*=\s*(\d+)\s*$", text)
-        mprov = re.search(r"\bprovinces\s*=\s*\{([^}]*)\}", text, re.S)
-        mowner = re.search(r"\bowner\s*=\s*([A-Z0-9_]+)", text)
-        minfra = re.search(r"\binfrastructure\s*=\s*(\d+)", text)
-        manpower = re.search(r"(?m)^\s*manpower\s*=\s*(\d+)", text)
+        text = raw.decode('utf-8-sig', errors='ignore')
+        mid = re.search(r'(?m)^\s*id\s*=\s*(\d+)\s*$', text)
+        mprov = re.search(r'\bprovinces\s*=\s*\{([^}]*)\}', text, re.S)
+        mowner = re.search(r'\bowner\s*=\s*([A-Z0-9_]+)', text)
+        minfra = re.search(r'\binfrastructure\s*=\s*(\d+)', text)
+        manpower = re.search(r'(?m)^\s*manpower\s*=\s*(\d+)', text)
         if not (mid and mprov):
             continue
         sid = int(mid.group(1))
         states[sid] = {
-            "id": sid,
-            "path": path,
-            "text": text,
-            "bom": raw.startswith(b"\xef\xbb\xbf"),
-            "pids": [int(x) for x in re.findall(r"\d+", mprov.group(1))],
-            "owner": mowner.group(1) if mowner else "",
-            "old_infra": int(minfra.group(1)) if minfra else None,
-            "manpower": int(manpower.group(1)) if manpower else 0,
-            "vps": [(int(pid), int(value)) for pid, value in vp_re.findall(text)],
-            "name": path.stem,
+            'id': sid,
+            'path': path,
+            'text': text,
+            'bom': raw.startswith(b'\xef\xbb\xbf'),
+            'pids': [int(x) for x in re.findall(r'\d+', mprov.group(1))],
+            'owner': mowner.group(1) if mowner else '',
+            'old_infra': int(minfra.group(1)) if minfra else None,
+            'manpower': int(manpower.group(1)) if manpower else 0,
+            'vps': [(int(pid), int(value)) for pid, value in vp_re.findall(text)],
+            'name': path.stem,
         }
     return states
 
 
 def build_province_raster(rgb_by_pid):
-    img = np.asarray(Image.open(PROVINCES_BMP).convert("RGB"), dtype=np.uint8)
+    img = np.asarray(Image.open(PROVINCES_BMP).convert('RGB'), dtype=np.uint8)
     code = ((img[:, :, 0].astype(np.uint32) << 16) |
             (img[:, :, 1].astype(np.uint32) << 8) |
             img[:, :, 2].astype(np.uint32))
@@ -116,12 +119,12 @@ def projection_from_controls(prov):
         lons.append(lon)
         lats.append(lat)
     if len(xs) < 10:
-        raise RuntimeError(f"Only {len(xs)} projection controls found")
+        raise RuntimeError(f'Only {len(xs)} projection controls found')
     lon_coef = np.polyfit(xs, lons, 1)
     lat_coef = np.polyfit(zs, lats, 3)
     lon_rmse = float(np.sqrt(np.mean((np.polyval(lon_coef, xs) - np.asarray(lons)) ** 2)))
     lat_rmse = float(np.sqrt(np.mean((np.polyval(lat_coef, zs) - np.asarray(lats)) ** 2)))
-    print(f"Projection controls={len(xs)} lon_rmse={lon_rmse:.3f} lat_rmse={lat_rmse:.3f}", flush=True)
+    print(f'Projection controls={len(xs)} lon_rmse={lon_rmse:.3f} lat_rmse={lat_rmse:.3f}', flush=True)
     return lon_coef, lat_coef
 
 
@@ -135,8 +138,8 @@ def parse_rail_connectivity():
     presence = set()
     if not RAILWAYS.exists():
         return degree, presence
-    for line in RAILWAYS.read_text(encoding="utf-8-sig", errors="ignore").splitlines():
-        nums = [int(x) for x in re.findall(r"\d+", line)]
+    for line in RAILWAYS.read_text(encoding='utf-8-sig', errors='ignore').splitlines():
+        nums = [int(x) for x in re.findall(r'\d+', line)]
         if len(nums) < 4:
             continue
         count = nums[1]
@@ -154,8 +157,8 @@ def parse_supply_nodes():
     nodes = set()
     if not SUPPLY_NODES.exists():
         return nodes
-    for line in SUPPLY_NODES.read_text(encoding="utf-8-sig", errors="ignore").splitlines():
-        nums = [int(x) for x in re.findall(r"\d+", line)]
+    for line in SUPPLY_NODES.read_text(encoding='utf-8-sig', errors='ignore').splitlines():
+        nums = [int(x) for x in re.findall(r'\d+', line)]
         if len(nums) >= 2:
             nodes.add(nums[1])
     return nodes
@@ -172,7 +175,7 @@ def winsor_norm(values, lo=5.0, hi=95.0):
 
 
 def rank_percentiles(rows):
-    order = sorted(range(len(rows)), key=lambda i: (rows[i]["score"], rows[i]["state_id"]))
+    order = sorted(range(len(rows)), key=lambda i: (rows[i]['score'], rows[i]['state_id']))
     n = len(order)
     pct = [0.0] * n
     for rank, idx in enumerate(order):
@@ -210,14 +213,20 @@ def main():
 
     sid_lookup = np.zeros(max(max_pid, int(prov.max())) + 1, dtype=np.int32)
     for sid, st in states.items():
-        for pid in st["pids"]:
+        for pid in st['pids']:
             if 0 <= pid < len(sid_lookup):
                 sid_lookup[pid] = sid
     state_raster = sid_lookup[prov]
 
+    terrain_lut = np.full(len(sid_lookup), TERRAIN_SUITABILITY['unknown'], dtype=np.float32)
+    for pid, terrain in terrain_by_pid.items():
+        if 0 <= pid < len(terrain_lut):
+            terrain_lut[pid] = TERRAIN_SUITABILITY.get(terrain, TERRAIN_SUITABILITY['unknown'])
+    terrain_raster = terrain_lut[prov]
+
     targets = []
     for sid, st in states.items():
-        if st["owner"] != "SOV" or st["old_infra"] is None:
+        if st['owner'] != 'SOV' or st['old_infra'] is None:
             continue
         ys, xs = np.where(state_raster == sid)
         if not len(xs):
@@ -226,79 +235,91 @@ def main():
         if not (MIN_LON <= lon <= MAX_LON and MIN_LAT <= lat <= MAX_LAT):
             continue
 
-        pids = st["pids"]
+        pids = st['pids']
         nprov = max(1, len(pids))
-        vp_weight = sum(math.sqrt(max(0, value)) for _, value in st["vps"])
-        urban_count = sum(terrain_by_pid.get(pid) == "urban" for pid in pids)
-        c_raw = (vp_weight + 1.25 * urban_count) / nprov
+        pixel_area = int(len(xs))
+        # Approximate physical area: longitude degrees shrink with latitude.
+        # Absolute units do not matter because every density is normalized later.
+        area_proxy = max(1.0, pixel_area * max(0.20, math.cos(math.radians(lat))))
+        area_100k = area_proxy / 100000.0
 
-        pop_per_prov = st["manpower"] / nprov
-        p_raw = math.log1p(max(0.0, pop_per_prov))
+        vp_weight = sum(math.sqrt(max(0, value)) for _, value in st['vps'])
+        urban_count = sum(terrain_by_pid.get(pid) == 'urban' for pid in pids)
+        c_raw = (vp_weight + 1.25 * urban_count) / area_100k
+
+        pop_density = st['manpower'] / area_proxy
+        p_raw = math.log1p(max(0.0, pop_density))
 
         rail_degree_sum = sum(rail_degree.get(pid, 0) for pid in pids)
         rail_prov_count = sum(pid in rail_presence for pid in pids)
         hub_count = sum(pid in supply_nodes for pid in pids)
-        r_raw = (rail_degree_sum + 0.75 * rail_prov_count + 2.5 * hub_count) / nprov
+        r_raw = (rail_degree_sum + 0.75 * rail_prov_count + 2.5 * hub_count) / area_100k
 
-        terrain_values = [TERRAIN_SUITABILITY.get(terrain_by_pid.get(pid, "unknown"), 0.55) for pid in pids]
-        t_raw = float(np.mean(terrain_values)) if terrain_values else 0.55
+        # Pixel-weighted terrain suitability; no dependence on province granularity.
+        t_raw = float(np.mean(terrain_raster[ys, xs])) if len(xs) else TERRAIN_SUITABILITY['unknown']
 
         targets.append({
-            "state_id": sid, "name": st["name"], "lon": lon, "lat": lat,
-            "provinces": nprov, "manpower": st["manpower"], "vp_count": len(st["vps"]),
-            "vp_weight": vp_weight, "urban_count": urban_count,
-            "rail_degree": rail_degree_sum, "rail_provinces": rail_prov_count, "hubs": hub_count,
-            "C_raw": c_raw, "P_raw": p_raw, "R_raw": r_raw, "T_raw": t_raw,
-            "old_infra": st["old_infra"],
+            'state_id': sid, 'name': st['name'], 'lon': lon, 'lat': lat,
+            'provinces': nprov, 'pixels': pixel_area, 'area_proxy': area_proxy,
+            'manpower': st['manpower'], 'vp_count': len(st['vps']),
+            'vp_weight': vp_weight, 'urban_count': urban_count,
+            'rail_degree': rail_degree_sum, 'rail_provinces': rail_prov_count, 'hubs': hub_count,
+            'C_raw': c_raw, 'P_raw': p_raw, 'R_raw': r_raw, 'T_raw': t_raw,
+            'old_infra': st['old_infra'],
         })
 
-    targets.sort(key=lambda x: x["state_id"])
-    print(f"Target Soviet states west of Urals: {len(targets)}", flush=True)
+    targets.sort(key=lambda x: x['state_id'])
+    print(f'Target Soviet states west of Urals: {len(targets)}', flush=True)
     if len(targets) < 25:
-        raise RuntimeError("Unexpectedly small target set")
+        raise RuntimeError('Unexpectedly small target set')
 
-    for component in ("C", "P", "R", "T"):
-        values = [x[f"{component}_raw"] for x in targets]
+    for component in ('C', 'P', 'R', 'T'):
+        values = [x[f'{component}_raw'] for x in targets]
         norm, qlo, qhi = winsor_norm(values)
-        print(f"{component}: p05={qlo:.6f} p95={qhi:.6f}", flush=True)
+        print(f'{component}: p05={qlo:.6f} p95={qhi:.6f}', flush=True)
         for row, value in zip(targets, norm):
             row[component] = value
 
     for row in targets:
-        row["score"] = sum(COMPONENT_WEIGHTS[c] * row[c] for c in COMPONENT_WEIGHTS)
+        row['score'] = sum(COMPONENT_WEIGHTS[c] * row[c] for c in COMPONENT_WEIGHTS)
 
     percentiles = rank_percentiles(targets)
     for row, pct in zip(targets, percentiles):
-        row["percentile"] = pct
-        row["new_infra"] = infra_from_percentile(pct)
+        row['percentile'] = pct
+        row['new_infra'] = infra_from_percentile(pct)
 
     fields = [
-        "state_id", "name", "lon", "lat", "provinces", "manpower", "vp_count", "vp_weight",
-        "urban_count", "rail_degree", "rail_provinces", "hubs",
-        "C_raw", "P_raw", "R_raw", "T_raw", "C", "P", "R", "T",
-        "score", "percentile", "old_infra", "new_infra",
+        'state_id', 'name', 'lon', 'lat', 'provinces', 'pixels', 'area_proxy',
+        'manpower', 'vp_count', 'vp_weight', 'urban_count',
+        'rail_degree', 'rail_provinces', 'hubs',
+        'C_raw', 'P_raw', 'R_raw', 'T_raw', 'C', 'P', 'R', 'T',
+        'score', 'percentile', 'old_infra', 'new_infra',
     ]
-    with REPORT.open("w", encoding="utf-8", newline="") as f:
+    with REPORT.open('w', encoding='utf-8', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=fields)
         writer.writeheader()
         for row in targets:
-            writer.writerow({k: (f"{row[k]:.6f}" if isinstance(row[k], float) else row[k]) for k in fields})
+            writer.writerow({k: (f'{row[k]:.6f}' if isinstance(row[k], float) else row[k]) for k in fields})
 
-    print("Distribution:", {i: sum(r["new_infra"] == i for r in targets) for i in range(1, 10)}, flush=True)
-    print("Top:", [(r["state_id"], r["name"], round(r["score"], 3), round(r["percentile"], 1), r["new_infra"]) for r in sorted(targets, key=lambda x: x["score"], reverse=True)[:15]], flush=True)
-    print("Bottom:", [(r["state_id"], r["name"], round(r["score"], 3), round(r["percentile"], 1), r["new_infra"]) for r in sorted(targets, key=lambda x: x["score"])[:15]], flush=True)
+    print('Distribution:', {i: sum(r['new_infra'] == i for r in targets) for i in range(1, 10)}, flush=True)
+    print('Top:', [(r['state_id'], r['name'], round(r['score'], 3), round(r['percentile'], 1), r['new_infra']) for r in sorted(targets, key=lambda x: x['score'], reverse=True)[:15]], flush=True)
+    print('Bottom:', [(r['state_id'], r['name'], round(r['score'], 3), round(r['percentile'], 1), r['new_infra']) for r in sorted(targets, key=lambda x: x['score'])[:15]], flush=True)
+
+    if not APPLY_CHANGES:
+        print('Report-only calibration pass: state files were not modified.', flush=True)
+        return
 
     changed = 0
     for row in targets:
-        st = states[row["state_id"]]
-        new, n = re.subn(r"(\binfrastructure\s*=\s*)\d+", lambda m: m.group(1) + str(row["new_infra"]), st["text"], count=1)
+        st = states[row['state_id']]
+        new, n = re.subn(r'(\binfrastructure\s*=\s*)\d+', lambda m: m.group(1) + str(row['new_infra']), st['text'], count=1)
         if n != 1:
             raise RuntimeError(f'Infrastructure replacement failed for {st["path"]}')
-        if new != st["text"]:
-            st["path"].write_text(new, encoding="utf-8-sig" if st["bom"] else "utf-8")
+        if new != st['text']:
+            st['path'].write_text(new, encoding='utf-8-sig' if st['bom'] else 'utf-8')
             changed += 1
-    print(f"Changed state files: {changed}/{len(targets)}", flush=True)
+    print(f'Changed state files: {changed}/{len(targets)}', flush=True)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

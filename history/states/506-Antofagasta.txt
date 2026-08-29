@@ -1,0 +1,27 @@
+
+state={
+	id=506
+	name="STATE_506" # Antofagasta
+	manpower = 1
+	
+	state_category = rural
+	
+	resources = {
+		tungsten = 324
+	}
+
+	history={
+	1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+	}
+
+	provinces={
+		5131 12994
+	}
+}

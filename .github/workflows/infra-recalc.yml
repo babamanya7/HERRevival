@@ -1,0 +1,93 @@
+name: Soviet infrastructure recalculation
+
+on:
+  push:
+    branches:
+      - soviet-map-redraw-clean
+    paths:
+      - .github/workflows/infra-recalc.yml
+      - .github/infra_recalc.py
+
+concurrency:
+  group: soviet-infra-recalc
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  recalc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: soviet-map-redraw-clean
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install --disable-pip-version-check numpy pillow
+
+      - name: Recalculate Soviet infrastructure locally
+        run: python .github/infra_recalc.py
+
+      - name: Apply absolute infrastructure thresholds to report
+        shell: python
+        run: |
+          import csv
+          from pathlib import Path
+
+          path = Path('soviet-infra-report.csv')
+          thresholds = [
+              (0.14, 1),
+              (0.235, 2),
+              (0.37, 3),
+              (0.49, 4),
+              (0.60, 5),
+              (0.72, 6),
+              (0.82, 7),
+              (0.97, 8),
+          ]
+
+          def infra_from_score(score):
+              for ceiling, infra in thresholds:
+                  if score < ceiling:
+                      return infra
+              return 9
+
+          with path.open('r', encoding='utf-8', newline='') as f:
+              rows = list(csv.DictReader(f))
+              fields = list(rows[0].keys()) if rows else []
+
+          for row in rows:
+              row['new_infra'] = str(infra_from_score(float(row['score'])))
+
+          with path.open('w', encoding='utf-8', newline='') as f:
+              writer = csv.DictWriter(f, fieldnames=fields)
+              writer.writeheader()
+              writer.writerows(rows)
+
+          distribution = {i: sum(int(r['new_infra']) == i for r in rows) for i in range(1, 10)}
+          print('Absolute distribution:', distribution)
+          top = sorted(rows, key=lambda r: float(r['score']), reverse=True)[:15]
+          bottom = sorted(rows, key=lambda r: float(r['score']))[:15]
+          print('Absolute top:', [(r['state_id'], r['name'], round(float(r['score']), 3), int(r['new_infra'])) for r in top])
+          print('Absolute bottom:', [(r['state_id'], r['name'], round(float(r['score']), 3), int(r['new_infra'])) for r in bottom])
+
+      - name: Commit calibration report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- soviet-infra-report.csv
+          if git diff --cached --quiet; then
+            echo "No calibration changes to commit"
+            exit 0
+          fi
+          git commit -m "Calibrate absolute Soviet infrastructure thresholds [skip ci]"
+          git push origin HEAD:soviet-map-redraw-clean

@@ -237,6 +237,12 @@ recruit_character = USA_william_francis_gibbs
 recruit_character = USA_edward_curtis_wells
 recruit_character = USA_leslie_skinner
 
+recruit_character = USA_theodore_von_karman
+recruit_character = USA_enrico_fermi
+recruit_character = USA_ernest_lawrence
+recruit_character = USA_john_von_neumann
+recruit_character = USA_luis_alvarez
+
 set_autonomy = {
 	target = PHI
 	autonomous_state =  autonomy_puppet
@@ -437,6 +443,9 @@ create_operative_leader = {
 			special_type_slot_2 = flying_boat_medium
 			fuel_tank_type_slot = fuel_tanks_medium
 			role_type_slot = role_medium_bomber
+		}
+		upgrades={
+			air_bba_engine_upgrade = 3
 		}
 		obsolete = yes
 		icon = "GFX_USA_naval_bomber1_medium"

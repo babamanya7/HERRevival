@@ -1,6 +1,12 @@
 spriteTypes = {
 
 	# Babka
+	
+	spriteType = {
+		name = "GFX_trait_luftwaffe_field_commander"
+		texturefile = "gfx/interface/traits/trait_air_controller.dds"
+	}
+	
 	spriteType = {
 		name = "GFX_trait_soft_leader"
 		texturefile = "gfx/interface/traits/soft_leader.dds"

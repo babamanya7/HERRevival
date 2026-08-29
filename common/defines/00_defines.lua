@@ -1374,7 +1374,7 @@ NAir = {
 	DAY_NIGHT_COVERAGE_FACTOR = 0.5,					-- The max night coverage in a region that is still considered to be day-time when determining if day/night air missions shall run.
 	HOURS_DELAY_AFTER_EACH_COMBAT = 4,					-- How many hours needs the wing to be ready for the next combat. Use for tweaking if combats happens too often. (generally used as double because of roundtrip)
 	PORT_STRIKES_DELAY_MULTIPLIER = 2,					-- multplies HOURS_DELAY_AFTER_EACH_COMBAT if port strikes
-	CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 2,          -- how often carrier planes do battle inside naval combat
+	CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 4,          -- how often carrier planes do battle inside naval combat
 	CARRIER_SIZE_STAT_INCREMENT = 8,					-- Each Point of carrier_size state adds capacity for this many planes
 	SUBMARINE_CARRIER_SIZE_STAT_INCREMENT = 2,			-- Each Point of carrier_size state adds capacity for this many planes for submarines
 	MISSILE_LAUNCHER_CAPACITY = 10,                     -- The number of missiles per slot
@@ -1483,7 +1483,7 @@ NAir = {
 	DISRUPTION_DEFENCE_SPEED_FACTOR = 0.8,
 	DISRUPTION_DEFENCE_ATTACK_FACTOR = 4.0,
 
-	CARRIER_PLANES_AMOUNT_FOR_POSITIONING = 40,         -- below this amount of planes on a carrier we no longer get max benefit on enemy positioning
+	CARRIER_PLANES_AMOUNT_FOR_POSITIONING = 64,         -- below this amount of planes on a carrier we no longer get max benefit on enemy positioning
 
 	CAS_NIGHT_ATTACK_FACTOR = 0.1,                      -- CAS damaged get multiplied by this in land combats at night
 
@@ -1653,18 +1653,18 @@ NNavy = {
 	COMBAT_DAMAGE_TO_ORG_FACTOR = 1.2,								-- casting damage value to ship organisation multiplier. Use it to balance the game difficulty.
 
 	NAVY_MAX_XP = 100,
-	COMBAT_ON_THE_WAY_INIT_DISTANCE_BALANCE = 0.25, 				-- Value to balance initial distance to arrive for ships that are "on the way"
+	COMBAT_ON_THE_WAY_INIT_DISTANCE_BALANCE = 0.35, 				-- Value to balance initial distance to arrive for ships that are "on the way"
 	COMBAT_CHASE_RESIGNATION_HOURS = 24,								-- Before we resign chasing enemy, give them some minimum time so the combat doesn't end instantly.
 
-	COMBAT_MAX_GROUPS = 1,											-- Max amount of "Fire Exchange" groups (FEX).
+	COMBAT_MAX_GROUPS = 3,											-- Max amount of "Fire Exchange" groups (FEX).
 	COMBAT_MIN_DURATION = 16,										-- Min combat duration before we can retreat. It's a balancing variable so it's not possible to always run with our weak ships agains big flotillas.
 	COMBAT_INITIAL_DURATION = 2,									-- Number of hours that is considered the "initial phase" of naval combat, used for modifiers like surprise attack during "initial combat"
 	COMBAT_RETREAT_DECISION_CHANCE = 0.2, 							-- There is also random factor in deciding if we should retreat or not. That causes a delay in taking decision, that sooner or later will be picked. It's needed so damaged fast ships won't troll the combat.
 	COMBAT_DETECTED_CONVOYS_FROM_SURFACE_DETECTION_STAT = 0.1,		-- Each 1.0 of surface_detection that ship has (equipment stat), gives x% of convoys discovered from total travelling along the route.
 	COMBAT_BASE_CRITICAL_CHANCE = 0.07,								-- Base chance for receiving a critical chance. It get's scaled down with ship reliability.
 	COMBAT_CRITICAL_DAMAGE_MULT = 4.0,								-- Multiplier for the critical damage. Scaled down with the ship reliability.
-	COMBAT_ARMOR_PIERCING_CRITICAL_BONUS = 1.00,					-- Bonus to critical chance when shooter armor piercing is higher then target armor.
-	COMBAT_ARMOR_PIERCING_DAMAGE_REDUCTION = -0.75,					-- All damage reduction % when target armor is >= then shooter armor piercing.
+	COMBAT_ARMOR_PIERCING_CRITICAL_BONUS = 0.75,					-- Bonus to critical chance when shooter armor piercing is higher then target armor.
+	COMBAT_ARMOR_PIERCING_DAMAGE_REDUCTION = -0.6,					-- All damage reduction % when target armor is >= then shooter armor piercing.
 	REPAIR_AND_RETURN_PRIO_LOW = 0.2,								-- % of total Strength. When below, navy will go to home base to repair.
 	REPAIR_AND_RETURN_PRIO_MEDIUM = 0.5,							-- % of total Strength. When below, navy will go to home base to repair.
 	REPAIR_AND_RETURN_PRIO_HIGH = 0.9,								-- % of total Strength. When below, navy will go to home base to repair.
@@ -1749,7 +1749,7 @@ NNavy = {
 	NAVAL_TRANSFER_DAMAGE_REDUCTION = 0.25,							-- its hard to specifically balance 1-tick naval strikes vs unit transports so here is a factor for it
 	CARRIER_ONLY_COMBAT_ACTIVATE_TIME = 0,							-- hours from start of combat when carriers get to fight
 	CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 24,                          -- hours from start of combat when only carriers, capitals and subs get to attack
-	ALL_SHIPS_ACTIVATE_TIME = 28,                                    -- hours where all get to attack
+	ALL_SHIPS_ACTIVATE_TIME = 36,                                    -- hours where all get to attack
 
 	MINIMUM_SHIP_SPEED = 1.0,										-- slowest speed a ship can have
 
@@ -2101,22 +2101,22 @@ NNavy = {
 	SUPPORT_SHIP_RECOVERY_BASE_STRENGTH_FACTOR = 0.01,				-- Percentage of strength of max strength a recovered ship gets on recovery.
 
 	RELATIVE_SURFACE_DETECTION_TO_POSITIONING_FACTOR				= 0.01,	-- multiples the surface detection difference between two sides. the side with higher detection will get a bonus of this value
-	MAX_POSITIONING_BONUS_FROM_SURFACE_DETECTION					= 0.0,  -- will clamp the bonus that you get from detection
+	MAX_POSITIONING_BONUS_FROM_SURFACE_DETECTION					= 0.15,  -- will clamp the bonus that you get from detection
 
-	HIGHER_SHIP_RATIO_POSITIONING_PENALTY_FACTOR					= 0.32, -- if one side has more ships than the other, that side will get this penalty for each +100% ship ratio it has
+	HIGHER_SHIP_RATIO_POSITIONING_PENALTY_FACTOR					= 0.55, -- if one side has more ships than the other, that side will get this penalty for each +100% ship ratio it has
 	MAX_POSITIONING_PENALTY_FROM_HIGHER_SHIP_RATIO					= 1.0,  -- maximum penalty to get from larger fleets
-	MIN_SHIPS_FOR_HIGHER_SHIP_RATIO_PENALTY                         = 0,    -- the minimum fleet size in ships that a fleet must be before having the large fleet penalty applied to them
+	MIN_SHIPS_FOR_HIGHER_SHIP_RATIO_PENALTY                         = 12,    -- the minimum fleet size in ships that a fleet must be before having the large fleet penalty applied to them
 
 	HIGHER_CARRIER_RATIO_POSITIONING_PENALTY_FACTOR					= 0.25;  -- penalty if other side has stronger carrier air force
 	MAX_CARRIER_RATIO_POSITIONING_PENALTY_FACTOR 					= 0.5;  -- max penalty from stronger carrier air force
 
-	POSITIONING_PENALTY_FOR_SHIPS_JOINED_COMBAT_AFTER_IT_STARTS		= 0.005, -- each ship that joins the combat will have this penalty to be added into positioning
-	MAX_POSITIONING_PENALTY_FOR_NEWLY_JOINED_SHIPS 					= 0.2,  -- the accumulated penalty from new ships will be clamped to this value
+	POSITIONING_PENALTY_FOR_SHIPS_JOINED_COMBAT_AFTER_IT_STARTS		= 0.008, -- each ship that joins the combat will have this penalty to be added into positioning
+	MAX_POSITIONING_PENALTY_FOR_NEWLY_JOINED_SHIPS 					= 0.3,  -- the accumulated penalty from new ships will be clamped to this value
 	POSITIONING_PENALTY_HOURLY_DECAY_FOR_NEWLY_JOINED_SHIPS			= 0.01,-- the accumulated penalty from new ships will decay hourly by this value
 
-	DAMAGE_PENALTY_ON_MINIMUM_POSITIONING 							= 0.8,	-- damage penalty at 0% positioning
-	SCREENING_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING				= 0.2,  -- screening efficiency (screen to capital ratio) at 0% positioning
-	AA_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING					= 0,  -- AA penalty at 0% positioning
+	DAMAGE_PENALTY_ON_MINIMUM_POSITIONING 							= 0.85,	-- damage penalty at 0% positioning
+	SCREENING_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING				= 0.4,  -- screening efficiency (screen to capital ratio) at 0% positioning
+	AA_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING					= 0.45,  -- AA penalty at 0% positioning
 	SUBMARINE_REVEAL_ON_MINIMUM_POSITIONING                         = 1.0,  -- submarine reveal change on 0% positioning
 
 	SHIP_TO_FLEET_ANTI_AIR_RATIO									= 0.2,	-- total sum of fleet's anti air will be multiplied with this ratio and added to calculations anti-air of individual ships while air damage reduction

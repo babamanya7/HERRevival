@@ -847,7 +847,7 @@ NMilitary = {
 	INFRA_ORG_IMPACT = 0.3,				-- scale factor of infra on org regain.
 	ENGAGEMENT_WIDTH_PER_WIDTH = 3.0,	-- how much enemy combat width we are allowed to engage per width of our own
 
-	INFRASTRUCTURE_MOVEMENT_SPEED_IMPACT = -0.03,	-- speed penalty per infrastucture below maximum.
+	INFRASTRUCTURE_MOVEMENT_SPEED_IMPACT = -0.02,	-- speed penalty per infrastucture below maximum.
 
 	VPS_FOR_HISTORY_ENTRY = 1,					-- Minimum VPs required to receive an entry in divisional history
 	VPS_FOR_HIGH_HISTORY_ENTRY = 5,				-- VPs required for high-level history entry
@@ -4360,8 +4360,8 @@ NSupply = {
 
 	-- defines that are used for supply reach for built nodes
 	NODE_INITIAL_SUPPLY_FLOW = 2.5,
-	NODE_STARTING_PENALTY_PER_PROVINCE = 1,
-	NODE_ADDED_PENALTY_PER_PROVINCE = 1,
+	NODE_STARTING_PENALTY_PER_PROVINCE = 1.50,
+	NODE_ADDED_PENALTY_PER_PROVINCE = 0.15,
 
 	-- defines that are used for supply reach for dockyards
 	NAVAL_BASE_INITIAL_SUPPLY_FLOW = 2.5,
@@ -4391,14 +4391,14 @@ NSupply = {
 	FLOATING_HARBOR_DECAY_MAX_NAVAL_PENALTY = 0.5, -- At 100% Enemy Naval superiourity, change decay rate by this many "hours" per hour
 	FLOATING_HARBOR_DECAY_NO_CONTROL_PENALTY = 1.0, -- If adjacent land province is not held, change decay rate by this many "hours" per hour
 
-	SUPPLY_FLOW_DROP_REDUCTION_AT_MAX_INFRA = 0.5, -- max infrastructure level will reduce the supply flow drop off by this ratio
+	SUPPLY_FLOW_DROP_REDUCTION_AT_MAX_INFRA = 0.44, -- max infrastructure level will reduce the supply flow drop off by this ratio
 	SUPPLY_FLOW_PENALTY_CROSSING_RIVERS = 0.5, -- crossing rivers introduces additional penalty
 
 	 -- node flow terrain falloff is scaled by logistics curve based on distance(d) (scalar / (1+e^(-k(d-midpoint))))
-	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_K = 1.3, -- How steep the curve is
-	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_MIDPOINT = 2.3, -- sigmoid inflection point
-	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_SCALAR = 0.9, -- Max Penalty adjustment due to distance
-	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_MIN_PENALTY_SCALE = 0.25, -- Logistics curve never reduces penalty facor below this limit
+	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_K = 0.55, -- How steep the curve is
+	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_MIDPOINT = 3.3, -- sigmoid inflection point
+	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_SCALAR = 1.0, -- Max Penalty adjustment due to distance
+	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_MIN_PENALTY_SCALE = 0.15, -- Logistics curve never reduces penalty facor below this limit
 
 	-- The range bonus added to a fully motorized hub. This supply is added on top of the XXX_INITIAL_SUPPLY_FLOW defined above.
 	SUPPLY_HUB_FULL_MOTORIZATION_BONUS = 3.5,
@@ -4421,10 +4421,10 @@ NSupply = {
 
 	SUPPLY_NODE_MIN_SUPPLY_THRESHOLD = 1.0, -- if supply of a node is below this value it will be set to 0 -- Currently unused? This should happen when enough damage occurs
 
-	INFRA_TO_SUPPLY = 0.75,							-- each level of infra gives this many supply
+	INFRA_TO_SUPPLY = 0.8,							-- each level of infra gives this many supply
 	VP_TO_SUPPLY_BASE = 0,							-- Bonus to supply from a VP, no matter the level
 	VP_TO_SUPPLY_BONUS_CONVERSION = 0,			-- Bonus to supply local supplies from Victory Points, multiplied by this aspect and rounded to closest integer
-	SUPPLY_FROM_DAMAGED_INFRA = 0.05,                -- damaged infrastructure counts as this in supply calcs
+	SUPPLY_FROM_DAMAGED_INFRA = 0.2,                -- damaged infrastructure counts as this in supply calcs
 	SUPPLY_BASE_MULT = 0.2,							-- multiplier on supply base values
 	SUPPLY_DISRUPTION_DAILY_RECOVERY = 1.5,		-- every day nodes recover this much of their accumulated disruption.
 
@@ -4491,8 +4491,8 @@ NSupply = {
 	TRUCK_DISTANCE_FACTOR_FOR_REINFORCEMENT_SPEED = 1.0, -- time factor for total truck distance
 	NAVAL_DISTANCE_FACTOR_FOR_REINFORCEMENT_SPEED = 0.25, -- time factor for total naval distance
 
-	ALERT_VERY_LOW_SUPPLY_LEVEL = 0.33,			   -- At which point we show up the low and very low supply level alert. Value is in % of supplies supported vs required.
-	ALERT_LOW_SUPPLY_LEVEL = 0.66,
+	ALERT_VERY_LOW_SUPPLY_LEVEL = 0.35,			   -- At which point we show up the low and very low supply level alert. Value is in % of supplies supported vs required.
+	ALERT_LOW_SUPPLY_LEVEL = 0.65,
 
 	AI_FRONT_MINIMUM_UNITS_PER_PROVINCE_FOR_SUPPLY_CALCULATIONS = 0,    -- AI will try to keep this amount of divisions per province as a minimum when evaluating supply limitations for war fronts
 	AI_FRONT_DIVISIONS_PER_SUPPLY_POINT = 0.85, -- How many divisions should the AI consider it can supply per available supply point

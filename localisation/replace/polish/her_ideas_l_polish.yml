@@ -1,1135 +1,338 @@
 ﻿l_polish:
 
 #################################################################################### ideas ####################################################################################
-  GER_fw_prod_bonus:0 "Виробництво FW-190"
-  ITA_ger_treaty:0 "Договір про взаємодопомоги"
-  GER_ita_treaty:0 "Договір про взаємодопомоги"
-  ROM_old_army:0 "Застарілі збройні сили"
-  ROM_army_war_college_2:0 "Елітні гірськопіхотні частини"
-  ROM_anti_german_military:0 "Військові проти Німеччини"
-
-  USA_airborne_divisions_nh:0 "Повітряно-десантні дивізії"
-
-  SOV_ramazan_divisions:0 "Дальнцева передислокація"
-
-  USA_cockonut_grow:0 "Наслідки пожежі в Кокнат Гроув"
-
-  air_chief_cost_factor:0 "£air_advisor_cost_texticon Цінність призначення головнокомандувача ВВС"
-  air_genstab_chief_cost_factor:0 "£air_advisor_cost_texticon Цінність призначення начальника штабу ВВС"
-  air_h_command_cost_factor:0 "£air_advisor_cost_texticon Цінність призначення начальників служб ВПС"
-  air_theorist_cost_factor:0 "£air_advisor_cost_texticon Цінність призначення теоретики ВВС"
-
-  army_chief_cost_factor:0 "£army_advisor_cost_texticon Цінність призначення головнокомандувача СВ"
-  army_genstab_chief_cost_factor:0 "£army_advisor_cost_texticon Цінність призначення начальника штабу СВ"
-  army_h_command_cost_factor:0 "£army_advisor_cost_texticon Цінність призначення начальників служб СВ"
-
-  navy_chief_cost_factor:0 "£navy_advisor_cost_texticon Цінність призначення головнокомандувача ВМФ"
-  navy_genstab_chief_cost_factor:0 "£navy_advisor_cost_texticon Цінність призначення начальника штабу ВМФ"
-  navy_h_command_cost_factor:0 "£navy_advisor_cost_texticon Цінність призначення начальників служби ВМФ"
-
-  GER_organization_todt:0 "Organisation Todt"
-  GER_organization_todt_2:0 "Організація Тодта"
-  GER_organization_todt_3:0 "Організація Тодта"
-
-  GER_loyalty_of_wehrmacht:0 "Вірність Вермахту"
-  GER_supreme_commander_armed_forces:0 "Непереможна Армію"
-  GER_supreme_leader:0 "Верховний Лідер"
-  minor_nation:0 "Мінорна нація"
 
-  nkvd_purges:0 "Южина"
-  nerazberiha:0 "Незбережені війська"
-  fin_secret_buff_player:0 "Сісу"
-  fin_secret_buff:0 "Сісу"
-  integrated_economy:0 "Інтегроваюча економіка"
 
-  home_of_the_free:0 "Вітчизна свободи"
-  home_of_the_free_1:0 "Країна вільних людей"
 
-  GER_army_innovations:0 "Армейські інновації"
-  GER_army_innovations_1:0 "Армейські інновації"
-  GER_army_innovations_2:0 "Армейські інновації"
-  GER_army_innovations_3:0 "Армейські інновації"
-  GER_army_innovations_4:0 "Армейські інновації"
-  GER_army_innovations_5:0 "Армейські інновації"
 
-  GER_case_blue:0 "План Блау"
-  GER_case_typhoon:0 "Операція Тайфун"
-  great_dash:0 "Пограничний ривок"
-  SOV_cap:0 "Капітуляція СРСР"
-  cap_sov:0 "Капітуляція СРСР"
 
-  USA_massed_bombings:0 "Масовані бомбардування"
 
-  USA_island_hopping:0 "Стратегія стрибків по островах"
-  USA_island_hopping_nh:0 "Стратегія стрибків по островах"
 
-  JAP_unsatisfactory_pilot_training_system:0 "Незадоволена система підготовки польотів"
 
-  HUN_prom_buff:0 "Виробництво патріотизму"
-  HUN_prom_buff_1:0 "Виробництво патріотизму"
-  prom_evacuation_1:0 "Евакуація Промисловості"
-  prom_evacuation:0 "Евакуація Промисловості"
 
-  GER_wehrmacht_modifier:0 "Верхнє командування вермахта"
-  GER_luftwaffe_modifier:0 "Верхній командувач люфтваффі"
-  GER_kriegsmarine_modifier:0 "Верхній командувач кригсмаріні"
 
-  inexperienced_work_force:0 "Недосвідкова робоча сила"
-  inexperienced_work_force_desc:0 "Багато селян та фермерів, які працюють на фабриках, зазнали великих втрат у ефективності та виробництві. Ми повинні провести деякі реформи і дати робочий час адаптуватися до нових постійних робочих місць."
 
-  SOV_second_five_year_plan_12_dynamic_modifier:0 "Радянська промисловість"
-  SOV_second_five_year_plan_12_dynamic_modifier_desc:0 "Витіснення багатьох селян та фермерів на фабрики призвело до великих втрат у ефективності та виробництві, і ми повинні провести деякі реформи і дати їм час адаптуватися до нових постійних робочих місць. Наша велика промисловість залишається слабкою, поки ми не зможемо завершити п'ятирічний план і привести нашу країну в сучасну епоху."
-  SOV_second_five_year_plan_22_dynamic_modifier:0 "Радянська промисловість"
-  SOV_second_five_year_plan_22_dynamic_modifier_desc:0 "Витіснення багатьох селян та фермерів на фабрики призвело до великих втрат у ефективності та виробництві, і ми повинні провести деякі реформи і дати їм час адаптуватися до нових постійних робочих місць. Наша велика промисловість залишається слабкою, поки ми не зможемо завершити п'ятирічний план і привести нашу країну в сучасну епоху."
-  SOV_third_five_year_plan_23_dynamic_modifier:0 "Радянська промисловість"
-  SOV_third_five_year_plan_23_dynamic_modifier_desc:0 "Витіснення багатьох селян та фермерів на фабрики призвело до великих втрат у ефективності та виробництві, і ми повинні провести деякі реформи і дати їм час адаптуватися до нових постійних робочих місць. Наша велика промисловість залишається слабкою, поки ми не зможемо завершити п'ятирічний план і привести нашу країну в сучасну епоху."
-  SOV_third_five_year_plan_33_dynamic_modifier:0 "Радянська промисловість"
-  SOV_third_five_year_plan_33_dynamic_modifier_desc:0 "Витіснення багатьох селян та фермерів на фабрики призвело до великих втрат у ефективності та виробництві, і ми повинні провести деякі реформи і дати їм час адаптуватися до нових постійних робочих місць. Наша велика промисловість залишається слабкою, поки ми не зможемо завершити п'ятирічний план і привести нашу країну в сучасну епоху."
-  SOV_fourth_five_year_plan_34_dynamic_modifier:0 "Радянська промисловість"
-  SOV_fourth_five_year_plan_34_dynamic_modifier_desc:0 "Витіснення багатьох селян та фермерів на фабрики призвело до великих втрат у ефективності та виробництві, і ми повинні провести деякі реформи і дати їм час адаптуватися до нових постійних робочих місць. Наша велика промисловість залишається слабкою, поки ми не зможемо завершити п'ятирічний план і привести нашу країну в сучасну епоху."
-  SOV_fourth_five_year_plan_44_dynamic_modifier:0 "Радянська промисловість"
-  SOV_fourth_five_year_plan_44_dynamic_modifier_desc:0 "Витіснення багатьох селян та фермерів на фабрики призвело до великих втрат у ефективності та виробництві, і ми повинні провести деякі реформи і дати їм час адаптуватися до нових постійних робочих місць. Наша велика промисловість залишається слабкою, поки ми не зможемо завершити п'ятирічний план і привести нашу країну в сучасну епоху."
 
-  weak_tank_forces:0 "Слабкі танкові війська"
-  weak_tank_forces_2:0 "Слабкі танкові війська"
-  weak_tank_forces_3:0 "Слабкі танкові війська"
 
-  leslie_morshead:0 "Леслі Морсхед"
-  leslie_morshead_desc:0 ""
 
-  BEL_paul_emile_janson:0 "Пол-Еміль Дженсон"
-  paul_emile_janson_desc:0 ""
 
-  BEL_victor_matthys:0 "Віктор Маттіс"
-  victor_matthys_desc:0 ""
 
-  payment_sender_small:0 "Надсилання розкладу"
-  payment_reciever_small:0 "Повернення сплати"
-  payment_sender_medium:0 "Надсилання розкладу"
-  payment_reciever_medium:0 "Повернення сплати"
-  payment_sender_large:0 "Надсилання розкладу"
-  payment_reciever_large:0 "Повернення сплати"
 
-  desire_for_independance:0 "Бажання незалежності"
-  desire_for_independance_desc:0 ""
 
-  oil_mismanagment:0 "Нефтяне керування"
-  oil_mismanagment_desc:0 ""
 
-  partisan_suppression_focus_2:0 "Організовані партизани"
-  partisan_suppression_focus_2_desc:0 ""
 
-  MTG_naval_treaty_heavy_cruiser_limit_reached:0 "Ліміт важкого крейсера досягнуто"
-  MTG_naval_treaty_battleship_limit_reached:0 "Ліміт бойового корабля досягнуто"
-  MTG_naval_treaty_carrier_limit_reached:0 "Ліміт перевізника досягнуто"
 
 
 
-  pillarized_politics:0 "Подолання політики"
-  pillarized_politics_desc:0 ""
 
-  polarized_society_supportive:0 "Полярне суспільство"
-  polarized_society_supportive_desc:0 ""
 
-  polarized_society_supressed:0 "Поляризоване суспільство - пригнічене"
-  polarized_society_supressed_desc:0 ""
 
-  polarized_society_anger:0 "Полярне суспільство"
-  polarized_society_anger_desc:0 ""
 
-  polarized_society_rebellion:0 "Полярне суспільство"
-  polarized_society_rebellion_desc:0 ""
 
-  policy_of_independance:0 "Політика незалежності"
-  policy_of_independance_desc:0 ""
 
-  policies_of_deterrence:0 "Правила стримування"
-  policies_of_deterrence_desc:0 ""
 
-  national_labour_conference:0 "Національна конференція праці"
-  national_labour_conference_desc:0 ""
 
 
 
-  SPA_ITA_spanish_civil_war_commitments:0 "Громадські війни в Іспанії"
-  SPA_ITA_spanish_civil_war_commitments_desc:0 ""
 
-  misak_i_milli:0 "Мисак-і Міллі"
-  misak_i_milli_desc:0 "Місак Міллі, Національна клятва, після розпаду Османської імперії і закінчення війни за незалежність ми добровільно здали більшість території, яку ми тримали, і відмовились від нашої претензії на територію. Світ зараз інший, і люди на цих теренах вимагають нашого повернення, ми їх об'яжемо."
 
 
-  islamic_restoration_1:0 "Маленька державна боговідданість"
-  islamic_restoration_1_desc:0 ""
 
-  islamic_restoration_2:0 "Скромна державна боговідданість"
-  islamic_restoration_2_desc:0 ""
 
-  islamic_restoration_3:0 "Поміркована відданість державі"
-  islamic_restoration_3_desc:0 ""
 
-  islamic_restoration_4:0 "Значна державна боговідданість"
-  islamic_restoration_4_desc:0 ""
 
-  islamic_restoration_5:0 "Повна боговідданість держави"
-  islamic_restoration_5_desc:0 ""
 
-  motti_tactics_corps_spirit:0 "Тактика Мотті"
-  motti_tactics_corps_spirit_desc:0 "Дозволено, якщо наступною країною є §YFINLAND§!"
 
-  valtion_lentokonetehdas:0 "Державний авіаційний завод"
-  valtion_lentokonetehdas_desc:0 ""
 
-  vkt_armory:0 "Озвуковий завод VKT"
-  vkt_armory_desc:0 ""
 
-  tikkakoski_armory:0 "Оружальна палата Тікакоскі"
-  tikkakoski_armory_desc:0 ""
 
-  semi_agrarian_nation:0 "Напіваграрна нація"
-  semi_agrarian_nation_desc:0 ""
 
-  white_guards:0 "Біла гвардія"
-  white_guards_desc:0 ""
 
-  white_guards_2:0 "Біла гвардія"
-  white_guards_2_desc:0 ""
 
-  red_guards:0 "Червона гвардія"
-  red_guards_desc:0 ""
 
-  red_guards_2:0 "Червона гвардія"
-  red_guards_2_desc:0 ""
 
-  political_interventionism:0 "Політичний інтернаціоналізм"
-  political_interventionism_desc:0 ""
 
-  ger_light_0:0 "Panzer I"
 
-  military_funding_guaranteed:0 "Військове фінансування Military funding guaranteed"
-  FIN_monarchy_restoration_desc:0 ""
 
-  FIN_monarchy_restoration:0 "Фінська монархія"
-  FIN_monarchy_restoration_desc:0 ""
 
-  FIN_viljami_kalliokoski:0 "Вільям Калліокоскі"
-  FIN_viljami_kalliokoski_desc:0 ""
 
-  FIN_vilho_annala:0 "Вільго Аннала"
-  FIN_vilho_annala_desc:0 ""
 
-  FIN_otto_wille_kuusinen:0 "Отто Вілле Кусінен"
-  FIN_otto_wille_kuusinen_desc:0 ""
 
-  factory_workers_dissent:0 "Розбіжності серед працівників заводу"
-  factory_workers_dissent_desc:0 ""
 
-  dockyard_workers_dissent:0 "Розбіжності серед працівників верфі"
-  dockyard_workers_dissent_desc:0 ""
 
-  construction_workers_dissent:0 "Розбіжності між будівельниками"
-  construction_workers_dissent_desc:0 ""
 
-  proliferation_of_dissension:0 "Розбіжності в поглядах"
-  proliferation_of_dissension_desc:0 "Якщо ми не погоджуємось, то можемо здійснювати таємні дії, щоб отримати комуністичну підтримку."
 
-  european_settlers:0 "Європейські поселенці"
-  european_settlers_desc:0 ""
 
-  arms_industry_reorganization:0 "Перевпровадження військової промисловості"
-  arms_industry_reorganization_desc:0 ""
 
-  sissi_tactics:0 "Тактика Сиссі"
-  sissi_tactics_desc:0 ""
-  sissi_tactics_tt:0 "Легка піхота отримає §G+10%§! до швидкості пересування і §G+50%§! до прориву."
 
-  moscow_armistice:0 "Москва"
-  moscow_armistice_desc:0 ""
 
-  diversify_the_economy:0 "Диверсифікація економіки"
-  diversify_the_economy_desc:0 ""
 
-  commander_in_chief:0 "Mannerheim"
-  commander_in_chief_desc:0 ""
 
-  fennoman:0 "FENNOMAN"
-  fennoman_desc:0 ""
 
-  aggressive_neutrality:0 "Озброєний нейтралітет"
-  aggressive_neutrality_desc:0 "Нейтралітет сам по собі не захистить нас, ми повинні навчити населення протистояти окупації і стати самодостатньою."
 
-  shadow_scheme_focus:0 "Тіньова схема"
-  rapid_wartime_expansion:0 "Швидке нарощування військового потенціалу"
 
-  internal_conflict:0 "Внутрішній конфлікт"
-  war_torn_country:0 "Війна, що розірвалася"
-  Recovering_from_war:0 "Відновлення від війни"
 
-  CHI_high_peoples_support_civil_war:0 "Високі люди підтримують"
-  CHI_high_peoples_support_civil_war_desc:0 ""
 
-  CHI_low_peoples_support_civil_war:0 "Низька підтримка населення"
-  CHI_low_peoples_support_civil_war_desc:0 ""
 
-  warlord:0 "Воєчник"
 
-  CHI_hanyang_arsenal:0 "Ганьянський арсенал"
 
-  CHI_mukden_arsenal:0 "Мукденський Арсенал"
 
-  CHI_guangdong_arsenal:0 "Арсенал Гуандун"
 
-  CHI_liaoning_arsenal:0 "Ляонін Арсенал"
 
-  CHI_yue_loong:0 "Ю Лун"
 
-  CHI_kiangnan_shipyard:0 "Верфень Kiangnan Shipyard"
 
-  CHI_minsheng_shipyard:0 "Судовничий завод Minsheng"
 
-  CHI_qishuyan_machinery:0 "Кишуан Машини"
 
-  CHI_camco:0 "CAMCO"
 
-  CHI_cnac:0 "CNAC"
 
-  agrarian_society:0 "Аграрне суспільство"
-  agrarian_society_desc:0 "Місцеві адміністратори вважають, що їхній аграрний спосіб життя зробив більшість колоніального населення просто непридатною для військової служби або для ведення війни будь-якого роду. Вони стверджують, що ми повинні набирати тільки з так званих «Військові племена»Це переконання настільки поширене і вкоренилося, що для його подолання знадобиться принаймні одне покоління. У найближчому майбутньому ми повинні визнати, що вони просто проігнорують будь-який наказ про підготовку фермерів."
 
-  POL_national_defence_fund:0 "Фонд національної оборони"
-  POL_national_defence_fund_desc:0 ""
 
-  POL_romanian_bridgehead_strategy:0 "Румунська стратегія Bridgehead"
-  POL_romanian_bridgehead_strategy_desc:0 ""
 
-  POL_large_scale_unemployment:0 "Масштабне безробіття"
-  POL_large_scale_unemployment_desc:0 ""
 
-  POL_large_scale_unemployment_2:0 "Масштабне безробіття"
-  POL_large_scale_unemployment_2_desc:0 ""
 
-  POL_marginalized_minorities:0 "Маргінальні меншини"
-  POL_marginalized_minorities_desc:0 ""
 
-  POL_national_mobalization:0 "Монбалізація національної оборони"
-  POL_national_mobalization_desc:0 ""
 
-  cmp_truck:0 "Вантажівка CMP"
-  cmp_truck_desc:0 ""
 
-  Huba_mobalization_plans:0 "Мобалізаційні плани Хуби"
-  Huba_mobalization_plans_desc:0 ""
 
-  local_training_camps:0 "Місцеві виправні табори"
-  local_training_camps_desc:0 ""
 
-  aisin_gioro_puyi:0 "Айсин Джоро Пуйї"
-  aisin_gioro_puyi_desc:0 ""
 
-  danwei_work_groups:0 "Робочі групи Danwei"
-  danwei_work_groups_desc:0 ""
 
-  PRC_resistance_from_landlords:0 "Опір поміщиків"
-  PRC_resistance_from_landlords_desc:0 ""
 
-  PRC_laogai_system:0 "Система Laogai"
-  PRC_laogai_system_desc:0 ""
 
-  PRC_first_five_year_plan:0 "Перший п’ятирічний план"
-  PRC_first_five_year_plan_desc:0 ""
 
-  chairman:0 "Головуючий"
 
-  CHI_new_life_movement:0 "Зміна способу життя"
-  CHI_new_life_movement_desc:0 ""
 
-  he_umezu_treaty:0 "Договір Умізу"
-  he_umezu_treaty_desc:0 ""
 
-  CHI_xue_yue:0 "Сюе Юе"
-  CHI_xue_yue_desc:0 ""
 
-  CHI_huang_guangrei:0 "Хуан Гуангрей"
-  CHI_huang_guangrei_desc:0 ""
-  haung_guangrei_defects:0 "Хуан Гуанрей дезертирував"
 
-  CHI_war_of_resistance_2:0 "Війна опору"
-  CHI_war_of_resistance_2_desc:0 ""
 
-  CHI_military_affairs_commission_1:0 "Неорганізована армія"
-  CHI_military_affairs_commission_2:0 "Інструкції у військових справах"
-  CHI_military_affairs_commission_3:0 "Інструкції у військових справах"
-  CHI_military_affairs_commission_4:0 "Інструкції у військових справах"
-  CHI_military_affairs_commission_5:0 "Інструкції у військових справах"
-  CHI_military_affairs_commission_6:0 "Інструкції у військових справах"
-  CHI_military_affairs_commission_7:0 "Інструкції у військових справах"
-  CHI_military_affairs_commission_8:0 "Інструкції у військових справах"
-  CHI_military_affairs_commission_9:0 "Інструкції у військових справах"
 
-  he_zhonghan:0 "He Zhonghan"
-  he_zhonghan_desc:0 ""
 
-  alexander_von_falkenhausen:0 "Олександр фон Фалькенгаузен"
-  alexander_von_falkenhausen_desc:0 ""
-  Germany_withdraws_support:0 "Німеччина відмовилася від підтримки"
 
-  AST_wool_industry:0 "Фонди вовняної промисловості"
-  AST_wool_industry_desc:0 ""
 
-  RAJ_quit_india_resolution_curbed:0 "Відмова від індійської резолюції"
-  RAJ_quit_india_resolution_curbed_desc:0 ""
 
-  RAJ_riots_in_the_streets:0 "Повстання на вулицях"
-  RAJ_riots_in_the_streets_desc:0 ""
 
-  HUN_balkan_opposition:0 "Балканська опозиція"
-  HUN_balkan_opposition_desc:0 ""
 
-  HUN_societal_inequality:0 "Соціальна нерівність"
-  HUN_societal_inequality_desc:0 ""
 
-  HUN_societal_inequality_1:0 "Соціальна нерівність"
-  HUN_societal_inequality_1_desc:0 ""
 
-  HUN_lothar_rendulic:0 "Доктор Лотар Рендулік"
-  HUN_viktor_seebauer:0 "Віктор Зебауер"
-  HUN_eugen_beyer:0 "Євгеній Бейер"
-  HUN_henrik_werth_2:0 "Генрик Верт"
 
-  mausoleum_of_marasesti_never_again:0 "Пе Айчі Ню Се Трече!"
-  mausoleum_of_marasesti_never_again_desc:0 ""
 
-  mausoleum_of_marasesti_romanian_resiliance:0 "Пе Айчі Ню Се Трече!"
-  mausoleum_of_marasesti_romanian_resiliance_desc:0 ""
 
-  equipment_scavanging:0 "Обладнання Scavanging"
-  equipment_scavanging_desc:0 ""
 
-  ROM_vanatori_de_munte_cap:0 "Ванаторі де Мунте"
-  ROM_vanatori_de_munte_cap_desc:0 ""
 
-  SAF_native_military_corps:0 "Корені військових корпусів"
-  SAF_native_military_corps_desc:0 ""
 
-  ten_year_rule:0 "Десятиліття правило"
-  ten_year_rule_desc:0 "Британська імперія не передбачає, що ми будемо воювати до 1942 року, тому ми присвятили нашу економіку потребам людей."
 
-  royal_twenty_centres:0 "Королівські двадцять центрів"
-  royal_twenty_centres_desc:0 "Щоб повернути населення до роботи, ми створили трудові табори з мінімальною оплатою праці. Однак нас сильно критикували за погані умови праці і зарплату."
 
-  royal_twenty_centres2:0 "Королівські двадцять центрів"
-  royal_twenty_centres2_desc:0 "Щоб повернути населення до роботи, ми створили трудові табори з мінімальною оплатою праці. Однак нас сильно критикували за погані умови праці і зарплату."
 
-  royal_canadian_army_headquarters:0 "Королівська канадська армія"
 
-  crown_corporations:0 "Корпорації Crown"
-  crown_corporations2:0 "Корпорації Crown"
 
-  CAN_ernest_james_renaud:0 "Ернест Джеймс Рено"
 
-  CAN_howard_reid:0 "Говард Рід"
 
-  leonard_w_murray:0 "Леонард У.юррей"
 
-  charles_de_gaulle:0 "Шарль де Голль"
 
-  jean_de_lattre_de_tassigny:0 "Жан де Латр де Тассіньї"
 
-  alphonse_juin:0 "Альфонс Джуїн"
 
-  philippe_kieffer:0 "Філіп Кіфер"
 
-  FRA_foreign_legion:0 "Іноземний Легіон"
 
-  french_perseverance:0 "Французька наполегливість"
-  french_perseverance_desc:0 ""
 
-  FRA_disjointed_government:0 "Розділений уряд"
-  FRA_disjointed_government_desc:0 "Політична ситуація у Франції дуже нестабільна, але її необхідно і бажано, але країна розколоти, і участь у конфлікті підкине її величезному ризику. §RЦінність рейдів проти ідеологій подвоюється.§!"
 
-  FRA_grand_batterie:0 "Велика батареї"
-  FRA_grand_batterie_desc:0 ""
 
-  french_fighter_discount:0 "Фокус на авіації"
 
-  FRA_static_command:0 "Статичне командування"
-  FRA_static_command_desc:0 "Коли армія підготовляється до статичної війни, то використовує радіотелефони, хоча це безпечніше і менш імовірно, що противник буде зламаний, це значно зменшує нашу здатність здійснювати великі маневри."
 
-  FRA_victors_of_wwi:0 "Переможці Великої війни"
-  FRA_victors_of_wwi_desc:0 "Велика війна дорого коштувала Франції та її народу, і Версальський договір не змусив Францію турбуватися про наближення війни до її кордонів."
 
-  giovanni_messe_2:0 "Джованні Мессе"
 
-  ITA_retooling_the_industry:0 "Відновлення промисловості"
 
-  standaradized_war_material:0 "Типовий військовий матеріал"
 
-  ITA_reverse_the_brain_drain:0 "Зворотній потік"
 
-  mediterrarian_tariffs:0 "середземноморські торгові тарифи"
 
-  ITA_death_before_surrender:0 "Смерть перед своєю смертю"
 
-  ITF_death_before_surrender:0 "Смерть перед своєю смертю"
 
-  ITA_emmanuel_figurehead:0 "Король Еммануель"
-  ITA_emmanuel_figurehead_desc:0 ""
 
-  ITA_grand_council_of_fascism:0 "Велика порада фашизму"
-  ITA_grand_council_of_fascism_desc:0 "Велика рада фашизму є відповідальна за більшу частину правління країни і підтримує фашизм, але вони мають велику владу і не повинні бути вірними, якщо ми є в скрутному становищі."
 
-  gioventu_italiana_del_littorio:0 "Джовенту Італія Литторіо"
-  gioventu_italiana_del_littorio_desc:0 ""
 
-  ITA_intense_modernization_effort:0 "Інтенсивні зусилля з модернізації"
-  ITA_intense_modernization_effort_desc:0 ""
 
-  balkan_dominance:0 "Балканське панування"
-  balkan_dominance_desc:0 ""
 
-  mediterrarian_dominance:0 "Середземне домінування"
-  mediterrarian_dominance_desc:0 ""
 
-  ITA_poor_education_system:0 "Погана система освіти"
-  ITA_poor_education_system_desc:0 ""
 
-  ITA_iir:0 "IIR"
-  ITA_iir_desc:0 "Інститут промислової реконструкції"
 
-  ITA_industry_wide_naval_production:0 "Широке військових-морське переброєння"
-  ITA_industry_wide_naval_production_desc:0 ""
-  ITA_industry_wide_naval_production_instant_desc:0 "\n§RПерехід через часткову мобалізацію ліквідує залежність від промислового широкого військового-морського озброєння §!"
 
-  ITA_modernization:0 "Модернізація флоту"
-  ITA_modernization_desc:0 ""
 
-  ITA_roman_heritage:0 "Римська спадщина"
-  ITA_roman_heritage_desc:0 ""
-  ITA_roman_division_names_list:0 "Розкривати список імен римської дивізії"
 
-  ITA_alpini_idea:0 "Підручники з Alpini"
-  ITA_alpini_idea_desc:0 ""
 
-  rome_central_bank:0 "Центральний банк Рима"
 
-  ITA_aeronautic_funding:0 "Фінансове аеронавтика"
-  ITA_aeronautic_funding_desc:0 ""
 
-  ITA_decima_flottiglia_mas:0 "Десіма Флоттілія MAS"
-  ITA_decima_flottiglia_mas_desc:0 ""
 
-  ITA_inadequte_army:0 "Неадекватна армія"
-  ITA_inadequte_army_desc:0 ""
 
-  ITA_inadequte_army_2:0 "Неадекватна армія"
-  ITA_inadequte_army_2_desc:0 ""
 
-  ITA_inadequte_army_3:0 "Неадекватна армія"
-  ITA_inadequte_army_3_desc:0 ""
 
-  ITA_inadequte_army_4:0 "Неадекватна армія"
-  ITA_inadequte_army_4_desc:0 ""
 
-  ITA_inadequte_airforce:0 "Неадекватні ВВС"
-  ITA_inadequte_airforce_desc:0 ""
 
-  ITA_inadequte_airforce_2:0 "Неадекватні ВВС"
-  ITA_inadequte_airforce_2_desc:0 ""
 
-  ITA_inadequte_airforce_3:0 "Неадекватні ВВС"
-  ITA_inadequte_airforce_3_desc:0 ""
 
-  ITA_inadequte_airforce_4:0 "Неадекватні ВВС"
-  ITA_inadequte_airforce_4_desc:0 ""
 
-  ITA_inadequte_navy:0 "Неадекватний флот"
-  ITA_inadequte_navy_desc:0 ""
 
-  ITA_inadequte_navy_2:0 "Неадекватний флот"
-  ITA_inadequte_navy_2_desc:0 ""
 
-  ITA_inadequte_navy_3:0 "Неадекватний флот"
-  ITA_inadequte_navy_3_desc:0 ""
 
-  ITA_inadequte_navy_4:0 "Неадекватний флот"
-  ITA_inadequte_navy_4_desc:0 ""
 
-  ITA_rebuild_the_nation:0 "Відновлення народу"
-  ITA_rebuild_the_nation_desc:0 ""
 
-  ITA_national_revitalization:0 "Національна активізація"
-  ITA_national_revitalization_desc:0 ""
 
-  ansaldo:0 "Ansaldo"
-  ansaldo_desc:0 ""
 
-  franco_tosi_and_c:0 "Франко Тоші і C"
-  franco_tosi_and_c_desc:0 ""
 
-  leader_hospitalized:0 "Лідер госпіталізовано"
 
-  bribe_guc:0 "Бюджетні скорочення"
-  bribe_guc_desc:0 "Останні події вимагали додаткових витрат на окремі пункти, тому треба було тимчасово зменшити військові витрати."
 
-  bribe_gxc:0 "Великий бюджет зменшується"
-  bribe_gxc_desc:0 "Останні події вимагали значного збільшення витрат на окремі справи, тому треба було тимчасово зменшити військові витрати."
 
-  JAP_gekokujo:0 "Gekokujō"
-  JAP_gekokujo_desc:0 "Наше офіцерське ядро повно непідкорення, зазвичай слідуючи своїй доблесті і не підкоряючись вищому командуванню."
 
-  JAP_navy_slighted:0 "Військово-морський флот впав"
-  JAP_navy_slighted_desc:0 "Наша недавня підтримка армії призвела до приниження флоту. Мабуть, вони очікують, що армія програє і конфлікт з Китаєм закінчиться, з часом і частими провокаціями ми очікуємо, що вони скоро з'являться."
 
-  JAP_new_order:0 "Асоціація допомоги трону"
-  JAP_new_order_desc:0 ""
 
-  JAP_tripartite_pact:0 "Тривимірний пакт"
-  JAP_tripartite_pact_desc:0 ""
 
-  tomio_hara:0 "Томіо Хара"
-  tomio_hara_desc:0 ""
 
-  traditional_architecture:0 "Традиційна архітектура"
-  traditional_architecture_desc:0 "Наша архітектура має свій дизайн, заснований на традиціях і відповідно до бажань наших людей, красиві та елегантні, вони в основному побудовані з дерева і надзвичайно вразливі для будь-якого типу бомбардування."
 
-  JAP_interservice_rivalry_army_supreme:0 "Суперництво між службами - Army Supreme"
-  JAP_interservice_rivalry_army_supreme_desc:0 ""
 
-  JAP_interservice_rivalry_army_supreme_unstable:0 "Суперництво між службами - Army Supreme - Unstable"
-  JAP_interservice_rivalry_army_supreme_unstable_desc:0 ""
 
-  JAP_interservice_rivalry_navy_supreme:0 "Суперництво між службами - Navy Supreme"
-  JAP_interservice_rivalry_navy_supreme_desc:0 ""
 
-  JAP_interservice_rivalry_navy_supreme_unstable:0 "Interservice Rivalry - Navy Supreme - Нестабільний"
-  JAP_interservice_rivalry_navy_supreme_unstable_desc:0 ""
 
-  power_cemented:0 "Сила цементу"
-  power_cemented_desc:0 "Після великої чистки авторитет Сталіна великий і незаперечний."
 
-  power_cemented_2:0 "Сила цементу"
-  power_cemented_2_desc:0 "Після великої чистки авторитет Сталіна великий і незаперечний."
 
-  Incompetent_army:0 "Поширена армійська некомпетентність"
-  Incompetent_army_desc:0 "Наша армія все ще маневрує у довгих відкритих колонах, позбавлених єдності і негнучкості, а також важкої техніки також виводиться з дивізій без належного дозволу вищого командування."
 
-  Incompetent_army_2:0 "Обмежена армійська некомпетентність"
-  Incompetent_army_2_desc:0 "Наша армія все ще відступає без належного дозволу вищого командування і має менталітет, що наші засоби для боротьби безмежно, тому ми повинні просто відступати, оскільки у нас багато території, Багато землі, багато людей і що завжди буде багато хліба."
 
-  Incompetent_army_3:0 "Обмежена армійська некомпетентність"
-  Incompetent_army_3_desc:0 "Наша армія все ще відступає без належного дозволу вищого командування і має менталітет, що наші засоби для боротьби безмежно, тому ми повинні просто відступати, оскільки у нас багато території, Багато землі, багато людей і що завжди буде багато хліба."
 
-  Incompetent_navy:0 "Морська некомпетентність"
-  Incompetent_navy_desc:0 ""
 
-  Incompetent_airforce:0 "Некомпетентність ВВС"
-  Incompetent_airforce_desc:0 ""
 
-  Incompetent_airforce_2:0 "Некомпетентність ВВС"
-  Incompetent_airforce_2_desc:0 ""
 
-  order_227:0 "Наказ 227"
-  order_227_desc:0 "Час завершувати відступ."
 
-  planned_economy:0 "Адміністративна команда"
-  planned_economy_desc:0 ""
 
-  market_socialism:0 "Етизм"
-  market_socialism_desc:0 ""
 
-  gaz_automobile_plants:0 "Автозаводи ГАЗ"
-  gaz_automobile_plants_desc:0 ""
 
-  gaz_automobile_plants_1:0 "Автозаводи ГАЗ"
-  gaz_automobile_plants_1_desc:0 ""
 
-  gaz_automobile_plants_2:0 "Автозаводи ГАЗ"
-  gaz_automobile_plants_2_desc:0 ""
 
-  gaz_automobile_plants_3:0 "Автозаводи ГАЗ"
-  gaz_automobile_plants_3_desc:0 ""
 
-  gaz_automobile_plants_4:0 "Автозаводи ГАЗ"
-  gaz_automobile_plants_4_desc:0 ""
 
-  sov_weak_industry:0 "Слабка промисловість"
-  sov_weak_industry_desc:0 "Наша велика промисловість залишається слабкою, поки ми не зможемо завершити п'ятирічний план і привести нашу країну в сучасну епоху."
 
-  sov_weak_industry_2:0 "Слабка промисловість"
-  sov_weak_industry_2_desc:0 "Наша велика промисловість залишається слабкою, поки ми не зможемо завершити п'ятирічний план і привести нашу країну в сучасну епоху."
 
-  sov_weak_industry_3:0 "Слабка промисловість"
-  sov_weak_industry_3_desc:0 "Наша велика промисловість залишається слабкою, поки ми не зможемо завершити п'ятирічний план і привести нашу країну в сучасну епоху."
 
-  sov_weak_industry_4:0 "Слабка промисловість"
-  sov_weak_industry_4_desc:0 "Наша велика промисловість залишається слабкою, поки ми не зможемо завершити п'ятирічний план і привести нашу країну в сучасну епоху."
 
-  lowered_worker_minimum_wage:0 "Знижена мінімальна заробітна плата робітників"
-  lowered_worker_minimum_wage_desc:0 ""
 
-  bread_basket_of_the_soviet_union:0 "Хлібний кошик Радянського Союзу"
-  bread_basket_of_the_soviet_union_desc:0 ""
 
-  peoples_commissariat_focus_2:0 "Комісаріат захисної промисловості"
-  peoples_commissariat_focus_2_desc:0 ""
 
-  peoples_commissariat_focus_3:0 "Комісаріат захисної промисловості"
-  peoples_commissariat_focus_3_desc:0 ""
 
-  peoples_commissariat_focus_4:0 "Комісаріат захисної промисловості"
-  peoples_commissariat_focus_4_desc:0 ""
 
-  peoples_commissariat_focus_5:0 "Комісаріат захисної промисловості"
-  peoples_commissariat_focus_5_desc:0 ""
 
-  peoples_commissariat_focus_6:0 "Комісаріат захисної промисловості"
-  peoples_commissariat_focus_6_desc:0 ""
 
-  peoples_commissariat_focus_7:0 "Комісаріат захисної промисловості"
-  peoples_commissariat_focus_7_desc:0 ""
 
-  peoples_commissariat_focus_8:0 "Комісаріат захисної промисловості"
-  peoples_commissariat_focus_8_desc:0 ""
 
-  peoples_commissariat_focus_9:0 "Комісаріат захисної промисловості"
-  peoples_commissariat_focus_9_desc:0 ""
 
-  peoples_commissariat_focus_10:0 "Комісаріат захисної промисловості"
-  peoples_commissariat_focus_10_desc:0 ""
 
-  smersh:0 "СМЕРШ"
-  smersh_desc:0 "СМЕРШ, або «Смерть шпигунам», Це контррозвідна ініціатива, яка буде служити подвійній меті: викорінення ворожих шпигунів та страти дезертирів і партизан у рядах Червоної армії."
 
-  fear_from_the_purge:0 "Страх перед чисткою"
-  fear_from_the_purge_2:0 "Страх перед чисткою"
 
-  trotskyite_plot_purged_2:0 "Троцкістська змова ліквідована?"
 
-  comecon_economic_aid:0 "Економічна допомога Compecon"
 
-  cockrill:0 "Cockrill"
 
-  BEL_frc:0 "Фондері Рояль де Канон"
 
-  gardec_shipyards:0 "Судобудовні заводи Gardec"
 
-  herstol:0 "Компанія Herstol Arms Industry"
 
-  ag_weser:0 "AG Weser"
 
-  support_of_the_ss:0 "Айнзацгрупи"
-  support_of_the_ss_desc:0 "Військові ескадрони смерті нацистської Німеччини відіграють провідну роль у «Остаточне рішення єврейського питання»."
 
-  GER_mefo_bills_instant_desc:0 "\n§RПочаток війни або перехід до громадської економіки усуне залежність від рахунків MEFO, а також відстрочить потребу їх оплати до закінчення війни.§!"
 
-  GER_lack_of_offensive_plans:0 "Відсутній планшет"
-  GER_lack_of_offensive_plans_desc:0 "Ця війна вийшла з того, що ми планували, хто захоче вмирати за Данціг?"
 
-  GER_lack_of_offensive_plans_initial:0 "Відсутній планшет"
-  GER_lack_of_offensive_plans_initial_desc:0 "Ця війна вийшла з того, що ми планували, хто захоче вмирати за Данціг?"
 
-  GER_accepted_british_naval_dominance:0 "Берлінський військово-морський договір"
-  GER_accepted_british_naval_dominance_desc:0 "Ми прийняли британське військово-морське правління і обмежили розмір нашого флоту"
 
-  planned_offensives:0 "Заплановані події"
-  planned_offensives_desc:0 ""
 
-  GER_reichkommissariats_governments:0 "Рейхскісаріати"
-  GER_reichkommissariats_governments_desc:0 "З освітою різних рейхкомісаріатів ми можемо допомогти впоратися з переслідуванням."
 
-  GER_werwolf:0 "Тактика партизан-оборотней"
-  GER_werwolf_desc:0 "Обручі були запланована німецька група опору, яка буде боротися проти окупаційних держав, коли війна була програна."
 
-  SOV_military_restructuring:0 "Військова інфраструктура"
 
-  every_man_must_do_there_duty:0 "Кожна людина повинна виконувати свій обов’язок"
 
-  personality_cult:0 "Культура особистості "
 
-  socialist_realism_workforce:0 "Соціалістичний реалізм"
 
-  socialist_realism_people:0 "Соціалістичний реалізм"
 
-  socialist_realism_army:0 "Соціалістичний реалізм"
 
-  socialist_realism_partisans:0 "Соціалістичний реалізм"
 
-  celebration_of_the_constitution:0 "Святкування Конституції"
 
-  militarized_schools_2:0 "Мілітаризоване суспільство"
 
-  closed_city_networks:0 "Закриті міські мережі"
 
-  SOV_stavka:0 "Ставка"
 
-  SOV_Deep_battle:0 "Радянський Густий бій"
 
-  SOV_eyes_to_the_east:0 "Погляд на схід"
 
-  SOV_eyes_to_the_west:0 "Погляд на захід"
 
-  SOV_foundations_of_retribution:0 "Фонд відплати"
 
-  SOV_cease_fire:0 "Східний фронт припиняє вогонь"
 
-  winter_experts:0 "Зимові експерти"
-  winter_experts_desc:0 ""
 
-  paton_institute_of_electric_welding:0 "Інститут електроварки імені Е. Патона"
-  paton_institute_of_electric_welding_desc:0 ""
 
-  institute_of_electric_welding:0 "Інститут електроварки"
 
-  the_second_five_year_plan:0 "Друга п'ятилітка"
-  the_second_five_year_plan_desc:0 ""
 
-  the_third_five_year_plan:0 "Третя п'ятилітка"
-  the_third_five_year_plan_desc:0 ""
 
-  legacy_of_the_five_year_plans:0 "Спадщина Другої П’ятилітки"
-  legacy_of_the_five_year_plans_desc:0 ""
 
-  legacy_of_the_five_year_plans_2:0 "Спадщина Третій П’ятилітки"
-  legacy_of_the_five_year_plans_2_desc:0 ""
 
-  great_patriotic_war:0 "Велика Очесна війна"
-  great_patriotic_war_desc:0 "Ми в стані війни, ми повинні зібрати всі наші сили, щоб відбити загарбників або зустрітися з повним знищенням."
 
-  great_patriotic_war_2:0 "Велика Очесна війна"
-  great_patriotic_war_2_desc:0 "Ми в стані війни, ми повинні зібрати всі наші сили, щоб відбити загарбників або зустрітися з повним знищенням."
 
-  SOV_georgy_malenkov:0 "Георгій Маленков"
 
-  georgy_zhukov_chief:0 "Георгій Жуків"
 
-  vasily_chuikov:0 "Василь Чуйков"
 
-  leonid_govorov:0 "Леонід Говорів"
 
-  economic_divide:0 "Економічний розрив"
-  economic_divide_desc:0 "Наше теперішнє економічне управління зіткнулося з проблемою компетентності та ідеологічної вірності між міністром економіки Ялмаром Шактом і рейхскіссаром авіації Герінгом. Це розділення пошкодило нашій економіці, а також викликало внутрішні конфлікти в уряді, які необхідно усунути."
-  economic_divide_2:0 "Напружена економічна прірва"
-  economic_divide_2_desc:0 "Наше теперішнє економічне управління зіткнулося з проблемою компетентності та ідеологічної вірності між міністром економіки Ялмаром Шактом і рейхскіссаром авіації Герінгом. Це розділення пошкодило нашій економіці, а також викликало внутрішні конфлікти в уряді, які необхідно усунути."
-  operation_weserubung:0 "Дія Weserubung"
 
 
-  GER_organization_todt:0 "Organisation Todt"
 
-  relaxed_industry:0 "Розслаблена промисловість"
-  relaxed_industry_desc:0 "Робочий час малий, і наші громадяни звикли до розкошів."
 
-  active_industry:0 "Сверхмобілізована промисловість"
-  active_industry_desc:0 "Збільшення робочих годин на заводах і введення суворих норм харчування сприятиме військовій економіці, і в даний час вона набагато більш організована і здатна виробляти набагато більше обладнання."
 
-  GER_autarky_idea_desc:0 "Автаркія ставить переконання країни у своїх силах вище будь - якої торгівлі з іншими народами."
 
-  GER_autarky_idea_2:0 "Автаркія"
-  GER_autarky_idea_2_desc:0 "Автаркія ставить переконання країни у своїх силах вище будь - якої торгівлі з іншими народами."
 
-  GER_aeronautic_funding:0 "Фінансування авіації"
 
-  hitler_youth:0 "Гітлерюгенд"
-  hitler_youth_desc:0 ""
 
-  triumphant_will_2:0 "Тріумфальна воля"
-  triumphant_will_2_desc:0 ""
 
-  triumphant_will_3:0 "Тріумфальна воля"
-  triumphant_will_3_desc:0 ""
 
-  triumphant_will_4:0 "Тріумфальна воля"
-  triumphant_will_4_desc:0 ""
 
-  GER_barbarossa_preparation:0 "Підготовка до Барбаросса"
 
-  ewald_von_kleist:0 "Евальд фон Клейст"
 
-  ger_daf:0 "Німецький трудовий фронт"
 
-  ger_rls:0 "Служба праці Рейха"
 
-  bletchley_park:0 "Блетчлі Парк"
 
-  sour_loser_2:0 "Гіркий невдаха"
-  sour_loser_2_desc:0 "Шкода поразки у Великій війні домінує в політиці цієї нації."
 
-  sour_loser_3:0 "Гіркий невдаха"
-  sour_loser_3_desc:0 "Шкода поразки у Великій війні домінує в політиці цієї нації."
 
-  sour_loser_4:0 "Гіркий невдаха"
-  sour_loser_4_desc:0 "Шкода поразки у Великій війні домінує в політиці цієї нації."
 
-  coal_liquidization:0 "Ожиріння вугілля"
 
-  ENG_empty_the_gold_reserves_idea:0 "Опустити золотий запас"
 
-  ENG_commonwealth_free_trade_zone:0 "Зона вільної торгівлі Співдружності"
 
-  ENG_tizard:0 "Місія Тізарда"
 
-  USA_tizard:0 "Місія Тізарда"
 
-  vauxhaul_motors_eng:0 "«Воксхолл Моторс»"
 
-  ENG_government_loans:0 "Державні позики"
 
-  stiff_upper_lip_2:0 "Британський стоїцизм"
-  stiff_upper_lip_2_desc:0 "Якщо ви можете тримати голову, коли все про вас \nА втрачають свої і звинувачують вас, \n Якщо ви можете зустрітися з Triumph і Disaster\n І ставтеся до цих двох самозванців однаково: \nВаша Земля і все, що в ній, \n І що ще більше - ти будеш Людиною, мій сину."
 
-  stiff_upper_lip_3:0 "Британський стоїцизм"
-  stiff_upper_lip_3_desc:0 "Якщо ви можете тримати голову, коли все про вас \nА втрачають свої і звинувачують вас, \n Якщо ви можете зустрітися з Triumph і Disaster\n І ставтеся до цих двох самозванців однаково: \nВаша Земля і все, що в ній, \n І що ще більше - ти будеш Людиною, мій сину."
 
-  USA_wpa_idea:0 "Адміністрація обертання роботи"
 
-  USA_food_lend_lease:0 "Продовольчий ленд-ліз США"
-  USA_railway_materials_lend_lease:0 "Залізнична речовина по ленд-лізу"
-  USA_railway_materials_lend_lease_desc:0 "Американські поставки рейок, кріплення та спеціалізоване обладнання прискорюють будівництво радянських залізниць."
 
-  USA_great_depression_up_large_2_tt:0 "§ЗНадзвичайно зростає§! Наслідки Великої депресії.\n"
-  bs_great_depression:0 "Велика депресія"
-  bs_great_depression_desc:0 "Незважаючи на всесвітнє поширення Великої депресії, вона почалась крахом фондового ринку в Сполучених Штатах Америки й призвела до різкого зниження безробіття та податків. Американський народ та його уряд мають достатньо турбот, щоб уникнути втягнення у нову війну."
-  bs_great_depression_2:0 "Повільне відновлення"
-  bs_great_depression_2_desc:0 "Незважаючи на всесвітнє поширення Великої депресії, вона почалась крахом фондового ринку в Сполучених Штатах Америки й призвела до різкого зниження безробіття та податків. Американський народ та його уряд мають достатньо турбот, щоб уникнути втягнення у нову війну."
-  bs_great_depression_3:0 "Швидке відновлення"
-  bs_great_depression_3_desc:0 "Ми як і раніше слабкі."
-  bs_great_depression_4:0 "Повільне економічне зростання"
-  bs_great_depression_4_desc:0 "Кінець світу"
 
-  jock_campbell:0 "Джок Кемпбелл"
 
-  richard_o_conner:0 "Річард О. Коннер"
 
-  harry_hopkins:0 "Гаррі Гопкінс"
 
-  leslie_mcnair:0 "Леслі Макнейр"
 
-  idea_courtney_hodges:0 "Кортні Ходжес"
 
-  alexander_vandegrift:0 "Олександр Вандегрифт"
 
-  willow_run:0 "Біг Іви"
-  willow_run_desc:0 ""
 
-  napalm_bombs:0 "Напалмові бомби"
-  napalm_bombs_desc:0 ""
 
-  toledo_automobile_complex:0 "Автомобільний комплекс Толедо"
-  toledo_automobile_complex_desc:0 ""
 
-  chrysler_detroit_arsenals:0 "Крайслер Детройт Арсеналс"
-  chrysler_detroit_arsenals_desc:0 ""
 
-  morgan_bank_loans:0 "Займи військового часу від J.P. Morgan"
-  morgan_bank_loans_desc:0 ""
 
-  USA_selective_service:0 "Вибіркова служба"
-  USA_selective_service_desc:0 ""
 
-  USA_project_px:0 "Project P.X."
-  USA_project_px_desc:0 ""
 
-  USA_global_super_power:0 "Глобальна супердержава"
-  USA_global_super_power_desc:0 ""
 
-  USA_boulder_dam:0 "Будівництво дамби Боулдер"
 
-  USA_marshall_plan_aid:0 "План Маршалла допомоги"
 
-  USA_rural_electrification_act:0 "Закон про електрифікацію сільських районів"
-  USA_price_controls:0 "Федеральний закон про справедливе ціни"
-  USA_neutrality_act_1:0 "Закон про нейтралітет 1935 року"
-  USA_neutrality_act_2:0 "Оновлений Закон про нейтралітет 1935 року"
-  USA_neutrality_act_3:0 "Закон про нейтралітет Іспанії"
 
-  USA_agricultural_adjustment_act_1:0 "Перший закон щодо регулювання сільського господарства"
-  USA_agricultural_adjustment_act_1_desc:0 "Перший закон про сільськогосподарську корективу, спрямований на підвищення цін на продукти харчування, був системою, в якій федеральний уряд платив фермерам за сільськогосподарські вироби тільки для того, Щоб позбутися їх, знижуючи надлишок і підвищуючи ціни, а також платиючи фермерові не саджати сільськогосподарські культури і фінансуючи це через податок на виробників продуктів харчування."
 
-  USA_agricultural_adjustment_act_2:0 "Другий закон щодо регулювання сільського господарства"
-  USA_agricultural_adjustment_act_2_desc:0 "Другий закон щодо регулювання сільського господарства містив більшість доходів першого, за винятком того, що він не буде фінансуватися за рахунок податку на виробників, згідно з законом США проти Батлера."
 
-  USA_political_corruption:0 "Політична корупція"
-  USA_works_progress_administration:0 "Адміністрування ходу роботи"
-  USA_federal_works_agency:0 "Федеральне агентство робіт"
-  USA_farmer_relief_act:0 "Закон про допомогу фермерів"
-  USA_accumulated_wealth_tax:0 "Нагромадження грошей"
-  USA_accumulated_wealth_tax_2:0 "Нагромадження грошей"
-  USA_fair_labor_standards_act:0 "Закон про справедливі трудові стандарти"
-  USA_worker_autonomy_act:0 "Закон про автономність праці"
-  USA_nira_act:0 "Закон NIRA"
-  USA_union_recognition_act:0 "Закон про права профспілк"
-  USA_business_relations_act:0 "Закон про стосунки між бізнесом і профспілками"
-  USA_board_of_better_buisness:0 "Поради щодо поліпшення бізнесу"
-  USA_wagner_steagall_act:0 "Закон Вагнера-Стігалла"
-  USA_cash_and_carry_act:0 "Закон про готівку"
-  USA_lend_lease_act:0 "Закон про ленд-ліз"
-  USA_liberty_ships:0 "Кораблі типу Ліберті"
-  USA_roosevelt_recession:0 "Рецесія Рузвельта"
-  USA_budget_balancing:0 "Балансування бюджету"
-  USA_keynesian_economics:0 "Кейнсіанська економіка"
-  USA_department_of_defense_2:0 "Міністерство оборони"
-  USA_limited_rearmament:0 "Обмежене переозброєння"
-  keynesian_militarism:0 "Кейнсіанський мілітаризм"
-  USA_army_segregation:0 "Сегрегація в дивізійях"
-  USA_army_segregation_desc:0 "Тепер ми включили чорношкірих у білі дивізії, але вони як і раніше розділені на різні бригади, щоб уникнути расових конфліктів. Це набагато краще рішення того, що у нас було раніше, але деякі в нашому суспільстві хочуть, щоб воно пішло далі."
-  USA_army_segregation_2:0 "Сегрегація в бригадах"
-  USA_army_segregation_desc:0 "Тепер ми включили чорношкірих у білі дивізії, але вони як і раніше розділені на різні бригади, щоб уникнути расових конфліктів. Це набагато краще рішення того, що у нас було раніше, але деякі в нашому суспільстві хочуть, щоб воно пішло далі."
 
-  unreliable_torpedoes:0 "Ненадійні торпеди"
-  unreliable_torpedoes_desc:0 ""
-  unreliable_torpedoes_2:0 "Ненадійні торпеди"
-  unreliable_torpedoes_2_desc:0 ""
 
-  foreign_technologies:0 "Іноземні технології"
-  major_technologies:0 "Основні державні технології"
-  major_technologies_research:0 "Основні державні технології"
-  foreign_technologies_desc:0 "Назви наших танків і літаків з іноземних країн роблять нас залежними від їхніх відділів досліджень і розробок для нових розробок."
 
-  can_join_factions_tt:0 "§WВстановлює правило:§! £trigger_yes може вступати в альянси.\n"
+
+
+
+
+
+
+
+
 
 
   ###################################################################################################################################################################################################################################################################
   ###################################################################################################################################################################################################################################################################
   ###################################################################################################################################################################################################################################################################
   ###################################################################################################################################################################################################################################################################
-
-
-
-
-  collectivization:0 "Збірка"
-
-  women_at_home:0 "Жінки вдома"
-
-  women_in_the_workplace:0 "Жінки на роботі"
-
-  women_in_the_workforce:0 "Жінки у робочій силі"
-
-  women_in_the_army:0 "Жінки в армії"
-
-  women_in_the_frontlines:0 "Жінки на передовий"
-
-  EFFECT_CHANGE_LAW_ministry_of_culture:0 "Зміна закону про культуру на «$NAME|Y$Який надає ($DESC$)."
-  EFFECT_CHANGE_LAW_ministry_of_defence:0 "Змінити Закон про захист на "$NAME|Y$", який надає ($DESC$)."
-  EFFECT_CHANGE_LAW_ministry_of_propaganda:0 "Змінити закон про пропаганду на « пропаганді »$NAME|Y$Який надає ($DESC$)."
-  EFFECT_CHANGE_LAW_ministry_of_labour:0 "Змінити закон про « працю » на «$NAME|Y$Який надає ($DESC$)."
-  EFFECT_CHANGE_LAW_ministry_of_business:0 "Змінити бізнес-закон на "$NAME|Y$", який надає ($DESC$)."
-  EFFECT_CHANGE_LAW_ministry_of_foreign_affairs:0 "Змінити закон про закордонні справи на ‘$NAME|Y$Який надає ($DESC$)."
-
-  issueing_war_bonds:0 "Випуск військових облігацій"
-  No_bonds:0 "Без облігацій"
-
-  Series_A_bonds:0 "Облігації серії A"
-  Series_A_bonds_desc:0 "Привести до сплати §R4% споживчих товарів протягом 2 років§! Після війни.\n"
-
-  Series_B_bonds:0 "Облігації серії B"
-  Series_B_bonds_desc:0 "Приведе до сплати протягом 2 років §R8% споживчих товарів§! Після війни.\n"
-
-  Series_C_bonds:0 "Облігації серії C"
-  Series_C_bonds_desc:0 "Приведе до сплати протягом 2 років §R12 відсотків споживчих товарів§! Після війни.\n"
-
-  Series_D_bonds:0 "Облігації серії D"
-  Series_D_bonds_desc:0 "Приведе до сплати протягом 2 років §R16% товарів для споживача§! Після війни.\n"
-
-  Series_E_bonds:0 "Облігації серії E"
-  Series_E_bonds_desc:0 "Приведе до сплати протягом 2 років §R20 відсотків споживчих товарів§! Після війни.\n"
-
-  Series_F_bonds:0 "Облігації серії F"
-  Series_F_bonds_desc:0 "Приведе до сплати протягом 2 років §R25% споживчих товарів§! Після війни.\n"
-
-  Series_G_bonds:0 "Облігації серії G"
-  Series_G_bonds_desc:0 "Приведе до сплати протягом 2 років §R30 відсотків споживчих товарів§! Після війни.\n"
-
-  no_propaganda:0 "Не пропаганда"
-
-  light_propaganda_effort:0 "Маломасштабна пропаганда"
-
-  large_propaganda_effort:0 "Масштабна пропаганда"
-
-  intensive_propaganda_effort:0 "Пропагандистські кампанії"
-
-  indoctrination:0 "Індеологічна обробка"
-
-  fear_propaganda:0 "Кампанія страху"
-
-  hollywood:0 "Голлівуд"
-
-  shintoism:0 "Синтоїзм"
-
-  offer_better_wages:0 "Пропонувати вищу заробітну плату"
-
-  mandatory_army_service:0 "Громадська служба в армії"
-
-  incentivise_employability_oppertunities:0 "Заохочувати можливості працевлаштування"
-
-  conscript_men_into_the_factories:0 "Запрошення людей на фабрики"
-
-  no_economic_policy:0 "Економічна політика відсутня"
-
-  ministry_of_business_cost_factor:0 "Затрати на економічну політику"
-
-  full_privatization:0 "Ринковий капіталізм"
-
-  state_sponsored_economy:0 "Кейнсіанська економіка"
-
-  state_capitalism:0 "Дирижизм"
-
-  plan_economy:0 "Адміністративна команда"
-
-  planned_economy:0 "Адміністративна команда"
-  planned_economy_desc:0 ""
-
-  protectionism:0 "Протекціонізм"
-
-  agrarian_socialism:0 "Аграрний соціалізм"
-
-  national_socialism:0 "Державний монополістичний капіталізм"
-
-  national_syndicalism:0 "Дзайбацу"
-
-  primative_economy:0 "Примітивна економіка"
-
-  agrarian_economy:0 "Аграрна економіка"
-
-
-
-  isolationist:0 "Ізоляціоніст"
-
-  defensive:0 "Оборона"
-
-  infiltration:0 "Проникнення"
-
-  aggressive:0 "Наступ"
-
-  FRA_inadequate_army:0 "Неадекватна армія"
-  FRA_inadequate_army_desc:0 ""
-
-  FRA_structured_doctrines:0 "Структуровані доктрини"
-  FRA_structured_doctrines_desc:0 "Оскільки кожен резервіст у Франції повинен був регулярно переробити деякі тренування, французькі солдати вирішили прийняти дуже структурні, фіксовані і постійні доктрини, щоб переконатися, що кожен солдат буде добре підготовленим для мобілізації, і це також ускладнило модернізацію французьких доктрин."
-  FRA_structured_doctrines_1:0 "Структуровані доктрини"
-  FRA_structured_doctrines_1_desc:0 "Оскільки кожен резервіст у Франції повинен був регулярно переробити деякі тренування, французькі солдати вирішили прийняти дуже структурні, фіксовані і постійні доктрини, щоб переконатися, що кожен солдат буде добре підготовленим для мобілізації, і це також ускладнило модернізацію французьких доктрин."
-  FRA_structured_doctrines_2:0 "Структуровані доктрини"
-  FRA_structured_doctrines_2_desc:0 "Оскільки кожен резервіст у Франції повинен був регулярно переробити деякі тренування, французькі солдати вирішили прийняти дуже структурні, фіксовані і постійні доктрини, щоб переконатися, що кожен солдат буде добре підготовленим для мобілізації, і це також ускладнило модернізацію французьких доктрин."
-
-  GER_SS_redirection_of_war_production:0 "Перенаправлення військового виробництва в СС"
-  GER_SS_redirection_of_war_production_desc:0 "Згідно з угодою Гімлера-Спіра між 5% і 8% військового виробництва Німеччини була переправлена на Waffen-SS."
-
-  GER_SS_redirection_of_war_production_1:0 "Перенаправлення військового виробництва в СС"
-  GER_SS_redirection_of_war_production_1_desc:0 "Згідно з угодою Гімлера-Спіра між 5% і 8% військового виробництва Німеччини була переправлена на Waffen-SS."
-
-  SELECT_DESIGN_COMPANY_DESC:0 "\nВибравши це§YДизайнерська компанія§!Це покращить виробництво на всіх типах обладнання, перелічених вище, навіть якщо вони вже були досліджені.\n"
-  DESIGN_COMPANY_DESC:0 "§YКонструкторська компанія§! постійно покращує виробництво всіх вищезгаданих технологій, навіть якщо вони вже досліджені.\n"
-
-  FRA_protected_by_the_maginot_line_1:0 "Під захистом лінії Мажино"
-  FRA_protected_by_the_maginot_line_1_desc:0 "Закріплення кордону дає Франції можливість ретельно планувати і готуватися, але при цьому жертвує деякою гнучкістю в випадку чогось несподіваного."
-
-  USA_Ford_Chrysler_TVA_bonus:0 "£faction_usa_chrysler_ford Ford/Chrysler: співпрацю з TVA"
-  USA_GM_Dupont_recession_bonus:0 "£faction_usa_gm_dupont GM/DuPont: захисне виробництво"
-  USA_Kaiser_recession_bonus:0 "£faction_usa_kaiser Kaiser: будівельні контракти"
-  USA_home_of_the_free_financial_growth_bonus:0 "Країна вільних людей: зростання фінансів"
-  USA_Ford_Chrysler_investment_1_bonus:0 "Інвестиції в Ford/Chrysler"
-  USA_Ford_Chrysler_investment_2_bonus:0 "Підтримка підприємців США"
-  USA_Ford_Chrysler_investment_3_bonus:0 "Інвестиції в захистних гігантів"
-
-  market_militarism:0 "Ринковий мілітаризм"
-  market_militarism_desc:0 "При збереженні ефективності американського масового виробництва приватний капітал та федеральні контракти спрямовані на прискорення військового будівництва."
-  
-  SPA_spanish_civil_war_commitments_ita:0 "Італійський експедиційний корпус"
-

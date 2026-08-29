@@ -638,9 +638,6 @@
  materiel_manufacturer_cost_factor:1 "£manufacturer_materiel_cost_texticon  Цінність конструктора матеріального забезпечення"
  industrial_concern_cost_factor:0 "£industrial_concern_cost_texticon  Затрати на промисловий кінецьрн"
  theorist_cost_factor:0 "£military_theorist_cost_texticon  Затрати на теоретику"
- army_chief_cost_factor:0 "£army_chief_cost_texticon  Затрати на командувача армією"
- navy_chief_cost_factor:0 "£navy_chief_cost_texticon  Затрати на командуючий флот"
- air_chief_cost_factor:0 "£air_chief_cost_texticon  Затрати на команду"
  high_command_cost_factor:0 "£high_command_cost_texticon  Затрати на головне командування"
  MODIFIER_AI_LICENSE_ACCEPTANCE:0 "£ai_texticon  Схвалення запиту на купівлю ліцензії"
  MODIFIER_GUARANTEE_COST:0 "£guarantee_cost_texticon  Цінність гарантій"
@@ -1976,22 +1973,6 @@ modifier_army_sub_unit_long_range_patrol_support_defence_factor: "£defence_long
  TERRAIN_ADDITIONAL_WIDTH:0 "£combat_width_texticon  Ширина фронту на кожному додатковому напрямку: $VALUE|=0Y$"
 
 #traits_l_russian
- il_duce_laws_cost_tt: "  – £economy_laws_cost_texticon  Затрати на закони про економіку, торгівлю і заклик: §G−15%§!"
- SKILL_ATTACK:0 "£gen_attack_texticon  §HМеханізований рейтинг§!"
- SKILL_DEFENSE:0 "£gen_defence_texticon  §HРецензент§!"
- SKILL_PLANNING:0 "£planning_trait_texticon  §HПланування§!"
- SKILL_LOGISTICS:0 "£logistics_texticon  §HІніціатива§!"
- SKILL_NAVY_LEADER_ATTACK:0 "£attack_texticon  §HАтака§!"
- SKILL_NAVY_LEADER_DEFENSE:0 "£defence_texticon  §HОборона§!"
- SKILL_NAVY_LEADER_MANEUVERING:0 "£maneuver_texticon  §HЗмінна§!"
- SKILL_NAVY_LEADER_COORDINATION:0 "£coordination_texticon  §HКоординація§!"
- trait_bonus_attack:0 "£gen_attack_texticon  Механізований рейтинг: $VAL|+=0$"
- trait_bonus_defense:0 "£gen_defence_texticon  Рецензент: $VAL|+=0$"
- trait_bonus_planning:0 "£planning_trait_texticon  Планування: $VAL|+=0$"
- trait_bonus_logistics:0 "£logistics_texticon  Ініціатива: $VAL|+=0$"
- trait_bonus_maneuvering:0 "£maneuver_texticon  Маневрність: $VAL|+=0$"
- trait_bonus_coordination:0 "£coordination_texticon  Координація: $VAL|+=0$"
- expert_improviser_movement_bonus_on_land:0 "£movement_texticon  Бонус до швидкості пересування по суходолі: §G+10%§!"
  
 #unit_l_russian
  ATTRITION: "£attrition_texticon  Втрати виснаження"

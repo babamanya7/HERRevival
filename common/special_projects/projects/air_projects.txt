@@ -441,8 +441,8 @@ sp_air_axial_jet_engine = {
 	available = { 
 		FROM = {
 			OR = {
-				has_tech = engines_7
-				has_tech = radial_engines_7
+				has_tech = engines_6
+				has_tech = radial_engines_6
 			}
 			OR = {
 				has_tech = advanced_small_airframe
@@ -453,7 +453,7 @@ sp_air_axial_jet_engine = {
 	}
 	
 	breakthrough_cost = {
-		specialization_air = 4
+		specialization_air = 5
 	}
 
 	resource_cost = {
@@ -636,10 +636,7 @@ sp_air_fuel_injection = {
 
 	available = {
 		FROM = {
-			OR = {
-				has_tech = engine_tuning_5
-				has_tech = radial_engines_5
-			}
+			has_tech = engine_tuning_5
 		}
 	}
 	

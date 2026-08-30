@@ -110,20 +110,26 @@ ASG_category = {
 		cost = 0
 
 		complete_effect = {
-			repeat_effect = {
-				times = 4
-				create_ship = {
-					type = vnr_ship_hull_heavy_3
-					equipment_variant = "HER Test BB"
-				}
-			}
-			repeat_effect = {
-				times = 16
-				create_ship = {
-					type = vnr_ship_hull_light_3
-					equipment_variant = "HER Test Screen DD"
-				}
-			}
+			create_ship = { type = vnr_ship_hull_heavy_3 equipment_variant = "HER Test BB" }
+			create_ship = { type = vnr_ship_hull_heavy_3 equipment_variant = "HER Test BB" }
+			create_ship = { type = vnr_ship_hull_heavy_3 equipment_variant = "HER Test BB" }
+			create_ship = { type = vnr_ship_hull_heavy_3 equipment_variant = "HER Test BB" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
 		}
 	}
 
@@ -139,20 +145,14 @@ ASG_category = {
 		cost = 0
 
 		complete_effect = {
-			repeat_effect = {
-				times = 4
-				create_ship = {
-					type = vnr_ship_hull_heavy_3
-					equipment_variant = "HER Test BB"
-				}
-			}
-			repeat_effect = {
-				times = 4
-				create_ship = {
-					type = vnr_ship_hull_light_3
-					equipment_variant = "HER Test Screen DD"
-				}
-			}
+			create_ship = { type = vnr_ship_hull_heavy_3 equipment_variant = "HER Test BB" }
+			create_ship = { type = vnr_ship_hull_heavy_3 equipment_variant = "HER Test BB" }
+			create_ship = { type = vnr_ship_hull_heavy_3 equipment_variant = "HER Test BB" }
+			create_ship = { type = vnr_ship_hull_heavy_3 equipment_variant = "HER Test BB" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
 		}
 	}
 
@@ -168,20 +168,46 @@ ASG_category = {
 		cost = 0
 
 		complete_effect = {
-			repeat_effect = {
-				times = 4
-				create_ship = {
-					type = vnr_ship_hull_heavy_3
-					equipment_variant = "HER Test BB"
-				}
-			}
-			repeat_effect = {
-				times = 32
-				create_ship = {
-					type = vnr_ship_hull_light_3
-					equipment_variant = "HER Test Screen DD"
-				}
-			}
+			create_ship = { type = vnr_ship_hull_heavy_3 equipment_variant = "HER Test BB" }
+			create_ship = { type = vnr_ship_hull_heavy_3 equipment_variant = "HER Test BB" }
+			create_ship = { type = vnr_ship_hull_heavy_3 equipment_variant = "HER Test BB" }
+			create_ship = { type = vnr_ship_hull_heavy_3 equipment_variant = "HER Test BB" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
 		}
 	}
 
@@ -197,13 +223,22 @@ ASG_category = {
 		cost = 0
 
 		complete_effect = {
-			repeat_effect = {
-				times = 16
-				create_ship = {
-					type = vnr_ship_hull_light_3
-					equipment_variant = "HER Test Torpedo DD"
-				}
-			}
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Torpedo DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Torpedo DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Torpedo DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Torpedo DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Torpedo DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Torpedo DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Torpedo DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Torpedo DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Torpedo DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Torpedo DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Torpedo DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Torpedo DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Torpedo DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Torpedo DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Torpedo DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Torpedo DD" }
 		}
 	}
 }

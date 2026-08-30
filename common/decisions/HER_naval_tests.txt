@@ -1,0 +1,195 @@
+ASG_category = {
+
+	HER_create_naval_test_designs = {
+		icon = generic_industry
+
+		visible = {
+			is_debug = yes
+			NOT = { has_country_flag = HER_naval_test_designs_created }
+		}
+
+		fire_only_once = yes
+		cost = 0
+
+		complete_effect = {
+
+			create_equipment_variant = {
+				name = "HER Test BB"
+				type = vnr_ship_hull_heavy_3
+				parent_version = 0
+				allow_without_tech = yes
+				role_icon_index = 3
+
+				modules = {
+					fixed_ship_battery_slot = ship_heavy_battery_2
+					fixed_ship_anti_air_slot = empty
+					fixed_ship_fire_control_system_slot = empty
+					fixed_ship_radar_slot = empty
+					fixed_ship_engine_slot = heavy_ship_engine_2
+					fixed_ship_secondaries_slot = empty
+					fixed_ship_armor_slot = ship_armor_bb_1
+					fixed_ship_armor_scheme_slot = ship_scheme_mixed
+					fixed_ship_torpedo_defense_system_slot = empty
+					fixed_ship_airplane_launcher_slot = empty
+					fixed_ship_extra_secondaries_slot = empty
+					front_1_custom_slot = ship_heavy_battery_2
+					front_2_custom_slot = empty
+					mid_1_custom_slot = empty
+					mid_2_custom_slot = empty
+					mid_3_custom_slot = empty
+					rear_1_custom_slot = ship_heavy_battery_2
+					rear_2_custom_slot = empty
+				}
+			}
+
+			create_equipment_variant = {
+				name = "HER Test Screen DD"
+				type = vnr_ship_hull_light_3
+				parent_version = 0
+				allow_without_tech = yes
+				role_icon_index = 31
+
+				modules = {
+					fixed_ship_battery_slot = ship_light_battery_2
+					fixed_ship_anti_air_slot = empty
+					fixed_ship_fire_control_system_slot = empty
+					fixed_ship_radar_slot = empty
+					fixed_ship_extra_electronics_slot = empty
+					fixed_ship_torpedo_slot = empty
+					fixed_ship_engine_slot = light_ship_engine_2
+					fixed_ship_role_slot = ship_hull_light_role_dd
+					fixed_ship_extra_secondaries_slot = empty
+					front_1_custom_slot = empty
+					front_2_custom_slot = empty
+					mid_1_custom_slot = empty
+					mid_2_custom_slot = empty
+					rear_1_custom_slot = empty
+					rear_2_custom_slot = empty
+				}
+			}
+
+			create_equipment_variant = {
+				name = "HER Test Torpedo DD"
+				type = vnr_ship_hull_light_3
+				parent_version = 0
+				allow_without_tech = yes
+				role_icon_index = 31
+
+				modules = {
+					fixed_ship_battery_slot = ship_light_battery_2
+					fixed_ship_anti_air_slot = empty
+					fixed_ship_fire_control_system_slot = empty
+					fixed_ship_radar_slot = empty
+					fixed_ship_extra_electronics_slot = empty
+					fixed_ship_torpedo_slot = ship_torpedo_2
+					fixed_ship_engine_slot = light_ship_engine_2
+					fixed_ship_role_slot = ship_hull_light_role_dd
+					fixed_ship_extra_secondaries_slot = empty
+					front_1_custom_slot = empty
+					front_2_custom_slot = empty
+					mid_1_custom_slot = ship_torpedo_2
+					mid_2_custom_slot = empty
+					rear_1_custom_slot = ship_torpedo_2
+					rear_2_custom_slot = empty
+				}
+			}
+
+			set_country_flag = HER_naval_test_designs_created
+		}
+	}
+
+	HER_spawn_naval_test_full_screen = {
+		icon = generic_industry
+
+		visible = {
+			is_debug = yes
+			has_country_flag = HER_naval_test_designs_created
+		}
+
+		fire_only_once = no
+		cost = 0
+
+		complete_effect = {
+			create_ship = {
+				type = vnr_ship_hull_heavy_3
+				equipment_variant = "HER Test BB"
+				amount = 4
+			}
+			create_ship = {
+				type = vnr_ship_hull_light_3
+				equipment_variant = "HER Test Screen DD"
+				amount = 16
+			}
+		}
+	}
+
+	HER_spawn_naval_test_weak_screen = {
+		icon = generic_industry
+
+		visible = {
+			is_debug = yes
+			has_country_flag = HER_naval_test_designs_created
+		}
+
+		fire_only_once = no
+		cost = 0
+
+		complete_effect = {
+			create_ship = {
+				type = vnr_ship_hull_heavy_3
+				equipment_variant = "HER Test BB"
+				amount = 4
+			}
+			create_ship = {
+				type = vnr_ship_hull_light_3
+				equipment_variant = "HER Test Screen DD"
+				amount = 4
+			}
+		}
+	}
+
+	HER_spawn_naval_test_oversized = {
+		icon = generic_industry
+
+		visible = {
+			is_debug = yes
+			has_country_flag = HER_naval_test_designs_created
+		}
+
+		fire_only_once = no
+		cost = 0
+
+		complete_effect = {
+			create_ship = {
+				type = vnr_ship_hull_heavy_3
+				equipment_variant = "HER Test BB"
+				amount = 4
+			}
+			create_ship = {
+				type = vnr_ship_hull_light_3
+				equipment_variant = "HER Test Screen DD"
+				amount = 32
+			}
+		}
+	}
+
+	HER_spawn_naval_test_torpedo_force = {
+		icon = generic_industry
+
+		visible = {
+			is_debug = yes
+			has_country_flag = HER_naval_test_designs_created
+		}
+
+		fire_only_once = no
+		cost = 0
+
+		complete_effect = {
+			create_ship = {
+				type = vnr_ship_hull_light_3
+				equipment_variant = "HER Test Torpedo DD"
+				amount = 16
+			}
+		}
+	}
+}

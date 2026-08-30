@@ -110,15 +110,19 @@ ASG_category = {
 		cost = 0
 
 		complete_effect = {
-			create_ship = {
-				type = vnr_ship_hull_heavy_3
-				equipment_variant = "HER Test BB"
-				amount = 4
+			repeat_effect = {
+				times = 4
+				create_ship = {
+					type = vnr_ship_hull_heavy_3
+					equipment_variant = "HER Test BB"
+				}
 			}
-			create_ship = {
-				type = vnr_ship_hull_light_3
-				equipment_variant = "HER Test Screen DD"
-				amount = 16
+			repeat_effect = {
+				times = 16
+				create_ship = {
+					type = vnr_ship_hull_light_3
+					equipment_variant = "HER Test Screen DD"
+				}
 			}
 		}
 	}
@@ -135,15 +139,19 @@ ASG_category = {
 		cost = 0
 
 		complete_effect = {
-			create_ship = {
-				type = vnr_ship_hull_heavy_3
-				equipment_variant = "HER Test BB"
-				amount = 4
+			repeat_effect = {
+				times = 4
+				create_ship = {
+					type = vnr_ship_hull_heavy_3
+					equipment_variant = "HER Test BB"
+				}
 			}
-			create_ship = {
-				type = vnr_ship_hull_light_3
-				equipment_variant = "HER Test Screen DD"
-				amount = 4
+			repeat_effect = {
+				times = 4
+				create_ship = {
+					type = vnr_ship_hull_light_3
+					equipment_variant = "HER Test Screen DD"
+				}
 			}
 		}
 	}
@@ -160,15 +168,19 @@ ASG_category = {
 		cost = 0
 
 		complete_effect = {
-			create_ship = {
-				type = vnr_ship_hull_heavy_3
-				equipment_variant = "HER Test BB"
-				amount = 4
+			repeat_effect = {
+				times = 4
+				create_ship = {
+					type = vnr_ship_hull_heavy_3
+					equipment_variant = "HER Test BB"
+				}
 			}
-			create_ship = {
-				type = vnr_ship_hull_light_3
-				equipment_variant = "HER Test Screen DD"
-				amount = 32
+			repeat_effect = {
+				times = 32
+				create_ship = {
+					type = vnr_ship_hull_light_3
+					equipment_variant = "HER Test Screen DD"
+				}
 			}
 		}
 	}
@@ -185,10 +197,12 @@ ASG_category = {
 		cost = 0
 
 		complete_effect = {
-			create_ship = {
-				type = vnr_ship_hull_light_3
-				equipment_variant = "HER Test Torpedo DD"
-				amount = 16
+			repeat_effect = {
+				times = 16
+				create_ship = {
+					type = vnr_ship_hull_light_3
+					equipment_variant = "HER Test Torpedo DD"
+				}
 			}
 		}
 	}

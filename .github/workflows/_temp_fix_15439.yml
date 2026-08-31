@@ -1,0 +1,102 @@
+name: temp-fix-15439
+
+on:
+  push:
+    paths:
+      - '.github/workflows/_temp_fix_15439.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose-and-fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Diagnose province 15439
+        shell: python
+        run: |
+          import csv, struct, subprocess, sys
+          from pathlib import Path
+
+          target = 15439
+          defs = {}
+          rows = []
+          with open('map/definition.csv', encoding='utf-8-sig', newline='') as f:
+              for line in f:
+                  parts = line.rstrip('\n\r').split(';')
+                  if len(parts) >= 6 and parts[0].isdigit():
+                      pid = int(parts[0])
+                      rgb = tuple(map(int, parts[1:4]))
+                      defs[rgb] = (pid, parts[4], parts[5])
+                  rows.append(line)
+
+          target_rgb = next((rgb for rgb, v in defs.items() if v[0] == target), None)
+          if target_rgb is None:
+              raise SystemExit('target province not found in definition.csv')
+
+          data = Path('map/provinces.bmp').read_bytes()
+          if data[:2] != b'BM':
+              raise SystemExit('provinces.bmp is not BMP')
+          off = struct.unpack_from('<I', data, 10)[0]
+          dib = struct.unpack_from('<I', data, 14)[0]
+          width = struct.unpack_from('<i', data, 18)[0]
+          height_raw = struct.unpack_from('<i', data, 22)[0]
+          bpp = struct.unpack_from('<H', data, 28)[0]
+          comp = struct.unpack_from('<I', data, 30)[0]
+          if bpp != 24 or comp != 0:
+              raise SystemExit(f'unsupported BMP format: bpp={bpp}, compression={comp}')
+          height = abs(height_raw)
+          bottom_up = height_raw > 0
+          stride = ((width * 3 + 3) // 4) * 4
+
+          def rgb_at(x, y_top):
+              y_file = (height - 1 - y_top) if bottom_up else y_top
+              i = off + y_file * stride + x * 3
+              b, g, r = data[i:i+3]
+              return (r, g, b)
+
+          coast = []
+          count = 0
+          for y in range(height):
+              for x in range(width):
+                  if rgb_at(x, y) != target_rgb:
+                      continue
+                  count += 1
+                  for dx, dy in ((1,0),(-1,0),(0,1),(0,-1)):
+                      nx, ny = x+dx, y+dy
+                      if 0 <= nx < width and 0 <= ny < height:
+                          n = defs.get(rgb_at(nx, ny))
+                          if n and n[1] == 'sea':
+                              coast.append((x, y, n[0]))
+                              break
+
+          print(f'province {target}: pixels={count}, sea-adjacent pixels={len(coast)}')
+          if coast:
+              print('Province is genuinely coastal; NOT changing definition.csv.')
+              print('Sample coast pixels:', coast[:20])
+              raise SystemExit(2)
+
+          changed = False
+          out = []
+          for line in rows:
+              parts = line.rstrip('\n\r').split(';')
+              if parts and parts[0] == str(target):
+                  if parts[5] != 'true':
+                      raise SystemExit('target is already not coastal')
+                  parts[5] = 'false'
+                  newline = '\r\n' if line.endswith('\r\n') else '\n'
+                  line = ';'.join(parts) + newline
+                  changed = True
+              out.append(line)
+          if not changed:
+              raise SystemExit('failed to edit target line')
+          Path('map/definition.csv').write_text(''.join(out), encoding='utf-8')
+
+          subprocess.run(['git', 'config', 'user.name', 'github-actions[bot]'], check=True)
+          subprocess.run(['git', 'config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com'], check=True)
+          subprocess.run(['git', 'add', 'map/definition.csv'], check=True)
+          subprocess.run(['git', 'commit', '-m', 'Fix province 15439 coastal flag'], check=True)
+          subprocess.run(['git', 'push', 'origin', 'main'], check=True)

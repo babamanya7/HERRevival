@@ -1,0 +1,12 @@
+﻿l_polish:
+
+#bftb_decisions_l_russian
+ BUL_increase_foreign_industry_ns_tt:0 "Змінити §YЗакордонна промисловість§! за допомогою\n£consumer_goods_texticon  фабрика, що виробляє товари народного вжитку: §Y+0,5%§!\n"
+
+#bftb_focus_l_russian
+ BUL_attract_foreign_capitals_dynamic_modifier_tt:0 "Буде отримано національний дух §YЗакордонна промисловість§!, що дасть (£political_power_texticon  Приріст політичної влади: §G+5%§!, £construction_speed_texticon  Швидкість будівництва: §R-10%§!, £factory_output_texticon  обсяг виробництва фабрик: §R-2%§!, £prod_eff_cap  макс. ефективність виробництва: §R-5%§!, £efficiency_growth_texticon  Збільшення ефективності виробництва: §R-5%§!)"
+ BUL_utmost_optimization_dynamic_modifier_tt:0 "Змінити дух §YЗакордонна промисловість§!:\n£construction_speed_texticon  Швидкість будівництва: §G+5%§!\n£prod_eff_cap  Макс. ефективність виробництва: §G+3%§!\n£efficiency_growth_texticon  Зростання ефективності виробництва: §G+3%§!"
+ BUL_united_we_shall_prevail_tt:0 "[BUL.GetFlag][BUL.GetNameDefCap] і всі союзники-комуністи на Балканах отримають національний дух §YОб’ єднані Балкани§!, що дасть (£organization_texticon  Асоціація дивізії: §G+10%§!, £attack_core_texticon  атака дивізії на національній території: §G+15%§!, £defence_core_texticon  Захист дивізії на національній території: §G+15%§!)."
+ BUL_balkan_trade_union_secretariat_tt:0 "Усі балканські країни, союзні Болгарії, отримують національний дух §YБалканський профспілковий секретаріат§!, що дасть (£consumer_goods_texticon  фабрики, що виробляють товари для народного вжитку: §Y-5%§!, £economy_laws_cost_texticon  Витрати на закони про економіку: §G-35%§!, £trade_laws_cost_texticon  Витрати на закони, які регулюють торгівлю: §G-35%§!)."
+ BUL_appeal_to_european_capitalists_cg_tt:0 "Змінює національний дух §YЗакордонна промисловість§! на \n£consumer_goods_texticon  Вигідні товари: §Y-5%§!"
+ BUL_free_balkan_states_ns_tt:0 "\nОтримує національний дух §YНаш обов’язок на Балканах§!, хто дає (£consumer_goods_texticon  фабрики, що виробляють товари для народного вжитку: §Y-1%§! за кожну гарантовану країну, £stability_texticon  Стабільність: §G+5%§! за кожну гарантовану країну, £manpower_texticon  щотижневий зріст людських ресурсів: §G+1000§! Незалежно від кількості гарантованих країн)."

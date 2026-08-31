@@ -1,0 +1,471 @@
+﻿l_polish:
+ 
+ o_operation:0 "Дія"
+ o_unternehmen:0 "Операція"
+ o_storm:0 "Шторм"
+ o_fox:0 "Ліс"
+ ###Default Adjective
+ o_umbral:0 "Сумрак"
+ o_shadow:0 "Тінь"
+ o_sunlight:0 "Сонячне світло"
+ o_starry:0 "Зірка"
+ o_mountain:0 "Гора"
+ o_crescent:0 "Півмісяць"
+ o_active:0 "Активний"
+ o_joint:0 "Спільний"
+ o_allied:0 "Союзний"
+ o_unified:0 "Об’ єкт"
+ o_resolute:0 "Рішучий"
+ o_courageous:0 "Хоробрий"
+ o_dark:0 "Темний"
+ o_bright:0 "Яскравий"
+ o_defiant:0 "Неслухняний"
+ o_poised:0 "Уверений"
+ o_proud:0 "Гордий"
+ o_spotless:0 "Бездоганний"
+ o_steel:0 "Сталева"
+ o_iron:0 "Залізо"
+ o_bronze:0 "Бронза"
+ o_alpha:0 "Альфа"
+ o_beta:0 "Бета"
+ o_gamma:0 "Гама"
+ o_reckless:0 "Безтурботний"
+ o_stalwart:0 "Нескінченний"
+ o_red:0 "Червоний"
+ o_green:0 "Зелений"
+ o_orange:0 "Жовтогарячий"
+ o_blue:0 "Синій"
+ o_ochre:0 "Коричневато-жовний"
+ o_grey:0 "Сірий"
+ o_purple:0 "Лиловий"
+ o_restless:0 "Турботливий"
+ ###Default Noun
+ o_scimitar:0 "Ятаган"
+ o_sword:0 "Меч"
+ o_spirit:0 "Дух"
+ o_wolf:0 "Волк"
+ o_panther:0 "Пантера"
+ o_slingshot:0 "Орієнтація"
+ o_wind:0 "Вітер"
+ o_garden:0 "Сад"
+ o_thunder:0 "Грім"
+ o_rain:0 "Дощ"
+ o_hail:0 "Град"
+ o_pegasus:0 "Пегас"
+ o_star:0 "Зірка"
+ o_apron:0 "Фартук"
+ o_dome:0 "Купол"
+ o_homecoming:0 "Повернення"
+ o_laser:0 "Лазер"
+ o_default_operation:0 ""
+ o_phalanx:0 "Фаланга"
+ o_resolve:0 "Вирішення"
+ o_heart:0 "Серце"
+ o_support:0 "Підтримка"
+ o_heat:0 "Жара"
+ o_moon:0 "Місяць"
+ o_oak:0 "Дуб"
+ o_ash:0 "Пепел"
+ o_fire:0 "Вогонь"
+ o_force:0 "Сила"
+ o_hill:0 "Холм"
+ o_river:0 "Річка"
+ o_eagle:0 "Орел"
+ o_raptor:0 "Хижак"
+ o_hawk:0 "Яструб"
+ o_lion:0 "Лев"
+ o_tiger:0 "Тигр"
+ o_shield:0 "Щит"
+ ###German
+ o_barbarossa:0 "«Барбаросса»"
+ o_fall_blau:0 "План «Синій»"
+ o_fall_rot:0 "План «Червоний»"
+ o_fall_gelb:0 "План «Жовтий»"
+ o_fall_braun:0 "План «Коричневий»"
+ o_fall_weiss:0 "План «Білий»"
+ o_seelowe:0 "«Морський лев»"
+ o_weserubung:0 "«Вчення на Везері»"
+ o_fall_grun:0 "План «Зелений»"
+ o_merkur:0 "«Меркурій»"
+ o_marita:0 "«Маріта»"
+ o_herkules:0 "«Геркулес»"
+ o_silberfuchs:0 "«Срібна лисиця»"
+ o_blaufuchs:0 "«Блакитний песець»"
+ o_polarfuchs:0 "«Песець»"
+ o_platinfuchs:0 "«Платинова лисиця»"
+ o_taifun:0 "«Тайфун»"
+ o_zitadelle:0 "«Цитадель»"
+ o_herbstnebel:0 "«Осіньовий туман»"
+ o_buffel:0 "«Буйвол»"
+ o_sizilien:0 "«Сицилія»"
+ o_birke:0 "«Тереза»"
+ o_tanne_ost:0 "«Східна ель»"
+ o_tanne_west:0 "«Західна ель»"
+
+ o_wildente:0 "«Крижень»"
+ o_biene:0 "«Бджола»"
+ o_gneisenau:0 "«Гнайзенау»"
+ o_granit:0 "«Граніт»"
+ o_stahl:0 "«Сталь»"
+ o_scharnhorst:0 "«Шарнгорст»"
+ o_nebelubung:0 "«Навчання в тумані»"
+ o_eisen:0 "«Залізо»"
+ o_festung:0 "«Фортеця»"
+ o_Geier:0 "«Падальник»"
+ o_habicht:0 "«Яструб»"
+ o_luchs:0 "«Рись»"
+ o_morgenrote:0 "«Світанок»"
+ o_grunpfeil:0 "«Зелена стріла»"
+
+ o_ikarus:0 "«Ікар»" #Iceland
+ o_herbstreise:0 "«Північна подорож»" #Scotland
+ o_kathleen:0 "«Кетлін»" #Ireland
+
+ o_brandung:0 "«Прибій»" #Nafrica
+ o_skorpion:0 "«Скорпіон»" #Nafrica
+ o_aida:0 "«Аїда»" #Nafrica
+ o_capri:0 "«Капри»" #Nafrica
+ o_theseus:0 "«Тесей»" #Nafrica
+ o_ochsenkopf:0 "«Швидка голова»" #Nafrica
+ o_venezie:0 "«Венеція»" #Nafrica
+ o_fruhlingswind:0 "«Весняний вітер»" #Nafrica
+ o_ausladung:0 "«Розвантаження»"
+ o_eilbote:0 "«Кур' єр»"
+ o_fliederblute:0 "«Цвіт лілій»"
+ o_kuckuksei:0 "«Яйце кукшки»"
+
+ o_beowulf:0 "«Бевульф»" #baltics
+ o_doppelkopf:0 "«Подвійна голова»" #baltics
+ o_laura:0 "«Лаура»" #baltics
+ o_haifisch:0 "«Акула»"
+ o_nordwind:0 "«Північний вітер»"
+ o_schlussjagd:0 "«Кінцеве полювання»"
+ o_sturmflut:0 "«Штормовий приплив»"
+ o_taube:0 "«Голубка»"
+ o_siegfried:0 "«Зігфрід»"
+ o_westwind:0 "«Західний вітер»"
+
+ o_edelweiss:0 "«Едельвейс»" #Caucasus
+ o_attika:0 "«Актика»" #caucasus
+ o_bussard:0 "«Канюк»" #Caucasus
+ o_herbstlaub:0 "«Осінь»" #caucasus
+ o_herbstzeitlose:0 "«Осеній крокус»" #caucasus
+ o_schamil:0 "«Саміра»" #caucasus
+ o_clausewitz:0 "«Клаузевіц»" #caucasus
+ o_brunhild:0 "«Брюнхільда»"
+ o_krimhilde:0 "«Кримхільда»"
+ o_wikinger:0 "«Вікінг»"
+
+ o_gisella:0 "«Гісела»" # Iberia
+ o_ilona:0 "«Ілона»" #Iberia
+ o_isabella:0 "«Ізабелла»" #Iberia
+
+ o_maus:0 "«Миша»"
+ o_derfflinger:0 "«Derfflinger»"
+ o_moorbrand:0 "«Болотна пожежа»"
+ o_bettelstab:0 "«Bettelstab»"
+ o_blucher:0 "«Блюхер»"
+ o_braunschweig:0 "«Брауншвайг»"
+ o_bruckenschlag:0 "«Удар по мостах»"
+ o_feuerzauber:0 "«Феєрверк»" #Leningrad
+ o_nordlicht:0 "«Північне сяйво»" #Leningrad
+ o_sumpf:0 "«Болото»" #Leningrad
+ o_fredericus:0 "«Фредерікус»"
+ o_gertrud:0 "«Гертруда»" #turkey
+ o_fischreiher:0 "«Чапля»"
+ o_lichtschlag:0 "«Легкий удар»"
+ o_nordpol:0 "«Північний полюс»"
+ o_orkan:0 "«Ураган»"
+ o_raubtier:0 "«Хижак»"
+ o_storfang:0 "«Störfang»"
+ o_taubenschlag:0 "«Голубник»"
+ o_trappenjagd:0 "«Trappenjagd»"
+ o_wiesengrund:0 "«Wiesengrund»"
+ o_wintermarchen:0 "«Зимова казка»"
+ o_eisbar:0 "«Eisbär»"
+ o_lehrgang:0 "«Lehrgang»"
+ o_leopard:0 "«Леопард»"
+ o_michael:0 "«Міхаель»"
+ o_poseidon:0 "«Посейдон»"
+ o_zwischenspiel:0 "«Zwischenspiel»"
+ o_wintergewitter:0 "«Зимова гроза»"
+ o_aster:0 "«Айстра»"
+ o_blei:0 "«Свинець»"
+ o_blume:0 "«Квітка»"
+ o_fischfang:0 "«Риболовля»"
+ o_ludwig:0 "«Людвіг»"
+ o_luttich:0 "«Льєж»"
+ o_martin:0 "«Мартін»"
+ o_morgenwind:0 "«Ранковий вітер»"
+ o_sonnenaufgang:0 "«Схід сонця»"
+ o_konrad:0 "Конрад"
+ o_fruhlingserwachen:0 "«Весняне пробудження»" #hungary
+ o_wacht_am_rhein:0 "«Варта на Рейні»"
+ o_schneeman:0 "«Schneeman»"
+ o_sonnenwende:0 "«Sonnenwende»"
+ o_sudwing:0 "«Південний вітер»"
+
+ o_ostwind:0 "«Східний вітер»" #fictional below
+ o_wetzstein:0 "«Wetzstein»"
+ o_oderubung:0 "«Навчання на Одрі»"
+ o_donauubung:0 "«Навчання на Дунаї»"
+ o_osterspaziergang:0 "«Великодня прогулянка»"
+ o_reibeisen:0 "«Reibeisen»"
+ o_einbaum:0 "«Einbaum»"
+ o_apfelbaum:0 "«Яблуня»"
+ o_fuchsjagd:0 "«Полювання на лисиць»"
+ o_bismarck:0 "«Бісмарк»"
+ o_dorffest:0 "«Dorffest»"
+ o_gelandemarsch:0 "«Geländemarsch»"
+ o_freiherr:0 "«Freiherr»"
+ o_deichgraf:0 "«Deichgraf»"
+ o_heimfahrt:0 "«Heimfahrt»"
+ o_heimspiel:0 "«Heimspiel»"
+ o_hasenjagd:0 "«Hasenjagd»"
+ o_ingwer:0 "«Ingwer»"
+ o_jahreswechsel:0 "«Jahreswechsel»"
+ o_kannonenkugel:0 "«Kannonenkugel»"
+ o_lastkahn:0 "«Lastkahn»"
+ o_mondschein:0 "«Mondschein»"
+ o_neuland:0 "«Незвідана земля»"
+ o_ofenrohr:0 "«Димар»"
+ o_pistole:0 "«Пістолет»"
+ o_ruckreise:0 "«Зворотний шлях»"
+ o_sandbank:0 "«Піщаний берег»"
+ o_tankwart:0 "«Заправник»"
+ o_vogelsang:0 "«Пташиний спів»"
+ o_winkel:0 "«Кут»"
+ o_zebra:0 "«Зебра»"
+
+
+ ###Soviet Union
+ o_operatsiya:0 "Операція"
+ o_bagration:0 "«Багратіон»"
+ o_suvorov:0 "«Суворів»"
+ o_iskra:0 "«Іскра»"
+ o_lyuban:0 "«Любань»"
+ o_sinyavino:0 "«Сіявіно»"
+ o_mars:0 "«Марс»"
+ o_jupiter:0 "«Юпітер»"
+ o_kutuzov:0 "«Кутузів»"
+ o_polar_star:0 "«Полярна зірка»"
+ o_belgrade_strategic_offensive:0 "Белград"
+ o_berlin_strategic_offensive:0 "Берлін"
+ o_ring:0 "«Кільце»"
+ o_saturn:0 "«Сатурн»"
+ o_uranus:0 "«Уран»"
+ o_samland:0 "«Земланд»"
+ o_mercury:0 "«Меркурій»"
+ o_venus:0 "«Венера»"
+ o_neptune:0 "«Нептун»"
+ o_maly_saturn:0 "«Малий Сатурн»"
+ o_maly_neptun:0 "«Малий Нептун»"
+ o_kontsert:0 "«Концерт»"
+ o_rumyantsev:0 "«Півководець Рум’ян»"
+ o_strat_offensive_ru:0 ""
+ o_strat_defensive_ru:0 ""
+ o_strat_naval_ru:0 ""
+ o_strat_offensive_default:0 ""
+ o_strat_defensive_default:0 ""
+ o_strat_naval_default:0 ""
+ ###Japan
+ o_ichi:0 "Ічі"
+ o_ni:0 "Ні"
+ o_san:0 "Сан"
+ o_yon:0 "Йон"
+ o_ko:0 "Ко"
+ o_roku:0 "Року"
+ o_nana:0 "Нана"
+ o_hachi:0 "Хачі"
+ o_kyu:0 "Кю"
+ o_ju:0 "Джю"
+ o_ju_ichi:0 "Джю-ічі"
+ o_ju_ni:0 "Джю-ні"
+ o_ju_san:0 "Джю-сан"
+ o_ju_yon:0 "Джю-йон"
+ o_ju_ko:0 "Джю-ко"
+ o_ju_roku:0 "Джю-року"
+ o_ju_hachi:0 "Джю-хачі"
+ o_ju_kyu:0 "Джю-кю"
+ o_ni_ju:0 "Ні-джю"
+ o_ni_ju_ichi:0 "Ні-джю-ічі"
+ o_ni_ju_ni:0 "Ні-джю-ні"
+ o_ni_ju_san:0 "Ні-джю-сан"
+ o_ni_ju_yon:0 "Ні-джю-йон"
+ o_ni_ju_ko:0 "Ні-джю-ко"
+ o_ni_ju_roku:0 "Ні-джю-року"
+ o_ni_ju_hachi:0 "Ні-джю-хачі"
+ o_ni_ju_kyu:0 "Ні-джю-кю"
+ o_san_ju:0 "Сан-джю"
+ o_san_ju_ichi:0 "Сан-джю-ічі"
+ o_san_ju_ni:0 "Сан-джю-ні"
+ o_san_ju_san:0 "Сан-джю-сан"
+ o_san_ju_yon:0 "Сан-джю-йон"
+ o_san_ju_ko:0 "Сан-джю-ко"
+ o_san_ju_roku:0 "Сан-джю-року"
+ o_san_ju_hachi:0 "Сан-джю-хачі"
+ o_san_ju_kyu:0 "Сан-джю-кю"
+ o_yon_ju:0 "Йон-джю"
+ o_yon_ju_ichi:0 "Йон-джю-ічі"
+ o_yon_ju_ni:0 "Йон-джю-ні"
+ o_yon_ju_san:0 "Йон-джю-сан"
+ o_yon_ju_yon:0 "Йон-джю-йон"
+ o_yon_ju_ko:0 "Йон-джю-ко"
+ o_yon_ju_roku:0 "Йон-джю-року"
+ o_yon_ju_hachi:0 "Йон-джю-хачі"
+ o_yon_ju_kyu:0 "Йон-джю-кю"
+ o_roku_ju:0 "Року-джю"
+ o_roku_ju_ichi:0 "Року-джю-ічі"
+ o_roku_ju_ni:0 "Року-джю-ні"
+ o_roku_ju_san:0 "Року-джю-сан"
+ o_roku_ju_yon:0 "Року-джю-йон"
+ o_roku_ju_ko:0 "Року-джю-ко"
+ o_roku_ju_roku:0 "Року-джю-року"
+ o_roku_ju_hachi:0 "Року-джю-хачі"
+ o_roku_ju_kyu:0 "Року-джю-кю"
+ o_go:0 "го"
+ o_fu:0 "F U"
+ o_ai:0 "A I"
+ o_e:0 "E"
+ o_b:0 "B"
+ o_de:0 "D E"
+ o_l:0 "L"
+ o_t:0 "T"
+ o_sr:0 "S R"
+ o_m:0 "M"
+ o_al:0 "A L"
+ o_d:0 "D"
+ o_j:0 "J"
+ o_fs:0 "F S"
+ o_mo:0 "M O"
+ o_ry:0 "R Y"
+ o_mi:0 "M I"
+ ###USA
+ o_bold:0 "«Bold»"
+ o_striking:0 "«Striking»"
+ o_cobra:0 "«Кобра»"
+ 
+ #USA historical
+ o_musketeer:0 "«Мушкеттер»" #Philippines
+ o_diplomat:0 "«Дипломат»"
+
+ #South Pacific
+ o_cartwheel:0 "«Колесо»"
+ o_chronicle:0 "«Хрононіка»"
+ o_postern:0 "«Потайний хід»"
+ o_blissful:0 "«Благословення»"
+ o_dexterity:0 "«Пастка»"
+ o_cleanslate:0 "«Порожня сторінка»"
+ o_cyclone:0 "«Циклон»"
+ o_oboe:0 "«Гобой»"
+ o_watchtower:0 "«Вартова башта»" #Guadalcanal
+
+ #central pacific
+ o_detachment:0 "«Роз' єднати»" #Iwo Jima
+ o_flintlock:0 "«Кремнієва гвинтівка»" # marshall islands
+ o_catchpole:0 "«Пастка»" #Eniwetok
+ o_forager:0 "«Фуражір»" #Marianas
+ o_galvanic:0 "«Гальваніка»" #gilberts
+ o_iceberg:0 "«Айсберг»" #okinawa
+ o_stalemate:0 "«Пат»" #Peleliu
+
+ o_downfall:0 "«Порушення»" #invasion of Japan
+ o_olympic:0 "«Олімп»"
+ o_coronet:0 "«Корона»"
+ o_majestic:0 "«Величина»"
+
+ o_cottage:0 "«Коттедж»" #Alaska
+ o_sandcrab:0 "«Піщаний краб»"
+
+ o_causway:0 "«Дамба»" #Taiwan
+
+ o_avalanche:0 "«Лавіна»" #Italy
+ o_giant:0 "«Великан»"
+ o_buffalo:0 "«Буффало»"
+
+ o_anvil:0 "«Наквальня»" #south France
+ o_dragoon:0 "«Драгун»"
+
+ o_roundup:0 "«Облава»" #France
+ o_sledgehammer:0 "«Кувалда»"
+ o_overlord:0 "«Володар»"
+
+ o_blackstone:0 "«Сланець»"
+ o_brushwood:0 "«Зарослі»"
+ o_goalpost:0 "«Ворота»"
+
+ ###British
+
+ #Historical
+ o_abstention:0 "«Утримання»"
+
+ o_acrobat:0 "«Акробат»" #Nafrica
+ o_agreement:0 "«Угоди»"
+ o_daffodil:0 "«Одуванчик»"
+ o_snowdrop:0 "«Підлісок»"
+ o_battleaxe:0 "«Секіра»"
+ o_brevity:0 "«Короткий»"
+ o_compass:0 "«Компас»"
+ o_crusader:0 "«Хрестоносець»"
+ o_guillotine:0 "«Гільйотина»"
+ o_lightfoot:0 "«Легка сталь»"
+ o_supercharge:0 "«Наддув»"
+ o_pugilist:0 "«Боксер»"
+ o_vulcan:0 "«Вулкан»"
+
+ o_torch:0 "«Пекел»" #Morroco
+
+ o_jubilee:0 "«Ювілей»" #France
+ o_bluecoat:0 "«Синій мундир»"
+ o_Astonia:0 "«Астонія»"
+ o_charnwood:0 "«Чарнвуд»"
+ o_epsom:0 "«Епсом»"
+ o_goodwood:0 "«Гудвуд»"
+ o_greenline:0 "«Зелена лінія»"
+ o_pomegranate:0 "«Гранат»"
+ o_totalize:0 "«Зведення»"
+
+ o_plunder:0 "«Грабіж»" #Germany
+ o_varsity:0 "«Університет»"
+
+ o_accolade:0 "«Похвала»" #East Med
+ o_exporter:0 "«Експортувати»"
+ o_mandibles:0 "«Чекання»"
+ o_manna:0 "«Манна»"
+
+ o_baytown:0 "«Бейтаун»" #Italy
+ o_slapstick:0 "«Фарс»"
+ o_chesterfield:0 "«Честерфілд»"
+ o_diadem:0 "«Діадема»"
+ o_encore:0 "«Біс»"
+ o_husky:0 "«Гаскі»" # Sicily
+ o_shingle:0 "«Галька»"
+ o_olive:0 "«Олівкове дерево»"
+
+ o_anakim:0 "«Анаким»" #India/Burma
+ o_capital:0 "«Столиця»"
+ o_dracula:0 "«Дракула»"
+ o_longcloth:0 "«Бельська тканина»"
+ o_talon:0 "«Лапа»"
+ o_thursday:0 "«четвер»"
+
+ o_krohcol:0 "«Крокол»" #Thailand
+ o_matador:0 "«Матадор»"
+
+ o_countenance:0 "«Схвалення»" #Iran
+
+ o_zipper:0 "«Застежка-благання»" #Malaya
+ o_broadsword:0 "«Тесак»"
+
+ o_fork:0 "«Вилка»" #Iceland
+ o_primrose:0 "«Примула»" #Norway
+ o_r4:0 "План R 4" #Norway
+
+ o_infatuate:0 "«Страсть»" #Netherlands
+ o_comet:0 "«Комета»"
+ o_market_garden:0 "«Маркет — Гарден»"
+
+ o_constellation:0 "«Сузір'я»"
+ o_clipper:0 "«Clipper»"
+ o_aintree:0 "«Aintree»"
+ o_fusilade:0 "«Fusilade»"

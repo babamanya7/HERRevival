@@ -97,19 +97,35 @@ replace_in_named_block(static_mods, 'capital_screening_bonus', 'sortie_efficienc
 # Early carrier operations technology; keep it useful, but smaller on the new scale.
 replace_in_named_block('common/technologies/MTG_naval.txt', 'arresting_gear', 'sortie_efficiency', '0.03')
 
-# Locate every place that changes Norway's dynamic sortie-efficiency variable before committing anything.
-needle = 'NOR_royal_navy_dmod_sortie_efficiency'
-nor_hits = []
-for p in Path('.').rglob('*'):
-    if not p.is_file() or '.git' in p.parts:
+# Final audit of numeric non-define sortie modifiers. Norway's dynamic modifier is symbolic;
+# there is no numeric source for its referenced variable anywhere in this repository.
+allowed_files = {
+    doctrine,
+    traits,
+    country_traits,
+    'common/ideas/japan.txt',
+    'common/ideas/italy.txt',
+    static_mods,
+    'common/technologies/MTG_naval.txt',
+    'common/dynamic_modifiers/aat_dynamic_modifiers.txt',
+}
+unhandled = []
+for p in Path('common').rglob('*'):
+    if not p.is_file() or 'defines' in p.parts or p.suffix.lower() not in {'.txt', '.lua'}:
         continue
     try:
         s = p.read_text(encoding='utf-8-sig')
-    except (UnicodeDecodeError, OSError):
+    except UnicodeDecodeError:
         continue
     for n, line in enumerate(s.splitlines(), 1):
-        if needle in line:
-            nor_hits.append(f'{p}:{n}: {line.strip()}')
-print('NORWAY VARIABLE HITS:')
-print('\n'.join(nor_hits))
-raise RuntimeError('Audit stop: inspect Norway sortie-efficiency variable sources above')
+        if re.search(r'\b(?:sortie_efficiency|fighter_sortie_efficiency)\s*=', line):
+            norm = str(p).replace('\\', '/')
+            if norm not in allowed_files:
+                unhandled.append(f'{p}:{n}: {line.strip()}')
+if unhandled:
+    raise RuntimeError('Unhandled sortie-efficiency modifiers remain:\n' + '\n'.join(unhandled))
+
+print('Sortie efficiency rebalance:')
+for x in CHANGED:
+    print(' -', x)
+print('Norway dynamic sortie variable left symbolic: no numeric source exists in the repository.')

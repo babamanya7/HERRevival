@@ -43,6 +43,19 @@ def replace_in_named_block(path, key, field, value):
     p.write_text(text, encoding='utf-8')
 
 
+def replace_exact(path, old, new, expected=None):
+    p = Path(path)
+    text = p.read_text(encoding='utf-8-sig')
+    count = text.count(old)
+    if expected is not None and count != expected:
+        raise RuntimeError(f'{path}: expected {expected} occurrences of {old!r}, found {count}')
+    if count == 0:
+        raise RuntimeError(f'{path}: {old!r} not found')
+    p.write_text(text.replace(old, new), encoding='utf-8')
+    for _ in range(count):
+        CHANGED.append(f'{path}: {old.strip()} -> {new.strip()}')
+
+
 # Naval doctrines. Base Strike totals +30%; the two non-carrier doctrines retain a smaller +15% total.
 doctrine = 'common/technologies/naval_doctrine.txt'
 for key, value in {
@@ -69,43 +82,34 @@ replace_in_named_block(country_traits, 'navy_carrier_2', 'sortie_efficiency', '0
 replace_in_named_block(country_traits, 'navy_carrier_3', 'sortie_efficiency', '0.07')
 
 # Japan has two separate +20% sortie-efficiency national bonuses. Both become +5%.
-japan = Path('common/ideas/japan.txt')
-text = japan.read_text(encoding='utf-8-sig')
-pat = re.compile(r'(?m)^(\s*)sortie_efficiency\s*=\s*0\.2\b')
-matches = list(pat.finditer(text))
-if len(matches) != 2:
-    raise RuntimeError(f'Expected exactly 2 Japanese sortie_efficiency = 0.2 entries, found {len(matches)}')
-text = pat.sub(lambda m: m.group(1) + 'sortie_efficiency = 0.05', text)
-japan.write_text(text, encoding='utf-8')
-for _ in matches:
-    CHANGED.append('common/ideas/japan.txt: sortie_efficiency 0.2 -> 0.05')
+replace_exact('common/ideas/japan.txt', 'sortie_efficiency = 0.2', 'sortie_efficiency = 0.05', expected=2)
 
-# Audit: no unhandled non-define sortie-efficiency modifiers should remain outside the files above.
-# This deliberately ignores common/defines because the base value is maintained separately.
-unhandled = []
-for p in Path('common').rglob('*'):
-    if not p.is_file() or 'defines' in p.parts:
-        continue
-    if p.suffix.lower() not in {'.txt', '.lua'}:
+# Italy progression: halve fighter-only sortie bonuses.
+replace_exact('common/ideas/italy.txt', 'fighter_sortie_efficiency = 0.05', 'fighter_sortie_efficiency = 0.025', expected=1)
+replace_exact('common/ideas/italy.txt', 'fighter_sortie_efficiency = 0.1', 'fighter_sortie_efficiency = 0.05', expected=1)
+
+# Carrier experience and full-screening bonuses are also external sortie-efficiency sources.
+static_mods = 'common/modifiers/00_static_modifiers.txt'
+replace_in_named_block(static_mods, 'carrier_experience_bonus_max', 'fighter_sortie_efficiency', '0.10')
+replace_in_named_block(static_mods, 'carrier_experience_malus_min', 'fighter_sortie_efficiency', '-0.10')
+replace_in_named_block(static_mods, 'capital_screening_bonus', 'sortie_efficiency', '0.05')
+
+# Early carrier operations technology; keep it useful, but smaller on the new scale.
+replace_in_named_block('common/technologies/MTG_naval.txt', 'arresting_gear', 'sortie_efficiency', '0.03')
+
+# Locate every place that changes Norway's dynamic sortie-efficiency variable before committing anything.
+needle = 'NOR_royal_navy_dmod_sortie_efficiency'
+nor_hits = []
+for p in Path('.').rglob('*'):
+    if not p.is_file() or '.git' in p.parts:
         continue
     try:
         s = p.read_text(encoding='utf-8-sig')
-    except UnicodeDecodeError:
+    except (UnicodeDecodeError, OSError):
         continue
     for n, line in enumerate(s.splitlines(), 1):
-        if re.search(r'\b(?:sortie_efficiency|fighter_sortie_efficiency)\s*=', line):
-            # Everything remaining is allowed only in the explicitly rebalanced files.
-            if str(p).replace('\\', '/') not in {
-                doctrine,
-                traits,
-                country_traits,
-                'common/ideas/japan.txt',
-            }:
-                unhandled.append(f'{p}:{n}: {line.strip()}')
-
-if unhandled:
-    raise RuntimeError('Unhandled sortie-efficiency modifiers remain:\n' + '\n'.join(unhandled))
-
-print('Sortie efficiency rebalance:')
-for x in CHANGED:
-    print(' -', x)
+        if needle in line:
+            nor_hits.append(f'{p}:{n}: {line.strip()}')
+print('NORWAY VARIABLE HITS:')
+print('\n'.join(nor_hits))
+raise RuntimeError('Audit stop: inspect Norway sortie-efficiency variable sources above')

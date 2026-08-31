@@ -502,11 +502,11 @@ ship_experience_malus_min = {
 }
 
 carrier_experience_bonus_max = {
-	fighter_sortie_efficiency = 0.25
+	fighter_sortie_efficiency = 0.10
 }
 
 carrier_experience_malus_min = {
-	fighter_sortie_efficiency = -0.25
+	fighter_sortie_efficiency = -0.10
 }
 
 pride_of_the_fleet = {
@@ -535,7 +535,7 @@ screening_bonus = {
 
 capital_screening_bonus = { 
   naval_retreat_speed = 0.1
-  sortie_efficiency = 0.1
+  sortie_efficiency = 0.05
 }
 
 country_is_at_peace = {

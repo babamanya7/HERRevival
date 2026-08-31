@@ -1,0 +1,32 @@
+
+state={
+	id=955
+	name="STATE_955"
+
+	manpower = 51000
+	state_category = pastoral
+	
+	resources = {
+		iron = 72
+	}
+
+	history={
+		owner = AST
+		buildings = {
+			infrastructure = 2
+		}
+		add_core_of = AST
+		1936.1.1.14 = {
+			owner = BRA
+			controller = BRA
+			add_core_of = BRA
+			buildings = {
+				
+			}
+		}
+	}
+
+	provinces={
+		1498 2201 5125 5170 5207 8209 8247 10950 10958 12323 12993
+	}
+}

@@ -2,46 +2,46 @@ mio_policy_air_perfect_finish = {
 	icon = GFX_mio_policy_perfect_finish
 	allowed = { 
 		OR = {
-			mio_cat_dewoitine_designer
-			mio_cat_morane_saulnier_designer
-			mio_cat_bloch_designer
-			mio_cat_potez_designer
-			mio_cat_breguet_designer
-			mio_cat_supermarine_designer
-			mio_cat_hawker_designer
-			mio_cat_gloster_designer
-			mio_cat_de_havilland_designer
-			mio_cat_bristol_designer
-			mio_cat_fairey_aviation_designer
-			mio_cat_avro_designer
-			mio_cat_curtiss_designer
-			mio_cat_republic_designer
-			mio_cat_north_american_aviation_designer
-			mio_cat_lockheed_designer
-			mio_cat_douglas_aircraft_company_designer
-			mio_cat_boeing_designer
-			mio_cat_consolidated_designer
-			mio_cat_martin_designer
-			mio_cat_grumman_designer
-			mio_cat_messerschmitt_designer
-			mio_cat_junkers_designer
-			mio_cat_focke_wulf_designer
-			mio_cat_heinkel_designer
-			mio_cat_arado_flugzeugwerke_designer
-			mio_cat_polikarpov_designer
-			mio_cat_mikoyan_gurevich_designer
-			mio_cat_sukhoi_designer
-			mio_cat_ilyushin_designer
-			mio_cat_lavochkin_designer
-			mio_cat_yakovlev_designer
-			mio_cat_tupolev_designer
-			mio_cat_petlyakov_designer
-			mio_cat_beriev_designer
-			mio_cat_aichi_designer
-			mio_cat_yokosuka_designer
-			mio_cat_kawasaki_designer
-			mio_cat_nakajima_designer
-			mio_cat_mitsubishi_designer
+			has_mio_equipment_type = mio_cat_dewoitine_designer
+			has_mio_equipment_type = mio_cat_morane_saulnier_designer
+			has_mio_equipment_type = mio_cat_bloch_designer
+			has_mio_equipment_type = mio_cat_potez_designer
+			has_mio_equipment_type = mio_cat_breguet_designer
+			has_mio_equipment_type = mio_cat_supermarine_designer
+			has_mio_equipment_type = mio_cat_hawker_designer
+			has_mio_equipment_type = mio_cat_gloster_designer
+			has_mio_equipment_type = mio_cat_de_havilland_designer
+			has_mio_equipment_type = mio_cat_bristol_designer
+			has_mio_equipment_type = mio_cat_fairey_aviation_designer
+			has_mio_equipment_type = mio_cat_avro_designer
+			has_mio_equipment_type = mio_cat_curtiss_designer
+			has_mio_equipment_type = mio_cat_republic_designer
+			has_mio_equipment_type = mio_cat_north_american_aviation_designer
+			has_mio_equipment_type = mio_cat_lockheed_designer
+			has_mio_equipment_type = mio_cat_douglas_aircraft_company_designer
+			has_mio_equipment_type = mio_cat_boeing_designer
+			has_mio_equipment_type = mio_cat_consolidated_designer
+			has_mio_equipment_type = mio_cat_martin_designer
+			has_mio_equipment_type = mio_cat_grumman_designer
+			has_mio_equipment_type = mio_cat_messerschmitt_designer
+			has_mio_equipment_type = mio_cat_junkers_designer
+			has_mio_equipment_type = mio_cat_focke_wulf_designer
+			has_mio_equipment_type = mio_cat_heinkel_designer
+			has_mio_equipment_type = mio_cat_arado_flugzeugwerke_designer
+			has_mio_equipment_type = mio_cat_polikarpov_designer
+			has_mio_equipment_type = mio_cat_mikoyan_gurevich_designer
+			has_mio_equipment_type = mio_cat_sukhoi_designer
+			has_mio_equipment_type = mio_cat_ilyushin_designer
+			has_mio_equipment_type = mio_cat_lavochkin_designer
+			has_mio_equipment_type = mio_cat_yakovlev_designer
+			has_mio_equipment_type = mio_cat_tupolev_designer
+			has_mio_equipment_type = mio_cat_petlyakov_designer
+			has_mio_equipment_type = mio_cat_beriev_designer
+			has_mio_equipment_type = mio_cat_aichi_designer
+			has_mio_equipment_type = mio_cat_yokosuka_designer
+			has_mio_equipment_type = mio_cat_kawasaki_designer
+			has_mio_equipment_type = mio_cat_nakajima_designer
+			has_mio_equipment_type = mio_cat_mitsubishi_designer
 		}
 	}
 	available = { has_mio_size > 5 }
@@ -58,46 +58,46 @@ mio_policy_air_heavy_gantry_cranes = {
 	icon = GFX_mio_policy_heavy_gantry_cranes_air
 	allowed = {
 		OR = {
-			mio_cat_dewoitine_designer
-			mio_cat_morane_saulnier_designer
-			mio_cat_bloch_designer
-			mio_cat_potez_designer
-			mio_cat_breguet_designer
-			mio_cat_supermarine_designer
-			mio_cat_hawker_designer
-			mio_cat_gloster_designer
-			mio_cat_de_havilland_designer
-			mio_cat_bristol_designer
-			mio_cat_fairey_aviation_designer
-			mio_cat_avro_designer
-			mio_cat_curtiss_designer
-			mio_cat_republic_designer
-			mio_cat_north_american_aviation_designer
-			mio_cat_lockheed_designer
-			mio_cat_douglas_aircraft_company_designer
-			mio_cat_boeing_designer
-			mio_cat_consolidated_designer
-			mio_cat_martin_designer
-			mio_cat_grumman_designer
-			mio_cat_messerschmitt_designer
-			mio_cat_junkers_designer
-			mio_cat_focke_wulf_designer
-			mio_cat_heinkel_designer
-			mio_cat_arado_flugzeugwerke_designer
-			mio_cat_polikarpov_designer
-			mio_cat_mikoyan_gurevich_designer
-			mio_cat_sukhoi_designer
-			mio_cat_ilyushin_designer
-			mio_cat_lavochkin_designer
-			mio_cat_yakovlev_designer
-			mio_cat_tupolev_designer
-			mio_cat_petlyakov_designer
-			mio_cat_beriev_designer
-			mio_cat_aichi_designer
-			mio_cat_yokosuka_designer
-			mio_cat_kawasaki_designer
-			mio_cat_nakajima_designer
-			mio_cat_mitsubishi_designer
+			has_mio_equipment_type = mio_cat_dewoitine_designer
+			has_mio_equipment_type = mio_cat_morane_saulnier_designer
+			has_mio_equipment_type = mio_cat_bloch_designer
+			has_mio_equipment_type = mio_cat_potez_designer
+			has_mio_equipment_type = mio_cat_breguet_designer
+			has_mio_equipment_type = mio_cat_supermarine_designer
+			has_mio_equipment_type = mio_cat_hawker_designer
+			has_mio_equipment_type = mio_cat_gloster_designer
+			has_mio_equipment_type = mio_cat_de_havilland_designer
+			has_mio_equipment_type = mio_cat_bristol_designer
+			has_mio_equipment_type = mio_cat_fairey_aviation_designer
+			has_mio_equipment_type = mio_cat_avro_designer
+			has_mio_equipment_type = mio_cat_curtiss_designer
+			has_mio_equipment_type = mio_cat_republic_designer
+			has_mio_equipment_type = mio_cat_north_american_aviation_designer
+			has_mio_equipment_type = mio_cat_lockheed_designer
+			has_mio_equipment_type = mio_cat_douglas_aircraft_company_designer
+			has_mio_equipment_type = mio_cat_boeing_designer
+			has_mio_equipment_type = mio_cat_consolidated_designer
+			has_mio_equipment_type = mio_cat_martin_designer
+			has_mio_equipment_type = mio_cat_grumman_designer
+			has_mio_equipment_type = mio_cat_messerschmitt_designer
+			has_mio_equipment_type = mio_cat_junkers_designer
+			has_mio_equipment_type = mio_cat_focke_wulf_designer
+			has_mio_equipment_type = mio_cat_heinkel_designer
+			has_mio_equipment_type = mio_cat_arado_flugzeugwerke_designer
+			has_mio_equipment_type = mio_cat_polikarpov_designer
+			has_mio_equipment_type = mio_cat_mikoyan_gurevich_designer
+			has_mio_equipment_type = mio_cat_sukhoi_designer
+			has_mio_equipment_type = mio_cat_ilyushin_designer
+			has_mio_equipment_type = mio_cat_lavochkin_designer
+			has_mio_equipment_type = mio_cat_yakovlev_designer
+			has_mio_equipment_type = mio_cat_tupolev_designer
+			has_mio_equipment_type = mio_cat_petlyakov_designer
+			has_mio_equipment_type = mio_cat_beriev_designer
+			has_mio_equipment_type = mio_cat_aichi_designer
+			has_mio_equipment_type = mio_cat_yokosuka_designer
+			has_mio_equipment_type = mio_cat_kawasaki_designer
+			has_mio_equipment_type = mio_cat_nakajima_designer
+			has_mio_equipment_type = mio_cat_mitsubishi_designer
 		}
 	}
 	available = { has_mio_size > 5 }
@@ -115,46 +115,46 @@ mio_policy_air_propulsion_experimenters = {
 	icon = GFX_mio_policy_propulsion_experimenters
 	allowed = { 
 		OR = {
-			mio_cat_dewoitine_designer
-			mio_cat_morane_saulnier_designer
-			mio_cat_bloch_designer
-			mio_cat_potez_designer
-			mio_cat_breguet_designer
-			mio_cat_supermarine_designer
-			mio_cat_hawker_designer
-			mio_cat_gloster_designer
-			mio_cat_de_havilland_designer
-			mio_cat_bristol_designer
-			mio_cat_fairey_aviation_designer
-			mio_cat_avro_designer
-			mio_cat_curtiss_designer
-			mio_cat_republic_designer
-			mio_cat_north_american_aviation_designer
-			mio_cat_lockheed_designer
-			mio_cat_douglas_aircraft_company_designer
-			mio_cat_boeing_designer
-			mio_cat_consolidated_designer
-			mio_cat_martin_designer
-			mio_cat_grumman_designer
-			mio_cat_messerschmitt_designer
-			mio_cat_junkers_designer
-			mio_cat_focke_wulf_designer
-			mio_cat_heinkel_designer
-			mio_cat_arado_flugzeugwerke_designer
-			mio_cat_polikarpov_designer
-			mio_cat_mikoyan_gurevich_designer
-			mio_cat_sukhoi_designer
-			mio_cat_ilyushin_designer
-			mio_cat_lavochkin_designer
-			mio_cat_yakovlev_designer
-			mio_cat_tupolev_designer
-			mio_cat_petlyakov_designer
-			mio_cat_beriev_designer
-			mio_cat_aichi_designer
-			mio_cat_yokosuka_designer
-			mio_cat_kawasaki_designer
-			mio_cat_nakajima_designer
-			mio_cat_mitsubishi_designer
+			has_mio_equipment_type = mio_cat_dewoitine_designer
+			has_mio_equipment_type = mio_cat_morane_saulnier_designer
+			has_mio_equipment_type = mio_cat_bloch_designer
+			has_mio_equipment_type = mio_cat_potez_designer
+			has_mio_equipment_type = mio_cat_breguet_designer
+			has_mio_equipment_type = mio_cat_supermarine_designer
+			has_mio_equipment_type = mio_cat_hawker_designer
+			has_mio_equipment_type = mio_cat_gloster_designer
+			has_mio_equipment_type = mio_cat_de_havilland_designer
+			has_mio_equipment_type = mio_cat_bristol_designer
+			has_mio_equipment_type = mio_cat_fairey_aviation_designer
+			has_mio_equipment_type = mio_cat_avro_designer
+			has_mio_equipment_type = mio_cat_curtiss_designer
+			has_mio_equipment_type = mio_cat_republic_designer
+			has_mio_equipment_type = mio_cat_north_american_aviation_designer
+			has_mio_equipment_type = mio_cat_lockheed_designer
+			has_mio_equipment_type = mio_cat_douglas_aircraft_company_designer
+			has_mio_equipment_type = mio_cat_boeing_designer
+			has_mio_equipment_type = mio_cat_consolidated_designer
+			has_mio_equipment_type = mio_cat_martin_designer
+			has_mio_equipment_type = mio_cat_grumman_designer
+			has_mio_equipment_type = mio_cat_messerschmitt_designer
+			has_mio_equipment_type = mio_cat_junkers_designer
+			has_mio_equipment_type = mio_cat_focke_wulf_designer
+			has_mio_equipment_type = mio_cat_heinkel_designer
+			has_mio_equipment_type = mio_cat_arado_flugzeugwerke_designer
+			has_mio_equipment_type = mio_cat_polikarpov_designer
+			has_mio_equipment_type = mio_cat_mikoyan_gurevich_designer
+			has_mio_equipment_type = mio_cat_sukhoi_designer
+			has_mio_equipment_type = mio_cat_ilyushin_designer
+			has_mio_equipment_type = mio_cat_lavochkin_designer
+			has_mio_equipment_type = mio_cat_yakovlev_designer
+			has_mio_equipment_type = mio_cat_tupolev_designer
+			has_mio_equipment_type = mio_cat_petlyakov_designer
+			has_mio_equipment_type = mio_cat_beriev_designer
+			has_mio_equipment_type = mio_cat_aichi_designer
+			has_mio_equipment_type = mio_cat_yokosuka_designer
+			has_mio_equipment_type = mio_cat_kawasaki_designer
+			has_mio_equipment_type = mio_cat_nakajima_designer
+			has_mio_equipment_type = mio_cat_mitsubishi_designer
 		}
 	}
 	available = { has_mio_size > 5 }
@@ -173,46 +173,46 @@ mio_policy_air_wind_tunnel_pioneers = {
 	icon = GFX_mio_policy_wind_tunnel_pioneers
 	allowed = {
 		OR = {
-			mio_cat_dewoitine_designer
-			mio_cat_morane_saulnier_designer
-			mio_cat_bloch_designer
-			mio_cat_potez_designer
-			mio_cat_breguet_designer
-			mio_cat_supermarine_designer
-			mio_cat_hawker_designer
-			mio_cat_gloster_designer
-			mio_cat_de_havilland_designer
-			mio_cat_bristol_designer
-			mio_cat_fairey_aviation_designer
-			mio_cat_avro_designer
-			mio_cat_curtiss_designer
-			mio_cat_republic_designer
-			mio_cat_north_american_aviation_designer
-			mio_cat_lockheed_designer
-			mio_cat_douglas_aircraft_company_designer
-			mio_cat_boeing_designer
-			mio_cat_consolidated_designer
-			mio_cat_martin_designer
-			mio_cat_grumman_designer
-			mio_cat_messerschmitt_designer
-			mio_cat_junkers_designer
-			mio_cat_focke_wulf_designer
-			mio_cat_heinkel_designer
-			mio_cat_arado_flugzeugwerke_designer
-			mio_cat_polikarpov_designer
-			mio_cat_mikoyan_gurevich_designer
-			mio_cat_sukhoi_designer
-			mio_cat_ilyushin_designer
-			mio_cat_lavochkin_designer
-			mio_cat_yakovlev_designer
-			mio_cat_tupolev_designer
-			mio_cat_petlyakov_designer
-			mio_cat_beriev_designer
-			mio_cat_aichi_designer
-			mio_cat_yokosuka_designer
-			mio_cat_kawasaki_designer
-			mio_cat_nakajima_designer
-			mio_cat_mitsubishi_designer
+			has_mio_equipment_type = mio_cat_dewoitine_designer
+			has_mio_equipment_type = mio_cat_morane_saulnier_designer
+			has_mio_equipment_type = mio_cat_bloch_designer
+			has_mio_equipment_type = mio_cat_potez_designer
+			has_mio_equipment_type = mio_cat_breguet_designer
+			has_mio_equipment_type = mio_cat_supermarine_designer
+			has_mio_equipment_type = mio_cat_hawker_designer
+			has_mio_equipment_type = mio_cat_gloster_designer
+			has_mio_equipment_type = mio_cat_de_havilland_designer
+			has_mio_equipment_type = mio_cat_bristol_designer
+			has_mio_equipment_type = mio_cat_fairey_aviation_designer
+			has_mio_equipment_type = mio_cat_avro_designer
+			has_mio_equipment_type = mio_cat_curtiss_designer
+			has_mio_equipment_type = mio_cat_republic_designer
+			has_mio_equipment_type = mio_cat_north_american_aviation_designer
+			has_mio_equipment_type = mio_cat_lockheed_designer
+			has_mio_equipment_type = mio_cat_douglas_aircraft_company_designer
+			has_mio_equipment_type = mio_cat_boeing_designer
+			has_mio_equipment_type = mio_cat_consolidated_designer
+			has_mio_equipment_type = mio_cat_martin_designer
+			has_mio_equipment_type = mio_cat_grumman_designer
+			has_mio_equipment_type = mio_cat_messerschmitt_designer
+			has_mio_equipment_type = mio_cat_junkers_designer
+			has_mio_equipment_type = mio_cat_focke_wulf_designer
+			has_mio_equipment_type = mio_cat_heinkel_designer
+			has_mio_equipment_type = mio_cat_arado_flugzeugwerke_designer
+			has_mio_equipment_type = mio_cat_polikarpov_designer
+			has_mio_equipment_type = mio_cat_mikoyan_gurevich_designer
+			has_mio_equipment_type = mio_cat_sukhoi_designer
+			has_mio_equipment_type = mio_cat_ilyushin_designer
+			has_mio_equipment_type = mio_cat_lavochkin_designer
+			has_mio_equipment_type = mio_cat_yakovlev_designer
+			has_mio_equipment_type = mio_cat_tupolev_designer
+			has_mio_equipment_type = mio_cat_petlyakov_designer
+			has_mio_equipment_type = mio_cat_beriev_designer
+			has_mio_equipment_type = mio_cat_aichi_designer
+			has_mio_equipment_type = mio_cat_yokosuka_designer
+			has_mio_equipment_type = mio_cat_kawasaki_designer
+			has_mio_equipment_type = mio_cat_nakajima_designer
+			has_mio_equipment_type = mio_cat_mitsubishi_designer
 		}
 	}
 	available = { has_mio_size > 5}
@@ -231,46 +231,46 @@ mio_policy_air_modular_assembly  = {
 	icon = GFX_mio_policy_modular_assembly
 	allowed = {
 		OR = {
-			mio_cat_dewoitine_designer
-			mio_cat_morane_saulnier_designer
-			mio_cat_bloch_designer
-			mio_cat_potez_designer
-			mio_cat_breguet_designer
-			mio_cat_supermarine_designer
-			mio_cat_hawker_designer
-			mio_cat_gloster_designer
-			mio_cat_de_havilland_designer
-			mio_cat_bristol_designer
-			mio_cat_fairey_aviation_designer
-			mio_cat_avro_designer
-			mio_cat_curtiss_designer
-			mio_cat_republic_designer
-			mio_cat_north_american_aviation_designer
-			mio_cat_lockheed_designer
-			mio_cat_douglas_aircraft_company_designer
-			mio_cat_boeing_designer
-			mio_cat_consolidated_designer
-			mio_cat_martin_designer
-			mio_cat_grumman_designer
-			mio_cat_messerschmitt_designer
-			mio_cat_junkers_designer
-			mio_cat_focke_wulf_designer
-			mio_cat_heinkel_designer
-			mio_cat_arado_flugzeugwerke_designer
-			mio_cat_polikarpov_designer
-			mio_cat_mikoyan_gurevich_designer
-			mio_cat_sukhoi_designer
-			mio_cat_ilyushin_designer
-			mio_cat_lavochkin_designer
-			mio_cat_yakovlev_designer
-			mio_cat_tupolev_designer
-			mio_cat_petlyakov_designer
-			mio_cat_beriev_designer
-			mio_cat_aichi_designer
-			mio_cat_yokosuka_designer
-			mio_cat_kawasaki_designer
-			mio_cat_nakajima_designer
-			mio_cat_mitsubishi_designer
+			has_mio_equipment_type = mio_cat_dewoitine_designer
+			has_mio_equipment_type = mio_cat_morane_saulnier_designer
+			has_mio_equipment_type = mio_cat_bloch_designer
+			has_mio_equipment_type = mio_cat_potez_designer
+			has_mio_equipment_type = mio_cat_breguet_designer
+			has_mio_equipment_type = mio_cat_supermarine_designer
+			has_mio_equipment_type = mio_cat_hawker_designer
+			has_mio_equipment_type = mio_cat_gloster_designer
+			has_mio_equipment_type = mio_cat_de_havilland_designer
+			has_mio_equipment_type = mio_cat_bristol_designer
+			has_mio_equipment_type = mio_cat_fairey_aviation_designer
+			has_mio_equipment_type = mio_cat_avro_designer
+			has_mio_equipment_type = mio_cat_curtiss_designer
+			has_mio_equipment_type = mio_cat_republic_designer
+			has_mio_equipment_type = mio_cat_north_american_aviation_designer
+			has_mio_equipment_type = mio_cat_lockheed_designer
+			has_mio_equipment_type = mio_cat_douglas_aircraft_company_designer
+			has_mio_equipment_type = mio_cat_boeing_designer
+			has_mio_equipment_type = mio_cat_consolidated_designer
+			has_mio_equipment_type = mio_cat_martin_designer
+			has_mio_equipment_type = mio_cat_grumman_designer
+			has_mio_equipment_type = mio_cat_messerschmitt_designer
+			has_mio_equipment_type = mio_cat_junkers_designer
+			has_mio_equipment_type = mio_cat_focke_wulf_designer
+			has_mio_equipment_type = mio_cat_heinkel_designer
+			has_mio_equipment_type = mio_cat_arado_flugzeugwerke_designer
+			has_mio_equipment_type = mio_cat_polikarpov_designer
+			has_mio_equipment_type = mio_cat_mikoyan_gurevich_designer
+			has_mio_equipment_type = mio_cat_sukhoi_designer
+			has_mio_equipment_type = mio_cat_ilyushin_designer
+			has_mio_equipment_type = mio_cat_lavochkin_designer
+			has_mio_equipment_type = mio_cat_yakovlev_designer
+			has_mio_equipment_type = mio_cat_tupolev_designer
+			has_mio_equipment_type = mio_cat_petlyakov_designer
+			has_mio_equipment_type = mio_cat_beriev_designer
+			has_mio_equipment_type = mio_cat_aichi_designer
+			has_mio_equipment_type = mio_cat_yokosuka_designer
+			has_mio_equipment_type = mio_cat_kawasaki_designer
+			has_mio_equipment_type = mio_cat_nakajima_designer
+			has_mio_equipment_type = mio_cat_mitsubishi_designer
 		}
 	}
 	available = { has_mio_size > 5 }

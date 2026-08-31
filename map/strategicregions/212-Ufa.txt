@@ -1,0 +1,166 @@
+
+strategic_region={
+	id=212
+	name="STRATEGICREGION_212"
+	provinces={
+		273 291 1258 1278 1305 1937 2020 3289 4283 4354 5154 5209 6246 6285 7237 7416 7431 7444 7553 7576 7972 8043 8143 8179 9349 10226 10432 10775 10777 10976 11002 11014 12130 12172 12547 12996 13217 13384 13385 13598 13600 13615 13616 13966 13981 13990 14006 14047 14087 14088 14108 14129 14130 14134 14151 14153 14162 14169 14176 14196 14199 14205 14208 14211 14212 14223 14224 14236 14245 14246 14248 14252 14260 14281 14285 227 1181 1210 1254 1350 1378 1833 1883 1932 1981 1993 2012 2024 2025 2044 2123 2180 2193 2228 2229 3265 3330 3357 3385 3486 3563 4171 4322 4324 4938 4952 5045 5077 5079 5212 5228 6379 6424 6515 7343 7716 7912 7931 8122 8133 8199 8245 9420 9445 10299 10566 10697 10820 10831 10860 11433 12128 12242 12270 12298 12707 12714 12731 12741 12751 12794 12808 12812 12874 12896 12908 12985 13227 13613 13626
+	}
+	weather={
+		period={ # Jan 1941
+			between={ 0.0 30.0 }
+			temperature={ -30.000 -10.000 }
+			no_phenomenon=0.892
+			rain_light=0.387
+			rain_heavy=0.083
+			snow=0.950
+			blizzard=0.083
+			arctic_water=0.000
+			mud=0.075
+			sandstorm=0.000
+			min_snow_level=0.000
+		}
+		period={ # Feb 1941
+			between={ 0.1 27.1 }
+			temperature={ -27.000 -7.000 }
+			no_phenomenon=0.903
+			rain_light=0.376
+			rain_heavy=0.079
+			snow=0.858
+			blizzard=0.083
+			arctic_water=0.000
+			mud=0.072
+			sandstorm=0.000
+			min_snow_level=0.000
+		}
+		period={ # Mar 1941
+			between={ 0.2 30.2 }
+			temperature={ -19.000 1.000 }
+			no_phenomenon=0.871
+			rain_light=0.409
+			rain_heavy=0.090
+			snow=0.546
+			blizzard=0.045
+			arctic_water=0.000
+			mud=0.182
+			sandstorm=0.000
+			min_snow_level=0.000
+		}
+		period={ # Apr 1941
+			between={ 0.3 29.3 }
+			temperature={ -7.000 13.000 }
+			no_phenomenon=0.829
+			rain_light=0.453
+			rain_heavy=0.106
+			snow=0.182
+			blizzard=0.000
+			arctic_water=0.000
+			mud=0.215
+			sandstorm=0.000
+			min_snow_level=0.000
+		}
+		period={ # May 1941
+			between={ 0.4 30.4 }
+			temperature={ 1.000 21.000 }
+			no_phenomenon=0.734
+			rain_light=0.553
+			rain_heavy=0.140
+			snow=0.013
+			blizzard=0.000
+			arctic_water=0.000
+			mud=0.145
+			sandstorm=0.000
+			min_snow_level=0.000
+		}
+		period={ # Jun 1941
+			between={ 0.5 29.5 }
+			temperature={ 8.000 28.000 }
+			no_phenomenon=0.650
+			rain_light=0.642
+			rain_heavy=0.171
+			snow=0.000
+			blizzard=0.000
+			arctic_water=0.000
+			mud=0.152
+			sandstorm=0.000
+			min_snow_level=0.000
+		}
+		period={ # Jul 1941
+			between={ 0.6 30.6 }
+			temperature={ 11.000 31.000 }
+			no_phenomenon=0.629
+			rain_light=0.664
+			rain_heavy=0.179
+			snow=0.000
+			blizzard=0.000
+			arctic_water=0.000
+			mud=0.158
+			sandstorm=0.000
+			min_snow_level=0.000
+		}
+		period={ # Aug 1941
+			between={ 0.7 30.7 }
+			temperature={ 8.000 28.000 }
+			no_phenomenon=0.713
+			rain_light=0.576
+			rain_heavy=0.148
+			snow=0.000
+			blizzard=0.000
+			arctic_water=0.000
+			mud=0.132
+			sandstorm=0.000
+			min_snow_level=0.000
+		}
+		period={ # Sep 1941
+			between={ 0.8 29.8 }
+			temperature={ 0.000 20.000 }
+			no_phenomenon=0.829
+			rain_light=0.453
+			rain_heavy=0.106
+			snow=0.000
+			blizzard=0.000
+			arctic_water=0.000
+			mud=0.115
+			sandstorm=0.000
+			min_snow_level=0.000
+		}
+		period={ # Oct 1941
+			between={ 0.9 30.9 }
+			temperature={ -10.000 10.000 }
+			no_phenomenon=0.839
+			rain_light=0.442
+			rain_heavy=0.102
+			snow=0.065
+			blizzard=0.000
+			arctic_water=0.000
+			mud=0.152
+			sandstorm=0.000
+			min_snow_level=0.000
+		}
+		period={ # Nov 1941
+			between={ 0.10 29.10 }
+			temperature={ -17.000 3.000 }
+			no_phenomenon=0.850
+			rain_light=0.431
+			rain_heavy=0.098
+			snow=0.390
+			blizzard=0.045
+			arctic_water=0.000
+			mud=0.168
+			sandstorm=0.000
+			min_snow_level=0.000
+		}
+		period={ # Dec 1941
+			between={ 0.11 30.11 }
+			temperature={ -27.000 -7.000 }
+			no_phenomenon=0.882
+			rain_light=0.398
+			rain_heavy=0.087
+			snow=0.754
+			blizzard=0.083
+			arctic_water=0.000
+			mud=0.078
+			sandstorm=0.000
+			min_snow_level=0.000
+		}
+	}
+}

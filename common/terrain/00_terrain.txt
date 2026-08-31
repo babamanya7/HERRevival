@@ -50,7 +50,7 @@ categories =  {
 		#-# 0 #-#
 		
 		sickness_chance = 0.2
-		supply_flow_penalty_factor = 0.2
+		supply_flow_penalty_factor = 0.3
 		truck_attrition_factor = 2.0
 	}
 	
@@ -71,7 +71,7 @@ categories =  {
 		#-# 28 #-#
 
 		enemy_army_bonus_air_superiority_factor = -0.45
-		supply_flow_penalty_factor = 0.15
+		supply_flow_penalty_factor = 0.25
 		truck_attrition_factor = 0.25
 	}
 	
@@ -93,7 +93,7 @@ categories =  {
 
 		enemy_army_bonus_air_superiority_factor = -0.75
 		sickness_chance = 0.4
-		supply_flow_penalty_factor = 0.4
+		supply_flow_penalty_factor = 0.75
 		truck_attrition_factor = 5.0
 	}
 
@@ -114,7 +114,7 @@ categories =  {
 		#-# 48 #-#
 		
 		enemy_army_bonus_air_superiority_factor = -0.15
-		supply_flow_penalty_factor = 0.1
+		supply_flow_penalty_factor = 0.12
 		truck_attrition_factor = 0.25
 	}
 	
@@ -135,7 +135,7 @@ categories =  {
 		#-# 16 #-#
 
 		enemy_army_bonus_air_superiority_factor = -0.4
-		supply_flow_penalty_factor = 0.1
+		supply_flow_penalty_factor = 0.5
 		truck_attrition_factor = 1.0
 	}
 	
@@ -156,7 +156,7 @@ categories =  {
 		#-# 24 #-#
 		
 		sickness_chance = 0.2
-		supply_flow_penalty_factor = 0.3
+		supply_flow_penalty_factor = 0.55
 		truck_attrition_factor = 3.0
 	}
 	
@@ -178,7 +178,7 @@ categories =  {
 		
 		sickness_chance = 0.2
 		enemy_army_bonus_air_superiority_factor = -0.5
-		supply_flow_penalty_factor = 0.4
+		supply_flow_penalty_factor = 0.7
 		truck_attrition_factor = 4.0
 	}
 	
@@ -200,7 +200,6 @@ categories =  {
 		
 		local_supplies = 0.5
 		enemy_army_bonus_air_superiority_factor = -0.65
-		supply_flow_penalty_factor = -0.4
 	}
 
 	water_fjords = {

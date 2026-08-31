@@ -847,7 +847,7 @@ NMilitary = {
 	INFRA_ORG_IMPACT = 0.3,				-- scale factor of infra on org regain.
 	ENGAGEMENT_WIDTH_PER_WIDTH = 3.0,	-- how much enemy combat width we are allowed to engage per width of our own
 
-	INFRASTRUCTURE_MOVEMENT_SPEED_IMPACT = -0.03,	-- speed penalty per infrastucture below maximum.
+	INFRASTRUCTURE_MOVEMENT_SPEED_IMPACT = -0.02,	-- speed penalty per infrastucture below maximum.
 
 	VPS_FOR_HISTORY_ENTRY = 1,					-- Minimum VPs required to receive an entry in divisional history
 	VPS_FOR_HIGH_HISTORY_ENTRY = 5,				-- VPs required for high-level history entry
@@ -1361,22 +1361,22 @@ NAir = {
 	AIR_REGION_SUPERIORITY_PIXEL_SCALE = 0.01,          -- air superiority scale = superiority/(pixels*this)
 	COMBAT_MULTIPLANE_CAP = 3.0,						-- How many planes can shoot at each plane on other side ( if there are 100 planes we are atttacking COMBAT_MULTIPLANE_CAP * 100 of our planes can shoot )
 	COMBAT_DAMAGE_SCALE = 0.02,							-- Higher value = more shot down planes
-	COMBAT_DAMAGE_SCALE_CARRIER = 0.3,					-- same as above but used inside naval combat for carrier battles
+	COMBAT_DAMAGE_SCALE_CARRIER = 0.5,					-- same as above but used inside naval combat for carrier battles
 	CARRIER_PERCENTAGE_DEFEND = 0.35,					-- Percentage of planes able to defend a carrier from air attacks (historically 15% - 35%)
 	DETECT_CHANCE_FROM_OCCUPATION = 0.1, 				-- How much the controlled provinces in area affects the air detection base value.
-	DETECT_CHANCE_FROM_RADARS = 0.8, 					-- How much the radars in area affects detection chance.
+	DETECT_CHANCE_FROM_RADARS = 0.75, 					-- How much the radars in area affects detection chance.
 	DETECT_CHANCE_FROM_AIRCRAFTS_EFFECTIVE_COUNT = 2000, -- Max amount of aircrafts in region to give full detection bonus.
 	DETECT_CHANCE_FROM_AIRCRAFTS = 0.6,					-- How much aircrafts in region improves air detection (up to effective count).
 	DETECT_CHANCE_FROM_NIGHT = -0.5,					-- How much the night can reduce the air detection. (see static modifiers to check how weather affects it too.)
 	DETECT_EFFICIENCY_BASE = 0.1,						-- Base value for detection efficiency (once something detected, efficiency says how many airplanes was detected).
-	DETECT_EFFICIENCY_FROM_RADAR = 0.8,					-- How much radars affect the efficiency.
+	DETECT_EFFICIENCY_FROM_RADAR = 0.75,					-- How much radars affect the efficiency.
 	DETECT_EFFICIENCY_RANDOM_FACTOR = 0.25,				-- How much randomness is in amount of detected aircrafts.
 	DAY_NIGHT_COVERAGE_FACTOR = 0.5,					-- The max night coverage in a region that is still considered to be day-time when determining if day/night air missions shall run.
 	HOURS_DELAY_AFTER_EACH_COMBAT = 4,					-- How many hours needs the wing to be ready for the next combat. Use for tweaking if combats happens too often. (generally used as double because of roundtrip)
 	PORT_STRIKES_DELAY_MULTIPLIER = 2,					-- multplies HOURS_DELAY_AFTER_EACH_COMBAT if port strikes
-	CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 2,          -- how often carrier planes do battle inside naval combat
+	CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 4,          -- how often carrier planes do battle inside naval combat
 	CARRIER_SIZE_STAT_INCREMENT = 8,					-- Each Point of carrier_size state adds capacity for this many planes
-	SUBMARINE_CARRIER_SIZE_STAT_INCREMENT = 2,			-- Each Point of carrier_size state adds capacity for this many planes for submarines
+	SUBMARINE_CARRIER_SIZE_STAT_INCREMENT = 1,			-- Each Point of carrier_size state adds capacity for this many planes for submarines
 	MISSILE_LAUNCHER_CAPACITY = 10,                     -- The number of missiles per slot
 	MISSILE_LAUNCHER_SLOTS = 1,                         -- The number of missile slots a missile launcher unit can have
 	NAVAL_STRIKE_TARGETTING_TO_AMOUNT = 0.2,			-- Balancing value to convert the naval_strike_targetting equipment stats to chances of how many airplanes managed to do successfull strike.
@@ -1425,7 +1425,7 @@ NAir = {
 	SUPPLY_NEED_FACTOR = 0.8, 							-- multiplies supply usage
 	SUPPLY_PRIO_FACTOR = 100.0,							-- Effect of supply need per unit for target province picking for air supply
 	CAPACITY_PENALTY = 2,								-- scales penalty of having overcrowded bases.
-	AIR_COMBAT_FINAL_DAMAGE_SCALE = 0.015,               -- % how many max disrupted only planes are alloed to die in a single combat
+	AIR_COMBAT_FINAL_DAMAGE_SCALE = 0.05,               -- % how many max disrupted only planes are alloed to die in a single combat
 	AIR_COMBAT_FINAL_DAMAGE_PLANES = 50,                -- scaling/control for when only very few planes exist to stop roundoff issues
 	AIR_COMBAT_FINAL_DAMAGE_PLANES_FACTOR = 0.1,
 	AA_INDUSTRY_AIR_DAMAGE_FACTOR = -0.08,				-- 5x levels = 60% defense from bombing
@@ -1470,7 +1470,7 @@ NAir = {
 	AIR_WING_XP_LOSS_REDUCTION_OVER_FRIENDLY_TERRITORY_FACTOR = 0.25, 	--Reduction on XP loss over friendly territory
 
 	DISRUPTION_FACTOR = 4.0,									-- multiplier on disruption damage to scale its effects on planes
-	DISRUPTION_FACTOR_CARRIER = 20.0,							-- multiplier on disruption damage to scale its effects on carrier vs carrier planes
+	DISRUPTION_FACTOR_CARRIER = 8.0,							-- multiplier on disruption damage to scale its effects on carrier vs carrier planes
 	DISRUPTION_SPEED_FACTOR = 1.25,
 	DISRUPTION_AGILITY_FACTOR = 0.5,
 	DISRUPTION_ATTACK_FACTOR = 2.0,
@@ -1483,7 +1483,7 @@ NAir = {
 	DISRUPTION_DEFENCE_SPEED_FACTOR = 0.8,
 	DISRUPTION_DEFENCE_ATTACK_FACTOR = 4.0,
 
-	CARRIER_PLANES_AMOUNT_FOR_POSITIONING = 40,         -- below this amount of planes on a carrier we no longer get max benefit on enemy positioning
+	CARRIER_PLANES_AMOUNT_FOR_POSITIONING = 64,         -- below this amount of planes on a carrier we no longer get max benefit on enemy positioning
 
 	CAS_NIGHT_ATTACK_FACTOR = 0.1,                      -- CAS damaged get multiplied by this in land combats at night
 
@@ -1653,18 +1653,18 @@ NNavy = {
 	COMBAT_DAMAGE_TO_ORG_FACTOR = 1.2,								-- casting damage value to ship organisation multiplier. Use it to balance the game difficulty.
 
 	NAVY_MAX_XP = 100,
-	COMBAT_ON_THE_WAY_INIT_DISTANCE_BALANCE = 0.25, 				-- Value to balance initial distance to arrive for ships that are "on the way"
+	COMBAT_ON_THE_WAY_INIT_DISTANCE_BALANCE = 0.35, 				-- Value to balance initial distance to arrive for ships that are "on the way"
 	COMBAT_CHASE_RESIGNATION_HOURS = 24,								-- Before we resign chasing enemy, give them some minimum time so the combat doesn't end instantly.
 
-	COMBAT_MAX_GROUPS = 1,											-- Max amount of "Fire Exchange" groups (FEX).
+	COMBAT_MAX_GROUPS = 3,											-- Max amount of "Fire Exchange" groups (FEX).
 	COMBAT_MIN_DURATION = 16,										-- Min combat duration before we can retreat. It's a balancing variable so it's not possible to always run with our weak ships agains big flotillas.
 	COMBAT_INITIAL_DURATION = 2,									-- Number of hours that is considered the "initial phase" of naval combat, used for modifiers like surprise attack during "initial combat"
 	COMBAT_RETREAT_DECISION_CHANCE = 0.2, 							-- There is also random factor in deciding if we should retreat or not. That causes a delay in taking decision, that sooner or later will be picked. It's needed so damaged fast ships won't troll the combat.
 	COMBAT_DETECTED_CONVOYS_FROM_SURFACE_DETECTION_STAT = 0.1,		-- Each 1.0 of surface_detection that ship has (equipment stat), gives x% of convoys discovered from total travelling along the route.
 	COMBAT_BASE_CRITICAL_CHANCE = 0.07,								-- Base chance for receiving a critical chance. It get's scaled down with ship reliability.
 	COMBAT_CRITICAL_DAMAGE_MULT = 4.0,								-- Multiplier for the critical damage. Scaled down with the ship reliability.
-	COMBAT_ARMOR_PIERCING_CRITICAL_BONUS = 1.00,					-- Bonus to critical chance when shooter armor piercing is higher then target armor.
-	COMBAT_ARMOR_PIERCING_DAMAGE_REDUCTION = -0.75,					-- All damage reduction % when target armor is >= then shooter armor piercing.
+	COMBAT_ARMOR_PIERCING_CRITICAL_BONUS = 0.75,					-- Bonus to critical chance when shooter armor piercing is higher then target armor.
+	COMBAT_ARMOR_PIERCING_DAMAGE_REDUCTION = -0.6,					-- All damage reduction % when target armor is >= then shooter armor piercing.
 	REPAIR_AND_RETURN_PRIO_LOW = 0.2,								-- % of total Strength. When below, navy will go to home base to repair.
 	REPAIR_AND_RETURN_PRIO_MEDIUM = 0.5,							-- % of total Strength. When below, navy will go to home base to repair.
 	REPAIR_AND_RETURN_PRIO_HIGH = 0.9,								-- % of total Strength. When below, navy will go to home base to repair.
@@ -1680,10 +1680,10 @@ NNavy = {
 	EXPERIENCE_LOSS_FACTOR = 1.00,                 					-- percentage of experienced solders who die when manpower is removed
 	NAVY_EXPENSIVE_IC = 4000,										-- How much IC is considering the fleet to be expensive. Those expensive will triger the alert, when are on low STR.
 	MISSION_MAX_REGIONS = 4,										-- Limit of the regions that can be assigned to naval mission. Set to 0 for unlimited.
-	CONVOY_EFFICIENCY_LOSS_MODIFIER = 1.1,							-- How much efficiency drops when losing convoys. If modifier is 0.5, then losing 100% of convoys in short period, the efficiency will drop by 50%.
-	CONVOY_EFFICIENCY_REGAIN_AFTER_DAYS = 1,						-- Convoy starts regaining it's efficiency after X days without any convoys being sink.
-	CONVOY_EFFICIENCY_REGAIN_BASE_SPEED = 0.06,						-- How much efficiency regains every day.
-	CONVOY_EFFICIENCY_MIN_VALUE = 0.1,								-- To avoid complete 0% efficiency, set the lower limit.
+	CONVOY_EFFICIENCY_LOSS_MODIFIER = 1.5,							-- How much efficiency drops when losing convoys. If modifier is 0.5, then losing 100% of convoys in short period, the efficiency will drop by 50%.
+	CONVOY_EFFICIENCY_REGAIN_AFTER_DAYS = 5,						-- Convoy starts regaining it's efficiency after X days without any convoys being sink.
+	CONVOY_EFFICIENCY_REGAIN_BASE_SPEED = 0.035,						-- How much efficiency regains every day.
+	CONVOY_EFFICIENCY_MIN_VALUE = 0.05,								-- To avoid complete 0% efficiency, set the lower limit.
 	CONVOY_ROUTE_SIZE_CONVOY_SCALE = 0.5,                           -- scales impact of convoy route size (0 to turn off)
 	ANTI_AIR_TARGETTING_TO_CHANCE = 0.22,							-- Balancing value to convert averaged equipment stats (anti_air_targetting and naval_strike_agility) to probability chances of airplane being hit by navies AA.
 	ANTI_AIR_ATTACK_TO_AMOUNT = 0.01,								-- Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit.
@@ -1707,7 +1707,7 @@ NNavy = {
 	AMPHIBIOUS_INVADE_DEFEND_LOW = 1.5, 							-- low and high cap of defend modifier scale. Scale interpolated by invasion progress.
 	AMPHIBIOUS_INVADE_DEFEND_HIGH = 1.0,
 	AMPHIBIOUS_INVADE_LANDING_PENALTY_DECREASE = 3.5, 				-- scale of bonus that decreases "amphibious penalty" during combat, relative to invading transporter tech.
-	BASE_CARRIER_SORTIE_EFFICIENCY = 0.8,							-- factor of planes that can sortie by default from a carrier
+	BASE_CARRIER_SORTIE_EFFICIENCY = 0.35,							-- factor of planes that can sortie by default from a carrier
 	CONVOY_ATTACK_BASE_FACTOR = 0.15,                               -- base % of convoys that get intercepted
 	NAVAL_SPEED_MODIFIER = 0.1,	                    				-- basic speed control
 	NAVAL_RANGE_TO_INGAME_DISTANCE = 0.12,							-- Scale the ship stats "naval_range" to the ingame distance
@@ -1749,7 +1749,7 @@ NNavy = {
 	NAVAL_TRANSFER_DAMAGE_REDUCTION = 0.25,							-- its hard to specifically balance 1-tick naval strikes vs unit transports so here is a factor for it
 	CARRIER_ONLY_COMBAT_ACTIVATE_TIME = 0,							-- hours from start of combat when carriers get to fight
 	CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 24,                          -- hours from start of combat when only carriers, capitals and subs get to attack
-	ALL_SHIPS_ACTIVATE_TIME = 28,                                    -- hours where all get to attack
+	ALL_SHIPS_ACTIVATE_TIME = 36,                                    -- hours where all get to attack
 
 	MINIMUM_SHIP_SPEED = 1.0,										-- slowest speed a ship can have
 
@@ -2101,22 +2101,22 @@ NNavy = {
 	SUPPORT_SHIP_RECOVERY_BASE_STRENGTH_FACTOR = 0.01,				-- Percentage of strength of max strength a recovered ship gets on recovery.
 
 	RELATIVE_SURFACE_DETECTION_TO_POSITIONING_FACTOR				= 0.01,	-- multiples the surface detection difference between two sides. the side with higher detection will get a bonus of this value
-	MAX_POSITIONING_BONUS_FROM_SURFACE_DETECTION					= 0.0,  -- will clamp the bonus that you get from detection
+	MAX_POSITIONING_BONUS_FROM_SURFACE_DETECTION					= 0.15,  -- will clamp the bonus that you get from detection
 
-	HIGHER_SHIP_RATIO_POSITIONING_PENALTY_FACTOR					= 0.32, -- if one side has more ships than the other, that side will get this penalty for each +100% ship ratio it has
+	HIGHER_SHIP_RATIO_POSITIONING_PENALTY_FACTOR					= 0.55, -- if one side has more ships than the other, that side will get this penalty for each +100% ship ratio it has
 	MAX_POSITIONING_PENALTY_FROM_HIGHER_SHIP_RATIO					= 1.0,  -- maximum penalty to get from larger fleets
-	MIN_SHIPS_FOR_HIGHER_SHIP_RATIO_PENALTY                         = 0,    -- the minimum fleet size in ships that a fleet must be before having the large fleet penalty applied to them
+	MIN_SHIPS_FOR_HIGHER_SHIP_RATIO_PENALTY                         = 12,    -- the minimum fleet size in ships that a fleet must be before having the large fleet penalty applied to them
 
 	HIGHER_CARRIER_RATIO_POSITIONING_PENALTY_FACTOR					= 0.25;  -- penalty if other side has stronger carrier air force
 	MAX_CARRIER_RATIO_POSITIONING_PENALTY_FACTOR 					= 0.5;  -- max penalty from stronger carrier air force
 
-	POSITIONING_PENALTY_FOR_SHIPS_JOINED_COMBAT_AFTER_IT_STARTS		= 0.005, -- each ship that joins the combat will have this penalty to be added into positioning
-	MAX_POSITIONING_PENALTY_FOR_NEWLY_JOINED_SHIPS 					= 0.2,  -- the accumulated penalty from new ships will be clamped to this value
+	POSITIONING_PENALTY_FOR_SHIPS_JOINED_COMBAT_AFTER_IT_STARTS		= 0.008, -- each ship that joins the combat will have this penalty to be added into positioning
+	MAX_POSITIONING_PENALTY_FOR_NEWLY_JOINED_SHIPS 					= 0.3,  -- the accumulated penalty from new ships will be clamped to this value
 	POSITIONING_PENALTY_HOURLY_DECAY_FOR_NEWLY_JOINED_SHIPS			= 0.01,-- the accumulated penalty from new ships will decay hourly by this value
 
-	DAMAGE_PENALTY_ON_MINIMUM_POSITIONING 							= 0.8,	-- damage penalty at 0% positioning
-	SCREENING_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING				= 0.2,  -- screening efficiency (screen to capital ratio) at 0% positioning
-	AA_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING					= 0,  -- AA penalty at 0% positioning
+	DAMAGE_PENALTY_ON_MINIMUM_POSITIONING 							= 0.85,	-- damage penalty at 0% positioning
+	SCREENING_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING				= 0.4,  -- screening efficiency (screen to capital ratio) at 0% positioning
+	AA_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING					= 0.45,  -- AA penalty at 0% positioning
 	SUBMARINE_REVEAL_ON_MINIMUM_POSITIONING                         = 1.0,  -- submarine reveal change on 0% positioning
 
 	SHIP_TO_FLEET_ANTI_AIR_RATIO									= 0.2,	-- total sum of fleet's anti air will be multiplied with this ratio and added to calculations anti-air of individual ships while air damage reduction
@@ -4360,8 +4360,8 @@ NSupply = {
 
 	-- defines that are used for supply reach for built nodes
 	NODE_INITIAL_SUPPLY_FLOW = 2.5,
-	NODE_STARTING_PENALTY_PER_PROVINCE = 1,
-	NODE_ADDED_PENALTY_PER_PROVINCE = 1,
+	NODE_STARTING_PENALTY_PER_PROVINCE = 1.50,
+	NODE_ADDED_PENALTY_PER_PROVINCE = 0.15,
 
 	-- defines that are used for supply reach for dockyards
 	NAVAL_BASE_INITIAL_SUPPLY_FLOW = 2.5,
@@ -4391,14 +4391,14 @@ NSupply = {
 	FLOATING_HARBOR_DECAY_MAX_NAVAL_PENALTY = 0.5, -- At 100% Enemy Naval superiourity, change decay rate by this many "hours" per hour
 	FLOATING_HARBOR_DECAY_NO_CONTROL_PENALTY = 1.0, -- If adjacent land province is not held, change decay rate by this many "hours" per hour
 
-	SUPPLY_FLOW_DROP_REDUCTION_AT_MAX_INFRA = 0.5, -- max infrastructure level will reduce the supply flow drop off by this ratio
+	SUPPLY_FLOW_DROP_REDUCTION_AT_MAX_INFRA = 0.44, -- max infrastructure level will reduce the supply flow drop off by this ratio
 	SUPPLY_FLOW_PENALTY_CROSSING_RIVERS = 0.5, -- crossing rivers introduces additional penalty
 
 	 -- node flow terrain falloff is scaled by logistics curve based on distance(d) (scalar / (1+e^(-k(d-midpoint))))
-	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_K = 1.3, -- How steep the curve is
-	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_MIDPOINT = 2.3, -- sigmoid inflection point
-	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_SCALAR = 0.9, -- Max Penalty adjustment due to distance
-	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_MIN_PENALTY_SCALE = 0.25, -- Logistics curve never reduces penalty facor below this limit
+	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_K = 0.55, -- How steep the curve is
+	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_MIDPOINT = 3.3, -- sigmoid inflection point
+	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_SCALAR = 1.0, -- Max Penalty adjustment due to distance
+	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_MIN_PENALTY_SCALE = 0.15, -- Logistics curve never reduces penalty facor below this limit
 
 	-- The range bonus added to a fully motorized hub. This supply is added on top of the XXX_INITIAL_SUPPLY_FLOW defined above.
 	SUPPLY_HUB_FULL_MOTORIZATION_BONUS = 3.5,
@@ -4421,10 +4421,10 @@ NSupply = {
 
 	SUPPLY_NODE_MIN_SUPPLY_THRESHOLD = 1.0, -- if supply of a node is below this value it will be set to 0 -- Currently unused? This should happen when enough damage occurs
 
-	INFRA_TO_SUPPLY = 0.75,							-- each level of infra gives this many supply
+	INFRA_TO_SUPPLY = 0.8,							-- each level of infra gives this many supply
 	VP_TO_SUPPLY_BASE = 0,							-- Bonus to supply from a VP, no matter the level
 	VP_TO_SUPPLY_BONUS_CONVERSION = 0,			-- Bonus to supply local supplies from Victory Points, multiplied by this aspect and rounded to closest integer
-	SUPPLY_FROM_DAMAGED_INFRA = 0.05,                -- damaged infrastructure counts as this in supply calcs
+	SUPPLY_FROM_DAMAGED_INFRA = 0.2,                -- damaged infrastructure counts as this in supply calcs
 	SUPPLY_BASE_MULT = 0.2,							-- multiplier on supply base values
 	SUPPLY_DISRUPTION_DAILY_RECOVERY = 1.5,		-- every day nodes recover this much of their accumulated disruption.
 
@@ -4491,8 +4491,8 @@ NSupply = {
 	TRUCK_DISTANCE_FACTOR_FOR_REINFORCEMENT_SPEED = 1.0, -- time factor for total truck distance
 	NAVAL_DISTANCE_FACTOR_FOR_REINFORCEMENT_SPEED = 0.25, -- time factor for total naval distance
 
-	ALERT_VERY_LOW_SUPPLY_LEVEL = 0.33,			   -- At which point we show up the low and very low supply level alert. Value is in % of supplies supported vs required.
-	ALERT_LOW_SUPPLY_LEVEL = 0.66,
+	ALERT_VERY_LOW_SUPPLY_LEVEL = 0.35,			   -- At which point we show up the low and very low supply level alert. Value is in % of supplies supported vs required.
+	ALERT_LOW_SUPPLY_LEVEL = 0.65,
 
 	AI_FRONT_MINIMUM_UNITS_PER_PROVINCE_FOR_SUPPLY_CALCULATIONS = 0,    -- AI will try to keep this amount of divisions per province as a minimum when evaluating supply limitations for war fronts
 	AI_FRONT_DIVISIONS_PER_SUPPLY_POINT = 0.85, -- How many divisions should the AI consider it can supply per available supply point

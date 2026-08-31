@@ -1,0 +1,35 @@
+state={
+	id=95
+	name="STATE_95"
+
+	history={
+		victory_points = {
+			9304 3
+		}
+		victory_points = {
+			3393 3
+		}
+		victory_points = {
+			318 1
+		}
+		victory_points = { 11160 3 }
+		victory_points = { 11289 1 }
+		victory_points = { 11390 1 }
+		owner = POL
+		buildings = {
+			infrastructure = 4
+			industrial_complex = 4
+			air_base = 8
+
+		}
+		add_core_of = POL
+		add_core_of = BLR
+	}
+
+	provinces={
+		318 3281 3366 3393 6359 6413 9236 9304 9359 11341 13206 6120 9362 11311 9300 6148 11160 11289 11390 15394 15395 15396 15397 15398 15399 15400
+	}
+	manpower=1598900
+	buildings_max_level_factor=1.000
+	state_category=rural
+}

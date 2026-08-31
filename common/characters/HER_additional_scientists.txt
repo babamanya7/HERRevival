@@ -1,0 +1,417 @@
+# Additional scientists for HER Mod
+# Paste the relevant blocks into existing:
+# common/characters/SOV.txt
+# common/characters/ENG.txt
+# common/characters/USA.txt
+# common/characters/JAP.txt
+# common/characters/ITA.txt
+
+############################
+# USSR
+############################
+characters={
+
+	SOV_alexey_krylov = {
+		name = SOV_alexey_krylov
+		portraits = {
+			army = {
+				large = "gfx/leaders/SOV/SOV_alexey_krylov.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_surface_ship_specialist scientist_trait_brilliant_theorist }
+			skills = {
+				specialization_naval = 6
+			}
+		}
+	}
+
+	SOV_mstislav_keldysh = {
+		name = SOV_mstislav_keldysh
+		portraits = {
+			army = {
+				large = "gfx/leaders/SOV/SOV_mstislav_keldysh.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_aircraft_specialist scientist_trait_brilliant_theorist }
+			skills = {
+				specialization_air = 6
+			}
+		}
+	}
+
+	SOV_sergey_chaplygin = {
+		name = SOV_sergey_chaplygin
+		portraits = {
+			army = {
+				large = "gfx/leaders/SOV/SOV_sergey_chaplygin.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_aircraft_specialist scientist_trait_brilliant_theorist }
+			skills = {
+				specialization_air = 6
+			}
+		}
+	}
+
+	SOV_arkhip_lyulka = {
+		name = SOV_arkhip_lyulka
+		portraits = {
+			army = {
+				large = "gfx/leaders/SOV/SOV_arkhip_lyulka.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_jet_expert scientist_trait_fast_learner }
+			skills = {
+				specialization_air = 4
+			}
+		}
+	}
+
+	SOV_valentin_glushko = {
+		name = SOV_valentin_glushko
+		portraits = {
+			army = {
+				large = "gfx/leaders/SOV/SOV_valentin_glushko.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_rocketry_specialist }
+			skills = {
+				specialization_air = 5
+			}
+		}
+	}
+
+	SOV_axel_berg = {
+		name = SOV_axel_berg
+		portraits = {
+			army = {
+				large = "gfx/leaders/SOV/SOV_axel_berg.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_electronics_specialist }
+			skills = {
+				specialization_air = 5
+			}
+		}
+	}
+
+	SOV_yulii_khariton = {
+		name = SOV_yulii_khariton
+		portraits = {
+			army = {
+				large = "gfx/leaders/SOV/SOV_yulii_khariton.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_nuclear_warfare_expert }
+			skills = {
+				specialization_nuclear = 3
+			}
+		}
+	}
+
+
+	############################
+	# United Kingdom
+	############################
+
+	ENG_henry_tizard = {
+		name = ENG_henry_tizard
+		portraits = {
+			army = {
+				large = "gfx/leaders/ENG/ENG_henry_tizard.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_electronics_specialist scientist_trait_brilliant_theorist }
+			skills = {
+				specialization_air = 5
+			}
+		}
+	}
+
+	ENG_geoffrey_taylor = {
+		name = ENG_geoffrey_taylor
+		portraits = {
+			army = {
+				large = "gfx/leaders/ENG/ENG_geoffrey_taylor.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_aircraft_specialist scientist_trait_brilliant_theorist }
+			skills = {
+				specialization_air = 6
+			}
+		}
+	}
+
+	ENG_patrick_blackett = {
+		name = ENG_patrick_blackett
+		portraits = {
+			army = {
+				large = "gfx/leaders/ENG/ENG_patrick_blackett.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_brilliant_theorist }
+			skills = {
+				specialization_naval = 5
+			}
+		}
+	}
+
+	ENG_john_randall = {
+		name = ENG_john_randall
+		portraits = {
+			army = {
+				large = "gfx/leaders/ENG/ENG_john_randall.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_electronics_specialist scientist_trait_gifted_engineer }
+			skills = {
+				specialization_air = 4
+			}
+		}
+	}
+
+	ENG_barnes_wallis = {
+		name = ENG_barnes_wallis
+		portraits = {
+			army = {
+				large = "gfx/leaders/ENG/ENG_barnes_wallis.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_aircraft_specialist scientist_trait_gifted_engineer }
+			skills = {
+				specialization_air = 5
+			}
+		}
+	}
+
+
+	############################
+	# USA
+	############################
+
+	USA_theodore_von_karman = {
+		name = USA_theodore_von_karman
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/USA_theodore_von_karman.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_aircraft_specialist scientist_trait_brilliant_theorist }
+			skills = {
+				specialization_air = 7
+			}
+		}
+	}
+
+	USA_enrico_fermi = {
+		name = USA_enrico_fermi
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/USA_enrico_fermi.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_nuclear_specialist scientist_trait_brilliant_theorist }
+			skills = {
+				specialization_nuclear = 6
+			}
+		}
+	}
+
+	USA_ernest_lawrence = {
+		name = USA_ernest_lawrence
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/USA_ernest_lawrence.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_nuclear_specialist scientist_trait_gifted_engineer }
+			skills = {
+				specialization_nuclear = 6
+			}
+		}
+	}
+
+	USA_john_von_neumann = {
+		name = USA_john_von_neumann
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/USA_john_von_neumann.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_brilliant_theorist scientist_trait_fast_learner }
+			skills = {
+				specialization_land = 5
+			}
+		}
+	}
+
+	USA_luis_alvarez = {
+		name = USA_luis_alvarez
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/USA_luis_alvarez.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_electronics_specialist scientist_trait_fast_learner }
+			skills = {
+				specialization_air = 3
+			}
+		}
+	}
+
+
+	############################
+	# Japan
+	############################
+
+	JAP_hidetsugu_yagi = {
+		name = JAP_hidetsugu_yagi
+		portraits = {
+			army = {
+				large = "gfx/leaders/JAP/JAP_hidetsugu_yagi.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_electronics_specialist scientist_trait_brilliant_theorist }
+			skills = {
+				specialization_air = 6
+			}
+		}
+	}
+
+	JAP_shintaro_uda = {
+		name = JAP_shintaro_uda
+		portraits = {
+			army = {
+				large = "gfx/leaders/JAP/JAP_shintaro_uda.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_electronics_specialist }
+			skills = {
+				specialization_air = 5
+			}
+		}
+	}
+
+	JAP_bunsaku_arakatsu = {
+		name = JAP_bunsaku_arakatsu
+		portraits = {
+			army = {
+				large = "gfx/leaders/JAP/JAP_bunsaku_arakatsu.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_nuclear_specialist }
+			skills = {
+				specialization_nuclear = 4
+			}
+		}
+	}
+
+
+	############################
+	# Italy
+	############################
+
+	ITA_guglielmo_marconi = {
+		name = ITA_guglielmo_marconi
+		portraits = {
+			army = {
+				large = "gfx/leaders/ITA/ITA_guglielmo_marconi.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_electronics_specialist scientist_trait_brilliant_theorist }
+			skills = {
+				specialization_air = 7
+			}
+		}
+	}
+
+	ITA_ugo_tiberio = {
+		name = ITA_ugo_tiberio
+		portraits = {
+			army = {
+				large = "gfx/leaders/ITA/ITA_ugo_tiberio.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_electronics_specialist scientist_trait_fast_learner }
+			skills = {
+				specialization_naval = 4
+			}
+		}
+	}
+
+	ITA_nello_carrara = {
+		name = ITA_nello_carrara
+		portraits = {
+			army = {
+				large = "gfx/leaders/ITA/ITA_nello_carrara.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_electronics_specialist }
+			skills = {
+				specialization_air = 4
+			}
+		}
+	}
+
+	ITA_antonio_ferri = {
+		name = ITA_antonio_ferri
+		portraits = {
+			army = {
+				large = "gfx/leaders/ITA/ITA_antonio_ferri.dds"
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_aircraft_specialist scientist_trait_fast_learner }
+			skills = {
+				specialization_air = 3
+			}
+		}
+	}
+}

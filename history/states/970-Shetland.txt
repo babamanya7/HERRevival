@@ -1,0 +1,26 @@
+state = {
+	id = 970
+	name = "STATE_970"
+	manpower=31886
+	
+	state_category = wasteland
+	
+	resources = {
+		#
+	}
+
+	history={
+		owner = CAN
+		add_core_of = CAN
+		add_core_of = QUE
+		buildings = {
+			infrastructure = 1
+		}
+	}
+
+	provinces={
+		7364 12147 13078 13166 13184 13186 13506 13580 13581
+	}
+	
+	buildings_max_level_factor=1.000
+}

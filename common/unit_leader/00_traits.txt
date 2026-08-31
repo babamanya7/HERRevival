@@ -131,19 +131,11 @@ leader_traits = {
 		planning_skill = -1
 		logistics_skill = -1
 		non_shared_modifier = {
-			experience_gain_factor = -0.15
+			experience_gain_factor = -0.1
 		}
 		modifier = {
 			cas_damage_reduction = 0.2
-			modifier_army_sub_unit_anti_air_attack_factor = 0.3
-			modifier_army_sub_unit_anti_air_brigade_attack_factor = 0.3
-			modifier_army_sub_unit_mot_anti_air_brigade_attack_factor = 0.3
-			modifier_army_sub_unit_mechanized_anti_air_brigade_attack_factor = 0.3
-			modifier_army_sub_unit_light_sp_anti_air_brigade_attack_factor = 0.3
-			modifier_army_sub_unit_medium_sp_anti_air_brigade_attack_factor = 0.3
-			modifier_army_sub_unit_heavy_sp_anti_air_brigade_attack_factor = 0.3
-			modifier_army_sub_unit_super_heavy_sp_anti_air_brigade_attack_factor = 0.3
-			modifier_army_sub_unit_modern_sp_anti_air_brigade_attack_factor = 0.3
+			air_superiority_bonus_in_combat = 0.1
 		}
 		new_commander_weight = { factor = 0 }
 	}
@@ -2371,7 +2363,7 @@ leader_traits = {
 		cost = 500
 		modifier = {
 			navy_carrier_air_targetting_factor = 0.1 # Airplanes from carriers has better naval targetting
-			sortie_efficiency = 0.1
+			sortie_efficiency = 0.05
 		}
 		
 		ai_will_do = {
@@ -2756,7 +2748,7 @@ leader_traits = {
 	flight_deck_manager = { 
 		type = navy
 		modifier = {
-			 sortie_efficiency = 0.1
+			 sortie_efficiency = 0.05
 		}
 		
 		slot = navy_h_command
@@ -2778,7 +2770,7 @@ leader_traits = {
 	fighter_director = { 
 		type = navy
 		modifier = {
-			fighter_sortie_efficiency = 0.2
+			fighter_sortie_efficiency = 0.10
 		}
 				
 		ai_will_do = {

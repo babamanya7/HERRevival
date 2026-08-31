@@ -1,0 +1,140 @@
+# HER Naval Institute Rework
+# Survivability projects represent subdivision, damage-control layout and torpedo protection improvements.
+
+sp_naval_survivability_1 = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_surface_ship }
+
+	available = {
+		FROM = {
+			OR = {
+				has_tech = interwar_ship_hull_light
+				has_tech = interwar_ship_hull_cruiser
+				has_tech = interwar_ship_hull_heavy
+				has_tech = basic_ship_hull_carrier
+			}
+		}
+	}
+
+	breakthrough_cost = { specialization_naval = 1 }
+	resource_cost = {
+		resources = { steel = 80 chromium = 20 }
+	}
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.medium
+
+	project_output = {
+		country_effects = {
+			custom_override_tooltip = {
+				tooltip = sp_naval_survivability_1_output_tt
+				set_technology = {
+					her_naval_survivability_1 = 1
+					popup = no
+				}
+			}
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+	}
+}
+
+sp_naval_survivability_2 = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_surface_ship }
+
+	special_project_parent = {
+		sp_naval_survivability_1
+	}
+
+	available = {
+		FROM = {
+			has_tech = her_naval_survivability_1
+			OR = {
+				has_tech = improved_ship_hull_cruiser
+				has_tech = improved_ship_hull_heavy
+				has_tech = improved_ship_hull_carrier
+			}
+		}
+	}
+
+	breakthrough_cost = { specialization_naval = 1 }
+	resource_cost = {
+		resources = { steel = 120 chromium = 50 tungsten = 20 }
+	}
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.large
+
+	project_output = {
+		country_effects = {
+			custom_override_tooltip = {
+				tooltip = sp_naval_survivability_2_output_tt
+				set_technology = {
+					her_naval_survivability_2 = 1
+					popup = no
+				}
+			}
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_scientist_xp_3
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+		sp_naval_generic_reward_test_failure_2
+	}
+}
+
+sp_naval_enhanced_torpedo_belt = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_surface_ship }
+
+	special_project_parent = {
+		sp_naval_survivability_1
+	}
+
+	available = {
+		FROM = {
+			has_tech = improved_torpedo_defense
+		}
+	}
+
+	breakthrough_cost = { specialization_naval = 1 }
+	resource_cost = {
+		resources = { steel = 100 chromium = 40 }
+	}
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.medium
+
+	project_output = {
+		enable_equipment_modules = {
+			torpedo_belt_enhanced
+		}
+		country_effects = {
+			custom_effect_tooltip = sp_naval_enhanced_torpedo_belt_output_tt
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+		sp_naval_generic_reward_test_failure_2
+	}
+}

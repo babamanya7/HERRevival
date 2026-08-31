@@ -16,4 +16,23 @@ on_actions = {
 			makeup_starting_techs = yes
         }
     }
+
+    # JAP_heavy_escorts used to grant research bonuses to improved/advanced fire control.
+    # Those technologies are now institute-only, so convert the lost value into a naval breakthrough.
+    on_focus_completed = {
+        effect = {
+            if = {
+                limit = {
+                    tag = JAP
+                    has_completed_focus = JAP_heavy_escorts
+                    NOT = { has_country_flag = HER_JAP_heavy_escorts_naval_breakthrough }
+                }
+                add_breakthrough_progress = {
+                    specialization = specialization_naval
+                    value = 1
+                }
+                set_country_flag = HER_JAP_heavy_escorts_naval_breakthrough
+            }
+        }
+    }
 }

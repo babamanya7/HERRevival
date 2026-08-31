@@ -1,0 +1,156 @@
+# HER Naval Institute Rework
+# Specialized torpedo development. Electric and oxygen torpedoes are alternative paths.
+
+sp_naval_electric_torpedo = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_submarine sp_tag_surface_ship }
+
+	available = {
+		FROM = {
+			has_tech = magnetic_detonator
+			NOT = { is_special_project_completed = sp:sp_naval_oxygen_torpedo }
+		}
+	}
+
+	breakthrough_cost = {
+		specialization_naval = 1
+	}
+
+	resource_cost = {
+		resources = {
+			steel = 40
+			aluminium = 40
+			tungsten = 20
+		}
+	}
+
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.medium
+
+	project_output = {
+		country_effects = {
+			custom_override_tooltip = {
+				tooltip = sp_naval_electric_torpedo_output_tt
+				set_technology = {
+					her_naval_electric_torpedo = 1
+					popup = no
+				}
+			}
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+		sp_naval_generic_reward_test_failure_2
+	}
+}
+
+sp_naval_oxygen_torpedo = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_submarine sp_tag_surface_ship }
+
+	available = {
+		FROM = {
+			has_tech = magnetic_detonator
+			NOT = { is_special_project_completed = sp:sp_naval_electric_torpedo }
+		}
+	}
+
+	breakthrough_cost = {
+		specialization_naval = 1
+	}
+
+	resource_cost = {
+		resources = {
+			steel = 60
+			chromium = 40
+			tungsten = 20
+		}
+	}
+
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.medium
+
+	project_output = {
+		country_effects = {
+			custom_override_tooltip = {
+				tooltip = sp_naval_oxygen_torpedo_output_tt
+				set_technology = {
+					her_naval_oxygen_torpedo = 1
+					popup = no
+				}
+			}
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+		sp_naval_generic_reward_test_failure_2
+	}
+}
+
+sp_naval_homing_torpedo = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_submarine sp_tag_surface_ship }
+
+	available = {
+		FROM = {
+			OR = {
+				is_special_project_completed = sp:sp_naval_electric_torpedo
+				is_special_project_completed = sp:sp_naval_oxygen_torpedo
+			}
+		}
+	}
+
+	breakthrough_cost = {
+		specialization_naval = 1
+	}
+
+	resource_cost = {
+		resources = {
+			steel = 60
+			aluminium = 40
+			tungsten = 60
+		}
+	}
+
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.large
+
+	project_output = {
+		country_effects = {
+			custom_override_tooltip = {
+				tooltip = sp_naval_homing_torpedo_output_tt
+				set_technology = {
+					her_naval_homing_torpedo = 1
+					popup = no
+				}
+			}
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_scientist_xp_3
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_navy_xp_3
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+		sp_naval_generic_reward_test_failure_2
+	}
+}

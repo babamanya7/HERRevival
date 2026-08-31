@@ -1,0 +1,29 @@
+# HER Naval Institute Rework
+# Legacy IDs retained for compatibility only. Their modules are now unlocked directly by naval special projects.
+# Loaded after MTG_naval.txt so these definitions remove the old research-tree entries and module unlocks.
+
+technologies = {
+	basic_submarine_snorkel = {
+		research_cost = 1
+		start_year = 1942
+		allow = { always = no }
+	}
+
+	improved_submarine_snorkel = {
+		research_cost = 1
+		start_year = 1945
+		allow = { always = no }
+	}
+
+	anechoic_tile = {
+		research_cost = 1
+		start_year = 1944
+		allow = { always = no }
+	}
+
+	advanced_torpedo_defense = {
+		research_cost = 1
+		start_year = 1942
+		allow = { always = no }
+	}
+}

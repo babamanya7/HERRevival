@@ -1,0 +1,100 @@
+# HER Naval Institute Rework
+# Advanced dual-purpose naval artillery. Basic DP mounts remain a normal technology.
+
+sp_naval_dual_purpose_mounts_1 = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_surface_ship }
+
+	available = {
+		FROM = {
+			has_tech = basic_dp_light_battery
+		}
+	}
+
+	breakthrough_cost = {
+		specialization_naval = 2
+	}
+
+	resource_cost = {
+		resources = {
+			steel = 60
+			tungsten = 40
+		}
+	}
+
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.medium
+
+	project_output = {
+		enable_equipment_modules = {
+			dp_light_battery_3
+			dp_light_battery_3_single
+			dp_ship_secondaries_3
+			dp_ship_secondaries_3_bb
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+		sp_naval_generic_reward_test_failure_2
+	}
+}
+
+sp_naval_dual_purpose_mounts_2 = {
+	specialization = specialization_naval
+	project_tags = { sp_tag_surface_ship }
+
+	special_project_parent = {
+		sp_naval_dual_purpose_mounts_1
+	}
+
+	available = {
+		FROM = {
+			is_special_project_completed = sp:sp_naval_fire_control_1
+		}
+	}
+
+	breakthrough_cost = {
+		specialization_naval = 2
+	}
+
+	resource_cost = {
+		resources = {
+			steel = 100
+			tungsten = 80
+			chromium = 20
+		}
+	}
+
+	prototype_time = sp_time.prototype.medium
+	complexity = sp_complexity.large
+
+	project_output = {
+		enable_equipment_modules = {
+			dp_light_battery_4
+			dp_light_battery_4_single
+			dp_ship_secondaries_4
+			dp_ship_secondaries_4_bb
+			dp_ship_medium_1
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_naval_generic_reward_scientist_xp_1
+		sp_naval_generic_reward_scientist_xp_2
+		sp_naval_generic_reward_scientist_xp_3
+		sp_naval_generic_reward_navy_xp_1
+		sp_naval_generic_reward_navy_xp_2
+		sp_naval_generic_reward_navy_xp_3
+		sp_naval_generic_reward_major_progress_1
+		sp_naval_generic_reward_major_progress_2
+		sp_naval_generic_reward_test_failure_1
+		sp_naval_generic_reward_test_failure_2
+	}
+}

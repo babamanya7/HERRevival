@@ -29,10 +29,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add common/technologies/naval_doctrine.txt common/unit_leader/00_traits.txt common/country_leader/00_traits.txt common/ideas/japan.txt
+          git add common/technologies/naval_doctrine.txt common/technologies/MTG_naval.txt common/unit_leader/00_traits.txt common/country_leader/00_traits.txt common/ideas/japan.txt common/ideas/italy.txt common/modifiers/00_static_modifiers.txt
           if git diff --cached --quiet; then
             echo "No changes to commit"
             exit 0
           fi
           git commit -m "Rebalance carrier sortie efficiency bonuses"
           git push origin HEAD:temp_dev
+
+# audit rerun 2

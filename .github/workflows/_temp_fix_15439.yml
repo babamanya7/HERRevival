@@ -9,123 +9,31 @@ permissions:
   contents: write
 
 jobs:
-  diagnose-and-fix:
+  stage-fix:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: main
-      - name: Add missing naval base position for province 15439
+      - name: Add missing naval base position and push fix branch
         shell: python
         run: |
-          import struct, subprocess
+          import subprocess
           from pathlib import Path
 
-          target = 15439
-          defs_by_rgb = {}
-          defs_by_id = {}
-          with open('map/definition.csv', encoding='utf-8-sig') as f:
-              for line in f:
-                  p = line.rstrip('\r\n').split(';')
-                  if len(p) >= 6 and p[0].isdigit():
-                      pid = int(p[0])
-                      rgb = tuple(map(int, p[1:4]))
-                      defs_by_rgb[rgb] = (pid, p[4], p[5])
-                      defs_by_id[pid] = (rgb, p[4], p[5])
-
-          if target not in defs_by_id:
-              raise SystemExit('target province missing from definition.csv')
-          target_rgb, target_type, target_coastal = defs_by_id[target]
-          if target_type != 'land' or target_coastal != 'true':
-              raise SystemExit(f'unexpected target definition: {defs_by_id[target]}')
-
-          bmp = Path('map/provinces.bmp').read_bytes()
-          if bmp[:2] != b'BM':
-              raise SystemExit('provinces.bmp is not BMP')
-          off = struct.unpack_from('<I', bmp, 10)[0]
-          width = struct.unpack_from('<i', bmp, 18)[0]
-          height_raw = struct.unpack_from('<i', bmp, 22)[0]
-          bpp = struct.unpack_from('<H', bmp, 28)[0]
-          comp = struct.unpack_from('<I', bmp, 30)[0]
-          if bpp != 24 or comp != 0:
-              raise SystemExit(f'unsupported BMP: bpp={bpp}, compression={comp}')
-          height = abs(height_raw)
-          bottom_up = height_raw > 0
-          stride = ((width * 3 + 3) // 4) * 4
-
-          def rgb_at_top(x, y_top):
-              if not (0 <= x < width and 0 <= y_top < height):
-                  return None
-              y_file = height - 1 - y_top if bottom_up else y_top
-              i = off + y_file * stride + x * 3
-              b, g, r = bmp[i:i+3]
-              return (r, g, b)
-
-          coast = []
-          for y in range(height):
-              for x in range(width):
-                  if rgb_at_top(x, y) != target_rgb:
-                      continue
-                  for dx, dy in ((1,0),(-1,0),(0,1),(0,-1)):
-                      nx, ny = x+dx, y+dy
-                      n = defs_by_rgb.get(rgb_at_top(nx, ny))
-                      if n and n[1] == 'sea':
-                          coast.append((x, y, n[0], dx, dy))
-                          break
-          if not coast:
-              raise SystemExit('target has no sea-adjacent pixel')
-
-          buildings_path = Path('map/buildings.txt')
-          text = buildings_path.read_text(encoding='utf-8-sig')
-          lines = text.splitlines()
-          for line in lines:
-              p = line.split(';')
-              if len(p) >= 7 and p[0] == str(target) and p[1] == 'naval_base':
-                  print('naval_base already exists:', line)
-                  raise SystemExit(0)
-
-          # Infer whether buildings.txt Z uses top-origin or bottom-origin by checking
-          # existing naval-base positions against their owning province pixels.
-          top_hits = 0
-          bottom_hits = 0
-          checked = 0
-          for line in lines:
-              p = line.split(';')
-              if len(p) < 7 or p[1] != 'naval_base' or not p[0].isdigit():
-                  continue
-              try:
-                  pid = int(p[0]); x = round(float(p[2])); z = round(float(p[4]))
-              except ValueError:
-                  continue
-              if pid not in defs_by_id or not (0 <= x < width and 0 <= z < height):
-                  continue
-              if defs_by_rgb.get(rgb_at_top(x, z), (None,))[0] == pid:
-                  top_hits += 1
-              y_top_from_bottom = height - 1 - z
-              if defs_by_rgb.get(rgb_at_top(x, y_top_from_bottom), (None,))[0] == pid:
-                  bottom_hits += 1
-              checked += 1
-              if checked >= 1000:
-                  break
-          use_bottom_origin = bottom_hits >= top_hits
-          print(f'coordinate inference: checked={checked}, top_hits={top_hits}, bottom_hits={bottom_hits}, bottom_origin={use_bottom_origin}')
-
-          # Pick a central coastline pixel rather than an extreme tip.
-          cx = sum(c[0] for c in coast) / len(coast)
-          cy = sum(c[1] for c in coast) / len(coast)
-          x, y_top, sea_id, dx, dy = min(coast, key=lambda c: (c[0]-cx)**2 + (c[1]-cy)**2)
-          z = height - 1 - y_top if use_bottom_origin else y_top
-
-          newline = '\r\n' if '\r\n' in text else '\n'
-          if text and not text.endswith(('\n','\r')):
-              text += newline
-          new_line = f'{target};naval_base;{x:.2f};9.50;{z:.2f};0.00;{sea_id}'
-          text += new_line + newline
-          buildings_path.write_text(text, encoding='utf-8')
-          print('added:', new_line)
+          path = Path('map/buildings.txt')
+          text = path.read_text(encoding='utf-8-sig')
+          line = '15439;naval_base;3244.00;9.50;1748.00;0.00;1434'
+          if not any(x.strip() == line for x in text.splitlines()):
+              newline = '\r\n' if '\r\n' in text else '\n'
+              if text and not text.endswith(('\n', '\r')):
+                  text += newline
+              text += line + newline
+              path.write_text(text, encoding='utf-8')
 
           subprocess.run(['git', 'config', 'user.name', 'github-actions[bot]'], check=True)
           subprocess.run(['git', 'config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com'], check=True)
+          subprocess.run(['git', 'switch', '-c', 'fix/province-15439-port'], check=True)
           subprocess.run(['git', 'add', 'map/buildings.txt'], check=True)
           subprocess.run(['git', 'commit', '-m', 'Fix missing port position for province 15439'], check=True)
-          subprocess.run(['git', 'push', 'origin', 'main'], check=True)
+          subprocess.run(['git', 'push', '--force', 'origin', 'fix/province-15439-port'], check=True)

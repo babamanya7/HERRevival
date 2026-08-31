@@ -7075,7 +7075,7 @@ leader_traits = {
 
 	navy_carrier_1 = {
 		sprite = 3
-		sortie_efficiency = 0.08
+		sortie_efficiency = 0.03
 		
 		command_cap_increase = @tier1_cp_cap_increase
 		command_power = @tier1_cp_cost
@@ -7087,7 +7087,7 @@ leader_traits = {
 
 	navy_carrier_2 = {
 		sprite = 3
-		sortie_efficiency = 0.16
+		sortie_efficiency = 0.05
 		
 		command_cap_increase = @tier2_cp_cap_increase
 		command_power = @tier2_cp_cost
@@ -7099,7 +7099,7 @@ leader_traits = {
 
 	navy_carrier_3 = {
 		sprite = 3
-		sortie_efficiency = 0.24
+		sortie_efficiency = 0.07
 		
 		command_cap_increase = @tier3_cp_cap_increase
 		command_power = @tier3_cp_cost

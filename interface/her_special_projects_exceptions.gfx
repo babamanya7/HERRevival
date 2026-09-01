@@ -2,17 +2,17 @@ spriteTypes = {
 	### Land projects whose IDs do not use the sp_land_ prefix
 	spriteType = {
 		name = "GFX_sp_fluid_autowelding"
-		textureFile = "gfx/interface/special_project/project_icons/sp_fluid_autowelding.dds"
+		textureFile = "gfx/interface/special_project/project_icons/sp_fluid_autowelding.png"
 	}
 
 	spriteType = {
 		name = "GFX_sp_antitank_rockets"
-		textureFile = "gfx/interface/special_project/project_icons/sp_antitank_rockets.dds"
+		textureFile = "gfx/interface/special_project/project_icons/sp_antitank_rockets.png"
 	}
 
 	### Compatibility with the explicit legacy icon key in land_projects.txt
 	spriteType = {
 		name = "GFX_sp_anti_tank_rockets"
-		textureFile = "gfx/interface/special_project/project_icons/sp_antitank_rockets.dds"
+		textureFile = "gfx/interface/special_project/project_icons/sp_antitank_rockets.png"
 	}
 }

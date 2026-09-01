@@ -2,6 +2,7 @@
 # Specialized torpedo development. Electric and oxygen torpedoes are alternative paths.
 
 sp_naval_electric_torpedo = {
+	icon = GFX_sp_naval_electric_torpedo
 	specialization = specialization_naval
 	project_tags = { sp_tag_submarine sp_tag_surface_ship }
 
@@ -52,6 +53,7 @@ sp_naval_electric_torpedo = {
 }
 
 sp_naval_oxygen_torpedo = {
+	icon = GFX_sp_naval_oxygen_torpedo
 	specialization = specialization_naval
 	project_tags = { sp_tag_submarine sp_tag_surface_ship }
 
@@ -102,6 +104,7 @@ sp_naval_oxygen_torpedo = {
 }
 
 sp_naval_homing_torpedo = {
+	icon = GFX_sp_naval_homing_torpedo
 	specialization = specialization_naval
 	project_tags = { sp_tag_submarine sp_tag_surface_ship }
 

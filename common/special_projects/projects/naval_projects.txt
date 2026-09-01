@@ -236,6 +236,7 @@ sp_nuclear_torpedo = {
 }
 
 sp_naval_proximity_fuze = {
+	icon = GFX_sp_naval_proximity_fuze
     specialization = specialization_naval
 	project_tags = { sp_tag_surface_ship }
 	ai_will_do = {
@@ -368,6 +369,7 @@ sp_super_heavy_guns = {
 }
 
 sp_naval_underway_replenishment = {
+	icon = GFX_sp_naval_underway_replenishment
 	specialization = specialization_naval
 
 	project_tags = sp_tag_surface_ship
@@ -499,6 +501,7 @@ sp_naval_underway_replenishment = {
 
 # Rocket Launching Submarine
 sp_naval_rocket_launching_submarine = {
+	icon = GFX_sp_naval_rocket_launching_submarine
 	specialization = specialization_naval 
 
 	project_tags = {
@@ -560,6 +563,7 @@ sp_naval_rocket_launching_submarine = {
 
 # Nuclear Missile Submarine
 sp_naval_nuclear_missile_submarine = {
+	icon = GFX_sp_naval_nuclear_missile_submarine
 	specialization = specialization_naval 
 	
 	project_tags = {

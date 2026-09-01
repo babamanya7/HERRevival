@@ -39,6 +39,84 @@ ASG_category = {
 		}
 	}
 
+	HER_create_carrier_test_normal_aa_design = {
+		icon = generic_industry
+
+		visible = {
+			is_debug = yes
+			NOT = { has_country_flag = HER_carrier_test_normal_aa_design_created }
+		}
+
+		fire_only_once = yes
+		cost = 0
+
+		complete_effect = {
+			create_equipment_variant = {
+				name = "HER Test CV Normal AA"
+				type = vnr_ship_hull_carrier_1
+				parent_version = 0
+				allow_without_tech = yes
+
+				modules = {
+					fixed_ship_deck_slot_1 = ship_deck_space
+					fixed_ship_deck_slot_2 = ship_deck_space
+					fixed_ship_anti_air_slot = ship_anti_air_2
+					fixed_ship_radar_slot = empty
+					fixed_ship_engine_slot = carrier_ship_engine_2
+					fixed_ship_secondaries_slot = empty
+					fixed_ship_armor_slot = empty
+					fixed_ship_carrier_miscellaneous_slot_1 = empty
+					fixed_ship_carrier_miscellaneous_slot_2 = empty
+					fixed_ship_flight_deck_slot = carrier_wooden_deck
+					fixed_ship_role_slot = ship_hull_carrier_role_cv
+					front_1_custom_slot = ship_deck_space
+					mid_1_custom_slot = empty
+				}
+			}
+
+			set_country_flag = HER_carrier_test_normal_aa_design_created
+		}
+	}
+
+	HER_create_carrier_test_heavy_aa_design = {
+		icon = generic_industry
+
+		visible = {
+			is_debug = yes
+			NOT = { has_country_flag = HER_carrier_test_heavy_aa_design_created }
+		}
+
+		fire_only_once = yes
+		cost = 0
+
+		complete_effect = {
+			create_equipment_variant = {
+				name = "HER Test CV Heavy AA"
+				type = vnr_ship_hull_carrier_1
+				parent_version = 0
+				allow_without_tech = yes
+
+				modules = {
+					fixed_ship_deck_slot_1 = ship_deck_space
+					fixed_ship_deck_slot_2 = ship_deck_space
+					fixed_ship_anti_air_slot = ship_anti_air_4
+					fixed_ship_radar_slot = empty
+					fixed_ship_engine_slot = carrier_ship_engine_2
+					fixed_ship_secondaries_slot = empty
+					fixed_ship_armor_slot = empty
+					fixed_ship_carrier_miscellaneous_slot_1 = empty
+					fixed_ship_carrier_miscellaneous_slot_2 = empty
+					fixed_ship_flight_deck_slot = carrier_wooden_deck
+					fixed_ship_role_slot = ship_hull_carrier_role_cv
+					front_1_custom_slot = ship_deck_space
+					mid_1_custom_slot = ship_anti_air_4
+				}
+			}
+
+			set_country_flag = HER_carrier_test_heavy_aa_design_created
+		}
+	}
+
 	HER_spawn_carrier_test_1cv = {
 		icon = generic_industry
 
@@ -53,6 +131,50 @@ ASG_category = {
 
 		complete_effect = {
 			create_ship = { type = vnr_ship_hull_carrier_1 equipment_variant = "HER Test CV" }
+			create_ship = { type = vnr_ship_hull_heavy_3 equipment_variant = "HER Test BB" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+		}
+	}
+
+	HER_spawn_carrier_test_1cv_normal_aa = {
+		icon = generic_industry
+
+		visible = {
+			is_debug = yes
+			has_country_flag = HER_carrier_test_normal_aa_design_created
+			has_country_flag = HER_naval_test_designs_created
+		}
+
+		fire_only_once = no
+		cost = 0
+
+		complete_effect = {
+			create_ship = { type = vnr_ship_hull_carrier_1 equipment_variant = "HER Test CV Normal AA" }
+			create_ship = { type = vnr_ship_hull_heavy_3 equipment_variant = "HER Test BB" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
+		}
+	}
+
+	HER_spawn_carrier_test_1cv_heavy_aa = {
+		icon = generic_industry
+
+		visible = {
+			is_debug = yes
+			has_country_flag = HER_carrier_test_heavy_aa_design_created
+			has_country_flag = HER_naval_test_designs_created
+		}
+
+		fire_only_once = no
+		cost = 0
+
+		complete_effect = {
+			create_ship = { type = vnr_ship_hull_carrier_1 equipment_variant = "HER Test CV Heavy AA" }
 			create_ship = { type = vnr_ship_hull_heavy_3 equipment_variant = "HER Test BB" }
 			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }
 			create_ship = { type = vnr_ship_hull_light_3 equipment_variant = "HER Test Screen DD" }

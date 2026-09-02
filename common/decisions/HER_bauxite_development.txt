@@ -17,22 +17,22 @@ HER_historical_bauxite_development = {
 		remove_effect = { set_country_flag = FRA_herault_bauxite_expanded 22 = { add_resource = { type = bauxite amount = 30 } } }
 		ai_will_do = { factor = 5 }
 	}
-	BRA_expand_moengo_bauxite_mines = {
-		icon = aluminium allowed = { original_tag = BRA }
-		visible = { NOT = { has_country_flag = BRA_moengo_bauxite_expanded } }
+	HOL_expand_moengo_bauxite_mines = {
+		icon = aluminium allowed = { original_tag = HOL }
+		visible = { 309 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = HOL_moengo_bauxite_expanded } }
 		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 4 }
-		highlight_states = { highlight_state_targets = { state = 500 } }
+		highlight_states = { highlight_state_targets = { state = 309 } }
 		cost = 40 days_remove = 180 modifier = { civilian_factory_use = 5 }
-		remove_effect = { set_country_flag = BRA_moengo_bauxite_expanded 500 = { add_resource = { type = bauxite amount = 50 } } }
+		remove_effect = { set_country_flag = HOL_moengo_bauxite_expanded 309 = { add_resource = { type = bauxite amount = 50 } } }
 		ai_will_do = { factor = 7 }
 	}
-	BRA_expand_guiana_bauxite_fields = {
-		icon = aluminium allowed = { original_tag = BRA }
-		visible = { has_country_flag = BRA_moengo_bauxite_expanded NOT = { has_country_flag = BRA_guiana_bauxite_expanded } }
+	ENG_expand_demerara_berbice_bauxite_fields = {
+		icon = aluminium allowed = { original_tag = ENG }
+		visible = { 687 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = ENG_guiana_bauxite_expanded } }
 		available = { date > 1939.1.1 has_tech = excavation3 num_of_civilian_factories_available_for_projects > 5 }
-		highlight_states = { highlight_state_targets = { state = 500 } }
+		highlight_states = { highlight_state_targets = { state = 687 } }
 		cost = 45 days_remove = 210 modifier = { civilian_factory_use = 6 }
-		remove_effect = { set_country_flag = BRA_guiana_bauxite_expanded 500 = { add_resource = { type = bauxite amount = 45 } } }
+		remove_effect = { set_country_flag = ENG_guiana_bauxite_expanded 687 = { add_resource = { type = bauxite amount = 45 } } }
 		ai_will_do = { factor = 8 }
 	}
 	USA_expand_arkansas_bauxite_mines = {

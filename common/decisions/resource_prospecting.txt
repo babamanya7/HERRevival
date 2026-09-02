@@ -1,10 +1,10 @@
 prospect_for_resources = {
 	develop_shandong_aluminium_deposits = { #597
-		
+
 		icon = aluminium
 
 		allowed = {
-			
+
 		}
 
 		highlight_states = { highlight_state_targets = { state = 597 } }
@@ -52,8 +52,8 @@ prospect_for_resources = {
 		ai_will_do = {
 			factor = 1
 		}
-		remove_effect = { 
-			597 = { set_state_flag = shandong_aluminium_developed } 
+		remove_effect = {
+			597 = { set_state_flag = shandong_aluminium_developed }
 			597 = {
 				add_resource = {
 					type = bauxite
@@ -62,74 +62,12 @@ prospect_for_resources = {
 			}
 		}
 	}
+develop_yunnan_aluminium_deposits = { #325
 
-	develop_suiyuan_steel_deposits = { #621
-		
-		icon = steel
-
-		allowed = {
-			
-		}
-		highlight_states = { highlight_state_targets = { state = 621 } }
-		available = {
-			has_tech = excavation2
-			num_of_civilian_factories_available_for_projects > 2
-			#owns_state = 621
-			621 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-
-		visible = {
-			#owns_state = 621
-			621 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			621 = {
-				NOT = {
-					has_state_flag = suiyuan_steel_developed
-				}
-			}
-		}
-
-		fire_only_once = yes
-
-		cost = 25
-		days_remove = 60
-
-		modifier = {
-			civilian_factory_use = 3
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-		remove_effect = { 
-			621 = { set_state_flag = suiyuan_steel_developed } 
-			621 = {
-				add_resource = {
-					type = iron
-					amount = 8
-				}
-			}
-		}	
-	}
-	develop_yunnan_aluminium_deposits = { #325
-		
 		icon = aluminium
 
 		allowed = {
-			
+
 		}
 
 		available = {
@@ -176,18 +114,18 @@ prospect_for_resources = {
 		ai_will_do = {
 			factor = 1
 		}
-		remove_effect = { 
-			325 = { set_state_flag = yunnan_aluminium_developed } 
+		remove_effect = {
+			325 = { set_state_flag = yunnan_aluminium_developed }
 			325 = {
 				add_resource = {
 					type = bauxite
 					amount = 12
 				}
 			}
-		}	
+		}
 	}
 	develop_kirin_aluminium_deposits = { #328
-		
+
 		icon = aluminium
 
 		allowed = {
@@ -238,22 +176,22 @@ prospect_for_resources = {
 		ai_will_do = {
 			factor = 1
 		}
-		remove_effect = { 
-			328 = { set_state_flag = kirin_aluminium_developed } 
+		remove_effect = {
+			328 = { set_state_flag = kirin_aluminium_developed }
 			328 = {
 				add_resource = {
 					type = bauxite
 					amount = 12
 				}
 			}
-		}	
+		}
 	}
 	develop_sichuan_aluminium_deposits = { #605
-		
+
 		icon = aluminium
 
 		allowed = {
-			
+
 		}
 
 		available = {
@@ -300,84 +238,22 @@ prospect_for_resources = {
 		ai_will_do = {
 			factor = 1
 		}
-		remove_effect = { 
-			605 = { set_state_flag = sichuan_aluminium_developed } 
+		remove_effect = {
+			605 = { set_state_flag = sichuan_aluminium_developed }
 			605 = {
 				add_resource = {
 					type = bauxite
 					amount = 12
 				}
 			}
-		}	
+		}
 	}
-	develop_hubei_iron_mines = { #620
-		
-		icon = steel
+develop_luzon_chromium_deposits = { #623
 
-		allowed = {
-			
-		}
-
-		available = {
-			has_tech = excavation1
-			num_of_civilian_factories_available_for_projects > 2
-			#owns_state = 620
-			620 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-		highlight_states = { highlight_state_targets = { state = 620 } }
-
-		visible = {
-			#owns_state = 620
-			620 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			620 = {
-				NOT = {
-					has_state_flag = hubei_iron_mines_developed
-				}
-			}
-		}
-
-		fire_only_once = yes
-
-		cost = 25
-		days_remove = 60
-
-		modifier = {
-			civilian_factory_use = 3
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-		remove_effect = { 
-			620 = { set_state_flag = hubei_iron_mines_developed } 
-			620 = {
-				add_resource = {
-					type = iron
-					amount = 35
-				}
-			}
-		}	
-	}
-	develop_luzon_chromium_deposits = { #623
-		
 		icon = chromium
 
 		allowed = {
-			
+
 		}
 
 		available = {
@@ -424,8 +300,8 @@ prospect_for_resources = {
 		ai_will_do = {
 			factor = 5
 		}
-		remove_effect = { 
-			623 = { set_state_flag = luzon_chromium_developed } 
+		remove_effect = {
+			623 = { set_state_flag = luzon_chromium_developed }
 			623 = {
 				add_resource = {
 					type = chromium
@@ -434,142 +310,12 @@ prospect_for_resources = {
 			}
 		}
 	}
+develop_nauru_tungsten_deposits = { #725
 
-	develop_mindanao_steel_deposits = { #627
-		
-		icon = steel
-
-		allowed = {
-			
-		}
-
-		highlight_states = { highlight_state_targets = { state = 627 } }
-
-		available = {
-			has_tech = excavation4
-			num_of_civilian_factories_available_for_projects > 2
-			#owns_state = 627
-			627 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-
-		visible = {
-			#owns_state = 627
-			627 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			627 = {
-				NOT = {
-					has_state_flag = mindanao_steel_developed
-				}
-			}
-		}
-
-		fire_only_once = yes
-
-		cost = 25
-		days_remove = 60
-
-		modifier = {
-			civilian_factory_use = 3
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-		remove_effect = { 
-			627 = { set_state_flag = mindanao_steel_developed } 
-			627 = {
-				add_resource = {
-					type = iron
-					amount = 8
-				}
-			}
-		}
-	}
-
-	develop_samar_steel_deposits = { #625
-		
-		icon = steel
-
-		allowed = {
-			
-		}
-
-		available = {
-			has_tech = excavation3
-			num_of_civilian_factories_available_for_projects > 2
-			#owns_state = 625
-			625 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-
-		highlight_states = { highlight_state_targets = { state = 625 } }
-
-		visible = {
-			#owns_state = 625
-			625 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			625 = {
-				NOT = {
-					has_state_flag = samar_steel_developed
-				}
-			}
-		}
-
-		fire_only_once = yes
-
-		cost = 25
-		days_remove = 60
-
-		modifier = {
-			civilian_factory_use = 3
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		remove_effect = { 
-			625 = { set_state_flag = samar_steel_developed } 
-			625 = {
-				add_resource = {
-					type = iron
-					amount = 6
-				}
-			}
-		}	
-	}
-
-	develop_nauru_tungsten_deposits = { #725
-		
 		icon = tungsten
 
 		allowed = {
-			
+
 		}
 
 		available = {
@@ -634,11 +380,11 @@ prospect_for_resources = {
 		}
 	}
 	develop_tonkin_aluminium_deposits = { #671
-		
+
 		icon = aluminium
 
 		allowed = {
-			
+
 		}
 
 		available = {
@@ -698,14 +444,14 @@ prospect_for_resources = {
 		}
 	}
 	develop_singapore_aluminium_deposits = { #336
-		
+
 		icon = aluminium
 
 		allowed = {
-			
+
 		}
 
-		available = {	
+		available = {
 			has_tech = excavation2
 			num_of_civilian_factories_available_for_projects > 2
 			#owns_state = 336
@@ -762,7 +508,7 @@ prospect_for_resources = {
 		}
 	}
 	develop_tasmania_aluminium_deposits = { #518
-		
+
 		icon = aluminium
 
 		allowed = {
@@ -828,7 +574,7 @@ prospect_for_resources = {
 		}
 	}
 	develop_west_africa_aluminium_deposits = { #556
-		
+
 		icon = aluminium
 
 		allowed = {
@@ -899,7 +645,7 @@ prospect_for_resources = {
 		}
 	}
 	develop_west_africa_aluminium_deposits_2 = { #556
-		
+
 		icon = aluminium
 
 		allowed = {
@@ -974,7 +720,7 @@ prospect_for_resources = {
 		}
 	}
 	develop_madagascar_rubber_plantations = { #543
-		
+
 		icon = rubber
 
 		allowed = {
@@ -1044,7 +790,7 @@ prospect_for_resources = {
 		}
 	}
 	develop_madagascar_rubber_plantations_2 = { #543
-		
+
 		icon = rubber
 
 		allowed = {
@@ -1112,7 +858,7 @@ prospect_for_resources = {
 		}
 	}
 	develop_nigeria_rubber_plantations = { #558
-		
+
 		icon = rubber
 
 		allowed = {
@@ -1182,367 +928,8 @@ prospect_for_resources = {
 			}
 		}
 	}
-	develop_hannover_iron_mines = { #59
-		
-		icon = steel
+develop_arkansas_aluminium_deposits = { #372
 
-		allowed = {
-			
-		}
-
-		available = {
-			has_tech = excavation2
-			#owns_state = 59
-			59 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			num_of_civilian_factories_available_for_projects > 11
-		}
-
-		highlight_states = { highlight_state_targets = { state = 59 } }
-
-		visible = {
-			#owns_state = 59 
-			has_tech = excavation1
-			59 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			59 = {
-				NOT = {
-					has_state_flag = { 
-						flag = hannover_iron_mines_developed 
-						value = 5
-					}
-				}
-			}
-		}
-
-		cost = 25
-		days_remove = hannover_iron_mines_duration
-		modifier = {
-			civilian_factory_use = 10
-		}
-
-		ai_will_do = {
-			factor = 5
-		}
-
-		remove_effect = {
-			add_to_variable = { var = hannover_iron_mines_duration value = 30 }
-			59 = {
-				if = {
-					limit = {
-						NOT = {
-							has_state_flag = hannover_iron_mines_developed
-						}
-					}
-					set_state_flag = {
-						flag = hannover_iron_mines_developed
-						value = 1
-					}
-				}
-				else = {
-					modify_state_flag = {
-						flag = hannover_iron_mines_developed
-						value = 1
-					}
-				}
-			}
-			59 = {
-				add_resource = {
-					type = iron
-					amount = 18
-				}
-			}
-		}
-
-		complete_effect = {
-			if = {
-				limit = {
-					check_variable = { var = hannover_iron_mines_duration value = 30 compare = less_than }
-				}
-				set_variable = { var = hannover_iron_mines_duration value = 30 }
-			}
-		}
-	}
-	develop_styria_iron_mines = { #852
-		
-		icon = steel
-
-		allowed = {
-			
-		}
-
-		available = {
-			has_tech = excavation3
-			num_of_civilian_factories_available_for_projects > 9
-			#owns_state = 852
-			852 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-		highlight_states = { highlight_state_targets = { state = 852 } }
-
-		visible = {
-			#owns_state = 852
-			852 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			has_tech = excavation2
-			852 = {
-				NOT = {
-					has_state_flag = styria_iron_mines_developed
-				}
-			}
-		}
-
-		fire_only_once = yes
-
-		cost = 25
-		days_remove = 60
-
-		modifier = {
-			civilian_factory_use = 10
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-		remove_effect = { 
-			852 = { set_state_flag = styria_iron_mines_developed } 
-			852 = {
-				add_resource = {
-					type = iron
-					amount = 35
-				}
-			}
-		}
-	}
-	develop_hessen_iron_mines = { #55
-		
-		icon = steel
-
-		allowed = {
-			
-		}
-
-		available = {
-			has_tech = excavation5
-			num_of_civilian_factories_available_for_projects > 14
-			#owns_state = 55
-			55 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-		highlight_states = { highlight_state_targets = { state = 55 } }
-
-		visible = {
-			#owns_state = 55
-			55 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			has_tech = excavation4
-			55 = {
-				NOT = {
-					has_state_flag = hessen_iron_mines_developed
-				}
-			}
-		}
-
-		fire_only_once = yes
-
-		cost = 25
-		days_remove = 120
-
-		modifier = {
-			civilian_factory_use = 15
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-		remove_effect = { 
-			55 = { set_state_flag = hessen_iron_mines_developed } 
-			55 = {
-				add_resource = {
-					type = iron
-					amount = 74
-				}
-			}
-		}
-	}
-	develop_newfoundland_steel = { #331
-		
-		icon = steel
-
-		allowed = {
-
-		}
-
-		highlight_states = { highlight_state_targets = { state = 331 } }
-
-		available = {
-			has_tech = excavation3
-			num_of_civilian_factories_available_for_projects > 2
-			#owns_state = 331
-			331 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-
-		visible = {
-			#owns_state = 331
-			331 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			331 = {
-				NOT = {
-					has_state_flag = newfoundland_steel_developed
-				}
-			}
-		}
-
-		fire_only_once = yes
-
-		cost = 25
-		days_remove = 90
-
-		modifier = {
-			civilian_factory_use = 3
-		}
-
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				tag = ENG
-				has_war = no
-				date < 1938.1.1
-				factor = 0
-			}
-		}
-
-		remove_effect = {
-			331 = { set_state_flag = newfoundland_steel_developed }
-			331 = {
-				add_resource = {
-					type = iron
-					amount = 12
-				}
-			}
-		}
-	}
-	develop_quebec_steel = { #466
-		
-		icon = steel
-
-		allowed = {
-
-		}
-
-		available = {
-			has_tech = excavation2
-			num_of_civilian_factories_available_for_projects > 2
-			466 = {
-				infrastructure > 2
-			}
-			#owns_state = 466
-			466 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-		highlight_states = { highlight_state_targets = { state = 466 } }
-
-		visible = {
-			#owns_state = 466
-			466 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			466 = {
-				NOT = {
-					has_state_flag = quebec_steel_developed
-				}
-			}
-		}
-
-		fire_only_once = yes
-
-		cost = 25
-		days_remove = 90
-
-		modifier = {
-			civilian_factory_use = 3
-		}
-		remove_effect = {
-			466 = {
-				set_state_flag = quebec_steel_developed
-			}
-			466 = {
-				add_resource = {
-					type = iron
-					amount = 12
-				}
-			}
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	
-
-	develop_arkansas_aluminium_deposits = { #372
-		
 		icon = aluminium
 
 		allowed = {
@@ -1577,8 +964,8 @@ prospect_for_resources = {
 			}
 			372 = {
 				NOT = {
-					has_state_flag = { 
-						flag = arkansas_aluminium_developed 
+					has_state_flag = {
+						flag = arkansas_aluminium_developed
 						value = 5
 					}
 				}
@@ -1639,7 +1026,7 @@ prospect_for_resources = {
 		}
 	}
 	develop_new_york_aluminium_deposits = { #358
-		
+
 		icon = aluminium
 
 		allowed = {
@@ -1734,7 +1121,7 @@ prospect_for_resources = {
 		}
 	}
 	develop_tennessee_aluminium_deposits = { #368
-		
+
 		icon = aluminium
 
 		allowed = {
@@ -1769,8 +1156,8 @@ prospect_for_resources = {
 			}
 			368 = {
 				NOT = {
-					has_state_flag = { 
-						flag = tennessee_aluminium_developed 
+					has_state_flag = {
+						flag = tennessee_aluminium_developed
 						value = 5
 					}
 				}
@@ -1831,7 +1218,7 @@ prospect_for_resources = {
 		}
 	}
 	develop_washington_aluminium_deposits = { #386
-		
+
 		icon = aluminium
 
 		allowed = {
@@ -1866,8 +1253,8 @@ prospect_for_resources = {
 			}
 			386 = {
 				NOT = {
-					has_state_flag = { 
-						flag = washington_aluminium_developed 
+					has_state_flag = {
+						flag = washington_aluminium_developed
 						value = 5
 					}
 				}
@@ -1928,7 +1315,7 @@ prospect_for_resources = {
 		}
 	}
 	develop_idaho_tungsten_deposits = { #387
-		
+
 		icon = tungsten
 
 		allowed = {
@@ -2013,7 +1400,7 @@ prospect_for_resources = {
 		}
 	}
 	develop_california_tungsten_deposits = { #378
-		
+
 		icon = tungsten
 
 		allowed = {
@@ -2097,398 +1484,8 @@ prospect_for_resources = {
 			}
 		}
 	}
-	develop_minnesota_steel_deposits = { #391
-		
-		icon = steel
+develop_montana_chromium_deposits = { #388
 
-		allowed = {
-
-		}
-
-		available = {
-			has_tech = construction3
-			num_of_civilian_factories_available_for_projects > 11
-			#owns_state = 391
-			391 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-
-		highlight_states = { highlight_state_targets = { state = 391 } }
-
-		visible = {
-			#owns_state = 391
-			391 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			391 = {
-				NOT = {
-					has_state_flag = { 
-						flag = minnesota_steel_developed 
-						value = 5
-					}
-				}
-			}
-		}
-
-		cost = 25
-		days_remove = USA_minnesota_steel_duration
-
-		modifier = {
-			civilian_factory_use = 12
-		}
-
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_political_power < 200
-				factor = 0
-			}
-		}
-
-		remove_effect = {
-			add_to_variable = { var = USA_minnesota_steel_duration value = 30 }
-			391 = {
-				if = {
-					limit = {
-						NOT = {
-							has_state_flag = minnesota_steel_developed
-						}
-					}
-					set_state_flag = {
-						flag = minnesota_steel_developed
-						value = 1
-					}
-				}
-				else = {
-					modify_state_flag = {
-						flag = minnesota_steel_developed
-						value = 1
-					}
-				}
-			}
-			391 = {
-				add_resource = {
-					type = iron
-					amount = 15
-				}
-			}
-		}
-
-		complete_effect = {
-			if = {
-				limit = {
-					check_variable = { var = USA_minnesota_steel_duration value = 30 compare = less_than }
-				}
-				set_variable = { var = USA_minnesota_steel_duration value = 30 }
-			}
-		}
-	}
-	develop_pennsylvania_steel_deposits = { #360
-		
-		icon = steel
-
-		allowed = {
-
-		}
-
-		highlight_states = { highlight_state_targets = { state = 360 } }
-
-		available = {
-			has_tech = excavation3
-			num_of_civilian_factories_available_for_projects > 11
-			#owns_state = 360
-			360 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-
-		visible = {
-			#owns_state = 360
-			360 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			360 = {
-				NOT = {
-					has_state_flag = { 
-						flag = pennsylvania_steel_developed 
-						value = 5
-					}
-				}
-			}
-		}
-
-		cost = 25
-		days_remove = USA_pennsylvania_steel_duration
-
-		modifier = {
-			civilian_factory_use = 12
-		}
-
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_political_power < 200
-				factor = 0
-			}
-		}
-
-		remove_effect = {
-			add_to_variable = { var = USA_pennsylvania_steel_duration value = 30 }
-			360 = {
-				if = {
-					limit = {
-						NOT = {
-							has_state_flag = pennsylvania_steel_developed
-						}
-					}
-					set_state_flag = {
-						flag = pennsylvania_steel_developed
-						value = 1
-					}
-				}
-				else = {
-					modify_state_flag = {
-						flag = pennsylvania_steel_developed
-						value = 1
-					}
-				}
-			}
-			360 = {
-				add_resource = {
-					type = iron
-					amount = 15
-				}
-			}
-		}
-
-		complete_effect = {
-			if = {
-				limit = {
-					check_variable = { var = USA_pennsylvania_steel_duration value = 30 compare = less_than }
-				}
-				set_variable = { var = USA_pennsylvania_steel_duration value = 30 }
-			}
-		}
-	}
-
-	develop_ohio_steel_deposits = { #261
-		
-		icon = steel
-
-		allowed = {
-
-		}
-
-		available = {
-			has_tech = construction3
-			num_of_civilian_factories_available_for_projects > 11
-			#owns_state = 261
-			261 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-
-		highlight_states = { highlight_state_targets = { state = 261 } }
-
-		visible = {
-			#owns_state = 261
-			261 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			261 = {
-				NOT = {
-					has_state_flag = { 
-						flag = ohio_steel_developed 
-						value = 5
-					}
-				}
-			}
-		}
-
-		cost = 25
-		days_remove = USA_ohio_steel_duration
-
-		modifier = {
-			civilian_factory_use = 12
-		}
-
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_political_power < 200
-				factor = 0
-			}
-		}
-
-		remove_effect = {
-			add_to_variable = { var = USA_ohio_steel_duration value = 30 }
-			261 = {
-				if = {
-					limit = {
-						NOT = {
-							has_state_flag = ohio_steel_developed
-						}
-					}
-					set_state_flag = {
-						flag = ohio_steel_developed
-						value = 1
-					}
-				}
-				else = {
-					modify_state_flag = {
-						flag = ohio_steel_developed
-						value = 1
-					}
-				}
-			}
-			261 = {
-				add_resource = {
-					type = iron
-					amount = 15
-				}
-			}
-		}
-
-		complete_effect = {
-			if = {
-				limit = {
-					check_variable = { var = USA_ohio_steel_duration value = 30 compare = less_than }
-				}
-				set_variable = { var = USA_ohio_steel_duration value = 30 }
-			}
-		}
-	}
-	develop_indiana_steel_deposits = { #396
-		
-		icon = steel
-
-		allowed = {
-
-		}
-
-		highlight_states = { highlight_state_targets = { state = 396 } }
-
-		available = {
-			has_tech = construction3
-			num_of_civilian_factories_available_for_projects > 11
-			#owns_state = 396
-			396 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-
-		visible = {
-			#owns_state = 396
-			396 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			396 = {
-				NOT = {
-					has_state_flag = { 
-						flag = indiana_steel_developed 
-						value = 5
-					}
-				}
-			}
-		}
-
-		cost = 25
-		days_remove = USA_indiana_steel_duration
-
-		modifier = {
-			civilian_factory_use = 12
-		}
-
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_political_power < 200
-				factor = 0
-			}
-		}
-
-		remove_effect = {
-			add_to_variable = { var = USA_indiana_steel_duration value = 30 }
-			396 = {
-				if = {
-					limit = {
-						NOT = {
-							has_state_flag = indiana_steel_developed
-						}
-					}
-					set_state_flag = {
-						flag = indiana_steel_developed
-						value = 1
-					}
-				}
-				else = {
-					modify_state_flag = {
-						flag = indiana_steel_developed
-						value = 1
-					}
-				}
-			}
-			396 = {
-				add_resource = {
-					type = iron
-					amount = 15
-				}
-			}
-		}
-
-		complete_effect = {
-			if = {
-				limit = {
-					check_variable = { var = USA_indiana_steel_duration value = 30 compare = less_than }
-				}
-				set_variable = { var = USA_indiana_steel_duration value = 30 }
-			}
-		}
-	}
-
-	develop_montana_chromium_deposits = { #388
-		
 		icon = chromium
 
 		allowed = {
@@ -2524,8 +1521,8 @@ prospect_for_resources = {
 			has_tech = excavation3
 			388 = {
 				NOT = {
-					has_state_flag = { 
-						flag = montana_chromium_developed 
+					has_state_flag = {
+						flag = montana_chromium_developed
 						value = 5
 					}
 				}
@@ -2587,7 +1584,7 @@ prospect_for_resources = {
 	}
 
 	develop_california_chromium_deposits = { #378
-		
+
 		icon = chromium
 
 		allowed = {
@@ -2623,8 +1620,8 @@ prospect_for_resources = {
 			has_tech = excavation3
 			378 = {
 				NOT = {
-					has_state_flag = { 
-						flag = california_chromium_developed 
+					has_state_flag = {
+						flag = california_chromium_developed
 						value = 5
 					}
 				}
@@ -2686,7 +1683,7 @@ prospect_for_resources = {
 	}
 	develop_palau_aluminium_deposits = { #647
 		icon = aluminium
-		
+
 		highlight_states = { highlight_state_targets = { state = 647 } }
 
 		allowed = {
@@ -2738,16 +1735,16 @@ prospect_for_resources = {
 					type = bauxite
 					amount = 12
 				}
-				set_state_flag = palau_aluminium_developed				
+				set_state_flag = palau_aluminium_developed
 			}
 		}
 	}
 	develop_cornwall_tungsten_deposits_1 = { #123
-		
+
 		icon = tungsten
 
 		allowed = {
-			
+
 		}
 
 		available = {
@@ -2812,11 +1809,11 @@ prospect_for_resources = {
 		}
 	}
 	develop_cornwall_tungsten_deposits_2 = { #123
-		
+
 		icon = tungsten
 
 		allowed = {
-			
+
 		}
 
 		available = {
@@ -2878,7 +1875,7 @@ prospect_for_resources = {
 	}
 	develop_leningrad_aluminium_deposits = { #195
 		icon = aluminium
-		
+
 		highlight_states = { highlight_state_targets = { state = 195 } }
 
 		allowed = {
@@ -2930,13 +1927,13 @@ prospect_for_resources = {
 					type = bauxite
 					amount = 12
 				}
-				set_state_flag = leningrad_aluminium_developed				
+				set_state_flag = leningrad_aluminium_developed
 			}
 		}
 	}
 	develop_kamensk_aluminium_deposits = { #653
 		icon = aluminium
-		
+
 		highlight_states = { highlight_state_targets = { state = 653 } }
 
 		allowed = {
@@ -2988,13 +1985,13 @@ prospect_for_resources = {
 					type = bauxite
 					amount = 12
 				}
-				set_state_flag = kamensk_aluminium_developed				
+				set_state_flag = kamensk_aluminium_developed
 			}
 		}
 	}
 	develop_stalingrad_aluminium_deposits = { #217
 		icon = aluminium
-		
+
 		highlight_states = { highlight_state_targets = { state = 217 } }
 
 		allowed = {
@@ -3052,16 +2049,16 @@ prospect_for_resources = {
 					type = bauxite
 					amount = 12
 				}
-				set_state_flag = stalingrad_aluminium_developed				
+				set_state_flag = stalingrad_aluminium_developed
 			}
 		}
 	}
 	develop_caucasus_tungsten_deposits_1 = { #233
-		
+
 		icon = tungsten
 
 		allowed = {
-			
+
 		}
 
 		available = {
@@ -3127,11 +2124,11 @@ prospect_for_resources = {
 		}
 	}
 	develop_caucasus_tungsten_deposits_2 = { #233
-		
+
 		icon = tungsten
 
 		allowed = {
-			
+
 		}
 
 		available = {
@@ -3198,11 +2195,11 @@ prospect_for_resources = {
 		}
 	}
 	develop_kyzyl_tungsten_deposits = { #404 State not found
-		
+
 		icon = tungsten
 
 		allowed = {
-			
+
 		}
 
 		available = {
@@ -3268,856 +2265,12 @@ prospect_for_resources = {
 			}
 		}
 	}
-	develop_chelyabinsk_steel_deposits = { #572 
-		
-		icon = steel
+develop_uralsk_chromium_deposits_1 = { #407
 
-		allowed = {
-			
-		}
-
-		available = {
-			has_tech = construction4
-			num_of_civilian_factories_available_for_projects > 4
-			#owns_state = 572
-			572 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			has_tech = construction3
-		}
-
-		highlight_states = { highlight_state_targets = { state = 572 } }
-
-		visible = {
-			#owns_state = 572
-			572 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			has_tech = construction3
-			572 = {
-				NOT = {
-					has_state_flag = { 
-						flag = chelyabinsk_steel_developed 
-						value = 3
-					}
-				}
-			}
-		}
-
-		
-
-		cost = 25
-		days_remove = 90
-
-		modifier = {
-			civilian_factory_use = 5
-		}
-
-		ai_will_do = {
-			factor = 1
-
-			modifier = {
-				factor = 0
-				original_tag = SOV
-				SOV_save_pp_for_manpower_trouble = yes
-			}
-		}
-
-		remove_effect = {
-			572 = { 
-				if = {
-					limit = {
-						not = {
-							has_state_flag = chelyabinsk_steel_developed 
-						}
-					}
-					set_state_flag = {
-						flag = chelyabinsk_steel_developed 
-						value = 1
-					}
-				}
-				else = {
-					modify_state_flag = {
-						flag = chelyabinsk_steel_developed 
-						value = 1
-					}
-				}
-			}
-			572 = {
-				add_resource = {
-					type = iron
-					amount = 20
-				}
-			}
-		}
-	}
-	develop_zlatoust_steel_deposits_1 = { #573
-		
-		icon = steel
-
-		allowed = {
-			
-		}
-
-		available = {
-			has_tech = construction3
-			num_of_civilian_factories_available_for_projects > 2
-			#owns_state = 573
-			573 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-
-		highlight_states = { highlight_state_targets = { state = 573 } }
-
-		visible = {
-			#owns_state = 573
-			573 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			573 = {
-				NOT = {
-					has_state_flag = zlatoust_steel_developed
-				}
-			}
-		}
-
-		fire_only_once = yes
-
-		cost = 25
-		days_remove = 60
-
-		modifier = {
-			civilian_factory_use = 3
-		}
-
-		ai_will_do = {
-			factor = 1
-
-			modifier = {
-				factor = 0
-				original_tag = SOV
-				SOV_save_pp_for_manpower_trouble = yes
-			}
-		}
-
-		remove_effect = {
-			573 = { set_state_flag = zlatoust_steel_developed }
-			573 = {
-				add_resource = {
-					type = iron
-					amount = 10
-				}
-			}
-		}
-	}
-	develop_zlatoust_steel_deposits_2 = { #573
-		
-		icon = steel
-
-		allowed = {
-			
-		}
-
-		available = {
-			has_tech = construction4
-			num_of_civilian_factories_available_for_projects > 4
-			#owns_state = 573
-			573 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-
-		highlight_states = { highlight_state_targets = { state = 573 } }
-
-		visible = {
-			#owns_state = 573
-			573 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			573 = {
-				NOT = {
-					has_state_flag = zlatoust_steel_developed_2
-				}
-				has_state_flag = zlatoust_steel_developed
-			}
-		}
-
-		fire_only_once = yes
-
-		cost = 25
-		days_remove = 90
-
-		modifier = {
-			civilian_factory_use = 5
-		}
-
-		ai_will_do = {
-			factor = 1
-
-			modifier = {
-				factor = 0
-				original_tag = SOV
-				SOV_save_pp_for_manpower_trouble = yes
-			}
-		}
-
-		remove_effect = {
-			573 = { set_state_flag = zlatoust_steel_developed_2 }
-			573 = {
-				add_resource = {
-					type = iron
-					amount = 20
-				}
-			}
-		}
-	}
-	develop_kursk_steel_deposits = { #220
-		
-		icon = steel
-
-		allowed = {
-
-		}
-
-		highlight_states = { highlight_state_targets = { state = 220 } }
-
-		available = {
-			has_tech = excavation2
-			num_of_civilian_factories_available_for_projects > 8
-			#owns_state = 220
-			220 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-
-		visible = {
-			#owns_state = 220
-			220 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			220 = {
-				NOT = {
-					has_state_flag = { 
-						flag = kursk_steel_developed 
-						value = 5
-					}
-				}
-			}
-		}
-
-		cost = 25
-		days_remove = SOV_kursk_steel_duration
-
-		modifier = {
-			civilian_factory_use = 9
-		}
-
-		ai_will_do = {
-			factor = 1
-
-			modifier = {
-				factor = 0
-				original_tag = SOV
-				SOV_save_pp_for_manpower_trouble = yes
-			}
-		}
-
-		remove_effect = {
-			add_to_variable = { var = SOV_kursk_steel_duration value = 30 }
-			220 = {
-				if = {
-					limit = {
-						NOT = {
-							has_state_flag = kursk_steel_developed
-						}
-					}
-					set_state_flag = {
-						flag = kursk_steel_developed
-						value = 1
-					}
-				}
-				else = {
-					modify_state_flag = {
-						flag = kursk_steel_developed
-						value = 1
-					}
-				}
-			}
-			220 = {
-				add_resource = {
-					type = iron
-					amount = 12
-				}
-			}
-		}
-
-		complete_effect = {
-			if = {
-				limit = {
-					check_variable = { var = SOV_kursk_steel_duration value = 30 compare = less_than }
-				}
-				set_variable = { var = SOV_kursk_steel_duration value = 30 }
-			}
-		}
-	}
-	develop_kursk_steel_deposits_2 = { #220
-		
-		icon = steel
-
-		allowed = {
-
-		}
-
-		highlight_states = { highlight_state_targets = { state = 220 } }
-
-		available = {
-			has_tech = excavation3
-			num_of_civilian_factories_available_for_projects > 11
-			#owns_state = 220
-			220 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-
-		visible = {
-			#owns_state = 220
-			220 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			220 = {
-				NOT = {
-					has_state_flag = { 
-						flag = kursk_steel_developed_2 
-						value = 5
-					}
-				}
-				has_state_flag = { 
-					flag = kursk_steel_developed
-					value = 5
-				}
-			}
-		}
-
-		cost = 25
-		days_remove = SOV_kursk_steel_duration_2
-
-		modifier = {
-			civilian_factory_use = 12
-		}
-
-		ai_will_do = {
-			factor = 1
-
-			modifier = {
-				factor = 0
-				original_tag = SOV
-				SOV_save_pp_for_manpower_trouble = yes
-			}
-		}
-
-		remove_effect = {
-			add_to_variable = { var = SOV_kursk_steel_duration_2 value = 30 }
-			220 = {
-				if = {
-					limit = {
-						NOT = {
-							has_state_flag = kursk_steel_developed_2
-						}
-					}
-					set_state_flag = {
-						flag = kursk_steel_developed_2
-						value = 1
-					}
-				}
-				else = {
-					modify_state_flag = {
-						flag = kursk_steel_developed_2
-						value = 1
-					}
-				}
-			}
-			220 = {
-				add_resource = {
-					type = iron
-					amount = 12
-				}
-			}
-		}
-
-		complete_effect = {
-			if = {
-				limit = {
-					check_variable = { var = SOV_kursk_steel_duration_2 value = 30 compare = less_than }
-				}
-				set_variable = { var = SOV_kursk_steel_duration_2 value = 30 }
-			}
-		}
-	}
-	develop_kursk_steel_deposits_3 = { #220
-		
-		icon = steel
-
-		allowed = {
-
-		}
-
-		highlight_states = { highlight_state_targets = { state = 220 } }
-
-		available = {
-			has_tech = excavation4
-			num_of_civilian_factories_available_for_projects > 14
-			#owns_state = 220
-			220 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-
-		visible = {
-			#owns_state = 220
-			220 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			220 = {
-				NOT = {
-					has_state_flag = { 
-						flag = kursk_steel_developed_3 
-						value = 5
-					}
-				}
-				has_state_flag = { 
-					flag = kursk_steel_developed_2
-					value = 5
-				}
-			}
-		}
-
-		cost = 25
-		days_remove = SOV_kursk_steel_duration_3
-
-		modifier = {
-			civilian_factory_use = 15
-		}
-
-		ai_will_do = {
-			factor = 1
-
-			modifier = {
-				factor = 0
-				original_tag = SOV
-				SOV_save_pp_for_manpower_trouble = yes
-			}
-		}
-
-		remove_effect = {
-			add_to_variable = { var = SOV_kursk_steel_duration_3 value = 30 }
-			220 = {
-				if = {
-					limit = {
-						NOT = {
-							has_state_flag = kursk_steel_developed_3
-						}
-					}
-					set_state_flag = {
-						flag = kursk_steel_developed_3
-						value = 1
-					}
-				}
-				else = {
-					modify_state_flag = {
-						flag = kursk_steel_developed_3
-						value = 1
-					}
-				}
-			}
-			220 = {
-				add_resource = {
-					type = iron
-					amount = 12
-				}
-			}
-		}
-
-		complete_effect = {
-			if = {
-				limit = {
-					check_variable = { var = SOV_kursk_steel_duration_3 value = 30 compare = less_than }
-				}
-				set_variable = { var = SOV_kursk_steel_duration_3 value = 30 }
-			}
-		}
-	}
-	develop_Belgorod_steel_deposits = { #240
-		
-		icon = steel
-
-		allowed = {
-
-		}
-
-		highlight_states = { highlight_state_targets = { state = 240 } }
-
-		available = {
-			has_tech = excavation2
-			num_of_civilian_factories_available_for_projects > 8
-			#owns_state = 240
-			240 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-
-		visible = {
-			#owns_state = 240
-			240 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			240 = {
-				NOT = {
-					has_state_flag = { 
-						flag = Belgorod_steel_developed 
-						value = 5
-					}
-				}
-			}
-		}
-
-		cost = 25
-		days_remove = SOV_Belgorod_steel_duration
-
-		modifier = {
-			civilian_factory_use = 9
-		}
-
-		ai_will_do = {
-			factor = 1
-
-			modifier = {
-				factor = 0
-				original_tag = SOV
-				SOV_save_pp_for_manpower_trouble = yes
-			}
-		}
-
-		remove_effect = {
-			add_to_variable = { var = SOV_Belgorod_steel_duration value = 30 }
-			240 = {
-				if = {
-					limit = {
-						NOT = {
-							has_state_flag = Belgorod_steel_developed
-						}
-					}
-					set_state_flag = {
-						flag = Belgorod_steel_developed
-						value = 1
-					}
-				}
-				else = {
-					modify_state_flag = {
-						flag = Belgorod_steel_developed
-						value = 1
-					}
-				}
-			}
-			240 = {
-				add_resource = {
-					type = iron
-					amount = 12
-				}
-			}
-		}
-
-		complete_effect = {
-			if = {
-				limit = {
-					check_variable = { var = SOV_Belgorod_steel_duration value = 30 compare = less_than }
-				}
-				set_variable = { var = SOV_Belgorod_steel_duration value = 30 }
-			}
-		}
-	}
-	develop_Belgorod_steel_deposits_2 = { #240
-		
-		icon = steel
-
-		allowed = {
-
-		}
-
-		highlight_states = { highlight_state_targets = { state = 240 } }
-
-		available = {
-			has_tech = excavation3
-			num_of_civilian_factories_available_for_projects > 11
-			#owns_state = 240
-			240 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-
-		visible = {
-			#owns_state = 240
-			240 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			240 = {
-				NOT = {
-					has_state_flag = { 
-						flag = Belgorod_steel_developed_2 
-						value = 5
-					}
-				}
-				has_state_flag = { 
-					flag = Belgorod_steel_developed
-					value = 5
-				}
-			}
-		}
-
-		cost = 25
-		days_remove = SOV_Belgorod_steel_duration_2
-
-		modifier = {
-			civilian_factory_use = 12
-		}
-
-		ai_will_do = {
-			factor = 1
-
-			modifier = {
-				factor = 0
-				original_tag = SOV
-				SOV_save_pp_for_manpower_trouble = yes
-			}
-		}
-
-		remove_effect = {
-			add_to_variable = { var = SOV_Belgorod_steel_duration_2 value = 30 }
-			240 = {
-				if = {
-					limit = {
-						NOT = {
-							has_state_flag = Belgorod_steel_developed_2
-						}
-					}
-					set_state_flag = {
-						flag = Belgorod_steel_developed_2
-						value = 1
-					}
-				}
-				else = {
-					modify_state_flag = {
-						flag = Belgorod_steel_developed_2
-						value = 1
-					}
-				}
-			}
-			240 = {
-				add_resource = {
-					type = iron
-					amount = 12
-				}
-			}
-		}
-
-		complete_effect = {
-			if = {
-				limit = {
-					check_variable = { var = SOV_Belgorod_steel_duration_2 value = 30 compare = less_than }
-				}
-				set_variable = { var = SOV_Belgorod_steel_duration_2 value = 30 }
-			}
-		}
-	}
-	develop_Belgorod_steel_deposits_3 = { #240
-		
-		icon = steel
-
-		allowed = {
-
-		}
-
-		highlight_states = { highlight_state_targets = { state = 240 } }
-
-		available = {
-			has_tech = excavation4
-			num_of_civilian_factories_available_for_projects > 14
-			#owns_state = 240
-			240 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-
-		visible = {
-			#owns_state = 240
-			240 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			240 = {
-				NOT = {
-					has_state_flag = { 
-						flag = Belgorod_steel_developed_3 
-						value = 5
-					}
-				}
-				has_state_flag = { 
-					flag = Belgorod_steel_developed_2
-					value = 5
-				}
-			}
-		}
-
-		cost = 25
-		days_remove = SOV_Belgorod_steel_duration_3
-
-		modifier = {
-			civilian_factory_use = 15
-		}
-
-		ai_will_do = {
-			factor = 1
-
-			modifier = {
-				factor = 0
-				original_tag = SOV
-				SOV_save_pp_for_manpower_trouble = yes
-			}
-		}
-
-		remove_effect = {
-			add_to_variable = { var = SOV_Belgorod_steel_duration_3 value = 30 }
-			240 = {
-				if = {
-					limit = {
-						NOT = {
-							has_state_flag = Belgorod_steel_developed_3
-						}
-					}
-					set_state_flag = {
-						flag = Belgorod_steel_developed_3
-						value = 1
-					}
-				}
-				else = {
-					modify_state_flag = {
-						flag = Belgorod_steel_developed_3
-						value = 1
-					}
-				}
-			}
-			240 = {
-				add_resource = {
-					type = iron
-					amount = 12
-				}
-			}
-		}
-
-		complete_effect = {
-			if = {
-				limit = {
-					check_variable = { var = SOV_Belgorod_steel_duration_3 value = 30 compare = less_than }
-				}
-				set_variable = { var = SOV_Belgorod_steel_duration_3 value = 30 }
-			}
-		}
-	}
-	develop_uralsk_chromium_deposits_1 = { #407
-		
 		icon = chromium
 
 		allowed = {
-			
+
 		}
 
 		available = {
@@ -4183,11 +2336,11 @@ prospect_for_resources = {
 		}
 	}
 	develop_uralsk_chromium_deposits_2 = { #407
-		
+
 		icon = chromium
 
 		allowed = {
-			
+
 		}
 
 		available = {
@@ -4252,75 +2405,9 @@ prospect_for_resources = {
 				}
 			}
 		}
-	}	
-	develop_liaotung_iron_ore_deposits = { #716
-		
-		icon = steel
-
-		allowed = {
-
-		}
-
-		highlight_states = { highlight_state_targets = { state = 716 } }
-
-		available = {
-			has_tech = construction3
-			num_of_civilian_factories_available_for_projects > 2
-			has_tech = excavation1
-			#owns_state = 716
-			716 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-		}
-
-		visible = {
-			#owns_state = 716
-			716 = {
-				CONTROLLER = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
-			716 = {
-				NOT = {
-					has_state_flag = liaotung_steel_developed
-				}
-			}
-		}
-
-		fire_only_once = yes
-
-		cost = 25
-		days_remove = 90
-
-		modifier = {
-			civilian_factory_use = 3
-		}
-
-		remove_effect = {
-			716 = { set_state_flag = liaotung_steel_developed }
-			716 = {
-				add_resource = {
-					type = iron
-					amount = 16
-				}
-			}
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
 	}
+develop_chosen_tungsten_deposits = { #527
 
-	develop_chosen_tungsten_deposits = { #527
-		
 		icon = tungsten
 
 		allowed = {
@@ -4355,8 +2442,8 @@ prospect_for_resources = {
 			}
 			527 = {
 				NOT = {
-					has_state_flag = { 
-						flag = chosin_tungsten_developed 
+					has_state_flag = {
+						flag = chosin_tungsten_developed
 						value = 5
 					}
 				}

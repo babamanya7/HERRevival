@@ -188,3 +188,5 @@ for tag,target in TARGETS.items():
 print('\n'.join(report))
 print(f'\nChanged state files: {len(changed)}')
 print(f'Selected-country dock total: {before_total} -> {after_total} ({after_total-before_total:+d}, {(after_total/before_total-1)*100:+.2f}%)')
+
+# trigger workflow

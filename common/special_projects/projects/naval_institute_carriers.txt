@@ -2,6 +2,7 @@
 # Carrier aviation engineering and mutually exclusive flight-deck concepts.
 
 sp_naval_carrier_deck_operations = {
+	icon = GFX_sp_naval_carrier_deck_operations
 	specialization = specialization_naval
 	project_tags = { sp_tag_surface_ship }
 
@@ -49,6 +50,7 @@ sp_naval_carrier_deck_operations = {
 }
 
 sp_naval_carrier_flight_deck_systems = {
+	icon = GFX_sp_naval_carrier_flight_deck_systems
 	specialization = specialization_naval
 	project_tags = { sp_tag_surface_ship }
 
@@ -105,6 +107,7 @@ sp_naval_carrier_flight_deck_systems = {
 }
 
 sp_naval_armored_flight_deck = {
+	icon = GFX_sp_naval_armored_flight_deck
 	specialization = specialization_naval
 	project_tags = { sp_tag_surface_ship }
 
@@ -153,6 +156,7 @@ sp_naval_armored_flight_deck = {
 }
 
 sp_naval_enlarged_air_group = {
+	icon = GFX_sp_naval_enlarged_air_group
 	specialization = specialization_naval
 	project_tags = { sp_tag_surface_ship }
 

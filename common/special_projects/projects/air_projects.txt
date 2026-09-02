@@ -573,6 +573,7 @@ sp_air_axial_jet_engine = {
 
 sp_air_water_injection = {
 	specialization = specialization_air
+	icon = GFX_sp_air_water_injection
 
 	project_tags = {
 		sp_tag_aircraft
@@ -629,6 +630,7 @@ sp_air_water_injection = {
 
 sp_air_fuel_injection = {
 	specialization = specialization_air
+	icon = GFX_sp_air_fuel_injection
 
 	project_tags = {
 		sp_tag_aircraft
@@ -682,6 +684,7 @@ sp_air_fuel_injection = {
 
 sp_air_engine_upgrades = {
 	specialization = specialization_air
+	icon = GFX_sp_air_engine_upgrades
 
 	project_tags = {
 		sp_tag_aircraft
@@ -736,6 +739,7 @@ sp_air_engine_upgrades = {
 
 sp_air_engine_upgrades_2 = {
 	specialization = specialization_air
+	icon = GFX_sp_air_engine_upgrades_2
 
 	project_tags = {
 		sp_tag_aircraft
@@ -794,6 +798,7 @@ sp_air_engine_upgrades_2 = {
 
 sp_air_self_sealing_fuel_tanks_ngs = {
 	specialization = specialization_air
+	icon = GFX_sp_air_self_sealing_fuel_tanks_ngs
 
 	project_tags = {
 		sp_tag_aircraft
@@ -1013,7 +1018,7 @@ sp_air_jet_engine = {
 
 sp_air_jet_engines_imrovements_supersonic_air_intake = {
 	specialization = specialization_air 	
-	icon = GFX_sp_air_jet_engine
+	icon = GFX_sp_air_supersonic_air_intake
 
 	project_tags = {
 		sp_tag_aircraft
@@ -1071,7 +1076,7 @@ sp_air_jet_engines_imrovements_supersonic_air_intake = {
 
 sp_air_jet_engines_imrovements_swept_wings = {
 	specialization = specialization_air 	
-	icon = GFX_sp_air_jet_engine
+	icon = GFX_sp_air_swept_wings
 
 	project_tags = {
 		sp_tag_aircraft
@@ -1128,7 +1133,7 @@ sp_air_jet_engines_imrovements_swept_wings = {
 
 sp_air_jet_engines_imrovements_improved_compressor = {
 	specialization = specialization_air 	
-	icon = GFX_sp_air_jet_engine
+	icon = GFX_sp_air_improved_compressor
 
 	project_tags = {
 		sp_tag_aircraft
@@ -1186,7 +1191,7 @@ sp_air_jet_engines_imrovements_improved_compressor = {
 
 sp_air_jet_engines_imrovements_afterburner = {
 	specialization = specialization_air 	
-	icon = GFX_sp_air_jet_engine
+	icon = GFX_sp_air_afterburner
 
 	project_tags = {
 		sp_tag_aircraft

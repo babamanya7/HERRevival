@@ -1,0 +1,33 @@
+name: Apply dockyard rebalance
+
+on:
+  push:
+    branches:
+      - industry-rebalance
+    paths:
+      - '.github/dock_rebalance_apply.py'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: industry-rebalance
+          fetch-depth: 0
+      - name: Apply target starting dockyards
+        run: python .github/dock_rebalance_apply.py
+      - name: Commit state changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add history/states
+          if git diff --cached --quiet; then
+            echo "No state changes needed"
+          else
+            git commit -m "Rebalance starting dockyards"
+            git push origin HEAD:industry-rebalance
+          fi

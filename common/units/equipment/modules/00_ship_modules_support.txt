@@ -1100,6 +1100,7 @@ equipment_modules = {
 		add_stats = {
 			surface_detection = 2.5
 			sub_detection = 2
+			submarine_carrier_size = 1
 			sub_attack = 1.5
 			build_cost_ic = 150
 		}
@@ -1120,6 +1121,7 @@ equipment_modules = {
 		add_stats = {
 			surface_detection = 4
 			sub_detection = 3.5
+			submarine_carrier_size = 1
 			sub_attack = 2.5
 			build_cost_ic = 250
 		}
@@ -1191,6 +1193,7 @@ equipment_modules = {
 			chromium = 1
 		}
 		add_stats = {
+			submarine_carrier_size = 1
 			surface_detection = 2
 			naval_torpedo_hit_chance_factor = 0.01
 			build_cost_ic = 150
@@ -1208,6 +1211,7 @@ equipment_modules = {
 			chromium = 2
 		}
 		add_stats = {
+			submarine_carrier_size = 1
 			surface_detection = 3.5
 			naval_torpedo_hit_chance_factor = 0.02
 			hg_attack = 2

@@ -1,0 +1,146 @@
+HER_historical_chromium_development = {
+	ENG_expand_southern_rhodesian_chromite = {
+		icon = chromium allowed = { original_tag = ENG }
+		visible = { 545 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = ENG_rhodesian_chromite_expanded } }
+		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 6 }
+		highlight_states = { highlight_state_targets = { state = 545 } }
+		cost = 50 days_remove = 210 modifier = { civilian_factory_use = 7 }
+		remove_effect = { set_country_flag = ENG_rhodesian_chromite_expanded 545 = { add_resource = { type = chromium amount = 500 } } }
+		ai_will_do = { factor = 8 }
+	}
+	ENG_expand_cyprus_chromite_mines = {
+		icon = chromium allowed = { original_tag = ENG }
+		visible = { 183 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = ENG_cyprus_chromite_expanded } }
+		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
+		highlight_states = { highlight_state_targets = { state = 183 } }
+		cost = 25 days_remove = 150 modifier = { civilian_factory_use = 3 }
+		remove_effect = { set_country_flag = ENG_cyprus_chromite_expanded 183 = { add_resource = { type = chromium amount = 30 } } }
+		ai_will_do = { factor = 3 }
+	}
+	SOV_modernize_ural_chromite_mines = {
+		icon = chromium allowed = { original_tag = SOV }
+		visible = { NOT = { has_country_flag = SOV_ural_chromite_modernized } }
+		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 6 }
+		highlight_states = { highlight_state_targets = { state = 398 state = 652 } }
+		cost = 50 days_remove = 210 modifier = { civilian_factory_use = 7 }
+		remove_effect = { set_country_flag = SOV_ural_chromite_modernized 398 = { add_resource = { type = chromium amount = 80 } } 652 = { add_resource = { type = chromium amount = 120 } } }
+		ai_will_do = { factor = 7 }
+	}
+	SOV_develop_kempirsay_chromite = {
+		icon = chromium allowed = { original_tag = SOV }
+		visible = { 402 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = SOV_kempirsay_chromite_developed } }
+		available = { date > 1938.1.1 has_tech = excavation3 num_of_civilian_factories_available_for_projects > 7 }
+		highlight_states = { highlight_state_targets = { state = 402 } }
+		cost = 60 days_remove = 240 modifier = { civilian_factory_use = 9 }
+		remove_effect = { set_country_flag = SOV_kempirsay_chromite_developed 402 = { add_resource = { type = chromium amount = 700 } } }
+		ai_will_do = { factor = 9 }
+	}
+	SOV_wartime_kempirsay_expansion = {
+		icon = chromium allowed = { original_tag = SOV }
+		visible = { has_country_flag = SOV_kempirsay_chromite_developed NOT = { has_country_flag = SOV_kempirsay_wartime_expanded } }
+		available = { date > 1941.6.1 has_war = yes has_tech = excavation3 num_of_civilian_factories_available_for_projects > 9 }
+		highlight_states = { highlight_state_targets = { state = 402 } }
+		cost = 70 days_remove = 270 modifier = { civilian_factory_use = 11 }
+		remove_effect = { set_country_flag = SOV_kempirsay_wartime_expanded 402 = { add_resource = { type = chromium amount = 500 } } }
+		ai_will_do = { factor = 10 }
+	}
+	TUR_expand_guleman_chromite_mines = {
+		icon = chromium allowed = { original_tag = TUR }
+		visible = { NOT = { has_country_flag = TUR_guleman_chromite_expanded } }
+		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 5 }
+		highlight_states = { highlight_state_targets = { state = 339 } }
+		cost = 45 days_remove = 190 modifier = { civilian_factory_use = 6 }
+		remove_effect = { set_country_flag = TUR_guleman_chromite_expanded 339 = { add_resource = { type = chromium amount = 300 } } }
+		ai_will_do = { factor = 8 }
+	}
+	TUR_wartime_chromite_expansion = {
+		icon = chromium allowed = { original_tag = TUR }
+		visible = { has_country_flag = TUR_guleman_chromite_expanded NOT = { has_country_flag = TUR_wartime_chromite_expanded } }
+		available = { date > 1940.1.1 has_tech = excavation3 num_of_civilian_factories_available_for_projects > 7 }
+		highlight_states = { highlight_state_targets = { state = 339 } }
+		cost = 55 days_remove = 240 modifier = { civilian_factory_use = 8 }
+		remove_effect = { set_country_flag = TUR_wartime_chromite_expanded 339 = { add_resource = { type = chromium amount = 300 } } }
+		ai_will_do = { factor = 9 }
+	}
+	SAF_expand_bushveld_chromite_mines = {
+		icon = chromium allowed = { original_tag = SAF }
+		visible = { 275 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = SAF_bushveld_chromite_expanded } }
+		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 5 }
+		highlight_states = { highlight_state_targets = { state = 275 } }
+		cost = 45 days_remove = 210 modifier = { civilian_factory_use = 6 }
+		remove_effect = { set_country_flag = SAF_bushveld_chromite_expanded 275 = { add_resource = { type = chromium amount = 300 } } }
+		ai_will_do = { factor = 7 }
+	}
+	RAJ_expand_indian_chromite_mines = {
+		icon = chromium allowed = { original_tag = RAJ }
+		visible = { NOT = { has_country_flag = RAJ_chromite_mines_expanded } }
+		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 4 }
+		highlight_states = { highlight_state_targets = { state = 425 state = 426 state = 435 state = 444 } }
+		cost = 40 days_remove = 190 modifier = { civilian_factory_use = 5 }
+		remove_effect = { set_country_flag = RAJ_chromite_mines_expanded 425 = { add_resource = { type = chromium amount = 60 } } 426 = { add_resource = { type = chromium amount = 40 } } 435 = { add_resource = { type = chromium amount = 30 } } 444 = { add_resource = { type = chromium amount = 20 } } }
+		ai_will_do = { factor = 6 }
+	}
+	FRA_expand_new_caledonian_chromite = {
+		icon = chromium allowed = { original_tag = FRA }
+		visible = { 635 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = FRA_new_caledonia_chromite_expanded } }
+		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 4 }
+		highlight_states = { highlight_state_targets = { state = 635 } }
+		cost = 35 days_remove = 180 modifier = { civilian_factory_use = 5 }
+		remove_effect = { set_country_flag = FRA_new_caledonia_chromite_expanded 635 = { add_resource = { type = chromium amount = 100 } } }
+		ai_will_do = { factor = 5 }
+	}
+	YUG_expand_macedonian_chromite_mines = {
+		icon = chromium allowed = { original_tag = YUG }
+		visible = { NOT = { has_country_flag = YUG_macedonian_chromite_expanded } }
+		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 4 }
+		highlight_states = { highlight_state_targets = { state = 849 state = 106 } }
+		cost = 40 days_remove = 190 modifier = { civilian_factory_use = 5 }
+		remove_effect = { set_country_flag = YUG_macedonian_chromite_expanded 849 = { add_resource = { type = chromium amount = 100 } } 106 = { add_resource = { type = chromium amount = 50 } } }
+		ai_will_do = { factor = 6 }
+	}
+	GRE_expand_vourinos_chromite_mines = {
+		icon = chromium allowed = { original_tag = GRE }
+		visible = { NOT = { has_country_flag = GRE_vourinos_chromite_expanded } }
+		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 4 }
+		highlight_states = { highlight_state_targets = { state = 731 state = 47 } }
+		cost = 35 days_remove = 180 modifier = { civilian_factory_use = 5 }
+		remove_effect = { set_country_flag = GRE_vourinos_chromite_expanded 731 = { add_resource = { type = chromium amount = 100 } } 47 = { add_resource = { type = chromium amount = 50 } } }
+		ai_will_do = { factor = 6 }
+	}
+	JAP_expand_domestic_chromite_mines = {
+		icon = chromium allowed = { original_tag = JAP }
+		visible = { NOT = { has_country_flag = JAP_domestic_chromite_expanded } }
+		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 5 }
+		highlight_states = { highlight_state_targets = { state = 536 state = 530 state = 528 } }
+		cost = 40 days_remove = 190 modifier = { civilian_factory_use = 6 }
+		remove_effect = { set_country_flag = JAP_domestic_chromite_expanded 536 = { add_resource = { type = chromium amount = 50 } } 530 = { add_resource = { type = chromium amount = 30 } } 528 = { add_resource = { type = chromium amount = 20 } } }
+		ai_will_do = { factor = 6 }
+	}
+	PHI_develop_zambales_chromite = {
+		icon = chromium allowed = { original_tag = PHI }
+		visible = { 623 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = PHI_zambales_chromite_developed } }
+		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 4 }
+		highlight_states = { highlight_state_targets = { state = 623 } }
+		cost = 45 days_remove = 210 modifier = { civilian_factory_use = 6 }
+		remove_effect = { set_country_flag = PHI_zambales_chromite_developed 623 = { add_resource = { type = chromium amount = 700 } } }
+		ai_will_do = { factor = 10 }
+	}
+	ALB_develop_albanian_chromite = {
+		icon = chromium allowed = { original_tag = ALB }
+		visible = { 44 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = ALB_chromite_developed } }
+		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
+		highlight_states = { highlight_state_targets = { state = 44 } }
+		cost = 30 days_remove = 180 modifier = { civilian_factory_use = 4 }
+		remove_effect = { set_country_flag = ALB_chromite_developed 44 = { add_resource = { type = chromium amount = 200 } } }
+		ai_will_do = { factor = 7 }
+	}
+	USA_wartime_domestic_chromite_program = {
+		icon = chromium allowed = { original_tag = USA }
+		visible = { NOT = { has_country_flag = USA_wartime_chromite_program } }
+		available = { date > 1940.1.1 has_war = yes has_tech = excavation3 num_of_civilian_factories_available_for_projects > 9 }
+		highlight_states = { highlight_state_targets = { state = 385 state = 378 } }
+		cost = 60 days_remove = 240 modifier = { civilian_factory_use = 10 }
+		remove_effect = { set_country_flag = USA_wartime_chromite_program 385 = { add_resource = { type = chromium amount = 130 } } 378 = { add_resource = { type = chromium amount = 70 } } }
+		ai_will_do = { factor = 9 }
+	}
+}

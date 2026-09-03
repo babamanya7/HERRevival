@@ -563,42 +563,42 @@ units = {
     ##### Divisioni territoriali "II" (replacement formations, 1 Jan 1936) #####
     division = {
         name = "105a Divisione di Fanteria 'Cosseria II'"
-        location = 6788 # Genoa area, representing Imperia garrison
+        location = 14878 # Genoa area, representing Imperia garrison
         division_template = "Divisione Territoriale di Fanteria"
         start_experience_factor = 0.10
         start_equipment_factor = 0.50
     }
     division = {
         name = "119a Divisione di Fanteria 'Gavinana II'"
-        location = 9907 # Florence
+        location = 14722 # Florence
         division_template = "Divisione Territoriale di Fanteria"
         start_experience_factor = 0.10
         start_equipment_factor = 0.50
     }
     division = {
         name = "124a Divisione di Fanteria 'Gran Sasso II'"
-        location = 925 # Abruzzo, L'Aquila/Chieti district
+        location = 14575 # L'Aquila
         division_template = "Divisione Territoriale di Fanteria"
         start_experience_factor = 0.10
         start_equipment_factor = 0.50
     }
     division = {
         name = "127a Divisione di Fanteria 'Sila II'"
-        location = 11837 # Calabria, representing Catanzaro district
+        location = 14373 # Catanzaro
         division_template = "Divisione Territoriale di Fanteria"
         start_experience_factor = 0.10
         start_equipment_factor = 0.50
     }
     division = {
         name = "129a Divisione di Fanteria 'Peloritana II'"
-        location = 4159 # Messina
+        location = 14363 # Messina
         division_template = "Divisione Territoriale di Fanteria"
         start_experience_factor = 0.10
         start_equipment_factor = 0.50
     }
     division = {
         name = "130a Divisione di Fanteria 'Sabauda II'"
-        location = 11773 # Cagliari / Sardinia
+        location = 14393 # Cagliari / Sardinia
         division_template = "Divisione Territoriale di Fanteria"
         start_experience_factor = 0.10
         start_equipment_factor = 0.50
@@ -630,7 +630,7 @@ units = {
 			is_name_ordered = yes
 			name_order = 26
 		}#  "26a Divisione di Fanteria 'Assietta'" 
-		location = 11954 
+		location = 5091
 		division_template = "Divisione di Fanteria Mobilitata"	
 		start_experience_factor = 0.3 
 	}
@@ -639,7 +639,7 @@ units = {
 			is_name_ordered = yes
 			name_order = 5
 		}#  "5a Divisione Alpina 'Pusteria'" 
-		location = 9598 
+		location = 12766
 		division_template = "Divisione Alpina" 
 		start_experience_factor = 0.3 
 	}
@@ -690,7 +690,7 @@ units = {
 			is_name_ordered = yes
 			name_order = 5
 		}#  "5a Divisione di Fanteria 'Cosseria'" 
-		location = 11954
+		location = 5091
 		division_template = "Divisione di Fanteria Mobilitata"	
 		start_experience_factor = 0.2 
 	}

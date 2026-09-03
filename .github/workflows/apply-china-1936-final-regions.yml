@@ -1,0 +1,22 @@
+name: Apply China 1936 final regional OOB
+on:
+  push:
+    branches: [italy-1936-oob-rework]
+    paths: [.github/workflows/apply-china-1936-final-regions.yml]
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: italy-1936-oob-rework
+          fetch-depth: 0
+      - run: python .github/scripts/patch_china_1936_final_regions.py
+      - run: |
+          git config user.name "babamanya7"
+          git config user.email "108981808+babamanya7@users.noreply.github.com"
+          git add history/units/CHI_1936.txt
+          git commit -m "finish China 1936 regional OOB" || exit 0
+          git push origin italy-1936-oob-rework

@@ -1,6 +1,20 @@
 ideas = {
 
 	country = {
+
+		GER_strategic_wolfram_reserve_program = {
+			picture = generic_production_bonus
+
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				production_speed_tungsten_storage_factor = 0.5
+			}
+		}
 	
 		GER_rudeltaktik_ns = {
 		 	picture = generic_navy_submarines

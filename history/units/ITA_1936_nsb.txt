@@ -1,41 +1,90 @@
 ﻿####### Division Templates #######
-division_template = { 
-	name = "Divisione di Fanteria" 
-	division_names_group = ITA_INF_01 
+division_template = {
+    name = "Divisione di Fanteria"
+    division_names_group = ITA_INF_01
 
-	# Represents nearly all infantry divisions
-	# In later years, CC.NN. Brigade added to INF Division (1x2 MIL/INF regiments)
-	# Also represent semi-mountain divisions (1st, 2nd, 3rd, 4th, 6th Divisions)
-	regiments = {
-		heavy_infantry = { x = 0 y = 0 }
-		heavy_infantry = { x = 0 y = 1 }
-		heavy_infantry = { x = 0 y = 2 }
+    # Peacetime metropolitan division: 3 infantry regiments x 2 battalions.
+    regiments = {
+        heavy_infantry = { x = 0 y = 0 }
+        heavy_infantry = { x = 0 y = 1 }
         heavy_infantry = { x = 1 y = 0 }
-		heavy_infantry = { x = 1 y = 1 }
-		heavy_infantry = { x = 1 y = 2 }
+        heavy_infantry = { x = 1 y = 1 }
         heavy_infantry = { x = 2 y = 0 }
-		heavy_infantry = { x = 2 y = 1 }
-		heavy_infantry = { x = 2 y = 2 }
-		heavy_infantry = { x = 3 y = 0 }
-		heavy_infantry = { x = 3 y = 1 }
-		heavy_infantry = { x = 3 y = 2 }
-		artillery_brigade = { x = 4 y = 0 }
-		artillery_brigade = { x = 4 y = 1 }
-		artillery_brigade = { x = 4 y = 2 }
-	}
-	regimental_support = {
-		artillery = { x = 0 y = 0 }
-		artillery = { x = 1 y = 0 }
-		artillery = { x = 2 y = 0 }
-	}
-	
-	support = {
+        heavy_infantry = { x = 2 y = 1 }
+        artillery_brigade = { x = 4 y = 0 }
+        artillery_brigade = { x = 4 y = 1 }
+        artillery_brigade = { x = 4 y = 2 }
+    }
+    regimental_support = {
+        artillery = { x = 0 y = 0 }
+        artillery = { x = 1 y = 0 }
+        artillery = { x = 2 y = 0 }
+    }
+    support = {
         engineer = { x = 0 y = 0 }
         field_hospital = { x = 0 y = 1 }
-		signal_company = { x = 0 y = 2 }
-		recon = { x = 0 y = 3 }
-		logistics_company = { x = 0 y = 4 }
-	}
+        signal_company = { x = 0 y = 2 }
+        recon = { x = 0 y = 3 }
+        logistics_company = { x = 0 y = 4 }
+    }
+}
+
+division_template = {
+    name = "Divisione di Fanteria Mobilitata"
+    division_names_group = ITA_INF_01
+
+    # Mobilized East African War division: 3 regiments x 3 battalions.
+    regiments = {
+        heavy_infantry = { x = 0 y = 0 }
+        heavy_infantry = { x = 0 y = 1 }
+        heavy_infantry = { x = 0 y = 2 }
+        heavy_infantry = { x = 1 y = 0 }
+        heavy_infantry = { x = 1 y = 1 }
+        heavy_infantry = { x = 1 y = 2 }
+        heavy_infantry = { x = 2 y = 0 }
+        heavy_infantry = { x = 2 y = 1 }
+        heavy_infantry = { x = 2 y = 2 }
+        artillery_brigade = { x = 4 y = 0 }
+        artillery_brigade = { x = 4 y = 1 }
+        artillery_brigade = { x = 4 y = 2 }
+    }
+    regimental_support = {
+        artillery = { x = 0 y = 0 }
+        artillery = { x = 1 y = 0 }
+        artillery = { x = 2 y = 0 }
+    }
+    support = {
+        engineer = { x = 0 y = 0 }
+        field_hospital = { x = 0 y = 1 }
+        signal_company = { x = 0 y = 2 }
+        recon = { x = 0 y = 3 }
+        logistics_company = { x = 0 y = 4 }
+    }
+}
+
+division_template = {
+    name = "Divisione Territoriale di Fanteria"
+    division_names_group = ITA_INF_01
+
+    # Replacement "II" divisions raised while parent formations served overseas.
+    regiments = {
+        heavy_infantry = { x = 0 y = 0 }
+        heavy_infantry = { x = 0 y = 1 }
+        heavy_infantry = { x = 1 y = 0 }
+        heavy_infantry = { x = 1 y = 1 }
+        heavy_infantry = { x = 2 y = 0 }
+        heavy_infantry = { x = 2 y = 1 }
+        artillery_brigade = { x = 4 y = 0 }
+        artillery_brigade = { x = 4 y = 1 }
+    }
+    regimental_support = {
+        artillery = { x = 0 y = 0 }
+        artillery = { x = 1 y = 0 }
+    }
+    support = {
+        engineer = { x = 0 y = 0 }
+        signal_company = { x = 0 y = 1 }
+    }
 }
 
 division_template = { 
@@ -483,6 +532,51 @@ units = {
 		start_equipment_factor = 0.7 
 	}
 
+
+    ##### Divisioni territoriali "II" (replacement formations, 1 Jan 1936) #####
+    division = {
+        name = "105a Divisione di Fanteria 'Cosseria II'"
+        location = 6788 # Genoa area, representing Imperia garrison
+        division_template = "Divisione Territoriale di Fanteria"
+        start_experience_factor = 0.10
+        start_equipment_factor = 0.50
+    }
+    division = {
+        name = "119a Divisione di Fanteria 'Gavinana II'"
+        location = 9907 # Florence
+        division_template = "Divisione Territoriale di Fanteria"
+        start_experience_factor = 0.10
+        start_equipment_factor = 0.50
+    }
+    division = {
+        name = "124a Divisione di Fanteria 'Gran Sasso II'"
+        location = 925 # Abruzzo, L'Aquila/Chieti district
+        division_template = "Divisione Territoriale di Fanteria"
+        start_experience_factor = 0.10
+        start_equipment_factor = 0.50
+    }
+    division = {
+        name = "127a Divisione di Fanteria 'Sila II'"
+        location = 11837 # Calabria, representing Catanzaro district
+        division_template = "Divisione Territoriale di Fanteria"
+        start_experience_factor = 0.10
+        start_equipment_factor = 0.50
+    }
+    division = {
+        name = "129a Divisione di Fanteria 'Peloritana II'"
+        location = 4159 # Messina
+        division_template = "Divisione Territoriale di Fanteria"
+        start_experience_factor = 0.10
+        start_equipment_factor = 0.50
+    }
+    division = {
+        name = "130a Divisione di Fanteria 'Sabauda II'"
+        location = 11773 # Cagliari / Sardinia
+        division_template = "Divisione Territoriale di Fanteria"
+        start_experience_factor = 0.10
+        start_equipment_factor = 0.50
+    }
+
 	##### Commando Superiore Africa #####
 	# Subordinate to Theater #
 	division = { # 
@@ -510,7 +604,7 @@ units = {
 			name_order = 30
 		}#  "30a Divisione di Fanteria 'Sabauda'" 
 		location = 14883 
-		division_template = "Divisione di Fanteria"	
+		division_template = "Divisione di Fanteria Mobilitata"	
 		start_experience_factor = 0.2 
 	}
 	division = { # 
@@ -518,8 +612,8 @@ units = {
 			is_name_ordered = yes
 			name_order = 26
 		}#  "26a Divisione di Fanteria 'Assietta'" 
-		location = 14883 
-		division_template = "Divisione di Fanteria"	
+		location = 11954 
+		division_template = "Divisione di Fanteria Mobilitata"	
 		start_experience_factor = 0.3 
 	}
 	division = { # 
@@ -527,7 +621,7 @@ units = {
 			is_name_ordered = yes
 			name_order = 5
 		}#  "5a Divisione Alpina 'Pusteria'" 
-		location = 14722 
+		location = 9598 
 		division_template = "Divisione Alpina" 
 		start_experience_factor = 0.3 
 	}
@@ -535,50 +629,41 @@ units = {
 		name = "4a Divisione CC.NN. '3 Gennaio'" 
 		location = 14722 
 		division_template = "Camicie Nere"	# CC.NN. militia, lower training and equipment
-		start_experience_factor = 0.15
+		start_experience_factor = 0.20
 	}
 
 	# II Corpo d'Armata dell'A.O.I. #
 	division = { # 
-		division_name = {
-			is_name_ordered = yes
-			name_order = 19
-		}#  "19a Divisione di Fanteria 'Venezia'" 
+		name = "19a Divisione di Fanteria 'Gavinana'"#  "19a Divisione di Fanteria 'Gavinana'" 
 		location = 13864 
-		division_template = "Divisione di Fanteria"	
+		division_template = "Divisione di Fanteria Mobilitata"	
 		start_experience_factor = 0.2 
 	}
 	division = { # 
-		division_name = {
-			is_name_ordered = yes
-			name_order = 24
-		}#  "24a Divisione di Fanteria 'Pinerolo'" 
+		name = "24a Divisione di Fanteria 'Gran Sasso'"#  "24a Divisione di Fanteria 'Gran Sasso'" 
 		location = 14925 
-		division_template = "Divisione di Fanteria"	
+		division_template = "Divisione di Fanteria Mobilitata"	
 		start_experience_factor = 0.2 
 	}
 	division = { # 
 		name = "3a Divisione CC.NN. '21 Aprile'" 
 		location = 14807
 		division_template = "Camicie Nere"	# CC.NN. militia, lower training and equipment
-		start_experience_factor = 0.15
+		start_experience_factor = 0.25
 	}
 
 	# III Corpo d'Armata dell'A.O.I. #
 	division = { # 
-		division_name = {
-			is_name_ordered = yes
-			name_order = 27
-		}#  "27a Divisione Autotrasportabile 'Brescia'" 
+		name = "27a Divisione di Fanteria 'Sila'"#  "27a Divisione di Fanteria 'Sila'" 
 		location = 12766 
-		division_template = "Divisione di Fanteria"	
+		division_template = "Divisione di Fanteria Mobilitata"	
 		start_experience_factor = 0.3 
 	}
 	division = { # 
 		name = "1a Divisione CC.NN. '23 Marzo'" 
 		location = 12766 
 		division_template = "Camicie Nere"	# CC.NN. militia, lower training and equipment
-		start_experience_factor = 0.15
+		start_experience_factor = 0.30
 	}
 
 	# IV Corpo d'Armata dell'A.O.I. #
@@ -587,21 +672,21 @@ units = {
 			is_name_ordered = yes
 			name_order = 5
 		}#  "5a Divisione di Fanteria 'Cosseria'" 
-		location = 5065
-		division_template = "Divisione di Fanteria"	
+		location = 11954
+		division_template = "Divisione di Fanteria Mobilitata"	
 		start_experience_factor = 0.2 
 	}
 	division = { # 
 		name = "2a Divisione CC.NN. '28 Ottobre'" 
 		location = 10928 
 		division_template = "Camicie Nere"	# CC.NN. militia, lower training and equipment
-		start_experience_factor = 0.15
+		start_experience_factor = 0.30
 	}
 	division = { # 
 		name = "5a Divisione CC.NN. '1 Febbraio'" 
 		location = 10928 
 		division_template = "Camicie Nere"	# CC.NN. militia, lower training and equipment
-		start_experience_factor = 0.15
+		start_experience_factor = 0.20
 	}
 
 	# Corpo d'Armata Eritreo #
@@ -626,12 +711,9 @@ units = {
 
 	# Corpo d'Armata Libico #
 	division = { # 
-		division_name = {
-			is_name_ordered = yes
-			name_order = 29
-		}#  "29a Divisione di Fanteria 'Piemonte'" 
+		name = "29a Divisione di Fanteria 'Peloritana'"#  "29a Divisione di Fanteria 'Peloritana'" 
 		location = 5091 
-		division_template = "Divisione di Fanteria"	
+		division_template = "Divisione di Fanteria Mobilitata"	
 		start_experience_factor = 0.2 
 	}
 	division = { # 
@@ -655,9 +737,9 @@ units = {
 	}
 	division = { # 
 		name = "6a Divisione CC.NN. 'Tevere'" 
-		location = 8164 
+		location = 12991 
 		division_template = "Camicie Nere"	# CC.NN. militia, lower training and equipment
-		start_experience_factor = 0.15
+		start_experience_factor = 0.10
 	}
 
 	############################

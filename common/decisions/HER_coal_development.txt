@@ -8,7 +8,7 @@ HER_historical_coal_development = {
 		cost = 50
 		days_remove = 180
 		modifier = { civilian_factory_use = 6 }
-		remove_effect = { set_country_flag = SOV_kuzbass_expanded 570 = { add_resource = { type = coal amount = 45 } } }
+		remove_effect = { set_country_flag = SOV_kuzbass_expanded 570 = { add_resource = { type = coal amount = 70 } } }
 		ai_will_do = { factor = 5 }
 	}
 	SOV_expand_ural_coal_base = {
@@ -20,7 +20,7 @@ HER_historical_coal_development = {
 		cost = 40
 		days_remove = 150
 		modifier = { civilian_factory_use = 5 }
-		remove_effect = { set_country_flag = SOV_ural_coal_expanded 581 = { add_resource = { type = coal amount = 35 } } }
+		remove_effect = { set_country_flag = SOV_ural_coal_expanded 581 = { add_resource = { type = coal amount = 55 } } }
 		ai_will_do = { factor = 4 }
 	}
 	SOV_expand_karaganda = {
@@ -32,7 +32,7 @@ HER_historical_coal_development = {
 		cost = 40
 		days_remove = 150
 		modifier = { civilian_factory_use = 5 }
-		remove_effect = { set_country_flag = SOV_karaganda_expanded 589 = { add_resource = { type = coal amount = 30 } } }
+		remove_effect = { set_country_flag = SOV_karaganda_expanded 589 = { add_resource = { type = coal amount = 50 } } }
 		ai_will_do = { factor = 4 }
 	}
 	SOV_expand_moscow_basin = {
@@ -44,7 +44,7 @@ HER_historical_coal_development = {
 		cost = 35
 		days_remove = 120
 		modifier = { civilian_factory_use = 4 }
-		remove_effect = { set_country_flag = SOV_moscow_coal_expanded 223 = { add_resource = { type = coal amount = 25 } } }
+		remove_effect = { set_country_flag = SOV_moscow_coal_expanded 223 = { add_resource = { type = coal amount = 40 } } }
 		ai_will_do = { factor = 3 }
 	}
 	SOV_develop_pechora_basin = {
@@ -56,7 +56,7 @@ HER_historical_coal_development = {
 		cost = 50
 		days_remove = 240
 		modifier = { civilian_factory_use = 6 }
-		remove_effect = { set_country_flag = SOV_pechora_developed 262 = { add_resource = { type = coal amount = 18 } } }
+		remove_effect = { set_country_flag = SOV_pechora_developed 262 = { add_resource = { type = coal amount = 30 } } }
 		ai_will_do = { factor = 3 }
 	}
 	SOV_open_gremyachinsk = {
@@ -68,7 +68,7 @@ HER_historical_coal_development = {
 		cost = 40
 		days_remove = 180
 		modifier = { civilian_factory_use = 5 }
-		remove_effect = { set_country_flag = SOV_gremyachinsk_opened 262 = { add_resource = { type = coal amount = 17 } } }
+		remove_effect = { set_country_flag = SOV_gremyachinsk_opened 262 = { add_resource = { type = coal amount = 30 } } }
 		ai_will_do = { factor = 4 }
 	}
 	SOV_emergency_eastern_coal_expansion = {
@@ -88,7 +88,7 @@ HER_historical_coal_development = {
 		cost = 75
 		days_remove = 270
 		modifier = { civilian_factory_use = 10 }
-		remove_effect = { set_country_flag = SOV_emergency_coal_expansion_done 570 = { add_resource = { type = coal amount = 55 } } 581 = { add_resource = { type = coal amount = 35 } } 589 = { add_resource = { type = coal amount = 30 } } }
+		remove_effect = { set_country_flag = SOV_emergency_coal_expansion_done 570 = { add_resource = { type = coal amount = 90 } } 581 = { add_resource = { type = coal amount = 55 } } 589 = { add_resource = { type = coal amount = 50 } } }
 		ai_will_do = { factor = 10 }
 	}
 	SOV_restore_donbass_mines = {
@@ -100,7 +100,7 @@ HER_historical_coal_development = {
 		cost = 100
 		days_remove = 360
 		modifier = { civilian_factory_use = 12 }
-		remove_effect = { set_country_flag = SOV_donbass_restored 227 = { add_resource = { type = coal amount = 70 } } 228 = { add_resource = { type = coal amount = 70 } } }
+		remove_effect = { set_country_flag = SOV_donbass_restored 227 = { add_resource = { type = coal amount = 110 } } 228 = { add_resource = { type = coal amount = 110 } } }
 		ai_will_do = { factor = 10 }
 	}
 
@@ -111,7 +111,7 @@ HER_historical_coal_development = {
 		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 7 }
 		highlight_states = { highlight_state_targets = { state = 64 state = 65 state = 802 } }
 		cost = 50 days_remove = 180 modifier = { civilian_factory_use = 8 }
-		remove_effect = { set_country_flag = GER_lignite_expanded 64 = { add_resource = { type = coal amount = 35 } } 65 = { add_resource = { type = coal amount = 25 } } }
+		remove_effect = { set_country_flag = GER_lignite_expanded 64 = { add_resource = { type = coal amount = 55 } } 65 = { add_resource = { type = coal amount = 40 } } }
 		ai_will_do = { factor = 5 }
 	}
 	GER_wartime_lignite_expansion = {
@@ -121,7 +121,7 @@ HER_historical_coal_development = {
 		available = { date > 1940.1.1 has_tech = excavation3 num_of_civilian_factories_available_for_projects > 9 }
 		highlight_states = { highlight_state_targets = { state = 64 state = 65 } }
 		cost = 65 days_remove = 240 modifier = { civilian_factory_use = 10 }
-		remove_effect = { set_country_flag = GER_wartime_lignite_expanded 64 = { add_resource = { type = coal amount = 40 } } 65 = { add_resource = { type = coal amount = 30 } } }
+		remove_effect = { set_country_flag = GER_wartime_lignite_expanded 64 = { add_resource = { type = coal amount = 65 } } 65 = { add_resource = { type = coal amount = 50 } } }
 		ai_will_do = { factor = 6 }
 	}
 	ITA_develop_sulcis_coalfield = {
@@ -130,7 +130,7 @@ HER_historical_coal_development = {
 		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
 		highlight_states = { highlight_state_targets = { state = 114 } }
 		cost = 40 days_remove = 180 modifier = { civilian_factory_use = 4 }
-		remove_effect = { set_country_flag = ITA_sulcis_developed 114 = { add_resource = { type = coal amount = 18 } } }
+		remove_effect = { set_country_flag = ITA_sulcis_developed 114 = { add_resource = { type = coal amount = 30 } } }
 		ai_will_do = { factor = 5 }
 	}
 	JAP_expand_hokkaido_kyushu_coal = {
@@ -139,7 +139,7 @@ HER_historical_coal_development = {
 		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 5 }
 		highlight_states = { highlight_state_targets = { state = 528 state = 536 } }
 		cost = 45 days_remove = 180 modifier = { civilian_factory_use = 6 }
-		remove_effect = { set_country_flag = JAP_home_coal_expanded 528 = { add_resource = { type = coal amount = 20 } } 536 = { add_resource = { type = coal amount = 20 } } }
+		remove_effect = { set_country_flag = JAP_home_coal_expanded 528 = { add_resource = { type = coal amount = 30 } } 536 = { add_resource = { type = coal amount = 30 } } }
 		ai_will_do = { factor = 5 }
 	}
 	JAP_expand_korean_coal_mines = {
@@ -148,7 +148,7 @@ HER_historical_coal_development = {
 		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 4 }
 		highlight_states = { highlight_state_targets = { state = 845 } }
 		cost = 40 days_remove = 150 modifier = { civilian_factory_use = 5 }
-		remove_effect = { set_country_flag = JAP_korean_coal_expanded 845 = { add_resource = { type = coal amount = 20 } } }
+		remove_effect = { set_country_flag = JAP_korean_coal_expanded 845 = { add_resource = { type = coal amount = 30 } } }
 		ai_will_do = { factor = 4 }
 	}
 	MAN_expand_fushun_coal_mines = {
@@ -157,7 +157,7 @@ HER_historical_coal_development = {
 		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
 		highlight_states = { highlight_state_targets = { state = 716 } }
 		cost = 35 days_remove = 180 modifier = { civilian_factory_use = 4 }
-		remove_effect = { set_country_flag = MAN_fushun_expanded 716 = { add_resource = { type = coal amount = 25 } } }
+		remove_effect = { set_country_flag = MAN_fushun_expanded 716 = { add_resource = { type = coal amount = 40 } } }
 		ai_will_do = { factor = 6 }
 	}
 	USA_wartime_appalachian_output = {
@@ -166,7 +166,7 @@ HER_historical_coal_development = {
 		available = { date > 1940.1.1 has_war = yes has_tech = excavation3 num_of_civilian_factories_available_for_projects > 9 }
 		highlight_states = { highlight_state_targets = { state = 360 state = 369 state = 827 } }
 		cost = 60 days_remove = 180 modifier = { civilian_factory_use = 10 }
-		remove_effect = { set_country_flag = USA_appalachian_coal_mobilized 360 = { add_resource = { type = coal amount = 35 } } 369 = { add_resource = { type = coal amount = 30 } } 827 = { add_resource = { type = coal amount = 25 } } }
+		remove_effect = { set_country_flag = USA_appalachian_coal_mobilized 360 = { add_resource = { type = coal amount = 55 } } 369 = { add_resource = { type = coal amount = 50 } } 827 = { add_resource = { type = coal amount = 40 } } }
 		ai_will_do = { factor = 5 }
 	}
 	RAJ_expand_jharia_raniganj = {
@@ -175,7 +175,7 @@ HER_historical_coal_development = {
 		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
 		highlight_states = { highlight_state_targets = { state = 430 state = 435 } }
 		cost = 35 days_remove = 180 modifier = { civilian_factory_use = 4 }
-		remove_effect = { set_country_flag = RAJ_eastern_coal_expanded 430 = { add_resource = { type = coal amount = 12 } } 435 = { add_resource = { type = coal amount = 18 } } }
+		remove_effect = { set_country_flag = RAJ_eastern_coal_expanded 430 = { add_resource = { type = coal amount = 20 } } 435 = { add_resource = { type = coal amount = 30 } } }
 		ai_will_do = { factor = 5 }
 	}
 	SAF_expand_witbank_coalfield = {
@@ -184,7 +184,7 @@ HER_historical_coal_development = {
 		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
 		highlight_states = { highlight_state_targets = { state = 275 } }
 		cost = 35 days_remove = 150 modifier = { civilian_factory_use = 4 }
-		remove_effect = { set_country_flag = SAF_witbank_expanded 275 = { add_resource = { type = coal amount = 20 } } }
+		remove_effect = { set_country_flag = SAF_witbank_expanded 275 = { add_resource = { type = coal amount = 30 } } }
 		ai_will_do = { factor = 4 }
 	}
 	AST_expand_eastern_coalfields = {
@@ -193,7 +193,7 @@ HER_historical_coal_development = {
 		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
 		highlight_states = { highlight_state_targets = { state = 285 state = 521 } }
 		cost = 35 days_remove = 150 modifier = { civilian_factory_use = 4 }
-		remove_effect = { set_country_flag = AST_eastern_coal_expanded 285 = { add_resource = { type = coal amount = 15 } } 521 = { add_resource = { type = coal amount = 5 } } }
+		remove_effect = { set_country_flag = AST_eastern_coal_expanded 285 = { add_resource = { type = coal amount = 25 } } 521 = { add_resource = { type = coal amount = 10 } } }
 		ai_will_do = { factor = 4 }
 	}
 	CAN_expand_alberta_nova_scotia_coal = {
@@ -202,7 +202,7 @@ HER_historical_coal_development = {
 		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
 		highlight_states = { highlight_state_targets = { state = 464 state = 470 } }
 		cost = 35 days_remove = 150 modifier = { civilian_factory_use = 4 }
-		remove_effect = { set_country_flag = CAN_coal_expanded 464 = { add_resource = { type = coal amount = 8 } } 470 = { add_resource = { type = coal amount = 7 } } }
+		remove_effect = { set_country_flag = CAN_coal_expanded 464 = { add_resource = { type = coal amount = 13 } } 470 = { add_resource = { type = coal amount = 12 } } }
 		ai_will_do = { factor = 4 }
 	}
 	TUR_expand_zonguldak_coalfield = {
@@ -211,7 +211,7 @@ HER_historical_coal_development = {
 		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
 		highlight_states = { highlight_state_targets = { state = 339 } }
 		cost = 35 days_remove = 180 modifier = { civilian_factory_use = 4 }
-		remove_effect = { set_country_flag = TUR_zonguldak_expanded 339 = { add_resource = { type = coal amount = 15 } } }
+		remove_effect = { set_country_flag = TUR_zonguldak_expanded 339 = { add_resource = { type = coal amount = 25 } } }
 		ai_will_do = { factor = 4 }
 	}
 	CZE_expand_north_bohemian_lignite = {
@@ -220,7 +220,7 @@ HER_historical_coal_development = {
 		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
 		highlight_states = { highlight_state_targets = { state = 69 state = 9 } }
 		cost = 35 days_remove = 150 modifier = { civilian_factory_use = 4 }
-		remove_effect = { set_country_flag = CZE_lignite_expanded 69 = { add_resource = { type = coal amount = 20 } } }
+		remove_effect = { set_country_flag = CZE_lignite_expanded 69 = { add_resource = { type = coal amount = 30 } } }
 		ai_will_do = { factor = 4 }
 	}
 	HUN_expand_transdanubian_lignite = {
@@ -229,7 +229,7 @@ HER_historical_coal_development = {
 		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
 		highlight_states = { highlight_state_targets = { state = 155 } }
 		cost = 30 days_remove = 150 modifier = { civilian_factory_use = 4 }
-		remove_effect = { set_country_flag = HUN_lignite_expanded 155 = { add_resource = { type = coal amount = 15 } } }
+		remove_effect = { set_country_flag = HUN_lignite_expanded 155 = { add_resource = { type = coal amount = 25 } } }
 		ai_will_do = { factor = 4 }
 	}
 	POL_expand_upper_silesian_mines = {
@@ -238,7 +238,7 @@ HER_historical_coal_development = {
 		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
 		highlight_states = { highlight_state_targets = { state = 762 } }
 		cost = 35 days_remove = 150 modifier = { civilian_factory_use = 4 }
-		remove_effect = { set_country_flag = POL_upper_silesia_expanded 762 = { add_resource = { type = coal amount = 20 } } }
+		remove_effect = { set_country_flag = POL_upper_silesia_expanded 762 = { add_resource = { type = coal amount = 30 } } }
 		ai_will_do = { factor = 4 }
 	}
 	FRA_modernize_nord_pas_de_calais_mines = {
@@ -247,7 +247,7 @@ HER_historical_coal_development = {
 		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 4 }
 		highlight_states = { highlight_state_targets = { state = 29 } }
 		cost = 40 days_remove = 180 modifier = { civilian_factory_use = 5 }
-		remove_effect = { set_country_flag = FRA_northern_mines_modernized 29 = { add_resource = { type = coal amount = 12 } } }
+		remove_effect = { set_country_flag = FRA_northern_mines_modernized 29 = { add_resource = { type = coal amount = 20 } } }
 		ai_will_do = { factor = 3 }
 	}
 	SPR_reopen_asturian_leonese_mines = {
@@ -256,7 +256,7 @@ HER_historical_coal_development = {
 		available = { date > 1939.1.1 has_war = no has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
 		highlight_states = { highlight_state_targets = { state = 174 } }
 		cost = 35 days_remove = 180 modifier = { civilian_factory_use = 4 }
-		remove_effect = { set_country_flag = SPR_asturian_mines_reopened 174 = { add_resource = { type = coal amount = 10 } } }
+		remove_effect = { set_country_flag = SPR_asturian_mines_reopened 174 = { add_resource = { type = coal amount = 15 } } }
 		ai_will_do = { factor = 4 }
 	}
 	ROM_expand_jiu_valley_mines = {
@@ -265,7 +265,7 @@ HER_historical_coal_development = {
 		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
 		highlight_states = { highlight_state_targets = { state = 82 } }
 		cost = 30 days_remove = 150 modifier = { civilian_factory_use = 4 }
-		remove_effect = { set_country_flag = ROM_jiu_valley_expanded 82 = { add_resource = { type = coal amount = 8 } } }
+		remove_effect = { set_country_flag = ROM_jiu_valley_expanded 82 = { add_resource = { type = coal amount = 12 } } }
 		ai_will_do = { factor = 4 }
 	}
 	BUL_expand_pernik_mines = {
@@ -274,7 +274,7 @@ HER_historical_coal_development = {
 		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 2 }
 		highlight_states = { highlight_state_targets = { state = 48 } }
 		cost = 25 days_remove = 120 modifier = { civilian_factory_use = 3 }
-		remove_effect = { set_country_flag = BUL_pernik_expanded 48 = { add_resource = { type = coal amount = 8 } } }
+		remove_effect = { set_country_flag = BUL_pernik_expanded 48 = { add_resource = { type = coal amount = 12 } } }
 		ai_will_do = { factor = 4 }
 	}
 	YUG_expand_bosnian_serbian_lignite = {
@@ -283,7 +283,7 @@ HER_historical_coal_development = {
 		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 2 }
 		highlight_states = { highlight_state_targets = { state = 107 } }
 		cost = 25 days_remove = 120 modifier = { civilian_factory_use = 3 }
-		remove_effect = { set_country_flag = YUG_lignite_expanded 107 = { add_resource = { type = coal amount = 10 } } }
+		remove_effect = { set_country_flag = YUG_lignite_expanded 107 = { add_resource = { type = coal amount = 15 } } }
 		ai_will_do = { factor = 4 }
 	}
 	CHI_expand_shanxi_coalfield = {
@@ -292,7 +292,7 @@ HER_historical_coal_development = {
 		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
 		highlight_states = { highlight_state_targets = { state = 615 } }
 		cost = 30 days_remove = 180 modifier = { civilian_factory_use = 4 }
-		remove_effect = { set_country_flag = CHI_shanxi_coal_expanded 615 = { add_resource = { type = coal amount = 15 } } }
+		remove_effect = { set_country_flag = CHI_shanxi_coal_expanded 615 = { add_resource = { type = coal amount = 25 } } }
 		ai_will_do = { factor = 4 }
 	}
 }

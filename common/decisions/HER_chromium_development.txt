@@ -118,11 +118,11 @@ HER_historical_chromium_development = {
 	}
 	PHI_develop_zambales_chromite = {
 		icon = chromium allowed = { original_tag = PHI }
-		visible = { 623 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = PHI_zambales_chromite_developed } }
+		visible = { 623 = { CONTROLLER = { tag = ROOT } NOT = { has_state_flag = zambales_chromite_developed } } }
 		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 4 }
 		highlight_states = { highlight_state_targets = { state = 623 } }
 		cost = 45 days_remove = 210 modifier = { civilian_factory_use = 6 }
-		remove_effect = { set_country_flag = PHI_zambales_chromite_developed 623 = { add_resource = { type = chromium amount = 700 } } }
+		remove_effect = { 623 = { add_resource = { type = chromium amount = 700 } set_state_flag = zambales_chromite_developed } }
 		ai_will_do = { factor = 10 }
 	}
 	ALB_develop_albanian_chromite = {

@@ -97,7 +97,6 @@ focus_tree = {
 		available_if_capitulated = no
 		
 		completion_reward = {
-			custom_effect_tooltip = SOV_connection_of_the_interior_info
 			every_state = {
 				limit = {
 					is_core_of = SOV
@@ -108,20 +107,6 @@ focus_tree = {
 						has_state_category = large_town
 						has_state_category = city
 						has_state_category = large_city
-					}
-				}
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			every_state = {
-				limit = {
-					is_core_of = SOV
-					is_controlled_by = SOV
-					is_on_continent = europe
-					OR = {
 						has_state_category = metropolis
 						has_state_category = megalopolis
 					}
@@ -6511,26 +6496,6 @@ focus_tree = {
 			add_political_power = 150
 			custom_effect_tooltip = if_they_accept #This will also make GER more likely to take Molotov-Ribbentrop pact and less to take Anti-Soviet Pact
 			effect_tooltip = {
-				if = {
-					limit = {
-						NOT = { has_tech = fighter2 }
-					}
-					set_technology = { fighter2 = 1 }
-				}
-				if = { #Default name
-					limit = {
-						has_government = communism
-					}
-					add_tech_bonus = {
-						name = NSB_soviet_soviet_german_trade_agreement_tech_bonus_name
-						bonus = 1
-						uses = 1
-						category = air_equipment
-					}
-				}
-				mio:SOV_mig_design_bureau_organization = {
-					add_mio_funds = 800
-				}
 				#Effects to Germans
 				GER = {
 					add_timed_idea = { idea = SOV_soviet_german_trade_agreement days = 545 } #Technically 1 year but really 18 months for Soviet payment 

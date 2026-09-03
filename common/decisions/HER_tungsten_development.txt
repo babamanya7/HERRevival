@@ -1,0 +1,182 @@
+HER_historical_tungsten_development = {
+	CHI_expand_jiangxi_tungsten_output = {
+		icon = tungsten allowed = { original_tag = CHI }
+		visible = { 600 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = CHI_jiangxi_tungsten_expanded } }
+		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 6 }
+		highlight_states = { highlight_state_targets = { state = 600 state = 593 state = 602 } }
+		cost = 55 days_remove = 180 modifier = { civilian_factory_use = 7 }
+		remove_effect = { set_country_flag = CHI_jiangxi_tungsten_expanded 600 = { add_resource = { type = tungsten amount = 700 } } 593 = { add_resource = { type = tungsten amount = 180 } } 602 = { add_resource = { type = tungsten amount = 120 } } }
+		ai_will_do = { factor = 10 }
+	}
+	CHI_wartime_nanling_tungsten_program = {
+		icon = tungsten allowed = { original_tag = CHI }
+		visible = { has_country_flag = CHI_jiangxi_tungsten_expanded NOT = { has_country_flag = CHI_nanling_tungsten_program } }
+		available = { date > 1939.1.1 has_war = yes has_tech = excavation3 num_of_civilian_factories_available_for_projects > 7 }
+		highlight_states = { highlight_state_targets = { state = 600 state = 599 state = 325 } }
+		cost = 65 days_remove = 240 modifier = { civilian_factory_use = 9 }
+		remove_effect = { set_country_flag = CHI_nanling_tungsten_program 600 = { add_resource = { type = tungsten amount = 350 } } 599 = { add_resource = { type = tungsten amount = 200 } } 325 = { add_resource = { type = tungsten amount = 150 } } }
+		ai_will_do = { factor = 9 }
+	}
+	RAJ_expand_mawchi_mines = {
+		icon = tungsten allowed = { original_tag = RAJ }
+		visible = { 640 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = RAJ_mawchi_expanded } }
+		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 5 }
+		highlight_states = { highlight_state_targets = { state = 640 } }
+		cost = 45 days_remove = 180 modifier = { civilian_factory_use = 6 }
+		remove_effect = { set_country_flag = RAJ_mawchi_expanded 640 = { add_resource = { type = tungsten amount = 250 } } }
+		ai_will_do = { factor = 8 }
+	}
+	RAJ_wartime_burma_tungsten_expansion = {
+		icon = tungsten allowed = { original_tag = RAJ }
+		visible = { has_country_flag = RAJ_mawchi_expanded NOT = { has_country_flag = RAJ_burma_tungsten_expanded } }
+		available = { date > 1940.1.1 has_war = yes has_tech = excavation3 num_of_civilian_factories_available_for_projects > 7 }
+		highlight_states = { highlight_state_targets = { state = 640 state = 288 } }
+		cost = 55 days_remove = 240 modifier = { civilian_factory_use = 8 }
+		remove_effect = { set_country_flag = RAJ_burma_tungsten_expanded 640 = { add_resource = { type = tungsten amount = 120 } } 288 = { add_resource = { type = tungsten amount = 80 } } }
+		ai_will_do = { factor = 9 }
+	}
+	USA_wartime_tungsten_program = {
+		icon = tungsten allowed = { original_tag = USA }
+		visible = { NOT = { has_country_flag = USA_wartime_tungsten_program } }
+		available = { date > 1940.1.1 has_war = yes has_tech = excavation3 num_of_civilian_factories_available_for_projects > 10 }
+		highlight_states = { highlight_state_targets = { state = 379 state = 378 state = 387 } }
+		cost = 75 days_remove = 270 modifier = { civilian_factory_use = 12 }
+		remove_effect = { set_country_flag = USA_wartime_tungsten_program 379 = { add_resource = { type = tungsten amount = 180 } } 378 = { add_resource = { type = tungsten amount = 150 } } 387 = { add_resource = { type = tungsten amount = 120 } } }
+		ai_will_do = { factor = 10 }
+	}
+	BRA_expand_bolivian_argentine_tungsten = {
+		icon = tungsten allowed = { original_tag = BRA }
+		visible = { NOT = { has_country_flag = BRA_andes_tungsten_expanded } }
+		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 5 }
+		highlight_states = { highlight_state_targets = { state = 500 } }
+		cost = 45 days_remove = 210 modifier = { civilian_factory_use = 6 }
+		remove_effect = { set_country_flag = BRA_andes_tungsten_expanded 500 = { add_resource = { type = tungsten amount = 300 } } }
+		ai_will_do = { factor = 7 }
+	}
+	BRA_wartime_andean_tungsten_program = {
+		icon = tungsten allowed = { original_tag = BRA }
+		visible = { has_country_flag = BRA_andes_tungsten_expanded NOT = { has_country_flag = BRA_wartime_tungsten_program } }
+		available = { date > 1941.1.1 has_war = yes has_tech = excavation3 num_of_civilian_factories_available_for_projects > 7 }
+		highlight_states = { highlight_state_targets = { state = 500 } }
+		cost = 60 days_remove = 270 modifier = { civilian_factory_use = 9 }
+		remove_effect = { set_country_flag = BRA_wartime_tungsten_program 500 = { add_resource = { type = tungsten amount = 500 } } }
+		ai_will_do = { factor = 9 }
+	}
+	JAP_expand_sangdong_tungsten_mines = {
+		icon = tungsten allowed = { original_tag = JAP }
+		visible = { 527 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = JAP_sangdong_expanded } }
+		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 6 }
+		highlight_states = { highlight_state_targets = { state = 527 } }
+		cost = 45 days_remove = 210 modifier = { civilian_factory_use = 6 }
+		remove_effect = { set_country_flag = JAP_sangdong_expanded 527 = { add_resource = { type = tungsten amount = 200 } } }
+		ai_will_do = { factor = 8 }
+	}
+	JAP_wartime_korean_tungsten_program = {
+		icon = tungsten allowed = { original_tag = JAP }
+		visible = { has_country_flag = JAP_sangdong_expanded NOT = { has_country_flag = JAP_korean_tungsten_program } }
+		available = { date > 1940.1.1 has_war = yes has_tech = excavation3 num_of_civilian_factories_available_for_projects > 8 }
+		highlight_states = { highlight_state_targets = { state = 527 } }
+		cost = 65 days_remove = 270 modifier = { civilian_factory_use = 10 }
+		remove_effect = { set_country_flag = JAP_korean_tungsten_program 527 = { add_resource = { type = tungsten amount = 500 } } }
+		ai_will_do = { factor = 10 }
+	}
+	POR_expand_panasqueira_mines = {
+		icon = tungsten allowed = { original_tag = POR }
+		visible = { 181 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = POR_panasqueira_expanded } }
+		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 4 }
+		highlight_states = { highlight_state_targets = { state = 181 } }
+		cost = 40 days_remove = 180 modifier = { civilian_factory_use = 5 }
+		remove_effect = { set_country_flag = POR_panasqueira_expanded 181 = { add_resource = { type = tungsten amount = 200 } } }
+		ai_will_do = { factor = 8 }
+	}
+	POR_wolfram_boom = {
+		icon = tungsten allowed = { original_tag = POR }
+		visible = { has_country_flag = POR_panasqueira_expanded NOT = { has_country_flag = POR_wolfram_boom } }
+		available = { date > 1940.1.1 has_tech = excavation3 num_of_civilian_factories_available_for_projects > 6 }
+		highlight_states = { highlight_state_targets = { state = 181 } }
+		cost = 55 days_remove = 240 modifier = { civilian_factory_use = 8 }
+		remove_effect = { set_country_flag = POR_wolfram_boom 181 = { add_resource = { type = tungsten amount = 400 } } }
+		ai_will_do = { factor = 10 }
+	}
+	SPR_begin_iberian_wolfram_expansion = {
+		icon = tungsten allowed = { original_tag = SPR }
+		visible = { NOT = { has_country_flag = SPR_iberian_wolfram_expanded } }
+		available = { date > 1939.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 4 }
+		highlight_states = { highlight_state_targets = { state = 171 state = 170 } }
+		cost = 40 days_remove = 180 modifier = { civilian_factory_use = 5 }
+		remove_effect = { set_country_flag = SPR_iberian_wolfram_expanded 171 = { add_resource = { type = tungsten amount = 90 } } 170 = { add_resource = { type = tungsten amount = 60 } } }
+		ai_will_do = { factor = 7 }
+	}
+	SPR_wartime_wolfram_boom = {
+		icon = tungsten allowed = { original_tag = SPR }
+		visible = { has_country_flag = SPR_iberian_wolfram_expanded NOT = { has_country_flag = SPR_wartime_wolfram_boom } }
+		available = { date > 1941.1.1 has_tech = excavation3 num_of_civilian_factories_available_for_projects > 6 }
+		highlight_states = { highlight_state_targets = { state = 171 state = 170 } }
+		cost = 60 days_remove = 270 modifier = { civilian_factory_use = 8 }
+		remove_effect = { set_country_flag = SPR_wartime_wolfram_boom 171 = { add_resource = { type = tungsten amount = 300 } } 170 = { add_resource = { type = tungsten amount = 200 } } }
+		ai_will_do = { factor = 10 }
+	}
+	FRA_expand_indochinese_tungsten_mines = {
+		icon = tungsten allowed = { original_tag = FRA }
+		visible = { 671 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = FRA_indochina_tungsten_expanded } }
+		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 4 }
+		highlight_states = { highlight_state_targets = { state = 671 } }
+		cost = 35 days_remove = 180 modifier = { civilian_factory_use = 5 }
+		remove_effect = { set_country_flag = FRA_indochina_tungsten_expanded 671 = { add_resource = { type = tungsten amount = 150 } } }
+		ai_will_do = { factor = 6 }
+	}
+	AST_expand_queensland_tungsten_mines = {
+		icon = tungsten allowed = { original_tag = AST }
+		visible = { 521 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = AST_queensland_tungsten_expanded } }
+		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 4 }
+		highlight_states = { highlight_state_targets = { state = 521 } }
+		cost = 40 days_remove = 190 modifier = { civilian_factory_use = 5 }
+		remove_effect = { set_country_flag = AST_queensland_tungsten_expanded 521 = { add_resource = { type = tungsten amount = 250 } } }
+		ai_will_do = { factor = 7 }
+	}
+	SOV_develop_tyrnyauz_tungsten = {
+		icon = tungsten allowed = { original_tag = SOV }
+		visible = { 233 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = SOV_tyrnyauz_developed } }
+		available = { date > 1940.1.1 has_tech = excavation3 num_of_civilian_factories_available_for_projects > 6 }
+		highlight_states = { highlight_state_targets = { state = 233 } }
+		cost = 50 days_remove = 240 modifier = { civilian_factory_use = 7 }
+		remove_effect = { set_country_flag = SOV_tyrnyauz_developed 233 = { add_resource = { type = tungsten amount = 150 } } }
+		ai_will_do = { factor = 8 }
+	}
+	SOV_expand_dzhida_tungsten_complex = {
+		icon = tungsten allowed = { original_tag = SOV }
+		visible = { 563 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = SOV_dzhida_tungsten_expanded } }
+		available = { date > 1942.1.1 has_war = yes has_tech = excavation3 num_of_civilian_factories_available_for_projects > 7 }
+		highlight_states = { highlight_state_targets = { state = 563 } }
+		cost = 55 days_remove = 240 modifier = { civilian_factory_use = 8 }
+		remove_effect = { set_country_flag = SOV_dzhida_tungsten_expanded 563 = { add_resource = { type = tungsten amount = 100 } } }
+		ai_will_do = { factor = 9 }
+	}
+	ENG_reopen_hemerdon_mine = {
+		icon = tungsten allowed = { original_tag = ENG }
+		visible = { 123 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = ENG_hemerdon_reopened } }
+		available = { date > 1941.1.1 has_war = yes has_tech = excavation3 num_of_civilian_factories_available_for_projects > 5 }
+		highlight_states = { highlight_state_targets = { state = 123 } }
+		cost = 40 days_remove = 210 modifier = { civilian_factory_use = 6 }
+		remove_effect = { set_country_flag = ENG_hemerdon_reopened 123 = { add_resource = { type = tungsten amount = 100 } } }
+		ai_will_do = { factor = 8 }
+	}
+	SWE_expand_yxsjoberg_tungsten_mine = {
+		icon = tungsten allowed = { original_tag = SWE }
+		visible = { NOT = { has_country_flag = SWE_yxsjoberg_expanded } }
+		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
+		highlight_states = { highlight_state_targets = { state = 141 } }
+		cost = 30 days_remove = 160 modifier = { civilian_factory_use = 4 }
+		remove_effect = { set_country_flag = SWE_yxsjoberg_expanded 141 = { add_resource = { type = tungsten amount = 50 } } }
+		ai_will_do = { factor = 5 }
+	}
+	SIA_expand_thai_tungsten_mines = {
+		icon = tungsten allowed = { original_tag = SIA }
+		visible = { 289 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = SIA_tungsten_expanded } }
+		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
+		highlight_states = { highlight_state_targets = { state = 289 } }
+		cost = 30 days_remove = 160 modifier = { civilian_factory_use = 4 }
+		remove_effect = { set_country_flag = SIA_tungsten_expanded 289 = { add_resource = { type = tungsten amount = 70 } } }
+		ai_will_do = { factor = 5 }
+	}
+}

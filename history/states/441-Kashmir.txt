@@ -5,17 +5,19 @@ state={
 	manpower = 2123700
 	
 	state_category = rural
+	buildings_max_level_factor = 1.200
 	
 	resources={
-		bauxite = 9
 	}
 
 	history={
 		owner = RAJ
 		buildings = {
 			infrastructure = 2
-			industrial_complex = 1
-		}
+			industrial_complex = 5
+		
+			arms_factory = 1
+}
 		add_core_of = PAK
 		add_core_of = RAJ
 	}

@@ -6,11 +6,15 @@ state={
 	
 	state_category = city
 
+	resources = {
+		coal = 8
+	}
+
 	history={
 		owner = AUS
 		buildings = {
 			infrastructure = 6
-			industrial_complex = 6
+			industrial_complex = 5
 			arms_factory = 1
 			air_base = 8
 		}

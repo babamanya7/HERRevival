@@ -1,0 +1,14 @@
+HER_historical_rubber_development = {
+	icon = generic_prospect_for_resources
+	visible = {
+		OR = {
+			original_tag = MAL
+			original_tag = INS
+			original_tag = ENG
+			original_tag = FRA
+			original_tag = SIA
+			original_tag = RAJ
+			original_tag = BRA
+		}
+	}
+}

@@ -9,13 +9,13 @@ state={
 		}
 		buildings = {
 			infrastructure = 9
-			industrial_complex = 13
-			dockyard = 2
+			industrial_complex = 15
+			dockyard = 3
 			air_base = 8
 			6882 = {
 				naval_base = 6
 			}
-			steel_refinery = 5
+			steel_refinery = 4
 		}
 		add_core_of = USA
 		1936.1.1.14 = {
@@ -33,6 +33,6 @@ state={
 		3693 3863 6882 11782 
 	}
 	manpower=3000000
-	buildings_max_level_factor=1.000
+	buildings_max_level_factor=1.100
 	state_category=metropolis
 }

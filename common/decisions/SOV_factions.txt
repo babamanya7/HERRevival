@@ -1362,7 +1362,7 @@ SOV_internal_factions = {
 		#Success trigger
 		available = {
 			has_completed_focus = SOV_finish_the_second_five_year_plan
-			num_of_civilian_factories > 350
+			num_of_civilian_factories > 300
 			has_country_flag = azov_complete
 			has_country_flag = zaporozh_complete
 			has_country_flag = ural_complete
@@ -1405,6 +1405,8 @@ SOV_internal_factions = {
 		available = {
 			227 = {
 				steel_refinery > 3
+			}
+			227 = {
 				infrastructure > 7
 			}
 		}
@@ -1429,6 +1431,7 @@ SOV_internal_factions = {
 			add_stability = 0.02
 			add_political_power = 10
 			227 = {
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = industrial_complex
 					level = 2
@@ -1456,8 +1459,12 @@ SOV_internal_factions = {
 		available = {
 			200 = {
 				steel_refinery > 3
-				industrial_complex > 3
-				infrastructure > 5
+			}
+			200 = {
+				industrial_complex > 2
+			}
+			200 = {
+				infrastructure > 6
 			}
 		}
 
@@ -1481,6 +1488,7 @@ SOV_internal_factions = {
 			add_stability = 0.02
 			add_political_power = 10
 			200 = {
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = industrial_complex
 					level = 2
@@ -1507,7 +1515,9 @@ SOV_internal_factions = {
 		#Success trigger
 		available = {
 			653 = {
-				industrial_complex > 3
+				industrial_complex > 2
+			}
+			653 = {
 				infrastructure > 3
 			}
 		}
@@ -1532,6 +1542,7 @@ SOV_internal_factions = {
 			add_stability = 0.02
 			add_political_power = 10
 			653 = {
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = infrastructure
 					level = 1
@@ -1558,8 +1569,10 @@ SOV_internal_factions = {
 		#Success trigger
 		available = {
 			227 = {
-				industrial_complex > 13
-				infrastructure > 5
+				industrial_complex > 8
+			}
+			227 = {
+				infrastructure > 8
 			}
 		}
 
@@ -1583,6 +1596,7 @@ SOV_internal_factions = {
 			add_stability = 0.02
 			add_political_power = 10
 			227 = {
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = infrastructure
 					level = 1
@@ -1609,8 +1623,10 @@ SOV_internal_factions = {
 		#Success trigger
 		available = {
 			572 = {
-				industrial_complex > 5
-				infrastructure > 5
+				industrial_complex > 4
+			}
+			572 = {
+				infrastructure > 4
 			}
 		}
 
@@ -1634,6 +1650,7 @@ SOV_internal_factions = {
 			add_stability = 0.02
 			add_political_power = 10
 			572 = {
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = infrastructure
 					level = 1
@@ -1660,16 +1677,20 @@ SOV_internal_factions = {
 		#Success trigger
 		available = {
 			226 = {
+				infrastructure > 7
+			}
+			226 = {
 				industrial_complex > 4
-				infrastructure > 5
+			}
+			200 = {
+				infrastructure > 7
 			}
 			200 = {
 				industrial_complex > 4
-				infrastructure > 5
 			}
 		}
 
-		days_mission_timeout = 600
+		days_mission_timeout = 540
 
 		fire_only_once = yes
 
@@ -1688,9 +1709,10 @@ SOV_internal_factions = {
 		complete_effect = {
 			226 = {
 				set_state_category = city
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 				add_building_construction = {
@@ -1701,9 +1723,10 @@ SOV_internal_factions = {
 			}
 			200 = {
 				set_state_category = city
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 				add_building_construction = {
@@ -1713,6 +1736,92 @@ SOV_internal_factions = {
 				}
 			}
 			set_country_flag = dneproges_complete
+		}
+	}
+
+	# Third Five-Year Plan: the first stage of the Ural Aluminium Plant entered service in 1939.
+	SOV_fyp_ural_aluminium_plant = {
+		icon = generic_construction
+
+		allowed = { original_tag = SOV }
+
+		available = {
+			653 = {
+				infrastructure > 6
+			}
+			653 = {
+				hydro_aluminium_refinery > 3
+			}
+		}
+
+		days_mission_timeout = 640
+		fire_only_once = yes
+		is_good = no
+
+		activation = {
+			has_completed_focus = SOV_start_the_third_five_year_plan
+			NOT = { has_war_with = GER }
+		}
+
+		timeout_effect = {
+			add_stability = -0.02
+			add_political_power = -15
+		}
+
+		complete_effect = {
+			add_stability = 0.01
+			653 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = hydro_aluminium_refinery
+					level = 2
+					instant_build = yes
+				}
+			}
+			set_country_flag = ural_aluminium_complete
+		}
+	}
+
+	# Third Five-Year Plan: expand Kazan Aircraft Plant No. 124 and its heavy-aircraft capacity.
+	SOV_fyp_kazan_aviation_complex = {
+		icon = generic_construction
+
+		allowed = { original_tag = SOV }
+
+		available = {
+			249 = {
+				arms_factory > 9
+			}
+			249 = {
+				infrastructure > 6
+			}
+		}
+
+		days_mission_timeout = 720
+		fire_only_once = yes
+		is_good = no
+
+		activation = {
+			has_completed_focus = SOV_start_the_third_five_year_plan
+			NOT = { has_war_with = GER }
+		}
+
+		timeout_effect = {
+			add_stability = -0.02
+			add_political_power = -15
+		}
+
+		complete_effect = {
+			add_stability = 0.01
+			249 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 5
+					instant_build = yes
+				}
+			}
+			set_country_flag = kazan_aviation_complete
 		}
 	}
 

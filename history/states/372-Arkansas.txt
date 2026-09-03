@@ -7,8 +7,9 @@ state={
 	state_category = city
 	
 	resources={
-		bauxite = 176
-		coal = 16
+		coal = 15
+		bauxite = 760
+
 	}
 
 
@@ -16,7 +17,7 @@ state={
 		owner = USA
 		buildings = {
 			infrastructure = 4
-			industrial_complex = 13
+			industrial_complex = 15
 		}
 		add_core_of = USA
 		victory_points = {

@@ -4,9 +4,9 @@ state={
 	manpower=634421
 
 	resources={
-		iron = 395
-		oil = 6
-		coal = 253
+		oil = 1		coal = 156
+		iron = 500
+
 	}
 
 	history={
@@ -14,6 +14,7 @@ state={
 		buildings = {
 			infrastructure = 6
 			industrial_complex = 2
+			steel_refinery = 4
 
 		}
 		add_core_of = SOV

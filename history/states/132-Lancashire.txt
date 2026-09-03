@@ -4,10 +4,12 @@ state= {
 	manpower = 5770454
 	
 	state_category = megalopolis
+	buildings_max_level_factor = 1.080
 	
 	resources={
-		iron = 12
-		coal = 1643
+		coal = 1762
+		iron = 180
+
 	}
 
 	history= {
@@ -21,12 +23,12 @@ state= {
 		
 		buildings = {
 			infrastructure = 8
-			arms_factory = 2
-			industrial_complex = 10
+			arms_factory = 4
+			industrial_complex = 14
 			dockyard = 6
 			air_base = 6
 			fuel_silo = 2
-			steel_refinery = 4
+			steel_refinery = 3
 			6384 = {
 				naval_base = 5
 			}

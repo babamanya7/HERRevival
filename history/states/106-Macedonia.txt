@@ -1,14 +1,17 @@
 state={
 	id=106
 	name="STATE_106"
-	
+
+	resources={
+		chromium = 194
+	}
 
 	history={
 		owner = YUG
 		victory_points = { 14504 3 }
 		buildings = {
 			infrastructure = 4
-			industrial_complex = 2
+			industrial_complex = 1
 			air_base = 4
 
 		}

@@ -5,8 +5,6 @@ state={
 	manpower = 4650000
 	state_category = city
 	resources={
-		iron = 15
-		chromium = 35 # was: 4
 	}
 
 	history={
@@ -15,8 +13,8 @@ state={
 		#
 		buildings = {
 			infrastructure = 2
-			industrial_complex = 7
-			arms_factory = 2
+			industrial_complex = 5
+			arms_factory = 1
 		}
 		victory_points = { 
 			7137 10 

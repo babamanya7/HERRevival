@@ -4,9 +4,8 @@ state= {
 	manpower = 12700000
 	state_category = city
 	resources={
-		tungsten=192 # was: 20
-		iron = 33
-		chromium = 31 # was: 4
+		tungsten = 620
+		iron = 10
 	}
 
 	history= {
@@ -16,7 +15,7 @@ state= {
 		buildings = {
 			infrastructure = 1
 			arms_factory = 1
-			industrial_complex = 2
+			industrial_complex = 1
 			9938 = {
 				naval_base = 1
 				coastal_bunker = 1

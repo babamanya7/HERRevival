@@ -78,23 +78,34 @@
 
     ROM_change_sides_to_commintern:0 "Переворот короля Михая"
 
-    SOV_complete_second_five_year_plan:0 "Завершение второго пятилетнего плана"
+    SOV_complete_second_five_year_plan:0 "Завершить второй пятилетний план"
+    SOV_complete_second_five_year_plan_desc:0 "Госплан требует закончить ключевые очереди тяжёлой промышленности до истечения установленного срока. Каждый объект сначала потребует собственных капиталовложений и только после выполнения норм получит дополнительные государственные мощности."
 
     SOV_winter_counterattack:0 "Провести зимнее контрнаступление"
 
-    SOV_fyp_azovsteel:0 "Стройка Азовстали"
-    SOV_fyp_zaporozhsteel:0 "Стройка Запорожстали"
-    SOV_fyp_ural_heavy_industry:0 "Стройка Уральского завода тяжёлого машиностроения"
-    SOV_fyp_donbass_heavy_industry:0 "Стройка Краматорского завода тяжёлого станкостроения"
-    SOV_fyp_chelyabinsk_heavy_industry:0 "Стройка Челябинского тракторного завода"
-    SOV_fyp_dneproges:0 "Стройка Днепрогэс"
+    SOV_fyp_azovsteel:0 "Расширение «Азовстали»"
+    SOV_fyp_azovsteel_desc:0 "Первая очередь комбината уже действует. Расширение доменного и прокатного производства позволит превратить Приазовье в один из центров советской металлургии."
+    SOV_fyp_zaporozhsteel:0 "Вторая очередь «Запорожстали»"
+    SOV_fyp_zaporozhsteel_desc:0 "Запорожский металлургический комплекс должен получить дополнительные доменные печи и мощности полного цикла."
+    SOV_fyp_ural_heavy_industry:0 "Расширение Уралмаша"
+    SOV_fyp_ural_heavy_industry_desc:0 "Уралмаш уже введён в строй, однако его производственная база ещё далека от проектной. Новые цеха позволят выпускать больше оборудования для шахт, металлургии и тяжёлого машиностроения."
+    SOV_fyp_donbass_heavy_industry:0 "Вторая очередь НКМЗ"
+    SOV_fyp_donbass_heavy_industry_desc:0 "Новокраматорский машиностроительный завод станет основной площадкой для выпуска крупного металлургического и горного оборудования."
+    SOV_fyp_chelyabinsk_heavy_industry:0 "Расширение Челябинского тракторного завода"
+    SOV_fyp_chelyabinsk_heavy_industry_desc:0 "Новые корпуса ЧТЗ увеличат выпуск гусеничной техники и создадут резерв мощностей, пригодных для будущего военного производства."
+    SOV_fyp_dneproges:0 "Вывести Днепрогэс на проектную мощность"
+    SOV_fyp_dneproges_desc:0 "Монтаж оставшихся гидроагрегатов и развитие потребляющих предприятий завершат формирование Днепровского промышленно-энергетического узла."
+    SOV_fyp_ural_aluminium_plant:0 "Первая очередь Уральского алюминиевого завода"
+    SOV_fyp_ural_aluminium_plant_desc:0 "Южноуральские бокситы и электроэнергия новых гидростанций должны обеспечить стране крупную алюминиевую базу вдали от западных границ."
+    SOV_fyp_kazan_aviation_complex:0 "Расширение Казанского авиазавода №124"
+    SOV_fyp_kazan_aviation_complex_desc:0 "Новые корпуса и инфраструктура Казанского авиакомбината позволят развернуть крупносерийное производство тяжёлых самолётов в глубине страны."
 
-    azov_complete:0 "Азовсталь построена"
-    zaporozh_complete:0 "Запорожсталь построена"
-    ural_complete:0 "УЗТМ построен"
-    donbass_complete:0 "КЗТС построен"
-    chtz_complete:0 "ЧТЗ построен"
-    dneproges_complete:0 "Днепрогэс построена"
+    azov_complete:0 "Расширение «Азовстали» завершено"
+    zaporozh_complete:0 "Вторая очередь «Запорожстали» завершена"
+    ural_complete:0 "Расширение Уралмаша завершено"
+    donbass_complete:0 "Вторая очередь НКМЗ завершена"
+    chtz_complete:0 "Расширение ЧТЗ завершено"
+    dneproges_complete:0 "Днепрогэс выведен на проектную мощность"
 
     MAN_raid_otw:0 "Уже проводим рейд"
 
@@ -253,8 +264,6 @@
     close_synthetic_refineries_desc:0 ""
     trigger_has_75_coal:0 "Как минимум 75 угля в избытке"
 
-    develop_chengdu_oil_deposits:0 "Исследовать нефтяные месторождения Чэнду"
-    develop_magnitogorsk_coal_deposits:0 "Разработка месторождения угля в Магнитогорске"
 
     CHI_yellow_river_flood:0 "Разрушить дамбы на Хуанхэ"
     CHI_yellow_river_flood_desc:0 "Разлив Хуанхэ поможет замедлить продвижение японцев вглубь Китая и позволит создать оборонительный рубеж от Хуанхэ до Янцзы."
@@ -2398,32 +2407,14 @@
     payback_war_bond_F:0 "Выплаты по облигациям"
     payback_war_bond_G:0 "Выплаты по облигациям"
 
-    develop_western_rhineland_coal_mines:0 "Развитие угольных шахт Западного Рейнланда"
-    develop_western_rhineland_coal_mines_desc:0 ""
 
-    develop_eastern_rhineland_coal_mines:0 "Развитие угольных шахт Восточного Рейнланда"
-    develop_eastern_rhineland_coal_mines_desc:0 ""
 
-    develop_tuscany_coal_mines:0 "Развитие угольных шахт Тосканы"
-    develop_tuscany_coal_mines_desc:0 ""
 
-    develop_champagne_coal_mines:0 "Развивать угольные шахты в регионе Шампань"
-    develop_champagne_coal_mines_desc:0 ""
 
-    develop_guadalajara_coal_mines:0 "Развитие угольных шахт Гвадалахары"
-    develop_guadalajara_coal_mines_desc:0 ""
 
-    develop_sevilla_coal_mines:0 "Разработка угольных шахт Севильи"
-    develop_sevilla_coal_mines_desc:0 ""
 
-    develop_montana_coal_mines:0 "Разработка угольных шахт в Монтане"
-    develop_montana_coal_mines_desc:0 ""
 
-    develop_north_dakota_coal_mines:0 "Разработка угольных шахт в Северной Дакоте"
-    develop_north_dakota_coal_mines_desc:0 ""
 
-    develop_gulf_province_coal_mines:0 "Разработка угольных шахт в провинции Персидского залива."
-    develop_gulf_province_coal_mines_desc:0 ""
 
     develop_hannover_iron_mines:0 "Разработка железорудных месторождений Зальцгиттер"
     develop_hannover_iron_mines_desc:0 ""
@@ -2837,4 +2828,3 @@
   USA_JPMorgan_market_assistance_agitated_desc:0 "При взволнованном отношении J. P. Morgan не станет помогать правительству. Сначала необходимо улучшить отношения."
   USA_JPMorgan_market_assistance_congress_support_tt:0 "До §G10 сенаторов§! и §G25 членов Палаты представителей§! поддержат правительство."
   USA_JPMorgan_market_assistance_requires_worried_tt:0 "Отношение J. P. Morgan — §Yтревожное§! или лучше."
-

@@ -5,8 +5,7 @@ state={
 	buildings_max_level_factor=1.000
 	state_category= large_city
 	resources = {
-		iron = 28
-		rubber = 35
+		iron = 40
 	}
 
 	history={
@@ -15,9 +14,9 @@ state={
 		#
 		buildings = {
 			infrastructure = 2
-			arms_factory = 5
-			industrial_complex = 6
-			steel_refinery = 2
+			arms_factory = 2
+			industrial_complex = 4
+			steel_refinery = 1
 		}
 		victory_points = {
 			4619 30

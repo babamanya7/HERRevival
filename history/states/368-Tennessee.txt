@@ -5,10 +5,12 @@ state={
 	manpower = 2616555
 	
 	state_category = city
+	buildings_max_level_factor = 1.267
 	
 	resources={
-		iron = 2
-		coal = 61
+		coal = 59
+		iron = 8
+
 	}
 
 
@@ -16,8 +18,8 @@ state={
 		owner = USA
 		buildings = {
 			infrastructure = 5
-			industrial_complex = 13
-			aluminium_refinery = 2
+			industrial_complex = 15
+			hydro_aluminium_refinery = 4
 		}
 		add_core_of = USA
 		victory_points = {

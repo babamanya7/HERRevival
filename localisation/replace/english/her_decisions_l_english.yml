@@ -1,7 +1,7 @@
 ﻿l_english:
-    
+
     FRA_activate_Dyle_plan: "План Дайла"
-    
+
     SOV_propaganda_more_metal_tt: "Дается §G+40§! §Y$state_resource_coal$§!, §G+25§! §Y$state_resource_aluminium$§!, §G+80§! §Y$state_resource_tungsten$§!, §G+45§! §Y$state_resource_steel$§! и §G+60§! §Y$state_resource_chromium$§! за каждый регион, производящий эти ресурсы."
     
     SOV_add_hspg_companies_to_guards:0 "£faction_sov_army Придать гвардейским частям тяжёлые САУ"
@@ -77,23 +77,34 @@
     
     ROM_change_sides_to_commintern:0 "Переворот короля Михая"
     
-    SOV_complete_second_five_year_plan:0 "Завершение второго пятилетнего плана"
+    SOV_complete_second_five_year_plan:0 "Complete the Second Five-Year Plan"
+    SOV_complete_second_five_year_plan_desc:0 "Gosplan demands that the principal extensions of heavy industry be completed before the deadline. Each project requires direct investment before additional state capacity is assigned to it."
     
     SOV_winter_counterattack:0 "Провести зимнее контрнаступление"
     
-    SOV_fyp_azovsteel:0 "Стройка Азовстали"
-    SOV_fyp_zaporozhsteel:0 "Стройка Запорожстали"
-    SOV_fyp_ural_heavy_industry:0 "Стройка Уральского завода тяжёлого машиностроения"
-    SOV_fyp_donbass_heavy_industry:0 "Стройка Краматорского завода тяжёлого станкостроения"
-    SOV_fyp_chelyabinsk_heavy_industry:0 "Стройка Челябинского тракторного завода"
-    SOV_fyp_dneproges:0 "Стройка Днепрогэс"
-    
-    azov_complete:0 "Азовсталь построена"
-    zaporozh_complete:0 "Запорожсталь построена"
-    ural_complete:0 "УЗТМ построен"
-    donbass_complete:0 "КЗТС построен"
-    chtz_complete:0 "ЧТЗ построен"
-    dneproges_complete:0 "Днепрогэс построена"
+    SOV_fyp_azovsteel:0 "Expand Azovstal"
+    SOV_fyp_azovsteel_desc:0 "The first stage of the combine is already operating. Additional blast furnaces and rolling capacity will turn the Azov region into a major centre of Soviet metallurgy."
+    SOV_fyp_zaporozhsteel:0 "Second Stage of Zaporizhstal"
+    SOV_fyp_zaporozhsteel_desc:0 "The Zaporizhzhia metallurgical complex is to receive additional blast furnaces and integrated production capacity."
+    SOV_fyp_ural_heavy_industry:0 "Expand Uralmash"
+    SOV_fyp_ural_heavy_industry_desc:0 "Uralmash has entered service, but remains far below its planned capacity. New workshops will produce machinery for mines, metallurgy and heavy industry."
+    SOV_fyp_donbass_heavy_industry:0 "Second Stage of NKMZ"
+    SOV_fyp_donbass_heavy_industry_desc:0 "The Novokramatorsk Machine-Building Plant will become a principal producer of large mining and metallurgical equipment."
+    SOV_fyp_chelyabinsk_heavy_industry:0 "Expand the Chelyabinsk Tractor Plant"
+    SOV_fyp_chelyabinsk_heavy_industry_desc:0 "New ChTZ workshops will increase tracked vehicle output and create reserve capacity suitable for future armaments production."
+    SOV_fyp_dneproges:0 "Bring DneproGES to Design Capacity"
+    SOV_fyp_dneproges_desc:0 "Installing the remaining generating units and expanding consumer industries will complete the Dnieper industrial and power complex."
+    SOV_fyp_ural_aluminium_plant:0 "First Stage of the Ural Aluminium Plant"
+    SOV_fyp_ural_aluminium_plant_desc:0 "South Ural bauxite and new hydroelectric power must provide the country with a major aluminium base far from its western frontiers."
+    SOV_fyp_kazan_aviation_complex:0 "Expand Kazan Aircraft Plant No. 124"
+    SOV_fyp_kazan_aviation_complex_desc:0 "New workshops and infrastructure at the Kazan aircraft combine will support large-scale production of heavy aircraft deep within the country."
+
+    azov_complete:0 "Azovstal expansion completed"
+    zaporozh_complete:0 "Second stage of Zaporizhstal completed"
+    ural_complete:0 "Uralmash expansion completed"
+    donbass_complete:0 "Second stage of NKMZ completed"
+    chtz_complete:0 "ChTZ expansion completed"
+    dneproges_complete:0 "DneproGES brought to design capacity"
     
     MAN_raid_otw:0 "Уже проводим рейд"
     
@@ -252,8 +263,6 @@
     close_synthetic_refineries_desc:0 ""
     trigger_has_75_coal:0 "Как минимум 75 угля в избытке"
 
-    develop_chengdu_oil_deposits:0 "Исследовать нефтяные месторождения Чэнду"
-    develop_magnitogorsk_coal_deposits:0 "Разработка месторождения угля в Магнитогорске"
     
     CHI_yellow_river_flood:0 "Flood the Yellow River"
     CHI_yellow_river_flood_desc:0 "Flooding the Yellow river can help us hinder the Japanese progress into China, allowing us to have a defensive line from the Yellow to the Yangtze"
@@ -2560,23 +2569,11 @@
     payback_war_bond_F:0 "Выплаты по облигациям"
     payback_war_bond_G:0 "Выплаты по облигациям"
 
-    develop_western_rhineland_coal_mines:0 "Develop Western Rhineland Coal Mines"
-    develop_western_rhineland_coal_mines_desc:0 "" 
 
-    develop_eastern_rhineland_coal_mines:0 "Develop Eastern Rhineland Coal Mines"
-    develop_eastern_rhineland_coal_mines_desc:0 "" 
 
-    develop_tuscany_coal_mines:0 "Develop Tuscany Coal Mines"
-    develop_tuscany_coal_mines_desc:0 "" 
 
-    develop_champagne_coal_mines:0 "Develop Champagne Coal Mines"
-    develop_champagne_coal_mines_desc:0 ""
 
-    develop_guadalajara_coal_mines:0 "Develop Guadalajara Coal Mines"
-    develop_guadalajara_coal_mines_desc:0 ""
 
-    develop_sevilla_coal_mines:0 "Develop Sevilla Coal Mines"
-    develop_sevilla_coal_mines_desc:0 ""
 
     develop_bursa_coal_mines:0 "Develop Bursa Coal Mines"
     develop_bursa_coal_mines_desc:0 ""
@@ -2584,14 +2581,8 @@
     develop_trabzon_coal_mines:0 "Develop Trabzon Coal Mines"
     develop_trabzon_coal_mines_desc:0 ""
 
-    develop_montana_coal_mines:0 "Develop Montana Coal Mines"
-    develop_montana_coal_mines_desc:0 ""
 
-    develop_north_dakota_coal_mines:0 "Develop North Dakota Coal Mines"
-    develop_north_dakota_coal_mines_desc:0 ""
 
-    develop_gulf_province_coal_mines:0 "Develop Coal Mines in the Gulf Province"
-    develop_gulf_province_coal_mines_desc:0 ""
     
     develop_hannover_iron_mines:0 "Develop Salzgitter Iron Mines"
     develop_hannover_iron_mines_desc:0 ""
@@ -3006,4 +2997,3 @@
   USA_JPMorgan_market_assistance_agitated_desc:0 "At Agitated attitude, J. P. Morgan will not assist the government. Improve relations before this decision can be activated."
   USA_JPMorgan_market_assistance_congress_support_tt:0 "Up to §G10 Senators§! and §G25 Representatives§! support the government."
   USA_JPMorgan_market_assistance_requires_worried_tt:0 "J. P. Morgan's attitude is §YWorried§! or better."
-

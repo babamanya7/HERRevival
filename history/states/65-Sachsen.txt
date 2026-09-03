@@ -3,20 +3,20 @@ state={
 	id=65
 	name="STATE_65"
 	manpower = 5592576
-	buildings_max_level_factor=1.000
+	buildings_max_level_factor=1.800
 	state_category = metropolis
 
 	resources={
-		coal = 264
+		coal = 258
 	}
 
 	history={
 		owner = GER
 		buildings = {
 			infrastructure = 7
-			arms_factory = 6
-			industrial_complex = 7
-			steel_refinery = 2
+			arms_factory = 21
+			industrial_complex = 13
+			steel_refinery = 1
 			synthetic_refinery = 1
 		}
 		victory_points = {

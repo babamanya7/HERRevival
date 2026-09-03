@@ -25,6 +25,18 @@ focus_tree = {
 		
 		completion_reward = {
 			country_event = { id = ger_armor.823 }
+			64 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = tungsten_storage
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_timed_idea = {
+				idea = GER_strategic_wolfram_reserve_program
+				days = 730
+			}
 		}
 	}
 
@@ -737,6 +749,31 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+			}
+		}
+
+	focus = {
+		id = GER_reich_research_council
+		icon = GFX_focus_research
+		prerequisite = { focus = GER_nationalize_german_arms_industries }
+		x = 2
+		y = 1
+		relative_position_id = GER_nationalize_german_arms_industries
+		cost = 5
+
+		available = {
+			date > 1938.1.1
+		}
+
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_RESEARCH }
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		completion_reward = {
+			add_research_slot = 1
 		}
 	}
 	focus = {

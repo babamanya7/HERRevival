@@ -4,8 +4,10 @@ state = {
 	manpower = 2432754
 	
 	state_category = large_city
+	buildings_max_level_factor = 1.056
 	
 	resources = {
+		chromium = 6
 		#
 	}
 
@@ -15,11 +17,11 @@ state = {
 		add_core_of = QUE
 		buildings = {
 			infrastructure = 6
-			dockyard = 1
+			dockyard = 2
 			industrial_complex = 9
 			arms_factory = 4
 			steel_refinery = 1
-			aluminium_refinery = 2
+			hydro_aluminium_refinery = 3
 			air_base = 6
 			12149 = {
 				naval_base = 6

@@ -5,16 +5,17 @@ state={
 	manpower = 2470938
 	
 	state_category = city
+	buildings_max_level_factor = 1.134
 	
 	resources = {
-		coal = 885
+		coal = 844
 	}
 
 	history={
 		owner = USA
 		buildings = {
 			infrastructure = 6
-			industrial_complex = 14
+			industrial_complex = 16
 			steel_refinery = 1
 		}
 		add_core_of = USA

@@ -5,6 +5,7 @@ state={
 	manpower = 3685235
 	
 	state_category = megalopolis
+	buildings_max_level_factor = 1.120
 	resources={
 		
 	}
@@ -13,10 +14,9 @@ state={
 		owner = ENG
 		buildings = {
 			infrastructure = 8
-			arms_factory = 5
-			industrial_complex = 11
-			aluminium_refinery = 2
-			steel_refinery = 5
+			arms_factory = 9
+			industrial_complex = 15
+			steel_refinery = 4
 			air_base = 2
 			fuel_silo = 2
 		}

@@ -6,7 +6,11 @@ state={
 	
 	state_category = city
 
-	history={
+		resources = {
+		iron = 180
+	}
+
+history={
 		owner = SOV
 		victory_points = {
 			9680 1
@@ -30,7 +34,6 @@ state={
 			infrastructure = 7
 			dockyard = 1
 			air_base = 4
-			steel_refinery = 2
 			industrial_complex = 2
 			arms_factory = 2
 			9680 ={

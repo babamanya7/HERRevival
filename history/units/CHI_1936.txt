@@ -111,9 +111,222 @@ division_template = {
     }
 }
 
+
+division_template = {
+    name = "Guangdong Shi"
+    division_names_group = CHI_INF_01
+    # Chen Jitang First Group Army field division, 1932-36 structure.
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+        infantry = { x = 0 y = 2 }
+        infantry = { x = 1 y = 0 }
+        infantry = { x = 1 y = 1 }
+        infantry = { x = 1 y = 2 }
+        infantry = { x = 2 y = 0 }
+        infantry = { x = 2 y = 1 }
+        infantry = { x = 2 y = 2 }
+    }
+    support = {
+        engineer = { x = 0 y = 0 }
+        signal_company = { x = 0 y = 1 }
+    }
+    priority = 1
+}
+
+division_template = {
+    name = "Guangdong Duli Lu"
+    division_names_group = CHI_INF_01
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+        infantry = { x = 1 y = 0 }
+    }
+    priority = 0
+}
+
+division_template = {
+    name = "Guangdong Duli Tuan"
+    division_names_group = CHI_INF_01
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+    }
+    priority = 0
+}
+
 ### OOB ###
 units = {
 	###### Kuomintang Army (CO: Chang Kai-shek) ######
+
+	##### Guangdong First Group Army (CO: Chen Jitang) #####
+	# The establishment created in 1931-32 remained broadly intact until Chen's fall in July 1936.
+	# 1st Army (Yu Hanmou)
+	division = {
+		name = "1 Guangdong Shi"
+		location = 1162
+		division_template = "Guangdong Shi"
+		start_experience_factor = 0.20
+		start_equipment_factor = 0.78
+	}
+	division = {
+		name = "2 Guangdong Shi"
+		location = 1162
+		division_template = "Guangdong Shi"
+		start_experience_factor = 0.20
+		start_equipment_factor = 0.78
+	}
+
+	# 2nd Army (Xiang Hanping)
+	division = {
+		name = "4 Guangdong Shi"
+		location = 1202
+		division_template = "Guangdong Shi"
+		start_experience_factor = 0.18
+		start_equipment_factor = 0.75
+	}
+	division = {
+		name = "5 Guangdong Shi"
+		location = 1202
+		division_template = "Guangdong Shi"
+		start_experience_factor = 0.18
+		start_equipment_factor = 0.75
+	}
+
+	# 3rd Army (Li Yangjing)
+	division = {
+		name = "7 Guangdong Shi"
+		location = 9938
+		division_template = "Guangdong Shi"
+		start_experience_factor = 0.18
+		start_equipment_factor = 0.75
+	}
+	division = {
+		name = "8 Guangdong Shi"
+		location = 9938
+		division_template = "Guangdong Shi"
+		start_experience_factor = 0.18
+		start_equipment_factor = 0.75
+	}
+
+	# Independent and training divisions
+	division = {
+		name = "1 Guangdong Duli Shi"
+		location = 1162
+		division_template = "Guangdong Shi"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.70
+	}
+	division = {
+		name = "2 Guangdong Duli Shi"
+		location = 1202
+		division_template = "Guangdong Shi"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.70
+	}
+	division = {
+		name = "Guangdong Peixun Shi"
+		location = 1162
+		division_template = "Guangdong Shi"
+		start_experience_factor = 0.20
+		start_equipment_factor = 0.72
+	}
+
+	# Independent Guards Brigade and four independent brigades
+	division = {
+		name = "Guangdong Jingwei Lu"
+		location = 1162
+		division_template = "Guangdong Duli Lu"
+		start_experience_factor = 0.20
+		start_equipment_factor = 0.75
+	}
+	division = {
+		name = "1 Guangdong Duli Lu"
+		location = 1162
+		division_template = "Guangdong Duli Lu"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.68
+	}
+	division = {
+		name = "2 Guangdong Duli Lu"
+		location = 1202
+		division_template = "Guangdong Duli Lu"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.68
+	}
+	division = {
+		name = "3 Guangdong Duli Lu"
+		location = 9938
+		division_template = "Guangdong Duli Lu"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.65
+	}
+	division = {
+		name = "4 Guangdong Duli Lu"
+		location = 9938
+		division_template = "Guangdong Duli Lu"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.65
+	}
+
+	# Eight independent regiments were part of the permanent establishment.
+	division = {
+		name = "1 Guangdong Duli Tuan"
+		location = 1162
+		division_template = "Guangdong Duli Tuan"
+		start_experience_factor = 0.12
+		start_equipment_factor = 0.62
+	}
+	division = {
+		name = "2 Guangdong Duli Tuan"
+		location = 1162
+		division_template = "Guangdong Duli Tuan"
+		start_experience_factor = 0.12
+		start_equipment_factor = 0.62
+	}
+	division = {
+		name = "3 Guangdong Duli Tuan"
+		location = 1202
+		division_template = "Guangdong Duli Tuan"
+		start_experience_factor = 0.12
+		start_equipment_factor = 0.62
+	}
+	division = {
+		name = "4 Guangdong Duli Tuan"
+		location = 1202
+		division_template = "Guangdong Duli Tuan"
+		start_experience_factor = 0.12
+		start_equipment_factor = 0.62
+	}
+	division = {
+		name = "5 Guangdong Duli Tuan"
+		location = 9938
+		division_template = "Guangdong Duli Tuan"
+		start_experience_factor = 0.12
+		start_equipment_factor = 0.62
+	}
+	division = {
+		name = "6 Guangdong Duli Tuan"
+		location = 9938
+		division_template = "Guangdong Duli Tuan"
+		start_experience_factor = 0.12
+		start_equipment_factor = 0.62
+	}
+	division = {
+		name = "7 Guangdong Duli Tuan"
+		location = 1202
+		division_template = "Guangdong Duli Tuan"
+		start_experience_factor = 0.12
+		start_equipment_factor = 0.62
+	}
+	division = {
+		name = "8 Guangdong Duli Tuan"
+		location = 1162
+		division_template = "Guangdong Duli Tuan"
+		start_experience_factor = 0.12
+		start_equipment_factor = 0.62
+	}
+
 	##### Beiping-Tianjin Area (CO: ) #####
 	### 29 Juntuan (highly-reinforced corps) ###
 	division = {

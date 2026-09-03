@@ -1,45 +1,114 @@
 ﻿division_template = {
-	name = "Juntuán"
-	division_names_group = CHI_INF_01
-	
-	regiments = {
-		infantry = { x = 0 y = 0 }
-		infantry = { x = 0 y = 1 }
-		infantry = { x = 1 y = 0 }
-		infantry = { x = 1 y = 1 }
-		infantry = { x = 2 y = 0 }
-		infantry = { x = 2 y = 1 }
-	}
-
-	priority = 0 # garrison
+    name = "Juntuán"
+    division_names_group = CHI_INF_01
+    # Ordinary NRA/provincial field division: nominal four-regiment organisation,
+    # usually only about 4,000-6,000 men actually present.
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+        infantry = { x = 1 y = 0 }
+        infantry = { x = 1 y = 1 }
+        infantry = { x = 2 y = 0 }
+        infantry = { x = 2 y = 1 }
+    }
+    priority = 0
 }
-division_template = {
-	name = "Sanjiao Jun"
-	division_names_group = CHI_INF_01
 
-	regiments = {
-		infantry = { x = 0 y = 0 }
-		infantry = { x = 0 y = 1 }
-		infantry = { x = 1 y = 0 }
-		infantry = { x = 1 y = 1 }
-		infantry = { x = 2 y = 0 }
-		infantry = { x = 2 y = 1 }
-		infantry = { x = 3 y = 0 }
-		infantry = { x = 3 y = 1 }
-		infantry = { x = 4 y = 0 }
-		infantry = { x = 4 y = 1 }
-	}
+division_template = {
+    name = "Sanjiao Jun"
+    division_names_group = CHI_INF_01
+    # 1935 New-Type / German-advised division: 4 regiments x 3 battalions.
+    # Artillery is represented by one battalion because actual gun holdings lagged far below TO&E.
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+        infantry = { x = 0 y = 2 }
+        infantry = { x = 1 y = 0 }
+        infantry = { x = 1 y = 1 }
+        infantry = { x = 1 y = 2 }
+        infantry = { x = 2 y = 0 }
+        infantry = { x = 2 y = 1 }
+        infantry = { x = 2 y = 2 }
+        infantry = { x = 3 y = 0 }
+        infantry = { x = 3 y = 1 }
+        infantry = { x = 3 y = 2 }
+        artillery_brigade = { x = 4 y = 0 }
+    }
+    support = {
+        engineer = { x = 0 y = 0 }
+        signal_company = { x = 0 y = 1 }
+        recon = { x = 0 y = 2 }
+    }
+    priority = 1
 }
-division_template = {
-	name = "Qibing Jun"		# Represents two-division cavalry corps (generally poorly-equipped)
-	division_names_group = CHI_CAV_01
 
-	regiments = {
-		cavalry = { x = 0 y = 0 }
-		cavalry = { x = 0 y = 1 }
-		cavalry = { x = 1 y = 0 }
-		cavalry = { x = 1 y = 1 }
-	}
+division_template = {
+    name = "29 Jun Zengqiang Shi"
+    division_names_group = CHI_INF_01
+    # Song Zheyuan's 29th Army divisions were exceptionally large four-brigade formations.
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+        infantry = { x = 0 y = 2 }
+        infantry = { x = 1 y = 0 }
+        infantry = { x = 1 y = 1 }
+        infantry = { x = 1 y = 2 }
+        infantry = { x = 2 y = 0 }
+        infantry = { x = 2 y = 1 }
+        infantry = { x = 2 y = 2 }
+        infantry = { x = 3 y = 0 }
+        infantry = { x = 3 y = 1 }
+        infantry = { x = 3 y = 2 }
+        artillery_brigade = { x = 4 y = 0 }
+    }
+    support = { engineer = { x = 0 y = 0 } }
+}
+
+division_template = {
+    name = "Jingbei Lu"
+    division_names_group = CHI_INF_01
+    # Peace-preservation / independent infantry brigade.
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+        infantry = { x = 1 y = 0 }
+    }
+    priority = 0
+}
+
+division_template = {
+    name = "Teqin Lu"
+    division_names_group = CHI_INF_01
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+        infantry = { x = 1 y = 0 }
+        infantry = { x = 1 y = 1 }
+    }
+    priority = 0
+}
+
+division_template = {
+    name = "Qibing Shi"
+    division_names_group = CHI_CAV_01
+    # Typical cavalry division, roughly 3,000 men in the northern armies.
+    regiments = {
+        cavalry = { x = 0 y = 0 }
+        cavalry = { x = 0 y = 1 }
+        cavalry = { x = 1 y = 0 }
+    }
+}
+
+division_template = {
+    name = "Qibing Jun"
+    division_names_group = CHI_CAV_01
+    # Corps-level cavalry abstraction retained for formations not yet decomposed in this OOB.
+    regiments = {
+        cavalry = { x = 0 y = 0 }
+        cavalry = { x = 0 y = 1 }
+        cavalry = { x = 1 y = 0 }
+        cavalry = { x = 1 y = 1 }
+    }
 }
 
 ### OOB ###
@@ -50,27 +119,69 @@ units = {
 	division = {
 		name = "37 Bubing Shi"
 		location = 9843
-		division_template = "Sanjiao Jun"
+		division_template = "29 Jun Zengqiang Shi"
 		start_experience_factor = 0.2
+		start_equipment_factor = 0.80
 	}
 	division = {
 		name = "38 Bubing Shi"
 		location = 10068
-		division_template = "Sanjiao Jun"
+		division_template = "29 Jun Zengqiang Shi"
 		start_experience_factor = 0.2
+		start_equipment_factor = 0.80
 	}
 	division = {
 		name = "132 Bubing Shi"
 		location = 11761
-		division_template = "Sanjiao Jun"
+		division_template = "29 Jun Zengqiang Shi"
 		start_experience_factor = 0.2
+		start_equipment_factor = 0.80
 	}
 	division = {
 		name = "143 Bubing Shi"
 		location = 4140
-		division_template = "Sanjiao Jun"
+		division_template = "29 Jun Zengqiang Shi"
 		start_experience_factor = 0.2
+		start_equipment_factor = 0.80
 	}
+
+
+    # 29th Army additional permanent formations (Beiping-Tianjin-Chahar)
+    division = {
+        name = "9 Qibing Shi"
+        location = 9843 # Nanyuan / Beiping area
+        division_template = "Qibing Shi"
+        start_experience_factor = 0.20
+        start_equipment_factor = 0.75
+    }
+    division = {
+        name = "39 Duli Bubing Lu"
+        location = 9843 # Beiyuan
+        division_template = "Jingbei Lu"
+        start_experience_factor = 0.15
+        start_equipment_factor = 0.70
+    }
+    division = {
+        name = "40 Duli Bubing Lu"
+        location = 4140 # Zhangjiakou
+        division_template = "Jingbei Lu"
+        start_experience_factor = 0.15
+        start_equipment_factor = 0.70
+    }
+    division = {
+        name = "13 Duli Qibing Lu"
+        location = 4140 # Xuanhua / Chahar
+        division_template = "Qibing Shi"
+        start_experience_factor = 0.15
+        start_equipment_factor = 0.65
+    }
+    division = {
+        name = "29 Jun Teqin Lu"
+        location = 9843 # Nanyuan
+        division_template = "Teqin Lu"
+        start_experience_factor = 0.20
+        start_equipment_factor = 0.75
+    }
 
 	##### First War Area (CO: Cheng Qian) #####
 	division = { # "4 Qibing Jun"
@@ -104,7 +215,7 @@ units = {
 		location = 7256
 		division_template = "Sanjiao Jun"		# Reorganized German-trained division (frontline infantry, better equipment and highest experience)
 		start_experience_factor = 0.3
-		start_equipment_factor = 1.0
+		start_equipment_factor = 0.85
 
 	}
 	division = { # "25 Bubing Shi"
@@ -115,7 +226,7 @@ units = {
 		location = 7256
 		division_template = "Sanjiao Jun"		# Reorganized German-trained division (frontline infantry, better equipment and highest experience)
 		start_experience_factor = 0.3
-		start_equipment_factor = 1.0
+		start_equipment_factor = 0.85
 
 	}
 	## 1st Army ##
@@ -127,7 +238,7 @@ units = {
 		location = 2091
 		division_template = "Sanjiao Jun"		# Reorganized German-trained division (frontline infantry, better equipment and highest experience)
 		start_experience_factor = 0.3
-		start_equipment_factor = 1.0
+		start_equipment_factor = 0.85
 
 	}
 	division = {
@@ -187,7 +298,7 @@ units = {
 		location = 9958
 		division_template = "Sanjiao Jun"		# Reorganized German-trained division (frontline infantry, better equipment and highest experience)
 		start_experience_factor = 0.3
-		start_equipment_factor = 1.0
+		start_equipment_factor = 0.85
 
 	}
 	division = { # "89 Bubing Shi"
@@ -198,7 +309,7 @@ units = {
 		location = 9958
 		division_template = "Sanjiao Jun"		# Reorganized German-trained division (frontline infantry, better equipment and highest experience)
 		start_experience_factor = 0.3
-		start_equipment_factor = 1.0
+		start_equipment_factor = 0.85
 
 	}
 	division = { # "17 Juntuán"
@@ -232,7 +343,7 @@ units = {
 		location = 10043
 		division_template = "Sanjiao Jun"		# Reorganized German-trained division (frontline infantry, better equipment and highest experience)
 		start_experience_factor = 0.3
-		start_equipment_factor = 1.0
+		start_equipment_factor = 0.85
 
 	}
 	division = { # "83 Bubing Shi"
@@ -243,7 +354,7 @@ units = {
 		location = 10043
 		division_template = "Sanjiao Jun"		# Reorganized German-trained division (frontline infantry, better equipment and highest experience)
 		start_experience_factor = 0.3
-		start_equipment_factor = 1.0
+		start_equipment_factor = 0.85
 
 	}
 
@@ -262,21 +373,21 @@ units = {
 	division = {
 		name = "1 Fujian Jingbei"
 		location = 9974
-		division_template = "Juntuán"		# Garrison unit (poor equipment and training)
+		division_template = "Jingbei Lu"		# Garrison unit (poor equipment and training)
 		start_equipment_factor = 0.9
 		start_experience_factor = 0.1
 	}
 	division = {
 		name = "2 Fujian Jingbei"
 		location = 4169
-		division_template = "Juntuán"		# Garrison unit (poor equipment and training)
+		division_template = "Jingbei Lu"		# Garrison unit (poor equipment and training)
 		start_equipment_factor = 0.9
 		start_experience_factor = 0.1
 	}
 	division = {
 		name = "3 Fujian Jingbei"
 		location = 4196
-		division_template = "Juntuán"		# Garrison unit (poor equipment and training)
+		division_template = "Jingbei Lu"		# Garrison unit (poor equipment and training)
 		start_equipment_factor = 0.8
 		start_experience_factor = 0.1
 	}
@@ -284,7 +395,7 @@ units = {
 	division = {
 		name = "Shanghai Jingbei"
 		location = 7014
-		division_template = "Juntuán"		# Garrison unit (poor equipment and training)
+		division_template = "Jingbei Lu"		# Garrison unit (poor equipment and training)
 		start_equipment_factor = 0.9
 		start_experience_factor = 0.1
 	}
@@ -304,7 +415,7 @@ units = {
 		location = 10076
 		division_template = "Sanjiao Jun"		# German-trained division (frontline infantry, better equipment and experience)
 		start_experience_factor = 0.3
-		start_equipment_factor = 1.0
+		start_equipment_factor = 0.85
 
 	}
 	division = { # "Shui Jing Tuan"
@@ -315,7 +426,7 @@ units = {
 		location = 10076
 		division_template = "Sanjiao Jun"		# German-trained division (frontline infantry, better equipment and experience)
 		start_experience_factor = 0.3
-		start_equipment_factor = 1.0
+		start_equipment_factor = 0.85
 
 	}
 	division = {
@@ -334,7 +445,7 @@ units = {
 		location = 7191
 		division_template = "Sanjiao Jun"		# German-trained division (frontline infantry, better equipment and experience)
 		start_experience_factor = 0.3
-		start_equipment_factor = 1.0
+		start_equipment_factor = 0.85
 
 	}
 	division = { # "87 Bubing Shi"
@@ -345,7 +456,7 @@ units = {
 		location = 7191
 		division_template = "Sanjiao Jun"		# German-trained division (frontline infantry, better equipment and experience)
 		start_experience_factor = 0.3
-		start_equipment_factor = 1.0
+		start_equipment_factor = 0.85
 
 	}
 	division = { # "88 Bubing Shi"
@@ -356,7 +467,7 @@ units = {
 		location = 7191
 		division_template = "Sanjiao Jun"		# German-trained division (frontline infantry, better equipment and experience)
 		start_experience_factor = 0.3
-		start_equipment_factor = 1.0
+		start_equipment_factor = 0.85
 
 	}
 	## 10th Army (CO: Liu Jiangxu) ##
@@ -376,7 +487,7 @@ units = {
 		location = 4174
 		division_template = "Sanjiao Jun"		# Reorganized German-trained division (frontline infantry, better equipment and highest experience)
 		start_experience_factor = 0.3
-		start_equipment_factor = 1.0
+		start_equipment_factor = 0.85
 
 	}
 	division = { # "14 Bubing Shi"
@@ -387,7 +498,7 @@ units = {
 		location = 4174
 		division_template = "Sanjiao Jun"		# German-trained division (frontline infantry, better equipment and experience)
 		start_experience_factor = 0.3
-		start_equipment_factor = 1.0
+		start_equipment_factor = 0.85
 
 	}
 	division = { # "4 Juntuán"
@@ -454,7 +565,7 @@ units = {
 		location = 7058
 		division_template = "Sanjiao Jun"		# German-trained division (frontline infantry, better equipment and experience)
 		start_experience_factor = 0.3
-		start_equipment_factor = 1.0
+		start_equipment_factor = 0.85
 
 	}
 	division = { # "9 Bubing Shi"
@@ -465,7 +576,7 @@ units = {
 		location = 7058
 		division_template = "Sanjiao Jun"		# German-trained division (frontline infantry, better equipment and experience)
 		start_experience_factor = 0.3
-		start_equipment_factor = 1.0
+		start_equipment_factor = 0.85
 
 	}
 	division = { # "25 Juntuán"
@@ -484,7 +595,7 @@ units = {
 	division = {
 		name = "Wuhan Jingbei"
 		location = 4619
-		division_template = "Juntuán"		# Garrison unit (poor equipment and training)
+		division_template = "Jingbei Lu"		# Garrison unit (poor equipment and training)
 		start_equipment_factor = 0.8
 		start_experience_factor = 0.1
 	}
@@ -530,34 +641,34 @@ units = {
 		location = 11913
 		division_template = "Sanjiao Jun"		# Reorganized German-trained division (frontline infantry, better equipment and highest experience)
 		start_experience_factor = 0.3
-		start_equipment_factor = 1.0
+		start_equipment_factor = 0.85
 
 	}
 	division = {
 		name = "1 Nanking Jingbei"
 		location = 11913
-		division_template = "Juntuán"		# Garrison unit (poor equipment and training)
+		division_template = "Jingbei Lu"		# Garrison unit (poor equipment and training)
 		start_equipment_factor = 0.7
 		start_experience_factor = 0.1
 	}
 	division = {
 		name = "2 Nanking Jingbei"
 		location = 11913
-		division_template = "Juntuán"		# Garrison unit (poor equipment and training)
+		division_template = "Jingbei Lu"		# Garrison unit (poor equipment and training)
 		start_equipment_factor = 0.7
 		start_experience_factor = 0.1
 	}
 	division = {
 		name = "3 Nanking Jingbei"
 		location = 11913
-		division_template = "Juntuán"		# Garrison unit (poor equipment and training)
+		division_template = "Jingbei Lu"		# Garrison unit (poor equipment and training)
 		start_equipment_factor = 0.7
 		start_experience_factor = 0.1
 	}
 	division = {
 		name = "4 Nanking Jingbei"
 		location = 11913
-		division_template = "Juntuán"		# Garrison unit (poor equipment and training)
+		division_template = "Jingbei Lu"		# Garrison unit (poor equipment and training)
 		start_equipment_factor = 0.7
 		start_experience_factor = 0.1
 	}
@@ -577,7 +688,7 @@ units = {
 	division = {
 		name = "Qingdao Jingbei"
 		location = 10000
-		division_template = "Juntuán"		# Garrison unit (poor equipment and training)
+		division_template = "Jingbei Lu"		# Garrison unit (poor equipment and training)
 		start_equipment_factor = 0.9
 		start_experience_factor = 0.1
 	}

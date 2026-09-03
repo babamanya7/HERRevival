@@ -1362,7 +1362,7 @@ SOV_internal_factions = {
 		#Success trigger
 		available = {
 			has_completed_focus = SOV_finish_the_second_five_year_plan
-			num_of_civilian_factories > 240
+			num_of_civilian_factories > 300
 			has_country_flag = azov_complete
 			has_country_flag = zaporozh_complete
 			has_country_flag = ural_complete

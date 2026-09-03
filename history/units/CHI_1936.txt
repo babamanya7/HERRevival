@@ -176,6 +176,86 @@ division_template = {
     priority = 0
 }
 
+
+division_template = {
+    name = "Guangxi Shi"
+    division_names_group = CHI_INF_01
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+        infantry = { x = 1 y = 0 }
+        infantry = { x = 1 y = 1 }
+        infantry = { x = 2 y = 0 }
+        infantry = { x = 2 y = 1 }
+        infantry = { x = 3 y = 0 }
+        infantry = { x = 3 y = 1 }
+    }
+    support = { engineer = { x = 0 y = 0 } }
+    priority = 1
+}
+
+division_template = {
+    name = "Shandong Shi"
+    division_names_group = CHI_INF_01
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+        infantry = { x = 1 y = 0 }
+        infantry = { x = 1 y = 1 }
+        infantry = { x = 2 y = 0 }
+        infantry = { x = 2 y = 1 }
+    }
+    priority = 0
+}
+
+division_template = {
+    name = "Shandong Shouqiang Lu"
+    division_names_group = CHI_INF_01
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+        infantry = { x = 1 y = 0 }
+    }
+    priority = 0
+}
+
+division_template = {
+    name = "Chuanjun Shi"
+    division_names_group = CHI_INF_01
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+        infantry = { x = 1 y = 0 }
+        infantry = { x = 1 y = 1 }
+        infantry = { x = 2 y = 0 }
+        infantry = { x = 2 y = 1 }
+    }
+    priority = 0
+}
+
+division_template = {
+    name = "Chuanjun Lu"
+    division_names_group = CHI_INF_01
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+        infantry = { x = 1 y = 0 }
+    }
+    priority = 0
+}
+
+division_template = {
+    name = "Dianjun Lu"
+    division_names_group = CHI_INF_01
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+        infantry = { x = 1 y = 0 }
+    }
+    support = { engineer = { x = 0 y = 0 } }
+    priority = 0
+}
+
 ### OOB ###
 units = {
 	###### Kuomintang Army (CO: Chang Kai-shek) ######
@@ -919,48 +999,196 @@ units = {
 		start_experience_factor = 0.1
 	}
 
-	##### Fifth War Area (CO: Li Zongren) #####
-	division = { # "3 Qibing Jun"
-		division_name = {
-			is_name_ordered = yes
-			name_order = 3
-		}
-		location = 10000
-		division_template = "Qibing Jun"
-		start_experience_factor = 0.1
-		start_equipment_factor = 0.7
 
+	##### Guangxi Provincial Army (CO: Li Zongren / Bai Chongxi) #####
+	# Pre-October 1936 New Guangxi regular divisions. Their later renumbering confirms the standing formation lineage.
+	division = {
+		name = "19 Guangxi Bubing Shi"
+		location = 1047
+		division_template = "Guangxi Shi"
+		start_experience_factor = 0.22
+		start_equipment_factor = 0.80
+	}
+	division = {
+		name = "21 Guangxi Bubing Shi"
+		location = 1047
+		division_template = "Guangxi Shi"
+		start_experience_factor = 0.22
+		start_equipment_factor = 0.78
+	}
+	division = {
+		name = "24 Guangxi Bubing Shi"
+		location = 1047
+		division_template = "Guangxi Shi"
+		start_experience_factor = 0.22
+		start_equipment_factor = 0.80
+	}
+	division = {
+		name = "43 Guangxi Bubing Shi"
+		location = 7137
+		division_template = "Guangxi Shi"
+		start_experience_factor = 0.22
+		start_equipment_factor = 0.76
+	}
+	division = {
+		name = "44 Guangxi Bubing Shi"
+		location = 7137
+		division_template = "Guangxi Shi"
+		start_experience_factor = 0.22
+		start_equipment_factor = 0.76
+	}
+	division = {
+		name = "45 Guangxi Bubing Shi"
+		location = 7137
+		division_template = "Guangxi Shi"
+		start_experience_factor = 0.22
+		start_equipment_factor = 0.76
+	}
+
+
+	##### Sichuan Provincial Forces (CO: Liu Xiang) #####
+	# Only formations securely traceable through the October 1935 reorganization are instantiated here.
+	division = {
+		name = "1 Chuanjun Bubing Shi"
+		location = 6999
+		division_template = "Chuanjun Shi"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.62
+	}
+	division = {
+		name = "2 Chuanjun Bubing Shi"
+		location = 6999
+		division_template = "Chuanjun Shi"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.62
+	}
+	division = {
+		name = "4 Chuanjun Bubing Shi"
+		location = 6999
+		division_template = "Chuanjun Shi"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.60
+	}
+	division = {
+		name = "5 Chuanjun Bubing Shi"
+		location = 4925
+		division_template = "Chuanjun Shi"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.60
+	}
+	division = {
+		name = "Chuanjun Jiaodao Shi"
+		location = 4925
+		division_template = "Chuanjun Shi"
+		start_experience_factor = 0.20
+		start_equipment_factor = 0.68
+	}
+	division = {
+		name = "2 Chuanbian Lu"
+		location = 4925
+		division_template = "Chuanjun Lu"
+		start_experience_factor = 0.12
+		start_equipment_factor = 0.55
+	}
+
+	##### Yunnan Provincial Army (CO: Long Yun) #####
+	# Long Yun had abolished powerful divisional commands after 1931; brigades were the basic standing formation.
+	# Three brigades are documented operating in NE Yunnan in early 1935; six representative standing brigades preserve that brigade-based structure without inventing divisional numbers.
+	division = {
+		name = "Dianjun Duli Lu 1"
+		location = 1319
+		division_template = "Dianjun Lu"
+		start_experience_factor = 0.18
+		start_equipment_factor = 0.72
+	}
+	division = {
+		name = "Dianjun Duli Lu 2"
+		location = 1319
+		division_template = "Dianjun Lu"
+		start_experience_factor = 0.18
+		start_equipment_factor = 0.72
+	}
+	division = {
+		name = "Dianjun Duli Lu 3"
+		location = 1319
+		division_template = "Dianjun Lu"
+		start_experience_factor = 0.18
+		start_equipment_factor = 0.72
+	}
+	division = {
+		name = "Dianjun Duli Lu 4"
+		location = 1222
+		division_template = "Dianjun Lu"
+		start_experience_factor = 0.18
+		start_equipment_factor = 0.72
+	}
+	division = {
+		name = "Dianjun Duli Lu 5"
+		location = 1222
+		division_template = "Dianjun Lu"
+		start_experience_factor = 0.18
+		start_equipment_factor = 0.72
+	}
+	division = {
+		name = "Dianjun Duli Lu 6"
+		location = 1222
+		division_template = "Dianjun Lu"
+		start_experience_factor = 0.18
+		start_equipment_factor = 0.72
+	}
+
+	##### Shandong Provincial Army (CO: Han Fuju) #####
+	# Five provincial divisions and Han's pistol brigade; same provincial core later formed his 3rd Army Group.
+	division = {
+		name = "20 Shandong Bubing Shi"
+		location = 4205
+		division_template = "Shandong Shi"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.72
+	}
+	division = {
+		name = "22 Shandong Bubing Shi"
+		location = 4205
+		division_template = "Shandong Shi"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.72
+	}
+	division = {
+		name = "81 Shandong Bubing Shi"
+		location = 4205
+		division_template = "Shandong Shi"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.70
+	}
+	division = {
+		name = "29 Shandong Bubing Shi"
+		location = 10000
+		division_template = "Shandong Shi"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.70
+	}
+	division = {
+		name = "74 Shandong Bubing Shi"
+		location = 10000
+		division_template = "Shandong Shi"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.68
+	}
+	division = {
+		name = "Han Fuju Shouqiang Lu"
+		location = 4205
+		division_template = "Shandong Shouqiang Lu"
+		start_experience_factor = 0.20
+		start_equipment_factor = 0.75
 	}
 	division = {
 		name = "Qingdao Jingbei"
 		location = 10000
-		division_template = "Jingbei Lu"		# Garrison unit (poor equipment and training)
-		start_equipment_factor = 0.9
-		start_experience_factor = 0.1
+		division_template = "Jingbei Lu"
+		start_experience_factor = 0.10
+		start_equipment_factor = 0.75
 	}
-	## 3rd Army (CO: Han Fuqu) ##
-	division = { # "12 Juntuán"
-		division_name = {
-			is_name_ordered = yes
-			name_order = 12
-		}
-		location = 4205
-		division_template = "Juntuán"
-		start_experience_factor = 0.1
-		start_equipment_factor = 0.8
 
-	}
-	division = { # "40 Juntuán"
-		division_name = {
-			is_name_ordered = yes
-			name_order = 40
-		}
-		location = 4205
-		division_template = "Juntuán"
-		start_experience_factor = 0.1
-		start_equipment_factor = 0.7
-
-	}
 }
 
 

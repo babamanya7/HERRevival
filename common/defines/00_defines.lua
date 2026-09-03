@@ -1405,7 +1405,7 @@ NAir = {
 	ACE_DEATH_CHANCE_BASE = 0.003,						-- Base chance % for ace pilot die when an airplane is shot down in the Ace wing.
 	ACE_DEATH_BY_OTHER_ACE_CHANCE = 1.0,				-- chance to an ace dying by another ace if it was hit by ace in combat
 	ACE_DEATH_CHANCE_PLANES_MULT = 0.001,				-- The more airplanes was lost in a single airplanes (more bloody it was) the higher chance of Ace to die.
-	AIR_AGILITY_TO_NAVAL_STRIKE_AGILITY = 0.01,         		-- conversion factor to bring agility in line with ship AA
+	AIR_AGILITY_TO_NAVAL_STRIKE_AGILITY = 0.045,         		-- conversion factor to bring agility in line with ship AA
 	ACE_EARN_CHANCE_BASE = 0.01,						-- Base chance % for ace pilot creation roll to happen. Happens only when successfully kill airplane/ship or damage the buildings.
 	ACE_EARN_CHANCE_PLANES_MULT = 0.005,				-- Ace generation chance per aircraft. Chance is rolled twice because decimal numbers can't be small enough
 	AIR_DAMAGE_TO_DIVISION_LOSSES = 1.0,				-- factor for conversion air damage to division losses for details statistics of air wings
@@ -1733,7 +1733,7 @@ NNavy = {
 	SCREEN_CAP_REDUCTION_FACTOR = 0.02,							-- Reduces screen silhouette weight if there are caps present, screenval * 1/(1+caps*weight)
 	
 	SHORE_BOMBARDMENT_CAP = 0.4,
-	ANTI_AIR_TARGETING = 1.1,                                       -- how good ships are at hitting aircraft
+	ANTI_AIR_TARGETING = 6.35,                                       -- how good ships are at hitting aircraft
 	MIN_TRACTED_ASSIST_DAMAGE_RATIO = 0.05,							-- How much damage counts as assist damage
 	SUPPLY_NEED_FACTOR = 4,										    -- multiplies supply usage
 	DECRYPTION_SPOTTING_BONUS = 0.2,

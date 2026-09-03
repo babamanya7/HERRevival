@@ -3929,37 +3929,6 @@ technologies = {
 		categories = { naval_equipment ss_tech mio_cat_tech_all_submarine_and_modules }
 	}
 
-	basic_submarine_snorkel = {
-		enable_equipment_modules = { ship_sub_snorkel_1 }
-		on_research_complete = { custom_effect_tooltip = snorkel_advice_tt }
-		research_cost = 0.75
-		start_year = 1942
-		folder = { name = mtgnavalfolder position = { x = 0 y = @1944 } }
-		ai_will_do = {
-			factor = 1
-			modifier = { factor = 3 has_navy_size = { size > 35 unit = submarine } }
-		}
-		special_project_specialization = { specialization_naval }
-		categories = { naval_equipment ss_tech ship_modules_tech mio_cat_tech_all_submarine_and_modules }
-	}
-
-	improved_submarine_snorkel = {
-		enable_equipment_modules = { ship_sub_snorkel_2 }
-		on_research_complete = { custom_effect_tooltip = snorkel_advice_tt }
-		xp_research_type = navy
-		xp_boost_cost = 20
-		xp_research_bonus = 1.50
-		research_cost = 1
-		start_year = 1945
-		folder = { name = mtgnavalfolder position = { x = 0 y = 23 } }
-		ai_will_do = {
-			factor = 1
-			modifier = { factor = 3 has_navy_size = { size > 40 unit = submarine } }
-		}
-		special_project_specialization = { specialization_naval }
-		categories = { naval_equipment ss_tech ship_modules_tech mio_cat_tech_all_submarine_and_modules }
-	}
-
 	diesel_electric_transmission = {
 		research_cost = 0.75
 		xp_research_type = navy
@@ -4076,22 +4045,6 @@ technologies = {
 		}
 		special_project_specialization = { specialization_naval }
 		categories = { naval_equipment nuclear ss_tech ship_modules_tech mio_cat_tech_all_submarine_and_modules }
-	}
-
-	anechoic_tile = {
-		enable_equipment_modules = { anechoic_tile_1 }
-		xp_research_type = navy
-		xp_boost_cost = 20
-		xp_research_bonus = 1.50
-		research_cost = 1.5
-		start_year = 1944
-		folder = { name = mtgnavalfolder position = { x = 1 y = @1944_module_2 } }
-		ai_will_do = {
-			factor = 1
-			modifier = { factor = 7 has_navy_size = { size > 40 unit = submarine } }
-		}
-		special_project_specialization = { specialization_naval }
-		categories = { naval_equipment ss_tech ship_modules_tech mio_cat_tech_all_submarine_and_modules }
 	}
 
 	basic_periscope = {

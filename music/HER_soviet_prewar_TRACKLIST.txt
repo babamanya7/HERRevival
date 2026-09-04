@@ -1,4 +1,4 @@
-HER Soviet prewar radio — file map
+HER Soviet prewar radio — FINAL file map
 
 Put all OGG files into:
   music/HER_soviet_prewar/
@@ -27,28 +27,21 @@ Use exactly these filenames:
 20  sov_prewar_20.ogg  — Широка страна моя родная
 21  sov_prewar_21.ogg  — Самовары-самопалы
 22  sov_prewar_22.ogg  — Спортивный марш
-23  sov_prewar_23.ogg  — Весёлый ветер
-24  sov_prewar_24.ogg  — Марш энтузиастов
-25  sov_prewar_25.ogg  — Песня о встречном
-26  sov_prewar_26.ogg  — Полюшко-поле
-27  sov_prewar_27.ogg  — Песня о Щорсе
-28  sov_prewar_28.ogg  — Капитан
-29  sov_prewar_29.ogg  — Молодёжная
-30  sov_prewar_30.ogg  — А если повезёт
-31  sov_prewar_31.ogg  — Солёная песня
-32  sov_prewar_32.ogg  — В путь
-33  sov_prewar_33.ogg  — Пора в путь-дорогу
-34  sov_prewar_34.ogg  — Первым делом самолёты
-35  sov_prewar_35.ogg  — Экипаж — одна семья
-36  sov_prewar_36.ogg  — Песня о североморцах
-37  sov_prewar_37.ogg  — Ты видел всё, морской солёный ветер
-38  sov_prewar_38.ogg  — Морская лирическая
-39  sov_prewar_39.ogg  — Пшеница золотая
-40  sov_prewar_40.ogg  — Урожайная
+23  sov_prewar_23.ogg  — Полюшко-поле
+24  sov_prewar_24.ogg  — Песня о Щорсе
+25  sov_prewar_25.ogg  — Капитан
+26  sov_prewar_26.ogg  — А если повезёт
+27  sov_prewar_27.ogg  — Солёная песня
+28  sov_prewar_28.ogg  — В путь
+29  sov_prewar_29.ogg  — Пора в путь-дорогу
+30  sov_prewar_30.ogg  — Экипаж — одна семья
+31  sov_prewar_31.ogg  — Ты видел всё, морской солёный ветер
+32  sov_prewar_32.ogg  — В путь-дорогу
 
 Notes:
 - Files must be .ogg.
-- The playlist and asset declarations are already wired up.
-- Localisation keys are HER_SOV_PREWAR_01 ... HER_SOV_PREWAR_40.
+- This is the final renumbered list: 32 tracks, no gaps.
+- The playlist and asset declarations use these exact filenames.
+- Localisation keys are HER_SOV_PREWAR_01 ... HER_SOV_PREWAR_32.
 - The station id is HER_soviet_prewar.
-- The station currently uses the vanilla base-game album art as a safe placeholder, so no custom image is required for it to load.
+- The station currently uses the vanilla base-game album art as a safe placeholder.

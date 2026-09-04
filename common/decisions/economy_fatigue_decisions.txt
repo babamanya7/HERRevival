@@ -426,18 +426,26 @@ economy_decisions = {
 
 		available = {
 			check_variable = { resource@iron < 0 }
+			check_variable = { resource@coal < 0 }
 			hidden_trigger = {
 				is_ai = no
 			}
 		}
 		activation = {
-			check_variable = { resource@iron > 30 }
 			OR = {
-				any_controlled_state={
-					hydro_steel_refinery_inactive > 0
+				AND = {
+					check_variable = { resource@iron > 30 }
+					check_variable = { resource@coal > 10 }
+					any_controlled_state={
+						hydro_steel_refinery_inactive > 0
+					}
 				}
-				any_controlled_state={
-					steel_refinery_inactive > 0
+				AND = {
+					check_variable = { resource@iron > 30 }
+					check_variable = { resource@coal > 30 }
+					any_controlled_state={
+						steel_refinery_inactive > 0
+					}
 				}
 			}
 			hidden_trigger = {
@@ -451,21 +459,14 @@ economy_decisions = {
 		timeout_effect = {
 			if = {
 				limit = {
-					AND = {
-						hidden_trigger = {
-							check_variable = { resource@iron > 30 }
-						}
-						hidden_trigger = {
-							check_variable = { resource@coal > 30 }
-						}
+					hidden_trigger = {
+						check_variable = { resource@iron > 30 }
 					}
-					OR = {
-						any_controlled_state={
-							hydro_steel_refinery_inactive > 0
-						}
-						any_controlled_state={
-							steel_refinery_inactive > 0
-						}
+					hidden_trigger = {
+						check_variable = { resource@coal > 30 }
+					}
+					any_controlled_state={
+						steel_refinery_inactive > 0
 					}
 				}
 				random_controlled_state = {
@@ -483,7 +484,18 @@ economy_decisions = {
 					}
 				}
 			}
-			else = {
+			if = {
+				limit = {
+					hidden_trigger = {
+						check_variable = { resource@iron > 30 }
+					}
+					hidden_trigger = {
+						check_variable = { resource@coal > 10 }
+					}
+					any_controlled_state={
+						hydro_steel_refinery_inactive > 0
+					}
+				}
 				random_controlled_state = {
 					limit = {
 						hydro_steel_refinery_inactive > 0
@@ -493,7 +505,7 @@ economy_decisions = {
 						level = 1
 					}
 					add_building_construction = {
-						type = hydro_steel_refinery
+						type = steel_refinery
 						level = 1
 						instant_build = yes
 					}
@@ -501,21 +513,19 @@ economy_decisions = {
 			}
 			if = {
 				limit = {
-					AND = {
-						hidden_trigger = {
+					OR = {
+						AND = {
 							check_variable = { resource@iron > 30 }
-						}
-						hidden_trigger = {
 							check_variable = { resource@coal > 30 }
+							any_controlled_state={
+								steel_refinery_inactive > 0
+							}
 						}
-						hidden_trigger = {
-							OR = {
-								any_controlled_state={
-									hydro_steel_refinery_inactive > 0
-								}
-								any_controlled_state={
-									steel_refinery_inactive > 0
-								}
+						AND = {
+							check_variable = { resource@iron > 30 }
+							check_variable = { resource@coal > 10 }
+							any_controlled_state={
+								hydro_steel_refinery_inactive > 0
 							}
 						}
 					}
@@ -529,7 +539,7 @@ economy_decisions = {
 	iron_shortage = {
 
 		icon = steel
-
+		
 		available = {
 			AND = {
 				check_variable = { resource@iron > 0 }
@@ -556,6 +566,7 @@ economy_decisions = {
 				is_ai = no
 			}
 		}
+		
 
 		is_good = no
 		days_mission_timeout = 0
@@ -570,13 +581,8 @@ economy_decisions = {
 						hidden_trigger = {
 							check_variable = { resource@coal < 0 }
 						}
-						OR = {
-							any_controlled_state={
-								hydro_steel_refinery > 0
-							}
-							any_controlled_state={
-								steel_refinery > 0
-							}
+						any_controlled_state={
+							steel_refinery > 0
 						}
 					}
 				}
@@ -595,7 +601,20 @@ economy_decisions = {
 					}
 				}
 			}
-			else = {
+			if = {
+				limit = {
+					OR = {
+						hidden_trigger = {
+							check_variable = { resource@iron < 0 }
+						}
+						hidden_trigger = {
+							check_variable = { resource@coal < 0 }
+						}
+						any_controlled_state={
+							hydro_steel_refinery > 0
+						}
+					}
+				}
 				random_controlled_state = {
 					limit = {
 						hydro_steel_refinery > 0
@@ -639,14 +658,19 @@ economy_decisions = {
 			}
 		}
 		activation = {
-			check_variable = { resource@bauxite > 30 }
-			check_variable = { resource@coal > 30 }
 			OR = {
-				any_controlled_state={
-					hydro_aluminium_refinery_inactive > 0
+				AND = {
+					any_controlled_state={
+						hydro_aluminium_refinery_inactive > 0
+					}
+					check_variable = { resource@bauxite > 30 }
 				}
-				any_controlled_state={
-					aluminium_refinery_inactive > 0
+				AND = {
+					any_controlled_state={
+						aluminium_refinery_inactive > 0
+					}
+					check_variable = { resource@bauxite > 30 }
+					check_variable = { resource@coal > 10 }
 				}
 			}
 			hidden_trigger = {
@@ -666,16 +690,11 @@ economy_decisions = {
 							check_variable = { resource@bauxite > 30 }
 						}
 						hidden_trigger = {
-							check_variable = { resource@coal > 30 }
+							check_variable = { resource@coal > 10 }
 						}
 					}
-					OR = {
-						any_controlled_state={
-							hydro_aluminium_refinery_inactive > 0
-						}
-						any_controlled_state={
-							aluminium_refinery_inactive > 0
-						}
+					any_controlled_state={
+						aluminium_refinery_inactive > 0
 					}
 				}
 				random_controlled_state = {
@@ -693,7 +712,17 @@ economy_decisions = {
 					}
 				}
 			}
-			else = {
+			if = {
+				limit = {
+					AND = {
+						hidden_trigger = {
+							check_variable = { resource@bauxite > 30 }
+						}
+					}
+					any_controlled_state={
+						hydro_aluminium_refinery_inactive > 0
+					}
+				}
 				random_controlled_state = {
 					limit = {
 						hydro_aluminium_refinery_inactive > 0
@@ -711,20 +740,27 @@ economy_decisions = {
 			}
 			if = {
 				limit = {
-					AND = {
-						hidden_trigger = {
-							check_variable = { resource@bauxite > 30 }
-						}
-						hidden_trigger = {
-							check_variable = { resource@coal > 30 }
-						}
-						hidden_trigger = {
-							OR = {
-								any_controlled_state={
-									hydro_aluminium_refinery_inactive > 0
-								}
+					OR = {
+						AND = {
+							hidden_trigger = {
+								check_variable = { resource@bauxite > 30 }
+							}
+							hidden_trigger = {
+								check_variable = { resource@coal > 10 }
+							}
+							hidden_trigger = {
 								any_controlled_state={
 									aluminium_refinery_inactive > 0
+								}
+							}
+						}
+						AND = {
+							hidden_trigger = {
+								check_variable = { resource@bauxite > 30 }
+							}
+							hidden_trigger = {
+								any_controlled_state={
+									hydro_aluminium_refinery_inactive > 0
 								}
 							}
 						}
@@ -751,15 +787,18 @@ economy_decisions = {
 		}
 		activation = {
 			OR = {
-				check_variable = { resource@bauxite < 0 }
-				check_variable = { resource@coal < 0 }
-			}
-			OR = {
-				any_controlled_state={
-					hydro_aluminium_refinery > 0
+				AND = {
+					check_variable = { resource@bauxite < 0 }
+					check_variable = { resource@coal < 0 }
+					any_controlled_state={
+						aluminium_refinery > 0
+					}
 				}
-				any_controlled_state={
-					aluminium_refinery > 0
+				AND = {
+					check_variable = { resource@bauxite < 0 }
+					any_controlled_state={
+						hydro_aluminium_refinery > 0
+					}
 				}
 			}
 			hidden_trigger = {
@@ -781,13 +820,8 @@ economy_decisions = {
 							check_variable = { resource@coal < 0 }
 						}
 					}
-					OR = {
-						any_controlled_state={
-							hydro_aluminium_refinery > 0
-						}
-						any_controlled_state={
-							aluminium_refinery > 0
-						}
+					any_controlled_state={
+						aluminium_refinery > 0
 					}
 				}
 				random_controlled_state = {
@@ -805,7 +839,15 @@ economy_decisions = {
 					}
 				}
 			}
-			else = {
+			if = {
+				limit = {
+					hidden_trigger = {
+						check_variable = { resource@bauxite < 0 }
+					}
+					any_controlled_state={
+						hydro_aluminium_refinery > 0
+					}
+				}
 				random_controlled_state = {
 					limit = {
 						hydro_aluminium_refinery > 0
@@ -824,11 +866,28 @@ economy_decisions = {
 			if = {
 				limit = {
 					OR = {
-						hidden_trigger = {
-							check_variable = { resource@bauxite < 0 }
+						AND = {
+							hidden_trigger = {
+								check_variable = { resource@bauxite < 0 }
+							}
+							hidden_trigger = {
+								check_variable = { resource@coal < 0 }
+							}
+							hidden_trigger = {
+								any_controlled_state={
+									aluminium_refinery > 0
+								}
+							}
 						}
-						hidden_trigger = {
-							check_variable = { resource@coal < 0 }
+						AND = {
+							hidden_trigger = {
+								check_variable = { resource@bauxite < 0 }
+							}
+							hidden_trigger = {
+								any_controlled_state={
+									hydro_aluminium_refinery > 0
+								}
+							}
 						}
 					}
 				}
@@ -843,13 +902,13 @@ economy_decisions = {
 		icon = oil
 
 		available = {
-			check_variable = { resource@coal > -1}
+			check_variable = { resource@coal > 0 }
 			hidden_trigger = {
 				is_ai = no
 			}
 		}
 		activation = {
-			check_variable = { resource@coal < 0}
+			check_variable = { resource@coal < 0 }
 			any_controlled_state = {
 				synthetic_refinery > 0
 			}
@@ -859,7 +918,7 @@ economy_decisions = {
 		}
 
 		is_good = no
-		days_mission_timeout = 3
+		days_mission_timeout = 1
 		
 
 		timeout_effect = {

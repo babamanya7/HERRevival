@@ -46,6 +46,7 @@ The first integrated balance pass deliberately leaves base gun accuracy unchange
 | `CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT_FROM_AIR` | 0.10 | 0.80 | Air hits strongly favor deck, hangar and internal-system casualties |
 | `NAVAL_STRIKE_DAMAGE_TO_STR` | 2.00 | 1.25 | Limits direct aircraft STR deletion |
 | `NAVAL_STRIKE_DAMAGE_TO_ORG` | 2.00 | 1.75 | Aircraft remain strong at operational disruption |
+| `NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCORE` | 5 | -5 | Aircraft deprioritize ships already removed from effective combat |
 
 With these values, a critical is no longer synonymous with an automatic universal `x4` damage spike. The global multiplier is moderate, while magazine explosions, aviation-fuel fires, pressure-hull ruptures and other selected critical parts provide their own differentiated multipliers and fixed damage.
 
@@ -92,4 +93,4 @@ Ship-wide ventilation failure and disrupted damage-control parties are available
 5. Balance damage-control technologies and total critical-risk reduction only after the baseline frequency is measured.
 6. Balance repair time and operational absence from the campaign.
 
-Do not grant aircraft extra target weight against ships merely because they are already damaged.
+Aircraft receive a small negative target-score adjustment against low-strength ships. This keeps air groups focused on combat-capable threats instead of repeatedly striking burning, crippled or already mission-killed vessels. The penalty is deliberately limited: a damaged ship can still be attacked when its class, screening exposure or other targeting factors make it the best available target.

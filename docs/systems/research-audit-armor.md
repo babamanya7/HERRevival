@@ -58,7 +58,7 @@ Armor thickness and armor construction are separate axes, which is a strong desi
 - riveted armor: cheap baseline with small defense/breakthrough;
 - welded armor: higher defense/breakthrough, strength and armor multiplier at higher IC cost;
 - cast armor: still larger defensive/armor multiplier at substantially higher IC cost;
-- `tank_welded_armor_2`: special hidden module enabled by `weld_armor_2`, which is not normally researchable (`allow = { always = no }`). It gives a very favorable combination of +30% armor and -8% build cost at only a reliability penalty, so its actual national/event/focus grant must be found and audited. Do not rebalance it until the intended recipient and historical rationale are identified.
+- `tank_welded_armor_2`: special Soviet module enabled through the Paton automatic-welding project chain. It is intentionally national rather than a general research option. Do not rebalance it in isolation from the project cost and the Soviet mass-production model.
 
 ### Engine technology side branch
 - `engine_tech_1`: 1936, cost 1; unlocks diesel/gasoline engines and engine upgrade levels 1–5.
@@ -68,7 +68,7 @@ Armor thickness and armor construction are separate axes, which is a strong desi
 
 Each designer engine-upgrade level increases speed and breakthrough but raises IC/fuel use and lowers reliability. This is a good pattern: research expands the engineering envelope rather than automatically buffing every tank.
 
-Engine-type modules also create meaningful tradeoffs between gasoline, diesel, petrol-electric and gas-turbine engines through IC, fuel, reliability, speed and strategic-resource requirements. The gas-turbine unlock still needs to be traced.
+Engine-type modules also create meaningful tradeoffs between gasoline, diesel, petrol-electric and gas-turbine engines through IC, fuel, reliability, speed and strategic-resource requirements. The gas-turbine unlock still needs to be traced; if no grant exists it is an orphan module.
 
 ### Alloying branch
 `alloying_tech_1..4` are special-project-gated, cost 1, dated 1937/39/41/43. The prerequisite project is `sp_land_alloying_armor`, available after `armor_tech_1`; it has large complexity, medium prototype time, breakthrough cost 2 and project resource cost of 100 steel + 100 tungsten + 100 chromium.
@@ -93,6 +93,7 @@ Tank-related special projects are tightly integrated with ordinary research and 
 - `sp_land_alloying_armor`: requires `armor_tech_1`; medium prototype, large complexity, breakthrough cost 2, heavy strategic-resource project cost; unlocks the alloying research chain.
 - `sp_land_stabilizator`: requires `improved_computing_machine`; medium prototype, medium complexity, breakthrough cost 2; unlocks stabilizer module.
 - `sp_land_improved_stabilizator`: requires `advanced_computing_machine` and the first stabilizer project; medium prototype, large complexity, breakthrough cost 2; unlocks stabilizer II.
+- Soviet `sp_fluid_autowelding`: national follow-up project gated by armor/alloying progression; completion grants `weld_armor_2` through `sov_armor.800`.
 
 This creates a real dependency from electronics/computing into late-war tank fire-control quality and should be included when judging computing-tech value.
 
@@ -111,15 +112,73 @@ The same reward pool can also give permanent equipment bonuses to the broad `arm
 
 **A/B design review:** consider moving selected advanced modules behind existing armor/engine/chassis/electronics techs or national MIO/focus progression rather than creating extra standalone research nodes. Multi-man turret availability is particularly important for representing historically different crew-layout quality between countries such as France and Germany.
 
+### Fire-control / command modules
+Current late-war tank modules are substantial combat multipliers rather than decorative add-ons:
+- radio I/II/III progressively gives very large defense/breakthrough and smaller SA/HA bonuses;
+- stabilizer I/II gives broad combat-stat multipliers at IC/resource/reliability cost;
+- autoloader gives large SA/HA and moderate defense/breakthrough at IC/tungsten/reliability cost.
+
+This means late-war tank quality in HER is driven more by systems integration than by chassis generation alone. Preserve that principle, but re-audit the exact stacking and separate vehicle-level effects from crew/doctrine/formation-level command effects where possible.
+
 ### Amphibious drive
 `amphibious_drive` is a 1941 special-project tech, cost 1, requiring `sp_land_amphibious_drive`, and unlocks amphibious variants across light/medium/heavy chassis generations. This is a strong cross-generation unlock; evaluate project cost against how broadly it expands the designer.
 
 ### Integration rule
 Because tank guns are unlocked in artillery/AT/AA/heavy-artillery trees, the armor audit must not conclude on chassis cost before the weapon tree is included. A nominal cost-2.5 medium chassis may require several additional slot investments before it can field the historically expected gun.
 
+## Tank Designer 2.0 — accepted design direction
+The current tank designer should be treated as a candidate for a major rebuild, at least to the architectural quality of HER's aircraft designer rather than as a minor numerical rebalance.
+
+Target principles:
+- chassis is a weight/volume/engineering envelope, not merely a generation stat package;
+- turret is a real subsystem: crew count, ring size, gun capacity, cost, situational awareness and combat efficiency;
+- main gun is a physical constraint with recoil/size/resource/weight implications;
+- armor separates thickness, construction method, slope and alloy quality;
+- engine/transmission/suspension create distinct mobility/reliability/maintenance tradeoffs;
+- crew layout and ergonomics should be separated from electronics;
+- radio should model command/control rather than act as a universal substitute for doctrine/crew quality;
+- optics, stabilizers and loading systems should have narrower, legible functions;
+- stacking the best module in every slot must create an expensive/heavy/unreliable design rather than a universally optimal tank;
+- national tank-building schools should emerge from design choices + MIO/special projects, not only from flat national stat bonuses.
+
+Avoid adding research nodes merely to gate every module. Prefer existing armor/engine/electronics/chassis techs, MIO progression and special projects as unlock gates.
+
+## New armored-vehicle roles — feasibility direction
+HER should investigate additional role-specific armored equipment beyond the standard tank/TD/SPG/SPAA/flame set. Candidate roles include:
+- command tank / command vehicle;
+- assault tank / infantry-support tank;
+- breakthrough tank as a distinct operational role where useful;
+- armored engineering / recovery vehicle;
+- reconnaissance tank / armored scout role;
+- ammunition/support carrier where it can affect the formation without excessive micro.
+
+The engine already supports custom equipment archetypes: HER itself defines `armored_support_vehicle` as an `is_archetype = yes` custom armor equipment. This makes new land equipment types technically plausible even if the engine's `type =` enum remains limited. The preferred implementation may therefore be a custom archetype and/or custom battalion equipment requirement rather than inventing unsupported engine-level `type` tokens.
+
+A particularly promising model for command tanks is to make them a small secondary equipment requirement inside tank battalions/companies (if unit equipment syntax supports the desired ratio) rather than a full battalion. This would model Panzerbefehlswagen / command Shermans / Soviet command vehicles as a formation-level capability and avoid template clutter.
+
+## Aircraft role expansion — feasibility direction
+HER's aircraft designer already has a dedicated required `role_type_slot`, and `00_plane_role_modules.txt` defines role modules through `add_equipment_type`, mission permissions and mission-specific stat modifiers. Current `role_small_fighter_bomber` is still classified as engine type `fighter` while gaining air-superiority + CAS mission access. Therefore the user's criticism is correct: it is operationally a fighter with a ground-attack mission rather than a truly separate stockpile/class identity.
+
+The equipment documentation enumerates a fixed set of air `type` values (`fighter`, `cas`, `interceptor`, `tactical_bomber`, `strategic_bomber`, `naval_bomber`, etc.). Treat arbitrary new engine-level air types such as `fighter_bomber` as unconfirmed/likely unsupported until tested. However, separate aircraft archetypes and designer roles can still be created while mapping them to an existing supported engine type and restricting missions/modules accordingly.
+
+Design target for the air audit:
+- fighter;
+- interceptor;
+- fighter-bomber as a genuinely distinct design/production identity if technically possible;
+- dedicated CAS / assault aircraft;
+- tactical bomber;
+- strategic bomber;
+- torpedo bomber;
+- maritime patrol aircraft;
+- reconnaissance aircraft;
+- potentially night fighter / heavy fighter roles if their operational behavior can be represented cleanly.
+
+If a truly new engine air type cannot be created, test whether a separate archetype with an existing underlying type is sufficient to keep production, stockpile, MIO/category and wing identity distinct. Do not settle for the current 'fighter + CAS button' model without testing this route.
+
 ## Active follow-ups
-- Locate every grant/reference to `weld_armor_2` / `tank_welded_armor_2` and identify intended country/path.
 - Locate the gas-turbine engine unlock.
 - Audit stabilizer/autoloader/other tank special-project modules against historical dates and gun dependencies.
-- Build representative 1939/1941/1943 medium-tank research packages and calculate total research cost/slot-days including gun techs.
+- During the unit/equipment audit, verify whether one battalion can require a controlled mix of normal tanks + command/support vehicles and whether designer variants can satisfy separate archetypes cleanly.
+- During the air audit, prototype the distinction between engine-level air type, equipment archetype, required role module, allowed mission set and wing/stockpile identity.
+- Determine whether custom air `type` tokens are accepted by the current engine; treat as experimental until a minimal test mod is proven.
 - Recheck steel/tungsten/chromium line costs against the post-resource-rebalance economy.

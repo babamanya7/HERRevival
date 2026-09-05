@@ -208,7 +208,7 @@ HER_historical_coal_development = {
 	TUR_expand_zonguldak_coalfield = {
 		icon = coal allowed = { original_tag = TUR }
 		visible = { NOT = { has_country_flag = TUR_zonguldak_expanded } }
-		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
+		available = { date > 1938.1.1 }
 		highlight_states = { highlight_state_targets = { state = 339 } }
 		cost = 0 days_remove = 180 modifier = { civilian_factory_use = 4 }
 		remove_effect = { set_country_flag = TUR_zonguldak_expanded 339 = { add_resource = { type = coal amount = 25 } } }
@@ -253,7 +253,7 @@ HER_historical_coal_development = {
 	SPR_reopen_asturian_leonese_mines = {
 		icon = coal allowed = { original_tag = SPR }
 		visible = { 174 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = SPR_asturian_mines_reopened } }
-		available = { date > 1939.1.1 has_war = no has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
+		available = { date > 1939.1.1 }
 		highlight_states = { highlight_state_targets = { state = 174 } }
 		cost = 0 days_remove = 180 modifier = { civilian_factory_use = 4 }
 		remove_effect = { set_country_flag = SPR_asturian_mines_reopened 174 = { add_resource = { type = coal amount = 15 } } }

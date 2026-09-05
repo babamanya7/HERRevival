@@ -1,0 +1,17 @@
+on_actions = {
+	on_daily = {
+		effect = {
+			every_country = {
+				limit = {
+					tag = USA
+					has_country_flag = USA_automatic_factory_retooling_disabled
+				}
+
+				remove_mission = USA_ford_retooling_factories_slow
+				remove_mission = USA_ford_retooling_factories_fast
+				remove_mission = USA_gm_retooling_factories_slow
+				remove_mission = USA_gm_retooling_factories_fast
+			}
+		}
+	}
+}

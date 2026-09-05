@@ -20,6 +20,80 @@ This file is a focused companion to `docs/systems/research-audit.md` while the a
 ### Active architectural reference
 The BBA aircraft system is the architectural reference for the planned Tank Designer 2.0. A single physical airframe generation can produce multiple operational identities through a required role slot and module restrictions. This is the preferred pattern for future tank chassis + role + modules design.
 
+### Air Designer 2.0 — ACCEPTED DESIGN DIRECTION
+The aircraft designer itself is now planned for a major structural rework rather than only balance tuning. Goal: turn the airframe into a real aircraft skeleton/physical layout, then mount engines, weapons, fuel, protection, avionics and mission equipment onto explicit structural locations.
+
+Core principle:
+`airframe skeleton -> physical layout -> propulsion layout -> role/equipment identity -> location-specific modules -> performance/resource tradeoffs`.
+
+The current good weapon-layout pattern (separate cowling/capot, wing and fuselage/frame weapon locations) should be generalized to the whole aircraft.
+
+Target structural sections should include, where engine limitations permit:
+- nose/cowling section;
+- left/right or abstracted wing sections;
+- fuselage/frame section;
+- engine / nacelle layout;
+- fuel-system section;
+- cockpit/crew section;
+- defensive/turret positions for medium/large aircraft;
+- avionics/navigation/radar section;
+- structural/protection section;
+- mission/special-equipment section.
+
+The designer should model aircraft layout choices rather than only generic special slots. Candidate layout choices include:
+- single-engine nose-mounted tractor layout;
+- twin-engine wing nacelles;
+- multi-engine nacelle layouts for medium/large aircraft;
+- central/engine-mounted cannon compatibility;
+- pusher / unusual propulsion layouts if engine/module syntax allows;
+- jet/rocket/combined or other special propulsion arrangements where supported;
+- internal vs external stores and bomb-bay/pylon tradeoffs;
+- crew/turret arrangement for medium/large aircraft.
+
+Layout choices should alter module compatibility, weight, drag/speed, agility, defence, reliability, fuel use, range, IC and strategic-resource demand. Avoid universal '+stats' modules where a physical engineering relationship can be modeled instead.
+
+### Distinct fighter-bomber equipment identity — ACCEPTED TARGET
+The current `role_small_fighter_bomber` is not sufficient because it remains an ordinary `fighter` equipment identity with an added CAS mission.
+
+A genuine fighter-bomber should have its own duplicate equipment archetype / stockpile identity / air-wing subunit, while still being built from the same small-airframe generation and module family.
+
+The engine air-type namespace appears fixed. Therefore the preferred implementation is to repurpose an unused recognized type channel on the relevant base airframe rather than invent a new type.
+
+Current best candidate:
+- SMALL airframe: repurpose the recognized `heavy_fighter` type channel, which is not currently used by the small-airframe family, for the fighter-bomber duplicate archetype.
+- MEDIUM airframe: `fighter` and `interceptor` are currently unused recognized channels and may be available for future distinct medium fighter/strike identities.
+
+Important distinction:
+- engine-facing `type` is a technical duplicate-archetype routing channel;
+- gameplay balancing should be separated through custom subunit categories, equipment/MIO categories, role modules and mission modifiers.
+
+Thus a small fighter-bomber can technically route through `type = heavy_fighter` while using a distinct `category_fighter_bomber`, leaving the true medium heavy fighter on `category_heavy_fighter`.
+
+This reuse must be audited for any hardcoded or script-level effects tied directly to `heavy_fighter`; visible HER doctrine bonuses mainly use subunit categories and mission modifiers, which is encouraging but not a full executable guarantee.
+
+### Fighter-bomber integration checklist
+Creating a distinct fighter-bomber archetype is a cross-system change, not a single equipment edit. The implementation pass must audit/update at least:
+- `common/units/equipment/plane_airframes.txt` duplicate archetypes and `allowed_types`;
+- aircraft role modules (`role_small_fighter_bomber` etc.);
+- `common/units/air.txt` subunit definition and custom `category_fighter_bomber`;
+- MIO/KB applicability and all relevant `mio_cat_*` categories;
+- technology categories and research bonuses;
+- national focuses / ideas / events / decisions that grant fighter, CAS or heavy-fighter bonuses;
+- doctrines and air-mission modifiers;
+- ace traits / air-chief traits if class-specific;
+- AI designer templates / AI production weights / preferred roles;
+- starting technology unlocks;
+- historical OOB aircraft variants and deployed wings;
+- country starting stockpiles and production lines;
+- localization for role, duplicate airframe, subunit, category, designer UI and equipment names;
+- icons, interface category/overview placement, sprites and map/wing icon behavior;
+- conversion and `can_convert_from` relationships between fighter and fighter-bomber designs;
+- lend-lease / market / stockpile filters;
+- MIO auto-assign and equipment-policy filters;
+- any scripted triggers/effects checking `fighter`, `heavy_fighter`, equipment archetypes, categories or air wing types.
+
+Do not implement the new archetype before this dependency map is complete.
+
 ### Airframe cadence
 Small/medium airframes follow a healthy broad cadence: interwar (1926) -> basic (1936) -> improved (1940 nominal) -> advanced (1943) -> modern/jet-era (1945). Large airframes are similar but the latest generation extends later.
 
@@ -92,13 +166,13 @@ Aircraft also have designer upgrades for reducing strategic-material use. At hig
 ### Fighter-bomber type limitation — corrected technical conclusion
 Current `role_small_fighter_bomber` maps to the existing engine air type `fighter`. A separate duplicate airframe identity cannot be selected merely by inventing another duplicate archetype name if it shares the same `type`; BBA's `type_override`/duplicate-archetype selection is keyed through the recognized air `type` value.
 
-HER's `small_plane_airframe` already exposes the relevant recognized small-aircraft type set through `allowed_types` (`fighter`, `interceptor`, `cas`, `naval_bomber`, `suicide`, `scout_plane`, `tactical_bomber`, `maritime_patrol_plane`). Existing specialized duplicate airframes consume those type channels. Therefore adding `small_plane_fighter_bomber_airframe` while still assigning `fighter` does **not** by itself create a separately addressable BBA duplicate; the engine will still resolve through the same fighter type.
+HER's `small_plane_airframe` currently exposes `fighter`, `interceptor`, `cas`, `naval_bomber`, `suicide`, `scout_plane`, `tactical_bomber`, and `maritime_patrol_plane`. The recognized `heavy_fighter` type is not currently exposed/used by the SMALL family, while it is used normally by the MEDIUM family. This creates a plausible free routing channel for a separate small fighter-bomber duplicate.
 
-The equipment documentation also enumerates air `type` as a fixed engine-facing set rather than an open script-defined namespace. Treat a custom `type = fighter_bomber` as unsupported/hardcoded unless a minimal executable test proves otherwise.
+The equipment documentation enumerates air `type` as a fixed engine-facing set rather than an open script-defined namespace. Treat a custom `type = fighter_bomber` as unsupported/hardcoded unless a minimal executable test proves otherwise.
 
-**Current technical verdict:** a truly separate fighter-bomber equipment class on the same small-airframe designer requires either (a) an unused recognized engine air type that can be repurposed, or (b) proof that the engine accepts a new custom air type throughout designer duplication, stockpile, wing, mission, AI and UI systems. The previously proposed 'new subunit + duplicate archetype sharing `fighter`' workaround is not valid for this purpose.
+**Current technical verdict:** a truly separate fighter-bomber equipment class on the same small-airframe designer is plausibly achievable by repurposing the unused `heavy_fighter` type channel on SMALL, provided that all direct `heavy_fighter` dependencies are audited and the engine does not impose hidden class behavior that breaks the intended role.
 
-Do not claim that a custom air subunit solves this identity problem: subunit IDs/categories are scriptable, but the designer duplicate selection still depends on the recognized equipment type.
+Do not claim that a custom air subunit alone solves identity: the key is a unique recognized type channel within the base airframe family plus a distinct duplicate archetype/subunit/category stack.
 
 ## Active follow-ups
 - Compare radial and inline engine module stats generation-by-generation.
@@ -107,4 +181,5 @@ Do not claim that a custom air subunit solves this identity problem: subunit IDs
 - Audit guns, bomb loads, survivability and electronics by module value and weight/thrust tradeoffs.
 - Build representative 1939/1941/1943 fighter and CAS research packages and calculate total required research cost.
 - Verify duplicate `allow` blocks on modern airframes and whether both gates apply or one overrides the other.
-- If a distinct fighter-bomber equipment identity remains desired, test only two realistic routes: repurpose an existing recognized air type, or perform a minimal custom-air-type engine test. Do not rely on duplicate archetype naming alone.
+- Map every script-level dependency on `heavy_fighter` before repurposing it for SMALL fighter-bombers.
+- Build a full Air Designer 2.0 slot/category dependency map before implementation.

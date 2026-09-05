@@ -4,7 +4,7 @@ HER_historical_rubber_development = {
 		visible = { 862 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = MAL_rubber_quotas_released } }
 		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 5 }
 		highlight_states = { highlight_state_targets = { state = 862 } }
-		cost = 45 days_remove = 180 modifier = { civilian_factory_use = 6 }
+		cost = 25 days_remove = 180 modifier = { civilian_factory_use = 6 }
 		remove_effect = { set_country_flag = MAL_rubber_quotas_released 862 = { add_resource = { type = rubber amount = 500 } } }
 		ai_will_do = { factor = 10 }
 	}
@@ -13,7 +13,7 @@ HER_historical_rubber_development = {
 		visible = { has_country_flag = MAL_rubber_quotas_released NOT = { has_country_flag = MAL_wartime_rubber_drive } }
 		available = { date > 1940.1.1 has_war = yes has_tech = excavation3 num_of_civilian_factories_available_for_projects > 7 }
 		highlight_states = { highlight_state_targets = { state = 862 state = 333 } }
-		cost = 60 days_remove = 240 modifier = { civilian_factory_use = 9 }
+		cost = 30 days_remove = 240 modifier = { civilian_factory_use = 9 }
 		remove_effect = { set_country_flag = MAL_wartime_rubber_drive 862 = { add_resource = { type = rubber amount = 750 } } 333 = { add_resource = { type = rubber amount = 100 } } }
 		ai_will_do = { factor = 10 }
 	}
@@ -22,7 +22,7 @@ HER_historical_rubber_development = {
 		visible = { 672 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = INS_sumatran_rubber_expanded } }
 		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 5 }
 		highlight_states = { highlight_state_targets = { state = 672 state = 335 } }
-		cost = 45 days_remove = 180 modifier = { civilian_factory_use = 6 }
+		cost = 25 days_remove = 180 modifier = { civilian_factory_use = 6 }
 		remove_effect = { set_country_flag = INS_sumatran_rubber_expanded 672 = { add_resource = { type = rubber amount = 400 } } 335 = { add_resource = { type = rubber amount = 200 } } }
 		ai_will_do = { factor = 10 }
 	}
@@ -31,7 +31,7 @@ HER_historical_rubber_development = {
 		visible = { has_country_flag = INS_sumatran_rubber_expanded NOT = { has_country_flag = INS_wartime_rubber_expanded } }
 		available = { date > 1940.1.1 has_war = yes has_tech = excavation3 num_of_civilian_factories_available_for_projects > 7 }
 		highlight_states = { highlight_state_targets = { state = 672 state = 335 state = 334 } }
-		cost = 60 days_remove = 240 modifier = { civilian_factory_use = 9 }
+		cost = 30 days_remove = 240 modifier = { civilian_factory_use = 9 }
 		remove_effect = { set_country_flag = INS_wartime_rubber_expanded 672 = { add_resource = { type = rubber amount = 350 } } 335 = { add_resource = { type = rubber amount = 250 } } 334 = { add_resource = { type = rubber amount = 100 } } }
 		ai_will_do = { factor = 10 }
 	}
@@ -40,7 +40,7 @@ HER_historical_rubber_development = {
 		visible = { 422 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = ENG_ceylon_rubber_replanted } }
 		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 4 }
 		highlight_states = { highlight_state_targets = { state = 422 } }
-		cost = 35 days_remove = 180 modifier = { civilian_factory_use = 5 }
+		cost = 20 days_remove = 180 modifier = { civilian_factory_use = 5 }
 		remove_effect = { set_country_flag = ENG_ceylon_rubber_replanted 422 = { add_resource = { type = rubber amount = 180 } } }
 		ai_will_do = { factor = 8 }
 	}
@@ -49,7 +49,7 @@ HER_historical_rubber_development = {
 		visible = { 286 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = FRA_cochinchina_rubber_expanded } }
 		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 4 }
 		highlight_states = { highlight_state_targets = { state = 286 } }
-		cost = 35 days_remove = 180 modifier = { civilian_factory_use = 5 }
+		cost = 20 days_remove = 180 modifier = { civilian_factory_use = 5 }
 		remove_effect = { set_country_flag = FRA_cochinchina_rubber_expanded 286 = { add_resource = { type = rubber amount = 200 } } }
 		ai_will_do = { factor = 8 }
 	}
@@ -58,7 +58,7 @@ HER_historical_rubber_development = {
 		visible = { 724 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = SIA_southern_rubber_expanded } }
 		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
 		highlight_states = { highlight_state_targets = { state = 724 } }
-		cost = 30 days_remove = 160 modifier = { civilian_factory_use = 4 }
+		cost = 15 days_remove = 160 modifier = { civilian_factory_use = 4 }
 		remove_effect = { set_country_flag = SIA_southern_rubber_expanded 724 = { add_resource = { type = rubber amount = 180 } } }
 		ai_will_do = { factor = 8 }
 	}
@@ -67,7 +67,7 @@ HER_historical_rubber_development = {
 		visible = { 423 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = RAJ_travancore_rubber_expanded } }
 		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
 		highlight_states = { highlight_state_targets = { state = 423 } }
-		cost = 30 days_remove = 160 modifier = { civilian_factory_use = 4 }
+		cost = 15 days_remove = 160 modifier = { civilian_factory_use = 4 }
 		remove_effect = { set_country_flag = RAJ_travancore_rubber_expanded 423 = { add_resource = { type = rubber amount = 120 } } }
 		ai_will_do = { factor = 7 }
 	}
@@ -76,7 +76,7 @@ HER_historical_rubber_development = {
 		visible = { NOT = { has_country_flag = BRA_battle_for_rubber } }
 		available = { date > 1942.1.1 has_war = yes has_tech = excavation3 num_of_civilian_factories_available_for_projects > 5 }
 		highlight_states = { highlight_state_targets = { state = 500 } }
-		cost = 50 days_remove = 240 modifier = { civilian_factory_use = 7 }
+		cost = 25 days_remove = 240 modifier = { civilian_factory_use = 7 }
 		remove_effect = { set_country_flag = BRA_battle_for_rubber 500 = { add_resource = { type = rubber amount = 350 } } }
 		ai_will_do = { factor = 9 }
 	}

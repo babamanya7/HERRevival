@@ -4,7 +4,7 @@ HER_historical_iron_development = {
 		visible = { NOT = { has_country_flag = USA_mesabi_mechanized } }
 		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 7 }
 		highlight_states = { highlight_state_targets = { state = 391 state = 822 } }
-		cost = 60 days_remove = 210 modifier = { civilian_factory_use = 8 }
+		cost = 30 days_remove = 210 modifier = { civilian_factory_use = 8 }
 		remove_effect = { set_country_flag = USA_mesabi_mechanized 391 = { add_resource = { type = iron amount = 120 } } 822 = { add_resource = { type = iron amount = 80 } } }
 		ai_will_do = { factor = 7 }
 	}
@@ -13,7 +13,7 @@ HER_historical_iron_development = {
 		visible = { has_country_flag = USA_mesabi_mechanized NOT = { has_country_flag = USA_lake_superior_expanded } }
 		available = { date > 1940.1.1 has_war = yes has_tech = excavation3 num_of_civilian_factories_available_for_projects > 10 }
 		highlight_states = { highlight_state_targets = { state = 391 state = 822 state = 393 } }
-		cost = 80 days_remove = 270 modifier = { civilian_factory_use = 12 }
+		cost = 40 days_remove = 270 modifier = { civilian_factory_use = 12 }
 		remove_effect = { set_country_flag = USA_lake_superior_expanded 391 = { add_resource = { type = iron amount = 100 } } 822 = { add_resource = { type = iron amount = 80 } } 393 = { add_resource = { type = iron amount = 70 } } }
 		ai_will_do = { factor = 10 }
 	}
@@ -22,7 +22,7 @@ HER_historical_iron_development = {
 		visible = { 226 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = SOV_krivoy_rog_expanded } }
 		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 7 }
 		highlight_states = { highlight_state_targets = { state = 226 } }
-		cost = 55 days_remove = 210 modifier = { civilian_factory_use = 7 }
+		cost = 30 days_remove = 210 modifier = { civilian_factory_use = 7 }
 		remove_effect = { set_country_flag = SOV_krivoy_rog_expanded 226 = { add_resource = { type = iron amount = 120 } } }
 		ai_will_do = { factor = 8 }
 	}
@@ -31,7 +31,7 @@ HER_historical_iron_development = {
 		visible = { 876 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = SOV_magnitogorsk_ore_expanded } }
 		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 6 }
 		highlight_states = { highlight_state_targets = { state = 876 } }
-		cost = 50 days_remove = 210 modifier = { civilian_factory_use = 7 }
+		cost = 25 days_remove = 210 modifier = { civilian_factory_use = 7 }
 		remove_effect = { set_country_flag = SOV_magnitogorsk_ore_expanded 876 = { add_resource = { type = iron amount = 80 } } }
 		ai_will_do = { factor = 7 }
 	}
@@ -40,7 +40,7 @@ HER_historical_iron_development = {
 		visible = { NOT = { has_country_flag = SOV_wartime_ural_iron_expanded } }
 		available = { date > 1941.6.1 has_war = yes has_tech = excavation3 num_of_civilian_factories_available_for_projects > 8 }
 		highlight_states = { highlight_state_targets = { state = 876 state = 653 state = 399 } }
-		cost = 70 days_remove = 270 modifier = { civilian_factory_use = 10 }
+		cost = 35 days_remove = 270 modifier = { civilian_factory_use = 10 }
 		remove_effect = { set_country_flag = SOV_wartime_ural_iron_expanded 876 = { add_resource = { type = iron amount = 50 } } 653 = { add_resource = { type = iron amount = 30 } } 399 = { add_resource = { type = iron amount = 20 } } }
 		ai_will_do = { factor = 10 }
 	}
@@ -49,7 +49,7 @@ HER_historical_iron_development = {
 		visible = { 28 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = FRA_lorraine_mines_modernized } }
 		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 6 }
 		highlight_states = { highlight_state_targets = { state = 28 } }
-		cost = 50 days_remove = 180 modifier = { civilian_factory_use = 7 }
+		cost = 25 days_remove = 180 modifier = { civilian_factory_use = 7 }
 		remove_effect = { set_country_flag = FRA_lorraine_mines_modernized 28 = { add_resource = { type = iron amount = 100 } } }
 		ai_will_do = { factor = 6 }
 	}
@@ -58,16 +58,16 @@ HER_historical_iron_development = {
 		visible = { NOT = { has_country_flag = SWE_lapland_iron_expanded } }
 		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 5 }
 		highlight_states = { highlight_state_targets = { state = 141 } }
-		cost = 45 days_remove = 180 modifier = { civilian_factory_use = 6 }
+		cost = 0 days_remove = 180 modifier = { civilian_factory_use = 6 }
 		remove_effect = { set_country_flag = SWE_lapland_iron_expanded 141 = { add_resource = { type = iron amount = 80 } } }
-		ai_will_do = { factor = 7 }
+		ai_will_do = { factor = 100 }
 	}
 	ENG_expand_northamptonshire_ironstone = {
 		icon = steel allowed = { original_tag = ENG }
 		visible = { 129 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = ENG_northamptonshire_expanded } }
 		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 5 }
 		highlight_states = { highlight_state_targets = { state = 129 } }
-		cost = 45 days_remove = 180 modifier = { civilian_factory_use = 6 }
+		cost = 25 days_remove = 180 modifier = { civilian_factory_use = 6 }
 		remove_effect = { set_country_flag = ENG_northamptonshire_expanded 129 = { add_resource = { type = iron amount = 60 } } }
 		ai_will_do = { factor = 6 }
 	}
@@ -76,7 +76,7 @@ HER_historical_iron_development = {
 		visible = { 700 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = ENG_marampa_expanded } }
 		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
 		highlight_states = { highlight_state_targets = { state = 700 } }
-		cost = 30 days_remove = 150 modifier = { civilian_factory_use = 4 }
+		cost = 15 days_remove = 150 modifier = { civilian_factory_use = 4 }
 		remove_effect = { set_country_flag = ENG_marampa_expanded 700 = { add_resource = { type = iron amount = 20 } } }
 		ai_will_do = { factor = 4 }
 	}
@@ -85,7 +85,7 @@ HER_historical_iron_development = {
 		visible = { 59 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = GER_salzgitter_developed } }
 		available = { date > 1937.7.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 7 }
 		highlight_states = { highlight_state_targets = { state = 59 } }
-		cost = 60 days_remove = 240 modifier = { civilian_factory_use = 9 }
+		cost = 30 days_remove = 240 modifier = { civilian_factory_use = 9 }
 		remove_effect = { set_country_flag = GER_salzgitter_developed 59 = { add_resource = { type = iron amount = 100 } } }
 		ai_will_do = { factor = 10 }
 	}
@@ -94,7 +94,7 @@ HER_historical_iron_development = {
 		visible = { 57 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = GER_siegerland_expanded } }
 		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 5 }
 		highlight_states = { highlight_state_targets = { state = 57 } }
-		cost = 40 days_remove = 180 modifier = { civilian_factory_use = 6 }
+		cost = 20 days_remove = 180 modifier = { civilian_factory_use = 6 }
 		remove_effect = { set_country_flag = GER_siegerland_expanded 57 = { add_resource = { type = iron amount = 30 } } }
 		ai_will_do = { factor = 6 }
 	}
@@ -103,7 +103,7 @@ HER_historical_iron_development = {
 		visible = { NOT = { has_country_flag = RAJ_eastern_iron_expanded } }
 		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 4 }
 		highlight_states = { highlight_state_targets = { state = 435 state = 426 } }
-		cost = 40 days_remove = 180 modifier = { civilian_factory_use = 5 }
+		cost = 20 days_remove = 180 modifier = { civilian_factory_use = 5 }
 		remove_effect = { set_country_flag = RAJ_eastern_iron_expanded 435 = { add_resource = { type = iron amount = 20 } } 426 = { add_resource = { type = iron amount = 15 } } }
 		ai_will_do = { factor = 5 }
 	}
@@ -112,7 +112,7 @@ HER_historical_iron_development = {
 		visible = { 955 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = AST_yampi_sound_expanded } }
 		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
 		highlight_states = { highlight_state_targets = { state = 955 } }
-		cost = 35 days_remove = 180 modifier = { civilian_factory_use = 4 }
+		cost = 20 days_remove = 180 modifier = { civilian_factory_use = 4 }
 		remove_effect = { set_country_flag = AST_yampi_sound_expanded 955 = { add_resource = { type = iron amount = 25 } } }
 		ai_will_do = { factor = 4 }
 	}
@@ -121,7 +121,7 @@ HER_historical_iron_development = {
 		visible = { NOT = { has_country_flag = BRA_itabira_export_project } }
 		available = { date > 1942.1.1 has_tech = excavation3 num_of_civilian_factories_available_for_projects > 4 }
 		highlight_states = { highlight_state_targets = { state = 500 } }
-		cost = 45 days_remove = 240 modifier = { civilian_factory_use = 6 }
+		cost = 25 days_remove = 240 modifier = { civilian_factory_use = 6 }
 		remove_effect = { set_country_flag = BRA_itabira_export_project 500 = { add_resource = { type = iron amount = 30 } } }
 		ai_will_do = { factor = 5 }
 	}
@@ -130,7 +130,7 @@ HER_historical_iron_development = {
 		visible = { 144 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = NOR_sor_varanger_expanded } }
 		available = { date > 1937.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 3 }
 		highlight_states = { highlight_state_targets = { state = 144 } }
-		cost = 30 days_remove = 150 modifier = { civilian_factory_use = 4 }
+		cost = 15 days_remove = 150 modifier = { civilian_factory_use = 4 }
 		remove_effect = { set_country_flag = NOR_sor_varanger_expanded 144 = { add_resource = { type = iron amount = 20 } } }
 		ai_will_do = { factor = 4 }
 	}
@@ -139,7 +139,7 @@ HER_historical_iron_development = {
 		visible = { 716 = { CONTROLLER = { tag = ROOT } } NOT = { has_country_flag = MAN_anshan_benxihu_expanded } }
 		available = { date > 1938.1.1 has_tech = excavation2 num_of_civilian_factories_available_for_projects > 5 }
 		highlight_states = { highlight_state_targets = { state = 716 } }
-		cost = 45 days_remove = 210 modifier = { civilian_factory_use = 6 }
+		cost = 25 days_remove = 210 modifier = { civilian_factory_use = 6 }
 		remove_effect = { set_country_flag = MAN_anshan_benxihu_expanded 716 = { add_resource = { type = iron amount = 50 } } }
 		ai_will_do = { factor = 7 }
 	}

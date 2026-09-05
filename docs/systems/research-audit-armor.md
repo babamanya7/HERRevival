@@ -143,16 +143,38 @@ Target principles:
 
 Avoid adding research nodes merely to gate every module. Prefer existing armor/engine/electronics/chassis techs, MIO progression and special projects as unlock gates.
 
-## New armored-vehicle roles — feasibility direction
-HER should investigate additional role-specific armored equipment beyond the standard tank/TD/SPG/SPAA/flame set. Candidate roles include:
-- command tank / command vehicle;
-- assault tank / infantry-support tank;
-- breakthrough tank as a distinct operational role where useful;
-- armored engineering / recovery vehicle;
-- reconnaissance tank / armored scout role;
-- ammunition/support carrier where it can affect the formation without excessive micro.
+## Tank role layer — ACCEPTED
+Specialized armored vehicles must be designable **on the basis of each ordinary light/medium/heavy chassis**, not implemented primarily as separate bespoke chassis/archetypes.
 
-The engine already supports custom equipment archetypes: HER itself defines `armored_support_vehicle` as an `is_archetype = yes` custom armor equipment. This makes new land equipment types technically plausible even if the engine's `type =` enum remains limited. The preferred implementation may therefore be a custom archetype and/or custom battalion equipment requirement rather than inventing unsupported engine-level `type` tokens.
+Target architecture:
+`chassis -> required vehicle role -> role-specific module restrictions/effects -> battalion/formation usage`.
+
+The desired role layer should be analogous in concept to the aircraft designer's required `role_type_slot`, while respecting whatever land-equipment syntax the engine actually supports. If a direct tank `type_override`/role-slot mechanism is not supported, emulate the user-facing result through duplicated chassis archetypes or another safe mechanism, but keep the design experience centered on one physical chassis family rather than separate researchable hulls.
+
+Candidate roles on every suitable chassis generation:
+- line tank;
+- tank destroyer;
+- self-propelled artillery;
+- self-propelled AA;
+- flame tank;
+- command tank;
+- assault gun / assault tank / infantry-support vehicle;
+- armored engineer vehicle;
+- recovery/maintenance vehicle;
+- reconnaissance/scout role where useful;
+- amphibious role where compatible.
+
+Role is not merely a label. It must shape the allowed design:
+- command role: requires radio/command equipment, may reduce ammunition/weapon capacity, raises IC/electronics use, and should primarily improve formation command/control rather than raw vehicle firepower;
+- engineer role: requires dozer/demolition/recovery/bridging-style equipment and should trade weapon capacity for engineering value;
+- assault/infantry-support role: favors howitzers/close-support weapons, protection and urban/fortification assault at the cost of anti-tank versatility/mobility;
+- SPG role: represents indirect mobile artillery and should remain distinct from an assault gun used for direct infantry support;
+- TD/AA/flame roles continue to be specialized derivatives of the same base chassis.
+
+This role layer is a core part of Tank Designer 2.0 and should be designed together with battalion equipment requirements, not as a cosmetic extension.
+
+## New armored-vehicle roles — feasibility direction
+HER should investigate additional role-specific armored equipment beyond the standard tank/TD/SPG/SPAA/flame set. The engine already supports custom equipment archetypes: HER itself defines `armored_support_vehicle` as an `is_archetype = yes` custom armor equipment. This makes new land equipment identities technically plausible even if the engine's `type =` enum remains limited.
 
 A particularly promising model for command tanks is to make them a small secondary equipment requirement inside tank battalions/companies (if unit equipment syntax supports the desired ratio) rather than a full battalion. This would model Panzerbefehlswagen / command Shermans / Soviet command vehicles as a formation-level capability and avoid template clutter.
 

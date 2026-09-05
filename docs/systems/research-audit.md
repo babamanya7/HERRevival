@@ -205,7 +205,77 @@ Five levels, each +10% local resources and +5% storage size → roughly +50% ext
 
 ---
 
-## 8. Cross-system preliminary conclusions
+## 8. Infantry weapons
+
+### Main equipment / upgrade cadence
+Current structure:
+- `infantry_weapons` — 1918, cost 1.5, unlocks infantry equipment 0 and `antitank_1`;
+- `infantry_weapons1` — 1937, cost 1.5, unlocks infantry equipment 1 and `antitank_2`;
+- `infantry_weapons2` — 1939, cost 1.5, gives +3% soft attack and +3% breakthrough to all infantry and applies `inf_up_1` / cost increase;
+- `improved_infantry_weapons` — 1940, cost 2, unlocks infantry equipment 2;
+- `improved_infantry_weapons_2` — 1941, cost 2, another +3% soft attack / breakthrough and `inf_up_2`;
+- `advanced_infantry_weapons` — 1943, cost 2, unlocks infantry equipment 3;
+- `advanced_infantry_weapons2` — 1944, cost 1.5, another +3% soft attack / breakthrough and `inf_up_3`.
+
+### Findings
+- The separation between new equipment models and generic infantry-combat upgrades is conceptually interesting, but it means the practical research burden of keeping infantry current is higher than the visible weapon-model cadence alone. Evaluate each model + following stat-upgrade pair as one research cycle.
+- 1937 → 1939 → 1940 → 1941 → 1943 → 1944 is fairly dense. Check whether the repeated annual 1939–41 sequence crowds out support/artillery research, especially for countries with fewer slots.
+- `infantry_weapons2`, `improved_infantry_weapons_2`, and `advanced_infantry_weapons2` each also add an idea (`inf_up_1/2/3`) and custom tooltip `inf_increase_cost`; exact equipment-cost escalation must be audited together with the weapon equipment definitions before judging value.
+- Early infantry weapon techs also unlock `antitank_1/2`, so infantry-weapon research currently controls part of the infantry AT equipment progression. Verify whether this is intentional and whether relevant AT/MIO categories are present.
+
+### Infantry AT
+- `infantry_at` — 1942, cost 1.5, unlocks `antitank_3` and the `sp_antitank_rockets` project.
+- `infantry_at2` — 1944, cost 1.5, unlocks `antitank_4`.
+- `infantry_at2` has its folder definition commented out. **A/C / visibility check:** verify whether it is intentionally hidden/indirect or accidentally absent from the visible research tree. If players cannot normally select it, this is a functional bug.
+
+---
+
+## 9. Special forces in infantry tree
+
+### Paratroopers
+- 1936 / 1939 / 1943 progression, costs 2 / 1.5 / 2.
+- `paratroopers2` (1939) unlocks `mech_paratrooper` and para equipment 1.
+
+**B / historical-role review:** 1939 mechanized paratrooper availability may be too early or too broad depending on what `mech_paratrooper` represents in HER. Re-evaluate against unit/equipment implementation, not name alone.
+
+### Marines
+- 1936 / 1939 / 1943 progression, costs 2 / 1.5 / 2.
+- Later levels give meaningful river/amphibious/marsh attack bonuses rather than generic stat inflation.
+
+Preliminary verdict: healthy thematic progression; revisit with amphibious-combat balance.
+
+### General special-forces note
+Special-force techs use dedicated categories (`para_tech`, `marine_tech`, etc.), which is good for targeted bonuses. Audit later against any generic `cat_special_forces_generic` and doctrine categories to prevent missing/double bonuses.
+
+---
+
+## 10. Support equipment and companies
+
+### Support equipment chassis
+Current equipment progression is roughly:
+- base `tech_support` — 1918, cost 1;
+- `tech_support_2` — 1939, cost 2;
+- `tech_support_3` — 1941, cost 2;
+- `tech_support_4` — 1943, cost 2;
+- `tech_support_5` — 1945, cost 2.
+
+Cadence 1939/41/43/45 is coherent. However, each support-equipment level also serves as a hub that paths toward the matching level of engineers, recon, field hospitals, logistics, MP, signals, and maintenance. This means the support-equipment chain is a structural gate for a very large share of army-support research.
+
+**A/B / gating review:** verify whether every company really should require the next generic support-equipment technology. If all support branches are effectively synchronized behind one chassis tech, player specialization may be more constrained than intended.
+
+### Engineers
+- `tech_engineers` 1936 unlocks engineer, assault engineer, HQ engineer.
+- `tech_engineers2` 1939 adds entrenchment, fort bonuses and dozer blade.
+- `tech_engineers3` 1941 adds urban/forest bonuses, unlocks `heavy_infantry_support_armor`, and buffs flame tanks.
+
+**A / role-overlap review:** `tech_engineers3` is no longer purely an engineer-company improvement; it also gates heavy-infantry support armor and flame-tank terrain performance. Verify whether these unlocks belong here or in armor/heavy-infantry techs. This matters for category bonuses and research discounts as well as tree clarity.
+
+### General support-tech observation
+The support tree appears very broad and regular, which is good for readability, but that regularity can hide cross-system unlocks. Every support-company level should be audited for side effects outside its nominal company (modules, unit types, armor unlocks, terrain buffs, etc.).
+
+---
+
+## 11. Cross-system preliminary conclusions
 
 1. HER's industry tree contains many good specialized sub-branches, but too many branches independently improve the same global outputs (factory output, dockyard output, research speed). The main design task is to reduce role overlap, not flatten the tree.
 2. Evaluate cumulative 1944 state, not isolated +1/+2/+4% tech effects.
@@ -213,12 +283,14 @@ Five levels, each +10% local resources and +5% storage size → roughly +50% ext
 4. Resource-tech scaling must be tested against the newly historicalized resource base.
 5. Infrastructure technologies should primarily model logistics/infrastructure capability rather than act as secondary machine-tool branches.
 6. Social systems (education, healthcare, agriculture) are interesting HER content, but their categories and effects currently bleed into construction/economic-law/general systems.
+7. Infantry/support research shows another recurring pattern: nominally narrow technologies often unlock or modify content from adjacent systems. Integration/category auditing is therefore as important as raw stat balancing.
+8. Research burden must be measured by complete capability packages (equipment model + generic upgrade + support gate), not by individual technology cost alone.
 
 ---
 
 ## TODO — next passes
 - finish synthetic oil/rubber branch audit;
-- audit infantry and support technologies;
+- finish infantry special-forces branches and full support-company audit;
 - audit artillery;
 - audit armor and NSB armor integration;
 - audit air technologies and BBA modules;

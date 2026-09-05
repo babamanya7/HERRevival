@@ -194,6 +194,39 @@ The equipment documentation enumerates air `type` as a fixed engine-facing set r
 
 Do not claim that a custom air subunit alone solves identity: the key is a unique recognized type channel within the base airframe family plus a distinct duplicate archetype/subunit/category stack.
 
+### Air weapons / mission payload pass
+The weapon system is one of the stronger parts of the current designer because physical mounting location already matters. Cowling/capot and wing fighter weapons have different weight/IC values, while bombs/rockets/torpedoes are split into wing and frame/fuselage categories. Preserve this location-aware pattern and extend it to the rest of Air Designer 2.0.
+
+Fighter guns follow a useful physical tradeoff: heavier guns increase `air_attack`, weight and IC while progressively reducing speed and range. Wing-mounted versions are generally somewhat heavier/more expensive than equivalent cowling weapons, reinforcing mounting-location identity.
+
+**B / fighter-bomber vs CAS imbalance:** current fighter-bomber payload modules are not consistently paying the same aerodynamic penalty as equivalent CAS payloads. Examples:
+- `fb_bomb_locks`: +4 ground attack, mission weight +3, IC 4; its speed/range penalties are commented out;
+- `wing_bomb_locks`: +4 ground attack, mission weight +3, IC 2; active -4.5% speed / -3% range;
+- `fb_heavy_bomb_locks`: +8 ground attack, mission weight +5, IC 6; its -7.5% speed / -5% range penalties are commented out;
+- normal `heavy_bomb_locks`: same +8 ground attack / +5 mission weight / IC 6 but active -7.5% speed / -5% range;
+- `fb_rocket_rails` / `_2`: same ground-attack and mission-weight values as CAS rocket rails, but the corresponding speed/range penalties are commented out while CAS rails retain them.
+
+This is backwards for a compromise role: fighter-bombers should preserve more air-combat capability than dedicated CAS, but they should not get equivalent payload with effectively free aerodynamics. Air Designer 2.0 should make the distinction physical: smaller/restricted payload, pylons/external stores, less efficient ground attack per unit payload, or stronger drag/range penalties, while dedicated CAS receives heavier/denser ground-attack options and specialized attack equipment.
+
+The current role module adds another -33% CAS `air_ground_attack` penalty to small fighter-bombers, so final balance depends on mission-stat stacking. Preserve the concept of reduced strike efficiency for fighter-bombers, but move more of the differentiation into physical payload/layout constraints rather than relying on a single blanket role penalty.
+
+### Bombing / naval payload specialization
+Normal CAS/bomber payloads have clearer mission specialization:
+- AP bomb locks sacrifice ground attack for stronger naval strike/targeting;
+- cluster bombs are particularly strong on logistics strike relative to ordinary CAS;
+- torpedo generations increase naval strike and targeting while increasing weight/drag/cost;
+- internal bomb bays scale strongly in IC, weight and drag from small -> medium -> large.
+
+This is a good role-specialization pattern. Air Designer 2.0 should retain the idea that payload type and mounting location define mission efficiency rather than turning every weapon into generic attack.
+
+### Electronics modules
+Aircraft electronics already provide mission-specific rather than universal bonuses:
+- radio navigation reduces night penalty and improves air superiority, bombing or naval targeting depending on mission;
+- air-ground radar improves night performance plus bombing/detection or CAS ground attack by mission;
+- air-air radar improves night performance, air attack and air-superiority contribution on interception/air-superiority missions.
+
+This is a strong reference for the deeper designer: electronics should occupy explicit avionics/radar sections and enhance relevant missions rather than giving broad all-stat buffs.
+
 ## Active follow-ups
 - Compare radial and inline engine module stats generation-by-generation.
 - Audit full `engine_tuning_*` and range tech dates/costs against slot-day burden.

@@ -437,4 +437,6 @@ Split only when the main file becomes cumbersome; avoid fragmentation for its ow
 - Carrier criticals separately cover flight deck, aircraft elevators, hangar, aviation fuel, flight control and damage control. Wooden and armored decks retain different risk profiles.
 - Naval criticals use the dedicated 35-frame `GFX_HER_critical_damage_icons` atlas. Each critical ID has a unique icon and frame.
 - Balance order: critical map and effects, critical probability, severity/duration, ordinary hit damage, then repair/operational absence. Do not increase aircraft target weight merely because a ship is already damaged.
+- Pre-defines critical scale: common local casualties weight `0.65-1.0`; ship-wide mission-kill casualties `0.25-0.65`; catastrophes `0.05-0.2`. Never use a critical-hit damage multiplier below `1.0`.
+- `toxic_gas_leakage` is submarine-only. Carriers instead use the separate aviation-fuel-fire casualty.
 - Detailed implementation notes: `docs/systems/naval-critical-damage.md`.

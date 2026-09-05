@@ -11,7 +11,7 @@ sub_units = {
 
 		supply_consumption = 0.01
 
-		critical_parts = { electrical_power_failure pressure_hull_rupture destroyed_ammo_storage broken_propeller on_fire rudder_jammed ballast_tanks_inoperable gas_leakage }
+		critical_parts = { electrical_power_failure pressure_hull_rupture destroyed_ammo_storage broken_propeller on_fire rudder_jammed ballast_tanks_inoperable toxic_gas_leakage }
 		critical_part_damage_chance_mult = 1
 
 		hit_profile_mult = 1.0

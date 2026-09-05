@@ -19,7 +19,15 @@ Critical parts are split into two layers:
 
 ## Hull-wide criticals
 
-Surface ships receive bridge damage, electrical failure, severe flooding, magazine explosion, fire, propeller damage and rudder damage. Aircraft carriers additionally retain the volatile-gas casualty. Submarines use electrical failure, pressure-hull rupture, magazine explosion, fire, propeller/rudder damage, ballast failure and gas leakage.
+Surface ships receive bridge damage, electrical failure, severe flooding, magazine explosion, fire, propeller damage and rudder damage. Submarines use electrical failure, pressure-hull rupture, magazine explosion, fire, propeller/rudder damage, ballast failure and toxic gas leakage. Toxic gas leakage is submarine-only; carrier fuel vapors and volatile aviation fuel are represented by the separate aviation-fuel fire critical.
+
+## Pre-defines severity scale
+
+- Common local equipment casualties normally carry relative weights of `0.65-1.0` and remove roughly `30-60%` of the affected system.
+- Ship-wide mission-kill casualties normally carry weights of `0.25-0.65` and combine moderate ORG/speed penalties with limited extra damage.
+- Catastrophic casualties carry weights of `0.05-0.2`. Magazine explosion is capped at `x4` damage; aviation-fuel fire at `x2.25`; pressure-hull rupture at `x2` STR damage.
+- Critical-hit damage multipliers below `1.0` are prohibited. A critical casualty must not reduce the damage of the hit which caused it.
+- Carrier capacity penalties are deliberately cumulative: one local casualty degrades operations, while several simultaneous deck/elevator/hangar/control casualties can create a full mission kill.
 
 ## Module zones
 

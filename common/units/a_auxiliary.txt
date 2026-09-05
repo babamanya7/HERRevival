@@ -10,7 +10,7 @@ sub_units = {
 
 		supply_consumption = 0.02
 		
-		critical_parts = { rudder_jammed broken_propeller on_fire }
+		critical_parts = { bridge_hit electrical_power_failure severe_flooding broken_propeller on_fire rudder_jammed }
 		critical_part_damage_chance_mult = 1 
 		
 		hit_profile_mult = 1.0

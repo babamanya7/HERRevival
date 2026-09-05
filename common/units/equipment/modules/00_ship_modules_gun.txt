@@ -2733,6 +2733,7 @@ equipment_modules = {
 ################
     ship_missile_1 = {
 		category = ship_missile
+		critical_parts = { damaged_missile_launchers }
 
 		add_stats = {
 			build_cost_ic = 800
@@ -2760,6 +2761,7 @@ equipment_modules = {
 	}
 	ship_missile_2 = {
 		category = ship_missile
+		critical_parts = { damaged_missile_launchers }
 		parent = ship_missile_1
 
 		add_stats = {
@@ -2788,6 +2790,7 @@ equipment_modules = {
 	}
 	ship_cruise_missile_1 = {
 		category = ship_missile
+		critical_parts = { damaged_missile_launchers }
 
 		add_stats = {
 			build_cost_ic = 800
@@ -2808,6 +2811,7 @@ equipment_modules = {
 	}
 	ship_cruise_missile_sub_1 = {
 		category = ship_sub_missile
+		critical_parts = { damaged_missile_launchers }
 		gui_category = ship_missile
 		gfx = ship_cruise_missile_1
 
@@ -2910,6 +2914,7 @@ equipment_modules = {
 	sub_missile_launcher = {
 		abbreviation = "sml"
 		category = sub_rocket
+		critical_parts = { damaged_missile_launchers }
 		add_equipment_type = missile_launcher
 		allow_equipment_type = { missile ballistic_missile }
 
@@ -2932,6 +2937,7 @@ equipment_modules = {
 	slbm_launcher = {
 		abbreviation = "slb"
 		category = sub_rocket
+		critical_parts = { damaged_missile_launchers }
 		add_equipment_type = missile_launcher
 		allow_equipment_type = { nuclear_missile }
 
@@ -2954,6 +2960,7 @@ equipment_modules = {
 	ship_missile_launcher = {
 		gfx = sub_missile_launcher
 		category = ship_rocket
+		critical_parts = { damaged_missile_launchers }
 		add_equipment_type = missile_launcher
 		allow_equipment_type = { missile ballistic_missile }
 
@@ -2976,6 +2983,7 @@ equipment_modules = {
 	ship_slbm_launcher = {
 		gfx = slbm_launcher
 		category = ship_rocket
+		critical_parts = { damaged_missile_launchers }
 		add_equipment_type = missile_launcher
 		allow_equipment_type = { nuclear_missile }
 

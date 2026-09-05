@@ -88,6 +88,9 @@ critical_parts = {
 		chance = 0.1
 		str_damage_multiplier = 10
 		org_damage_multiplier = 10
+		base_damage_instance = 1
+		damage_instance_per_added_module = 0
+		max_damage_instance = 1
 	}
 	
 
@@ -100,6 +103,9 @@ critical_parts = {
 		}
 		org_damage = 5
 		org_damage_multiplier = 2
+		base_damage_instance = 1
+		damage_instance_per_added_module = 0
+		max_damage_instance = 1
 	}
 
 	broken_propeller = {
@@ -111,6 +117,9 @@ critical_parts = {
 		chance = 0.5
 		org_damage_multiplier = 0.5
 		str_damage_multiplier = 0.5
+		base_damage_instance = 1
+		damage_instance_per_added_module = 0
+		max_damage_instance = 1
 	}
 	rudder_jammed = {
 		icon = "GFX_default_critical_damage_icons"
@@ -122,6 +131,9 @@ critical_parts = {
 		chance = 0.25
 		org_damage_multiplier = 0.25
 		str_damage_multiplier = 0.25
+		base_damage_instance = 1
+		damage_instance_per_added_module = 0
+		max_damage_instance = 1
 	}
 	ballast_tanks_inoperable = {
 		icon = "GFX_default_critical_damage_icons"
@@ -132,6 +144,9 @@ critical_parts = {
 		
 		org_damage_multiplier = 0.25
 		str_damage_multiplier = 0.25
+		base_damage_instance = 1
+		damage_instance_per_added_module = 0
+		max_damage_instance = 1
 	}
 
     damaged_fire_control = {
@@ -190,5 +205,317 @@ critical_parts = {
         chance = 0.1
         org_damage_multiplier = 3
         str_damage_multiplier = 3
+		base_damage_instance = 1
+		damage_instance_per_added_module = 0
+		max_damage_instance = 1
     }
+
+	# HER: local armament and mission-system casualties
+	damaged_anti_air = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 3
+		stat_penalties = { anti_air_attack = -0.5 }
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = -1
+	}
+	damaged_depth_charge_racks = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 4
+		stat_penalties = { sub_attack = -0.6 }
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = -1
+	}
+	damaged_mine_warfare_gear = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 4
+		stat_penalties = {
+			mines_planting = -0.75
+			mines_sweeping = -0.75
+		}
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = -1
+	}
+	damaged_torpedo_fire_control = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 4
+		stat_penalties = {
+			torpedo_attack = -0.25
+			naval_torpedo_hit_chance_factor = -0.5
+		}
+		chance = 0.5
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = 1
+	}
+	damaged_radar = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 3
+		stat_penalties = {
+			surface_detection = -0.65
+			sub_detection = -0.35
+		}
+		chance = 0.7
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = 1
+	}
+	damaged_sonar = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 3
+		stat_penalties = { sub_detection = -0.75 }
+		chance = 0.7
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = 1
+	}
+
+	# HER: propulsion, command and hull casualties
+	damaged_engine_room = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 7
+		modifier = {
+			naval_speed_factor = -0.55
+			navy_org_factor = -0.25
+		}
+		chance = 0.65
+		org_damage = 4
+		org_damage_multiplier = 0.75
+		str_damage_multiplier = 0.75
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = 1
+	}
+	bridge_hit = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 3
+		modifier = {
+			navy_org_factor = -0.4
+			naval_morale_factor = -0.35
+			naval_retreat_chance = -0.35
+		}
+		stat_penalties = {
+			naval_light_gun_hit_chance_factor = -0.2
+			naval_heavy_gun_hit_chance_factor = -0.2
+		}
+		chance = 0.3
+		org_damage = 8
+		org_damage_multiplier = 1.5
+		base_damage_instance = 1
+		damage_instance_per_added_module = 0
+		max_damage_instance = 1
+	}
+	electrical_power_failure = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 7
+		modifier = {
+			navy_org_factor = -0.45
+			naval_morale_factor = -0.4
+		}
+		stat_penalties = {
+			surface_detection = -0.45
+			sub_detection = -0.45
+			anti_air_attack = -0.35
+			naval_light_gun_hit_chance_factor = -0.25
+			naval_heavy_gun_hit_chance_factor = -0.25
+		}
+		chance = 0.35
+		org_damage_multiplier = 1.25
+		base_damage_instance = 1
+		damage_instance_per_added_module = 0
+		max_damage_instance = 1
+	}
+	severe_flooding = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 7
+		modifier = {
+			naval_speed_factor = -0.4
+			navy_org_factor = -0.45
+			naval_morale_factor = -0.6
+		}
+		chance = 0.45
+		str_damage = 8
+		org_damage = 6
+		str_damage_multiplier = 1.5
+		org_damage_multiplier = 1.25
+		base_damage_instance = 1
+		damage_instance_per_added_module = 0
+		max_damage_instance = 1
+	}
+	armor_belt_breached = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 7
+		stat_penalties = { armor_value = -0.35 }
+		chance = 0.3
+		str_damage_multiplier = 1.5
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = 1
+	}
+	fuel_tank_rupture = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 6
+		modifier = {
+			navy_org_factor = -0.3
+			naval_morale_factor = -0.45
+		}
+		chance = 0.3
+		str_damage = 5
+		org_damage = 5
+		str_damage_multiplier = 1.5
+		org_damage_multiplier = 1.5
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = 1
+	}
+
+	# HER: carrier mission-kill casualties
+	damaged_aircraft_elevator = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 6
+		stat_penalties = { carrier_size = -0.45 }
+		modifier = { navy_org_factor = -0.2 }
+		chance = 0.75
+		org_damage_multiplier = 0.75
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = 2
+	}
+	hangar_fire = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 6
+		stat_penalties = { carrier_size = -0.5 }
+		modifier = {
+			navy_org_factor = -0.55
+			naval_morale_factor = -0.7
+		}
+		chance = 0.4
+		str_damage = 6
+		org_damage = 8
+		str_damage_multiplier = 2
+		org_damage_multiplier = 2
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = 1
+	}
+	aviation_fuel_fire = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 6
+		stat_penalties = { carrier_size = -0.65 }
+		modifier = {
+			navy_org_factor = -0.75
+			naval_morale_factor = -0.9
+		}
+		chance = 0.18
+		str_damage = 10
+		org_damage = 12
+		str_damage_multiplier = 3
+		org_damage_multiplier = 3
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = 1
+	}
+
+	# HER: submarine casualties
+	pressure_hull_rupture = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 7
+		stat_penalties = {
+			sub_visibility = 1.5
+			naval_range = -0.5
+		}
+		modifier = {
+			naval_speed_factor = -0.5
+			navy_org_factor = -0.65
+			naval_morale_factor = -0.8
+		}
+		chance = 0.25
+		str_damage = 10
+		org_damage = 8
+		str_damage_multiplier = 2.5
+		org_damage_multiplier = 2
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = 1
+	}
+	damaged_periscope = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 3
+		stat_penalties = {
+			surface_detection = -0.75
+			sub_visibility = 0.5
+		}
+		chance = 0.7
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = 1
+	}
+	damaged_snorkel = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 7
+		stat_penalties = {
+			sub_visibility = 0.75
+			naval_range = -0.2
+		}
+		chance = 0.65
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = 1
+	}
+
+	# HER: aviation and missile support systems
+	damaged_aviation_facilities = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 6
+		stat_penalties = {
+			carrier_size = -0.35
+			submarine_carrier_size = -0.75
+			surface_detection = -0.45
+			sub_detection = -0.45
+			sub_attack = -0.35
+		}
+		chance = 0.7
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = 1
+	}
+	damaged_missile_launchers = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 2
+		stat_penalties = {
+			hg_attack = -0.7
+			lg_attack = -0.7
+		}
+		chance = 0.6
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = -1
+	}
+	carrier_air_ops_disrupted = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 6
+		stat_penalties = { carrier_size = -0.3 }
+		modifier = { navy_org_factor = -0.35 }
+		chance = 0.55
+		org_damage = 5
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = 1
+	}
+	damage_control_center_hit = {
+		icon = "GFX_default_critical_damage_icons"
+		frame = 6
+		stat_penalties = { reliability = -0.2 }
+		modifier = {
+			navy_org_factor = -0.3
+			naval_morale_factor = -0.5
+		}
+		chance = 0.35
+		org_damage_multiplier = 1.25
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = 1
+	}
 }

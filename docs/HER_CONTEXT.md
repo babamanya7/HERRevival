@@ -429,3 +429,11 @@ Split only when the main file becomes cumbersome; avoid fragmentation for its ow
 - Added warehouse-system lessons.
 - Added initial China aid architecture and clearly marked unverified implementation details.
 - Established proactive maintenance policy for future HER sessions.
+# Naval critical damage implementation
+
+- Naval combat uses critical damage as the primary route to mission kills, major loss of combat capability and catastrophic losses; ordinary hits should later be balanced toward limited STR/ORG damage.
+- Criticals are split between hull-wide casualties on naval sub-units and local system casualties attached to equipment modules.
+- Each physical module family should have at least one relevant critical zone; role/classification modules are excluded because they are not physical compartments.
+- Carrier criticals separately cover flight deck, aircraft elevators, hangar, aviation fuel, flight control and damage control. Wooden and armored decks retain different risk profiles.
+- Balance order: critical map and effects, critical probability, severity/duration, ordinary hit damage, then repair/operational absence. Do not increase aircraft target weight merely because a ship is already damaged.
+- Detailed implementation notes: `docs/systems/naval-critical-damage.md`.

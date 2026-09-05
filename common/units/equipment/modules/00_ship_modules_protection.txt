@@ -12,6 +12,7 @@ equipment_modules = {
     ship_armor_bb_1 = {
 		abbreviation = "sde"
 		category = ship_heavy_armor
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_thick_1
 		
 		multiply_stats = {
@@ -39,6 +40,7 @@ equipment_modules = {
 	ship_armor_bc_1 = {
 		abbreviation = "sdf"
 		category = ship_heavy_armor
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_1
 		
 		multiply_stats = {
@@ -67,6 +69,7 @@ equipment_modules = {
 	ship_armor_bb_2 = {
 		abbreviation = "sdg"
 		category = ship_heavy_armor
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_thick_2
 		parent = ship_armor_bb_1
 		multiply_stats = {
@@ -105,6 +108,7 @@ equipment_modules = {
 	ship_armor_bc_2 = {
 		abbreviation = "sdh"
 		category = ship_heavy_armor
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_2
 		parent = ship_armor_bc_1
 		multiply_stats = {
@@ -142,6 +146,7 @@ equipment_modules = {
 	ship_armor_bb_3 = {
 		abbreviation = "sdi"
 		category = ship_heavy_armor
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_thick_3
 		parent = ship_armor_bb_2
 		multiply_stats = {
@@ -183,6 +188,7 @@ equipment_modules = {
 	ship_armor_bc_3 = {
 		abbreviation = "sdj"
 		category = ship_heavy_armor
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_3
 		parent = ship_armor_bc_2
 		multiply_stats = {
@@ -224,6 +230,7 @@ equipment_modules = {
 	ship_armor_bb_4 = {
 		abbreviation = "sdj1"
 		category = ship_heavy_armor
+		critical_parts = { armor_belt_breached }
 		parent = ship_armor_bb_3
 		multiply_stats = {
 			build_cost_ic = 0.2
@@ -264,6 +271,7 @@ equipment_modules = {
 	ship_armor_bc_4 = {
 		abbreviation = "sdj2"
 		category = ship_heavy_armor
+		critical_parts = { armor_belt_breached }
 		parent = ship_armor_bc_3
 		multiply_stats = {
 			build_cost_ic = 0.17
@@ -304,6 +312,7 @@ equipment_modules = {
 	ship_armor_shbb = {
 		abbreviation = "sk"
 		category = ship_super_heavy_armor
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_thick_3
 		
 		multiply_stats = {
@@ -344,6 +353,7 @@ equipment_modules = {
 	}
 	ship_armor_shbb_2 = {
 		category = ship_super_heavy_armor
+		critical_parts = { armor_belt_breached }
 		parent = ship_armor_shbb
 		gfx = ship_armor_bb_4
 		
@@ -399,6 +409,7 @@ equipment_modules = {
     ship_armor_cruiser_1 = {
 		abbreviation = "sdl"
 		category = ship_cruiser_armor
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_thin_1
 		
 		multiply_stats = {
@@ -422,6 +433,7 @@ equipment_modules = {
 	ship_armor_cruiser_2 = {
 		abbreviation = "sdm"
 		category = ship_cruiser_armor
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_thin_2
 		parent = ship_armor_cruiser_1
 		multiply_stats = {
@@ -451,6 +463,7 @@ equipment_modules = {
 	ship_armor_cruiser_3 = {
 		abbreviation = "sdn"
 		category = ship_cruiser_armor
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_thin_3
 		parent = ship_armor_cruiser_2
 		multiply_stats = {
@@ -479,6 +492,7 @@ equipment_modules = {
 	ship_armor_cruiser_4 = {
 		abbreviation = "sdo"
 		category = ship_cruiser_armor
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_thin_4
 		parent = ship_armor_cruiser_3
 		multiply_stats = {
@@ -506,6 +520,7 @@ equipment_modules = {
 	}
 	ship_armor_cruiser_heavy_1 = {
 		category = ship_cruiser_heavy_armor
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_1
 		add_equipment_type = capital_ship
 		
@@ -530,6 +545,7 @@ equipment_modules = {
 	}
 	ship_armor_cruiser_heavy_2 = {
 		category = ship_cruiser_heavy_armor
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_2
 		add_equipment_type = capital_ship
 		parent = ship_armor_cruiser_heavy_1
@@ -560,6 +576,7 @@ equipment_modules = {
 	}
 	ship_armor_cruiser_heavy_3 = {
 		category = ship_cruiser_heavy_armor
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_3
 		add_equipment_type = capital_ship
 		parent = ship_armor_cruiser_heavy_2
@@ -591,6 +608,7 @@ equipment_modules = {
 	}
 	ship_armor_cruiser_heavy_4 = {
 		category = ship_cruiser_heavy_armor
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_bc_4
 		add_equipment_type = capital_ship
 		parent = ship_armor_cruiser_heavy_3
@@ -627,6 +645,7 @@ equipment_modules = {
 #####################
 	ship_armor_carrier_1 = {
 		category = ship_carrier_armor
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_thin_1
 		
 		multiply_stats = {
@@ -669,6 +688,7 @@ equipment_modules = {
 	}
 	ship_armor_carrier_2 = {
 		category = ship_carrier_armor
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_thin_2
 		parent = ship_armor_carrier_1
 		multiply_stats = {
@@ -717,6 +737,7 @@ equipment_modules = {
 	}
 	ship_armor_carrier_3 = {
 		category = ship_carrier_armor
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_thin_3
 		parent = ship_armor_carrier_2
 		multiply_stats = {
@@ -764,6 +785,7 @@ equipment_modules = {
 	}
 	ship_armor_carrier_4 = {
 		category = ship_carrier_armor
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_thin_4
 		parent = ship_armor_carrier_3
 		multiply_stats = {
@@ -811,6 +833,7 @@ equipment_modules = {
 	}
 	ship_armor_carrier_heavy_1 = {
 		category = ship_carrier_armor_heavy
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_1
 		add_equipment_type = capital_ship
 		
@@ -855,6 +878,7 @@ equipment_modules = {
 	}
 	ship_armor_carrier_heavy_2 = {
 		category = ship_carrier_armor_heavy
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_2
 		add_equipment_type = capital_ship
 		parent = ship_armor_carrier_heavy_1
@@ -905,6 +929,7 @@ equipment_modules = {
 	}
 	ship_armor_carrier_heavy_3 = {
 		category = ship_carrier_armor_heavy
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_3
 		add_equipment_type = capital_ship
 		parent = ship_armor_carrier_heavy_2
@@ -956,6 +981,7 @@ equipment_modules = {
 	}
 	ship_armor_carrier_heavy_4 = {
 		category = ship_carrier_armor_heavy
+		critical_parts = { armor_belt_breached }
 		gfx = ship_armor_bc_4
 		add_equipment_type = capital_ship
 		parent = ship_armor_carrier_heavy_3
@@ -1007,6 +1033,7 @@ equipment_modules = {
 	}
 	ship_armor_carrier_heavy_5 = {
 		category = ship_carrier_armor_heavy
+		critical_parts = { armor_belt_breached }
 		gfx = ship_heavy_armor
 		add_equipment_type = capital_ship
 		parent = ship_armor_carrier_heavy_4
@@ -1061,6 +1088,7 @@ equipment_modules = {
 	}
 	ship_armor_carrier_shbb = {
 		category = ship_carrier_armor_shbb
+		critical_parts = { armor_belt_breached }
 		gui_category = ship_carrier_armor_heavy
 		gfx = ship_heavy_armor
 		
@@ -1096,6 +1124,7 @@ equipment_modules = {
 ####################
     ship_scheme_incremental = {
 		category = armor_scheme
+		critical_parts = { armor_belt_breached }
 
 		multiply_stats = {
 			naval_speed = -0.05
@@ -1110,6 +1139,7 @@ equipment_modules = {
 	}
 	ship_scheme_incremental_post_jutland = {
 		category = armor_scheme
+		critical_parts = { armor_belt_breached }
 		parent = ship_scheme_incremental
 
 		multiply_stats = {
@@ -1132,6 +1162,7 @@ equipment_modules = {
 	}
 	ship_scheme_mixed = {
 		category = armor_scheme
+		critical_parts = { armor_belt_breached }
 		parent = ship_scheme_incremental_post_jutland
 
 		multiply_stats = {
@@ -1155,6 +1186,7 @@ equipment_modules = {
 	}
 	ship_scheme_all_or_nothing = {
 		category = armor_scheme
+		critical_parts = { armor_belt_breached }
 		parent = ship_scheme_mixed
 
 		multiply_stats = {
@@ -1174,6 +1206,7 @@ equipment_modules = {
 	}
 	ship_scheme_all_or_nothing_armor_box = {
 		category = armor_scheme
+		critical_parts = { armor_belt_breached }
 		parent = ship_scheme_all_or_nothing
 
 		multiply_stats = {
@@ -1203,6 +1236,7 @@ equipment_modules = {
 ##############################
     torpedo_bulge = {
 		category = torpedo_defense_system
+		critical_parts = { severe_flooding }
 		
 		build_cost_resources = {
 			steel = 8
@@ -1229,6 +1263,7 @@ equipment_modules = {
 	}
 	pugliese_system = {
 		category = torpedo_defense_system
+		critical_parts = { severe_flooding }
 		
 		build_cost_resources = {
 			steel = 10
@@ -1246,6 +1281,7 @@ equipment_modules = {
 	}
 	torpedo_belt = {
 		category = torpedo_defense_system
+		critical_parts = { severe_flooding }
 		parent = torpedo_bulge
 		
 		build_cost_resources = {
@@ -1274,7 +1310,8 @@ equipment_modules = {
 		dismantle_cost_ic = 4500
 	}
 	torpedo_belt_enhanced = {
-    	category = torpedo_defense_system
+		category = torpedo_defense_system
+		critical_parts = { severe_flooding }
 		parent = torpedo_belt
 		
 		build_cost_resources = {
@@ -1308,6 +1345,7 @@ equipment_modules = {
 ######################
     pressure_hull_1 = {
 		category = pressure_hull
+		critical_parts = { pressure_hull_rupture }
 
 		build_cost_resources = {
 			steel = 8
@@ -1325,6 +1363,7 @@ equipment_modules = {
 	}
 	pressure_hull_2 = {
 		category = pressure_hull
+		critical_parts = { pressure_hull_rupture }
 		parent = pressure_hull_1
 
 		build_cost_resources = {
@@ -1345,6 +1384,7 @@ equipment_modules = {
 	}
 	pressure_hull_3 = {
 		category = pressure_hull
+		critical_parts = { pressure_hull_rupture }
 		parent = pressure_hull_2
 		
 		build_cost_resources = {
@@ -1365,6 +1405,7 @@ equipment_modules = {
 	}
 	pressure_hull_4 = {
 		category = pressure_hull
+		critical_parts = { pressure_hull_rupture }
 		parent = pressure_hull_3
 
 		build_cost_resources = {
@@ -1385,6 +1426,7 @@ equipment_modules = {
 	}
 	pressure_hull_5 = {
 		category = pressure_hull
+		critical_parts = { pressure_hull_rupture }
 		parent = pressure_hull_4
 
 		build_cost_resources = {

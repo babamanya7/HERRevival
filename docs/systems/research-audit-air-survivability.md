@@ -4,6 +4,22 @@ Status: IN PROGRESS
 
 Companion notes for `docs/systems/research-audit-air.md` while Air Designer 2.0 is being specified.
 
+## Accepted design rule: no mandatory designer modules
+If a module is almost always selected once its technology is available, it is not functioning as a meaningful designer choice. Treat such modules as a design smell.
+
+Air Designer 2.0 rule:
+- either integrate an effectively universal improvement into the baseline evolution of the relevant airframe/engine/fuel/cockpit subsystem;
+- or redesign the module so that it creates a genuine physical tradeoff in weight, volume, drag, fuel, reliability, IC, strategic resources, maintenance or role compatibility.
+
+Do not solve mandatory modules only by flat numerical nerfs if the underlying problem is structural.
+
+Current priority candidates for this treatment:
+- self-sealing fuel tanks;
+- automatic extinguisher systems;
+- pressurized cockpit;
+- some engine-performance enhancement combinations;
+- generic lightweight/reinforced construction sliders.
+
 ## Current findings
 
 ### Self-sealing fuel tanks

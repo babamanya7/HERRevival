@@ -414,7 +414,7 @@ equipment_modules = {
 		multiply_stats = {
 			naval_speed = -0.01			
 		}
-		critical_parts = { damaged_torpedoes }
+		critical_parts = { damaged_torpedoes torpedo_warhead_detonation }
 	}
 
 	ship_torpedo_2 = {
@@ -450,7 +450,7 @@ equipment_modules = {
 			}
 			convert_cost_ic = 60
 		}
-		critical_parts = { damaged_torpedoes }
+		critical_parts = { damaged_torpedoes torpedo_warhead_detonation }
 	}
 
 	ship_torpedo_3 = {
@@ -482,7 +482,7 @@ equipment_modules = {
 			}
 			convert_cost_ic = 60
 		}
-		critical_parts = { damaged_torpedoes }
+		critical_parts = { damaged_torpedoes torpedo_warhead_detonation }
 	}
 
 	ship_torpedo_4 = {
@@ -514,7 +514,7 @@ equipment_modules = {
 			}
 			convert_cost_ic = 60
 		}
-		critical_parts = { damaged_torpedoes }
+		critical_parts = { damaged_torpedoes torpedo_warhead_detonation }
 	}
 
 	ship_torpedo_5 = {
@@ -548,7 +548,7 @@ equipment_modules = {
 			}
 			convert_cost_ic = 60
 		}
-		critical_parts = { damaged_torpedoes }
+		critical_parts = { damaged_torpedoes torpedo_warhead_detonation }
 	}
 
 	ship_torpedo_bb = {
@@ -571,7 +571,7 @@ equipment_modules = {
 		}
 		dismantle_cost_ic = 60
 
-		critical_parts = { damaged_torpedoes }
+		critical_parts = { damaged_torpedoes torpedo_warhead_detonation }
 	}
 
 	ship_torpedo_sub_1 = {
@@ -593,7 +593,7 @@ equipment_modules = {
 			sub_visibility = 0.05
 			naval_speed = -0.01			
 		}
-		critical_parts = { damaged_torpedoes }
+		critical_parts = { damaged_torpedoes torpedo_warhead_detonation }
 	}
 
 	ship_torpedo_sub_2 = {
@@ -625,7 +625,7 @@ equipment_modules = {
 			}
 			convert_cost_ic = 60
 		}
-		critical_parts = { damaged_torpedoes }
+		critical_parts = { damaged_torpedoes torpedo_warhead_detonation }
 	}
 
 	ship_torpedo_sub_3 = {
@@ -658,7 +658,7 @@ equipment_modules = {
 			}
 			convert_cost_ic = 60
 		}
-		critical_parts = { damaged_torpedoes }
+		critical_parts = { damaged_torpedoes torpedo_warhead_detonation }
 	}
 
 	ship_torpedo_sub_4 = {
@@ -691,7 +691,7 @@ equipment_modules = {
 			}
 			convert_cost_ic = 60
 		}
-		critical_parts = { damaged_torpedoes }
+		critical_parts = { damaged_torpedoes torpedo_warhead_detonation }
 	}
 
 	ship_torpedo_sub_5 = {
@@ -727,7 +727,7 @@ equipment_modules = {
 			}
 			convert_cost_ic = 60
 		}
-		critical_parts = { damaged_torpedoes }
+		critical_parts = { damaged_torpedoes torpedo_warhead_detonation }
 	}
 
 

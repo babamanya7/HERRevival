@@ -11,7 +11,7 @@ equipment_modules = {
 ##################
     ship_deck_space_more = {
 		category = ship_deck_space
-		critical_parts = { damaged_aircraft_elevator hangar_fire aviation_fuel_fire }
+		critical_parts = { damaged_aircraft_elevator damaged_arresting_gear hangar_fire aviation_fuel_fire armed_aircraft_detonation }
 		build_cost_resources = {
 			steel = 20
 			aluminium = 8
@@ -40,7 +40,7 @@ equipment_modules = {
 	}
 	ship_deck_space_armored = {
 		category = ship_deck_space
-		critical_parts = { damaged_aircraft_elevator hangar_fire aviation_fuel_fire }
+		critical_parts = { damaged_aircraft_elevator damaged_arresting_gear hangar_fire aviation_fuel_fire armed_aircraft_detonation }
 		build_cost_resources = {
 			steel = 15
 			aluminium = 4
@@ -69,7 +69,7 @@ equipment_modules = {
 	}
 	ship_deck_space = {
 		category = ship_deck_space
-		critical_parts = { damaged_aircraft_elevator hangar_fire aviation_fuel_fire }
+		critical_parts = { damaged_aircraft_elevator damaged_arresting_gear hangar_fire aviation_fuel_fire armed_aircraft_detonation }
 		build_cost_resources = {
 			steel = 15
 			aluminium = 6
@@ -95,7 +95,7 @@ equipment_modules = {
 	}
 	ship_deck_space_small = {
 		category = ship_deck_space_small
-		critical_parts = { damaged_aircraft_elevator hangar_fire aviation_fuel_fire }
+		critical_parts = { damaged_aircraft_elevator damaged_arresting_gear hangar_fire aviation_fuel_fire armed_aircraft_detonation }
 		add_equipment_type = capital_ship
 		gui_category = ship_deck_space
 		build_cost_resources = {
@@ -118,7 +118,7 @@ equipment_modules = {
 	}
 	ship_deck_space_big = {
 		category = ship_deck_space_big
-		critical_parts = { damaged_aircraft_elevator hangar_fire aviation_fuel_fire }
+		critical_parts = { damaged_aircraft_elevator damaged_arresting_gear hangar_fire aviation_fuel_fire armed_aircraft_detonation }
 		gui_category = ship_deck_space
 		add_equipment_type = capital_ship
 		build_cost_resources = {
@@ -145,7 +145,7 @@ equipment_modules = {
 	}
 	ship_deck_space_bb = {
 		category = ship_deck_space_bb
-		critical_parts = { damaged_aircraft_elevator hangar_fire aviation_fuel_fire }
+		critical_parts = { damaged_aircraft_elevator damaged_arresting_gear hangar_fire aviation_fuel_fire armed_aircraft_detonation }
 		gui_category = ship_deck_space
 		add_equipment_type = carrier
 		gfx = ship_deck_space
@@ -172,7 +172,7 @@ equipment_modules = {
 	}
 	ship_deck_space_mega = {
 		category = ship_deck_space_mega
-		critical_parts = { damaged_aircraft_elevator hangar_fire aviation_fuel_fire }
+		critical_parts = { damaged_aircraft_elevator damaged_arresting_gear hangar_fire aviation_fuel_fire armed_aircraft_detonation }
 		gui_category = ship_deck_space
 		gfx = big_ship_deck_space
 		add_equipment_type = capital_ship
@@ -198,7 +198,7 @@ equipment_modules = {
 	}
 	ship_deck_space_converted = {
 		category = ship_deck_space_converted
-		critical_parts = { damaged_aircraft_elevator hangar_fire aviation_fuel_fire }
+		critical_parts = { damaged_aircraft_elevator damaged_arresting_gear hangar_fire aviation_fuel_fire armed_aircraft_detonation }
 		gui_category = ship_deck_space
 		gfx = ship_deck_space
 		build_cost_resources = {
@@ -294,7 +294,7 @@ equipment_modules = {
 		}
 		dismantle_cost_ic = 2000
 
-		critical_parts = { damaged_armored_flight_deck }
+		critical_parts = { damaged_armored_flight_deck damaged_arresting_gear }
 	}
 	carrier_wooden_deck = {
 		category = ship_flight_deck
@@ -309,7 +309,7 @@ equipment_modules = {
 		}
 		dismantle_cost_ic = 1500
 
-		critical_parts = { damaged_wooden_flight_deck }
+		critical_parts = { damaged_wooden_flight_deck damaged_arresting_gear }
 	}	
 
 

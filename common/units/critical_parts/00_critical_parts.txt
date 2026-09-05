@@ -130,8 +130,10 @@ critical_parts = {
 		icon = "GFX_HER_critical_damage_icons"
 		frame = 17
 		modifier = {
-			naval_retreat_chance = -0.6
-			naval_speed_factor = -0.35
+			naval_retreat_chance = -0.7
+			naval_speed_factor = -0.2
+			navy_org_factor = -0.15
+			naval_morale_factor = -0.1
 		}
 		chance = 0.4
 		base_damage_instance = 1
@@ -167,14 +169,14 @@ critical_parts = {
         icon = "GFX_HER_critical_damage_icons"
 		frame = 22
         stat_penalties = {
-			carrier_size = -0.3
+			carrier_size = -0.15
         }
 		modifier = {
-			navy_org_factor = -0.25
+			navy_org_factor = -0.1
 		}
 		chance = 0.9
-		org_damage = 3
-		org_damage_multiplier = 1.25
+		org_damage = 2
+		org_damage_multiplier = 1.1
 		base_damage_instance = 1
 		damage_instance_per_added_module = 1
 		max_damage_instance = 1
@@ -183,14 +185,16 @@ critical_parts = {
         icon = "GFX_HER_critical_damage_icons"
 		frame = 23
         stat_penalties = {
-			carrier_size = -0.2
+			carrier_size = -0.35
         }
 		modifier = {
-			navy_org_factor = -0.15
+			navy_org_factor = -0.25
 		}
-		chance = 0.55
-		org_damage = 2
-		org_damage_multiplier = 1.1
+		chance = 0.4
+		str_damage = 3
+		org_damage = 3
+		str_damage_multiplier = 1.15
+		org_damage_multiplier = 1.25
 		base_damage_instance = 1
 		damage_instance_per_added_module = 1
 		max_damage_instance = 1
@@ -291,6 +295,21 @@ critical_parts = {
 		damage_instance_per_added_module = 1
 		max_damage_instance = 1
 	}
+	carrier_propulsion_failure = {
+		icon = "GFX_HER_critical_damage_icons"
+		frame = 37
+		stat_penalties = { carrier_size = -0.25 }
+		modifier = {
+			naval_speed_factor = -0.5
+			navy_org_factor = -0.15
+		}
+		chance = 0.45
+		org_damage = 3
+		org_damage_multiplier = 1.15
+		base_damage_instance = 1
+		damage_instance_per_added_module = 0
+		max_damage_instance = 1
+	}
 	bridge_hit = {
 		icon = "GFX_HER_critical_damage_icons"
 		frame = 13
@@ -316,6 +335,8 @@ critical_parts = {
 		modifier = {
 			navy_org_factor = -0.3
 			naval_morale_factor = -0.3
+			naval_speed_factor = -0.15
+			reliability = -0.15
 		}
 		stat_penalties = {
 			surface_detection = -0.4
@@ -325,6 +346,39 @@ critical_parts = {
 			naval_heavy_gun_hit_chance_factor = -0.2
 		}
 		chance = 0.35
+		org_damage_multiplier = 1.15
+		base_damage_instance = 1
+		damage_instance_per_added_module = 0
+		max_damage_instance = 1
+	}
+	ventilation_system_failure = {
+		icon = "GFX_HER_critical_damage_icons"
+		frame = 38
+		modifier = {
+			navy_org_factor = -0.2
+			naval_morale_factor = -0.3
+		}
+		stat_penalties = {
+			anti_air_attack = -0.1
+			naval_light_gun_hit_chance_factor = -0.1
+			naval_heavy_gun_hit_chance_factor = -0.1
+		}
+		chance = 0.55
+		org_damage = 2
+		org_damage_multiplier = 1.1
+		base_damage_instance = 1
+		damage_instance_per_added_module = 0
+		max_damage_instance = 1
+	}
+	damage_control_parties_disrupted = {
+		icon = "GFX_HER_critical_damage_icons"
+		frame = 39
+		modifier = {
+			reliability = -0.2
+			navy_org_factor = -0.2
+			naval_morale_factor = -0.3
+		}
+		chance = 0.25
 		org_damage_multiplier = 1.15
 		base_damage_instance = 1
 		damage_instance_per_added_module = 0
@@ -386,6 +440,16 @@ critical_parts = {
 		damage_instance_per_added_module = 1
 		max_damage_instance = 2
 	}
+	damaged_arresting_gear = {
+		icon = "GFX_HER_critical_damage_icons"
+		frame = 36
+		stat_penalties = { carrier_size = -0.15 }
+		modifier = { navy_org_factor = -0.1 }
+		chance = 0.75
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = 2
+	}
 	hangar_fire = {
 		icon = "GFX_HER_critical_damage_icons"
 		frame = 25
@@ -417,6 +481,35 @@ critical_parts = {
 		str_damage_multiplier = 2.25
 		org_damage_multiplier = 2.25
 		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = 1
+	}
+	armed_aircraft_detonation = {
+		icon = "GFX_HER_critical_damage_icons"
+		frame = 40
+		stat_penalties = { carrier_size = -0.45 }
+		modifier = {
+			navy_org_factor = -0.45
+			naval_morale_factor = -0.5
+		}
+		chance = 0.18
+		org_damage = 6
+		str_damage_multiplier = 1.75
+		org_damage_multiplier = 2.0
+		base_damage_instance = 1
+		damage_instance_per_added_module = 1
+		max_damage_instance = 1
+	}
+	torpedo_warhead_detonation = {
+		icon = "GFX_HER_critical_damage_icons"
+		frame = 41
+		stat_penalties = { torpedo_attack = -1.0 }
+		chance = 0.08
+		str_damage = 7
+		org_damage = 5
+		str_damage_multiplier = 2.75
+		org_damage_multiplier = 2.0
+		base_damage_instance = 0
 		damage_instance_per_added_module = 1
 		max_damage_instance = 1
 	}

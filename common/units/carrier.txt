@@ -14,7 +14,7 @@ sub_units = {
 
 		max_organisation = 40
 
-		critical_parts = { bridge_hit electrical_power_failure severe_flooding destroyed_ammo_storage broken_propeller on_fire rudder_jammed }
+		critical_parts = { bridge_hit electrical_power_failure ventilation_system_failure damage_control_parties_disrupted severe_flooding destroyed_ammo_storage broken_propeller carrier_propulsion_failure on_fire rudder_jammed }
 		critical_part_damage_chance_mult = 1
 
 		hit_profile_mult = 1

@@ -2,6 +2,10 @@
 
 Status: implementation baseline. Probability and raw-damage defines are not balanced yet.
 
+The system uses a dedicated 35-frame horizontal icon atlas at
+`gfx/interface/navalcombat/HER_critical_damage_icons.dds`. Every critical part
+has its own frame; no two critical IDs intentionally share an icon.
+
 ## Design rule
 
 Normal hits should primarily cause limited STR/ORG damage. Mission kills, loss of combat capability and catastrophic losses should primarily come from critical damage to specific systems.

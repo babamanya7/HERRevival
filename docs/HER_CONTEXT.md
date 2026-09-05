@@ -435,5 +435,6 @@ Split only when the main file becomes cumbersome; avoid fragmentation for its ow
 - Criticals are split between hull-wide casualties on naval sub-units and local system casualties attached to equipment modules.
 - Each physical module family should have at least one relevant critical zone; role/classification modules are excluded because they are not physical compartments.
 - Carrier criticals separately cover flight deck, aircraft elevators, hangar, aviation fuel, flight control and damage control. Wooden and armored decks retain different risk profiles.
+- Naval criticals use the dedicated 35-frame `GFX_HER_critical_damage_icons` atlas. Each critical ID has a unique icon and frame.
 - Balance order: critical map and effects, critical probability, severity/duration, ordinary hit damage, then repair/operational absence. Do not increase aircraft target weight merely because a ship is already damaged.
 - Detailed implementation notes: `docs/systems/naval-critical-damage.md`.

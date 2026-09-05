@@ -89,8 +89,16 @@ Aircraft also have designer upgrades for reducing strategic-material use. At hig
 ### Survivability research value
 `survivability_studies` (1936, cost 1) unlocks self-sealing fuel tanks, armor plates and automatic extinguishers for small/medium/large aircraft simultaneously. This is very high value per slot-day and should be compared against narrower cost-1 weapon technologies.
 
-### Fighter-bomber role direction
-Current `role_small_fighter_bomber` still maps to underlying equipment type `fighter` and simply allows air-superiority + CAS missions. Accepted future direction: investigate a genuinely distinct production/stockpile/wing identity for fighter-bombers while retaining a role-layer architecture. Arbitrary new engine-level air `type` tokens remain experimental until proven.
+### Fighter-bomber type limitation — corrected technical conclusion
+Current `role_small_fighter_bomber` maps to the existing engine air type `fighter`. A separate duplicate airframe identity cannot be selected merely by inventing another duplicate archetype name if it shares the same `type`; BBA's `type_override`/duplicate-archetype selection is keyed through the recognized air `type` value.
+
+HER's `small_plane_airframe` already exposes the relevant recognized small-aircraft type set through `allowed_types` (`fighter`, `interceptor`, `cas`, `naval_bomber`, `suicide`, `scout_plane`, `tactical_bomber`, `maritime_patrol_plane`). Existing specialized duplicate airframes consume those type channels. Therefore adding `small_plane_fighter_bomber_airframe` while still assigning `fighter` does **not** by itself create a separately addressable BBA duplicate; the engine will still resolve through the same fighter type.
+
+The equipment documentation also enumerates air `type` as a fixed engine-facing set rather than an open script-defined namespace. Treat a custom `type = fighter_bomber` as unsupported/hardcoded unless a minimal executable test proves otherwise.
+
+**Current technical verdict:** a truly separate fighter-bomber equipment class on the same small-airframe designer requires either (a) an unused recognized engine air type that can be repurposed, or (b) proof that the engine accepts a new custom air type throughout designer duplication, stockpile, wing, mission, AI and UI systems. The previously proposed 'new subunit + duplicate archetype sharing `fighter`' workaround is not valid for this purpose.
+
+Do not claim that a custom air subunit solves this identity problem: subunit IDs/categories are scriptable, but the designer duplicate selection still depends on the recognized equipment type.
 
 ## Active follow-ups
 - Compare radial and inline engine module stats generation-by-generation.
@@ -99,3 +107,4 @@ Current `role_small_fighter_bomber` still maps to underlying equipment type `fig
 - Audit guns, bomb loads, survivability and electronics by module value and weight/thrust tradeoffs.
 - Build representative 1939/1941/1943 fighter and CAS research packages and calculate total required research cost.
 - Verify duplicate `allow` blocks on modern airframes and whether both gates apply or one overrides the other.
+- If a distinct fighter-bomber equipment identity remains desired, test only two realistic routes: repurpose an existing recognized air type, or perform a minimal custom-air-type engine test. Do not rely on duplicate archetype naming alone.

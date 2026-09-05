@@ -71,6 +71,25 @@ Thus a small fighter-bomber can technically route through `type = heavy_fighter`
 
 This reuse must be audited for any hardcoded or script-level effects tied directly to `heavy_fighter`; visible HER doctrine bonuses mainly use subunit categories and mission modifiers, which is encouraging but not a full executable guarantee.
 
+### Fighter-bomber as a KB / historical-series conflict resolver — ACCEPTED REQUIREMENT
+The fighter-bomber identity is also required to solve current MIO/KB and historical-aircraft conflicts where multiple distinct aircraft families are forced onto the same airframe generation and the same equipment archetype.
+
+Known recurring pattern:
+- Germany: Bf 109 family and Fw 190A family can collide on the same small-airframe generation/archetype;
+- USSR: fighter families such as Yak/LaGG/Lavochkin lines can collide in the same generic fighter slot; LaGG-3 is a strong candidate for migration into the fighter-bomber/strike identity where historical role and balance support it;
+- similar conflicts exist in the USA and UK and must be audited country-by-country.
+
+Air Designer 2.0 must therefore include a full historical-series/archetype mapping pass for at least GER/SOV/USA/ENG. The target is not arbitrary relabeling: each family should be assigned to the role/equipment identity that best represents its design intent and operational use, while also removing artificial competition between unrelated KB/MIO families.
+
+Candidate examples to investigate, not blindly hard-code:
+- Fw 190A -> fighter-bomber / strike-oriented small-aircraft identity, while Bf 109 remains the primary fighter family;
+- LaGG-3 -> fighter-bomber / strike-oriented identity if its final module/role rules and historical usage justify that split;
+- corresponding US and British fighter-vs-strike families should be identified during the MIO audit rather than left stacked on one archetype.
+
+Implementation implication: once the fighter-bomber archetype is introduced, all MIO/KB applicability, historical variants, names, OOBs, starting production, research categories and focus bonuses must be reassigned by aircraft family rather than by broad old `fighter` membership alone.
+
+Success criterion: distinct historical aircraft families should no longer be forced to compete for one archetype merely because the vanilla/HER role taxonomy is too coarse.
+
 ### Fighter-bomber integration checklist
 Creating a distinct fighter-bomber archetype is a cross-system change, not a single equipment edit. The implementation pass must audit/update at least:
 - `common/units/equipment/plane_airframes.txt` duplicate archetypes and `allowed_types`;
@@ -90,7 +109,8 @@ Creating a distinct fighter-bomber archetype is a cross-system change, not a sin
 - conversion and `can_convert_from` relationships between fighter and fighter-bomber designs;
 - lend-lease / market / stockpile filters;
 - MIO auto-assign and equipment-policy filters;
-- any scripted triggers/effects checking `fighter`, `heavy_fighter`, equipment archetypes, categories or air wing types.
+- any scripted triggers/effects checking `fighter`, `heavy_fighter`, equipment archetypes, categories or air wing types;
+- historical aircraft-family -> role/archetype -> KB/MIO mapping for GER/SOV/USA/ENG, with explicit conflict resolution for families that currently share one generic fighter identity.
 
 Do not implement the new archetype before this dependency map is complete.
 
@@ -183,3 +203,4 @@ Do not claim that a custom air subunit alone solves identity: the key is a uniqu
 - Verify duplicate `allow` blocks on modern airframes and whether both gates apply or one overrides the other.
 - Map every script-level dependency on `heavy_fighter` before repurposing it for SMALL fighter-bombers.
 - Build a full Air Designer 2.0 slot/category dependency map before implementation.
+- Audit GER/SOV/USA/ENG historical aircraft-series conflicts and produce a clean mapping of family -> role -> duplicate archetype -> subunit category -> KB/MIO applicability before rewriting designer data.

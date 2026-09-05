@@ -122,10 +122,18 @@ Air Designer 2.0 implication:
 - P-39 may remain primary fighter or become a family-specific variant inside the primary-fighter channel rather than receiving an artificial role;
 - the Curtiss tree should be reviewed together with Bell naming/ownership representation, because the current tree groups P-39/P-40 under one organization even though the historical manufacturers differ.
 
+### Lockheed / P-38
+`USA_lockheed_organization` already uses the medium heavy-fighter identity cleanly. Its initial applicability includes `medium_plane_fighter_airframe_2/3`; P-38 progression is limited to those medium fighter archetypes.
+
+Air Designer 2.0 target:
+- retain P-38 as a medium heavy-fighter family rather than forcing it into the new small fighter-bomber channel;
+- represent long range, twin-engine layout, concentrated nose armament and high-altitude performance through the new physical layout/module system;
+- allow strike capability through compatible payload modules without changing its core stockpile identity unless a later historical variant specifically warrants a separate role.
+
 ### US role map — current preferred direction
 - Primary fighter: P-51 and conventional P-40/P-39 branches unless later reassigned by variant;
 - Fighter-bomber/strike: P-47 is the strongest clear candidate;
-- Heavy fighter: preserve medium-airframe Lockheed/twin-engine families;
+- Heavy fighter: P-38 / Lockheed medium-airframe family;
 - Dedicated CAS/naval: Douglas and other specialized MIOs remain separate.
 
 The US case therefore does not require every conflicting family to receive a new role. The fighter-bomber archetype should be used where the operational identity is real (P-47), while remaining same-role manufacturer competition should be handled through KB/MIO availability and historical variant mapping.
@@ -143,6 +151,57 @@ Air Designer 2.0 target:
 - Spitfire -> primary fighter identity;
 - Typhoon/Tempest strike-oriented branch -> strong fighter-bomber identity candidate, subject to detailed historical mapping by variant;
 - Hurricane should be reviewed separately because early-war fighter/ground-attack variants may justify either staying fighter or branching into fighter-bomber later.
+
+### de Havilland / Mosquito
+`ENG_de_havilland_organization` is an especially useful architectural precedent because the same physical Mosquito platform is already represented through multiple duplicate equipment identities.
+
+Observed mapping:
+- Mosquito F/NF branch -> `medium_plane_fighter_airframe_2`;
+- Mosquito bomber branch -> `medium_plane_airframe_2`;
+- Mosquito fighter-bomber branch -> `medium_plane_cas_airframe_2`.
+
+The night-fighter specialization remains inside the medium fighter identity rather than receiving a separate stockpile/archetype. This is desirable: night fighting is primarily a mission/equipment/configuration specialization (radar, crew, guns, interception doctrine), not necessarily a separate physical aircraft class.
+
+Air Designer 2.0 target:
+- preserve Mosquito F/NF as medium heavy fighter;
+- preserve bomber and fighter-bomber derivatives as distinct equipment identities where their operational/production use differs;
+- use the Mosquito pattern as a direct precedent for the new small fighter-bomber architecture: one physical platform generation can support several role-specific duplicate archetypes without inventing new hardcoded engine types;
+- deepen the night-fighter distinction through radar/avionics, crew, armament, range and night-performance modules rather than a new `night_fighter` stockpile type.
+
+### Bristol / Blenheim-Beaufort-Beaufighter
+`ENG_bristol_organization` also already separates medium-airframe roles well:
+- Blenheim -> `medium_plane_airframe_1`;
+- Beaufort -> `medium_plane_naval_bomber_airframe_1`;
+- Beaufighter -> `medium_plane_fighter_airframe_1`.
+
+This again supports keeping heavy fighter as the main two-engine fighter identity and using mission/layout modules for night fighter or strike variants.
+
+Air Designer 2.0 target:
+- retain Beaufighter as medium heavy fighter by default;
+- permit night-fighter specialization through radar/crew/weapon layout;
+- review strike/torpedo Beaufighter derivatives at variant level rather than creating a new broad class unless production/wing identity genuinely benefits.
+
+### Gloster
+`ENG_gloster_organization` maps Gladiator to the early generic small fighter and Meteor to `small_plane_airframe_4`. It does not currently create a separate interceptor or night-fighter role problem.
+
+Air Designer 2.0 target:
+- keep Gladiator/Meteor in primary-fighter lineage unless jet architecture later creates a stronger reason to split roles;
+- review the broad `research_categories = { fighter }` syntax during category cleanup for consistency with HER's custom MIO categories.
+
+### UK role map — current preferred direction
+- Primary fighter: Spitfire; Hurricane early; Meteor later;
+- Fighter-bomber/strike: Typhoon/Tempest strong candidate, plus selected Hurricane variants if desired;
+- Heavy fighter: Beaufighter and Mosquito F;
+- Night fighter: specialization inside heavy-fighter identity through radar/crew/modules, not a new stockpile class;
+- Medium fighter-bomber: Mosquito FB already has a useful distinct duplicate identity via `medium_plane_cas_airframe_2`.
+
+## Night-fighter design rule — accepted direction
+Do not create a separate night-fighter equipment identity by default.
+
+Preferred model:
+`heavy fighter / interceptor base identity -> radar + avionics + crew/layout + armament + mission bonuses -> night-fighter configuration`.
+
+Create a separate stockpile identity only if gameplay requires different reinforcement/wing handling strongly enough to justify the extra archetype. Current Mosquito and Beaufighter architecture indicates that this is unnecessary for the normal WWII night-fighter case.
 
 ## Systemic MIO migration requirements
 Introducing a new fighter-bomber duplicate archetype requires more than adding a new MIO category. At minimum:
@@ -183,12 +242,14 @@ Primary-fighter counterparts that should remain distinct:
 
 Interceptor identities already supported by current HER architecture:
 - SOV: MiG-1/MiG-3;
-- GER: late Fw 190D path currently uses interceptor airframe and must be reassessed alongside Ta 152;
-- additional ENG/USA/JAP interceptor/night-fighter families remain to audit.
+- GER: late Fw 190D path currently uses interceptor airframe and must be reassessed alongside Ta 152.
+
+Heavy-fighter identities already cleanly represented on medium airframes:
+- USA: P-38 / Lockheed;
+- ENG: Beaufighter / Bristol and Mosquito F/NF / de Havilland.
 
 ## Follow-ups
-- Audit British Gloster/Bristol/de Havilland branches for interceptor/heavy-fighter/night-fighter conflicts.
-- Audit remaining US Lockheed/twin-engine and naval fighter branches.
 - Audit Japan and France after GER/SOV/USA/ENG migration rules are stable.
 - Build a final country-by-country migration table before touching production data.
 - Audit MIO category definitions themselves to confirm how a new fighter-bomber category must be wired into `equipment_type` / research categories / module categories.
+- Audit starting OOB/variants for Mosquito, Beaufighter, P-38, P-47, Fw 190, LaGG-3 and Typhoon to estimate migration cost.

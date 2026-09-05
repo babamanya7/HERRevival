@@ -1,6 +1,6 @@
 # Naval critical damage system
 
-Status: implementation baseline. Probability and raw-damage defines are not balanced yet.
+Status: first integrated critical-probability and raw-damage defines baseline implemented; combat testing is still required.
 
 The system uses a dedicated 41-frame horizontal icon atlas at
 `gfx/interface/navalcombat/HER_critical_damage_icons.dds`. Every critical part
@@ -29,6 +29,25 @@ Surface ships receive bridge damage, electrical failure, severe flooding, magazi
 - Critical-hit damage multipliers below `1.0` are prohibited. A critical casualty must not reduce the damage of the hit which caused it.
 - Carrier capacity penalties are deliberately cumulative: one local casualty degrades operations, while several simultaneous deck/elevator/hangar/control casualties can create a full mission kill.
 - Wooden and armored flight decks use opposite risk profiles. A wooden deck has a high critical weight but a relatively light direct operational penalty because local holes can be patched at sea. An armored deck has a much lower critical weight, but a successful penetration or structural deformation causes a severe mission kill and additional repair damage.
+
+## Defines baseline
+
+The first integrated balance pass deliberately leaves base gun accuracy unchanged so hit frequency and hit consequence can be tested separately.
+
+| Define | Previous | Baseline | Purpose |
+|---|---:|---:|---|
+| `COMBAT_DAMAGE_TO_STR_FACTOR` | 0.80 | 0.50 | Ordinary surface hits remove less hull strength |
+| `COMBAT_DAMAGE_TO_ORG_FACTOR` | 1.20 | 0.90 | Ordinary hits still disrupt without deciding the battle alone |
+| `COMBAT_BASE_CRITICAL_CHANCE` | 0.07 | 0.10 | System casualties become the main route to mission kills |
+| `COMBAT_CRITICAL_DAMAGE_MULT` | 4.00 | 2.00 | Avoid a universal damage explosion before the selected critical part applies its own severity |
+| `COMBAT_TORPEDO_CRITICAL_CHANCE` | 0.10 | 0.15 | Torpedoes more often cause flooding and machinery casualties |
+| `COMBAT_TORPEDO_CRITICAL_DAMAGE_MULT` | 2.00 | 1.50 | Torpedo lethality shifts toward critical effects rather than universal raw damage |
+| `CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT` | 0.10 | 0.65 | Most surface criticals now damage a defined ship system |
+| `CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT_FROM_AIR` | 0.10 | 0.80 | Air hits strongly favor deck, hangar and internal-system casualties |
+| `NAVAL_STRIKE_DAMAGE_TO_STR` | 2.00 | 1.25 | Limits direct aircraft STR deletion |
+| `NAVAL_STRIKE_DAMAGE_TO_ORG` | 2.00 | 1.75 | Aircraft remain strong at operational disruption |
+
+With these values, a critical is no longer synonymous with an automatic universal `x4` damage spike. The global multiplier is moderate, while magazine explosions, aviation-fuel fires, pressure-hull ruptures and other selected critical parts provide their own differentiated multipliers and fixed damage.
 
 ## Module zones
 
@@ -67,9 +86,10 @@ Ship-wide ventilation failure and disrupted damage-control parties are available
 ## Next balance pass
 
 1. Test the effective critical pool by class and representative 1936/1940/1944 designs.
-2. Tune artillery, torpedo and carrier-air critical chances with reliability and armor/piercing interactions.
-3. Tune critical severity and repair duration.
-4. Reduce ordinary non-critical STR damage only after the critical model is producing plausible mission kills.
-5. Balance repair time and operational absence from the campaign.
+2. Measure criticals per 100 gun, torpedo and air hits across representative reliability values.
+3. Tune artillery, torpedo and carrier-air critical chances with armor/piercing interactions.
+4. Tune critical severity and repair duration.
+5. Balance damage-control technologies and total critical-risk reduction only after the baseline frequency is measured.
+6. Balance repair time and operational absence from the campaign.
 
 Do not grant aircraft extra target weight against ships merely because they are already damaged.

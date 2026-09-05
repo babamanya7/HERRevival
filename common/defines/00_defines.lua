@@ -1,4803 +1,485 @@
-NDefines = {
-
-NGame = {
-	START_DATE = "1936.1.1.12",
-	END_DATE = "1999.1.1.1",
-	MAP_SCALE_PIXEL_TO_KM = 10.484,					-- Yes, I DID THE TRUE MATH
-	SAVE_VERSION = 30,								-- 1.16.0 (Countenance)
-	MINOR_SAVE_VERSION = 1,                         -- Minor save version is used to identifiy different backward compatible savegame versions
-	CHECKSUM_SALT = "zwOdv5d9wm9uDSOT",				-- Data to modify generated checksum when game binaries have changed but not any content files.
-	LAG_DAYS_FOR_LOWER_SPEED = 2000,					-- Days of client lag for decrease of gamespeed
-	LAG_DAYS_FOR_PAUSE = 5000,						-- Days of client lag for pause of gamespeed.
-	GAME_SPEED_SECONDS = { 1.275, 0.925, 0.35, 0.07, 0.0 }, -- game speeds for each level. Must be 5 entries with last one 0 for unbound
-	MAJOR_PARTICIPANTS_FOR_MAJOR_WAR = 3,			-- Minimum number of major countries involved in a war to consider it major enough to not end the game even though the enddate has been reached.
-	TRADE_ROUTE_RECALCULATE_FREQUENCY_DAYS = 30, -- Max recalculation time for all trade routes (0 means we do not recalucate prediodically trade routes)
-	COMBAT_LOG_MAX_MONTHS = 12,
-	MESSAGE_TIMEOUT_DAYS = 14,						-- Useful if running the handsoff game. The popup messages that doesn't require the player respond will automatically hide after some timeout.
-	INFO_MESSAGE_TIMEOUT_DAYS = 3,					-- Same but for unimportant messages.
-	AIR_LOG_TIMEOUT_HOURS = 24,						-- Data storring data
-	EVENT_TIMEOUT_DEFAULT = 13,						-- Default days before an event times out if not scripted
-	MISSION_REMOVE_FROM_INTERFACE_DEFAULT = 13,		-- Default days before a mission is removed from the interface after having failed or completed
-	DECISION_ALERT_TIMEOUT_DAYS = 30,				-- Days left when player will be alerted about timing out events or decisions
-	OIL_RESOURCE= "oil",							-- Name of the oil resource
-	FUEL_RESOURCE = "oil",							-- resource that will give country fuel
-	ENERGY_RESOURCE = "coal",						-- resource that will give country energy 
-	MAX_EFFECT_ITERATION = 1000,					-- maximum allowed iteration for loop effects
-	MAX_SCRIPTED_LOC_RECURSION = 30,				-- max recursion for scripted localizations
-	HANDS_OFF_START_TAG = "BRA",					-- tag for player country for -hands_off runs. use an existing tag that is less likely to affect the game
-	ALERT_SFX_COOLDOWN_DAYS = 7,					-- After playing an alert sound, don't play the same sound for XXX days, even if it fires again.
-	MUSIC_PLAYER_RECENTLY_PLAYED_SIZE = 10,			-- The music player keeps track of recently played music to try and avoid playing the same songs too often. This determines the max number of songs in the recently played list.
-},
-
-NGeography = {
-	MEDITERRANEAN_SEA_REGIONS = { 29, 68, 69, 168, 169, 202 }, -- The sea regions that are considered as part of the Mediterranean sea
-},
-
-NDiplomacy = {
-	DIPLOMACY_REQUEST_EXPIRY_DAYS = 30,
-	BASE_SURRENDER_LEVEL = 1.0,						-- Surrender when level reached. valid 0-1
-	MAX_TRUST_VALUE = 100,							-- Max trust value cap.
-	MIN_TRUST_VALUE = -100,							-- Min trust value cap.
-	MAX_OPINION_VALUE = 100,						-- Max opinion value cap.
-	MIN_OPINION_VALUE = -100,						-- Min opinion value cap.
-	BASE_TRUCE_PERIOD = 180,						-- Base truce period in days.
-	TRUCE_PERIOD_AFTER_KICKING_FROM_FACTION = 30,				-- Truce period after kicking someone from faction in days.
-	NUM_DAYS_TO_ENABLE_KICKING_NEW_MEMBERS_OF_FACTION = 90,			-- Number of days before being able to kick a new member of faction
-	NUM_DAYS_TO_ENABLE_REINVITE_KICKED_NATIONS = 90,			-- Number of days before being able to re invite a kicked nation to your faction
-	BASE_NEGATIVE_OPINION_AFTER_BEING_KICKED = 20,				-- Negative opinion that will be received after kicking a nation
-	DECAY_RATE_OF_NEGATIVE_OPINION_AFTER_BEING_KICKED = 1,			-- Weekly decay rate of the negative opinion
-	TRUCE_BREAK_COST_PP = 200,						-- Base cost in PP of breaking a truce by joining a war or accepting a call to war ( you cannot declare war yourself until the truce if up ), this is then multiplied by the time left on the truce ( so once half the truce is up it only cost 50% of this )
-	BASE_PEACE_PUPPET_FACTOR = 100,					-- Base factor for puppet in %.
-	BASE_PEACE_LIBERATE_FACTOR = 100,				-- Base factor for liberate in %.
-	BASE_PEACE_TAKE_UNCONTROLLED_STATE_FACTOR = 10.0, -- Base factor for taking state you do not control
-	BASE_PEACE_TAKE_FACTION_CONTROLLED_STATE_FACTOR = 0.5, -- Base factor for taking state you do not control, but someone in faction does
-	BASE_PEACE_FORCE_GOVERNMENT_COST = 100, 		-- Base cost for forcing a country to change government.
-	-- In peace conference, cost is factored based on how many times the state has been contested and for how long it has been uncontested (for everyone else)
-	PEACE_COST_FACTOR_CONTESTED_MAX = 15,           -- To prevent overflows due to the exponential increase, cap the contested factor to this
-	PEACE_COST_FACTOR_UNCONTESTED_MAX = 15,         -- To prevent overflows due to the exponential increase, cap the uncontested factor to this
-	PEACE_COST_FACTOR_CONTESTED_BID = 1.20,         -- Cost factor for each contested bid on the state.
-	PEACE_COST_FACTOR_UNCONTESTED_BID_MIN = 1.15,   -- Minimum cost factor for each turn a bid has been uncontested on the state.
-	PEACE_COST_FACTOR_UNCONTESTED_BID_MAX = 1.60,   -- Maximum cost factor for each turn a bid has been uncontested on the state.
-	PEACE_COST_FACTOR_UNCONTESTED_BID_STEP = 0.15,  -- Uncontested cost factor will increase by this much each turn.
-	PEACE_COST_FACTOR_CAPITAL_SHIP_IC = 0.005,				-- In peace conference, cost for taking one capital ship per IC
-	PEACE_COST_FACTOR_SCREENING_SHIP_IC = 0.005,			-- In peace conference, cost for taking a part of the screening ships per IC
-	PEACE_INCREASE_COST_FACTOR_PER_MISSING_PERCENT_FOR_CAPITULATION = 0.0012, 	-- increase factor if loser has not capitulated, for every percent between surrender level and BASE_SURRENDER_LEVEL
-	-- peace action taker has a discount if they occupy the state depending on compliance
-	-- it's a table where first value is the compliance level, and the second the factor
-	PEACE_COST_FACTOR_COMPLIANCE_STEPS = {
-		0,   1.0, -- between 0%  and 30% compliance, factor is 1.0
-		30,  0.9, -- between 30% and 70%
-		70,  0.8, -- above 70%
-	},
-	-- In peace conference, adding a stackable to a peace action, increment the cost by a percentage
-	PEACE_COST_FACTOR_STACK_DEMILITARIZED_ZONE = 0.25,
-	PEACE_COST_FACTOR_STACK_WAR_REPARATION = 0.25,
-	PEACE_COST_FACTOR_STACK_RESOURCE_RIGHTS = 0.25,
-	PEACE_COST_FACTOR_STACK_DISMANTLE_INDUSTRY = 0.25,
-	-- peace conference can set timed effect, set length in days
-	PEACE_TIMED_EFFECT_LENGTH_DEMILITARIZED_ZONE = 1825, -- 5 years
-	PEACE_TIMED_EFFECT_LENGTH_WAR_REPARATION = 1825,
-	PEACE_TIMED_EFFECT_LENGTH_RESOURCE_RIGHTS = 1825,
-	PEACE_TIMED_EFFECT_RATIO_CIVILIAN_FACTORY_WAR_REPARATION = 0.5, 	-- ratio of civilian factories taken via stackable war reparation
-
-	-- The Influence cost modifier is basically the inverse of distance. Nearby states are cheaper, and far-away states are more expensive.
-	-- We basically do a two-segment lerp:
-	--   if distance is between [0, NEUTRAL_DIST], we lerp the cost modifier between [MIN_DIST_COST_MODIFIER, 1.0]
-	--   if distance is between [NEUTRAL_DIST, MAX_DIST], we lerp the cost modifier between [1.0, MAX_DIST_COST_MODIFIER]
-	-- The below values represent (pixel distance / INFLUENCE_DISTANCE_DIVISOR)
-	INFLUENCE_NEUTRAL_DIST_CAPITAL = 30.0,           -- distance to capital that results in a cost modifier of 1.0
-	INFLUENCE_MAX_DIST_CAPITAL = 45.0,              -- distance to capital that results in a cost modifier of INFLUENCE_MAX_DIST_COST_MODIFIER
-	INFLUENCE_NEUTRAL_DIST_CORE = 6.0,              -- distance to nearest core state that results in a cost modifier of 1.0
-	INFLUENCE_MAX_DIST_CORE = 13.0,                 -- distance to nearest core state that results in a cost modifier of INFLUENCE_MAX_DIST_COST_MODIFIER
-	INFLUENCE_NEUTRAL_DIST_CONTROLLED = 14.0,       -- distance to nearest controlled state that results in a cost modifier of 1.0
-	INFLUENCE_MAX_DIST_CONTROLLED = 20.0,           -- distance to nearest controlled state that results in a cost modifier of INFLUENCE_MAX_DIST_COST_MODIFIER
-	INFLUENCE_MIN_DIST_COST_MODIFIER = 0.70,        -- Cost modifier at min (zero) distance
-	INFLUENCE_MAX_DIST_COST_MODIFIER = 1.00,         -- Cost modifier at max distance
-	INFLUENCE_RATIO_CAPITAL = 0.05,                  -- Ratio of influence based on distance to capital
-	INFLUENCE_RATIO_CORE = 0.45,                     -- Ratio of influence based on distance to nearest core territory
-	INFLUENCE_RATIO_CONTROLLED = 0.5,               -- Ratio of influence based on distance to neared controlled territory (including uncontested peace conference bids)
-	INFLUENCE_DISTANCE_DIVISOR = 22.0,              -- Divide pixel distance with this when determining distance to capital / core / controlled states. Just an arbitrary way of scaling the distance numbers.
-
-	INFLUENCE_PER_ADJACENCY = 0.05,					-- How much influence to add per uncontested adjacent state in the PC (blob, don't snake)
-
-	INFLUENCE_MAJOR_FACTOR = 1.0,					--How much influence discount an AI major will get (inverse)
-	INFLUENCE_MINOR_FACTOR = 1.0,					--How much influence discount an AI minor will get (inverse)
-
-	PEACE_TRIGGER_AI_MAX_INFLUENCE_VALUE = 0.99,	-- Max influence value for pc_is_state_outside_influence_for_winner trigger
-
-	BASE_IMPROVE_RELATION_COST = 10,                -- Political power cost to initiate relation improvement
-	BASE_IMPROVE_RELATION_SAME_IDEOLOGY_GROUP_MAINTAIN_COST = 0.2, -- Political power cost each update when boosting relations with nation of same ideology
-	BASE_IMPROVE_RELATION_DIFFERENT_IDEOLOGY_GROUP_MAINTAIN_COST = 0.4,    -- Political power cost each update when boosting relations with nation of different ideology
-	BASE_SEND_ATTACHE_COST = 0,					-- Political power cost to send attache
-	BASE_SEND_ATTACHE_CP_COST = 40,				-- Command Power sent attache usage cost
-	BASE_GENERATE_WARGOAL_DAILY_PP = 0.2,	-- Daily pp cost for generation of wargoals
-	WARGOAL_VERSUS_MAJOR_AT_WAR_REDUCTION = -0.75, 	-- reduction of pp cost for wargoal vs major at war.
-	WARGOAL_WORLD_TENSION_REDUCTION = -0.5,			-- Reduction of pp cost for wargoal at 100% world tension, scales linearly
-	WARGOAL_JUSTIFY_TENSION_FROM_PRODUCTION = 30.0,	-- Base value scaled by production capacity of country compared to biggest country
-	MIN_WARGOAL_JUSTIFY_COST = 2.0,					-- It always takes atleast 10 days to justify a wargoal
-	WARGOAL_PER_JUSTIFY_AND_WAR_COST_FACTOR = 1.5,	-- Cost factor per nation at war with or justifying against
-	WARGOAL_THREAT_MAX_TIME_RATIO = 1.0,			-- Threat from justifying a wargoal slowly builds up, hitting 100% at this proportion of the way to completion
-	BASE_BOOST_PARTY_POPULARITY_DAILY_PP = 0.25, 	-- Daily pp cost for boost party popularity
-	BASE_BOOST_PARTY_POPULARITY_DAILY_DRIFT = 0.1, 	-- Daily amount of popularity that will be added by the activity.
-	BASE_STAGE_COUP_DAILY_PP = 0.5,					-- Daily pp cost for staging a coup
-	BASE_STAGE_COUP_TOTAL_COST = 200, 				-- Equipment consume factor for stage coup.
-	NAP_EXPIRY_MONTHS = 48,                         -- NAPs expire after this many months
-	NAP_UNBREAKABLE_MONTHS = 18,                    -- NAPS cannot be broken for this many months
-	NAP_FORCE_BALANCE_RULE_MONTHS = 6,        		-- The NAP border force balance rule changes with this interval
-	NAP_BREAK_FORCE_BALANCE_1 = 2.0,              	-- 2-1 brigades along the border required to break NAP
-	NAP_BREAK_FORCE_BALANCE_2 = 1.0,              	-- 1-1 brigades along the border required to break NAP
-	NAP_BREAK_FORCE_BALANCE_3 = 0.5,              	-- 1-2 brigades along the border required to break NAP
-	VERY_GOOD_OPINION = 50,							-- Threshold for a country that has a very good opinion of you.
-	VERY_BAD_OPINION = -50,							-- Threshold for a country that has a very bad opinion of you.
-	DIPLOMACY_HOURS_BETWEEN_REQUESTS = 24,			-- How long a country must wait before sending a new diplomatic request.
-	TROOP_FEAR = 0, 								-- Impact on troops on borders when deciding how willing a nation is to trade
-	FLEET_FEAR = 0,									-- Impact on troops on borders when deciding how willing a nation is to trade
-	IC_TO_EQUIPMENT_COUP_RATIO = 0.1,				-- Ratio for calculating cost of staging coup
-	VOLUNTEERS_PER_TARGET_PROVINCE = 0.01,			-- Each province owned by the target country contributes this amount of volunteers to the limit.
-	VOLUNTEERS_PER_COUNTRY_ARMY = 0.05,				-- Each army unit owned by the source country contributes this amount of volunteers to the limit.
-	VOLUNTEERS_RETURN_EQUIPMENT = 0.95,				-- Returning volunteers keep this much equipment
-	VOLUNTEERS_TRANSFER_SPEED = 14,					-- days to transfer a unit to another nation
-	VOLUNTEERS_DIVISIONS_REQUIRED = 30,				-- This many divisons are required for the country to be able to send volunteers.
-	TENSION_STATE_VALUE = 2,						-- Tension value gained by annexing one state
-	TENSION_CIVIL_WAR_IMPACT = 0.2,					-- civil war multiplier on tension.
-	TENSION_NO_CB_WAR = 5,							-- Amount of tension generated by a no-CB wargoal
-	TENSION_CB_WAR = 4,								-- Amount of tension generated by a war with a CB
-	TENSION_ANNEX_NO_CLAIM = 2,						-- Amount of tension generated by annexing a state you don't have claims on
-	TENSION_ANNEX_CLAIM = 0.5,						-- Amount of tension generated by annexing a state you DO have claims on
-	TENSION_ANNEX_CORE = 0,							-- Amount of tension generated by annexing a state that is your core
-	TENSION_PUPPET = 1.25,							-- Amount of tension generated by puppeting (per state)
-	TENSION_FORCE_GOVERNMENT = 0.75,                -- Amount of tension generated by forcing government (per state)
-	TENSION_VOLUNTEER_FORCE_DIVISION = 0.2,			-- Amount of tension generated for each sent division
-	TENSION_DECAY_DAILY = 0.005,					-- Each day tension decays this much for Threat sources which are no longer relevant. Replaces TENSION_DECAY as of 1.12.0
-	TENSION_SIZE_FACTOR = 1.0,						-- All action tension values are multiplied by this value
-	TENSION_TIME_SCALE_START_DATE = "1936.1.1.12",	-- Starting at this date, the tension values will be scaled down (will be equal to 1 before that)
-	TENSION_TIME_SCALE_MONTHLY_FACTOR = -0.005,		-- Timed tension scale will be modified by this amount starting with TENSION_TIME_SCALE_START_DATE
-	TENSION_TIME_SCALE_MIN = 0.25,					-- Timed tension scale won't decrease under this value
-	TENSION_GUARANTEE = -5,
-	TENSION_FACTION_JOIN = 4,
-	TENSION_JOIN_ATTACKER = 2,						-- scale of the amount of tension added when country joins attacker side
-	TENSION_PEACE_FACTOR = 0.25,					-- scale of the amount of tension (from war declaration) reduced when peace is completed.
-	TENSION_PEACE_FACTOR_THREAT_FACTOR = 0.60,		-- see above
-	TENSION_LIBERATE = -1,							-- Amount of tension generated by liberating a country.
-	TENSION_TAKE_ONE_CAPITAL_SHIP = 0.25,			-- Amount of tension generated by 1 take navy peace action
-	TENSION_DEMILITARIZE_ZONE = 0.25,				-- Amount of tension generated by stacking demilitarize zone on 1 state, multiplied with the state base threat
-	TENSION_WAR_REPARATION = 0.25,					-- Amount of tension generated by stacking war reparation on 1 state, multiplied with the state base threat
-	TENSION_RESOURCE_RIGHTS = 0.25,					-- Amount of tension generated by stacking resource rights on 1 state, multiplied with the state base threat
-	TENSION_DISMANTLE_INDUSTRY = 0.25,				-- Amount of tension generated by stacking dismantle military industry on 1 state, multiplied with the state base threat
-	TENSION_CAPITULATE = 0.1,						-- Scale of the amount of tension created by a countries capitulation.
-	GUARANTEE_COST = 25,							-- Scale with the number of already guaranteed countries.
-	REVOKE_GUARANTEE_COST = 25,
-	BASE_CONDITIONAL_PEACE_WARESCORE_RATIO = 0.5, 	-- Warscore ratio needed for the losing side to able to surrender.
-	BASE_CONDITIONAL_PEACE_MONTHS = 3,				-- War length must be before a surrender is possible.
-	JOINING_NAP_WAR_PENALTY = 0.2,					-- War support penalty for breaking non-breakable NAP
-	BREAKING_GUARANTEE_PENALTY = 0.2,				-- War support penalty for breaking guarantee
-
-	-- WARNING ! if you modify the following values, you should update corresponding loc keys in games_rules_l_english.yml
-	PEACE_SCORE_TRANSFERRED_TO_FACTION_LEADER = 0.1, 		-- Part of the peace score transferred from the faction members to the faction leader (if game rule enabled)
-	PEACE_SCORE_RESET_LOW_SCORE_THRESHOLD = 0.05,			-- Winners with less than this ratio of war participation will give all their score to other players
-	PEACE_SCORE_RESET_LOW_SCORE_MINIMUM_FOR_RECEIVER = 0.1, -- Disable the previous, if no winner has at least this ratio of war participation
-	
-	PEACE_SCORE_TRANSFERRED_FROM_FACTION_INFLUENCE = 0.1,	-- How much % of your war score will be given to the top PEACE_SCORE_TOP_FACTION_INFLUENCE_AMOUNT of your faction
-	PEACE_SCORE_TOP_FACTION_INFLUENCE_AMOUNT = 2,           -- The amount of highest grossing influence members from your factions that get additional war score
-	
-	PEACE_SCORE_SCALE_FACTOR = 1.35,                -- Losers' total value times this factor becomes the default total peace conference score that is distributed to the winners.
-
-	PEACE_SCORE_MINOR_BOOST_FRACTION = 0.05,        -- Low-scoring winners are boosted by receiving more of their score earlier. This value, multiplied by the total score distributed this turn, is the minimum score they will receive (up until their total allocated score).
-	-- Example: If 2000 score is distributed to winners this turn and this value is set to 0.05, each winner will receive a minimum of 100 score (clamped by the max score they will receive over the cource of the conference).
-
-	PEACE_SCORE_DISTRIBUTION = { 0.2, 0.2, 0.2, 0.2, 0.2 }, -- How much of the total peace conference score you get during the first n turns.
-	-- More explanation of the peace score distribution above:
-	-- {1.0} would give you all the score on the first turn.
-	-- {0.5, 0.5, 0.5} would give you 50 % of the total score on each of the first three turns (in this case resulting in receiving 150 % of the total score).
-
-	PEACE_CONTEST_REFUND_FACTOR = { 1.0, 0.92, 0.84, 0.76 }, -- How much of the spent peace conference score that gets refunded in a contest. First element applies for the first round of conflicts, second element for the second round of conflicts, etc. The final element is used for each consecutive turn, so setting that to e.g. 0.7 means you get 70 % of the spent score back for every turn thereafter.
-
-	PEACE_PLAY_SOUND_ON_NEW_TURN = true,            -- Whether the 'peace_conference_new_turn' audio hook is called or not
-	PEACE_PLAY_NEW_TURN_SOUND_ONLY_IF_NOT_ALREADY_PLAYING = true, -- Whether the 'peace_conference_new_turn' audio hook should play only if not already playing (relevant if players spam-click the pass/submit button)
-
-	MAX_REMEMBERED_LEASED_IC = 1000,				-- Maximum of leased equipment value that is remembered for opinion bonus
-	MAX_OPINION_FOR_LEASED_IC = 30,					-- Positive opinion when remembering the MAX_REMEMBERED_LEASED_IC equipment
-	MONTHLY_LEASED_IC_DECAY = 35,					-- How much of leased equipment is being "forgot" each month
-	OPINION_PER_VOLUNTEER = 3,						-- Opinion bonus per one sent volunteer division
-	MAX_OPINION_FROM_VOLUNTEERS = 30,				-- Opinion bonus per one sent volunteer division
-	OPINION_FOR_DEMO_FROM_WT_GENERATION = -1.0,		-- How much less do democracies like us if we generate world tension
-	NOT_READY_FOR_WAR_BASE = 0,					-- AI should be unwilling to enter accept a call to war if not ready for war against the relevant enemies.
-	FRONT_IS_DANGEROUS = 0,						-- AI should be unwilling to enter accept a call to war if front is too dangerous.
-	NOT_READY_FOR_WAR_VAL_PER_DAY_SINCE_CALL = 1,	-- Value modifying the not ready base over time.
-
-	PEACE_ACTION_MAX_COST = 9999,					-- Max value for a peace action cost (after all modifiers)
-
-	RESOURCE_SENT_AUTONOMY_DAILY_BASE = 0.0,		-- If puppet provides resources to its master they increasy their autonomy by at least this amount
-	RESOURCE_SENT_AUTONOMY_DAILY_FACTOR = 0.005,	-- If puppet provides resources to its master they increasy their autonomy by the resources factored by this
-	WAR_SCORE_AUTONOMY_BASE = 0.0,					-- Value added if any war score is contributed by puppet
-	WAR_SCORE_AUTONOMY_FACTOR = 0.6,				-- If puppet generates war score it get a boost to independence
-	LL_TO_OVERLORD_AUTONOMY_DAILY_BASE = 0.0,		-- If puppet lend leases equipment to overlord of at least same tech level as they have, they gain autonomy
-	LL_TO_OVERLORD_AUTONOMY_DAILY_FACTOR = 0.05,	-- If puppet lend leases equipment to overlord of at least same tech level as they have, they gain autonomy
-	LL_TO_PUPPET_AUTONOMY_DAILY_BASE = 0.0,			-- If overlord lend leases equipment to puppet of higher tech level as they have, puppet losses autonomy
-	LL_TO_PUPPET_AUTONOMY_DAILY_FACTOR = -0.01,		-- If overlord lend leases equipment to puppet of higher tech level as they have, puppet losses autonomy
-	AUTONOMY_FREEDOM_FROM_CAPITULATE = 0.5,         -- if overlord capitulate you get this
-	ATTACHE_TO_SUBJECT_EFFECT = -0.05,				-- If overlord sent attaches to the subject it losses autonomy
-	ATTACHE_TO_OVERLORD_EFFECT = 0.05,				-- If subject sent attaches to the overlord it gains autonomy
-	
-	AUTONOMY_LEVEL_CHANGE_SANCTUARY = 30,			-- The number of days post autonomy level has changed where neither side can increase nor decrease the autonomy level.
-	AUTONOMY_LEVEL_CHANGE_PP_COST_BASE = 50.0,		-- Base cost of changing level of autonomy
-	AUTONOMY_LEVEL_CHANGE_PP_ANNEX = 300,			-- Annexation cost
-	AUTONOMY_LEVEL_CHANGE_PP_FREE = 300,			-- Break free cost
-	MAX_SCORE_DIFF_TO_CHANGE_AUTONOMY = 10,			-- The max diff between current freedom score and the cap for next or previous level allowed for changing
-	MASTER_BUILD_AUTONOMY_FACTOR = -0.7,            -- scales autonomy gain from construction by this
-	VICTORY_POINT_WORTH_FACTOR = 10,				-- multiplier when calcualting proince worth (surrender)
-	VICTORY_POINT_WORTH_FACTOR_WARSCORE = 0.2,				-- multiplier for each victory points when calculating province worth for warscore
-	PROVINCE_WORTH_FROM_STATE_VALUE_FACTOR_WARSCORE = 0.2, 	-- multiplier for the average value a province received from state for warscore
-	CAPITAL_CAPITULATE_BONUS_SCORE = 150,			-- extra bonus when deciding who to capitulate to (applied to capital holder)
-	CAPITAL_CAPITULATE_BONUS_SCORE_MUL = 1.5,		-- extra bonus multiplier when deciding who to capitulate to (applied to capital holder)
-	IDEOLOGY_JOIN_FACTION_MIN_LEVEL = 0.3,			-- ideology limit required to join faction
-	JOIN_FACTION_LIMIT_CHANGE_AT_WAR = 0.5,			-- if in defensive war this or your modifier is counted as limit to join factions (so if you have 80% join limit this now means you can join at 50%)
-	LICENSE_ACCEPTANCE_OPINION_FACTOR = 0.2,		-- Opinion modifier for acceptance of license production requests.
-	LICENSE_ACCEPTANCE_PUPPET_BASE = 20,			-- Acceptance modifier for puppets requesting production licenses.
-	LICENSE_ACCEPTANCE_TECH_DIFFERENCE = 5, 		-- Acceptance modifier for each year of technology difference.
-	LICENSE_ACCEPTANCE_TECH_DIFFERENCE_BASE = 20,    -- Acceptance base for tech difference
-	LICENSE_ACCEPTANCE_SAME_FACTION = 20,			-- Acceptance modifier for being in the same faction
-
-	WARGOAL_COST_LEND_LEASE = -0.25,                -- cost modifier to wargoaljustification for LL
-	WARGOAL_COST_DOCKING_RIGHTS = -0.2,             -- cost modifier to wargoaljustification for dockign rights
- 	WARGOAL_COST_VOLUNTEERS = -0.5,                 -- cost modifier to wargoaljustification for volunteers
-
-	ASSUME_FACTION_LEADERSHIP_PP_COST = 200,				-- Political power cost to assume faction leadership
-	ASSUME_FACTION_LEADERSHIP_MIN_MANPOWER_RATIO = 2,		-- The minimum ratio of manpower that a country must have compared to the current leader in order to assume leadership.
-	ASSUME_FACTION_LEADERSHIP_MIN_FACTORY_RATIO = 1.5,		-- The minimum ratio of factories that a country must have compared to the current leader in order to assume leadership.
-	ASSUME_FACTION_LEADERSHIP_COOLDOWN_DAYS = 180,			-- Number of days after formation of faction or change in leadership before another country is allowed to assume leadership.
-	ASSUME_FACTION_SPYMASTER_COOLDOWN_DAYS = 180,			-- Number of days after change of Spy Master before another country is allowed to become Spy Master.
-	FACTION_LEADERSHIP_CHANGE_ALERT_THRESHOLD = 0.8,		-- Threshold for showing an alert when a faction member is close to being able to assume leadership of the faction that a player currently leads.
-	FACTION_LEADERSHIP_CHANGE_NOT_SUBJECT_WEIGHT = 2,		-- Importance of subject status when determining how close a faction member is to being able to assume leadership.
-	FACTION_LEADERSHIP_CHANGE_NOT_CAPITULATED_WEIGHT = 2,	-- Importance of capitulation status when determining how close a faction member is to being able to assume leadership.
-	FACTION_LEADERSHIP_CHANGE_IN_ALL_WARS_WEIGHT = 1,		-- Importance not being in all faction leader wars when determining how close a faction member is to being able to assume leadership.
-	FACTION_LEADERSHIP_CHANGE_COOLDOWN_WEIGHT = 1,			-- Importance of leadership change cooldown when determining how close a faction member is to being able to assume leadership.
-	FACTION_LEADERSHIP_CHANGE_MANPOWER_WEIGHT = 2,			-- Importance of manpower in field when determining how close a faction member is to being able to assume leadership.
-	FACTION_LEADERSHIP_CHANGE_FACTORY_WEIGHT = 2,			-- Importance of factory count when determining how close a faction member is to being able to assume leadership.
-
-	FACTION_POWER_RESOURCE_WEIGHT = 0.05 ,			--The weight of the country resources on the faction's power projection
-	FACTION_POWER_INDUSTRY_WEIGHT = 0.1,			--The weight of the industry on the faction's power projection
-	FACTION_POWER_ARMY_WEIGHT = 0.25,				--The weight of the army on the faction's power projection
-	FACTION_POWER_AIR_BOMBER_WEIGHT = 0.25,			--The weight of the bombers on the faction's power projection
-	FACTION_POWER_AIR_WEIGHT = 0.02,				--The weight of the air equipment except bombers on the faction's power projection
-	FACTION_POWER_NAVAL_CAPITAL_SHIP_WEIGHT = 5,	--The weight of the capital ships on the faction's power projection
-	FACTION_POWER_NAVAL_WEIGHT = 0.25,				--The weight of the naval equipment except capital ships on the faction's power projection
-	FACTION_POWER_EFFECTS_WEIGHT = 1,			--The weight of the faction's goal status on the faction's power projection
-
-	EMBARGO_COST = 100,										-- One-time cost
-	REVOKE_EMBARGO_COST = 0,								-- Cost to remove an existing embargo
-	EMBARGO_THREAT_THRESHOLD = 25,						-- Target-generated threat threshold to allow embargo (affected by modifiers)
-
-	EMBARGO_SAME_IDEOLOGY_AI_WEIGHT = -20,				-- AI weight for same ideology
-	EMBARGO_DIFFERENT_IDEOLOGY_AI_WEIGHT = 15,			-- AI weight for different ideology
-	EMBARGO_DIFFERENT_IDEOLOGY_AT_OFFENSIVE_WAR_AI_WEIGHT = 5,	--AI weight for different ideology and in offensive war (additive with above)
-	EMBARGO_RECIPIENT_IS_MAJOR_AI_WEIGHT = 5,			-- Ai weight for recipient being major
-	EMBARGO_NEIGHBOUR_AI_WEIGHT = -2000,					--AI weight for embargoing neighbors (neighbors are big and scary, we should consider not doing it)
-	
-	NAVAL_BLOCKADE_BASE_COST = 9999,						-- Base PP cost for issuing a naval blockade
-	NAVAL_BLOCKADE_DAILY_COST = 0.1,					-- Daily PP cost for one naval blockade
-	NAVAL_BLOCKADE_THREAT_THRESHOLD = 999,				-- Target-generated threat threshold to allow naval blockade
-
-	EQUIPMENT_PURCHASE_ACCEPTANCE_OPINION = 1.1,                        -- Acceptance factor for opinion
-	EQUIPMENT_PURCHASE_ACCEPTANCE_SAME_IDEOLOGY = 15,                   -- Acceptance value added if same ideology
-	EQUIPMENT_PURCHASE_ACCEPTANCE_SCRIPTED_IDEOLOGY_ACCEPTANCE = 1.0,   -- Acceptance factor for scripted ideology acceptance modifier
-	EQUIPMENT_PURCHASE_ACCEPTANCE_TRADE_INFLUENCE = 0.70,               -- Acceptance factor for trade influence (adjusted from base value)
-	EQUIPMENT_PURCHASE_ACCEPTANCE_COMPETING_FACTIONS = -30,             -- Acceptance value added if both countries are in factions, and factions are different
-	EQUIPMENT_PURCHASE_ACCEPTANCE_EMBARGO = -200,                       -- Acceptance value added if either side has embargoed the other
-	EQUIPMENT_PURCHASE_ACCEPTANCE_NON_AGGRESSION_PACT = 25,             -- Acceptance value added if there is a non-aggression pact between the countries
-
-	MARKET_ACCESS_ACCEPTANCE_OPINION = 1.1,                             -- Acceptance factor for opinion
-	MARKET_ACCESS_ACCEPTANCE_SAME_IDEOLOGY = 15,                        -- Acceptance value added if same ideology
-	MARKET_ACCESS_ACCEPTANCE_SCRIPTED_IDEOLOGY_ACCEPTANCE = 1.0,        -- Acceptance factor for scripted ideology acceptance modifier
-	MARKET_ACCESS_ACCEPTANCE_TRADE_INFLUENCE = 0.70,                    -- Acceptance factor for trade influence (adjusted from base value)
-	MARKET_ACCESS_ACCEPTANCE_COMPETING_FACTIONS = -30,                  -- Acceptance value added if both countries are in factions, and factions are different
-	MARKET_ACCESS_ACCEPTANCE_EMBARGO = -200,                            -- Acceptance value added if either side has embargoed the other
-	MARKET_ACCESS_ACCEPTANCE_NO_TRADE_ROUTE = -100,                     -- Acceptance value added if there is no valid trade route between the countries
-	MARKET_ACCESS_ACCEPTANCE_NON_AGGRESSION_PACT = 1000,                -- Acceptance value added if there is a non-aggression pact between the countries
-},
-
-NCountry = {
-	EVENT_PROCESS_OFFSET = 21,						-- Events are checked every X day per country or state (1 is ideal, but CPU heavy)
-	BASE_RESEARCH_SLOTS = 2,						-- Base number of research slots per country.
-	POPULATION_YEARLY_GROWTH_BASE = 0.015,			-- basic population growth per year, used for monthly manpower gain
-	RESISTANCE_STRENGTH_FROM_VP = 0.001,			-- How much strength ticking speed gives each VP score.
-	RESISTANCE_STRENGTH_FROM_NEIGHBORS = 0.5, 		-- Multiplies how much resistance can spread from one state to its neighbors, a state will spread whatever is highest of its victorypoints resistance increase or half of any of its neighbors spread, multiplied by this
-	RESISTANCE_DECAY_WHEN_NO_GROWTH = 0.005,		-- Resistance will fall by this much each day if there is nothing increasing it ( no VPs and no spread from neighbors )
-	REINFORCEMENT_DIVISION_PRIORITY_COUNT = 3, 		-- How many priority stages we have in division template? 0)Reserves, 1)Normal, 2)Elite.
-	REINFORCEMENT_DIVISION_PRIORITY_DEFAULT = 1, 	-- Each template by default is 1)Normal
-	REINFORCEMENT_THEATER_GROUP_PRIORITY_DEFAULT = 1,-- Each theater group by default is 1)Normal
-	REINFORCEMENT_THEATRE_PRIORITY_COUNT = 3,		-- Same as with divisions...
-	REINFORCEMENT_THEATRE_PRIORITY_DEFAULT = 1,
-	REINFORCEMENT_AIRBASE_PRIORITY_COUNT = 3,
-	REINFORCEMENT_AIRBASE_PRIORITY_DEFAULT = 1,
-	REINFORCEMENT_DELIVERY_SPEED_MIN = 0.2,			-- The distance from the supply region to capital should affect the speed only a little bit. Main factor for penalty is overcrowded areas, and not the route length.
-	REINFORCEMENT_EQUIPMENT_DELIVERY_SPEED = 0.042,	-- Modifier for army equipment reinforcement speed
-	REINFORCEMENT_MANPOWER_DELIVERY_SPEED = 2.5,	-- Modifier for army manpower reinforcement delivery speed (travel time)
-	REINFORCEMENT_MANPOWER_CHUNK = 0.05,			-- Chunk size of manpower reinforcement delivery, in % of total manpower needed by the template.
-	EQUIPMENT_UPGRADE_CHUNK_MAX_SIZE = 2,			-- Maximum chunk size of equipment upgrade distribution per update.
-	COUNTRY_SCORE_MULTIPLIER = 1.0,					-- Weight of the country score.
-	ARMY_SCORE_MULTIPLIER = 0.15,					-- Based on number of armies.
-	NAVY_SCORE_MULTIPLIER = 1.0,					-- Based on number of navies.
-	AIR_SCORE_MULTIPLIER = 0.1,						-- Based on number of planes (which is typically a lot).
-	INDUSTRY_SCORE_MULTIPLIER = 1.0,				-- Based on number of factories.
-	PROVINCE_SCORE_MULTIPLIER = 0.1,				-- Based on number of controlled provinces.
-	NUCLEAR_BOMB_DROP_WAR_SUPPORT_EFFECT_MAX_INFRA = 0.2, -- Reduce enemy national war support on nuking a province, the value scales with infrastructure up to this number
-	NUCLEAR_BOMB_DROP_WAR_SUPPORT_EFFECT_MAX_VP = 3,-- War support will be scaled down if there's less VP than this in the province
-	THERMONUCLEAR_BOMB_DROP_WAR_SUPPORT_EFFECT_MAX_INFRA = 0.2,	-- Reduce enemy national war support on nuking a province, the value scales with infrastructure up to this number
-	THERMONUCLEAR_BOMB_DROP_WAR_SUPPORT_EFFECT_MAX_VP = 3,		-- War support will be scaled down if there's less VP than this in the province
-	WEEKLY_STABILITY_GAIN = 0.0,
-	WEEKLY_WAR_SUPPORT_GAIN = 0.0,
-	SUPPLY_CONVOY_FACTOR = 0.1,					-- How many convoys each supply needs
-	CONVOY_RANGE_FACTOR = 1.01,                        -- How much range affects convoy need for resource trades and supply
-	CONVOY_LENDLEASE_RANGE_FACTOR = 1.01,				-- How much range affects convoy need for lend lease
-	CONVOY_INTERNATIONAL_MARKET_RANGE_FACTOR = 1.01,	-- How much range affects convoy need for international market
-	NAVY_USE_HOME_BASE_FOR_RANGE = true,			-- If true, will calculate task force range from home base, otherwise will calculate from any friendly naval base
-	CONVOY_CONTROLLED_ROUTE_COST_REDUCTION_FACTOR = 0.25,	-- How much fewer convoys you need shipping through areas you control
-	LOCAL_MANPOWER_ACCESSIBLE_NON_CORE_FACTOR = 0.02,  -- accessible recruitable factor base
-	MAX_NON_CORE_MANPOWER_FACTOR = 1.0,				-- max clamp for recruitable local non core manpower factor for states
-	DEFAULT_STABILITY = 0.5,						-- Default stability if not scripted otherwise.
-	DEFAULT_WAR_SUPPORT = 0.5,						-- Default war support if not scripted otherwise.
-	BASE_STABILITY_WAR_FACTOR = -0.2,				-- Default stability war factor
-	BASE_STABILITY_PARTY_POPULARITY_FACTOR = 0.15,	-- Default stability rulling party popularity factor
-	DEFAULT_COASTAL_PROTECTION_STABILITY = 0,		-- Default stability when the coastal states are fully protected
-	MIN_COUP_STABILITY_FACTOR = 0.0,				-- Min value of coup factor in stability
-	MAX_COUP_STABILITY_FACTOR = 2.0,				-- Max value of coup factor in stability
-	MIN_COUP_SUCCESS_STABILITY = 0.8,				-- Max stability when coup will happen
-	WAR_SUPPORT_OFFNSIVE_WAR = -0.2,				-- Impact of being in offensive war
-	WAR_SUPPORT_DEFENSIVE_WAR = 0.2,				-- Impact of being in defensive war
-	WAR_SUPPORT_TENSION_IMPACT = 0,				-- Total impact of world tension
-	MIN_STABILITY = 0.0,
-	MAX_STABILITY = 1.0,
-	MIN_WAR_SUPPORT = 0.0,
-	MAX_WAR_SUPPORT = 1.0,
-	FRONT_PROVINCE_SCORE = 20,    					-- Max province score of a front. Used for the hostile troop alert
-	MAJOR_IC_RATIO = 3,                             -- difference in total factories needed to be considered major with respect to other nation
-	MAJOR_MIN_FACTORIES = 100,						-- need at least these many factories to become a major
-	MAX_INTELLIGENCE_DIFFERENCE = 10.0,				-- (Old Intel) Max difference in intelligence levels between countries
-	INTEL_FROM_ALLIANCE_FACTOR = 0.3,				-- Multiplied to the difference between a country intel and the maximum value in the alliance to compute the amount of intel that flows from the alliance to that country. 0 means no alliance contribution, 1 means a country intel's is the same as the max in the alliance.
-	MAX_INTELLIGENCE_DATA_DEVIATION = 1.0,          -- (Old Intel) Max deviation in estimating default espionage values ( 0.0 - 1.0 )
-	MAX_INTELLIGENCE_MILITARY_DATA_DEVIATION = 1.0, -- (Old Intel) Max deviation in estimating enemy military units amount ( 0.0 - 1.0 )
-	MAX_INTELLIGENCE_NAVY_DATA_DEVIATION = 0.3,		-- (Old Intel) Max deviation in estimating enemy ships amount ( 0.0 - 1.0 )
-	MAX_INTELLIGENCE_AIR_DATA_DEVIATION = 1.0,		-- (Old Intel) Max deviation in estimating enemy air planes amount ( 0.0 - 1.0 )
-	MAX_INTELLIGENCE_CONVOY_DATA_DEVIATION = 0.3,	-- (Old Intel) Max deviation in estimating enemy convoys amount ( 0.0 - 1.0 )
-	MAX_INTELLIGENCE_MANPOWER_DATA_DEVIATION = 0.4,	-- (Old Intel) Max deviation in estimating enemy total manpower amount ( 0.0 - 1.0 )
-	MAX_INTELLIGENCE_FIELDED_MANPOWER_DATA_DEVIATION = 0.35, -- (Old Intel) Max deviation in estimating enemy fielded manpower amount ( 0.0 - 1.0 )
-	MAX_INTELLIGENCE_INDUSTRY_DATA_DEVIATION = 0,4, -- (Old Intel) Max deviation in estimating enemy total industry
-	MIN_MANPOWER_RATIO = 0.15,						-- Min manpower ratio to show manpower alert
-	ARMY_IMPORTANCE_FACTOR = 5.0,					-- Army factor for AI and calculations
-	TERRAIN_IMPORTANCE_FACTOR = 5.0,				-- Terrain base factor for state strategic value
-	VICTORY_POINTS_IMPORTANCE_FACTOR = 5.0,			-- State victory points importance factor for AI and calculations
-	BUILDING_IMPORTANCE_FACTOR = 3.0,				-- State building importance factor for AI and calculations
-	RESOURCE_IMPORTANCE_FACTOR = 1.0,				-- State resource importance factor for AI and calculations
-	INTERPOLATED_FRONT_STEPS_SHORT = 2,				-- Performance optimization - The amount of steps for interpolated fronts. Non-AI countries got full interpolated fronts, the rest has optimized version of it.
-	MIN_AIR_RESERVE_RATIO = 0.33,					-- Min manpower ratio to show air reserves alert
-	POLITICAL_POWER_LOWER_CAP = -500.0,				-- Min amount of political power country should have
-	POLITICAL_POWER_UPPER_CAP = 2000.0,				-- Max amount of political power country should have
-	RESISTANCE_IMPORTANT_LEVEL = 0.25,				-- Level when resistance becomes dangerous
-	RESISTANCE_IMPORTANT_COUNTRY_LEVEL = 0.25,		-- Level when average resistance in a country becomes dangerous
-	MIN_MAJOR_COUNTRIES	= 7,						-- MIN_MAJOR_COUNTRIES countries with most factories will be considered as major countries
-	ADDITIONAL_MAJOR_COUNTRIES_IC_RATIO = 0.7,		-- Countries will also be considered major when having more factories that the average of top MIN_MAJOR_COUNTRIES countries' factories times ADDITIONAL_MAJOR_COUNTRIES_IC_RATIO
-	BASE_TENSION_MAJOR_COUNTRY_INDEX = 1,			-- Which major country should be considered the base country when scaling generated world tension. 0 is the country with the most factories, 1 is the second most-factories country etc. This number has to be lower than MIN_MAJOR_COUNTRIES
-	MIN_NAVAL_SUPPLY_EFFICIENCY = 0.1,				-- Min ratio when supplies will be considered delivered from the capital by naval path
-	PARADROP_AIR_SUPERIORITY_RATIO = 0.7,			-- Min ratio of air superiority for paradropping
-	STATE_VALUE_BASE = 10.0,                        -- Base value of a state (value is used to determine costs in e.g. peace conferences)
-	STATE_VALUE_BUILDING_SLOTS_MULT = 4.0,          -- The value of each building slot in a state
-	STATE_VALUE_MANPOWER_FACTOR = 0.1,              -- State cost increases with this for every 10k population (so 3.1M becomes 310 and then multiplied by this)
-	INVASION_REPORT_EXPERATION_DAYS = 30,			-- Invasion experation days
-	MIN_FOCUSES_FOR_CONTINUOUS = 10,				-- Focuses needed to unlock continuous focuses
-	AUTONOMOUS_TOTAL_SCORE = 5000,					-- Total score for autonomous scale
-	AUTONOMOUS_SPILLOVER = 0.025,					-- Total score that can be saved to reach next level
-	CIVIL_WAR_INVOLVEMENT_MIN_TENSION = 0.5,		-- base value of world tension to involve other sides to the civil war
-	UNCAPITULATE_LEVEL = 0.1,                       -- if we reclaim this much and our capital we reset capitulate status
-	BASE_SURRENDER_LIMIT = 0.8,						-- Base level of occupation required for country surrender
-	SURRENDER_LIMIT_MULT_FOR_COUNTRIES_WITH_NO_CORES = 0.7, -- Countries with no owned cores will their surrender level multiplied by this amount
-	MIN_SURRENDER_LIMIT = 0.2,						-- Minimum non-forced surrender limit. valid 0-1
-	BASE_MOBILIZATION_SPEED = 0.007,				-- Base speed of manpower mobilization  #in 1/1000 of 1 %
-
-	INTERCEPTION_WAR_SUPPORT_SCALE = 0.00001,		-- Scaling of interceptions to war support impact
-	INTERCEPTION_BOMBING_WAR_SUPPORT_IMPACT = 0.3,	-- Max impact of interceptions on the war support
-
-	BOMBING_WAR_SUPPORT_PENALTY_SCALE = -0.00015, 			-- Scaling of bomber damage to war support impact, will be added weekly as a war support penalty
-	MAX_BOMBING_WEEKLY_WAR_SUPPORT_PENALTY = -0.006,		-- Max penalty that will gained per week from bomber's damage
-	BOMBING_WEEKLY_WAR_SUPPORT_PENALTY_DECAY = 0.001,		-- Weekly decay of bomber damage war support penalty
-	MAX_BOMBING_WAR_SUPPORT_IMPACT = -0.3,					-- Max total penalty from bomber's damage
-
-	HEROES_BEING_KILLED_WAR_SUPPORT_PENALTY_SCALE = -0.03,			-- Scaling of war heroes manpower lost to war support impact, will be added weekly as a war support penalty
-	MAX_HEROES_BEING_KILLED_WEEKLY_WAR_SUPPORT_PENALTY = -0.006,		-- Max penalty that will gained per week from war heroes manpower lost
-	HEROES_BEING_KILLED_WEEKLY_WAR_SUPPORT_PENALTY_DECAY = 0.001,	-- Weekly decay of war heroes manpower lost war support penalty
-	MAX_HEROES_BEING_KILLED_WAR_SUPPORT_IMPACT = -0.3,				-- Max total penalty from war heroes manpower lost
-	WAR_SUPPORT_FROM_CASUALTIES = 0.025,							-- Base value (inverted) for calculating heroes being killed
-	
-	CONVOYS_BEING_RAIDED_WAR_SUPPORT_PENALTY_SCALE = -0.05,			-- Scaling of trade convoy raided to war support impact, will be added weekly as a war support penalty
-	MAX_CONVOYS_BEING_RAIDED_WEEKLY_WAR_SUPPORT_PENALTY = -0.006,	-- Max penalty that will gained per week from trade convoy raided
-	CONVOYS_BEING_RAIDED_WEEKLY_WAR_SUPPORT_PENALTY_DECAY = 0.001,	-- Weekly decay of trade convoy raided war support penalty
-	MAX_CONVOYS_BEING_RAIDED_WAR_SUPPORT_IMPACT = -0.5,				-- Max total penalty from trade convoy raided
-
-	FEMALE_UNIT_LEADER_BASE_CHANCE = {
-		-- applies as a factor to female unit leader randomization
-		-- the values needs to be zero if you don't actually have random portraits
-		0.5, -- country leaders
-		0.5, -- army leaders
-		0.5, -- navy leaders
-		0.5, -- air leaders
-		0.5, -- operatives
-		0.5, -- scientists
-	},
-
-	CONVOYS_SUNK_MULTIPLIER_FOR_WAR_SUPPORT = 0.2,	-- once a trade convoy ship sunk, you will get a larger negative impact on your war support
-	CONVOYS_BEING_RAIDED_DAILY_WAR_SUPPORT_IMPACT_FROM_OVERSEA_STATES = 0.2,	-- resource transfer convoys convoys from our states being raided will give a daily war support penalty depending on how important that resource is and how inefficent convoys are
-	CONVOYS_SUNK_MULTIPLIER_FOR_WAR_SUPPORT_FROM_OVERSEA_STATES = 0.2,			-- once a resource transfer convoys from our states ship sunk, you will get a larger negative impact on your war support
-	CONVOYS_BEING_RAIDED_DAILY_WAR_SUPPORT_IMPACT = 0.2,	-- trade convoys being raided will give a daily war support penalty depending on how important that resource is and how inefficent convoys are
-
-	MAX_PROPAGANDA_STABILITY_IMPACT = 0,			-- Max total penalty from operative performing the propaganda mission in a country
-	MAX_PROPAGANDA_WAR_SUPPORT_IMPACT = 0,		-- Max total penalty from operative performing the propaganda mission in a country
-	PROPAGANDA_STABILITY_DAILY_DECAY = 1,		-- Amount of stability recovered daily from propaganda effort
-	PROPAGANDA_WAR_SUPPORT_DAILY_DECAY = 1,		-- Amount of war support recovered daily from war support effort
-
-	NUM_DAYS_TO_FULLY_DELETE_STOCKPILED_EQUIPMENT = 365,	 -- time in days to fully delete equipments from stockpile. when you delete an equipment, they go to a temporary hidden pool which still can be seized
-	AIR_SUPPLY_CONVERSION_SCALE = 0.1,				-- Conversion scale for planes to air supply
-	AIR_SUPPLY_DROP_EXPIRATION_HOURS = 168,			-- Air drop length after being dropped
-	STARTING_COMMAND_POWER = 0.0,					-- starting command power for every country
-	BASE_MAX_COMMAND_POWER = 200.0,					-- base value for maximum command power
-	BASE_COMMAND_POWER_GAIN = 1.0,					-- base value for daily command power gain
-	AIR_VOLUNTEER_PLANES_RATIO = 0.2,				-- Ratio for volunteer planes available for sending in relation to sender air force
-	AIR_VOLUNTEER_BASES_CAPACITY_LIMIT = 0.1,		-- Ratio for volunteer planes available for sending in relation to receiver air base capacity
-	ATTACHE_XP_SHARE = 0.10,						-- Country received xp from attaches
-	SPECIAL_FORCES_CAP_BASE = 0.02,					-- Max ammount of special forces battalions is total number of non-special forces battalions multiplied by this and modified by a country modifier
-	SPECIAL_FORCES_CAP_MIN = 18,					-- You can have a minimum of this many special forces battalions, regardless of the number of non-special forces battalions you have, this can also be modified by a country modifier
-	DAYS_OF_WAR_BEFORE_SURRENDER = 7,				-- Number of days a war has to have existed before anyone can surrender in it
-
-	FUEL_LEASE_CONVOY_RATIO = 0.0003,				-- num convoys needed per fuel land lease
-
-	STARTING_FUEL_RATIO = 0.8,						-- starting fuel ratio compared to max fuel for countries
-	BASE_FUEL_GAIN_PER_OIL = 1.3,						-- base amount of fuel gained hourly per excess oil
-	BASE_FUEL_GAIN = 2.0,							-- base amount of fuel gained hourly, independent of excess oil
-	BASE_FUEL_CAPACITY = 100000,						-- base amount of fuel capacity
-
-	SCORCHED_EARTH_STATE_COST = 10,					-- pp cost to scorch a state
-
-	COUNTRY_MANPOWER_CAPITULATED_FREE_POOL_FACTOR = 0.1,	-- Factor on amount of normal manpower left for an exiled nation with no territory.
-	COUNTRY_MANPOWER_CAPITULATED_CORE_GAIN_FACTOR = 0.001,	-- Factor on amount of normal manpower gained for the exile nation. From owned states that are controlled by an enemy. State manpower reduced by factor 1000 in code.
-	COUNTRY_MANPOWER_CAPITULATED_NON_CORE_GAIN_FACTOR = 0.001,	-- Factor on amount of normal manpower gained for the exile nation. From owned states that are controlled by an enemy. State manpower reduced by factor 1000 in code.
-	GIE_MAX_LEGITIMACY = 100, 								--Legitimacy max of a GiE
-	GIE_CAPITULATE_MAX_STOCKPILE_TRANSFER = 0.1, 			-- 0-1 Transfers ratio of stockpile. from 0 to this define depending on starting legitimacy on capitulation.
-	GIE_CAPITULATE_MIN_LEGIT_FOR_TRANSFER = 5, -- 0-100 Minimum starting legitimacy to transfer any equipment at all.
-	GIE_CAPITULATION_LEGITIMACY_WARSCORE_FACTOR = 0.5,      -- Multiplies war contribution percent with this factor for part of starting legitimacy. (0.5 would mean a 50 % war contribution gives 25 more legitimacy)
-	GIE_CAPITULATION_LEGITIMACY_WARLENGTH_FACTOR = 1.0,     -- Multiplies war length (nr of weeks) with this factor for part of starting legitimacy. (1.0 would mean a war length of 30 weeks gives 30 more legitimacy)
-	GIE_WARSCORE_GAIN_LEGITIMACY_FACTOR = 1,		 		--Factor on how much legitimacy is gained from warscore earned by GiE units.
-	GIE_HOST_CIC_FROM_LEGITIMACY_MAX = 5, 					--Host will receive from 0 to this value in CIC.
-	GIE_HOST_MIC_FROM_LEGITIMACY_MAX = 5,					--Host will receive from 0 to this value in MIC.
-	GIE_HOST_DOCKYARDS_FROM_LEGITIMACY_MAX = 0,				--Host will receive from 0 to this value in dockyards.
-	GIE_VETERAN_MANPOWER_NON_CORE_GAIN_FACTOR = 0.005,	-- Factor on amount of manpower gained from owned states that are controlled by an enemy. State manpower reduced by factor 1000 in code.
-	GIE_VETERAN_MANPOWER_CORE_GAIN_FACTOR = 0.01,	-- Factor on amount of manpower gained from owned states that are controlled by an enemy. State manpower reduced by factor 1000 in code.
-	GIE_MANPOWER_TOTAL_MAX_FACTOR = 0.5,	-- Factor on max amount of exile manpower that can be gained from owned states. Approaching this will give diminishing returns. Reduced by factor 100 in code.
-	GIE_MANPOWER_RATO_OF_MAX_START_PENALTY = 0.5,	--When this ratio of max manpower has been recruited we start applying the penalty.
-	GIE_MANPOWER_GAIN_PENALTY_MAX = 0.95,	--Max penalty on exile manpower growth.
-	GIE_EXILE_AIR_RECRUITMENT_LEGITIMACY = 50, 	--Legitimacy required to recruit exile airwings
-	GIE_EXILE_AIR_START_EXPERIENCE = 3, 		--Starting experience for exile airwings
-	GIE_EXILE_TROOP_RECRUITMENT_LEGITIMACY = 25, 	--Legitimacy required to recruit exile troops
-	GIE_EXILE_TROOPS_DEPLOY_TRAINING_MAX_LEVEL = 10, 	--Max XP exile troops can receive from training
-	GIE_EXILE_ARMY_LEADER_LEGITIMACY_LEVELS = {  	--Legitimacy levels where a new army leader is received.
-		30,
-		60,
-		90,
-	},
-	GIE_EXILE_ARMY_LEADER_START_LEVEL = 3,	--Starting level for exile leader
-	GIE_ESCAPING_DIVISIONS_TRANSFER_DAYS = 30, -- days to transfer escaping divisions to host nation
-	GIE_ESCAPING_DIVISIONS_XP_BOOST = 0.4, -- Escaping divisions gain a boost to experience. Only the toughest motherbadasses will band together and survive to git me one hundred Nazi scalps ... Or die tryin'...
-	GIE_DIVISION_ATTACK_BONUS_AGAINST_OCCUPIER = 0.1, -- Attack bonus factor against whoever occupies your core territory.
-	GIE_DIVISION_DEFENSE_BONUS_AGAINST_OCCUPIER = 0.1, -- Attack bonus factor against whoever occupies your core territory.
-	GIE_DIVISION_ATTACK_BONUS_ON_CORE = 0.1, -- Attack bonus factor when fighting on cores.
-	GIE_DIVISION_DEFENSE_BONUS_ON_CORE = 0.1, -- Defense bonus factor when fighting on cores.
-	GIE_ESCAPING_DIVISIONS_EQUIPMENT_RATIO = 0.2, -- Base equipment ratio on escaped troops.
-	GIE_ESCAPING_DIVISIONS_AMOUNT_RATIO = 0.1, -- Ratio on amount of divisions that escapes. Scales with starting legitimacy
-	GIE_LIBERATED_NATION_DAILY_LEGITIMACY_CHANGE = -1.5, --An uncapitulated exile that is fully liberated will have legitimacy changed with this amount daily. Will be automatically reinstated when it reaches 0.
-	GIE_EXILE_TRANSFER_ON_LEADER_CAPITULATION_MANPOWER_FACTOR = 0.1, --Factor on exile manpower kept when a faction leader capitulates and the hosted exiles are transfered.
-	GIE_CONVOY_ON_CREATION = 10, -- Number of convoy a GiE will get on creation.
-
-
-	SURRENDER_LIMIT_REDUCTION_PER_COLLABORATION = 0.05, 	--each percent of collaboration will lower surrender limit by this percentage
-	SURRENDER_RECIPIENT_SCORE_PER_COLLABORATION = 1.0, 	--countries with collaboration will get bonus while game calculates which country the enemy will capitulate
-	COMPLIANCE_PER_COLLABORATION = 1.0,					--each percent of collaboration will be converted to this compliance at capitulation
-
-	WILL_LEAD_TO_WAR_FOCUS_PERSISTENCE = 60, -- taken focuses that has lead to war will still make ai prep for war for this many days after being taken
-	WILL_LEAD_TO_WAR_DECISION_PERSISTENCE = 30, -- the decision thats lead to war will sitll make ai prep for war for this many days after being taken/cooldown/timeout
-
-	ARMY_COUNT_DAILY_LERP_FOR_TRAINING_XP = 0.002, -- number of armies that is used in training xp calculates daily lerps to actual number (if real number is lower)
-	ARMY_COUNT_DAILY_DECREASE_FOR_TRAINING_XP = 0.1, -- number of armies that is used in training xp calculates daily linearly approaches this number (if real number is lower)
-},
-
-NResistance = {
-	INITIAL_STATE_RESISTANCE = 1.0,							-- initial resistance percentage of a state once it is captured
-	INITIAL_STATE_COMPLIANCE = 0.0,							-- initial compliance percentage of a state once it is captured
-	COMPLIANCE_FACTOR_ON_STATE_CONTROLLER_CHANGE = 0,	-- compliance factor that applies when the state controller changes (in between allies, compliance is zeroed if it is taken by original country)
-	RESISTANCE_COOLDOWN_WHEN_DISABLED = -0.25,				-- resistance cooldown when the state is taken back by its original owner (compliance is zeroed in that case)
-
-	RESISTANCE_TARGET_BASE = 40.0,							-- base resistance target percentage
-
-	RESISTANCE_TARGET_MODIFIER_HAS_CLAIM = 0,			-- resistance target modifier in % for states we have claim
-
-	RESISTANCE_TARGET_MODIFIER_PER_STABILITY_LOSS = 0.2,	-- resistance target modifier per stability below 100%
-	RESISTANCE_TARGET_MODIFIER_PER_COMPLIANCE = -0.5,		-- resistance target modifier per compliance %
-
-	RESISTANCE_TARGET_MODIFIER_IS_AT_PEACE = -10.0,			-- resistance target modifier when we are at peace
-
-	RESISTANCE_TARGET_MODIFIER_STATE_VP = {					-- resistance target modifier pairs for vp. first entry is total vp in state and second entry is amount of target modifier that applies for that threshold
-		0,   0.0, -- 0 - 5
-		5,   5.0, -- 5 - 10
-		10,  10.0, -- 10 - 15
-		15,  15.0, -- 15 - 20
-		20,  20.0, -- 20 - 25
-		25,  25.0, -- 25 - 30
-		30,  30.0, -- 30 - 35
-		35,  35.0, -- 35 - 40
-		40,  40.0, -- 40 - 45
-		45,  45.0, -- 45 - 50
-		50,  50.0, -- 50 - ...
-	},
-
-	RESISTANCE_TARGET_MODIFIER_OCCUPIED_CAPITULATED = 10.0, -- resistance target modifier when the enemy is capitulated
-
-	RESISTANCE_TARGET_MODIFIER_OCCUPIED_IS_EXILE_MIN = 2.0,   -- min & max resistance target modifier resistance target modifier for exile countries. interpolated using legitimacy
-	RESISTANCE_TARGET_MODIFIER_OCCUPIED_IS_EXILE_MAX = 20.0,
-
-	RESISTANCE_TARGET_MODIFIER_POP_LOW = -20.0,			-- how much we reduce the resistance target
-	RESISTANCE_TARGET_MODIFIER_POP_VERY_LOW = -50.0,			-- resistance target modifier in % for states we have claim
-
-	RESISTANCE_POP_LOW_CUTOFF = 10000,
-	RESISTANCE_POP_VERY_LOW_CUTOFF = 1000,
-
-	RESISTANCE_TARGET_MIN_CAP_FOR_NON_COMPLIANCE = 10, -- min resistance target will be capped to this percentage for non-compliance sources
-
-	RESISTANCE_DECAY_BASE = 0.1, -- base resistance decay
-	RESISTANCE_DECAY_MIN = 0.01, -- min resistance decay
-	RESISTANCE_DECAY_MAX = 100.0, -- nax resistance decay
-
-	RESISTANCE_DECAY_MODIFIER_HAS_CLAIM = 0, -- resistance decay modifier for our claims
-	RESISTANCE_DECAY_MODIFIER_FACTORS = {  -- resistance decay modifier when resistance hits a certain percentage
-		10, -50, -- below 10% it has a -50% modifier on decay
-		20, -25, -- below 20% it has a -25% modifier on decay
-	},
-
-	MIN_DAMAGE_TO_GARRISONS_MODIFIER = 0.05, -- modifier that applies to losses from resistance attack to garrisons at most can be reduced to this amount
-
-	RESISTANCE_GROWTH_BASE = 0.2, -- base resistance grow
-	RESISTANCE_GROWTH_MIN = 0.01, -- min resistance grow
-	RESISTANCE_GROWTH_MAX = 100.0, -- max resistance grow
-
-	COMPLIANCE_GROWTH_BASE = 0.08, -- base compliance grow
-	COMPLIANCE_GROWTH_MIN = -100.0, -- min compliance grow
-	COMPLIANCE_GROWTH_MAX = 100.0, -- max compliance grow
-
-	COMPLIANCE_GROWTH_IS_AT_PEACE = 25, -- compliance growth buff at peace
-	COMPLIANCE_GROWTH_HAS_CLAIM = 0, -- compliance growth buff if state has a claim
-
-	COMPLIANCE_DECAY_AT_MAX_COMPLIANCE = -0.1, -- as compliance increases, it gets a decay rate depending on its value. compliance should stabilize at some value until its growth changes
-	COMPLIANCE_DECAY_PER_EXILE_LEGITIMACY = -0.02, -- higher legitimacy will give higher decay to compliance
-
-	RESISTANCE_RATIO_DIFF_TO_SPREAD = 0.5, -- resistance diff between two neighbour states will spread by this ratio ( from highest resistance states to lower ones and it will only spread once to a state)
-
-	RESISTANCE_ACTIVITY_CHANCE_AT_MAX_RESISTANCE = 0.3,
-	RESISTANCE_ACTIVITY_MIN_GARRISON_PENETRATE_CHANCE = 0.03,
-
-	RESISTANCE_TARGET_TO_REENABLE_RESISTANCE = 10, -- resistance will be disabled once it reaches zero and will not be reenabled until resistance target reaches above this value
-	GARRISON_LOG_MAX_MONTHS = 3,
-
-	NO_COMPLIANCE_GAIN_ENABLE_LIMIT = 0.5, -- at least this ratio of no garrison law should be active in order to no compliance gain to take effect
-
-	GARRISON_MANPOWER_MIN_DELIVERY_SPEED = 0.5,	-- Minimum base delivery speed if the chunk can't be calculated.
-	GARRISON_MANPOWER_REINFORCEMENT_SPEED = 2000.0,	-- Modifier for garrison manpower reinforcement.  This value is the maximum to be delivered which is then modified by distance
-	GARRISON_EQUIPMENT_DELIVERY_SPEED = 4.0,	-- Modifier for garrison equipment reinforcement speed
-
-	GARRISON_STR_POW_MANPOWER = 2,	--Scales impact of manpower deficiency by raising that deficiency to the number here. Formula: efficiency = 1.0 - manpower_deficiency^GARRISON_STR_POW_MANPOWER
-	GARRISON_STR_POW_EQUIPMENT = 3,	--Scales impact of euqipment deficiency by raising that deficiency to the number here. Formula: efficiency = 1.0 - equipment_deficiency^GARRISON_STR_POW_EQUIPMENT
-
-	SUPPRESSION_NEEDED_BY_RESISTANCE_POINT = 0.75, -- Number of suppression point we need for each 1% of resistance
-	SUPPRESSION_NEEDED_LOWER_CAP = 10.0,	-- if resistance is lower than this value then we always act as though it is at the define for the purpose of suppresion requirements
-	SUPPRESSION_NEEDED_UPPER_CAP = 50.0, -- if resistance is greater than this value then we always act as though it is at the define for the purpose of suppresion requirements
-
-	GARRISON_MANPOWER_LOST_BY_ATTACK = 0.01, 	-- Ratio of manpower lost by garrison at each attack on garrison (this number will be reduced by the hardness of garrison template)
-	GARRISON_EQUIPMENT_LOST_BY_ATTACK = 0.02, 	-- Ratio of equipment lost by garrison at each attack on garrison (this number will be reduced by the hardness of garrison template)
-	MAXIMUM_GARRISON_HARDNESS_WHEN_ATTACKED = 0.8,   -- Cap to be sure that garrison will suffer lost in attack, even with a almost 100% hardness
-
-	FOREIGN_MANPOWER_MIN_THRESHOLD = 20000,		 -- The minimum number of Manpower that AI will accept to give at once, in order to avoid many weird little transfer.
-	MANPOWER_BUFFER_TO_NOT_GIVE_MINOR = 0, -- To determine how much AI can give as foreign manpower, we calculate how much manpower we use, and add this buffer. The result is what we want to keep, for minor countries. So higher this number is, lower we will give Manpower.
-	MANPOWER_BUFFER_TO_NOT_GIVE_MAJOR = 0, -- To determine how much AI can give as foreign manpower, we calculate how much manpower we use, and add this buffer. The result is what we want to keep, for major countries. So higher this number is, lower we will give Manpower.
-	MAX_GARRISON_RATIO_WE_AGREE_TO_SUPPORT = -1,	-- The part of the manpower needed by the foreign garrison, that AI will agree to support with our manpower. If negative number, AI will not take into consideration the need, and just calculate how much they can give.
-	FOREIGN_MANPOWER_AI_COOLDOWN_DAYS = 1,		 -- Number of days after an AI give us manpower before the AI accept to give more.
-
-	INITIAL_HISTORY_RESISTANCE = 0.0,			-- resistance value for initial colony states
-	INITIAL_HISTORY_COMPLIANCE = 70.0,			-- compliance value for initial colony states
-	INITIAL_GARRISON_STRENGTH = 1,				-- garrison value for initial colony states
-
-	STATE_COMPLIANCE_DECAY_FOR_LOST_STATES = 0.02, -- daily compliance decay for the states you lost control of
-
-},
-
-NProduction = {
-	MAX_EQUIPMENT_RESOURCES_NEED = 6, 	-- Max number of different strategic resources an equipment can be dependent on.
-	MAX_CIV_FACTORIES_PER_LINE = 25,	-- Max number of factories that can be assigned a single production line.
-	DEFAULT_MAX_NAV_FACTORIES_PER_LINE = 10,
-	FLOATING_HARBOR_MAX_NAV_FACTORIES_PER_LINE = 5,
-	CONVOY_MAX_NAV_FACTORIES_PER_LINE = 10,
-	CAPITAL_SHIP_MAX_NAV_FACTORIES_PER_LINE = 5,
-	MAX_MIL_FACTORIES_PER_LINE = 300,
-	MAX_MIL_FACTORIES_VISIBLE_FOR_MIL_EQUIPMENT_LINE = 30,
-	RAILWAY_GUN_MAX_MIL_FACTORIES_PER_LINE = 5,
-	RAILWAY_GUN_REPAIR_SPEED = 8.0,			-- Railway gun strength repair speed per factory
-	EFFICIENCY_LOSS_PER_UNUSED_DAY = 1.5,		-- Daily loss of efficiency for unused factory slots ( efficiency is tracked per factory slot in the production line )
-	RESOURCE_PENALTY_WARNING_CRITICAL_RATIO =  0.75, -- Switch to red progress bar if penalty is over threshold
-	RESOURCE_TO_ENERGY_COEFFICIENT = 2,		-- How much energy per coal produces
-	BASE_COUNTRY_ENERGY_PRODUCTION = 0, 			-- The base energy production of a country
-	ENERGY_SCALING_COST_BY_FACTORY_COUNT = 0.003, -- Scales energy cost based on the total number of factories
-	BASE_ENERGY_COST = 2,						-- How much energy per factory consumes
-	ENERGY_COST_CAP = 16,						-- Maximum energy cost per factory
-	ENERGY_SCALE_PER_TRADE_FACTORY_EXPORT = 0, -- Factor of how many of the factories gained from trade is affects the energy cost scaling
-	BASE_FACTORY_SPEED = 0.5, 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
-	BASE_FACTORY_SPEED_MIL = 0.5, 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
-	BASE_FACTORY_SPEED_NAV = 0.37, 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
-	BASE_FACTORY_START_EFFICIENCY_FACTOR = 1,	-- Base start efficiency for factories expressed in %.
-	POWERED_FACTORY_SPEED = 2, 					--Powered factory speed multiplier.
-	POWERED_FACTORY_SPEED_MIL = 2, 			--Powered factory speed multiplier.
-	POWERED_FACTORY_SPEED_NAV = 1.5, 			--Powered factory speed multiplier.
-	BASE_FACTORY_MAX_EFFICIENCY_FACTOR = 50,	-- Base max efficiency for factories expressed in %.
-	BASE_FACTORY_EFFICIENCY_GAIN = 0.3,		-- Base efficiency factor.
-	BASE_FACTORY_EFFICIENCY_BALANCE_FACTOR = 0.1, 			-- Factory efficiency balancing factor
-	BASE_FACTORY_EFFICIENCY_VARIANT_CHANGE_FACTOR = 80,		-- Base factor for changing production variants in %.
-	BASE_FACTORY_EFFICIENCY_PARENT_CHANGE_FACTOR = 40,		-- Base factor for changing production parent<->children in %.
-	BASE_FACTORY_EFFICIENCY_FAMILY_CHANGE_FACTOR = 60,		-- Base factor for changing production with same family in %.
-	BASE_FACTORY_EFFICIENCY_ARCHETYPE_CHANGE_FACTOR = 20, 	-- Base factor for changing production with same archetype in %.
-	EQUIPMENT_BASE_LEND_LEASE_WEIGHT = 1.0, -- Base equipment lend lease weight
-	EQUIPMENT_LEND_LEASE_WEIGHT_FACTOR = 0.008, -- Base equipment lend lease factor
-	LEND_LEASE_DELIVERY_TOTAL_DAYS = 30,                    -- Nr of days between lend lease deliveries
-	ANNEX_STOCKPILES_RATIO = 1.0,		-- How much stockpiled equipment will be transferred on annexation
-	ANNEX_FIELD_EQUIPMENT_RATIO = 1.0,	-- How much equipment from deployed divisions will be transferred on annexation
-	ANNEX_FUEL_RATIO = 1.0,	-- How much fuel will be transferred on annexation
-	ANNEX_CONVOYS_RATIO = 1.0,			-- How many convoys will be transferred on annexation
-	MIN_POSSIBLE_TRAINING_MANPOWER = 30000,	-- How many deployment lines minimum can be training
-	MIN_FIELD_TO_TRAINING_MANPOWER_RATIO = 0.2,	-- Ratio which % of army in field can be trained
-	CAPITULATE_STOCKPILES_RATIO = 0.75, -- How much equipment from deployed divisions will be transferred on capitulation
-	CAPITULATE_FUEL_RATIO = 0.5, -- How much fuel will be transferred on capitulation
-	INFRA_MAX_CONSTRUCTION_COST_EFFECT = 1.8, 		-- Building in a state with higher infrastructure will reduce the cost of shared buildings.
-	PRODUCTION_RESOURCE_LACK_PENALTY = -0.01,			-- Penalty decrease while lack of resource per factory
-	CIC_BANK_SPEED_BOOST_FACTOR = 0.25,                 -- The CIC bank can boost production speed with this factor (0.5 means 50 %)
-	MIN_LICENSE_ACTIVE_DAYS = 30,						-- Min days for license to be active
-	BASE_LICENSE_IC_COST = 0,							-- Base IC cost for lended license
-	LICENSE_IC_COST_YEAR_INCREASE = 0.25,					-- IC cost equipment for every year of equipment after 1936
-	LICENSE_EQUIPMENT_BASE_SPEED = -0.25,				-- base MIC speed modifier for licensed equipment
-	LICENSE_EQUIPMENT_TECH_SPEED_PER_YEAR = -0.05,		-- MIC speed modifier for licensed equipment for each year of difference between actual and latest equipment
-	LICENSE_EQUIPMENT_TECH_SPEED_MAX_YEARS = 4,			-- Maximum years for MIC speed modifier
-	LICENSE_EQUIPMENT_SPEED_NOT_FACTION = -0.10,		-- MIC speed modifier for licensed equipment for not being in faction
-	LICENSE_EQUIPMENT_UPGRADE_XP_FACTOR = 2.0,			-- XP cost for upgrading licensed equipment
-	LICENSE_EQUIPMENT_SPEED_NO_LICENSE = -0.50,			-- Penalty for producing non licensed equipment
-	CONVERSION_SPEED_BONUS = 0,							-- Modifier to the production speed when converting equipment
-	EQUIPMENT_MODULE_ADD_XP_COST = 2.0,					-- XP cost for adding a new equipment module in an empty slot when creating an equipment variant.
-	EQUIPMENT_MODULE_REPLACE_XP_COST = 2.0,				-- XP cost for replacing one equipment module with an unrelated module when creating an equipment variant.
-	EQUIPMENT_MODULE_CONVERT_XP_COST = 2.0,				-- XP cost for converting one equipment module to a related module when creating an equipment variant.
-	EQUIPMENT_MODULE_REMOVE_XP_COST = 2.0,				-- XP cost for removing an equipment module and leaving the slot empty when creating an equipment variant.
-	BASE_NAVAL_EQUIPMENT_CONVERSION_IC_COST_FACTOR = 0.2,       -- Fraction of the hull industry cost which is always included in the refitting cost.
-	BASE_LAND_EQUIPMENT_CONVERSION_IC_COST_FACTOR = 0.9,        -- Fraction of the chassis industry cost which is always included in the conversion cost.
-	MIN_NAVAL_EQUIPMENT_CONVERSION_RESOURCE_COST_FACTOR = 0.1,	-- Minimum fraction of a naval equipment's strategic resource cost that any conversion will cost.
-	MIN_LAND_EQUIPMENT_CONVERSION_RESOURCE_COST_FACTOR = 0,		-- Minimum fraction of a land equipment's strategic resource cost that any conversion will cost.
-	SHIP_REFIT_MAX_PROGRESS_TO_CANCEL = 0.2,			-- Maximum refitting progress % that we still allow to cancel wihtout having to scuttle the ship.
-	SHIP_REFIT_DAMAGE_TO_PROGRESS_FACTOR = 0.5,			-- When a ship is being damaged (for example port strike) while refitting, the damage is transferred to the production line progress instead. This variable is used to balance it.
-	MINIMUM_NUMBER_OF_FACTORIES_TAKEN_BY_CONSUMER_GOODS_VALUE = 1,		-- The minimum number of factories we have to put on consumer goods, by value.
-	MINIMUM_NUMBER_OF_FACTORIES_TAKEN_BY_CONSUMER_GOODS_PERCENT = 0.05,	-- The minimum number of factories we have to put on consumer goods, in percent.
-	INITIAL_ALLOWED_FACTORY_RATIO_FOR_REPAIRS = 1.0,					-- max % of factories allowed on autorepairs
-	MILITARY_FACTORY_COHERENCY_BONUS = 250,							-- Value we add to the weight of a production line already in progress, if we only have one military factory. (to reduce fluctuating AI production)		
-},
-
-NMarket = {
-	PURCHASE_CONTRACT_DELIVERY_TOTAL_DAYS = 30,                   	-- Number of days between purchase contract deliveries
-	IC_TO_CIC_FACTOR = 2.0,                    						-- The factor for mapping IC cost to CIC cost. Should be a positive number.
-	MAX_CIV_FACTORIES_PER_CONTRACT = 50,							-- Max number of factories that can be assigned for paying single contract.
-	LOW_PRICE_LEVEL_FACTOR = 0.75,                    				-- The factor of base equipment price for low price level. Should be in range (0,1] 
-	HIGH_PRICE_LEVEL_FACTOR = 1.25,                    				-- The factor of base equipment price for high price level. Should be more than 1.
-	MIN_DELIVERY_LIMIT_WARNING_UI = 0.8,							-- The delivery percentage under we want to let player know the contract is inefficient. [0,1]
-	PURCHASE_CONTRACT_SUBSIDY_BONUS_SPEED_FACTOR = 1.0,				-- The factor of speed bonus from subsidies
-	CONVOY_WEIGHT_OVERRIDE = 0.0,									-- Overrides the default lend leas weight of convoys for international market
-	REQUEST_AUTOMATION_AUTO_ACCEPT_MARKET_ACCESS_DEFAULT = true, 	-- Whether by default should accept market access requests from other countries.
-	REQUEST_AUTOMATION_AUTO_SEND_MARKET_ACCESS_DEFAULT = true,		-- Whether by default should send market access requests to other countries.
-	REQUEST_AUTOMATION_AUTO_ACCEPT_PURCHASE_DEFAULT = false,		-- Whether by default should accept purchase requests from other countries.
-	CONTRACT_ESTIMATE_AVERAGE_CONVOY_COUNT_ALPHA = 0.5,				-- How strong effect should have the daily convoy count on the average (1.0 means it will use only the new number as average)
-	CONTRACT_ESTIMATE_AVERAGE_DAILY_PRODUCTION_ALPHA = 0.5, 		-- How strong effect should have the daily production on the average (1.0 means it will use only the new number as average)
-	CONTRACT_ESTIMATE_AVERAGE_CONVOY_COUNT_SNAP_LIMIT = 0.3,		-- If the difference between current and estimated available convoy count is smaller then this value, we will use the current value for calculations.
-	CONTRACT_ESTIMATE_AVERAGE_DAILY_PRODUCTION_SNAP_LIMIT = 1.5,	-- If the difference between current and estimated daily production is smaller then this value, we will use the current value for calculations.
-	CONTRACT_ESTIMATE_AVERAGE_CONVOY_SUNK_MULTIPLIER_ALPHA = 0.5,	-- How strong effect should have the daily sunk efficiency on the average (1.0 means it will use only the new number as average)
-	CONTRACT_ESTIMATE_AVERAGE_CONVOY_SUNK_MULTIPLIER_SNAP_LIMIT = 0.05, -- If the difference between current and estimated sunk efficiency convoy count is smaller then this value, we will use the current value for calculations.
-	WARNING_CONVOYS_SUNK_MAX_DAYS  = 30, -- The contracts will show sunk convoy message if there was sunk convoy in this amount of days
-
-},
-
-NTechnology = {
-	MAX_SUBTECHS = 3,						-- Max number of sub technologies a technology can have.
-	BASE_RESEARCH_POINTS_SAVED = 30.0,		-- Base amount of research points a country can save per slot.
-	BASE_YEAR_AHEAD_PENALTY_FACTOR = 4,		-- Base year ahead penalty
-	BASE_TECH_COST = 80,					-- Base cost for a tech. multiplied with tech cost and ahead of time penalties
-	MAX_TECH_SHARING_BONUS = 0.5, 			-- Max technology sharing bonus that can be applied instantly
-	LICENSE_PRODUCTION_TECH_BONUS = 0.25,	-- License production tech bonus
-
-	DEFAULT_XP_UNLOCK_RESEARCH_COST = 0,			-- default xp cost of a research to unlock directly
-	DEFAULT_XP_BOOST_RESEARCH_COST = 0,				-- default xp cost of a research to speed up the process
-	DEFAULT_XP_BOOST_RESEARCH_BONUS = 0,			-- default boost research bonus gained when xp is used to research an item
-	MIN_RESEARCH_SPEED = 0.1,						-- research speed can't go below this value
-
-	USE_BONUS_REGRET_TIMER = 30,						-- Number of days the player has to regret using a limited tech bonus
-},
-
-NPolitics = {
-	BASE_LEADER_TRAITS = 3,				-- Base amount of leader traits.
-	MAX_RANDOM_LEADERS = 1,				-- Maximum amount random leader to have per party.
-	BASE_POLITICAL_POWER_INCREASE = 2.0,	-- Weekly increase of PP.
-	ARMY_LEADER_COST = 2,					-- command power cost for recruiting new leaders, 'this value' * number_of_existing_leaders_of_type
-	NAVY_LEADER_COST = 5,					-- command power cost for recruiting new leaders, 'this value' * number_of_existing_leaders_of_type
-	ARMY_LEADER_MAX_COST = 75,				-- max cost BEFORE modifiers
-	NAVY_LEADER_MAX_COST = 75,				-- max cost BEFORE modifiers
-	LEADER_TRAITS_XP_SHOW = 0.05,			-- Amount of XP a trait needs to be shown in tooltips of a leader.
-	REVOLTER_PARTY_POPULARITY = 0.4,		-- Revolter party loses 80% popularity when the civil war breaks out
-	MIN_OVERTHROWN_GOVERNMENT_SUPPORT_RATIO = 0.4, -- Min possible support for new government after puppeting the government
-	NUM_OCCUPATION_POLICIES = 4,		-- Number of potential occupation policies
-	DEFAULT_OCCUPATION_POLICY = 1,		-- Defaullt value for occupation policy
-	INSTANT_WIN_REVOLTER_POPULARITY_RATIO = 0.4, -- Min party popularity for instant win in one province state
-	INSTANT_WIN_POPULARITY_WIN = 50, -- New party popularity
-},
-
-NBuildings = {
-	ANTI_AIR_SUPERIORITY_MULT = 2.0,	-- How much air superiority reduction to the enemy does our AA guns? Normally each building level = -1 reduction. With this multiplier.
-	SAM_MISSION_SUPERIORITY = 2.0,      -- How much air superiority each SAM mission gives per rocket wing performing SAM missions.
-	MAX_BUILDING_LEVELS = 45,			-- Max levels a building can have.
-	AIRBASE_CAPACITY_MULT = 120,		-- Each level of airbase building multiplied by this, gives capacity (max operational value). Value is int. 1 for each airplane.
-	ROCKETSITE_CAPACITY_MULT = 40,		-- Each level of rocketsite building multiplied by this, gives capacity (max operational value). Value is int. 1 for each rocket.
-	NAVALBASE_REPAIR_MULT = 0.05,		-- Each level of navalbase building repairs X strength and can repair as many ships as its level
-	RADAR_RANGE_BASE = 4,				-- Radar range base, first level radar will be this + min, best radar will be this + max
-	RADAR_RANGE_MIN = 8,				-- Radar range (from state center to province center) in measure of map pixels. Exluding techs.
-	RADAR_RANGE_MAX = 32,				-- Range is interpolated between building levels 1-15.
-	RADAR_INTEL_EFFECT = 5,			-- Province covered by radar increases intel by 10 (where 255 is max). Province may be covered by multiple radars, then the value sums up.
-	SABOTAGE_FACTORY_DAMAGE = 50.0,		-- How much damage takes a factory building in sabotage when state is occupied. Damage is mult by (1 + resistance strength), i.e. up to 2 x base value.
-	BASE_FACTORY_REPAIR = 0.5,			-- Default repair rate before factories are taken into account
-	BASE_FACTORY_REPAIR_FACTOR = 1.0,	-- Factory speed modifier when repairing.
-	SUPPLY_PORT_LEVEL_THROUGHPUT = 3,   -- supply throughput per level of naval base
-	MAX_SHARED_SLOTS = 50,				-- Max slots shared by factories
-	OWNER_CHANGE_EXTRA_SHARED_SLOTS_FACTOR = 1, --Scale factor of extra shared slots when state owner change.
-	DESTRUCTION_COOLDOWN_IN_WAR = 180,	-- Number of days cooldown between removal of buildings in war times
-
-	INFRASTRUCTURE_RESOURCE_BONUS = 0.07, -- multiplicative resource bonus for each level of (non damaged) infrastructure
-	SUPPLY_ROUTE_RESOURCE_BONUS = 0.1,   -- multiplicative resource bonus for having a railway/naval connection to the capital
-	INFRASTRUCTURE_MUD_EFFECT = -0.95, -- multiplicative effect on mud growth for max infra
-},
-
-NDeployment = {
-	BASE_DEPLOYMENT_TRAINING = 1,		-- Base training done each day during deployment.
-},
-
-NMilitary = {
-	COMBAT_VALUE_ORG_IMPORTANCE = 1,		-- Multiplier on TotalOrganisation when determining the combat value of a division
-	COMBAT_VALUE_STR_IMPORTANCE = 1,		-- Multiplier on TotalStrength when determining the combat value of a division
-
-	SOFT_ATTACK_TARGETING_FACTOR = 1.0,		-- How much we care about potential soft attacks when evaluating priority combat target
-	HARD_ATTACK_TARGETING_FACTOR = 2.0,		-- How much we care about potential hard attacks when evaluating priority combat target
-	
-	CASUALTIES_WS_P_PENALTY_DIVISOR = 200,							--Divisor for casualties WS penalty
-	CASUALTIES_WS_A_PENALTY_DIVISOR = 600,							--Divisor for casualties WS penalty
-	
-	PIERCING_THRESHOLDS = {					-- Our piercing / their armor must be this value to deal damage fraction equal to the index in the array below [higher number = higher penetration]. If armor is 0, 1.00 will be returned.
-		1.00,
-		0.95,
-		0.90,
-		0.85,
-		0.80,
-		0.75,
-		0.70,
-		0.65,
-		0.60,
-		0.55,
-		0.50,
-		0.45,
-		0.40,
-		0.35,
-		0.30,
-		0.25,
-		0.20,
-		0.15,
-		0.10,
-		0.05,
-		0.00, --there isn't much point setting this higher than 0
-	},
-	PIERCING_THRESHOLD_DAMAGE_VALUES = {	-- 0 armor will always receive maximum damage (so add overmatching at your own peril). the system expects at least 2 values, with no upper limit.
-		1.00,
-		0.95,
-		0.90,
-		0.85,
-		0.80,
-		0.75,
-		0.70,
-		0.65,
-		0.60,
-		0.55,
-		0.50,
-		0.45,
-		0.40,
-		0.35,
-		0.30,
-		0.25,
-		0.20,
-		0.15,
-		0.10,
-		0.05,
-		0.00,
-	},
-	
-	DIVISIONAL_COMMANDER_TRAIT_XP_REQUIREMENT = 750.0,	--Get a trait if any valid options & xp gained >= this
-	NUM_DAYS_FOR_OPERATION_ENTRY = 60,					--Number of days that a unit must have been on a particular active order instance to receive a history entry.
-	MAX_LEADERS_TO_SHOW = 50,							--Max officers to show in field officers list, sorted by field EXP. Divisions with awardable entries will potentially supercede this limit
-	BASE_FEMALE_DIVISIONAL_COMMANDER_CHANCE = 0,		--Chance to receive a female divisonal commander. This is set to zero in the base game, as we do not have generic female portraits for many graphical culture groups.
-														--this expects a value between 0 and 1 and is added to by female_divisional_commander_chance. If you don't have female generic portraits defined, you -will- get silhouettes.
-
-	DIVISIONAL_COMMANDER_RANK_XP_THRESHOLD = { 		-- XP thresholds for divisional commander ranks. [TAG]_DIVISION_EXPERIENCE_TITLE_ARMY_EXPERIENCE_[array index]
-		0,
-		500.0,
-		1000.0,
-		2000.0,
-		4000.0,
-	},
-
-	USE_MULTIPLICATIVE_ORG_LOSS_WHEN_MOVING = true, -- whether to apply org_loss_when_moving modifiers additively or multiplicatively (hardcoded multiplicative pre-2021)
-	HOURLY_ORG_MOVEMENT_IMPACT = -0.2,		-- how much org is lost every hour while moving an army.
-	ZERO_ORG_MOVEMENT_MODIFIER = -0.25,		-- speed impact at 0 org.
-	INFRA_ORG_IMPACT = 0.3,				-- scale factor of infra on org regain.
-	ENGAGEMENT_WIDTH_PER_WIDTH = 3.0,	-- how much enemy combat width we are allowed to engage per width of our own
-
-	INFRASTRUCTURE_MOVEMENT_SPEED_IMPACT = -0.02,	-- speed penalty per infrastucture below maximum.
-
-	VPS_FOR_HISTORY_ENTRY = 1,					-- Minimum VPs required to receive an entry in divisional history
-	VPS_FOR_HIGH_HISTORY_ENTRY = 5,				-- VPs required for high-level history entry
-	ENTRIES_TO_CHECK_FOR_DUPLICATE = 2,			-- Max number of history entries to check back to see if we're being awarded the same entry
-	COST_INCREASE_PER_ACTIVE_MEDAL = 0,		-- Additional cost factor per active medal
-	MAX_ENTRY_ELISION_COUNT = 4,				-- If we do the same type of thing consecutively, each entry will stack locations up to this number
-	GENERATE_AI_DIV_COMMAND_HISTORY_ENTRIES = true,	--Should we generate history entries for the AI (may cause savegame bloat)
-	GENERATE_AI_DIV_COMMAND_MEDALS = 0.10,		-- Chance for AI to award a medal when receiving a history entry that allows it. Also gives a chance for AI to gain history entries irrespective of the setting above
-	MAX_NUM_AUTOMEDALS = 6,						-- You can't get more medals from the automedal system than this.
-	FIELD_EXPERIENCE_ON_DIVISION_MULT = 0.05,	-- Multiply field experience gained by this, when applying to divisional commander
-	MAX_FIELD_EXPERIENCE_ON_DIVISION = 8000,	-- Max experience that can be gained on divisional commanders
-	FIELD_EXPERIENCE_ON_DIVISION_PER_MEDAL_MULT = 0.1,	--Multiply officer field experience gain by this * number of division medals on application
-	CAPTAIN_EXPERIENCE_ON_SHIP_MULT = 1.55,		-- Multiply ship experience gained by this, when applying to ship captain
-	MAX_CAPTAIN_EXPERIENCE_ON_SHIP = 8000,		-- Max experience that can be gained on ship captains
-	CAPTAIN_EXPERIENCE_ON_SHIP_PER_MEDAL_MULT = 0.1,	--Multiply ship captain experience gain by this * number of ship medals on application
-	HISTORY_OPERATION_RANDOM_MAX = 24,			-- max random int to roll when determining whether to grant an awardable entry for operations. 1/N chances.
-	CASUALTY_COUNT_FOR_HISTORY_ENTRY = 25000,	-- number of received casualties to receive a history entry (one only)
-	FIELD_OFFICER_PROMOTION_PENALTY = 0,		--Amount of division experience lost when promoting a commander (reduced by modifiers)
-	
-	HISTORICAL_ORDER_NAME_EXHAUSTION = true,	-- Do historically chosen order instances exhaust their case names? If false ie, Operation Barbarossa will appear for any orders fulfilling the conditions for Germany
-
-	SHORE_BOMBARDMENT_COLLATERAL_DAMAGE_MULTIPLIER = 30.0,		-- Factor on shore bombardment damage purposes, for collateral damage.
-	SHORE_BOMBARDMENT_COLLATERAL_DAMAGE_CRIT_CHANCE_FACTOR = 0.002,	    -- Chance for crit (ie, high single building damage) to occur.
-	
-	WAR_SCORE_LOSSES_RATIO = 0.5,								-- war score gained for every 1000 casualties
-	WAR_SCORE_LOSSES_MULT_IF_CAPITULATED = 0.25, 				-- factor applied to war score gained from casualties if capitulated
-	WAR_SCORE_STRATEGIC_BOMBING_FACTOR = 0.02,  				-- war score gained for every damage made to enemy's building with strategic bombing
-	WAR_SCORE_STRAT_BOMBING_DECAY_PER_CIVILIAN_FACTORY = 0.10,	-- monthly war score deducted from strategic bombing for every civilian factory in service on the bombed enemy side
-	WAR_SCORE_AIR_IC_LOSS_FACTOR = 0.1,							-- war score gained for every IC of damage done to an enemy's air mission
-	WAR_SCORE_LAND_DAMAGE_FACTOR = 0.1,          				-- war score gained for every strengh damage done to an enemy's army
-	WAR_SCORE_ATTACKER_AND_WINNER_FACTOR = 1.2,					-- factor applied to war score gained for strength damage done when being the attacker and the winner
-	WAR_SCORE_LAND_IC_LOSS_FACTOR = 0.1,         				-- war score gained for every IC damage done to an enemy's army
-	WAR_SCORE_PROVINCE_FACTOR = 0.3,							-- war score gained when capturing a province for the first time, multiplied by province's worth
-	WAR_SCORE_LEND_LEASE_GIVEN_IC_FACTOR = 0.1,  				-- war score gained for every IC of lend lease sent to allies
-	WAR_SCORE_LEND_LEASE_GIVEN_FUEL_FACTOR = 0.01,  				-- war score gained for every unit of fuel lend lease sent to allies
-	WAR_SCORE_LEND_LEASE_RECEIVED_IC_FACTOR = 0.1,  			-- war score deducted for every IC of lend lease received from allies
-	WAR_SCORE_LEND_LEASE_RECEIVED_FUEL_FACTOR = 0.01, 			-- war score deducted for every unit of fuel lend lease received from allies
-
-	CORPS_COMMANDER_DIVISIONS_CAP = 20,			-- how many divisions a corps commander is limited to. 0 = inf, < 0 = blocked
-	DIVISION_SIZE_FOR_XP = 10,                   -- how many battalions should a division have to count as a full divisions when calculating XP stuff
-	CORPS_COMMANDER_ARMIES_CAP = -1,			-- how many armies a corps commander is limited to. 0 = inf, < 0 = blocked
-	FIELD_MARSHAL_DIVISIONS_CAP = 20,			-- how many divisions a field marshall is limited to. 0 = inf, < 0 = blocked
-	FIELD_MARSHAL_ARMIES_CAP = 3,				-- how many armies a field marshall is limited to. 0 = inf, < 0 = blocked
-
-	UNIT_LEADER_GENERATION_CAPITAL_CONTINENT_FACTOR = 100, --Integer factor to multiply manpower.
-
-	RECON_SKILL_IMPACT = 4, -- how many skillpoints is a recon advantage worth when picking a tactic.
-
-	MAX_DIVISION_BRIGADE_WIDTH = 6,			-- Max width of regiments in division designer.
-	MAX_DIVISION_BRIGADE_HEIGHT = 4,		-- Max height of regiments in division designer.
-	MIN_DIVISION_BRIGADE_HEIGHT = 3,		-- Min height of regiments in division designer.
-	MAX_DIVISION_SUPPORT_WIDTH = 1,			-- Max width of support in division designer.
-	MAX_DIVISION_SUPPORT_HEIGHT = 7,		-- Max height of support in division designer.
-	MAX_REGIMENTAL_SUPPORT_WIDTH = 6,		-- Max width of regimental supports in division designer.
-	MAX_REGIMENTAL_SUPPORT_HEIGHT = 3,		-- Max height of regimental supports in division designer.
-	MAX_HQ_BATTALION_WIDTH = 1,				-- Max width of regiments in division designer (Army HQ templates).
-	MAX_HQ_BATTALION_HEIGHT = 1,			-- Max height of regiments in division designer (Army HQ templates).
-	MAX_HQ_SUPPORT_WIDTH = 1,				-- Max width of support in division designer (Army HQ templates).
-	MAX_HQ_SUPPORT_HEIGHT = 4,				-- Max height of support in division designer (Army HQ templates).
-	MAX_HQ_REGIMENTAL_SUPPORT_WIDTH = 0,		-- Max width of regimental supports in division designer (Army HQ templates).
-	MAX_HQ_REGIMENTAL_SUPPORT_HEIGHT = 0,		-- Max height of regimental supports in division designer (Army HQ templates).
-	REGIMENTAL_SUPPORT_REQUIRED_BATTALIONS = { 3, 3, 3 }, -- For each regimental support row, how many battalions are required in the regiment to be able to place a support in that row.
-	-- When the AI is deciding where to place battalions, it tries to place it in the position with the lowest number according to this grid.
-	AI_BATTALION_BUILD_ORDER = { 	1,  6,  11, 16, 21,
-				     				2,  7,  12, 17, 22,
-				     				3,  8,  13, 18, 23,
-				     				4,  9,  14, 19, 24,
-				     				5,  10, 15, 20, 25 }, 
-	
-	BASE_DIVISION_BRIGADE_GROUP_COST = 3, 	--Base cost to unlock a regiment slot,
-	BASE_DIVISION_BRIGADE_CHANGE_COST = 3,	--Base cost to change a regiment column.
-	BASE_DIVISION_SUPPORT_SLOT_COST = 2, 	--Base cost to unlock a support slot
-
-	REGIMENTAL_SUPPORT_SLOT_COST_MULTIPLIER = 2.0, -- Regimental support slot costs are scaled by this value compared to normal support slots
-
-	MAX_ARMY_EXPERIENCE = 5000,			--Max army experience a country can store
-	MAX_NAVY_EXPERIENCE = 5000,			--Max navy experience a country can store
-	MAX_AIR_EXPERIENCE = 5000,				--Max air experience a country can store
-
-	COMBAT_MINIMUM_TIME = 4,			-- Shortest time possible for a combat in hours
-	SPOTTING_QUALITY_DROP_HOURS = 4, 	-- Each X hours the intel quality drops after unit was spotted.
-	SPOTTING_QUALITY_NAVAL_RECON_DROP_HOURS = 12, 	-- Each X hours the intel quality drops after unit was spotted by naval recon air mission.
-	LEADER_GROUP_MAX_SIZE = 1000, --5,			-- Max slots for leader groups.
-
-	MIN_SUPPLY_CONSUMPTION = 0.01,					-- minimum value of supply consumption that a unit can get
-
-	LAND_COMBAT_ORG_DICE_SIZE = 2,                 -- nr of damage dice
-	LAND_COMBAT_STR_DICE_SIZE = 2,                 -- nr of damage dice
-	LAND_COMBAT_STR_DAMAGE_MODIFIER = 0.03,       -- global damage modifier... but some equipment is returned at end of battles see : EQUIPMENT_COMBAT_LOSS_FACTOR
-	LAND_COMBAT_ORG_DAMAGE_MODIFIER = 0.045,       -- global damage modifier
-	LAND_AIR_COMBAT_STR_DAMAGE_MODIFIER = 0.027,    -- air global damage modifier
-	LAND_AIR_COMBAT_ORG_DAMAGE_MODIFIER = 0.009,    -- global damage modifier
-	LAND_AIR_COMBAT_STR_DICE_SIZE = 1,                 -- nr of damage dice (used by air to ground)
-	LAND_AIR_COMBAT_ORG_DICE_SIZE = 1,                 -- nr of damage dice (used by air to ground)
-	LAND_AIR_COMBAT_MAX_PLANES_PER_ENEMY_WIDTH = 1, -- how many CAS/TAC can enter a combat depending on enemy width there
-	LAND_COMBAT_STR_ARMOR_ON_SOFT_DICE_SIZE = 3,   -- extra damage dice if our armor outclasses enemy
-	LAND_COMBAT_ORG_ARMOR_ON_SOFT_DICE_SIZE = 3,   -- extra damage dice if our armor outclasses enemy
-	LAND_COMBAT_STR_ARMOR_DEFLECTION_FACTOR = 0.5, -- damage reduction if armor outclassing enemy
-	LAND_COMBAT_ORG_ARMOR_DEFLECTION_FACTOR = 0.5, -- damage reduction if armor outclassing enemy
-	LAND_COMBAT_COLLATERAL_FORT_FACTOR = 0.005,		-- Factor to scale collateral damage to forts with.
-	LAND_COMBAT_COLLATERAL_INFRA_FACTOR = 0.002,	-- Factor to scale collateral damage to infra with.
-	LAND_COMBAT_FORT_DAMAGE_CHANCE = 4,				-- chance to get a hit to damage on forts. (out of 100)
-	ATTRITION_DAMAGE_ORG = 0,					   -- damage from attrition to Organisation
-	ATTRITION_EQUIPMENT_LOSS_CHANCE = 0.003,		  -- Chance for loosing equipment when suffer attrition. Scaled up the stronger attrition is. Then scaled down by equipment reliability.
-	ATTRITION_WHILE_MOVING_FACTOR = 1,
-	RELIABILITY_ORG_REGAIN = -0.2,                    -- how much reliability affects org regain
-	RELIABILITY_ORG_MOVING = -1.3,                 -- how much reliability affects org loss on moving
-	RELIABILITY_WEATHER = 1.0,                     -- how much reliability is afffecting weather impact
-	RELIABILTY_RECOVERY = 0.2,                     -- factor affecting how much equipment is returned "from the dead"
-	BASE_CHANCE_TO_AVOID_HIT = 90,                 -- Base chance to avoid hit if defences left.
-	CHANCE_TO_AVOID_HIT_AT_NO_DEF = 50,	           -- chance to avoid hit if no defences left.
-	COMBAT_MOVEMENT_SPEED = 0.33,	               -- speed reduction base modifier in combat
-	TACTIC_SWAP_FREQUENCEY = 6,                    -- hours between tactic swaps
-	PREFERRED_TACTIC_CHARACTER_SKILL_LEVEL_REQUIRED = 8, -- Which level a field marhal or general has to be before they can pick their preferred tactic
-	COUNTRY_PREFERRED_TACTIC_WEIGHT_FACTOR = 0.2,  -- extra weight multiplier for the country preferred tactic when doing weighted random
-	ARMY_GENERAL_PREFERRED_TACTIC_WEIGHT_FACTOR = 0.2,   -- extra weight multiplier for the army general preferred tactic when doing weighted random
-	FIELD_MARSHAL_PREFERRED_TACTIC_WEIGHT_FACTOR = 0.1, -- extra weight multiplier for the field marhsal preferred tactic when doing weighted random
-	PREFERRED_TACTIC_COMMAND_POWER_COST = 10,	   -- command point cost for changing preferred tactic
-	INITIATIVE_PICK_COUNTER_ADVANTAGE_FACTOR  = 0.2, -- advantage per leader level for picking a counter
-	AMPHIBIOUS_INVADE_MOVEMENT_COST = 24.0,        -- total progress cost of movement while amphibious invading
-	LAND_SPEED_MODIFIER = 0.05,                    -- basic speed control
-	RIVER_CROSSING_PENALTY = -0.3,                 -- small river crossing
-	RIVER_CROSSING_PENALTY_LARGE = -0.6,           -- large river crossing
-	RIVER_CROSSING_SPEED_PENALTY = -0.3,           -- small river crossing
-	RIVER_CROSSING_SPEED_PENALTY_LARGE = -0.6,     -- large river crossing
-	RIVER_SMALL_START_INDEX = 0,                   -- color indices for rivers
-	RIVER_SMALL_STOP_INDEX = 6,
-	RIVER_LARGE_STOP_INDEX = 11,
-	BASE_FORT_PENALTY = -0.2, 					   -- fort penalty
-	MULTIPLE_COMBATS_PENALTY = -0.5,               -- defender penalty if attacked from multiple directions
-	DIG_IN_FACTOR = 0.01,						   -- bonus factor for each dug-in level
-	ARMY_LEADER_XP_GAIN_PER_UNIT_IN_COMBAT = 0.25, -- XP gain per unit in combat
-	CONSTANT_XP_RATIO_FOR_MULTIPLE_LEADERS_IN_SAME_COMBAT = 0.5, -- if there are multiple leaders in same combat, each one gets thisratio + (1-thisratio)/num leaders. amount of xp each general gets scales 1 0.75 0.66 etc for 1 2 3 generals
-	BASE_LEADER_TRAIT_GAIN_XP = 0.3,			   -- Base xp gain for traits per hour for armies
-	MAX_NUM_TRAITS = -1,						   -- cant have more, -1 to disable
-	ENEMY_AIR_SUPERIORITY_IMPACT = -0.4,          -- effect on defense due to enemy air superiorty
-	ENEMY_AIR_SUPERIORITY_DEFENSE = 0.8,	     	  -- more AA attack will approach this amount of help (diminishing returns)
-	ENEMY_AIR_SUPERIORITY_DEFENSE_STEEPNESS = 100, -- how quickly defense approaches the max impact diminishing returns curve
-	ENEMY_AIR_SUPERIORITY_SPEED_IMPACT = -0.3,     -- effect on speed due to enemy air superiority
-
-	ANTI_AIR_TARGETTING_TO_CHANCE = 0.016,			-- Balancing value to determine the chance of ground AA hitting an attacking airplane, affecting both the effective average damage done by AA to airplanes, and the reduction of damage done by airplanes due to AA support
-	ANTI_AIR_ATTACK_TO_AMOUNT = 0.006,				-- Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit.
-
-	ENCIRCLED_PENALTY = -0.3,                      	-- penalty when completely encircled
-
-	UNIT_EXPERIENCE_PER_COMBAT_HOUR = 0.00036,
-	UNIT_EXPERIENCE_SCALE = 0.3,
-	UNIT_EXPERIENCE_PER_TRAINING_DAY = 0.001,
-	TRAINING_MAX_LEVEL = 10,
-	DEPLOY_TRAINING_MAX_LEVEL = 5,
-	TRAINING_EXPERIENCE_SCALE = 30,
-	TRAINING_ORG = 0.2,
-	ARMY_EXP_BASE_LEVEL = 10,
-	UNIT_EXP_LEVELS = { 0.01,	0.02,	0.03,	0.04,	0.05,	0.07,	0.09,	0.11,	0.13,	0.15,	0.18,	0.21,	0.24,	0.27,	0.3,	0.35,	0.4,	0.45,	0.5,	0.55,	0.62,	0.69,	0.76,	0.83,	0.9 },		-- Experience needed to progress to the next level
-	FIELD_EXPERIENCE_SCALE = 0.0015,
-	FIELD_EXPERIENCE_MAX_PER_DAY = 1.2,				-- Most xp you can gain per day
-	EXPEDITIONARY_FIELD_EXPERIENCE_SCALE = 0.3,		-- reduction factor in Xp from expeditionary forces
-	LEND_LEASE_FIELD_EXPERIENCE_SCALE = 0.0005,		-- Experience scale for lend leased equipment used in combat.
-	LEADER_EXPERIENCE_SCALE = 1.0,
-	SLOWEST_SPEED = 3,
-	REINFORCEMENT_REQUEST_MAX_WAITING_DAYS = 14,   -- Every X days the equipment will be sent, regardless if still didn't produced all that has been requested.
-	REINFORCEMENT_REQUEST_DAYS_FREQUENCY = 7,	   -- How many days must pass until we may give another reinforcement request
-	EXPERIENCE_COMBAT_FACTOR = 0.05,
-	UNIT_DIGIN_CAP = 5,                           -- how "deep" you can dig you can dig in until hitting max bonus
-	UNIT_DIGIN_SPEED = 1,						   -- how "deep" you can dig a day.
-	PARACHUTE_FAILED_EQUIPMENT_DIV = 80.0,		   -- When the transport plane was shot down, we drop unit with almost NONE equipment
-	PARACHUTE_FAILED_MANPOWER_DIV = 80.0,		   -- When the transport plane was shot down, we drop unit with almost NONE manpower
-	PARACHUTE_FAILED_STR_DIV = 4.0,			  		 -- When the transport plane was shot down, we drop unit with almost NONE strenght
-	PARACHUTE_DISRUPTED_EQUIPMENT_DIV = 1,	       -- When the transport plane was hit, we drop unit with reduced equipment. Penalty is higher as more hits was received (and AA guns was in the state).
-	PARACHUTE_DISRUPTED_MANPOWER_DIV = 1,	       -- When the transport plane was hit, we drop unit with reduced manpower. Penalty is higher as more hits was received (and AA guns was in the state).
-	PARACHUTE_DISRUPTED_STR_DIV = 1,			   -- When the transport plane was hit, we drop unit with reduced strength. Penalty is higher as more hits was received (and AA guns was in the state).
-	PARACHUTE_PENALTY_RANDOMNESS = 0.1,			   -- Random factor for str,manpower,eq penalties.
-	PARACHUTE_DISRUPTED_AA_PENALTY = 1,            -- How much the Air defence in the state (from AA buildings level * air_defence) is scaled to affect overall disruption (equipment,manpower,str).
-	PARACHUTE_COMPLETE_ORG = 0.75,				   -- Organisation value (in %) after unit being dropped, regardless if failed, disrupted, or successful.
-	PARACHUTE_ORG_REGAIN_PENALTY_DURATION = 72,   -- penalty in org regain after being parachuted. Value is in hours.
-	PARACHUTE_ORG_REGAIN_PENALTY_MULT = -0.5,	   -- penalty to org regain after being parachuted.
-	SHIP_MORALE_TO_ORG_REGAIN_BASE = 0.2,			   -- Base org regain per hour
-	BASE_NIGHT_ATTACK_PENALTY = -0.5,
-	EXILE_EQUIPMENT = 1.0,						   -- Amount of equipment to keep
-	EXILE_ORG = 0.0,							   -- Amount of org to keep
-	EXPERIENCE_LOSS_FACTOR = 1.00,                 -- percentage of experienced solders who die when manpower is removed
-	EQUIPMENT_COMBAT_LOSS_FACTOR = 0.75,		   -- % of equipment lost to strength ratio in combat, so some % is returned if below 1
-	SUPPLY_USE_FACTOR_MOVING = 1.5,                -- Deprecated/Unused
-	SUPPLY_USE_FACTOR_INACTIVE = 0.95,			   -- Deprecated/Unused
-	SUPPLY_GRACE = 72,							   -- troops always carry 3 days of food and supply
-	SUPPLY_GRACE_MAX_REDUCE_PER_HOUR = 1,          -- supply grace is not decreased instantly when it is buffed temporarily and buff is removed
-	SUPPLY_ORG_MAX_CAP = 0.2,                      -- Max organization is factored by this if completely out of supply
-	MAX_OUT_OF_SUPPLY_DAYS = 28, 				   -- how many days of shitty supply until max penalty achieved
-	OUT_OF_SUPPLY_ATTRITION = 1.0,                 -- max attrition when out of supply
-	OUT_OF_SUPPLY_SPEED = -0.2,                    -- max speed reduction from supply
-	NON_CORE_SUPPLY_SPEED = -0.4,				   -- we are not running on our own VP supply so need to steal stuff along the way
-	NON_CORE_SUPPLY_AIR_SPEED = -0.2,			   -- we are not running on our own VP supply so need to steal stuff along the way, a bit less due to air supply
-	OUT_OF_SUPPLY_MORALE = -0.3,                   -- max org regain reduction from supply
-	TRAINING_ATTRITION = 0.03,		  			   -- amount of extra attrition from being in training
-	TRAINING_MIN_STRENGTH = 0.95,				   -- if strength is less than this, the unit will pause training until it's been reinforced
-	TRAINING_MAX_DAILY_COUNTRY_EXP = 0.08,         -- Maximum army XP gained per day from training
-	AIR_SUPPORT_BASE = 0.3,                        -- CAS bonus factor for air support moddifier for land unit in combat
-	LOW_SUPPLY = 0.99,							   -- When the supply status of an unit becomes low.
-	BORDER_WAR_ATTRITION_FACTOR = 0.1,			   -- How much of borderwar balance of power makes it into attrition
-	BORDER_WAR_VICTORY = 0.8,					   -- At wich border war balance of power is victory declared
-	REINFORCE_CHANCE = 0.02,                 	   -- base chance to join combat from back line when empty
-	SPEED_REINFORCEMENT_BONUS = 0.05,              -- chance to join combat bonus by each 100% larger than infantry base (up to 200%)
-	OVERSEAS_LOSE_EQUIPMENT_FACTOR = 0.75,		   -- percentage of equipment lost disbanded overseas
-	NAVAL_TRANSFER_DISBAND_MANPOWER_FACTOR = 0.5,  -- percentage of manpower returned when a naval transfering unit is disbanded
-	ENCIRCLED_DISBAND_MANPOWER_FACTOR = 0.2,       -- percentage of manpower returned when an encircled unit is disbanded
-	ORG_LOSS_FACTOR_ON_CONQUER = 0.15,              -- percentage of (max) org loss on takign enemy province
-	LOW_ORG_FOR_ATTACK = 0.25,                      -- at what org % we start affecting speed when doign hostile moves. scales down ZERO_ORG_MOVEMENT_MODIFIER
-
-	PLANNING_DECAY = 0.01,
-	PLAYER_ORDER_PLANNING_DECAY = 0.01,				-- Amount of planning lost due to player manual order
-	PLANNING_GAIN = 0.01,
-	NAVAL_INVASION_PLANNING_BONUS_GAIN = 0.02,		-- Planning Bonus gain per day for naval invasions
-	NAVAL_INVASION_PLANNING_BONUS_MALUS = -1,		-- Malus in percentage for the planning bonus gain for naval invasions
-	PLANNING_MAX = 0.0,                           	-- can get more from techs
-	CIVILWAR_ORGANIZATION_FACTOR = 0.5,			  	-- Multiplier of org for both sides when civilwar.
-	PLAN_CONSIDERED_GOOD = 0.2,						-- Plan evaluations above this value are considered more or less safe
-	PLAN_CONSIDERED_BAD = -0.5,						-- Plan evaluations below this value are considered unsafe
-	PLAN_MIN_AUTOMATED_EMPTY_POCKET_SIZE = 15,		-- The battle plan system will only automatically attack provinces in pockets that has no resistance and are no bigger than these many provinces
-	PLAN_SPREAD_ATTACK_WEIGHT = 12,					-- The higher the value, the less it should crowd provinces with multiple attacks.
-	PLAN_NEIGHBORING_ENEMY_PROVINCE_FACTOR = 0.7,	-- When calculating the importance of provinces, it takes number of enemy provinces into account, factored by this
-	PLAN_PROVINCE_BASE_IMPORTANCE = 2.0,			-- Used when calculating the calue of front and defense area provinces for the battle plan system
-
-	PLAN_PROVINCE_LOW_VP_DEFENSE_THRESHOLD = 1.0,      -- For area defense VP orders, what are the thresholds for "low", "medium" and "high" VP values
-	PLAN_PROVINCE_MEDIUM_VP_DEFENSE_THRESHOLD = 10.0,   -- see above
-	PLAN_PROVINCE_HIGH_VP_DEFENSE_THRESHOLD = 25.0,    -- see above
-	PLAN_PROVINCE_LOW_VP_DEFENSE_IMPORTANCE = 2.0,     -- For area defense VP orders, use this value for relative importance
-	PLAN_PROVINCE_MEDIUM_VP_DEFENSE_IMPORTANCE = 5.0,  -- see above
-	PLAN_PROVINCE_HIGH_VP_DEFENSE_IMPORTANCE = 10.0,   -- see above
-	PLAN_PROVINCE_CAPITAL_DEFENSE_IMPORTANCE = 50.0,   -- For area defense VP orders, boost importance value with this if it's the capital
-	MIN_VP_NEEDED_FOR_DEFENSE_ORDER_ASSIGNMENTS = 0.0, -- For area devense VP orders, ignore provinces with VP <= this value
-
-	PLAN_PROVINCE_LOW_VP_IMPORTANCE_FRONT = 1.0,    -- Used when calculating the calue of fronts in the battle plan system
-	PLAN_PROVINCE_MEDIUM_VP_IMPORTANCE_FRONT = 2.25, -- Used when calculating the calue of fronts in the battle plan system
-	PLAN_PROVINCE_HIGH_VP_IMPORTANCE_FRONT = 2.75,  -- Used when calculating the calue of fronts in the battle plan system
-
-	PLAN_SHARED_FRONT_PROV_IMPORTANCE_FACTOR = 0.8,	-- If fornt orders share end provinces, they should each have a somewhat reduced prio due to it being shared.
-
-	PLAN_PORVINCE_PORT_BASE_IMPORTANCE = 18.0,		-- Added importance for area defense province with a port
-	PLAN_PORVINCE_PORT_LEVEL_FACTOR = 0.5,			-- Bonus factor for port level
-	PLAN_PORVINCE_AIRFIELD_BASE_IMPORTANCE = 3.0,	-- Added importance for area defense province with air field
-	PLAN_PORVINCE_AIRFIELD_POPULATED_FACTOR = 1.5,	-- Bonus factor when an airfield has planes on it
-	PLAN_PORVINCE_AIRFIELD_LEVEL_FACTOR = 0.25,		-- Bonus factor for airfield level
-	PLAN_PORVINCE_RESISTANCE_BASE_IMPORTANCE = 150.0, -- Used when calculating the calue of defense area provinces for the battle plan system (factored by resistance level)
-	PLAN_PROVINCE_VP_PORT_FACTOR = 0.25,
-
-	-- These need to result in province value > 1.0 for it to matter.
-	PLAN_AREA_DEFENSE_ENEMY_CONTROLLER_SCORE = 25.0,-- Score applied to provinces in the defense area order controlled by enemies
-	PLAN_AREA_DEFENSE_ENEMY_UNIT_FACTOR = -2.0,		-- Factor applied to province score in area defense order per enemy unit in that province
-	PLAN_AREA_DEFENSE_FORT_IMPORTANCE = 0.25,		-- Used when calculating the value of defense area provinces for the battle plan system, works as multipliers on the rest
-	PLAN_AREA_DEFENSE_COASTAL_FORT_IMPORTANCE = 3.0,-- Used when calculating the value of defense area provinces for the battle plan system
-	PLAN_AREA_DEFENSE_COAST_NO_FORT_IMPORTANCE = 1.1,-- Used when calculating the value of defense area provinces for the battle plan system
-	PLAN_AREA_DEFENSE_HAS_RAIL_IMPORTANCE = 1.5,	-- Used when calculating the value of defense area provinces for the battle plan system
-	PLAN_AREA_DEFENSE_HAS_SUPPLY_NODE = 20.0,		-- Used when calculating the value of defense area provinces for the battle plan system
-	PLAN_AREA_DEFENSE_FACILITY = 15.0,               -- Used when calculating the value of defense area provinces for the battle plan system
-
-	PLAN_STICKINESS_FACTOR = 100.0,					-- Factor used in unitcontroller when prioritizing units for locations
-
-	PLAN_PROVINCE_PRIO_DISTRIBUTION_MIN = 0.7,		-- Lowest fraction of divisions that will be distributed based on province priority
-	PLAN_PROVINCE_PRIO_DISTRIBUTION_MAX = 1.0,		-- Highest fraction of divisions that will be distributed based on province priority
-	PLAN_PROVINCE_PRIO_DISTRIBUTION_DPP_HIGH = 3.0, -- At what divisions per province should we use PLAN_PROVINCE_PRIO_DISTRIBUTION_MIN
-	PLAN_PROVINCE_PRIO_DISTRIBUTION_DPP_LOW = 2.0,	-- At what divisions per province should we use PLAN_PROVINCE_PRIO_DISTRIBUTION_MAX
-
-	PLAN_EXECUTE_CAREFUL_LIMIT = 25,				-- When looking for an attach target, this score limit is required in the battle plan to consider province for attack
-	PLAN_EXECUTE_BALANCED_LIMIT = 0,				-- When looking for an attach target, this score limit is required in the battle plan to consider province for attack
-	PLAN_EXECUTE_RUSH = -15,						-- When looking for an attach target, this score limit is required in the battle plan to consider province for attack
-	PLAN_EXECUTE_CAREFUL_MAX_FORT = 5,				-- If execution mode is set to careful, units will not attack provinces with fort levels greater than or equal to this
-
-	-- order by EExecutionType: careful, balanced, rush, <skip>, rush_weak
-	PLAN_EXECUTE_SUPPLY_CHECK = { 1.0, 0.0, 0.0, 1.0, 0.0 }, -- for each execution mode how careful should we be with supply (1.0 means full required supply available, zero is no limit).
-
-	PLAN_MAX_PROGRESS_TO_JOIN = 0.50,				-- If Lower progress than this, probably needs support
-	COHESION_IMMOBILE_PLANNING_SPEED_MULTIPLIER = 1,	-- If using the 'immobile' cohesion setting, factor ALL planning speed growth by this
-	PLAN_COHESION_WEIGHTS = { 1.0, 40.0, 80.0, 100.0 }, 	-- for each cohesion setting, how keen on relocating from distance should we be? (default 1.0), higher weight = shorter max distance. The last entry is special-cased, the value should have no effect and units will just not move anywhere, ever.
-	PLAN_COHESION_DISTANCE_MAX_WHEN_LEFT_BEHIND = 38,	--Unused and deprecated - will be removed in next major version.
-
-	PLAN_BLITZ_OPTIMISM = 0.2,						-- Additional combat balance value in favor of blitzing side when considering targets (not a combat bonus, just offsets planning)
-	MIN_BALANCE_SCORE_TO_PROCEED_ATTACK = 0.2,		--A combat balance score of less than this will prevent auto attacking
-	DYNAMIC_MODIFIER_ATTACK_BIAS = 1.0,				--This factors the weighting bias of dynamic attack modifiers
-
-	FLANKED_PROVINCES_COUNT = 3,					-- Attacker has to attack from that many provinces for the attack to be considered as flanking
-	EQUIPMENT_REPLACEMENT_RATIO = 0,				-- Equipment min ratio after blocking the equipment type
-	NUKE_DELAY_HOURS = 12,							-- How many hours does it take for the nuclear drop to happen
-	PARADROP_PENALTY = -0.4, 						-- Combat penalty when recently paradropped
-	PARADROP_HOURS = 24,							-- time paratroopers suffer penalties in combat
-	COMBAT_SUPPLY_LACK_ATTACKER_ATTACK = -0.6,     -- attack combat penalty for attacker if out of supply
-	COMBAT_SUPPLY_LACK_ATTACKER_DEFEND = -0.6,     -- defend combat penalty for attacker if out of supply
-	COMBAT_SUPPLY_LACK_DEFENDER_ATTACK = -0.6,     -- attack combat penalty for defender if out of supply
-	COMBAT_SUPPLY_LACK_DEFENDER_DEFEND = -0.6,     -- defend combat penalty for defender if out of supply
-	COMBAT_STACKING_START = 8,						-- at what nr of divisions stacking penalty starts
-	COMBAT_STACKING_EXTRA = 4,                      -- extra stacking from directions
-	COMBAT_STACKING_PENALTY = -0.08,                -- how much stackign penalty per division
-	COMBAT_OVER_WIDTH_PENALTY = -0.8,					-- over combat width penalty per %.
-	COMBAT_OVER_WIDTH_PENALTY_MAX = -0.4,			-- over combat width max (when you cant join no more).
-	RETREAT_SPEED_FACTOR = 0.4,                    -- speed bonus when retreating
-	WITHDRAWING_SPEED_FACTOR = 0.2,					-- speed bonus when withdrawing
-	STRATEGIC_SPEED_INFRA_BASE = 2.0,               -- Base speed of strategic redeployment when not on railways
-	STRATEGIC_SPEED_INFRA_MAX = 6.0,               -- Additional speed of strategic redeployment on max-level infrastructure
-	STRATEGIC_SPEED_RAIL_BASE = 4.0,               -- Base speed of strategic redeployment when on railways
-	STRATEGIC_SPEED_RAIL_MAX = 12.0,                -- Additional speed of strategic redeployment on max-level railways
-	STRATEGIC_REDEPLOY_ORG_RATIO = 0.1,			    -- Ratio of max org while strategic redeployment
-	BATALION_NOT_CHANGED_EXPERIENCE_DROP = 0.0,		-- Division experience drop if unit has same batalion
-	BATALION_CHANGED_EXPERIENCE_DROP = 0.75,			-- Division experience drop if unit has different batalion
-	ARMOR_VS_AVERAGE = 0,			                -- how to weight in highest armor & pen vs the division average
-	PEN_VS_AVERAGE = 0,
-
-	LAND_EQUIPMENT_BASE_COST = 8,					-- Cost in XP to upgrade a piece of equipment one level is base + ( total levels * ramp )
-	LAND_EQUIPMENT_RAMP_COST = 4,
-	NAVAL_EQUIPMENT_BASE_COST = 8,
-	NAVAL_EQUIPMENT_RAMP_COST = 4,
-	AIR_EQUIPMENT_BASE_COST = 8,
-	AIR_EQUIPMENT_RAMP_COST = 4,
-
-	FASTER_ORG_REGAIN_LEVEL = 0.33,
-	FASTER_ORG_REGAIN_MULT = 0.8,
-	SLOWER_ORG_REGAIN_LEVEL = 0.66,
-	SLOWER_ORG_REGAIN_MULT = -0.4,
-
-	DISBAND_MANPOWER_LOSS = 0.0,
-	MIN_DIVISION_DEPLOYMENT_TRAINING = 0.2,			-- Min level of division training
-
-	FRONTLINE_EXPANSION_FACTOR = 0.7,				-- When attacking along a frontline, how much should units spread out as they advance. 0.0 means head (more or less) directly to the drawn frontline, with no distractions
-	FRONT_MIN_PATH_TO_REDEPLOY = 4,					-- If a units path is at least this long to reach its front location, it will strategically redeploy.
-	ARMY_INITIATIVE_REINFORCE_FACTOR = 0.4,			-- scales initiative for reinforce chance
-
-	BASE_CAPTURE_EQUIPMENT_RATIO = 0.001,				-- after a successful land combat, ratio of the equipments that are being captured/salvaged from enemy's lost equipment
-
-	ACCLIMATIZATION_IN_COMBAT_SPEED_FACTOR = 3,		-- Acclimatization speed multiplier while being in combat.
-	ACCLIMATIZATION_SPEED_GAIN = 0.02,				-- A variable used to balance the overall speed of gaining the acclimatization
-	ACCLIMATIZATION_LOSS_SPEED_FACTOR = 2.0,		-- Loosing one acclimatization while being under affect of the opposite climate should cause it to drop down much faster than gaining.
-
-
-	PROMOTE_LEADER_CP_COST = 10.0,					-- cost of promoting a leader
-
-	FIELD_MARSHAL_ARMY_BONUS_RATIO = 0.5,           -- ratio to apply regular bonuses FM bonuses to armies
-
-	FIELD_MARSHAL_XP_RATIO = 0.5,					-- xp gain ratio for army group leaders
-
-	GARRISON_ORDER_ARMY_CAP_FACTOR = 1,			-- armies gets increased cap when they are garrisoned
-
-	COMMANDER_LEVEL_UP_STAT_COUNT = 4, 				-- num stats gained on level up
-	COMMANDER_LEVEL_UP_STAT_WEIGHTS = {3, 5, 4, 4}, -- level up stat random base weights attack, defense, planning, logistics
-
-	NAVY_LEADER_LEVEL_UP_STAT_WEIGHTS = {5, 5, 5, 5}, -- level up stat random base weights attack, defense, maneuvering, coordination
-
-	UNIT_LEADER_INITIAL_TRAIT_SLOT = { 				-- trait slot for 0 level leader
-		1.0, -- field marshal
-		1.0, -- corps commander
-		1.0, -- navy general
-		0.0, -- operative
-	},
-
-	UNIT_LEADER_TRAIT_SLOT_PER_LEVEL = { 			-- num extra traits on each level
-		0.4, -- field marshal
-		0.25, -- corps commander
-		0.5, -- navy general
-		0.0, -- operative
-	},
-
-	UNIT_LEADER_USE_NONLINEAR_XP_GAIN = true,       -- Whether unit leader XP gain is scaled by 1/<nr_of_traits>
-
-	HOURS_REQ_REJOIN_BORDER_WAR_FOR_INJURED_UNITS = 336, -- minimum hours required for units to rejoin border wars
-
-	NEW_COMMANDER_RANDOM_PERSONALITY_TRAIT_CHANCES = {  -- chances to gain a personality trait for new generals
-		1.00, -- 75% for first trait
-		0.5,  -- 50% for second trait after that
-		0.25  -- 25% for third trait after that
-	},
-
-	NEW_COMMANDER_RANDOM_BASIC_TRAIT_CHANCES = {  -- chances to gain a basic trait for new generals
-		0.5, -- 50% for first trait
-		0.15,  -- 15% for second trait after that
-		0.05  -- 5% for third trait after that
-	},
-
-	NEW_COMMANDER_RANDOM_STATUS_TRAIT_CHANCES = {  -- chances to gain a status trait for new generals
-		0.1, -- 10% for first trait
-		0.05  -- 5% for second trait after that
-	},
-
-	NEW_OPERATIVE_RANDOM_PERSONALITY_TRAIT_CHANCES = {  -- chances to gain a personality trait for new operatives
-		0.5, -- 50% for first trait
-		0.1  -- 10% for second trait after that
-	},
-
-	NEW_OPERATIVE_RANDOM_BASIC_TRAIT_CHANCES = {  -- chances to gain a basic trait for new operatives
-		0.25, -- 25% for first trait
-		0.05  -- 5% for second trait after that
-	},
-
-	NEW_OPERATIVE_RANDOM_STATUS_TRAIT_CHANCES = {  -- chances to gain a status trait for new operatives
-	},
-
-	NEW_COMMANDER_RANDOM_SKILL_CHANCES = {  -- chances to give a random stat skill for new operatives
-	},
-
-	NEW_NAVY_LEADER_RANDOM_SKILL_CHANCES = { -- chances to give a random stat skill point for a new admiral
-	},
-
-	UNIT_LEADER_MODIFIER_COOLDOWN_ON_GROUP_CHANGE = 14,		-- time in days for a unit leader to regain its modifiers
-	UNIT_LEADER_ASSIGN_TRAIT_COST = 5,					-- cost to assign a new trait to a unit leader
-	ATTACHED_WINGS_ORDER_UPDATE_DAYS = 5,					-- Days untill the attached wing will update the order
-
-	UNIT_LEADER_MODIFIER_COOLDOWN_ON_DEPLOY = 5,		-- base time in days for a unit leader to be deployed while not already deployed. Instantaneous if 0. Scaled by HQ template manpower.
-	UNIT_LEADER_MODIFIER_COOLDOWN_ON_DEPLOY_MIN = 3,		-- minimum cooldown in days for deploying a unit leader, even for very small HQ templates
-	UNIT_LEADER_MODIFIER_COOLDOWN_ON_REDEPLOY = 7,		-- time in days for a unit leader to de redeployed to a new unit. Instantaneous if 0
-	UNIT_LEADER_MODIFIER_COOLDOWN_ON_WITHDRAW = 5,		-- base time in days for withdrawing a deployed unit leader. Instantaneous if 0. Scaled by HQ template manpower.
-	UNIT_LEADER_MODIFIER_COOLDOWN_ON_WITHDRAW_MIN = 3,		-- minimum cooldown in days for withdrawing a unit leader, even for very small HQ templates
-	UNIT_LEADER_MODIFIER_COOLDOWN_REFERENCE_MANPOWER = 250,	-- reference manpower for deploy/withdraw cooldown scaling. At this value, delay equals the base.
-	UNIT_LEADER_MODIFIER_COOLDOWN_MANPOWER_EXPONENT = 1.1,		-- exponent for manpower scaling (>1 = big divisions punished harder)
-
-	BORDER_WAR_WIN_DAYS_AGAINST_EMPTY_OPPONENTS = 30,		-- border wars will be automatically won if no opponent shows up for this duration
-
-
-	MAX_RELATIVE_COMBAT_DAMAGE_TO_MODIFY_XP = 5.0,			-- you gain more XP if you are doing more damage relative to enemy, this is the max relative amount to gain following RATe
-	XP_GAIN_FACTOR_FOR_MAX_RELATIVE_COMBAT_DAMAGE = 5.0,	-- XP factor scaling for max relative combat damage
-
-	XP_DECAY_RATE_PER_HOUR_IN_COMBAT = 0.05,				-- you get reduced XP as combat drags
-	MIN_XP_RATE_TO_DECAY = 0.25,								-- minimum XP factor for dragged combats
-
-	XP_GAIN_PER_OVERRUN_UNIT = 60.0,						-- fixed XP gain per overrun unit
-	XP_GAIN_FOR_SHATTERING = 40.0,                          -- fixed XP gain per shattered unit
-
-	UNIT_UPKEEP_ATTRITION = 0.00,							--Constant attrition value applied to armies.
-
-	FUEL_PENALTY_START_RATIO = 0.2,				-- ratio of fuel in an army to start getting penalties
-	FUEL_PENALTY_START_RATIO_BUFFER = 0.1,				-- buffer that keeps the out-of-fuel alert open even when above the FUEL_PENALTY_START_RATIO threshold, so that it doesn't spam-ping when fluctuating
-	
-	SURPLUS_SUPPLY_RATIO_FOR_ZERO_FUEL_FLOW = 0.5,		-- if a supply chunk has more supply needed than this ratio + 1 compared to its max supply flow, the units inside the chiunk will get no fuel
-
-	ARMY_MAX_FUEL_FLOW_MULT = 1.2,					-- max fuel ratio that an army can get per hour, multiplied by supply situation
-
-	ARMY_FUEL_COST_MULT = 0.5,						-- fuel cost multiplier for all army related stuff
-	ARMY_COMBAT_FUEL_MULT =   0.4,					-- fuel consumption ratio in combat (plus ARMY_MOVEMENT_FUEL_MULT if you are also moving. ie offensive combat)
-	ARMY_TRAINING_FUEL_MULT = 0.8,					-- fuel consumption ratio while training
-	ARMY_MOVEMENT_FUEL_MULT = 0.8,					-- fuel consumption ratio while moving
-	ARMY_NAVAL_TRANSFER_FUEL_MULT = 0.2,			-- fuel consumption ratio while naval transferring
-	ARMY_STRATEGIC_DEPLOYMENT_FUEL_MULT = 0.4,		-- fuel consumption ratio while doing strategic deployment
-	ARMY_IDLE_FUEL_MULT = 0.0,						-- fuel consumption ratio while just existing
-	FUEL_EFFICIENCY_RAID_MULTIPLIER = 1.0,			-- convoy raid multiplier for fuel sunk
-
-	FUEL_FLOW_PENALTY_FOR_SUPPLY_CHUNK_EDGE_RATIO = 0.5, -- supply flow that is limited by control of incoming edge provinces will have lesser effect on fuel flow
-
-	OUT_OF_FUEL_EQUIPMENT_MULT = 0.2,				-- ratio of the stats that you get from equipments that uses fuel and you lack it
-	OUT_OF_FUEL_SPEED_MULT = 0.2,					-- speed mult that armies get when out of fuel
-	OUT_OF_FUEL_TRAINING_XP_GAIN_MULT = 0.0,		-- xp gain mult from training when a unit is out of fuel
-	FUEL_CAPACITY_DEFAULT_HOURS = 168,				-- default capacity if not specified
-
-	MAX_ESTIMATED_PLAN_UNITS_NOT_IN_PLACE_FACTOR = -0.6, 	--Scaled by % of units not in place. Used to be a flat -50%
-	DAMAGE_SPLIT_ON_FIRST_TARGET = 0.2,			--% of damage dealt to the first target in a combat. The rest will be split amongst subsequent targets. Modifiers can affect this up to a maximum of 0.9. That value must not be exposed as a define.
-
-
-	NEW_ARMY_LEADER_LEVEL_CHANCES = {				-- chances for new army leaders to start at a given level
-		0.45,  -- 45% for level one
-		0.30,   -- 30% for level two
-		0.15,   -- 15% for level three
-		0.07,   -- 7% for level four
-		0.03  -- 3%  for level five
-    	  -- 0%  for level six to twenty
-	},
-	
-	FIGHTING_STRENGTH_DEATH_THRESHOLD = 0.001,		-- fighting strength below which divisions die from attrition
-	FIGHTING_STRENGTH_HQ_ALERT_THRESHOLD = 0.2,		-- fighting strength below which deployed leader have an alert glow on their portrait
-
-	COMMANDER_ABILITY_BASE_RANGE = 4,                  -- Base radius range of commander abilities
-
-	COMMS_MAX_DISTANCE = 5,														-- If N is >= the size of the below arrays, the last value will be considered repeated
-	PLANNING_CAP_COMMS_SCALING = { 1.0, 1.0, 0.8, 0.5, 0.1 },					-- Value at index J is the scaling applied to planning cap when HQ is J provinces behind the frontline
-	PLANNING_CAP_NO_HQ_SCALING = 0.0,											-- Scaling applied to planning cap when there's no HQ (no leader or leader not deployed or not the same root order)
-	PLANNING_SPEED_COMMS_SCALING = { 1.0, 1.0, 0.8, 0.5, 0.1 },					-- Same as PLANNING_CAP_COMMS_SCALING but for planning speed
-	PLANNING_SPEED_NO_HQ_SCALING = 0.0,											-- Same as PLANNING_CAP_NO_HQ_SCALING but for planning speed
-	LEADER_MOD_COMMS_SCALING = { 1.0, 1.0, 0.8, 0.5, 0.1 },					 	-- Same as PLANNING_CAP_COMMS_SCALING but for leader modifiers
-	LEADER_MOD_NO_HQ_SCALING = 0.0,												-- Same as PLANNING_CAP_NO_HQ_SCALING but for leader modifiers
-	ABILITY_COMMS_SCALING = { 1.0, 1.0, 0.8, 0.5, 0.1 },						-- Same as PLANNING_CAP_COMMS_SCALING but for active abilities
-	ABILITY_NO_HQ_SCALING = 0.1,												-- Same as PLANNING_CAP_NO_HQ_SCALING but for active abilities
-	GENERAL_PROXIMITY_CLOSE = 1,												-- At the "close" proximity setting, the general should stay this many provinces behind the frontline
-	GENERAL_PROXIMITY_MEDIUM = 2,												-- At the "medium" proximity setting, the general should stay this many provinces behind the frontline
-	GENERAL_PROXIMITY_FAR = 3,													-- At the "far" proximity setting, the general should stay this many provinces behind the frontline
-	GENERAL_PROXIMITY_DEFAULT = 1,												-- The default proximity setting for a deployed general. This number should correspond to one of the values above
-	GENERAL_RANK_TO_ARMY_HQ_EXP_LEVEL_FACTOR = 2,								-- The general's rank is multiplied by this factor (rounded up) to determine the spawned Army HQ division's experience level
-	ARMY_HQ_REQUISITION_MINIMUM_REMAINING_PERCENTAGE = 10,						-- When deploying an Army HQ, divisions will not have their equipment or manpower requisitioned below this percentage of their target manpower or equipment
-
-	PREFERRED_PRISON_VP = 5,	-- When capturing a general, try to find a province with at least that much VP to imprison them. The effective prison VP can be lower than that, if the capturing country doesn't have any province with at least this amount of VP
-},
-
-
-NAir = {
-	AIR_INVASION_PREPARE_DAYS = 2,						-- base days needed to prepare an airborne invasion
-	AIR_INVASION_PLAN_CAP = 1000,						-- base cap of airborne invasions can be planned at the same time
-	AIR_WING_FLIGHT_SPEED_MULT = 0.03,					-- Global speed multiplier for airplanes (affects fe.transferring to another base)
-	AIR_WING_MAX_STATS_ATTACK = 120,					-- Max stats
-	AIR_WING_MAX_STATS_DEFENCE = 40,
-	AIR_WING_MAX_STATS_AGILITY = 120,
-	AIR_WING_MAX_STATS_SPEED = 800,
-	AIR_WING_MAX_STATS_BOMBING = 160,
-	AIR_WING_MAX_SIZE = 40, 							-- Max amount of airplanes in wing
-	AIR_WING_AVERAGE_SIZE = 40, 						-- Eyeballed average amount of airplanes in wing. Used when calculating air volunteer.
-	AIR_WING_BOMB_DAMAGE_FACTOR = 3,					-- Used to balance the damage done while bombing.
-	BASE_AIR_INVASION_DIVISION_CAP = 1000,				-- base cap of divisions that can be assigned in a airborne invasion	
-	BIGGEST_AGILITY_FACTOR_DIFF = 4,					-- biggest factor difference in agility for doing damage (caps to this)
-	BIGGEST_SPEED_FACTOR_DIFF = 4,						-- biggest factor difference in speed for doing damage (caps to this)
-	TOP_SPEED_DAMAGE_BONUS_FACTOR = 0.002,				-- A factor for scaling the top speed of a plane into damage buff. If an attacking wing has a speed advantage of any form their speed value will be converted into a percentage bonus with this modifier
-	COMBAT_DAMAGE_STATS_MULTILPIER = 8,
-	CARRIER_COMBAT_DAMAGE_STATS_MULTIPLIER = 8,
-	COMBAT_BETTER_AGILITY_DAMAGE_REDUCTION = 1.75, 		-- How much the better agility (than opponent's) can reduce their damage to us.
-	COMBAT_BETTER_SPEED_DAMAGE_INCREASE = 2.35, 		-- How much the better Speed (than opponent's) can increase our damage to them.
-														-- Both of these defines are combined with their sister FACTOR_DIFF defines to create defense or offensive buffs
-														-- In both cases the maximum bonus or reduction is (BIGGEST_X_FACTOR_DIFF - 1) * COMBAT_BETTER_X_DAMAGE_Y * Damage
-	COMBAT_MAX_WINGS_AT_ONCE = 10000, 					-- Max amount of air wings in one combat simulation. The higher value, the quicker countries may loose their wings. It's a gameplay balance value.
-	COMBAT_MAX_WINGS_AT_GROUND_ATTACK = 10000,	        -- we can really pounce a land strike and escalate
-	COMBAT_MAX_WINGS_AT_ONCE_PORT_STRIKE = 10000,       -- we can really pounce a naval strike and escalate
-	AIR_REGION_SUPERIORITY_PIXEL_SCALE = 0.01,          -- air superiority scale = superiority/(pixels*this)
-	COMBAT_MULTIPLANE_CAP = 3.0,						-- How many planes can shoot at each plane on other side ( if there are 100 planes we are atttacking COMBAT_MULTIPLANE_CAP * 100 of our planes can shoot )
-	COMBAT_DAMAGE_SCALE = 0.02,							-- Higher value = more shot down planes
-	COMBAT_DAMAGE_SCALE_CARRIER = 0.5,					-- same as above but used inside naval combat for carrier battles
-	CARRIER_PERCENTAGE_DEFEND = 0.35,					-- Percentage of planes able to defend a carrier from air attacks (historically 15% - 35%)
-	DETECT_CHANCE_FROM_OCCUPATION = 0.1, 				-- How much the controlled provinces in area affects the air detection base value.
-	DETECT_CHANCE_FROM_RADARS = 0.75, 					-- How much the radars in area affects detection chance.
-	DETECT_CHANCE_FROM_AIRCRAFTS_EFFECTIVE_COUNT = 2000, -- Max amount of aircrafts in region to give full detection bonus.
-	DETECT_CHANCE_FROM_AIRCRAFTS = 0.6,					-- How much aircrafts in region improves air detection (up to effective count).
-	DETECT_CHANCE_FROM_NIGHT = -0.5,					-- How much the night can reduce the air detection. (see static modifiers to check how weather affects it too.)
-	DETECT_EFFICIENCY_BASE = 0.1,						-- Base value for detection efficiency (once something detected, efficiency says how many airplanes was detected).
-	DETECT_EFFICIENCY_FROM_RADAR = 0.75,					-- How much radars affect the efficiency.
-	DETECT_EFFICIENCY_RANDOM_FACTOR = 0.25,				-- How much randomness is in amount of detected aircrafts.
-	DAY_NIGHT_COVERAGE_FACTOR = 0.5,					-- The max night coverage in a region that is still considered to be day-time when determining if day/night air missions shall run.
-	HOURS_DELAY_AFTER_EACH_COMBAT = 4,					-- How many hours needs the wing to be ready for the next combat. Use for tweaking if combats happens too often. (generally used as double because of roundtrip)
-	PORT_STRIKES_DELAY_MULTIPLIER = 2,					-- multplies HOURS_DELAY_AFTER_EACH_COMBAT if port strikes
-	CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 4,          -- how often carrier planes do battle inside naval combat
-	CARRIER_SIZE_STAT_INCREMENT = 8,					-- Each Point of carrier_size state adds capacity for this many planes
-	SUBMARINE_CARRIER_SIZE_STAT_INCREMENT = 1,			-- Each Point of carrier_size state adds capacity for this many planes for submarines
-	MISSILE_LAUNCHER_CAPACITY = 10,                     -- The number of missiles per slot
-	MISSILE_LAUNCHER_SLOTS = 1,                         -- The number of missile slots a missile launcher unit can have
-	NAVAL_STRIKE_TARGETTING_TO_AMOUNT = 0.2,			-- Balancing value to convert the naval_strike_targetting equipment stats to chances of how many airplanes managed to do successfull strike.
-	NAVAL_STRIKE_DAMAGE_TO_STR = 2.0,					-- Balancing value to convert damage ( naval_strike_attack * hits ) to Strength reduction.
-	NAVAL_STRIKE_DAMAGE_TO_ORG = 2.0,					-- Balancing value to convert damage ( naval_strike_attack * hits ) to Organisation reduction.
-	NAVAL_STRIKE_CARRIER_MULTIPLIER = 12.0,              -- damage bonus when planes are in naval combat where their carrier is present (and can thus sortie faster and more effectively)
-	FIELD_EXPERIENCE_SCALE = 0.0004,
-	FIELD_EXPERIENCE_MAX_PER_DAY = 2,					-- Most xp you can gain per day
-	CLOSE_AIR_SUPPORT_EXPERIENCE_SCALE = 0.0005,		-- How much the experinence gained by CAS is scaled
-	PARADROP_EXPERIENCE_SCALE = 0.03,					-- How much the experinence gained by paradropping is scaled
-	BOMBING_DAMAGE_EXPERIENCE_SCALE = 0.0002,           -- How much the experinence gained by bombing is scaled
-
-	EXPERIENCE_SCALE_ATTACK_LOGISTICS_NO_TRUCK_CONSUMERS = 0.0001, -- How much country experinence gained by attacking consumers who aren't motorized
-	EXPERIENCE_SCALE_ATTACK_LOGISTICS_NODE_AND_TRAINS = 0.0002,    -- How much country experinence gained by attacking node/trains
-	EXPERIENCE_SCALE_ATTACK_LOGISTICS_TRUCKS = 0.0002,             -- How much country experinence gained by attacking trucks
-	
-	FIELD_EXPERIENCE_FACTOR = 0.7,						-- Factor all air experience gain from missions by this
-	
-	AI_ALLOWED_PLANES_KEPT_IN_RESERVE = 0,			--AI allowed planes is reduced by this percentage. Overflow will be distributed to the next valid order. Worst case, this will result in this % of planes no being assigned any order. 
-	
-	ACCIDENT_CHANCE_BASE = 0.05,						-- Base chance % (0 - 100) for accident to happen. Reduced with higher reliability stat.
-	ACCIDENT_CHANCE_CARRIER_MULT = 1.5,					-- The total accident chance is scaled up when it happens on the carrier ship.
-	ACCIDENT_CHANCE_BALANCE_MULT = 1.0,					-- Multiplier for balancing how often the air accident really happens. The higher mult, the more often.
-	ACCIDENT_CHANCE_RELIABILITY_MULT = 5.0,				-- Multiplier to accident chance per point of missing reliability.
-	ACCIDENT_EFFECT_MULT = 0.001,						-- Multiplier for balancing the effect of accidents
-	ACE_DEATH_CHANCE_BASE = 0.003,						-- Base chance % for ace pilot die when an airplane is shot down in the Ace wing.
-	ACE_DEATH_BY_OTHER_ACE_CHANCE = 1.0,				-- chance to an ace dying by another ace if it was hit by ace in combat
-	ACE_DEATH_CHANCE_PLANES_MULT = 0.001,				-- The more airplanes was lost in a single airplanes (more bloody it was) the higher chance of Ace to die.
-	AIR_AGILITY_TO_NAVAL_STRIKE_AGILITY = 0.045,         		-- conversion factor to bring agility in line with ship AA
-	ACE_EARN_CHANCE_BASE = 0.01,						-- Base chance % for ace pilot creation roll to happen. Happens only when successfully kill airplane/ship or damage the buildings.
-	ACE_EARN_CHANCE_PLANES_MULT = 0.005,				-- Ace generation chance per aircraft. Chance is rolled twice because decimal numbers can't be small enough
-	AIR_DAMAGE_TO_DIVISION_LOSSES = 1.0,				-- factor for conversion air damage to division losses for details statistics of air wings
-	AIR_NAVAL_KAMIKAZE_DAMAGE_MULT = 20.0,				-- Balancing value to increase usual damage to Strength for Kamikaze
-	AIR_NAVAL_KAMIKAZE_LOSSES_MULT = 4.0,          		-- Balancing value to increase usual losses if Kamikaze participating in the battle
-	BASE_KAMIKAZE_DAMAGE = 2.0,                    		-- Base Kamikaze death rate
-	BASE_KAMIKAZE_TARGETING = 2.0,			        	-- Kamikaze can't be a bad target
-	BASE_STRATEGIC_BOMBING_HIT_SHIP_CHANCE = 0.05,		-- Chance to hit a ship in port when it is bombed.
-	BASE_STRATEGIC_BOMBING_HIT_SHIP_DAMAGE_FACTOR = 50,
-	BASE_STRATEGIC_BOMBING_HIT_PLANE_CHANCE = 0.65,		-- Chance to hit a plane in airbase when it is bombed.
-	BASE_STRATEGIC_BOMBING_HIT_PLANE_DAMAGE_FACTOR = 1,
-	AGGRESSION_THRESHOLD = { 0.0, 0.25, 0.5 },			-- Threshold levels for mission aggressivity for air
-
-	ACE_WING_SIZE =	40,								-- size of wing ace bonuses are set up for. if lower more bonus, if higher less bonus
-	ACE_WING_SIZE_MAX_BONUS = 2,               	        -- biggest bonus we can get from having a small wing with an ace on
-	NO_SEARCH_MISSION_DETECT_FACTOR = -0.75,				-- value of planes not on active search missions for detection
-	SUPPLY_NEED_FACTOR = 0.8, 							-- multiplies supply usage
-	SUPPLY_PRIO_FACTOR = 100.0,							-- Effect of supply need per unit for target province picking for air supply
-	CAPACITY_PENALTY = 2,								-- scales penalty of having overcrowded bases.
-	AIR_COMBAT_FINAL_DAMAGE_SCALE = 0.05,               -- % how many max disrupted only planes are alloed to die in a single combat
-	AIR_COMBAT_FINAL_DAMAGE_PLANES = 50,                -- scaling/control for when only very few planes exist to stop roundoff issues
-	AIR_COMBAT_FINAL_DAMAGE_PLANES_FACTOR = 0.1,
-	AA_INDUSTRY_AIR_DAMAGE_FACTOR = -0.08,				-- 5x levels = 60% defense from bombing
-	NAVAL_STRIKE_DETECTION_BALANCE_FACTOR = 0.7,		-- Value used to scale the surface_visibility stats to balance the gameplay, so 100% detection chance still won't spam the strikes.
-	NAVAL_RECON_DETECTION_BALANCE_FACTOR = 0.7,			-- Value used to scale the surface_visibility stats to balance the gameplay, so 100% detection chance still won't spam spotting.
-	LEND_LEASED_EQUIPMENT_EXPERIENCE_GAIN = 0.5,		-- Value used for equipment
-	ANTI_AIR_PLANE_DAMAGE_FACTOR = 0.8,					-- Anti Air Gun Damage factor
-	ANTI_AIR_PLANE_DAMAGE_CHANCE = 0.1,					-- Anti Air Gun hit chance
-	ANTI_AIR_ATTACK_TO_DAMAGE_REDUCTION_FACTOR = 1.0,	-- Balancing value to convert equipment stat anti_air_attack to the damage reduction modifier apply to incoming air attacks against units with AA.
-	ANTI_AIR_MAXIMUM_DAMAGE_REDUCTION_FACTOR = 0.8,	-- Maximum damage reduction factor applied to incoming air attacks against units with AA.
-	AIR_DEPLOYMENT_DAYS = 2,							-- Days to deploy one air wing
-	NAVAL_STRIKE_BASE_STR_TO_PLANES_RATIO = 0.03,		-- Max airbombers to do port strike comparing to strength
-	NAVAL_COMBAT_EXTERNAL_PLANES_JOIN_RATIO = 0.05,		-- Max planes that can join a combat comparing to the total strength of the ships
-	NAVAL_COMBAT_EXTERNAL_PLANES_JOIN_RATIO_PER_DAY = 0.2, -- max extra plane % that can join every day
-	NAVAL_COMBAT_EXTERNAL_PLANES_MIN_CAP = 20,			-- Min cap for planes that can join naval combat
-
-	AIR_MORE_GROUND_CREWS_COST = 5.0,					-- CP cost to maintain more ground crews
-	AIR_MORE_GROUND_CREWS_BOOST = 0.1,					-- Efficienct boost for more ground crews
-
-	EFFICIENCY_REGION_CHANGE_PENALTY_FACTOR = 0.9,				-- Penalty applied for changing region
-	-- Gain should be changed in increments of 0.024 due to precision.
-	EFFICIENCY_REGION_CHANGE_DAILY_GAIN_DEFAULT = 1,	-- Default how much efficiency to regain per day. Gain applied hourly.
-	EFFICIENCY_REGION_CHANGE_DAILY_GAIN_CAS = 0.888,				-- How much efficiency to regain per day. Gain applied hourly.
-	EFFICIENCY_REGION_CHANGE_DAILY_GAIN_NAVAL_BOMBER = 0.192,		-- How much efficiency to regain per day. Gain applied hourly.
-	EFFICIENCY_REGION_CHANGE_DAILY_GAIN_TACTICAL_BOMBER = 0.192,	-- How much efficiency to regain per day. Gain applied hourly.
-	EFFICIENCY_REGION_CHANGE_DAILY_GAIN_FIGHTER = 0.888,			-- How much efficiency to regain per day. Gain applied hourly.
-	EFFICIENCY_REGION_CHANGE_DAILY_GAIN_STRATEGIC_BOMBER = 0.072,	-- How much efficiency to regain per day. Gain applied hourly.
-	EFFICIENCY_REGION_CHANGE_DAILY_GAIN_MARITIME_PATROL_PLANE = 1,
-
-	AIR_WING_XP_MAX = 1200.0, 											--Per plane XP.
-	AIR_WING_XP_LEVELS = { 200, 400, 600, 800, 1000, }, 				--Experience needed to progress to the next level
-	AIR_WING_XP_LOSS_WHEN_KILLED = 250,									--if a plane dies, the game assumes that a pilot with this amount of xp died and recalcs average.
-	AIR_WING_XP_TRAINING_MAX = 200.0, 									--Max average XP achieved with training.
-
-	AIR_WING_XP_TRAINING_MISSION_GAIN_DAILY = 1.5, 						--Daily gain when running training exercise mission
-	AIR_WING_XP_AIR_VS_AIR_COMBAT_GAIN = 2.0, 							--Wings in combat gain extra XP
-	AIR_WING_XP_GROUND_MISSION_COMPLETED_GAIN = 1.0, 					--Bombers bombing, CAS cassing, NBs nbing, kamikazees kamikazeeing, etc.
-	AIR_WING_XP_RECON_MISSION_COMPLETED_GAIN = 1.0, 					--recon mission
-
-	AIR_WING_COUNTRY_XP_FROM_TRAINING_FACTOR = 0.1, 					--Factor on country Air XP gained from wing training
-	AIR_WING_XP_TRAINING_MISSION_ACCIDENT_FACTOR = 1.5, 				--Training exercises cause more accidents
-	AIR_WING_XP_LOSS_REDUCTION_OVER_FRIENDLY_TERRITORY_FACTOR = 0.25, 	--Reduction on XP loss over friendly territory
-
-	DISRUPTION_FACTOR = 4.0,									-- multiplier on disruption damage to scale its effects on planes
-	DISRUPTION_FACTOR_CARRIER = 8.0,							-- multiplier on disruption damage to scale its effects on carrier vs carrier planes
-	DISRUPTION_SPEED_FACTOR = 1.25,
-	DISRUPTION_AGILITY_FACTOR = 0.5,
-	DISRUPTION_ATTACK_FACTOR = 2.0,
-	DISRUPTION_DETECTION_FACTOR = 1.2,
-	ESCORT_FACTOR = 4.0,
-	ESCORT_SPEED_FACTOR = 0.85,
-	ESCORT_AGILITY_FACTOR = 0.85,
-	ESCORT_ATTACK_FACTOR = 1.25,
-	DISRUPTION_DEFENCE_DEFENCE_FACTOR = 1.25,
-	DISRUPTION_DEFENCE_SPEED_FACTOR = 0.8,
-	DISRUPTION_DEFENCE_ATTACK_FACTOR = 4.0,
-
-	CARRIER_PLANES_AMOUNT_FOR_POSITIONING = 64,         -- below this amount of planes on a carrier we no longer get max benefit on enemy positioning
-
-	CAS_NIGHT_ATTACK_FACTOR = 0.1,                      -- CAS damaged get multiplied by this in land combats at night
-
-	AIR_WING_ATTACK_LOGISTICS_NO_TRUCK_DISRUPTION_FACTOR = 0.02, -- If a unit isn't motorized, still disrupt its supply by damage * this
-	AIR_WING_ATTACK_LOGISTICS_TRUCK_DAMAGE_FACTOR = 0.25,
-	AIR_WING_ATTACK_LOGISTICS_INFRA_DAMAGE_SPILL_FACTOR = 0.0016, -- Portion of truck damage to additionally deal to infrastructure
-	AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_FACTOR = 0.04,
-	AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_DISRUPTION_MITIGATION = 6.0, -- Multiply Train Damage by (Smooth / (Smooth + (Disruption * Mitigation)))
-	AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_DISRUPTION_SMOOTHING = 5.0,
-	AIR_WING_ATTACK_LOGISTICS_RAILWAY_DAMAGE_SPILL_FACTOR = 0.006, -- Portion of train damage to additionally deal to railways
-
-	AIR_WING_ATTACK_LOGISTICS_DISRUPTION_MIN_DAMAGE_FACTOR = 0.1, -- Multiply train damage by this factor, scale from 1.0 at 0 disruption to this at AIR_WING_ATTACK_LOGISTICS_MAX_DISRUPTION_DAMAGE_TO_CONSIDER
-	AIR_WING_ATTACK_LOGISTICS_MAX_DISRUPTION_DAMAGE_TO_CONSIDER = 15.0, -- see above
-	AIR_WING_ATTACK_LOGISTICS_DIRECT_DISRUPTION_DAMAGE_FACTOR = 0.01, -- Disruption damage to supply throughput done by bombing damage, not dependant on killing trains which also causes diruption.
-
-	AIR_WING_ATTACK_LOGISTICS_TRUCK_MAX_FACTOR = 0.3, -- max trucks we can destroy in one instance of a logistics strike
-
-	SECONDARY_DAMAGE_STRAT = 0.2,  -- how much damage gets translated to railway guns for strat bombing
-	SECONDARY_DAMAGE_LOGISTICS = 1.0, -- how much damage gets translated to railway guns for logistic strike
-
-	INTERCEPTION_DISTANCE_SCALE = 50, -- At this many pixels of path length, full interception efficiency is applied to air missions. Lerp from 0.
-	INTERCEPTION_DAMAGE_SCALE = 0.3, -- Multiply the interception damage with this value. Works as a cap when interception distance is at maximum.
-
-	MIN_PLANE_COUNT_PARADROP = 40,
-	MIN_PLANE_COUNT_AIR_SUPPLY = 20,
-	BASE_UNIT_WEIGHT_IN_TRANSPORT_PLANES = 40.0,
-	
-	MANPOWER_LOSS_RATIO_PLANE_SHOT = 0.10,	-- The loss ratio of manpower for a shot plane.
-
-	MISSION_COMMAND_POWER_COSTS = {  -- command power cost per plane to create a mission
-		0.0, -- AIR_SUPERIORITY
-		0.0, -- CAS
-		0.0, -- INTERCEPTION
-		0.0, -- STRATEGIC_BOMBER
-		0.0, -- NAVAL_BOMBER
-		0.0, -- DROP_NUKE
-		0.0, -- PARADROP
-		0.0, -- NAVAL_KAMIKAZE
-        0.0, -- PORT_STRIKE
-		0.0, -- ATTACK_LOGISTICS
-		0.0, -- AIR_SUPPLY
-		0.0, -- TRAINING
-		0.0, -- NAVAL_MINES_PLANTING
-		0.0, -- NAVAL_MINES_SWEEPING
-		0.0, -- RECON
-		0.0, -- NAVAL_PATROL
-		0,0, -- BARRAGE
-		0,0, -- SAM
-	},
-
-	MISSION_FUEL_COSTS = {  -- fuel cost per plane for each mission
-		1.0, -- AIR_SUPERIORITY
-		1.0, -- CAS
-		0.5, -- INTERCEPTION
-		1.0, -- STRATEGIC_BOMBER
-		1.0, -- NAVAL_BOMBER
-		1.0, -- DROP_NUKE
-		1.0, -- PARADROP
-		0.75, -- NAVAL_KAMIKAZE
-		1.2, -- PORT_STRIKE
-		1.2, -- ATTACK_LOGISTICS
-		1.0, -- AIR_SUPPLY
-		0.5, -- TRAINING
-		1.0, -- NAVAL_MINES_PLANTING
-		1.0, -- NAVAL_MINES_SWEEPING
-		0.75, -- RECON
-		1.0, -- NAVAL_PATROL
-		0.0, -- BARRAGE
-		0,0, -- NUCLEAR
-		0,0, -- SAM
-	},
-	MAX_FUEL_FLOW_MULT = 1.0, -- max fuel flow ratio for planes, which will be multiplied by supply
-
-	FUEL_COST_MULT = 0.35, -- fuel multiplier for all air missions
-
-	MISSION_EFFICIENCY_MULT_AT_LACK_OF_FUEL = 0.25, 				-- multiplier for mission efficiency when a base lacks fuel
-	
-	STRATEGIC_BOMBING_PROV_BUILD_PRIO_SCALE = 1.5,					-- Scale of the selected priority for provincial buildings
-	STRATEGIC_BOMBING_STATE_BUILD_PRIO_SCALE = 1.5,					-- Scale of the selected priority for state buildings
-	STRATEGIC_BOMBING_INFRA_PRIO_SCALE = 0.7,						-- Scale of the selected priority for infrastructure
-	STRATEGIC_BOMBING_RAILWAY_PRIORITY_SCALE = 0.2,					-- The scale of extra priority assigned to railway for strategic bombing
-	STRATEGIC_BOMBING_STATE_BUILDING_SCALE = 1.0,					-- The scale of state building priority for strategic bombing
-
-	NAVAL_MINES_PLANTING_SPEED_MULT = 0.025,						-- Value used to overall balance of the speed of planting naval mines
-	NAVAL_MINES_PLANTING_SPEED_LOWER_BOUND = 0.001,					-- Speed of planting naval mines can not be lower than this
-	NAVAL_MINES_SWEEPING_SPEED_MULT = 0.025,						-- Value used to overall balance of the speed of sweeping naval mines
-	NAVAL_MINES_SWEEPING_SPEED_LOWER_BOUND = 0.001,					-- Speed of sweeping naval mines can not be lower than this
-	NON_CORE_STRATEGIC_IMPACT = 0.5,                                -- multiplier for strategic impact of non-core bombing
-	RECON_LAND_SPOT_CHANCE = 0.25,                     				-- scale factor on spotting lan
-
-	REINFORCEMENT_DISABLING_DURATION_IN_LAND_CARRIER_TRANSFER = 48,	-- The reinforcement disabling duration in hours when transfering from land to carrier and vice versa
-
-	THRUST_WEIGHT_AGILITY_FACTOR = 2,								-- For plane designs, additive agility bonus per point of thrust exceeding weight
-	MAX_QUICK_WING_SELECTION = 3,									-- Max possible selection for airwing quick deploy
-
-	USE_SINGLE_NAVAL_ARMAMENT_CATEGORY = false,						-- If true, only the armament module category that inflicts the greatest damage to naval targets will contribute naval strike and port strike mission specific stats. Only modules with both naval_strike_attack and naval_strike_targetting are considered. This is used to prevent torpedo_mounting and bomb_locks stats from stacking.
-	
-	PORT_STRIKE_DAMAGE_FACTOR = 1.0,								-- How much damage is dealt to ports during a port strike (per plane damage [complex number] * num flying planes * define)
-},
-
-NNavy = {
-	-- Peace Conference
-	WAR_SCORE_GAIN_FOR_SUNK_SHIP_MANPOWER_FACTOR = 0.004,			-- war score gained for every manpower killed when sinking a ship
-	WAR_SCORE_GAIN_FOR_SUNK_SHIP_PRODUCTION_COST_FACTOR = 0.10,		-- war score gained for every IC of the sunk ship
-	WAR_SCORE_GAIN_FOR_SUNK_CONVOY = 0.10,							-- war score gained for every sunk convoy
-	PEACE_ACTION_TRANSFER_NAVY_EXPERIENCE_RETAINED = 0.25,			-- % of experience to retain after being transferred in a peace conference
-	
-	CARRIER_OFFENSIVE_STANCE_SORTIE_RATIO = {0.0, 0.25, 0.50, 0.75, 1.0},	-- The defensive stance sortie is 1.0 - value in index so their sum equals 1
-	CARRIER_OFFENSIVE_STANCE_DEFAULT_INDEX = 2,						-- The default offensive sortie index in CARRIER_OFFENSIVE_STANCE_SORTIE_RATIO
-	SELECTED_SORTIE_INITIAL_TIME = 24,								-- Amount of hours from combat start where the selected sortie will override the default one
-	
-	SHIP_SUPPORT_NEED_FACTOR = 0.1,									-- The support need for a ship. This factor is multiplied with the ships dominance value
-	MAX_ADMIRAL_HEADQUARTER_ASSIGNMENTS = 3,						-- Max amount of admirals that can be assigned to naval headquarters
-	NAVAL_HEADQUARTER_ADJACENCY = 2,								-- How many extra steps of strategic regions from the first the naval headquarter provides benefits. 
-	
-	-- Having Naval Dominance will provide the following benefits:
-	CONVOY_BLOCKED_BY_ENEMY_CONTROLLED_REGION = true,				-- If an enemy control a sea region, consider that region as blocked
-	NAVAL_DOMINANCE_STRIKE_FORCE_FRACTION = 0.0006,					-- How much dominance points goes into one percent of the multiplier from strike force missions. ( e.g. a taskforce of 1000 dominance generates a 60% multiplier ) 
-	NAVAL_DOMINANCE_STRIKE_FORCE_MULTIREGION_DECAY = 0.05,			-- Percentage that the strike force mission's naval dominance multiplier decreases with for each additional assigned region
-	NAVAL_DOMINANCE_SPOTTING_BONUS = 0.05,
-    NAVAL_DOMINANCE_ORG_RECOVERY = 0.1,
-    NAVAL_DOMINANCE_SHIP_RECOVERY_CHANCE = 0.1,
-	NAVAL_DOMINANCE_MINES_PLANTING_BONUS = 0.2,						-- Naval planting bonus when having naval dominance in the region
-	NAVAL_DOMINANCE_MINES_SWEEPING_BONUS = 0.2,						-- Naval sweeping bonus when having naval dominance in the region
-	NAVAL_DOMINANCE_CHANCE_OF_ACCIDENT_REDUCTION = 0.25,			-- The chance to encounter an accident during naval training would be reduced when having naval dominance in the region
-	
-	-- Convoy Priorities START
-	NAVAL_INVASION_PRIORITY = 1,									-- Default convoy priority for naval invasions
-	NAVAL_TRANSFER_PRIORITY = 2,									-- Default convoy priority for naval transports
-	SUPPLY_PRIORITY = 6,											-- Default convoy priority for supplying units via sea
-	RESOURCE_LENDLEASE_PRIORITY = 5,								-- Default convoy priority for export lend lease
-	RESOURCE_EXPORT_PRIORITY = 3,									-- Default convoy priority for export trade
-	RESOURCE_ORIGIN_PRIORITY = 4,									-- Default convoy priority for resources shipped internally
-	RESOURCE_PURCHASE_PRIORITY = 6,									-- Default convoy priority for export equipment purchase
-	UNDERWAY_REPLENISHMENT_PRIORITY = 7,							-- Default convoy priority for underway replenishment
-	-- Convoy Priorities END
-	
-	NAVAL_HOMEBASE_CALCULATION_DISTANCE_CUTOFF = 1000,				-- Tuning parameter for homebase calculation. Distance to normalize against. Everything above said value will be treated as score = 0.
-	NAVAL_HOMEBASE_BUILDING_SCORE_FACTOR = 0.02,					-- Tuning parameter for homebase calculation. Multiplier for how much the level of the naval base impacts its total score.
-	NAVAL_HOMEBASE_OWNERSHIP_BONUS = 0.04,							-- Tuning parameter for homebase calculation. Adds to total score based on if the base is owned by the country doing the calculation.
-	NAVAL_MISSION_AI_RANGE_THRESHOLD_EPSILON = 0.25,				-- Epsilon tolerance for AI naval range threshold checks.
-	NAVAL_MISSION_AI_CONVOY_NORMALIZATION_TARGET = 150,			-- Number of convoys to normalize against when scoring convoy raiding missions.
-
-	ADMIRAL_TASKFORCE_CAP = 8,										-- admirals will start getting penalties after this amount of taskforces
-
-	DETECTION_CHANCE_MULT_BASE = 0.1,								-- base multiplier value for detection chance. Later the chance is an average between our detection and enemy visibility, mult by surface/sub detection chance in the following defines.
-	DETECTION_CHANCE_MULT_RADAR_BONUS = 0.1,						-- detection chance bonus from radars.
-	DETECTION_CHANCE_MULT_AIR_SUPERIORITY_BONUS = 0.25,			-- bonus from air superiority.
-
-	MAX_CAPITALS_PER_AUTO_TASK_FORCE = 5,							-- maximum number of capital ships the auto-task force creation will put together when designing SurfaceActionGroup
-	MAX_SUBMARINES_PER_AUTO_TASK_FORCE = 20,						-- maximum number of submarines the auto-task force creation will put together when designing wolfpack
-	BEST_CAPITALS_TO_CARRIER_RATIO = 1,							-- capitals / carriers ratio used when auto-task force creation designs CarrierTaskForce
-	BEST_CAPITALS_TO_SCREENS_RATIO = 0.25, 							-- capitals / screens ratio used for creating FEX groups in naval combat
-	COMBAT_BASE_HIT_CHANCE = 0.1,									-- base chance for hit
-
-	COMBAT_MIN_HIT_CHANCE = 0.05,									-- never less hit chance then this?
-	COMBAT_EVASION_TO_HIT_CHANCE = 0.007,							-- we take ship evasion stats, and mult by this value, so it gives hit chance reduction. So if reduction is 0.025 and ship evasion = 10, then there will be 0.25 (25%) lower hit chance. (Fe. 50% base -25% from evasion +10% bcoz it's very close).
-	COMBAT_EVASION_TO_HIT_CHANCE_TORPEDO_MULT = 10.0,				-- the above evasion hit chance is multiplied by 400% if shooting with torpedoes. Torpedoes are slow, so evasion matters more.
-	MIN_HIT_PROFILE_MULT = 0.0,										-- largest hit profile penalty to hitting
-	COMBAT_LOW_ORG_HIT_CHANCE_PENALTY = -0.4,						-- % of penalty applied to hit chance when ORG is very low.
-	COMBAT_LOW_MANPOWER_HIT_CHANCE_PENALTY = -0.2,					-- % of penalty applied to hit chance when manpower is very low.
-	COMBAT_DAMAGE_RANDOMNESS = 0.5,									-- random factor in damage. So if max damage is fe. 10, and randomness is 30%, then damage will be between 7-10.
-	COMBAT_TORPEDO_CRITICAL_CHANCE = 0.1,							-- chance for critical hit from torpedo.
-	COMBAT_TORPEDO_CRITICAL_DAMAGE_MULT = 2.0,						-- multiplier to damage when got critical hit from torpedo. (Critical hits are devastating as usualy torpedo_attack are pretty high base values).
-
-	COMBAT_DAMAGE_TO_STR_FACTOR = 0.8,								-- casting damage value to ship strength multiplier. Use it ot balance the game difficulty.
-	COMBAT_DAMAGE_TO_ORG_FACTOR = 1.2,								-- casting damage value to ship organisation multiplier. Use it to balance the game difficulty.
-
-	NAVY_MAX_XP = 100,
-	COMBAT_ON_THE_WAY_INIT_DISTANCE_BALANCE = 0.35, 				-- Value to balance initial distance to arrive for ships that are "on the way"
-	COMBAT_CHASE_RESIGNATION_HOURS = 24,								-- Before we resign chasing enemy, give them some minimum time so the combat doesn't end instantly.
-
-	COMBAT_MAX_GROUPS = 3,											-- Max amount of "Fire Exchange" groups (FEX).
-	COMBAT_MIN_DURATION = 16,										-- Min combat duration before we can retreat. It's a balancing variable so it's not possible to always run with our weak ships agains big flotillas.
-	COMBAT_INITIAL_DURATION = 2,									-- Number of hours that is considered the "initial phase" of naval combat, used for modifiers like surprise attack during "initial combat"
-	COMBAT_RETREAT_DECISION_CHANCE = 0.2, 							-- There is also random factor in deciding if we should retreat or not. That causes a delay in taking decision, that sooner or later will be picked. It's needed so damaged fast ships won't troll the combat.
-	COMBAT_DETECTED_CONVOYS_FROM_SURFACE_DETECTION_STAT = 0.1,		-- Each 1.0 of surface_detection that ship has (equipment stat), gives x% of convoys discovered from total travelling along the route.
-	COMBAT_BASE_CRITICAL_CHANCE = 0.07,								-- Base chance for receiving a critical chance. It get's scaled down with ship reliability.
-	COMBAT_CRITICAL_DAMAGE_MULT = 4.0,								-- Multiplier for the critical damage. Scaled down with the ship reliability.
-	COMBAT_ARMOR_PIERCING_CRITICAL_BONUS = 0.75,					-- Bonus to critical chance when shooter armor piercing is higher then target armor.
-	COMBAT_ARMOR_PIERCING_DAMAGE_REDUCTION = -0.6,					-- All damage reduction % when target armor is >= then shooter armor piercing.
-	REPAIR_AND_RETURN_PRIO_LOW = 0.2,								-- % of total Strength. When below, navy will go to home base to repair.
-	REPAIR_AND_RETURN_PRIO_MEDIUM = 0.5,							-- % of total Strength. When below, navy will go to home base to repair.
-	REPAIR_AND_RETURN_PRIO_HIGH = 0.9,								-- % of total Strength. When below, navy will go to home base to repair.
-	REPAIR_AND_RETURN_PRIO_LOW_COMBAT = 0.6,						-- % of total Strength. When below, navy will go to home base to repair (in combat).
-	REPAIR_AND_RETURN_PRIO_MEDIUM_COMBAT = 0.3,						-- % of total Strength. When below, navy will go to home base to repair (in combat).
-	REPAIR_AND_RETURN_PRIO_HIGH_COMBAT = 0.1,						-- % of total Strength. When below, navy will go to home base to repair (in combat).
-	REPAIR_AND_RETURN_AMOUNT_SHIPS_LOW = 0.2,						-- % of total damaged ships, that will be sent for repair-and-return in one call.
-	REPAIR_AND_RETURN_AMOUNT_SHIPS_MEDIUM = 0.4,					-- % of total damaged ships, that will be sent for repair-and-return in one call.
-	REPAIR_AND_RETURN_AMOUNT_SHIPS_HIGH = 0.8,						-- % of total damaged ships, that will be sent for repair-and-return in one call.
-	REPAIR_AND_RETURN_UNIT_DYING_STR = 0.2,							-- Str below this point is considering a single ship "dying", and a high priority to send to repair.
-	CAPITAL_SHIP_COMBAT_RETREAT_MULT = 0.5,							-- Multiplier on combat retreat threshold for capital ships and carriers (they can take more punishment)
-	AI_MAX_TASKFORCES_PER_TRAINING_OBJECTIVE = 5,					-- Max number of taskforces we desire for AI to put in each fleet that is training.
-	EXPERIENCE_LOSS_FACTOR = 1.00,                 					-- percentage of experienced solders who die when manpower is removed
-	NAVY_EXPENSIVE_IC = 4000,										-- How much IC is considering the fleet to be expensive. Those expensive will triger the alert, when are on low STR.
-	MISSION_MAX_REGIONS = 4,										-- Limit of the regions that can be assigned to naval mission. Set to 0 for unlimited.
-	CONVOY_EFFICIENCY_LOSS_MODIFIER = 1.5,							-- How much efficiency drops when losing convoys. If modifier is 0.5, then losing 100% of convoys in short period, the efficiency will drop by 50%.
-	CONVOY_EFFICIENCY_REGAIN_AFTER_DAYS = 5,						-- Convoy starts regaining it's efficiency after X days without any convoys being sink.
-	CONVOY_EFFICIENCY_REGAIN_BASE_SPEED = 0.035,						-- How much efficiency regains every day.
-	CONVOY_EFFICIENCY_MIN_VALUE = 0.05,								-- To avoid complete 0% efficiency, set the lower limit.
-	CONVOY_ROUTE_SIZE_CONVOY_SCALE = 0.5,                           -- scales impact of convoy route size (0 to turn off)
-	ANTI_AIR_TARGETTING_TO_CHANCE = 0.22,							-- Balancing value to convert averaged equipment stats (anti_air_targetting and naval_strike_agility) to probability chances of airplane being hit by navies AA.
-	ANTI_AIR_ATTACK_TO_AMOUNT = 0.01,								-- Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit.
-	CONVOY_SINKING_SPILLOVER = 0.5,                 				-- Damaged convoys roll for if they sink in the end of combat by accumulating the damage. This scales that chance.
-	UNIT_EXPERIENCE_PER_COMBAT_HOUR = 8,
-	UNIT_EXPERIENCE_SCALE = 1,
-	EXPERIENCE_FACTOR_CONVOY_ATTACK = 0.04,
-	EXPERIENCE_FACTOR_NON_CARRIER_GAIN = 0.04,						-- Xp gain by non-carrier ships in the combat
-	EXPERIENCE_FACTOR_CARRIER_GAIN = 0.08,							-- Xp gain by carrier ships in the combat
-	FIELD_EXPERIENCE_SCALE = 0.075,
-	FIELD_EXPERIENCE_MAX_PER_DAY = 50,								-- Most xp you can gain per day
-	LEADER_EXPERIENCE_SCALE = 1.0,
-	NAVAL_HEADQUARTERS_EXPERIENCE_SCALE = 0.125,					-- Characters assigned to a naval HQ will gain 15% of all experience from taskforces in their regions
-	BATTLE_NAME_VP_FACTOR = 100,									-- Name is given by ((VP value) * BATTLE_NAME_VP_FACTOR) / (Distance VP -> battle)
-	BATTLE_NAME_VP_CUTOFF = 1.0,									-- If best score of above calculation is below this, name will be that of region.
-	AMPHIBIOUS_LANDING_PENALTY = -0.7,								-- amphibious landing penalty
-	AMPHIBIOUS_INVADE_SPEED_BASE = 0.5, 							-- every hour movement progress on amphibious invasion
-	AMPHIBIOUS_INVADE_MOVEMENT_COST = 24.0, 						-- total progress cost of movement while amphibious invading
-	AMPHIBIOUS_INVADE_ATTACK_LOW = 0.2, 							-- low and high cap of attack modifier scale. Scale interpolated by invasion progress.
-	AMPHIBIOUS_INVADE_ATTACK_HIGH = 1.0,
-	AMPHIBIOUS_INVADE_DEFEND_LOW = 1.5, 							-- low and high cap of defend modifier scale. Scale interpolated by invasion progress.
-	AMPHIBIOUS_INVADE_DEFEND_HIGH = 1.0,
-	AMPHIBIOUS_INVADE_LANDING_PENALTY_DECREASE = 3.5, 				-- scale of bonus that decreases "amphibious penalty" during combat, relative to invading transporter tech.
-	BASE_CARRIER_SORTIE_EFFICIENCY = 0.35,							-- factor of planes that can sortie by default from a carrier
-	CONVOY_ATTACK_BASE_FACTOR = 0.15,                               -- base % of convoys that get intercepted
-	NAVAL_SPEED_MODIFIER = 0.1,	                    				-- basic speed control
-	NAVAL_RANGE_TO_INGAME_DISTANCE = 0.12,							-- Scale the ship stats "naval_range" to the ingame distance
-	NAVAL_INVASION_PREPARE_DAYS = 14,								-- base days needed to prepare a naval invasion
-	NAVAL_INVASION_PLAN_CAP = 1000,									-- base cap of naval invasions can be planned at the same time
-	BASE_NAVAL_INVASION_DIVISION_CAP = 4,							-- base cap of divisions that can be assigned in a naval invasion
-	NAVAL_COMBAT_RESULT_TIMEOUT_YEARS = 2,							-- after that many years, we clear the naval combat results, so they don't get stuck forever in the memory.
-	CONVOY_LOSS_HISTORY_TIMEOUT_MONTHS = 24,						-- after this many months remove the history of lost convoys to not bloat savegames and memory since there is no way to see them anyway
-	NAVAL_TRANSFER_BASE_SPEED = 6,                                  -- base speed of units on water being transported
-	NAVAL_TRANSFER_BASE_NAVAL_DIST_ADD = 100,						-- Extra cost for naval movement ( compared to land movement ) when deciding what ports to use for a naval transfer
-	NAVAL_TRANSFER_BASE_NAVAL_DIST_MULT = 20,						-- Multiplier for the cost of naval movement ( compared to land movement ) when deciding what ports to use for naval transfer
-	
-	NAVAL_COMBAT_PLANE_MIN_STACKING_PENALTY = 80,						-- How many planes flying in a naval combat before penalties are introduced
-	NAVAL_COMBAT_PLANE_STACKING_PENALTY_EFFECT = 0.005,					-- Each plane above the optimal amount decreases the amount of airplanes being able to takeoff by such %. Subject to diminishing returns
-	
-	SHIP_SILHOUETTE_VALUE_PLANES_CAPITAL = 10,						-- For dynamic plane efficacy, silhouette value (nominally in planes, but very abstract)
-	SHIP_SILHOUETTE_VALUE_PLANES_SCREEN = 5,						-- As Above. This one would be nice to split by type, but that's problematic.
-	SHIP_SILHOUETTE_VALUE_PLANES_CARRIER = 16,						-- As Above
-	SHIP_SILHOUETTE_VALUE_PLANES_SUPPORT = 3,						-- As Above
-	SHIP_SILHOUETTE_VALUE_PLANES_CONVOY = 4,						-- As Above
-	SHIP_SILHOUETTE_VALUE_PLANES_SUBMARINE = 7,						-- As Above
-	
-	SCREEN_CAP_REDUCTION_FACTOR = 0.02,							-- Reduces screen silhouette weight if there are caps present, screenval * 1/(1+caps*weight)
-	
-	SHORE_BOMBARDMENT_CAP = 0.4,
-	ANTI_AIR_TARGETING = 6.35,                                       -- how good ships are at hitting aircraft
-	MIN_TRACTED_ASSIST_DAMAGE_RATIO = 0.05,							-- How much damage counts as assist damage
-	SUPPLY_NEED_FACTOR = 4,										    -- multiplies supply usage
-	DECRYPTION_SPOTTING_BONUS = 0.2,
-	DISBAND_MANPOWER_LOSS = 0.0,
-	MANPOWER_LOSS_RATIO_ON_SUNK = 0.5,								-- sunk ships will lose this ratio of their current manpower
-	MANPOWER_LOSS_RATIO_ON_STR_LOSS = 0.5,							-- losing strength will make you also lose manpower at this ratio of total manpower
-	MIN_MANPOWER_RATIO_TO_DROP = 0.1,								-- ships will not lose man power to below this ratio
-	DAILY_MANPOWER_GAIN_RATIO = 0.05,								-- the ships not in combat will be able to gain this ratio of their max manpower
-	PRIDE_OF_THE_FLEET_UNASSIGN_COST = 50,							-- cost to unassign/replace pride of the fleet
-	PRIDE_OF_THE_FLEET_LOST_TEMP_MODIFIER_DURATION = 30,			-- duration for temp modifiers that you get when you lose your pride of the fleet
-	XP_GAIN_FACTOR = 1.0,	   			   							-- xp gain factor for navy
-
-	NAVAL_TRANSFER_DAMAGE_REDUCTION = 0.25,							-- its hard to specifically balance 1-tick naval strikes vs unit transports so here is a factor for it
-	CARRIER_ONLY_COMBAT_ACTIVATE_TIME = 0,							-- hours from start of combat when carriers get to fight
-	CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 24,                          -- hours from start of combat when only carriers, capitals and subs get to attack
-	ALL_SHIPS_ACTIVATE_TIME = 36,                                    -- hours where all get to attack
-
-	MINIMUM_SHIP_SPEED = 1.0,										-- slowest speed a ship can have
-
-	REPAIR_SPLIT_TASKFORCE_SIZE = 5,								-- if a country does not have empty naval naval bases for repairs, it will split ships with this sizes and distribute them around
-	NAVY_REPAIR_BASE_SEARCH_SCORE_PER_SHIP_WAITING_EXTRA_SHIP = 5,  -- if a naval base has more ships than it can repair, it will get penalties
-	NAVY_REPAIR_BASE_SEARCH_SCORE_PER_SLOT = 1.0,					-- while searching for a naval base for repairs, the bases gets a bonus to their scores per empty slot they have
-	NAVY_REPAIR_BASE_SEARCH_BOOST_FOR_SAME_COUNTRY = 5,				-- while searching for a naval base for repairs, your own bases gets a bonus
-	NAVY_REPAIR_BASE_SEARCH_NON_OPERATIONAL_STR = 0.65,				-- strength factor at or below which a fleet is considered non-operational by the AI, causing it to cancel the mission and send the fleet to repair
-	NAVY_REPAIR_BASE_PRIORITY_THRESHOLD_LOW = 2,					-- bases with a level above this value will be set to low prio	(bases between these levels will get medium prio)
-	NAVY_REPAIR_BASE_PRIORITY_THRESHOLD_HIGH = 7,					-- bases with a level above this value will be set to high prio (bases between these levels will get medium prio)
-
-	CONVOY_SPOTTING_COOLDOWN = 0.3,  -- % of travel time
-	CONVOY_SPOTTING_COOLDOWN_MIN = 36, -- minimum cooldown time
-	CONVOY_SPOTTING_COOLDOWN_MAX = 168, -- maximum cooldown time
-	CONVOY_SPOTTING_COOLDOWN_MIN_FROM_EFFICIENCY = 15, -- clamped min value after screening efficiency has been applied
-
-	AIR_BASE_DOMINANCE_FACTOR = 0.02, -- Percentage factor per air base level in region towards naval dominance target value
-	RADAR_DOMINANCE_FACTOR = 0.05, -- Percentage factor per radar level in region towards naval dominance target value
-	DOMINANCE_CONTROLLED_THRESHOLD_RATIO = 0.66, -- Percentage of needed dominance control over enemies for you and friendlies to control a strategic sea region
-
-	MISSION_FUEL_COSTS = {  -- fuel cost for each mission
-		0.25, -- HOLD (consumes fuel HOLD_MISSION_MOVEMENT_COST fuel while moving)
-		1.0, -- PATROL		
-		1.0, -- STRIKE FORCE (does not cost fuel at base, and uses IN_COMBAT_FUEL_COST in combat. this is just for the movement in between)	
-		1.0, -- CONVOY RAIDING
-		1.0, -- CONVOY ESCORT
-		1.0, -- MINES PLANTING	
-		1.0, -- MINES SWEEPING	
-		0.5, -- TRAIN
-		0.0, -- RESERVE_FLEET (consumes fuel HOLD_MISSION_MOVEMENT_COST fuel while moving)
-		1.25, -- NAVAL_INVASION_SUPPORT (does not cost fuel at base, only costs while doing bombardment and escorting units)
-	},
-	
-	MISSION_FUEL_COSTS_PRIO_FACTOR = {  -- Prio fuel cost ratio for each mission. Highet value means that mission is more important to perform with regards to fuel usage
-		0.0, -- HOLD (consumes fuel HOLD_MISSION_MOVEMENT_COST fuel while moving)
-		1.0, -- PATROL
-		1.0, -- STRIKE FORCE (does not cost fuel at base, and uses IN_COMBAT_FUEL_COST in combat. this is just for the movement in between)
-		0.6, -- CONVOY RAIDING
-		0.6, -- CONVOY ESCORT
-		0.5, -- MINES PLANTING
-		0.3, -- MINES SWEEPING
-		0.6, -- TRAIN
-		0.0, -- RESERVE_FLEET (consumes fuel HOLD_MISSION_MOVEMENT_COST fuel while moving)
-		1.0, -- NAVAL_INVASION_SUPPORT (does not cost fuel at base, only costs while doing bombardment and escorting units)
-	},
-	
-	HOLD_MISSION_MOVEMENT_COST = 1.0,								-- ships on hold cost this much fuel while moving
-	ON_BASE_FUEL_COST = 0.0,										-- ships that waits at naval bases cost this ratio
-	STRIKE_FORCE_ON_BASE_FUEL_COST_FACTOR = 0.25,					-- fuel cost for naval strike mission in port
-	IN_COMBAT_FUEL_COST = 1.25,										-- ships in combat will get this ratio for fuel cost
-	TRAINING_FUEL_COST_FOR_ESCORT_SHIPS = 0.15,						-- ships that are on training mission but not training (ie they are at max xp and training will cancel at max xp) will consume this ratio of fuel
-
-	MAX_FUEL_FLOW_MULT = 2.0, -- max fuel flow ratio for ships, which will be multiplied by supply
-	FUEL_COST_MULT = 0.10, -- fuel multiplier for all naval missions
-
-	OUT_OF_FUEL_SPEED_FACTOR = -0.8,
-	OUT_OF_FUEL_RANGE_FACTOR = -0.8,
-	OUT_OF_FUEL_ATTACK_FACTOR = -0.8,
-	OUT_OF_FUEL_TORPEDO_FACTOR = -0.8,
-
-	UNDERWAY_REPLENISHMENT_RANGE_FACTOR = 0.5,			-- bonus factor applied to task force's range when underway replenishment is activated (e.g. 0.2 means +20%)
-	UNDERWAY_REPLENISHMENT_CONVOY_COST_PER_FUEL = 0.25,	-- Cost in convoys for underway replenishment multiplied by max daily fuel consumption (rounded up)
-
-	MISSION_SPREADS = {  -- mission spreads in the case a ship join combat, which is calculated for number of ships that will be in combat. 1 means no ship will be at start
-		0.0, -- HOLD
-		0.0, -- PATROL
-		0.0, -- STRIKE FORCE
-		0.0, -- CONVOY RAIDING
-		0.0, -- CONVOY ESCORT
-		0.7, -- MINES PLANTING
-		0.7, -- MINES SWEEPING
-		0.5, -- TRAIN
-		0.0, -- RESERVE_FLEET
-		0.0, -- NAVAL_INVASION_SUPPORT
-	},
-	MISSION_DEFAULT_SPREAD_BASE = 1.0, -- multiplier for mission spreads. higher = less ships on start
-
-	AGGRESSION_SETTINGS_VALUES = { -- ships will use this values while deciding to attack enemies
-		0,		-- do not engage
-		0.5,	-- low
-		0.9,	-- medium
-		2.0,	-- high
-		10000,	-- I am death incarnate!
-	},
-	
-	AGGRESSION_LEVEL_BY_MISSION_WEAKER = { -- the aggression level per mission when the AI has a weaker navy than its opponent
-		---- values correspond to the indexes of the AGGRESSION_SETTINGS_VALUES. 0 = do not engage, 1 = low, 2 = medium, etc. 
-		---- If set to (-1), will use the hardcoded behavior (low if navy is generally weaker than opponent, medium if stronger)
-		-1, -- HOLD
-		0, -- PATROL
-		2, -- STRIKE FORCE
-		2, -- CONVOY RAIDING
-		1, -- CONVOY ESCORT
-		-1, -- MINES PLANTING
-		-1, -- MINES SWEEPING
-		-1, -- TRAINING
-		-1, -- RESERVE_FLEET
-		2, -- NAVAL_INVASION_SUPPORT
-	},
-	AGGRESSION_LEVEL_BY_MISSION_STRONGER_OR_EQUAL = { -- the aggression level per mission when the AI has a stronger navy than its opponent
-		---- values correspond to the indexes of the AGGRESSION_SETTINGS_VALUES. 0 = do not engage, 1 = low, 2 = medium, etc. 
-		---- If set to (-1), will use the hardcoded behavior (low if navy is generally weaker than opponent, medium if stronger)
-		-1, -- HOLD
-		2, -- PATROL
-		4, -- STRIKE FORCE
-		2, -- CONVOY RAIDING
-		2, -- CONVOY ESCORT
-		-1, -- MINES PLANTING
-		-1, -- MINES SWEEPING
-		-1, -- TRAINING
-		-1, -- RESERVE_FLEET
-		3, -- NAVAL_INVASION_SUPPORT
-	},
-
-	AGGRESION_MULTIPLIER_FOR_COMBAT = 1.2,				-- ships are more aggresive in combat
-
-	AGGRESSION_ARMOR_EFFICIENCY_MULTIPLIER = 1.0,		-- armor to enemy piercing ratio is multiplied by this value, which will increase the strength of ships while considering them for aggression
-	AGGRESSION_MIN_ARMOR_EFFICIENCY = 0.5,              -- armor multiplier has a min and max caps while being factored in aggression
-	AGGRESSION_MAX_ARMOR_EFFICIENCY = 1.5,              -- armor multiplier has a min and max caps while being factored in aggression
-
-	AGGRESSION_LIGHT_GUN_EFFICIENCY_ON_LIGHT_SHIPS = 0.05, -- ratio for scoring for different gun types against light ships
-	AGGRESSION_HEAVY_GUN_EFFICIENCY_ON_LIGHT_SHIPS = 0.5,-- ratio for scoring for different gun types against light ships
-	AGGRESSION_TORPEDO_EFFICIENCY_ON_LIGHT_SHIPS = 0.1,   -- ratio for scoring for different gun types against light ships
-
-	AGGRESSION_LIGHT_GUN_EFFICIENCY_ON_HEAVY_SHIPS = 0.1, -- ratio for scoring for different gun types against heavy ships
-	AGGRESSION_HEAVY_GUN_EFFICIENCY_ON_HEAVY_SHIPS = 1.0, -- ratio for scoring for different gun types against heavy ships
-	AGGRESSION_TORPEDO_EFFICIENCY_ON_HEAVY_SHIPS = 1.1,   -- ratio for scoring for different gun types against heavy ships
-
-	AGGRESSION_CONVOY_STRENGTH_FACTOR = 0.3,			  -- convoys in combat gets a penalty to their strength in aggression calculations
-
-	SUBMARINE_ESCAPE_RATIOS = { -- subs will escape battle in convoy raid if there are enemies that can attack
-		1000,     -- do not engage
-		15,   -- low
-		3.0,   -- medium
-		1.0,   -- high
-		0,   -- I am death incarnate!
-	},
-
-	MIN_REPAIR_FOR_JOINING_COMBATS = { -- strikeforces/patrol forces will not join combats if they are not repaired enough
-		0.0,	-- do not repair
-		0.3,	-- low
-		0.6,	-- medium
-		0.9,	-- high
-	},
-
-	ORG_COST_WHILE_MOVING = { -- org cost while the ships are moving
-		0.0, -- HOLD
-		0.2, -- PATROL
-		0.25, -- STRIKE FORCE
-		0.2, -- CONVOY RAIDING
-		0.2, -- CONVOY ESCORT
-		0.2, -- MINES PLANTING
-		0.2, -- MINES SWEEPING
-		0.2, -- TRAIN
-		0.3, -- RESERVE_FLEET
-		0.2, -- NAVAL_INVASION_SUPPORT
-	},
-
-	ORG_COST_WHILE_MOVING_IN_MISSION_ZONE = { -- org cost while moving in mission zone
-		0.0, -- HOLD
-		0.0, -- PATROL
-		0.0, -- STRIKE FORCE
-		0.0, -- CONVOY RAIDING
-		0.0, -- CONVOY ESCORT
-		0.0, -- MINES PLANTING
-		0.0, -- MINES SWEEPING
-		0.0, -- TRAIN
-		0.0, -- RESERVE_FLEET
-		0.0, -- NAVAL_INVASION_SUPPORT
-	},
-
-	MAX_ORG_ON_MANUAL_MOVE = 0.8,	-- org will clamped to this ratio on manual move
-	MIN_ORG_ON_MANUAL_MOVE = 0.5,	-- org will clamped to this ratio on manual move
-
-	INITIAL_ALLOWED_DOCKYARD_RATIO_FOR_REPAIRS = 1,				-- initially countries will allocate this ratio of dockyards for repairs
-
-	FIELD_EXPERIENCE_FACTOR = 0.7,									-- Factor all naval experience gain from missions by this
-
-	MISSION_DAILY_EXP_GAIN_PER_SHIP = 0.3,					-- Amount of exp each ship gain every 24h while training (before modifiers)
-	MISSION_DAILY_COUNTRY_EXP_FACTOR = 0.01,						-- Factor used to scale the Daily Country Navy XP gain
-	MISSION_DAILY_COUNTRY_EXP_MANPOWER_FACTOR = 0.006,					-- Factor used to scale the sum of the on mission manpower for the Daily Country Navy XP gain
-	MISSION_DAILY_COUNTRY_EXP_MANPOWER_RATIO_FACTOR = 0.01,				-- Factor used to scale the sum of the manpower divided by the country's number of ship for the Daily Country Navy XP gain
-	MISSION_DAILY_COUNTRY_EXP_SHIP_RATIO_FACTOR =  300.0,					-- Factor used to scale the ratio of ships on mission for the Daily Country Navy XP gain
-	MISSION_EXP_RATIOS = {											-- experience multipliers for different mission types
-		0.0,	-- HOLD
-		0.005,	-- PATROL
-		0.005,	-- STRIKE FORCE
-		0.005,	-- CONVOY RAIDING
-		0.005,	-- CONVOY ESCORT
-		0.005,	-- MINES PLANTING
-		0.005,	-- MINES SWEEPING
-		1.0,	-- TRAIN
-		0.0,	-- RESERVE_FLEET
-		0.005,	-- NAVAL_INVASION_SUPPORT
-	},
-	
-	MISSION_DOMINANCE_RATIOS = { -- supremacy multipliers for different mission types
-		0.0, -- HOLD
-        1.0, -- PATROL
-        0.25, -- STRIKE FORCE 
-        0.75, -- CONVOY RAIDING
-        0.75, -- CONVOY ESCORT
-        0.25, -- MINES PLANTING
-        0.25, -- MINES SWEEPING
-        0.0, -- TRAIN
-        0.0, -- RESERVE_FLEET
-        0.75, -- NAVAL_INVASION_SUPPORT
-	},
-
-	DOMINANCE_PER_SHIP_PER_RANGE_NEUTRAL = 2000,					-- ship range where there is no penalty nor bonus to naval dominance, below or above this will be scaled accordingly with penalty or bonus, min value is 0
-	DOMINANCE_PER_SHIP_PER_SPEED_NEUTRAL = 20,						-- ship speed where there is no penalty nor bonus to naval dominance, below or above this will be scaled accordingly with penalty or bonus, min value is 0
-	DOMINANCE_PER_SHIP_PER_CARRIER_SIZE = 0.1,						-- bonus to dominance based on the carrier size - e.g. regular carrier hangar has carrier_size of 2, so it would be a bonus of 2 * DOMINANCE_PER_SHIP_PER_CARRIER_SIZE, min value is 0
-	DOMINANCE_PER_SHIP_PER_HEAVY_GUN_ATTACK = 0.01,					-- bonus to dominance based on the heavy attack, min value is 0
-	NAVAL_MINES_IN_REGION_MAX = 1000.0,								-- Max number of mines that can be layed by the ships. The value should be hidden from the user, as we present % so it's an abstract value that should be used for balancing.
-	NAVAL_MINES_PLANTING_SPEED_MULT = 0.01,						-- Value used to overall balance of the speed of planting naval mines
-	NAVAL_MINES_SWEEPING_SPEED_MULT = 0.009,						-- Value used to overall balance of the speed of sweeping naval mines
-	NAVAL_MINES_DECAY_AT_PEACE_TIME = 0.25,							-- How fast mines are decaying in peace time. Planting mines in peace time may be exploitable, so it's blocked atm. That's why after war we should decay them too.
-	NAVAL_MINES_SWEEPERS_REDUCTION_ON_PENALTY_EFFECT = 3.3,			-- How much is the task force's sweeping attribute reducing the penalty effect.
-	NAVAL_MINES_INTEL_DIFF_FACTOR = 0.1,					-- Better our decryption over enemy encryption will reduce the penalties from the enemy mines in the region. This value is a factor to be used for balancing.
-
-	ATTRITION_WHILE_MOVING_FACTOR = 1.5,							-- attrition multiplier while moving & doing missions
-	ATTRITION_DAMAGE_ORG = 0,					   				-- damage from attrition to Organisation (relative to max org)
-	ATTRITION_DAMAGE_STR = 0.03,					   				-- damage from attrition to str (relative to max str)
-	ATTRITION_STR_DAMAGE_CHANCE = 0.2,								-- chance to get damaged at highest attrition
-
-	NAVAL_ACCIDENT_CHANCE_REDUCTION_ON_POTF = 0.01,					-- Scale of the current chance for an accident to happen, applied for the pride of the fleet.
-	NAVAL_ACCIDENT_CRITICAL_HIT_CHANCE_REDUCTION_POTF = 0.01,		-- Scale of the current chance for a critical hit when an accident happens, applied for the pride of the fleet.
-
-	NAVAL_MINES_ACCIDENT_CRITICAL_HIT_CHANCES = 0.14,				-- If an accident happens, how likely it is to be a critical hit (caused by naval mines)
-	NAVAL_MINES_ACCIDENT_CRITICAL_HIT_DAMAGE_SCALE = 5.0,			-- Scale the value below in case of critical hit (caused by naval mines)
-	NAVAL_MINES_ACCIDENT_STRENGTH_LOSS = 75.0,						-- Amount of strength loss when hit by naval mine
-	NAVAL_MINES_ACCIDENT_ORG_LOSS_FACTOR = 0.6,						-- Amount of strength loss when hit by naval mine
-
-	TRAINING_ACCIDENT_CHANCES = 0.02,						-- Chances one ship get damage each hour while on training
-	TRAINING_ACCIDENT_CRITICAL_HIT_CHANCES = 0.3,					-- If an accident happens, how likely it is to be a critical hit
-	TRAINING_ACCIDENT_CRITICAL_HIT_DAMAGE_SCALE = 4.0,				-- Scale the value below in case of critical hit
-	TRAINING_ACCIDENT_STRENGTH_LOSS = 4.0,							-- Amount of strength loss in a training accident
-	TRAINING_ACCIDENT_STRENGTH_LOSS_FACTOR = 0.05,						-- Amount of strength loss in a training accident, propotional to the maximum strength of the ship
-	TRAINING_ACCIDENT_ORG_LOSS_FACTOR = 0.3,						-- Amount of current organization the ship lose
-
-	ACCIDENTS_CHANCE_BALANCE_FACTOR = 0.04,							-- General chance for naval accidents for balancing the gameplay.
-
-																	-- The Formula: Min( TRAINING_MAX_DAILY_COUNTRY_EXP * Ratio, TRAINING_DAILY_COUNTRY_EXP_FACTOR * ( TRAINING_DAILY_COUNTRY_EXP_SHIP_RATIO_FACTOR * TrainingShipCount / CountryShipCount
-																	--              + TRAINING_DAILY_COUNTRY_EXP_MANPOWER_FACTOR * Manpower + TRAINING_DAILY_COUNTRY_EXP_MANPOWER_RATIO_FACTOR * Manpower / CountryShipCount ) )
-	TRAINING_EXPERIENCE_FACTOR = 0.075,								-- Amount of exp each ship gain every 24h while training (before modifiers)
-	TRAINING_DAILY_COUNTRY_EXP_FACTOR = 0.001,						-- Factor used to scale the Daily Country Navy XP gain
-	TRAINING_DAILY_COUNTRY_EXP_MANPOWER_FACTOR = 0.006,					-- Factor used to scale the sum of the training manpower for the Daily Country Navy XP gain
-	TRAINING_DAILY_COUNTRY_EXP_MANPOWER_RATIO_FACTOR = 0.01,				-- Factor used to scale the sum of the manpower divided by the country's number of ship for the Daily Country Navy XP gain
-	TRAINING_DAILY_COUNTRY_EXP_SHIP_RATIO_FACTOR =  300.0,					-- Factor used to scale the ratio of training ships for the Daily Country Navy XP gain
-	TRAINING_MAX_DAILY_COUNTRY_EXP = 3.5,							-- Maximum navy XP daily gain
-	TRAINING_MIN_STRENGTH = 0.1,									-- if strength is less than this, the unit will not contribute to training and cant be damaged by training
-
-	TRAINING_ORG = 0.2,												-- max organization on traiaing mission
-
-	BASE_SPOTTING = 1,												-- base spotting percentage for navy
-	BASE_SPOTTING_FROM_RADAR = 1,									-- base spotting percentage that comes from full radar coverage
-	NAVY_SPOTTER_DETECTION_FACTOR = 0.1,							-- multiplier for task forces' detection value before logistic transform
-	BASE_SPOTTING_FROM_NAVY = 10,									-- base spotting percentage that comes from task forces in area
-	AIR_SPOTTER_NORMALIZED_AIRWING_SIZE = 100,						-- each plane will contribute 1/this of the air-wing's detection stat
-	AIR_SPOTTER_DETECTION_FACTOR = 0.025,							-- multiplier for air-wings' detection value before logistic transform
-	BASE_SPOTTING_FROM_AIR = 20,									-- base spotting percentage that comes from air-wings in area
-	BASE_SPOTTING_FROM_DECRYPTION = 10,								-- base spotting percentage that comes from decryption, can go negative (enemy decryption is subtracted)
-	MIN_SPOTTING_PROGRESS = 0.01,									-- Minimum spotting progress (in percent) per hourly tick
-	AIR_MISSION_SPOTTING_FACTORS = {								-- Multiplier for air-wings' spotting contribution per mission type
-		0.50, -- AIR_SUPERIORITY
-		0, -- CAS
-		0.25, -- INTERCEPTION
-		0, -- STRATEGIC_BOMBER
-		0.50, -- NAVAL_BOMBER
-		0, -- DROP_NUKE
-		0, -- PARADROP
-		0.25, -- NAVAL_KAMIKAZE
-		0, -- PORT_STRIKE
-		0, -- ATTACK_LOGISTICS
-		0, -- AIR_SUPPLY
-		0, -- TRAINING
-		0.25, -- NAVAL_MINES_PLANTING
-		0.50, -- NAVAL_MINES_SWEEPING
-		1.00, -- RECON
-		2.00, -- NAVAL_PATROL
-	},
-
-	MIN_HOURS_TO_SHUFFLE_NEWLY_ASSIGNED_PATROLS = 7 * 24,			-- if a fleet has less patrol than it needs to cover all of it areas, it will shuffle the patrols around. it will wait this much hour before shuffling a task force to new area
-	SPOTTING_ENEMY_SPOTTING_MULTIPLIER_FOR_RUNNING_AWAY = 0.80,		-- enemy spotting is multiplied by this value to simulate running away
-	SPOTTING_MULTIPLIER_FOR_SURFACE = 1.0,							-- task force surface spotting value is multiplied by this and added to spotting percentage every hour
-	SPOTTING_MULTIPLIER_FOR_SUB = 1.0,								-- task force sub spotting value is multiplied by this and added to spotting percentage every hour
-	SPOTTING_SPEED_MULT_FOR_RUNNING_AWAY = 0.5,						-- task forces that does not want to engage will reduce enemy spotting rate every hour by speed diff mult this ratio
-	SPOTTING_SPEED_MULT_FOR_CATCHING_UP = 0.2,						-- speed diff bonus rate that is added to spotting every hour
-	SPOTTING_MISSION_DETECTION_THRESHOLD_LOW = 10.0,					-- value between 0 and 100 above which to show very coarse information about the spotted task force
-	SPOTTING_MISSION_DETECTION_THRESHOLD_MEDIUM = 70.0,					-- value between 0 and 100 above which to show coarse information about the spotted task force. Note: accurate information are shown when spotting reach 100.
-	NAVY_VISIBILITY_BONUS_ON_RETURN_FOR_REPAIR = 0.9,				-- Multiplier for the surface/sub visiblity when the heavily damaged fleet is returning to the home base for reparation. 1.0 = no bonus. 0.0 = invisible.
-	VISIBILITY_MULTIPLIER_FOR_SPOTTING = 0.1,						-- multiplier for visibility stat
-	INTEL_LEVEL_LOW_HALF_RANGE_PERCENTAGE = 10,							-- Integer representing the maximum offset of the displayed value to the original, in percentage (divided by 100 in code). For spotting level "low".
-	INTEL_LEVEL_MEDIUM_HALF_RANGE_PERCENTAGE = 5,							-- Same as above but for the spotting level "medium"
-	INTEL_LEVEL_LOW_HALF_RANGE_MIN_SHIPS = 3,							-- If the percentage of the value is lower than this, use this value instead. For spotting level "low"
-	INTEL_LEVEL_LOW_HALF_RANGE_MIN_CAPITALS = 1,							-- Same as above but for capital ships
-	INTEL_LEVEL_MEDIUM_HALF_RANGE_MIN_SHIPS = 1,							-- If the percentage of the value is lower than this, use this value instead. For spotting level "medium"
-	INTEL_LEVEL_MEDIUM_HALF_RANGE_MIN_CAPITALS = 1,							-- Same as above but for capital ships. NOTE: overriden to 0 if the total number of ships in the task force is less than four.
-	INTEL_LEVEL_LOW_STRENGTH_ESTIMATE_HALF_RANGE_PERCENTAGE = 20,					-- Integer representing the maximum offset of the estimated enemy strength to the original, in percentage (divided by 100 in code). For spotting level "low".
-	INTEL_LEVEL_MEDIUM_STRENGTH_ESTIMATE_HALF_RANGE_PERCENTAGE = 10,					-- Same as above for spotting level "medium"
-	BASE_SPOTTING_SPEED = 0.0,										-- daily base spotting speed
-	BASE_ESCAPE_SPEED = 0.045,										-- daily base escape speed (gained as percentagE)
-	SPEED_TO_ESCAPE_SPEED = 0.95,									-- ratio to converstion from ship speed to escape speed (divided by hundred)
-	ESCAPE_SPEED_PER_COMBAT_DAY = 0.1,								-- daily increase in escape speed during combat duration
-	MAX_ESCAPE_SPEED_FROM_COMBAT_DURATION = 1,					-- max escape speed that will be gained from combat duration
-	ESCAPE_SPEED_SUB_BASE = 0.02,									-- subs get faster escape speed. gets replaced by hidden version below if hidden
-	ESCAPE_SPEED_HIDDEN_SUB = 0.8,									-- hidden subs get faster escape speed
-
-	SUB_DETECTION_CHANCE_BASE = 5,									-- to start spotting a submarine, a dice is rolled and checked if it succeeds this percentage. if not, that enemy sub force won't be spotted on this tick
-	SUB_DETECTION_CHANCE_BASE_SPOTTING_EFFECT = 0.5,				-- effect of base spotting for initial spotting of pure submarine forces. this along with next value is added together and rolled against a random to start spotting
-	SUB_DETECTION_CHANCE_SPOTTING_SPEED_EFFECT = 2.0,				-- effect of spotting speed for initial spotting of pure submarine forces. this along with prev value is added together and rolled against a random to start spotting
-	SUB_DETECTION_CHANCE_BASE_SPOTTING_POW_EFFECT = 1.5,			-- effect of spotting speed will be powered by this for initial spotting of pure submarine forces. this along with prev value is added together and rolled against a random to start spotting
-
-	BASE_CONVOY_SPOTTING_SPEED = 0.0,								-- daily base spotting speed against convoys
-	BASE_UNIT_TRANSFER_SPOTTING_SPEED = 0.0,						-- daily base spotting speed against unit trans
-	BASE_NAVAL_INVASION_SPOTTING_SPEED = 0.0,						-- daily base spotting speed against unit transfers
-
-	CONVOY_SPOTTING_SPEED_MULT = 1.0,								-- spotting speed mult against convoys
-	UNIT_TRANSFER_SPOTTING_SPEED_MULT = 5.0,						-- spotting speed mult against unit transfers
-	NAVAL_INVASION_SPOTTING_SPEED_MULT = 10.0,						-- spotting speed mult against naval invasion armies
-
-
-	CONVOY_DETECTION_CHANCE_BASE = 4.12,							-- regular convoy base chance detection percentage (if this fails, no detection is done on that tick)
-	BASE_SPOTTING_EFFECT_FOR_INITIAL_CONVOY_SPOTTING = 0.05,		-- effect of base convoy spotting for initial spotting of regular convoys. this along with next value is added together and rolled a random  once for every convoy to check for spotting
-	SPOTTING_SPEED_EFFECT_FOR_INITIAL_CONVOY_SPOTTING = 0.50,		-- effect of convoy spotting speed for initial spotting of regular convoys. this along with prev value is added together and rolled a random once for every convoy to check for spotting
-	SPOTTING_MOD_FOR_CONVOY_COUNT = 0.2,							-- a modifier for scaling the count of convoys on a parabolic curve (counvoy_count ^ SPOTTING_MOD_FOR_CONVOY_COUNT)
-
-	UNIT_TRANSFER_DETECTION_CHANCE_BASE = 8.0,							-- unit transfer and naval invasion base chance detection percentage (if this fails, no detection is done on that tick)
-	BASE_SPOTTING_EFFECT_FOR_INITIAL_UNIT_TRANSFER_SPOTTING = 2.4,		-- same as BASE_SPOTTING_EFFECT_FOR_INITIAL_CONVOY_SPOTTING, but for naval transfer convoys
-	SPOTTING_SPEED_EFFECT_FOR_INITIAL_UNIT_TRANSFER_SPOTTING = 0.12,	-- same as SPOTTING_SPEED_EFFECT_FOR_INITIAL_CONVOY_SPOTTING, but for naval transfer convoys
-	BASE_SPOTTING_EFFECT_FOR_INITIAL_NAVAL_INVASION_SPOTTING = 2.4,		-- same as BASE_SPOTTING_EFFECT_FOR_INITIAL_CONVOY_SPOTTING, but for naval invasion convoys
-	SPOTTING_SPEED_EFFECT_FOR_INITIAL_NAVAL_INVASION_SPOTTING = 0.12,	-- same as SPOTTING_SPEED_EFFECT_FOR_INITIAL_CONVOY_SPOTTING, but for naval invasion convoys
-
-	MIN_GUN_COOLDOWN = 0.1,											-- minimum cooldown for a gun
-	BASE_GUN_COOLDOWNS = { -- number of hours for a gun to be ready after shooting
-		0.8,	-- big guns
-		3.2,	-- torpedoes
-		0.8,	-- small guns
-	},
-
-	BASE_JOIN_COMBAT_HOURS						= 4,				-- the taskforces that wants to join existing combats will wait for at least this amount
-	LOW_ORG_FACTOR_ON_JOIN_COMBAT_DURATION		= 2.0,				-- low org of the ships will be factored in when a taskforce wants to join combat
-
-	BASE_POSITIONING												= 1.0,	-- base value for positioning
-
-	DOMINANCE_DAILY_GAIN_FACTOR = 0.04, 							-- Daily dominance gain, as a fraction of target value 
-	DOMINANCE_DAILY_LOSS_FACTOR = 0.06, 							-- Daily dominance loss, as a fraction of previous target value 
-
-	SUPPORT_SHIP_RECOVERY_BASE_STRENGTH_FACTOR = 0.01,				-- Percentage of strength of max strength a recovered ship gets on recovery.
-
-	RELATIVE_SURFACE_DETECTION_TO_POSITIONING_FACTOR				= 0.01,	-- multiples the surface detection difference between two sides. the side with higher detection will get a bonus of this value
-	MAX_POSITIONING_BONUS_FROM_SURFACE_DETECTION					= 0.15,  -- will clamp the bonus that you get from detection
-
-	HIGHER_SHIP_RATIO_POSITIONING_PENALTY_FACTOR					= 0.55, -- if one side has more ships than the other, that side will get this penalty for each +100% ship ratio it has
-	MAX_POSITIONING_PENALTY_FROM_HIGHER_SHIP_RATIO					= 1.0,  -- maximum penalty to get from larger fleets
-	MIN_SHIPS_FOR_HIGHER_SHIP_RATIO_PENALTY                         = 12,    -- the minimum fleet size in ships that a fleet must be before having the large fleet penalty applied to them
-
-	HIGHER_CARRIER_RATIO_POSITIONING_PENALTY_FACTOR					= 0.25;  -- penalty if other side has stronger carrier air force
-	MAX_CARRIER_RATIO_POSITIONING_PENALTY_FACTOR 					= 0.5;  -- max penalty from stronger carrier air force
-
-	POSITIONING_PENALTY_FOR_SHIPS_JOINED_COMBAT_AFTER_IT_STARTS		= 0.008, -- each ship that joins the combat will have this penalty to be added into positioning
-	MAX_POSITIONING_PENALTY_FOR_NEWLY_JOINED_SHIPS 					= 0.3,  -- the accumulated penalty from new ships will be clamped to this value
-	POSITIONING_PENALTY_HOURLY_DECAY_FOR_NEWLY_JOINED_SHIPS			= 0.01,-- the accumulated penalty from new ships will decay hourly by this value
-
-	DAMAGE_PENALTY_ON_MINIMUM_POSITIONING 							= 0.85,	-- damage penalty at 0% positioning
-	SCREENING_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING				= 0.4,  -- screening efficiency (screen to capital ratio) at 0% positioning
-	AA_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING					= 0.45,  -- AA penalty at 0% positioning
-	SUBMARINE_REVEAL_ON_MINIMUM_POSITIONING                         = 1.0,  -- submarine reveal change on 0% positioning
-
-	SHIP_TO_FLEET_ANTI_AIR_RATIO									= 0.2,	-- total sum of fleet's anti air will be multiplied with this ratio and added to calculations anti-air of individual ships while air damage reduction
-
-	ANTI_AIR_POW_ON_INCOMING_AIR_DAMAGE								= 0.2,	-- received air damage is calculated using following: 1 - ( (ship_anti_air + fleet_anti_air * SHIP_TO_FLEET_ANTI_AIR_RATIO )^ANTI_AIR_POW_ON_INCOMING_AIR_DAMAGE ) * ANTI_AIR_MULT_ON_INCOMING_AIR_DAMAGE
-	ANTI_AIR_MULT_ON_INCOMING_AIR_DAMAGE							= 0.15,
-
-	MAX_ANTI_AIR_REDUCTION_EFFECT_ON_INCOMING_AIR_DAMAGE 			= 0.8,	-- damage reduction for incoming air attacks is clamped to this value at maximum.
-
-	CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT							= 0.1,	-- the game will roll between 0-1 and will damage a random part if below this val on naval critical hits
-	CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT_FROM_AIR					= 0.1,	-- the game will roll between 0-1 and will damage a random part if below this val on air critical hits
-
-	SCREEN_RATIO_FOR_FULL_SCREENING_FOR_CAPITALS 					= 4.0,	-- this screen ratio to num capital/carriers is needed for full screening beyond screen line
-	SCREEN_RATIO_FOR_FULL_SCREENING_FOR_CONVOYS 					= 0.5,	-- this screen ratio to num convoys is needed for full screening beyond screen line
-	CAPITAL_RATIO_FOR_FULL_SCREENING_FOR_CARRIERS 					= 1.0,  -- this capital ratio to num carriers is needed for full screening beyond screen line
-	CAPITAL_RATIO_FOR_FULL_SCREENING_FOR_CONVOYS 					= 0.25,  -- this capital ratio to num convoys is needed for full screening beyond screen line
-
-	TASK_FORCE_ROLE_TO_INSIGNIA = {								-- define the index of the insignia to use for a task force designed for a specific role
-		6,	-- Role undefined
-		15,	-- Wolfpack
-		22,	-- Carrier task force
-		26,	-- Surface action group
-		16,	-- Mine layers
-		17,	-- Mine sweepers
-		29,	-- Patrol task force
-		1,	-- Convoy escort
-	},
-
-	-- NOTE: you can see the effect of changing the values down below by running the command tfria with a task force selected
-	MIN_MINE_CAPABLE_RATIO_FOR_ROLE_ASSIGNMENT = 0.6,					-- minimum ratio of mine laying/sweeping capable ships needed for a taskforce to get that icon assigned
-	MAX_SHIP_COUNT_FOR_DOMINANCE_PATROL_ROLE_ASSIGNMENT = 15,			-- define the maximum number of ships that should be in a task force for it to be considered a dominance building patrol (provided they have any capitals as well)
-	MIN_SHIP_COUNT_FOR_TASK_FORCE_ROLE_ASSIGNMENT = 4,					-- define the minimum number of ship that should be in a task force for it to be considered a patrol or an escort task force (used to the insignia assignment, see TASK_FORCE_ROLE_TO_INSIGNIA)
-	SURFACE_DETECTION_STAT_FOR_SHIP_TO_BE_PATROL = 16,					-- amount of surface detection required for a ship to be considered as part of a patrol task force
-	DEPTH_CHARGE_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 15,					-- amount of depth charge required for a ship to be considred a sub hunter and so good for convoy escort
-	SUB_DETECTION_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 2,					-- amount of sub detection required for a ship to be considered a sub hunter
-
-	HEAVY_GUN_ATTACK_TO_SHORE_BOMBARDMENT							= 0.1,  -- heavy gun attack value is divided by this value * 100 and added to shore bombardment modifier
-	LIGHT_GUN_ATTACK_TO_SHORE_BOMBARDMENT							= 0.05, -- light gun attack value is divided by this value * 100 and added to shore bombardment modifier
-
-	GUN_HIT_PROFILES = { -- hit profiles for guns, if target ih profile is lower the gun will have lower accuracy
-		80.0,	-- big guns
-		145.0,	-- torpedoes
-		45.0,	-- small guns
-	},
-
-	DEPTH_CHARGES_HIT_CHANCE_MULT 									= 1.1, 		-- multiplies hit chance of small guns
-	DEPTH_CHARGES_DAMAGE_MULT 										= 0.7, 		-- multiplies damage of depth charges
-	DEPTH_CHARGES_HIT_PROFILE 										= 100.0,	-- hit profile for depth charges
-
-	CONVOY_HIT_PROFILE												= 120.0,  	-- convoys has this contant hit profile
-	HIT_PROFILE_MULT 												= 100.0,  	-- multiplies hit profile of every ship
-	HIT_PROFILE_SPEED_FACTOR										= 2,		-- factors speed value when determining it profile (Vis * HIT_PROFILE_MULT * Ship Hit Profile Mult)
-	HIT_PROFILE_SPEED_BASE											= 20,		-- Base value added to hitprofile speed calulation
-	
-	NAVAL_COMBAT_MEDAL_CHANCE										= 24,		-- 1/N chance that a ship gains a medal after participating in a battle
-	NAVAL_COMBAT_MEDAL_MIN_DURATION									= 48,		-- Minimum hours the battle must have taken to gain a medal
-	NAVAL_COMBAT_MEDAL_LAST_MEDAL_LIMIT								= 30,		-- Minimum days before the ship can gain a new medal
-	NAVAL_COMBAT_MEDAL_ALLOW_CONVOY									= false,	-- Do naval attacks on convoy count for medals
-
-	CONVOY_RAID_MAX_REGION_TO_TASKFORCE_RATIO						= 1.5,		-- each taskforce in convoy raid mission can at most cover this many regions without losing efficiency
-	CONVOY_DEFENSE_MAX_CONVOY_TO_SHIP_RATIO							= 12.0,		-- each ship in convoy defense mission can at most cover this many convoys without losing efficiency
-	CONVOY_DEFENSE_MAX_REGION_TO_TASKFORCE_RATIO					= 5.0,		-- each taskforce in convoy defense mission can at most cover this many regions without losing efficiency
-
-	MINE_SWEEPING_REGION_TO_TASKFORCE_RATIO = 1.0,		-- ratio of taskforce to regions assigned ratio of efficiency, modified by coordination
-	MINE_PLANTING_REGION_TO_TASKFORCE_RATIO = 1.0,		-- ratio of taskforce to regions assigned ratio of efficiency, modified by coordination
-
-	EFFICIENCY_TO_JOIN_COMBAT_RATIO_PENALTY							= 1.0,		-- at lower efficiencies less ships will be able to join combat
-	EFFICIENCY_TO_TIME_TO_JOIN_COMBAT_PENALTY 						= 100.0,	-- at lower efficiencies less time to join combat hour will be increased
-
-	COORDINATION_EFFECT_ON_CONVOY_RAID_EFFICIENCY					= 1.5,		-- coordination will increase the number of areas you can cover in convoy raid
-	COORDINATION_EFFECT_ON_CONVOY_DEFENSE_EFFICIENCY				= 1.5,		-- coordination will increase the number of convoys you can cover in convoy defense
-
-	COORDINATION_EFFECT_ON_TIME_TO_JOIN_COMBAT						= 1.0,		-- coordination will reduce the time to join combat penalties
-	COORDINATION_EFFECT_ON_MINE_LAYING_SPEED 						= 0.5,      -- affect of coordination modifier in mine laying speed
-	COORDINATION_EFFECT_ON_MINE_SWEEPING_SPEED 						= 0.5,      -- affect of coordination modifier in mine sweeping speed
-	COORDINATION_EFFECT_ON_PATROL_SPOTTING 							= 1.0,		-- affect of coordination modifier in spotting speed
-
-	COORDINATION_EFFECT_ON_MINE_SWEEPING = 1.0,      -- modifies coordination by multiplication for mine sweeping
-	COORDINATION_EFFECT_ON_MINE_PLANTING = 1.0,      -- modifies coordination by multiplication for mine laying
-
-	DOMINANCE_EFFECT_ON_POSITIONING_FOR_CONVOY_ESCORT_MAX_RATIO		= 2.0,		-- The ratio which gives the max possible gain of positioning bonus from dominance in region of combat (e.g. to get max bonus you need 'dominance threshold * 2.0' dominance in the region)
-	DOMINANCE_EFFECT_ON_POSITIONING_FOR_CONVOY_ESCORT				= 0.15,		-- Increase of positioning when at max ratio (full control and dominance is >=DOMINANCE_EFFECT_ON_POSITIONING_FOR_CONVOY_ESCORT_MAX_RATIO times the competing dominance)
-
-	MISSION_EFFICIENCY_POW_FACTOR									= 1.7,		-- mission efficiencies will be powered up by this to further penalize low efficiencies
-
-	NAVAL_COMBAT_SUB_DETECTION_FACTOR                               = 1.0,      -- balance value for sub detection in combat by ships
-	SUBMARINE_HIDE_TIMEOUT 											= 20,		-- Amount of in-game-hours that takes the submarine (with position unrevealed), to hide.
-	SUBMARINE_REVEALED_TIMEOUT 										= 16,		-- Amount of in-game-hours that makes the submarine visible if it is on the defender side.
-	SUBMARINE_REVEAL_BASE_CHANCE 									= 11,		-- /deprecated, will be removed in the future update/ Base factor for submarine detection. It's modified by the difference of a spotter's submarines detection vs submarine visibility. Use this variable for game balancing. setting this too low will cause bad spotting issues.
-	SUBMARINE_REVEAL_POW 											= 3.0,		-- /deprecated, will be removed in the future update/ A scaling factor that is applied to the reveal chance in order to make large differences in detection vs visibility more pronounced
-	SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE 							= 0.035,		-- /deprecated, will be removed in the future update/ Chance of a submarine being revealed when it fires. 1.0 is 100%. this chance is then multiplied with modifier created by comparing firer's visibiility and target's detection
-	
-	-- reworked submarine detection formula, new formula is (avg. sub detection * SUBMARINE_REVEAL_DETECTION_MULTIPLIER) / MAX{( SUBMARINE_BASE_STEALTH_VALUE - sub visibility), 0.1_fixed }, for formula (with one 'hack' on the graph to avoid undefined) - https://www.desmos.com/calculator/zhbwchjblc
-	SUBMARINE_BASE_STEALTH_VALUE									= 100,		-- Used in the reworked formula, sub_visiblity is subtracted from SUBMARINE_BASE_STEALTH_VALUE for the divider. The higher the define, the lower the chance for detection to happen
-	SUBMARINE_REVEAL_DETECTION_MULTIPLIER							= 0.075,		-- Used in the reworked formula, multiplies the average submarine detection. The higher the define, the higher chance for detection to happen
-	SUBMARINE_REVEAL_TORPEDO_FIRING_DETECTION_MULTIPLIER			= 1.1,		-- used in the reworked formula when firing the torpedos to see whether it has been detected. This define is applied as multiplier to the numerator (avg. sub detection * SUBMARINE_REVEAL_DETECTION_MULTIPLIER * SUBMARINE_REVEAL_TORPEDO_FIRING_DETECTION_MULTIPLIER). define = 1, no difference, define < 0, no chance of detecting, 0 < define < 1, lowers chance of detecting comparing to passive reveal, 1 < define, increases chance to be revealed.
-
-	MAX_NUM_HOURS_TO_WAIT_AT_ALLY_DOCKYARDS_FOR_REPAIRS 			= 48,		-- taskforces will wait at most this amount of hours in ally bases for repairs before switching to another base for repairs
-
-	COMBAT_RESULT_PRIORITY_THRESHOLDS = { 										-- the game will use this thresholds to define importance of a naval combat result. it will use the highest level that has higher threshold than the amount of production lost in combat
-		0, 		-- low (keep at zero)
-		4000,   -- medium
-		20000,  -- high
-	},
-	COMBAT_RESULT_PRIORITY_DAY_TO_LIVE = { 										-- the game will delete the combat results after some duration depending on its importance
-		7,
-		30,
-		120,
-	},
-	NAVAL_ACCIDENTS_DAYS_TO_LIVE = 120,
-
-	NAVAL_MINE_DANGER_RATIOS = {
-		0.1,		-- not owned
-		0.5,		-- near controlled
-		1.0,		-- near owned
-		1.0,		-- controlled
-		3.0,		-- owned
-	},
-	NAVAL_MINE_DANGER_TRIGGER_MIN = 0.0,
-	NAVAL_MINE_DANGER_TRIGGER_MAX = 2.0,
-
-	NAVAL_CONVOY_DANGER_RATIOS = {
-		0.10,		-- not owned
-		0.10,		-- near controlled
-		0.10,		-- near owned
-		0.15,		-- controlled
-		0.15,		-- owned
-	},
-	NAVAL_CONVOY_DANGER_TRIGGER_MIN = 0.0,
-	NAVAL_CONVOY_DANGER_TRIGGER_MAX = 100.0,
-
-	-- those two work together in the formula f(x) = Y(x/(x+X)) where Y is MAX and X is SLOPE
-	NAVAL_COMBAT_AIR_SUB_DETECTION_MAX = 10.0,
-	NAVAL_COMBAT_AIR_SUB_DETECTION_SLOPE = 10.0,						-- lower means sharper curve (ramps up very fast, then flatten out very fast). Must be >0
-
-	NAVAL_COMBAT_AIR_SUB_DETECTION_EXTERNAL_FACTOR = 1.0,					-- Factor applied to the stats of external air planes
-	NAVAL_COMBAT_AIR_SUB_DETECTION_INTERNAL_EFFICIENCY_FACTOR = 1.0,			-- Factor of Carrier's sortie efficiency on the stats bellow
-	NAVAL_COMBAT_AIR_AGILITY_TO_SUB_DETECTION = 0.0,					-- Factor to apply to the agility of air planes active in a naval combat to deduce their contibution to sub detection
-	NAVAL_COMBAT_AIR_STRIKE_ATTACK_TO_SUB_DETECTION = 0.0,					-- Same, but for strike attack (aka naval attack)
-	NAVAL_COMBAT_AIR_STRIKE_TARGETING_TO_SUB_DETECTION = 0.0,				-- Same, but for strike targeting (aka naval targeting)
-	NAVAL_COMBAT_AIR_MAX_SPEED_TO_SUB_DETECTION = 0.0,					-- Same, but for Max Speed
-	NAVAL_COMBAT_AIR_PLANE_COUNT_TO_SUB_DETECTION = 1.0,					-- Factor applied to the number of active plane in a naval combat to deduce their contribution to sub detection
-	NAVAL_COMBAT_AIR_SUB_DETECTION_DECAY_RATE = 1.0,					-- Factor to decay the value of sub detection contributed by planes on the last hour. Note: the maximum value between the decayed value and the newly computed one is taken into account. A decay rate of 1 means that nothing is carried over, the previous value is zerod out. A decay rate of 0 means that the previous value is carried over as is.
-	NAVAL_COMBAT_AIR_SUB_DETECTION_FACTOR = 0.0,						-- A global factor that applies after all others, right before the sub detection contributed by plane is added to the global sub detection of a combatant
-
-	NAVAL_COMBAT_AIR_SUB_TARGET_BASE = 10,                             -- base scoring for target picking for planes inside naval combat based on screening efficency, one define per ship typ
-	NAVAL_COMBAT_AIR_SCREEN_TARGET_BASE = 10,
-	NAVAL_COMBAT_AIR_CAPITAL_TARGET_BASE = 10,
-	NAVAL_COMBAT_AIR_CARRIER_TARGET_BASE = 10,
-	NAVAL_COMBAT_AIR_CONVOY_TARGET_BASE = 1.0,
-	NAVAL_COMBAT_AIR_SUB_TARGET_SCALE = 10,                             -- scaled scoring for target picking for planes inside naval combat, max value when zero screening efficency, one define per ship typ
-	NAVAL_COMBAT_AIR_SCREEN_TARGET_SCALE = 10,
-	NAVAL_COMBAT_AIR_CAPITAL_TARGET_SCALE = 50,
-	NAVAL_COMBAT_AIR_CARRIER_TARGET_SCALE = 200,
-	NAVAL_COMBAT_AIR_CONVOY_TARGET_SCALE = 1.0,
-	NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCORE = 5,                         -- how much score factor from low health (scales between 0->this number)
-	NAVAL_COMBAT_AIR_LOW_AA_TARGET_SCORE = 5,                           -- how much score factor from low AA guns (scales between 0->this number)
-
-	NAVAL_BASE_DOMINANCE_FACTOR = 0.01,									-- base naval dominance buff based on naval bases in the region
-
-	NAVAL_HEADQUARTERS_FIRST_ADJACENT_FACTOR = 0.5,						-- naval dominance from naval headquarters is multiplied by this value for the first adjacent region
-	NAVAL_HEADQUARTERS_SECOND_ADJACENT_FACTOR = 0.25,					-- naval dominance from naval headquarters is multiplied by this value for the second adjacent region
-
-	NEW_NAVY_LEADER_LEVEL_CHANCES = {									-- chances for new navy leaders to start at a given level
-		0.95, -- 95% for level one
-		0.05  -- 5% for level two
-		      -- 0% for level three to ten
-	},
-
-	NAVY_PIERCING_THRESHOLDS = {					-- Our piercing / their armor must be this value to deal damage fraction equal to the index in the array below [higher number = higher penetration]. If armor is 0, 1.00 will be returned.
-		2.00,
-		1.00,
-		0.95,
-		0.90,
-		0.85,
-		0.80,
-		0.75,
-		0.70,
-		0.65,
-		0.60,
-		0.55,
-		0.50,
-		0.40,
-		0.35,
-		0.30,
-		0.25,
-		0.20,
-		0.15,
-		0.10,
-		0.05,
-		0.00 --there isn't much point setting this higher than 0
-	},
-
-	NAVY_PIERCING_THRESHOLD_CRITICAL_VALUES = {	-- 0 armor will always receive maximum damage (so add overmatching at your own peril). the system expects at least 2 values, with no upper limit.
-		2.00,
-		1.00,
-		0.95,
-		0.90,
-		0.85,
-		0.80,
-		0.75,
-		0.70,
-		0.65,
-		0.60,
-		0.55,
-		0.50,
-		0.40,
-		0.35,
-		0.30,
-		0.25,
-		0.20,
-		0.15,
-		0.10,
-		0.05,
-		0.00 -- For criticals, you could reduce crit chance unlike damage in army combat, but we do not for now.
-	},
-	
-	NAVY_PIERCING_THRESHOLD_DAMAGE_VALUES = {	-- 0 armor will always receive maximum damage (so add overmatching at your own peril). the system expects at least 2 values, with no upper limit.
-		1.00,
-		1.00,
-		0.95,
-		0.90,
-		0.85,
-		0.80,
-		0.75,
-		0.70,
-		0.65,
-		0.60,
-		0.55,
-		0.50,
-		0.40,
-		0.35,
-		0.30,
-		0.25,
-		0.20,
-		0.15,
-		0.10,
-		0.05,
-		0.00 -- 
-	},
-
-	-- all of these NEED to be the same size!!!!
-
-},
-
-NRailwayGun = {
-	RAILWAY_GUN_POSSIBLE_RANGES = { 8, 8, 11 },	-- Possible values for railway gun range in pixel.
-													-- For optimization reasons, they are listed here and equipment DB must use one of those.
-													-- when writing railway gun in equipment, use the index in this array
-													-- the first value in array is the default value
-	ATTACK_TO_FORTS_MODIFIER_FACTOR = 1.333,		-- Forts modifier is calculated by multiplying railway gun attack value with this and dividing by 100
-	ATTACK_TO_ENTRENCHMENT_MODIFIER_FACTOR = 0.8,		-- Entrenchment modifier is calculated by multiplying railway gun attack value with this and dividing by 100
-	ATTACK_TO_BOMBARDMENT_MODIFIER_FACTOR = 0.4,	-- Bombardment modifier is calculated by multiplying railway gun attack value with this and dividing by 100
-	DAILY_MANPOWER_GAIN_RATIO = 0.05,				-- Railway Guns will be able to gain this ratio of their max manpower daily
-	DISBAND_MANPOWER_LOSS = 0.0,					-- The ration of manpower lost on disbanding railway guns
-	ENCIRCLED_DISBAND_MANPOWER_FACTOR = 0.2,		-- The percentage of manpower returned when an encircled unit is disbanded
-	OUT_OF_SUPPLY_SPEED = -0.8,						-- Max speed reduction from supply for railway guns
-	BASE_CAPTURE_CHANCE = 0.2,						-- The base chance of railway guns being captured during an overrrun. Will be further modified by the equipment capture chance of the capturing unit.
-	DISTRIBUTION_RAILWAY_GUN_PRESENCE_SCORE = -100,					-- Score for Railway Guns in nearby provs. x3 if on that province. x2 if adjacent. x1 if 2 away.
-	DISTRIBUTION_OUR_UNITS_PRESENCE_SCORE = 1,	 					-- Score for our units in province when distributing Railway Guns
-	DISTRIBUTION_FRIENDLY_UNITS_PRESENCE_SCORE = 0,					-- Score for friendly units in province when distributing Railway Guns
-	DISTRIBUTION_HOSTILE_UNITS_PRESENCE_SCORE = -45,				-- Score for hostile units in province when distributing Railway Guns
-	DISTRIBUTION_COMBATS_PRESENCE_SCORE = -30,						-- Score for combats in province when distributing Railway Guns
-	DISTRIBUTION_COMBATS_INRANGE_SCORE = 15,						-- Score for combats in range when distributing Railway Guns
-	DISTRIBUTION_OUR_UNITS_INRANGE_SCORE = 2.5,						-- Score for our units in range when distributing Railway Guns
-	DISTRIBUTION_FRIENDLY_UNITS_INRANGE_SCORE = 1.5,				-- Score for friendly units in range when distributing Railway Guns
-	DISTRIBUTION_HOSTILE_UNITS_INRANGE_SCORE = 6,					-- Score for hostile units in range when distributing Railway Guns
-	DISTRIBUTION_DISTANCE_SCORE = -0.08,							-- Score for distance to province when distributing Railway Guns
-	DISTRIBUTION_PROVINCE_CONTROLLED_BY_ENEMY_SCORE = -3,			-- Score for staying in province controlled by enemy
-	DISTRIBUTION_PROVINCES_CONTROLLED_BY_ENEMY_INRANGE_SCORE = 15,	-- Score for provinces controlled by enemy in range when distributing Railway Guns
-	DISTRIBUTION_HOLD_POSITION_SCORE = 35,							-- Score for staying in the same province when distributing Railway Guns
-	DISTRIBUTION_NO_RAILWAY_SCORE = -500,							-- Score for provinces with no railways (need to be low, but we allow RG to enter port provinces without railways)
-	DISTRIBUTION_SUPPLY_DEFICIT_SCORE = -100,						-- Score for provinces without sufficient supply cap
-},
-
-NTrade = {
-	DISTANCE_TRADE_FACTOR = 0,				-- Trade factor is modified by distance times this
-	RELATION_TRADE_FACTOR = 2,					-- Trade factor is modified by Opinion value times this
-	ALLOW_TRADE_CUT_OFF = 0,					-- If trade factor is less than this, no trade will be allowed
-	MONTH_TRADE_FACTOR = 2,						-- Each month a trade gets this much boost to it's trade factor
-	MAX_MONTH_TRADE_FACTOR = 50,				-- This is the maximum bonus that can be gained from time
-	BASE_TRADE_FACTOR = 100,					-- This is the base trade factor
-	PUPPET_MASTER_TRADE_FACTOR = 500,			-- This is priority for puppet master
-	PUPPET_TRADE_FACTOR = 0,					-- This is unpriority for puppets
-	BASE_LAND_TRADE_RANGE = 1000,
-	PARTY_SUPPORT_TRADE_FACTOR = 0,			-- Trade factor bonus at the other side having 100 % party popularity for my party
-	ANTI_MONOPOLY_TRADE_FACTOR_THRESHOLD = 0.5,	-- What percentage of resources has to be sold to the buyer for the anti-monopoly factor to take effect
-	ANTI_MONOPOLY_TRADE_FACTOR = 0,			-- This is added to the factor value when anti-monopoly threshold is exceeded
-	NAVAL_ROUTE_ACCESS_AVOID_COST_MULT = 1,	-- Naval pathfinding should avoid certain regions that you mark. High "cost multiplier" will make it less willingly go through a specific region.
-},
-
-NAI = {
-	PEACE_TIME_NAVY_FUEL_FACTOR = 0.2,			-- Percentage of fuel available to navy that is allowed to use for missiosn during peace time
-	PEACE_TIME_NAVY_FUEL_LIMIT = 0.5,			-- The maximum fuel percentage to use for navy at peace from available fuel scaled with world tension
-	GARRISON_FRACTION = 0.01, 					-- How large part of a front should always be holding the line rather than advancing at the enemy
-	AI_TASKFORCE_REQUIRED_RESERVE_RATIO = 0.2,	-- Fraction of required TF optimal composition held in reserve for reinforcement (rounded up per type)
-	THEORIST_SCALING_WEIGHT_FACTOR_PER_NON_POLITICAL_ADVISORS = 0.15, --Scale theorist weight by this * num non political advisors
-	DIPLOMATIC_ACTION_GOOD_BAD_RATIO_THRESHOLD = 1,
-	BASE_RELUCTANCE = 0, 						-- Base reluctance applied to all diplomatic offers
-	DIPLOMATIC_ACTION_RANDOM_FACTOR = 0.5, 		-- How much of the AI diplomatic action scoring is randomly determined (1.0 = half random, 2.0 = 2/3rd random, etc)
-	DIPLOMATIC_ACTION_PROPOSE_SCORE = 50, 		-- AI must score a diplomatic action at least this highly to propose it themselves
-	DILPOMATIC_ACTION_DECLARE_WAR_WARGOAL_BASE = 50, -- Base diplomatic action score bonus to go to war per wargoal
-	DIPLOMATIC_ACTION_BREAK_SCORE = -10, 		-- AI must score a diplomatic action less than this to break it off
-	DIPLOMATIC_ACTION_NAVAL_BLOCKADE_BASE_SCORE  = -700, 	-- The conditions need to make the base score beat DIPLOMATIC_ACTION_PROPOSE_SCORE before a blockade is considered
-	DIPLOMATIC_ACTION_NAVAL_BLOCKADE_DECREMENT_SCORE_PER_EXISTING_BLOCKADE  = 100, 	-- AI will decrease the desire by this amount following each existing blockade
-	DIPLOMATIC_ACTION_NAVAL_BLOCKADE_OPINION_SCALING  = -2, 		-- AI will increase the desire by this amount times the opinion of the target, note that this must be a negative value to increase desire
-	DIPLOMATIC_ACTION_NAVAL_BLOCKADE_TENSION_FACTOR  = 8, 	-- Generated Threat x TENSION_FACTOR
-	DIPLOMATIC_ACTION_NAVAL_BLOCKADE_DECREMENT_SAME_IDEOLOGY  = 2000, 	-- AI will decrease the desire by this amount if the target is of the same ideology
-	DIPLOMATIC_ACTION_NAVAL_BLOCKADE_FLEET_SIZE_THRESHOLD = 100, -- AI will increase/decrease the naval blockade desire if the fleet size difference above/below this threshold
-	DIPLOMATIC_ACTION_NAVAL_BLOCKADE_FLEET_SIZE_SCALING = 4, -- AI will increase/decrease the naval blockade desire by this times if the fleet size difference above/below the threshold
-	
-	DIPLOMACY_CREATE_FACTION_FACTOR = 0.75,		-- Factor for AI desire to create a new faction. Val < 1.0 makes it less likely to create than to join.
-	DIPLOMACY_FACTION_WRONG_IDEOLOGY_PENALTY = 50, -- AI penalty for diplomatic faction acitons between nations of different ideologies
-	DIPLOMACY_FACTION_SAME_IDEOLOGY_MAJOR = 10, -- AI bonus acceptance when being asked about faction is a major of the same ideology
-	DIPLOMACY_FACTION_NEUTRALITY_PENALTY = 50,	-- Neutral nations have a separate penalty, not wanting to get involved at all, rather than caring much about the difference in ideology
-	DIPLOMACY_FACTION_GLOBAL_TENSION_FACTOR = 0.2,-- How much the AI takes global tension into account when considering faction actions
-	DIPLOMACY_FACTION_WAR_RELUCTANCE = -50,		-- Penalty to desire to enter a faction with a country that we are not fighting wars together with.
-	DIPLOMACY_FACTION_TAKE_OVER_RELUCTANCE_VERSUS_HUMAN = 2.0,	-- Multiplier penalty for how much stronger than a human faction member an AI country must be to choose to assume faction leadership.
-	DIPLOMACY_SCARED_MINOR_EXTRA_RELUCTANCE = -50, -- extra reluctance to join stuff as scared minor
-	DIPLOMACY_FACTION_PLAYER_JOIN = 20,			-- Bonus for human players asking to join a faction.
-	DIPLOMACY_BOOST_PARTY_COST_FACTOR = 100.0,	-- Desire to boost party popularity subtracts the daily cost multiplied by this
-	DIPLOMACY_IMPROVE_RELATION_COST_FACTOR = 7.0,-- Desire to boost relations subtracts the cost multiplied by this
-	DIPLOMACY_IMPROVE_RELATION_PP_FACTOR = 0.1,	-- Desire to boost relations adds total PP multiplied by this
-	DIPLOMACY_SEND_ATTACHE_COST_FACTOR = 5.0,	-- Desire to send attache substracts the cost multiplied by this
-	DIPLOMACY_SEND_ATTACHE_PP_FACTOR = 0.1,	-- Desire to send attache adds total PP multiplied by this
-	DIPLOMACY_REJECTED_WAIT_MONTHS_BASE = 1,	-- AI will not repeat offers until at least this time has passed, and at most the double
-	DIPLOMACY_LEND_LEASE_MONTHS_TO_CANCEL = 30,	-- AI will not cancel a lend lease offer until this time has passed
-	DIPLOMACY_CALL_ALLY_VALIDITY_DURATION = 1,	-- Overwrite above value for CallAlly and JoinAlly diplo action. This is however fixed, and is not subject to randomness. Also, this is the time the AI will keep the action in its incoming queue without declining it.
-	DIPLOMACY_PURCHASE_EQUIPMENT_MONTHS = 2,    -- AI will not ask to purchase equipment more often than this
-	DIPLOMACY_SEND_MAX_FACTION = 0.75,			-- Country should not send away more units than this as expeditionaries
-	DIPLOMACY_ACCEPT_VOLUNTEERS_BASE = 1000,		-- Base value of volunteer acceptance (help is welcome)
-	DIPLOMACY_ACCEPT_ATTACHE_BASE = 1000,			-- Base value of attache acceptance (help is welcome)
-	DIPLOMACY_ACCEPT_ATTACHE_OPINION_TRASHHOLD = 0, -- Value of opinion that will remove accepting penalty for receiveing the attache
-	DIPLOMACY_ACCEPT_ATTACHE_OPINION_PENALTY = 0, -- Value of acceptance penalty if the opinion too low
-	DIPLOMACY_FACTION_MAJOR_AT_WAR = 1000.0,	-- Factor that will be multiplied with the surrender level in the desire to offer to the other ai to join a faction
-	DIPLOMACY_FACTION_SURRENDER_LEVEL = 20, 	-- How much the recipient nation losing matters for joining a faction
-	DIPLO_PREFER_OTHER_FACTION = -400,			-- The country has yet to ask some other faction it would prefer to be a part of.
-	DIPLO_DISTANCE_BETWEEN_CAPITALS = -340,		-- Max scaled malus from distance between capitals
-	DIPLO_ACCEPTABLE_DISTANCE_BETWEEN_CAPITALS = 1000.0, --When scaled distance malus begins to kick in. At double this value, max penalty (above) is achieved
-	DIPLO_SHOW_FACTION_JOIN_WARNING_THRESHOLD = -20,	-- Show warning if declare-war target is this close to accepting or being sent a faction invitiation
-	DIPLO_MAX_CONTAINMENT_ACCEPTANCE = 0,		-- Max value for 'wants to contain' diplo acceptance
-	AI_GUARANTEE_DESIRE_WITH_PRESSURE_MODIFIER = 15, 	-- If we have an 'ideology drfit from guarantees' modifier, how much more likely will we be to guarantee nations?
-	RESEARCH_DAYS_BETWEEN_WEIGHT_UPDATE = 1, 	-- Refreshes need scores based on country situation.
-	RESEARCH_WEIGHT_TRUNCATION_THRESHOLD = 0.75,    -- When choosing a tech to research, use this truncation selection threshold. (for example, if the top score is 10, a threshold of 0.75 will pick randomly from anything above 7.5 score)
-	RESEARCH_LAND_DOCTRINE_NEED_GAIN_FACTOR = 0.12, -- Multiplies value based on relative military industry size / country size.
-	RESEARCH_NAVAL_DOCTRINE_NEED_GAIN_FACTOR = 0.075, -- Multiplies value based on relative naval industry size / country size.
-	RESEARCH_AIR_DOCTRINE_NEED_GAIN_FACTOR = 0.07, -- Multiplies value based on relative number of air base / country size.
-	RESEARCH_NEW_DOCTRINE_RANDOM_FACTOR = 0.05,	-- How much randomness is allowed to contribute to do new research expressed as a factor of total tech weights. Higher means more random exploration.
-	RESEARCH_AHEAD_BONUS_FACTOR = 10.0,          -- To which extent AI should care about ahead of time bonuses to research
-	RESEARCH_BONUS_FACTOR = 2.0,                -- To which extent AI should care about research speed bonuses
-	RESEARCH_YEARS_BEHIND_FACTOR = 0.3,         -- To which extent AI should care about not falling behind (i.e. increase weight for old tech)
-	RESEARCH_NEEDS_FACTOR = 0.01,               -- To which extent AI should care about its research needs (research needs are matched against the tech category)
-	RESEARCH_LENGTH_FACTOR = 3,                 -- To which extent AI should care about how long it takes to research something (it prefers short research times)
-	MAX_AHEAD_RESEARCH_PENALTY = 7,             -- Max ahead of time penalty AI will ever consider (this also includes BASE_YEAR_AHEAD_PENALTY_FACTOR, so not the raw time)
-	RESEARCH_AHEAD_OF_TIME_FACTOR = 1.5, 		-- To which extent AI should care about ahead of time penalties to research
-	RESEARCH_BASE_DAYS = 60,					-- AI adds a base number of days when weighting completion time for techs to ensure it doesn't only research quick techs
-	DECLARE_WAR_RELATIVE_FORCE_FACTOR = 0.5,	-- Weight of relative force between nations that consider going to war
-	TRADEABLE_FACTORIES_FRACTION = 0.8,			-- Will at most trade away this fraction of factories.
-	MIN_DELIVERED_TRADE_FRACTION = 0.7,			-- AI will cancel trade deals that are not able to deliver more than this fraction of the agreed amount
-	SEA_PATH_LENGTH_SCORE_BASE = 0,           -- scoring reduction from naval paths for AI when picking trade partners
-	MINIMUM_GOOD_TRADE_RATIO_PER_CIV = 0.005,   -- for each civ factory we have mul with this we are allowed to trade under % of resource on a trade
-	NAVAL_DOCKYARDS_SHIP_FACTOR = 1.5,			-- The extent to which number of dockyards play into amount of sips a nation wants
-	PRODUCTION_EQUIPMENT_SURPLUS_FACTOR = 0.3,	-- Base value for how much of currently used equipment the AI will at least strive to have in stock
-	PRODUCTION_EQUIPMENT_SURPLUS_FACTOR_GARRISON = 0.3,	-- Base value for how much of currently used equipment the AI will at least strive to have in stock for garrison forces
-	AIR_SUPERIORITY_FACTOR = 2.5,				-- Factor for air superiority score
-	ROCKET_MIN_ASSIGN_SCORE = 10,				-- Minimum total score for region to be considered for rocket air missions
-	ROCKET_MIN_PRIO_ASSIGN_SCORE = 50,			-- Minimum total score for region to be considered for critical rocket air missions
-	ROCKET_PRIORITIZE_BARRAGE = false,			-- Prioritize rocket barrage or strategic bombing mission. false = prioritize strategic bombing, true = prioritize barrage
-	ROCKET_ASSIGN_SCORE_REDUCTION_PER_ASSIGNMENT = 0.5, -- each assigned rocket reduces the score of a region by this amount
-	GUN_EMPLACEMENT_MIN_ASSIGN_SCORE = 1,       -- Minimum total score for region to be considered for gun emplacement air missions
-	GUN_EMPLACEMENT_MIN_PRIO_ASSIGN_SCORE = 50, -- Minimum total score for region to be considered for critical gun emplacement air missions
-	GUN_EMPLACEMENT_ASSIGN_SCORE_REDUCTION_PER_ASSIGNMENT = 0.5, -- each assigned gun emplacement reduces the score of a region by this amount
-	MAX_VOLUNTEER_ARMY_FRACTION = 0.05,			-- Countries will not send more than their forces time this number to aid another country
-	DEPLOY_MIN_TRAINING_SURRENDER_FACTOR = 0.5,     -- Required percentage of training (1.0 = 100%) for AI to deploy unit in wartime while surrender progress is higher than 0
-	DEPLOY_MIN_EQUIPMENT_SURRENDER_FACTOR = 0.9,   -- Required percentage of equipment (1.0 = 100%) for AI to deploy unit in wartime while surrender progress is higher than 0
-	DEPLOY_MIN_TRAINING_PEACE_FACTOR = 1,        -- Required percentage of training (1.0 = 100%) for AI to deploy unit in peacetime
-	DEPLOY_MIN_EQUIPMENT_PEACE_FACTOR = 0.7,       -- Required percentage of equipment (1.0 = 100%) for AI to deploy unit in peacetime
-	DEPLOY_MIN_TRAINING_WAR_FACTOR = 1,          -- Required percentage of training (1.0 = 100%) for AI to deploy unit in wartime
-	DEPLOY_MIN_EQUIPMENT_WAR_FACTOR = 0.85,         -- Required percentage of equipment (1.0 = 100%) for AI to deploy unit in wartime
-	DEPLOY_MIN_EQUIPMENT_CAP_DEPLOY_FACTOR = 0.85,  -- If training is capped by equipment deficit and we have reached that cap, deploy unit anyway if percentage is above this (reinforce in field instead).
-	DYNAMIC_STRATEGIES_THREAT_FACTOR = 4.0,		-- How much threat generated by other countries effects generated strategies
-	LOCATION_BALANCE_TO_ADVANCE = 0.0,			-- Limit on location strength balance between country and enemy for unit to dare to move forward.
-	
-	EQUIPMENT_MARKET_UPDATE_FREQUENCY_DAYS = 7,                    -- How often the AI runs its market logic
-	EQUIPMENT_MARKET_MAX_CIVS_FOR_PURCHASES_RATIO = 0.2,            -- Ratio of available civilian factories to max use for equipment purchases (0.2 = 20 %, so 50 available civs would mean max ca 10 civs to spend on purchases at any one time). Gets modified by equipment_market_spend_factories AI strategy.
-	EQUIPMENT_MARKET_BASE_MARKET_RATIO = 0.25,                       -- The AI tries to keep ca this ratio of equipment surplus for sale on the market. Gets modified by equipment_market_for_sale_factor AI strategy.
-	EQUIPMENT_MARKET_DEFAULT_CIC_CHUNK_FOR_SALE = 150.0,            -- When putting things up for sale on the market, this determines the default "chunk" size of equipment the AI puts up. Gets overridden by equipment_market_min_for_sale AI strategy. (If one equipment is worth 5 CIC, a value of 150 would result in chunk sizes of 150/5 = 30 units)
-	EQUIPMENT_MARKET_NR_DELIVERIES_SOFT_MAX = 7,                   -- AI tries to adjust assigned factories and amount of equipment to keep nr deliveries at max this
-	EQUIPMENT_MARKET_EXTRA_CONVOYS_OVERRIDE = 2,                    -- Makes the AI able to buy convoys even if they are lacking free convoys. 0 will make them stop this behavior, anything > 0 will allow overriding the perceived nr of free convoys. Only if convoy equipment has a non-zero weight does the actual value matter.
-	EQUIPMENT_MARKET_WANTED_CONVOY_USAGE_RATIO = 0.3,               -- If the AI's available/free/unused convoys is reduced to this ratio (0.3 = 30 %), start buying convoys.
-	EQUIPMENT_MARKET_CONTRACT_DURATION_ACCEPTANCE = -10,            -- If expected contract duration is longer than EQUIPMENT_MARKET_NR_DELIVERIES_SOFT_MAX deliveries, then add this to the PurchaseContract AI acceptance score per nr overdue deliveries
-	EQUIPMENT_MARKET_CONTRACT_EFFICIENCY_TO_CANCEL = 0.1,           -- If contract efficiency stays below this, the AI will cancel the contract
-	EQUIPMENT_MARKET_EQUIPMENT_SUNK_TO_CANCEL = 0.5,                -- If more equipment is sunk then the given percentage, the AI will cancel the contract
-	EQUIPMENT_MARKET_SHORTAGE_DAYS_TO_CANCEL = 30,                  -- If equipment deficit will take more than these many days to fix, the AI will cancel the contract
-	EQUIPMENT_MARKET_MAX_CONVOY_RATIO_FOR_MARKET_PEACE = 0.6,       -- Max ratio of total convoys to use for equipment trade while at peace
-	EQUIPMENT_MARKET_MAX_CONVOY_RATIO_FOR_MARKET_WAR = 0.4,        -- Max ratio of total convoys to use for equipment trade while at war
-	EQUIPMENT_MARKET_SCORE_FACTOR_VARIANT_SCORE = 5.0,              -- Score coefficient for VariantScore (high is good)
-	EQUIPMENT_MARKET_SCORE_FACTOR_CIC_VALUE_NEEDED = 8.0,           -- Score coefficient for CicValueNeeded (high is prio)
-	EQUIPMENT_MARKET_SCORE_FACTOR_SUBSIDY_VALUE = 2.0,              -- Score coefficient for SubsidyValue (high is good)
-	EQUIPMENT_MARKET_SCORE_FACTOR_COST_PER_UNIT = -5.0,             -- Score coefficient for SubsidizedCostPerUnit (low is good)
-	EQUIPMENT_MARKET_SCORE_FACTOR_AI_STRAT_WEIGHT = 50.0,           -- Score coefficient for AiStratWeight (high is prio)
-	EQUIPMENT_MARKET_SCORE_FACTOR_DIPLO_OPINION = 1.0,              -- Score coefficient for DiploOpinion, mainly used as tie breaker (high is good)
-
-	INFRASTRUCTURE_PERCENTAGE_AT_WHICH_TO_BUILD_INFRA_CAP_BUILDING = 0.75,		-- When should we build a cap building on a state
-	NUM_FACTORIES_IN_STATE_TO_WANT_ENERGY_REDUCTION = 6,			-- How many mils should we want in a state before we think about building energy reduction cap building
-	TOTAL_STATE_EXTRACTED_RESOURCES_FOR_BUILDING_RESOURCE_CAP_BUILDING = 30.0,	--How many resources required for building a resource inproving infra cap building
-
-	DIPLOMACY_ACCEPT_CONDITIONAL_SURRENDER_MANPOWER_IN_FIELD = -20,	-- Scale multiplied by difference in manpower in field
-	DIPLOMACY_ACCEPT_CONDITIONAL_SURRENDER_GLOBAL_TENSION = -10,	-- Multiplied by WT
-	DIPLOMACY_ACCEPT_CONDITIONAL_SURRENDER_WAR_SUPPORT = -10,		-- Multiplied by recipient WS
-	DIPLOMACY_ACCEPT_CONDITIONAL_SURRENDER_EMBARGO = 2,				-- Multiplied by num embargo, max 5 embargo
-	DIPLOMACY_ACCEPT_CONDITIONAL_SURRENDER_OWN_SURRENDER_LIMIT = 20, -- Multiplied by recipient nation's surrender level
-	DIPLOMACY_ACCEPT_CONDITIONAL_SURRENDER_MINOR_WAR = 10,			-- Applied if recipient is a minor nation (and therefore there are no majors in this war)
-	
-	MIN_POLITICAL_POWER_MONTHLY_GAIN_FOR_IMPROVE_RELATIONS = 0.50,	-- If country makes less than this PP per month, they won't improve relations
-
-	NUM_RESOURCES_TO_ALLOW_MINOR_EMBARGO = 69,	--If we or any of our puppets have more total resources of a single category that this, we will consider embargoing countries
-	EMBARGO_WORLD_TENSION_THREAT_DIVISOR = 2.5,		--A divisor to generated world tension when applying how much we care about it in AI desire
-
-	OPINION_CUTOFF_FOR_IMPROVE_RELATIONS = 80,	-- AI will never consider improving relations if above this opinion with target.
-
-	DEFAULT_MODULE_VARIANT_CREATION_XP_CUTOFF_LAND = 20,	-- Army XP needed before attempting to create a variant of a type that uses the tank designer (the tank designer DLC feature must be active).
-	DEFAULT_MODULE_VARIANT_CREATION_XP_CUTOFF_NAVY = 20,	-- Same as above but for the ship designer.
-	DEFAULT_MODULE_VARIANT_CREATION_XP_CUTOFF_AIR = 20,		-- Same as above but for the plane designer.
-	DEFAULT_LEGACY_VARIANT_CREATION_XP_CUTOFF_LAND = 10,	-- Army XP needed before attempting to create a variant of a type that uses the legacy upgrades system. ai_strategy supports land_xp_spend_priority upgrade_xp_cutoff. If none is set, this define is used instead.
-	DEFAULT_LEGACY_VARIANT_CREATION_XP_CUTOFF_NAVY = 20,	-- Same as above but for navy XP and navy_xp_spend_priority.
-	DEFAULT_LEGACY_VARIANT_CREATION_XP_CUTOFF_AIR  = 1,	-- Same as above but for air XP and air_xp_spend_priority.
-	VARIANT_CREATION_XP_RESERVE_LAND = 10,					-- If the AI lacks army XP to create a variant it will reserve this much XP for variant creation so that it will eventually be able to create a variant.
-	VARIANT_CREATION_XP_RESERVE_NAVY = 30,					-- Same as above but for navy XP.
-	VARIANT_CREATION_XP_RESERVE_AIR  = 30,					-- Same as above but for air XP.
-
-	-- The AI uses the below values when selecting which design to make among the types that use the tank designer
-	-- (the tank designer DLC feature must be active). For each role, the highest priority AI design that can be
-	-- created, if any, is assigned a weight. Any design with a weight of zero or a weight that falls below the
-	-- cutoff is dropped. A random design is then picked from the remaining.
-	-- Weight is calculated as AlternativeFactor * DemandFactor.
-	-- An "alternative" is a producible design of the same archetype (each specialized type is its own archetype).
-	LAND_DESIGN_ALTERNATIVE_ABSENT = 1,
-	LAND_DESIGN_ALTERNATIVE_OF_LESSER_TECH = 1,
-	LAND_DESIGN_ALTERNATIVE_OF_EQUAL_TECH = 1,
-	LAND_DESIGN_ALTERNATIVE_OF_GREATER_TECH = 1,
-	-- If a template may be reinforced with the archetype it's considered to be "demanded". If multiple conditions
-	-- are met, e.g. it's both in the field and in training, the largest value is used.
-	LAND_DESIGN_DEMAND_FIELD_DIVISION = 45,
-	LAND_DESIGN_DEMAND_TRAINING_DIVISION = 30,
-	LAND_DESIGN_DEMAND_GARRISON_DIVISION = 15,
-	LAND_DESIGN_DEMAND_UNUSED_TEMPLATE = 1,
-	LAND_DESIGN_DEMAND_ABSENT = 0,
-	-- If a design with a weight when divided by the largest weight falls below this value it's excluded from the
-	-- selection. Valid values are in the range [0, 1] inclusive.
-	LAND_DESIGN_CUTOFF_AS_PERCENTAGE_OF_MAX = 0.01,
-
-	-- See above documentation.
-	AIR_DESIGN_ALTERNATIVE_ABSENT = 1000000,
-	AIR_DESIGN_ALTERNATIVE_OF_LESSER_TECH = 10000,
-	AIR_DESIGN_ALTERNATIVE_OF_EQUAL_TECH = 100,
-	AIR_DESIGN_ALTERNATIVE_OF_GREATER_TECH = 1,
-	-- The AI desires to produce equipment at a certain rate per archetype, and demand is determined per archetype
-	-- relative to the least and most desired counts.
-	AIR_DESIGN_DEMAND_MAX = 33,
-	AIR_DESIGN_DEMAND_MIN = 1,
-	AIR_DESIGN_DEMAND_ABSENT = 0,
-	AIR_DESIGN_CUTOFF_AS_PERCENTAGE_OF_MAX = 0.34,
-
-	-- The AI "desires" to spend XP on doctrines, templates, and equipment.
-	-- The desire is built up over time and when XP is available it spends it on the action that has the highest accumulated desire. After spending XP the desire is reset, in effect balancing the desires.
-	-- Below is the daily desire gain for each action.
-	DESIRE_USE_XP_TO_UNLOCK_LAND_DOCTRINE = 10.0,    -- How quickly is desire to unlock land doctrines accumulated?
-	DESIRE_USE_XP_TO_UNLOCK_NAVAL_DOCTRINE = 10.0,   -- How quickly is desire to unlock naval doctrines accumulated?
-	DESIRE_USE_XP_TO_UNLOCK_AIR_DOCTRINE = 10.0,     -- How quickly is desire to unlock air doctrines accumulated?
-	DESIRE_USE_XP_TO_UPDATE_LAND_TEMPLATE = 100.0,    -- How quickly is desire to update/create templates accumulated?
-	DESIRE_USE_XP_TO_UPGRADE_LAND_EQUIPMENT = 50.0,  -- How quickly is desire to update/create land equipment variants accumulated?
-	DESIRE_USE_XP_TO_UPGRADE_NAVAL_EQUIPMENT = 1.0, -- How quickly is desire to update/create naval equipment variants accumulated?
-	DESIRE_USE_XP_TO_UPGRADE_AIR_EQUIPMENT = 100.0,   -- How quickly is desire to update/create air equipment variants accumulated?
-	DESIRE_USE_XP_TO_UNLOCK_ARMY_SPIRIT = 0.4,    -- How quickly is desire to unlock army spirits accumulated?
-	DESIRE_USE_XP_TO_UNLOCK_NAVY_SPIRIT = 0.4,   -- How quickly is desire to unlock naval spirits accumulated?
-	DESIRE_USE_XP_TO_UNLOCK_AIR_SPIRIT = 0.4,     -- How quickly is desire to unlock air spirits accumulated?
-
-	DAYS_BETWEEN_CHECK_BEST_DOCTRINE = 7;       -- Recalculate desired best doctrine to unlock with this many days inbetween.
-	DAYS_BETWEEN_CHECK_BEST_TEMPLATE = 7;       -- Recalculate desired best template to upgrade with this many days inbetween.
-	DAYS_BETWEEN_CHECK_BEST_EQUIPMENT = 7;      -- Recalculate desired best equipment to upgrade with this many days inbetween.
-	
-	UNLOCK_SPIRIT_AI_WILL_DO_FACTOR = 20,              -- Factor for scripted ai_will_do value
-	UNLOCK_SPIRIT_MODIFIER_FACTOR = 0.05,              -- Factor for AI's evaluated value of the modifiers connected to the spirit
-	UNLOCK_SPIRIT_USE_TRUNCATION_SELECT = true,       -- Whether to use truncation select or roulette-wheel select. Set threshold for truncation select below.
-	UNLOCK_SPIRIT_TRUNCATION_SELECT_THRESHOLD = 0.0,  -- Valid between [0.0, 1.0]. When unlocking spirits, select randomly from all spirits with AI score >= VALUE * HighestSpiritScore. To always select the best, set this value to 1.0. To select fully randomly, set this value to 0.0.
-
-	FOCUS_TREE_CONTINUE_FACTOR = 1.5,			-- Factor for score of how likely the AI is to keep going down a focus tree rather than starting a new path.
-	PLAN_VALUE_TO_EXECUTE = -0.61,				-- AI will typically avoid carrying out a plan it below this value (0.0 is considered balanced).
-	DECLARE_WAR_NOT_NEIGHBOR_FACTOR = 0.25,		-- Multiplier applied before force factor if country is not neighbor with the one it is considering going to war
-	CALL_ALLY_BASE_DESIRE = 20,					-- exactly what it says
-	CALL_ALLY_DEMOCRATIC_DESIRE = 50,			-- Desire to call ally added for democratic AI
-	CALL_ALLY_NEUTRAL_DESIRE = 25,				-- Desire to call ally added for neutral AI
-	CALL_ALLY_FASCIST_DESIRE = -10,				-- Desire to call ally added for fascist AI
-	CALL_ALLY_COMMUNIST_DESIRE = 75,			-- Desire to call ally added for communist AI
-	CALL_ALLY_PUPPET_INVITE_OVERLORD = 1000,    -- Desire for a puppet to call its overlord into the war
-	CALL_ALLY_OVERLORD_INVITE_PUPPET = 20,      -- Desire for an overlord to call its puppet into the war
-	CALL_ALLY_RELATIVE_INDUSTRY_STRENGTH_THRESHOLD = 1.5, -- If our relative industry strength ratio is less than this (compared to all enemies), increase desire to call allies
-	CALL_ALLY_RELATIVE_ARMY_STRENGTH_THRESHOLD = 1.5,     -- If our relative army strength ratio is less than this (compared to all enemies), increase desire to call allies
-	CALL_ALLY_RELATIVE_INDUSTRY_STRENGTH_MAX = 50.0,      -- Max desire value for relative industry strength (lerping between zero and this based on the threshold)
-	CALL_ALLY_RELATIVE_ARMY_STRENGTH_MAX = 100.0,         -- Max desire value for relative army strength (lerping between zero and this based on the threshold)
-	CALL_ALLY_LOSING_WAR_THRESHOLD = 0.45,                -- If our war progress is less than this, increase desire to call allies (0.5 is stalemate)
-	CALL_ALLY_LOSING_WAR_MAX = 100.0,                     -- Max desire value for losing war (lerping between zero and this based on the threshold)
-	CALL_ALLY_WAR_LENGTH_NR_MONTHS = 2,                   -- For every month the war has gone on, increase desire this much
-	CALL_ALLY_JOINER_HAS_ENEMY_NEIGHBOR = 100,            -- If the joining country is neighbor to at least one of the enemies, increase desire this much
-
-	AI_CHAIN_CALLS_ALLIES = true,				-- with this enabled the AI will automatically call AI allies when called into a war (which in turn generates a single popup, this circumvents some potential modfiable scripts with the call ally diplo action, which might be a cause to disable it in some mods
-
-	MIN_AI_UNITS_PER_TILE_FOR_STANDARD_COHESION = 2.0,	-- How many units should we have for each tile along a front in order to switch to standard cohesion (less moving around)
-	MIN_FRONT_SIZE_TO_CONSIDER_STANDARD_COHESION = 2000,	-- How long should fronts be before we consider switching to standard cohesion (under this, standard cohesion fronts will switch back to relaxed)
-
-	JOIN_ALLY_BASE_DESIRE = 20,					-- exactly what it says
-	JOIN_ALLY_DEMOCRATIC_DESIRE = 50,			-- Desire to join ally added for democratic AI
-	JOIN_ALLY_NEUTRAL_DESIRE = 25,				-- Desire to join ally added for neutral AI
-	JOIN_ALLY_FASCIST_DESIRE = -10,				-- Desire to join ally added for fascist AI
-	JOIN_ALLY_COMMUNIST_DESIRE = 75,			-- Desire to join ally added for communist AI
-	JOIN_FACTION_BOTH_LOSING = -300,			-- Desire to be in a faction when both we and htey are in losing wars
-	LENDLEASE_FRACTION_OF_PRODUCTION = 0.5,		-- Base fraction AI would send as lendlease
-	LENDLEASE_FRACTION_OF_STOCKPILE = 0.75,		-- Base fraction AI would send as lendlease
-	MINIMUM_MONTHLY_LEND_LEASE_EQUIPMENT = 10,	-- AI will not offer lend-lease if the monthly amount would be less than this
-	MINIMUM_EQUIPMENT_TO_ASK_LEND_LEASE = 1000000,	-- AI will accept to lend lease this equipment only if our stockpile is less than that.
-	MINIMUM_CONVOY_TO_ASK_LEND_LEASE = 100,		-- AI will accept to lend lease convoys only if our stockpile is less than that (special case because convoy stockpile can't be negative).
-	MINIMUM_FUEL_DAYS_TO_ASK_LEND_LEASE = 60,	-- AI will accept to lend lease fuel only if the player have less fuel than this number multiply by his max daily consumption.
-	MINIMUM_FUEL_DAYS_TO_ACCEPT_LEND_LEASE = 60, -- AI will accept to lend lease fuel only if they have more fuel than this number multiply by their max daily consumption. Note that for a GiE asking to its host, we divide this number by 2.
-	LENDLEASE_CONVOY_OVERCOMMIT_PENALTY_INTERVAL = 3, -- For every N convoys the receiver is over capacity (including this lend-lease), apply -1 to AI acceptance score
-
-	DEFAULT_SUPPLY_TRUCK_BUFFER_RATIO = 1.5,	-- ai will set to truck buffer ratio to this. can be modified by wanted_supply_trucks min_wanted_supply_trucks ai strats
-	DEFAULT_SUPPLY_TRAIN_NEED_FACTOR = 1.5,     -- AI multiplies current train usage by this to determine desired nr of wanted trains. Can be modified by wanted_supply_train min_wanted_supply_trains ai strats.
-
-	POLITICAL_IDEA_MIN_SCORE = 0.1,				-- Only replace or add an idea if score is above this score.
-	HIGH_COMMAND_ADDED_WEIGHT_FACTOR = 1.0,		-- Weight multiplier for high_command advisors over other chosen advisor or idea types
-	CHIEF_ADDED_WEIGHT_FACTOR = 12.5,			-- Weight multiplier for chief roles over other advisor or idea types
-
-	GARRISON_TEMPLATE_SCORE_IC_FACTOR = 1.0,		-- ai uses these defines while calculating garrison template score of a template.
-	GARRISON_TEMPLATE_SCORE_MANPOWER_FACTOR = 0.05,  -- formula is (template_ic * ic_factor + template_manpower * manpower_factor ) / template_supression (lower is better)
-	
-	ADVISOR_SCORE_TRAIT_MODIFIER_FACTOR = 0.2,     -- When scoring advisors, factor the score contribution from the advisor's trait modifiers by this value
-	ADVISOR_SCORE_CHEAPER_IS_BETTER_FACTOR = 0.1,  -- When scoring advisors, this define scales how much the AI prefers cheaper advisors over more expensive ones. 0.0 means no effect, 0.15 means a cost difference of 100 PP modifies the score by 15 %.
-	ADVISOR_SCORE_CHEAPER_IS_BETTER_MIN = 0.5,     -- Clamps the above scoring factor to at minimum this value
-
-	-- stuff related to how the AI evaluates/scores how useful modifiers are
-	EVAL_MODIFIER_NON_PERCENT_FACTOR = 0.1,                       -- Multiply non-percent-based modifiers with this to put the values in the approximately same range so they can be compared. (Why we are using 0.1 and not 0.01? No idea...)
-	EVAL_MODIFIER_UNSPECIFIED_CATEGORY_FACTOR = 0.75,             -- Arbitrary scoring factor for modifiers the AI doesn't know how to categorize
-	EVAL_MODIFIER_MAX_COMMAND_POWER_FACTOR = 0.01,                -- Increasing CP cap with x is maybe 100 times less useful than e.g. gaining x more XP per day
-
-	-- for positive values of following defines, ai weights will take over of hardcoded ai scoring system
-	MIN_AI_SCORE_TO_MOBILIZATION_LAW_OVERRIDE_HARD_CODED_SCORE = 0.0,
-	MIN_AI_SCORE_TO_ECONOMY_LAW_OVERRIDE_HARD_CODED_SCORE = -100.0,
-	MIN_AI_SCORE_TO_TRADE_LAW_OVERRIDE_HARD_CODED_SCORE = 1000.0,
-	MIN_AI_SCORE_TO_ALL_LAWS_OVERRIDE_HARD_CODED_SCORE = 0.0,
-
-	AT_WAR_THREAT_FACTOR = 2.0,					-- How much increase in threat does AI feel for being in war against someone
-	NEIGHBOUR_WAR_THREAT_FACTOR = 1.10, 		-- How much increase in threat does AI feel against neighbours who are at war
-	POTENTIAL_ALLY_JOIN_WAR_FACTOR = 100, 		-- How much increase in threat does AI feel against neighbours who are allied against one of our enemies
-	POTENTIAL_FUTURE_ENEMY_FACTOR = 100, 		-- How much increase in threat does AI feel against neighbours who at war with our allies
-	NEUTRAL_THREAT_PARANOIA = 10,				-- How scared neutrals are of everyone
-	DIFFERENT_FACTION_THREAT = 30,				-- Threat caused by not being in the same faction
-	MAX_THREAT_FOR_FIRST_YEAR_CIVILIAN_MODE = 60, -- above this threshold, ai will leave first year civilian factory mode which bumps it civilian factory scores while building
-	PLAN_ATTACK_MIN_ORG_FACTOR_LOW = 0.85,		-- Minimum org % for a unit to actively attack an enemy unit when executing a plan
-	PLAN_ATTACK_MIN_STRENGTH_FACTOR_LOW = 0.85,	-- Minimum strength for a unit to actively attack an enemy unit when executing a plan
-	PLAN_ATTACK_MIN_ORG_FACTOR_MED = 0.65,		-- (LOW,MED,HIGH) corresponds to the plan execution agressiveness level.
-	PLAN_ATTACK_MIN_STRENGTH_FACTOR_MED = 0.65,
-	PLAN_ATTACK_MIN_ORG_FACTOR_HIGH = 0.5,
-	PLAN_ATTACK_MIN_STRENGTH_FACTOR_HIGH = 0.5,
-	PLAN_FRONTUNIT_DISTANCE_FACTOR = 8.5,		-- Factor for candidate units distance to front positions.
-	PLAN_ATTACK_DEPTH_FACTOR = 0.5,				-- Factor applied to size or enemy being attacked.
-	PLAN_STEP_COST_LIMIT = 15,					-- When stepping to draw a plan this cost makes it break if it hits hard terrain (multiplied by number of desired steps)
-	PLAN_STEP_COST_LIMIT_REDUCTION = 3,			-- Cost limit is reduced per iteration, making hard terrain less likely to be crossed the further into enemy territory it is
-	PLAN_MIN_SIZE_FOR_FALLBACK = 2000,			-- A country with less provinces than this will not draw fallback plans, but rather station their troops along the front
-	SEND_VOLUNTEER_EVAL_BASE_DISTANCE = 175.0,  -- How far away it will evaluate sending volunteers if not a major power
-	SEND_VOLUNTEER_EVAL_MAJOER_POWER = 1.0, 	-- How willing major powers are to send volunteers.
-	SEND_VOLUNTEER_EVAL_CONTAINMENT_FACTOR = 0.9, -- How much AI containment factors into its evaluation of sending volunteers.
-	GIVE_STATE_CONTROL_MIN_CONTROLLED = 0,		-- AI needs to control more than this number of states before considering giving any away
-	GIVE_STATE_CONTROL_MIN_CONTROL_DIFF = 1,	-- The difference in number of controlled states compared to war participation needs to be bigger than this for the AI to consider giving a state to a country
-	RELATIVE_STRENGTH_TO_INVADE = 0,			-- Compares the estimated strength of the country/faction compared to it's enemies to see if it should invade or stay at home to defend.
-	RELATIVE_STRENGTH_TO_INVADE_DEFENSIVE = 0,-- Compares the estimated strength of the country/faction compared to it's enemies to see if it should invade or stay at home to defend, but while being a defensive country.
-	GIVE_STATE_CONTROL_BASE_SCORE = 1000,		-- Base diplo score for giving away control of states
-	GIVE_STATE_CONTROL_DIFF_FACTOR = 2.0,		-- Diplo score multiplier for state control compared to war participation difference
-	GIVE_STATE_CONTROL_NEIGHBOR_SCORE = 20,		-- Diplo score for each neighboring state controlled by the target
-	GIVE_STATE_CONTROL_NEIGHBOR_ACTOR_SCORE = 1000, -- Diplo score for each neighboring state that is controlled by the sender
-	GIVE_STATE_CONTROL_NEIGHBOR_OTHER_SCORE = 1000, -- Diplo score for each neighboring state controlled by someone else
-	GIVE_STATE_CONTROL_MAX_SCORE_DIST = 600,	-- A State that is closer to the recipient capital than this gets a score bonus based on the below value
-	GIVE_STATE_CONTROL_DIST_SCORE_MULT = 0.2,	-- Multiplier for the score gained from distance ( GIVE_STATE_CONTROL_MAX_SCORE_DIST - distance ) * this
-	IRRATIONALITY_LAMBDA = 200,					-- Lambda given to Poisson Random function determining if a leader should act a bit irrational
-												-- Value of 200 should give 0.3% chance of Stalin going for instance crazy and conquering all of America
-	GENERATE_WARGOAL_THREAT_BASELINE = 1.0,	    -- The baseline for what the AI considers the world is getting dangerous and we want to generate wargoals with no antagonize value
-	GENERATE_WARGOAL_ANTAGONIZE_SCALE = 0.35,    -- works to scale the AIs antagonize value vs the threat baseline for when it should act on existing claims: threat used for baseline is min_threat - antagonize * scale
-	RESERVE_TO_COMMITTED_BALANCE = 0.15,			-- How many reserves compared to number of committed divisions in a combat (1.0 = as many as reserves as committed)
-	DIPLOMACY_COMMUNIST_NOT_NEIGHBOUR = -10,	-- Communists want to stay consolidated with their influence
-	MAIN_ENEMY_FRONT_IMPORTANCE = 3.0,			-- How much extra focus the AI should put on who it considers to be its current main enemy.
-	EASY_TARGET_FRONT_IMPORTANCE = 10.0,			-- How much extra focus the AI should put on who it considers to be the easiest target.
-	AI_FRONT_MOVEMENT_FACTOR_FOR_READY = 0.25,	-- If less than this fraction of units on a front is moving, AI sees it as ready for action
-	MICRO_POCKET_SIZE = 3,						-- Pockets with a size equal to or lower than this will be mocroed by the AI, for efficiency.
-	DECLARE_WAR_MIN_FRONT_SIZE_TO_CONSIDER_FOR_NOT_READY = 0.04, -- fronts with less armies than this ratio compared to total number of armies are ignored when ai checks if it is ready for war
-	POCKET_DISTANCE_MAX = 6000,				-- shortest square distance we bother about chasing pockets
-	VP_MAX_PROVINCE_WORTH = 500,				-- Max worth a province can have to a defensive order
-	VP_LEVEL_IMPORTANCE_MEDIUM = 1,			-- Victory points with values higher than or equal to this are considered to be of medium importance.
-
-	-- these are all 3 numbers for min, desired, max unit need weights for area defense
-	AREA_DEFENSE_CAPITAL_PEACE_VP_WEIGHT = { 1.0, 1.0, 1.0 },
-	AREA_DEFENSE_CAPITAL_VP_WEIGHT = { 0.0, 1.5, 2.0 },
-	AREA_DEFENSE_HOME_VP_WEIGHT = { 0.0, 0.75, 1.0 },
-	AREA_DEFENSE_OTHER_VP_WEIGHT = { 0.0, 0.5, 1.0 },
-
-	AREA_DEFENSE_CAPITAL_PEACE_COAST_WEIGHT = { 0.25, 1.0, 2.0 },
-	AREA_DEFENSE_CAPITAL_COAST_WEIGHT = { 0.0, 0.3, 1.0 },
-	AREA_DEFENSE_HOME_COAST_WEIGHT = { 0.0, 0.2, 0.75 },
-	AREA_DEFENSE_OTHER_COAST_WEIGHT = { 0.0, 0.0, 0.0 },
-
-	AREA_DEFENSE_CAPITAL_PEACE_BASE_WEIGHT = { 0.0, 0.0, 0.0 },
-	AREA_DEFENSE_CAPITAL_BASE_WEIGHT = { 0.5, 1.5, 1.5 },
-	AREA_DEFENSE_HOME_BASE_WEIGHT = { 0.5, 1.5, 1.5 },
-	AREA_DEFENSE_OTHER_BASE_WEIGHT = { 0.5, 1.0, 1.0 },
-
-	ESTIMATED_CONVOYS_PER_DIVISION = 18,			-- Not always correct, but mainly used to make sure AI does not go crazy
-	ENTRENCHMENT_WEIGHT = 4.0,					-- AI should favour units with less entrenchment when assigning units around.
-	FRONT_TERRAIN_DEFENSE_FACTOR = 7.0,        -- Multiplier applied to unit defense modifier for terrain on front province multiplied by terrain importance
-	FRONT_TERRAIN_ATTACK_FACTOR = 7.0,			-- Multiplier applied to unit attack modifier for terrain on enemy front province multiplied by terrain importance
-
-	BASE_DISTANCE_TO_CARE = 999999,				-- Countries that are too far away are less interesting in diplomacy
-	MIN_FORCE_RATIO_TO_PROTECT = 0.5,			-- Tiny countries should not feel protective or really large ones
-
-	ORG_UNIT_STRONG = 0.75,						-- Organization % for unit to be considered strong
-	STR_UNIT_STRONG = 0.75,						-- Strength (equipment) % for unit to be considered strong
-
-	ORG_UNIT_WEAK = 0.35,						-- Organization % for unit to be considered weak
-	STR_UNIT_WEAK = 0.4,						-- Strength (equipment) % for unit to be considered weak
-
-	ORG_UNIT_NORMAL = 0.6,						-- Organization % for unit to be considered normal
-	STR_UNIT_NORMAL = 0.6,						-- Strength (equipment) % for unit to be considered normal
-
-	PLAN_FACTION_STRONG_TO_EXECUTE = 0.65,		-- % or more of units in an order to consider executing the plan
-	PLAN_FACTION_NORMAL_TO_EXECUTE = 0.5,		-- % or more of units in an order to consider executing the plan
-	PLAN_FACTION_WEAK_TO_ABORT = 0.5,			-- % or more of units in an order to consider executing the plan
-	PLAN_AVG_PREPARATION_TO_EXECUTE = 0.5,		-- % or more average plan preparation before executing
-
-	REDEPLOY_DISTANCE_VS_ORDER_SIZE = 0.9,		-- Factor applied to the path length of a unit compared to length of an order to determine if it should use strategic redeployment
-
-	FORT_LEVEL_TO_CONSIDER_HIGHLY_FORTIFIED = 1,	-- Provinces above this level of fortification will be considered highly fortified by plan evaluation
-	PLAN_VALUE_FORTIFICATION_LEVEL_MAX_PENALTY = -0.2,	--Max plan value penalty from fortification. This is scaled by number of provinces along a frontline, over the number which exceed the fort value value above
-
-	MAX_ALLOWED_NAVAL_DANGER = 80,				-- AI will ignore naval paths that has danger value of above this threshold while assigning units
-	TRANSFER_DANGER_HOSTILE_SHIPS = 50, 		-- max danger from complete enemy naval supriority over ai in an area
-
-	EXPORT_RESOURCE_TRADE_NEED_IMPORTANCE = 0.5,  -- how important is each lost resource to overexport for trade law selection
-
-	OPERATION_EQUIPMENT_NEED_PRODUCTION_MULT = 1.0, -- equipment requests for operations will be added the equipment needs that ai considers while assigning factories to production
-
-	MIN_FUEL_RATIO_TO_NOT_IGNORE_STRIKE_FORCE_COST = 0.0, -- ai will still assign strike forces unless fuel ratio drops below this one
-	MIN_FUEL_RATIO_TO_NOT_IGNORE_INVASION_SUPPORT_COST = 0.0, -- ai will still naval invasion support forces unless fuel ratio drops below this one
-
-	ENEMY_HOME_AREA_RATIO_TO_DISABLE_INVASIONS = 0.3, -- if we are fighting against an enemy home area from our home area and if the enemy area is larger than this ratio, non strategy invasions are disabled
-
-	HOURS_BETWEEN_ENCIRCLEMENT_DISCOVERY = 72,	-- Per army, interval in hours between refresh of which provinces it considers make up potential encirclement points
-
-	FASCISTS_BEFRIEND_FASCISTS = 10,
-	FASCISTS_BEFRIEND_DEMOCRACIES = -25,
-	FASCISTS_BEFRIEND_COMMUNISTS = -25,
-	FASCISTS_ALLY_FASCISTS = 0,
-	FASCISTS_ALLY_DEMOCRACIES = -100,
-	FASCISTS_ALLY_COMMUNISTS = -100,
-	FASCISTS_ANTAGONIZE_FASCISTS = -10,
-	FASCISTS_ANTAGONIZE_DEMOCRACIES = 100,
-	FASCISTS_ANTAGONIZE_COMMUNISTS = 100,
-	DEMOCRACIES_BEFRIEND_FASCISTS = -25,
-	DEMOCRACIES_BEFRIEND_DEMOCRACIES = 0,
-	DEMOCRACIES_BEFRIEND_COMMUNISTS = -25,
-	DEMOCRACIES_ALLY_FASCISTS = -50,
-	DEMOCRACIES_ALLY_DEMOCRACIES = 0,
-	DEMOCRACIES_ALLY_COMMUNISTS = -50,
-	DEMOCRACIES_ANTAGONIZE_FASCISTS = 0,
-	DEMOCRACIES_ANTAGONIZE_DEMOCRACIES = -25,
-	DEMOCRACIES_ANTAGONIZE_COMMUNISTS = 0,
-	COMMUNISTS_BEFRIEND_FASCISTS = -25,
-	COMMUNISTS_BEFRIEND_DEMOCRACIES = -25,
-	COMMUNISTS_BEFRIEND_COMMUNISTS = 25,
-	COMMUNISTS_ALLY_FASCISTS = -100,
-	COMMUNISTS_ALLY_DEMOCRACIES = -50,
-	COMMUNISTS_ALLY_COMMUNISTS = 0,
-	COMMUNISTS_ANTAGONIZE_FASCISTS = 100,
-	COMMUNISTS_ANTAGONIZE_DEMOCRACIES = 10,
-	COMMUNISTS_ANTAGONIZE_COMMUNISTS = -10,
-
-	TENSION_MIN_FOR_GUARANTEE_VS_MINOR = 10, -- for non faction people AI will not consider you worth guaranteeing below this
-
-	NUM_AI_MESSAGES = 10,				-- Set to whatever category has the highest number of messages
-
-	DIPLOMACY_FACTION_WAR_WANTS_HELP = 50,	-- Desire to send to nations to join a faction if you are at war
-	DIPLOMACY_FACTION_CIVILWAR_WANTS_HELP = -50,
-	FACTION_UNSTABLE_ACCEPTANCE = -100,
-	DIPLOMACY_AT_WAR_WITH_ALLY_RELUCTANCE = -1000,
-	DIPLOMACY_FACTION_JOIN_COUP_INITIATOR_BONUS = 70,	-- If a country initiated coup on an another country, civil war revolter is more likely to join initiator's faction
-
-
-	SHIPS_PRODUCTION_BASE_COST = 1,					-- Used by the AI to normalize IC values when picking what ship to build.
-	NEEDED_NAVAL_FACTORIES_EXPENSIVE_SHIP_BONUS = 1000,   -- Amount of naval yards you need to get a bonus to building really expensive ships
-
-	FORTIFIED_RATIO_TO_CONSIDER_A_FRONT_FORTIFIED = 0.5, -- ai will consider a front fortified if this ratio of provinces has fort
-	HEAVILY_FORTIFIED_RATIO_TO_CONSIDER_A_FRONT_FORTIFIED = 0.5, -- ai will consider a front super fortified if this ratio of provinces has lots of forts
-	FORTIFIED_MIN_ORG_FACTOR_TO_CONSIDER_A_FRONT_FORTIFIED = 0.2, -- ai will treat fortified provinces as unfortified if no unit in that province has an organization factor at least this high
-
-	DESPERATE_AI_MIN_UNIT_ASSIGN_TO_ESCAPE = 0,			-- AI will assign at least this amount of units to break from desperate situations
-
-	DESPERATE_AI_WEAK_UNIT_STR_LIMIT = 0.35,					-- ai will increase number of units assigned to break from desperate situations when units are start falling lower than this str limit
-	DESPERATE_AI_MIN_ORG_BEFORE_ATTACK = 0.3,					-- ai will wait for this much org to attack an enemy prov in desperate situations
-	DESPERATE_AI_MIN_ORG_BEFORE_MOVE = 0.06,					-- ai will wait for this much org to move in desperate situations
-	DESPERATE_ATTACK_WITHOUT_ORG_WHEN_NO_ORG_GAIN = 120,		-- if ai can't regain enough org to attack in this many hours, it will go truly desperate and attack anyway (still has to wait for move org)
-
-
-	MAX_REQUEST_EXPEDITIONARIES_ARMY_RATIO = 0.3,				-- AI will not accept expeditionary requests if its expeditions are above this ratio
-	CASUALTY_RATIO_TO_PULL_EXPEDITIONARIES_BACK = 0.1,			-- AI will pull expeditioniries back if its casualties is aboce this ratio compared to their total deployed manpower
-	CASUALTY_RATIO_TO_NOT_SEND_EXPEDITIONARIES = 0.05,			-- AI will not send expeditioniries if its casualties is aboce this ratio compared to their total deployed manpower
-
-	SURRENDER_LEVEL_TO_PULL_EXPEDITIONARIES_BACK = 0.3,			-- AI will pull expeditioniries back if its surrender level is above this ratio
-	SURRENDER_LEVEL_TO_NOT_SEND_EXPEDITIONARIES = 0.15,			-- AI will not send expeditioniries if its surrender level is above this ratio
-
-	EXPEDITIONARY_CASUALTY_DECAY_RATIO = 0.3333,				-- expeditionary manpower lost will decay by thousands daily by this ratio (compared to deployed manpower)
-	NUM_DAYS_TO_PULL_EXPEDITIONARIES_BACK = 14,					-- AI will pull units back from non-ai players after waiting this days if things are not going well for its units
-
-	ACCESS_SCORE_FOR_DEMOCRATIC_COUNTRIES = 500,				-- democracies gives each other access if they have a common enemy
-
-	AI_AIR_MISSION_COVERAGE_TO_STAY_PUT = 0.75,					-- AI will not rebase air wings on missions if their new mission target exceeds this percentage of region coverage
-
-	ACCESS_SCORE_PENALTY_PER_EXISTING_ACCESS_AT_WAR = 250,		-- each access reduces the desire of next access
-	ACCESS_SCORE_PENALTY_PER_EXISTING_ACCESS = 500,				-- each access reduces the desire of next access
-	NAVAL_ACCESS_SCORE_PENALTY_PER_EXISTING_ACCESS_AT_WAR = 150,
-	NAVAL_ACCESS_SCORE_PENALTY_PER_EXISTING_ACCESS = 250,
-
-	AIR_BASE_ACCESS_SCORE_PENALTY_PER_EXISTING_ACCESS_AT_WAR = 150,
-	AIR_BASE_ACCESS_SCORE_PENALTY_PER_EXISTING_ACCESS = 250,
-
-	TOO_INSIGNIFICANT_ARMY_RATIO_BEGIN = 0.75,					-- if army ratio is of a country is larger than this threshold, it will be less reluctant to accept certain diplo actions
-	TOO_INSIGNIFICANT_MAX_PENALTY = 350,						-- max penalty that will be applied for thinking a country is too insignificant
-
-	-- Calculating wanted nr of divisions
-	WANTED_UNITS_INDUSTRY_FACTOR = 6,                        -- How many units a country wants is partially based on how much military industry that is available
-	WANTED_UNITS_THREAT_BASE = 0.7,                             -- If no threat, multiply min wanted units by this
-	WANTED_UNITS_THREAT_MAX = 25.0,                             -- Normalized threat is clamped to this
-	WANTED_UNITS_WAR_THREAT_FACTOR = 1.5,                       -- Factor threat with this if country is at war. this value is overriden by the value in ideology database if that value exceedes this.
-	WANTED_UNITS_DANGEROUS_NEIGHBOR_FACTOR = 1.25,              -- Factor if has dangerous neighbor
-	WANTED_UNITS_MANPOWER_DIVISOR = 20000,                      -- Normalizing divisor for AI manpower. (for each x max available manpower, they want one division)
-	WANTED_UNITS_WEIGHT_FRONTS_WANT = 0.35,                      -- Weight of front needs when computing final nr wanted units
-	WANTED_UNITS_WEIGHT_FACTORIES = 0.45,                        -- Weight of military factories when computing final nr wanted units
-	WANTED_UNITS_WEIGHT_MANPOWER = 0.3,                         -- Weight of manpower availability when computing final nr wanted units
-	WANTED_UNITS_MIN_DEFENCE_FACTOR = 0.4,						-- Factor on units required for min defence
-	-- End of calculating wanted nr of divisions
-
-	WANTED_UNITS_MAX_WANTED_CAP = 1000,	-- Maximum wanted divisions for a country. This can be exceeded by certain hardcoded multipliers, but not by base calculation logic.
-	
-	WANTED_LAND_PLANES_PER_BASE_CAPACITY_FACTOR = 1,	-- Scales how many land-based planes the AI want per air base space (excluding carriers).
-	WANTED_LAND_PLANES_PER_DIVISION = 20,				-- How many land-based planes the AI want for each division it wants.
-	WANTED_LAND_PLANES_TOTAL_MAX_PER_DIVISION = 100,	-- The max total number of land-based planes the AI want.
-	
-	WANTED_CARRIER_PLANES_PER_CARRIER_CAPACITY_FACTOR = 1.5,					-- Scales how many carrier planes the AI want per carrier deck space.
-	WANTED_CARRIER_PLANES_PER_CARRIER_CAPACITY_IN_PRODUCTION_FACTOR = 1,	-- Scales how many carrier planes the AI want per deck space of carriers in production.
-	CARRIER_CAPACITY_IN_PRODUCTION_MAX_DAYS_LEFT_TO_INCLUDE_FACTOR = 365,	-- Carriers in production that will take more days to complete than this value will be ignored when calculating the above.
-
-	START_TRAINING_EQUIPMENT_LEVEL = 0.40,               -- ai will not start to train if equipment drops below this level
-	STOP_TRAINING_EQUIPMENT_LEVEL = 0.30,                -- ai will not train if equipment drops below this level
-	START_TRAINING_SUPPLY_LEVEL = 0.40,                  -- ai will not start to train if supply ratio drops below this level
-	STOP_TRAINING_SUPPLY_LEVEL = 0.30,                   -- ai will not train if supply ratio drops below this level
-	STOP_TRAINING_FULLY_TRAINED_FACTOR = 0.99,           -- ai will not train if at least this ratio of divisions in the army are fully trained
-	STOP_TRAINING_ACTIVE_COMBAT_RATIO = 0.10,            -- ai halts all training when more than this share of its divisions are in active combat (reinforce instead)
-	
-	BUILD_REFINERY_LACK_OF_RESOURCE_MODIFIER = 0.003,	-- How much lack of resources are worth when evaluating what to build.
-
-	DIVISION_DESIGN_MAX_FAILED_DAYS = 60,					-- max days we keep track of since failure of a template design update
-	
-	DIVISION_MATCH_ROLE_BOOST_FACTOR = 1.2,                 -- When finding closest matching existing template to a target template, boost the score by this much if the template also has the correct role
-
-	EQUIPMENT_DESIGN_MAX_FAILED_DAYS = 60,					-- max days we keep track of since failure of an equipment design update
-
-
-	UPGRADE_DIVISION_RELUCTANCE = 3,					-- How often to consider upgrading to new templates for units in the field
-	UPGRADE_PERCENTAGE_OF_FORCES = 0.1,					-- How big part of the army that should be considered for upgrading
-	REMOVE_OBSOLETE_TEMPLATE_DAYS = 180,                -- Remove obsolete and unused templates if they have been marked as obsolete for x days. Non-positive value means "never remove".
-	
-	REFIT_SHIP_RELUCTANCE = 5000,							-- How often to consider refitting to new equipment variants for ships in the field
-	REFIT_SHIP_PERCENTAGE_OF_FORCES = 0.33,				-- How big part of the navy that should be considered for refitting
-
-
-	NAVY_PREFERED_MAX_SIZE = 50,						-- AI will generally attempt to merge fleets into this size, but as a soft limit.
-	INVASION_COASTAL_PROVS_PER_ORDER = 28,				-- AI will consider one extra invasion per number of provinces stated here (num orders = total coast / this)
-	MIN_INVASION_AREA_SIZE_FOR_FLOATING_HARBORS = 15,   -- AI will consider using floating harbors for naval invasion if invasion area is larger than this many provinces
-
-	CONVOY_NEED_SAFETY_BUFFER = 1.30,					-- AI will try and keep 15% more convoys than what it needs.
-	CONVOY_DEFICIT_BUILD_BOOST_MAX = 150,				-- Cap on the convoy-deficit-driven boost added to the convoy build target. Prevents convoy panic from starving warship production when many convoys are lost at once.
-	REGION_THREAT_PER_SUNK_CONVOY = 25,					-- Threat value per convoy sunk in a region. Decays over time.
-	REGION_THREAT_LEVEL_TO_AVOID_REGION = 25 * 10,		-- How much threat must be generated in region ( by REGION_THREAT_PER_SUNK_CONVOY ) so the AI will decide to mark the region as avoid
-	REGION_THREAT_LEVEL_TO_BLOCK_REGION = 25 * 200,		-- How much threat must be generated in region ( by REGION_THREAT_PER_SUNK_CONVOY ) so the AI will decide to mark the region as avoid
-	REGION_CONVOY_DANGER_DAILY_DECAY = 2,				-- When convoys are sunk it generates threat in the region which the AI uses to prio nalval missions
-
-	PRODUCTION_LINE_SWITCH_SURPLUS_NEEDED_MODIFIER = 0.8,	-- Is modified by efficency modifiers.
-	PLAN_ACTIVATION_MAJOR_WEIGHT_FACTOR = 1.5,			-- AI countries will hold on activating plans if stronger countries have plans in the same location. Majors count extra (value of 1 will negate this)
-	PLAN_ACTIVATION_PLAYER_WEIGHT_FACTOR = 2,		-- AI countries will hold on activating plans if player controlled countries have plans in the same location.
-	AREA_DEFENSE_BASE_IMPORTANCE = 30,                  -- Area defense order base importance value (used for determining order of troop selections)
-	AREA_DEFENSE_CIVIL_WAR_IMPORTANCE = 5,             -- Area defense order importance value when a country is in a civil war as target or revolter.
-	AREA_DEFENSE_IMPORTANCE_FACTOR = 0.2,               -- used to balance defensive area importance vs other fronts
-
-	MAX_DISTANCE_NAVAL_INVASION = 400.0,				-- AI is extremely unwilling to plan naval invasions above this naval distance limit.
-	ENEMY_NAVY_STRENGTH_DONT_BOTHER = 3,				-- If the enemy has a navy at least these many times stronger that the own, don't bother invading
-	MIN_SUPPLY_USE_SANITY_CAP = 100,					-- Ignore supply cap if below this value when deciding on how many divisions to produce.
-	MAX_SUPPLY_DIVISOR = 1.5,							-- To make sure the AI does not overdeploy divisions. Higher number means more supply per unit.
-	MISSING_CONVOYS_BOOST_FACTOR = 0.0,					-- The more convoys a country is missing, the more resources it diverts to cover this.
-	TRANSPORTS_PER_PARATROOPER = 20,					-- Air transports only duty is to drop paratroopers.
-	MAX_MICRO_ATTACKS_PER_ORDER = 5,					-- AI goes through its orders and checks if there are situations to take advantage of
-	FALLBACK_LOSING_FACTOR = 0.0,						-- The lower this number, the longer the AI will hold the line before sending them to the fallback line
-	PRODUCTION_MAX_PROGRESS_TO_SWITCH_NAVAL = 0.001,		-- AI will not replace ships being built by newer types if progress is above this
-	PRODUCTION_WAIT_TO_FINISH_IF_EXPENSIVE = 0.01,      -- If produced item is expensive (producing less than one/week), wait to finish item if progress is above this
-	PRODUCTION_WAIT_TO_FINISH_IF_CHEAP = 0.01,          -- If produced item is cheap (producing more than one/week), wait to finish item if progress is above this
-	STATE_CONTROL_FOR_AREA_DEFENSE = 0.6,				-- To avoid AI sending area defense to area with very little foothold
-	FORCE_FACTOR_AGAINST_EXTRA_MINOR = 0.15,			-- AI considers generating wargoals against minors below this % of force compared to themselves to get at a bigger enemy.
-	MAX_EXTRA_WARGOAL_GENERATION = 2,					-- AI may want to generate wargoals against weak minors to get at larger enemy, but never more that this at any given time.
-	NAVAL_MISSION_DISTANCE_BASE = 3500,					-- Base value when AI is evaluating distance score to places
-	NAVAL_MISSION_INVASION_BASE = 30000,					-- Base score for region with naval invasion (modified dynamically by prioritizing orders)
-	NAVAL_MISSION_AGGRESSIVE_PATROL_DIVISOR = 1,		-- Divides patrol score when not defending
-	NAVAL_MISSION_AGGRESSIVE_ESCORT_DIVISOR = 2,		-- Divides escort score when not defending
-	NAVAL_MISSION_PATROL_NEAR_OWNED = 500,			-- Extra patrol mission score near owned provinces
-	NAVAL_MISSION_ESCORT_NEAR_OWNED = 300,			-- Extra escort mission score near owned provinces
-	NAVAL_MISSION_PATROL_NEAR_CONTROLLED = 120,		-- Extra patrol mission score near controlled provinces
-	NAVAL_MISSION_ESCORT_NEAR_CONTROLLED = 200,		-- Extra escort mission score near controlled provinces
-	NAVAL_MISSION_MINES_PLANTING_NEAR_OWNED = 40000,
-	NAVAL_MISSION_MINES_PLANTING_NEAR_CONTROLLED = 30000,
-	NAVAL_MISSION_MINES_SWEEPING_NEAR_OWNED = 60000,	 -- How likely the AI will do the sweeping missions. The value is scaled by the amount of mines to sweep.
-	NAVAL_MISSION_MINES_SWEEPING_NEAR_CONTROLLED = 50000,-- Same as above, but nearby the controlled territory.
-	NEW_LEADER_EXTRA_CP_FACTOR = 2.0,					-- Country must have at least this many times extra command power to get new admirals or army leaders
-	SCARY_LEVEL_AVERAGE_DEFENSE = -0.6,                 -- average front defense modifier to make it consider it as a PITA to go for
-	ATTACK_HEAVILY_DEFENDED_LIMIT = 0.5,				-- AI will not launch attacks against heavily defended fronts unless they consider to have this level of advantage (1.0 = 100%)
-	CANCEL_COMBAT_DISADVANTAGE_RATIO = 1.1,             -- If the enemy's advantage ratio over us during (normal) combat is more than <value>, allow canceling the attack
-	CANCEL_COMBAT_MIN_DURATION_HOURS = 12,              -- Only allow cancelling (normal) combat if at least <value> hours have passed
-	CANCEL_INVASION_COMBAT_DISADVANTAGE_RATIO = 2.8,    -- If the enemy's advantage ratio over us during invasion combat is more than <value>, allow canceling the attack
-	CANCEL_INVASION_COMBAT_MIN_DURATION_HOURS = 72,    -- Only allow cancelling invasion combat if at least <value> hours have passed
-	MIN_PLAN_VALUE_TO_MICRO_INACTIVE = 0.15,				-- The AI will not consider members of groups which plan is not activated AND evaluates lower than this.
-
-	MAX_UNITS_FACTOR_AREA_ORDER = 1.0,					-- Factor for max number of units to assign to area defense orders
-	DESIRED_UNITS_FACTOR_AREA_ORDER = 1.0,				-- Factor for desired number of units to assign to area defense orders
-	MIN_UNITS_FACTOR_AREA_ORDER = 1.0,					-- Factor for min number of units to assign to area defense orders
-
-	MAX_UNITS_FACTOR_FRONT_ORDER = 3.0,					-- Factor for max number of units to assign to area front orders
-	DESIRED_UNITS_FACTOR_FRONT_ORDER = 3.0,				-- Factor for desired number of units to assign to area front orders
-	MIN_UNITS_FACTOR_FRONT_ORDER = 2.0,					-- Factor for min number of units to assign to area front orders
-
-	MAX_UNITS_FACTOR_INVASION_ORDER = 1.0,				-- Factor for max number of units to assign to naval invasion orders
-	DESIRED_UNITS_FACTOR_INVASION_ORDER = 1.0,			-- Factor for desired number of units to assign to naval invasion orders
-	MIN_UNITS_FACTOR_INVASION_ORDER = 1.0,				-- Factor for min number of units to assign to naval invasion orders
-
-	FRONT_UNITS_CAP_FACTOR = 20.0,						-- A factor applied to total front size and supply use. Primarily effects small fronts
-	MAX_DIST_PORT_RUSH = 40.0,							-- If a unit is in enemy territory with no supply it will consider nearby ports within this distance.
-
-	MIN_FIELD_STRENGTH_TO_BUILD_UNITS = 0.7,			-- Cancel unit production if below this to get resources out to units in the field
-	MIN_MANPOWER_TO_BUILD_UNITS = 0.7,					-- Cancel unit production if below this to get resources out to units in the field
-
-	AVERAGE_SUPPLY_USE_PESSIMISM = 1.5,					-- Multiplier for when AI calculates average supply use of entire army.
-
-	PROPOSE_LEND_LEASE_AIDESIRE_SAME_IDEOLOGY = 40,				-- Added to AI desire to propose lend lease if recipent is same ideology (and AI can't declare war on recipient)
-	PROPOSE_LEND_LEASE_AIDESIRE_SAME_IDEOLOGY_CIVIL_WAR = 25,	-- Added to AI desire to propose lend lease if recipent is same ideology and they are currently in civil war
-	SEND_VOLUNTEER_AIDESIRE_SAME_IDEOLOGY = 40,					-- Added to AI desire to send volunteers if recipent is same ideology (and AI can't declare war on recipient)
-	SEND_VOLUNTEER_AIDESIRE_SAME_IDEOLOGY_CIVIL_WAR = 25,		-- Added to AI desire to send volunteers if recipent is same ideology and they are currently in civil war
-
-	REQUEST_LEND_LEASE_PROTECT_VALUE = 75,				-- Limit for protect enemy desire for reducing lend lease desire
-	REQUEST_LEND_LEASE_CONTAINS_VALUE = 100,			-- Limit of contain enemy desire for boosting friendly help
-
-	FRONT_BULGE_RATIO_UPPER_CUTOFF = 1.8,				-- If total bulginess is lower than this, the front is ignored.
-	FRONT_BULGE_RATIO_LOWER_CUTOFF = 1.4,				-- If local bulginess drops below this, a point of interest is found
-	FRONT_CUTOFF_MIN_EDGE_PROXIMITY = 1,				-- Minimum number of provinces to the front edge to determine for cutoff oportunity.
-
-
-	AIR_SCORE_DISTANCE_IMPACT = 0.0,					-- Effect of distance applied to the score calculations
-	DAYS_BETWEEN_AIR_PRIORITIES_UPDATE = 7,				-- Amount of days between air ai updates priorities for air wings ( from 1 to N )
-
-	NAVAL_AIR_SUPERIORITY_IMPORTANCE = 0.10,			-- Strategic importance of air superiority ( amount of enemy planes in area )
-	NAVAL_SHIP_AIR_IMPORTANCE = 5,					-- Naval ship air importance
-	NAVAL_SHIP_IN_PORT_AIR_IMPORTANCE = 6.0,			-- Naval ship in the port air importance
-	NAVAL_COMBAT_AIR_IMPORTANCE = 8.0,					-- Naval combat air importance
-	NAVAL_TRANSFER_AIR_IMPORTANCE = 0.0,				-- Naval transfer air importance
-	NAVAL_COMBAT_TRANSFER_AIR_IMPORTANCE = 50.0,		-- Naval combat involving enemy land units
-	NAVAL_IMPORTANCE_SCALE = 2,						-- Naval total importance scale (every naval score get's multiplied by it)
-	NAVAL_COMBAT_OUR_NAVY_MULT_ON_IMPORTANCE = 0.35,	-- Naval region importance are scaled by our ships as well
-	NAVAL_COMBAT_ALLY_NAVY_MULT_ON_IMPORTANCE = 0.15,	-- Naval region importance are scaled by our ships as well
-	NAVAL_COMBAT_MIN_OUR_NAVY_MULT_ON_IMPORTANCE = 0.5, -- Min scale factor for naval region importance from our ships
-	NAVAL_COMBAT_MAX_OUR_NAVY_MULT_ON_IMPORTANCE = 1.0, -- Max scale factor for naval region importance from our ships
-
-
-	NAVAL_RANGE_FOR_DOCKING_RIGHTS_CHECK = 240.0,		-- Naval range used to check if docking rights would allow us to reach a specific province
-
-	NAVAL_PATROL_PLANES_PER_SHIP_PATROLLING = 50.0,		-- Amount of naval patrol planes per ship on a patrol mission
-	NAVAL_PATROL_PLANES_PER_SHIP_RAIDING = 40.0,		-- Amount of naval patrol planes per ship on a convoy raid mission
-	NAVAL_PATROL_PLANES_PER_SHIP_ESCORTING = 20.0,		-- Amount of naval patrol planes per ship on a convoy escort mission
-
-	NAVAL_COAST_DEFENSE_TENSION_THRESHOLD = 0.5,		-- The world tension threshold where countries start pre-emptively protecting their home coast
-
-	NAVAL_FIGHTERS_PER_PLANE = 1.0,						-- Amounts of air superiority planes requested per enemy plane
-	NAVAL_STRIKE_PLANES_PER_ARMY = 0,					-- Amount of planes requested per enemy army
-	NAVAL_STRIKE_PLANES_PER_SHIP = 50,					-- Amount of bombers requested per enemy ship
-	PORT_STRIKE_PLANES_PER_SHIP = 10,					-- Amount of bombers request per enemy ship in the port
-	MINES_SWEEPING_PLANES_PER_MAX_MINES = 150, 			-- Amount of air planes request for mines sweeping when there is max amount of mines planted by enemy in certain region
-	MINES_PLANTING_PLANES_PER_MAX_DESIRE = 100,			-- Amount of air planes request for mines planting when there is max desire for it.
-	MINES_PLANTING_DESIRE_PER_HOME_STATE = 0.4,			-- Scoring for how much do we want to plant naval mines with our air wings if the naval region is adjacent to a home state. Multiple adjacent states increases the score. Max sum of score is 1.0.
-	MINES_PLANTING_DESIRE_PER_ENEMY_STATE = 0.1,		-- Scoring for how much do we want to plant naval mines with our air wings if the naval region is adjacent to the enemy state. Multiple adjacent states increases the score. Max sum of score is 1.0.
-	MINES_PLANTING_DESIRE_PER_NAVAL_THREAT = 250,		-- How much threat must be generated in the naval region, in order to get the maximum desire to plant naval mines in there.
-	NAVAL_MIN_EXCORT_PLANES = 0,						-- Min amount of planes requested to excort operations
-	DEMOCRATIC_AI_FACTION_KICKING_PLAYER_THREAT_DIFFERENCE = 6.0, -- World threat generation difference needed to kick a player from a democratic faction
-	BEFRIEND_FACTOR_FOR_KICKING_COUNTRIES = 7.5,		-- World threat difference addition per 100 befriend against a country, democratic leaders will forgive allies if they are befriending them
-
-	LAND_DEFENSE_AIR_SUPERIORITY_IMPORTANCE = 1.0,		-- Strategic importance of air superiority ( amount of enemy planes in area )
-	LAND_DEFENSE_CIVIL_FACTORY_IMPORTANCE = 800,		-- Strategic importance of civil factories
-	LAND_DEFENSE_MILITARY_FACTORY_IMPORTANCE = 880,		-- Strategic importance of military factories
-	LAND_DEFENSE_NAVAL_FACTORY_IMPORTANCE = 420,		-- Strategic importance of naval factories
-	LAND_DEFENSE_SUPPLY_HUB_IMPORTANCE = 9,             -- Strategic importance of supply hubs
-	LAND_DEFENSE_AA_IMPORTANCE_FACTOR = 1.0,			-- Factor of AA influence on strategic importance ( 0.0 - 1.0 )
-	LAND_DEFENSE_INFRA_IMPORTANCE_FACTOR = 0.5,			-- Factor of infrastructure influence on strategic importance ( 0.0 - 1.0 )
-	LAND_DEFENSE_IMPORTANCE_SCALE = 3.0,				-- Lend defence total importance scale (every land defence score get's multiplied by it)
-
-	NUM_HOURS_SINCE_LAST_COMBAT_TO_SUPPORT_UNITS_VIA_AIR = 72,			-- units will be considered in combat if they are just out of their last combat for air supporting
-
-	LAND_DEFENSE_MIN_FACTORIES_FOR_AIR_IMPORTANCE = 5,	-- If amount of factories is less importance of factories won't apply
-
-	LAND_DEFENSE_RAID_IMPORTANCE = 500,                 -- Strategic importance of detected raids targetting us
-	LAND_DEFENSE_FIGHERS_PER_RAID = 100,                -- Amount of air superiority planes requested per detected raid targetting us
-	LAND_DEFENSE_INTERCEPTORS_PER_RAID = 100,           -- Amount of interceptor planes requested per detected raid targetting us
-
-	LAND_DEFENSE_FIGHERS_PER_PLANE = 2.5,				-- Amount of air superiority planes requested per enemy plane
-	LAND_DEFENSE_INTERCEPTORS_PER_BOMBERS = 0.8,        -- Amount of interceptor planes requested per enemy bomber
-	LAND_DEFENSE_INTERCEPTORS_PER_PLANE = 0.1,          -- Amount of interceptor planes requested per enemy plane (non bomber)
-
-	LAND_DEFENSE_SAM_MISSILE_IMPORTANCE_FACTOR = 0.2,	-- Importance factor of using sam missiles for regions strategic importance. Higher value will increase the usage
-    LAND_COMBAT_MISSILE_IMPORTANCE_FACTOR = 1.5, 		-- Importance factor of using missiles for regions strategic importance. Higher value will increase the usage
-
-	LAND_COMBAT_AIR_SUPERIORITY_IMPORTANCE = 0.80,		-- Strategic importance of air superiority ( amount of enemy planes in area )
-	LAND_COMBAT_OUR_ARMIES_AIR_IMPORTANCE = 8,			-- Strategic importance of our armies
-	LAND_COMBAT_OUR_COMBATS_AIR_IMPORTANCE = 1000,		-- Strategic importance of our armies in the combats
-	LAND_COMBAT_FRIEND_ARMIES_AIR_IMPORTANCE = 2,		-- Strategic importance of friendly armies
-	LAND_COMBAT_FRIEND_COMBATS_AIR_IMPORTANCE = 5,		-- Strategic importance of friendly armies in the combat
-	LAND_COMBAT_ENEMY_ARMIES_AIR_IMPORTANCE = 12,		-- Strategic importance of our armies
-	LAND_COMBAT_ENEMY_LAND_FORTS_AIR_IMPORTANCE = 5,	-- Strategic importance of enemy land forts in the region
-	LAND_COMBAT_ENEMY_COASTAL_FORTS_AIR_IMPORTANCE = 20,	-- Strategic importance of enemy coastal fronts in the region
-	LAND_COMBAT_IMPORTANCE_SCALE = 5.0,					-- Lend combat total importance scale (every land combat score get's multiplied by it)
-
-	LAND_COMBAT_FIGHTERS_PER_PLANE = 3.0,				-- Amount of air superiority planes requested per enemy plane
-	LAND_COMBAT_CAS_PLANES_PER_ENEMY_ARMY_LIMIT = 200,	-- Limit of CAS planes requested by enemy armies
-	LAND_COMBAT_CAS_PER_ENEMY_ARMY = 60,				-- Amount of CAS planes requested per enemy division
-	LAND_COMBAT_ANTI_LOGISTICS_PER_ENEMY_ARMY = 0.1,    -- Amount of CAS planes requested per enemy army for anti-logistics
-	LAND_COMBAT_CAS_PER_COMBAT = 120,					-- Amount of CAS requested per combat
-	LAND_COMBAT_BOMBERS_PER_LAND_FORT_LEVEL = 6,		-- Amount of bomber planes requested per enemy land fort level
-	LAND_COMBAT_BOMBERS_PER_COASTAL_FORT_LEVEL = 6,		-- Amount of bomber planes requested per enemy coastal fort level
-	LAND_COMBAT_MIN_EXCORT_PLANES = 80,					-- Min amount of planes requested to excort operations
-
-	LAND_COMBAT_INTERCEPT_PER_PLANE = 0.25,				-- Amount of interception planes requested per enemy plane
-	MIN_ALLIED_DEFENSE_FACTOR_AIRWING_REQUESTS = 0.07,	-- Airwing requests will be factored by a minimum of this when comparing own vs friendly troops in area
-	AIR_SUPERIORITY_FOR_FRIENDLY_CAS_RATIO = 0.75,		-- Demand at least this proportion of our cas planes as air superiority regardless of other needs
-	LAND_COMBAT_GUIDE_DISTANCE = 290.0,					-- Distance within whch we'll care a bit more about sending planes regardless of whether our boiz are dying
-
-	ENEMY_PASSING_THROUGH_PLANES_PER_BOMBER = 0.1,		-- Amount of planes we assign to intercept enemies en-route to a location
-	ENEMY_PASSING_THROUGH_PLANES_PER_FIGHTER = 0.1,		-- Amount of planes we assign to intercept enemies en-route to a location
-	ENEMY_PASSING_THROUGH_PLANES_PER_SUPPORT = 0.1,		-- Amount of planes we assign to intercept enemies en-route to a location
-
-	AI_FRACTION_OF_FIGHTERS_RESERVED_FOR_INTERCEPTION = 0,	--Percentage of fighters we reserve for interception vs AS
-	MAX_AIR_REGIONS_TO_CARE_ABOUT = 6,							-- Number of regions we'll consider when trying to split planes a bit. Split is NOT equal, just a guide, leftovers still applied elsewhere if needed
-
-	ENEMY_PASSING_THROUGH_PLANES_PER_BOMBER_NAVAL_REGION = 0.15,		-- Amount of planes we assign to intercept enemies en-route to a location over a sea region
-	ENEMY_PASSING_THROUGH_PLANES_PER_FIGHTER_NAVAL_REGION = 0.15,		-- Amount of planes we assign to intercept enemies en-route to a location over a sea region
-	ENEMY_PASSING_THROUGH_PLANES_PER_SUPPORT_NAVAL_REGION = 0.15,		-- Amount of planes we assign to intercept enemies en-route to a location over a sea region
-	NAVAL_DEFENSE_INTERCEPTION_IMPORTANCE_FACTOR = 30,	-- Factor on added planes passing through region to strategic importance
-
-	XP_RATIO_REQUIRED_TO_RESEARCH_WITH_XP = 3.0,		-- AI will at least need this amount of xp compared to cost of a tech to reserch it with XP
-	RESEARCH_WITH_XP_AI_WEIGHT_MULT = 1.5, 				-- AI will bump score of a research with this mult if it can use XP
-
-	STR_BOMB_AIR_SUPERIORITY_IMPORTANCE = 0.10,			-- Strategic importance of air superiority ( amount of enemy planes in area )
-	STR_BOMB_CIVIL_FACTORY_IMPORTANCE = 50,				-- Strategic importance of enemy civil factories
-	STR_BOMB_MILITARY_FACTORY_IMPORTANCE = 70,			-- Strategic importance of enemy military factories
-	STR_BOMB_NAVAL_FACTORY_IMPORTANCE = 30,				-- Strategic importance of enemy naval factories
-	STR_BOMB_SUPPLY_HUB_IMPORTANCE = 1,                 -- Strategic importance of enemy supply hubs
-	STR_BOMB_AA_IMPORTANCE_FACTOR = 0.5,				-- Factor of AA influence on strategic importance ( 0.0 - 1.0 )
-	STR_BOMB_INFRA_IMPORTANCE_FACTOR = 0.25,			-- Factor of infrastructure influence on strategic importance ( 0.0 - 1.0 )
-	STR_BOMB_IMPORTANCE_SCALE = 1.0,					-- str bombing total importance scale (every str bombing score get's multiplied by it)
-
-	STR_BOMB_MIN_ENEMY_FIGHTERS_IN_AREA = 2000,			-- If amount of enemy fighters is higher than this mission won't perform
-	STR_BOMB_FIGHTERS_PER_PLANE = 1.1,					-- Amount of air superiority planes requested per enemy plane
-	STR_BOMB_PLANES_PER_CIV_FACTORY = 200,				-- Amount of planes requested per enemy civ factory
-	STR_BOMB_PLANES_PER_MIL_FACTORY = 205,				-- Amount of planes requested per enemy military factory
-	STR_BOMB_PLANES_PER_NAV_FACTORY = 105,				-- Amount of planes requested per enemy naval factory
-	STR_BOMB_PLANES_PER_SUPPLY_HUB = 30,                 -- Amount of planes requested per enemy supply node
-	STR_BOMB_MIN_EXCORT_PLANES = 200,					-- Min amount of planes requested to excort operations
-	RECON_PLANES_NAVAL = 50,                           -- scale on recon for naval areas
-	RECON_PLANES_LAND_COMBAT = 25,                     -- scale on recon for land combat areas
-	RECON_PLANES_STRATEGIC = 50,                       -- scale on recon for strategic areas
-
-	ASSIGN_FRONT_ARMY_SOFT_ATTACK_FACTOR = 0.1,                 -- Importance of unit's ARMY_SOFT_ATTACK stat when assigning to a front
-	ASSIGN_FRONT_ARMY_HARD_ATTACK_FACTOR = 0.1,                -- Importance of unit's ARMY_HARD_ATTACK stat when assigning to a front
-	ASSIGN_FRONT_ARMY_BREAKTHROUGH_FACTOR = 0.1,               -- Importance of unit's ARMY_BREAKTHROUGH stat when assigning to a front
-	ASSIGN_DEFENSE_ARMY_DEFENSE_FACTOR = 3.0,                   -- Importance of unit's ARMY_DEFENSE stat when assigning to an area defense order
-	ASSIGN_DEFENSE_ARMY_ENTRENCHMENT_FACTOR = 2.0,              -- Importance of unit's ARMY_ENTRENCHMENT stat when assigning to an area defense order
-	ASSIGN_DEFENSE_TEMPLATE_CLASS_SCORE = 3.0,                  -- Importance of unit's AI template class (AREA_DEFENSE, CAVALRY) when assigning to an area defense order
-	ASSIGN_INVASION_AMPHIBIOUS_ATTACK_FACTOR = 50.0,            -- Importance of unit's amphibious attack adjuster when assigning to an invasion order
-	ORDER_ASSIGNMENT_DISTANCE_FACTOR = 100.0,                    -- When the AI assigns units to orders, how much should distance be taken into account?
-	REVISITED_PROV_BOOST_FACTOR = 6,                            -- When the AI picks units for a front, it prioritises units already nearby.
-	UNIT_ASSIGNMENT_STATS_IMPORTANCE = 2.0,                     -- Stats score for units are multiplied by this when the AI is deciding which front they should be assigned to
-
-	ASSIGN_FRONT_TERRAIN_ATTACK_FACTOR = 3.0,                   -- Importance of unit's terrain adjusted attack stat when assigning to a front
-	ASSIGN_FRONT_TERRAIN_DEFENSE_FACTOR = 1.0,                  -- Importance of unit's terrain adjusted defense stat when assigning to a front
-	ASSIGN_FRONT_TERRAIN_MOVEMENT_FACTOR = 2.0,                 -- Importance of unit's terrain adjusted movement stat when assigning to a front
-	ASSIGN_DEFENSE_TERRAIN_ATTACK_FACTOR = 0.5,                 -- Importance of unit's terrain adjusted attack stat when assigning to an area defense order
-	ASSIGN_DEFENSE_TERRAIN_DEFENSE_FACTOR = 4.0,               -- Importance of unit's terrain adjusted defense stat when assigning to an area defense order
-	ASSIGN_DEFENSE_TERRAIN_MOVEMENT_FACTOR = 0.5,               -- Importance of unit's terrain adjusted movement stat when assigning to an area defense order
-	ASSIGN_MOUNTAINEERS_TO_MOUNTAINS = 10.0,                    -- factor for assigning mountaineer divisions to fronts with mountains (proportional to how much of that terrain type)
-	ASSIGN_TANKS_TO_MOUNTAINS = -15.0,                           -- factor for assigning tank divisions to fronts with mountains (proportional to how much of that terrain type)
-	ASSIGN_TANKS_TO_JUNGLE = -20.0,                              -- factor for assigning tank divisions to fronts with jungle (proportional to how much of that terrain type)
-	UNIT_ASSIGNMENT_TERRAIN_IMPORTANCE = 18.0,                  -- Terrain score for units are multiplied by this when the AI is deciding which front they should be assigned to
-
-	ASSIGN_TANKS_TO_WAR_FRONT = 25.0,                            -- Scoring factor for assigning tank divisions to active war fronts
-	ASSIGN_TANKS_TO_NON_WAR_FRONT = 0.1,                        -- Scoring factor for assigning tank divisions to non-war fronts
-
-	REASSIGN_TO_ANOTHER_FRONT_FACTOR = 0.1,                    -- Factor for reassigning to another front. 0.0 < X < 1.0 means reluctant, X > 1.0 means want to.
-	REASSIGN_TO_ANOTHER_FRONT_IF_IN_COMBAT_FACTOR = 0.05,       -- Factor for reassigning to another front if in combat. 0.0 < X < 1.0 means reluctant, X > 1.0 means want to.
-
-	ENEMY_FORTIFICATION_FACTOR_FOR_FRONT_REQUESTS = 2.0,		-- front unit request factor at max enemy fortification
-	ENEMY_FORTIFICATION_FACTOR_FOR_FRONT_REQUESTS_MAX = 0.7, 	-- max factor that can be added by enemy fortification
-
-	MANPOWER_RATIO_CAREFULNESS_THRESHOLD = 0.05,                -- if manpower ratio (available/used-by-army) is less than this, start being more careful with plan execution (i.e. don't throw your men into the meat grinder if you're running out of manpower)
-
-	PLAN_ACTIVATION_SUPERIORITY_AGGRO = 1.75,			-- How aggressive a country is in activating a plan based on how superiour their force is.
-	WAIT_YEARS_BEFORE_FREER_BUILDING = 3,				-- The AI will skip considering certain buildings during the buildup phase, after htese many years it starts building them regardless of threat.
-
-	MAX_CARRIER_OVERFILL = 1.85,						-- Carriers will be overfilled to this amount if there are doctrines to justify it
-
-	FIELDED_EQUIPMENT_BUFFER_RATIO_FOR_OCCUPATION_AI = 0.5, -- garrison ai will try to leave this ratio of buffers while assigning laws
-	FIELDED_MANPOWER_BUFFER_RATIO_FOR_OCCUPATION_AI = 0.3,  -- garrison ai will try to leave this ratio of buffers while assigning laws
-
-	IMPORTANT_VICTORY_POINT = 15,						-- during occupation ai will only care so much to ask for extra garrisons if VP amount is at least this
-
-	DOCKYARDS_PER_NAVAL_DESIRE_EFFECT = -50.0,			-- Effects how much AI wants to build dockyards based on how navally focused they are in general. Recommended range -100.0 to 100.0.
-
-	DECISION_PRIORITY_RANDOMIZER = 0.1,					-- random factor that is used while picking decisions. ai is able to pick a lower priority decision earler than a higher one if it is within this threshold
-
-	DESIGN_COMPANY_SCORE_MULTIPLIER = 2.0,              -- score multiplier for hiring a design company
-	ARMY_CHIEF_SCORE_MULTIPLIER = 2.0,                  -- score multiplier for hiring an army chief
-	AIR_CHIEF_SCORE_MULTIPLIER = 1.5,                   -- score multiplier for hiring an air chief
-	NAVY_CHIEF_SCORE_MULTIPLIER = 1.0,                  -- score multiplier for hiring an navy chief
-	POLITICAL_ADVISOR_SCORE_MULTIPLIER = 1.0,           -- score multiplier for hiring political advisors
-	THEORIST_ACCEPTANCE_MULTIPLIER = 0.7,						-- scale the acceptance of hiring a theorist by this number times the amount of non-theorists we have, capped at one.
-	MIN_SCALED_IDEA_WEIGHT_TO_COMPARE_WITH_DECISIONS = 100,		-- idea scores are scaled between these two values while comparing them to decisions
-	MAX_SCALED_IDEA_WEIGHT_TO_COMPARE_WITH_DECISIONS = 200,		-- idea scores are scaled between these two values while comparing them to decisions
-
-	CRITICAL_DECISION_PRIORITY = 200,					-- critical ai score for decisions, ai will be able to pick decisions if it has higher prio even if it is not time to pick them (0 to disable)
-	CRITICAL_IDEA_PRIORITY = 400,							-- critical ai score for ideas, ai will be able to pick ideas if it has higher prio even if it is not time to pick them (0 to disable)
-
-	MAX_PP_TO_SPEND_ON_LOWER_PRIO_TASKS = 25,			-- max pp cost for ai to allow spend pp on lower prio things while a higher prio things are available
-	MIN_SCORE_FOR_LOWER_PRIO_TASKS = 100,				-- this is a threshold for low prio tasks that will be considered critical
-
-	LOW_PRIO_TEMPLATE_BONUS_FOR_GARRISONS = 300000,		-- bonus to make ai more likely to assign low prio units to garrisons
-	LOW_PRIO_TEMPLATE_PENALTY_FOR_FRONTS = -2000,		-- penalty to make ai less likely to assign low prio units to fronts
-
-
-	DEPLOYED_UNIT_MANPOWER_RATIO_TO_BUFFER_WARTIME = 0.3, 				-- deployment will try to buffer a ratio of deployed manpower (for reinforcements) during war time
-	DEPLOYED_UNIT_MANPOWER_RATIO_TO_BUFFER_PEACETIME = 0.1,     		-- deployment will try to buffer a ratio of deployed manpower (for reinforcements) during peace time
-
-	MAX_AVAILABLE_MANPOWER_RATIO_TO_BUFFER_WARTIME = 0.4,			-- deployment will try to buffer a ratio of manpower (for reinforcements) during war time
-	MAX_AVAILABLE_MANPOWER_RATIO_TO_BUFFER_PEACETIME = 0.2,		-- deployment will try to buffer a ratio of manpower (for reinforcements) during peace time
-
-	MANPOWER_RATIO_REQUIRED_TO_PRIO_MOBILIZATION_LAW = 0.4,		-- percentage of manpower in field is desired to be buffered for AI when it has upcoming wars or already at war. if it has less manpower, it will prio manpower laws
-	UPGRADES_DEFICIT_LIMIT_DAYS = 60,                           -- Ai will avoid upgrading units in the field to new templates if it takes longer than this to fullfill their equipment need
-
-	GIE_EXILE_AIR_MANPOWER_USAGE_RATIO = 0.2, -- AI will not deploy new exile wings when this percentage of available exile manpower is already used for wing recruitment.
-
-	CARRIER_TASKFORCE_MAX_CARRIER_COUNT = 4, 		-- optimum carrier count for carrier taskforces
-	CAPITAL_TASKFORCE_MAX_CAPITAL_COUNT = 12, 		-- optimum capital count for capital taskforces
-	SCREEN_TASKFORCE_MAX_SHIP_COUNT = 12,			-- optimum screen count for screen taskforces
-	SUB_TASKFORCE_MAX_SHIP_COUNT = 16 ,				-- optimum sub count for sub taskforces
-
-	MIN_CAPITALS_FOR_CARRIER_TASKFORCE = 6,			-- carrier fleets will at least have this amount of capitals
-	CAPITALS_TO_CARRIER_RATIO = 1.5,				-- capital to carrier count in carrier taskfoces
-	SCREENS_TO_CAPITAL_RATIO = 4.0,					-- screens to capital/carrier count in carrier & capital taskforces
-
-	MIN_MAIN_SHIP_RATIO = 0.3,                      -- if main ship ratio is below this, steal other ships.
-	MIN_SUPPORT_SHIP_RATIO = 0.7,                   -- if support ship ratio is below this, steal other ships.
-	MIN_MAIN_SHIP_RATIO_TO_REINFORCE = 0.5,         -- the main ships will be tried to reinforce this level.
-	MIN_SUPPORT_SHIP_RATIO_TO_REINFORCE = 0.9,      -- the support ships will be tried to reinforce this level.
-	MIN_MAIN_SHIP_TO_SPARE = 0.7,                   -- can only steal ships from a task force if their main ship ratio is above this.
-	MIN_SUPPORT_SHIP_TO_SPARE = 1.0,                -- can only steal ships from a task force if their support ship ratio is above this.
-	MIN_MAIN_SHIP_RATIO_TO_MERGE = 0.7,             -- try merge task force if main ship ratio is lower than this.
-	MAX_MAIN_SHIP_RATIO_TO_MERGE = 1.001,           -- if resulting main ship ratio would be at most this, allow merging into this task force.
-	MAIN_SHIP_RATIO_TO_SPLIT = 1.8,                 -- if main ship ratio in a task force is larger than this, split it. (If a carrier TF wants 4 carriers (see defines above), but it has more than [this * 4] carriers, then we try to split the TF.)
-
-	MISSION_FLEET_ICONS = {
-		4, -- HOLD
-		29, -- PATROL
-		21, -- STRIKE FORCE
-		15, -- CONVOY RAIDING
-		23, -- CONVOY ESCORT
-		24, -- MINES PLANTING
-		5, -- MINES SWEEPING
-		4, -- TRAIN
-		4, -- RESERVE_FLEET
-		9, -- NAVAL INVASION SUPPORT
-	},
-
-	MIN_NAVAL_MISSION_PRIO_TO_ASSIGN = {  -- priorities for regions to get assigned to a mission
-	0, -- HOLD (consumes fuel HOLD_MISSION_MOVEMENT_COST fuel while moving)
-	200, -- PATROL		
-	200, -- STRIKE FORCE 
-	200, -- CONVOY RAIDING
-	100, -- CONVOY ESCORT
-	200, -- MINES PLANTING	
-	100, -- MINES SWEEPING	
-	0, -- TRAIN
-	0, -- RESERVE_FLEET
-	100, -- NAVAL INVASION SUPPORT
-	},
-
-	HIGH_PRIO_NAVAL_MISSION_SCORES = {  -- priorities for regions to get assigned to a mission
-	0, -- HOLD (consumes fuel HOLD_MISSION_MOVEMENT_COST fuel while moving)
-	3800, -- PATROL - 100000	
-	1000, -- STRIKE FORCE 
-	1500, -- CONVOY RAIDING
-	3000, -- CONVOY ESCORT - 1000
-	-1, -- MINES PLANTING	
-	300, -- MINES SWEEPING	
-	0, -- TRAIN
-	0, -- RESERVE_FLEET
-	1000, -- NAVAL INVASION SUPPORT
-	},
-
-	MAX_MISSION_PER_TASKFORCE = {  -- max mission region/taskforce ratio
-		0, -- HOLD (consumes fuel HOLD_MISSION_MOVEMENT_COST fuel while moving)
-		1.5, -- PATROL
-		6, -- STRIKE FORCE
-		1.5, -- CONVOY RAIDING
-		4, -- CONVOY ESCORT
-		2, -- MINES PLANTING
-		2, -- MINES SWEEPING
-		0, -- TRAIN
-		0, -- RESERVE_FLEET
-		10, -- NAVAL INVASION SUPPORT
-	},
-
-	-- all-screen taskforces will be shared between convoy defense, mine missions and patrols (in this prio)
-	-- and these ratios limits the maximum ratio of these taskforces to allocate on type
-	MAX_SCREEN_TASKFORCES_FOR_CONVOY_DEFENSE_MIN = 0.4, -- maximum ratio of all screen-ships forces to be used in convoy defense (increases up to max as AI loses convoys).
-	MAX_SCREEN_TASKFORCES_FOR_CONVOY_DEFENSE_MAX = 0.6, -- maximum ratio of all screen-ships forces to be used in convoy defense (increases up to max as AI loses convoys).
-	MAX_SCREEN_TASKFORCES_FOR_CONVOY_DEFENSE_MIN_CONVOY_THREAT = 100, -- AI will increase screen assignment for escort missions as threate increases
-	MAX_SCREEN_TASKFORCES_FOR_CONVOY_DEFENSE_MAX_CONVOY_THREAT = 500,-- AI will increase screen assignment for escort missions as threate increases
-
-
-	MAX_SCREEN_TASKFORCES_FOR_MINE_SWEEPING = 0.1, -- maximum ratio of screens forces to be used in mine sweeping
-	MAX_SCREEN_TASKFORCES_FOR_MINE_SWEEPING_PRIO = 0.8, -- if you have mines near your owned states, you will start priotize mine missions and will assign this ratio of screens
-	MAX_SCREEN_TASKFORCES_FOR_MINE_SWEEPING_PRIO_MIN_MINES = 10, -- lowest mine for prioing mine missions
-	MAX_SCREEN_TASKFORCES_FOR_MINE_SWEEPING_PRIO_MAX_MINES = 250, -- highest mines for highest prio for mine missions
-
-
-	MAX_SCREEN_TASKFORCES_FOR_MINE_LAYING = 0.05, -- maximum ratio of screens forces to be used in mine laying
-	MAX_SCREEN_FORCES_FOR_INVASION_SUPPORT = 0.2, -- max ratio of screens forces to be used in naval invasion missions
-	MAX_CAPITAL_FORCES_FOR_INVASION_SUPPORT = 0.25, -- max ratio of capital forces to be used in naval invasion missions
-	MAX_PATROL_TO_STRIKE_FORCE_RATIO = 3.0,	-- maximum patrol/strike force ratio
-
-
-	-- <start> construction prioritization
-	CONSTRUCTION_PRIO_INFRASTRUCTURE = 30,                                    -- base prio for infrastructure in the construction queue
-	CONSTRUCTION_PRIO_CIV_FACTORY = 1,                                       -- base prio for civilian factories in the construction queue
-	CONSTRUCTION_PRIO_MIL_FACTORY = 0.70,                                       -- base prio for military factories in the construction queue
-	CONSTRUCTION_PRIO_SUPPLY_BUILDING = 3.50,                                   -- base prio for supply buildings (supply hubs, ports) in the construction queue
-	CONSTRUCTION_PRIO_RAILWAY = 20.00,                                           -- base prio for railways in the construction queue
-	CONSTRUCTION_PRIO_RAILWAY_GUN_REPAIR = 15.00,                               -- base prio for railway gun repairs in the construction queue
-	CONSTRUCTION_PRIO_UNSPECIFIED = 0.50,                                       -- base prio for unspecified buildings (none of the categories above) in the construction queue
-	CONSTRUCTION_PRIO_FACTOR_OCCUPIED_TERRITORY = 1.00,                         -- factor prio with this if occupied territory
-	CONSTRUCTION_PRIO_FACTOR_OWNED_NONCORE = 3.00,                              -- factor prio with this if owned non-core territory
-	CONSTRUCTION_PRIO_FACTOR_OWNED_CORE = 5.00,                                 -- factor prio with this if owned core territory
-	CONSTRUCTION_PRIO_FACTOR_REPAIRING = 0,                                  -- factor prio with this if building is being repaired
-	-- <end> construction prioritization
-	
-
-	MAX_FACTORY_TO_SPARE_FOR_MISSION_FUEL_TRADE = 0.12, 						-- amount of factories to spend on oil trade in case of fuel need for missions
-	MAX_FACTORY_TO_SPARE_FOR_CRITICAL_MISSION_FUEL_TRADE = 0.3, 			-- amount of factories to spend on oil trade in case of fuel need for prio missions
-	MAX_FACTORY_TO_TRADE_FOR_FUEL = 0.5,
-	FUEL_TRADE_PRIO_FOR_CONVOY_DEFENSE = 0.3,								-- AI will be less reluctant to cancel convoy missions if it is trading for oil
-
-	MAX_FACTORY_TO_SPARE_FOR_MISSION_FUEL_TRADE_IN_PEACE = 0.03, 			-- amount of factories to spend on oil trade in case of fuel need for missions in peace time
-	MAX_FACTORY_TO_SPARE_FOR_CRITICAL_MISSION_FUEL_TRADE_IN_PEACE = 0.1, 	-- amount of factories to spend on oil trade in case of fuel need for prio missions in peace time
-	MAX_FACTORY_TO_TRADE_FOR_FUEL_IN_PEACE = 0.15,
-
-
-	FUEL_REQUEST_RATIO_FOR_COMBATS = 0.6,									-- ratio of ship combat fuel cost that is to be considered in fuel usage and request system
-	PRIO_FUEL_REQUEST_RATIO_FOR_COMBATS = 0.8,								-- ratio of ship combat fuel cost that is to be considered in prio fuel usage and request system
-
-	FUEL_REQUEST_RATIO_FOR_MOVEMENT = 0.4,									-- ratio of ship movement fuel cost that is to be considered in fuel usage and request system
-	PRIO_FUEL_REQUEST_RATIO_FOR_MOVEMENT = 0.2,								-- ratio of ship movement fuel cost that is to be considered in prio fuel usage and request system
-
-	NAVY_ACTUAL_FUEL_USAGE_WEIGHT_ON_OIL_REQUEST = 0.5, 					-- weight of actual fuel usage of ships compared to what is being asked for missions while calculating oil needed for trade
-	AIR_ACTUAL_FUEL_USAGE_WEIGHT_ON_OIL_REQUEST = 0.5, 						-- weight of actual fuel usage of planes compared to what is being asked for missions while calculating oil needed for trade
-
-	MONTHS_TO_FILL_FUEL_BUFFER_WITH_OIL_REQUESTS = 6.0, 					-- in war time, coutries will try to fill their buffer in this duration and trade for oil if necesarry
-	MONTHS_TO_FILL_FUEL_BUFFER_WITH_OIL_REQUESTS_IN_PEACE_TIME = 10.0,      -- in peace time, coutries will try to fill their buffer in this duration and trade for oil if necesarry
-
-	FUEL_CONSUMPTION_MULT_FOR_FUEL_SAVING_MODE = 0.25,				-- fuel consumptions will be limited by this ratio in fuel saving mode
-	FUEL_CONSUMPTION_MULT_REGULAR_FUEL_MODE = 1.0,					-- fuel consumptions will be limited by this ratio in regular fuel mode
-	FUEL_CONSUMPTION_MULT_AGRESSIVE_FUEL_MODE = 3.0,				-- fuel consumptions will be limited by this ratio in aggressive fuel usage mode
-
-	DAYS_FUEL_REMAINING_TO_ENTER_FUEL_SAVING_MODE = 30,				-- countries will enter fuel saving mode if they will be out of fuel in this number of days and their fuel ratio is below next define
-	DAYS_FUEL_REMAINING_TO_ENTER_FUEL_SAVING_MODE_FUEL_RATIO = 0.4,
-
-	FUEL_RATIO_TO_EXIST_FUEL_SAVING_MODE = 0.60, 					-- countries will exit fuel saving mode if they have more fuel ratio than this
-
-
-
-
-	WANTED_MAX_FUEL_BUFFER_IN_DAYS_FOR_ARMY_MAX_CONSUMPTION = 365,  -- AI will try to buffer at least this amount of days on max consumption, will trade if necesarry and will go into fuel saving mode/aggresive mode using this buffer
-	WANTED_MAX_FUEL_BUFFER_IN_DAYS_FOR_AIR_MAX_CONSUMPTION  = 2,  -- AI will try to buffer at least this amount of days on max consumption, will trade if necesarry and will go into fuel saving mode/aggresive mode using this buffer
-	WANTED_MAX_FUEL_BUFFER_IN_DAYS_FOR_NAVY_MAX_CONSUMPTION = 365,  -- AI will try to buffer at least this amount of days on max consumption, will trade if necesarry and will go into fuel saving mode/aggresive mode using this buffer
-	MIN_WANTED_MAX_FUEL = 50,									   -- minimum value for wanted fuel buffers for AI (in thousands)
-
-	GIE_LEND_LEASE_TO_PLAYER_EXILE_DESIRE_BONUS = 10000, -- AI host is more likely to accept lend lease requests from a player.
-
-	NAVAL_BASE_RATIO_ALLOCATED_FOR_REPAIRS = 0.25,				-- ai will allocate at most this ratio of dockyards for repairs in peace time
-	NAVAL_BASE_RATIO_ALLOCATED_FOR_REPAIRS_IN_WAR_TIME = 0.6,	-- ai will allocate at most this ratio of dockyards for repairs in war time
-
-	MAX_FUEL_CONSUMPTION_RATIO_FOR_AIR_TRAINING = 3,			-- ai will use at most this ratio of affordable fuel for air training
-	
-	AI_SHIP_SWAP_MIN_DAMAGED_SHIPS = 2,							-- minimum number of damaged ships in a taskforce before AI considers swapping them to reserves
-	AI_SHIP_SWAP_DAMAGE_THRESHOLD = 0.33,						-- per-ship strength threshold below which the AI considers a capital/carrier damaged enough to swap to reserves
-	AI_REPAIR_CANCEL_MIN_STRENGTH = 0.75,						-- AI will pull non-reserve task forces out of repair and back on mission once they reach this strength
-	AI_SURFACE_COMBAT_FUEL_RATIO = 0.70,						-- fraction of navy fuel reserved for surface combat (patrols, strike forces, dominance)
-	AI_CONVOY_DEFENSE_FUEL_RATIO = 0.15,						-- fraction of navy fuel reserved for convoy escorts (remaining goes to convoy raiding)
-	
-	MAX_FUEL_CONSUMPTION_RATIO_FOR_NAVY_TRAINING = 0.60,		-- ai will use at most this ratio of affordable fuel for naval training
-
-	MAX_FULLY_TRAINED_SHIP_RATIO_FOR_TRAINING = 0.7,			-- ai will not train a taskforce if fully trained ships are above this ratio
-
-	NUM_SILOS_PER_CIVILIAN_FACTORIES = 0.0025,					-- ai will try to build a silo per this ratio of civ factories
-	NUM_SILOS_PER_MILITARY_FACTORIES = 0.012,					-- ai will try to build a silo per this ratio of mil factories
-	NUM_SILOS_PER_DOCKYARDS = 0.02,								-- ai will try to build a silo per this ratio of dockyards
-
-	SHIP_STR_RATIO_PUT_ON_REPAIRS = 0.8,						-- if ships are damaged below this ratio, they are put for repairs
-	SHIP_STR_RATIO_EXIT_REPAIRS = 1.00,							-- the ships will leave repairs if they are >= this ratio of total str
-	REPAIR_TASKFORCE_SIZE = 4,									-- repair taskforce sizes are limited to this many ships
-	PLAN_VALUE_BONUS_FOR_MOVING_UNITS = 0.25,					-- AI plans gets a bonus when units are not moving and ready to fight
-	AGGRESSIVENESS_BONUS_FOR_FRONTS_THAT_ARE_ON_HIGH_AGGRESSIVENESS	= -0.4,	-- AI gets a bonus to aggresiveness if it is already executing an aggressive plan (lower is more aggressive)
-	AGGRESSIVENESS_CHECK_BASE = 1.4,							-- front comparison where ai will consider aggressive stance, unless it is already then the number above is used
-	AGGRESSIVENESS_CHECK_EASY_TARGET = -0.7,					-- if target nation is flagged as easy target we also adjust down the front comparison needed
-	AGGRESSIVENESS_CHECK_CAREFUL = 0.65,							-- at what front strength balance do we go careful
-	AGGRESSIVENESS_CHECK_PARTLY_FORTIFIED = 1.8,				-- if front strength balance is at or above this value versus a party fortified enemy, we do a balanced attack
-	AGGRESSIVENESS_CHECK_PARTLY_FORTIFIED_WEAK_POINTS = 0.6,	-- if front strength balance is at or above this value versus a party fortified enemy, we rush attack weak points; below this value, we are careful
-	AGGRESSIVENESS_CHECK_FULLY_FORTIFIED = 8,					-- if front strength balance is at or above this value versus a fully fortified enemy with no weak points, we do a balanced attack instead being careful
-	AGGRESSIVENESS_CHECK_FULLY_FORTIFIED_POCKET = 3,			-- if front strength balance is at or above this value versus a fully fortified enemy in a pocket, we do a balanced attack instead being careful
-	FRONT_EVAL_UNIT_ACCURACY = 1.0,								-- scale how stupid ai will act on fronts. 0 is potato
-	FRONT_EVAL_UNIT_AIR_SUP_IMPACT = 1.0,                       -- scale how good the AI thinks air superiority is for units
-	FRONT_EVAL_UNIT_SUPPLY_AND_ORG_LACK_IMPACT = 1.0,			-- scale how painful the AI thinks a combined lack of supply and organization is for units
-	FRONT_EVAL_PERCENT_TO_ASSIST_ALLY_FRONT = 0.15, 				-- percentage of how many units the AI thinks it should have compared to an ally before considering sending units
-
-	PRODUCTION_CARRIER_PLANE_BUFFER_RATIO = 1.5,				-- in addition to total deck size of carriers, we want at least this ratio to buffer it
-	PRODUCTION_CARRIER_PLANE_PRODUCTION_BOOST_TO_BUFFER = 4.0,  -- production of carrier planes will go up by this ratio if we lack buffers
-
-
-	NAVAL_MAX_CONVOY_TO_INTEL_FOR_CONVOY_RAIDS = 200,            -- number of convoys in region will be clamped to this max, anything more will be ignored while assigning raids
-	EXTRA_NAVY_INTEL_FOR_CONVOY_RAIDING = 0.0,                   -- this amount of intel is added to navy intel while ai is assigning convoy raiding mission
-	INTEL_NEEDED_TO_NEGATVE_CONVOY_COUNT_REDUCTION = 80.0,       -- navy intel is divided by this ratio to negate NAVAL_CONVOY_COUNT_INTEL_DROPOFF_DUE_TO_LOW_DECYPTION
-	NAVAL_CONVOY_COUNT_INTEL_DROPOFF_DUE_TO_LOW_DECYPTION = 200, -- on lowest navy intel, ai won't be able to see enemy convoys lower than this ratio
-
-	CONVOY_RAID_SCORE_FROM_CONVOY_INTELLIGENCE = 5,			 -- each convoy intelligenge will incease raid score by this
-
-	AIR_AI_ENEMY_PROV_RATIO_FOR_COMBAT_REGION = 0.15,			 -- if a region has more than this ratio of provinces controlled by enemy, AI will consider it as a combat zone while assigning planes
-
-	RESEARCH_MULTI_DOCTRINE_SCORE = 0.3,                         -- score penalty to researchign multiple doctrines at once for AI
-	CONVOY_ESCORT_SCORE_FROM_CONVOYS = 15,                       -- score for each convoy you have in area
-	CONVOY_ESCORT_MUL_FROM_NO_CONVOYS = 0,                   	 -- score multiplier when no convoys are around
-	CONVOY_RAID_MIN_ENEMY_THREAT = 0.05,
-
-	RAILWAY_GUN_PRODUCTION_BASE_DIVISIONS_RATIO_PERCENT = 0,	-- Base ratio of desired railway guns to divisions for AI (5 means 5%). Can be modified by railway_guns_divisions_ratio AI strategy value
-	RAILWAY_GUN_PRODUCTION_MIN_DIVISONS = 20,					-- Minimum required number of divisions for the AI to consider producing railway guns
-	RAILWAY_GUN_PRODUCTION_MIN_FACTORIES = 10,					-- Minimum required number of military factories for the AI to consider producing railway guns
-	RAILWAY_GUN_PER_ARMY_CAP = 5,								-- Maximum railway guns assigned to one army for the AI
-	RAILWAY_GUN_ASSIGNMENT_SCORE_UNITCOUNT_MULTIPLIER = 10.0,	-- Score multiplier for favoring orders groups with more units when assigning railway guns
-	RAILWAY_GUN_ASSIGNMENT_SCORE_HOLD = 20,						-- Score for keeping current assignment when assigning railway guns
-
-	MAX_UNIT_RATIO_FOR_INVASIONS = 0.4,                         -- countries won't use armies more than this ratio of total units for invasions
-	MIN_UNIT_RATIO_FOR_INVASIONS = 0.1,                         -- don't allocate more divisions than this for naval invasions
-	MAX_INVASION_FRONT_SCORE = 2400,                            -- max score for naval invasion front scores
-	MIN_FRONT_SCORE_FOR_AFTER_INVASION_AREAS = 1500,			-- min score for army fronts that are created on recently invaded regions
-
-	MIN_CONVOY_EFFICIENCY_TO_CANCEL_TRADES = 0.4,				-- min efficiency (due to convoy raid) to cancel trades
-	MIN_CONVOY_EFFICIENCY_TO_START_TRADES = 0.6,				-- min efficiency (due to convoy raid) to start be able to trades
-	MIN_CONVOY_EFFICIENCY_PER_WAR_SUPPORT_HIT = 0.6,			-- percentage of warsupport hit you get is multiplied by this value and added to min convoy efficiencies
-
-	NAVAL_INVADED_AREA_PRIO_DURATION = 90,								-- after successful invasion, AI will prio the enemy area for this number of days
-	NAVAL_INVADED_AREA_PRIO_MULT = 1.2,									-- fronts that belongs to recent invasions gets more prio
-	MIN_NUM_CONQUERED_PROVINCES_TO_DEPRIO_NAVAL_INVADED_FRONTS = 100,	-- if you conquer this amount of provinces after a naval invasion, it will lose its prio status and will act as a regular front
-
-	INVASION_TARGET_DISTANCE_DENOMINATOR = 1000,            -- When selecting invasion target, divide this with (pixel) distance to get distance score factor. (Doesn't really affect the relative scoring, but it affects the linearity of the score function.)
-	INVASION_TARGET_NO_PORT_FACTOR = 0.3,                   -- When selecting invasion target, multiply score with this if the target has no port
-	INVASION_TARGET_TRUNCATION_SELECT_THRESHOLD = 1.0,      -- When selecting invasion target, use this threshold for truncation selection. (1.0 means select highest scored target, 0.0 means select randomly from all possible target, 0.5 means select randomly from all targets with more than 50 % of highest score)
-	INVASION_TARGET_PRIO_NOT_ENEMY_FACTOR = 0.15,           -- When calculating priority for an invasion, factor the score with this if the target is not an actual enemy.
-	FAILED_INVASION_AVOID_DURATION = 60,                    -- after a failed invasion, AI will down-prioritize invading the same area again for this number of days
-	FAILED_INVASION_AREA_PRIO_FACTOR = 0.25,                 -- for every failed invasion on an area, factor that area's invasion prio with this value
-	FAILED_INVASION_PORT_PRIO_FACTOR = 0.33,                -- for every failed invasion on a target port (province), factor the chance that we try to invade that same port again (relative to other ports)
-
-	BUILDING_TARGETS_BUILDING_PRIORITIES = {				-- buildings in order of pirority when considering building targets strategies. First has the greatest priority, omitted has the lowest. NOTE: not all buildings are supported by building targets strategies.
-		'infrastructure',
-		'nuclear_reactor',
-		'nuclear_reactor_heavy_water',
-		'synthetic_refinery',
-		'arms_factory',
-		'industrial_complex',
-	},
-
-	MIN_INVASION_PLAN_VALUE_TO_EXECUTE = 0.3,				-- ai will only activate invasions if plan value is above this
-	MIN_INVASION_ORG_FACTOR_TO_EXECUTE = 0.7,				-- ai will only activate invasions if average org factor is above this
-	MIN_INVASION_UNITS_READY_TO_EXECUTE = 0.9,              -- ai will only activate invasions if this ratio of assigned units are ready
-	INVASION_UNITS_READY_AT_MIN_PLAN = 0.75,                -- units ready ratio required when plan value is at minimum threshold
-	INVASION_UNITS_READY_AT_MAX_PLAN = 0.25,                -- units ready ratio required when plan value is very high (1.0+)
-	MAX_INVASION_SIZE = 20,									-- max invasion group size
-
-	MAX_PORT_STRIKE_HISTORY_TO_REMEMBER = 5000,				-- maximum port strike history to keep track (will be used to disable ports
-	PORT_STRIKE_HISTORY_DECAY_MIN = 10,						-- minimum decay for port strike history (<7 days since last port strike)
-	PORT_STRIKE_HISTORY_DECAY_MAX = 400,					-- maximum decay for port strike history (>=37 days since last port strike)
-	MAX_PORT_RATIO_TO_DISABLE = 0.8,						-- max ratio of ports to disable due to port strikes
-	PORT_STRIKE_HISTORY_VALUE_TO_DISABLE_REPAIRS = 200,		-- cut off for disabling ports above this threshold
-	PORT_STRIKE_HISTORY_VALUE_TO_REENABLE_REPAIRS = 10,     -- cut off for reenabling ports bloew this threshold
-
-
-	CURRENT_LAW_SCORE_BONUS = 50.0,							-- current score will get an additional bonus to its ai weight
-	-- these values are used for ai_desire_ variables that are used occupation law selection
-	OIL_WANT_PER_POTENTIAL_LAND_CONSUMPTION_K = 0.05,       	-- how much extra oil requested on top of balance for country's potential oil consumptions
-	OIL_WANT_PER_POTENTIAL_NAVY_CONSUMPTION_K = 0.03,
-	OIL_WANT_PER_POTENTIAL_AIR_CONSUMPTION_K = 0.03,
-	OIL_WANT_PER_POTENTIAL_MISC_CONSUMPTION_K = 0.1,
-	OIL_WANT_AT_PEACE_PER_POTENTIAL_LAND_CONSUMPTION_K = 0.02,
-	OIL_WANT_AT_PEACE_PER_POTENTIAL_NAVY_CONSUMPTION_K = 0.0,
-	OIL_WANT_AT_PEACE_PER_POTENTIAL_AIR_CONSUMPTION_K = 0.0,
-	OIL_WANT_AT_PEACE_PER_POTENTIAL_MISC_CONSUMPTION_K = 0.1,
-	RESOURCE_WANT_PER_MISSING_BALANCE = 0.2,					-- negative balance increases the desire on a resource
-	RESOURCE_WANT_PER_CONSUMED = 0.05,							-- if resource is being used in production, increase the desire
-	-- ~end
-
-	-- crypto ai calculates a score & a threshold for each cracked crypto
-	-- if score > crypto, it activates the crypto
-	CRYPTO_ACTIVATION_THRESHOLD = 1.15,				-- will multiply crypto activation threshold. larger
-
-	CRYPTO_ACTIVATE_NUM_DAYS_DROP_OFF = 0.4,		-- longer decrypted crypto waits, lower threshold it will have. threshold will be multiplied by this value at most
-	CRYPTO_ACTIVATE_NUM_DAYS_DECAY = 60,			-- at this number of days, it will decay by %50 of prev define
-
-	CRYPTO_ACTIVATE_NUM_ACTIVATED_DROP_OFF = 0.6,				-- having an already activated cryptos will further multiply threshold, down to this value
-
-	CRYPTO_ACTIVATION_SCORE_ARMIES_IN_COMBAT_BONUS = 0.2, 		-- having units in combat will increase the score by this ratio
-	CRYPTO_ACTIVATION_SCORE_OUR_CAPITAL_BONUS = 0.2, 			-- fronts of our capital get a bonus by this ratio
-	CRYPTO_ACTIVATION_SCORE_ENEMY_CAPITAL_BONUS = 0.2, 			-- fronts of enemy capital get a bonus by this ratio
-	CRYPTO_AFTER_SCORE_INVASION_FRONT_BONUS = 1.0, 				-- a front that is naval invading will increase the score by this ratio
-	-- ~crypto ai
-
-	MAX_MODULAR_EQUIPMENT_EQUIPMENT_UPGRADE_COUNT_PER_PASS = 4, -- the maximum number of level AI will try to add to an equipment upgrade of an equipment defined in common/ai_equipment in one pass
-
-	EQUIPMENT_UPGRADE_VARIANT_MATCH_SCORE_FACTOR = 0.2, -- the weight of equipment upgrade level when computing the match score of a variant to an ai equipment design.
-
-	AI_UPDATE_ROLES_FREQUENCY_HOURS = 48;               -- Update the roles for a country AI this often (affects performance)
-	AI_NAVAL_GOALS_UPDATE_FREQUENCY_DAYS = 7;           -- Regenerate naval AI objectives this often in days (affects performance)
-
-	UPDATE_SUPPLY_BOTTLENECKS_FREQUENCY_HOURS = 168;     -- Check for and try to fix supply bottlenecks this often. (168 hours = 1 week)
-	FIX_SUPPLY_BOTTLENECK_SATURATION_THRESHOLD = 0.75;  -- Try to fix supply bottlenecks if supply node saturation exceeds this value.
-
-	UPDATE_SUPPLY_MOTORIZATION_FREQUENCY_HOURS = 20;     -- Check if activating motorization would improve supply situation this often.
-
-	AI_PREFERRED_TACTIC_WEEKLY_CHANGE_CHANCE = 0.05, 	-- Chance for AI to select a new preferred tactic if they don't have one selected
-
-	-- <start> assigning leaders to armies
-	ARMY_LEADER_ASSIGN_KEEP_CURRENT_LEADER_FACTOR = 3.0,        -- Boosts the score for keeping the current leader. Value > 1.0 favors the current leader.
-	ARMY_LEADER_ASSIGN_DONT_STEAL_OTHER_FACTOR = 0.2,          -- Reduces the score for leaders assigned elsewhere. Value < 1.0 discourages reassigning these leaders.
-	ARMY_LEADER_ASSIGN_FIELD_MARSHAL_TO_ARMY = 0.5,            -- Score for assigning a field marshal to a normal army (want to use them for army groups)
-	ARMY_LEADER_ASSIGN_EMPTYNESS_MALUS = 0.15,                   -- Factor for avoiding assigning leaders that can lead large armies to small armies (a value of 0.2 reduces the score by max 20 %)
-	ARMY_LEADER_ASSIGN_OVERCAPACITY = -200,                     -- Score for assigning leader to a too large army
-	ARMY_LEADER_ASSIGN_OVERALL_SKILL_FACTOR = 50,               -- This times general's overall skill is added to score
-	ARMY_LEADER_ASSIGN_DEFENSE_OVERALL_SKILL_FACTOR = 10,       -- If defensive army, this times general's overall skill is added to score
-	ARMY_LEADER_ASSIGN_DEFENSE_ATTACK_SKILL_FACTOR = 3,         -- If defensive army, this times general's attack skill is added to score
-	ARMY_LEADER_ASSIGN_DEFENSE_DEFENSE_SKILL_FACTOR = 20,       -- If defensive army, this times general's defense skill is added to score
-	ARMY_LEADER_ASSIGN_DEFENSE_LOGISTICS_SKILL_FACTOR = 3,      -- If defensive army, this times general's logistics skill is added to score
-	ARMY_LEADER_ASSIGN_DEFENSE_PLANNING_SKILL_FACTOR = 3,       -- If defensive army, this times general's planning skill is added to score
-	ARMY_LEADER_ASSIGN_INVASION_ATTACK_SKILL_FACTOR = 10,       -- If invasion army, this times general's attack skill is added to score
-	ARMY_LEADER_ASSIGN_INVASION_DEFENSE_SKILL_FACTOR = 10,      -- If invasion army, this times general's defense skill is added to score
-	ARMY_LEADER_ASSIGN_INVASION_LOGISTICS_SKILL_FACTOR = 20,    -- If invasion army, this times general's logistics skill is added to score
-	ARMY_LEADER_ASSIGN_INVASION_PLANNING_SKILL_FACTOR = 20,     -- If invasion army, this times general's planning skill is added to score
-	ARMY_LEADER_ASSIGN_ATTACK_SKILL_FACTOR = 20,                -- This times general's attack skill is added to score
-	ARMY_LEADER_ASSIGN_DEFENSE_SKILL_FACTOR = 10,               -- This times general's defense skill is added to score
-	ARMY_LEADER_ASSIGN_LOGISTICS_SKILL_FACTOR = 7,              -- This times general's logistics skill is added to score
-	ARMY_LEADER_ASSIGN_PLANNING_SKILL_FACTOR = 7,               -- This times general's planning skill is added to score
-	ARMY_LEADER_ASSIGN_NR_TRAITS = 0,                           -- This times general's nr of active traits is added to score
-	ARMY_LEADER_ASSIGN_EXILED_LEADS_EXILED_TROOPS = 10,         -- If exiled leader, increase chance of leading army with exiled troops
-	ARMY_LEADER_ASSIGN_EXILED_LEADS_OWN_EXILED_TROOPS = 100,    -- If exiled leader, increase chance of leading army with exiled troops from same country as the leader
-	ARMY_LEADER_ASSIGN_WITHDRAW_DAYS = 7,						-- General will withdraw from HQ after that many days without an order HQ can influence (frontline or naval invasion)
-	ARMY_LEADER_MIN_DIVISIONS_FOR_HQ = 8,						-- Army must contain at least this many divisions before the AI will deploy an HQ unit for it
-	MAX_DEPLOYED_ARMY_HQS = 40,									-- AI will not deploy more than this many army HQs at once
-	MAX_CAPTURED_GENERALS_TO_STOP_HQ_DEPLOY = 15,				-- AI stops deploying new army HQs once this many of its army leaders are captured
-
-	-- the following defines concern the general's modifiers
-	ARMY_LEADER_ASSIGN_DEFENSE_MAX_DIG_IN_FACTOR = 1.0,         -- If defensive army, importance of general's MAX_DIG_IN_FACTOR modifier
-	ARMY_LEADER_ASSIGN_DEFENSE_ARMY_ARMOR_DEFENCE_FACTOR = 1.0, -- If defensive army, importance of general's ARMY_ARMOR_DEFENCE_FACTOR modifier (proportional to armor ratio in the army)
-	ARMY_LEADER_ASSIGN_PLANNING_SPEED = 0.1,                    -- Importance of general's PLANNING_SPEED modifier
-	ARMY_LEADER_ASSIGN_MAX_PLANNING = 0.1,                      -- Importance of general's MAX_PLANNING modifier
-	ARMY_LEADER_ASSIGN_RECON_FACTOR = 2.0,                      -- Importance of general's RECON_FACTOR modifier
-	ARMY_LEADER_ASSIGN_OUT_OF_SUPPLY_FACTOR = 1.0,              -- Importance of general's OUT_OF_SUPPLY_FACTOR modifier
-	ARMY_LEADER_ASSIGN_WINTER_ATTRITION_FACTOR = 1.0,           -- Importance of general's WINTER_ATTRITION_FACTOR modifier
-	ARMY_LEADER_ASSIGN_ARMY_ARMOR_SPEED_FACTOR = 30.0,          -- Importance of general's ARMY_ARMOR_SPEED_FACTOR modifier (proportional to armor ratio in the army)
-	ARMY_LEADER_ASSIGN_ARMY_ARMOR_ATTACK_FACTOR = 30.0,         -- Importance of general's ARMY_ARMOR_ATTACK_FACTOR modifier (proportional to armor ratio in the army)
-	ARMY_LEADER_ASSIGN_BOOST_ARMOR_SKILL = 25.0,                -- Importance of general's trait where armor skill is boosted, e.g. armor_officer which boosts panzer_leader (proportional to armor ratio in the army)
-	ARMY_LEADER_ASSIGN_ARMOR_LEADER_IF_NO_ARMOR = -1.0,         -- Avoid assigning a general with armor skills to an army with no armor (can be negative)
-	ARMY_LEADER_ASSIGN_AMPHIBIOUS_INVASION = 6.0,               -- If involved in invasion, importance of general's AMPHIBIOUS_INVASION modifier
-	ARMY_LEADER_ASSIGN_NAVAL_INVASION_PREPARATION = 6.0,        -- If involved in invasion, importance of general's NAVAL_INVASION_PREPARATION modifier
-	ARMY_LEADER_ASSIGN_XP_GAIN_FACTOR = 2.0,                    -- Importance of general's XP_GAIN_FACTOR modifier
-	ARMY_LEADER_ASSIGN_SUPPLY_CONSUMPTION_FACTOR = 1.0,         -- Importance of general's SUPPLY_CONSUMPTION_FACTOR modifier
-	ARMY_LEADER_ASSIGN_LAND_REINFORCE_RATE = 1.0,               -- Importance of general's LAND_REINFORCE_RATE modifier
-	ARMY_LEADER_ASSIGN_ARMY_MORALE_FACTOR = 1.0,                -- Importance of general's ARMY_MORALE_FACTOR modifier
-	ARMY_LEADER_ASSIGN_TERRAIN_FACTOR = 0.2,                    -- Importance of general's terrain skills
-	-- <end> assigning leaders to armies
-
-	-- Which settings will AI use for area defense by default
-	AREA_DEFENSE_SETTING_VP = false,
-	AREA_DEFENSE_SETTING_PORTS = true,
-	AREA_DEFENSE_SETTING_AIRBASES = false,
-	AREA_DEFENSE_SETTING_BORDERS = false,
-	AREA_DEFENSE_SETTING_FORTS = true,
-	AREA_DEFENSE_SETTING_COASTLINES = false,
-	AREA_DEFENSE_SETTING_RAILWAYS = false,
-	AREA_DEFENSE_SETTING_FACILITY = false,
-
-	AREA_DEFENSE_MINCAP_MAX_CAPITAL_DEFENSE = 100,              -- MaxUnits for capital defense is at least this. (basically use capital defense as a buffer if we have "too many units")
-	AREA_DEFENSE_MINCAP_DESIRED_CAPITAL_DEFENSE = 5,            -- DesiredUnits for capital defense is at least this.
-	AREA_DEFENSE_MINCAP_MAX_HOME_AREA = 10,                     -- MaxUnits for home area is at least this.
-	AREA_DEFENSE_MINCAP_DESIRED_HOME_AREA = 3,                  -- DesiredUnits for home area is at least this.
-
-	COMMAND_POWER_BEFORE_SPEND_ON_TRAITS = 10.0,
-	
-	PEACE_BID_FOLD_TURNS_AGAINST_OTHER_AI = 2,					--Resolve contests against other AIs after this many turns. Don't always contest forever, it yields the same results.
-	-- When resolving contest against other AI, a tie breaker score is calculated and the loser folds.
-	PEACE_BID_CONTEST_TIE_BREAKER_CONFERENCE_SCORE = 1.0,       -- How much to weigh relative remaining peace conference score between the countries
-	PEACE_BID_CONTEST_TIE_BREAKER_INFLUENCE_DISTANCE = 1.0,     -- How much to weigh relative influence distance between the countries
-	PEACE_BID_CONTEST_TIE_BREAKER_COUNTRY_SCORE = 1.0,          -- How much to weigh relative country score between the countries
-	-- End of tie breaker score factors
-	PEACE_BID_FOLD_AGAINST_PLAYER_CHANCE = 0.5,                 -- Likelihood that AI will fold in a bidding contest against human player.
-	PEACE_BID_FOLD_AGAINST_LIBERATE_CONTEST = 1.0,              -- Likelihood that the AI will back down against a same-ideology country performing a contesting liberate bid ##Bordergore prevention therapy
-	PEACE_AI_GROUP_PEACE_ACTIONS = true,                        -- Whether AI should group peace actions or greedily just select the most-desired peace actions
-	PEACE_AI_EVALUATE_FOR_SUBJECTS = true,                      -- Whether AI should include subjects when evaluating giving states to other winners (may affect performance on new conference turn)
-	PEACE_AI_EVALUATE_FOR_ALLIES = true,                        -- Whether AI should include allies when evaluating giving states to other winners (may affect performance on new conference turn)
-	PEACE_AI_EVALUATE_FOR_NON_ALLIES = false,                   -- Whether AI should include non-allies (not in same faction) when evaluating giving states to other winners (may affect performance on new conference turn)
-	PEACE_AI_EVALUATE_OTHER_IF_CORE = true,                     -- Whether AI should evaluate giving states to other winners if state is their core (may affect performance on new conference turn)
-	PEACE_AI_EVALUATE_OTHER_IF_CLAIM = true,                    -- Whether AI should evaluate giving states to other winners if they have a claim on the state (may affect performance on new conference turn)
-	PEACE_AI_EVALUATE_OTHER_ALWAYS = false,                     -- Whether AI should always evaluate giving states to other winners (!!! may heavily affect performance on new conference turn for large peace conferences !!!)
-	
-	DIVISION_SUPPLY_RATIO_TO_MOTORIZE = 1.0,						-- If supply ratio is less than this, consider motorizing any applicable nearby supply hub
-
-	INDUSTRIAL_ORG_TRAIT_UNLOCK_RANDOMNESS = 1,		-- AI will pick a random from N top traits when choosing a trait to unlock
-	INDUSTRIAL_ORG_POLICY_CHANGE_RANDOMNESS = 1,	-- AI will pick a random from N top policies when choosing a policy to attach to an MIO
-	INDUSTRIAL_ORG_RESEARCH_ASSIGN_RANDOMNESS = 1,	-- AI will pick a random from N top MIOs when choosing an MIO to assign to a research
-	INDUSTRIAL_ORG_PRODUCTION_ASSIGN_RANDOMNESS = 3,-- AI will pick a random from N top MIOs when choosing an MIO to assign to a production line
-	INDUSTRIAL_ORG_POLICY_CHANGE_SCALE = 1.0,		-- Policy change weight will be scaled by this value
-	INDUSTRIAL_ORG_TRAIT_RANK_FACTOR = 0.80,		-- When precomputing weights, traits will affect the final score less the further down the tree they are, by this factor
-	INDUSTRIAL_ORG_RESEARCH_BONUS_FACTOR = 1.0,		-- Research bonus will be multiplied by this factor when evaluating design teams
-	
-	AI_WANTED_LAND_BASED_PLANES_FACTOR = 0.50,		-- Factor applied to desire for land based planes (total airbase space * define)
-	AI_WANTED_CARRIER_BASED_PLANES_FACTOR = 1.0,	-- Factor applied to desire for carrier based planes (total carrier space * define)
-	
-	-- AIFC stands for "AI Force Concentration". Using acronym to keep define names shorter.
-	AIFC_UPDATE_FREQUENCY_DAYS = 7,                             -- How often will AI run its AI force concentration logic. Lowering this number may decrease performance.
-	AIFC_FRESHNESS_BASE_VALUE = 35.0,                           -- AIFC fronts have a "freshness value" which decreases if no progress is made. When it reaches zero, it will give up on the current target and try another.
-	AIFC_REFRESH_NEED_PER_DAY = 1.0,                            -- Decrease freshness value with this every day.
-	AIFC_REFRESH_NEED_SUPPLY_FACTOR_PER_DAY = 1.0,              -- Decrease freshness value with this multiplied by average supply ratio every day.
-	AIFC_FRESHNESS_ADD_ON_PROGRESS = 7.0,                      -- Increase freshness value with this when we advance a province along the target path.
-	AIFC_UNIT_RATIO_BASE = 0.14,                                -- After fulfilling minimum front unit needs, this ratio of the "extra"/desired units can be allocated to AI force concentration duty
-	AIFC_MAX_NR_FRONTS = 2,                                     -- The X (this) fronts with highest AIFC score are considered for AI force concentration
-	AIFC_CA_DIVISIONS_PER_PROVINCE = 4.0,                         -- AI will use this as a baseline of how many divisions to have per province
-	AIFC_ACTIVATE_AVG_ORG_RATIO_THRESHOLD = 0.5,                -- Only activate the offensive order if average organisation is above this.
-	AIFC_ACTIVATE_IN_POSITION_RATIO_THRESHOLD = 0.5,            -- Only activate the offensive order if divisions in position is more than this ratio.
-	AIFC_OFFENSIVE_DEACTIVATION_DAYS_THRESHOLD = 14,             -- Deactivate the offensive order only if the conditions have been unfulfilled for this many days.
-	AIFC_UNIT_NUDGE_FREQUENCY_DAYS = 14.0,                        -- On average every X day (randomly), check if another division (within same front) is better for AIFC based on score factors below.
-	-- Unit offensiveness score factors for AIFC. Division stats are factored by this before adding up to total score.
-	AIFC_UNIT_OFFENSIVE_SCORE_FACTOR_BREAKTHROUGH = 12.0,
-	AIFC_UNIT_OFFENSIVE_SCORE_FACTOR_SOFT_ATTACK = 12.0,
-	AIFC_UNIT_OFFENSIVE_SCORE_FACTOR_HARD_ATTACK = 16.0,
-	AIFC_UNIT_OFFENSIVE_SCORE_FACTOR_ARMOR = 80.0,
-	AIFC_UNIT_OFFENSIVE_SCORE_FACTOR_PIERCING = 4.0,
-	AIFC_UNIT_OFFENSIVE_SCORE_FACTOR_HARDNESS = 800.0,
-	AIFC_UNIT_OFFENSIVE_SCORE_FACTOR_SPEED = 15.0,
-	AIFC_UNIT_OFFENSIVE_SCORE_FACTOR_INITIATIVE = 5.0,
-	AIFC_UNIT_OFFENSIVE_SCORE_FACTOR_ORGANISATION = 1.0,
-	AIFC_UNIT_OFFENSIVE_SCORE_FACTOR_HITPOINTS = 0.5,
-	AIFC_UNIT_OFFENSIVE_SCORE_FACTOR_DEFENSE = -0.2,
-	AIFC_UNIT_OFFENSIVE_SCORE_FACTOR_ENTRENCHMENT = -0.5,
-	AIFC_UNIT_OFFENSIVE_SCORE_FACTOR_EXPERIENCE = 500.0,
-	-- End of unit offensiveness score factors for AIFC
-	-- Strategic target scoring for AIFC
-	AIFC_TARGET_IGNORE_VP_THRESHOLD = 5,                       -- VP target needs at leas this many victory points to be considered a target
-	AIFC_TARGET_SUPPLY_HUB_BASE_SCORE = 25.0,                   -- Base score for supply hubs
-	AIFC_TARGET_NAVAL_BASE_BASE_SCORE = 10.0,                   -- Base score for naval bases
-	AIFC_TARGET_NAVAL_BASE_SCORE_PER_LEVEL = 1.5,               -- Score for naval bases increases by this for each level
-	AIFC_TARGET_VP_SCORE_FACTOR = 1.0,                          -- Score for VPs increases by this for every victory point
-	AIFC_TARGET_CAPITAL_SCORE_EXTRA = 5.0,                      -- Extra score for Capitals (in addition to VP score)
-	AIFC_TARGET_SHORT_PATH_PENALTY_FACTOR = 0,                -- Penalty factor for short AIFC paths (path <= 3 (including own start province))
-	AIFC_TARGET_PERSISTED_FACTOR = 30.0,                        -- Bonus factor for persisted targets (used to incentivize AI to select target again after e.g. front lines have reformed or save file is loaded)
-	-- End of strategic target scoring for AIFC
-	-- Offensive path scoring (cost multipliers) for AIFC
-	AIFC_PATH_MAX_COST = 2.0,                                   -- Only allow paths with total cost <= this. WARNING: increasing this value may cause stuttering and other performance issues (since AIFC will evaluate larger areas)
-	AIFC_PATH_COST_ADJ_NORMAL = 0.5,
-	AIFC_PATH_COST_ADJ_STRAIT = 2.0,
-	AIFC_PATH_COST_ADJ_RIVER = 1.0,
-	AIFC_PATH_COST_ADJ_RIVER_LARGE = 1.5,
-	AIFC_PATH_COST_TRN_MOUNTAINS = 2.0,
-	AIFC_PATH_COST_TRN_FOREST = 1.2,
-	AIFC_PATH_COST_TRN_DESERT = 1.1,
-	AIFC_PATH_COST_TRN_HILLS = 1.2,
-	AIFC_PATH_COST_TRN_JUNGLE = 1.5,
-	AIFC_PATH_COST_TRN_PLAINS = 1.0,
-	AIFC_PATH_COST_TRN_URBAN = 1.4,
-	AIFC_PATH_COST_TRN_MARSH = 1.5,
-	AIFC_PATH_COST_PER_FORT_LEVEL = 0.2,                        -- This multiplier is calculated as: 1.0 + <define>*fort_level    (only for fort levels > 0)
-	AIFC_PATH_COST_HAS_SUPPLY_HUB = 0.5,                        -- If the province we're entering has a supply hub
-	AIFC_PATH_COST_HAS_NAVAL_BASE = 0.5,                        -- If the province we're entering has a naval base
-	AIFC_PATH_COST_RAILWAY_CONNECTION = 0.8,                   -- If the provinces are connected by a railway with level > 0
-	-- End of offensive path scoring for AIFC
-
-	RAIDS_ENABLE_AI = true,                                -- Whether AI should use the raid system
-	RAIDS_CREATE_FREQUENCY_DAYS = 7,                       -- How often will AI run its raid creation logic. Lowering this number may decrease performance.
-	RAIDS_SCORE_DIFF_TO_CANCEL = 0.3,                      -- If already-created low-scoring raids are blocking higher-scoring ones from being created due to command power, this allows the AI to cancel the lower-scoring raids. If `lowerScore < <value>*higherScore`, then the lower-scoring one may be cancelled. A value of 0.0 means it will never allow cancelling lower-scoring raids, while a value of 1.0 means it will always allow cancelling lower-scoring raids.
-	RAIDS_COMMAND_POWER_CAP_TO_CREATE = 60.0,              -- The AI will only try to create new raids if the command power cap is at least this.
-	RAIDS_MIN_SUCCESS_FOR_LAUNCH = 0.65,                   -- The AI will not launch a raid if the chance of success is lower than this.
-	RAIDS_CANCEL_AFTER_DAYS_LAUNCHABLE = 60,               -- If a raid has been launchable for more than <this> days but not been launched (e.g. due to bad success chance), the AI will cancel the raid.
-	RAIDS_NUKE_TARGET_CUT_OFF = 10,                        -- When AI selects targets for nukes, only pick from the <x> highest-scoring targets.
-	RAIDS_UNIT_SCORE_SUCCESS_CHANCE_FACTOR = 500.0,        -- When AI selects which units to use for raids, multiply the unit success chance modifier with this.
-	RAIDS_UNIT_SCORE_DISTANCE_KM_FACTOR = 0.1,             -- When AI selects which units to use for raids, multiply the km distance with this.
-	RAIDS_AVOID_SAME_TARGET_DURATION_DAYS = 180,           -- After a raid is finished/canceled, AI is less likely to raid the same target for this time.
-	RAIDS_AVOID_SAME_TARGET_FACTOR = 0.4,                  -- If AI has already raided (or tried to raid) a target, score of new raids against same target is factored by this
-	
-	PATROL_FLEETS_PER_INVASION_REGION_ON_PATH = 2,			-- How many STL patrol fleet templates should the AI try to use when generating dominance
-    AI_MIN_DOMINANCE_MARGIN = 200,                          -- When trying to get control of a region, AI will try to exceed the required dominance by at least this amount
-    CONVOY_DANGER_FOR_MAX_IMPORTANCE = 50,                  -- When deciding whether to protect a convoy route, the importance will scale with convoy danger up to this value
-    NUM_CONVOYS_FOR_MAX_PROTECTION = 50,                    -- When deciding whether to protect a convoy route, the importance will scale with the number of convoys up to this value
-    CONVOY_RAIDING_TARGET_RECALC_DAYS = 3,                  -- Each X days, the AI will reevaluate which regions to convoy raid (because enemy convoy usage or trade routes might change)
-	STRIKE_FORCE_TARGET_RECALC_DAYS = 5,					-- Each X days, the AI will reevaluate which regions to put strike forces in (because patrol coverage will change)
-    AI_OBJECTIVE_DEFAULT_TARGET_RECALC_DAYS = 0,            -- Each X days, the AI will reevaluate which regions to target for naval missions (this is the default value, but can be overriden by specific objectives, see CONVOY_RAIDING_TARGET_RECALC_DAYS)
-	DANGEROUS_ENEMY_ARMY_SIZE = 100,						-- If the size of the enemy's army of the attacking country is more than this value, the AI will add naval invasion defense importance
-	DANGEROUS_DISTANCE_TO_CAPITAL = 1000.0,					-- Distance in pixels from the target province to capital location where the AI will add the naval invasion defense importance
-	
-	NAVAL_STRIKE_FORCE_OBJECTIVE_IMPORTANCE = {				-- ordering of this list is important!
-		0.1875,	-- invasion suppport
-		0.25,	-- invasion defense
-		0,0,	-- others ( MineSweeping, MineLaying )
-		0.0625,	-- generic coast defense
-		0,0,	-- others ( ConvoyRaiding, ConvoyProtection )
-		0.125,	-- naval dominance strategy
-		0,0,0	-- others ( Training, NavalBlockade, StrikeForce )
-	},
-	
-	MIN_FACTORIES_TO_WANT_TO_IMPORT = {  -- minimum number of civilian factories the AI must have to consider importing a resource - per strategic resource. Default 0, array -should- be updated with new resources, or if the order changes.
-		0, -- oil
-		0, -- aluminium
-		0, -- rubber
-		0, -- tungsten
-		0, -- steel
-		0, -- chromium
-		10, -- coal
-	},
-	
-	SUGGESTED_NUM_MAX_CARRIERS = 4,							-- We don't know exactly how many planes we should use when evaluating AI build so we need a suggested number to start things off. ALso used for task force suggestions list.
-	
-},
-
-NFocus = {
-	FOCUS_POINT_DAYS = 7,						-- Each point takes a week
-	FOCUS_PROGRESS_PEACE = 1,					-- Progress during peace
-	FOCUS_PROGRESS_WAR = 1,					-- Progress during war
-	MAX_SAVED_FOCUS_PROGRESS = 10,				-- This much progress can be saved while not having a focus selected
-},
-
-NOperatives = {
-	AGENCY_CREATION_DAYS = 1,						-- Number of days needed to create an intelligence agency
-	AGENCY_UPGRADE_DAYS = 30,						-- Number of days needed to upgrade an intelligence agency
-	AGENCY_CREATION_FACTORIES = 0,					-- Number of factories used to create an intelligence agency
-	AGENCY_AI_BASE_NUM_FACTORIES = 25.0,				-- Used by AI to pace the upgrades. Formula : if( AGENCY_AI_BASE_NUM_FACTORIES <= num_civ_factories - num_upgrades * AGENCY_AI_PER_UPGRADE_FACTORIES )
-	AGENCY_AI_PER_UPGRADE_FACTORIES = 6.0,			-- Used by AI to pace the upgrades. Formula : if( AGENCY_AI_BASE_NUM_FACTORIES <= num_civ_factories - num_upgrades * AGENCY_AI_PER_UPGRADE_FACTORIES )
-	AGENCY_UPGRADE_PER_OPERATIVE_SLOT = 5,			-- Number of upgrade needed to unlock an additional operative slot
-	MAX_OPERATIVE_SLOT_FROM_AGENCY_UPGRADES = 20,	-- max operative slots gained from upgrades
-	AGENCY_OPERATIVE_RECRUITMENT_TIME = 1,			-- Number of days to wait to have operative to recruit when an operative slot first becomes available
-	BECOME_SPYMASTER_PP_COST = 0,					-- Number of political power used to become Spy Master
-	BECOME_SPYMASTER_FI_COST = 0,					-- Faction initiative used to become Spy Master (only with faction dlc)
-	BECOME_SPYMASTER_MIN_UPGRADES = 3,				-- Number of agency upgrades you need before becoming Spy Master
-	BASE_COUNTER_INTELLIGENCE_RATING = 0.0,					-- Base national counter intelligence rating for all countries
-	AGENCY_DEFENSE_EFFECT_ON_HOSTILE_ACTION_COST = 0.2,			-- Defense factor that is responsible for multiplying the cost hostile actions against our country by its level and this value
-	INTEL_NETWORK_GAIN_RATE_ON_WRONG_CONTROLLER = -10.0,			-- Amount of network strength lost in a state when it does not have the right controller anymore
-	INTEL_NETWORK_GAIN_RATE_ON_OUT_OF_RANGE = -1.75,				-- Amount of network strength lost in a state that has the right controller but is out of range of any operative
-	INTEL_NETWORK_GAIN_FROM_ADJACENCY_FACTOR = 0.5,				-- Factor multiplied to the sum of the positive difference between a state's strength and its neighbors'. In other words, how strongly neighbors impact the strength gained in a state. Values greater or equal to 1 are discouraged.
-	INTEL_NETWORK_GAIN_DECAY_PER_STEP_FACTOR = 0.5,				-- Factor multiplied to the gain of the previous node in the netowrk initially contributed by the agent. In other words, before adjacency, the strength gain in a state would be GainFromOperative * ( INTEL_NETWORK_GAIN_DECAY_PER_STEP_FACTOR ^ NodeDepth ) where NodeDepth is the distance between the state and the operative's location.
-	INTEL_NETWORK_STRENGTH_TARGET_OFFSET_PER_OPERATIVE = 15.0,		-- The amount of strength each operative on build intel network mission in a sub network add to the base target network strength
-	INTEL_NETWORK_STRENGTH_DECAY_WHEN_ABOVE_TARGET = -2.5,			-- The amount of strength removed each tick from a state that has more strength than the target
-	INTEL_NETWORK_BASE_STRENGTH_TARGET_COUNTERINTELLIGENCE_FACTOR = -10.0,	-- BaseStrengthTarget = Factor * CounterIntelligenceRating + Offset
-	INTEL_NETWORK_BASE_STRENGTH_TARGET_COUNTERINTELLIGENCE_OFFSET = 90,	-- Offset mentioned above
-	INTEL_NETWORK_MIN_VP_TO_TARGET = 0,					-- The minimum value of the highest VP in a state to consider the state as a valid target to start building an intel network
-	INTEL_NETWORK_MIN_STRENGTH_TO_TARGET = 101.0,				-- The minimum value of the intel network in a state to consider it a valid target to deploy an operative in
-	INTEL_NETWORK_MIN_STRENGTH_TO_LINK_SUBNETWORKS = 0.0,			-- Where the influence of two operative meet, the two nodes on each side have to have strictly more than the given strength before the two operatives have a chance of being considered in the same network
-	INTEL_NETWORK_OPERATIVE_GAIN_STACKING_FACTOR = 0.5,			-- When multiple operative are present in the same location, this factor is applied for each operative with a lower gain than the max. So if operatives have the gain [ 3, 1, 2 ] in the same location, it is sorted to [ 1, 2, 3 ] then converted to [ 1*D^2, 2*D^1, 3 ], with D being this define, so if D=0.5 we have [ 0.25, 1, 3 ] and the final gain from operative at this location will be 4.25. Putting this define to 0 is equivalent to considering the maximum value only.
-	INTEL_NETWORK_MIN_STRENGTH_FOR_STATE_TO_COUNT_TOWARD_NATIONAL_COVERAGE = 0.0,	-- Amount of strength (0, 100) in a state required for it to count toward the national coverage
-	INTEL_NETWORK_NATIONAL_COVERAGE_CONTROLLED_STATES_WEIGHT = 0.2,		-- Weight (expected [0,1]) multiplied by the number of states covered by the network that are controlled by the target over the total number of states the target controls
-	INTEL_NETWORK_NATIONAL_COVERAGE_CORE_STATES_WEIGHT = 0.6,			-- Weight (expected [0,1]) multiplied by the number of states covered by the network that are core to the target over the total number of states the target has for core
-	INTEL_NETWORK_NATIONAL_COVERAGE_OWNED_WORTH_WEIGHT = 0.2,		-- Weight (expected [0,1]) multiplied by the value of victory points covered by the network over the total value of victory points controlled by the targets
-	INTEL_NETWORK_OCCUPIED_TAG_STATES_WEIGHT = 0.5,				-- Weight (expected [0,1]) multiplied to the fraction of number of state covered by the intel network divided by the number of states occupied by the target of the network, per occupied tag
-	INTEL_NETWORK_OCCUPIED_TAG_WORTH_WEIGHT = 0.5,				-- Weight (expected [0,1]) multiplied to the fraction of victory points worth of states covered by the intel network divided by the worth of states occupied by the target of the network, per occupied tag
-	INTEL_NETWORK_MIN_SUB_NETWORK_SIZE_FOR_DETECTION = 0,			-- minimum number of state of a sub-intel network before an operative on build intel network mission in this network can be detected
-	INTEL_NETWORK_MIN_NATIONAL_COVERAGE_FOR_DETECTION = 0.02,		-- [0, 1] minimum national coverage required for an operative on build intel network to have a chance to be discovered
-	INTEL_NETWORK_MIN_SUB_NETWORK_NATIONAL_COVERAGE_FOR_DETECTION = 0.01,	-- [0, 1] minimum national coverage of the network the operative on build intel network is in to have a chance to be discovered
-	INTEL_NETWORK_MIN_SUB_NETWORK_STRENGTH_FOR_DETECTION = 10.0,		-- [0, 100] minimum network strength of the network the operative on build intel network mission is in to have a chance to be discovered
-
-	INTEL_NETWORK_INTELLIGENCE_AGENCY_DEFENSE_TO_DETECTION_FACTOR = 2.0,	-- multiplied to the intelligence agency defense of the target of the intel network
-	INTEL_NETWORK_INTELLIGENCE_AGENCY_DEFENSE_DETECTION_SCALE_FACTOR = 0.0,	-- factor multiplied to the intelligence agency defense of the target of the intel network before being factored to the detection chance
-	INTEL_NETWORK_MAX_INTELLIGENCE_AGENCY_DEFENSE_DETECTION_SCALE_FACTOR = 1.0,	-- clamp the value from the multiplication of the above factor (expect a value greater or equal to 1)
-	INTEL_NETWORK_NATIONAL_COVERAGE_TO_DETECTION_CHANCE_FACTOR = 1.0,	-- multiplied to the national coverage (a value in range [0, 1]
-	INTEL_NETWORK_SUB_NETWORK_STRENGTH_TO_DETECTION_CHANCE_FACTOR = 0.1,	-- multiplied to the network strength (a value in range [0, 100]
-	INTEL_NETWORK_SUB_NETWORK_NATIONAL_COVERAGE_TO_DETECTION_CHANCE_FACTOR = 3.0,	-- multiplied to the contribution to the national coverage of the sub network (a value in range [0, 1])
-	INTEL_NETWORK_DETECTION_GLOBAL_FACTOR = 0.01,				-- global factor multiplied to the detection chance before it is multiplied a dice roll in the range [0,1000)
-	BUILD_INTEL_NETWORK_DAILY_XP_GAIN = 1,
-	QUIET_INTEL_NETWORK_DAILY_XP_GAIN = 0,
-	OPERATIVE_MISSION_DETECTION_CHANCE_FACTOR = {
-		-- Factor multiplied to the detection chance of an agent on mission before the offsets
-		0.0, -- NoMission
-		1.0, -- BuildIntelNetwork
-		1.0, -- QuietIntelNetwork
-		1.0, -- CounterIntelligence
-		0.0, -- RootOutResistance
-		3.0, -- BoostIdeology
-		0.1, -- ControlTrade
-		0.1, -- DiplomaticPressure
-		3.0, -- Propaganda
-	},
-
-	-- used for calculating how many operatives will a spy master gain from its faction members
-	-- first number in every now is number of operatives gained
-	-- second number is total factory needed (mil and civ) for giving previous ratio
-	OPERATIVE_SLOTS_FROM_FACTION_MEMBERS_FOR_SPY_MASTER = {
-		0.5, 	4.0, -- 0 operative for [0, 10)
-		0.5,  	10.0, -- 0.25 operative for [10, 50)
-		0.5, 	50.0, -- 0.5 operative for >= 50
-	},
-
-	INTEL_NETWORK_STATE_MODIFIER_STRENGTH_THRESHOLD = 10,			-- Minimum amount of strength required in a state for the intel network related modifiers to start being applied
-
-	INTEL_NETWORK_MIN_DEFAULT_FOR_SHOWING = 25,              -- default min level for networks used to filter operation requirements if not overriden
-
-	OPERATIVE_BASE_INTEL_NETWORK_GAIN = 0.4,				-- Base amount of network strength gain per day provided by an operative
-	OPERATIVE_MAX_INTEL_NETWORK_GAIN = -1.0,				-- Max amount of network strength gain per day provided by an operative after modifiers have been applied (negative value means no max)
-	COUNTER_INTELLIGENCE_FOREIGN_AGENT_FACTOR = 0.0,			-- Multiplier to the counter intelligence provided by foreign (ally) operatives
-	COUNTER_INTELLIGENCE_STACKING_FACTOR = 0.5,				-- Multiplier applied to each operative after the first one. So if we have the following counter intelligence rating values [ 0.1, 0.3, 0.2 ], the factor is applied twice for the lowest value and once for the 2nd lowest one as such : [ 0.3, 0.2 * D, 0.1 * D * D ] and then the result is summed up to give the final rating value
-	COUNTER_INTELLIGENCE_TO_DEFENSE_LOG_FACTOR = 0.0,			-- Defense = LogFactor * log( 1 + CounterIntelligence ) + CounterIntelligence / Divisor
-	COUNTER_INTELLIGENCE_TO_DEFENSE_DIVISOR = 1.0,				-- see above
-	COUNTER_INTELLIGENCE_DAILY_XP_GAIN = 0.112,
-	BOOST_IDEOLOGY_NATIONAL_COVERAGE_FACTOR = 1.0,				-- used to compute the drift factor as follow: BASE * SUB_NETWORK_NC * BOOST_IDEOLOGY_DEFENSE_FACTOR
-	BOOST_IDEOLOGY_MAX_DRIFT_BY_OPERATIVE = 0,				-- the maximum drift an operative can cause, a negative value means no maximum
-	BOOST_IDEOLOGY_DRIFT_STACKING_FACTOR = 0,				-- multiplied to the drift of an operative for each operative after the first one, with the greatest drift. So if we have the following drift values [ 0.1, 0.3, 0.2 ], the factor is applied twice for the lowest value and once for the 2nd lowest one as such : [ 0.3, 0.2 * D, 0.1 * D * D ] and then the result is summed up to give the final drift value.
-	BOOST_IDEOLOGY_DEFENSE_FACTOR = 0,					-- multiplied to the target's defense to get the amount of drift to remove from each operative's drift
-	BOOST_IDEOLOGY_DAILY_XP_GAIN = 0,
-	OPERATIVE_BASE_INTEL_AGENCY_DEFENSE = 1.0,				-- Base amount of intel agency defense contributed by an operative on counter_intelligence mission
-	OPERATIVE_BASE_BOOST_IDEOLOGY = 0.1,					-- Base amount of daily ideology drift provoked by an operative
-	OPERATIVE_BASE_PROPAGANDA_POWER = 0.0005,					-- Base amount of daily war support and stability change when an operative is assigned to propaganda
-	PROPAGANDA_SUB_NETWORK_STRENGTH_FACTOR = 0,				-- Multiplied to the network strength before being multiplied to the Stability/WarSupport drift caused by an operative
-	PROPAGANDA_DEFENSE_FACTOR = 0,					-- Multiplied to the target's defense before being subtracted from the Stability/WarSupport drift caused by an operative
-	PROPAGANDA_OPERATIVE_STACKING_FACTOR = 0,				-- Multiplied to the Stability/WarSupport drift values of each operative after the one with the greatest values. The process is done separatly for Stability and WarSupport
-	PROPAGANDA_COUNTRY_STACKING_FACTOR = 0,				-- Multiplied to the Stability/WarSupport drift values of each country after the one with the greatest values. The process is done separatly for Stability and WarSupport
-	PROPAGANDA_DAILY_XP_GAIN = 0,
-	OPERATIVE_BASE_ROOT_OUT_RESISTANCE_EFFICIENCY = 1.0,			-- The base efficiency of an operative at the RootOutResistance mission (this is a percentage, 1.0 == 100%)
-	ROOT_OUT_RESISTANCE_STACKING_FACTOR = 0.5,				-- Multiplied to each operative efficiency after the first one
-	ROOT_OUT_RESISTANCE_RANGE_STEP_FACTOR = 0.5,				-- Multiplied to the summed up efficiency from all operative operating in a same state to determine the efficiency in neighboring states
-	ROOT_OUT_RESISTANCE_DAILY_XP_GAIN = 0.068,
-	OPERATIVE_BASE_CONTROL_TRADE_DRIFT = 0,				-- The base daily drift in trade influence caused by an operative
-	CONTROL_TRADE_STACKING_FACTOR = 0,					-- Multiplied to the drift of each operative after the first one
-	CONTROL_TRADE_MAX_INFLUENCE = 0,					-- The maximum amount of trade influence that can be gained through the control trade mission
-	CONTROL_TRADE_INFLUENCE_DAILY_DECAY = 0,				-- The amount of trade influence lost when no operative are assigned to the mission
-	CONTROL_TRADE_DAILY_XP_GAIN = 0,
-	OPERATIVE_BASE_DIPLOMATIC_PRESSURE_AI_ACCEPTANCE_SCORE_DRIFT = 0,	-- The daily change in the amount of opinion requiered to join a faction
-	OPERATIVE_BASE_DIPLOMATIC_PRESSURE_TENSION_REQUIREMENTS_DRIFT = 0,	-- The daily change in world tension requiered to join a faction
-	DIPLOMATIC_PRESSURE_MAX_AI_ACCEPTANCE_SCORE_INCREASE = 0,	-- the maximum amount of ai acceptance score from diplomatic pressure
-	DIPLOMATIC_PRESSURE_MAX_TENSION_REQUIREMENTS_DECREASE = 0,	-- amount of tension (tensions is in range [0,1]) that can be removed from the requirements imposed by the modifier join_faction_tension_limit
-	DIPLOMATIC_PRESSURE_OPERATIVE_STACKING_FACTOR = 0.5,		-- The diminishing return factor to apply to operative working for the same faction after the first one. Operatives operating for a same faction are ranked by their efficiency and their opinion and tension drift are individually applyied a stacking factor like so: DRIFT * STACKING_FACTOR^RANK where RANK is a value from 0 to the number of operative -1 where the opperative with the highest drift value has rank 0
-	DIPLOMATIC_PRESSURE_AI_ACCEPTANCE_SCORE_DECAY = 0.4,			-- daily decay when the mission is not active
-	DIPLOMATIC_PRESSURE_TENSION_REQUIREMENTS_DECAY = 0.001,			--
-	DIPLOMATIC_PRESSURE_DAILY_XP_GAIN = 0.137,
-	MIN_NATIONAL_COVERAGE_FOR_BOOST_IDEOLOGY = 0.01,			-- Minimum network coverage required to start the mission (the code ensures that a network exists at all)
-	MIN_NATIONAL_COVERAGE_FOR_PROPAGANDA = 0.01,			-- Minimum network coverage required to start the mission (the code ensures that a network exists at all)
-	OPERATIVE_MIN_DAYS_HARMED = 30,						-- Minimum number of days an operative can be harmed. Applied after modifiers. Can be zero.
-	OPERATIVE_MAX_DAYS_HARMED = 120,						-- Maximum number of days an operative can be harmed. Applied after modifiers. Is ignored if negative
-	OPERATIVE_MIN_DAYS_FORCED_INTO_HIDING = 7,				-- Minimum number of days an operative can be forced into hiding. Applied after modifiers. Can be zero.
-	OPERATIVE_MAX_DAYS_FORCED_INTO_HIDING = 120,				-- Maximum number of days an operative can be forced into hiding. Applied after modifiers. Is ignored if negative
-	OPERATIVE_MAX_DAYS_TO_AUTO_RESUME_MISSION = 30,				-- Maximum number of days an operative has to be disabled before its mission is not automatically resumed once he is available again
-	MAX_RECRUITED_OPERATIVES = 10,
-
-	CRYPTO_BASE_CRYPTO_LEVEL = 12000,						-- base crypto strength for a country
-	CRYPTO_CRYPTO_LEVEL_PER_CRYPTO_UPGRADE = 4250,			-- crypto strength per crypto upgrade
-
-	CRYPTO_CRYPTO_ACTIVE_BONUS_DURATION = 30,				-- number of days the active decryption bonuses will be applied before enemy resets their intelligence
-	CYRPTO_ACTIVE_BONUS_ACTIVATION_PROGRESS_RATIO = 0.5,	-- once bonus is activated, decryption progress will be reduced to this ratio
-
-	OPERATION_AI_MINIMUM_SCORE = 10.0,						-- Once an operation's AI weight falls below the minimum score it will be scrapped if it is being prepared
-	OPERATION_COMPLETION_XP = 18,
-
-	OPERATIVE_CAPTURE_DURATION_IN_DAYS = 9*30,
-
-	-- operation cost & time are increased by default this ratios for each
-	-- instance of operation that were already executed against same target.
-	-- can be overridden using time_multiplier & cost_multiplier in operation.
-	DEFAULT_OPERATION_COST_MULTIPLIER = 0.15,
-	DEFAULT_OPERATION_TIME_MULTIPLIER = 0.0,
-
-	-- The following defines are multiplied to the number of operatives operating in the target country the activity level is computed for
-	BUILD_INTEL_NETWORK_MISSION_ACTIVITY_INDICATOR_FACTOR = 10,
-	BOOST_IDEOLOGY_NETWORK_MISSION_ACTIVITY_INDICATOR_FACTOR = 10,
-	PROPAGANDA_NETWORK_MISSION_ACTIVITY_INDICATOR_FACTOR = 10,
-	CONTROL_TRADE_NETWORK_MISSION_ACTIVITY_INDICATOR_FACTOR = 1,
-	DIPLOMATIC_PRESSURE_NETWORK_MISSION_ACTIVITY_INDICATOR_FACTOR = 1,
-
-	-- multiplied to the sum of the network coverage [0,1] all countries have over the target
-	INTEL_NETWORK_COVERAGE_ACTIVITY_FACTOR = 100,
-
-	-- multiplied to the strength [0,100] of the strongest network over that country
-	INTEL_NETWORK_STRENGTH_DANGER_FACTOR = 1,
-
-	-- Activity level PID values
-	ACTIVITY_LEVEL_PROPORTIONAL_FACTOR = 0.01,
-	ACTIVITY_LEVEL_INTEGRAL_FACTOR = 0.001,
-	ACTIVITY_LEVEL_DERIVATIVE_FACTOR = 0,
-
-	-- Danger level PID values
-	DANGER_LEVEL_PROPORTIONAL_FACTOR = 0.01,
-	DANGER_LEVEL_INTEGRAL_FACTOR = 0.001,
-	DANGER_LEVEL_DERIVATIVE_FACTOR = 0,
-
-	NUM_DAYS_BEFORE_REMOVING_PREPARED_OPERATIONS = 60, -- num days before removing prepared operations
-
-	ON_CAPTURE_COUNTERINTELLIGENCE_OPERATIVE_XP_GAIN = 100,					-- Xp gain when an enemy operative is captured in the country the operative is assigned to counter intelligence to. Apply to a single randomly selected operative
-	ON_CAPTURE_COUNTERINTELLIGENCE_OPERATIVE_WEIGHT_OWN_COUNTRY_FOR_XP = 2,			-- An integer on how likely an operative operating in his own country is to get selected for the xp reward on enemy operative capture
-	ON_CAPTURE_COUNTERINTELLIGENCE_OPERATIVE_WEIGHT_DIFFERENT_COUNTRY_FOR_XP = 1,		-- same for an operative assigned to counter intelligence in a different country than his own
-
-
-    -- risk and outcome texts. each number array should match its labels in size, but its ok to have different amount of risk levels than outcomes
-	RISK_LEVELS = { 0.1, 0.2, 0.3 },       -- each risk level comes with a label to display for operations if it goes abve that number. If below the first it will isntead show the good outcomes
-	RISK_LEVELS_LABELS = { "RISK_LOW", "RISK_MID", "RISK_HIGH" },
-	OUTCOME_LEVELS = { 0.0, 0.2, 0.3 },    -- outcome levels are shown if risk is below its first entry instead
-	OUTCOME_LEVELS_LABELS = { "OUTCOME_BASE", "OUTCOME_GOOD", "OUTCOME_VGOOD" },
-
-	TECH_STEAL_EQUIPMENT_FACTOR = 4,
-	TECH_STEAL_YEAR_FACTOR = 4,
-},
-
-NIntel = {
-	COUNTRY_LEVEL_INTEL_MAXIMUMS = {			-- The maximum intel a country can have over another
-		100.0, -- Civilian
-		100.0, -- Army
-		100.0, -- Navy
-		100.0, -- Airforce
-	},
-
-	-- Static sources:
-	--
-	-- A static source is a source that will fully decay once its origin disappear.
-	-- (e.g. radar destroyed)
-	--
-	-- MAXIMUMS:
-	-- if set to an non-empty arrays, overrides COUNTRY_LEVEL_INTEL_MAXIMUMS
-	-- for this specific source (note that COUNTRY_LEVEL_INTEL_MAXIMUMS is
-	-- applied after INTEL_SOURCE_XXX_MAXIMUMS)
-
-	STATIC_INTEL_SOURCE_OPERATION_TOKENS_MAXIMUMS = {},
-	STATIC_INTEL_SOURCE_BROKEN_CYPHER_MAXIMUMS = { 60.0, 60.0, 60.0, 60.0 },
-	STATIC_INTEL_SOURCE_RADAR_MAXIMUMS = { 0.0, 0.0, 5.0, 5.0 },
-	STATIC_INTEL_SOURCE_INTEL_NETWORK_MAXIMUMS = { 25.0, 25.0, 25.0, 25.0},
-
-	-- Dynamic intel pool can be manipulated through the following defines:
-	--
-	-- FLAT_DECAY and MULT_DECAY control the rate at which the intel decays
-	-- The formula is applied as follow (runs daily):
-	-- NextIntel = ( Intel - FLAT_DECAY ) * MULT_DECAY
-	--
-	-- AGGREGAT_LOG_FACTOR and AGGREGAT_DIVISOR control the rate at which
-	-- intel accumulates. It is applied to the sum of the intel generated
-	-- throughout the day as follow:
-	-- Aggregat = LOG_FACTOR * log( 1 + IntelOfTheDay ) + IntelOfTheDay / DIVISOR
-	-- The Aggregat is then added to the pool of intel.
-	-- If DIVISOR is zero then the division is evaluated to zero.
-	--
-	-- MAXIMUMS controls the maximum value that the pool can contribute to
-	-- the final intel values.
-	--
-	-- ABSOLUTE_MAXIMUMS defines a ceiling for the intel in the pool that
-	-- will never be exceeded. They are meant to be greater or equal to
-	-- MAXIMUMS. If the array is empty, no absolute maximum is defined.
-
-	-- Dynamic pool EVENT
-	DYNAMIC_INTEL_SOURCE_EVENT_FLAT_DECAY = 0.0,
-	DYNAMIC_INTEL_SOURCE_EVENT_MULT_DECAY = 0.985,
-	DYNAMIC_INTEL_SOURCE_EVENT_AGGREGAT_LOG_FACTOR = 0,
-	DYNAMIC_INTEL_SOURCE_EVENT_AGGREGAT_DIVISOR = 1,
-	DYNAMIC_INTEL_SOURCE_EVENT_MAXIMUMS = { 40, 40, 40, 40 },
-	DYNAMIC_INTEL_SOURCE_EVENT_ABSOLUTE_MAXIMUMS = { 50, 50, 50, 50 },
-
-	-- Dynamic pool LAND_COMBAT
-	DYNAMIC_INTEL_SOURCE_LAND_COMBAT_FLAT_DECAY = 0.0,
-	DYNAMIC_INTEL_SOURCE_LAND_COMBAT_MULT_DECAY = 0.985,
-	DYNAMIC_INTEL_SOURCE_LAND_COMBAT_AGGREGAT_LOG_FACTOR = 0.25,
-	DYNAMIC_INTEL_SOURCE_LAND_COMBAT_AGGREGAT_DIVISOR = 10,
-	DYNAMIC_INTEL_SOURCE_LAND_COMBAT_MAXIMUMS = { 0, 25, 5, 10 },
-	DYNAMIC_INTEL_SOURCE_LAND_COMBAT_ABSOLUTE_MAXIMUMS = { 0, 30, 10, 15 },
-
-	-- Dynamic pool NAVAL_COMBAT
-	DYNAMIC_INTEL_SOURCE_NAVAL_COMBAT_FLAT_DECAY = 0.0,
-	DYNAMIC_INTEL_SOURCE_NAVAL_COMBAT_MULT_DECAY = 0.985,
-	DYNAMIC_INTEL_SOURCE_NAVAL_COMBAT_AGGREGAT_LOG_FACTOR = 0.02,
-	DYNAMIC_INTEL_SOURCE_NAVAL_COMBAT_AGGREGAT_DIVISOR = 200,
-	DYNAMIC_INTEL_SOURCE_NAVAL_COMBAT_MAXIMUMS = { 5, 0, 25, 20 },
-	DYNAMIC_INTEL_SOURCE_NAVAL_COMBAT_ABSOLUTE_MAXIMUMS = { 10, 0, 30, 25 },
-
-	-- Dynamic pool AIR_COMBAT
-	DYNAMIC_INTEL_SOURCE_AIR_COMBAT_FLAT_DECAY = 0.0,
-	DYNAMIC_INTEL_SOURCE_AIR_COMBAT_MULT_DECAY = 0.985,
-	DYNAMIC_INTEL_SOURCE_AIR_COMBAT_AGGREGAT_LOG_FACTOR = 1,
-	DYNAMIC_INTEL_SOURCE_AIR_COMBAT_AGGREGAT_DIVISOR = 2,
-	DYNAMIC_INTEL_SOURCE_AIR_COMBAT_MAXIMUMS = { 0, 0, 0, 25 },
-	DYNAMIC_INTEL_SOURCE_AIR_COMBAT_ABSOLUTE_MAXIMUMS = { 0, 0, 0, 30 },
-
-	-- Dynamic pool AIR_RECON
-	DYNAMIC_INTEL_SOURCE_AIR_RECON_FLAT_DECAY = 0.0,
-	DYNAMIC_INTEL_SOURCE_AIR_RECON_MULT_DECAY = 0.995,
-	DYNAMIC_INTEL_SOURCE_AIR_RECON_AGGREGAT_LOG_FACTOR = 0.05,
-	DYNAMIC_INTEL_SOURCE_AIR_RECON_AGGREGAT_DIVISOR = 200,
-	DYNAMIC_INTEL_SOURCE_AIR_RECON_MAXIMUMS = { 25, 25, 25, 25 },
-	DYNAMIC_INTEL_SOURCE_AIR_RECON_ABSOLUTE_MAXIMUMS = { 30, 30, 30, 30 },
-
-	-- Dynamic pool CAPTURED_OPERATIVE
-	DYNAMIC_INTEL_SOURCE_CAPTURED_OPERATIVE_FLAT_DECAY = 0.0,
-	DYNAMIC_INTEL_SOURCE_CAPTURED_OPERATIVE_MULT_DECAY = 0.95,
-	DYNAMIC_INTEL_SOURCE_CAPTURED_OPERATIVE_AGGREGAT_LOG_FACTOR = 1,
-	DYNAMIC_INTEL_SOURCE_CAPTURED_OPERATIVE_AGGREGAT_DIVISOR = 2,
-	DYNAMIC_INTEL_SOURCE_CAPTURED_OPERATIVE_MAXIMUMS = { 30, 30, 30, 30 },
-	DYNAMIC_INTEL_SOURCE_CAPTURED_OPERATIVE_ABSOLUTE_MAXIMUMS = { 40, 40, 40, 40 },
-
-	LAND_COMBAT_ARMY_INTEL_OVER_OPPONENT_PER_INSTANCE = 1.0,			-- if the opponent has any division present, flat intel value generated py a participant against an opponent
-	LAND_COMBAT_ARMY_INTEL_OVER_OPPONENT_PER_COMITTED_DIVISIONS = 0.5,		-- multiplied to the number of comitted divisions of the opponent
-	LAND_COMBAT_ARMY_INTEL_OVER_OPPONENT_PER_RESERVE_DIVISIONS = 0.1,		-- same for divisions in reserve
-	LAND_COMBAT_ARMY_INTEL_OVER_OPPONENT_PER_RETREATING_DIVISIONS = 0.2,		-- same for retreating divisions
-	LAND_COMBAT_ARMY_INTEL_FACTOR = 0.01,						-- factor applied once all values have been added together
-	LAND_COMBAT_AIR_INTEL_OVER_OPPONENT_PER_INSTANCE = 1.0,				-- if the opponent has any plane active in the, flat intel value generated by a participant against that opponent
-	LAND_COMBAT_AIR_INTEL_OVER_OPPONENT_PER_PLANE = 0.1,				-- multiplied to the number of plane that opponent has in the combat
-	LAND_COMBAT_AIR_INTEL_FACTOR = 0.01,						-- factor applied once all values have been added together
-	RECON_INTEL_BONUS = 0.075,                                      -- each recon gives this bonus to overall gathered land intel in combat
-
-	NAVAL_COMBAT_NAVY_INTEL_OVER_OPPONENT_PER_INSTANCE = 1.0,
-	NAVAL_COMBAT_NAVY_INTEL_OVER_OPPONENT_PER_SUBMARINE = 0.2,
-	NAVAL_COMBAT_NAVY_INTEL_OVER_OPPONENT_PER_SCREEN_SHIP = 0.5,
-	NAVAL_COMBAT_NAVY_INTEL_OVER_OPPONENT_PER_CAPITAL_SHIP = 1.0,
-	NAVAL_COMBAT_NAVY_INTEL_OVER_OPPONENT_PER_INTERNAL_PLANES = 0.05,
-	NAVAL_COMBAT_NAVY_INTEL_FACTOR = 1.0,
-	NAVAL_COMBAT_CIVILIAN_INTEL_OVER_OPPONENT_PER_INSTANCE = 0.0,
-	NAVAL_COMBAT_CIVILIAN_INTEL_OVER_OPPONENT_PER_TRADE_CONVOY = 1.0,
-	NAVAL_COMBAT_CIVILIAN_INTEL_FACTOR = 1.0,
-	NAVAL_COMBAT_ARMY_INTEL_OVER_OPPONENT_PER_INSTANCE = 0.0,
-	NAVAL_COMBAT_ARMY_INTEL_OVER_OPPONENT_PER_TRANSFER_CONVOY = 1.0,
-	NAVAL_COMBAT_ARMY_INTEL_FACTOR = 1.0,
-	NAVAL_COMBAT_AIR_INTEL_OVER_OPPONENT_PER_INSTANCE = 1.0,
-	NAVAL_COMBAT_AIR_INTEL_OVER_OPPONENT_PER_INTERNAL_PLANES = 0.0,
-	NAVAL_COMBAT_AIR_INTEL_OVER_OPPONENT_PER_EXTERNAL_PLANES = 0.01,
-	NAVAL_COMBAT_AIR_INTEL_FACTOR = 1.0,
-
-	NAVY_INTEL_BASE_SPOTTING_BONUS_MIN_INTEL_FOR_BONUS = 5, -- at least this intel diff is needed for start applying BASE_SPOTTING_FROM_DECRYPTION bonus
-	NAVY_INTEL_BASE_SPOTTING_BONUS_MAX_INTEL_FOR_BONUS = 40, -- at this intel BASE_SPOTTING_FROM_DECRYPTION will be applied fully
-
-	NAVY_INTEL_MINE_DAMAGE_REDUCTION_FACTOR_MIN_INTEL_FOR_BONUS = 5, -- at least this intel diff is needed for start applying NAVAL_MINES_INTEL_DIFF_FACTOR bonus
-	NAVY_INTEL_MINE_DAMAGE_REDUCTION_FACTOR_MAX_INTEL_FOR_BONUS = 40, -- t this intel NAVAL_MINES_INTEL_DIFF_FACTOR will be applied fully
-
-	AIR_COMBAT_AIR_INTEL_PER_INSTANCE = 1.0,
-	AIR_COMBAT_AIR_INTEL_PER_OPPONENT_PLANE = 0.0,
-	AIR_COMBAT_AIR_INTEL_FACTOR = 0.2,
-
-	INTEL_NETWORK_NATIONAL_COVERAGE_FACTOR = 2.0,			 -- multiplied to the national coverage to deduce the fraction of the maximum value listed below that will be added to the intel against the network's target
-	INTEL_NETWORK_NATIONAL_COVERAGE_NAVAL_BASE_FACTOR = 15.0, -- factor used instead of above in case you dont cover naval bases etc
-
-	-- the maximum intel values that an intel network will provide against a target
-	INTEL_NETWORK_MAX_CIVILIAN_INTEL = 20.0,
-	INTEL_NETWORK_MAX_ARMY_INTEL = 20.0,
-	INTEL_NETWORK_MAX_NAVY_INTEL = 25.0,				-- only apply if the network encompass a naval base controlled by the network's target
-	INTEL_NETWORK_MAX_AIRFORCE_INTEL = 15.0,
-
-	RADAR_LEVEL_INTEL_FACTOR = 5,					-- Multiplied to the radar level to tell the fraction of intel per covered province we get. The radar level is computed as BuildingLevel / MaxBuildingLevel.
-	RADAR_INTEL_STACKING_FACTOR = 5,				-- Used when multiple radars cover the same province
-	RADAR_BASE_INTEL_VALUES_FOR_COUNTRY_COVERAGE_PERCENTAGE = {
-		-- Values are the same order as in COUNTRY_LEVEL_INTEL_MAXIMUMS
-		-- Multiplied by the total radar efficiency over the provinces of
-		-- a specific country divided by the number of provinces controlled
-		-- by that same country.
-		0.0,
-		0.0,
-		0.0,
-		0.0,
-	},
-	RADAR_BASE_INTEL_VALUES_FOR_COVERED_LAND_PROVINCES = {
-		-- Values are the same order as in COUNTRY_LEVEL_INTEL_MAXIMUMS
-		-- Multiplied by the total radar efficiency of the provinces of
-		-- a specific country divided by the individual radar's
-		-- percentage of covered provinces.
-		0.0,
-		0.0,
-		0.0,
-		0.0,
-	},
-	RADAR_BASE_INTEL_VALUES_FOR_COVERED_SEA_PROVINCES = {
-		-- Values are the same order as in COUNTRY_LEVEL_INTEL_MAXIMUMS
-		-- Multiplied by the total radar efficiency of the provinces
-		-- covered by the radar for each strategic region that has
-		-- convoy routes and multiplied by the fraction of convoy
-		-- that country has going through the region (excluding the
-		-- convoys of the radar's owner)
-		0.0,
-		0.0,
-		0.0,
-		0.0,
-	},
-	RADAR_NAVY_INTEL_FACTOR_PER_SHIP_TYPE = {
-		-- Navy intel value factored to the fraction of the country's
-		-- ships in the sea zone covered by the radar, by ship type
-		0.0, -- Submarine
-		0.0, -- Screen ship
-		0.0, -- Capital ship
-		0.0, -- Carrier ship
-	},
-	CAPTURED_OPERATIVE_MAX_FACTOR = 35.0,	-- Define the maximum of the randomized factor, before the factor from operative is applied
-	CAPTURED_OPERATIVE_MIN_FACTOR = 10.0,	-- Define the minimum of the randomized factor, before the factor from operative is applied
-	CAPTURED_OPERATIVE_INTEL_YIELD = {
-		-- Values are the same order as in COUNTRY_LEVEL_INTEL_MAXIMUMS
-		-- Daily base intel yield from an operative, before the
-		-- factors defined above are applied
-		0.3,
-		0.3,
-		0.3,
-		0.3,
-	},
-
-	RECON_PLANE_INTEL_BASE = 0.02, 				-- intel base amount for a strategic area per plane
-	RECON_PLANE_LAND_DISTRIBUTION = { 10.0, 6.0, 0.0, 3.0 },    -- controls for land and sea zones how much of each intel typee is given (civ, army, navy, air)
-	RECON_PLANE_SEA_DISTRIBUTION = { 0.0, 0.0, 10.0, 0.0 },
-
-	LAND_SPOT_DECAY = 0.05,
-	NAVAL_SPOT_DECAY = 1,
-
-	ENCRYPTION_DECRYPTION_INTEL_FACTORS = {
-		-- Factored to ( 1 + A.decryption ) / ( 1 + B.encryption ) to determine the intel
-		-- A has over B when legacy encryption and decryption modifier are used.
-		-- Note that if A.decryption is zero, the result is forced to zero
-		-- In the ame order as COUNTRY_LEVEL_INTEL_MAXIMUMS
-		15.0, 15.0, 15.0, 15.0
-	},
-
-	-- intel ledger defines
-	CIVILIAN_PRODUCTION_RANGE_INTEL_MIN = 0.1, -- minimum value to show fuzzy factory counts below this you will get ???
-	CIVILIAN_PRODUCTION_RANGE_INTEL_MAX = 0.5, -- maximum value to show fuzzy factory counts. above this you will get full count
-	CIVILIAN_PRODUCTION_INTEL_RANGE_AT_LOWEST_INTEL = 0.5, -- range of intel values at lowest intel
-
-	CIVILIAN_FUEL_RANGE_INTEL_MIN = 0.3, -- minimum value to show fuzzy factory counts below this you will get ???
-	CIVILIAN_FUEL_RANGE_INTEL_MAX = 0.7, -- maximum value to show fuzzy factory counts. above this you will get full count
-	CIVILIAN_FUEL_INTEL_RANGE_AT_LOWEST_INTEL = 0.5, -- range of intel values at lowest intel
-
-	CIVILIAN_MANPOWER_RANGE_INTEL_MIN = 0.1, -- minimum value to show fuzzy factory counts below this you will get ???
-	CIVILIAN_MANPOWER_RANGE_INTEL_MAX = 0.7, -- maximum value to show fuzzy factory counts. above this you will get full count
-	CIVILIAN_MANPOWER_INTEL_RANGE_AT_LOWEST_INTEL = 0.5, -- range of intel values at lowest intel
-
-	CIVILIAN_CONVOYS_RANGE_INTEL_MIN = 0.1, -- minimum value to show fuzzy factory counts below this you will get ???
-	CIVILIAN_CONVOYS_INTEL_RANGE_AT_LOWEST_INTEL = 0.5, -- range of intel values at lowest intel
-
-	CIVILIAN_TRUCKS_RANGE_INTEL_MIN = 0.1, -- minimum value to show fuzzy factory counts below this you will get ???
-	CIVILIAN_TRUCKS_RANGE_INTEL_MAX = 0.5, -- maximum value to show fuzzy factory counts. above this you will get full count
-	CIVILIAN_TRUCKS_INTEL_RANGE_AT_LOWEST_INTEL = 0.5, -- range of intel values at lowest intel
-
-	CIVILIAN_TRAINS_RANGE_INTEL_MIN = 0.1, -- minimum value to show fuzzy factory counts below this you will get ???
-	CIVILIAN_TRAINS_RANGE_INTEL_MAX = 0.5, -- maximum value to show fuzzy factory counts. above this you will get full count
-	CIVILIAN_TRAINS_INTEL_RANGE_AT_LOWEST_INTEL = 0.5, -- range of intel values at lowest intel
-
-	CIVILIAN_SUPPLY_RANGE_INTEL_MIN = 0.1, -- minimum value to show fuzzy factory counts below this you will get ???
-	CIVILIAN_SUPPLY_RANGE_INTEL_MAX = 0.5, -- maximum value to show fuzzy factory counts. above this you will get full count
-	CIVILIAN_SUPPLY_INTEL_RANGE_AT_LOWEST_INTEL = 0.5, -- range of intel values at lowest intel
-
-	CIVILIAN_TRADE_SHOW_TRADE_AMOUNTS = 0.0, -- minimum value to show how much a country trades a resource
-	CIVILIAN_TRADE_SHOW_TRADE_PARTNERS = 0.1, -- minimum value to show who a country trades with
-	CIVILIAN_MIN_INTEL_FOR_RESOURCE_ROUTES_TOOLTIPS = 0.9, -- minimum value to show convoy routes for resource transfer
-	CIVILIAN_MIN_INTEL_FOR_TRADE_ROUTES = 0.7, -- minimum value to show trade routes on map
-	CIVILIAN_MIN_INTEL_FOR_RESOURCE_ORIGIN_ROUTES = 0.5, -- minimum value to show resource transfers to mainland on map
-
-	ARMY_MIN_INTEL_FOR_SUPPLY_ROUTES = 0.5, -- minimum value to show convoy routes for supply transfer
-	ARMY_MIN_INTEL_FOR_SUPPLY_ROUTES_TOOLTIPS = 0.7, -- minimum value to show convoy route tooltips for supply transfer
-
-	CIVILIAN_INTEL_NEEDED_TO_SHOW_ANTI_AIR_REDUCTION = 0.3, -- minimum value to show anti air damage reduction
-
-	CIVILIAN_INTEL_NEEDED_TO_SHOW_FOCUS_TREE = 0.5, -- min required intel to focus tree with taken focuses
-	CIVILIAN_INTEL_NEEDED_TO_SHOW_CURRENT_FOCUS = 0.7,  -- min required intel to show currently focus
-	CIVILIAN_INTEL_NEEDED_TO_SHOW_CURRENT_FOCUS_PROGRESS = 0.7,  -- min required intel to show current focus progress
-
-	CIVILIAN_MIN_INTEL_TO_SHOW_INDUSTRY_GRAPH = 0.30,
-	CIVILIAN_MIN_INTEL_TO_SHOW_CONVOYS_GRAPH = 0.70,
-	CIVILIAN_MIN_INTEL_TO_SHOW_BOMBERS_GRAPH = 0.8,
-	CIVILIAN_MIN_INTEL_TO_SHOW_TRUCKS_GRAPH = 0.5,
-	CIVILIAN_MIN_INTEL_TO_SHOW_TRAINS_GRAPH = 0.5,
-
-	CIVILIAN_MIN_INTEL_TO_SHOW_RAIL_STAUS = 0.4, -- when mousing over supply map mode, shows damage/construction status
-
-	OLD_TECH_COUNT_NUM_DAYS = 180, -- num days after researched to consider a tech as "old"
-	INTEL_TO_SHOW_TECH_COUNT = { 0.5, 0.3, 0.3, 0.3 },  -- minimum value to show current tech count and current doctrine
-	INTEL_TO_SHOW_PREVIOUSLY_RESEARCHED = { 0.7, 0.7, 0.7, 0.7 }, -- minimum value to show previously researched tech
-	INTEL_TO_SHOW_CURRENTLY_RESEARCHED = { 0.8, 0.8, 0.8, 0.8 }, -- minimum value to show currently being researched tech
-
-	INTEL_TO_SHOW_GRAND_DOCTRINE = { 0.3, 0.3, 0.3 }, -- minimum value to show grand doctrine { army, navy, air }
-	INTEL_TO_SHOW_SUBDOCTRINES = { 0.5, 0.5, 0.5 }, -- minimum value to show subdoctrines { army, navy, air }
-	INTEL_TO_SHOW_MASTERY = { 0.7, 0.7, 0.7 }, -- minimum value to show mastery levels { army, navy, air }
-
-	INTEL_TO_SHOW_IDEAS = { 0.0, 0.0, 0.0, 0.0 },
-
-	ARMY_ARMY_COUNT_RANGE_INTEL_MIN = 0.15,
-	ARMY_ARMY_COUNT_RANGE_INTEL_MAX = 0.7,
-	ARMY_ARMY_COUNT_RANGE_INTEL_RANGE_AT_LOWEST_INTEL = 0.8,
-
-	ARMY_SPECIAL_FORCES_COUNT_RANGE_INTEL_RANGE_AT_LOWEST_INTEL = 0.7,
-
-	ARMY_DEPLOYED_MANPOWER_COUNT_RANGE_INTEL_MIN = 0.25,
-	ARMY_DEPLOYED_MANPOWER_COUNT_RANGE_INTEL_MAX = 0.7,
-	ARMY_DEPLOYED_MANPOWER_COUNT_RANGE_INTEL_RANGE_AT_LOWEST_INTEL = 0.5,
-	ARMY_MIN_INTEL_TO_SHOW_EQUIPMENT_RATIO = 0.7,
-
-	ARMY_MIN_INTEL_TO_SHOW_BASIC_TEMPLATE_INFO = 0.3,
-	ARMY_TEMPLATE_UNIT_COUNT_INTEL_MIN = 0.5,
-	ARMY_TEMPLATE_UNIT_COUNT_INTEL_MAX = 0.7,
-	ARMY_TEMPLATE_UNIT_COUNT_INTEL_RANGE_AT_LOWEST_INTEL = 1.0,
-	ARMY_MIN_INTEL_TO_SHOW_EXACT_TEMPLATE_INFO = 0.8,
-
-	ARMY_STOCKPILE_COUNT_INTEL_MIN = 0.3,
-	ARMY_STOCKPILE_COUNT_INTEL_MAX = 0.7,
-	ARMY_STOCKPILE_COUNT_INTEL_RANGE_AT_LOWEST_INTEL = 0.5,
-
-	ARMY_MIN_INTEL_TO_SHOW_EQUIPMENT_DESIGN_DETAILS = 0.8,
-
-	ARMY_MIN_INTEL_RATIO_NEEDED_FOR_DISPLAYING_FAKE_ENEMY_INTEL_IN_LEDGER = 0.9,
-	ARMY_MIN_INTEL_RATIO_NEEDED_FOR_REVEALING_FAKE_ENEMY_INTEL = 0.9,
-
-	ARMY_INTEL_COMBAT_BONUS_MAX_BONUS = 0.2, -- max combat bonus that will apply when intel is high enough
-	ARMY_INTEL_COMBAT_BONUS_FACTOR_ATTACK = 1.0, -- multiplier for attack value of intel combat bonus
-	ARMY_INTEL_COMBAT_BONUS_FACTOR_DEFENSE = 1.0, -- multiplier for defense value of intel combat bonus
-
-	ARMY_INTEL_COMBAT_BONUS_MIN_INTEL_FOR_BONUS = 1, -- min intel needed to start applying ARMY_INTEL_COMBAT_BONUS_MAX_BONUS
-	ARMY_INTEL_COMBAT_BONUS_MAX_INTEL_FOR_BONUS = 100, -- intel needed to fully apply ARMY_INTEL_COMBAT_BONUS_MAX_BONUS
-
-	NAVAL_DOMINANCE_INTEL_LOW = 0.4,								-- we need more intel than this to get any dominance
-	NAVAL_DOMINANCE_INTEL_LOW_DOMINANCE_PENALTY_START = 0.1,		-- dominance is reduced to NAVAL_DOMINANCE_INTEL_LOW_DOMINANCE_MIN_PENALTY at or below this intel
-	NAVAL_DOMINANCE_INTEL_LOW_DOMINANCE_MIN_PENALTY = 0.5, -- you get this much dominance at NAVAL_DOMINANCE_INTEL_LOW_DOMINANCE_PENALTY_START and scales up to 1 at NAVAL_DOMINANCE_INTEL_LOW
-
-	NAVY_FLEET_COUNT_INTEL_MIN = 0.1,
-	NAVY_FLEET_COUNT_INTEL_MAX = 0.3,
-	NAVY_FLEET_COUNT_INTEL_RANGE_AT_LOWEST_INTEL = 0.5,
-
-	NAVY_TASKFORCE_COUNT_INTEL_MIN = 0.3,
-	NAVY_TASKFORCE_COUNT_INTEL_MAX = 0.7,
-	NAVY_TASKFORCE_COUNT_INTEL_RANGE_AT_LOWEST_INTEL = 0.5,
-
-	NAVY_SHIP_COUNT_INTEL_MIN = 0.1,
-	NAVY_SHIP_COUNT_INTEL_MAX = 0.8,
-	NAVY_SHIP_COUNT_INTEL_RANGE_AT_LOWEST_INTEL = 0.5,
-
-	NAVY_MIN_INTEL_TO_SHOW_EXISTING_CATEGORY_TYPES = 0.1,   --this is about disaplying ships by class category
-	NAVY_SHIP_TYPE_COUNT_INTEL_MIN = 0.3,					--this range is used both when for disaplying counts by class and counts by variant
-	NAVY_SHIP_TYPE_COUNT_INTEL_MAX = 0.7,
-	NAVY_SHIP_TYPE_COUNT_INTEL_RANGE_AT_LOWEST_INTEL = 0.5,
-
-	NAVY_MIN_INTEL_TO_SHOW_SHIP_CLASSES = 0.5, --this unclocks the display of a given variant
-	NAVY_DEPLOYED_MANPOWER_COUNT_RANGE_INTEL_MIN = 0.05,
-	NAVY_DEPLOYED_MANPOWER_COUNT_RANGE_INTEL_MAX = 0.7,
-	NAVY_DEPLOYED_MANPOWER_COUNT_RANGE_INTEL_RANGE_AT_LOWEST_INTEL = 0.5,
-
-	NAVY_MIN_INTEL_TO_SHOW_SHIP_DESIGN_DETAILS = 0.8,
-
-	AIR_AIRWING_COUNT_INTEL_MIN = 0.0,
-	AIR_AIRWING_COUNT_INTEL_MAX = 0.7,
-	AIR_AIRWING_COUNT_INTEL_RANGE_AT_LOWEST_INTEL = 0.5,
-
-	AIR_MIN_INTEL_TO_SHOW_AIRWING_CLASSES = 0.3,
-	AIR_WING_TYPE_COUNT_INTEL_MIN = 0.5,
-	AIR_WING_TYPE_COUNT_INTEL_MAX = 0.7,
-	AIR_WING_TYPE_COUNT_INTEL_RANGE_AT_LOWEST_INTEL = 0.5,
-
-	AIR_DEPLOYED_MANPOWER_COUNT_RANGE_INTEL_MIN = 0.1,
-	AIR_DEPLOYED_MANPOWER_COUNT_RANGE_INTEL_MAX = 0.7,
-	AIR_DEPLOYED_MANPOWER_COUNT_RANGE_INTEL_RANGE_AT_LOWEST_INTEL = 0.5,
-	
-	RAID_MIN_INTEL_FOR_WARNING_ON_LAUNCH = 0.1,           -- how much intel (of the relevant type) is needed to show a warning when raid is launched
-    RAID_MIN_INTEL_FOR_WARNING_HALFWAY_TO_LAUNCH = 0.5,   -- how much intel (of the relevant type) is needed to show a warning halfway through preparation
-                                                          --     (this limit is a dummy value only used for communicating the role of intel in the intel ledger )
-                                                          --     (in reality, detection scales linearly with intel. 70% intel = detection at 30% preparation, 50% intel = detection at 50% preparation, etc.
-    RAID_MIN_INTEL_FOR_WARNING_EARLY_PREPARATION = 0.8,   -- how much intel (of the relevant type) is needed to show a warning early in the preparation
-                                                          --     (this limit is a dummy value only used for communicating the role of intel in the intel ledger )
-                                                          --     (in reality, detection scales linearly with intel. 70% intel = detection at 30% preparation, 50% intel = detection at 50% preparation, etc.
-
-	CIVILIAN_MAPICON_INDUSTRY_COUNT_INTEL_RANGE_AT_LOWEST_INTEL = 0.7,
-
-	MAP_INTEL_VISIBILITY_CUTOFFS = { -- how much map intel is gained with intel over a country. first number is threshold, second is amount of intel map intel gained
-		0.25, -50,
-		0.75, -50,
-		1.00, 0,
-		
-	},
-
-	-- these are used in some triggers
-	ARMY_AVG_ARMOR_INTEL_MIN = 0.0,
-	ARMY_AVG_ARMOR_INTEL_MAX = 0.5,
-	ARMY_AVG_ARMOR_RANGE_AT_LOWEST_INTEL = 1.0,
-
-	ARMY_MAX_ARMOR_INTEL_MIN = 0.0,
-	ARMY_MAX_ARMOR_INTEL_MAX = 0.5,
-	ARMY_MAX_ARMOR_RANGE_AT_LOWEST_INTEL = 1.0,
-
-	ARMY_AVG_PIERCING_INTEL_MIN = 0.0,
-	ARMY_AVG_PIERCING_INTEL_MAX = 0.5,
-	ARMY_AVG_PIERCING_RANGE_AT_LOWEST_INTEL = 1.0,
-
-	ARMY_MAX_PIERCING_INTEL_MIN = 0.0,
-	ARMY_MAX_PIERCING_INTEL_MAX = 0.5,
-	ARMY_MAX_PIERCING_RANGE_AT_LOWEST_INTEL = 1.0,
-	--~
-
-	NAVY_MAPICON_MISSION_COUNT_INTEL_MIN = 0.5,  -- min intel to show assigned naval missions
-	NAVY_MAPICON_MISSION_COUNT_INTEL_MAX = 0.8,  -- min intel to show assigned naval missions with perfect accuracy, and taskforces count
-
-	NAVY_MAPICON_SHOW_ALL_NAVAL_PORTS = 0.3,  -- min intel to show all naval ports (otherwise you will only see nearby ones)
-	NAVY_MAPICON_NAVAL_PORT_VISIBILITY_DETAIL_THRESHOLDS = { -- how detailed the post tooltips will be
-		0.0,	-- for no intel
-		0.1,	-- show port level
-		0.3,	-- show fuzzy taskforce count
-		0.7,	-- show full taskforce count
-		0.8,	-- show taskforce details
-	},
-	NAVY_MAPICON_NAVAL_PORT_TASKFORCE_FUZZY_THRESHOLD = 0.5,
-
-	AIR_MAPICON_MISSION_COUNT_INTEL_MIN = {
-		0.3, -- AIR_SUPERIORITY
-		0.3, -- CAS
-		0.3, -- INTERCEPTION
-		0.3, -- STRATEGIC_BOMBER
-		0.3, -- NAVAL_BOMBER
-		0.3, -- DROP_NUKE
-		0.3, -- PARADROP
-		0.3, -- NAVAL_KAMIKAZE
-        0.3, -- PORT_STRIKE
-		0.3, -- ATTACK_LOGISTICS
-		0.3, -- AIR_SUPPLY
-		0.3, -- TRAINING
-		0.3, -- NAVAL_MINES_PLANTING
-		0.3, -- NAVAL_MINES_SWEEPING
-		0.3, -- RECON
-		0.3, -- NAVAL_PATROL
-		0.3, -- BARRAGE
-		0.3, -- SAM
-	},
-	AIR_MAPICON_MISSION_COUNT_INTEL_MAX = {
-		0.6, -- AIR_SUPERIORITY
-		0.6, -- CAS
-		0.6, -- INTERCEPTION
-		0.6, -- STRATEGIC_BOMBER
-		0.6, -- NAVAL_BOMBER
-		0.6, -- DROP_NUKE
-		0.6, -- PARADROP
-		0.6, -- NAVAL_KAMIKAZE
-        0.6, -- PORT_STRIKE
-		0.6, -- ATTACK_LOGISTICS
-		0.6, -- AIR_SUPPLY
-		0.6, -- TRAINING
-		0.6, -- NAVAL_MINES_PLANTING
-		0.6, -- NAVAL_MINES_SWEEPING
-		0.6, -- RECON
-		0.6, -- NAVAL_PATROL
-		0.6, -- BARRAGE
-		0.6, -- SAM
-	},
-	AIR_MAPICON_MISSION_COUNT_INTEL_RANGE_AT_LOWEST_INTEL = {
-		0.5, -- AIR_SUPERIORITY
-		0.5, -- CAS
-		0.5, -- INTERCEPTION
-		0.5, -- STRATEGIC_BOMBER
-		0.5, -- NAVAL_BOMBER
-		0.5, -- DROP_NUKE
-		0.5, -- PARADROP
-		0.5, -- NAVAL_KAMIKAZE
-        0.5, -- PORT_STRIKE
-		0.5, -- ATTACK_LOGISTICS
-		0.5, -- AIR_SUPPLY
-		0.5, -- TRAINING
-		0.5, -- NAVAL_MINES_PLANTING
-		0.5, -- NAVAL_MINES_SWEEPING
-		0.5, -- RECON
-		0.5, -- NAVAL_PATROL
-		0.5, -- BARRAGE
-		0.5, -- SAM
-	},
-
-	AIR_MAPICON_SHOW_ALL_AIR_PORTS = 0.3,  -- min intel to show all air ports (otherwise you will only see nearby ones)
-	AIR_MAPICON_AIR_PORT_VISIBILITY_DETAIL_THRESHOLDS = { -- how detailed the post tooltips will be
-		0.0,	-- for no intel
-		0.3,	-- show fuzzy air plane count
-		0.7,	-- show full air count
-		0.8,	-- show air plane details
-	},
-	AIR_MAPICON_AIR_PORT_PLANE_FUZZY_THRESHOLD = 0.5,
-	AIR_MIN_INTEL_TO_SHOW_EQUIPMENT_DESIGN_DETAILS = 0.8,
-
-	-- ~intel ledger defines
-},
-
-NCharacter = {
-	OFFICER_CORP_ADVISOR_ENTRIES_IN_MENU = { "high_command", "theorist", "army_theorist", "navy_theorist", "air_theorist", "army_chief", "air_chief", "navy_chief" },
-	OFFICER_CORP_HIGH_COMMAND_SLOTS_IN_MENU = 3, --For Alert manager to count the number of High Command Slots in the UI
-	POLITICAL_ADVISOR_SLOTS_IN_MENU = 3, --For Alert manager to count the number of Political Advisor Slots in the UI
-
-	DEFAULT_PP_COST_FOR_MILITARY_ADVISOR = 50,	-- When an advisor does not have cost assigned this is the default used
-	DEFAULT_PP_COST_FOR_POLITICAL_ADVISOR = 150,
-	DEFAULT_CP_COST_FOR_ADVISOR = 0,	-- For Starting Advisors
-	DEFAULT_CP_COST_FOR_DYNAMIC_ADVISORS = 0,	-- For Advisors created during gameplay
-	ADVISOR_PROMOTION_COST = 5,	-- Cost to promote someone to advisor
-
-	COUNTRY_LEADER_BASE_EXPIRE_YEAR_LENGTH = 5, -- When creating a dynamic country leader if an expire date is not set it will have 5 years as a base expiration date
-	COUNTRY_LEADER_BASE_RANDOM_MAX_YEAR_LENGTH = 15, -- Max random value added to COUNTRY_LEADER_BASE_EXPIRE_YEAR_LENGTH
-
-	SPECIALIST_ADVISOR_MIN_RANK = 5,
-	EXPERT_ADVISOR_MIN_RANK = 10,
-	GENIUS_ADVISOR_MIN_RANK = 15,
-},
-
-NSupply = {
-	MAX_RAILWAY_LEVEL = 5, -- update railway texture as well, each frame corresponds to a level
-
-	--defines to calculate the capitals supply. This will be also used for max supply of other nodes depending on how well they are connected to capital. Using the formula:
-	--CapitalSupply = CAPITAL_SUPPLY_BASE + (NumberOfCivilianFactories * CAPITAL_SUPPLY_CIVILIAN_FACTORIES) + (NumberOfMilitaryFactories * CAPITAL_SUPPLY_MILITARY_FACTORIES) + (NumberOfDockyards * CAPITAL_SUPPLY_DOCKYARDS)
-	CAPITAL_SUPPLY_BASE = 5, -- base supply for capital
-	CAPITAL_SUPPLY_CIVILIAN_FACTORIES = 0.12, -- supply from one civilian factory
-	CAPITAL_SUPPLY_MILITARY_FACTORIES = 0.12, -- supply from one military factory
-	CAPITAL_SUPPLY_DOCKYARDS = 0, --supply from one naval factory
-
-	-- defines that are used for supply reach for capital
-	-- supply flow will start from INITIAL_SUPPLY_FLOW and will be reduced by a penalty on each province it travels (which depends on how far we are from our origin, terrain etc)
-	-- a supply reach >= 1.0 considered "perfect" and will be able to fully support units on that particular province (assuming you are not over capacity)
-	CAPITAL_INITIAL_SUPPLY_FLOW = 5, -- starting supply from
-	CAPITAL_STARTING_PENALTY_PER_PROVINCE = 1, -- starting penalty that will be added as supply moves away from its origin (modified by stuff like terrain)
-	CAPITAL_ADDED_PENALTY_PER_PROVINCE = 1, -- added penalty as we move away from origin
-
-	-- defines that are used for supply reach for built nodes
-	NODE_INITIAL_SUPPLY_FLOW = 2.5,
-	NODE_STARTING_PENALTY_PER_PROVINCE = 1.50,
-	NODE_ADDED_PENALTY_PER_PROVINCE = 0.15,
-
-	-- defines that are used for supply reach for dockyards
-	NAVAL_BASE_INITIAL_SUPPLY_FLOW = 2.5,
-	NAVAL_BASE_STARTING_PENALTY_PER_PROVINCE = 1,
-	NAVAL_BASE_ADDED_PENALTY_PER_PROVINCE = 1,
-	NAVAL_SUPPLY_HUB_REDUCTION_FACTOR = 0.0,							-- naval supply hub will reduce the supply need to the fleet by this ratio
-
-	-- Node Flow (i.e. province caps) increase by this amount per railway level of the node's bottleneck
-	NODE_FLOW_BONUS_PER_RAIL_LEVEL = 0.4,
-
-	-- rivers will transfer in between nodes as if they were this level
-	RIVER_RAILWAY_LEVEL = 1,
-
-	-- defines that are used for supply reach for floating harbors
-	FLOATING_HARBOR_INITIAL_SUPPLY_FLOW = 2.5,
-	FLOATING_HARBOR_STARTING_PENALTY_PER_PROVINCE = 1,
-	FLOATING_HARBOR_ADDED_PENALTY_PER_PROVINCE = 1,
-
-	FLOATING_HARBOR_BASE_SUPPLY = 15.0, -- supply given by a floating harbor
-	FLOATING_HARBOR_BASE_DURATION = 60, -- duration of a full hp floating harbor
-	FLOATING_HARBOR_DURATION_RATIO_AT_MIN_HP = 0.0,  -- duration mult for a harbor that was reduced to 0 hp
-
-	FLOATING_HARBOR_MIN_DECAY = 0.2, -- Always reduce Floating Harbor longevity by this many "hours" per hour
-	FLOATING_HARBOR_DECAY_MAX_AIR_BONUS = -0.1, -- At 100% Friendly Air superiourity, change decay rate by this many "hours" per hour
-	FLOATING_HARBOR_DECAY_MAX_AIR_PENALTY = 0.4, -- At 100% Enemy Air superiourity, change decay rate by this many "hours" per hour
-	FLOATING_HARBOR_DECAY_MAX_NAVAL_BONUS = -0.2, -- At 100% Friendly naval superiourity, change decay rate by this many "hours" per hour
-	FLOATING_HARBOR_DECAY_MAX_NAVAL_PENALTY = 0.5, -- At 100% Enemy Naval superiourity, change decay rate by this many "hours" per hour
-	FLOATING_HARBOR_DECAY_NO_CONTROL_PENALTY = 1.0, -- If adjacent land province is not held, change decay rate by this many "hours" per hour
-
-	SUPPLY_FLOW_DROP_REDUCTION_AT_MAX_INFRA = 0.44, -- max infrastructure level will reduce the supply flow drop off by this ratio
-	SUPPLY_FLOW_PENALTY_CROSSING_RIVERS = 0.5, -- crossing rivers introduces additional penalty
-
-	 -- node flow terrain falloff is scaled by logistics curve based on distance(d) (scalar / (1+e^(-k(d-midpoint))))
-	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_K = 0.55, -- How steep the curve is
-	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_MIDPOINT = 3.3, -- sigmoid inflection point
-	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_SCALAR = 1.0, -- Max Penalty adjustment due to distance
-	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_MIN_PENALTY_SCALE = 0.15, -- Logistics curve never reduces penalty facor below this limit
-
-	-- The range bonus added to a fully motorized hub. This supply is added on top of the XXX_INITIAL_SUPPLY_FLOW defined above.
-	SUPPLY_HUB_FULL_MOTORIZATION_BONUS = 3.5,
-	-- How many trucks does it cost to fully motorize a hub
-	SUPPLY_HUB_FULL_MOTORIZATION_TRUCK_COST = 500.0,
-	-- For each additional level of motorization on a hub (i.e. contry with set motoriazation) reduce max bonus for next level by this amount
-	SUPPLY_HUB_MOTORIZATION_MARGINAL_EFFECT_DECAY = 1.5,
-
-
-	-- used for calculating "flow" for railways.
-	RAILWAY_BASE_FLOW = 5.0, 		-- how much base flow railway gives when a node connected to its capital/a naval node by a railway
-	RAILWAY_FLOW_PER_LEVEL = 5.0, 	-- how much additional flow a railway level gives
-	RAILWAY_FLOW_PENALTY_PER_DAMAGED = 4.0, -- penalty to flow per damaged railway
-	RAILWAY_MIN_FLOW = 5.0, 		-- minimum railway flow can be reduced to
-
-	-- used for calculating "flow" from a naval node to another naval node when it is connected via a convoy route
-	-- NAVAL_BASE_MAX_SUPPLY_FLOW_FACTOR = 0.9, -- flow of the parent node is factored to this ratio (so at most it can transfer parent naval node flow * this define)
-	NAVAL_BASE_FLOW = 6.0, -- max output/input of a naval node is limited by this base value + additional ratio for each level
-	NAVAL_FLOW_PER_LEVEL = 2.0, -- max output/input of a naval node is limited by previous base value + this define per its level
-
-	SUPPLY_NODE_MIN_SUPPLY_THRESHOLD = 1.0, -- if supply of a node is below this value it will be set to 0 -- Currently unused? This should happen when enough damage occurs
-
-	INFRA_TO_SUPPLY = 0.8,							-- each level of infra gives this many supply
-	VP_TO_SUPPLY_BASE = 0,							-- Bonus to supply from a VP, no matter the level
-	VP_TO_SUPPLY_BONUS_CONVERSION = 0,			-- Bonus to supply local supplies from Victory Points, multiplied by this aspect and rounded to closest integer
-	SUPPLY_FROM_DAMAGED_INFRA = 0.2,                -- damaged infrastructure counts as this in supply calcs
-	SUPPLY_BASE_MULT = 0.2,							-- multiplier on supply base values
-	SUPPLY_DISRUPTION_DAILY_RECOVERY = 1.5,		-- every day nodes recover this much of their accumulated disruption.
-
-	RAILWAY_CONVERSION_COOLDOWN = 14, -- railways will be put on cooldown when they are captured by enemy and will not be usable during the cooldown
-	RAILWAY_CONVERSION_COOLDOWN_CORE = 7,
-	RAILWAY_CONVERSION_COOLDOWN_CIVILWAR = 0,
-
-	DEFAULT_STARTING_TRUCK_RATIO = 2, -- countries get this ratio of starting truck in their buffers compared to their need
-	DEFAULT_STARTING_TRAIN_RATIO = 2, -- countries get this ratio of starting trains in their buffers compared to their need
-
-	SUPPLY_POINTS_PER_TRAIN = 0.5,  -- old default 1.25 -- Amount of supply that can fit in a train. (Trains distribute supply from capital to a supply node.)
-	NUM_RAILWAYS_TRAIN_FACTOR = 0.05, -- the train usage is scaled by railway distance between the supply node and the capital multiplied by this factor
-
-	BASE_SUPPLY_MULT_FOR_TRUCK_DEFAULT_BUFFER = 1.0,  -- initial value for wanted buffers over potential truck usage
-	BASE_SUPPLY_MULT_FOR_TRUCK_MIN_BUFFER = 0.0, -- min and max values for buffer ratio
-	BASE_SUPPLY_MULT_FOR_TRUCK_MAX_BUFFER = 100.0,
-
-	TRUCK_ATTRITION = 0.005, -- base truck attrition
-	TRUCK_ATTRITION_FACTOR = 0.8, --a scale on total truck attrition
-
-	BASE_TRUCK_HP = 50.0,
-	TRUCK_HP_PER_ARMOR = 2,
-
-	BASE_TRAIN_HP = 100.0,
-	TRAIN_ARMOR_TARGETING_WEIGHT = 0.01, -- For each health point gained by armor_value, enemy bombers are this much more likely to target
-	TRAIN_ANTI_AIR_HIT_CHANCE = 0.05, -- Balancing value to determine the chance of train anti-air hitting an attacking airwing.
-	TRAIN_ANTI_AIR_HIT_ROLL_COUNT = 12, -- The air_attack of all attacked trains are accumulated, and then we do this many random rolls each with the hit chance set above to determine the fraction of the accumulated air_attack that hits.
-	TRAIN_ANTI_AIR_ATTACK_TO_AMOUNT = 0.001, -- Balancing value to convert the hitting air_attack to a percentage value of the attacking planes that are killed.
-
-	MIN_TRAIN_SUPPLY_FACTOR = 0.2, -- Having 0 trains in stockpile only applies this penalty factor, scaling up to 1.0 when need is met
-	MIN_TRAIN_REQUIREMENT = 20, -- If total train need <= this, then don't apply any supply penalty, even if stockpile is insufficient
-
-	SUPPLY_FLOW_REDUCTION_THRESHOLD = 0.1, -- if supply flow is lower than this, it is not applied
-
-	-- following values are used for calculating potential truck usage
-	-- generally potential is ~= current usage but as units moves along the map
-	-- they are assigned to different nodes which adds slightly higher usage due to minimum truck needed being 1
-	BASE_AIR_SUPPLY_MULT_FOR_TRUCK_BUFFER = 1.0,
-	BASE_ARMY_SUPPLY_MULT_FOR_TRUCK_BUFFER = 1.0,
-	BASE_NAVY_SUPPLY_MULT_FOR_TRUCK_BUFFER = 1.0,
-
-	CAPITAL_NODE_BASE_SUPPLY_ADD = 0,
-	BUILT_NODE_BASE_SUPPLY_ADD = 0.5,
-	LOCAL_NODE_BASE_SUPPLY_ADD = 0.5,
-	NAVAL_NODE_BASE_SUPPLY_ADD = 0.25,
-	-- ~end
-
-	-- armies slowly gains and buffers supply above >100% up to their supply grace if they have efficent supply flow
-	-- otherwuse they will lose up to 100% supply every day depending on how bad supply flow is
-	ARMY_SUPPLY_RATIO_STARTING_GAIN = 0.0,
-	ARMY_SUPPLY_RATIO_SPEED_GAIN_PER_HOUR = 0.02,
-	ARMY_MAX_SUPPLY_RATIO_GAIN_PER_HOUR = 0.2,
-
-	MIN_SURRENDER_LIMIT_TO_MOVE_SUPPLY_CAPITAL = 0.01, -- country needs to be above thos surrender ratio to be able to move its capital
-	COOLDOWN_DAYS_AFTER_MOVING_SUPPLY_CAPITAL = 30, -- cooldown for moving supply again after last move
-	DAYS_TO_START_GIVING_SUPPLY_AFTER_MOVING_SUPPLY_CAPITAL = 1,  -- the country will start gaining supply after this many days moving its capital
-	DAYS_TO_START_GIVING_FULL_SUPPLY_AFTER_MOVING_SUPPLY_CAPITAL =  30, -- the country will reach max supply after this many days moving its capital
-
-	MIN_DIFF_FOR_AUTO_UPDATING_EXISTING_RAILWAYS = 5, -- while building railways, the system will prefer updating existing railway if new railway is close enough to existing one
-	
-	-- reinforcements depends on distance to capital and following defines are used for calculating reinforcement time
-	SUPPLY_PATH_MAX_DISTANCE = 360,	-- max time it can take
-	RAILWAY_DISTANCE_FACTOR_FOR_REINFORCEMENT_SPEED = 0.75, -- time factor for total railway distance
-	TRUCK_DISTANCE_FACTOR_FOR_REINFORCEMENT_SPEED = 1.0, -- time factor for total truck distance
-	NAVAL_DISTANCE_FACTOR_FOR_REINFORCEMENT_SPEED = 0.25, -- time factor for total naval distance
-
-	ALERT_VERY_LOW_SUPPLY_LEVEL = 0.35,			   -- At which point we show up the low and very low supply level alert. Value is in % of supplies supported vs required.
-	ALERT_LOW_SUPPLY_LEVEL = 0.65,
-
-	AI_FRONT_MINIMUM_UNITS_PER_PROVINCE_FOR_SUPPLY_CALCULATIONS = 0,    -- AI will try to keep this amount of divisions per province as a minimum when evaluating supply limitations for war fronts
-	AI_FRONT_DIVISIONS_PER_SUPPLY_POINT = 0.85, -- How many divisions should the AI consider it can supply per available supply point
-	AI_FRONT_MAX_UNITS_ENEMY_COUNT_FACTOR = 1.2, -- Make sure AI front MaxNrUnits is at least EnemyCount multiplied by this factor
-	SUPPLY_THRESHOLD_FOR_ARMY_ATTRITION = 0.33, -- armies will only get attrition below this supply
-	NUMBER_OF_SHOWN_SUPPLY_SOURCES_IN_SUPPLY_MAPMODE = 3, -- number of supply flow sources shown in breakdown tooltip
-	ESTIMATED_DIVISION_WEIGHT_FOR_SUPPLY_ESTIMATIONS_GUI = 1.0,	--Division supply consumption used for estimating frontline weight for order tooltips
-	AVAILABLE_MANPOWER_STATE_SUPPLY = 1,						--Factor for state supply from max manpower (population)
-	NON_CORE_MANPOWER_STATE_SUPPLY = 0.5,						--Factor for population sttate supply when controlled by an occupier (NO TAKE FOOD)
-	STORED_SUPPLY_CONSUMPTION_RATE_FACTOR = 0.75,				--Multiplies consumption rate of stored supply (more/less easement)
-},
-NAITheatre = {
-	AI_THEATRE_GENERATION_HOME_THEATRE_DEPTH_RESTRICTION = 2,			-- The home theatre is generated based off a initial depth restriction
-	AI_THEATRE_GENERATION_BORDER_SIZE_RESTRICTION = 7,					-- Theatres are generated based off borders, Higher value means larger theatres
-	AI_THEATRE_GENERATION_DEPTH_TO_START_CONSIDERING_BORDERSTATES = 2,	-- Distance from capital in terms of states
-	AI_THEATRE_GENERATION_MINIMUM_STATE_COUNT = 3,						-- Small Theatres - Minimum state count for a theatre
-	AI_THEATRE_GENERATION_MAX_DISTANCE_TO_MERGE = 200,					-- Small Theatres - Dont merge with too far away theatres, higher value means less merging will occur
-	AI_THEATRE_GENERATION_MAX_DISTANCE_TO_FILL = 350,					-- Final generation step - Max distance to fill states, higher values means less theatres
-
-	AI_THEATRE_DISTRIBUTION_SAME_THEATRE_SCORE_MODIFIER = 0.25, 			-- Value that affects the score of units when distributing to fronts within the same theatre, its a percentage multiplier, the higher it is the higher the chance of units staying in close proximity
-	AI_THEATRE_DISTRIBUTION_MAX_SCORE = 250000, 						-- Max Score that a unit can have when being distributed to ai fronts, higher value means more granularity in score changes, lower values means less variation in where units can go
-	AI_THEATRE_DISTRIBUTION_PERCENTAGE_OF_MINIMUM_UNITS_TO_KEEP = 1.0,	-- How much should a frontline adheer to its minimum unit demand, when removing/reassigning units
-	AI_THEATRE_DISTRIBUTION_MAX_PERCENT_UNMET_DEMAND_PER_FRONT = 0.5,   -- Percentage of how much fronts should request from other lower priority fronts, 0 means once a front gets hold of a unit it stays there forever until its demand is reduced, controlls shuffling of units.
-
-	AI_THEATRE_STATE_UPDATE_MAX_STATE_COUNT_TO_EXPAND = 25,				-- Max theatre size
-
-	AI_THEATRE_BREAKDOWN_MIN_STATE_COUNT = 3,							-- Theatres below this size will break and merge with others
-	AI_THEATRE_BREAKDOWN_MAX_DISTANCE_TO_MERGE = 200,					-- Dont merge with too far away theatres, higher value means less merging will occur
-
-	AI_THEATRE_SEARCH_SUPPLY_NODE_MAX_DEPTH = 5,						-- Max depth of breadth-first search while looking for supply nodes when out of supply
-	AI_THEATRE_SUPPLY_CRISIS_LIMIT = 0.25,                               -- If a unit is standing in an area with this supply ratio it will try to escape
-	AI_THEATRE_AI_FRONT_MIN_DESIRED_RATIO = 0.18,						-- Fronts are sorted based on priority, we nudge unit demand based on this sorting, the higher the value the more units the most important front gets
-},
-NIndustrialOrganisation = {
-	ASSIGN_DESIGN_TEAM_PP_COST_PER_DAY = 0.05,					-- Cost in Political Power daily generation when one MIO is assigned to a research slot
-	ASSIGN_INDUSTRIAL_MANUFACTURER_PP_COST_PER_DAY = 0.03,		-- Cost in Political Power daily generation when one MIO is assigned to a production line
-	FUNDS_FOR_SIZE_UP = 900,					-- Funds needed for a MIO to increment its size and get points to unlock traits
-	FUNDS_FOR_SIZE_UP_LEVEL_FACTOR = 100, 			-- How much each level mutliplies the funds for size up 
-	FUNDS_FOR_SIZE_UP_LEVEL_POW = 1.4, 							-- the power we applie to the mio size when calculating funds to level up. 	
-	UNLOCKED_TRAITS_PER_SIZE_UP = 1,			-- Number of points for unlocking traits obtained when the MIO increments its size
-	DESIGN_TEAM_CHANGE_XP_COST = 3,				-- Flat cost added to the XP cost of a new equipment design
-	FUNDS_FOR_RESEARCH_COMPLETION_PER_RESEARCH_COST = 400,     -- Funds added to MIO when the Design Team has completed a research, multiplied by research_cost in technology template
-	FUNDS_FOR_CREATING_EQUIPMENT_VARIANT = 0,		-- Funds added to MIO when a new variant is created with the Design Team assigned to it
-	FUNDS_FROM_MANUFACTURER_PER_IC_PER_DAY = 0.02,		-- Funds added to MIO when a manufacturer is attached to a production line. Added every day proportional to IC produced.
-	MAX_FUNDS_FROM_MANUFACTURER_PER_DAY = 0,		-- Max funds generated per manufacturer per day. Set to 0 for no Maximum.
-	DESIGN_TEAM_RESEARCH_BONUS = 0.05,				-- Research bonus for applying a Design Team that matches the technology
-	ENABLE_TASK_CAPACITY = false,					-- Enable limited task capacity for MIOs
-	DEFAULT_INITIAL_TASK_CAPACITY = 0,				-- Default start task capacity for each MIO (may be overriden in DB)
-	DEFAULT_INITIAL_POLICY_ATTACH_COST = 20,		-- Default start attach cost in PP for policies
-	DEFAULT_INITIAL_ATTACH_POLICY_COOLDOWN = 180,	-- Default start cooldown in days after attaching a policy
-	LEGACY_COST_FACTOR_SCALE = 1.0,					-- Multiplier to use when legacy Designer cost factors is applied to MIOs (<IdeaGroup>_cost_factor)
-},
-NProject = {
-	FACILITY_SUPPLY_WARNING_RED_RATIO = 0.66,		-- When lacking supply for a facility it will be a yellow icon shown until the supply is less than this value, where it will turn red.
-	DEFAULT_COMPLEXITY = 120,						-- Default special project prototype phase to only require one iteration.
-	DEFAULT_EMPTY_REWARD_WEIGHT = 1.0,				-- The weight for no reward being given after a prototype iteration.
-	DEFAULT_STOP_PROJECT_DAYS = 3,					-- The amount of days it takes for a cancelled project to be stopped.
-	DAYS_TO_REMOVE_SCIENTIST = 3,					-- Amount of days needed for a scientist to be unassigned.
-	DISMANTLE_FACILITY_DAYS = 60,                   -- Amount of days needed to dismantle a facility.
-	PROTOTYPE_PHASE_MAX_PROGRESS = 100,				-- the number of progress points needed to finish the prototype phase and complete the project
-	MINIMUM_PROJECT_SPEED_FACTOR_FROM_SUPPLY = 1.0,	-- Minimum special project research speed based on supply
-	NEEDED_SUPPLY_FOR_FULL_SPEED_PROJECT = 0.0,		-- Supply needed in province to get full research speed for special project
-    MINIMUM_PROJECT_SPEED_FACTOR_FROM_RESOURCE_SHORTAGE = 0.2, -- Minimum special project research speed factor based on resource shortage^M
-	ITERATION_REWARD_DEFAULT_WEIGHT = 1.0,			-- If no weight is specified, set it to 1.0
-	DEFAULT_PROJECT_COMPLETION_SCIENTIST_EXPERIENCE_GAIN = 300.0,	-- Default experience gain for assigned scientist when a project is completed
-	SCIENTIST_INJURED_FACTOR = 0.1,                 -- A factor to reduce the amount of progress gained in a program with attached injured scientist. E.g. 0.5 reduces the progress by 50%
-	RECRUIT_SCIENTIST_ONE_TRAIT_CHANCE = 0.35,		-- Chance to get one trait when creating a scientist. E.g. 0.35 = 35% chance to get a trait
-	SCIENTIST_BASIC_RESEARCH_DAILY_XP_GAIN = 0.25,	-- Daily experience gain for doing basic research
-	RECRUIT_SCIENTIST_COST = {						-- Amount of pp to hire a scientist based on available scientist
-		5,			-- pp cost if no available scientist
-		5,			-- pp cost if 1 available scientist
-		5,			-- pp cost if 2 available scientist
-		5			-- pp cost if more than 2 available scientist
-	},
-	SCIENTIST_SKILL_LEVEL_THRESHOLDS = {			-- Threshold for scientist to level up
-		175,		-- to go from level 0 to level 1
-		291,			-- to go from level 1 to level 2
-		408,		-- to go from level 2 to level 3
-		525,		-- to go from level 3 to level 4
-		641,		-- to go from level 4 to level 5
-		758,		-- to go from level 5 to level 6
-		875,		-- to go from level 6 to level 7
-		991,		-- to go from level 7 to level 8
-		1108,		-- to go from level 8 to level 9
-		1225,		-- Max level = Array size
-	},
-	SCIENTIST_SKILL_LEVEL_SPEED_MODIFIER = {		-- Bonus to apply to daily phase progress according to the skill level of the scientist
-	    -0.20,    -- -1.0 means -100%         also name loc key is SCIENTIST_SKILL_LEVEL_NAME_0
-		-0.15,  -- -0.05 means -5%			also name loc key is SCIENTIST_SKILL_LEVEL_NAME_1
-		-0.10,	-- 0 means no change		also name loc key is SCIENTIST_SKILL_LEVEL_NAME_2
-		-0.05,   -- 0.15 means +15%			...
-		0.00,
-		0.05,
-		0.10,
-		0.15,
-		0.20,
-		0.25,
-		0.30,	-- Size MUST be SCIENTIST_SKILL_LEVEL_THRESHOLDS's size + 1
-	},
-	PROJECT_LOSS_FACTOR_ON_CAPTURE = 0.2,              -- Factor of lost progress on project when facility is captured
-	PROJECT_CAPTURE_GAIN_RATIO = 0.2,                  -- Ratio of difference from captured facilities ongoing project to receive to the captors' progress
-	PROJECT_CAPTURE_BREAKTHROUGH_PROGRESS = 0.1,        -- Ratio of breakthrough progress on capture to the captor for the facilities specialization
-	PROJECT_CAPTURE_DIMINISHING_RETURN = 0.6,          -- Reduced amount of gain when capturing a facility with a project you already gained. Will apply the factor each time a capture occurs. 0.6 means a reduction of 60% on next project capture.
-	BASIC_RESEARCH_TECHNOLOGY_BONUS_FACTOR = 0.02,     -- Bonus research factor applied to technologies per scientist skill level when performing basic research in a matching facility.
-	BASIC_RESEARCH_TECHNOLOGY_BONUS_DIMINISHING_RETURN_FACTOR = 0.12, -- Diminishing return on BASIC_RESEARCH_TECHNOLOGY_BONUS_FACTOR for each extra scientist performing basic research for multiple facilities.
-	BREAKTHROUGH_DAILY_TECHNOLOGY_GAIN = 12,           -- Amount in 1/100th percentage. E.g. 25 = 0.25%
-	BREAKTHROUGH_DAILY_SCIENTIST_SKILL_GAIN = 6,       -- Amount in 1/100th percentage gained per skill when doing basic research. E.g. 5 = 0.05% per skill level.
-	BREAKTHROUGH_DAILY_ROCKET_SITE_GAIN = 1,		   -- Amount in 1/100th percentage gained per rocket site level. E.g. 1 = 0.01% per rocket site level.
-	BREAKTHROUGH_DAILY_NUCLEAR_REACTOR_GAIN = 1,       -- Amount in 1/100th percentage gained per nuclear reactor. E.g. 2 = 0.02% per nuclear reactor.
-	BREAKTHROUGH_GAIN_ANIMATION_SPEED_MAX = 1.0,	   -- The animation for gaining breakthrough progress is a ratio of this value and current daily gain.
-	AMOUNT_OF_SUPPORTIVE_SCIENTISTS = 3,			   -- The amount of supportive scientists a facility can have
-	SUPPORTIVE_SCIENTISTS_FRACTION = 0.25,			   -- how effective supportive scientists are compared to how strong they would be on default
-	SUPPORTIVE_SCIENITST_PROGRESS_BONUS = 0.1,		   -- How much of the progress will be given to the additional scientist countries project. percentage of how much the current project got from its iteration
-	SUPPORTIVE_SCIENTISTS_SHARING_BONUS = 0.05,		   -- Research sharing % per supportive scientist. Global per faction.
-},
-NRaids = {
-	BASE_DAYS_TO_PREPARE = 3,						   -- Base number of days required to complete raid preparation phase
-	MAX_STATE_TARGETS_TO_EVALUATE_PER_HOUR = 1,	   -- PERFORMANCE (HOURLY TICK) : higher number = faster state target re-evaulation + lower performance
-	RAID_TARGET_ITEM_POOL_SIZE = 1,				   -- PERFORMANCE (UI) : number of entries to reserve in the raid target item pool
-	RAID_TYPE_ICON_ITEM_POOL_SIZE = 1,			   -- PERFORMANCE (UI) : number of entries to reserve in the raid type icon item pool
-    RAID_LOW_RISK_SETTING_DISASTER_MODIFIER = 0.01,       -- How much the disaster risk is modified when the dial is set to "low"
-    RAID_MEDIUM_RISK_SETTING_DISASTER_MODIFIER = 0.1,  -- How much the disaster risk is modified when the dial is set to "medium"
-    RAID_HIGH_RISK_SETTING_DISASTER_MODIFIER = 0.25,   -- How much the disaster risk is modified when the dial is set to "high"
-    RAID_SUCCESS_MODIFIER_THRESHOLD_BAD = -10.0,       -- If a success chance modifier is below this value, it will be displayed in red
-    RAID_SUCCESS_MODIFIER_THRESHOLD_NEUTRAL = 0.0,     -- If a success chance modifier is below this value, it will be displayed in yellow
-	MAX_DETECTED_TARGETS_PER_HOUR = 1,                 -- PERFORMANCE (HOURLY TICK) : max number of targets to be detected per hour, NOTE : keep this low because detection is checked against every country!
-	RAID_DEFAULT_TARGET_COOLDOWN_DAYS = 30,           -- The default cooldown (in days) for raiding the same target, can be overriden for specific raid types through script
-	RAID_UNIT_SPEED_MULTIPLIER = 0.1,                  -- Global speed control
-	BASE_NAVAL_COMMANDO_RAID_DISTANCE = 1500,         -- Max distance in kilometers
-
-    RAID_LOW_RISK_SETTING_SUCCESS_MODIFIER = 0.01,       -- How much the success chance is modified when the dial is set to "low"
-    RAID_MEDIUM_RISK_SETTING_SUCCESS_MODIFIER = 0.1,    -- How much the success chance is modified when the dial is set to "low"
-    RAID_HIGH_RISK_SETTING_SUCCESS_MODIFIER = 0.25,     -- How much the success chance is modified when the dial is set to "low"
-
-	TARGET_DETECTION_INTEL_TRESHOLD = 20.0,             -- How much intel is needed for a target to be detected?
-
-	TARGET_INTEL_PER_CIVILIAN_INTEL_OVER_COUNTRY = 0.5,		-- Intel level over target country is scaled by this value
-	TARGET_INTEL_PER_ARMY_INTEL_OVER_COUNTRY = 0.5,			-- Intel level over target country is scaled by this value
-	TARGET_INTEL_PER_NAVY_INTEL_OVER_COUNTRY = 0.5,			-- Intel level over target country is scaled by this value
-	TARGET_INTEL_PER_AIRFORCE_INTEL_OVER_COUNTRY = 0.5,		-- Intel level over target country is scaled by this value
-
-	TARGET_INTEL_PER_NETWORK_STRENGTH = 0.5,				-- Intel network strength in target state is scaled by this value
-	TARGET_INTEL_FROM_CONTROLLED_NEIGHBOUR_STATES = 15.0,	-- Flat bonus for having control over at least one neighbour state
-	TARGET_INTEL_PER_AIR_SUPERIORITY = 0.5,					-- Air superiority over target region is scaled by this value
-	TARGET_INTEL_FROM_DECRYPTION = 25.0,					-- Flat bonus for having fully decrypted their ciphers
-	TARGET_INTEL_PENALTY_PER_ENEMY_COUNTER_INTEL = 5.0,		-- Enemy counter intel is scaled by this value
-
-	RAID_OUTCOME_REPORT_DAYS_TO_LIVE = 10,                  -- How many days after a raid has ended will the raid outcome report be visible on the map before being automatically dismissed
-
-	NUCLEAR_BOMB_PRODUCTION_SCALE = 2555.0,					-- +1 nuclear_production gives 1 nuke per 7 years
-	THERMONUCLEAR_BOMB_PRODUCTION_SCALE = 2555.0,			-- +1 nuclear_production gives 1 nuke per 7 years
-
-	NUCLEAR_BOMB_MIN_DAMAGE_PERCENT = 0.1,					-- Minimum damage from nukes as a percentage of current strength/organisation
-	NUCLEAR_BOMB_MAX_DAMAGE_PERCENT = 0.99,					-- Minimum damage from nukes as a percentage of current strength/organisation
-	THERMONUCLEAR_BOMB_MIN_DAMAGE_PERCENT = 0.6,			-- Minimum damage from nukes as a percentage of current strength/organisation
-	THERMONUCLEAR_BOMB_MAX_DAMAGE_PERCENT = 0.99,			-- Minimum damage from nukes as a percentage of current strength/organisation
-	NUCLEAR_RAID_CATEGORY_NAME = "nuclear_raids",           -- The raid category to activate when clicking on the "nuclear" mission button for a rocket
-
-	ARMY_TRANSFER_MOVE_SAFELY = true,						-- Whether to move safely when transferring divisions to the raid source
-	ARMY_TRANSFER_AVOID_ENEMY = true,						-- Whether to avoid enemy when transferring divisions to the raid source
-
-	MAX_TARGETS_TO_UPDATE_PER_FRAME = 1,					-- PERFORMANCE (FRAME) : max raid targets to evaluate per frame (affects raid map icon refresh rate)
-},
-NFactions = {
-	FACTION_INITIATIVE_CHANGE_RULE_COST = 1,				-- Cost of changing a faction rule (FI points)
-	FACTION_DOCTRINE_SHARING_UNLOCK_COST = 1,               -- Cost of unlocking doctrine sharing for one folder
-	DOCTRINE_SHARING_BASE_MASTERY_GAIN_MONTHLY = 0,        -- When doctrine sharing is enabled, this is the base amount of mastery gained monthly
-	DOCTRINE_SHARING_MONTHLY_MASTERY_GAIN_PER_COMMANDER = 0, -- When doctrine sharing is enabled, each theater commander increases the montly mastery gain by this much
-
-	AI_FACTION_POWER_PROJECTION_TRESHOLD = 1000,			-- AI score is negative if faction's Power Projection value is below the treshold
-	AI_FACTION_POWER_PROJECTION_VALUE = 0.01,				-- AI score per Power Projection point
-	AI_MIN_POWER_PROJECTION_SCORE = -100,					-- Min AI score for Power Projection
-	AI_MAX_POWER_PROJECTION_SCORE = 100,					-- Max AI score for Power Projection
-	FACTION_INFLUENCE_LEND_LEASE_FACTOR=0.01,				-- how much the country's contribution in the faction affects its influence
-	FACTION_INFLUENCE_WAR_SCORE_FACTOR=0.1,					-- how much the country's war score affects its influence
-	FACTION_INFLUENCE_EFFECTS_FACTOR=1,						-- how much the effects affects its influence
-	FACTION_INFLUENCE_INDUSTRIAL_CAPACITY_FACTOR = 5, 			--how much the country's industry affects its influence
-	FACTION_INFLUENCE_GARRISON_SUPPORT_PROVIDER_FACTOR = 0.001,  	--how much the country's provided garrison support affects its influence
-	FACTION_INFLUENCE_GARRISON_SUPPORT_RECIEVER_FACTOR = -0.001, 	--how much the country's received garrison support affects its influence
-	FACTION_INFLUENCE_EXPEDITIONARY_FORCE_PROVIDER_FACTOR = 0.01 , 	--how much the country's provided expeditionary forces affects its influence
-	FACTION_CONTRIBUTION_SETTING_INCREASE = 0.01,				--How big the steps are for increasing/decreasing contribution settings
-	FACTION_CONTRIBUTION_DEBT_LIMIT = 250,							--How much you are allowed to be in debt from spending contribution
-	FACTION_INFLUENCE_EXPEDITIONARY_FORCE_RECIEVER_FACTOR = -0.02 , --how much the country's provided expeditionary forces affects its influence
-	FACTION_MANPOWER_GIVE_CONTRIBUTION_SCALAR=0.1,			-- a scalar of how much contribution you get for giving a singular recruitable population to your faction
-	FACTION_MANPOWER_RECIEVE_CONTRIBUTION_SCALAR=0.1,		-- a scalar for how much contribution it takes to get a singular recruitable population
-	FACTION_INFLUENCE_SCIENTIST_CONTRIBUTION_VALUE = 0.5,				-- how much contribution one scientists gives to you if it is working for somebody else.
-	FACTION_SCIENTIST_CONTRIBUTION_VALUE = 0,				--how much contribution one scientists gives to you if it is working for somebody else.
-	ASSIGN_FACILITY_TO_FACTION_INITIATIVE_COST = 1,		--The initiative cost of assigning a facility to a faction
-	FACTION_ASSIGN_SCIENTIST_COST = 25,						--how much political power it costs to assign a supportive scientist
-	FACTION_UNLOCK_COMMANDER_COST = 1,						--how much initiative it costs to create a new faction theater
-	FACTION_REPLACE_COMMANDER_COST = 1,						--how much FI it costs to replace someone else's theater commander
-	FACTION_SUPREME_COMMANDER_EFFECTIVENESS = 0.2,			--percentage value for how effective supreme commanders are compared to their regular position as FM/admiral.
-	FACTION_THEATER_COMMANDER_COUNTRY_LIMIT_BASE = 3,			--base value for how many countries a theater commander can lead
-	FACTION_THEATER_COMMANDER_COUNTRY_LIMIT_SKILL_FACTOR = 1,	--how much each skill level adds to the country limit
-	FACTION_THEATER_COMMANDER_REGION_LIMIT_BASE = 3,			-- Base value of the commander region limit
-	FACTION_THEATER_COMMANDER_REGION_LIMIT_SKILL_FACTOR = 1,	-- An increase to the region limit per commander skill level
-	FACTION_THEATER_COMMANDER_LAND_SUPPLY_USAGE_MODIFIER_BASE = 0,				-- Base value (percentage, negative = good)
-	FACTION_THEATER_COMMANDER_LAND_SUPPLY_USAGE_MODIFIER_SKILL_FACTOR = -0.01,	-- Value per skill level (percentage, negative = good)
-	FACTION_THEATER_COMMANDER_NAVY_SUPPLY_USAGE_MODIFIER_BASE = 0,				-- Base value (percentage, negative = good)
-	FACTION_THEATER_COMMANDER_NAVY_SUPPLY_USAGE_MODIFIER_SKILL_FACTOR = -0.01,	-- Value per skill level (percentage, negative = good)
-	FACTION_THEATER_COMMANDER_SECONDARY_BONUS = 0.5,							-- A value that scales the supply usage modifiers if a Land commander is giving the supply bonus to Navy and vice versa
-	THEATER_COMMANDER_LAND_EXPERIENCE_SCALE = 0.1,									-- How much experience the theater commander will gain from land combats (FM)
-	THEATER_COMMANDER_NAVY_EXPERIENCE_SCALE = 0.1,									-- How much experience the theater commander will gain from naval combats (Admiral)
-	BECOME_FACTION_LEADER_INFLUENCE_THRESHOLD = 0.4,			--The min influence percentage for a country to be able to take over leadership in the faction
-	MAX_PROJECT_COUNT=3,									--The maximum number of projects a faction can have
-	AI_THEATER_CREATION_PENALTY = 2.5, -- Penalty defines how much each theater reduces the chance linearly. (The higher, the worse the penalty is)
-	BECOME_FACTION_LEADER_INFLUENCE_WEIGHT = 1,		-- Importance of faction influence when determining how close a faction member is to being able to assume leadership.
-	FACTION_INFLUENCE_LEADER_BONUS = 200,			-- How much influence we are giving a faction member for being the leader
-	FACTION_TAKE_OVER_RELUCTANCE_VERSUS_HUMAN_INFLUENCE = 1.5,	-- Multiplier penalty for how much more influence is required an AI country compared to a human To assume leadership of faction.
-
-	AI_PICK_FROM_TOP_AMOUNT = 3,							-- AI Will spend choose from the top X to decide what to spent their initiative on, based on a weighted random
-
-	AI_PING_AREA_PRIORITY = 100,						-- added AI strategy value for pinged regions
-	AI_PING_FRONT_UNIT_REQUEST = 100,					-- added AI strategy value for pinged regions
-	AI_PING_FORCE_CONCENTRATION_FRONT_FACTOR = 100,		-- added AI strategy value for pinged regions
-	AI_PING_FORCE_CONCENTRATION_TARGET_WEIGHT = 100,	-- added AI strategy value for pinged regions
-	AI_PING_INVASION_UNIT_REQUEST = 100,				-- added AI strategy value for pinged regions
-	AI_PING_NAVAL_DOMINANCE = 100,						-- added AI strategy value for pinged regions
-	
-	AI_PING_FORCE_CONCENTRATION_CAREFUL_FACTOR = 0.5,		-- AI strategy factor for FC in careful order execution mode
-	AI_PING_FORCE_CONCENTRATION_AGGRESSIVE_FACTOR = 1.2,	-- AI strategy factor for FC in aggressive order execution mode
-	
-	RANK_FOR_SHINY_FLAG = 1,							-- Top N factions get a shiny flag on the factions screen. All that death was worth it.
-	
-	PEACE_CONFERENCE_MINIMAL_REQUIREMENT = 0.5,			-- How much more faction power projection you need to have compared to the second biggest contesting faction / country to start recieving the PEACE_CONFERENCE_MAX_DISCOUNT e.g. 0.5 means you need to be 50% bigger
-	PEACE_CONFERENCE_MAX_DISCOUNT = 0.25, 				-- How much % disount you get for being the bigger faction. Scales between the PEACE_CONFERENCE_MINIMAL_REQUIREMENT and 100% where at PEACE_CONFERENCE_MINIMAL_REQUIREMENT you get 0% and at 100% you will get PEACE_CONFERENCE_MAX_DISCOUNT
-	MAX_NUM_SHORT_TERM_GOALS = 1,						-- Maximum number of short term goals a faction can have at any one time	
-	MAX_NUM_MEDIUM_TERM_GOALS = 1,						-- Maximum number of medium term goals a faction can have at any one time
-	MAX_NUM_LONG_TERM_GOALS = 1,						-- Maximum number of long term goals a faction can have at any one time
-	REPLACING_UNFINISHED_FACTION_GOAL_COST = 1,			-- The cost of replacing a goal if it is not finished
-	PASSIVE_INITIATIVE_GENERATION = 0.0,				-- How much initiative we are generating per day, scaled by manifest progress and influence%
-	MAX_FACTION_THEATERS = 1,							-- The maximum number of faction theaters that can be created
-	
-	AI_FACTION_THEATER_TEMPLATE_SELECTION_RANDOMNESS = 1,	-- AI will pick a weighted random template from the top of the list
-	AI_FACTION_THEATER_COMMANDER_SELECTION_RANDOMNESS = 1,	-- AI will pick a weighted random template from the top of the list
-
-	FACTION_INTELLIGENCE_ALLOWED_ADVISOR_TRAIT = { 
-		"head_of_intelligence",
-		"mastermind_code_cracker",
-		"expert_code_cracker",
-		"spymaster",
-		"spymaster_no_lar",
-		"commander_of_the_fetno_derash",
-		"commander_of_the_fetno_derash_no_lar",
-		"SWI_soviet_spy",
-		"SWI_intelligence_officer",
-		"special_envoy",
-		"BRA_soviet_spy",
-		"HUN_military_intelligence_officer",
-		"AUS_secretive_priest",
-		"AUS_veteran_head_of_agency",
-		"BEL_illusive_mastermind",
-		"GER_intelligence_coordinator",
-		"GER_secretary_of_state_security",
-		"GER_reich_security_main_office_director_lar",
-		"GER_reich_security_main_office_director_no_lar",
-		"head_of_the_abwehr",
-		"head_of_the_abwehr_improved",
-		"intelligence_service_deputy",
-		"PRC_multi_talented_diplomat_lar",
-		"PRC_multi_talented_diplomat_no_lar",
-		"PRC_trained_by_the_nkvd",
-		"PRC_spymaster",
-		"PHI_intelligence_bureau_chief",
-		"HUN_stalinist_agent",
-		"JAP_tokko_chief",
-		"CHI_spymaster"
-
-	},
-	FACTION_INTELLIGENCE_UNLOCK_COST = 1,
-	FACTION_INTELLIGENCE_SHARING_BONUS = 0.05,      -- How much intelligence sharing one 
-	FACTION_INTELLIGENCE_SHARING_SPY_SLOT_GAIN = 1,  -- How many operative slots an advisor position unlocks, excludes the spymaster
-	FACTION_INTELLIGENCE_HEAD_OF_CRYPTOLOGY_BONUS_COUNTRY = 0.1, -- How much bonus the Head of Operations give to the country that holds that position
-	FACTION_INTELLIGENCE_HEAD_OF_CRYPTOLOGY_BONUS_OTHERS = 0.05, -- How much bonus the Head of Operations give to the countries that dont hold that position
-	FACTION_INTELLIGENCE_HEAD_OF_OPERATIONS_BONUS_COUNTRY = 0.1, -- How much bonus the Head of Operations give to the country that holds that position
-	FACTION_INTELLIGENCE_HEAD_OF_OPERATIONS_BONUS_OTHERS = 0.05, -- How much bonus the Head of Operations give to the countries that dont hold that position
-	FACTION_INTELLIGENCE_HEAD_OF_COUNTER_INTEL_BONUS_COUNTRY = 0.1, -- How much bonus the Head of Operations give to the country that holds that position
-	FACTION_INTELLIGENCE_HEAD_OF_COUNTER_INTEL_BONUS_OTHERS = 0.05, -- How much bonus the Head of Operations give to the countries that dont hold that position
-	FACTION_DEFAULT_ICON = "GFX_faction_logo_generic",				-- Faction icon when creating a generic faction in game that does not have an icon setup
-	FACTION_DEFAULT_TEMPLATE = "faction_template_generic",   -- Default template that gets used if no template template is specified when playing with NCNS
-	AI_DAYS_TO_SELECT_GOAL = 14,
-},
-NDoctrines = {
-        DEFAULT_REWARD_MASTERY = 0.0,                         -- How much mastery is required for unlocking a doctrine reward, if no override is set
-        BASE_MASTERY_GAIN_TARGET_MANPOWER = 100000.0,           -- Beyond this amount of manpower contributing to mastery, mastery gain will start having diminishing returns (see doctrines documentation)
-        TRAINING_MASTERY_GAIN_FACTOR = 0.0,                     -- How much training contributes to doctrine mastery relative to combat/missions
-        MAX_MONTHLY_MASTERY_GAIN = 0.0,                        -- Monthly mastery gain will not exceed this value
-        MIN_MASTERY_GAIN_PER_DAY = 0.0,                         -- If we have any mastery gain, it will be boosted to be at least this much per day (lower cap)
-        MASTERY_BAR_ANIMATION_SPEED_PER_DAILY_MASTERY = 5.0, -- Multiplier of how fast the mastery bar animates based on daily mastery gain
-        MASTERY_BAR_MAX_ANIMATION_SPEED = 50.0,               -- Max speed of the mastery bar animation
-        MASTERY_BANK_CONVERSION_RATE = 0.25,                    -- The rate at which mastery gained when a track is finished or empty is "banked"
-        MASTERY_BANK_MAX = 200.0,                               -- The maximum amount of mastery that can be banked
-        MILITARY_ATTACHE_MASTERY_TRANSFER_FACTOR = 0.0,         -- For each mastery track, military attaches will add this fraction of their visiting country's mastery gain (from units only) in that track
-        THEATER_COMMANDER_UNITS_MASTERY_GAIN_FACTOR_PER_SKILL = 0.0,  -- Unit in a theater commander's theater will contribute this fraction of their mastery gain to the theater commander's country, for each skill point they have in attack + defense
-	NAVAL_MISSION_MASTERY_GAIN_FACTORS = {  -- Mastery gain from naval missions is reduced, just like training
-		0.0, -- HOLD
-		0.0, -- PATROL
-		0.0, -- STRIKE FORCE
-		0.0, -- CONVOY RAIDING
-		0.0, -- CONVOY ESCORT
-		0.0, -- MINES PLANTING
-		0.0, -- MINES SWEEPING
-		0.0, -- TRAIN # NOT USED - handled by TRAINING_MASTERY_GAIN_FACTOR
-		0.0, -- RESERVE_FLEET
-		0.0, -- NAVAL_INVASION_SUPPORT
-	},
-},
-}
+YЄзЉx-®йЬjЧќўлiєЪ+Љ§j[h‘йЬўйнЧ~uзґиµ©hєЪn¶X§zНS‘Yљ[™\ИHВ‚“‘Ш[YHHВ‚TХT•СUHHЊNLН‹ЊKЊKЊL€‹‚QS‘СUHHЊNNNKЊKЊKЊH‹‚SPTФРРSWФVSХЧТУHHLЌBBBBKKHY\ЛHQH•QHPU‚TРU‘WХ‘T”ТSУ€HМBBBBBBBKKHKЊM‹Њ
+ЫЭ[ќ[[ЩJB‚SRS“Ф—ФРU‘WХ‘T”ТSУ€HKKHZ[›Ь€Ш]™H™\њЪ[Ы€\И\ЩYИY[ќYљ^HY™™\™[ќXЪЭШ\™ЫЫ\]X›HШ]™YШ[YH™\њЪ[ЫњВ‚PТPТФХSWФРSHћќУЩЌY]ЫN]QУХ‹BBBKKH]HИ[ЩYћHЩ[™\]YЪXЪЬЭ[HЪ[€Ш[YHљ[\љY\И]™HЪ[™ЩYќ]›Э[ћHЫЫќ[ќљ[\Л‚‚SQЧСVTЧС“Ф—УХСT—ФФQQHЊBBBBKKH^\ИЩ€ЫY[ќYИ›Ь€XЬ™X\ЩHЩ€Ш[Y\ЬYY‚SQЧСVTЧС“Ф—ФUTСHHLBBBBBKKH^\ИЩ€ЫY[ќYИ›Ь€]\ЩHЩ€Ш[Y\ЬYY‚‚QРSQWФФQQФСPУУ‘ИHИKЊЌНKЋLЌKЊНKЊЛЊKKHШ[YHЬYYИ›Ь€XXЪ]™[€]\Э™HH[ќљY\ИЪ]\ЭЫ™H›Ь€[›Э[™‚SPR“Ф—ФT•PТTS•ЧС“Ф—УPR“Ф—ХРT€HЛBBKKHZ[љ[][Hќ[X™\€Щ€XZ›Ь€ЫЭ[ќљY\И[ќ›Ы™Y[€HШ\€ИЫЫњЪY\€]XZ›Ь€[›ЭYЪИ›Э[™HШ[YH]™[€ЭYЪH[™]H\И™Y[€™XXЪY‚‚UђQWФ“ХUWФ‘PРSХSUWС”‘TUQSђЦWСVTИHМKHX^™XШ[Э[][Ы€[YH›Ь€[YH›Э]\И
+YX[њИЩHИ›Э™XШ[XШ]H™Y[ЩXШ[HYH›Э]\КB‚PУУPђUУСЧУPVУSУ•ИHL‹‚SQTФРQСWХSQSХUСVTИHMBBBBBKKH\ЩYќ[Y€ќ[›љ[™ИH[™ЫЩ™€Ш[YK€HЬ\Y\ЬШYЩ\И]Щ\Ы‰Э™\]Z\™HH^Y\€™\ЬЫ™Ъ[]]ЫX]XШ[HYHYќ\€ЫЫYH[Y[Э]‚‚RS‘“ЧУQTФРQСWХSQSХUСVTИHЛBBBBKKHШ[YHќ]›Ь€[љ[\Ьќ[ќY\ЬШYЩ\Л‚‚PRT—УСЧХSQSХUТХT”ИHЌBBBBBKKH]HЭЬњљ[™И]B‚QU‘S•ХSQSХUСQђUSHLЛBBBBBKKHY][^\И™Y›Ь™H[€]™[ќ[Y\ИЭ]Y€›ЭШЬљ\Y‚SRTФТSУ—Ф‘SSХ‘WС”“УWТS•T‘ђPСWСQђUSHLЛBKKHY][^\И™Y›Ь™HHZ\ЬЪ[Ы€\И™[[Э™Yњ›ЫHH[ќ\™XЩHYќ\€]љ[™ИZ[YЬ€ЫЫ\]Y‚QPТTТSУ—РST•ХSQSХUСVTИHМBBBKKH^\ИYќЪ[€^Y\€Ъ[™H[\ќYX›Э][Z[™ИЭ]]™[ќИЬ€XЪ\Ъ[ЫњВ‚SТSФ‘TУХTђСOH›Ъ[‹BBBBBBKKH[YHЩ€HЪ[™\ЫЭ\ЩB‚Q•QSФ‘TУХTђСHH›Ъ[‹BBBBBBKKH™\ЫЭ\ЩH]Ъ[Ъ]™HЫЭ[ќћHќY[‚QS‘T‘ЦWФ‘TУХTђСHHЫШ[‹BBBBBKKH™\ЫЭ\ЩH]Ъ[Ъ]™HЫЭ[ќћH[™\™ЮH‚SPVСQ‘‘PХТUTђUSУ€HLBBBBKKHX^[][H[ЭЩY]\][Ы€›Ь€ЫЬY™™XЭВ‚SPVФРФ’TQУРЧФ‘PХT”ТSУ€HМBBBKKHX^™XЭ\њЪ[Ы€›Ь€ШЬљ\YШШ[^][ЫњВ‚RS‘ЧУС‘—ФХT•ХQИHђ”ђH‹BBBBKKHYИ›Ь€^Y\€ЫЭ[ќћH›Ь€Z[™ЧЫЩ™€ќ[њЛ€\ЩH[€^\Э[™ИYИ]\И\ЬИZЩ[HИY™™XЭHШ[YB‚PST•ФС–РУУУХУ—СVTИHЛBBBBKKHYќ\€^Z[™И[€[\ќЫЭ[™Ы‰Э^HHШ[YHЫЭ[™›Ь€^\Л]™[€Y€]љ\™\ИYШZ[‹‚‚SUTТPЧФVQT—Ф‘PСS•WФVQQФТV‘HHLBBKKHH]\ЪXИ^Y\€ЩY\ИXЪИЩ€™XЩ[ќH^YY]\ЪXИИћH[™]›ЪY^Z[™ИHШ[YHЫЫ™ЬИЫИЩќ[‹€\И]\›Z[™\ИHX^ќ[X™\€Щ€ЫЫ™ЬИ[€H™XЩ[ќH^YY\Э‚џK‚“‘Щ[ЩЬ\HHВ‚SQQUT”ђS‘PS—ФСPWФ‘QТSУ”ИHИЋKЋЋKMЋMЋKЊ€KKHHЩXH™YЪ[ЫњИ]\™HЫЫњЪY\™Y\И\ќЩ€HYY]\њ[™X[€ЩXBџK‚“‘\ЫXXЮHHВ‚QTУPPЦWФ‘TUQTХСVT–WСVTИHМ‚PђTСWФХT”‘S‘T—УU‘SHKЊBBBBBKKHЭ\њ™[™\€Ъ[€]™[™XXЪY€[YLB‚SPVХ•TХХђSQHHLBBBBBBKKHX^ќ\Э[YHШ\‚‚SRS—Х•TХХђSQHHLLBBBBBBKKHZ[€ќ\Э[YHШ\‚‚SPVУФS’SУ—ХђSQHHLBBBBBKKHX^Ь[љ[Ы€[YHШ\‚‚SRS—УФS’SУ—ХђSQHHLLBBBBBKKHZ[€Ь[љ[Ы€[YHШ\‚‚PђTСWХ•PСWФT’SСHNBBBBBKKH\ЩHќXЩH\љ[Щ[€^\Л‚‚U•PСWФT’SСРQ•T—ТТPТТS‘ЧС”“УWСђPХSУ€HМBBBKKHќXЩH\љ[ЩYќ\€ЪXЪЪ[™ИЫЫY[Ы™Hњ›ЫHXЭ[Ы€[€^\Л‚‚S•SWСVTЧХЧСSђP“WТТPТТS‘ЧУ‘UЧУQSP‘T”ЧУС—СђPХSУ€HLBBKKHќ[X™\€Щ€^\И™Y›Ь™H™Z[™ИX›HИЪXЪИH™]ИY[X™\€Щ€XЭ[Ы‚‚S•SWСVTЧХЧСSђP“WФ‘RS•’UWТТPТСQУђUSУ”ИHLBBKKHќ[X™\€Щ€^\И™Y›Ь™H™Z[™ИX›HИ™H[ќљ]HHЪXЪЩY][Ы€И[Э\€XЭ[Ы‚‚PђTСWУ‘QРUU‘WУФS’SУ—РQ•T—Р‘RS‘ЧТТPТСQHЊBBBKKH™YШ]]™HЬ[љ[Ы€]Ъ[™H™XЩZ]™YYќ\€ЪXЪЪ[™ИH][Ы‚‚QPРVWФђUWУС—У‘QРUU‘WУФS’SУ—РQ•T—Р‘RS‘ЧТТPТСQHKBBKKHЩYZЫHXШ^H]HЩ€H™YШ]]™HЬ[љ[Ы‚‚U•PСWР”‘PRЧРУФХФHЊBBBBBKKH\ЩHЫЬЭ[€Щ€њ™XZЪ[™ИHќXЩHћH›Ъ[љ[™ИHШ\€Ь€XШЩ\[™ИHШ[ИШ\€
+[ЭHШ[››ЭXЫ\™HШ\€[Э\њЩ[€[ќ[HќXЩHY€\
+K\И\И[€][\YYћHH[YHYќЫ€HќXЩH
+ЫИЫЩH[€HќXЩH\И\]Ы›HЫЬЭL	HЩ€\И
+B‚PђTСWФPPСWФTUСђPХФ€HLBBBBKKH\ЩHXЭЬ€›Ь€\][€	K‚‚PђTСWФPPСWУP‘TђUWСђPХФ€HLBBBKKH\ЩHXЭЬ€›Ь€X™\]H[€	K‚‚PђTСWФPPСWХRСWХSђУУ•“УQФХUWСђPХФ€HLЊKH\ЩHXЭЬ€›Ь€ZЪ[™ИЭ]H[ЭHИ›ЭЫЫќ›Ы‚PђTСWФPPСWХRСWСђPХSУ—РУУ•“УQФХUWСђPХФ€HЌKKH\ЩHXЭЬ€›Ь€ZЪ[™ИЭ]H[ЭHИ›ЭЫЫќ›Ыќ]ЫЫY[Ы™H[€XЭ[Ы€Щ\В‚PђTСWФPPСWС“ФђСWСУХ‘T““QS•РУФХHLBKKH\ЩHЫЬЭ›Ь€›ЬЪ[™ИHЫЭ[ќћHИЪ[™ЩHЫЭ™\››Y[ќ‚‚KKH[€XXЩHЫЫ™™\™[ЩKЫЬЭ\ИXЭЬ™Y\ЩYЫ€ЭИX[ћH[Y\ИHЭ]H\И™Y[€ЫЫќ\ЭY[™›Ь€ЭИЫ™И]\И™Y[€[ЫЫќ\ЭY
+›Ь€]™\ћ[Ы™H[ЩJB‚TPPСWРУФХСђPХФ—РУУ•TХQУPVHMKKHИ™]™[ќЭ™\™›ЭЬИYHИH^Ы™[ќX[[Ь™X\ЩKШ\HЫЫќ\ЭYXЭЬ€И\В‚TPPСWРУФХСђPХФ—ХSђУУ•TХQУPVHMKKHИ™]™[ќЭ™\™›ЭЬИYHИH^Ы™[ќX[[Ь™X\ЩKШ\H[ЫЫќ\ЭYXЭЬ€И\В‚TPPСWРУФХСђPХФ—РУУ•TХQР’QHKЊЊKHЫЬЭXЭЬ€›Ь€XXЪЫЫќ\ЭYљYЫ€HЭ]K‚‚TPPСWРУФХСђPХФ—ХSђУУ•TХQР’QУRS€HKЊMKKHZ[љ[][HЫЬЭXЭЬ€›Ь€XXЪ\›€HљY\И™Y[€[ЫЫќ\ЭYЫ€HЭ]K‚‚TPPСWРУФХСђPХФ—ХSђУУ•TХQР’QУPVHKЌЊKHX^[][HЫЬЭXЭЬ€›Ь€XXЪ\›€HљY\И™Y[€[ЫЫќ\ЭYЫ€HЭ]K‚‚TPPСWРУФХСђPХФ—ХSђУУ•TХQР’QФХTHЊMKKH[ЫЫќ\ЭYЫЬЭXЭЬ€Ъ[[Ь™X\ЩHћH\И]XЪXXЪ\›‹‚‚TPPСWРУФХСђPХФ—РРTUSФТTТPИHЊKBBBKKH[€XXЩHЫЫ™™\™[ЩKЫЬЭ›Ь€ZЪ[™ИЫ™HШ\][Ъ\\€PВ‚TPPСWРУФХСђPХФ—ФРФ‘QS’S‘ЧФТTТPИHЊKBBKKH[€XXЩHЫЫ™™\™[ЩKЫЬЭ›Ь€ZЪ[™ИH\ќЩ€HШЬ™Y[љ[™ИЪ\И\€PВ‚TPPСWТSђФ‘PTСWРУФХСђPХФ—ФT—УRTФТS‘ЧФTђСS•С“Ф—РРTUSUSУ€HЊL‹KKH[Ь™X\ЩHXЭЬ€Y€ЬЩ\€\И›ЭШ\][]Y›Ь€]™\ћH\Щ[ќ™]ЩY[€Э\њ™[™\€]™[[™ђTСWФХT”‘S‘T—УU‘S‚KKHXXЩHXЭ[Ы€ZЩ\€\ИH\ШЫЭ[ќY€^HШШЭ\HHЭ]H\[™[™ИЫ€ЫЫ\X[ЩB‚KKH]	ЬИHX›HЪ\™Hљ\њЭ[YH\ИHЫЫ\X[ЩH]™[[™HЩXЫЫ™HXЭЬ‚‚TPPСWРУФХСђPХФ—РУУTPSђСWФХTИHВ‚BLKЊKH™]ЩY[€	H[™М	HЫЫ\X[ЩKXЭЬ€\ИKЊ‚BLМЋKKH™]ЩY[€М	H[™М	B‚BMМЋKHX›Э™HМ	B‚_K‚KKH[€XXЩHЫЫ™™\™[ЩKY[™ИHЭXЪШX›HИHXXЩHXЭ[Ы‹[Ь™[Y[ќHЫЬЭћHH\Щ[ќYЩB‚TPPСWРУФХСђPХФ—ФХPТЧСSRSUT’V‘QЦ“У‘HHЊЌK‚TPPСWРУФХСђPХФ—ФХPТЧХРT—Ф‘TTђUSУ€HЊЌK‚TPPСWРУФХСђPХФ—ФХPТЧФ‘TУХTђСWФ’QТИHЊЌK‚TPPСWРУФХСђPХФ—ФХPТЧСTУPS•WТS‘TХ–HHЊЌK‚KKHXXЩHЫЫ™™\™[ЩHШ[€Щ][YYY™™XЭЩ][™Э[€^\В‚TPPСWХSQQСQ‘‘PХУS‘ХСSRSUT’V‘QЦ“У‘HHNЌKKHHYX\њВ‚TPPСWХSQQСQ‘‘PХУS‘ХХРT—Ф‘TTђUSУ€HNЌK‚TPPСWХSQQСQ‘‘PХУS‘ХФ‘TУХTђСWФ’QТИHNЌK‚TPPСWХSQQСQ‘‘PХФђUSЧРТU’SPS—СђPХФ–WХРT—Ф‘TTђUSУ€HЌKKKH][ИЩ€Ъ]љ[X[€XЭЬљY\ИZЩ[€љXHЭXЪШX›HШ\€™\\][Ы‚‚‚KKHH[™›Y[ЩHЫЬЭ[ЩYљY\€\И\ЪXШ[HH[ќ™\њЩHЩ€\Э[ЩK€™X\ћHЭ]\И\™HЪX\\‹[™\‹X]Ш^HЭ]\И\™H[Ь™H^[њЪ]™K‚‚KKHЩH\ЪXШ[HИHЫЛ\ЩYЫY[ќ\њ‚‚KKHY€\Э[ЩH\И™]ЩY[€М‘UUђSСTХKЩH\њHЫЬЭ[ЩYљY\€™]ЩY[€УRS—СTХРУФХУSСQ’QT‹KЊB‚KKHY€\Э[ЩH\И™]ЩY[€У‘UUђSСTХPVСTХKЩH\њHЫЬЭ[ЩYљY\€™]ЩY[€МKЊPVСTХРУФХУSСQ’QT—B‚KKHH™[ЭИ[Y\И™\™\Щ[ќ
+^[\Э[ЩHИS‘“QSђСWСTХSђСWСU’TУФЉB‚RS‘“QSђСWУ‘UUђSСTХРРTUSHМЊKH\Э[ЩHИШ\][]™\Э[И[€HЫЬЭ[ЩYљY\€Щ€KЊ‚RS‘“QSђСWУPVСTХРРTUSHKЊKH\Э[ЩHИШ\][]™\Э[И[€HЫЬЭ[ЩYљY\€Щ€S‘“QSђСWУPVСTХРУФХУSСQ’QT‚‚RS‘“QSђСWУ‘UUђSСTХРУФ‘HH‹ЊKH\Э[ЩHИ™X\™\ЭЫЬ™HЭ]H]™\Э[И[€HЫЬЭ[ЩYљY\€Щ€KЊ‚RS‘“QSђСWУPVСTХРУФ‘HHLЛЊKH\Э[ЩHИ™X\™\ЭЫЬ™HЭ]H]™\Э[И[€HЫЬЭ[ЩYљY\€Щ€S‘“QSђСWУPVСTХРУФХУSСQ’QT‚‚RS‘“QSђСWУ‘UUђSСTХРУУ•“УQHMЊKH\Э[ЩHИ™X\™\ЭЫЫќ›ЫYЭ]H]™\Э[И[€HЫЬЭ[ЩYљY\€Щ€KЊ‚RS‘“QSђСWУPVСTХРУУ•“УQHЊЊKH\Э[ЩHИ™X\™\ЭЫЫќ›ЫYЭ]H]™\Э[И[€HЫЬЭ[ЩYљY\€Щ€S‘“QSђСWУPVСTХРУФХУSСQ’QT‚‚RS‘“QSђСWУRS—СTХРУФХУSСQ’QT€HЌМKHЫЬЭ[ЩYљY\€]Z[€
+™\›КH\Э[ЩB‚RS‘“QSђСWУPVСTХРУФХУSСQ’QT€HKЊKHЫЬЭ[ЩYљY\€]X^\Э[ЩB‚RS‘“QSђСWФђUSЧРРTUSHЊKKH][ИЩ€[™›Y[ЩH\ЩYЫ€\Э[ЩHИШ\][‚RS‘“QSђСWФђUSЧРУФ‘HHЌKKH][ИЩ€[™›Y[ЩH\ЩYЫ€\Э[ЩHИ™X\™\ЭЫЬ™H\њљ]ЬћB‚RS‘“QSђСWФђUSЧРУУ•“УQHЌKKH][ИЩ€[™›Y[ЩH\ЩYЫ€\Э[ЩHИ™X\™YЫЫќ›ЫY\њљ]ЬћH
+[ЫY[™И[ЫЫќ\ЭYXXЩHЫЫ™™\™[ЩHљYКB‚RS‘“QSђСWСTХSђСWСU’TУФ€HЊ‹ЊKH]љYH^[\Э[ЩHЪ]\ИЪ[€]\›Z[љ[™И\Э[ЩHИШ\][ИЫЬ™HИЫЫќ›ЫYЭ]\Л€ќ\Э[€\љ]\ћHШ^HЩ€ШШ[[™ИH\Э[ЩHќ[X™\њЛ‚‚‚RS‘“QSђСWФT—РQђPСSђЦHHЊKBBBBKKHЭИ]XЪ[™›Y[ЩHИY\€[ЫЫќ\ЭYYXЩ[ќЭ]H[€HИ
+›Ш‹Ы‰ЭЫZЩJB‚‚RS‘“QSђСWУPR“Ф—СђPХФ€HKЊBBBBKKRЭИ]XЪ[™›Y[ЩH\ШЫЭ[ќ[€RHXZ›Ь€Ъ[Щ]
+[ќ™\њЩJB‚RS‘“QSђСWУRS“Ф—СђPХФ€HKЊBBBBKKRЭИ]XЪ[™›Y[ЩH\ШЫЭ[ќ[€RHZ[›Ь€Ъ[Щ]
+[ќ™\њЩJB‚‚TPPСWХ’QССT—РRWУPVТS‘“QSђСWХђSQHHЋNKKKHX^[™›Y[ЩH[YH›Ь€ЧЪ\ЧЬЭ]WЫЭ]ЪYWЪ[™›Y[ЩWЩ›Ь—ЭЪ[›™\€љYЩЩ\‚‚‚PђTСWТST“Х‘WФ‘SUSУ—РУФХHLKHЫ]XШ[ЭЩ\€ЫЬЭИ[љ]X]H™[][Ы€[\›Э™[Y[ќ‚PђTСWТST“Х‘WФ‘SUSУ—ФРSQWТQSУСЦWСФ“ХTУPRS•RS—РУФХHЊ‹KHЫ]XШ[ЭЩ\€ЫЬЭXXЪ\]HЪ[€›ЫЬЭ[™И™[][ЫњИЪ]][Ы€Щ€Ш[YHY[ЫЩЮB‚PђTСWТST“Х‘WФ‘SUSУ—СQ‘‘T‘S•ТQSУСЦWСФ“ХTУPRS•RS—РУФХHЌKHЫ]XШ[ЭЩ\€ЫЬЭXXЪ\]HЪ[€›ЫЬЭ[™И™[][ЫњИЪ]][Ы€Щ€Y™™\™[ќY[ЫЩЮB‚PђTСWФСS‘РUPТWРУФХHBBBBKKHЫ]XШ[ЭЩ\€ЫЬЭИЩ[™]XЪB‚PђTСWФСS‘РUPТWРФРУФХHBBBKKHЫЫ[X[™ЭЩ\€Щ[ќ]XЪH\ШYЩHЫЬЭ‚PђTСWССS‘TђUWХРT‘УРSСRSWФHЊ‹KKHZ[HЫЬЭ›Ь€Щ[™\][Ы€Щ€Ш\™ЫШ[В‚UРT‘УРSХ‘T”ХTЧУPR“Ф—РUХРT—Ф‘QPХSУ€HLЌНKKKH™YXЭ[Ы€Щ€ЫЬЭ›Ь€Ш\™ЫШ[њИXZ›Ь€]Ш\‹‚‚UРT‘УРSХУФ“ХS”ТSУ—Ф‘QPХSУ€HLЌKBBKKH™YXЭ[Ы€Щ€ЫЬЭ›Ь€Ш\™ЫШ[]L	HЫЬ›[њЪ[Ы‹ШШ[\И[™X\›B‚UРT‘УРSТ•TХQ–WХS”ТSУ—С”“УWФ“СPХSУ€HМЊKKH\ЩH[YHШШ[YћH›ЩXЭ[Ы€Ш\XЪ]HЩ€ЫЭ[ќћHЫЫ\\™YИљYЩЩ\ЭЫЭ[ќћB‚SRS—ХРT‘УРSТ•TХQ–WРУФХH‹ЊBBBBKKH][Ш^\ИZЩ\И]X\ЭL^\ИИќ\ЭYћHHШ\™ЫШ[‚UРT‘УРSФT—Т•TХQ–WРS‘ХРT—РУФХСђPХФ€HKЌKKKHЫЬЭXЭЬ€\€][Ы€]Ш\€Ъ]Ь€ќ\ЭYћZ[™ИYШZ[њЭ‚UРT‘УРSХ‘PUУPVХSQWФђUSИHKЊBBKKH™X]њ›ЫHќ\ЭYћZ[™ИHШ\™ЫШ[ЫЭЫHќZ[И\][™ИL	H]\И›ЬЬќ[Ы€Щ€HШ^HИЫЫ\][Ы‚‚PђTСWР“УФХФT•WФФST’UWСRSWФHЊЌKKKHZ[HЫЬЭ›Ь€›ЫЬЭ\ќHЬ[\љ]B‚PђTСWР“УФХФT•WФФST’UWСRSWС’Q•HЊKKKHZ[H[[Э[ќЩ€Ь[\љ]H]Ъ[™HYYћHHXЭ]љ]K‚‚PђTСWФХQСWРУХTСRSWФHЌKBBBBKKHZ[HЫЬЭ›Ь€ЭYЪ[™ИHЫЭ\‚PђTСWФХQСWРУХTХХSРУФХHЊBBBKKH\]Z\Y[ќЫЫњЭ[YHXЭЬ€›Ь€ЭYЩHЫЭ\‚‚SђTСVT–WУSУ•ИHKHђTИ^\™HYќ\€\ИX[ћH[ЫќВ‚SђTХSђ”‘PRРP“WУSУ•ИHNKHђTИШ[››Э™Hњ›ЪЩ[€›Ь€\ИX[ћH[ЫќВ‚SђTС“ФђСWРђSSђСWФ•SWУSУ•ИH‹BKKHHђT›Ь™\€›ЬЩH[[ЩHќ[HЪ[™Щ\ИЪ]\И[ќ\ќ[‚SђTР”‘PRЧС“ФђСWРђSSђСWМHH‹ЊKKH‹LHњљYШY\И[Ы™ИH›Ь™\€™\]Z\™YИњ™XZИђT‚SђTР”‘PRЧС“ФђСWРђSSђСWМ€HKЊKKHKLHњљYШY\И[Ы™ИH›Ь™\€™\]Z\™YИњ™XZИђT‚SђTР”‘PRЧС“ФђСWРђSSђСWМИHЌKKKHKL€њљYШY\И[Ы™ИH›Ь™\€™\]Z\™YИњ™XZИђT‚U‘T–WСУУСУФS’SУ€HLBBBBBBKKH™\ЪЫ›Ь€HЫЭ[ќћH]\ИH™\ћHЫЫЩЬ[љ[Ы€Щ€[ЭK‚‚U‘T–WРђQУФS’SУ€HMLBBBBBBKKH™\ЪЫ›Ь€HЫЭ[ќћH]\ИH™\ћHYЬ[љ[Ы€Щ€[ЭK‚‚QTУPPЦWТХT”ЧР‘UСQS—Ф‘TUQTХИHЌBBKKHЭИЫ™ИHЫЭ[ќћH]\ЭШZ]™Y›Ь™HЩ[™[™ИH™]И\ЫX]XИ™\]Y\Э‚‚U“УФС‘PT€HBBBBBBBKKH[\XЭЫ€›ЫЬИЫ€›Ь™\њИЪ[€XЪY[™ИЭИЪ[[™ИH][Ы€\ИИYB‚Q“QUС‘PT€HBBBBBBBBKKH[\XЭЫ€›ЫЬИЫ€›Ь™\њИЪ[€XЪY[™ИЭИЪ[[™ИH][Ы€\ИИYB‚RPЧХЧСTURTQS•РУХTФђUSИHЊKBBBKKH][И›Ь€Ш[Э[][™ИЫЬЭЩ€ЭYЪ[™ИЫЭ\‚U“УS•QT”ЧФT—ХT‘СUФ“Х’SђСHHЊKBBKKHXXЪ›Эљ[ЩHЭЫ™YћHH\™Щ]ЫЭ[ќћHЫЫќљXќ]\И\И[[Э[ќЩ€›Ы[ќY\њИИH[Z]‚‚U“УS•QT”ЧФT—РУХS•–WРT“VHHЊKBBBKKHXXЪ\›^H[љ]ЭЫ™YћHHЫЭ\ЩHЫЭ[ќћHЫЫќљXќ]\И\И[[Э[ќЩ€›Ы[ќY\њИИH[Z]‚‚U“УS•QT”ЧФ‘UT“—СTURTQS•HЋMKBBBKKH™]\›љ[™И›Ы[ќY\њИЩY\\И]XЪ\]Z\Y[ќ‚U“УS•QT”ЧХђS”С‘T—ФФQQHMBBBBKKH^\ИИ[њЩ™\€H[љ]И[›Э\€][Ы‚‚U“УS•QT”ЧСU’TТSУ”ЧФ‘TURT‘QHМBBBKKH\ИX[ћH]љ\ЫЫњИ\™H™\]Z\™Y›Ь€HЫЭ[ќћHИ™HX›HИЩ[™›Ы[ќY\њЛ‚‚US”ТSУ—ФХUWХђSQHH‹BBBBBKKH[њЪ[Ы€[YHШZ[™YћH[›™^[™ИЫ™HЭ]B‚US”ТSУ—РТU’SХРT—ТSTPХHЊ‹BBBBKKHЪ]љ[Ш\€][\Y\€Ы€[њЪ[Ы‹‚‚US”ТSУ—У“ЧРР—ХРT€HKBBBBBBKKH[[Э[ќЩ€[њЪ[Ы€Щ[™\]YћHH›ЛPР€Ш\™ЫШ[‚US”ТSУ—РР—ХРT€HBBBBBBBKKH[[Э[ќЩ€[њЪ[Ы€Щ[™\]YћHHШ\€Ъ]HР‚‚US”ТSУ—РS“‘VУ“ЧРУRSHH‹BBBBBKKH[[Э[ќЩ€[њЪ[Ы€Щ[™\]YћH[›™^[™ИHЭ]H[ЭHЫ‰Э]™HЫZ[\ИЫ‚‚US”ТSУ—РS“‘VРУRSHHЌKBBBBBKKH[[Э[ќЩ€[њЪ[Ы€Щ[™\]YћH[›™^[™ИHЭ]H[ЭHИ]™HЫZ[\ИЫ‚‚US”ТSУ—РS“‘VРУФ‘HHBBBBBBKKH[[Э[ќЩ€[њЪ[Ы€Щ[™\]YћH[›™^[™ИHЭ]H]\И[Э\€ЫЬ™B‚US”ТSУ—ФTUHKЊЌKBBBBBBKKH[[Э[ќЩ€[њЪ[Ы€Щ[™\]YћH\][™И
+\€Э]JB‚US”ТSУ—С“ФђСWСУХ‘T““QS•HЌНKKH[[Э[ќЩ€[њЪ[Ы€Щ[™\]YћH›ЬЪ[™ИЫЭ™\››Y[ќ
+\€Э]JB‚US”ТSУ—Х“УS•QT—С“ФђСWСU’TТSУ€HЊ‹BBKKH[[Э[ќЩ€[њЪ[Ы€Щ[™\]Y›Ь€XXЪЩ[ќ]љ\Ъ[Ы‚‚US”ТSУ—СPРVWСRSHHЊKBBBBKKHXXЪ^H[њЪ[Ы€XШ^\И\И]XЪ›Ь€™X]ЫЭ\Щ\ИЪXЪ\™H›ИЫ™Щ\€™[][ќ€™\XЩ\ИS”ТSУ—СPРVH\ИЩ€KЊL‹Њ‚US”ТSУ—ФТV‘WСђPХФ€HKЊBBBBBKKH[XЭ[Ы€[њЪ[Ы€[Y\И\™H][\YYћH\И[YB‚US”ТSУ—ХSQWФРРSWФХT•СUHHЊNLН‹ЊKЊKЊL€‹KKHЭ\ќ[™И]\И]KH[њЪ[Ы€[Y\ИЪ[™HШШ[YЭЫ€
+Ъ[™H\]X[ИH™Y›Ь™H]
+B‚US”ТSУ—ХSQWФРРSWУSУ•WСђPХФ€HLЊKBKKH[YY[њЪ[Ы€ШШ[HЪ[™H[ЩYљYYћH\И[[Э[ќЭ\ќ[™ИЪ]S”ТSУ—ХSQWФРРSWФХT•СUB‚US”ТSУ—ХSQWФРРSWУRS€HЊЌKBBBBKKH[YY[њЪ[Ы€ШШ[HЫЫ‰ЭXЬ™X\ЩH[™\€\И[YB‚US”ТSУ—СХPTђS•QHHMK‚US”ТSУ—СђPХSУ—Т“ТS€H‚US”ТSУ—Т“ТS—РUPТСT€H‹BBBBBKKHШШ[HЩ€H[[Э[ќЩ€[њЪ[Ы€YYЪ[€ЫЭ[ќћH›Ъ[њИ]XЪЩ\€ЪYB‚US”ТSУ—ФPPСWСђPХФ€HЊЌKBBBBKKHШШ[HЩ€H[[Э[ќЩ€[њЪ[Ы€
+њ›ЫHШ\€XЫ\][ЫЉH™YXЩYЪ[€XXЩH\ИЫЫ\]Y‚‚US”ТSУ—ФPPСWСђPХФ—Х‘PUСђPХФ€HЌЊBKKHЩYHX›Э™B‚US”ТSУ—УP‘TђUHHLKBBBBBBKKH[[Э[ќЩ€[њЪ[Ы€Щ[™\]YћHX™\][™ИHЫЭ[ќћK‚‚US”ТSУ—ХRСWУУ‘WРРTUSФТTHЊЌKBBKKH[[Э[ќЩ€[њЪ[Ы€Щ[™\]YћHHZЩH]ћHXXЩHXЭ[Ы‚‚US”ТSУ—СSRSUT’V‘WЦ“У‘HHЊЌKBBBKKH[[Э[ќЩ€[њЪ[Ы€Щ[™\]YћHЭXЪЪ[™И[Z[]\љ^™H›Ы™HЫ€HЭ]K][\YYЪ]HЭ]H\ЩH™X]‚US”ТSУ—ХРT—Ф‘TTђUSУ€HЊЌKBBBBKKH[[Э[ќЩ€[њЪ[Ы€Щ[™\]YћHЭXЪЪ[™ИШ\€™\\][Ы€Ы€HЭ]K][\YYЪ]HЭ]H\ЩH™X]‚US”ТSУ—Ф‘TУХTђСWФ’QТИHЊЌKBBBBKKH[[Э[ќЩ€[њЪ[Ы€Щ[™\]YћHЭXЪЪ[™И™\ЫЭ\ЩHљYЪИЫ€HЭ]K][\YYЪ]HЭ]H\ЩH™X]‚US”ТSУ—СTУPS•WТS‘TХ–HHЊЌKBBBKKH[[Э[ќЩ€[њЪ[Ы€Щ[™\]YћHЭXЪЪ[™И\ЫX[ќHZ[]\ћH[™\ЭћHЫ€HЭ]K][\YYЪ]HЭ]H\ЩH™X]‚US”ТSУ—РРTUSUHHЊKBBBBBKKHШШ[HЩ€H[[Э[ќЩ€[њЪ[Ы€Ь™X]YћHHЫЭ[ќљY\ИШ\][][Ы‹‚‚QХPTђS•QWРУФХHЌKBBBBBBKKHШШ[HЪ]Hќ[X™\€Щ€[™XYHЭX\[ќYYЫЭ[ќљY\Л‚‚T‘U“ТСWСХPTђS•QWРУФХHЌK‚PђTСWРУУ‘USУђSФPPСWХРT‘TРУФ‘WФђUSИHЌKKKHШ\њШЫЬ™H][И™YYY›Ь€HЬЪ[™ИЪYHИX›HИЭ\њ™[™\‹‚‚PђTСWРУУ‘USУђSФPPСWУSУ•ИHЛBBBKKHШ\€[™Э]\Э™H™Y›Ь™HHЭ\њ™[™\€\ИЬЬЪX›K‚‚R“ТS’S‘ЧУђTХРT—ФSђSHHЊ‹BBBBKKHШ\€Э\Ьќ[[H›Ь€њ™XZЪ[™И›Ы‹Xњ™XZШX›HђT‚P”‘PRТS‘ЧСХPTђS•QWФSђSHHЊ‹BBBKKHШ\€Э\Ьќ[[H›Ь€њ™XZЪ[™ИЭX\[ќYB‚‚KKHРT“’S‘ИHY€[ЭH[ЩYћHH›ЫЭЪ[™И[Y\Л[ЭHЪЭ[\]HЫЬњ™\ЬЫ™[™ИШИЩ^\И[€Ш[Y\ЧЬќ[\ЧЫЩ[™Ы\Ъћ[[‚TPPСWФРУФ‘WХђS”С‘T”‘QХЧСђPХSУ—УPQT€HЊKBKKH\ќЩ€HXXЩHШЫЬ™H[њЩ™\њ™Yњ›ЫHHXЭ[Ы€Y[X™\њИИHXЭ[Ы€XY\€
+Y€Ш[YHќ[H[X›Y
+B‚TPPСWФРУФ‘WФ‘TСUУХЧФРУФ‘WХ‘TТУHЊKBBKKHЪ[›™\њИЪ]\ЬИ[€\И][ИЩ€Ш\€\ќXЪ\][Ы€Ъ[Ъ]™H[Z\€ШЫЬ™HИЭ\€^Y\њВ‚TPPСWФРУФ‘WФ‘TСUУХЧФРУФ‘WУRS’SUSWС“Ф—Ф‘PСRU‘T€HЊKKH\ШX›HH™]љ[Э\ЛY€›ИЪ[›™\€\И]X\Э\И][ИЩ€Ш\€\ќXЪ\][Ы‚‚B‚TPPСWФРУФ‘WХђS”С‘T”‘QС”“УWСђPХSУ—ТS‘“QSђСHHЊKKKHЭИ]XЪ	HЩ€[Э\€Ш\€ШЫЬ™HЪ[™HЪ]™[€ИHЬPPСWФРУФ‘WХФСђPХSУ—ТS‘“QSђСWРSSХS•Щ€[Э\€XЭ[Ы‚‚TPPСWФРУФ‘WХФСђPХSУ—ТS‘“QSђСWРSSХS•H‹KHH[[Э[ќЩ€YЪ\ЭЬ›ЬЬЪ[™И[™›Y[ЩHY[X™\њИњ›ЫH[Э\€XЭ[ЫњИ]Щ]Y][Ы[Ш\€ШЫЬ™B‚B‚TPPСWФРУФ‘WФРРSWСђPХФ€HKЊНKKHЬЩ\њЙИЭ[[YH[Y\И\ИXЭЬ€™XЫЫY\ИHY][Э[XXЩHЫЫ™™\™[ЩHШЫЬ™H]\И\ЭљXќ]YИHЪ[›™\њЛ‚‚‚TPPСWФРУФ‘WУRS“Ф—Р“УФХС”ђPХSУ€HЊKKHЭЛ\ШЫЬљ[™ИЪ[›™\њИ\™H›ЫЬЭYћH™XЩZ]љ[™И[Ь™HЩ€Z\€ШЫЬ™HX\›Y\‹€\И[YK][\YYћHHЭ[ШЫЬ™H\ЭљXќ]Y\И\›‹\ИHZ[љ[][HШЫЬ™H^HЪ[™XЩZ]™H
+\[ќ[Z\€Э[[ШШ]YШЫЬ™JK‚‚KKH^[\N€Y€ЊШЫЬ™H\И\ЭљXќ]YИЪ[›™\њИ\И\›€[™\И[YH\ИЩ]ИЊKXXЪЪ[›™\€Ъ[™XЩZ]™HHZ[љ[][HЩ€LШЫЬ™H
+Ы[\YћHHX^ШЫЬ™H^HЪ[™XЩZ]™HЭ™\€HЫЭ\ЩHЩ€HЫЫ™™\™[ЩJK‚‚‚TPPСWФРУФ‘WСTХ’P•USУ€HИЊ‹Њ‹Њ‹Њ‹Њ€KKHЭИ]XЪЩ€HЭ[XXЩHЫЫ™™\™[ЩHШЫЬ™H[ЭHЩ]\љ[™ИHљ\њЭ€\›њЛ‚‚KKH[Ь™H^[][Ы€Щ€HXXЩHШЫЬ™H\ЭљXќ][Ы€X›Э™N‚‚KKHМKЊHЫЭ[Ъ]™H[ЭH[HШЫЬ™HЫ€Hљ\њЭ\›‹‚‚KKHМЌKЌKЌ_HЫЭ[Ъ]™H[ЭHL	HЩ€HЭ[ШЫЬ™HЫ€XXЪЩ€Hљ\њЭ™YH\›њИ
+[€\ИШ\ЩH™\Э[[™И[€™XЩZ]љ[™ИML	HЩ€HЭ[ШЫЬ™JK‚‚‚TPPСWРУУ•TХФ‘Q•S‘СђPХФ€HИKЊЋL‹ЋЌН€KKHЭИ]XЪЩ€HЬ[ќXXЩHЫЫ™™\™[ЩHШЫЬ™H]Щ]И™Yќ[™Y[€HЫЫќ\Э€љ\њЭ[[Y[ќ\Y\И›Ь€Hљ\њЭ›Э[™Щ€ЫЫ™›XЭЛЩXЫЫ™[[Y[ќ›Ь€HЩXЫЫ™›Э[™Щ€ЫЫ™›XЭЛ]Л€Hљ[[[[Y[ќ\И\ЩY›Ь€XXЪЫЫњЩXЭ]]™H\›‹ЫИЩ][™И]ИK™Л€ЌИYX[њИ[ЭHЩ]М	HЩ€HЬ[ќШЫЬ™HXЪИ›Ь€]™\ћH\›€\™XYќ\‹‚‚‚TPPСWФVWФУХS‘УУ—У‘UЧХT“€HќYKKHЪ]\€H	ЬXXЩWШЫЫ™™\™[ЩWЫ™]ЧЭ\›‰И]Y[ИЫЪИ\ИШ[YЬ€›Э‚TPPСWФVWУ‘UЧХT“—ФУХS‘УУ“WТQ—У“ХРS‘PQWФVRS‘ИHќYKKHЪ]\€H	ЬXXЩWШЫЫ™™\™[ЩWЫ™]ЧЭ\›‰И]Y[ИЫЪИЪЭ[^HЫ›HY€›Э[™XYH^Z[™И
+™[][ќY€^Y\њИЬ[KXЫXЪИH\ЬЛЬЭX›Z]ќ]ЫЉB‚‚SPVФ‘SQSP‘T‘QУPTСQТPИHLBBBKKHX^[][HЩ€X\ЩY\]Z\Y[ќ[YH]\И™[Y[X™\™Y›Ь€Ь[љ[Ы€›Ыќ\В‚SPVУФS’SУ—С“Ф—УPTСQТPИHМBBBBKKHЬЪ]]™HЬ[љ[Ы€Ъ[€™[Y[X™\љ[™ИHPVФ‘SQSP‘T‘QУPTСQТPИ\]Z\Y[ќ‚SSУ•WУPTСQТPЧСPРVHHНKBBBBKKHЭИ]XЪЩ€X\ЩY\]Z\Y[ќ\И™Z[™И™›Ь™ЫЭ€XXЪ[Ыќ‚SФS’SУ—ФT—Х“УS•QT€HЛBBBBBKKHЬ[љ[Ы€›Ыќ\И\€Ы™HЩ[ќ›Ы[ќY\€]љ\Ъ[Ы‚‚SPVУФS’SУ—С”“УWХ“УS•QT”ИHМBBBKKHЬ[љ[Ы€›Ыќ\И\€Ы™HЩ[ќ›Ы[ќY\€]љ\Ъ[Ы‚‚SФS’SУ—С“Ф—СSSЧС”“УWХХССS‘TђUSУ€HLKЊBKKHЭИ]XЪ\ЬИИ[[ШЬXЪY\ИZЩH\ИY€ЩHЩ[™\]HЫЬ›[њЪ[Ы‚‚S“ХФ‘PQWС“Ф—ХРT—РђTСHHBBBBKKHRHЪЭ[™H[ќЪ[[™ИИ[ќ\€XШЩ\HШ[ИШ\€Y€›Э™XYH›Ь€Ш\€YШZ[њЭH™[][ќ[™[ZY\Л‚‚Q”“У•ТTЧСS‘СT“ХTИHBBBBBKKHRHЪЭ[™H[ќЪ[[™ИИ[ќ\€XШЩ\HШ[ИШ\€Y€њ›Ыќ\ИЫИ[™Щ\›Э\Л‚‚S“ХФ‘PQWС“Ф—ХРT—ХђSФT—СVWФТSђСWРРSHKKKH[YH[ЩYћZ[™ИH›Э™XYH\ЩHЭ™\€[YK‚‚‚TPPСWРPХSУ—УPVРУФХHNNNKBBBBKKHX^[YH›Ь€HXXЩHXЭ[Ы€ЫЬЭ
+Yќ\€[[ЩYљY\њКB‚‚T‘TУХTђСWФСS•РUUУ“УVWСRSWРђTСHHЊBKKHY€\]›ЭљY\И™\ЫЭ\Щ\ИИ]ИX\Э\€^H[Ь™X\ЮHZ\€]]Ы›Ы^HћH]X\Э\И[[Э[ќ‚T‘TУХTђСWФСS•РUUУ“УVWСRSWСђPХФ€HЊKKKHY€\]›ЭљY\И™\ЫЭ\Щ\ИИ]ИX\Э\€^H[Ь™X\ЮHZ\€]]Ы›Ы^HћHH™\ЫЭ\Щ\ИXЭЬ™YћH\В‚UРT—ФРУФ‘WРUUУ“УVWРђTСHHЊBBBBKKH[YHYYY€[ћHШ\€ШЫЬ™H\ИЫЫќљXќ]YћH\]‚UРT—ФРУФ‘WРUUУ“УVWСђPХФ€HЌ‹BBBKKHY€\]Щ[™\]\ИШ\€ШЫЬ™H]Щ]H›ЫЬЭИ[™\[™[ЩB‚SХЧУХ‘T“Ф‘РUUУ“УVWСRSWРђTСHHЊBKKHY€\][™X\Щ\И\]Z\Y[ќИЭ™\›Ь™Щ€]X\ЭШ[YHXЪ]™[\И^H]™K^HШZ[€]]Ы›Ы^B‚SХЧУХ‘T“Ф‘РUUУ“УVWСRSWСђPХФ€HЊKKKHY€\][™X\Щ\И\]Z\Y[ќИЭ™\›Ь™Щ€]X\ЭШ[YHXЪ]™[\И^H]™K^HШZ[€]]Ы›Ы^B‚SХЧФTUРUUУ“УVWСRSWРђTСHHЊBBKKHY€Э™\›Ь™[™X\Щ\И\]Z\Y[ќИ\]Щ€YЪ\€XЪ]™[\И^H]™K\]ЬЬЩ\И]]Ы›Ы^B‚SХЧФTUРUUУ“УVWСRSWСђPХФ€HLЊKBKKHY€Э™\›Ь™[™X\Щ\И\]Z\Y[ќИ\]Щ€YЪ\€XЪ]™[\И^H]™K\]ЬЬЩ\И]]Ы›Ы^B‚PUUУ“УVWС”‘QQУWС”“УWРРTUSUHHЌKKHY€Э™\›Ь™Ш\][]H[ЭHЩ]\В‚PUPТWХЧФХP’‘PХСQ‘‘PХHLЊKBBBKKHY€Э™\›Ь™Щ[ќ]XЪ\ИИHЭXљ™XЭ]ЬЬЩ\И]]Ы›Ы^B‚PUPТWХЧУХ‘T“Ф‘СQ‘‘PХHЊKBBBKKHY€ЭXљ™XЭЩ[ќ]XЪ\ИИHЭ™\›Ь™]ШZ[њИ]]Ы›Ы^B‚B‚PUUУ“УVWУU‘SРТS‘СWФРSђХPT–HHМBBKKHHќ[X™\€Щ€^\ИЬЭ]]Ы›Ы^H]™[\ИЪ[™ЩYЪ\™H™Z]\€ЪYHШ[€[Ь™X\ЩH›Ь€XЬ™X\ЩHH]]Ы›Ы^H]™[‚‚PUUУ“УVWУU‘SРТS‘СWФРУФХРђTСHHLЊBKKH\ЩHЫЬЭЩ€Ъ[™Ъ[™И]™[Щ€]]Ы›Ы^B‚PUUУ“УVWУU‘SРТS‘СWФРS“‘VHМBBKKH[›™^][Ы€ЫЬЭ‚PUUУ“УVWУU‘SРТS‘СWФС”‘QHHМBBKKHњ™XZИњ™YHЫЬЭ‚SPVФРУФ‘WСQ‘—ХЧРТS‘СWРUUУ“УVHHLBBKKHHX^Y™€™]ЩY[€Э\њ™[ќњ™YYЫHШЫЬ™H[™HШ\›Ь€™^Ь€™]љ[Э\И]™[[ЭЩY›Ь€Ъ[™Ъ[™В‚SPTХT—Р•RSРUUУ“УVWСђPХФ€HLЌЛKHШШ[\И]]Ы›Ы^HШZ[€њ›ЫHЫЫњЭќXЭ[Ы€ћH\В‚U’PХФ–WФТS•ХУФ•СђPХФ€HLBBBKKH][\Y\€Ъ[€Ш[ЭX[[™И›Ъ[ЩHЫЬќ
+Э\њ™[™\ЉB‚U’PХФ–WФТS•ХУФ•СђPХФ—ХРT”РУФ‘HHЊ‹BBBKKH][\Y\€›Ь€XXЪљXЭЬћHЪ[ќИЪ[€Ш[Э[][™И›Эљ[ЩHЫЬќ›Ь€Ш\њШЫЬ™B‚T“Х’SђСWХУФ•С”“УWФХUWХђSQWСђPХФ—ХРT”РУФ‘HHЊ‹KKH][\Y\€›Ь€H]™\YЩH[YHH›Эљ[ЩH™XЩZ]™Yњ›ЫHЭ]H›Ь€Ш\њШЫЬ™B‚PРTUSРРTUSUWР“У•TЧФРУФ‘HHMLBBKKH^H›Ыќ\ИЪ[€XЪY[™ИЪИИШ\][]HИ
+\YYИШ\][Ы\ЉB‚PРTUSРРTUSUWР“У•TЧФРУФ‘WУUSHKЌKBKKH^H›Ыќ\И][\Y\€Ъ[€XЪY[™ИЪИИШ\][]HИ
+\YYИШ\][Ы\ЉB‚RQSУСЦWТ“ТS—СђPХSУ—УRS—УU‘SHЊЛBBKKHY[ЫЩЮH[Z]™\]Z\™YИ›Ъ[€XЭ[Ы‚‚R“ТS—СђPХSУ—УSRUРТS‘СWРUХРT€HЌKBBKKHY€[€Y™[њЪ]™HШ\€\ИЬ€[Э\€[ЩYљY\€\ИЫЭ[ќY\И[Z]И›Ъ[€XЭ[ЫњИ
+ЫИY€[ЭH]™H	H›Ъ[€[Z]\И›ЭИYX[њИ[ЭHШ[€›Ъ[€]L	JB‚SPСS”СWРPРСTSђСWУФS’SУ—СђPХФ€HЊ‹BKKHЬ[љ[Ы€[ЩYљY\€›Ь€XШЩ\[ЩHЩ€XЩ[њЩH›ЩXЭ[Ы€™\]Y\ЭЛ‚‚SPСS”СWРPРСTSђСWФTUРђTСHHЊBBKKHXШЩ\[ЩH[ЩYљY\€›Ь€\]И™\]Y\Э[™И›ЩXЭ[Ы€XЩ[њЩ\Л‚‚SPСS”СWРPРСTSђСWХPТСQ‘‘T‘SђСHHKBKKHXШЩ\[ЩH[ЩYљY\€›Ь€XXЪYX\€Щ€XЪ›ЫЩЮHY™™\™[ЩK‚‚SPСS”СWРPРСTSђСWХPТСQ‘‘T‘SђСWРђTСHHЊKHXШЩ\[ЩH\ЩH›Ь€XЪY™™\™[ЩB‚SPСS”СWРPРСTSђСWФРSQWСђPХSУ€HЊBBKKHXШЩ\[ЩH[ЩYљY\€›Ь€™Z[™И[€HШ[YHXЭ[Ы‚‚‚UРT‘УРSРУФХУS‘УPTСHHLЊЌKKHЫЬЭ[ЩYљY\€ИШ\™ЫШ[ќ\ЭYљXШ][Ы€›Ь€‚UРT‘УРSРУФХСРТТS‘ЧФ’QТИHLЊ‹KHЫЬЭ[ЩYљY\€ИШ\™ЫШ[ќ\ЭYљXШ][Ы€›Ь€ШЪЪYЫ€љYЪВ€UРT‘УРSРУФХХ“УS•QT”ИHLЌKKHЫЬЭ[ЩYљY\€ИШ\™ЫШ[ќ\ЭYљXШ][Ы€›Ь€›Ы[ќY\њВ‚‚PTФХSQWСђPХSУ—УPQT”ТTФРУФХHЊBBBKKHЫ]XШ[ЭЩ\€ЫЬЭИ\ЬЭ[YHXЭ[Ы€XY\њЪ\‚PTФХSQWСђPХSУ—УPQT”ТTУRS—УPS”ХСT—ФђUSИH‹BKKHHZ[љ[][H][ИЩ€X[њЭЩ\€]HЫЭ[ќћH]\Э]™HЫЫ\\™YИHЭ\њ™[ќXY\€[€Ь™\€И\ЬЭ[YHXY\њЪ\‚‚PTФХSQWСђPХSУ—УPQT”ТTУRS—СђPХФ–WФђUSИHKЌKBKKHHZ[љ[][H][ИЩ€XЭЬљY\И]HЫЭ[ќћH]\Э]™HЫЫ\\™YИHЭ\њ™[ќXY\€[€Ь™\€И\ЬЭ[YHXY\њЪ\‚‚PTФХSQWСђPХSУ—УPQT”ТTРУУУХУ—СVTИHNBBKKHќ[X™\€Щ€^\ИYќ\€›Ь›X][Ы€Щ€XЭ[Ы€Ь€Ъ[™ЩH[€XY\њЪ\™Y›Ь™H[›Э\€ЫЭ[ќћH\И[ЭЩYИ\ЬЭ[YHXY\њЪ\‚‚PTФХSQWСђPХSУ—ФФSPTХT—РУУУХУ—СVTИHNBBKKHќ[X™\€Щ€^\ИYќ\€Ъ[™ЩHЩ€ЬHX\Э\€™Y›Ь™H[›Э\€ЫЭ[ќћH\И[ЭЩYИ™XЫЫYHЬHX\Э\‹‚‚QђPХSУ—УPQT”ТTРТS‘СWРST•Х‘TТУHЋBKKH™\ЪЫ›Ь€ЪЭЪ[™И[€[\ќЪ[€HXЭ[Ы€Y[X™\€\ИЫЬЩHИ™Z[™ИX›HИ\ЬЭ[YHXY\њЪ\Щ€HXЭ[Ы€]H^Y\€Э\њ™[ќHXYЛ‚‚QђPХSУ—УPQT”ТTРТS‘СWУ“ХФХP’‘PХХСRQТH‹BKKH[\Ьќ[ЩHЩ€ЭXљ™XЭЭ]\ИЪ[€]\›Z[љ[™ИЭИЫЬЩHHXЭ[Ы€Y[X™\€\ИИ™Z[™ИX›HИ\ЬЭ[YHXY\њЪ\‚‚QђPХSУ—УPQT”ТTРТS‘СWУ“ХРРTUSUQХСRQТH‹KKH[\Ьќ[ЩHЩ€Ш\][][Ы€Э]\ИЪ[€]\›Z[љ[™ИЭИЫЬЩHHXЭ[Ы€Y[X™\€\ИИ™Z[™ИX›HИ\ЬЭ[YHXY\њЪ\‚‚QђPХSУ—УPQT”ТTРТS‘СWТS—РSХРT”ЧХСRQТHKBKKH[\Ьќ[ЩH›Э™Z[™И[€[XЭ[Ы€XY\€Ш\њИЪ[€]\›Z[љ[™ИЭИЫЬЩHHXЭ[Ы€Y[X™\€\ИИ™Z[™ИX›HИ\ЬЭ[YHXY\њЪ\‚‚QђPХSУ—УPQT”ТTРТS‘СWРУУУХУ—ХСRQТHKBBKKH[\Ьќ[ЩHЩ€XY\њЪ\Ъ[™ЩHЫЫЫЭЫ€Ъ[€]\›Z[љ[™ИЭИЫЬЩHHXЭ[Ы€Y[X™\€\ИИ™Z[™ИX›HИ\ЬЭ[YHXY\њЪ\‚‚QђPХSУ—УPQT”ТTРТS‘СWУPS”ХСT—ХСRQТH‹BBKKH[\Ьќ[ЩHЩ€X[њЭЩ\€[€љY[Ъ[€]\›Z[љ[™ИЭИЫЬЩHHXЭ[Ы€Y[X™\€\ИИ™Z[™ИX›HИ\ЬЭ[YHXY\њЪ\‚‚QђPХSУ—УPQT”ТTРТS‘СWСђPХФ–WХСRQТH‹BBKKH[\Ьќ[ЩHЩ€XЭЬћHЫЭ[ќЪ[€]\›Z[љ[™ИЭИЫЬЩHHXЭ[Ы€Y[X™\€\ИИ™Z[™ИX›HИ\ЬЭ[YHXY\њЪ\‚‚‚QђPХSУ—ФХСT—Ф‘TУХTђСWХСRQТHЊHBBKKUHЩZYЪЩ€HЫЭ[ќћH™\ЫЭ\Щ\ИЫ€HXЭ[Ы‰ЬИЭЩ\€›Ъ™XЭ[Ы‚‚QђPХSУ—ФХСT—ТS‘TХ–WХСRQТHЊKBBKKUHЩZYЪЩ€H[™\ЭћHЫ€HXЭ[Ы‰ЬИЭЩ\€›Ъ™XЭ[Ы‚‚QђPХSУ—ФХСT—РT“VWХСRQТHЊЌKBBBKKUHЩZYЪЩ€H\›^HЫ€HXЭ[Ы‰ЬИЭЩ\€›Ъ™XЭ[Ы‚‚QђPХSУ—ФХСT—РRT—Р“УP‘T—ХСRQТHЊЌKBBKKUHЩZYЪЩ€H›ЫX™\њИЫ€HXЭ[Ы‰ЬИЭЩ\€›Ъ™XЭ[Ы‚‚QђPХSУ—ФХСT—РRT—ХСRQТHЊ‹BBBKKUHЩZYЪЩ€HZ\€\]Z\Y[ќ^Щ\›ЫX™\њИЫ€HXЭ[Ы‰ЬИЭЩ\€›Ъ™XЭ[Ы‚‚QђPХSУ—ФХСT—УђUђSРРTUSФТTХСRQТHKKKUHЩZYЪЩ€HШ\][Ъ\ИЫ€HXЭ[Ы‰ЬИЭЩ\€›Ъ™XЭ[Ы‚‚QђPХSУ—ФХСT—УђUђSХСRQТHЊЌKBBBKKUHЩZYЪЩ€H][\]Z\Y[ќ^Щ\Ш\][Ъ\ИЫ€HXЭ[Ы‰ЬИЭЩ\€›Ъ™XЭ[Ы‚‚QђPХSУ—ФХСT—СQ‘‘PХЧХСRQТHKBBKKUHЩZYЪЩ€HXЭ[Ы‰ЬИЫШ[Э]\ИЫ€HXЭ[Ы‰ЬИЭЩ\€›Ъ™XЭ[Ы‚‚‚QSPђT‘УЧРУФХHLBBBBBBBBBKKHЫ™K][YHЫЬЭ‚T‘U“ТСWСSPђT‘УЧРУФХHBBBBBBBKKHЫЬЭИ™[[Э™H[€^\Э[™И[X\™ЫВ‚QSPђT‘УЧХ‘PUХ‘TТУHЌKBBBBBKKH\™Щ]YЩ[™\]Y™X]™\ЪЫИ[ЭИ[X\™ЫИ
+Y™™XЭYћH[ЩYљY\њКB‚‚QSPђT‘УЧФРSQWТQSУСЦWРRWХСRQТHLЊBBBKKHRHЩZYЪ›Ь€Ш[YHY[ЫЩЮB‚QSPђT‘УЧСQ‘‘T‘S•ТQSУСЦWРRWХСRQТHMKBBKKHRHЩZYЪ›Ь€Y™™\™[ќY[ЫЩЮB‚QSPђT‘УЧСQ‘‘T‘S•ТQSУСЦWРUУС‘‘S”ТU‘WХРT—РRWХСRQТHKKKPRHЩZYЪ›Ь€Y™™\™[ќY[ЫЩЮH[™[€Щ™™[њЪ]™HШ\€
+Y]]™HЪ]X›Э™JB‚QSPђT‘УЧФ‘PТTQS•ТTЧУPR“Ф—РRWХСRQТHKBBKKHZHЩZYЪ›Ь€™XЪ\Y[ќ™Z[™ИXZ›Ь‚‚QSPђT‘УЧУ‘RQТ“ХT—РRWХСRQТHLЊBBBBKKPRHЩZYЪ›Ь€[X\™ЫЪ[™И™ZYЪ›ЬњИ
+™ZYЪ›ЬњИ\™HљYИ[™ШШ\ћKЩHЪЭ[ЫЫњЪY\€›ЭЪ[™И]
+B‚B‚SђUђSР“РТРQWРђTСWРУФХHNNNKBBBBBKKH\ЩHЫЬЭ›Ь€\ЬЭZ[™ИH][›ШЪШYB‚SђUђSР“РТРQWСRSWРУФХHЊKBBBBKKHZ[HЫЬЭ›Ь€Ы™H][›ШЪШYB‚SђUђSР“РТРQWХ‘PUХ‘TТУHNNKBBBKKH\™Щ]YЩ[™\]Y™X]™\ЪЫИ[ЭИ][›ШЪШYB‚‚QTURTQS•ФTђТTСWРPРСTSђСWУФS’SУ€HKЊKKHXШЩ\[ЩHXЭЬ€›Ь€Ь[љ[Ы‚‚QTURTQS•ФTђТTСWРPРСTSђСWФРSQWТQSУСЦHHMKKHXШЩ\[ЩH[YHYYY€Ш[YHY[ЫЩЮB‚QTURTQS•ФTђТTСWРPРСTSђСWФРФ’TQТQSУСЦWРPРСTSђСHHKЊKHXШЩ\[ЩHXЭЬ€›Ь€ШЬљ\YY[ЫЩЮHXШЩ\[ЩH[ЩYљY\‚‚QTURTQS•ФTђТTСWРPРСTSђСWХђQWТS‘“QSђСHHЌМKHXШЩ\[ЩHXЭЬ€›Ь€YH[™›Y[ЩH
+Yќ\ЭYњ›ЫH\ЩH[YJB‚QTURTQS•ФTђТTСWРPРСTSђСWРУУTUS‘ЧСђPХSУ”ИHLМKHXШЩ\[ЩH[YHYYY€›ЭЫЭ[ќљY\И\™H[€XЭ[ЫњЛ[™XЭ[ЫњИ\™HY™™\™[ќ‚QTURTQS•ФTђТTСWРPРСTSђСWСSPђT‘УИHLЊKHXШЩ\[ЩH[YHYYY€Z]\€ЪYH\И[X\™ЫЩYHЭ\‚‚QTURTQS•ФTђТTСWРPРСTSђСWУ“У—РQСФ‘TФТSУ—ФPХHЌKKHXШЩ\[ЩH[YHYYY€\™H\ИH›Ы‹XYЩЬ™\ЬЪ[Ы€XЭ™]ЩY[€HЫЭ[ќљY\В‚‚SPT’СUРPРСTФЧРPРСTSђСWУФS’SУ€HKЊKKHXШЩ\[ЩHXЭЬ€›Ь€Ь[љ[Ы‚‚SPT’СUРPРСTФЧРPРСTSђСWФРSQWТQSУСЦHHMKKHXШЩ\[ЩH[YHYYY€Ш[YHY[ЫЩЮB‚SPT’СUРPРСTФЧРPРСTSђСWФРФ’TQТQSУСЦWРPРСTSђСHHKЊKHXШЩ\[ЩHXЭЬ€›Ь€ШЬљ\YY[ЫЩЮHXШЩ\[ЩH[ЩYљY\‚‚SPT’СUРPРСTФЧРPРСTSђСWХђQWТS‘“QSђСHHЌМKHXШЩ\[ЩHXЭЬ€›Ь€YH[™›Y[ЩH
+Yќ\ЭYњ›ЫH\ЩH[YJB‚SPT’СUРPРСTФЧРPРСTSђСWРУУTUS‘ЧСђPХSУ”ИHLМKHXШЩ\[ЩH[YHYYY€›ЭЫЭ[ќљY\И\™H[€XЭ[ЫњЛ[™XЭ[ЫњИ\™HY™™\™[ќ‚SPT’СUРPРСTФЧРPРСTSђСWСSPђT‘УИHLЊKHXШЩ\[ЩH[YHYYY€Z]\€ЪYH\И[X\™ЫЩYHЭ\‚‚SPT’СUРPРСTФЧРPРСTSђСWУ“ЧХђQWФ“ХUHHLLKHXШЩ\[ЩH[YHYYY€\™H\И›И[YYH›Э]H™]ЩY[€HЫЭ[ќљY\В‚SPT’СUРPРСTФЧРPРСTSђСWУ“У—РQСФ‘TФТSУ—ФPХHLKHXШЩ\[ЩH[YHYYY€\™H\ИH›Ы‹XYЩЬ™\ЬЪ[Ы€XЭ™]ЩY[€HЫЭ[ќљY\ВџK‚“ђЫЭ[ќћHHВ‚QU‘S•Ф“РСTФЧУС‘”СUHЊKBBBBBKKH]™[ќИ\™HЪXЪЩY]™\ћH^H\€ЫЭ[ќћHЬ€Э]H
+H\ИYX[ќ]ФHX]ћJB‚PђTСWФ‘TСPTђТФУХИH‹BBBBBKKH\ЩHќ[X™\€Щ€™\ЩX\ЪЫЭИ\€ЫЭ[ќћK‚‚TФSUSУ—ЦQPT“WСФ“ХХРђTСHHЊMKBBKKH\ЪXИЬ[][Ы€Ь›ЭЭ\€YX\‹\ЩY›Ь€[ЫќHX[њЭЩ\€ШZ[‚‚T‘TТTХSђСWФХ‘S‘ХС”“УWХ”HЊKBBKKHЭИ]XЪЭ™[™ЭXЪЪ[™ИЬYYЪ]™\ИXXЪ”ШЫЬ™K‚‚T‘TТTХSђСWФХ‘S‘ХС”“УWУ‘RQТ“Ф”ИHЌKBKKH][\Y\ИЭИ]XЪ™\Ъ\Э[ЩHШ[€Ь™XYњ›ЫHЫ™HЭ]HИ]И™ZYЪ›ЬњЛHЭ]HЪ[Ь™XYЪ]]™\€\ИYЪ\ЭЩ€]ИљXЭЬћ\Ъ[ќИ™\Ъ\Э[ЩH[Ь™X\ЩHЬ€[€Щ€[ћHЩ€]И™ZYЪ›ЬњИЬ™XY][\YYћH\В‚T‘TТTХSђСWСPРVWХТS—У“ЧСФ“ХХHЊKBKKH™\Ъ\Э[ЩHЪ[[ћH\И]XЪXXЪ^HY€\™H\И›Э[™И[Ь™X\Ъ[™И]
+›И”И[™›ИЬ™XYњ›ЫH™ZYЪ›ЬњИ
+B‚T‘RS‘“ФђСSQS•СU’TТSУ—Ф’SФ’UWРУХS•HЛBKKHЭИX[ћHљ[Ьљ]HЭYЩ\ИЩH]™H[€]љ\Ъ[Ы€[\]OИ
+T™\Щ\ќ™\ЛJS›Ь›X[ЉQ[]K‚‚T‘RS‘“ФђСSQS•СU’TТSУ—Ф’SФ’UWСQђUSHKKKHXXЪ[\]HћHY][\ИJS›Ь›X[‚T‘RS‘“ФђСSQS•ХPUT—СФ“ХTФ’SФ’UWСQђUSHKKHXXЪX]\€Ь›Э\ћHY][\ИJS›Ь›X[‚T‘RS‘“ФђСSQS•ХPU‘WФ’SФ’UWРУХS•HЛBKKHШ[YH\ИЪ]]љ\Ъ[ЫњЛ‹‹‚‚T‘RS‘“ФђСSQS•ХPU‘WФ’SФ’UWСQђUSHK‚T‘RS‘“ФђСSQS•РRTђђTСWФ’SФ’UWРУХS•HЛ‚T‘RS‘“ФђСSQS•РRTђђTСWФ’SФ’UWСQђUSHK‚T‘RS‘“ФђСSQS•СSU‘T–WФФQQУRS€HЊ‹BBKKHH\Э[ЩHњ›ЫHHЭ\H™YЪ[Ы€ИШ\][ЪЭ[Y™™XЭHЬYYЫ›HH]Hљ]€XZ[€XЭЬ€›Ь€[[H\ИЭ™\Ь›ЭЩY\™X\Л[™›ЭH›Э]H[™Э‚‚T‘RS‘“ФђСSQS•СTURTQS•СSU‘T–WФФQQHЊ‹KKH[ЩYљY\€›Ь€\›^H\]Z\Y[ќ™Z[™›ЬЩ[Y[ќЬYY‚T‘RS‘“ФђСSQS•УPS”ХСT—СSU‘T–WФФQQH‹ЌKKKH[ЩYљY\€›Ь€\›^HX[њЭЩ\€™Z[™›ЬЩ[Y[ќ[]™\ћHЬYY
+]™[[YJB‚T‘RS‘“ФђСSQS•УPS”ХСT—РТS’ИHЊKBBKKHЪ[љИЪ^™HЩ€X[њЭЩ\€™Z[™›ЬЩ[Y[ќ[]™\ћK[€	HЩ€Э[X[њЭЩ\€™YYYћHH[\]K‚‚QTURTQS•ХTФђQWРТS’ЧУPVФТV‘HH‹BBKKHX^[][HЪ[љИЪ^™HЩ€\]Z\Y[ќ\ЬYH\ЭљXќ][Ы€\€\]K‚‚PУХS•–WФРУФ‘WУUSTQT€HKЊBBBBKKHЩZYЪЩ€HЫЭ[ќћHШЫЬ™K‚‚PT“VWФРУФ‘WУUSTQT€HЊMKBBBBKKH\ЩYЫ€ќ[X™\€Щ€\›ZY\Л‚‚SђU–WФРУФ‘WУUSTQT€HKЊBBBBKKH\ЩYЫ€ќ[X™\€Щ€]љY\Л‚‚PRT—ФРУФ‘WУUSTQT€HЊKBBBBBKKH\ЩYЫ€ќ[X™\€Щ€[™\И
+ЪXЪ\И\XШ[HHЭ
+K‚‚RS‘TХ–WФРУФ‘WУUSTQT€HKЊBBBKKH\ЩYЫ€ќ[X™\€Щ€XЭЬљY\Л‚‚T“Х’SђСWФРУФ‘WУUSTQT€HЊKBBBKKH\ЩYЫ€ќ[X™\€Щ€ЫЫќ›ЫY›Эљ[Щ\Л‚‚S•PУPT—Р“УP—С“ФХРT—ФХTФ•СQ‘‘PХУPVТS‘”ђHHЊ‹KH™YXЩH[™[^H][Ы[Ш\€Э\ЬќЫ€ќZЪ[™ИH›Эљ[ЩKH[YHШШ[\ИЪ][™њ\ЭќXЭ\™H\И\Иќ[X™\‚‚S•PУPT—Р“УP—С“ФХРT—ФХTФ•СQ‘‘PХУPVХ”HЛKHШ\€Э\ЬќЪ[™HШШ[YЭЫ€Y€\™IЬИ\ЬИ”[€\И[€H›Эљ[ЩB‚UT“SУ•PУPT—Р“УP—С“ФХРT—ФХTФ•СQ‘‘PХУPVТS‘”ђHHЊ‹KKH™YXЩH[™[^H][Ы[Ш\€Э\ЬќЫ€ќZЪ[™ИH›Эљ[ЩKH[YHШШ[\ИЪ][™њ\ЭќXЭ\™H\И\Иќ[X™\‚‚UT“SУ•PУPT—Р“УP—С“ФХРT—ФХTФ•СQ‘‘PХУPVХ”HЛBKKHШ\€Э\ЬќЪ[™HШШ[YЭЫ€Y€\™IЬИ\ЬИ”[€\И[€H›Эљ[ЩB‚UСQRУWФХP’SUWСРRS€HЊ‚UСQRУWХРT—ФХTФ•СРRS€HЊ‚TХTWРУУ•“ЦWСђPХФ€HЊKBBBBKKHЭИX[ћHЫЫќ›Ю\ИXXЪЭ\H™YYВ‚PУУ•“ЦWФђS‘СWСђPХФ€HKЊKKHЭИ]XЪ[™ЩHY™™XЭИЫЫќ›ЮH™YY›Ь€™\ЫЭ\ЩHY\И[™Э\B‚PУУ•“ЦWУS‘PTСWФђS‘СWСђPХФ€HKЊKBBBKKHЭИ]XЪ[™ЩHY™™XЭИЫЫќ›ЮH™YY›Ь€[™X\ЩB‚PУУ•“ЦWТS•T“ђUSУђSУPT’СUФђS‘СWСђPХФ€HKЊKKKHЭИ]XЪ[™ЩHY™™XЭИЫЫќ›ЮH™YY›Ь€[ќ\›][Ы[X\љЩ]‚SђU–WХTСWТУQWРђTСWС“Ф—ФђS‘СHHќYKBBKKHY€ќYKЪ[Ш[Э[]H\ЪИ›ЬЩH[™ЩHњ›ЫHЫYH\ЩKЭ\ќЪ\ЩHЪ[Ш[Э[]Hњ›ЫH[ћHњљY[™H][\ЩB‚PУУ•“ЦWРУУ•“УQФ“ХUWРУФХФ‘QPХSУ—СђPХФ€HЊЌKKKHЭИ]XЪ™]Щ\€ЫЫќ›Ю\И[ЭH™YYЪ\[™И›ЭYЪ\™X\И[ЭHЫЫќ›Ы‚SРРSУPS”ХСT—РPРСTФТP“WУ“У—РУФ‘WСђPХФ€HЊ‹KHXШЩ\ЬЪX›H™XЬќZ]X›HXЭЬ€\ЩB‚SPVУ“У—РУФ‘WУPS”ХСT—СђPХФ€HKЊBBBKKHX^Ы[\›Ь€™XЬќZ]X›HШШ[›Ы€ЫЬ™HX[њЭЩ\€XЭЬ€›Ь€Э]\В‚QQђUSФХP’SUHHЌKBBBBBKKHY][ЭXљ[]HY€›ЭШЬљ\YЭ\ќЪ\ЩK‚‚QQђUSХРT—ФХTФ•HЌKBBBBBKKHY][Ш\€Э\ЬќY€›ЭШЬљ\YЭ\ќЪ\ЩK‚‚PђTСWФХP’SUWХРT—СђPХФ€HLЊ‹BBBKKHY][ЭXљ[]HШ\€XЭЬ‚‚PђTСWФХP’SUWФT•WФФST’UWСђPХФ€HЊMKKKHY][ЭXљ[]Hќ[[™И\ќHЬ[\љ]HXЭЬ‚‚QQђUSРУРTХSФ“ХPХSУ—ФХP’SUHHBKKHY][ЭXљ[]HЪ[€HЫШ\Э[Э]\И\™Hќ[H›ЭXЭY‚SRS—РУХTФХP’SUWСђPХФ€HЊBBBKKHZ[€[YHЩ€ЫЭ\XЭЬ€[€ЭXљ[]B‚SPVРУХTФХP’SUWСђPХФ€H‹ЊBBBKKHX^[YHЩ€ЫЭ\XЭЬ€[€ЭXљ[]B‚SRS—РУХTФХPРСTФЧФХP’SUHHЋBBBKKHX^ЭXљ[]HЪ[€ЫЭ\Ъ[\[‚‚UРT—ФХTФ•УС‘“”ТU‘WХРT€HLЊ‹BBBKKH[\XЭЩ€™Z[™И[€Щ™™[њЪ]™HШ\‚‚UРT—ФХTФ•СQ‘S”ТU‘WХРT€HЊ‹BBBKKH[\XЭЩ€™Z[™И[€Y™[њЪ]™HШ\‚‚UРT—ФХTФ•ХS”ТSУ—ТSTPХHBBBKKHЭ[[\XЭЩ€ЫЬ›[њЪ[Ы‚‚SRS—ФХP’SUHHЊ‚SPVФХP’SUHHKЊ‚SRS—ХРT—ФХTФ•HЊ‚SPVХРT—ФХTФ•HKЊ‚Q”“У•Ф“Х’SђСWФРУФ‘HHЊBBBBKKHX^›Эљ[ЩHШЫЬ™HЩ€Hњ›Ыќ€\ЩY›Ь€HЬЭ[H›ЫЬ[\ќ‚SPR“Ф—ТPЧФђUSИHЛKHY™™\™[ЩH[€Э[XЭЬљY\И™YYYИ™HЫЫњЪY\™YXZ›Ь€Ъ]™\ЬXЭИЭ\€][Ы‚‚SPR“Ф—УRS—СђPХФ’QTИHLBBBBBKKH™YY]X\Э\ЩHX[ћHXЭЬљY\ИИ™XЫЫYHHXZ›Ь‚‚SPVТS•SQСSђСWСQ‘‘T‘SђСHHLЊBBBKKH
+Ы[ќ[
+HX^Y™™\™[ЩH[€[ќ[YЩ[ЩH]™[И™]ЩY[€ЫЭ[ќљY\В‚RS•SС”“УWРSPSђСWСђPХФ€HЊЛBBBKKH][\YYИHY™™\™[ЩH™]ЩY[€HЫЭ[ќћH[ќ[[™HX^[][H[YH[€H[X[ЩHИЫЫ\]HH[[Э[ќЩ€[ќ[]›ЭЬИњ›ЫHH[X[ЩHИ]ЫЭ[ќћK€YX[њИ›И[X[ЩHЫЫќљXќ][Ы‹HYX[њИHЫЭ[ќћH[ќ[	ЬИ\ИHШ[YH\ИHX^[€H[X[ЩK‚‚SPVТS•SQСSђСWСUWСU’PUSУ€HKЊKH
+Ы[ќ[
+HX^]љX][Ы€[€\Э[X][™ИY][\Ь[ЫYЩH[Y\И
+ЊHKЊ
+B‚SPVТS•SQСSђСWУRSUT–WСUWСU’PUSУ€HKЊKH
+Ы[ќ[
+HX^]љX][Ы€[€\Э[X][™И[™[^HZ[]\ћH[љ]И[[Э[ќ
+ЊHKЊ
+B‚SPVТS•SQСSђСWУђU–WСUWСU’PUSУ€HЊЛBKKH
+Ы[ќ[
+HX^]љX][Ы€[€\Э[X][™И[™[^HЪ\И[[Э[ќ
+ЊHKЊ
+B‚SPVТS•SQСSђСWРRT—СUWСU’PUSУ€HKЊBKKH
+Ы[ќ[
+HX^]љX][Ы€[€\Э[X][™И[™[^HZ\€[™\И[[Э[ќ
+ЊHKЊ
+B‚SPVТS•SQСSђСWРУУ•“ЦWСUWСU’PUSУ€HЊЛKKH
+Ы[ќ[
+HX^]љX][Ы€[€\Э[X][™И[™[^HЫЫќ›Ю\И[[Э[ќ
+ЊHKЊ
+B‚SPVТS•SQСSђСWУPS”ХСT—СUWСU’PUSУ€HЌKKH
+Ы[ќ[
+HX^]љX][Ы€[€\Э[X][™И[™[^HЭ[X[њЭЩ\€[[Э[ќ
+ЊHKЊ
+B‚SPVТS•SQСSђСWС’QSQУPS”ХСT—СUWСU’PUSУ€HЊНKKH
+Ы[ќ[
+HX^]љX][Ы€[€\Э[X][™И[™[^HљY[YX[њЭЩ\€[[Э[ќ
+ЊHKЊ
+B‚SPVТS•SQСSђСWТS‘TХ–WСUWСU’PUSУ€HKH
+Ы[ќ[
+HX^]љX][Ы€[€\Э[X][™И[™[^HЭ[[™\ЭћB‚SRS—УPS”ХСT—ФђUSИHЊMKBBBBBKKHZ[€X[њЭЩ\€][ИИЪЭИX[њЭЩ\€[\ќ‚PT“VWТSTФ•SђСWСђPХФ€HKЊBBBBKKH\›^HXЭЬ€›Ь€RH[™Ш[Э[][ЫњВ‚UT”ђRS—ТSTФ•SђСWСђPХФ€HKЊBBBKKH\њZ[€\ЩHXЭЬ€›Ь€Э]HЭ]YЪXИ[YB‚U’PХФ–WФТS•ЧТSTФ•SђСWСђPХФ€HKЊBBKKHЭ]HљXЭЬћHЪ[ќИ[\Ьќ[ЩHXЭЬ€›Ь€RH[™Ш[Э[][ЫњВ‚P•RSS‘ЧТSTФ•SђСWСђPХФ€HЛЊBBBKKHЭ]HќZ[[™И[\Ьќ[ЩHXЭЬ€›Ь€RH[™Ш[Э[][ЫњВ‚T‘TУХTђСWТSTФ•SђСWСђPХФ€HKЊBBBKKHЭ]H™\ЫЭ\ЩH[\Ьќ[ЩHXЭЬ€›Ь€RH[™Ш[Э[][ЫњВ‚RS•T”УUQС”“У•ФХTЧФТФ•H‹BBBKKH\™›Ь›X[ЩHЬ[Z^][Ы€HH[[Э[ќЩ€Э\И›Ь€[ќ\њЫ]Yњ›ЫќЛ€›Ы‹PRHЫЭ[ќљY\ИЫЭќ[[ќ\њЫ]Yњ›ЫќЛH™\Э\ИЬ[Z^™Y™\њЪ[Ы€Щ€]‚‚SRS—РRT—Ф‘TСT•‘WФђUSИHЊМЛBBBBKKHZ[€X[њЭЩ\€][ИИЪЭИZ\€™\Щ\ќ™\И[\ќ‚TУUPРSФХСT—УХСT—РРTHMLЊBBBKKHZ[€[[Э[ќЩ€Ы]XШ[ЭЩ\€ЫЭ[ќћHЪЭ[]™B‚TУUPРSФХСT—ХTT—РРTHЊЊBBBKKHX^[[Э[ќЩ€Ы]XШ[ЭЩ\€ЫЭ[ќћHЪЭ[]™B‚T‘TТTХSђСWТSTФ•S•УU‘SHЊЌKBBBKKH]™[Ъ[€™\Ъ\Э[ЩH™XЫЫY\И[™Щ\›Э\В‚T‘TТTХSђСWТSTФ•S•РУХS•–WУU‘SHЊЌKBKKH]™[Ъ[€]™\YЩH™\Ъ\Э[ЩH[€HЫЭ[ќћH™XЫЫY\И[™Щ\›Э\В‚SRS—УPR“Ф—РУХS•’QTВOHЛBBBBBKKHRS—УPR“Ф—РУХS•’QTИЫЭ[ќљY\ИЪ][ЬЭXЭЬљY\ИЪ[™HЫЫњЪY\™Y\ИXZ›Ь€ЫЭ[ќљY\В‚PQUSУђSУPR“Ф—РУХS•’QTЧТPЧФђUSИHЌЛBKKHЫЭ[ќљY\ИЪ[[ЫИ™HЫЫњЪY\™YXZ›Ь€Ъ[€]љ[™И[Ь™HXЭЬљY\И]H]™\YЩHЩ€ЬRS—УPR“Ф—РУХS•’QTИЫЭ[ќљY\ЙИXЭЬљY\И[Y\ИQUSУђSУPR“Ф—РУХS•’QTЧТPЧФђUSВ‚PђTСWХS”ТSУ—УPR“Ф—РУХS•–WТS‘VHKBBKKHЪXЪXZ›Ь€ЫЭ[ќћHЪЭ[™HЫЫњЪY\™YH\ЩHЫЭ[ќћHЪ[€ШШ[[™ИЩ[™\]YЫЬ›[њЪ[Ы‹€\ИHЫЭ[ќћHЪ]H[ЬЭXЭЬљY\ЛH\ИHЩXЫЫ™[ЬЭYXЭЬљY\ИЫЭ[ќћH]Л€\Иќ[X™\€\ИИ™HЭЩ\€[€RS—УPR“Ф—РУХS•’QTВ‚SRS—УђUђSФХTWСQ‘’PТQSђЦHHЊKBBBKKHZ[€][ИЪ[€Э\Y\ИЪ[™HЫЫњЪY\™Y[]™\™Yњ›ЫHHШ\][ћH][]‚TTђQ“ФРRT—ФХTT’SФ’UWФђUSИHЌЛBBKKHZ[€][ИЩ€Z\€Э\\љ[Ьљ]H›Ь€\Y›Ь[™В‚TХUWХђSQWРђTСHHLЊKH\ЩH[YHЩ€HЭ]H
+[YH\И\ЩYИ]\›Z[™HЫЬЭИ[€K™Л€XXЩHЫЫ™™\™[Щ\КB‚TХUWХђSQWР•RSS‘ЧФУХЧУUSHЊKHH[YHЩ€XXЪќZ[[™ИЫЭ[€HЭ]B‚TХUWХђSQWУPS”ХСT—СђPХФ€HЊKKHЭ]HЫЬЭ[Ь™X\Щ\ИЪ]\И›Ь€]™\ћHLИЬ[][Ы€
+ЫИЛЊSH™XЫЫY\ИМL[™[€][\YYћH\КB‚RS•ђTТSУ—Ф‘TФ•СVTђUSУ—СVTИHМBBKKH[ќ\Ъ[Ы€^\][Ы€^\В‚SRS—С“РХTСTЧС“Ф—РУУ•S•SХTИHLBBBKKH›ШЭ\Щ\И™YYYИ[›ШЪИЫЫќ[ќ[Э\И›ШЭ\Щ\В‚PUUУ“УSХTЧХХSФРУФ‘HHLBBBBKKHЭ[ШЫЬ™H›Ь€]]Ы›Ы[Э\ИШШ[B‚PUUУ“УSХTЧФФSХ‘T€HЊЌKBBBBKKHЭ[ШЫЬ™H]Ш[€™HШ]™YИ™XXЪ™^]™[‚PТU’SХРT—ТS•“У‘SQS•УRS—ХS”ТSУ€HЌKBKKH\ЩH[YHЩ€ЫЬ›[њЪ[Ы€И[ќ›Ы™HЭ\€ЪY\ИИHЪ]љ[Ш\‚‚USђРTUSUWУU‘SHЊKKHY€ЩH™XЫZ[H\И]XЪ[™Э\€Ш\][ЩH™\Щ]Ш\][]HЭ]\В‚PђTСWФХT”‘S‘T—УSRUHЋBBBBBKKH\ЩH]™[Щ€ШШЭ\][Ы€™\]Z\™Y›Ь€ЫЭ[ќћHЭ\њ™[™\‚‚TХT”‘S‘T—УSRUУUSС“Ф—РУХS•’QTЧХТUУ“ЧРУФ‘TИHЌЛKHЫЭ[ќљY\ИЪ]›ИЭЫ™YЫЬ™\ИЪ[Z\€Э\њ™[™\€]™[][\YYћH\И[[Э[ќ‚SRS—ФХT”‘S‘T—УSRUHЊ‹BBBBBKKHZ[љ[][H›Ы‹Y›ЬЩYЭ\њ™[™\€[Z]€[YLB‚PђTСWУSР’SVђUSУ—ФФQQHЊЛBBBKKH\ЩHЬYYЩ€X[њЭЩ\€[Шљ[^][Ы€Ъ[€KМLЩ€H	B‚‚RS•TђСTSУ—ХРT—ФХTФ•ФРРSHHЊKBKKHШШ[[™ИЩ€[ќ\Щ\[ЫњИИШ\€Э\Ьќ[\XЭ‚RS•TђСTSУ—Р“УP’S‘ЧХРT—ФХTФ•ТSTPХHЊЛKKHX^[\XЭЩ€[ќ\Щ\[ЫњИЫ€HШ\€Э\Ьќ‚‚P“УP’S‘ЧХРT—ФХTФ•ФSђSWФРРSHHLЊMKBBKKHШШ[[™ИЩ€›ЫX™\€[XYЩHИШ\€Э\Ьќ[\XЭЪ[™HYYЩYZЫH\ИHШ\€Э\Ьќ[[B‚SPVР“УP’S‘ЧХСQRУWХРT—ФХTФ•ФSђSHHLЊ‹BKKHX^[[H]Ъ[ШZ[™Y\€ЩYZИњ›ЫH›ЫX™\‰ЬИ[XYЩB‚P“УP’S‘ЧХСQRУWХРT—ФХTФ•ФSђSWСPРVHHЊKBKKHЩYZЫHXШ^HЩ€›ЫX™\€[XYЩHШ\€Э\Ьќ[[B‚SPVР“УP’S‘ЧХРT—ФХTФ•ТSTPХHLЊЛBBBBKKHX^Э[[[Hњ›ЫH›ЫX™\‰ЬИ[XYЩB‚‚RT“СTЧР‘RS‘ЧТТSQХРT—ФХTФ•ФSђSWФРРSHHLЊЛBBKKHШШ[[™ИЩ€Ш\€\›Щ\ИX[њЭЩ\€ЬЭИШ\€Э\Ьќ[\XЭЪ[™HYYЩYZЫH\ИHШ\€Э\Ьќ[[B‚SPVТT“СTЧР‘RS‘ЧТТSQХСQRУWХРT—ФХTФ•ФSђSHHLЊ‹BKKHX^[[H]Ъ[ШZ[™Y\€ЩYZИњ›ЫHШ\€\›Щ\ИX[њЭЩ\€ЬЭ‚RT“СTЧР‘RS‘ЧТТSQХСQRУWХРT—ФХTФ•ФSђSWСPРVHHЊKKKHЩYZЫHXШ^HЩ€Ш\€\›Щ\ИX[њЭЩ\€ЬЭШ\€Э\Ьќ[[B‚SPVТT“СTЧР‘RS‘ЧТТSQХРT—ФХTФ•ТSTPХHLЊЛBBBKKHX^Э[[[Hњ›ЫHШ\€\›Щ\ИX[њЭЩ\€ЬЭ‚UРT—ФХTФ•С”“УWРРTХPSQTИHЊЌKBBBBBBKKH\ЩH[YH
+[ќ™\ќY
+H›Ь€Ш[Э[][™И\›Щ\И™Z[™ИЪ[Y‚B‚PУУ•“ЦTЧР‘RS‘ЧФђRQQХРT—ФХTФ•ФSђSWФРРSHHLЊKBBKKHШШ[[™ИЩ€YHЫЫќ›ЮHZYYИШ\€Э\Ьќ[\XЭЪ[™HYYЩYZЫH\ИHШ\€Э\Ьќ[[B‚SPVРУУ•“ЦTЧР‘RS‘ЧФђRQQХСQRУWХРT—ФХTФ•ФSђSHHLЊ‹KKHX^[[H]Ъ[ШZ[™Y\€ЩYZИњ›ЫHYHЫЫќ›ЮHZYY‚PУУ•“ЦTЧР‘RS‘ЧФђRQQХСQRУWХРT—ФХTФ•ФSђSWСPРVHHЊKKKHЩYZЫHXШ^HЩ€YHЫЫќ›ЮHZYYШ\€Э\Ьќ[[B‚SPVРУУ•“ЦTЧР‘RS‘ЧФђRQQХРT—ФХTФ•ТSTPХHLЌKBBBKKHX^Э[[[Hњ›ЫHYHЫЫќ›ЮHZYY‚‚Q‘SPSWХS’UУPQT—РђTСWРТSђСHHВ‚BKKH\Y\И\ИHXЭЬ€И™[X[H[љ]XY\€[™ЫZ^][Ы‚‚BKKHH[Y\И™YYИИ™H™\›ИY€[ЭHЫ‰ЭXЭX[H]™H[™ЫHЬќZ]В‚BLЌKKHЫЭ[ќћHXY\њВ‚BLЌKKH\›^HXY\њВ‚BLЌKKH]ћHXY\њВ‚BLЌKKHZ\€XY\њВ‚BLЌKKHЬ\]]™\В‚BLЌKKHШЪY[ќ\ЭВ‚_K‚‚PУУ•“ЦTЧФХS’ЧУUSTQT—С“Ф—ХРT—ФХTФ•HЊ‹KKHЫЩHHYHЫЫќ›ЮHЪ\Э[љЛ[ЭHЪ[Щ]H\™Щ\€™YШ]]™H[\XЭЫ€[Э\€Ш\€Э\Ьќ‚PУУ•“ЦTЧР‘RS‘ЧФђRQQСRSWХРT—ФХTФ•ТSTPХС”“УWУХ‘T”СPWФХUTИHЊ‹KKH™\ЫЭ\ЩH[њЩ™\€ЫЫќ›Ю\ИЫЫќ›Ю\Ињ›ЫHЭ\€Э]\И™Z[™ИZYYЪ[Ъ]™HHZ[HШ\€Э\Ьќ[[H\[™[™ИЫ€ЭИ[\Ьќ[ќ]™\ЫЭ\ЩH\И[™ЭИ[™Y™љXЩ[ќЫЫќ›Ю\И\™B‚PУУ•“ЦTЧФХS’ЧУUSTQT—С“Ф—ХРT—ФХTФ•С”“УWУХ‘T”СPWФХUTИHЊ‹BBKKHЫЩHH™\ЫЭ\ЩH[њЩ™\€ЫЫќ›Ю\Ињ›ЫHЭ\€Э]\ИЪ\Э[љЛ[ЭHЪ[Щ]H\™Щ\€™YШ]]™H[\XЭЫ€[Э\€Ш\€Э\Ьќ‚PУУ•“ЦTЧР‘RS‘ЧФђRQQСRSWХРT—ФХTФ•ТSTPХHЊ‹KKHYHЫЫќ›Ю\И™Z[™ИZYYЪ[Ъ]™HHZ[HШ\€Э\Ьќ[[H\[™[™ИЫ€ЭИ[\Ьќ[ќ]™\ЫЭ\ЩH\И[™ЭИ[™Y™љXЩ[ќЫЫќ›Ю\И\™B‚‚SPVФ“ФQРS‘WФХP’SUWТSTPХHBBKKHX^Э[[[Hњ›ЫHЬ\]]™H\™›Ь›Z[™ИH›ЬYШ[™HZ\ЬЪ[Ы€[€HЫЭ[ќћB‚SPVФ“ФQРS‘WХРT—ФХTФ•ТSTPХHBKKHX^Э[[[Hњ›ЫHЬ\]]™H\™›Ь›Z[™ИH›ЬYШ[™HZ\ЬЪ[Ы€[€HЫЭ[ќћB‚T“ФQРS‘WФХP’SUWСRSWСPРVHHKBKKH[[Э[ќЩ€ЭXљ[]H™XЫЭ™\™YZ[Hњ›ЫH›ЬYШ[™HY™›Ьќ‚T“ФQРS‘WХРT—ФХTФ•СRSWСPРVHHKBKKH[[Э[ќЩ€Ш\€Э\Ьќ™XЫЭ™\™YZ[Hњ›ЫHШ\€Э\ЬќY™›Ьќ‚‚S•SWСVTЧХЧС•SWСSUWФХРТФSQСTURTQS•HНЌKHKH[YH[€^\ИИќ[H[]H\]Z\Y[ќИњ›ЫHЭШЪЬ[K€Ъ[€[ЭH[]H[€\]Z\Y[ќ^HЫИИH[\Ь\ћHY[€ЫЫЪXЪЭ[Ш[€™HЩZ^™Y‚PRT—ФХTWРУУ•‘T”ТSУ—ФРРSHHЊKBBBKKHЫЫќ™\њЪ[Ы€ШШ[H›Ь€[™\ИИZ\€Э\B‚PRT—ФХTWС“ФСVTђUSУ—ТХT”ИHMЋBBKKHZ\€›Ь[™ЭYќ\€™Z[™И›ЬY‚TХT•S‘ЧРУУSPS‘ФХСT€HЊBBBBKKHЭ\ќ[™ИЫЫ[X[™ЭЩ\€›Ь€]™\ћHЫЭ[ќћB‚PђTСWУPVРУУSPS‘ФХСT€HЊЊBBBBKKH\ЩH[YH›Ь€X^[][HЫЫ[X[™ЭЩ\‚‚PђTСWРУУSPS‘ФХСT—СРRS€HKЊBBBBKKH\ЩH[YH›Ь€Z[HЫЫ[X[™ЭЩ\€ШZ[‚‚PRT—Х“УS•QT—ФS‘TЧФђUSИHЊ‹BBBKKH][И›Ь€›Ы[ќY\€[™\И]Z[X›H›Ь€Щ[™[™И[€™[][Ы€ИЩ[™\€Z\€›ЬЩB‚PRT—Х“УS•QT—РђTСTЧРРTPТUWУSRUHЊKBKKH][И›Ь€›Ы[ќY\€[™\И]Z[X›H›Ь€Щ[™[™И[€™[][Ы€И™XЩZ]™\€Z\€\ЩHШ\XЪ]B‚PUPТWЦФТT‘HHЊLBBBBBKKHЫЭ[ќћH™XЩZ]™Yњ›ЫH]XЪ\В‚TФPТPSС“ФђСTЧРРTРђTСHHЊ‹BBBBKKHX^[[[Э[ќЩ€ЬXЪX[›ЬЩ\И][[ЫњИ\ИЭ[ќ[X™\€Щ€›Ы‹\ЬXЪX[›ЬЩ\И][[ЫњИ][\YYћH\И[™[ЩYљYYћHHЫЭ[ќћH[ЩYљY\‚‚TФPТPSС“ФђСTЧРРTУRS€HNBBBBKKH[ЭHШ[€]™HHZ[љ[][HЩ€\ИX[ћHЬXЪX[›ЬЩ\И][[ЫњЛ™YШ\™\ЬИЩ€Hќ[X™\€Щ€›Ы‹\ЬXЪX[›ЬЩ\И][[ЫњИ[ЭH]™K\ИШ[€[ЫИ™H[ЩYљYYћHHЫЭ[ќћH[ЩYљY\‚‚QVTЧУС—ХРT—Р‘Q“Ф‘WФХT”‘S‘T€HЛBBBKKHќ[X™\€Щ€^\ИHШ\€\ИИ]™H^\ЭY™Y›Ь™H[ћ[Ы™HШ[€Э\њ™[™\€[€]‚‚Q•QSУPTСWРУУ•“ЦWФђUSИHЊЛBBBKKHќ[HЫЫќ›Ю\И™YYY\€ќY[[™X\ЩB‚‚TХT•S‘ЧС•QSФђUSИHЋBBBBBKKHЭ\ќ[™ИќY[][ИЫЫ\\™YИX^ќY[›Ь€ЫЭ[ќљY\В‚PђTСWС•QSСРRS—ФT—УТSHKЊЛBBBBBKKH\ЩH[[Э[ќЩ€ќY[ШZ[™YЭ\›H\€^Щ\ЬИЪ[‚PђTСWС•QSСРRS€H‹ЊBBBBBBKKH\ЩH[[Э[ќЩ€ќY[ШZ[™YЭ\›K[™\[™[ќЩ€^Щ\ЬИЪ[‚PђTСWС•QSРРTPТUHHLBBBBBKKH\ЩH[[Э[ќЩ€ќY[Ш\XЪ]B‚‚TРУФђТQСPT•ФХUWРУФХHLBBBBKKHЫЬЭИШЫЬЪHЭ]B‚‚PУХS•–WУPS”ХСT—РРTUSUQС”‘QWФУУСђPХФ€HЊKKKHXЭЬ€Ы€[[Э[ќЩ€›Ь›X[X[њЭЩ\€Yќ›Ь€[€^[Y][Ы€Ъ]›И\њљ]ЬћK‚‚PУХS•–WУPS”ХСT—РРTUSUQРУФ‘WСРRS—СђPХФ€HЊKKKHXЭЬ€Ы€[[Э[ќЩ€›Ь›X[X[њЭЩ\€ШZ[™Y›Ь€H^[H][Ы‹€њ›ЫHЭЫ™YЭ]\И]\™HЫЫќ›ЫYћH[€[™[^K€Э]HX[њЭЩ\€™YXЩYћHXЭЬ€L[€ЫЩK‚‚PУХS•–WУPS”ХСT—РРTUSUQУ“У—РУФ‘WСРRS—СђPХФ€HЊKKKHXЭЬ€Ы€[[Э[ќЩ€›Ь›X[X[њЭЩ\€ШZ[™Y›Ь€H^[H][Ы‹€њ›ЫHЭЫ™YЭ]\И]\™HЫЫќ›ЫYћH[€[™[^K€Э]HX[њЭЩ\€™YXЩYћHXЭЬ€L[€ЫЩK‚‚QТQWУPVУQТUSPPЦHHLBBBBBBBKKSYЪ][XXЮHX^Щ€HЪQB‚QТQWРРTUSUWУPVФХРТФSWХђS”С‘T€HЊKBBKKHLH[њЩ™\њИ][ИЩ€ЭШЪЬ[K€њ›ЫHИ\ИYљ[™H\[™[™ИЫ€Э\ќ[™ИYЪ][XXЮHЫ€Ш\][][Ы‹‚‚QТQWРРTUSUWУRS—УQТUС“Ф—ХђS”С‘T€HKKHLLZ[љ[][HЭ\ќ[™ИYЪ][XXЮHИ[њЩ™\€[ћH\]Z\Y[ќ][‚‚QТQWРРTUSUSУ—УQТUSPPЦWХРT”РУФ‘WСђPХФ€HЌKKH][\Y\ИШ\€ЫЫќљXќ][Ы€\Щ[ќЪ]\ИXЭЬ€›Ь€\ќЩ€Э\ќ[™ИYЪ][XXЮK€
+ЌHЫЭ[YX[€HL	HШ\€ЫЫќљXќ][Ы€Ъ]™\ИЌH[Ь™HYЪ][XXЮJB‚QТQWРРTUSUSУ—УQТUSPPЦWХРT“S‘ХСђPХФ€HKЊKH][\Y\ИШ\€[™Э
+њ€Щ€ЩYZЬКHЪ]\ИXЭЬ€›Ь€\ќЩ€Э\ќ[™ИYЪ][XXЮK€
+KЊЫЭ[YX[€HШ\€[™ЭЩ€МЩYZЬИЪ]™\ИМ[Ь™HYЪ][XXЮJB‚QТQWХРT”РУФ‘WСРRS—УQТUSPPЦWСђPХФ€HKBHBKKQXЭЬ€Ы€ЭИ]XЪYЪ][XXЮH\ИШZ[™Yњ›ЫHШ\њШЫЬ™HX\›™YћHЪQH[љ]Л‚‚QТQWТФХРТPЧС”“УWУQТUSPPЦWУPVHKBBBBKKRЬЭЪ[™XЩZ]™Hњ›ЫHИ\И[YH[€ТPЛ‚‚QТQWТФХУRPЧС”“УWУQТUSPPЦWУPVHKBBBBKKRЬЭЪ[™XЩZ]™Hњ›ЫHИ\И[YH[€RPЛ‚‚QТQWТФХСРТЦPT‘ЧС”“УWУQТUSPPЦWУPVHBBBKKRЬЭЪ[™XЩZ]™Hњ›ЫHИ\И[YH[€ШЪЮX\™Л‚‚QТQWХ‘UTђS—УPS”ХСT—У“У—РУФ‘WСРRS—СђPХФ€HЊKKKHXЭЬ€Ы€[[Э[ќЩ€X[њЭЩ\€ШZ[™Yњ›ЫHЭЫ™YЭ]\И]\™HЫЫќ›ЫYћH[€[™[^K€Э]HX[њЭЩ\€™YXЩYћHXЭЬ€L[€ЫЩK‚‚QТQWХ‘UTђS—УPS”ХСT—РУФ‘WСРRS—СђPХФ€HЊKKKHXЭЬ€Ы€[[Э[ќЩ€X[њЭЩ\€ШZ[™Yњ›ЫHЭЫ™YЭ]\И]\™HЫЫќ›ЫYћH[€[™[^K€Э]HX[њЭЩ\€™YXЩYћHXЭЬ€L[€ЫЩK‚‚QТQWУPS”ХСT—ХХSУPVСђPХФ€HЌKKKHXЭЬ€Ы€X^[[Э[ќЩ€^[HX[њЭЩ\€]Ш[€™HШZ[™Yњ›ЫHЭЫ™YЭ]\Л€\›ШXЪ[™И\ИЪ[Ъ]™H[Z[љ\Ъ[™И™]\›њЛ€™YXЩYћHXЭЬ€L[€ЫЩK‚‚QТQWУPS”ХСT—ФђUЧУС—УPVФХT•ФSђSHHЌKKKUЪ[€\И][ИЩ€X^X[њЭЩ\€\И™Y[€™XЬќZ]YЩHЭ\ќ\Z[™ИH[[K‚‚QТQWУPS”ХСT—СРRS—ФSђSWУPVHЋMKKKSX^[[HЫ€^[HX[њЭЩ\€Ь›ЭЭ‚‚QТQWСVSWРRT—Ф‘PФ•RUQS•УQТUSPPЦHHLKKSYЪ][XXЮH™\]Z\™YИ™XЬќZ]^[HZ\ќЪ[™ЬВ‚QТQWСVSWРRT—ФХT•СVT’QSђСHHЛBKKTЭ\ќ[™И^\љY[ЩH›Ь€^[HZ\ќЪ[™ЬВ‚QТQWСVSWХ“УФФ‘PФ•RUQS•УQТUSPPЦHHЌKKKSYЪ][XXЮH™\]Z\™YИ™XЬќZ]^[H›ЫЬВ‚QТQWСVSWХ“УФЧСTЦWХђRS’S‘ЧУPVУU‘SHLKKSX^^[H›ЫЬИШ[€™XЩZ]™Hњ›ЫHZ[љ[™В‚QТQWСVSWРT“VWУPQT—УQТUSPPЦWУU‘SИHИKKSYЪ][XXЮH]™[ИЪ\™HH™]И\›^HXY\€\И™XЩZ]™Y‚‚BLМ‚BMЊ‚BNL‚_K‚QТQWСVSWРT“VWУPQT—ФХT•УU‘SHЛKKTЭ\ќ[™И]™[›Ь€^[HXY\‚‚QТQWСTРРTS‘ЧСU’TТSУ”ЧХђS”С‘T—СVTИHМKH^\ИИ[њЩ™\€\ШШ\[™И]љ\Ъ[ЫњИИЬЭ][Ы‚‚QТQWСTРРTS‘ЧСU’TТSУ”ЧЦР“УФХHЌKH\ШШ\[™И]љ\Ъ[ЫњИШZ[€H›ЫЬЭИ^\љY[ЩK€Ы›HHЭYЪ\Э[Э\Y\ЬЩ\ИЪ[[™ЩЩ]\€[™Э\ќљ]™HИЪ]YHЫ™H[™™Y^љHШШ[И‹‹€Ь€YHћZ[‰Л‹‹‚‚QТQWСU’TТSУ—РUPТЧР“У•TЧРQРRS”ХУРРХTQT€HЊKKH]XЪИ›Ыќ\ИXЭЬ€YШZ[њЭЪЩ]™\€ШШЭ\Y\И[Э\€ЫЬ™H\њљ]ЬћK‚‚QТQWСU’TТSУ—СQ‘S”СWР“У•TЧРQРRS”ХУРРХTQT€HЊKKH]XЪИ›Ыќ\ИXЭЬ€YШZ[њЭЪЩ]™\€ШШЭ\Y\И[Э\€ЫЬ™H\њљ]ЬћK‚‚QТQWСU’TТSУ—РUPТЧР“У•TЧУУ—РУФ‘HHЊKKH]XЪИ›Ыќ\ИXЭЬ€Ъ[€љYЪ[™ИЫ€ЫЬ™\Л‚‚QТQWСU’TТSУ—СQ‘S”СWР“У•TЧУУ—РУФ‘HHЊKKHY™[њЩH›Ыќ\ИXЭЬ€Ъ[€љYЪ[™ИЫ€ЫЬ™\Л‚‚QТQWСTРРTS‘ЧСU’TТSУ”ЧСTURTQS•ФђUSИHЊ‹KH\ЩH\]Z\Y[ќ][ИЫ€\ШШ\Y›ЫЬЛ‚‚QТQWСTРРTS‘ЧСU’TТSУ”ЧРSSХS•ФђUSИHЊKKH][ИЫ€[[Э[ќЩ€]љ\Ъ[ЫњИ]\ШШ\\Л€ШШ[\ИЪ]Э\ќ[™ИYЪ][XXЮB‚QТQWУP‘TђUQУђUSУ—СRSWУQТUSPPЦWРТS‘СHHLKЌKKP[€[Ш\][]Y^[H]\Иќ[HX™\]YЪ[]™HYЪ][XXЮHЪ[™ЩYЪ]\И[[Э[ќZ[K€Ъ[™H]]ЫX]XШ[H™Z[њЭ]YЪ[€]™XXЪ\И‚‚QТQWСVSWХђS”С‘T—УУ—УPQT—РРTUSUSУ—УPS”ХСT—СђPХФ€HЊKKQXЭЬ€Ы€^[HX[њЭЩ\€Щ\Ъ[€HXЭ[Ы€XY\€Ш\][]\И[™HЬЭY^[\И\™H[њЩ™\™Y‚‚QТQWРУУ•“ЦWУУ—РФ‘PUSУ€HLKHќ[X™\€Щ€ЫЫќ›ЮHHЪQHЪ[Щ]Ы€Ь™X][Ы‹‚‚‚‚TХT”‘S‘T—УSRUФ‘QPХSУ—ФT—РУУP“ФђUSУ€HЊKKKYXXЪ\Щ[ќЩ€ЫЫX›Ь][Ы€Ъ[ЭЩ\€Э\њ™[™\€[Z]ћH\И\Щ[ќYЩB‚TХT”‘S‘T—Ф‘PТTQS•ФРУФ‘WФT—РУУP“ФђUSУ€HKЊKKXЫЭ[ќљY\ИЪ]ЫЫX›Ь][Ы€Ъ[Щ]›Ыќ\ИЪ[HШ[YHШ[Э[]\ИЪXЪЫЭ[ќћHH[™[^HЪ[Ш\][]B‚PУУTPSђСWФT—РУУP“ФђUSУ€HKЊBBBBKKYXXЪ\Щ[ќЩ€ЫЫX›Ь][Ы€Ъ[™HЫЫќ™\ќYИ\ИЫЫ\X[ЩH]Ш\][][Ы‚‚‚UТSУPQХЧХРT—С“РХTЧФT”ТTХSђСHHЊKHZЩ[€›ШЭ\Щ\И]\ИXYИШ\€Ъ[Э[XZЩHZH™\›Ь€Ш\€›Ь€\ИX[ћH^\ИYќ\€™Z[™ИZЩ[‚‚UТSУPQХЧХРT—СPТTТSУ—ФT”ТTХSђСHHМKHHXЪ\Ъ[Ы€]ИXYИШ\€Ъ[Ъ]XZЩHZH™\›Ь€Ш\€›Ь€\ИX[ћH^\ИYќ\€™Z[™ИZЩ[‹ШЫЫЫЭЫ‹Э[Y[Э]‚‚PT“VWРУХS•СRSWУT”С“Ф—ХђRS’S‘ЧЦHЊ‹KHќ[X™\€Щ€\›ZY\И]\И\ЩY[€Z[љ[™ИШ[Э[]\ИZ[H\њИИXЭX[ќ[X™\€
+Y€™X[ќ[X™\€\ИЭЩ\ЉB‚PT“VWРУХS•СRSWСPФ‘PTСWС“Ф—ХђRS’S‘ЧЦHЊKKHќ[X™\€Щ€\›ZY\И]\И\ЩY[€Z[љ[™ИШ[Э[]\ИZ[H[™X\›H\›ШXЪ\И\Иќ[X™\€
+Y€™X[ќ[X™\€\ИЭЩ\ЉBџK‚“”™\Ъ\Э[ЩHHВ‚RS’UPSФХUWФ‘TТTХSђСHHKЊBBBBBBKKH[љ]X[™\Ъ\Э[ЩH\Щ[ќYЩHЩ€HЭ]HЫЩH]\ИШ\\™Y‚RS’UPSФХUWРУУTPSђСHHЊBBBBBBKKH[љ]X[ЫЫ\X[ЩH\Щ[ќYЩHЩ€HЭ]HЫЩH]\ИШ\\™Y‚PУУTPSђСWСђPХФ—УУ—ФХUWРУУ•“УT—РТS‘СHHKKHЫЫ\X[ЩHXЭЬ€]\Y\ИЪ[€HЭ]HЫЫќ›Ы\€Ъ[™Щ\И
+[€™]ЩY[€[Y\ЛЫЫ\X[ЩH\И™\›ЩYY€]\ИZЩ[€ћHЬљYЪ[[ЫЭ[ќћJB‚T‘TТTХSђСWРУУУХУ—ХТS—СTРP“QHLЊЌKBBBKKH™\Ъ\Э[ЩHЫЫЫЭЫ€Ъ[€HЭ]H\ИZЩ[€XЪИћH]ИЬљYЪ[[ЭЫ™\€
+ЫЫ\X[ЩH\И™\›ЩY[€]Ш\ЩJB‚‚T‘TТTХSђСWХT‘СUРђTСHHЊBBBBBBKKH\ЩH™\Ъ\Э[ЩH\™Щ]\Щ[ќYЩB‚‚T‘TТTХSђСWХT‘СUУSСQ’QT—ТTЧРУRSHHBBKKH™\Ъ\Э[ЩH\™Щ][ЩYљY\€[€	H›Ь€Э]\ИЩH]™HЫZ[B‚‚T‘TТTХSђСWХT‘СUУSСQ’QT—ФT—ФХP’SUWУФФИHЊ‹KKH™\Ъ\Э[ЩH\™Щ][ЩYљY\€\€ЭXљ[]H™[ЭИL	B‚T‘TТTХSђСWХT‘СUУSСQ’QT—ФT—РУУTPSђСHHLЌKBKKH™\Ъ\Э[ЩH\™Щ][ЩYљY\€\€ЫЫ\X[ЩH	B‚‚T‘TТTХSђСWХT‘СUУSСQ’QT—ТTЧРUФPPСHHLLЊBBKKH™\Ъ\Э[ЩH\™Щ][ЩYљY\€Ъ[€ЩH\™H]XXЩB‚‚T‘TТTХSђСWХT‘СUУSСQ’QT—ФХUWХ”HВBBBBKKH™\Ъ\Э[ЩH\™Щ][ЩYљY\€Z\њИ›Ь€њ€љ\њЭ[ќћH\ИЭ[њ[€Э]H[™ЩXЫЫ™[ќћH\И[[Э[ќЩ€\™Щ][ЩYљY\€]\Y\И›Ь€]™\ЪЫ‚BLЊKHHB‚BMKKЊKHHHL‚BLLLЊKHLHMB‚BLMKMKЊKHMHHЊ‚BLЊЊЊKHЊHЌB‚BLЌKЌKЊKHЌHHМ‚BLММЊKHМHНB‚BLНKНKЊKHНHH‚BMЊKHHB‚BMKKЊKHHHL‚BMLLЊKHLH‹‹‚‚_K‚‚T‘TТTХSђСWХT‘СUУSСQ’QT—УРРХTQQРРTUSUQHLЊKH™\Ъ\Э[ЩH\™Щ][ЩYљY\€Ъ[€H[™[^H\ИШ\][]Y‚‚T‘TТTХSђСWХT‘СUУSСQ’QT—УРРХTQQТTЧСVSWУRS€H‹ЊKHZ[€	€X^™\Ъ\Э[ЩH\™Щ][ЩYљY\€™\Ъ\Э[ЩH\™Щ][ЩYљY\€›Ь€^[HЫЭ[ќљY\Л€[ќ\њЫ]Y\Ъ[™ИYЪ][XXЮB‚T‘TТTХSђСWХT‘СUУSСQ’QT—УРРХTQQТTЧСVSWУPVHЊЊ‚‚T‘TТTХSђСWХT‘СUУSСQ’QT—ФФУХИHLЊЊBBKKHЭИ]XЪЩH™YXЩHH™\Ъ\Э[ЩH\™Щ]‚T‘TТTХSђСWХT‘СUУSСQ’QT—ФФХ‘T–WУХИHMLЊBBKKH™\Ъ\Э[ЩH\™Щ][ЩYљY\€[€	H›Ь€Э]\ИЩH]™HЫZ[B‚‚T‘TТTХSђСWФФУХЧРХUС‘€HL‚T‘TТTХSђСWФФХ‘T–WУХЧРХUС‘€HL‚‚T‘TТTХSђСWХT‘СUУRS—РРTС“Ф—У“У—РУУTPSђСHHLKHZ[€™\Ъ\Э[ЩH\™Щ]Ъ[™HШ\YИ\И\Щ[ќYЩH›Ь€›Ы‹XЫЫ\X[ЩHЫЭ\Щ\В‚‚T‘TТTХSђСWСPРVWРђTСHHЊKKH\ЩH™\Ъ\Э[ЩHXШ^B‚T‘TТTХSђСWСPРVWУRS€HЊKKHZ[€™\Ъ\Э[ЩHXШ^B‚T‘TТTХSђСWСPРVWУPVHLЊKH^™\Ъ\Э[ЩHXШ^B‚‚T‘TТTХSђСWСPРVWУSСQ’QT—ТTЧРУRSHHKH™\Ъ\Э[ЩHXШ^H[ЩYљY\€›Ь€Э\€ЫZ[\В‚T‘TТTХSђСWСPРVWУSСQ’QT—СђPХФ”ИHИKH™\Ъ\Э[ЩHXШ^H[ЩYљY\€Ъ[€™\Ъ\Э[ЩH]ИHЩ\ќZ[€\Щ[ќYЩB‚BLLMLKH™[ЭИL	H]\ИHML	H[ЩYљY\€Ы€XШ^B‚BLЊLЌKKH™[ЭИЊ	H]\ИHLЌIH[ЩYљY\€Ы€XШ^B‚_K‚‚SRS—СSPQСWХЧСРT”’TУУ”ЧУSСQ’QT€HЊKKH[ЩYљY\€]\Y\ИИЬЬЩ\Ињ›ЫH™\Ъ\Э[ЩH]XЪИИШ\њљ\ЫЫњИ][ЬЭШ[€™H™YXЩYИ\И[[Э[ќ‚‚T‘TТTХSђСWСФ“ХХРђTСHHЊ‹KH\ЩH™\Ъ\Э[ЩHЬ›ЭВ‚T‘TТTХSђСWСФ“ХХУRS€HЊKKHZ[€™\Ъ\Э[ЩHЬ›ЭВ‚T‘TТTХSђСWСФ“ХХУPVHLЊKHX^™\Ъ\Э[ЩHЬ›ЭВ‚‚PУУTPSђСWСФ“ХХРђTСHHЊKH\ЩHЫЫ\X[ЩHЬ›ЭВ‚PУУTPSђСWСФ“ХХУRS€HLLЊKHZ[€ЫЫ\X[ЩHЬ›ЭВ‚PУУTPSђСWСФ“ХХУPVHLЊKHX^ЫЫ\X[ЩHЬ›ЭВ‚‚PУУTPSђСWСФ“ХХТTЧРUФPPСHHЌKKHЫЫ\X[ЩHЬ›ЭЭќY™€]XXЩB‚PУУTPSђСWСФ“ХХТTЧРУRSHHKHЫЫ\X[ЩHЬ›ЭЭќY™€Y€Э]H\ИHЫZ[B‚‚PУУTPSђСWСPРVWРUУPVРУУTPSђСHHLЊKKH\ИЫЫ\X[ЩH[Ь™X\Щ\Л]Щ]ИHXШ^H]H\[™[™ИЫ€]И[YK€ЫЫ\X[ЩHЪЭ[ЭXљ[^™H]ЫЫYH[YH[ќ[]ИЬ›ЭЭЪ[™Щ\В‚PУУTPSђСWСPРVWФT—СVSWУQТUSPPЦHHLЊ‹KHYЪ\€YЪ][XXЮHЪ[Ъ]™HYЪ\€XШ^HИЫЫ\X[ЩB‚‚T‘TТTХSђСWФђUSЧСQ‘—ХЧФФ‘PQHЌKKH™\Ъ\Э[ЩHY™€™]ЩY[€ЫИ™ZYЪ›Э\€Э]\ИЪ[Ь™XYћH\И][И
+њ›ЫHYЪ\Э™\Ъ\Э[ЩHЭ]\ИИЭЩ\€Ы™\И[™]Ъ[Ы›HЬ™XYЫЩHИHЭ]JB‚‚T‘TТTХSђСWРPХU’UWРТSђСWРUУPVФ‘TТTХSђСHHЊЛ‚T‘TТTХSђСWРPХU’UWУRS—СРT”’TУУ—ФS‘UђUWРТSђСHHЊЛ‚‚T‘TТTХSђСWХT‘СUХЧФ‘QSђP“WФ‘TТTХSђСHHLKH™\Ъ\Э[ЩHЪ[™H\ШX›YЫЩH]™XXЪ\И™\›И[™Ъ[›Э™H™Y[X›Y[ќ[™\Ъ\Э[ЩH\™Щ]™XXЪ\ИX›Э™H\И[YB‚QРT”’TУУ—УСЧУPVУSУ•ИHЛ‚‚S“ЧРУУTPSђСWСРRS—СSђP“WУSRUHЌKKH]X\Э\И][ИЩ€›ИШ\њљ\ЫЫ€]ИЪЭ[™HXЭ]™H[€Ь™\€И›ИЫЫ\X[ЩHШZ[€ИZЩHY™™XЭ‚‚QРT”’TУУ—УPS”ХСT—УRS—СSU‘T–WФФQQHЌKKKHZ[љ[][H\ЩH[]™\ћHЬYYY€HЪ[љИШ[‰Э™HШ[Э[]Y‚‚QРT”’TУУ—УPS”ХСT—Ф‘RS‘“ФђСSQS•ФФQQHЊЊKKH[ЩYљY\€›Ь€Ш\њљ\ЫЫ€X[њЭЩ\€™Z[™›ЬЩ[Y[ќ€\И[YH\ИHX^[][HИ™H[]™\™YЪXЪ\И[€[ЩYљYYћH\Э[ЩB‚QРT”’TУУ—СTURTQS•СSU‘T–WФФQQHЊKKH[ЩYљY\€›Ь€Ш\њљ\ЫЫ€\]Z\Y[ќ™Z[™›ЬЩ[Y[ќЬYY‚‚QРT”’TУУ—ФХ—ФХЧУPS”ХСT€H‹KKTШШ[\И[\XЭЩ€X[њЭЩ\€YљXЪY[ЮHћHZ\Ъ[™И]YљXЪY[ЮHИHќ[X™\€\™K€›Ь›][N€Y™љXЪY[ЮHHKЊHX[њЭЩ\—ЩYљXЪY[ЮW‘РT”’TУУ—ФХ—ФХЧУPS”ХСT‚‚QРT”’TУУ—ФХ—ФХЧСTURTQS•HЛKKTШШ[\И[\XЭЩ€]\Z\Y[ќYљXЪY[ЮHћHZ\Ъ[™И]YљXЪY[ЮHИHќ[X™\€\™K€›Ь›][N€Y™љXЪY[ЮHHKЊH\]Z\Y[ќЩYљXЪY[ЮW‘РT”’TУУ—ФХ—ФХЧСTURTQS•‚‚TХT‘TФТSУ—У‘QQQР–WФ‘TТTХSђСWФТS•HЌНKKHќ[X™\€Щ€Э\™\ЬЪ[Ы€Ъ[ќЩH™YY›Ь€XXЪIHЩ€™\Ъ\Э[ЩB‚TХT‘TФТSУ—У‘QQQУХСT—РРTHLЊKKHY€™\Ъ\Э[ЩH\ИЭЩ\€[€\И[YH[€ЩH[Ш^\ИXЭ\ИЭYЪ]\И]HYљ[™H›Ь€H\њЬЩHЩ€Э\™\Ъ[Ы€™\]Z\™[Y[ќВ‚TХT‘TФТSУ—У‘QQQХTT—РРTHLЊKHY€™\Ъ\Э[ЩH\ИЬ™X]\€[€\И[YH[€ЩH[Ш^\ИXЭ\ИЭYЪ]\И]HYљ[™H›Ь€H\њЬЩHЩ€Э\™\Ъ[Ы€™\]Z\™[Y[ќВ‚‚QРT”’TУУ—УPS”ХСT—УФХР–WРUPТИHЊKKKH][ИЩ€X[њЭЩ\€ЬЭћHШ\њљ\ЫЫ€]XXЪ]XЪИЫ€Ш\њљ\ЫЫ€
+\Иќ[X™\€Ъ[™H™YXЩYћHH\™™\ЬИЩ€Ш\њљ\ЫЫ€[\]JB‚QРT”’TУУ—СTURTQS•УФХР–WРUPТИHЊ‹KKH][ИЩ€\]Z\Y[ќЬЭћHШ\њљ\ЫЫ€]XXЪ]XЪИЫ€Ш\њљ\ЫЫ€
+\Иќ[X™\€Ъ[™H™YXЩYћHH\™™\ЬИЩ€Ш\њљ\ЫЫ€[\]JB‚SPVSUSWСРT”’TУУ—ТT‘‘TФЧХТS—РUPТСQHЋKHШ\И™HЭ\™H]Ш\њљ\ЫЫ€Ъ[ЭY™™\€ЬЭ[€]XЪЛ]™[€Ъ]H[[ЬЭL	H\™™\ЬВ‚‚Q“Ф‘RQУ—УPS”ХСT—УRS—Х‘TТУHЊBHKHHZ[љ[][Hќ[X™\€Щ€X[њЭЩ\€]RHЪ[XШЩ\ИЪ]™H]ЫЩK[€Ь™\€И]›ЪYX[ћHЩZ\™]H[њЩ™\‹‚‚SPS”ХСT—Р•Q‘‘T—ХЧУ“ХСТU‘WУRS“Ф€HKHИ]\›Z[™HЭИ]XЪRHШ[€Ъ]™H\И›Ь™ZYЫ€X[њЭЩ\‹ЩHШ[Э[]HЭИ]XЪX[њЭЩ\€ЩH\ЩK[™Y\ИќY™™\‹€H™\Э[\ИЪ]ЩHШ[ќИЩY\›Ь€Z[›Ь€ЫЭ[ќљY\Л€ЫИYЪ\€\Иќ[X™\€\ЛЭЩ\€ЩHЪ[Ъ]™HX[њЭЩ\‹‚‚SPS”ХСT—Р•Q‘‘T—ХЧУ“ХСТU‘WУPR“Ф€HKHИ]\›Z[™HЭИ]XЪRHШ[€Ъ]™H\И›Ь™ZYЫ€X[њЭЩ\‹ЩHШ[Э[]HЭИ]XЪX[њЭЩ\€ЩH\ЩK[™Y\ИќY™™\‹€H™\Э[\ИЪ]ЩHШ[ќИЩY\›Ь€XZ›Ь€ЫЭ[ќљY\Л€ЫИYЪ\€\Иќ[X™\€\ЛЭЩ\€ЩHЪ[Ъ]™HX[њЭЩ\‹‚‚SPVСРT”’TУУ—ФђUSЧХСWРQФ‘QWХЧФХTФ•HLKKKHH\ќЩ€HX[њЭЩ\€™YYYћHH›Ь™ZYЫ€Ш\њљ\ЫЫ‹]RHЪ[YЬ™YHИЭ\ЬќЪ]Э\€X[њЭЩ\‹€Y€™YШ]]™Hќ[X™\‹RHЪ[›ЭZЩH[ќИЫЫњЪY\][Ы€H™YY[™ќ\ЭШ[Э[]HЭИ]XЪ^HШ[€Ъ]™K‚‚Q“Ф‘RQУ—УPS”ХСT—РRWРУУУХУ—СVTИHKBHKHќ[X™\€Щ€^\ИYќ\€[€RHЪ]™H\ИX[њЭЩ\€™Y›Ь™HHRHXШЩ\ИЪ]™H[Ь™K‚‚‚RS’UPSТTХФ–WФ‘TТTХSђСHHЊBBKKH™\Ъ\Э[ЩH[YH›Ь€[љ]X[ЫЫЫћHЭ]\В‚RS’UPSТTХФ–WРУУTPSђСHHМЊBBKKHЫЫ\X[ЩH[YH›Ь€[љ]X[ЫЫЫћHЭ]\В‚RS’UPSСРT”’TУУ—ФХ‘S‘ХHKBBBKKHШ\њљ\ЫЫ€[YH›Ь€[љ]X[ЫЫЫћHЭ]\В‚‚TХUWРУУTPSђСWСPРVWС“Ф—УФХФХUTИHЊ‹KHZ[HЫЫ\X[ЩHXШ^H›Ь€HЭ]\И[ЭHЬЭЫЫќ›ЫЩ‚‚џK‚“”›ЩXЭ[Ы€HВ‚SPVСTURTQS•Ф‘TУХTђСTЧУ‘QQH‹KKHX^ќ[X™\€Щ€Y™™\™[ќЭ]YЪXИ™\ЫЭ\Щ\И[€\]Z\Y[ќШ[€™H\[™[ќЫ‹‚‚SPVРТU—СђPХФ’QTЧФT—УS‘HHЌKKKHX^ќ[X™\€Щ€XЭЬљY\И]Ш[€™H\ЬЪYЫ™YHЪ[™ЫH›ЩXЭ[Ы€[™K‚‚QQђUSУPVУђU—СђPХФ’QTЧФT—УS‘HHL‚Q“РUS‘ЧТTђ“Ф—УPVУђU—СђPХФ’QTЧФT—УS‘HHK‚PУУ•“ЦWУPVУђU—СђPХФ’QTЧФT—УS‘HHL‚PРTUSФТTУPVУђU—СђPХФ’QTЧФT—УS‘HHK‚SPVУRSСђPХФ’QTЧФT—УS‘HHМ‚SPVУRSСђPХФ’QTЧХ’TТP“WС“Ф—УRSСTURTQS•УS‘HHМ‚TђRSРVWСХS—УPVУRSСђPХФ’QTЧФT—УS‘HHK‚TђRSРVWСХS—Ф‘TRT—ФФQQHЊBBKKHZ[Ш^HЭ[€Э™[™Э™\Z\€ЬYY\€XЭЬћB‚QQ‘’PТQSђЦWУФФЧФT—ХS•TСQСVHHKЌKBKKHZ[HЬЬИЩ€Y™љXЪY[ЮH›Ь€[ќ\ЩYXЭЬћHЫЭИ
+Y™љXЪY[ЮH\ИXЪЩY\€XЭЬћHЫЭ[€H›ЩXЭ[Ы€[™H
+B‚T‘TУХTђСWФSђSWХРT“’S‘ЧРФ’UPРSФђUSИHЌНKKHЭЪ]ЪИ™Y›ЩЬ™\ЬИ\€Y€[[H\ИЭ™\€™\ЪЫ‚T‘TУХTђСWХЧСS‘T‘ЦWРУСQ‘’PТQS•H‹BKKHЭИ]XЪ[™\™ЮH\€ЫШ[›ЩXЩ\В‚PђTСWРУХS•–WСS‘T‘ЦWФ“СPХSУ€HBBKKHH\ЩH[™\™ЮH›ЩXЭ[Ы€Щ€HЫЭ[ќћB‚QS‘T‘ЦWФРРSS‘ЧРУФХР–WСђPХФ–WРУХS•HЊЛKHШШ[\И[™\™ЮHЫЬЭ\ЩYЫ€HЭ[ќ[X™\€Щ€XЭЬљY\В‚PђTСWСS‘T‘ЦWРУФХH‹BBBBBKKHЭИ]XЪ[™\™ЮH\€XЭЬћHЫЫњЭ[Y\В‚QS‘T‘ЦWРУФХРРTHM‹BBBBBKKHX^[][H[™\™ЮHЫЬЭ\€XЭЬћB‚QS‘T‘ЦWФРРSWФT—ХђQWСђPХФ–WСVФ•HKHXЭЬ€Щ€ЭИX[ћHЩ€HXЭЬљY\ИШZ[™Yњ›ЫHYH\ИY™™XЭИH[™\™ЮHЫЬЭШШ[[™В‚PђTСWСђPХФ–WФФQQHЌKBBBKKH\ЩHXЭЬћHЬYY][\Y\€
+ЭИ]XЪЪLИЭ[HPИXXЪXЭЬћHЪ]™\КK‚‚PђTСWСђPХФ–WФФQQУRSHЌKBBBKKH\ЩHXЭЬћHЬYY][\Y\€
+ЭИ]XЪЪLИЭ[HPИXXЪXЭЬћHЪ]™\КK‚‚PђTСWСђPХФ–WФФQQУђU€HЊНЛBBBKKH\ЩHXЭЬћHЬYY][\Y\€
+ЭИ]XЪЪLИЭ[HPИXXЪXЭЬћHЪ]™\КK‚‚PђTСWСђPХФ–WФХT•СQ‘’PТQSђЦWСђPХФ€HKKKH\ЩHЭ\ќY™љXЪY[ЮH›Ь€XЭЬљY\И^™\ЬЩY[€	K‚‚TХСT‘QСђPХФ–WФФQQH‹BBBBKKTЭЩ\™YXЭЬћHЬYY][\Y\‹‚‚TХСT‘QСђPХФ–WФФQQУRSH‹BBKKTЭЩ\™YXЭЬћHЬYY][\Y\‹‚‚TХСT‘QСђPХФ–WФФQQУђU€HKЌKBBKKTЭЩ\™YXЭЬћHЬYY][\Y\‹‚‚PђTСWСђPХФ–WУPVСQ‘’PТQSђЦWСђPХФ€HLKKH\ЩHX^Y™љXЪY[ЮH›Ь€XЭЬљY\И^™\ЬЩY[€	K‚‚PђTСWСђPХФ–WСQ‘’PТQSђЦWСРRS€HЊЛBKKH\ЩHY™љXЪY[ЮHXЭЬ‹‚‚PђTСWСђPХФ–WСQ‘’PТQSђЦWРђSSђСWСђPХФ€HЊKBBKKHXЭЬћHY™љXЪY[ЮH[[Ъ[™ИXЭЬ‚‚PђTСWСђPХФ–WСQ‘’PТQSђЦWХђT’PS•РТS‘СWСђPХФ€HBKKH\ЩHXЭЬ€›Ь€Ъ[™Ъ[™И›ЩXЭ[Ы€\љX[ќИ[€	K‚‚PђTСWСђPХФ–WСQ‘’PТQSђЦWФT‘S•РТS‘СWСђPХФ€HBKKH\ЩHXЭЬ€›Ь€Ъ[™Ъ[™И›ЩXЭ[Ы€\™[ќOЪ[™[€[€	K‚‚PђTСWСђPХФ–WСQ‘’PТQSђЦWСђSRSWРТS‘СWСђPХФ€HЊBKKH\ЩHXЭЬ€›Ь€Ъ[™Ъ[™И›ЩXЭ[Ы€Ъ]Ш[YH[Z[H[€	K‚‚PђTСWСђPХФ–WСQ‘’PТQSђЦWРTђТUTWРТS‘СWСђPХФ€HЊKKH\ЩHXЭЬ€›Ь€Ъ[™Ъ[™И›ЩXЭ[Ы€Ъ]Ш[YH\Ъ]\H[€	K‚‚QTURTQS•РђTСWУS‘УPTСWХСRQТHKЊKH\ЩH\]Z\Y[ќ[™X\ЩHЩZYЪ‚QTURTQS•УS‘УPTСWХСRQТСђPХФ€HЊKH\ЩH\]Z\Y[ќ[™X\ЩHXЭЬ‚‚SS‘УPTСWСSU‘T–WХХSСVTИHМKHњ€Щ€^\И™]ЩY[€[™X\ЩH[]™\љY\В‚PS“‘VФХРТФSTЧФђUSИHKЊBKKHЭИ]XЪЭШЪЬ[Y\]Z\Y[ќЪ[™H[њЩ™\њ™YЫ€[›™^][Ы‚‚PS“‘VС’QSСTURTQS•ФђUSИHKЊKKHЭИ]XЪ\]Z\Y[ќњ›ЫH\ЮYY]љ\Ъ[ЫњИЪ[™H[њЩ™\њ™YЫ€[›™^][Ы‚‚PS“‘VС•QSФђUSИHKЊKKHЭИ]XЪќY[Ъ[™H[њЩ™\њ™YЫ€[›™^][Ы‚‚PS“‘VРУУ•“ЦTЧФђUSИHKЊBBKKHЭИX[ћHЫЫќ›Ю\ИЪ[™H[њЩ™\њ™YЫ€[›™^][Ы‚‚SRS—ФФФТP“WХђRS’S‘ЧУPS”ХСT€HМKKHЭИX[ћH\Ю[Y[ќ[™\ИZ[љ[][HШ[€™HZ[љ[™В‚SRS—С’QSХЧХђRS’S‘ЧУPS”ХСT—ФђUSИHЊ‹KKH][ИЪXЪ	HЩ€\›^H[€љY[Ш[€™HZ[™Y‚PРTUSUWФХРТФSTЧФђUSИHЌНKKHЭИ]XЪ\]Z\Y[ќњ›ЫH\ЮYY]љ\Ъ[ЫњИЪ[™H[њЩ™\њ™YЫ€Ш\][][Ы‚‚PРTUSUWС•QSФђUSИHЌKKHЭИ]XЪќY[Ъ[™H[њЩ™\њ™YЫ€Ш\][][Ы‚‚RS‘”ђWУPVРУУ”Х•PХSУ—РУФХСQ‘‘PХHKЋBKKHќZ[[™И[€HЭ]HЪ]YЪ\€[™њ\ЭќXЭ\™HЪ[™YXЩHHЫЬЭЩ€Ъ\™YќZ[[™ЬЛ‚‚T“СPХSУ—Ф‘TУХTђСWУPТЧФSђSHHLЊKBBKKH[[HXЬ™X\ЩHЪ[HXЪИЩ€™\ЫЭ\ЩH\€XЭЬћB‚PТPЧРђS’ЧФФQQР“УФХСђPХФ€HЊЌKKHHТPИ[љИШ[€›ЫЬЭ›ЩXЭ[Ы€ЬYYЪ]\ИXЭЬ€
+ЌHYX[њИL	JB‚SRS—УPСS”СWРPХU‘WСVTИHМBBBBBKKHZ[€^\И›Ь€XЩ[њЩHИ™HXЭ]™B‚PђTСWУPСS”СWТPЧРУФХHBBBBBBKKH\ЩHPИЫЬЭ›Ь€[™YXЩ[њЩB‚SPСS”СWТPЧРУФХЦQPT—ТSђФ‘PTСHHЊЌKBBBBKKHPИЫЬЭ\]Z\Y[ќ›Ь€]™\ћHYX\€Щ€\]Z\Y[ќYќ\€NLН‚‚SPСS”СWСTURTQS•РђTСWФФQQHLЊЌKBBBKKH\ЩHRPИЬYY[ЩYљY\€›Ь€XЩ[њЩY\]Z\Y[ќ‚SPСS”СWСTURTQS•ХPТФФQQФT—ЦQPT€HLЊKBKKHRPИЬYY[ЩYљY\€›Ь€XЩ[њЩY\]Z\Y[ќ›Ь€XXЪYX\€Щ€Y™™\™[ЩH™]ЩY[€XЭX[[™]\Э\]Z\Y[ќ‚SPСS”СWСTURTQS•ХPТФФQQУPVЦQPT”ИHBBKKHX^[][HYX\њИ›Ь€RPИЬYY[ЩYљY\‚‚SPСS”СWСTURTQS•ФФQQУ“ХСђPХSУ€HLЊLBKKHRPИЬYY[ЩYљY\€›Ь€XЩ[њЩY\]Z\Y[ќ›Ь€›Э™Z[™И[€XЭ[Ы‚‚SPСS”СWСTURTQS•ХTФђQWЦСђPХФ€H‹ЊBBKKHЫЬЭ›Ь€\ЬY[™ИXЩ[њЩY\]Z\Y[ќ‚SPСS”СWСTURTQS•ФФQQУ“ЧУPСS”СHHLЌLBBKKH[[H›Ь€›ЩXЪ[™И›Ы€XЩ[њЩY\]Z\Y[ќ‚PУУ•‘T”ТSУ—ФФQQР“У•TИHBBBBBBKKH[ЩYљY\€ИH›ЩXЭ[Ы€ЬYYЪ[€ЫЫќ™\ќ[™И\]Z\Y[ќ‚QTURTQS•УSСSWРQЦРУФХH‹ЊBBBBKKHЫЬЭ›Ь€Y[™ИH™]И\]Z\Y[ќ[Щ[H[€[€[\HЫЭЪ[€Ь™X][™И[€\]Z\Y[ќ\љX[ќ‚‚QTURTQS•УSСSWФ‘TPСWЦРУФХH‹ЊBBBKKHЫЬЭ›Ь€™\XЪ[™ИЫ™H\]Z\Y[ќ[Щ[HЪ][€[њ™[]Y[Щ[HЪ[€Ь™X][™И[€\]Z\Y[ќ\љX[ќ‚‚QTURTQS•УSСSWРУУ•‘T•ЦРУФХH‹ЊBBBKKHЫЬЭ›Ь€ЫЫќ™\ќ[™ИЫ™H\]Z\Y[ќ[Щ[HИH™[]Y[Щ[HЪ[€Ь™X][™И[€\]Z\Y[ќ\љX[ќ‚‚QTURTQS•УSСSWФ‘SSХ‘WЦРУФХH‹ЊBBBKKHЫЬЭ›Ь€™[[Эљ[™И[€\]Z\Y[ќ[Щ[H[™X]љ[™ИHЫЭ[\HЪ[€Ь™X][™И[€\]Z\Y[ќ\љX[ќ‚‚PђTСWУђUђSСTURTQS•РУУ•‘T”ТSУ—ТPЧРУФХСђPХФ€HЊ‹KHњXЭ[Ы€Щ€H[[™\ЭћHЫЬЭЪXЪ\И[Ш^\И[ЫYY[€H™Yљ][™ИЫЬЭ‚‚PђTСWУS‘СTURTQS•РУУ•‘T”ТSУ—ТPЧРУФХСђPХФ€HЋKKHњXЭ[Ы€Щ€HЪ\ЬЪ\И[™\ЭћHЫЬЭЪXЪ\И[Ш^\И[ЫYY[€HЫЫќ™\њЪ[Ы€ЫЬЭ‚‚SRS—УђUђSСTURTQS•РУУ•‘T”ТSУ—Ф‘TУХTђСWРУФХСђPХФ€HЊKKKHZ[љ[][HњXЭ[Ы€Щ€H][\]Z\Y[ќ	ЬИЭ]YЪXИ™\ЫЭ\ЩHЫЬЭ][ћHЫЫќ™\њЪ[Ы€Ъ[ЫЬЭ‚‚SRS—УS‘СTURTQS•РУУ•‘T”ТSУ—Ф‘TУХTђСWРУФХСђPХФ€HBKKHZ[љ[][HњXЭ[Ы€Щ€H[™\]Z\Y[ќ	ЬИЭ]YЪXИ™\ЫЭ\ЩHЫЬЭ][ћHЫЫќ™\њЪ[Ы€Ъ[ЫЬЭ‚‚TТTФ‘Q’UУPVФ“СФ‘TФЧХЧРРSђСSHЊ‹BBKKHX^[][H™Yљ][™И›ЩЬ™\ЬИ	H]ЩHЭ[[ЭИИШ[Щ[ЪZЭ]]љ[™ИИШЭ]HHЪ\‚‚TТTФ‘Q’UСSPQСWХЧФ“СФ‘TФЧСђPХФ€HЌKBBKKHЪ[€HЪ\\И™Z[™И[XYЩY
+›Ь€^[\HЬќЭљZЩJHЪ[H™Yљ][™ЛH[XYЩH\И[њЩ™\њ™YИH›ЩXЭ[Ы€[™H›ЩЬ™\ЬИ[њЭXY€\И\љXX›H\И\ЩYИ[[ЩH]‚‚SRS’SUSWУ•SP‘T—УС—СђPХФ’QTЧХRСS—Р–WРУУ”ХSQT—СУУСЧХђSQHHKBKKHHZ[љ[][Hќ[X™\€Щ€XЭЬљY\ИЩH]™HИ]Ы€ЫЫњЭ[Y\€ЫЫЩЛћH[YK‚‚SRS’SUSWУ•SP‘T—УС—СђPХФ’QTЧХRСS—Р–WРУУ”ХSQT—СУУСЧФTђСS•HЊKKKHHZ[љ[][Hќ[X™\€Щ€XЭЬљY\ИЩH]™HИ]Ы€ЫЫњЭ[Y\€ЫЫЩЛ[€\Щ[ќ‚‚RS’UPSРSХСQСђPХФ–WФђUSЧС“Ф—Ф‘TRT”ИHKЊBBBBKKHX^	HЩ€XЭЬљY\И[ЭЩYЫ€]]Ь™\Z\њВ‚SRSUT–WСђPХФ–WРУТT‘SђЦWР“У•TИHЌLBBBBBBKKH[YHЩHYИHЩZYЪЩ€H›ЩXЭ[Ы€[™H[™XYH[€›ЩЬ™\ЬЛY€ЩHЫ›H]™HЫ™HZ[]\ћHXЭЬћK€
+И™YXЩH›XЭX][™ИRH›ЩXЭ[ЫЉBBBџK‚““X\љЩ]HВ‚TTђТTСWРУУ•ђPХСSU‘T–WХХSСVTИHМKKHќ[X™\€Щ€^\И™]ЩY[€\Ъ\ЩHЫЫќXЭ[]™\љY\В‚RPЧХЧРТPЧСђPХФ€H‹ЊBBBBBKKHHXЭЬ€›Ь€X\[™ИPИЫЬЭИТPИЫЬЭ€ЪЭ[™HHЬЪ]]™Hќ[X™\‹‚‚SPVРТU—СђPХФ’QTЧФT—РУУ•ђPХHLBBBBBBKKHX^ќ[X™\€Щ€XЭЬљY\И]Ш[€™H\ЬЪYЫ™Y›Ь€^Z[™ИЪ[™ЫHЫЫќXЭ‚‚SХЧФ’PСWУU‘SСђPХФ€HЌНKBBBKKHHXЭЬ€Щ€\ЩH\]Z\Y[ќљXЩH›Ь€ЭИљXЩH]™[€ЪЭ[™H[€[™ЩH
+WH‚RQТФ’PСWУU‘SСђPХФ€HKЊЌKBBBKKHHXЭЬ€Щ€\ЩH\]Z\Y[ќљXЩH›Ь€YЪљXЩH]™[€ЪЭ[™H[Ь™H[€K‚‚SRS—СSU‘T–WУSRUХРT“’S‘ЧХRHHЋBBBBBBKKHH[]™\ћH\Щ[ќYЩH[™\€ЩHШ[ќИ]^Y\€Ы›ЭИHЫЫќXЭ\И[™Y™љXЪY[ќ€МWB‚TTђТTСWРУУ•ђPХФХP”ТQWР“У•TЧФФQQСђPХФ€HKЊBBBKKHHXЭЬ€Щ€ЬYY›Ыќ\Ињ›ЫHЭXњЪYY\В‚PУУ•“ЦWХСRQТУХ‘T”’QHHЊBBBBBBBBKKHЭ™\њљY\ИHY][[™X\ИЩZYЪЩ€ЫЫќ›Ю\И›Ь€[ќ\›][Ы[X\љЩ]‚T‘TUQTХРUUУPUSУ—РUUЧРPРСTУPT’СUРPРСTФЧСQђUSHќYKKKHЪ]\€ћHY][ЪЭ[XШЩ\X\љЩ]XШЩ\ЬИ™\]Y\ЭИњ›ЫHЭ\€ЫЭ[ќљY\Л‚‚T‘TUQTХРUUУPUSУ—РUUЧФСS‘УPT’СUРPРСTФЧСQђUSHќYKBKKHЪ]\€ћHY][ЪЭ[Щ[™X\љЩ]XШЩ\ЬИ™\]Y\ЭИИЭ\€ЫЭ[ќљY\Л‚‚T‘TUQTХРUUУPUSУ—РUUЧРPРСTФTђТTСWСQђUSH[ЩKBKKHЪ]\€ћHY][ЪЭ[XШЩ\\Ъ\ЩH™\]Y\ЭИњ›ЫHЭ\€ЫЭ[ќљY\Л‚‚PУУ•ђPХСTХSPUWРU‘TђQСWРУУ•“ЦWРУХS•РSHHЌKBBBKKHЭИЭ›Ы™ИY™™XЭЪЭ[]™HHZ[HЫЫќ›ЮHЫЭ[ќЫ€H]™\YЩH
+KЊYX[њИ]Ъ[\ЩHЫ›HH™]Иќ[X™\€\И]™\YЩJB‚PУУ•ђPХСTХSPUWРU‘TђQСWСRSWФ“СPХSУ—РSHHЌKBKKHЭИЭ›Ы™ИY™™XЭЪЭ[]™HHZ[H›ЩXЭ[Ы€Ы€H]™\YЩH
+KЊYX[њИ]Ъ[\ЩHЫ›HH™]Иќ[X™\€\И]™\YЩJB‚PУУ•ђPХСTХSPUWРU‘TђQСWРУУ•“ЦWРУХS•ФУђTУSRUHЊЛBKKHY€HY™™\™[ЩH™]ЩY[€Э\њ™[ќ[™\Э[X]Y]Z[X›HЫЫќ›ЮHЫЭ[ќ\ИЫX[\€[€\И[YKЩHЪ[\ЩHHЭ\њ™[ќ[YH›Ь€Ш[Э[][ЫњЛ‚‚PУУ•ђPХСTХSPUWРU‘TђQСWСRSWФ“СPХSУ—ФУђTУSRUHKЌKKKHY€HY™™\™[ЩH™]ЩY[€Э\њ™[ќ[™\Э[X]YZ[H›ЩXЭ[Ы€\ИЫX[\€[€\И[YKЩHЪ[\ЩHHЭ\њ™[ќ[YH›Ь€Ш[Э[][ЫњЛ‚‚PУУ•ђPХСTХSPUWРU‘TђQСWРУУ•“ЦWФХS’ЧУUSTQT—РSHHЌKKKHЭИЭ›Ы™ИY™™XЭЪЭ[]™HHZ[HЭ[љИY™љXЪY[ЮHЫ€H]™\YЩH
+KЊYX[њИ]Ъ[\ЩHЫ›HH™]Иќ[X™\€\И]™\YЩJB‚PУУ•ђPХСTХSPUWРU‘TђQСWРУУ•“ЦWФХS’ЧУUSTQT—ФУђTУSRUHЊKKHY€HY™™\™[ЩH™]ЩY[€Э\њ™[ќ[™\Э[X]YЭ[љИY™љXЪY[ЮHЫЫќ›ЮHЫЭ[ќ\ИЫX[\€[€\И[YKЩHЪ[\ЩHHЭ\њ™[ќ[YH›Ь€Ш[Э[][ЫњЛ‚‚UРT“’S‘ЧРУУ•“ЦTЧФХS’ЧУPVСVTИHМKHHЫЫќXЭИЪ[ЪЭИЭ[љИЫЫќ›ЮHY\ЬШYЩHY€\™HШ\ИЭ[љИЫЫќ›ЮH[€\И[[Э[ќЩ€^\В‚џK‚“•XЪ›ЫЩЮHHВ‚SPVФХP•PТИHЛBBBBBKKHX^ќ[X™\€Щ€ЭX€XЪ›ЫЩЪY\ИHXЪ›ЫЩЮHШ[€]™K‚‚PђTСWФ‘TСPTђТФТS•ЧФРU‘QHМЊBKKH\ЩH[[Э[ќЩ€™\ЩX\ЪЪ[ќИHЫЭ[ќћHШ[€Ш]™H\€ЫЭ‚‚PђTСWЦQPT—РRPQФSђSWСђPХФ€HBKKH\ЩHYX\€ZXY[[B‚PђTСWХPТРУФХHBBBBKKH\ЩHЫЬЭ›Ь€HXЪ€][\YYЪ]XЪЫЬЭ[™ZXYЩ€[YH[[Y\В‚SPVХPТФТT’S‘ЧР“У•TИHЌKBBKKHX^XЪ›ЫЩЮHЪ\љ[™И›Ыќ\И]Ш[€™H\YY[њЭ[ќB‚SPСS”СWФ“СPХSУ—ХPТР“У•TИHЊЌKKKHXЩ[њЩH›ЩXЭ[Ы€XЪ›Ыќ\В‚‚QQђUSЦХS“РТЧФ‘TСPTђТРУФХHBBKKHY][ЫЬЭЩ€H™\ЩX\ЪИ[›ШЪИ\™XЭB‚QQђUSЦР“УФХФ‘TСPTђТРУФХHBBBKKHY][ЫЬЭЩ€H™\ЩX\ЪИЬYY\H›ШЩ\ЬВ‚QQђUSЦР“УФХФ‘TСPTђТР“У•TИHBBKKHY][›ЫЬЭ™\ЩX\Ъ›Ыќ\ИШZ[™YЪ[€\И\ЩYИ™\ЩX\Ъ[€][B‚SRS—Ф‘TСPTђТФФQQHЊKBBBBBKKH™\ЩX\ЪЬYYШ[‰ЭЫИ™[ЭИ\И[YB‚‚UTСWР“У•TЧФ‘QФ‘UХSQT€HМBBBBBKKHќ[X™\€Щ€^\ИH^Y\€\ИИ™YЬ™]\Ъ[™ИH[Z]YXЪ›Ыќ\ВџK‚“”Ы]XЬИHВ‚PђTСWУPQT—ХђRUИHЛBBBKKH\ЩH[[Э[ќЩ€XY\€Z]Л‚‚SPVФђS‘УWУPQT”ИHKBBBKKHX^[][H[[Э[ќ[™ЫHXY\€И]™H\€\ќK‚‚PђTСWФУUPРSФХСT—ТSђФ‘PTСHH‹ЊKKHЩYZЫH[Ь™X\ЩHЩ€‚‚PT“VWУPQT—РУФХH‹BBBBKKHЫЫ[X[™ЭЩ\€ЫЬЭ›Ь€™XЬќZ][™И™]ИXY\њЛ	Э\И[YIИ
+€ќ[X™\—ЫЩ—Щ^\Э[™ЧЫXY\њЧЫЩ—Э\B‚SђU–WУPQT—РУФХHKBBBBKKHЫЫ[X[™ЭЩ\€ЫЬЭ›Ь€™XЬќZ][™И™]ИXY\њЛ	Э\И[YIИ
+€ќ[X™\—ЫЩ—Щ^\Э[™ЧЫXY\њЧЫЩ—Э\B‚PT“VWУPQT—УPVРУФХHНKBBBKKHX^ЫЬЭ‘Q“Ф‘H[ЩYљY\њВ‚SђU–WУPQT—УPVРУФХHНKBBBKKHX^ЫЬЭ‘Q“Ф‘H[ЩYљY\њВ‚SPQT—ХђRUЧЦФТХИHЊKBBKKH[[Э[ќЩ€HZ]™YYИИ™HЪЭЫ€[€ЫЫ\ИЩ€HXY\‹‚‚T‘U“УT—ФT•WФФST’UHHЌBKKH™]›Ы\€\ќHЬЩ\И	HЬ[\љ]HЪ[€HЪ]љ[Ш\€њ™XZЬИЭ]‚SRS—УХ‘T•“ХУ—СУХ‘T““QS•ФХTФ•ФђUSИHЌKHZ[€ЬЬЪX›HЭ\Ьќ›Ь€™]ИЫЭ™\››Y[ќYќ\€\][™ИHЫЭ™\››Y[ќ‚S•SWУРРХTUSУ—ФУPТQTИHBKKHќ[X™\€Щ€Э[ќX[ШШЭ\][Ы€ЫXЪY\В‚QQђUSУРРХTUSУ—ФУPЦHHKBKKHY][[YH›Ь€ШШЭ\][Ы€ЫXЮB‚RS”ХS•ХТS—Ф‘U“УT—ФФST’UWФђUSИHЌKHZ[€\ќHЬ[\љ]H›Ь€[њЭ[ќЪ[€[€Ы™H›Эљ[ЩHЭ]B‚RS”ХS•ХТS—ФФST’UWХТS€HLKH™]И\ќHЬ[\љ]BџK‚“ђќZ[[™ЬИHВ‚PS•WРRT—ФХTT’SФ’UWУUSH‹ЊKKHЭИ]XЪZ\€Э\\љ[Ьљ]H™YXЭ[Ы€ИH[™[^HЩ\ИЭ\€PHЭ[њПИ›Ь›X[HXXЪќZ[[™И]™[HLH™YXЭ[Ы‹€Ъ]\И][\Y\‹‚‚TРSWУRTФТSУ—ФХTT’SФ’UHH‹ЊKHЭИ]XЪZ\€Э\\љ[Ьљ]HXXЪРSHZ\ЬЪ[Ы€Ъ]™\И\€›ШЪЩ]Ъ[™И\™›Ь›Z[™ИРSHZ\ЬЪ[ЫњЛ‚‚SPVР•RSS‘ЧУU‘SИHKBBKKHX^]™[ИHќZ[[™ИШ[€]™K‚‚PRTђђTСWРРTPТUWУUSHLЊBKKHXXЪ]™[Щ€Z\\ЩHќZ[[™И][\YYћH\ЛЪ]™\ИШ\XЪ]H
+X^Ь\][Ы[[YJK€[YH\И[ќ€H›Ь€XXЪZ\њ[™K‚‚T“РТСUТUWРРTPТUWУUSHBKKHXXЪ]™[Щ€›ШЪЩ]Ъ]HќZ[[™И][\YYћH\ЛЪ]™\ИШ\XЪ]H
+X^Ь\][Ы[[YJK€[YH\И[ќ€H›Ь€XXЪ›ШЪЩ]‚‚SђUђSђTСWФ‘TRT—УUSHЊKBKKHXXЪ]™[Щ€][\ЩHќZ[[™И™\Z\њИЭ™[™Э[™Ш[€™\Z\€\ИX[ћHЪ\И\И]И]™[‚TђQT—ФђS‘СWРђTСHHBBBKKHY\€[™ЩH\ЩKљ\њЭ]™[Y\€Ъ[™H\И
+ИZ[‹™\ЭY\€Ъ[™H\И
+ИX^‚TђQT—ФђS‘СWУRS€HBBBKKHY\€[™ЩH
+њ›ЫHЭ]HЩ[ќ\€И›Эљ[ЩHЩ[ќ\ЉH[€YX\Э\™HЩ€X\^[Л€^Y[™ИXЪЛ‚‚TђQT—ФђS‘СWУPVHМ‹BBBKKH[™ЩH\И[ќ\њЫ]Y™]ЩY[€ќZ[[™И]™[ИKLMK‚‚TђQT—ТS•SСQ‘‘PХHKBBKKH›Эљ[ЩHЫЭ™\™YћHY\€[Ь™X\Щ\И[ќ[ћHL
+Ъ\™HЌMH\ИX^
+K€›Эљ[ЩHX^H™HЫЭ™\™YћH][\HY\њЛ[€H[YHЭ[\И\‚‚TРP“ХQСWСђPХФ–WСSPQСHHLЊBKKHЭИ]XЪ[XYЩHZЩ\ИHXЭЬћHќZ[[™И[€ШX›ЭYЩHЪ[€Э]H\ИШШЭ\YY€[XYЩH\И][ћH
+H
+И™\Ъ\Э[ЩHЭ™[™Э
+KK™K€\И€\ЩH[YK‚‚PђTСWСђPХФ–WФ‘TRT€HЌKBBKKHY][™\Z\€]H™Y›Ь™HXЭЬљY\И\™HZЩ[€[ќИXШЫЭ[ќ‚PђTСWСђPХФ–WФ‘TRT—СђPХФ€HKЊKKHXЭЬћHЬYY[ЩYљY\€Ъ[€™\Z\љ[™Л‚‚TХTWФФ•УU‘SХ“ХQТUHЛKHЭ\H›ЭYЪ]\€]™[Щ€][\ЩB‚SPVФТT‘QФУХИHLBBBKKHX^ЫЭИЪ\™YћHXЭЬљY\В‚SХУ‘T—РТS‘СWСVђWФТT‘QФУХЧСђPХФ€HKKTШШ[HXЭЬ€Щ€^HЪ\™YЫЭИЪ[€Э]HЭЫ™\€Ъ[™ЩK‚‚QTХ•PХSУ—РУУУХУ—ТS—ХРT€HNKKHќ[X™\€Щ€^\ИЫЫЫЭЫ€™]ЩY[€™[[Э[Щ€ќZ[[™ЬИ[€Ш\€[Y\В‚‚RS‘”ђTХ•PХT‘WФ‘TУХTђСWР“У•TИHЊЛKH][\XШ]]™H™\ЫЭ\ЩH›Ыќ\И›Ь€XXЪ]™[Щ€
+›Ы€[XYЩY
+H[™њ\ЭќXЭ\™B‚TХTWФ“ХUWФ‘TУХTђСWР“У•TИHЊKKH][\XШ]]™H™\ЫЭ\ЩH›Ыќ\И›Ь€]љ[™ИHZ[Ш^KЫ][ЫЫ›™XЭ[Ы€ИHШ\][‚RS‘”ђTХ•PХT‘WУUQСQ‘‘PХHLЋMKKH][\XШ]]™HY™™XЭЫ€]YЬ›ЭЭ›Ь€X^[™њBџK‚“‘\Ю[Y[ќHВ‚PђTСWСTЦSQS•ХђRS’S‘ИHKBKKH\ЩHZ[љ[™ИЫ™HXXЪ^H\љ[™И\Ю[Y[ќ‚џK‚““Z[]\ћHHВ‚PУУPђUХђSQWУФ‘ЧТSTФ•SђСHHKBKKH][\Y\€Ы€Э[Ь™Ш[љ\Ш][Ы€Ъ[€]\›Z[љ[™ИHЫЫX][YHЩ€H]љ\Ъ[Ы‚‚PУУPђUХђSQWФХ—ТSTФ•SђСHHKBKKH][\Y\€Ы€Э[Э™[™ЭЪ[€]\›Z[љ[™ИHЫЫX][YHЩ€H]љ\Ъ[Ы‚‚‚TУС•РUPТЧХT‘СUS‘ЧСђPХФ€HKЊBKKHЭИ]XЪЩHШ\™HX›Э]Э[ќX[ЫЩќ]XЪЬИЪ[€][X][™Иљ[Ьљ]HЫЫX]\™Щ]‚RT‘РUPТЧХT‘СUS‘ЧСђPХФ€H‹ЊBKKHЭИ]XЪЩHШ\™HX›Э]Э[ќX[\™]XЪЬИЪ[€][X][™Иљ[Ьљ]HЫЫX]\™Щ]‚B‚PРTХPSQTЧХФЧФФSђSWСU’TУФ€HЊBBBBBBKKQ]љ\ЫЬ€›Ь€Ш\ЭX[Y\ИФИ[[B‚PРTХPSQTЧХФЧРWФSђSWСU’TУФ€HЊBBBBBBKKQ]љ\ЫЬ€›Ь€Ш\ЭX[Y\ИФИ[[B‚B‚TQTђТS‘ЧХ‘TТУИHВBBBBKKHЭ\€Y\Ъ[™ИИZ\€\›[Ь€]\Э™H\И[YHИX[[XYЩHњXЭ[Ы€\]X[ИH[™^[€H\њ^H™[ЭИЪYЪ\€ќ[X™\€HYЪ\€[™]][Ы—K€Y€\›[Ь€\ИKЊЪ[™H™]\›™Y‚‚BLKЊ‚BLЋMK‚BLЋL‚BLЋK‚BLЋ‚BLЌНK‚BLЌМ‚BLЌЌK‚BLЌЊ‚BLЌMK‚BLЌL‚BLЌK‚BLЌ‚BLЊНK‚BLЊМ‚BLЊЌK‚BLЊЊ‚BLЊMK‚BLЊL‚BLЊK‚BLЊK]\™H\Ы‰Э]XЪЪ[ќЩ][™И\ИYЪ\€[€‚_K‚TQTђТS‘ЧХ‘TТУСSPQСWХђSQTИHВKKH\›[Ь€Ъ[[Ш^\И™XЩZ]™HX^[][H[XYЩH
+ЫИYЭ™\›X]Ъ[™И][Э\€ЭЫ€\љ[
+K€HЮ\Э[H^XЭИ]X\Э€[Y\ЛЪ]›И\\€[Z]‚‚BLKЊ‚BLЋMK‚BLЋL‚BLЋK‚BLЋ‚BLЌНK‚BLЌМ‚BLЌЌK‚BLЌЊ‚BLЌMK‚BLЌL‚BLЌK‚BLЌ‚BLЊНK‚BLЊМ‚BLЊЌK‚BLЊЊ‚BLЊMK‚BLЊL‚BLЊK‚BLЊ‚_K‚B‚QU’TТSУђSРУУSPS‘T—ХђRUЦФ‘TURT‘SQS•HНLЊKKQЩ]HZ]Y€[ћH[YЬ[ЫњИ	€ШZ[™YЏH\В‚S•SWСVTЧС“Ф—УФTђUSУ—СS•–HHЊBBBBKKSќ[X™\€Щ€^\И]H[љ]]\Э]™H™Y[€Ы€H\ќXЭ[\€XЭ]™HЬ™\€[њЭ[ЩHИ™XЩZ]™HH\ЭЬћH[ќћK‚‚SPVУPQT”ЧХЧФТХИHLBBBBBBKKSX^Щ™љXЩ\њИИЪЭИ[€љY[Щ™љXЩ\њИ\ЭЫЬќYћHљY[V€]љ\Ъ[ЫњИЪ]]Ш\™X›H[ќљY\ИЪ[Э[ќX[HЭ\\ЩYH\И[Z]‚PђTСWС‘SPSWСU’TТSУђSРУУSPS‘T—РТSђСHHBKKPЪ[ЩHИ™XЩZ]™HH™[X[H]љ\ЫЫ[ЫЫ[X[™\‹€\И\ИЩ]И™\›И[€H\ЩHШ[YK\ИЩHИ›Э]™HЩ[™\љXИ™[X[HЬќZ]И›Ь€X[ћHЬ\XШ[Э[\™HЬ›Э\Л‚‚BBBBBBBBBBBBBKK]\И^XЭИH[YH™]ЩY[€[™H[™\ИYYИћH™[X[WЩ]љ\Ъ[Ы[ШЫЫ[X[™\—ШЪ[ЩK€Y€[ЭHЫ‰Э]™H™[X[HЩ[™\љXИЬќZ]ИYљ[™Y[ЭH]Ъ[HЩ]Ъ[ЭY]\Л‚‚‚QU’TТSУђSРУУSPS‘T—ФђS’ЧЦХ‘TТУHИBKKH™\ЪЫИ›Ь€]љ\Ъ[Ы[ЫЫ[X[™\€[љЬЛ€ХQЧWСU’TТSУ—СVT’QSђСWХUWРT“VWСVT’QSђСWЦШ\њ^H[™^B‚BL‚BMLЊ‚BLLЊ‚BLЊЊ‚BMЊ‚_K‚‚UTСWУUSTPРUU‘WУФ‘ЧУФФЧХТS—УSХ’S‘ИHќYKKHЪ]\€И\HЬ™ЧЫЬЬЧЭЪ[—Ы[Эљ[™И[ЩYљY\њИY]]™[HЬ€][\XШ]]™[H
+\™ЫЩY][\XШ]]™H™KLЊЊJB‚RХT“WУФ‘ЧУSХ‘SQS•ТSTPХHLЊ‹BKKHЭИ]XЪЬ™И\ИЬЭ]™\ћHЭ\€Ъ[H[Эљ[™И[€\›^K‚‚V‘T“ЧУФ‘ЧУSХ‘SQS•УSСQ’QT€HLЊЌKBKKHЬYY[\XЭ]Ь™Л‚‚RS‘”ђWУФ‘ЧТSTPХHЊЛBBBKKHШШ[HXЭЬ€Щ€[™њHЫ€Ь™И™YШZ[‹‚‚QS‘РQСSQS•ХТQФT—ХТQHЛЊKKHЭИ]XЪ[™[^HЫЫX]ЪYЩH\™H[ЭЩYИ[™ШYЩH\€ЪYЩ€Э\€ЭЫ‚‚‚RS‘”ђTХ•PХT‘WУSХ‘SQS•ФФQQТSTPХHLЊ‹KKHЬYY[[H\€[™њ\ЭXЭ\™H™[ЭИX^[][K‚‚‚U”ЧС“Ф—ТTХФ–WСS•–HHKBBBBKKHZ[љ[][H”И™\]Z\™YИ™XЩZ]™H[€[ќћH[€]љ\Ъ[Ы[\ЭЬћB‚U”ЧС“Ф—ТQТТTХФ–WСS•–HHKBBBKKH”И™\]Z\™Y›Ь€YЪ[]™[\ЭЬћH[ќћB‚QS•’QTЧХЧРТPТЧС“Ф—СTPРUHH‹BBKKHX^ќ[X™\€Щ€\ЭЬћH[ќљY\ИИЪXЪИXЪИИЩYHY€ЩIЬ™H™Z[™И]Ш\™YHШ[YH[ќћB‚PУФХТSђФ‘PTСWФT—РPХU‘WУQQSHBKKHY][Ы[ЫЬЭXЭЬ€\€XЭ]™HYY[‚SPVСS•–WСSTТSУ—РУХS•HBBBKKHY€ЩHИHШ[YH\HЩ€[™ИЫЫњЩXЭ]]™[KXXЪ[ќћHЪ[ЭXЪИШШ][ЫњИ\И\Иќ[X™\‚‚QСS‘TђUWРRWСU—РУУSPS‘ТTХФ–WСS•’QTИHќYKKKTЪЭ[ЩHЩ[™\]H\ЭЬћH[ќљY\И›Ь€HRH
+X^HШ]\ЩHШ]™YШ[YH›Ш]
+B‚QСS‘TђUWРRWСU—РУУSPS‘УQQSИHЊLBKKHЪ[ЩH›Ь€RHИ]Ш\™HYY[Ъ[€™XЩZ]љ[™ИH\ЭЬћH[ќћH][ЭЬИ]€[ЫИЪ]™\ИHЪ[ЩH›Ь€RHИШZ[€\ЭЬћH[ќљY\И\њ™\ЬXЭ]™HЩ€HЩ][™ИX›Э™B‚SPVУ•SWРUUУQQSИH‹BBBBBKKH[ЭHШ[‰ЭЩ][Ь™HYY[Ињ›ЫHH]]ЫYY[Ю\Э[H[€\Л‚‚Q’QSСVT’QSђСWУУ—СU’TТSУ—УUSHЊKKKH][\HљY[^\љY[ЩHШZ[™YћH\ЛЪ[€\Z[™ИИ]љ\Ъ[Ы[ЫЫ[X[™\‚‚SPVС’QSСVT’QSђСWУУ—СU’TТSУ€HKKHX^^\љY[ЩH]Ш[€™HШZ[™YЫ€]љ\Ъ[Ы[ЫЫ[X[™\њВ‚Q’QSСVT’QSђСWУУ—СU’TТSУ—ФT—УQQSУUSHЊKKKS][\HЩ™љXЩ\€љY[^\љY[ЩHШZ[€ћH\И
+€ќ[X™\€Щ€]љ\Ъ[Ы€YY[ИЫ€\XШ][Ы‚‚PРTRS—СVT’QSђСWУУ—ФТTУUSHKЌMKBKKH][\HЪ\^\љY[ЩHШZ[™YћH\ЛЪ[€\Z[™ИИЪ\Ш\Z[‚‚SPVРРTRS—СVT’QSђСWУУ—ФТTHBKKHX^^\љY[ЩH]Ш[€™HШZ[™YЫ€Ъ\Ш\Z[њВ‚PРTRS—СVT’QSђСWУУ—ФТTФT—УQQSУUSHЊKKKS][\HЪ\Ш\Z[€^\љY[ЩHШZ[€ћH\И
+€ќ[X™\€Щ€Ъ\YY[ИЫ€\XШ][Ы‚‚RTХФ–WУФTђUSУ—ФђS‘УWУPVHЌBBKKHX^[™ЫH[ќИ›ЫЪ[€]\›Z[љ[™ИЪ]\€ИЬ[ќ[€]Ш\™X›H[ќћH›Ь€Ь\][ЫњЛ€KУ€Ъ[Щ\Л‚‚PРTХPSWРУХS•С“Ф—ТTХФ–WСS•–HHЌLKKHќ[X™\€Щ€™XЩZ]™YШ\ЭX[Y\ИИ™XЩZ]™HH\ЭЬћH[ќћH
+Ы™HЫ›JB‚Q’QSУС‘’PСT—Ф“УSХSУ—ФSђSHHBKKP[[Э[ќЩ€]љ\Ъ[Ы€^\љY[ЩHЬЭЪ[€›Ы[Э[™ИHЫЫ[X[™\€
+™YXЩYћH[ЩYљY\њКB‚B‚RTХФ’PРSУФ‘T—УђSQWСVUTХSУ€HќYKKKHИ\ЭЬљXШ[HЪЬЩ[€Ь™\€[њЭ[Щ\И^]\ЭZ\€Ш\ЩH[Y\ПИY€[ЩHYKЬ\][Ы€\\›ЬЬШHЪ[\X\€›Ь€[ћHЬ™\њИќ[љ[[™ИHЫЫ™][ЫњИ›Ь€Щ\›X[ћB‚‚TТФ‘WР“УPђT‘QS•РУУUTђSСSPQСWУUSTQT€HМЊBKKHXЭЬ€Ы€ЪЬ™H›ЫX\™Y[ќ[XYЩH\њЬЩ\Л›Ь€ЫЫ]\[[XYЩK‚‚TТФ‘WР“УPђT‘QS•РУУUTђSСSPQСWРФ’UРТSђСWСђPХФ€HЊ‹HKHЪ[ЩH›Ь€Ьљ]
+YKYЪЪ[™ЫHќZ[[™И[XYЩJHИШШЭ\‹‚‚B‚UРT—ФРУФ‘WУФФСTЧФђUSИHЌKBBBBBBBKKHШ\€ШЫЬ™HШZ[™Y›Ь€]™\ћHLШ\ЭX[Y\В‚UРT—ФРУФ‘WУФФСTЧУUSТQ—РРTUSUQHЊЌKBBBKKHXЭЬ€\YYИШ\€ШЫЬ™HШZ[™Yњ›ЫHШ\ЭX[Y\ИY€Ш\][]Y‚UРT—ФРУФ‘WФХђUQТPЧР“УP’S‘ЧСђPХФ€HЊ‹BBBKKHШ\€ШЫЬ™HШZ[™Y›Ь€]™\ћH[XYЩHXYHИ[™[^IЬИќZ[[™ИЪ]Э]YЪXИ›ЫXљ[™В‚UРT—ФРУФ‘WФХђUР“УP’S‘ЧСPРVWФT—РТU’SPS—СђPХФ–HHЊLKKH[ЫќHШ\€ШЫЬ™HYXЭYњ›ЫHЭ]YЪXИ›ЫXљ[™И›Ь€]™\ћHЪ]љ[X[€XЭЬћH[€Щ\ќљXЩHЫ€H›ЫX™Y[™[^HЪYB‚UРT—ФРУФ‘WРRT—ТPЧУФФЧСђPХФ€HЊKBBBBBBKKHШ\€ШЫЬ™HШZ[™Y›Ь€]™\ћHPИЩ€[XYЩHЫ™HИ[€[™[^IЬИZ\€Z\ЬЪ[Ы‚‚UРT—ФРУФ‘WУS‘СSPQСWСђPХФ€HЊKBBBKKHШ\€ШЫЬ™HШZ[™Y›Ь€]™\ћHЭ™[™Ъ[XYЩHЫ™HИ[€[™[^IЬИ\›^B‚UРT—ФРУФ‘WРUPТСT—РS‘ХТS“‘T—СђPХФ€HKЊ‹BBBBKKHXЭЬ€\YYИШ\€ШЫЬ™HШZ[™Y›Ь€Э™[™Э[XYЩHЫ™HЪ[€™Z[™ИH]XЪЩ\€[™HЪ[›™\‚‚UРT—ФРУФ‘WУS‘ТPЧУФФЧСђPХФ€HЊKBBBKKHШ\€ШЫЬ™HШZ[™Y›Ь€]™\ћHPИ[XYЩHЫ™HИ[€[™[^IЬИ\›^B‚UРT—ФРУФ‘WФ“Х’SђСWСђPХФ€HЊЛBBBBBBKKHШ\€ШЫЬ™HШZ[™YЪ[€Ш\\љ[™ИH›Эљ[ЩH›Ь€Hљ\њЭ[YK][\YYћH›Эљ[ЩIЬИЫЬќ‚UРT—ФРУФ‘WУS‘УPTСWСТU‘S—ТPЧСђPХФ€HЊKBBBKKHШ\€ШЫЬ™HШZ[™Y›Ь€]™\ћHPИЩ€[™X\ЩHЩ[ќИ[Y\В‚UРT—ФРУФ‘WУS‘УPTСWСТU‘S—С•QSСђPХФ€HЊKBBBKKHШ\€ШЫЬ™HШZ[™Y›Ь€]™\ћH[љ]Щ€ќY[[™X\ЩHЩ[ќИ[Y\В‚UРT—ФРУФ‘WУS‘УPTСWФ‘PСRU‘QТPЧСђPХФ€HЊKBBKKHШ\€ШЫЬ™HYXЭY›Ь€]™\ћHPИЩ€[™X\ЩH™XЩZ]™Yњ›ЫH[Y\В‚UРT—ФРУФ‘WУS‘УPTСWФ‘PСRU‘QС•QSСђPХФ€HЊKBBKKHШ\€ШЫЬ™HYXЭY›Ь€]™\ћH[љ]Щ€ќY[[™X\ЩH™XЩZ]™Yњ›ЫH[Y\В‚‚PУФ”ЧРУУSPS‘T—СU’TТSУ”ЧРРTHЊBBKKHЭИX[ћH]љ\Ъ[ЫњИHЫЬњИЫЫ[X[™\€\И[Z]YЛ€H[™‹H›ШЪЩY‚QU’TТSУ—ФТV‘WС“Ф—ЦHLKHЭИX[ћH][[ЫњИЪЭ[H]љ\Ъ[Ы€]™HИЫЭ[ќ\ИHќ[]љ\Ъ[ЫњИЪ[€Ш[Э[][™ИЭY™‚‚PУФ”ЧРУУSPS‘T—РT“RQTЧРРTHLKBBKKHЭИX[ћH\›ZY\ИHЫЬњИЫЫ[X[™\€\И[Z]YЛ€H[™‹H›ШЪЩY‚Q’QSУPT”ТSСU’TТSУ”ЧРРTHЊBBKKHЭИX[ћH]љ\Ъ[ЫњИHљY[X\њЪ[\И[Z]YЛ€H[™‹H›ШЪЩY‚Q’QSУPT”ТSРT“RQTЧРРTHЛBBBKKHЭИX[ћH\›ZY\ИHљY[X\њЪ[\И[Z]YЛ€H[™‹H›ШЪЩY‚‚US’UУPQT—ССS‘TђUSУ—РРTUSРУУ•S‘S•СђPХФ€HLKR[ќYЩ\€XЭЬ€И][\HX[њЭЩ\‹‚‚‚T‘PУУ—ФТТSТSTPХHKHЭИX[ћHЪЪ[Ъ[ќИ\ИH™XЫЫ€Y[ќYЩHЫЬќЪ[€XЪЪ[™ИHXЭXЛ‚‚‚SPVСU’TТSУ—Р”’QРQWХТQH‹BBKKHX^ЪYЩ€™YЪ[Y[ќИ[€]љ\Ъ[Ы€\ЪYЫ™\‹‚‚SPVСU’TТSУ—Р”’QРQWТRQТHBKKHX^ZYЪЩ€™YЪ[Y[ќИ[€]љ\Ъ[Ы€\ЪYЫ™\‹‚‚SRS—СU’TТSУ—Р”’QРQWТRQТHЛBKKHZ[€ZYЪЩ€™YЪ[Y[ќИ[€]љ\Ъ[Ы€\ЪYЫ™\‹‚‚SPVСU’TТSУ—ФХTФ•ХТQHKBBKKHX^ЪYЩ€Э\Ьќ[€]љ\Ъ[Ы€\ЪYЫ™\‹‚‚SPVСU’TТSУ—ФХTФ•ТRQТHЛBKKHX^ZYЪЩ€Э\Ьќ[€]љ\Ъ[Ы€\ЪYЫ™\‹‚‚SPVФ‘QТSQS•SФХTФ•ХТQH‹BKKHX^ЪYЩ€™YЪ[Y[ќ[Э\ЬќИ[€]љ\Ъ[Ы€\ЪYЫ™\‹‚‚SPVФ‘QТSQS•SФХTФ•ТRQТHЛBKKHX^ZYЪЩ€™YЪ[Y[ќ[Э\ЬќИ[€]љ\Ъ[Ы€\ЪYЫ™\‹‚‚SPVТWРђUSSУ—ХТQHKBBBKKHX^ЪYЩ€™YЪ[Y[ќИ[€]љ\Ъ[Ы€\ЪYЫ™\€
+\›^HH[\]\КK‚‚SPVТWРђUSSУ—ТRQТHKBBKKHX^ZYЪЩ€™YЪ[Y[ќИ[€]љ\Ъ[Ы€\ЪYЫ™\€
+\›^HH[\]\КK‚‚SPVТWФХTФ•ХТQHKBBBKKHX^ЪYЩ€Э\Ьќ[€]љ\Ъ[Ы€\ЪYЫ™\€
+\›^HH[\]\КK‚‚SPVТWФХTФ•ТRQТHBBBKKHX^ZYЪЩ€Э\Ьќ[€]љ\Ъ[Ы€\ЪYЫ™\€
+\›^HH[\]\КK‚‚SPVТWФ‘QТSQS•SФХTФ•ХТQHBKKHX^ЪYЩ€™YЪ[Y[ќ[Э\ЬќИ[€]љ\Ъ[Ы€\ЪYЫ™\€
+\›^HH[\]\КK‚‚SPVТWФ‘QТSQS•SФХTФ•ТRQТHBKKHX^ZYЪЩ€™YЪ[Y[ќ[Э\ЬќИ[€]љ\Ъ[Ы€\ЪYЫ™\€
+\›^HH[\]\КK‚‚T‘QТSQS•SФХTФ•Ф‘TURT‘QРђUSSУ”ИHИЛЛИKKH›Ь€XXЪ™YЪ[Y[ќ[Э\Ьќ›ЭЛЭИX[ћH][[ЫњИ\™H™\]Z\™Y[€H™YЪ[Y[ќИ™HX›HИXЩHHЭ\Ьќ[€]›ЭЛ‚‚KKHЪ[€HRH\ИXЪY[™ИЪ\™HИXЩH][[ЫњЛ]љY\ИИXЩH][€HЬЪ][Ы€Ъ]HЭЩ\Эќ[X™\€XШЫЬ™[™ИИ\ИЬљY‚‚PRWРђUSSУ—Р•RSУФ‘T€HИLK‹LKM‹ЊK‚BBBHBBBL‹ЛL‹MЛЊ‹‚BBBHBBBLЛLЛNЊЛ‚BBBHBBBMKMNKЌ‚BBBHBBBMKLMKЊЌHK‚B‚PђTСWСU’TТSУ—Р”’QРQWСФ“ХTРУФХHЛKKP\ЩHЫЬЭИ[›ШЪИH™YЪ[Y[ќЫЭ‚PђTСWСU’TТSУ—Р”’QРQWРТS‘СWРУФХHЛKKP\ЩHЫЬЭИЪ[™ЩHH™YЪ[Y[ќЫЫ[[‹‚‚PђTСWСU’TТSУ—ФХTФ•ФУХРУФХH‹KKP\ЩHЫЬЭИ[›ШЪИHЭ\ЬќЫЭ‚‚T‘QТSQS•SФХTФ•ФУХРУФХУUSTQT€H‹ЊKH™YЪ[Y[ќ[Э\ЬќЫЭЫЬЭИ\™HШШ[YћH\И[YHЫЫ\\™YИ›Ь›X[Э\ЬќЫЭВ‚‚SPVРT“VWСVT’QSђСHHLBBKKSX^\›^H^\љY[ЩHHЫЭ[ќћHШ[€ЭЬ™B‚SPVУђU–WСVT’QSђСHHLBBKKSX^]ћH^\љY[ЩHHЫЭ[ќћHШ[€ЭЬ™B‚SPVРRT—СVT’QSђСHHLBBBKKSX^Z\€^\љY[ЩHHЫЭ[ќћHШ[€ЭЬ™B‚‚PУУPђUУRS’SUSWХSQHHBBKKHЪЬќ\Э[YHЬЬЪX›H›Ь€HЫЫX][€Э\њВ‚TФХS‘ЧФUPSUWС“ФТХT”ИHKKHXXЪЭ\њИH[ќ[]X[]H›ЬИYќ\€[љ]Ш\ИЬЭY‚‚TФХS‘ЧФUPSUWУђUђSФ‘PУУ—С“ФТХT”ИHL‹KKHXXЪЭ\њИH[ќ[]X[]H›ЬИYќ\€[љ]Ш\ИЬЭYћH][™XЫЫ€Z\€Z\ЬЪ[Ы‹‚‚SPQT—СФ“ХTУPVФТV‘HHLKMKBBKKHX^ЫЭИ›Ь€XY\€Ь›Э\Л‚‚‚SRS—ФХTWРУУ”ХSTSУ€HЊKBBBBKKHZ[љ[][H[YHЩ€Э\HЫЫњЭ[\[Ы€]H[љ]Ш[€Щ]‚‚SS‘РУУPђUУФ‘ЧСPСWФТV‘HH‹KHњ€Щ€[XYЩHXЩB‚SS‘РУУPђUФХ—СPСWФТV‘HH‹KHњ€Щ€[XYЩHXЩB‚SS‘РУУPђUФХ—СSPQСWУSСQ’QT€HЊЛKHЫШ[[XYЩH[ЩYљY\‹‹‹€ќ]ЫЫYH\]Z\Y[ќ\И™]\›™Y][™Щ€]\ИЩYH€TURTQS•РУУPђUУФФЧСђPХФ‚‚SS‘РУУPђUУФ‘ЧСSPQСWУSСQ’QT€HЊKKHЫШ[[XYЩH[ЩYљY\‚‚SS‘РRT—РУУPђUФХ—СSPQСWУSСQ’QT€HЊЌЛKHZ\€ЫШ[[XYЩH[ЩYљY\‚‚SS‘РRT—РУУPђUУФ‘ЧСSPQСWУSСQ’QT€HЊKKHЫШ[[XYЩH[ЩYљY\‚‚SS‘РRT—РУУPђUФХ—СPСWФТV‘HHKKHњ€Щ€[XYЩHXЩH
+\ЩYћHZ\€ИЬ›Э[™
+B‚SS‘РRT—РУУPђUУФ‘ЧСPСWФТV‘HHKKHњ€Щ€[XYЩHXЩH
+\ЩYћHZ\€ИЬ›Э[™
+B‚SS‘РRT—РУУPђUУPVФS‘TЧФT—СS‘SVWХТQHKKHЭИX[ћHРTЛХPИШ[€[ќ\€HЫЫX]\[™[™ИЫ€[™[^HЪY\™B‚SS‘РУУPђUФХ—РT“SФ—УУ—ФУС•СPСWФТV‘HHЛKH^H[XYЩHXЩHY€Э\€\›[Ь€Э]Ы\ЬЩ\И[™[^B‚SS‘РУУPђUУФ‘ЧРT“SФ—УУ—ФУС•СPСWФТV‘HHЛKH^H[XYЩHXЩHY€Э\€\›[Ь€Э]Ы\ЬЩ\И[™[^B‚SS‘РУУPђUФХ—РT“SФ—СQ“PХSУ—СђPХФ€HЌKKH[XYЩH™YXЭ[Ы€Y€\›[Ь€Э]Ы\ЬЪ[™И[™[^B‚SS‘РУУPђUУФ‘ЧРT“SФ—СQ“PХSУ—СђPХФ€HЌKKH[XYЩH™YXЭ[Ы€Y€\›[Ь€Э]Ы\ЬЪ[™И[™[^B‚SS‘РУУPђUРУУUTђSС“Ф•СђPХФ€HЊKBKKHXЭЬ€ИШШ[HЫЫ]\[[XYЩHИ›ЬќИЪ]‚‚SS‘РУУPђUРУУUTђSТS‘”ђWСђPХФ€HЊ‹KKHXЭЬ€ИШШ[HЫЫ]\[[XYЩHИ[™њHЪ]‚‚SS‘РУУPђUС“Ф•СSPQСWРТSђСHHBBBKKHЪ[ЩHИЩ]H]И[XYЩHЫ€›ЬќЛ€
+Э]Щ€L
+B‚PU’USУ—СSPQСWУФ‘ИHBBBBHKH[XYЩHњ›ЫH]љ][Ы€ИЬ™Ш[љ\Ш][Ы‚‚PU’USУ—СTURTQS•УФФЧРТSђСHHЊЛBHKHЪ[ЩH›Ь€ЫЬЪ[™И\]Z\Y[ќЪ[€ЭY™™\€]љ][Ы‹€ШШ[Y\HЭ›Ы™Щ\€]љ][Ы€\Л€[€ШШ[YЭЫ€ћH\]Z\Y[ќ™[XXљ[]K‚‚PU’USУ—ХТSWУSХ’S‘ЧСђPХФ€HK‚T‘SPP’SUWУФ‘ЧФ‘QРRS€HLЊ‹KHЭИ]XЪ™[XXљ[]HY™™XЭИЬ™И™YШZ[‚‚T‘SPP’SUWУФ‘ЧУSХ’S‘ИHLKЊЛKHЭИ]XЪ™[XXљ[]HY™™XЭИЬ™ИЬЬИЫ€[Эљ[™В‚T‘SPP’SUWХСPUT€HKЊKHЭИ]XЪ™[XXљ[]H\ИY™™™XЭ[™ИЩX]\€[\XЭ‚T‘SPP’SWФ‘PУХ‘T–HHЊ‹KHXЭЬ€Y™™XЭ[™ИЭИ]XЪ\]Z\Y[ќ\И™]\›™Y™њ›ЫHHXY‚‚PђTСWРТSђСWХЧРU“ТQТUHLKH\ЩHЪ[ЩHИ]›ЪY]Y€Y™[Щ\ИYќ‚‚PТSђСWХЧРU“ТQТUРUУ“ЧСQ€HLHKHЪ[ЩHИ]›ЪY]Y€›ИY™[Щ\ИYќ‚‚PУУPђUУSХ‘SQS•ФФQQHЊМЛHKHЬYY™YXЭ[Ы€\ЩH[ЩYљY\€[€ЫЫX]‚UPХPЧФХРTС”‘TUQSђСVHH‹KHЭ\њИ™]ЩY[€XЭXИЭШ\В‚T‘Q‘T”‘QХPХPЧРТTђPХT—ФТТSУU‘SФ‘TURT‘QHKHЪXЪ]™[HљY[X\љ[Ь€Щ[™\[\ИИ™H™Y›Ь™H^HШ[€XЪИZ\€™Y™\њ™YXЭXВ‚PУХS•–WФ‘Q‘T”‘QХPХPЧХСRQТСђPХФ€HЊ‹KH^HЩZYЪ][\Y\€›Ь€HЫЭ[ќћH™Y™\њ™YXЭXИЪ[€Ъ[™ИЩZYЪY[™ЫB‚PT“VWССS‘TђSФ‘Q‘T”‘QХPХPЧХСRQТСђPХФ€HЊ‹KH^HЩZYЪ][\Y\€›Ь€H\›^HЩ[™\[™Y™\њ™YXЭXИЪ[€Ъ[™ИЩZYЪY[™ЫB‚Q’QSУPT”ТSФ‘Q‘T”‘QХPХPЧХСRQТСђPХФ€HЊKKH^HЩZYЪ][\Y\€›Ь€HљY[X\љШ[™Y™\њ™YXЭXИЪ[€Ъ[™ИЩZYЪY[™ЫB‚T‘Q‘T”‘QХPХPЧРУУSPS‘ФХСT—РУФХHLHKHЫЫ[X[™Ъ[ќЫЬЭ›Ь€Ъ[™Ъ[™И™Y™\њ™YXЭXВ‚RS’UPUU‘WФPТЧРУХS•T—РQђS•QСWСђPХФ€HЊ‹KHY[ќYЩH\€XY\€]™[›Ь€XЪЪ[™ИHЫЭ[ќ\‚‚PSTP’SХTЧТS•ђQWУSХ‘SQS•РУФХHЌЊKHЭ[›ЩЬ™\ЬИЫЬЭЩ€[Э™[Y[ќЪ[H[\Xљ[Э\И[ќY[™В‚SS‘ФФQQУSСQ’QT€HЊKKH\ЪXИЬYYЫЫќ›Ы‚T’U‘T—РФ“ФФТS‘ЧФSђSHHLЊЛKHЫX[љ]™\€Ь›ЬЬЪ[™В‚T’U‘T—РФ“ФФТS‘ЧФSђSWУT‘СHHLЌ‹KH\™ЩHљ]™\€Ь›ЬЬЪ[™В‚T’U‘T—РФ“ФФТS‘ЧФФQQФSђSHHLЊЛKHЫX[љ]™\€Ь›ЬЬЪ[™В‚T’U‘T—РФ“ФФТS‘ЧФФQQФSђSWУT‘СHHLЌ‹KH\™ЩHљ]™\€Ь›ЬЬЪ[™В‚T’U‘T—ФУPSФХT•ТS‘VHKHЫЫЬ€[™XЩ\И›Ь€љ]™\њВ‚T’U‘T—ФУPSФХФТS‘VH‹‚T’U‘T—УT‘СWФХФТS‘VHLK‚PђTСWС“Ф•ФSђSHHLЊ‹BBBBHKH›Ьќ[[B‚SUSTWРУУPђUЧФSђSHHLЌKKHY™[™\€[[HY€]XЪЩYњ›ЫH][\H\™XЭ[ЫњВ‚QQЧТS—СђPХФ€HЊKBBBBBHKH›Ыќ\ИXЭЬ€›Ь€XXЪYЛZ[€]™[‚PT“VWУPQT—ЦСРRS—ФT—ХS’UТS—РУУPђUHЊЌKKHШZ[€\€[љ][€ЫЫX]‚PУУ”ХS•ЦФђUSЧС“Ф—УUSTWУPQT”ЧТS—ФРSQWРУУPђUHЌKKHY€\™H\™H][\HXY\њИ[€Ш[YHЫЫX]XXЪЫ™HЩ]И\Ь][И
+И
+K]\Ь][КKЫќ[HXY\њЛ€[[Э[ќЩ€XXЪЩ[™\[Щ]ИШШ[\ИHЌНHЌЌ€]И›Ь€H€ИЩ[™\[В‚PђTСWУPQT—ХђRUСРRS—ЦHЊЛBBHKH\ЩHШZ[€›Ь€Z]И\€Э\€›Ь€\›ZY\В‚SPVУ•SWХђRUИHLKBBBBBHKHШ[ќ]™H[Ь™KLHИ\ШX›B‚QS‘SVWРRT—ФХTT’SФ’UWТSTPХHLЌKHY™™XЭЫ€Y™[њЩHYHИ[™[^HZ\€Э\\љ[ЬќB‚QS‘SVWРRT—ФХTT’SФ’UWСQ‘S”СHHЋHHKH[Ь™HPH]XЪИЪ[\›ШXЪ\И[[Э[ќЩ€[
+[Z[љ\Ъ[™И™]\›њКB‚QS‘SVWРRT—ФХTT’SФ’UWСQ‘S”СWФХQT‘TФИHLKHЭИ]ZXЪЫHY™[њЩH\›ШXЪ\ИHX^[\XЭ[Z[љ\Ъ[™И™]\›њИЭ\ќ™B‚QS‘SVWРRT—ФХTT’SФ’UWФФQQТSTPХHLЊЛKHY™™XЭЫ€ЬYYYHИ[™[^HZ\€Э\\љ[Ьљ]B‚‚PS•WРRT—ХT‘СUS‘ЧХЧРТSђСHHЊM‹BBKKH[[Ъ[™И[YHИ]\›Z[™HHЪ[ЩHЩ€Ь›Э[™PH][™И[€]XЪЪ[™ИZ\њ[™KY™™XЭ[™И›ЭHY™™XЭ]™H]™\YЩH[XYЩHЫ™HћHPHИZ\њ[™\Л[™H™YXЭ[Ы€Щ€[XYЩHЫ™HћHZ\њ[™\ИYHИPHЭ\Ьќ‚PS•WРRT—РUPТЧХЧРSSХS•HЊ‹BBBKKH[[Ъ[™И[YHИЫЫќ™\ќ\]Z\Y[ќЭ][ќWШZ\—Ш]XЪИИH[™ЫH	H[YHЩ€Z\њ[™\И™Z[™И]‚‚‚QSђТTђУQФSђSHHLЊЛKKH[[HЪ[€ЫЫ\][H[Ъ\ЫY‚‚US’UСVT’QSђСWФT—РУУPђUТХT€HЊН‹‚US’UСVT’QSђСWФРРSHHЊЛ‚US’UСVT’QSђСWФT—ХђRS’S‘ЧСVHHЊK‚UђRS’S‘ЧУPVУU‘SHL‚QTЦWХђRS’S‘ЧУPVУU‘SHK‚UђRS’S‘ЧСVT’QSђСWФРРSHHМ‚UђRS’S‘ЧУФ‘ИHЊ‹‚PT“VWСVРђTСWУU‘SHL‚US’UСVУU‘SИHИЊKLЊ‹LЊЛLЊLЊKLЊЛLЊKLЊLKLЊLЛLЊMKLЊNLЊЊKLЊЌLЊЌЛLЊЛLЊНKLЌLЌKLЌKLЌMKLЌЊ‹LЌЋKLЌН‹LЋЛLЋHKBKKH^\љY[ЩH™YYYИ›ЩЬ™\ЬИИH™^]™[‚Q’QSСVT’QSђСWФРРSHHЊMK‚Q’QSСVT’QSђСWУPVФT—СVHHKЊ‹BBBKKH[ЬЭ[ЭHШ[€ШZ[€\€^B‚QVQUSУђT–WС’QSСVT’QSђСWФРРSHHЊЛBKKH™YXЭ[Ы€XЭЬ€[€њ›ЫH^Y][Ы\ћH›ЬЩ\В‚SS‘УPTСWС’QSСVT’QSђСWФРРSHHЊKBKKH^\љY[ЩHШШ[H›Ь€[™X\ЩY\]Z\Y[ќ\ЩY[€ЫЫX]‚‚SPQT—СVT’QSђСWФРРSHHKЊ‚TУХСTХФФQQHЛ‚T‘RS‘“ФђСSQS•Ф‘TUQTХУPVХРRUS‘ЧСVTИHMKH]™\ћH^\ИH\]Z\Y[ќЪ[™HЩ[ќ™YШ\™\ЬИY€Э[Y‰Э›ЩXЩY[]\И™Y[€™\]Y\ЭY‚‚T‘RS‘“ФђСSQS•Ф‘TUQTХСVTЧС”‘TUQSђЦHHЛHKHЭИX[ћH^\И]\Э\ЬИ[ќ[ЩHX^HЪ]™H[›Э\€™Z[™›ЬЩ[Y[ќ™\]Y\Э‚QVT’QSђСWРУУPђUСђPХФ€HЊK‚US’UСQТS—РРTHKKHЭИ™Y\€[ЭHШ[€YИ[ЭHШ[€YИ[€[ќ[][™ИX^›Ыќ\В‚US’UСQТS—ФФQQHKBBBBBHKHЭИ™Y\€[ЭHШ[€YИH^K‚‚TTђPТUWСђRSQСTURTQS•СU€HЊBHKHЪ[€H[њЬЬќ[™HШ\ИЪЭЭЫ‹ЩH›Ь[љ]Ъ][[ЬЭ“У‘H\]Z\Y[ќ‚TTђPТUWСђRSQУPS”ХСT—СU€HЊBHKHЪ[€H[њЬЬќ[™HШ\ИЪЭЭЫ‹ЩH›Ь[љ]Ъ][[ЬЭ“У‘HX[њЭЩ\‚‚TTђPТUWСђRSQФХ—СU€HЊBBHBHKHЪ[€H[њЬЬќ[™HШ\ИЪЭЭЫ‹ЩH›Ь[љ]Ъ][[ЬЭ“У‘HЭ™[™Ъ‚TTђPТUWСTФ•TQСTURTQS•СU€HKHKHЪ[€H[њЬЬќ[™HШ\И]ЩH›Ь[љ]Ъ]™YXЩY\]Z\Y[ќ€[[H\ИYЪ\€\И[Ь™H]ИШ\И™XЩZ]™Y
+[™PHЭ[њИШ\И[€HЭ]JK‚‚TTђPТUWСTФ•TQУPS”ХСT—СU€HKHKHЪ[€H[њЬЬќ[™HШ\И]ЩH›Ь[љ]Ъ]™YXЩYX[њЭЩ\‹€[[H\ИYЪ\€\И[Ь™H]ИШ\И™XЩZ]™Y
+[™PHЭ[њИШ\И[€HЭ]JK‚‚TTђPТUWСTФ•TQФХ—СU€HKBBHKHЪ[€H[њЬЬќ[™HШ\И]ЩH›Ь[љ]Ъ]™YXЩYЭ™[™Э€[[H\ИYЪ\€\И[Ь™H]ИШ\И™XЩZ]™Y
+[™PHЭ[њИШ\И[€HЭ]JK‚‚TTђPТUWФSђSWФђS‘УS‘TФИHЊKBBHKH[™ЫHXЭЬ€›Ь€Э‹X[њЭЩ\‹\H[[Y\Л‚‚TTђPТUWСTФ•TQРPWФSђSHHKKHЭИ]XЪHZ\€Y™[ЩH[€HЭ]H
+њ›ЫHPHќZ[[™ЬИ]™[
+€Z\—ЩY™[ЩJH\ИШШ[YИY™™XЭЭ™\[\Ьќ\[Ы€
+\]Z\Y[ќX[њЭЩ\‹ЭЉK‚‚TTђPТUWРУУTUWУФ‘ИHЌНKBBBHKHЬ™Ш[љ\Ш][Ы€[YH
+[€	JHYќ\€[љ]™Z[™И›ЬY™YШ\™\ЬИY€Z[Y\Ьќ\YЬ€ЭXШЩ\ЬЩќ[‚‚TTђPТUWУФ‘ЧФ‘QРRS—ФSђSWСTђUSУ€HМ‹KH[[H[€Ь™И™YШZ[€Yќ\€™Z[™И\XЪ]Y€[YH\И[€Э\њЛ‚‚TTђPТUWУФ‘ЧФ‘QРRS—ФSђSWУUSHLЌKHKH[[HИЬ™И™YШZ[€Yќ\€™Z[™И\XЪ]Y‚‚TТTУSФђSWХЧУФ‘ЧФ‘QРRS—РђTСHHЊ‹BBHKH\ЩHЬ™И™YШZ[€\€Э\‚‚PђTСWУ’QТРUPТЧФSђSHHLЌK‚QVSWСTURTQS•HKЊBBBBBHKH[[Э[ќЩ€\]Z\Y[ќИЩY\‚QVSWУФ‘ИHЊBBBBBBHKH[[Э[ќЩ€Ь™ИИЩY\‚QVT’QSђСWУФФЧСђPХФ€HKЊKH\Щ[ќYЩHЩ€^\љY[ЩYЫЫ\њИЪИYHЪ[€X[њЭЩ\€\И™[[Э™Y‚QTURTQS•РУУPђUУФФЧСђPХФ€HЌНKBHKH	HЩ€\]Z\Y[ќЬЭИЭ™[™Э][И[€ЫЫX]ЫИЫЫYH	H\И™]\›™YY€™[ЭИB‚TХTWХTСWСђPХФ—УSХ’S‘ИHKЌKKH\™XШ]YХ[ќ\ЩY‚TХTWХTСWСђPХФ—ТSђPХU‘HHЋMKBBHKH\™XШ]YХ[ќ\ЩY‚TХTWСФђPСHHМ‹BBBBBBHKH›ЫЬИ[Ш^\ИШ\њћHИ^\ИЩ€›ЫЩ[™Э\B‚TХTWСФђPСWУPVФ‘QPСWФT—ТХT€HKKHЭ\HЬXЩH\И›ЭXЬ™X\ЩY[њЭ[ќHЪ[€]\ИќY™™Y[\Ь\љ[H[™ќY™€\И™[[Э™Y‚TХTWУФ‘ЧУPVРРTHЊ‹KHX^Ь™Ш[љ^][Ы€\ИXЭЬ™YћH\ИY€ЫЫ\][HЭ]Щ€Э\B‚SPVУХUУС—ФХTWСVTИHЋBBBHKHЭИX[ћH^\ИЩ€Ъ]HЭ\H[ќ[X^[[HXЪY]™Y‚SХUУС—ФХTWРU’USУ€HKЊKHX^]љ][Ы€Ъ[€Э]Щ€Э\B‚SХUУС—ФХTWФФQQHLЊ‹KHX^ЬYY™YXЭ[Ы€њ›ЫHЭ\B‚S“У—РУФ‘WФХTWФФQQHLЌBBBHKHЩH\™H›Эќ[›љ[™ИЫ€Э\€ЭЫ€”Э\HЫИ™YYИЭX[ЭY™€[Ы™ИHШ^B‚S“У—РУФ‘WФХTWРRT—ФФQQHLЊ‹BBHKHЩH\™H›Эќ[›љ[™ИЫ€Э\€ЭЫ€”Э\HЫИ™YYИЭX[ЭY™€[Ы™ИHШ^KHљ]\ЬИYHИZ\€Э\B‚SХUУС—ФХTWУSФђSHHLЊЛKHX^Ь™И™YШZ[€™YXЭ[Ы€њ›ЫHЭ\B‚UђRS’S‘ЧРU’USУ€HЊЛBHBBHKH[[Э[ќЩ€^H]љ][Ы€њ›ЫH™Z[™И[€Z[љ[™В‚UђRS’S‘ЧУRS—ФХ‘S‘ХHЋMKBBBHKHY€Э™[™Э\И\ЬИ[€\ЛH[љ]Ъ[]\ЩHZ[љ[™И[ќ[]	ЬИ™Y[€™Z[™›ЬЩY‚UђRS’S‘ЧУPVСRSWРУХS•–WСVHЊKHX^[][H\›^HШZ[™Y\€^Hњ›ЫHZ[љ[™В‚PRT—ФХTФ•РђTСHHЊЛKHРTИ›Ыќ\ИXЭЬ€›Ь€Z\€Э\Ьќ[ЩYљY\€›Ь€[™[љ][€ЫЫX]‚SХЧФХTHHЋNKBBBBBBHKHЪ[€HЭ\HЭ]\ИЩ€[€[љ]™XЫЫY\ИЭЛ‚‚P“Ф‘T—ХРT—РU’USУ—СђPХФ€HЊKBBHKHЭИ]XЪЩ€›Ь™\ќШ\€[[ЩHЩ€ЭЩ\€XZЩ\И][ќИ]љ][Ы‚‚P“Ф‘T—ХРT—Х’PХФ–HHЋBBBBHKH]ЪXЪ›Ь™\€Ш\€[[ЩHЩ€ЭЩ\€\ИљXЭЬћHXЫ\™Y‚T‘RS‘“ФђСWРТSђСHHЊ‹HKH\ЩHЪ[ЩHИ›Ъ[€ЫЫX]њ›ЫHXЪИ[™HЪ[€[\B‚TФQQФ‘RS‘“ФђСSQS•Р“У•TИHЊKKHЪ[ЩHИ›Ъ[€ЫЫX]›Ыќ\ИћHXXЪL	H\™Щ\€[€[™[ќћH\ЩH
+\ИЊ	JB‚SХ‘T”СPTЧУФСWСTURTQS•СђPХФ€HЌНKBHKH\Щ[ќYЩHЩ€\]Z\Y[ќЬЭ\Ш[™YЭ™\њЩX\В‚SђUђSХђS”С‘T—СTРђS‘УPS”ХСT—СђPХФ€HЌKKH\Щ[ќYЩHЩ€X[њЭЩ\€™]\›™YЪ[€H][[њЩ™\љ[™И[љ]\И\Ш[™Y‚QSђТTђУQСTРђS‘УPS”ХСT—СђPХФ€HЊ‹KH\Щ[ќYЩHЩ€X[њЭЩ\€™]\›™YЪ[€[€[Ъ\ЫY[љ]\И\Ш[™Y‚SФ‘ЧУФФЧСђPХФ—УУ—РУУ”UQT€HЊMKKH\Щ[ќYЩHЩ€
+X^
+HЬ™ИЬЬИЫ€ZЪYЫ€[™[^H›Эљ[ЩB‚SХЧУФ‘ЧС“Ф—РUPТИHЊЌKKH]Ъ]Ь™И	HЩHЭ\ќY™™XЭ[™ИЬYYЪ[€ЪYЫ€ЬЭ[H[Э™\Л€ШШ[\ИЭЫ€‘T“ЧУФ‘ЧУSХ‘SQS•УSСQ’QT‚‚‚TS“’S‘ЧСPРVHHЊK‚TVQT—УФ‘T—ФS“’S‘ЧСPРVHHЊKBBBKKH[[Э[ќЩ€[›љ[™ИЬЭYHИ^Y\€X[ќX[Ь™\‚‚TS“’S‘ЧСРRS€HЊK‚SђUђSТS•ђTТSУ—ФS“’S‘ЧР“У•TЧСРRS€HЊ‹BKKH[›љ[™И›Ыќ\ИШZ[€\€^H›Ь€][[ќ\Ъ[ЫњВ‚SђUђSТS•ђTТSУ—ФS“’S‘ЧР“У•TЧУPSTИHLKBKKHX[\И[€\Щ[ќYЩH›Ь€H[›љ[™И›Ыќ\ИШZ[€›Ь€][[ќ\Ъ[ЫњВ‚TS“’S‘ЧУPVHЊKKHШ[€Щ][Ь™Hњ›ЫHXЪВ‚PТU’SРT—УФ‘РS’VђUSУ—СђPХФ€HЌKBBHKKH][\Y\€Щ€Ь™И›Ь€›ЭЪY\ИЪ[€Ъ]љ[Ш\‹‚‚TS—РУУ”ТQT‘QСУУСHЊ‹BBBBBKKH[€][X][ЫњИX›Э™H\И[YH\™HЫЫњЪY\™Y[Ь™HЬ€\ЬИШY™B‚TS—РУУ”ТQT‘QРђQHLЌKBBBBBKKH[€][X][ЫњИ™[ЭИ\И[YH\™HЫЫњЪY\™Y[њШY™B‚TS—УRS—РUUУPUQСSTWФРТСUФТV‘HHMKBKKHH]H[€Ю\Э[HЪ[Ы›H]]ЫX]XШ[H]XЪИ›Эљ[Щ\И[€ШЪЩ]И]\И›И™\Ъ\Э[ЩH[™\™H›ИљYЩЩ\€[€\ЩHX[ћH›Эљ[Щ\В‚TS—ФФ‘PQРUPТЧХСRQТHL‹BBBBKKHHYЪ\€H[YKH\ЬИ]ЪЭ[Ь›ЭЩ›Эљ[Щ\ИЪ]][\H]XЪЬЛ‚‚TS—У‘RQТ“Ф’S‘ЧСS‘SVWФ“Х’SђСWСђPХФ€HЌЛKKHЪ[€Ш[Э[][™ИH[\Ьќ[ЩHЩ€›Эљ[Щ\Л]ZЩ\Иќ[X™\€Щ€[™[^H›Эљ[Щ\И[ќИXШЫЭ[ќXЭЬ™YћH\В‚TS—Ф“Х’SђСWРђTСWТSTФ•SђСHH‹ЊBBKKH\ЩYЪ[€Ш[Э[][™ИHШ[YHЩ€њ›Ыќ[™Y™[њЩH\™XH›Эљ[Щ\И›Ь€H]H[€Ю\Э[B‚‚TS—Ф“Х’SђСWУХЧХ”СQ‘S”СWХ‘TТУHKЊKH›Ь€\™XHY™[њЩH”Ь™\њЛЪ]\™HH™\ЪЫИ›Ь€›ЭИ‹›YY][H€[™љYЪ€”[Y\В‚TS—Ф“Х’SђСWУQQUSWХ”СQ‘S”СWХ‘TТУHLЊKHЩYHX›Э™B‚TS—Ф“Х’SђСWТQТХ”СQ‘S”СWХ‘TТУHЌKЊKHЩYHX›Э™B‚TS—Ф“Х’SђСWУХЧХ”СQ‘S”СWТSTФ•SђСHH‹ЊKH›Ь€\™XHY™[њЩH”Ь™\њЛ\ЩH\И[YH›Ь€™[]]™H[\Ьќ[ЩB‚TS—Ф“Х’SђСWУQQUSWХ”СQ‘S”СWТSTФ•SђСHHKЊKHЩYHX›Э™B‚TS—Ф“Х’SђСWТQТХ”СQ‘S”СWТSTФ•SђСHHLЊKHЩYHX›Э™B‚TS—Ф“Х’SђСWРРTUSСQ‘S”СWТSTФ•SђСHHLЊKH›Ь€\™XHY™[њЩH”Ь™\њЛ›ЫЬЭ[\Ьќ[ЩH[YHЪ]\ИY€]	ЬИHШ\][‚SRS—Х”У‘QQQС“Ф—СQ‘S”СWУФ‘T—РTФТQУ“QS•ИHЊKH›Ь€\™XH]™[њЩH”Ь™\њЛYЫ›Ь™H›Эљ[Щ\ИЪ]”H\И[YB‚‚TS—Ф“Х’SђСWУХЧХ”ТSTФ•SђСWС”“У•HKЊKH\ЩYЪ[€Ш[Э[][™ИHШ[YHЩ€њ›ЫќИ[€H]H[€Ю\Э[B‚TS—Ф“Х’SђСWУQQUSWХ”ТSTФ•SђСWС”“У•H‹ЊЌKKH\ЩYЪ[€Ш[Э[][™ИHШ[YHЩ€њ›ЫќИ[€H]H[€Ю\Э[B‚TS—Ф“Х’SђСWТQТХ”ТSTФ•SђСWС”“У•H‹ЌНKKH\ЩYЪ[€Ш[Э[][™ИHШ[YHЩ€њ›ЫќИ[€H]H[€Ю\Э[B‚‚TS—ФТT‘QС”“У•Ф“Х—ТSTФ•SђСWСђPХФ€HЋKKHY€›Ь›ќЬ™\њИЪ\™H[™›Эљ[Щ\Л^HЪЭ[XXЪ]™HHЫЫY]Ъ]™YXЩYљ[ИYHИ]™Z[™ИЪ\™Y‚‚‚TS—ФФ•’SђСWФФ•РђTСWТSTФ•SђСHHNЊBKKHYY[\Ьќ[ЩH›Ь€\™XHY™[њЩH›Эљ[ЩHЪ]HЬќ‚TS—ФФ•’SђСWФФ•УU‘SСђPХФ€HЌKBBKKH›Ыќ\ИXЭЬ€›Ь€Ьќ]™[‚TS—ФФ•’SђСWРRT‘’QSРђTСWТSTФ•SђСHHЛЊKKHYY[\Ьќ[ЩH›Ь€\™XHY™[њЩH›Эљ[ЩHЪ]Z\€љY[‚TS—ФФ•’SђСWРRT‘’QSФФSUQСђPХФ€HKЌKKKH›Ыќ\ИXЭЬ€Ъ[€[€Z\™љY[\И[™\ИЫ€]‚TS—ФФ•’SђСWРRT‘’QSУU‘SСђPХФ€HЊЌKBKKH›Ыќ\ИXЭЬ€›Ь€Z\™љY[]™[‚TS—ФФ•’SђСWФ‘TТTХSђСWРђTСWТSTФ•SђСHHMLЊKH\ЩYЪ[€Ш[Э[][™ИHШ[YHЩ€Y™[њЩH\™XH›Эљ[Щ\И›Ь€H]H[€Ю\Э[H
+XЭЬ™YћH™\Ъ\Э[ЩH]™[
+B‚TS—Ф“Х’SђСWХ”ФФ•СђPХФ€HЊЌK‚‚KKH\ЩH™YYИ™\Э[[€›Эљ[ЩH[YH€KЊ›Ь€]ИX]\‹‚‚TS—РT‘PWСQ‘S”СWСS‘SVWРУУ•“УT—ФРУФ‘HHЌKЊKHШЫЬ™H\YYИ›Эљ[Щ\И[€HY™[њЩH\™XHЬ™\€ЫЫќ›ЫYћH[™[ZY\В‚TS—РT‘PWСQ‘S”СWСS‘SVWХS’UСђPХФ€HL‹ЊBKKHXЭЬ€\YYИ›Эљ[ЩHШЫЬ™H[€\™XHY™[њЩHЬ™\€\€[™[^H[љ][€]›Эљ[ЩB‚TS—РT‘PWСQ‘S”СWС“Ф•ТSTФ•SђСHHЊЌKBKKH\ЩYЪ[€Ш[Э[][™ИH[YHЩ€Y™[њЩH\™XH›Эљ[Щ\И›Ь€H]H[€Ю\Э[KЫЬљЬИ\И][\Y\њИЫ€H™\Э‚TS—РT‘PWСQ‘S”СWРУРTХSС“Ф•ТSTФ•SђСHHЛЊKH\ЩYЪ[€Ш[Э[][™ИH[YHЩ€Y™[њЩH\™XH›Эљ[Щ\И›Ь€H]H[€Ю\Э[B‚TS—РT‘PWСQ‘S”СWРУРTХУ“ЧС“Ф•ТSTФ•SђСHHKЊKKH\ЩYЪ[€Ш[Э[][™ИH[YHЩ€Y™[њЩH\™XH›Эљ[Щ\И›Ь€H]H[€Ю\Э[B‚TS—РT‘PWСQ‘S”СWТTЧФђRSТSTФ•SђСHHKЌKKKH\ЩYЪ[€Ш[Э[][™ИH[YHЩ€Y™[њЩH\™XH›Эљ[Щ\И›Ь€H]H[€Ю\Э[B‚TS—РT‘PWСQ‘S”СWТTЧФХTWУ“СHHЊЊBKKH\ЩYЪ[€Ш[Э[][™ИH[YHЩ€Y™[њЩH\™XH›Эљ[Щ\И›Ь€H]H[€Ю\Э[B‚TS—РT‘PWСQ‘S”СWСђPТSUHHMKЊKH\ЩYЪ[€Ш[Э[][™ИH[YHЩ€Y™[њЩH\™XH›Эљ[Щ\И›Ь€H]H[€Ю\Э[B‚‚TS—ФХPТТS‘TФЧСђPХФ€HLЊBBBBKKHXЭЬ€\ЩY[€[љ]ЫЫќ›Ы\€Ъ[€љ[Ьљ]^љ[™И[љ]И›Ь€ШШ][ЫњВ‚‚TS—Ф“Х’SђСWФ’SЧСTХ’P•USУ—УRS€HЌЛBKKHЭЩ\ЭњXЭ[Ы€Щ€]љ\Ъ[ЫњИ]Ъ[™H\ЭљXќ]Y\ЩYЫ€›Эљ[ЩHљ[Ьљ]B‚TS—Ф“Х’SђСWФ’SЧСTХ’P•USУ—УPVHKЊBKKHYЪ\ЭњXЭ[Ы€Щ€]љ\Ъ[ЫњИ]Ъ[™H\ЭљXќ]Y\ЩYЫ€›Эљ[ЩHљ[Ьљ]B‚TS—Ф“Х’SђСWФ’SЧСTХ’P•USУ—СТQТHЛЊKH]Ъ]]љ\Ъ[ЫњИ\€›Эљ[ЩHЪЭ[ЩH\ЩHS—Ф“Х’SђСWФ’SЧСTХ’P•USУ—УRS‚‚TS—Ф“Х’SђСWФ’SЧСTХ’P•USУ—СУХИH‹ЊKKH]Ъ]]љ\Ъ[ЫњИ\€›Эљ[ЩHЪЭ[ЩH\ЩHS—Ф“Х’SђСWФ’SЧСTХ’P•USУ—УPV‚‚TS—СVPХUWРРT‘Q•SУSRUHЌKBBBKKHЪ[€ЫЪЪ[™И›Ь€[€]XЪ\™Щ]\ИШЫЬ™H[Z]\И™\]Z\™Y[€H]H[€ИЫЫњЪY\€›Эљ[ЩH›Ь€]XЪВ‚TS—СVPХUWРђSSђСQУSRUHBBBKKHЪ[€ЫЪЪ[™И›Ь€[€]XЪ\™Щ]\ИШЫЬ™H[Z]\И™\]Z\™Y[€H]H[€ИЫЫњЪY\€›Эљ[ЩH›Ь€]XЪВ‚TS—СVPХUWФ•TТHLMKBBBBBKKHЪ[€ЫЪЪ[™И›Ь€[€]XЪ\™Щ]\ИШЫЬ™H[Z]\И™\]Z\™Y[€H]H[€ИЫЫњЪY\€›Эљ[ЩH›Ь€]XЪВ‚TS—СVPХUWРРT‘Q•SУPVС“Ф•HKBBBKKHY€^XЭ][Ы€[ЩH\ИЩ]ИШ\™Yќ[[љ]ИЪ[›Э]XЪИ›Эљ[Щ\ИЪ]›Ьќ]™[ИЬ™X]\€[€Ь€\]X[И\В‚‚KKHЬ™\€ћHQ^XЭ][Ы•\N€Ш\™Yќ[[[ЩYќ\ЪЪЪ\‹ќ\ЪЭЩXZВ‚TS—СVPХUWФХTWРТPТИHИKЊЊЊKЊЊKKH›Ь€XXЪ^XЭ][Ы€[ЩHЭИШ\™Yќ[ЪЭ[ЩH™HЪ]Э\H
+KЊYX[њИќ[™\]Z\™YЭ\H]Z[X›K™\›И\И›И[Z]
+K‚‚‚TS—УPVФ“СФ‘TФЧХЧТ“ТS€HЌLBBBKKHY€ЭЩ\€›ЩЬ™\ЬИ[€\Л›ШX›H™YYИЭ\Ьќ‚PУТTТSУ—ТSSSР’SWФS“’S‘ЧФФQQУUSTQT€HKKKHY€\Ъ[™ИH	Ъ[[[Шљ[IИЫЪ\Ъ[Ы€Щ][™ЛXЭЬ€S[›љ[™ИЬYYЬ›ЭЭћH\В‚TS—РУТTТSУ—ХСRQТИHИKЊЊЊLЊKKKH›Ь€XXЪЫЪ\Ъ[Ы€Щ][™ЛЭИЩY[€Ы€™[ШШ][™Ињ›ЫH\Э[ЩHЪЭ[ЩH™OИ
+Y][KЊ
+KYЪ\€ЩZYЪHЪЬќ\€X^\Э[ЩK€H\Э[ќћH\ИЬXЪX[XШ\ЩYH[YHЪЭ[]™H›ИY™™XЭ[™[љ]ИЪ[ќ\Э›Э[Э™H[ћ]Ъ\™K]™\‹‚‚TS—РУТTТSУ—СTХSђСWУPVХТS—УQ•Р‘RS‘HОKKU[ќ\ЩY[™\™XШ]YHЪ[™H™[[Э™Y[€™^XZ›Ь€™\њЪ[Ы‹‚‚‚TS—Р“U—УФSRTУHHЊ‹BBBBBKKHY][Ы[ЫЫX][[ЩH[YH[€]›Ь€Щ€›]љ[™ИЪYHЪ[€ЫЫњЪY\љ[™И\™Щ]И
+›ЭHЫЫX]›Ыќ\Лќ\ЭЩ™њЩ]И[›љ[™КB‚SRS—РђSSђСWФРУФ‘WХЧФ“РСQQРUPТИHЊ‹BKKPHЫЫX][[ЩHШЫЬ™HЩ€\ЬИ[€\ИЪ[™]™[ќ]]И]XЪЪ[™В‚QSђSRPЧУSСQ’QT—РUPТЧР’PTИHKЊBBBKKU\ИXЭЬњИHЩZYЪ[™ИљX\ИЩ€[[ZXИ]XЪИ[ЩYљY\њВ‚‚Q“S’СQФ“Х’SђСTЧРУХS•HЛBBBBKKH]XЪЩ\€\ИИ]XЪИњ›ЫH]X[ћH›Эљ[Щ\И›Ь€H]XЪИИ™HЫЫњЪY\™Y\И›[љЪ[™В‚QTURTQS•Ф‘TPСSQS•ФђUSИHBBBKKH\]Z\Y[ќZ[€][ИYќ\€›ШЪЪ[™ИH\]Z\Y[ќ\B‚S•RСWСSVWТХT”ИHL‹BBBBBBKKHЭИX[ћHЭ\њИЩ\И]ZЩH›Ь€HќXЫX\€›ЬИ\[‚‚TTђQ“ФФSђSHHLЌBBBBBKKHЫЫX][[HЪ[€™XЩ[ќH\Y›ЬY‚TTђQ“ФТХT”ИHЌBBBBBBKKH[YH\]›ЫЬ\њИЭY™™\€[[Y\И[€ЫЫX]‚PУУPђUФХTWУPТЧРUPТСT—РUPТИHLЌ‹KH]XЪИЫЫX][[H›Ь€]XЪЩ\€Y€Э]Щ€Э\B‚PУУPђUФХTWУPТЧРUPТСT—СQ‘S‘HLЌ‹KHY™[™ЫЫX][[H›Ь€]XЪЩ\€Y€Э]Щ€Э\B‚PУУPђUФХTWУPТЧСQ‘S‘T—РUPТИHLЌ‹KH]XЪИЫЫX][[H›Ь€Y™[™\€Y€Э]Щ€Э\B‚PУУPђUФХTWУPТЧСQ‘S‘T—СQ‘S‘HLЌ‹KHY™[™ЫЫX][[H›Ь€Y™[™\€Y€Э]Щ€Э\B‚PУУPђUФХPТТS‘ЧФХT•HBBBBBKKH]Ъ]њ€Щ€]љ\Ъ[ЫњИЭXЪЪ[™И[[HЭ\ќВ‚PУУPђUФХPТТS‘ЧСVђHHKH^HЭXЪЪ[™Ињ›ЫH\™XЭ[ЫњВ‚PУУPђUФХPТТS‘ЧФSђSHHLЊKHЭИ]XЪЭXЪЪYЫ€[[H\€]љ\Ъ[Ы‚‚PУУPђUУХ‘T—ХТQФSђSHHLЋBBBBKKHЭ™\€ЫЫX]ЪY[[H\€	K‚‚PУУPђUУХ‘T—ХТQФSђSWУPVHLЌBBKKHЭ™\€ЫЫX]ЪYX^
+Ъ[€[ЭHШ[ќ›Ъ[€›И[Ь™JK‚‚T‘U‘PUФФQQСђPХФ€HЌKHЬYY›Ыќ\ИЪ[€™]™X][™В‚UТUђUТS‘ЧФФQQСђPХФ€HЊ‹BBBBKKHЬYY›Ыќ\ИЪ[€Ъ]]Ъ[™В‚TХђUQТPЧФФQQТS‘”ђWРђTСHH‹ЊKH\ЩHЬYYЩ€Э]YЪXИ™Y\Ю[Y[ќЪ[€›ЭЫ€Z[Ш^\В‚TХђUQТPЧФФQQТS‘”ђWУPVH‹ЊKHY][Ы[ЬYYЩ€Э]YЪXИ™Y\Ю[Y[ќЫ€X^[]™[[™њ\ЭќXЭ\™B‚TХђUQТPЧФФQQФђRSРђTСHHЊKH\ЩHЬYYЩ€Э]YЪXИ™Y\Ю[Y[ќЪ[€Ы€Z[Ш^\В‚TХђUQТPЧФФQQФђRSУPVHL‹ЊKHY][Ы[ЬYYЩ€Э]YЪXИ™Y\Ю[Y[ќЫ€X^[]™[Z[Ш^\В‚TХђUQТPЧФ‘QTЦWУФ‘ЧФђUSИHЊKBBHKH][ИЩ€X^Ь™ИЪ[HЭ]YЪXИ™Y\Ю[Y[ќ‚PђUSSУ—У“ХРТS‘СQСVT’QSђСWС“ФHЊBKKH]љ\Ъ[Ы€^\љY[ЩH›ЬY€[љ]\ИШ[YH][[Ы‚‚PђUSSУ—РТS‘СQСVT’QSђСWС“ФHЌНKBBKKH]љ\Ъ[Ы€^\љY[ЩH›ЬY€[љ]\ИY™™\™[ќ][[Ы‚‚PT“SФ—Х”ЧРU‘TђQСHHBBHKHЭИИЩZYЪ[€YЪ\Э\›[Ь€	€[€њИH]љ\Ъ[Ы€]™\YЩB‚TS—Х”ЧРU‘TђQСHH‚‚SS‘СTURTQS•РђTСWРУФХHBBBBKKHЫЬЭ[€И\ЬYHHYXЩHЩ€\]Z\Y[ќЫ™H]™[\И\ЩH
+И
+Э[]™[И
+€[\
+B‚SS‘СTURTQS•ФђSTРУФХH‚SђUђSСTURTQS•РђTСWРУФХH‚SђUђSСTURTQS•ФђSTРУФХH‚PRT—СTURTQS•РђTСWРУФХH‚PRT—СTURTQS•ФђSTРУФХH‚‚QђTХT—УФ‘ЧФ‘QРRS—УU‘SHЊМЛ‚QђTХT—УФ‘ЧФ‘QРRS—УUSHЋ‚TУХСT—УФ‘ЧФ‘QРRS—УU‘SHЌЌ‹‚TУХСT—УФ‘ЧФ‘QРRS—УUSHLЌ‚‚QTРђS‘УPS”ХСT—УФФИHЊ‚SRS—СU’TТSУ—СTЦSQS•ХђRS’S‘ИHЊ‹BBKKHZ[€]™[Щ€]љ\Ъ[Ы€Z[љ[™В‚‚Q”“У•S‘WСVS”ТSУ—СђPХФ€HЌЛBBBKKHЪ[€]XЪЪ[™И[Ы™ИHњ›Ыќ[™KЭИ]XЪЪЭ[[љ]ИЬ™XYЭ]\И^HY[ЩK€ЊYX[њИXY
+[Ь™HЬ€\ЬКH\™XЭHИH]Ы€њ›Ыќ[™KЪ]›И\ЭXЭ[ЫњВ‚Q”“У•УRS—ФUХЧФ‘QTЦHHBBBBKKHY€H[љ]И]\И]X\Э\ИЫ™ИИ™XXЪ]Ињ›ЫќШШ][Ы‹]Ъ[Э]YЪXШ[H™Y\ЮK‚‚PT“VWТS’UPUU‘WФ‘RS‘“ФђСWСђPХФ€HЌBBKKHШШ[\И[љ]X]]™H›Ь€™Z[™›ЬЩHЪ[ЩB‚‚PђTСWРРTT‘WСTURTQS•ФђUSИHЊKBBBKKHYќ\€HЭXШЩ\ЬЩќ[[™ЫЫX]][ИЩ€H\]Z\Y[ќИ]\™H™Z[™ИШ\\™YЬШ[YЩYњ›ЫH[™[^IЬИЬЭ\]Z\Y[ќ‚‚PPРУSPUVђUSУ—ТS—РУУPђUФФQQСђPХФ€HЛBKKHXШЫ[X]^][Ы€ЬYY][\Y\€Ъ[H™Z[™И[€ЫЫX]‚‚PPРУSPUVђUSУ—ФФQQСРRS€HЊ‹BBBKKHH\љXX›H\ЩYИ[[ЩHHЭ™\[ЬYYЩ€ШZ[љ[™ИHXШЫ[X]^][Ы‚‚PPРУSPUVђUSУ—УФФЧФФQQСђPХФ€H‹ЊBKKHЫЬЪ[™ИЫ™HXШЫ[X]^][Ы€Ъ[H™Z[™И[™\€Y™™XЭЩ€HЬЬЪ]HЫ[X]HЪЭ[Ш]\ЩH]И›ЬЭЫ€]XЪ\Э\€[€ШZ[љ[™Л‚‚‚‚T“УSХWУPQT—РФРУФХHLЊBBBBKKHЫЬЭЩ€›Ы[Э[™ИHXY\‚‚‚Q’QSУPT”ТSРT“VWР“У•TЧФђUSИHЌKKH][ИИ\H™YЭ[\€›Ыќ\Щ\И“H›Ыќ\Щ\ИИ\›ZY\В‚‚Q’QSУPT”ТSЦФђUSИHЌKBBBBKKHШZ[€][И›Ь€\›^HЬ›Э\XY\њВ‚‚QРT”’TУУ—УФ‘T—РT“VWРРTСђPХФ€HKBBKKH\›ZY\ИЩ]И[Ь™X\ЩYШ\Ъ[€^H\™HШ\њљ\ЫЫ™Y‚‚PУУSPS‘T—УU‘SХTФХUРУХS•HBBBKKHќ[HЭ]ИШZ[™YЫ€]™[\‚PУУSPS‘T—УU‘SХTФХUХСRQТИHМЛKKKH]™[\Э][™ЫH\ЩHЩZYЪИ]XЪЛY™[њЩK[›љ[™ЛЩЪ\ЭXЬВ‚‚SђU–WУPQT—УU‘SХTФХUХСRQТИHНKKK_KKH]™[\Э][™ЫH\ЩHЩZYЪИ]XЪЛY™[њЩKX[™]]™\љ[™ЛЫЫЬ™[][Ы‚‚‚US’UУPQT—ТS’UPSХђRUФУХHИBBBKKHZ]ЫЭ›Ь€]™[XY\‚‚BLKЊKHљY[X\њЪ[‚BLKЊKHЫЬњИЫЫ[X[™\‚‚BLKЊKH]ћHЩ[™\[‚BLЊKHЬ\]]™B‚_K‚‚US’UУPQT—ХђRUФУХФT—УU‘SHИBBKKHќ[H^HZ]ИЫ€XXЪ]™[‚BLЌKHљY[X\њЪ[‚BLЊЌKKHЫЬњИЫЫ[X[™\‚‚BLЌKKH]ћHЩ[™\[‚BLЊKHЬ\]]™B‚_K‚‚US’UУPQT—ХTСWУ“У“S‘PT—ЦСРRS€HќYKKHЪ]\€[љ]XY\€ШZ[€\ИШШ[YћHKПњ—ЫЩ—ЭZ]П‚‚‚RХT”ЧФ‘TWФ‘R“ТS—Р“Ф‘T—ХРT—С“Ф—ТS’•T‘QХS’UИHМН‹KHZ[љ[][HЭ\њИ™\]Z\™Y›Ь€[љ]ИИ™Z›Ъ[€›Ь™\€Ш\њВ‚‚S‘UЧРУУSPS‘T—ФђS‘УWФT”УУђSUWХђRUРТSђСTИHИKHЪ[Щ\ИИШZ[€H\њЫЫ[]HZ]›Ь€™]ИЩ[™\[В‚BLKЊKHНIH›Ь€љ\њЭZ]‚BLЌKKHL	H›Ь€ЩXЫЫ™Z]Yќ\€]‚BLЊЌHKHЌIH›Ь€\™Z]Yќ\€]‚_K‚‚S‘UЧРУУSPS‘T—ФђS‘УWРђTТPЧХђRUРТSђСTИHИKHЪ[Щ\ИИШZ[€H\ЪXИZ]›Ь€™]ИЩ[™\[В‚BLЌKKHL	H›Ь€љ\њЭZ]‚BLЊMKKHMIH›Ь€ЩXЫЫ™Z]Yќ\€]‚BLЊHKHIH›Ь€\™Z]Yќ\€]‚_K‚‚S‘UЧРУУSPS‘T—ФђS‘УWФХUTЧХђRUРТSђСTИHИKHЪ[Щ\ИИШZ[€HЭ]\ИZ]›Ь€™]ИЩ[™\[В‚BLЊKKHL	H›Ь€љ\њЭZ]‚BLЊHKHIH›Ь€ЩXЫЫ™Z]Yќ\€]‚_K‚‚S‘UЧУФTђUU‘WФђS‘УWФT”УУђSUWХђRUРТSђСTИHИKHЪ[Щ\ИИШZ[€H\њЫЫ[]HZ]›Ь€™]ИЬ\]]™\В‚BLЌKKHL	H›Ь€љ\њЭZ]‚BLЊHKHL	H›Ь€ЩXЫЫ™Z]Yќ\€]‚_K‚‚S‘UЧУФTђUU‘WФђS‘УWРђTТPЧХђRUРТSђСTИHИKHЪ[Щ\ИИШZ[€H\ЪXИZ]›Ь€™]ИЬ\]]™\В‚BLЊЌKKHЌIH›Ь€љ\њЭZ]‚BLЊHKHIH›Ь€ЩXЫЫ™Z]Yќ\€]‚_K‚‚S‘UЧУФTђUU‘WФђS‘УWФХUTЧХђRUРТSђСTИHИKHЪ[Щ\ИИШZ[€HЭ]\ИZ]›Ь€™]ИЬ\]]™\В‚_K‚‚S‘UЧРУУSPS‘T—ФђS‘УWФТТSРТSђСTИHИKHЪ[Щ\ИИЪ]™HH[™ЫHЭ]ЪЪ[›Ь€™]ИЬ\]]™\В‚_K‚‚S‘UЧУђU–WУPQT—ФђS‘УWФТТSРТSђСTИHИKHЪ[Щ\ИИЪ]™HH[™ЫHЭ]ЪЪ[Ъ[ќ›Ь€H™]ИYZ\[‚_K‚‚US’UУPQT—УSСQ’QT—РУУУХУ—УУ—СФ“ХTРТS‘СHHMBKKH[YH[€^\И›Ь€H[љ]XY\€И™YШZ[€]И[ЩYљY\њВ‚US’UУPQT—РTФТQУ—ХђRUРУФХHKBBBBKKHЫЬЭИ\ЬЪYЫ€H™]ИZ]ИH[љ]XY\‚‚PUPТQХТS‘ФЧУФ‘T—ХTUWСVTИHKBBBBKKH^\И[ќ[H]XЪYЪ[™ИЪ[\]HHЬ™\‚‚‚US’UУPQT—УSСQ’QT—РУУУХУ—УУ—СTЦHHKBKKH\ЩH[YH[€^\И›Ь€H[љ]XY\€И™H\ЮYYЪ[H›Э[™XYH\ЮYY€[њЭ[ќ[™[Э\ИY€€ШШ[YћHH[\]HX[њЭЩ\‹‚‚US’UУPQT—УSСQ’QT—РУУУХУ—УУ—СTЦWУRS€HЛBKKHZ[љ[][HЫЫЫЭЫ€[€^\И›Ь€\ЮZ[™ИH[љ]XY\‹]™[€›Ь€™\ћHЫX[H[\]\В‚US’UУPQT—УSСQ’QT—РУУУХУ—УУ—Ф‘QTЦHHЛBKKH[YH[€^\И›Ь€H[љ]XY\€ИH™Y\ЮYYИH™]И[љ]€[њЭ[ќ[™[Э\ИY€‚US’UУPQT—УSСQ’QT—РУУУХУ—УУ—ХТUђUИHKBKKH\ЩH[YH[€^\И›Ь€Ъ]]Ъ[™ИH\ЮYY[љ]XY\‹€[њЭ[ќ[™[Э\ИY€€ШШ[YћHH[\]HX[њЭЩ\‹‚‚US’UУPQT—УSСQ’QT—РУУУХУ—УУ—ХТUђUЧУRS€HЛBKKHZ[љ[][HЫЫЫЭЫ€[€^\И›Ь€Ъ]]Ъ[™ИH[љ]XY\‹]™[€›Ь€™\ћHЫX[H[\]\В‚US’UУPQT—УSСQ’QT—РУУУХУ—Ф‘Q‘T‘SђСWУPS”ХСT€HЌLKKH™Y™\™[ЩHX[њЭЩ\€›Ь€\ЮKЭЪ]]ИЫЫЫЭЫ€ШШ[[™Л€]\И[YK[^H\]X[ИH\ЩK‚‚US’UУPQT—УSСQ’QT—РУУУХУ—УPS”ХСT—СVУ‘S•HKЊKBKKH^Ы™[ќ›Ь€X[њЭЩ\€ШШ[[™И
+ЊHHљYИ]љ\Ъ[ЫњИ[љ\ЪY\™\ЉB‚‚P“Ф‘T—ХРT—ХТS—СVTЧРQРRS”ХСSTWУФУ‘S•ИHМBKKH›Ь™\€Ш\њИЪ[™H]]ЫX]XШ[HЫЫ€Y€›ИЬЫ™[ќЪЭЬИ\›Ь€\И\][Ы‚‚‚‚SPVФ‘SUU‘WРУУPђUСSPQСWХЧУSСQ–WЦHKЊBBKKH[ЭHШZ[€[Ь™HY€[ЭH\™HЪ[™И[Ь™H[XYЩH™[]]™HИ[™[^K\И\ИHX^™[]]™H[[Э[ќИШZ[€›ЫЭЪ[™ИђUB‚VСРRS—СђPХФ—С“Ф—УPVФ‘SUU‘WРУУPђUСSPQСHHKЊKKHXЭЬ€ШШ[[™И›Ь€X^™[]]™HЫЫX][XYЩB‚‚VСPРVWФђUWФT—ТХT—ТS—РУУPђUHЊKBBBKKH[ЭHЩ]™YXЩY\ИЫЫX]YЬВ‚SRS—ЦФђUWХЧСPРVHHЊЌKBBBBBBBKKHZ[љ[][HXЭЬ€›Ь€YЩЩYЫЫX]В‚‚VСРRS—ФT—УХ‘T”•S—ХS’UHЊЊBBBBBKKHљ^YШZ[€\€Э™\њќ[€[љ]‚VСРRS—С“Ф—ФТUT’S‘ИHЊKHљ^YШZ[€\€Ъ]\™Y[љ]‚‚US’UХTСQTРU’USУ€HЊBBBBBBKKPЫЫњЭ[ќ]љ][Ы€[YH\YYИ\›ZY\Л‚‚‚Q•QSФSђSWФХT•ФђUSИHЊ‹BBBKKH][ИЩ€ќY[[€[€\›^HИЭ\ќЩ][™И[[Y\В‚Q•QSФSђSWФХT•ФђUSЧР•Q‘‘T€HЊKBBBKKHќY™™\€]ЩY\ИHЭ][Щ‹YќY[[\ќЬ[€]™[€Ъ[€X›Э™HH•QSФSђSWФХT•ФђUSИ™\ЪЫЫИ]]Щ\Ы‰ЭЬ[K\[™ИЪ[€›XЭX][™В‚B‚TХT”TЧФХTWФђUSЧС“Ф—Ц‘T“ЧС•QSС“ХИHЌKBKKHY€HЭ\HЪ[љИ\И[Ь™HЭ\H™YYY[€\И][И
+ИHЫЫ\\™YИ]ИX^Э\H›ЭЛH[љ]И[њЪYHHЪ][љИЪ[Щ]›ИќY[‚‚PT“VWУPVС•QSС“ХЧУUSHKЊ‹BBBBKKHX^ќY[][И][€\›^HШ[€Щ]\€Э\‹][\YYћHЭ\HЪ]X][Ы‚‚‚PT“VWС•QSРУФХУUSHЌKBBBBBKKHќY[ЫЬЭ][\Y\€›Ь€[\›^H™[]YЭY™‚‚PT“VWРУУPђUС•QSУUSHЌBBBBKKHќY[ЫЫњЭ[\[Ы€][И[€ЫЫX]
+\ИT“VWУSХ‘SQS•С•QSУUSY€[ЭH\™H[ЫИ[Эљ[™Л€YHЩ™™[њЪ]™HЫЫX]
+B‚PT“VWХђRS’S‘ЧС•QSУUSHЋBBBBKKHќY[ЫЫњЭ[\[Ы€][ИЪ[HZ[љ[™В‚PT“VWУSХ‘SQS•С•QSУUSHЋBBBBKKHќY[ЫЫњЭ[\[Ы€][ИЪ[H[Эљ[™В‚PT“VWУђUђSХђS”С‘T—С•QSУUSHЊ‹BBKKHќY[ЫЫњЭ[\[Ы€][ИЪ[H][[њЩ™\њљ[™В‚PT“VWФХђUQТPЧСTЦSQS•С•QSУUSHЌBKKHќY[ЫЫњЭ[\[Ы€][ИЪ[HЪ[™ИЭ]YЪXИ\Ю[Y[ќ‚PT“VWТQWС•QSУUSHЊBBBBBKKHќY[ЫЫњЭ[\[Ы€][ИЪ[Hќ\Э^\Э[™В‚Q•QSСQ‘’PТQSђЦWФђRQУUSTQT€HKЊBBKKHЫЫќ›ЮHZY][\Y\€›Ь€ќY[Э[љВ‚‚Q•QSС“ХЧФSђSWС“Ф—ФХTWРТS’ЧСQСWФђUSИHЌKKHЭ\H›ЭИ]\И[Z]YћHЫЫќ›ЫЩ€[ЫЫZ[™ИYЩH›Эљ[Щ\ИЪ[]™H\ЬЩ\€Y™™XЭЫ€ќY[›ЭВ‚‚SХUУС—С•QSСTURTQS•УUSHЊ‹BBBKKH][ИЩ€HЭ]И][ЭHЩ]њ›ЫH\]Z\Y[ќИ]\Щ\ИќY[[™[ЭHXЪИ]‚SХUУС—С•QSФФQQУUSHЊ‹BBBBKKHЬYY][]\›ZY\ИЩ]Ъ[€Э]Щ€ќY[‚SХUУС—С•QSХђRS’S‘ЧЦСРRS—УUSHЊBKKHШZ[€][њ›ЫHZ[љ[™ИЪ[€H[љ]\ИЭ]Щ€ќY[‚Q•QSРРTPТUWСQђUSТХT”ИHMЋBBBKKHY][Ш\XЪ]HY€›ЭЬXЪYљYY‚‚SPVСTХSPUQФS—ХS’UЧУ“ХТS—ФPСWСђPХФ€HLЌ‹KKTШШ[YћH	HЩ€[љ]И›Э[€XЩK€\ЩYИ™HH›]ML	B‚QSPQСWФФUУУ—С’T”ХХT‘СUHЊ‹BBKKIHЩ€[XYЩHX[ИHљ\њЭ\™Щ][€HЫЫX]€H™\ЭЪ[™HЬ][[Ы™ЬЭЭXњЩ\]Y[ќ\™Щ]Л€[ЩYљY\њИШ[€Y™™XЭ\И\ИHX^[][HЩ€ЋK€][YH]\Э›Э™H^ЬЩY\ИHYљ[™K‚‚‚‚S‘UЧРT“VWУPQT—УU‘SРТSђСTИHВBBBKKHЪ[Щ\И›Ь€™]И\›^HXY\њИИЭ\ќ]HЪ]™[€]™[‚BLЌKKHIH›Ь€]™[Ы™B‚BLЊМKHМ	H›Ь€]™[ЫВ‚BLЊMKKHMIH›Ь€]™[™YB‚BLЊЛKHЙH›Ь€]™[›Э\‚‚BLЊИKHЙH›Ь€]™[љ]™B€HKH	H›Ь€]™[Ъ^ИЩ[ќB‚_K‚B‚Q’QТS‘ЧФХ‘S‘ХСPUХ‘TТУHЊKBKKHљYЪ[™ИЭ™[™Э™[ЭИЪXЪ]љ\Ъ[ЫњИYHњ›ЫH]љ][Ы‚‚Q’QТS‘ЧФХ‘S‘ХТWРST•Х‘TТУHЊ‹BKKHљYЪ[™ИЭ™[™Э™[ЭИЪXЪ\ЮYYXY\€]™H[€[\ќЫЭИЫ€Z\€ЬќZ]‚‚PУУSPS‘T—РP’SUWРђTСWФђS‘СHHKH\ЩHY]\И[™ЩHЩ€ЫЫ[X[™\€Xљ[]Y\В‚‚PУУSTЧУPVСTХSђСHHKBBBBBBBBBBBBBKKHY€€\ИЏHHЪ^™HЩ€H™[ЭИ\њ^\ЛH\Э[YHЪ[™HЫЫњЪY\™Y™\X]Y‚TS“’S‘ЧРРTРУУSTЧФРРSS‘ИHИKЊKЊЋЌKЊHKBBBBKKH[YH][™^€\ИHШШ[[™И\YYИ[›љ[™ИШ\Ъ[€H\И€›Эљ[Щ\И™Z[™Hњ›Ыќ[™B‚TS“’S‘ЧРРTУ“ЧТWФРРSS‘ИHЊBBBBBBBBBBKKHШШ[[™И\YYИ[›љ[™ИШ\Ъ[€\™IЬИ›ИH
+›ИXY\€Ь€XY\€›Э\ЮYYЬ€›ЭHШ[YH›ЫЭЬ™\ЉB‚TS“’S‘ЧФФQQРУУSTЧФРРSS‘ИHИKЊKЊЋЌKЊHKBBBBKKHШ[YH\ИS“’S‘ЧРРTРУУSTЧФРРSS‘Иќ]›Ь€[›љ[™ИЬYY‚TS“’S‘ЧФФQQУ“ЧТWФРРSS‘ИHЊBBBBBBBBBBKKHШ[YH\ИS“’S‘ЧРРTУ“ЧТWФРРSS‘Иќ]›Ь€[›љ[™ИЬYY‚SPQT—УSСРУУSTЧФРРSS‘ИHИKЊKЊЋЌKЊHKBBBBHKKHШ[YH\ИS“’S‘ЧРРTРУУSTЧФРРSS‘Иќ]›Ь€XY\€[ЩYљY\њВ‚SPQT—УSСУ“ЧТWФРРSS‘ИHЊBBBBBBBBBBBKKHШ[YH\ИS“’S‘ЧРРTУ“ЧТWФРРSS‘Иќ]›Ь€XY\€[ЩYљY\њВ‚PP’SUWРУУSTЧФРРSS‘ИHИKЊKЊЋЌKЊHKBBBBBKKHШ[YH\ИS“’S‘ЧРРTРУУSTЧФРРSS‘Иќ]›Ь€XЭ]™HXљ[]Y\В‚PP’SUWУ“ЧТWФРРSS‘ИHЊKBBBBBBBBBBBKKHШ[YH\ИS“’S‘ЧРРTУ“ЧТWФРРSS‘Иќ]›Ь€XЭ]™HXљ[]Y\В‚QСS‘TђSФ“ЦSRUWРУФСHHKBBBBBBBBBBBKKH]HЫЬЩH€›Ю[Z]HЩ][™ЛHЩ[™\[ЪЭ[Э^H\ИX[ћH›Эљ[Щ\И™Z[™Hњ›Ыќ[™B‚QСS‘TђSФ“ЦSRUWУQQUSHH‹BBBBBBBBBBBKKH]H›YY][H€›Ю[Z]HЩ][™ЛHЩ[™\[ЪЭ[Э^H\ИX[ћH›Эљ[Щ\И™Z[™Hњ›Ыќ[™B‚QСS‘TђSФ“ЦSRUWСђT€HЛBBBBBBBBBBBBKKH]H™\€€›Ю[Z]HЩ][™ЛHЩ[™\[ЪЭ[Э^H\ИX[ћH›Эљ[Щ\И™Z[™Hњ›Ыќ[™B‚QСS‘TђSФ“ЦSRUWСQђUSHKBBBBBBBBBBBKKHHY][›Ю[Z]HЩ][™И›Ь€H\ЮYYЩ[™\[€\Иќ[X™\€ЪЭ[ЫЬњ™\ЬЫ™ИЫ™HЩ€H[Y\ИX›Э™B‚QСS‘TђSФђS’ЧХЧРT“VWТWСVУU‘SСђPХФ€H‹BBBBBBBKKHHЩ[™\[	ЬИ[љИ\И][\YYћH\ИXЭЬ€
+›Э[™Y\
+HИ]\›Z[™HHЬ]Ы™Y\›^HH]љ\Ъ[Ы‰ЬИ^\љY[ЩH]™[‚PT“VWТWФ‘TURTТUSУ—УRS’SUSWФ‘SPRS’S‘ЧФTђСS•QСHHLBBBBBKKHЪ[€\ЮZ[™И[€\›^HK]љ\Ъ[ЫњИЪ[›Э]™HZ\€\]Z\Y[ќЬ€X[њЭЩ\€™\]Z\Ъ][Ы™Y™[ЭИ\И\Щ[ќYЩHЩ€Z\€\™Щ]X[њЭЩ\€Ь€\]Z\Y[ќ‚‚T‘Q‘T”‘QФ’TУУ—Х”HKKKHЪ[€Ш\\љ[™ИHЩ[™\[ћHИљ[™H›Эљ[ЩHЪ]]X\Э]]XЪ”И[\љ\ЫЫ€[K€HY™™XЭ]™Hљ\ЫЫ€”Ш[€™HЭЩ\€[€]Y€HШ\\љ[™ИЫЭ[ќћHЩ\Ы‰Э]™H[ћH›Эљ[ЩHЪ]]X\Э\И[[Э[ќЩ€”џK‚‚“ђZ\€HВ‚PRT—ТS•ђTТSУ—Ф‘TT‘WСVTИH‹BBBBBKKH\ЩH^\И™YYYИ™\\™H[€Z\›Ь›™H[ќ\Ъ[Ы‚‚PRT—ТS•ђTТSУ—ФS—РРTHLBBBBBKKH\ЩHШ\Щ€Z\›Ь›™H[ќ\Ъ[ЫњИШ[€™H[›™Y]HШ[YH[YB‚PRT—ХТS‘ЧС“QТФФQQУUSHЊЛBBBBKKHЫШ[ЬYY][\Y\€›Ь€Z\њ[™\И
+Y™™XЭИ™Kќ[њЩ™\њљ[™ИИ[›Э\€\ЩJB‚PRT—ХТS‘ЧУPVФХUЧРUPТИHLЊBBBBKKHX^Э]В‚PRT—ХТS‘ЧУPVФХUЧСQ‘SђСHH‚PRT—ХТS‘ЧУPVФХUЧРQТSUHHLЊ‚PRT—ХТS‘ЧУPVФХUЧФФQQH‚PRT—ХТS‘ЧУPVФХUЧР“УP’S‘ИHMЊ‚PRT—ХТS‘ЧУPVФТV‘HHBBBBBBKKHX^[[Э[ќЩ€Z\њ[™\И[€Ъ[™В‚PRT—ХТS‘ЧРU‘TђQСWФТV‘HHBBBBBKKH^YX[Y]™\YЩH[[Э[ќЩ€Z\њ[™\И[€Ъ[™Л€\ЩYЪ[€Ш[Э[][™ИZ\€›Ы[ќY\‹‚‚PRT—ХТS‘ЧР“УP—СSPQСWСђPХФ€HЛBBBBKKH\ЩYИ[[ЩHH[XYЩHЫ™HЪ[H›ЫXљ[™Л‚‚PђTСWРRT—ТS•ђTТSУ—СU’TТSУ—РРTHLBBBKKH\ЩHШ\Щ€]љ\Ъ[ЫњИ]Ш[€™H\ЬЪYЫ™Y[€HZ\›Ь›™H[ќ\Ъ[Ы‚B‚P’QССTХРQТSUWСђPХФ—СQ‘€HBBBBKKHљYЩЩ\ЭXЭЬ€Y™™\™[ЩH[€YЪ[]H›Ь€Ъ[™И[XYЩH
+Ш\ИИ\КB‚P’QССTХФФQQСђPХФ—СQ‘€HBBBBBKKHљYЩЩ\ЭXЭЬ€Y™™\™[ЩH[€ЬYY›Ь€Ъ[™И[XYЩH
+Ш\ИИ\КB‚UФФФQQСSPQСWР“У•TЧСђPХФ€HЊ‹BBBKKHHXЭЬ€›Ь€ШШ[[™ИHЬЬYYЩ€H[™H[ќИ[XYЩHќY™‹€Y€[€]XЪЪ[™ИЪ[™И\ИHЬYYY[ќYЩHЩ€[ћH›Ь›HZ\€ЬYY[YHЪ[™HЫЫќ™\ќY[ќИH\Щ[ќYЩH›Ыќ\ИЪ]\И[ЩYљY\‚‚PУУPђUСSPQСWФХUЧУUSSQT€H‚PРT”’QT—РУУPђUСSPQСWФХUЧУUSTQT€H‚PУУPђUР‘UT—РQТSUWСSPQСWФ‘QPХSУ€HKЌНKBKKHЭИ]XЪH™]\€YЪ[]H
+[€ЬЫ™[ќ	ЬКHШ[€™YXЩHZ\€[XYЩHИ\Л‚‚PУУPђUР‘UT—ФФQQСSPQСWТSђФ‘PTСHH‹ЊНKBKKHЭИ]XЪH™]\€ЬYY
+[€ЬЫ™[ќ	ЬКHШ[€[Ь™X\ЩHЭ\€[XYЩHИ[K‚‚BBBBBBBBBBBBBKKH›ЭЩ€\ЩHYљ[™\И\™HЫЫXљ[™YЪ]Z\€Ъ\Э\€ђPХФ—СQ‘€Yљ[™\ИИЬ™X]HY™[њЩHЬ€Щ™™[њЪ]™HќY™њВ‚BBBBBBBBBBBBBKKH[€›ЭШ\Щ\ИHX^[][H›Ыќ\ИЬ€™YXЭ[Ы€\И
+’QССTХЦСђPХФ—СQ‘€HJH
+€УУPђUР‘UT—ЦСSPQСWЦH
+€[XYЩB‚PУУPђUУPVХТS‘ФЧРUУУђСHHLBBBBKKHX^[[Э[ќЩ€Z\€Ъ[™ЬИ[€Ы™HЫЫX]Ъ[][][Ы‹€HYЪ\€[YKH]ZXЪЩ\€ЫЭ[ќљY\ИX^HЫЬЩHZ\€Ъ[™ЬЛ€]	ЬИHШ[Y\^H[[ЩH[YK‚‚PУУPђUУPVХТS‘ФЧРUСФ“ХS‘РUPТИHLHKHЩHШ[€™X[HЭ[ЩHH[™ЭљZЩH[™\ШШ[]B‚PУУPђUУPVХТS‘ФЧРUУУђСWФФ•ФХ’RСHHLKHЩHШ[€™X[HЭ[ЩHH][ЭљZЩH[™\ШШ[]B‚PRT—Ф‘QТSУ—ФХTT’SФ’UWФVSФРРSHHЊKKHZ\€Э\\љ[Ьљ]HШШ[HHЭ\\љ[Ьљ]KК^[Кќ\КB‚PУУPђUУUSTS‘WРРTHЛЊBBBBBKKHЭИX[ћH[™\ИШ[€ЪЫЭ]XXЪ[™HЫ€Э\€ЪYH
+Y€\™H\™HL[™\ИЩH\™H]XЪЪ[™ИУУPђUУUSTS‘WРРT
+€LЩ€Э\€[™\ИШ[€ЪЫЭ
+B‚PУУPђUСSPQСWФРРSHHЊ‹BBBBBBKKHYЪ\€[YHH[Ь™HЪЭЭЫ€[™\В‚PУУPђUСSPQСWФРРSWРРT”’QT€HЌKBBBBKKHШ[YH\ИX›Э™Hќ]\ЩY[њЪYH][ЫЫX]›Ь€Ш\њљY\€]\В‚PРT”’QT—ФTђСS•QСWСQ‘S‘HЊНKBBBBKKH\Щ[ќYЩHЩ€[™\ИX›HИY™[™HШ\њљY\€њ›ЫHZ\€]XЪЬИ
+\ЭЬљXШ[HMIHHНIJB‚QUPХРТSђСWС”“УWУРРХTUSУ€HЊKBBBKKHЭИ]XЪHЫЫќ›ЫY›Эљ[Щ\И[€\™XHY™™XЭИHZ\€]XЭ[Ы€\ЩH[YK‚‚QUPХРТSђСWС”“УWФђQT”ИHЌНKBBBBKKHЭИ]XЪHY\њИ[€\™XHY™™XЭИ]XЭ[Ы€Ъ[ЩK‚‚QUPХРТSђСWС”“УWРRTђФђQ•ЧСQ‘‘PХU‘WРУХS•HЊKHX^[[Э[ќЩ€Z\ЬYќИ[€™YЪ[Ы€ИЪ]™Hќ[]XЭ[Ы€›Ыќ\Л‚‚QUPХРТSђСWС”“УWРRTђФђQ•ИHЌ‹BBBBKKHЭИ]XЪZ\ЬYќИ[€™YЪ[Ы€[\›Э™\ИZ\€]XЭ[Ы€
+\ИY™™XЭ]™HЫЭ[ќ
+K‚‚QUPХРТSђСWС”“УWУ’QТHLЌKBBBBKKHЭИ]XЪHљYЪШ[€™YXЩHHZ\€]XЭ[Ы‹€
+ЩYHЭ]XИ[ЩYљY\њИИЪXЪИЭИЩX]\€Y™™XЭИ]ЫЛЉB‚QUPХСQ‘’PТQSђЦWРђTСHHЊKBBBBBKKH\ЩH[YH›Ь€]XЭ[Ы€Y™љXЪY[ЮH
+ЫЩHЫЫY][™И]XЭYY™љXЪY[ЮHШ^\ИЭИX[ћHZ\њ[™\ИШ\И]XЭY
+K‚‚QUPХСQ‘’PТQSђЦWС”“УWФђQT€HЌНKBBBBKKHЭИ]XЪY\њИY™™XЭHY™љXЪY[ЮK‚‚QUPХСQ‘’PТQSђЦWФђS‘УWСђPХФ€HЊЌKBBBKKHЭИ]XЪ[™Ы[™\ЬИ\И[€[[Э[ќЩ€]XЭYZ\ЬYќЛ‚‚QVWУ’QТРУХ‘TђQСWСђPХФ€HЌKBBBBKKHHX^љYЪЫЭ™\YЩH[€H™YЪ[Ы€]\ИЭ[ЫЫњЪY\™YИ™H^K][YHЪ[€]\›Z[љ[™ИY€^KЫљYЪZ\€Z\ЬЪ[ЫњИЪ[ќ[‹‚‚RХT”ЧСSVWРQ•T—СPPТРУУPђUHBBBBKKHЭИX[ћHЭ\њИ™YYИHЪ[™ИИ™H™XYH›Ь€H™^ЫЫX]€\ЩH›Ь€ЩXZЪ[™ИY€ЫЫX]И\[њИЫИЩќ[‹€
+Щ[™\[H\ЩY\ИЭX›H™XШ]\ЩHЩ€›Э[™љ\
+B‚TФ•ФХ’RСTЧСSVWУUSTQT€H‹BBBBKKH][Y\ИХT”ЧСSVWРQ•T—СPPТРУУPђUY€ЬќЭљZЩ\В‚PРT”’QT—ТХT”ЧСSVWРQ•T—СPPТРУУPђUHKHЭИЩќ[€Ш\њљY\€[™\ИИ]H[њЪYH][ЫЫX]‚PРT”’QT—ФТV‘WФХUТSђФ‘SQS•HBBBBKKHXXЪЪ[ќЩ€Ш\њљY\—ЬЪ^™HЭ]HYИШ\XЪ]H›Ь€\ИX[ћH[™\В‚TХP“PT’S‘WРРT”’QT—ФТV‘WФХUТSђФ‘SQS•HKBBKKHXXЪЪ[ќЩ€Ш\њљY\—ЬЪ^™HЭ]HYИШ\XЪ]H›Ь€\ИX[ћH[™\И›Ь€ЭX›X\љ[™\В‚SRTФТSWУUSђТT—РРTPТUHHLKHHќ[X™\€Щ€Z\ЬЪ[\И\€ЫЭ‚SRTФТSWУUSђТT—ФУХИHKKHHќ[X™\€Щ€Z\ЬЪ[HЫЭИHZ\ЬЪ[H][Ъ\€[љ]Ш[€]™B‚SђUђSФХ’RСWХT‘СUS‘ЧХЧРSSХS•HЊ‹BBKKH[[Ъ[™И[YHИЫЫќ™\ќH][ЬЭљZЩWЭ\™Щ][™И\]Z\Y[ќЭ]ИИЪ[Щ\ИЩ€ЭИX[ћHZ\њ[™\ИX[YЩYИИЭXШЩ\ЬЩќ[ЭљZЩK‚‚SђUђSФХ’RСWСSPQСWХЧФХ€HKЊЌKBBBBKKHTЋ€\™XЭ›ЫX‹ЭЬњYИ[XYЩH\И[Z]YИЬљ]XШ[\ќИШ\њћH[ЬЭZ\ЬЪ[Ы€Ъ[Л‚‚SђUђSФХ’RСWСSPQСWХЧУФ‘ИHKЌНKBBBBKKHTЋ€Z\€]И\Ьќ\[Ь™H™XY[H[€^H\Э›ЮH[Э™[™Э‚‚SђUђSФХ’RСWРРT”’QT—УUSTQT€HL‹ЊKH[XYЩH›Ыќ\ИЪ[€[™\И\™H[€][ЫЫX]Ъ\™HZ\€Ш\њљY\€\И™\Щ[ќ
+[™Ш[€\ИЫЬќYH\Э\€[™[Ь™HY™™XЭ]™[JB‚Q’QSСVT’QSђСWФРРSHHЊ‚Q’QSСVT’QSђСWУPVФT—СVHH‹BBBBKKH[ЬЭ[ЭHШ[€ШZ[€\€^B‚PУФСWРRT—ФХTФ•СVT’QSђСWФРРSHHЊKBKKHЭИ]XЪH^\љ[™[ЩHШZ[™YћHРTИ\ИШШ[Y‚TTђQ“ФСVT’QSђСWФРРSHHЊЛBBBBKKHЭИ]XЪH^\љ[™[ЩHШZ[™YћH\Y›Ь[™И\ИШШ[Y‚P“УP’S‘ЧСSPQСWСVT’QSђСWФРРSHHЊ‹KHЭИ]XЪH^\љ[™[ЩHШZ[™YћH›ЫXљ[™И\ИШШ[Y‚‚QVT’QSђСWФРРSWРUPТЧУСТTХPФЧУ“ЧХ•PТЧРУУ”ХSQT”ИHЊKKHЭИ]XЪЫЭ[ќћH^\љ[™[ЩHШZ[™YћH]XЪЪ[™ИЫЫњЭ[Y\њИЪИ\™[‰Э[ЭЬљ^™Y‚QVT’QSђСWФРРSWРUPТЧУСТTХPФЧУ“СWРS‘ХђRS”ИHЊ‹KHЭИ]XЪЫЭ[ќћH^\љ[™[ЩHШZ[™YћH]XЪЪ[™И›ЩKЭZ[њВ‚QVT’QSђСWФРРSWРUPТЧУСТTХPФЧХ•PТФИHЊ‹KHЭИ]XЪЫЭ[ќћH^\љ[™[ЩHШZ[™YћH]XЪЪ[™ИќXЪЬВ‚B‚Q’QSСVT’QSђСWСђPХФ€HЌЛBBBBBKKHXЭЬ€[Z\€^\љY[ЩHШZ[€њ›ЫHZ\ЬЪ[ЫњИћH\В‚B‚PRWРSХСQФS‘TЧТСTТS—Ф‘TСT•‘HHBBKKPRH[ЭЩY[™\И\И™YXЩYћH\И\Щ[ќYЩK€Э™\™›ЭИЪ[™H\ЭљXќ]YИH™^[YЬ™\‹€ЫЬњЭШ\ЩK\ИЪ[™\Э[[€\И	HЩ€[™\И›И™Z[™И\ЬЪYЫ™Y[ћHЬ™\‹€‚B‚PPРТQS•РТSђСWРђTСHHЊKBBBBBKKH\ЩHЪ[ЩH	H
+HL
+H›Ь€XШЪY[ќИ\[‹€™YXЩYЪ]YЪ\€™[XXљ[]HЭ]‚‚PPРТQS•РТSђСWРРT”’QT—УUSHKЌKBBBBKKHHЭ[XШЪY[ќЪ[ЩH\ИШШ[Y\Ъ[€]\[њИЫ€HШ\њљY\€Ъ\‚‚PPРТQS•РТSђСWРђSSђСWУUSHKЊBBBBKKH][\Y\€›Ь€[[Ъ[™ИЭИЩќ[€HZ\€XШЪY[ќ™X[H\[њЛ€HYЪ\€][H[Ь™HЩќ[‹‚‚PPРТQS•РТSђСWФ‘SPP’SUWУUSHKЊBBBKKH][\Y\€ИXШЪY[ќЪ[ЩH\€Ъ[ќЩ€Z\ЬЪ[™И™[XXљ[]K‚‚PPРТQS•СQ‘‘PХУUSHЊKBBBBBKKH][\Y\€›Ь€[[Ъ[™ИHY™™XЭЩ€XШЪY[ќВ‚PPСWСPUРТSђСWРђTСHHЊЛBBBBBKKH\ЩHЪ[ЩH	H›Ь€XЩH[ЭYHЪ[€[€Z\њ[™H\ИЪЭЭЫ€[€HXЩHЪ[™Л‚‚PPСWСPUР–WУХT—РPСWРТSђСHHKЊBBBKKHЪ[ЩHИ[€XЩHZ[™ИћH[›Э\€XЩHY€]Ш\И]ћHXЩH[€ЫЫX]‚PPСWСPUРТSђСWФS‘TЧУUSHЊKBBBKKHH[Ь™HZ\њ[™\ИШ\ИЬЭ[€HЪ[™ЫHZ\њ[™\И
+[Ь™H›ЫЩH]Ш\КHHYЪ\€Ъ[ЩHЩ€XЩHИYK‚‚PRT—РQТSUWХЧУђUђSФХ’RСWРQТSUHHЊKBKKHЫЫќ™\њЪ[Ы€XЭЬ€Ињљ[™ИYЪ[]H[€[™HЪ]Ъ\PB‚PPСWСPT“—РТSђСWРђTСHHЊKBBBBBKKH\ЩHЪ[ЩH	H›Ь€XЩH[ЭЬ™X][Ы€›ЫИ\[‹€\[њИЫ›HЪ[€ЭXШЩ\ЬЩќ[HЪ[Z\њ[™KЬЪ\Ь€[XYЩHHќZ[[™ЬЛ‚‚PPСWСPT“—РТSђСWФS‘TЧУUSHЊKBBBKKHXЩHЩ[™\][Ы€Ъ[ЩH\€Z\ЬYќ€Ъ[ЩH\И›ЫYЪXЩH™XШ]\ЩHXЪ[X[ќ[X™\њИШ[‰Э™HЫX[[›ЭYЪ‚PRT—СSPQСWХЧСU’TТSУ—УФФСTИHKЊBBBKKHXЭЬ€›Ь€ЫЫќ™\њЪ[Ы€Z\€[XYЩHИ]љ\Ъ[Ы€ЬЬЩ\И›Ь€]Z[ИЭ]\ЭXЬИЩ€Z\€Ъ[™ЬВ‚PRT—УђUђSТРSRRРV‘WСSPQСWУUSHЊЊBBBKKH[[Ъ[™И[YHИ[Ь™X\ЩH\ЭX[[XYЩHИЭ™[™Э›Ь€Ш[ZZШ^™B‚PRT—УђUђSТРSRRРV‘WУФФСTЧУUSHЊBKKH[[Ъ[™И[YHИ[Ь™X\ЩH\ЭX[ЬЬЩ\ИY€Ш[ZZШ^™H\ќXЪ\][™И[€H]B‚PђTСWТРSRRРV‘WСSPQСHH‹ЊBKKH\ЩHШ[ZZШ^™HX]]B‚PђTСWТРSRRРV‘WХT‘СUS‘ИH‹ЊBBHKKHШ[ZZШ^™HШ[‰Э™HHY\™Щ]‚PђTСWФХђUQТPЧР“УP’S‘ЧТUФТTРТSђСHHЊKBKKHЪ[ЩHИ]HЪ\[€ЬќЪ[€]\И›ЫX™Y‚‚PђTСWФХђUQТPЧР“УP’S‘ЧТUФТTСSPQСWСђPХФ€HL‚PђTСWФХђUQТPЧР“УP’S‘ЧТUФS‘WРТSђСHHЌЌKBKKHЪ[ЩHИ]H[™H[€Z\\ЩHЪ[€]\И›ЫX™Y‚‚PђTСWФХђUQТPЧР“УP’S‘ЧТUФS‘WСSPQСWСђPХФ€HK‚PQСФ‘TФТSУ—Х‘TТУHИЊЊЌKЌHKBBKKH™\ЪЫ]™[И›Ь€Z\ЬЪ[Ы€YЩЬ™\ЬЪ]љ]H›Ь€Z\‚‚‚PPСWХТS‘ЧФТV‘HBMBBBBBBBKKHЪ^™HЩ€Ъ[™ИXЩH›Ыќ\Щ\И\™HЩ]\›Ь‹€Y€ЭЩ\€[Ь™H›Ыќ\ЛY€YЪ\€\ЬИ›Ыќ\В‚PPСWХТS‘ЧФТV‘WУPVР“У•TИH‹HKHљYЩЩ\Э›Ыќ\ИЩHШ[€Щ]њ›ЫH]љ[™ИHЫX[Ъ[™ИЪ][€XЩHЫ‚‚S“ЧФСPTђТУRTФТSУ—СUPХСђPХФ€HLЌНKBBBKKH[YHЩ€[™\И›ЭЫ€XЭ]™HЩX\ЪZ\ЬЪ[ЫњИ›Ь€]XЭ[Ы‚‚TХTWУ‘QQСђPХФ€HЋBBBBBBKKH][\Y\ИЭ\H\ШYЩB‚TХTWФ’SЧСђPХФ€HLЊBBBBBBKKHY™™XЭЩ€Э\H™YY\€[љ]›Ь€\™Щ]›Эљ[ЩHXЪЪ[™И›Ь€Z\€Э\B‚PРTPТUWФSђSHH‹BBBBBBBKKHШШ[\И[[HЩ€]љ[™ИЭ™\Ь›ЭЩY\Щ\Л‚‚PRT—РУУPђUС’SђSСSPQСWФРРSHHЊKKH	HЭИX[ћHX^\Ьќ\YЫ›H[™\И\™H[ЩYИYH[€HЪ[™ЫHЫЫX]‚PRT—РУУPђUС’SђSСSPQСWФS‘TИHLKHШШ[[™ЛШЫЫќ›Ы›Ь€Ъ[€Ы›H™\ћH™]И[™\И^\ЭИЭЬ›Э[™Щ™€\ЬЭY\В‚PRT—РУУPђUС’SђSСSPQСWФS‘TЧСђPХФ€HЊK‚PPWТS‘TХ–WРRT—СSPQСWСђPХФ€HLЊBBBKKH^]™[ИHЊ	HY™[њЩHњ›ЫH›ЫXљ[™В‚SђUђSФХ’RСWСUPХSУ—РђSSђСWСђPХФ€HЌЛBKKH[YH\ЩYИШШ[HHЭ\™XЩWЭљ\ЪXљ[]HЭ]ИИ[[ЩHHШ[Y\^KЫИL	H]XЭ[Ы€Ъ[ЩHЭ[ЫЫ‰ЭЬ[HHЭљZЩ\Л‚‚SђUђSФ‘PУУ—СUPХSУ—РђSSђСWСђPХФ€HЌЛBBKKH[YH\ЩYИШШ[HHЭ\™XЩWЭљ\ЪXљ[]HЭ]ИИ[[ЩHHШ[Y\^KЫИL	H]XЭ[Ы€Ъ[ЩHЭ[ЫЫ‰ЭЬ[HЬЭ[™Л‚‚SS‘УPTСQСTURTQS•СVT’QSђСWСРRS€HЌKBKKH[YH\ЩY›Ь€\]Z\Y[ќ‚PS•WРRT—ФS‘WСSPQСWСђPХФ€HЋBBBBKKH[ќHZ\€Э[€[XYЩHXЭЬ‚‚PS•WРRT—ФS‘WСSPQСWРТSђСHHЊKBBBBKKH[ќHZ\€Э[€]Ъ[ЩB‚PS•WРRT—РUPТЧХЧСSPQСWФ‘QPХSУ—СђPХФ€HKЊKKH[[Ъ[™И[YHИЫЫќ™\ќ\]Z\Y[ќЭ][ќWШZ\—Ш]XЪИИH[XYЩH™YXЭ[Ы€[ЩYљY\€\HИ[ЫЫZ[™ИZ\€]XЪЬИYШZ[њЭ[љ]ИЪ]PK‚‚PS•WРRT—УPVSUSWСSPQСWФ‘QPХSУ—СђPХФ€HЋKKHX^[][H[XYЩH™YXЭ[Ы€XЭЬ€\YYИ[ЫЫZ[™ИZ\€]XЪЬИYШZ[њЭ[љ]ИЪ]PK‚‚PRT—СTЦSQS•СVTИH‹BBBBBBKKH^\ИИ\ЮHЫ™HZ\€Ъ[™В‚SђUђSФХ’RСWРђTСWФХ—ХЧФS‘TЧФђUSИHЊЛBKKHX^Z\›ЫX™\њИИИЬќЭљZЩHЫЫ\\љ[™ИИЭ™[™Э‚SђUђSРУУPђUСVT“ђSФS‘TЧТ“ТS—ФђUSИHЊKBKKHX^[™\И]Ш[€›Ъ[€HЫЫX]ЫЫ\\љ[™ИИHЭ[Э™[™ЭЩ€HЪ\В‚SђUђSРУУPђUСVT“ђSФS‘TЧТ“ТS—ФђUSЧФT—СVHHЊ‹KHX^^H[™H	H]Ш[€›Ъ[€]™\ћH^B‚SђUђSРУУPђUСVT“ђSФS‘TЧУRS—РРTHЊBBKKHZ[€Ш\›Ь€[™\И]Ш[€›Ъ[€][ЫЫX]‚‚PRT—УSФ‘WСФ“ХS‘РФ‘UФЧРУФХHKЊBBBBKKHФЫЬЭИXZ[ќZ[€[Ь™HЬ›Э[™Ь™]ЬВ‚PRT—УSФ‘WСФ“ХS‘РФ‘UФЧР“УФХHЊKBBBBKKHY™љXЪY[Э›ЫЬЭ›Ь€[Ь™HЬ›Э[™Ь™]ЬВ‚‚QQ‘’PТQSђЦWФ‘QТSУ—РТS‘СWФSђSWСђPХФ€HЋKBBBKKH[[H\YY›Ь€Ъ[™Ъ[™И™YЪ[Ы‚‚KKHШZ[€ЪЭ[™HЪ[™ЩY[€[Ь™[Y[ќИЩ€ЊЌYHИ™XЪ\Ъ[Ы‹‚‚QQ‘’PТQSђЦWФ‘QТSУ—РТS‘СWСRSWСРRS—СQђUSHKKKHY][ЭИ]XЪY™љXЪY[ЮHИ™YШZ[€\€^K€ШZ[€\YYЭ\›K‚‚QQ‘’PТQSђЦWФ‘QТSУ—РТS‘СWСRSWСРRS—РРTИHЋBBBKKHЭИ]XЪY™љXЪY[ЮHИ™YШZ[€\€^K€ШZ[€\YYЭ\›K‚‚QQ‘’PТQSђЦWФ‘QТSУ—РТS‘СWСRSWСРRS—УђUђSР“УP‘T€HЊNL‹BKKHЭИ]XЪY™љXЪY[ЮHИ™YШZ[€\€^K€ШZ[€\YYЭ\›K‚‚QQ‘’PТQSђЦWФ‘QТSУ—РТS‘СWСRSWСРRS—ХPХPРSР“УP‘T€HЊNL‹KKHЭИ]XЪY™љXЪY[ЮHИ™YШZ[€\€^K€ШZ[€\YYЭ\›K‚‚QQ‘’PТQSђЦWФ‘QТSУ—РТS‘СWСRSWСРRS—С’QТT€HЋBBKKHЭИ]XЪY™љXЪY[ЮHИ™YШZ[€\€^K€ШZ[€\YYЭ\›K‚‚QQ‘’PТQSђЦWФ‘QТSУ—РТS‘СWСRSWСРRS—ФХђUQТPЧР“УP‘T€HЊМ‹KKHЭИ]XЪY™љXЪY[ЮHИ™YШZ[€\€^K€ШZ[€\YYЭ\›K‚‚QQ‘’PТQSђЦWФ‘QТSУ—РТS‘СWСRSWСРRS—УPT’USQWФU“УФS‘HHK‚‚PRT—ХТS‘ЧЦУPVHLЊЊBBBBBBBBBBKKT\€[™H‚‚PRT—ХТS‘ЧЦУU‘SИHИЊЊLKBBBKKQ^\љY[ЩH™YYYИ›ЩЬ™\ЬИИH™^]™[‚PRT—ХТS‘ЧЦУФФЧХТS—ТТSQHЌLBBBBBBBBKKZY€H[™HY\ЛHШ[YH\ЬЭ[Y\И]H[ЭЪ]\И[[Э[ќЩ€YY[™™XШ[ЬИ]™\YЩK‚‚PRT—ХТS‘ЧЦХђRS’S‘ЧУPVHЊЊBBBBBBBBKKSX^]™\YЩHXЪY]™YЪ]Z[љ[™Л‚‚‚PRT—ХТS‘ЧЦХђRS’S‘ЧУRTФТSУ—СРRS—СRSHHKЌKBBBBBKKQZ[HШZ[€Ъ[€ќ[›љ[™ИZ[љ[™И^\Ъ\ЩHZ\ЬЪ[Ы‚‚PRT—ХТS‘ЧЦРRT—Х”ЧРRT—РУУPђUСРRS€H‹ЊBBBBBBKKUЪ[™ЬИ[€ЫЫX]ШZ[€^H‚PRT—ХТS‘ЧЦСФ“ХS‘УRTФТSУ—РУУTUQСРRS€HKЊBBBBKKP›ЫX™\њИ›ЫXљ[™ЛРTИШ\ЬЪ[™ЛђњИљ[™ЛШ[ZZШ^™Y\ИШ[ZZШ^™YZ[™Л]Л‚‚PRT—ХТS‘ЧЦФ‘PУУ—УRTФТSУ—РУУTUQСРRS€HKЊBBBBKK\™XЫЫ€Z\ЬЪ[Ы‚‚‚PRT—ХТS‘ЧРУХS•–WЦС”“УWХђRS’S‘ЧСђPХФ€HЊKBBBBKKQXЭЬ€Ы€ЫЭ[ќћHZ\€ШZ[™Yњ›ЫHЪ[™ИZ[љ[™В‚PRT—ХТS‘ЧЦХђRS’S‘ЧУRTФТSУ—РPРТQS•СђPХФ€HKЌKBBBKKUZ[љ[™И^\Ъ\Щ\ИШ]\ЩH[Ь™HXШЪY[ќВ‚PRT—ХТS‘ЧЦУФФЧФ‘QPХSУ—УХ‘T—С”’QS‘WХT”’UФ–WСђPХФ€HЊЌKKKT™YXЭ[Ы€Ы€ЬЬИЭ™\€њљY[™H\њљ]ЬћB‚‚QTФ•TSУ—СђPХФ€HЊBBBBBBBBKKH][\Y\€Ы€\Ьќ\[Ы€[XYЩHИШШ[H]ИY™™XЭИЫ€[™\В‚QTФ•TSУ—СђPХФ—РРT”’QT€HЊBBBBBBKKH][\Y\€Ы€\Ьќ\[Ы€[XYЩHИШШ[H]ИY™™XЭИЫ€Ш\њљY\€њИШ\њљY\€[™\В‚QTФ•TSУ—ФФQQСђPХФ€HKЊЌK‚QTФ•TSУ—РQТSUWСђPХФ€HЌK‚QTФ•TSУ—РUPТЧСђPХФ€H‹Њ‚QTФ•TSУ—СUPХSУ—СђPХФ€HKЊ‹‚QTРУФ•СђPХФ€HЊ‚QTРУФ•ФФQQСђPХФ€HЋK‚QTРУФ•РQТSUWСђPХФ€HЋK‚QTРУФ•РUPТЧСђPХФ€HKЊЌK‚QTФ•TSУ—СQ‘SђСWСQ‘SђСWСђPХФ€HKЊЌK‚QTФ•TSУ—СQ‘SђСWФФQQСђPХФ€HЋ‚QTФ•TSУ—СQ‘SђСWРUPТЧСђPХФ€HЊ‚‚PРT”’QT—ФS‘TЧРSSХS•С“Ф—ФФТUSУ’S‘ИHЌKH™[ЭИ\И[[Э[ќЩ€[™\ИЫ€HШ\њљY\€ЩH›ИЫ™Щ\€Щ]X^™[™Yљ]Ы€[™[^HЬЪ][Ыљ[™В‚‚PРTЧУ’QТРUPТЧСђPХФ€HЊKKHРTИ[XYЩYЩ]][\YYћH\И[€[™ЫЫX]И]љYЪ‚‚PRT—ХТS‘ЧРUPТЧУСТTХPФЧУ“ЧХ•PТЧСTФ•TSУ—СђPХФ€HЊ‹KHY€H[љ]\Ы‰Э[ЭЬљ^™YЭ[\Ьќ\]ИЭ\HћH[XYЩH
+€\В‚PRT—ХТS‘ЧРUPТЧУСТTХPФЧХ•PТЧСSPQСWСђPХФ€HЊЌK‚PRT—ХТS‘ЧРUPТЧУСТTХPФЧТS‘”ђWСSPQСWФФSСђPХФ€HЊM‹KHЬќ[Ы€Щ€ќXЪИ[XYЩHИY][Ы[HX[И[™њ\ЭќXЭ\™B‚PRT—ХТS‘ЧРUPТЧУСТTХPФЧХђRS—СSPQСWСђPХФ€HЊ‚PRT—ХТS‘ЧРUPТЧУСТTХPФЧХђRS—СSPQСWСTФ•TSУ—УRUQРUSУ€H‹ЊKH][\HZ[€[XYЩHћH
+Ы[ЫЭИ
+Ы[ЫЭ
+И
+\Ьќ\[Ы€
+€Z]YШ][ЫЉJJB‚PRT—ХТS‘ЧРUPТЧУСТTХPФЧХђRS—СSPQСWСTФ•TSУ—ФУSУХS‘ИHKЊ‚PRT—ХТS‘ЧРUPТЧУСТTХPФЧФђRSРVWСSPQСWФФSСђPХФ€HЊ‹KHЬќ[Ы€Щ€Z[€[XYЩHИY][Ы[HX[ИZ[Ш^\В‚‚PRT—ХТS‘ЧРUPТЧУСТTХPФЧСTФ•TSУ—УRS—СSPQСWСђPХФ€HЊKKH][\HZ[€[XYЩHћH\ИXЭЬ‹ШШ[Hњ›ЫHKЊ]\Ьќ\[Ы€И\И]RT—ХТS‘ЧРUPТЧУСТTХPФЧУPVСTФ•TSУ—СSPQСWХЧРУУ”ТQT‚‚PRT—ХТS‘ЧРUPТЧУСТTХPФЧУPVСTФ•TSУ—СSPQСWХЧРУУ”ТQT€HMKЊKHЩYHX›Э™B‚PRT—ХТS‘ЧРUPТЧУСТTХPФЧСT‘PХСTФ•TSУ—СSPQСWСђPХФ€HЊKKH\Ьќ\[Ы€[XYЩHИЭ\H›ЭYЪ]Ы™HћH›ЫXљ[™И[XYЩK›Э\[™[ќЫ€Ъ[[™ИZ[њИЪXЪ[ЫИШ]\Щ\И\ќ\[Ы‹‚‚‚PRT—ХТS‘ЧРUPТЧУСТTХPФЧХ•PТЧУPVСђPХФ€HЊЛKHX^ќXЪЬИЩHШ[€\Э›ЮH[€Ы™H[њЭ[ЩHЩ€HЩЪ\ЭXЬИЭљZЩB‚‚TСPУУ‘T–WСSPQСWФХђUHЊ‹KHЭИ]XЪ[XYЩHЩ]И[њЫ]YИZ[Ш^HЭ[њИ›Ь€Э]›ЫXљ[™В‚TСPУУ‘T–WСSPQСWУСТTХPФИHKЊKHЭИ]XЪ[XYЩHЩ]И[њЫ]YИZ[Ш^HЭ[њИ›Ь€ЩЪ\ЭXИЭљZЩB‚‚RS•TђСTSУ—СTХSђСWФРРSHHLKH]\ИX[ћH^[ИЩ€][™Эќ[[ќ\Щ\[Ы€Y™љXЪY[ЮH\И\YYИZ\€Z\ЬЪ[ЫњЛ€\њњ›ЫH‚‚RS•TђСTSУ—СSPQСWФРРSHHЊЛKH][\HH[ќ\Щ\[Ы€[XYЩHЪ]\И[YK€ЫЬљЬИ\ИHШ\Ъ[€[ќ\Щ\[Ы€\Э[ЩH\И]X^[][K‚‚‚SRS—ФS‘WРУХS•ФTђQ“ФH‚SRS—ФS‘WРУХS•РRT—ФХTHHЊ‚PђTСWХS’UХСRQТТS—ХђS”ФФ•ФS‘TИHЊ‚B‚SPS”ХСT—УФФЧФђUSЧФS‘WФТХHЊLKKHHЬЬИ][ИЩ€X[њЭЩ\€›Ь€HЪЭ[™K‚‚‚SRTФТSУ—РУУSPS‘ФХСT—РУФХИHИKHЫЫ[X[™ЭЩ\€ЫЬЭ\€[™HИЬ™X]HHZ\ЬЪ[Ы‚‚BLЊKHRT—ФХTT’SФ’UB‚BLЊKHРTВ‚BLЊKHS•TђСTSУ‚‚BLЊKHХђUQТPЧР“УP‘T‚‚BLЊKHђUђSР“УP‘T‚‚BLЊKH“ФУ•RСB‚BLЊKHTђQ“Ф‚BLЊKHђUђSТРSRRРV‘B€ЊKHФ•ФХ’RСB‚BLЊKHUPТЧУСТTХPФВ‚BLЊKHRT—ФХTB‚BLЊKHђRS’S‘В‚BLЊKHђUђSУRS‘TЧФS•S‘В‚BLЊKHђUђSУRS‘TЧФХСQTS‘В‚BLЊKH‘PУУ‚‚BLЊKHђUђSФU“У‚BLKHђT”ђQСB‚BLKHРSB‚_K‚‚SRTФТSУ—С•QSРУФХИHИKHќY[ЫЬЭ\€[™H›Ь€XXЪZ\ЬЪ[Ы‚‚BLKЊKHRT—ФХTT’SФ’UB‚BLKЊKHРTВ‚BLЌKKHS•TђСTSУ‚‚BLKЊKHХђUQТPЧР“УP‘T‚‚BLKЊKHђUђSР“УP‘T‚‚BLKЊKH“ФУ•RСB‚BLKЊKHTђQ“Ф‚BLЌНKKHђUђSТРSRRРV‘B‚BLKЊ‹KHФ•ФХ’RСB‚BLKЊ‹KHUPТЧУСТTХPФВ‚BLKЊKHRT—ФХTB‚BLЌKKHђRS’S‘В‚BLKЊKHђUђSУRS‘TЧФS•S‘В‚BLKЊKHђUђSУRS‘TЧФХСQTS‘В‚BLЌНKKH‘PУУ‚‚BLKЊKHђUђSФU“У‚BLЊKHђT”ђQСB‚BLKH•PУPT‚‚BLKHРSB‚_K‚SPVС•QSС“ХЧУUSHKЊKHX^ќY[›ЭИ][И›Ь€[™\ЛЪXЪЪ[™H][\YYћHЭ\B‚‚Q•QSРУФХУUSHЊНKKHќY[][\Y\€›Ь€[Z\€Z\ЬЪ[ЫњВ‚‚SRTФТSУ—СQ‘’PТQSђЦWУUSРUУPТЧУС—С•QSHЊЌKBBBKKH][\Y\€›Ь€Z\ЬЪ[Ы€Y™љXЪY[ЮHЪ[€H\ЩHXЪЬИќY[‚B‚TХђUQТPЧР“УP’S‘ЧФ“Х—Р•RSФ’SЧФРРSHHKЌKBBBBKKHШШ[HЩ€HЩ[XЭYљ[Ьљ]H›Ь€›Эљ[ЪX[ќZ[[™ЬВ‚TХђUQТPЧР“УP’S‘ЧФХUWР•RSФ’SЧФРРSHHKЌKBBBBKKHШШ[HЩ€HЩ[XЭYљ[Ьљ]H›Ь€Э]HќZ[[™ЬВ‚TХђUQТPЧР“УP’S‘ЧТS‘”ђWФ’SЧФРРSHHЌЛBBBBBKKHШШ[HЩ€HЩ[XЭYљ[Ьљ]H›Ь€[™њ\ЭќXЭ\™B‚TХђUQТPЧР“УP’S‘ЧФђRSРVWФ’SФ’UWФРРSHHЊ‹BBBBKKHHШШ[HЩ€^Hљ[Ьљ]H\ЬЪYЫ™YИZ[Ш^H›Ь€Э]YЪXИ›ЫXљ[™В‚TХђUQТPЧР“УP’S‘ЧФХUWР•RSS‘ЧФРРSHHKЊBBBBKKHHШШ[HЩ€Э]HќZ[[™Иљ[Ьљ]H›Ь€Э]YЪXИ›ЫXљ[™В‚‚SђUђSУRS‘TЧФS•S‘ЧФФQQУUSHЊЌKBBBBBKKH[YH\ЩYИЭ™\[[[ЩHЩ€HЬYYЩ€[ќ[™И][Z[™\В‚SђUђSУRS‘TЧФS•S‘ЧФФQQУХСT—Р“ХS‘HЊKBBBBKKHЬYYЩ€[ќ[™И][Z[™\ИШ[€›Э™HЭЩ\€[€\В‚SђUђSУRS‘TЧФХСQTS‘ЧФФQQУUSHЊЌKBBBBBKKH[YH\ЩYИЭ™\[[[ЩHЩ€HЬYYЩ€ЭЩY\[™И][Z[™\В‚SђUђSУRS‘TЧФХСQTS‘ЧФФQQУХСT—Р“ХS‘HЊKBBBBKKHЬYYЩ€ЭЩY\[™И][Z[™\ИШ[€›Э™HЭЩ\€[€\В‚S“У—РУФ‘WФХђUQТPЧТSTPХHЌKKH][\Y\€›Ь€Э]YЪXИ[\XЭЩ€›Ы‹XЫЬ™H›ЫXљ[™В‚T‘PУУ—УS‘ФФХРТSђСHHЊЌKBBBKKHШШ[HXЭЬ€Ы€ЬЭ[™И[‚‚‚T‘RS‘“ФђСSQS•СTРP“S‘ЧСTђUSУ—ТS—УS‘РРT”’QT—ХђS”С‘T€HKKHH™Z[™›ЬЩ[Y[ќ\ШX›[™И\][Ы€[€Э\њИЪ[€[њЩ™\љ[™Ињ›ЫH[™ИШ\њљY\€[™љXЩH™\њШB‚‚U•TХХСRQТРQТSUWСђPХФ€H‹BBBBBBBKKH›Ь€[™H\ЪYЫњЛY]]™HYЪ[]H›Ыќ\И\€Ъ[ќЩ€ќ\Э^ЩYY[™ИЩZYЪ‚SPVФURPТЧХТS‘ЧФСSPХSУ€HЛBBBBBBBBKKHX^ЬЬЪX›HЩ[XЭ[Ы€›Ь€Z\ќЪ[™И]ZXЪИ\ЮB‚‚UTСWФТS‘УWУђUђSРT“PSQS•РРUQУФ–HH[ЩKBBBBBKKHY€ќYKЫ›HH\›X[Y[ќ[Щ[HШ]YЫЬћH][™›XЭИHЬ™X]\Э[XYЩHИ][\™Щ]ИЪ[ЫЫќљXќ]H][ЭљZЩH[™ЬќЭљZЩHZ\ЬЪ[Ы€ЬXЪYљXИЭ]Л€Ы›H[Щ[\ИЪ]›Э][ЬЭљZЩWШ]XЪИ[™][ЬЭљZЩWЭ\™Щ][™И\™HЫЫњЪY\™Y€\И\И\ЩYИ™]™[ќЬњYЧЫ[Э[ќ[™И[™›ЫX—ЫШЪЬИЭ]Ињ›ЫHЭXЪЪ[™Л‚‚B‚TФ•ФХ’RСWСSPQСWСђPХФ€HKЊBBBBBBBKKHЭИ]XЪ[XYЩH\ИX[ИЬќИ\љ[™ИHЬќЭљZЩH
+\€[™H[XYЩHШЫЫ\^ќ[X™\—H
+€ќ[H›Z[™И[™\И
+€Yљ[™JBџK‚““]ћHHВ‚KKHXXЩHЫЫ™™\™[ЩB‚UРT—ФРУФ‘WСРRS—С“Ф—ФХS’ЧФТTУPS”ХСT—СђPХФ€HЊBBKKHШ\€ШЫЬ™HШZ[™Y›Ь€]™\ћHX[њЭЩ\€Ъ[YЪ[€Ъ[љЪ[™ИHЪ\‚UРT—ФРУФ‘WСРRS—С“Ф—ФХS’ЧФТTФ“СPХSУ—РУФХСђPХФ€HЊLBKKHШ\€ШЫЬ™HШZ[™Y›Ь€]™\ћHPИЩ€HЭ[љИЪ\‚UРT—ФРУФ‘WСРRS—С“Ф—ФХS’ЧРУУ•“ЦHHЊLBBBBBBKKHШ\€ШЫЬ™HШZ[™Y›Ь€]™\ћHЭ[љИЫЫќ›ЮB‚TPPСWРPХSУ—ХђS”С‘T—УђU–WСVT’QSђСWФ‘URS‘QHЊЌKBBKKH	HЩ€^\љY[ЩHИ™]Z[€Yќ\€™Z[™И[њЩ™\њ™Y[€HXXЩHЫЫ™™\™[ЩB‚B‚PРT”’QT—УС‘‘S”ТU‘WФХSђСWФУФ•QWФђUSИHМЊЊЌKЌLЌНKKЊKKKHHY™[њЪ]™HЭ[ЩHЫЬќYH\ИKЊH[YH[€[™^ЫИZ\€Э[H\]X[ИB‚PРT”’QT—УС‘‘S”ТU‘WФХSђСWСQђUSТS‘VH‹BBBBBKKHHY][Щ™™[њЪ]™HЫЬќYH[™^[€РT”’QT—УС‘‘S”ТU‘WФХSђСWФУФ•QWФђUSВ‚TСSPХQФУФ•QWТS’UPSХSQHHЌBBBBBBBKKH[[Э[ќЩ€Э\њИњ›ЫHЫЫX]Э\ќЪ\™HHЩ[XЭYЫЬќYHЪ[Э™\њљYHHY][Ы™B‚B‚TТTФХTФ•У‘QQСђPХФ€HЊKBBBBBBBBKKHHЭ\Ьќ™YY›Ь€HЪ\€\ИXЭЬ€\И][\YYЪ]HЪ\ИЫZ[[ЩH[YB‚SPVРQRTђSТPQUPT•T—РTФТQУ“QS•ИHЛBBBBBKKHX^[[Э[ќЩ€YZ\[И]Ш[€™H\ЬЪYЫ™YИ][XY]X\ќ\њВ‚SђUђSТPQUPT•T—РQђPСSђЦHH‹BBBBBBBKKHЭИX[ћH^HЭ\ИЩ€Э]YЪXИ™YЪ[ЫњИњ›ЫHHљ\њЭH][XY]X\ќ\€›ЭљY\И™[™Yљ]Л€‚B‚KKH]љ[™И][ЫZ[[ЩHЪ[›ЭљYHH›ЫЭЪ[™И™[™Yљ]О‚‚PУУ•“ЦWР“РТСQР–WСS‘SVWРУУ•“УQФ‘QТSУ€HќYKBBBKKHY€[€[™[^HЫЫќ›ЫHЩXH™YЪ[Ы‹ЫЫњЪY\€]™YЪ[Ы€\И›ШЪЩY‚SђUђSСУRSђSђСWФХ’RСWС“ФђСWС”ђPХSУ€HЊ‹BBBBKKHЭИ]XЪЫZ[[ЩHЪ[ќИЫЩ\И[ќИЫ™H\Щ[ќЩ€H][\Y\€њ›ЫHЭљZЩH›ЬЩHZ\ЬЪ[ЫњЛ€
+K™Л€H\ЪЩ›ЬЩHЩ€LЫZ[[ЩHЩ[™\]\ИHЊ	H][\Y\€
+H‚SђUђSСУRSђSђСWФХ’RСWС“ФђСWУUST‘QТSУ—СPРVHHЊKBBKKH\Щ[ќYЩH]HЭљZЩH›ЬЩHZ\ЬЪ[Ы‰ЬИ][ЫZ[[ЩH][\Y\€XЬ™X\Щ\ИЪ]›Ь€XXЪY][Ы[\ЬЪYЫ™Y™YЪ[Ы‚‚SђUђSСУRSђSђСWФФХS‘ЧР“У•TИHЊK€ђUђSСУRSђSђСWУФ‘ЧФ‘PУХ‘T–HHЊK€ђUђSСУRSђSђСWФТTФ‘PУХ‘T–WРТSђСHHЊK‚SђUђSСУRSђSђСWУRS‘TЧФS•S‘ЧР“У•TИHЊ‹BBBBBKKH][[ќ[™И›Ыќ\ИЪ[€]љ[™И][ЫZ[[ЩH[€H™YЪ[Ы‚‚SђUђSСУRSђSђСWУRS‘TЧФХСQTS‘ЧР“У•TИHЊ‹BBBBBKKH][ЭЩY\[™И›Ыќ\ИЪ[€]љ[™И][ЫZ[[ЩH[€H™YЪ[Ы‚‚SђUђSСУRSђSђСWРТSђСWУС—РPРТQS•Ф‘QPХSУ€HЊЌKBBKKHHЪ[ЩHИ[ЫЭ[ќ\€[€XШЪY[ќ\љ[™И][Z[љ[™ИЫЭ[™H™YXЩYЪ[€]љ[™И][ЫZ[[ЩH[€H™YЪ[Ы‚‚B‚KKHЫЫќ›ЮHљ[Ьљ]Y\ИХT•‚SђUђSТS•ђTТSУ—Ф’SФ’UHHKBBBBBBBBKKHY][ЫЫќ›ЮHљ[Ьљ]H›Ь€][[ќ\Ъ[ЫњВ‚SђUђSХђS”С‘T—Ф’SФ’UHH‹BBBBBBBBKKHY][ЫЫќ›ЮHљ[Ьљ]H›Ь€][[њЬЬќВ‚TХTWФ’SФ’UHH‹BBBBBBBBBBKKHY][ЫЫќ›ЮHљ[Ьљ]H›Ь€Э\Z[™И[љ]ИљXHЩXB‚T‘TУХTђСWУS‘PTСWФ’SФ’UHHKBBBBBBBKKHY][ЫЫќ›ЮHљ[Ьљ]H›Ь€^Ьќ[™X\ЩB‚T‘TУХTђСWСVФ•Ф’SФ’UHHЛBBBBBBBBKKHY][ЫЫќ›ЮHљ[Ьљ]H›Ь€^ЬќYB‚T‘TУХTђСWУФ’QТS—Ф’SФ’UHHBBBBBBBBKKHY][ЫЫќ›ЮHљ[Ьљ]H›Ь€™\ЫЭ\Щ\ИЪ\Y[ќ\›[B‚T‘TУХTђСWФTђТTСWФ’SФ’UHH‹BBBBBBBBKKHY][ЫЫќ›ЮHљ[Ьљ]H›Ь€^Ьќ\]Z\Y[ќ\Ъ\ЩB‚US‘T•РVWФ‘TS’TТQS•Ф’SФ’UHHЛBBBBBBKKHY][ЫЫќ›ЮHљ[Ьљ]H›Ь€[™\ќШ^H™\[љ\ЪY[ќ‚KKHЫЫќ›ЮHљ[Ьљ]Y\ИS‘‚B‚SђUђSТУQPђTСWРРSХSUSУ—СTХSђСWРХUС‘€HLBBBKKH[љ[™И\[Y]\€›Ь€ЫYX\ЩHШ[Э[][Ы‹€\Э[ЩHИ›Ь›X[^™HYШZ[њЭ€]™\ћ][™ИX›Э™HШZY[YHЪ[™H™X]Y\ИШЫЬ™HH‚‚SђUђSТУQPђTСWР•RSS‘ЧФРУФ‘WСђPХФ€HЊ‹BBBBKKH[љ[™И\[Y]\€›Ь€ЫYX\ЩHШ[Э[][Ы‹€][\Y\€›Ь€ЭИ]XЪH]™[Щ€H][\ЩH[\XЭИ]ИЭ[ШЫЬ™K‚‚SђUђSТУQPђTСWУХУ‘T”ТTР“У•TИHЊBBBBBBKKH[љ[™И\[Y]\€›Ь€ЫYX\ЩHШ[Э[][Ы‹€YИИЭ[ШЫЬ™H\ЩYЫ€Y€H\ЩH\ИЭЫ™YћHHЫЭ[ќћHЪ[™ИHШ[Э[][Ы‹‚‚SђUђSУRTФТSУ—РRWФђS‘СWХ‘TТУСTТSУ€HЊЌKBBBKKH\Ъ[Ы€Ы\[ЩH›Ь€RH][[™ЩH™\ЪЫЪXЪЬЛ‚‚SђUђSУRTФТSУ—РRWРУУ•“ЦWУ“Ф“PSVђUSУ—ХT‘СUHMLBBKKHќ[X™\€Щ€ЫЫќ›Ю\ИИ›Ь›X[^™HYШZ[њЭЪ[€ШЫЬљ[™ИЫЫќ›ЮHZY[™ИZ\ЬЪ[ЫњЛ‚‚‚PQRTђSХTТС“ФђСWРРTHBBBBBBBBBKKHYZ\[ИЪ[Э\ќЩ][™И[[Y\ИYќ\€\И[[Э[ќЩ€\ЪЩ›ЬЩ\В‚‚QUPХSУ—РТSђСWУUSРђTСHHЊKBBBBBBBKKH\ЩH][\Y\€[YH›Ь€]XЭ[Ы€Ъ[ЩK€]\€HЪ[ЩH\И[€]™\YЩH™]ЩY[€Э\€]XЭ[Ы€[™[™[^Hљ\ЪXљ[]K][ћHЭ\™XЩKЬЭX€]XЭ[Ы€Ъ[ЩH[€H›ЫЭЪ[™ИYљ[™\Л‚‚QUPХSУ—РТSђСWУUSФђQT—Р“У•TИHЊKBBBBBKKH]XЭ[Ы€Ъ[ЩH›Ыќ\Ињ›ЫHY\њЛ‚‚QUPХSУ—РТSђСWУUSРRT—ФХTT’SФ’UWР“У•TИHЊЌKBBKKH›Ыќ\Ињ›ЫHZ\€Э\\љ[Ьљ]K‚‚‚SPVРРTUSЧФT—РUUЧХTТЧС“ФђСHHKBBBBBBKKHX^[][Hќ[X™\€Щ€Ш\][Ъ\ИH]]Л]\ЪИ›ЬЩHЬ™X][Ы€Ъ[]ЩЩ]\€Ъ[€\ЪYЫљ[™ИЭ\™XЩPXЭ[Ы‘Ь›Э\‚SPVФХP“PT’S‘TЧФT—РUUЧХTТЧС“ФђСHHЊBBBBBKKHX^[][Hќ[X™\€Щ€ЭX›X\љ[™\ИH]]Л]\ЪИ›ЬЩHЬ™X][Ы€Ъ[]ЩЩ]\€Ъ[€\ЪYЫљ[™ИЫЫњXЪВ‚P‘TХРРTUSЧХЧРРT”’QT—ФђUSИHKBBBBBBKKHШ\][ИИШ\њљY\њИ][И\ЩYЪ[€]]Л]\ЪИ›ЬЩHЬ™X][Ы€\ЪYЫњИШ\њљY\•\ЪС›ЬЩB‚P‘TХРРTUSЧХЧФРФ‘QS”ЧФђUSИHЊЌKBBBBBBKKHШ\][ИИШЬ™Y[њИ][И\ЩY›Ь€Ь™X][™И‘VЬ›Э\И[€][ЫЫX]‚PУУPђUРђTСWТUРТSђСHHЊKBBBBBBBBKKH\ЩHЪ[ЩH›Ь€]‚‚PУУPђUУRS—ТUРТSђСHHЊKBBBBBBBBKKH™]™\€\ЬИ]Ъ[ЩH[€\ПВ‚PУУPђUСUђTТSУ—ХЧТUРТSђСHHЊЛBBBBBBKKHЩHZЩHЪ\]\Ъ[Ы€Э]Л[™][ћH\И[YKЫИ]Ъ]™\И]Ъ[ЩH™YXЭ[Ы‹€ЫИY€™YXЭ[Ы€\ИЊЌH[™Ъ\]\Ъ[Ы€HL[€\™HЪ[™HЊЌH
+ЌIJHЭЩ\€]Ъ[ЩK€
+™K€L	H\ЩHLЌIHњ›ЫH]\Ъ[Ы€
+МL	HЫЮ€]	ЬИ™\ћHЫЬЩJK‚‚PУУPђUСUђTТSУ—ХЧТUРТSђСWХФ”QЧУUSHLЊBBBKKHHX›Э™H]\Ъ[Ы€]Ъ[ЩH\И][\YYћH	HY€ЪЫЭ[™ИЪ]ЬњYЩ\Л€ЬњYЩ\И\™HЫЭЛЫИ]\Ъ[Ы€X]\њИ[Ь™K‚‚SRS—ТUФ“С’SWУUSHЊBBBBBBBBBKKH\™Щ\Э]›Щљ[H[[HИ][™В‚PУУPђUУХЧУФ‘ЧТUРТSђСWФSђSHHLЌBBBBBKKH	HЩ€[[H\YYИ]Ъ[ЩHЪ[€Ф‘И\И™\ћHЭЛ‚‚PУУPђUУХЧУPS”ХСT—ТUРТSђСWФSђSHHLЊ‹BBBBKKH	HЩ€[[H\YYИ]Ъ[ЩHЪ[€X[њЭЩ\€\И™\ћHЭЛ‚‚PУУPђUСSPQСWФђS‘УS‘TФИHЌKBBBBBBBBKKH[™ЫHXЭЬ€[€[XYЩK€ЫИY€X^[XYЩH\И™K€L[™[™Ы[™\ЬИ\ИМ	K[€[XYЩHЪ[™H™]ЩY[€ЛLL‚‚PУУPђUХФ”QЧРФ’UPРSРТSђСHHЊMKBBBBBBKKHTЋ€ЬњYИ]И\™H\ЬXЪX[HZЩ[HИШ]\ЩH›ЫЩ[™И[™XXЪ[™\ћHШ\ЭX[Y\Л‚‚PУУPђUХФ”QЧРФ’UPРSСSPQСWУUSHKЌKBBBBBKKHTЋ€Ю\Э[HШ\ЭX[Y\Л›ЭH[љ]™\њШ[]ЛY[XYЩHЬZЩKШ\њћHЬњYИ][]K‚‚‚PУУPђUСSPQСWХЧФХ—СђPХФ€HЌKBBBBBBBKKHTЋ€Ь™[\ћHЭ\™XЩH]ИШ]\ЩH[Z]Y[ЬЬОИШ]\Э›ЬXИХ€ЬЬИЫЫY\Ињ›ЫHЬљ]XШ[Л‚‚PУУPђUСSPQСWХЧУФ‘ЧСђPХФ€HЋKBBBBBBBKKHTЋ€™\Щ\ќ™\ИЫЫX]\Ьќ\[Ы€Ъ[H™]™[ќ[™И]™\ћH]њ›ЫH™XЫЫZ[™ИHZ\ЬЪ[Ы€Ъ[‚‚‚SђU–WУPVЦHL‚PУУPђUУУ—ХWХРVWТS’UСTХSђСWРђSSђСHHЊНKBBBKKH[YHИ[[ЩH[љ]X[\Э[ЩHИ\њљ]™H›Ь€Ъ\И]\™H›Ы€HШ^H‚‚PУУPђUРТTСWФ‘TТQУђUSУ—ТХT”ИHЌBBBBBBBKKH™Y›Ь™HЩH™\ЪYЫ€Ъ\Ъ[™И[™[^KЪ]™H[HЫЫYHZ[љ[][H[YHЫИHЫЫX]Щ\Ы‰Э[™[њЭ[ќK‚‚‚PУУPђUУPVСФ“ХTИHЛBBBBBBBBBBKKHX^[[Э[ќЩ€‘љ\™H^Ъ[™ЩH€Ь›Э\И
+‘V
+K‚‚PУУPђUУRS—СTђUSУ€HM‹BBBBBBBBBKKHZ[€ЫЫX]\][Ы€™Y›Ь™HЩHШ[€™]™X]€]	ЬИH[[Ъ[™И\љXX›HЫИ]	ЬИ›ЭЬЬЪX›HИ[Ш^\Иќ[€Ъ]Э\€ЩXZИЪ\ИYШZ[њИљYИ›Э[\Л‚‚PУУPђUТS’UPSСTђUSУ€H‹BBBBBBBBKKHќ[X™\€Щ€Э\њИ]\ИЫЫњЪY\™YHљ[љ]X[\ЩH€Щ€][ЫЫX]\ЩY›Ь€[ЩYљY\њИZЩHЭ\њљ\ЩH]XЪИ\љ[™Иљ[љ]X[ЫЫX]‚‚PУУPђUФ‘U‘PUСPТTТSУ—РТSђСHHЊ‹BBBBBBKKH\™H\И[ЫИ[™ЫHXЭЬ€[€XЪY[™ИY€ЩHЪЭ[™]™X]Ь€›Э€]Ш]\Щ\ИH[^H[€ZЪ[™ИXЪ\Ъ[Ы‹]ЫЫЫ™\€Ь€]\€Ъ[™HXЪЩY€]	ЬИ™YYYЫИ[XYЩY\ЭЪ\ИЫЫ‰Э›ЫHЫЫX]‚‚PУУPђUСUPХQРУУ•“ЦTЧС”“УWФХT‘ђPСWСUPХSУ—ФХUHЊKBKKHXXЪKЊЩ€Э\™XЩWЩ]XЭ[Ы€]Ъ\\И
+\]Z\Y[ќЭ]
+KЪ]™\И	HЩ€ЫЫќ›Ю\И\ШЫЭ™\™Yњ›ЫHЭ[]™[[™И[Ы™ИH›Э]K‚‚PУУPђUРђTСWРФ’UPРSРТSђСHHЊKBBBBBBBKKHTЋ€Ьљ]XШ[И\™HHљ[X\ћH›Э]HИЮ\Э[HШ\ЭX[Y\ОИ™[XXљ[]HЭ[ШШ[\И\ИЭЫ‹‚‚PУУPђUРФ’UPРSСSPQСWУUSH‹ЊBBBBBBBKKHTЋ€[™]љYX[Ьљ]XШ[\ќИ›ЭљYHЩ]™\љ]NИ]›ЪYЭXЪЪ[™И]™\ћHЬљ]XШ[Ъ]H[љ]™\њШ[ЬZЩK‚‚PУУPђUРT“SФ—ФQTђТS‘ЧРФ’UPРSР“У•TИHЌНKBBBBKKH›Ыќ\ИИЬљ]XШ[Ъ[ЩHЪ[€ЪЫЭ\€\›[Ь€Y\Ъ[™И\ИYЪ\€[€\™Щ]\›[Ь‹‚‚PУУPђUРT“SФ—ФQTђТS‘ЧСSPQСWФ‘QPХSУ€HLЌ‹BBBBKKH[[XYЩH™YXЭ[Ы€	HЪ[€\™Щ]\›[Ь€\ИЏH[€ЪЫЭ\€\›[Ь€Y\Ъ[™Л‚‚T‘TRT—РS‘Ф‘UT“—Ф’SЧУХИHЊ‹BBBBBBBKKH	HЩ€Э[Э™[™Э€Ъ[€™[ЭЛ]ћHЪ[ЫИИЫYH\ЩHИ™\Z\‹‚‚T‘TRT—РS‘Ф‘UT“—Ф’SЧУQQUSHHЌKBBBBBBKKH	HЩ€Э[Э™[™Э€Ъ[€™[ЭЛ]ћHЪ[ЫИИЫYH\ЩHИ™\Z\‹‚‚T‘TRT—РS‘Ф‘UT“—Ф’SЧТQТHЋKBBBBBBBKKH	HЩ€Э[Э™[™Э€Ъ[€™[ЭЛ]ћHЪ[ЫИИЫYH\ЩHИ™\Z\‹‚‚T‘TRT—РS‘Ф‘UT“—Ф’SЧУХЧРУУPђUHЌ‹BBBBBKKH	HЩ€Э[Э™[™Э€Ъ[€™[ЭЛ]ћHЪ[ЫИИЫYH\ЩHИ™\Z\€
+[€ЫЫX]
+K‚‚T‘TRT—РS‘Ф‘UT“—Ф’SЧУQQUSWРУУPђUHЊЛBBBBBKKH	HЩ€Э[Э™[™Э€Ъ[€™[ЭЛ]ћHЪ[ЫИИЫYH\ЩHИ™\Z\€
+[€ЫЫX]
+K‚‚T‘TRT—РS‘Ф‘UT“—Ф’SЧТQТРУУPђUHЊKBBBBBKKH	HЩ€Э[Э™[™Э€Ъ[€™[ЭЛ]ћHЪ[ЫИИЫYH\ЩHИ™\Z\€
+[€ЫЫX]
+K‚‚T‘TRT—РS‘Ф‘UT“—РSSХS•ФТTЧУХИHЊ‹BBBBBKKH	HЩ€Э[[XYЩYЪ\Л]Ъ[™HЩ[ќ›Ь€™\Z\‹X[™\™]\›€[€Ы™HШ[‚‚T‘TRT—РS‘Ф‘UT“—РSSХS•ФТTЧУQQUSHHЌBBBBKKH	HЩ€Э[[XYЩYЪ\Л]Ъ[™HЩ[ќ›Ь€™\Z\‹X[™\™]\›€[€Ы™HШ[‚‚T‘TRT—РS‘Ф‘UT“—РSSХS•ФТTЧТQТHЋBBBBBKKH	HЩ€Э[[XYЩYЪ\Л]Ъ[™HЩ[ќ›Ь€™\Z\‹X[™\™]\›€[€Ы™HШ[‚‚T‘TRT—РS‘Ф‘UT“—ХS’UСRS‘ЧФХ€HЊ‹BBBBBBKKHЭ€™[ЭИ\ИЪ[ќ\ИЫЫњЪY\љ[™ИHЪ[™ЫHЪ\™Z[™И‹[™HYЪљ[Ьљ]HИЩ[™И™\Z\‹‚‚PРTUSФТTРУУPђUФ‘U‘PUУUSHЌKBBBBBBKKH][\Y\€Ы€ЫЫX]™]™X]™\ЪЫ›Ь€Ш\][Ъ\И[™Ш\њљY\њИ
+^HШ[€ZЩH[Ь™H[љ\ЪY[ќ
+B‚PRWУPVХTТС“ФђСTЧФT—ХђRS’S‘ЧУР’‘PХU‘HHKBBBBKKHX^ќ[X™\€Щ€\ЪЩ›ЬЩ\ИЩH\Ъ\™H›Ь€RHИ][€XXЪ›Y]]\ИZ[љ[™Л‚‚QVT’QSђСWУФФЧСђPХФ€HKЊBBBBKKH\Щ[ќYЩHЩ€^\љY[ЩYЫЫ\њИЪИYHЪ[€X[њЭЩ\€\И™[[Э™Y‚SђU–WСVS”ТU‘WТPИHBBBBBBBBBKKHЭИ]XЪPИ\ИЫЫњЪY\љ[™ИH›Y]И™H^[њЪ]™K€ЬЩH^[њЪ]™HЪ[љYЩ\€H[\ќЪ[€\™HЫ€ЭИХ‹‚‚SRTФТSУ—УPVФ‘QТSУ”ИHBBBBBBBBBKKH[Z]Щ€H™YЪ[ЫњИ]Ш[€™H\ЬЪYЫ™YИ][Z\ЬЪ[Ы‹€Щ]И›Ь€[›[Z]Y‚‚PУУ•“ЦWСQ‘’PТQSђЦWУФФЧУSСQ’QT€HKЌKBBBBBBKKHЭИ]XЪY™љXЪY[ЮH›ЬИЪ[€ЬЪ[™ИЫЫќ›Ю\Л€Y€[ЩYљY\€\ИЌK[€ЬЪ[™ИL	HЩ€ЫЫќ›Ю\И[€ЪЬќ\љ[ЩHY™љXЪY[ЮHЪ[›ЬћHL	K‚‚PУУ•“ЦWСQ‘’PТQSђЦWФ‘QРRS—РQ•T—СVTИHKBBBBBKKHЫЫќ›ЮHЭ\ќИ™YШZ[љ[™И]	ЬИY™љXЪY[ЮHYќ\€^\ИЪ]Э][ћHЫЫќ›Ю\И™Z[™ИЪ[љЛ‚‚PУУ•“ЦWСQ‘’PТQSђЦWФ‘QРRS—РђTСWФФQQHЊНKBBBBBKKHЭИ]XЪY™љXЪY[ЮH™YШZ[њИ]™\ћH^K‚‚PУУ•“ЦWСQ‘’PТQSђЦWУRS—ХђSQHHЊKBBBBBBBKKHИ]›ЪYЫЫ\]H	HY™љXЪY[ЮKЩ]HЭЩ\€[Z]‚‚PУУ•“ЦWФ“ХUWФТV‘WРУУ•“ЦWФРРSHHЌKKHШШ[\И[\XЭЩ€ЫЫќ›ЮH›Э]HЪ^™H
+И\›€Щ™ЉB‚PS•WРRT—ХT‘СUS‘ЧХЧРТSђСHHЊЊ‹BBBBBBKKH[[Ъ[™И[YHИЫЫќ™\ќ]™\YЩY\]Z\Y[ќЭ]И
+[ќWШZ\—Э\™Щ][™И[™][ЬЭљZЩWШYЪ[]JHИ›ШXљ[]HЪ[Щ\ИЩ€Z\њ[™H™Z[™И]ћH]љY\ИPK‚‚PS•WРRT—РUPТЧХЧРSSХS•HЊKBBBBBBBKKH[[Ъ[™И[YHИЫЫќ™\ќ\]Z\Y[ќЭ][ќWШZ\—Ш]XЪИИH[™ЫH	H[YHЩ€Z\њ[™\И™Z[™И]‚‚PУУ•“ЦWФТS’ТS‘ЧФФSХ‘T€HЌKBBBKKH[XYЩYЫЫќ›Ю\И›Ы›Ь€Y€^HЪ[љИ[€H[™Щ€ЫЫX]ћHXШЭ[][][™ИH[XYЩK€\ИШШ[\И]Ъ[ЩK‚‚US’UСVT’QSђСWФT—РУУPђUТХT€H‚US’UСVT’QSђСWФРРSHHK‚QVT’QSђСWСђPХФ—РУУ•“ЦWРUPТИHЊ‚QVT’QSђСWСђPХФ—У“У—РРT”’QT—СРRS€HЊBBBBBKKHШZ[€ћH›Ы‹XШ\њљY\€Ъ\И[€HЫЫX]‚QVT’QSђСWСђPХФ—РРT”’QT—СРRS€HЊBBBBBBKKHШZ[€ћHШ\њљY\€Ъ\И[€HЫЫX]‚Q’QSСVT’QSђСWФРРSHHЊНK‚Q’QSСVT’QSђСWУPVФT—СVHHLBBBBBBBKKH[ЬЭ[ЭHШ[€ШZ[€\€^B‚SPQT—СVT’QSђСWФРРSHHKЊ‚SђUђSТPQUPT•T”ЧСVT’QSђСWФРРSHHЊLЌKBBBBKKHЪ\XЭ\њИ\ЬЪYЫ™YИH][HЪ[ШZ[€MIHЩ€[^\љY[ЩHњ›ЫH\ЪЩ›ЬЩ\И[€Z\€™YЪ[ЫњВ‚PђUWУђSQWХ”СђPХФ€HLBBBBBBBBKKH[YH\ИЪ]™[€ћH
+
+”[YJH
+€ђUWУђSQWХ”СђPХФЉHИ
+\Э[ЩH”O€]JB‚PђUWУђSQWХ”РХUС‘€HKЊBBBBBBBBKKHY€™\ЭШЫЬ™HЩ€X›Э™HШ[Э[][Ы€\И™[ЭИ\Л[YHЪ[™H]Щ€™YЪ[Ы‹‚‚PSTP’SХTЧУS‘S‘ЧФSђSHHLЌЛBBBBBBBKKH[\Xљ[Э\И[™[™И[[B‚PSTP’SХTЧТS•ђQWФФQQРђTСHHЌKBBBBBBKKH]™\ћHЭ\€[Э™[Y[ќ›ЩЬ™\ЬИЫ€[\Xљ[Э\И[ќ\Ъ[Ы‚‚PSTP’SХTЧТS•ђQWУSХ‘SQS•РУФХHЌЊBBBBBKKHЭ[›ЩЬ™\ЬИЫЬЭЩ€[Э™[Y[ќЪ[H[\Xљ[Э\И[ќY[™В‚PSTP’SХTЧТS•ђQWРUPТЧУХИHЊ‹BBBBBBKKHЭИ[™YЪШ\Щ€]XЪИ[ЩYљY\€ШШ[K€ШШ[H[ќ\њЫ]YћH[ќ\Ъ[Ы€›ЩЬ™\ЬЛ‚‚PSTP’SХTЧТS•ђQWРUPТЧТQТHKЊ‚PSTP’SХTЧТS•ђQWСQ‘S‘УХИHKЌKBBBBBBKKHЭИ[™YЪШ\Щ€Y™[™[ЩYљY\€ШШ[K€ШШ[H[ќ\њЫ]YћH[ќ\Ъ[Ы€›ЩЬ™\ЬЛ‚‚PSTP’SХTЧТS•ђQWСQ‘S‘ТQТHKЊ‚PSTP’SХTЧТS•ђQWУS‘S‘ЧФSђSWСPФ‘PTСHHЛЌKBBBKKHШШ[HЩ€›Ыќ\И]XЬ™X\Щ\И[\Xљ[Э\И[[H€\љ[™ИЫЫX]™[]]™HИ[ќY[™И[њЬЬќ\€XЪ‚‚PђTСWРРT”’QT—ФУФ•QWСQ‘’PТQSђЦHHЊНKBBBBBBKKHXЭЬ€Щ€[™\И]Ш[€ЫЬќYHћHY][њ›ЫHHШ\њљY\‚‚PУУ•“ЦWРUPТЧРђTСWСђPХФ€HЊMKKH\ЩH	HЩ€ЫЫќ›Ю\И]Щ][ќ\Щ\Y‚SђUђSФФQQУSСQ’QT€HЊKHBBBKKH\ЪXИЬYYЫЫќ›Ы‚SђUђSФђS‘СWХЧТS‘РSQWСTХSђСHHЊL‹BBBBBBKKHШШ[HHЪ\Э]И›][Ь[™ЩH€ИH[™Ш[YH\Э[ЩB‚SђUђSТS•ђTТSУ—Ф‘TT‘WСVTИHMBBBBBBBKKH\ЩH^\И™YYYИ™\\™HH][[ќ\Ъ[Ы‚‚SђUђSТS•ђTТSУ—ФS—РРTHLBBBBBBBBKKH\ЩHШ\Щ€][[ќ\Ъ[ЫњИШ[€™H[›·з^{¶‰ћЛkєwµз\И]™H\ЬЩY‚SRS—ФS—ХђSQWХЧУRPФ“ЧТSђPХU‘HHЊMKBBBKKHHRHЪ[›ЭЫЫњЪY\€Y[X™\њИЩ€Ь›Э\ИЪXЪ[€\И›ЭXЭ]]YS‘][X]\ИЭЩ\€[€\Л‚‚‚SPVХS’UЧСђPХФ—РT‘PWУФ‘T€HKЊBBBBKKHXЭЬ€›Ь€X^ќ[X™\€Щ€[љ]ИИ\ЬЪYЫ€И\™XHY™[њЩHЬ™\њВ‚QTТT‘QХS’UЧСђPХФ—РT‘PWУФ‘T€HKЊBBBKKHXЭЬ€›Ь€\Ъ\™Yќ[X™\€Щ€[љ]ИИ\ЬЪYЫ€И\™XHY™[њЩHЬ™\њВ‚SRS—ХS’UЧСђPХФ—РT‘PWУФ‘T€HKЊBBBBKKHXЭЬ€›Ь€Z[€ќ[X™\€Щ€[љ]ИИ\ЬЪYЫ€И\™XHY™[њЩHЬ™\њВ‚‚SPVХS’UЧСђPХФ—С”“У•УФ‘T€HЛЊBBBBKKHXЭЬ€›Ь€X^ќ[X™\€Щ€[љ]ИИ\ЬЪYЫ€И\™XHњ›ЫќЬ™\њВ‚QTТT‘QХS’UЧСђPХФ—С”“У•УФ‘T€HЛЊBBBKKHXЭЬ€›Ь€\Ъ\™Yќ[X™\€Щ€[љ]ИИ\ЬЪYЫ€И\™XHњ›ЫќЬ™\њВ‚SRS—ХS’UЧСђPХФ—С”“У•УФ‘T€H‹ЊBBBBKKHXЭЬ€›Ь€Z[€ќ[X™\€Щ€[љ]ИИ\ЬЪYЫ€И\™XHњ›ЫќЬ™\њВ‚‚SPVХS’UЧСђPХФ—ТS•ђTТSУ—УФ‘T€HKЊBBBKKHXЭЬ€›Ь€X^ќ[X™\€Щ€[љ]ИИ\ЬЪYЫ€И][[ќ\Ъ[Ы€Ь™\њВ‚QTТT‘QХS’UЧСђPХФ—ТS•ђTТSУ—УФ‘T€HKЊBBKKHXЭЬ€›Ь€\Ъ\™Yќ[X™\€Щ€[љ]ИИ\ЬЪYЫ€И][[ќ\Ъ[Ы€Ь™\њВ‚SRS—ХS’UЧСђPХФ—ТS•ђTТSУ—УФ‘T€HKЊBBBKKHXЭЬ€›Ь€Z[€ќ[X™\€Щ€[љ]ИИ\ЬЪYЫ€И][[ќ\Ъ[Ы€Ь™\њВ‚‚Q”“У•ХS’UЧРРTСђPХФ€HЊЊBBBBBKKHHXЭЬ€\YYИЭ[њ›ЫќЪ^™H[™Э\H\ЩK€љ[X\љ[HY™™XЭИЫX[њ›ЫќВ‚SPVСTХФФ•Ф•TТHЊBBBBBBKKHY€H[љ]\И[€[™[^H\њљ]ЬћHЪ]›ИЭ\H]Ъ[ЫЫњЪY\€™X\ћHЬќИЪ][€\И\Э[ЩK‚‚‚SRS—С’QSФХ‘S‘ХХЧР•RSХS’UИHЌЛBBKKHШ[Щ[[љ]›ЩXЭ[Ы€Y€™[ЭИ\ИИЩ]™\ЫЭ\Щ\ИЭ]И[љ]И[€HљY[‚SRS—УPS”ХСT—ХЧР•RSХS’UИHЌЛBBBBKKHШ[Щ[[љ]›ЩXЭ[Ы€Y€™[ЭИ\ИИЩ]™\ЫЭ\Щ\ИЭ]И[љ]И[€HљY[‚‚PU‘TђQСWФХTWХTСWФTФТSRTУHHKЌKBBBBKKH][\Y\€›Ь€Ъ[€RHШ[Э[]\И]™\YЩHЭ\H\ЩHЩ€[ќ\™H\›^K‚‚‚T“ФФСWУS‘УPTСWРRQTТT‘WФРSQWТQSУСЦHHBBBKKHYYИRH\Ъ\™HИ›ЬЬЩH[™X\ЩHY€™XЪ\[ќ\ИШ[YHY[ЫЩЮH
+[™RHШ[‰ЭXЫ\™HШ\€Ы€™XЪ\Y[ќ
+B‚T“ФФСWУS‘УPTСWРRQTТT‘WФРSQWТQSУСЦWРТU’SХРT€HЌKKKHYYИRH\Ъ\™HИ›ЬЬЩH[™X\ЩHY€™XЪ\[ќ\ИШ[YHY[ЫЩЮH[™^H\™HЭ\њ™[ќH[€Ъ]љ[Ш\‚‚TСS‘Х“УS•QT—РRQTТT‘WФРSQWТQSУСЦHHBBBBKKHYYИRH\Ъ\™HИЩ[™›Ы[ќY\њИY€™XЪ\[ќ\ИШ[YHY[ЫЩЮH
+[™RHШ[‰ЭXЫ\™HШ\€Ы€™XЪ\Y[ќ
+B‚TСS‘Х“УS•QT—РRQTТT‘WФРSQWТQSУСЦWРТU’SХРT€HЌKBKKHYYИRH\Ъ\™HИЩ[™›Ы[ќY\њИY€™XЪ\[ќ\ИШ[YHY[ЫЩЮH[™^H\™HЭ\њ™[ќH[€Ъ]љ[Ш\‚‚‚T‘TUQTХУS‘УPTСWФ“ХPХХђSQHHНKBBBKKH[Z]›Ь€›ЭXЭ[™[^H\Ъ\™H›Ь€™YXЪ[™И[™X\ЩH\Ъ\™B‚T‘TUQTХУS‘УPTСWРУУ•RS”ЧХђSQHHLBBKKH[Z]Щ€ЫЫќZ[€[™[^H\Ъ\™H›Ь€›ЫЬЭ[™ИњљY[™H[‚‚Q”“У•Р•SСWФђUSЧХTT—РХUС‘€HKЋBBBKKHY€Э[ќ[Ъ[™\ЬИ\ИЭЩ\€[€\ЛHњ›Ыќ\ИYЫ›Ь™Y‚‚Q”“У•Р•SСWФђUSЧУХСT—РХUС‘€HKЌBBBKKHY€ШШ[ќ[Ъ[™\ЬИ›ЬИ™[ЭИ\ЛHЪ[ќЩ€[ќ\™\Э\И›Э[™‚Q”“У•РХUС‘—УRS—СQСWФ“ЦSRUHHKBBBKKHZ[љ[][Hќ[X™\€Щ€›Эљ[Щ\ИИHњ›ЫќYЩHИ]\›Z[™H›Ь€Э]Щ™€ЬЬќ[љ]K‚‚‚‚PRT—ФРУФ‘WСTХSђСWТSTPХHЊBBBBKKHY™™XЭЩ€\Э[ЩH\YYИHШЫЬ™HШ[Э[][ЫњВ‚QVTЧР‘UСQS—РRT—Ф’SФ’UQTЧХTUHHЛBBBKKH[[Э[ќЩ€^\И™]ЩY[€Z\€ZH\]\Иљ[Ьљ]Y\И›Ь€Z\€Ъ[™ЬИ
+њ›ЫHHИ€
+B‚‚SђUђSРRT—ФХTT’SФ’UWТSTФ•SђСHHЊLBBKKHЭ]YЪXИ[\Ьќ[ЩHЩ€Z\€Э\\љ[Ьљ]H
+[[Э[ќЩ€[™[^H[™\И[€\™XH
+B‚SђUђSФТTРRT—ТSTФ•SђСHHKBBBBKKH][Ъ\Z\€[\Ьќ[ЩB‚SђUђSФТTТS—ФФ•РRT—ТSTФ•SђСHH‹ЊBBKKH][Ъ\[€HЬќZ\€[\Ьќ[ЩB‚SђUђSРУУPђUРRT—ТSTФ•SђСHHЊBBBBKKH][ЫЫX]Z\€[\Ьќ[ЩB‚SђUђSХђS”С‘T—РRT—ТSTФ•SђСHHЊBBBKKH][[њЩ™\€Z\€[\Ьќ[ЩB‚SђUђSРУУPђUХђS”С‘T—РRT—ТSTФ•SђСHHLЊBKKH][ЫЫX][ќ›Ыљ[™И[™[^H[™[љ]В‚SђUђSТSTФ•SђСWФРРSHH‹BBBBBKKH][Э[[\Ьќ[ЩHШШ[H
+]™\ћH][ШЫЬ™HЩ]	ЬИ][\YYћH]
+B‚SђUђSРУУPђUУХT—УђU–WУUSУУ—ТSTФ•SђСHHЊНKKKH][™YЪ[Ы€[\Ьќ[ЩH\™HШШ[YћHЭ\€Ъ\И\ИЩ[‚SђUђSРУУPђUРSWУђU–WУUSУУ—ТSTФ•SђСHHЊMKKKH][™YЪ[Ы€[\Ьќ[ЩH\™HШШ[YћHЭ\€Ъ\И\ИЩ[‚SђUђSРУУPђUУRS—УХT—УђU–WУUSУУ—ТSTФ•SђСHHЌKKHZ[€ШШ[HXЭЬ€›Ь€][™YЪ[Ы€[\Ьќ[ЩHњ›ЫHЭ\€Ъ\В‚SђUђSРУУPђUУPVУХT—УђU–WУUSУУ—ТSTФ•SђСHHKЊKHX^ШШ[HXЭЬ€›Ь€][™YЪ[Ы€[\Ьќ[ЩHњ›ЫHЭ\€Ъ\В‚‚‚SђUђSФђS‘СWС“Ф—СРТТS‘ЧФ’QТЧРТPТИHЌЊBKKH][[™ЩH\ЩYИЪXЪИY€ШЪЪ[™ИљYЪИЫЭ[[ЭИ\ИИ™XXЪHЬXЪYљXИ›Эљ[ЩB‚‚SђUђSФU“УФS‘TЧФT—ФТTФU“УS‘ИHLЊBKKH[[Э[ќЩ€][]›Ы[™\И\€Ъ\Ы€H]›ЫZ\ЬЪ[Ы‚‚SђUђSФU“УФS‘TЧФT—ФТTФђRQS‘ИHЊBKKH[[Э[ќЩ€][]›Ы[™\И\€Ъ\Ы€HЫЫќ›ЮHZYZ\ЬЪ[Ы‚‚SђUђSФU“УФS‘TЧФT—ФТTСTРУФ•S‘ИHЊЊBKKH[[Э[ќЩ€][]›Ы[™\И\€Ъ\Ы€HЫЫќ›ЮH\ШЫЬќZ\ЬЪ[Ы‚‚‚SђUђSРУРTХСQ‘S”СWХS”ТSУ—Х‘TТУHЌKBKKHHЫЬ›[њЪ[Ы€™\ЪЫЪ\™HЫЭ[ќљY\ИЭ\ќ™KY[\]™[H›ЭXЭ[™ИZ\€ЫYHЫШ\Э‚‚SђUђSС’QТT”ЧФT—ФS‘HHKЊBBBBBKKH[[Э[ќИЩ€Z\€Э\\љ[Ьљ]H[™\И™\]Y\ЭY\€[™[^H[™B‚SђUђSФХ’RСWФS‘TЧФT—РT“VHHBBBBKKH[[Э[ќЩ€[™\И™\]Y\ЭY\€[™[^H\›^B‚SђUђSФХ’RСWФS‘TЧФT—ФТTHLBBBBKKH[[Э[ќЩ€›ЫX™\њИ™\]Y\ЭY\€[™[^HЪ\‚TФ•ФХ’RСWФS‘TЧФT—ФТTHLBBBBKKH[[Э[ќЩ€›ЫX™\њИ™\]Y\Э\€[™[^HЪ\[€HЬќ‚SRS‘TЧФХСQTS‘ЧФS‘TЧФT—УPVУRS‘TИHMLBBKKH[[Э[ќЩ€Z\€[™\И™\]Y\Э›Ь€Z[™\ИЭЩY\[™ИЪ[€\™H\ИX^[[Э[ќЩ€Z[™\И[ќYћH[™[^H[€Щ\ќZ[€™YЪ[Ы‚‚SRS‘TЧФS•S‘ЧФS‘TЧФT—УPVСTТT‘HHLBBKKH[[Э[ќЩ€Z\€[™\И™\]Y\Э›Ь€Z[™\И[ќ[™ИЪ[€\™H\ИX^\Ъ\™H›Ь€]‚‚SRS‘TЧФS•S‘ЧСTТT‘WФT—ТУQWФХUHHЌBBKKHШЫЬљ[™И›Ь€ЭИ]XЪИЩHШ[ќИ[ќ][Z[™\ИЪ]Э\€Z\€Ъ[™ЬИY€H][™YЪ[Ы€\ИYXЩ[ќИHЫYHЭ]K€][\HYXЩ[ќЭ]\И[Ь™X\Щ\ИHШЫЬ™K€X^Э[HЩ€ШЫЬ™H\ИKЊ‚‚SRS‘TЧФS•S‘ЧСTТT‘WФT—СS‘SVWФХUHHЊKBKKHШЫЬљ[™И›Ь€ЭИ]XЪИЩHШ[ќИ[ќ][Z[™\ИЪ]Э\€Z\€Ъ[™ЬИY€H][™YЪ[Ы€\ИYXЩ[ќИH[™[^HЭ]K€][\HYXЩ[ќЭ]\И[Ь™X\Щ\ИHШЫЬ™K€X^Э[HЩ€ШЫЬ™H\ИKЊ‚‚SRS‘TЧФS•S‘ЧСTТT‘WФT—УђUђSХ‘PUHЌLBKKHЭИ]XЪ™X]]\Э™HЩ[™\]Y[€H][™YЪ[Ы‹[€Ь™\€ИЩ]HX^[][H\Ъ\™HИ[ќ][Z[™\И[€\™K‚‚SђUђSУRS—СVУФ•ФS‘TИHBBBBBKKHZ[€[[Э[ќЩ€[™\И™\]Y\ЭYИ^ЫЬќЬ\][ЫњВ‚QSSРФђUPЧРRWСђPХSУ—ТТPТТS‘ЧФVQT—Х‘PUСQ‘‘T‘SђСHH‹ЊKHЫЬ›™X]Щ[™\][Ы€Y™™\™[ЩH™YYYИЪXЪИH^Y\€њ›ЫHH[[ШЬ]XИXЭ[Ы‚‚P‘Q”’QS‘СђPХФ—С“Ф—ТТPТТS‘ЧРУХS•’QTИHЛЌKBKKHЫЬ›™X]Y™™\™[ЩHY][Ы€\€L™YњљY[™YШZ[њЭHЫЭ[ќћK[[ШЬ]XИXY\њИЪ[›Ь™Ъ]™H[Y\ИY€^H\™H™YњљY[™[™И[B‚‚SS‘СQ‘S”СWРRT—ФХTT’SФ’UWТSTФ•SђСHHKЊBKKHЭ]YЪXИ[\Ьќ[ЩHЩ€Z\€Э\\љ[Ьљ]H
+[[Э[ќЩ€[™[^H[™\И[€\™XH
+B‚SS‘СQ‘S”СWРТU’SСђPХФ–WТSTФ•SђСHHBKKHЭ]YЪXИ[\Ьќ[ЩHЩ€Ъ]љ[XЭЬљY\В‚SS‘СQ‘S”СWУRSUT–WСђPХФ–WТSTФ•SђСHHBKKHЭ]YЪXИ[\Ьќ[ЩHЩ€Z[]\ћHXЭЬљY\В‚SS‘СQ‘S”СWУђUђSСђPХФ–WТSTФ•SђСHHЊBKKHЭ]YЪXИ[\Ьќ[ЩHЩ€][XЭЬљY\В‚SS‘СQ‘S”СWФХTWТP—ТSTФ•SђСHHKKHЭ]YЪXИ[\Ьќ[ЩHЩ€Э\HXњВ‚SS‘СQ‘S”СWРPWТSTФ•SђСWСђPХФ€HKЊBBKKHXЭЬ€Щ€PH[™›Y[ЩHЫ€Э]YЪXИ[\Ьќ[ЩH
+ЊHKЊ
+B‚SS‘СQ‘S”СWТS‘”ђWТSTФ•SђСWСђPХФ€HЌKBBKKHXЭЬ€Щ€[™њ\ЭќXЭ\™H[™›Y[ЩHЫ€Э]YЪXИ[\Ьќ[ЩH
+ЊHKЊ
+B‚SS‘СQ‘S”СWТSTФ•SђСWФРРSHHЛЊBBBKKH[™Y™[ЩHЭ[[\Ьќ[ЩHШШ[H
+]™\ћH[™Y™[ЩHШЫЬ™HЩ]	ЬИ][\YYћH]
+B‚‚S•SWТХT”ЧФТSђСWУTХРУУPђUХЧФХTФ•ХS’UЧХ’PWРRT€HМ‹BBKKH[љ]ИЪ[™HЫЫњЪY\™Y[€ЫЫX]Y€^H\™Hќ\ЭЭ]Щ€Z\€\ЭЫЫX]›Ь€Z\€Э\Ьќ[™В‚‚SS‘СQ‘S”СWУRS—СђPХФ’QTЧС“Ф—РRT—ТSTФ•SђСHHKKKHY€[[Э[ќЩ€XЭЬљY\И\И\ЬИ[\Ьќ[ЩHЩ€XЭЬљY\ИЫЫ‰Э\B‚‚SS‘СQ‘S”СWФђRQТSTФ•SђСHHLKHЭ]YЪXИ[\Ьќ[ЩHЩ€]XЭYZYИ\™Щ][™И\В‚SS‘СQ‘S”СWС’QТT”ЧФT—ФђRQHLKH[[Э[ќЩ€Z\€Э\\љ[Ьљ]H[™\И™\]Y\ЭY\€]XЭYZY\™Щ][™И\В‚SS‘СQ‘S”СWТS•TђСTФ”ЧФT—ФђRQHLKH[[Э[ќЩ€[ќ\Щ\Ь€[™\И™\]Y\ЭY\€]XЭYZY\™Щ][™И\В‚‚SS‘СQ‘S”СWС’QТT”ЧФT—ФS‘HH‹ЌKBBBKKH[[Э[ќЩ€Z\€Э\\љ[Ьљ]H[™\И™\]Y\ЭY\€[™[^H[™B‚SS‘СQ‘S”СWТS•TђСTФ”ЧФT—Р“УP‘T”ИHЋKH[[Э[ќЩ€[ќ\Щ\Ь€[™\И™\]Y\ЭY\€[™[^H›ЫX™\‚‚SS‘СQ‘S”СWТS•TђСTФ”ЧФT—ФS‘HHЊKKH[[Э[ќЩ€[ќ\Щ\Ь€[™\И™\]Y\ЭY\€[™[^H[™H
+›Ы€›ЫX™\ЉB‚‚SS‘СQ‘S”СWФРSWУRTФТSWТSTФ•SђСWСђPХФ€HЊ‹KKH[\Ьќ[ЩHXЭЬ€Щ€\Ъ[™ИШ[HZ\ЬЪ[\И›Ь€™YЪ[ЫњИЭ]YЪXИ[\Ьќ[ЩK€YЪ\€[YHЪ[[Ь™X\ЩHH\ШYЩB€S‘РУУPђUУRTФТSWТSTФ•SђСWСђPХФ€HKЌKBKKH[\Ьќ[ЩHXЭЬ€Щ€\Ъ[™ИZ\ЬЪ[\И›Ь€™YЪ[ЫњИЭ]YЪXИ[\Ьќ[ЩK€YЪ\€[YHЪ[[Ь™X\ЩHH\ШYЩB‚‚SS‘РУУPђUРRT—ФХTT’SФ’UWТSTФ•SђСHHЋBKKHЭ]YЪXИ[\Ьќ[ЩHЩ€Z\€Э\\љ[Ьљ]H
+[[Э[ќЩ€[™[^H[™\И[€\™XH
+B‚SS‘РУУPђUУХT—РT“RQTЧРRT—ТSTФ•SђСHHBBKKHЭ]YЪXИ[\Ьќ[ЩHЩ€Э\€\›ZY\В‚SS‘РУУPђUУХT—РУУPђUЧРRT—ТSTФ•SђСHHLBKKHЭ]YЪXИ[\Ьќ[ЩHЩ€Э\€\›ZY\И[€HЫЫX]В‚SS‘РУУPђUС”’QS‘РT“RQTЧРRT—ТSTФ•SђСHH‹BKKHЭ]YЪXИ[\Ьќ[ЩHЩ€њљY[™H\›ZY\В‚SS‘РУУPђUС”’QS‘РУУPђUЧРRT—ТSTФ•SђСHHKBKKHЭ]YЪXИ[\Ьќ[ЩHЩ€њљY[™H\›ZY\И[€HЫЫX]‚SS‘РУУPђUСS‘SVWРT“RQTЧРRT—ТSTФ•SђСHHL‹BKKHЭ]YЪXИ[\Ьќ[ЩHЩ€Э\€\›ZY\В‚SS‘РУУPђUСS‘SVWУS‘С“Ф•ЧРRT—ТSTФ•SђСHHKKKHЭ]YЪXИ[\Ьќ[ЩHЩ€[™[^H[™›ЬќИ[€H™YЪ[Ы‚‚SS‘РУУPђUСS‘SVWРУРTХSС“Ф•ЧРRT—ТSTФ•SђСHHЊKKHЭ]YЪXИ[\Ьќ[ЩHЩ€[™[^HЫШ\Э[њ›ЫќИ[€H™YЪ[Ы‚‚SS‘РУУPђUТSTФ•SђСWФРРSHHKЊBBBBKKH[™ЫЫX]Э[[\Ьќ[ЩHШШ[H
+]™\ћH[™ЫЫX]ШЫЬ™HЩ]	ЬИ][\YYћH]
+B‚‚SS‘РУУPђUС’QТT”ЧФT—ФS‘HHЛЊBBBKKH[[Э[ќЩ€Z\€Э\\љ[Ьљ]H[™\И™\]Y\ЭY\€[™[^H[™B‚SS‘РУУPђUРРTЧФS‘TЧФT—СS‘SVWРT“VWУSRUHЊKKH[Z]Щ€РTИ[™\И™\]Y\ЭYћH[™[^H\›ZY\В‚SS‘РУУPђUРРTЧФT—СS‘SVWРT“VHHЊBBBKKH[[Э[ќЩ€РTИ[™\И™\]Y\ЭY\€[™[^H]љ\Ъ[Ы‚‚SS‘РУУPђUРS•WУСТTХPФЧФT—СS‘SVWРT“VHHЊKKH[[Э[ќЩ€РTИ[™\И™\]Y\ЭY\€[™[^H\›^H›Ь€[ќK[ЩЪ\ЭXЬВ‚SS‘РУУPђUРРTЧФT—РУУPђUHLЊBBBBKKH[[Э[ќЩ€РTИ™\]Y\ЭY\€ЫЫX]‚SS‘РУУPђUР“УP‘T”ЧФT—УS‘С“Ф•УU‘SH‹BKKH[[Э[ќЩ€›ЫX™\€[™\И™\]Y\ЭY\€[™[^H[™›Ьќ]™[‚SS‘РУУPђUР“УP‘T”ЧФT—РУРTХSС“Ф•УU‘SH‹BKKH[[Э[ќЩ€›ЫX™\€[™\И™\]Y\ЭY\€[™[^HЫШ\Э[›Ьќ]™[‚SS‘РУУPђUУRS—СVУФ•ФS‘TИHBBBBKKHZ[€[[Э[ќЩ€[™\И™\]Y\ЭYИ^ЫЬќЬ\][ЫњВ‚‚SS‘РУУPђUТS•TђСTФT—ФS‘HHЊЌKBBBKKH[[Э[ќЩ€[ќ\Щ\[Ы€[™\И™\]Y\ЭY\€[™[^H[™B‚SRS—РSQQСQ‘S”СWСђPХФ—РRT•ТS‘ЧФ‘TUQTХИHЊЛKKHZ\ќЪ[™И™\]Y\ЭИЪ[™HXЭЬ™YћHHZ[љ[][HЩ€\ИЪ[€ЫЫ\\љ[™ИЭЫ€њИњљY[™H›ЫЬИ[€\™XB‚PRT—ФХTT’SФ’UWС“Ф—С”’QS‘WРРTЧФђUSИHЌНKBKKH[X[™]X\Э\И›ЬЬќ[Ы€Щ€Э\€Ш\И[™\И\ИZ\€Э\\љ[Ьљ]H™YШ\™\ЬИЩ€Э\€™YYВ‚SS‘РУУPђUСХRQWСTХSђСHHЋLЊBBBBKKH\Э[ЩHЪ][€ЪЪЩIЫШ\™HHљ][Ь™HX›Э]Щ[™[™И[™\И™YШ\™\ЬИЩ€Ъ]\€Э\€›Ъ^€\™HZ[™В‚‚QS‘SVWФTФТS‘ЧХ“ХQТФS‘TЧФT—Р“УP‘T€HЊKBKKH[[Э[ќЩ€[™\ИЩH\ЬЪYЫ€И[ќ\Щ\[™[ZY\И[‹\›Э]HИHШШ][Ы‚‚QS‘SVWФTФТS‘ЧХ“ХQТФS‘TЧФT—С’QТT€HЊKBKKH[[Э[ќЩ€[™\ИЩH\ЬЪYЫ€И[ќ\Щ\[™[ZY\И[‹\›Э]HИHШШ][Ы‚‚QS‘SVWФTФТS‘ЧХ“ХQТФS‘TЧФT—ФХTФ•HЊKBKKH[[Э[ќЩ€[™\ИЩH\ЬЪYЫ€И[ќ\Щ\[™[ZY\И[‹\›Э]HИHШШ][Ы‚‚‚PRWС”ђPХSУ—УС—С’QТT”ЧФ‘TСT•‘QС“Ф—ТS•TђСTSУ€HKKT\Щ[ќYЩHЩ€љYЪ\њИЩH™\Щ\ќ™H›Ь€[ќ\Щ\[Ы€њИTВ‚SPVРRT—Ф‘QТSУ”ЧХЧРРT‘WРP“ХUH‹BBBBBBKKHќ[X™\€Щ€™YЪ[ЫњИЩIЫЫЫњЪY\€Ъ[€ћZ[™ИИЬ][™\ИHљ]€Ь]\И“Х\]X[ќ\ЭHЭZYKYќЭ™\њИЭ[\YY[Щ]Ъ\™HY€™YYY‚‚QS‘SVWФTФТS‘ЧХ“ХQТФS‘TЧФT—Р“УP‘T—УђUђSФ‘QТSУ€HЊMKBKKH[[Э[ќЩ€[™\ИЩH\ЬЪYЫ€И[ќ\Щ\[™[ZY\И[‹\›Э]HИHШШ][Ы€Э™\€HЩXH™YЪ[Ы‚‚QS‘SVWФTФТS‘ЧХ“ХQТФS‘TЧФT—С’QТT—УђUђSФ‘QТSУ€HЊMKBKKH[[Э[ќЩ€[™\ИЩH\ЬЪYЫ€И[ќ\Щ\[™[ZY\И[‹\›Э]HИHШШ][Ы€Э™\€HЩXH™YЪ[Ы‚‚QS‘SVWФTФТS‘ЧХ“ХQТФS‘TЧФT—ФХTФ•УђUђSФ‘QТSУ€HЊMKBKKH[[Э[ќЩ€[™\ИЩH\ЬЪYЫ€И[ќ\Щ\[™[ZY\И[‹\›Э]HИHШШ][Ы€Э™\€HЩXH™YЪ[Ы‚‚SђUђSСQ‘S”СWТS•TђСTSУ—ТSTФ•SђСWСђPХФ€HМKKHXЭЬ€Ы€YY[™\И\ЬЪ[™И›ЭYЪ™YЪ[Ы€ИЭ]YЪXИ[\Ьќ[ЩB‚‚VФђUSЧФ‘TURT‘QХЧФ‘TСPTђТХТUЦHЛЊBKKHRHЪ[]X\Э™YY\И[[Э[ќЩ€ЫЫ\\™YИЫЬЭЩ€HXЪИ™\Щ\Ъ]Ъ]‚T‘TСPTђТХТUЦРRWХСRQТУUSHKЌKBBBKKHRHЪ[ќ[\ШЫЬ™HЩ€H™\ЩX\ЪЪ]\И][Y€]Ш[€\ЩH‚‚TХ—Р“УP—РRT—ФХTT’SФ’UWТSTФ•SђСHHЊLBBKKHЭ]YЪXИ[\Ьќ[ЩHЩ€Z\€Э\\љ[Ьљ]H
+[[Э[ќЩ€[™[^H[™\И[€\™XH
+B‚TХ—Р“УP—РТU’SСђPХФ–WТSTФ•SђСHHLBBBKKHЭ]YЪXИ[\Ьќ[ЩHЩ€[™[^HЪ]љ[XЭЬљY\В‚TХ—Р“УP—УRSUT–WСђPХФ–WТSTФ•SђСHHМBBKKHЭ]YЪXИ[\Ьќ[ЩHЩ€[™[^HZ[]\ћHXЭЬљY\В‚TХ—Р“УP—УђUђSСђPХФ–WТSTФ•SђСHHМBBBKKHЭ]YЪXИ[\Ьќ[ЩHЩ€[™[^H][XЭЬљY\В‚TХ—Р“УP—ФХTWТP—ТSTФ•SђСHHKKHЭ]YЪXИ[\Ьќ[ЩHЩ€[™[^HЭ\HXњВ‚TХ—Р“УP—РPWТSTФ•SђСWСђPХФ€HЌKBBBKKHXЭЬ€Щ€PH[™›Y[ЩHЫ€Э]YЪXИ[\Ьќ[ЩH
+ЊHKЊ
+B‚TХ—Р“УP—ТS‘”ђWТSTФ•SђСWСђPХФ€HЊЌKBBKKHXЭЬ€Щ€[™њ\ЭќXЭ\™H[™›Y[ЩHЫ€Э]YЪXИ[\Ьќ[ЩH
+ЊHKЊ
+B‚TХ—Р“УP—ТSTФ•SђСWФРРSHHKЊBBBBKKHЭ€›ЫXљ[™ИЭ[[\Ьќ[ЩHШШ[H
+]™\ћHЭ€›ЫXљ[™ИШЫЬ™HЩ]	ЬИ][\YYћH]
+B‚‚TХ—Р“УP—УRS—СS‘SVWС’QТT”ЧТS—РT‘PHHЊBBKKHY€[[Э[ќЩ€[™[^HљYЪ\њИ\ИYЪ\€[€\ИZ\ЬЪ[Ы€ЫЫ‰Э\™›Ь›B‚TХ—Р“УP—С’QТT”ЧФT—ФS‘HHKЊKBBBBKKH[[Э[ќЩ€Z\€Э\\љ[Ьљ]H[™\И™\]Y\ЭY\€[™[^H[™B‚TХ—Р“УP—ФS‘TЧФT—РТU—СђPХФ–HHЊBBBKKH[[Э[ќЩ€[™\И™\]Y\ЭY\€[™[^HЪ]€XЭЬћB‚TХ—Р“УP—ФS‘TЧФT—УRSСђPХФ–HHЊKBBBKKH[[Э[ќЩ€[™\И™\]Y\ЭY\€[™[^HZ[]\ћHXЭЬћB‚TХ—Р“УP—ФS‘TЧФT—УђU—СђPХФ–HHLKBBBKKH[[Э[ќЩ€[™\И™\]Y\ЭY\€[™[^H][XЭЬћB‚TХ—Р“УP—ФS‘TЧФT—ФХTWТP€HМKH[[Э[ќЩ€[™\И™\]Y\ЭY\€[™[^HЭ\H›ЩB‚TХ—Р“УP—УRS—СVУФ•ФS‘TИHЊBBBBKKHZ[€[[Э[ќЩ€[™\И™\]Y\ЭYИ^ЫЬќЬ\][ЫњВ‚T‘PУУ—ФS‘TЧУђUђSHLKHШШ[HЫ€™XЫЫ€›Ь€][\™X\В‚T‘PУУ—ФS‘TЧУS‘РУУPђUHЌKKHШШ[HЫ€™XЫЫ€›Ь€[™ЫЫX]\™X\В‚T‘PУУ—ФS‘TЧФХђUQТPИHLKHШШ[HЫ€™XЫЫ€›Ь€Э]YЪXИ\™X\В‚‚PTФТQУ—С”“У•РT“VWФУС•РUPТЧСђPХФ€HЊKKH[\Ьќ[ЩHЩ€[љ]	ЬИT“VWФУС•РUPТИЭ]Ъ[€\ЬЪYЫљ[™ИИHњ›Ыќ‚PTФТQУ—С”“У•РT“VWТT‘РUPТЧСђPХФ€HЊKKH[\Ьќ[ЩHЩ€[љ]	ЬИT“VWТT‘РUPТИЭ]Ъ[€\ЬЪYЫљ[™ИИHњ›Ыќ‚PTФТQУ—С”“У•РT“VWР”‘PRХ“ХQТСђPХФ€HЊKKH[\Ьќ[ЩHЩ€[љ]	ЬИT“VWР”‘PRХ“ХQТЭ]Ъ[€\ЬЪYЫљ[™ИИHњ›Ыќ‚PTФТQУ—СQ‘S”СWРT“VWСQ‘S”СWСђPХФ€HЛЊKH[\Ьќ[ЩHЩ€[љ]	ЬИT“VWСQ‘S”СHЭ]Ъ[€\ЬЪYЫљ[™ИИ[€\™XHY™[њЩHЬ™\‚‚PTФТQУ—СQ‘S”СWРT“VWСS•‘SђТQS•СђPХФ€H‹ЊKH[\Ьќ[ЩHЩ€[љ]	ЬИT“VWСS•‘SђТQS•Э]Ъ[€\ЬЪYЫљ[™ИИ[€\™XHY™[њЩHЬ™\‚‚PTФТQУ—СQ‘S”СWХSTUWРУTФЧФРУФ‘HHЛЊKH[\Ьќ[ЩHЩ€[љ]	ЬИRH[\]HЫ\ЬИ
+T‘PWСQ‘S”СKРUђS–JHЪ[€\ЬЪYЫљ[™ИИ[€\™XHY™[њЩHЬ™\‚‚PTФТQУ—ТS•ђTТSУ—РSTP’SХTЧРUPТЧСђPХФ€HLЊKH[\Ьќ[ЩHЩ€[љ]	ЬИ[\Xљ[Э\И]XЪИYќ\Э\€Ъ[€\ЬЪYЫљ[™ИИ[€[ќ\Ъ[Ы€Ь™\‚‚SФ‘T—РTФТQУ“QS•СTХSђСWСђPХФ€HLЊKHЪ[€HRH\ЬЪYЫњИ[љ]ИИЬ™\њЛЭИ]XЪЪЭ[\Э[ЩH™HZЩ[€[ќИXШЫЭ[ќВ‚T‘U’TТUQФ“Х—Р“УФХСђPХФ€H‹KHЪ[€HRHXЪЬИ[љ]И›Ь€Hњ›Ыќ]љ[Ьљ]\Щ\И[љ]И[™XYH™X\ћK‚‚US’UРTФТQУ“QS•ФХUЧТSTФ•SђСHH‹ЊKHЭ]ИШЫЬ™H›Ь€[љ]И\™H][\YYћH\ИЪ[€HRH\ИXЪY[™ИЪXЪњ›Ыќ^HЪЭ[™H\ЬЪYЫ™YВ‚‚PTФТQУ—С”“У•ХT”ђRS—РUPТЧСђPХФ€HЛЊKH[\Ьќ[ЩHЩ€[љ]	ЬИ\њZ[€Yќ\ЭY]XЪИЭ]Ъ[€\ЬЪYЫљ[™ИИHњ›Ыќ‚PTФТQУ—С”“У•ХT”ђRS—СQ‘S”СWСђPХФ€HKЊKH[\Ьќ[ЩHЩ€[љ]	ЬИ\њZ[€Yќ\ЭYY™[њЩHЭ]Ъ[€\ЬЪYЫљ[™ИИHњ›Ыќ‚PTФТQУ—С”“У•ХT”ђRS—УSХ‘SQS•СђPХФ€H‹ЊKH[\Ьќ[ЩHЩ€[љ]	ЬИ\њZ[€Yќ\ЭY[Э™[Y[ќЭ]Ъ[€\ЬЪYЫљ[™ИИHњ›Ыќ‚PTФТQУ—СQ‘S”СWХT”ђRS—РUPТЧСђPХФ€HЌKKH[\Ьќ[ЩHЩ€[љ]	ЬИ\њZ[€Yќ\ЭY]XЪИЭ]Ъ[€\ЬЪYЫљ[™ИИ[€\™XHY™[њЩHЬ™\‚‚PTФТQУ—СQ‘S”СWХT”ђRS—СQ‘S”СWСђPХФ€HЊKH[\Ьќ[ЩHЩ€[љ]	ЬИ\њZ[€Yќ\ЭYY™[њЩHЭ]Ъ[€\ЬЪYЫљ[™ИИ[€\™XHY™[њЩHЬ™\‚‚PTФТQУ—СQ‘S”СWХT”ђRS—УSХ‘SQS•СђPХФ€HЌKKH[\Ьќ[ЩHЩ€[љ]	ЬИ\њZ[€Yќ\ЭY[Э™[Y[ќЭ]Ъ[€\ЬЪYЫљ[™ИИ[€\™XHY™[њЩHЬ™\‚‚PTФТQУ—УSХS•RS‘QT”ЧХЧУSХS•RS”ИHLЊKHXЭЬ€›Ь€\ЬЪYЫљ[™И[Э[ќZ[™Y\€]љ\Ъ[ЫњИИњ›ЫќИЪ][Э[ќZ[њИ
+›ЬЬќ[Ы[ИЭИ]XЪЩ€]\њZ[€\JB‚PTФТQУ—ХS’ФЧХЧУSХS•RS”ИHLMKЊKHXЭЬ€›Ь€\ЬЪYЫљ[™И[љИ]љ\Ъ[ЫњИИњ›ЫќИЪ][Э[ќZ[њИ
+›ЬЬќ[Ы[ИЭИ]XЪЩ€]\њZ[€\JB‚PTФТQУ—ХS’ФЧХЧТ•S‘УHHLЊЊKHXЭЬ€›Ь€\ЬЪYЫљ[™И[љИ]љ\Ъ[ЫњИИњ›ЫќИЪ]ќ[™ЫH
+›ЬЬќ[Ы[ИЭИ]XЪЩ€]\њZ[€\JB‚US’UРTФТQУ“QS•ХT”ђRS—ТSTФ•SђСHHNЊKH\њZ[€ШЫЬ™H›Ь€[љ]И\™H][\YYћH\ИЪ[€HRH\ИXЪY[™ИЪXЪњ›Ыќ^HЪЭ[™H\ЬЪYЫ™YВ‚‚PTФТQУ—ХS’ФЧХЧХРT—С”“У•HЌKЊKHШЫЬљ[™ИXЭЬ€›Ь€\ЬЪYЫљ[™И[љИ]љ\Ъ[ЫњИИXЭ]™HШ\€њ›ЫќВ‚PTФТQУ—ХS’ФЧХЧУ“У—ХРT—С”“У•HЊKKHШЫЬљ[™ИXЭЬ€›Ь€\ЬЪYЫљ[™И[љИ]љ\Ъ[ЫњИИ›Ы‹]Ш\€њ›ЫќВ‚‚T‘PTФТQУ—ХЧРS“ХT—С”“У•СђPХФ€HЊKKHXЭЬ€›Ь€™X\ЬЪYЫљ[™ИИ[›Э\€њ›Ыќ€ЊKЊYX[њИ™[XЭ[ќ€KЊYX[њИШ[ќЛ‚‚T‘PTФТQУ—ХЧРS“ХT—С”“У•ТQ—ТS—РУУPђUСђPХФ€HЊKKHXЭЬ€›Ь€™X\ЬЪYЫљ[™ИИ[›Э\€њ›ЫќY€[€ЫЫX]€ЊKЊYX[њИ™[XЭ[ќ€KЊYX[њИШ[ќЛ‚‚‚QS‘SVWС“Ф•Q’PРUSУ—СђPХФ—С“Ф—С”“У•Ф‘TUQTХИH‹ЊBKKHњ›Ыќ[љ]™\]Y\ЭXЭЬ€]X^[™[^H›ЬќYљXШ][Ы‚‚QS‘SVWС“Ф•Q’PРUSУ—СђPХФ—С“Ф—С”“У•Ф‘TUQTХЧУPVHЌЛKKHX^XЭЬ€]Ш[€™HYYћH[™[^H›ЬќYљXШ][Ы‚‚‚SPS”ХСT—ФђUSЧРРT‘Q•S‘TФЧХ‘TТУHЊKKHY€X[њЭЩ\€][И
+]Z[X›KЭ\ЩYXћKX\›^JH\И\ЬИ[€\ЛЭ\ќ™Z[™И[Ь™HШ\™Yќ[Ъ][€^XЭ][Ы€
+K™K€Ы‰Э›ЭИ[Э\€Y[€[ќИHYX]Ьљ[™\€Y€[ЭIЬ™Hќ[›љ[™ИЭ]Щ€X[њЭЩ\ЉB‚‚TS—РPХUђUSУ—ФХTT’SФ’UWРQСФ“ИHKЌНKBBKKHЭИYЩЬ™\ЬЪ]™HHЫЭ[ќћH\И[€XЭ]][™ИH[€\ЩYЫ€ЭИЭ\\љ[Э\€Z\€›ЬЩH\Л‚‚UРRUЦQPT”ЧР‘Q“Ф‘WС”‘QT—Р•RSS‘ИHЛBBBKKHHRHЪ[ЪЪ\ЫЫњЪY\љ[™ИЩ\ќZ[€ќZ[[™ЬИ\љ[™ИHќZ[\\ЩKYќ\€\ЩHX[ћHYX\њИ]Э\ќИќZ[[™И[H™YШ\™\ЬИЩ€™X]‚‚‚SPVРРT”’QT—УХ‘T‘’SHKЋKBBBBBKKHШ\њљY\њИЪ[™HЭ™\™љ[YИ\И[[Э[ќY€\™H\™HШЭљ[™\ИИќ\ЭYћH]‚‚Q’QSQСTURTQS•Р•Q‘‘T—ФђUSЧС“Ф—УРРХTUSУ—РRHHЌKKHШ\њљ\ЫЫ€ZHЪ[ћHИX]™H\И][ИЩ€ќY™™\њИЪ[H\ЬЪYЫљ[™И]ЬВ‚Q’QSQУPS”ХСT—Р•Q‘‘T—ФђUSЧС“Ф—УРРХTUSУ—РRHHЊЛKHШ\њљ\ЫЫ€ZHЪ[ћHИX]™H\И][ИЩ€ќY™™\њИЪ[H\ЬЪYЫљ[™И]ЬВ‚‚RSTФ•S•Х’PХФ–WФТS•HMKBBBBBKKH\љ[™ИШШЭ\][Ы€ZHЪ[Ы›HШ\™HЫИ]XЪИ\ЪИ›Ь€^HШ\њљ\ЫЫњИY€”[[Э[ќ\И]X\Э\В‚‚QРТЦPT‘ЧФT—УђUђSСTТT‘WСQ‘‘PХHMLЊBBKKHY™™XЭИЭИ]XЪRHШ[ќИИќZ[ШЪЮX\™И\ЩYЫ€ЭИ][H›ШЭ\ЩY^H\™H[€Щ[™\[€™XЫЫ[Y[™Y[™ЩHLLЊИLЊ‚‚‚QPТTТSУ—Ф’SФ’UWФђS‘УRV‘T€HЊKBBBBKKH[™ЫHXЭЬ€]\И\ЩYЪ[HXЪЪ[™ИXЪ\Ъ[ЫњЛ€ZH\ИX›HИXЪИHЭЩ\€љ[Ьљ]HXЪ\Ъ[Ы€X\›\€[€HYЪ\€Ы™HY€]\ИЪ][€\И™\ЪЫ‚‚QTТQУ—РУУTS–WФРУФ‘WУUSTQT€H‹ЊKHШЫЬ™H][\Y\€›Ь€\љ[™ИH\ЪYЫ€ЫЫ\[ћB‚PT“VWРТQQ—ФРУФ‘WУUSTQT€H‹ЊKHШЫЬ™H][\Y\€›Ь€\љ[™И[€\›^HЪYY‚‚PRT—РТQQ—ФРУФ‘WУUSTQT€HKЌKKHШЫЬ™H][\Y\€›Ь€\љ[™И[€Z\€ЪYY‚‚SђU–WРТQQ—ФРУФ‘WУUSTQT€HKЊKHШЫЬ™H][\Y\€›Ь€\љ[™И[€]ћHЪYY‚‚TУUPРSРQ’TУФ—ФРУФ‘WУUSTQT€HKЊKHШЫЬ™H][\Y\€›Ь€\љ[™ИЫ]XШ[Yљ\ЫЬњВ‚USФ’TХРPРСTSђСWУUSTQT€HЌЛBBBBBKKHШШ[HHXШЩ\[ЩHЩ€\љ[™ИH[Ьљ\ЭћH\Иќ[X™\€[Y\ИH[[Э[ќЩ€›Ы‹][Ьљ\ЭИЩH]™KШ\Y]Ы™K‚‚SRS—ФРРSQТQPWХСRQТХЧРУУTT‘WХТUСPТTТSУ”ИHLBKKHYXHШЫЬ™\И\™HШШ[Y™]ЩY[€\ЩHЫИ[Y\ИЪ[HЫЫ\\љ[™И[HИXЪ\Ъ[ЫњВ‚SPVФРРSQТQPWХСRQТХЧРУУTT‘WХТUСPТTТSУ”ИHЊBKKHYXHШЫЬ™\И\™HШШ[Y™]ЩY[€\ЩHЫИ[Y\ИЪ[HЫЫ\\љ[™И[HИXЪ\Ъ[ЫњВ‚‚PФ’UPРSСPТTТSУ—Ф’SФ’UHHЊBBBBKKHЬљ]XШ[ZHШЫЬ™H›Ь€XЪ\Ъ[ЫњЛZHЪ[™HX›HИXЪИXЪ\Ъ[ЫњИY€]\ИYЪ\€љ[И]™[€Y€]\И›Э[YHИXЪИ[H
+И\ШX›JB‚PФ’UPРSТQPWФ’SФ’UHHBBBBBBKKHЬљ]XШ[ZHШЫЬ™H›Ь€YX\ЛZHЪ[™HX›HИXЪИYX\ИY€]\ИYЪ\€љ[И]™[€Y€]\И›Э[YHИXЪИ[H
+И\ШX›JB‚‚SPVФХЧФФS‘УУ—УХСT—Ф’SЧХTТФИHЌKBBKKHX^ЫЬЭ›Ь€ZHИ[ЭИЬ[™Ы€ЭЩ\€љ[И[™ЬИЪ[HHYЪ\€љ[И[™ЬИ\™H]Z[X›B‚SRS—ФРУФ‘WС“Ф—УХСT—Ф’SЧХTТФИHLBBBKKH\И\ИH™\ЪЫ›Ь€ЭИљ[И\ЪЬИ]Ъ[™HЫЫњЪY\™YЬљ]XШ[‚‚SХЧФ’SЧХSTUWР“У•TЧС“Ф—СРT”’TУУ”ИHМBKKH›Ыќ\ИИXZЩHZH[Ь™HZЩ[HИ\ЬЪYЫ€ЭИљ[И[љ]ИИШ\њљ\ЫЫњВ‚SХЧФ’SЧХSTUWФSђSWС“Ф—С”“У•ИHLЊBKKH[[HИXZЩHZH\ЬИZЩ[HИ\ЬЪYЫ€ЭИљ[И[љ]ИИњ›ЫќВ‚‚‚QTЦQQХS’UУPS”ХСT—ФђUSЧХЧР•Q‘‘T—ХРT•SQHHЊЛBBBKKH\Ю[Y[ќЪ[ћHИќY™™\€H][ИЩ€\ЮYYX[њЭЩ\€
+›Ь€™Z[™›ЬЩ[Y[ќКH\љ[™ИШ\€[YB‚QTЦQQХS’UУPS”ХСT—ФђUSЧХЧР•Q‘‘T—ФPPСUSQHHЊKBKKH\Ю[Y[ќЪ[ћHИќY™™\€H][ИЩ€\ЮYYX[њЭЩ\€
+›Ь€™Z[™›ЬЩ[Y[ќКH\љ[™ИXXЩH[YB‚‚SPVРUђRSP“WУPS”ХСT—ФђUSЧХЧР•Q‘‘T—ХРT•SQHHЌBBKKH\Ю[Y[ќЪ[ћHИќY™™\€H][ИЩ€X[њЭЩ\€
+›Ь€™Z[™›ЬЩ[Y[ќКH\љ[™ИШ\€[YB‚SPVРUђRSP“WУPS”ХСT—ФђUSЧХЧР•Q‘‘T—ФPPСUSQHHЊ‹BKKH\Ю[Y[ќЪ[ћHИќY™™\€H][ИЩ€X[њЭЩ\€
+›Ь€™Z[™›ЬЩ[Y[ќКH\љ[™ИXXЩH[YB‚‚SPS”ХСT—ФђUSЧФ‘TURT‘QХЧФ’SЧУSР’SVђUSУ—УUИHЌBKKH\Щ[ќYЩHЩ€X[њЭЩ\€[€љY[\И\Ъ\™YИ™HќY™™\™Y›Ь€RHЪ[€]\И\ЫЫZ[™ИШ\њИЬ€[™XYH]Ш\‹€Y€]\И\ЬИX[њЭЩ\‹]Ъ[љ[ИX[њЭЩ\€]ЬВ‚UTФђQTЧСQ’PТUУSRUСVTИHЊKHZHЪ[]›ЪY\ЬY[™И[љ]И[€HљY[И™]И[\]\ИY€]ZЩ\ИЫ™Щ\€[€\ИИќ[љ[Z\€\]Z\Y[ќ™YY‚‚QТQWСVSWРRT—УPS”ХСT—ХTРQСWФђUSИHЊ‹KHRHЪ[›Э\ЮH™]И^[HЪ[™ЬИЪ[€\И\Щ[ќYЩHЩ€]Z[X›H^[HX[њЭЩ\€\И[™XYH\ЩY›Ь€Ъ[™И™XЬќZ]Y[ќ‚‚‚PРT”’QT—ХTТС“ФђСWУPVРРT”’QT—РУХS•HBKKHЬ[][HШ\њљY\€ЫЭ[ќ›Ь€Ш\њљY\€\ЪЩ›ЬЩ\В‚PРTUSХTТС“ФђСWУPVРРTUSРУХS•HL‹BKKHЬ[][HШ\][ЫЭ[ќ›Ь€Ш\][\ЪЩ›ЬЩ\В‚TРФ‘QS—ХTТС“ФђСWУPVФТTРУХS•HL‹BBKKHЬ[][HШЬ™Y[€ЫЭ[ќ›Ь€ШЬ™Y[€\ЪЩ›ЬЩ\В‚TХP—ХTТС“ФђСWУPVФТTРУХS•HM€BBBKKHЬ[][HЭX€ЫЭ[ќ›Ь€ЭX€\ЪЩ›ЬЩ\В‚‚SRS—РРTUSЧС“Ф—РРT”’QT—ХTТС“ФђСHH‹BBKKHШ\њљY\€›Y]ИЪ[]X\Э]™H\И[[Э[ќЩ€Ш\][В‚PРTUSЧХЧРРT”’QT—ФђUSИHKЌKBBBKKHШ\][ИШ\њљY\€ЫЭ[ќ[€Ш\њљY\€\ЪЩ›ШЩ\В‚TРФ‘QS”ЧХЧРРTUSФђUSИHЊBBBBKKHШЬ™Y[њИИШ\][ШШ\њљY\€ЫЭ[ќ[€Ш\њљY\€	€Ш\][\ЪЩ›ЬЩ\В‚‚SRS—УPRS—ФТTФђUSИHЊЛKHY€XZ[€Ъ\][И\И™[ЭИ\ЛЭX[Э\€Ъ\Л‚‚SRS—ФХTФ•ФТTФђUSИHЌЛKHY€Э\ЬќЪ\][И\И™[ЭИ\ЛЭX[Э\€Ъ\Л‚‚SRS—УPRS—ФТTФђUSЧХЧФ‘RS‘“ФђСHHЌKKHHXZ[€Ъ\ИЪ[™HљYYИ™Z[™›ЬЩH\И]™[‚‚SRS—ФХTФ•ФТTФђUSЧХЧФ‘RS‘“ФђСHHЋKKHHЭ\ЬќЪ\ИЪ[™HљYYИ™Z[™›ЬЩH\И]™[‚‚SRS—УPRS—ФТTХЧФФT‘HHЌЛKHШ[€Ы›HЭX[Ъ\Ињ›ЫHH\ЪИ›ЬЩHY€Z\€XZ[€Ъ\][И\ИX›Э™H\Л‚‚SRS—ФХTФ•ФТTХЧФФT‘HHKЊKHШ[€Ы›HЭX[Ъ\Ињ›ЫHH\ЪИ›ЬЩHY€Z\€Э\ЬќЪ\][И\ИX›Э™H\Л‚‚SRS—УPRS—ФТTФђUSЧХЧУQT‘СHHЌЛKHћHY\™ЩH\ЪИ›ЬЩHY€XZ[€Ъ\][И\ИЭЩ\€[€\Л‚‚SPVУPRS—ФТTФђUSЧХЧУQT‘СHHKЊKKHY€™\Э[[™ИXZ[€Ъ\][ИЫЭ[™H][ЬЭ\Л[ЭИY\™Ъ[™И[ќИ\И\ЪИ›ЬЩK‚‚SPRS—ФТTФђUSЧХЧФФUHKЋKHY€XZ[€Ъ\][И[€H\ЪИ›ЬЩH\И\™Щ\€[€\ЛЬ]]€
+Y€HШ\њљY\€€Ш[ќИШ\њљY\њИ
+ЩYHYљ[™\ИX›Э™JKќ]]\И[Ь™H[€Э\И
+€HШ\њљY\њЛ[€ЩHћHИЬ]H‹ЉB‚‚SRTФТSУ—С“QUТPУУ”ИHВ‚BMKHУ‚BLЋKKHU“У‚BLЊKKHХ’RСH“ФђСB‚BLMKKHУУ•“ЦHђRQS‘В‚BLЊЛKHУУ•“ЦHTРУФ•‚BLЌKHRS‘TИS•S‘В‚BMKKHRS‘TИХСQTS‘В‚BMKHђRS‚‚BMKH‘TСT•‘WС“QU‚BNKKHђUђSS•ђTТSУ€ХTФ•‚_K‚‚SRS—УђUђSУRTФТSУ—Ф’SЧХЧРTФТQУ€HИKHљ[Ьљ]Y\И›Ь€™YЪ[ЫњИИЩ]\ЬЪYЫ™YИHZ\ЬЪ[Ы‚‚LKHУ
+ЫЫњЭ[Y\ИќY[УУRTФТSУ—УSХ‘SQS•РУФХќY[Ъ[H[Эљ[™КB‚LЊKHU“УBB‚LЊKHХ’RСH“ФђСH‚LЊKHУУ•“ЦHђRQS‘В‚LLKHУУ•“ЦHTРУФ•‚LЊKHRS‘TИS•S‘ВB‚LLKHRS‘TИХСQTS‘ВB‚LKHђRS‚‚LKH‘TСT•‘WС“QU‚LLKHђUђSS•ђTТSУ€ХTФ•‚_K‚‚RQТФ’SЧУђUђSУRTФТSУ—ФРУФ‘TИHИKHљ[Ьљ]Y\И›Ь€™YЪ[ЫњИИЩ]\ЬЪYЫ™YИHZ\ЬЪ[Ы‚‚LKHУ
+ЫЫњЭ[Y\ИќY[УУRTФТSУ—УSХ‘SQS•РУФХќY[Ъ[H[Эљ[™КB‚LОKHU“УHLB‚LLKHХ’RСH“ФђСH‚LMLKHУУ•“ЦHђRQS‘В‚LМKHУУ•“ЦHTРУФ•HL‚KLKKHRS‘TИS•S‘ВB‚LМKHRS‘TИХСQTS‘ВB‚LKHђRS‚‚LKH‘TСT•‘WС“QU‚LLKHђUђSS•ђTТSУ€ХTФ•‚_K‚‚SPVУRTФТSУ—ФT—ХTТС“ФђСHHИKHX^Z\ЬЪ[Ы€™YЪ[Ы‹Э\ЪЩ›ЬЩH][В‚BLKHУ
+ЫЫњЭ[Y\ИќY[УУRTФТSУ—УSХ‘SQS•РУФХќY[Ъ[H[Эљ[™КB‚BLKЌKKHU“У‚BM‹KHХ’RСH“ФђСB‚BLKЌKKHУУ•“ЦHђRQS‘В‚BMKHУУ•“ЦHTРУФ•‚BL‹KHRS‘TИS•S‘В‚BL‹KHRS‘TИХСQTS‘В‚BLKHђRS‚‚BLKH‘TСT•‘WС“QU‚BLLKHђUђSS•ђTТSУ€ХTФ•‚_K‚‚KKH[\ШЬ™Y[€\ЪЩ›ЬЩ\ИЪ[™HЪ\™Y™]ЩY[€ЫЫќ›ЮHY™[њЩKZ[™HZ\ЬЪ[ЫњИ[™]›ЫИ
+[€\Иљ[КB‚KKH[™\ЩH][ЬИ[Z]ИHX^[][H][ИЩ€\ЩH\ЪЩ›ЬЩ\ИИ[ШШ]HЫ€\B‚SPVФРФ‘QS—ХTТС“ФђСTЧС“Ф—РУУ•“ЦWСQ‘S”СWУRS€HЌKHX^[][H][ИЩ€[ШЬ™Y[‹\Ъ\И›ЬЩ\ИИ™H\ЩY[€ЫЫќ›ЮHY™[њЩH
+[Ь™X\Щ\И\ИX^\ИRHЬЩ\ИЫЫќ›Ю\КK‚‚SPVФРФ‘QS—ХTТС“ФђСTЧС“Ф—РУУ•“ЦWСQ‘S”СWУPVHЌ‹KHX^[][H][ИЩ€[ШЬ™Y[‹\Ъ\И›ЬЩ\ИИ™H\ЩY[€ЫЫќ›ЮHY™[њЩH
+[Ь™X\Щ\И\ИX^\ИRHЬЩ\ИЫЫќ›Ю\КK‚‚SPVФРФ‘QS—ХTТС“ФђСTЧС“Ф—РУУ•“ЦWСQ‘S”СWУRS—РУУ•“ЦWХ‘PUHLKHRHЪ[[Ь™X\ЩHШЬ™Y[€\ЬЪYЫ›Y[ќ›Ь€\ШЫЬќZ\ЬЪ[ЫњИ\И™X]H[Ь™X\Щ\В‚SPVФРФ‘QS—ХTТС“ФђСTЧС“Ф—РУУ•“ЦWСQ‘S”СWУPVРУУ•“ЦWХ‘PUHLKHRHЪ[[Ь™X\ЩHШЬ™Y[€\ЬЪYЫ›Y[ќ›Ь€\ШЫЬќZ\ЬЪ[ЫњИ\И™X]H[Ь™X\Щ\В‚‚‚SPVФРФ‘QS—ХTТС“ФђСTЧС“Ф—УRS‘WФХСQTS‘ИHЊKKHX^[][H][ИЩ€ШЬ™Y[њИ›ЬЩ\ИИ™H\ЩY[€Z[™HЭЩY\[™В‚SPVФРФ‘QS—ХTТС“ФђСTЧС“Ф—УRS‘WФХСQTS‘ЧФ’SИHЋKHY€[ЭH]™HZ[™\И™X\€[Э\€ЭЫ™YЭ]\Л[ЭHЪ[Э\ќљ[Э^™HZ[™HZ\ЬЪ[ЫњИ[™Ъ[\ЬЪYЫ€\И][ИЩ€ШЬ™Y[њВ‚SPVФРФ‘QS—ХTТС“ФђСTЧС“Ф—УRS‘WФХСQTS‘ЧФ’SЧУRS—УRS‘TИHLKHЭЩ\ЭZ[™H›Ь€љ[Ъ[™ИZ[™HZ\ЬЪ[ЫњВ‚SPVФРФ‘QS—ХTТС“ФђСTЧС“Ф—УRS‘WФХСQTS‘ЧФ’SЧУPVУRS‘TИHЌLKHYЪ\ЭZ[™\И›Ь€YЪ\Эљ[И›Ь€Z[™HZ\ЬЪ[ЫњВ‚‚‚SPVФРФ‘QS—ХTТС“ФђСTЧС“Ф—УRS‘WУVRS‘ИHЊKKHX^[][H][ИЩ€ШЬ™Y[њИ›ЬЩ\ИИ™H\ЩY[€Z[™H^Z[™В‚SPVФРФ‘QS—С“ФђСTЧС“Ф—ТS•ђTТSУ—ФХTФ•HЊ‹KHX^][ИЩ€ШЬ™Y[њИ›ЬЩ\ИИ™H\ЩY[€][[ќ\Ъ[Ы€Z\ЬЪ[ЫњВ‚SPVРРTUSС“ФђСTЧС“Ф—ТS•ђTТSУ—ФХTФ•HЊЌKKHX^][ИЩ€Ш\][›ЬЩ\ИИ™H\ЩY[€][[ќ\Ъ[Ы€Z\ЬЪ[ЫњВ‚SPVФU“УХЧФХ’RСWС“ФђСWФђUSИHЛЊKKHX^[][H]›ЫЬЭљZЩH›ЬЩH][В‚‚‚KKHЭ\ќ€ЫЫњЭќXЭ[Ы€љ[Ьљ]^][Ы‚‚PУУ”Х•PХSУ—Ф’SЧТS‘”ђTХ•PХT‘HHМKH\ЩHљ[И›Ь€[™њ\ЭќXЭ\™H[€HЫЫњЭќXЭ[Ы€]Y]YB‚PУУ”Х•PХSУ—Ф’SЧРТU—СђPХФ–HHKKH\ЩHљ[И›Ь€Ъ]љ[X[€XЭЬљY\И[€HЫЫњЭќXЭ[Ы€]Y]YB‚PУУ”Х•PХSУ—Ф’SЧУRSСђPХФ–HHЌМKH\ЩHљ[И›Ь€Z[]\ћHXЭЬљY\И[€HЫЫњЭќXЭ[Ы€]Y]YB‚PУУ”Х•PХSУ—Ф’SЧФХTWР•RSS‘ИHЛЌLKH\ЩHљ[И›Ь€Э\HќZ[[™ЬИ
+Э\HXњЛЬќКH[€HЫЫњЭќXЭ[Ы€]Y]YB‚PУУ”Х•PХSУ—Ф’SЧФђRSРVHHЊЊKH\ЩHљ[И›Ь€Z[Ш^\И[€HЫЫњЭќXЭ[Ы€]Y]YB‚PУУ”Х•PХSУ—Ф’SЧФђRSРVWСХS—Ф‘TRT€HMKЊKH\ЩHљ[И›Ь€Z[Ш^HЭ[€™\Z\њИ[€HЫЫњЭќXЭ[Ы€]Y]YB‚PУУ”Х•PХSУ—Ф’SЧХS”ФPТQ’QQHЌLKH\ЩHљ[И›Ь€[њЬXЪYљYYќZ[[™ЬИ
+›Ы™HЩ€HШ]YЫЬљY\ИX›Э™JH[€HЫЫњЭќXЭ[Ы€]Y]YB‚PУУ”Х•PХSУ—Ф’SЧСђPХФ—УРРХTQQХT”’UФ–HHKЊKHXЭЬ€љ[ИЪ]\ИY€ШШЭ\YY\њљ]ЬћB‚PУУ”Х•PХSУ—Ф’SЧСђPХФ—УХУ‘QУ“УђУФ‘HHЛЊKHXЭЬ€љ[ИЪ]\ИY€ЭЫ™Y›Ы‹XЫЬ™H\њљ]ЬћB‚PУУ”Х•PХSУ—Ф’SЧСђPХФ—УХУ‘QРУФ‘HHKЊKHXЭЬ€љ[ИЪ]\ИY€ЭЫ™YЫЬ™H\њљ]ЬћB‚PУУ”Х•PХSУ—Ф’SЧСђPХФ—Ф‘TRT’S‘ИHKHXЭЬ€љ[ИЪ]\ИY€ќZ[[™И\И™Z[™И™\Z\™Y‚KKH[™€ЫЫњЭќXЭ[Ы€љ[Ьљ]^][Ы‚‚B‚‚SPVСђPХФ–WХЧФФT‘WС“Ф—УRTФТSУ—С•QSХђQHHЊL‹BBBBBKKH[[Э[ќЩ€XЭЬљY\ИИЬ[™Ы€Ъ[YH[€Ш\ЩHЩ€ќY[™YY›Ь€Z\ЬЪ[ЫњВ‚SPVСђPХФ–WХЧФФT‘WС“Ф—РФ’UPРSУRTФТSУ—С•QSХђQHHЊЛBBKKH[[Э[ќЩ€XЭЬљY\ИИЬ[™Ы€Ъ[YH[€Ш\ЩHЩ€ќY[™YY›Ь€љ[ИZ\ЬЪ[ЫњВ‚SPVСђPХФ–WХЧХђQWС“Ф—С•QSHЌK‚Q•QSХђQWФ’SЧС“Ф—РУУ•“ЦWСQ‘S”СHHЊЛBBBBBBBKKHRHЪ[™H\ЬИ™[XЭ[ќИШ[Щ[ЫЫќ›ЮHZ\ЬЪ[ЫњИY€]\ИY[™И›Ь€Ъ[‚‚SPVСђPХФ–WХЧФФT‘WС“Ф—УRTФТSУ—С•QSХђQWТS—ФPPСHHЊЛBBKKH[[Э[ќЩ€XЭЬљY\ИИЬ[™Ы€Ъ[YH[€Ш\ЩHЩ€ќY[™YY›Ь€Z\ЬЪ[ЫњИ[€XXЩH[YB‚SPVСђPХФ–WХЧФФT‘WС“Ф—РФ’UPРSУRTФТSУ—С•QSХђQWТS—ФPPСHHЊKKKH[[Э[ќЩ€XЭЬљY\ИИЬ[™Ы€Ъ[YH[€Ш\ЩHЩ€ќY[™YY›Ь€љ[ИZ\ЬЪ[ЫњИ[€XXЩH[YB‚SPVСђPХФ–WХЧХђQWС“Ф—С•QSТS—ФPPСHHЊMK‚‚‚Q•QSФ‘TUQTХФђUSЧС“Ф—РУУPђUИHЌ‹BBBBBBBBKKH][ИЩ€Ъ\ЫЫX]ќY[ЫЬЭ]\ИИ™HЫЫњЪY\™Y[€ќY[\ШYЩH[™™\]Y\ЭЮ\Э[B‚T’SЧС•QSФ‘TUQTХФђUSЧС“Ф—РУУPђUИHЋBBBBBBBKKH][ИЩ€Ъ\ЫЫX]ќY[ЫЬЭ]\ИИ™HЫЫњЪY\™Y[€љ[ИќY[\ШYЩH[™™\]Y\ЭЮ\Э[B‚‚Q•QSФ‘TUQTХФђUSЧС“Ф—УSХ‘SQS•HЌBBBBBBBBKKH][ИЩ€Ъ\[Э™[Y[ќќY[ЫЬЭ]\ИИ™HЫЫњЪY\™Y[€ќY[\ШYЩH[™™\]Y\ЭЮ\Э[B‚T’SЧС•QSФ‘TUQTХФђUSЧС“Ф—УSХ‘SQS•HЊ‹BBBBBBBKKH][ИЩ€Ъ\[Э™[Y[ќќY[ЫЬЭ]\ИИ™HЫЫњЪY\™Y[€љ[ИќY[\ШYЩH[™™\]Y\ЭЮ\Э[B‚‚SђU–WРPХPSС•QSХTРQСWХСRQТУУ—УТSФ‘TUQTХHЌKBBBBKKHЩZYЪЩ€XЭX[ќY[\ШYЩHЩ€Ъ\ИЫЫ\\™YИЪ]\И™Z[™И\ЪЩY›Ь€Z\ЬЪ[ЫњИЪ[HШ[Э[][™ИЪ[™YYY›Ь€YB‚PRT—РPХPSС•QSХTРQСWХСRQТУУ—УТSФ‘TUQTХHЌKBBBBBKKHЩZYЪЩ€XЭX[ќY[\ШYЩHЩ€[™\ИЫЫ\\™YИЪ]\И™Z[™И\ЪЩY›Ь€Z\ЬЪ[ЫњИЪ[HШ[Э[][™ИЪ[™YYY›Ь€YB‚‚SSУ•ЧХЧС’SС•QSР•Q‘‘T—ХТUУТSФ‘TUQTХИH‹ЊBBBBKKH[€Ш\€[YKЫЭ]љY\ИЪ[ћHИљ[Z\€ќY™™\€[€\И\][Ы€[™YH›Ь€Ъ[Y€™XЩ\Ш\њћB‚SSУ•ЧХЧС’SС•QSР•Q‘‘T—ХТUУТSФ‘TUQTХЧТS—ФPPСWХSQHHLЊKH[€XXЩH[YKЫЭ]љY\ИЪ[ћHИљ[Z\€ќY™™\€[€\И\][Ы€[™YH›Ь€Ъ[Y€™XЩ\Ш\њћB‚‚Q•QSРУУ”ХSTSУ—УUSС“Ф—С•QSФРU’S‘ЧУSСHHЊЌKBBBKKHќY[ЫЫњЭ[\[ЫњИЪ[™H[Z]YћH\И][И[€ќY[Ш]љ[™И[ЩB‚Q•QSРУУ”ХSTSУ—УUSФ‘QХST—С•QSУSСHHKЊBBBBKKHќY[ЫЫњЭ[\[ЫњИЪ[™H[Z]YћH\И][И[€™YЭ[\€ќY[[ЩB‚Q•QSРУУ”ХSTSУ—УUSРQФ‘TФТU‘WС•QSУSСHHЛЊBBBKKHќY[ЫЫњЭ[\[ЫњИЪ[™H[Z]YћH\И][И[€YЩЬ™\ЬЪ]™HќY[\ШYЩH[ЩB‚‚QVTЧС•QSФ‘SPRS’S‘ЧХЧСS•T—С•QSФРU’S‘ЧУSСHHМBBBKKHЫЭ[ќљY\ИЪ[[ќ\€ќY[Ш]љ[™И[ЩHY€^HЪ[™HЭ]Щ€ќY[[€\Иќ[X™\€Щ€^\И[™Z\€ќY[][И\И™[ЭИ™^Yљ[™B‚QVTЧС•QSФ‘SPRS’S‘ЧХЧСS•T—С•QSФРU’S‘ЧУSСWС•QSФђUSИHЌ‚‚Q•QSФђUSЧХЧСVTХС•QSФРU’S‘ЧУSСHHЌЊBBBBKKHЫЭ[ќљY\ИЪ[^]ќY[Ш]љ[™И[ЩHY€^H]™H[Ь™HќY[][И[€\В‚‚‚‚‚UРS•QУPVС•QSР•Q‘‘T—ТS—СVTЧС“Ф—РT“VWУPVРУУ”ХSTSУ€HНЌKKHRHЪ[ћHИќY™™\€]X\Э\И[[Э[ќЩ€^\ИЫ€X^ЫЫњЭ[\[Ы‹Ъ[YHY€™XЩ\Ш\њћH[™Ъ[ЫИ[ќИќY[Ш]љ[™И[ЩKШYЩЬ™\Ъ]™H[ЩH\Ъ[™И\ИќY™™\‚‚UРS•QУPVС•QSР•Q‘‘T—ТS—СVTЧС“Ф—РRT—УPVРУУ”ХSTSУ€H‹KHRHЪ[ћHИќY™™\€]X\Э\И[[Э[ќЩ€^\ИЫ€X^ЫЫњЭ[\[Ы‹Ъ[YHY€™XЩ\Ш\њћH[™Ъ[ЫИ[ќИќY[Ш]љ[™И[ЩKШYЩЬ™\Ъ]™H[ЩH\Ъ[™И\ИќY™™\‚‚UРS•QУPVС•QSР•Q‘‘T—ТS—СVTЧС“Ф—УђU–WУPVРУУ”ХSTSУ€HНЌKKHRHЪ[ћHИќY™™\€]X\Э\И[[Э[ќЩ€^\ИЫ€X^ЫЫњЭ[\[Ы‹Ъ[YHY€™XЩ\Ш\њћH[™Ъ[ЫИ[ќИќY[Ш]љ[™И[ЩKШYЩЬ™\Ъ]™H[ЩH\Ъ[™И\ИќY™™\‚‚SRS—ХРS•QУPVС•QSHLBBBBBBBBHKHZ[љ[][H[YH›Ь€Ш[ќYќY[ќY™™\њИ›Ь€RH
+[€Э\Ш[™КB‚‚QТQWУS‘УPTСWХЧФVQT—СVSWСTТT‘WР“У•TИHLKHRHЬЭ\И[Ь™HZЩ[HИXШЩ\[™X\ЩH™\]Y\ЭИњ›ЫHH^Y\‹‚‚‚SђUђSРђTСWФђUSЧРSРРUQС“Ф—Ф‘TRT”ИHЊЌKBBBKKHZHЪ[[ШШ]H][ЬЭ\И][ИЩ€ШЪЮX\™И›Ь€™\Z\њИ[€XXЩH[YB‚SђUђSРђTСWФђUSЧРSРРUQС“Ф—Ф‘TRT”ЧТS—ХРT—ХSQHHЌ‹KKHZHЪ[[ШШ]H][ЬЭ\И][ИЩ€ШЪЮX\™И›Ь€™\Z\њИ[€Ш\€[YB‚‚SPVС•QSРУУ”ХSTSУ—ФђUSЧС“Ф—РRT—ХђRS’S‘ИHЛBBKKHZHЪ[\ЩH][ЬЭ\И][ИЩ€Y™›Ь™X›HќY[›Ь€Z\€Z[љ[™В‚B‚PRWФТTФХРTУRS—СSPQСQФТTИH‹BBBBBBKKHZ[љ[][Hќ[X™\€Щ€[XYЩYЪ\И[€H\ЪЩ›ЬЩH™Y›Ь™HRHЫЫњЪY\њИЭШ\[™И[HИ™\Щ\ќ™\В‚PRWФТTФХРTСSPQСWХ‘TТУHЊМЛBBBBBKKH\‹\Ъ\Э™[™Э™\ЪЫ™[ЭИЪXЪHRHЫЫњЪY\њИHШ\][ШШ\њљY\€[XYЩY[›ЭYЪИЭШ\И™\Щ\ќ™\В‚PRWФ‘TRT—РРSђСSУRS—ФХ‘S‘ХHЌНKBBBBBKKHRHЪ[[›Ы‹\™\Щ\ќ™H\ЪИ›ЬЩ\ИЭ]Щ€™\Z\€[™XЪИЫ€Z\ЬЪ[Ы€ЫЩH^H™XXЪ\ИЭ™[™Э‚PRWФХT‘ђPСWРУУPђUС•QSФђUSИHЌМBBBBBKKHњXЭ[Ы€Щ€]ћHќY[™\Щ\ќ™Y›Ь€Э\™XЩHЫЫX]
+]›ЫЛЭљZЩH›ЬЩ\ЛЫZ[[ЩJB‚PRWРУУ•“ЦWСQ‘S”СWС•QSФђUSИHЊMKBBBBBKKHњXЭ[Ы€Щ€]ћHќY[™\Щ\ќ™Y›Ь€ЫЫќ›ЮH\ШЫЬќИ
+™[XZ[љ[™ИЫЩ\ИИЫЫќ›ЮHZY[™КB‚B‚SPVС•QSРУУ”ХSTSУ—ФђUSЧС“Ф—УђU–WХђRS’S‘ИHЌЊBKKHZHЪ[\ЩH][ЬЭ\И][ИЩ€Y™›Ь™X›HќY[›Ь€][Z[љ[™В‚‚SPVС•SWХђRS‘QФТTФђUSЧС“Ф—ХђRS’S‘ИHЌЛBBKKHZHЪ[›ЭZ[€H\ЪЩ›ЬЩHY€ќ[HZ[™YЪ\И\™HX›Э™H\И][В‚‚S•SWФТSФЧФT—РТU’SPS—СђPХФ’QTИHЊЌKBBBBKKHZHЪ[ћHИќZ[HЪ[И\€\И][ИЩ€Ъ]€XЭЬљY\В‚S•SWФТSФЧФT—УRSUT–WСђPХФ’QTИHЊL‹BBBBKKHZHЪ[ћHИќZ[HЪ[И\€\И][ИЩ€Z[XЭЬљY\В‚S•SWФТSФЧФT—СРТЦPT‘ИHЊ‹BBBBBBBKKHZHЪ[ћHИќZ[HЪ[И\€\И][ИЩ€ШЪЮX\™В‚‚TТTФХ—ФђUSЧФUУУ—Ф‘TRT”ИHЋBBBBBKKHY€Ъ\И\™H[XYЩY™[ЭИ\И][Л^H\™H]›Ь€™\Z\њВ‚TТTФХ—ФђUSЧСVUФ‘TRT”ИHKЊBBBBBBKKHHЪ\ИЪ[X]™H™\Z\њИY€^H\™HЏH\И][ИЩ€Э[Э‚‚T‘TRT—ХTТС“ФђСWФТV‘HHBBBBBBBBKKH™\Z\€\ЪЩ›ЬЩHЪ^™\И\™H[Z]YИ\ИX[ћHЪ\В‚TS—ХђSQWР“У•TЧС“Ф—УSХ’S‘ЧХS’UИHЊЌKBBBBKKHRH[њИЩ]ИH›Ыќ\ИЪ[€[љ]И\™H›Э[Эљ[™И[™™XYHИљYЪ‚PQСФ‘TФТU‘S‘TФЧР“У•TЧС“Ф—С”“У•ЧХUРT‘WУУ—ТQТРQСФ‘TФТU‘S‘TФВOHLЌKKHRHЩ]ИH›Ыќ\ИИYЩЬ™\Ъ]™[™\ЬИY€]\И[™XYH^XЭ][™И[€YЩЬ™\ЬЪ]™H[€
+ЭЩ\€\И[Ь™HYЩЬ™\ЬЪ]™JB‚PQСФ‘TФТU‘S‘TФЧРТPТЧРђTСHHKЌBBBBBBKKHњ›ЫќЫЫ\\љ\ЫЫ€Ъ\™HZHЪ[ЫЫњЪY\€YЩЬ™\ЬЪ]™HЭ[ЩK[›\ЬИ]\И[™XYH[€Hќ[X™\€X›Э™H\И\ЩY‚PQСФ‘TФТU‘S‘TФЧРТPТЧСPTЦWХT‘СUHLЌЛBBBBKKHY€\™Щ]][Ы€\И›YЩЩY\ИX\ЮH\™Щ]ЩH[ЫИYќ\ЭЭЫ€Hњ›ЫќЫЫ\\љ\ЫЫ€™YYY‚PQСФ‘TФТU‘S‘TФЧРТPТЧРРT‘Q•SHЌЌKBBBBBBKKH]Ъ]њ›ЫќЭ™[™Э[[ЩHИЩHЫИШ\™Yќ[‚PQСФ‘TФТU‘S‘TФЧРТPТЧФT•WС“Ф•Q’QQHKЋBBBKKHY€њ›ЫќЭ™[™Э[[ЩH\И]Ь€X›Э™H\И[YH™\њЭ\ИH\ќH›ЬќYљYY[™[^KЩHИH[[ЩY]XЪВ‚PQСФ‘TФТU‘S‘TФЧРТPТЧФT•WС“Ф•Q’QQХСPRЧФТS•ИHЌ‹KKHY€њ›ЫќЭ™[™Э[[ЩH\И]Ь€X›Э™H\И[YH™\њЭ\ИH\ќH›ЬќYљYY[™[^KЩHќ\Ъ]XЪИЩXZИЪ[ќОИ™[ЭИ\И[YKЩH\™HШ\™Yќ[‚PQСФ‘TФТU‘S‘TФЧРТPТЧС•SWС“Ф•Q’QQHBBBBKKHY€њ›ЫќЭ™[™Э[[ЩH\И]Ь€X›Э™H\И[YH™\њЭ\ИHќ[H›ЬќYљYY[™[^HЪ]›ИЩXZИЪ[ќЛЩHИH[[ЩY]XЪИ[њЭXY™Z[™ИШ\™Yќ[‚PQСФ‘TФТU‘S‘TФЧРТPТЧС•SWС“Ф•Q’QQФРТСUHЛBBKKHY€њ›ЫќЭ™[™Э[[ЩH\И]Ь€X›Э™H\И[YH™\њЭ\ИHќ[H›ЬќYљYY[™[^H[€HШЪЩ]ЩHИH[[ЩY]XЪИ[њЭXY™Z[™ИШ\™Yќ[‚Q”“У•СUђSХS’UРPРХTђPЦHHKЊBBBBBBBKKHШШ[HЭИЭ\YZHЪ[XЭЫ€њ›ЫќЛ€\ИЭ]В‚Q”“У•СUђSХS’UРRT—ФХTТSTPХHKЊKHШШ[HЭИЫЫЩHRH[љЬИZ\€Э\\љ[Ьљ]H\И›Ь€[љ]В‚Q”“У•СUђSХS’UФХTWРS‘УФ‘ЧУPТЧТSTPХHKЊBBKKHШШ[HЭИZ[™ќ[HRH[љЬИHЫЫXљ[™YXЪИЩ€Э\H[™Ь™Ш[љ^][Ы€\И›Ь€[љ]В‚Q”“У•СUђSФTђСS•ХЧРTФТTХРSWС”“У•HЊMKBBBKKH\Щ[ќYЩHЩ€ЭИX[ћH[љ]ИHRH[љЬИ]ЪЭ[]™HЫЫ\\™YИ[€[H™Y›Ь™HЫЫњЪY\љ[™ИЩ[™[™И[љ]В‚‚T“СPХSУ—РРT”’QT—ФS‘WР•Q‘‘T—ФђUSИHKЌKBBBKKH[€Y][Ы€ИЭ[XЪИЪ^™HЩ€Ш\њљY\њЛЩHШ[ќ]X\Э\И][ИИќY™™\€]‚T“СPХSУ—РРT”’QT—ФS‘WФ“СPХSУ—Р“УФХХЧР•Q‘‘T€HЊKH›ЩXЭ[Ы€Щ€Ш\њљY\€[™\ИЪ[ЫИ\ћH\И][ИY€ЩHXЪИќY™™\њВ‚‚‚SђUђSУPVРУУ•“ЦWХЧТS•SС“Ф—РУУ•“ЦWФђRQИHЊKHќ[X™\€Щ€ЫЫќ›Ю\И[€™YЪ[Ы€Ъ[™HЫ[\YИ\ИX^[ћ][™И[Ь™HЪ[™HYЫ›Ь™YЪ[H\ЬЪYЫљ[™ИZYВ‚QVђWУђU–WТS•SС“Ф—РУУ•“ЦWФђRQS‘ИHЊKH\И[[Э[ќЩ€[ќ[\ИYYИ]ћH[ќ[Ъ[HZH\И\ЬЪYЫљ[™ИЫЫќ›ЮHZY[™ИZ\ЬЪ[Ы‚‚RS•SУ‘QQQХЧУ‘QРU‘WРУУ•“ЦWРУХS•Ф‘QPХSУ€HЊKH]ћH[ќ[\И]љYYћH\И][ИИ™YШ]HђUђSРУУ•“ЦWРУХS•ТS•SС“ФС‘—СQWХЧУХЧСPЦTSУ‚‚SђUђSРУУ•“ЦWРУХS•ТS•SС“ФС‘—СQWХЧУХЧСPЦTSУ€HЊKHЫ€ЭЩ\Э]ћH[ќ[ZHЫЫ‰Э™HX›HИЩYH[™[^HЫЫќ›Ю\ИЭЩ\€[€\И][В‚‚PУУ•“ЦWФђRQФРУФ‘WС”“УWРУУ•“ЦWТS•SQСSђСHHKBBHKHXXЪЫЫќ›ЮH[ќ[YЩ[™ЩHЪ[[ЩX\ЩHZYШЫЬ™HћH\В‚‚PRT—РRWСS‘SVWФ“Х—ФђUSЧС“Ф—РУУPђUФ‘QТSУ€HЊMKBBHKHY€H™YЪ[Ы€\И[Ь™H[€\И][ИЩ€›Эљ[Щ\ИЫЫќ›ЫYћH[™[^KRHЪ[ЫЫњЪY\€]\ИHЫЫX]›Ы™HЪ[H\ЬЪYЫљ[™И[™\В‚‚T‘TСPTђТУUSWСРХ’S‘WФРУФ‘HHЊЛKHШЫЬ™H[[HИ™\ЩX\ЪYЫ€][\HШЭљ[™\И]ЫЩH›Ь€RB‚PУУ•“ЦWСTРУФ•ФРУФ‘WС”“УWРУУ•“ЦTИHMKKHШЫЬ™H›Ь€XXЪЫЫќ›ЮH[ЭH]™H[€\™XB‚PУУ•“ЦWСTРУФ•УUSС”“УWУ“ЧРУУ•“ЦTИHHKHШЫЬ™H][\Y\€Ъ[€›ИЫЫќ›Ю\И\™H\›Э[™‚PУУ•“ЦWФђRQУRS—СS‘SVWХ‘PUHЊK‚‚TђRSРVWСХS—Ф“СPХSУ—РђTСWСU’TТSУ”ЧФђUSЧФTђСS•HKKH\ЩH][ИЩ€\Ъ\™YZ[Ш^HЭ[њИИ]љ\Ъ[ЫњИ›Ь€RH
+HYX[њИIJK€Ш[€™H[ЩYљYYћHZ[Ш^WЩЭ[њЧЩ]љ\Ъ[ЫњЧЬ][ИRHЭ]YЮH[YB‚TђRSРVWСХS—Ф“СPХSУ—УRS—СU’TУУ”ИHЊBBBBKKHZ[љ[][H™\]Z\™Yќ[X™\€Щ€]љ\Ъ[ЫњИ›Ь€HRHИЫЫњЪY\€›ЩXЪ[™ИZ[Ш^HЭ[њВ‚TђRSРVWСХS—Ф“СPХSУ—УRS—СђPХФ’QTИHLBBBBKKHZ[љ[][H™\]Z\™Yќ[X™\€Щ€Z[]\ћHXЭЬљY\И›Ь€HRHИЫЫњЪY\€›ЩXЪ[™ИZ[Ш^HЭ[њВ‚TђRSРVWСХS—ФT—РT“VWРРTHKBBBBBBBKKHX^[][HZ[Ш^HЭ[њИ\ЬЪYЫ™YИЫ™H\›^H›Ь€HRB‚TђRSРVWСХS—РTФТQУ“QS•ФРУФ‘WХS’UУХS•УUSTQT€HLЊKKHШЫЬ™H][\Y\€›Ь€]›Ьљ[™ИЬ™\њИЬ›Э\ИЪ][Ь™H[љ]ИЪ[€\ЬЪYЫљ[™ИZ[Ш^HЭ[њВ‚TђRSРVWСХS—РTФТQУ“QS•ФРУФ‘WТУHЊBBBBBKKHШЫЬ™H›Ь€ЩY\[™ИЭ\њ™[ќ\ЬЪYЫ›Y[ќЪ[€\ЬЪYЫљ[™ИZ[Ш^HЭ[њВ‚‚SPVХS’UФђUSЧС“Ф—ТS•ђTТSУ”ИHЌKHЫЭ[ќљY\ИЫЫ‰Э\ЩH\›ZY\И[Ь™H[€\И][ИЩ€Э[[љ]И›Ь€[ќ\Ъ[ЫњВ‚SRS—ХS’UФђUSЧС“Ф—ТS•ђTТSУ”ИHЊKKHЫ‰Э[ШШ]H[Ь™H]љ\Ъ[ЫњИ[€\И›Ь€][[ќ\Ъ[ЫњВ‚SPVТS•ђTТSУ—С”“У•ФРУФ‘HHЌKHX^ШЫЬ™H›Ь€][[ќ\Ъ[Ы€њ›ЫќШЫЬ™\В‚SRS—С”“У•ФРУФ‘WС“Ф—РQ•T—ТS•ђTТSУ—РT‘PTИHMLBBKKHZ[€ШЫЬ™H›Ь€\›^Hњ›ЫќИ]\™HЬ™X]YЫ€™XЩ[ќH[ќYY™YЪ[ЫњВ‚‚SRS—РУУ•“ЦWСQ‘’PТQSђЦWХЧРРSђСSХђQTИHЌBBBKKHZ[€Y™љXЪY[ЮH
+YHИЫЫќ›ЮHZY
+HИШ[Щ[Y\В‚SRS—РУУ•“ЦWСQ‘’PТQSђЦWХЧФХT•ХђQTИHЌ‹BBBKKHZ[€Y™љXЪY[ЮH
+YHИЫЫќ›ЮHZY
+HИЭ\ќ™HX›HИY\В‚SRS—РУУ•“ЦWСQ‘’PТQSђЦWФT—ХРT—ФХTФ•ТUHЌ‹BBKKH\Щ[ќYЩHЩ€Ш\њЭ\Ьќ][ЭHЩ]\И][\YYћH\И[YH[™YYИZ[€ЫЫќ›ЮHY™љXЪY[ЪY\В‚‚SђUђSТS•ђQQРT‘PWФ’SЧСTђUSУ€HLBBBBBBBKKHYќ\€ЭXШЩ\ЬЩќ[[ќ\Ъ[Ы‹RHЪ[љ[ИH[™[^H\™XH›Ь€\Иќ[X™\€Щ€^\В‚SђUђSТS•ђQQРT‘PWФ’SЧУUSHKЊ‹BBBBBBBBKKHњ›ЫќИ]™[Ы™ЬИИ™XЩ[ќ[ќ\Ъ[ЫњИЩ]И[Ь™Hљ[В‚SRS—У•SWРУУ”UQT‘QФ“Х’SђСTЧХЧСT’SЧУђUђSТS•ђQQС”“У•ИHLKKHY€[ЭHЫЫњ]Y\€\И[[Э[ќЩ€›Эљ[Щ\ИYќ\€H][[ќ\Ъ[Ы‹]Ъ[ЬЩH]Иљ[ИЭ]\И[™Ъ[XЭ\ИH™YЭ[\€њ›Ыќ‚‚RS•ђTТSУ—ХT‘СUСTХSђСWСS“УRSђUФ€HLKHЪ[€Щ[XЭ[™И[ќ\Ъ[Ы€\™Щ]]љYH\ИЪ]
+^[
+H\Э[ЩHИЩ]\Э[ЩHШЫЬ™HXЭЬ‹€
+Щ\Ы‰Э™X[HY™™XЭH™[]]™HШЫЬљ[™Лќ]]Y™™XЭИH[™X\љ]HЩ€HШЫЬ™Hќ[Э[Ы‹ЉB‚RS•ђTТSУ—ХT‘СUУ“ЧФФ•СђPХФ€HЊЛKHЪ[€Щ[XЭ[™И[ќ\Ъ[Ы€\™Щ]][\HШЫЬ™HЪ]\ИY€H\™Щ]\И›ИЬќ‚RS•ђTТSУ—ХT‘СUХ•SђРUSУ—ФСSPХХ‘TТУHKЊKHЪ[€Щ[XЭ[™И[ќ\Ъ[Ы€\™Щ]\ЩH\И™\ЪЫ›Ь€ќ[Ш][Ы€Щ[XЭ[Ы‹€
+KЊYX[њИЩ[XЭYЪ\ЭШЫЬ™Y\™Щ]ЊYX[њИЩ[XЭ[™Ы[Hњ›ЫH[ЬЬЪX›H\™Щ]ЌHYX[њИЩ[XЭ[™Ы[Hњ›ЫH[\™Щ]ИЪ][Ь™H[€L	HЩ€YЪ\ЭШЫЬ™JB‚RS•ђTТSУ—ХT‘СUФ’SЧУ“ХСS‘SVWСђPХФ€HЊMKKHЪ[€Ш[Э[][™Иљ[Ьљ]H›Ь€[€[ќ\Ъ[Ы‹XЭЬ€HШЫЬ™HЪ]\ИY€H\™Щ]\И›Э[€XЭX[[™[^K‚‚QђRSQТS•ђTТSУ—РU“ТQСTђUSУ€HЊKHYќ\€HZ[Y[ќ\Ъ[Ы‹RHЪ[ЭЫ‹\љ[Ьљ]^™H[ќY[™ИHШ[YH\™XHYШZ[€›Ь€\Иќ[X™\€Щ€^\В‚QђRSQТS•ђTТSУ—РT‘PWФ’SЧСђPХФ€HЊЌKKH›Ь€]™\ћHZ[Y[ќ\Ъ[Ы€Ы€[€\™XKXЭЬ€]\™XIЬИ[ќ\Ъ[Ы€љ[ИЪ]\И[YB‚QђRSQТS•ђTТSУ—ФФ•Ф’SЧСђPХФ€HЊМЛKH›Ь€]™\ћHZ[Y[ќ\Ъ[Ы€Ы€H\™Щ]Ьќ
+›Эљ[ЩJKXЭЬ€HЪ[ЩH]ЩHћHИ[ќYH]Ш[YHЬќYШZ[€
+™[]]™HИЭ\€ЬќКB‚‚P•RSS‘ЧХT‘СUЧР•RSS‘ЧФ’SФ’UQTИHВBBBKKHќZ[[™ЬИ[€Ь™\€Щ€\›Ьљ]HЪ[€ЫЫњЪY\љ[™ИќZ[[™И\™Щ]ИЭ]YЪY\Л€љ\њЭ\ИHЬ™X]\Эљ[Ьљ]KЫZ]Y\ИHЭЩ\Э€“ХN€›Э[ќZ[[™ЬИ\™HЭ\ЬќYћHќZ[[™И\™Щ]ИЭ]YЪY\Л‚‚BIЪ[™њ\ЭќXЭ\™IЛ‚BIЫќXЫX\—Ь™XXЭЬ‰Л‚BIЫќXЫX\—Ь™XXЭЬ—ЪX]ћWЭШ]\‰Л‚BIЬЮ[ќ]XЧЬ™Yљ[™\ћIЛ‚BIШ\›\ЧЩXЭЬћIЛ‚BIЪ[™\ЭљX[ШЫЫ\^	Л‚_K‚‚SRS—ТS•ђTТSУ—ФS—ХђSQWХЧСVPХUHHЊЛBBBKKHZHЪ[Ы›HXЭ]]H[ќ\Ъ[ЫњИY€[€[YH\ИX›Э™H\В‚SRS—ТS•ђTТSУ—УФ‘ЧСђPХФ—ХЧСVPХUHHЌЛBBBKKHZHЪ[Ы›HXЭ]]H[ќ\Ъ[ЫњИY€]™\YЩHЬ™ИXЭЬ€\ИX›Э™H\В‚SRS—ТS•ђTТSУ—ХS’UЧФ‘PQWХЧСVPХUHHЋKKHZHЪ[Ы›HXЭ]]H[ќ\Ъ[ЫњИY€\И][ИЩ€\ЬЪYЫ™Y[љ]И\™H™XYB‚RS•ђTТSУ—ХS’UЧФ‘PQWРUУRS—ФS€HЌНKKH[љ]И™XYH][И™\]Z\™YЪ[€[€[YH\И]Z[љ[][H™\ЪЫ‚RS•ђTТSУ—ХS’UЧФ‘PQWРUУPVФS€HЊЌKKH[љ]И™XYH][И™\]Z\™YЪ[€[€[YH\И™\ћHYЪ
+KЊ
+КB‚SPVТS•ђTТSУ—ФТV‘HHЊBBBBBBBBKKHX^[ќ\Ъ[Ы€Ь›Э\Ъ^™B‚‚SPVФФ•ФХ’RСWТTХФ–WХЧФ‘SQSP‘T€HLBBBKKHX^[][HЬќЭљZЩH\ЭЬћHИЩY\XЪИ
+Ъ[™H\ЩYИ\ШX›HЬќВ‚TФ•ФХ’RСWТTХФ–WСPРVWУRS€HLBBBBBKKHZ[љ[][HXШ^H›Ь€ЬќЭљZЩH\ЭЬћH
+И^\ИЪ[ЩH\ЭЬќЭљZЩJB‚TФ•ФХ’RСWТTХФ–WСPРVWУPVHBBBBKKHX^[][HXШ^H›Ь€ЬќЭљZЩH\ЭЬћH
+ЏLНИ^\ИЪ[ЩH\ЭЬќЭљZЩJB‚SPVФФ•ФђUSЧХЧСTРP“HHЋBBBBBKKHX^][ИЩ€ЬќИИ\ШX›HYHИЬќЭљZЩ\В‚TФ•ФХ’RСWТTХФ–WХђSQWХЧСTРP“WФ‘TRT”ИHЊBKKHЭ]Щ™€›Ь€\ШX›[™ИЬќИX›Э™H\И™\ЪЫ‚TФ•ФХ’RСWТTХФ–WХђSQWХЧФ‘QSђP“WФ‘TRT”ИHLKHЭ]Щ™€›Ь€™Y[X›[™ИЬќИ›Щ]И\И™\ЪЫ‚‚‚PХT”‘S•УUЧФРУФ‘WР“У•TИHLЊBBBBBBKKHЭ\њ™[ќШЫЬ™HЪ[Щ][€Y][Ы[›Ыќ\ИИ]ИZHЩZYЪ‚KKH\ЩH[Y\И\™H\ЩY›Ь€ZWЩ\Ъ\™WИ\љXX›\И]\™H\ЩYШШЭ\][Ы€]ИЩ[XЭ[Ы‚‚SТSХРS•ФT—ФХS•PSУS‘РУУ”ХSTSУ—ТИHЊKKKHЭИ]XЪ^HЪ[™\]Y\ЭYЫ€ЬЩ€[[ЩH›Ь€ЫЭ[ќћIЬИЭ[ќX[Ъ[ЫЫњЭ[\[ЫњВ‚SТSХРS•ФT—ФХS•PSУђU–WРУУ”ХSTSУ—ТИHЊЛ‚SТSХРS•ФT—ФХS•PSРRT—РУУ”ХSTSУ—ТИHЊЛ‚SТSХРS•ФT—ФХS•PSУRTРЧРУУ”ХSTSУ—ТИHЊK‚SТSХРS•РUФPPСWФT—ФХS•PSУS‘РУУ”ХSTSУ—ТИHЊ‹‚SТSХРS•РUФPPСWФT—ФХS•PSУђU–WРУУ”ХSTSУ—ТИHЊ‚SТSХРS•РUФPPСWФT—ФХS•PSРRT—РУУ”ХSTSУ—ТИHЊ‚SТSХРS•РUФPPСWФT—ФХS•PSУRTРЧРУУ”ХSTSУ—ТИHЊK‚T‘TУХTђСWХРS•ФT—УRTФТS‘ЧРђSSђСHHЊ‹BBBBKKH™YШ]]™H[[ЩH[Ь™X\Щ\ИH\Ъ\™HЫ€H™\ЫЭ\ЩB‚T‘TУХTђСWХРS•ФT—РУУ”ХSQQHЊKBBBBBBKKHY€™\ЫЭ\ЩH\И™Z[™И\ЩY[€›ЩXЭ[Ы‹[Ь™X\ЩHH\Ъ\™B‚KKH™[™‚‚KKHЬћ\ИZHШ[Э[]\ИHШЫЬ™H	€H™\ЪЫ›Ь€XXЪЬXЪЩYЬћ\В‚KKHY€ШЫЬ™H€Ьћ\Л]XЭ]]\ИHЬћ\В‚PФ–TЧРPХUђUSУ—Х‘TТУHKЊMKBBBKKHЪ[][\HЬћ\ИXЭ]][Ы€™\ЪЫ€\™Щ\‚‚‚PФ–TЧРPХUђUWУ•SWСVTЧС“ФУС‘€HЌBKKHЫ™Щ\€XЬћ\YЬћ\ИШZ]ЛЭЩ\€™\ЪЫ]Ъ[]™K€™\ЪЫЪ[™H][\YYћH\И[YH][ЬЭ‚PФ–TЧРPХUђUWУ•SWСVTЧСPРVHHЊBBKKH]\Иќ[X™\€Щ€^\Л]Ъ[XШ^HћH	MLЩ€™]€Yљ[™B‚‚PФ–TЧРPХUђUWУ•SWРPХUђUQС“ФУС‘€HЌ‹BBBKKH]љ[™И[€[™XYHXЭ]]YЬћ\ЬИЪ[ќ\ќ\€][\H™\ЪЫЭЫ€И\И[YB‚‚PФ–TЧРPХUђUSУ—ФРУФ‘WРT“RQTЧТS—РУУPђUР“У•TИHЊ‹BKKH]љ[™И[љ]И[€ЫЫX]Ъ[[Ь™X\ЩHHШЫЬ™HћH\И][В‚PФ–TЧРPХUђUSУ—ФРУФ‘WУХT—РРTUSР“У•TИHЊ‹BBKKHњ›ЫќИЩ€Э\€Ш\][Щ]H›Ыќ\ИћH\И][В‚PФ–TЧРPХUђUSУ—ФРУФ‘WСS‘SVWРРTUSР“У•TИHЊ‹BBKKHњ›ЫќИЩ€[™[^HШ\][Щ]H›Ыќ\ИћH\И][В‚PФ–TЧРQ•T—ФРУФ‘WТS•ђTТSУ—С”“У•Р“У•TИHKЊBBBKKHHњ›Ыќ]\И][[ќY[™ИЪ[[Ь™X\ЩHHШЫЬ™HћH\И][В‚KKHЬћ\ИZB‚‚SPVУSСST—СTURTQS•СTURTQS•ХTФђQWРУХS•ФT—ФTФИHKHHX^[][Hќ[X™\€Щ€]™[RHЪ[ћHИYИ[€\]Z\Y[ќ\ЬYHЩ€[€\]Z\Y[ќYљ[™Y[€ЫЫ[[Ы‹ШZWЩ\]Z\Y[ќ[€Ы™H\ЬВ‚‚QTURTQS•ХTФђQWХђT’PS•УPUТФРУФ‘WСђPХФ€HЊ‹KHHЩZYЪЩ€\]Z\Y[ќ\ЬYH]™[Ъ[€ЫЫ\][™ИHX]ЪШЫЬ™HЩ€H\љX[ќИ[€ZH\]Z\Y[ќ\ЪYЫ‹‚‚‚PRWХTUWФ“УTЧС”‘TUQSђЦWТХT”ИHИKH\]HH›Ы\И›Ь€HЫЭ[ќћHRH\ИЩќ[€
+Y™™XЭИ\™›Ь›X[ЩJB‚PRWУђUђSСУРSЧХTUWС”‘TUQSђЦWСVTИHОИKH™YЩ[™\]H][RHШљ™XЭ]™\И\ИЩќ[€[€^\И
+Y™™XЭИ\™›Ь›X[ЩJB‚‚UTUWФХTWР“ХS‘PТФЧС”‘TUQSђЦWТХT”ИHMЋИKHЪXЪИ›Ь€[™ћHИљ^Э\H›Э[™XЪЬИ\ИЩќ[‹€
+MЋЭ\њИHHЩYZКB‚Q’VФХTWР“ХS‘PТЧФРUTђUSУ—Х‘TТУHЌНNИKHћHИљ^Э\H›Э[™XЪЬИY€Э\H›ЩHШ]\][Ы€^ЩYYИ\И[YK‚‚‚UTUWФХTWУSХФ’VђUSУ—С”‘TUQSђЦWТХT”ИHЊИKHЪXЪИY€XЭ]][™И[ЭЬљ^][Ы€ЫЭ[[\›Э™HЭ\HЪ]X][Ы€\ИЩќ[‹‚‚‚PRWФ‘Q‘T”‘QХPХPЧХСQRУWРТS‘СWРТSђСHHЊKKKHЪ[ЩH›Ь€RHИЩ[XЭH™]И™Y™\њ™YXЭXИY€^HЫ‰Э]™HЫ™HЩ[XЭY‚‚KKHЭ\ќ€\ЬЪYЫљ[™ИXY\њИИ\›ZY\В‚PT“VWУPQT—РTФТQУ—ТСQTРХT”‘S•УPQT—СђPХФ€HЛЊKH›ЫЬЭИHШЫЬ™H›Ь€ЩY\[™ИHЭ\њ™[ќXY\‹€[YH€KЊ]›ЬњИHЭ\њ™[ќXY\‹‚‚PT“VWУPQT—РTФТQУ—СУ•ФХPSУХT—СђPХФ€HЊ‹KH™YXЩ\ИHШЫЬ™H›Ь€XY\њИ\ЬЪYЫ™Y[Щ]Ъ\™K€[YHKЊ\ШЫЭ\YЩ\И™X\ЬЪYЫљ[™И\ЩHXY\њЛ‚‚PT“VWУPQT—РTФТQУ—С’QSУPT”ТSХЧРT“VHHЌKKHШЫЬ™H›Ь€\ЬЪYЫљ[™ИHљY[X\њЪ[ИH›Ь›X[\›^H
+Ш[ќИ\ЩH[H›Ь€\›^HЬ›Э\КB‚PT“VWУPQT—РTФТQУ—СSTS‘TФЧУPSTИHЊMKKHXЭЬ€›Ь€]›ЪY[™И\ЬЪYЫљ[™ИXY\њИ]Ш[€XY\™ЩH\›ZY\ИИЫX[\›ZY\И
+H[YHЩ€Њ€™YXЩ\ИHШЫЬ™HћHX^Њ	JB‚PT“VWУPQT—РTФТQУ—УХ‘TђРTPТUHHLЊKHШЫЬ™H›Ь€\ЬЪYЫљ[™ИXY\€ИHЫИ\™ЩH\›^B‚PT“VWУPQT—РTФТQУ—УХ‘TђSФТТSСђPХФ€HLKH\И[Y\ИЩ[™\[	ЬИЭ™\[ЪЪ[\ИYYИШЫЬ™B‚PT“VWУPQT—РTФТQУ—СQ‘S”СWУХ‘TђSФТТSСђPХФ€HLKHY€Y™[њЪ]™H\›^K\И[Y\ИЩ[™\[	ЬИЭ™\[ЪЪ[\ИYYИШЫЬ™B‚PT“VWУPQT—РTФТQУ—СQ‘S”СWРUPТЧФТТSСђPХФ€HЛKHY€Y™[њЪ]™H\›^K\И[Y\ИЩ[™\[	ЬИ]XЪИЪЪ[\ИYYИШЫЬ™B‚PT“VWУPQT—РTФТQУ—СQ‘S”СWСQ‘S”СWФТТSСђPХФ€HЊKHY€Y™[њЪ]™H\›^K\И[Y\ИЩ[™\[	ЬИY™[њЩHЪЪ[\ИYYИШЫЬ™B‚PT“VWУPQT—РTФТQУ—СQ‘S”СWУСТTХPФЧФТТSСђPХФ€HЛKHY€Y™[њЪ]™H\›^K\И[Y\ИЩ[™\[	ЬИЩЪ\ЭXЬИЪЪ[\ИYYИШЫЬ™B‚PT“VWУPQT—РTФТQУ—СQ‘S”СWФS“’S‘ЧФТТSСђPХФ€HЛKHY€Y™[њЪ]™H\›^K\И[Y\ИЩ[™\[	ЬИ[›љ[™ИЪЪ[\ИYYИШЫЬ™B‚PT“VWУPQT—РTФТQУ—ТS•ђTТSУ—РUPТЧФТТSСђPХФ€HLKHY€[ќ\Ъ[Ы€\›^K\И[Y\ИЩ[™\[	ЬИ]XЪИЪЪ[\ИYYИШЫЬ™B‚PT“VWУPQT—РTФТQУ—ТS•ђTТSУ—СQ‘S”СWФТТSСђPХФ€HLKHY€[ќ\Ъ[Ы€\›^K\И[Y\ИЩ[™\[	ЬИY™[њЩHЪЪ[\ИYYИШЫЬ™B‚PT“VWУPQT—РTФТQУ—ТS•ђTТSУ—УСТTХPФЧФТТSСђPХФ€HЊKHY€[ќ\Ъ[Ы€\›^K\И[Y\ИЩ[™\[	ЬИЩЪ\ЭXЬИЪЪ[\ИYYИШЫЬ™B‚PT“VWУPQT—РTФТQУ—ТS•ђTТSУ—ФS“’S‘ЧФТТSСђPХФ€HЊKHY€[ќ\Ъ[Ы€\›^K\И[Y\ИЩ[™\[	ЬИ[›љ[™ИЪЪ[\ИYYИШЫЬ™B‚PT“VWУPQT—РTФТQУ—РUPТЧФТТSСђPХФ€HЊKH\И[Y\ИЩ[™\[	ЬИ]XЪИЪЪ[\ИYYИШЫЬ™B‚PT“VWУPQT—РTФТQУ—СQ‘S”СWФТТSСђPХФ€HLKH\И[Y\ИЩ[™\[	ЬИY™[њЩHЪЪ[\ИYYИШЫЬ™B‚PT“VWУPQT—РTФТQУ—УСТTХPФЧФТТSСђPХФ€HЛKH\И[Y\ИЩ[™\[	ЬИЩЪ\ЭXЬИЪЪ[\ИYYИШЫЬ™B‚PT“VWУPQT—РTФТQУ—ФS“’S‘ЧФТТSСђPХФ€HЛKH\И[Y\ИЩ[™\[	ЬИ[›љ[™ИЪЪ[\ИYYИШЫЬ™B‚PT“VWУPQT—РTФТQУ—У”—ХђRUИHKH\И[Y\ИЩ[™\[	ЬИњ€Щ€XЭ]™HZ]И\ИYYИШЫЬ™B‚PT“VWУPQT—РTФТQУ—СVSQУPQЧСVSQХ“УФИHLKHY€^[YXY\‹[Ь™X\ЩHЪ[ЩHЩ€XY[™И\›^HЪ]^[Y›ЫЬВ‚PT“VWУPQT—РTФТQУ—СVSQУPQЧУХУ—СVSQХ“УФИHLKHY€^[YXY\‹[Ь™X\ЩHЪ[ЩHЩ€XY[™И\›^HЪ]^[Y›ЫЬИњ›ЫHШ[YHЫЭ[ќћH\ИHXY\‚‚PT“VWУPQT—РTФТQУ—ХТUђUЧСVTИHЛBBBBBKKHЩ[™\[Ъ[Ъ]]Ињ›ЫHHYќ\€]X[ћH^\ИЪ]Э][€Ь™\€HШ[€[™›Y[ЩH
+њ›Ыќ[™HЬ€][[ќ\Ъ[ЫЉB‚PT“VWУPQT—УRS—СU’TТSУ”ЧС“Ф—ТHHBBBBBKKH\›^H]\ЭЫЫќZ[€]X\Э\ИX[ћH]љ\Ъ[ЫњИ™Y›Ь™HHRHЪ[\ЮH[€H[љ]›Ь€]‚SPVСTЦQQРT“VWТTИHBBBBBBBBKKHRHЪ[›Э\ЮH[Ь™H[€\ИX[ћH\›^H\И]ЫЩB‚SPVРРTT‘QССS‘TђSЧХЧФХФТWСTЦHHMKBBBKKHRHЭЬИ\ЮZ[™И™]И\›^H\ИЫЩH\ИX[ћHЩ€]И\›^HXY\њИ\™HШ\\™Y‚‚KKHH›ЫЭЪ[™ИYљ[™\ИЫЫЩ\›€HЩ[™\[	ЬИ[ЩYљY\њВ‚PT“VWУPQT—РTФТQУ—СQ‘S”СWУPVСQЧТS—СђPХФ€HKЊKHY€Y™[њЪ]™H\›^K[\Ьќ[ЩHЩ€Щ[™\[	ЬИPVСQЧТS—СђPХФ€[ЩYљY\‚‚PT“VWУPQT—РTФТQУ—СQ‘S”СWРT“VWРT“SФ—СQ‘SђСWСђPХФ€HKЊKHY€Y™[њЪ]™H\›^K[\Ьќ[ЩHЩ€Щ[™\[	ЬИT“VWРT“SФ—СQ‘SђСWСђPХФ€[ЩYљY\€
+›ЬЬќ[Ы[И\›[Ь€][И[€H\›^JB‚PT“VWУPQT—РTФТQУ—ФS“’S‘ЧФФQQHЊKKH[\Ьќ[ЩHЩ€Щ[™\[	ЬИS“’S‘ЧФФQQ[ЩYљY\‚‚PT“VWУPQT—РTФТQУ—УPVФS“’S‘ИHЊKKH[\Ьќ[ЩHЩ€Щ[™\[	ЬИPVФS“’S‘И[ЩYљY\‚‚PT“VWУPQT—РTФТQУ—Ф‘PУУ—СђPХФ€H‹ЊKH[\Ьќ[ЩHЩ€Щ[™\[	ЬИ‘PУУ—СђPХФ€[ЩYљY\‚‚PT“VWУPQT—РTФТQУ—УХUУС—ФХTWСђPХФ€HKЊKH[\Ьќ[ЩHЩ€Щ[™\[	ЬИХUУС—ФХTWСђPХФ€[ЩYљY\‚‚PT“VWУPQT—РTФТQУ—ХТS•T—РU’USУ—СђPХФ€HKЊKH[\Ьќ[ЩHЩ€Щ[™\[	ЬИТS•T—РU’USУ—СђPХФ€[ЩYљY\‚‚PT“VWУPQT—РTФТQУ—РT“VWРT“SФ—ФФQQСђPХФ€HМЊKH[\Ьќ[ЩHЩ€Щ[™\[	ЬИT“VWРT“SФ—ФФQQСђPХФ€[ЩYљY\€
+›ЬЬќ[Ы[И\›[Ь€][И[€H\›^JB‚PT“VWУPQT—РTФТQУ—РT“VWРT“SФ—РUPТЧСђPХФ€HМЊKH[\Ьќ[ЩHЩ€Щ[™\[	ЬИT“VWРT“SФ—РUPТЧСђPХФ€[ЩYљY\€
+›ЬЬќ[Ы[И\›[Ь€][И[€H\›^JB‚PT“VWУPQT—РTФТQУ—Р“УФХРT“SФ—ФТТSHЌKЊKH[\Ьќ[ЩHЩ€Щ[™\[	ЬИZ]Ъ\™H\›[Ь€ЪЪ[\И›ЫЬЭYK™Л€\›[Ь—ЫЩ™љXЩ\€ЪXЪ›ЫЬЭИ[ћ™\—ЫXY\€
+›ЬЬќ[Ы[И\›[Ь€][И[€H\›^JB‚PT“VWУPQT—РTФТQУ—РT“SФ—УPQT—ТQ—У“ЧРT“SФ€HLKЊKH]›ЪY\ЬЪYЫљ[™ИHЩ[™\[Ъ]\›[Ь€ЪЪ[ИИ[€\›^HЪ]›И\›[Ь€
+Ш[€™H™YШ]]™JB‚PT“VWУPQT—РTФТQУ—РSTP’SХTЧТS•ђTТSУ€H‹ЊKHY€[ќ›Ы™Y[€[ќ\Ъ[Ы‹[\Ьќ[ЩHЩ€Щ[™\[	ЬИSTP’SХTЧТS•ђTТSУ€[ЩYљY\‚‚PT“VWУPQT—РTФТQУ—УђUђSТS•ђTТSУ—Ф‘TTђUSУ€H‹ЊKHY€[ќ›Ы™Y[€[ќ\Ъ[Ы‹[\Ьќ[ЩHЩ€Щ[™\[	ЬИђUђSТS•ђTТSУ—Ф‘TTђUSУ€[ЩYљY\‚‚PT“VWУPQT—РTФТQУ—ЦСРRS—СђPХФ€H‹ЊKH[\Ьќ[ЩHЩ€Щ[™\[	ЬИСРRS—СђPХФ€[ЩYљY\‚‚PT“VWУPQT—РTФТQУ—ФХTWРУУ”ХSTSУ—СђPХФ€HKЊKH[\Ьќ[ЩHЩ€Щ[™\[	ЬИХTWРУУ”ХSTSУ—СђPХФ€[ЩYљY\‚‚PT“VWУPQT—РTФТQУ—УS‘Ф‘RS‘“ФђСWФђUHHKЊKH[\Ьќ[ЩHЩ€Щ[™\[	ЬИS‘Ф‘RS‘“ФђСWФђUH[ЩYљY\‚‚PT“VWУPQT—РTФТQУ—РT“VWУSФђSWСђPХФ€HKЊKH[\Ьќ[ЩHЩ€Щ[™\[	ЬИT“VWУSФђSWСђPХФ€[ЩYљY\‚‚PT“VWУPQT—РTФТQУ—ХT”ђRS—СђPХФ€HЊ‹KH[\Ьќ[ЩHЩ€Щ[™\[	ЬИ\њZ[€ЪЪ[В‚KKH[™€\ЬЪYЫљ[™ИXY\њИИ\›ZY\В‚‚KKHЪXЪЩ][™ЬИЪ[RH\ЩH›Ь€\™XHY™[њЩHћHY][‚PT‘PWСQ‘S”СWФСUS‘ЧХ”H[ЩK‚PT‘PWСQ‘S”СWФСUS‘ЧФФ•ИHќYK‚PT‘PWСQ‘S”СWФСUS‘ЧРRTђђTСTИH[ЩK‚PT‘PWСQ‘S”СWФСUS‘ЧР“Ф‘T”ИH[ЩK‚PT‘PWСQ‘S”СWФСUS‘ЧС“Ф•ИHќYK‚PT‘PWСQ‘S”СWФСUS‘ЧРУРTХS‘TИH[ЩK‚PT‘PWСQ‘S”СWФСUS‘ЧФђRSРVTИH[ЩK‚PT‘PWСQ‘S”СWФСUS‘ЧСђPТSUHH[ЩK‚‚PT‘PWСQ‘S”СWУRSђРTУPVРРTUSСQ‘S”СHHLKHX^[љ]И›Ь€Ш\][Y™[њЩH\И]X\Э\Л€
+\ЪXШ[H\ЩHШ\][Y™[њЩH\ИHќY™™\€Y€ЩH]™HќЫИX[ћH[љ]ИЉB‚PT‘PWСQ‘S”СWУRSђРTСTТT‘QРРTUSСQ‘S”СHHKKH\Ъ\™Y[љ]И›Ь€Ш\][Y™[њЩH\И]X\Э\Л‚‚PT‘PWСQ‘S”СWУRSђРTУPVТУQWРT‘PHHLKHX^[љ]И›Ь€ЫYH\™XH\И]X\Э\Л‚‚PT‘PWСQ‘S”СWУRSђРTСTТT‘QТУQWРT‘PHHЛKH\Ъ\™Y[љ]И›Ь€ЫYH\™XH\И]X\Э\Л‚‚‚PУУSPS‘ФХСT—Р‘Q“Ф‘WФФS‘УУ—ХђRUИHLЊ‚B‚TPPСWР’QС“УХT“”ЧРQРRS”ХУХT—РRHH‹BBBBKKT™\ЫЫ™HЫЫќ\ЭИYШZ[њЭЭ\€R\ИYќ\€\ИX[ћH\›њЛ€Ы‰Э[Ш^\ИЫЫќ\Э›Ь™]™\‹]ZY[ИHШ[YH™\Э[Л‚‚KKHЪ[€™\ЫЫљ[™ИЫЫќ\ЭYШZ[њЭЭ\€RKHYHњ™XZЩ\€ШЫЬ™H\ИШ[Э[]Y[™HЬЩ\€›ЫЛ‚‚TPPСWР’QРУУ•TХХQWР”‘PRСT—РУУ‘‘T‘SђСWФРУФ‘HHKЊKHЭИ]XЪИЩZYЪ™[]]™H™[XZ[љ[™ИXXЩHЫЫ™™\™[ЩHШЫЬ™H™]ЩY[€HЫЭ[ќљY\В‚TPPСWР’QРУУ•TХХQWР”‘PRСT—ТS‘“QSђСWСTХSђСHHKЊKHЭИ]XЪИЩZYЪ™[]]™H[™›Y[ЩH\Э[ЩH™]ЩY[€HЫЭ[ќљY\В‚TPPСWР’QРУУ•TХХQWР”‘PRСT—РУХS•–WФРУФ‘HHKЊKHЭИ]XЪИЩZYЪ™[]]™HЫЭ[ќћHШЫЬ™H™]ЩY[€HЫЭ[ќљY\В‚KKH[™Щ€YHњ™XZЩ\€ШЫЬ™HXЭЬњВ‚TPPСWР’QС“УРQРRS”ХФVQT—РТSђСHHЌKKHZЩ[ZЫЩ]RHЪ[›Ы[€HљY[™ИЫЫќ\ЭYШZ[њЭ[X[€^Y\‹‚‚TPPСWР’QС“УРQРRS”ХУP‘TђUWРУУ•TХHKЊKHZЩ[ZЫЩ]HRHЪ[XЪИЭЫ€YШZ[њЭHШ[YKZY[ЫЩЮHЫЭ[ќћH\™›Ь›Z[™ИHЫЫќ\Э[™ИX™\]HљYИР›Ь™\™ЫЬ™H™]™[ќ[Ы€\\B‚TPPСWРRWСФ“ХTФPPСWРPХSУ”ИHќYKKHЪ]\€RHЪЭ[Ь›Э\XXЩHXЭ[ЫњИЬ€Ь™YY[Hќ\ЭЩ[XЭH[ЬЭY\Ъ\™YXXЩHXЭ[ЫњВ‚TPPСWРRWСUђSPUWС“Ф—ФХP’‘PХИHќYKKHЪ]\€RHЪЭ[[ЫYHЭXљ™XЭИЪ[€][X][™ИЪ]љ[™ИЭ]\ИИЭ\€Ъ[›™\њИ
+X^HY™™XЭ\™›Ь›X[ЩHЫ€™]ИЫЫ™™\™[ЩH\›ЉB‚TPPСWРRWСUђSPUWС“Ф—РSQTИHќYKKHЪ]\€RHЪЭ[[ЫYH[Y\ИЪ[€][X][™ИЪ]љ[™ИЭ]\ИИЭ\€Ъ[›™\њИ
+X^HY™™XЭ\™›Ь›X[ЩHЫ€™]ИЫЫ™™\™[ЩH\›ЉB‚TPPСWРRWСUђSPUWС“Ф—У“У—РSQTИH[ЩKKHЪ]\€RHЪЭ[[ЫYH›Ы‹X[Y\И
+›Э[€Ш[YHXЭ[ЫЉHЪ[€][X][™ИЪ]љ[™ИЭ]\ИИЭ\€Ъ[›™\њИ
+X^HY™™XЭ\™›Ь›X[ЩHЫ€™]ИЫЫ™™\™[ЩH\›ЉB‚TPPСWРRWСUђSPUWУХT—ТQ—РУФ‘HHќYKKHЪ]\€RHЪЭ[][X]HЪ]љ[™ИЭ]\ИИЭ\€Ъ[›™\њИY€Э]H\ИZ\€ЫЬ™H
+X^HY™™XЭ\™›Ь›X[ЩHЫ€™]ИЫЫ™™\™[ЩH\›ЉB‚TPPСWРRWСUђSPUWУХT—ТQ—РУRSHHќYKKHЪ]\€RHЪЭ[][X]HЪ]љ[™ИЭ]\ИИЭ\€Ъ[›™\њИY€^H]™HHЫZ[HЫ€HЭ]H
+X^HY™™XЭ\™›Ь›X[ЩHЫ€™]ИЫЫ™™\™[ЩH\›ЉB‚TPPСWРRWСUђSPUWУХT—РSРVTИH[ЩKKHЪ]\€RHЪЭ[[Ш^\И][X]HЪ]љ[™ИЭ]\ИИЭ\€Ъ[›™\њИ
+HHHX^HX]љ[HY™™XЭ\™›Ь›X[ЩHЫ€™]ИЫЫ™™\™[ЩH\›€›Ь€\™ЩHXXЩHЫЫ™™\™[Щ\ИHHJB‚B‚QU’TТSУ—ФХTWФђUSЧХЧУSХФ’V‘HHKЊBBBBBKKHY€Э\H][И\И\ЬИ[€\ЛЫЫњЪY\€[ЭЬљ^љ[™И[ћH\XШX›H™X\ћHЭ\HX‚‚‚RS‘TХ’PSУФ‘ЧХђRUХS“РТЧФђS‘УS‘TФИHKBKKHRHЪ[XЪИH[™ЫHњ›ЫH€ЬZ]ИЪ[€ЪЫЬЪ[™ИHZ]И[›ШЪВ‚RS‘TХ’PSУФ‘ЧФУPЦWРТS‘СWФђS‘УS‘TФИHKKKHRHЪ[XЪИH[™ЫHњ›ЫH€ЬЫXЪY\ИЪ[€ЪЫЬЪ[™ИHЫXЮHИ]XЪИ[€RSВ‚RS‘TХ’PSУФ‘ЧФ‘TСPTђТРTФТQУ—ФђS‘УS‘TФИHKKKHRHЪ[XЪИH[™ЫHњ›ЫH€ЬRSЬИЪ[€ЪЫЬЪ[™И[€RSИИ\ЬЪYЫ€ИH™\ЩX\Ъ‚RS‘TХ’PSУФ‘ЧФ“СPХSУ—РTФТQУ—ФђS‘УS‘TФИHЛKHRHЪ[XЪИH[™ЫHњ›ЫH€ЬRSЬИЪ[€ЪЫЬЪ[™И[€RSИИ\ЬЪYЫ€ИH›ЩXЭ[Ы€[™B‚RS‘TХ’PSУФ‘ЧФУPЦWРТS‘СWФРРSHHKЊBKKHЫXЮHЪ[™ЩHЩZYЪЪ[™HШШ[YћH\И[YB‚RS‘TХ’PSУФ‘ЧХђRUФђS’ЧСђPХФ€HЋBKKHЪ[€™XЫЫ\][™ИЩZYЪЛZ]ИЪ[Y™™XЭHљ[[ШЫЬ™H\ЬИHќ\ќ\€ЭЫ€H™YH^H\™KћH\ИXЭЬ‚‚RS‘TХ’PSУФ‘ЧФ‘TСPTђТР“У•TЧСђPХФ€HKЊBKKH™\ЩX\Ъ›Ыќ\ИЪ[™H][\YYћH\ИXЭЬ€Ъ[€][X][™И\ЪYЫ€X[\В‚B‚PRWХРS•QУS‘РђTСQФS‘TЧСђPХФ€HЌLBKKHXЭЬ€\YYИ\Ъ\™H›Ь€[™\ЩY[™\И
+Э[Z\\ЩHЬXЩH
+€Yљ[™JB‚PRWХРS•QРРT”’QT—РђTСQФS‘TЧСђPХФ€HKЊKKHXЭЬ€\YYИ\Ъ\™H›Ь€Ш\њљY\€\ЩY[™\И
+Э[Ш\њљY\€ЬXЩH
+€Yљ[™JB‚B‚KKHRQђИЭ[™И›Ь€ђRH›ЬЩHЫЫЩ[ќ][Ы€‹€\Ъ[™ИXЬ›Ыћ[HИЩY\Yљ[™H[Y\ИЪЬќ\‹‚‚PRQђЧХTUWС”‘TUQSђЦWСVTИHЛKHЭИЩќ[€Ъ[RHќ[€]ИRH›ЬЩHЫЫЩ[ќ][Ы€ЩЪXЛ€ЭЩ\љ[™И\Иќ[X™\€X^HXЬ™X\ЩH\™›Ь›X[ЩK‚‚PRQђЧС”‘TТ‘TФЧРђTСWХђSQHHНKЊKHRQђИњ›ЫќИ]™HH™њ™\Ъ™\ЬИ[YH€ЪXЪXЬ™X\Щ\ИY€›И›ЩЬ™\ЬИ\ИXYK€Ъ[€]™XXЪ\И™\›Л]Ъ[Ъ]™H\Ы€HЭ\њ™[ќ\™Щ][™ћH[›Э\‹‚‚PRQђЧФ‘Q”‘TТУ‘QQФT—СVHHKЊKHXЬ™X\ЩHњ™\Ъ™\ЬИ[YHЪ]\И]™\ћH^K‚‚PRQђЧФ‘Q”‘TТУ‘QQФХTWСђPХФ—ФT—СVHHKЊKHXЬ™X\ЩHњ™\Ъ™\ЬИ[YHЪ]\И][\YYћH]™\YЩHЭ\H][И]™\ћH^K‚‚PRQђЧС”‘TТ‘TФЧРQУУ—Ф“СФ‘TФИHЛЊKH[Ь™X\ЩHњ™\Ъ™\ЬИ[YHЪ]\ИЪ[€ЩHY[ЩHH›Эљ[ЩH[Ы™ИH\™Щ]]‚‚PRQђЧХS’UФђUSЧРђTСHHЊMKHYќ\€ќ[љ[[™ИZ[љ[][Hњ›Ыќ[љ]™YYЛ\И][ИЩ€H™^H‹Щ\Ъ\™Y[љ]ИШ[€™H[ШШ]YИRH›ЬЩHЫЫЩ[ќ][Ы€]B‚PRQђЧУPVУ”—С”“У•ИH‹KHH
+\КHњ›ЫќИЪ]YЪ\ЭRQђИШЫЬ™H\™HЫЫњЪY\™Y›Ь€RH›ЬЩHЫЫЩ[ќ][Ы‚‚PRQђЧРРWСU’TТSУ”ЧФT—Ф“Х’SђСHHЊKHRHЪ[\ЩH\И\ИH\Щ[[™HЩ€ЭИX[ћH]љ\Ъ[ЫњИИ]™H\€›Эљ[ЩB‚PRQђЧРPХUђUWРU‘ЧУФ‘ЧФђUSЧХ‘TТУHЌKKHЫ›HXЭ]]HHЩ™™[њЪ]™HЬ™\€Y€]™\YЩHЬ™Ш[љ\Ш][Ы€\ИX›Э™H\Л‚‚PRQђЧРPХUђUWТS—ФФТUSУ—ФђUSЧХ‘TТУHЌKKHЫ›HXЭ]]HHЩ™™[њЪ]™HЬ™\€Y€]љ\Ъ[ЫњИ[€ЬЪ][Ы€\И[Ь™H[€\И][Л‚‚PRQђЧУС‘‘S”ТU‘WСPPХUђUSУ—СVTЧХ‘TТУHMKHXXЭ]]HHЩ™™[њЪ]™HЬ™\€Ы›HY€HЫЫ™][ЫњИ]™H™Y[€[™ќ[љ[Y›Ь€\ИX[ћH^\Л‚‚PRQђЧХS’UУ•QСWС”‘TUQSђЦWСVTИHMЊKHЫ€]™\YЩH]™\ћH^H
+[™Ы[JKЪXЪИY€[›Э\€]љ\Ъ[Ы€
+Ъ][€Ш[YHњ›Ыќ
+H\И™]\€›Ь€RQђИ\ЩYЫ€ШЫЬ™HXЭЬњИ™[ЭЛ‚‚KKH[љ]Щ™™[њЪ]™[™\ЬИШЫЬ™HXЭЬњИ›Ь€RQђЛ€]љ\Ъ[Ы€Э]И\™HXЭЬ™YћH\И™Y›Ь™HY[™И\ИЭ[ШЫЬ™K‚‚PRQђЧХS’UУС‘‘S”ТU‘WФРУФ‘WСђPХФ—Р”‘PRХ“ХQТHL‹Њ‚PRQђЧХS’UУС‘‘S”ТU‘WФРУФ‘WСђPХФ—ФУС•РUPТИHL‹Њ‚PRQђЧХS’UУС‘‘S”ТU‘WФРУФ‘WСђPХФ—ТT‘РUPТИHM‹Њ‚PRQђЧХS’UУС‘‘S”ТU‘WФРУФ‘WСђPХФ—РT“SФ€HЊ‚PRQђЧХS’UУС‘‘S”ТU‘WФРУФ‘WСђPХФ—ФQTђТS‘ИHЊ‚PRQђЧХS’UУС‘‘S”ТU‘WФРУФ‘WСђPХФ—ТT‘‘TФИHЊ‚PRQђЧХS’UУС‘‘S”ТU‘WФРУФ‘WСђPХФ—ФФQQHMKЊ‚PRQђЧХS’UУС‘‘S”ТU‘WФРУФ‘WСђPХФ—ТS’UPUU‘HHKЊ‚PRQђЧХS’UУС‘‘S”ТU‘WФРУФ‘WСђPХФ—УФ‘РS’TРUSУ€HKЊ‚PRQђЧХS’UУС‘‘S”ТU‘WФРУФ‘WСђPХФ—ТUТS•ИHЌK‚PRQђЧХS’UУС‘‘S”ТU‘WФРУФ‘WСђPХФ—СQ‘S”СHHLЊ‹‚PRQђЧХS’UУС‘‘S”ТU‘WФРУФ‘WСђPХФ—СS•‘SђТQS•HLЌK‚PRQђЧХS’UУС‘‘S”ТU‘WФРУФ‘WСђPХФ—СVT’QSђСHHLЊ‚KKH[™Щ€[љ]Щ™™[њЪ]™[™\ЬИШЫЬ™HXЭЬњИ›Ь€RQђВ‚KKHЭ]YЪXИ\™Щ]ШЫЬљ[™И›Ь€RQђВ‚PRQђЧХT‘СUТQУ“Ф‘WХ”Х‘TТУHKKH”\™Щ]™YYИ]X\И\ИX[ћHљXЭЬћHЪ[ќИИ™HЫЫњЪY\™YH\™Щ]‚PRQђЧХT‘СUФХTWТP—РђTСWФРУФ‘HHЌKЊKH\ЩHШЫЬ™H›Ь€Э\HXњВ‚PRQђЧХT‘СUУђUђSРђTСWРђTСWФРУФ‘HHLЊKH\ЩHШЫЬ™H›Ь€][\Щ\В‚PRQђЧХT‘СUУђUђSРђTСWФРУФ‘WФT—УU‘SHKЌKKHШЫЬ™H›Ь€][\Щ\И[Ь™X\Щ\ИћH\И›Ь€XXЪ]™[‚PRQђЧХT‘СUХ”ФРУФ‘WСђPХФ€HKЊKHШЫЬ™H›Ь€”И[Ь™X\Щ\ИћH\И›Ь€]™\ћHљXЭЬћHЪ[ќ‚PRQђЧХT‘СUРРTUSФРУФ‘WСVђHHKЊKH^HШЫЬ™H›Ь€Ш\][И
+[€Y][Ы€И”ШЫЬ™JB‚PRQђЧХT‘СUФТФ•ФUФSђSWСђPХФ€HKH[[HXЭЬ€›Ь€ЪЬќRQђИ]И
+]HИ
+[ЫY[™ИЭЫ€Э\ќ›Эљ[ЩJJB‚PRQђЧХT‘СUФT”ТTХQСђPХФ€HМЊKH›Ыќ\ИXЭЬ€›Ь€\њЪ\ЭY\™Щ]И
+\ЩYИ[Щ[ќ]љ^™HRHИЩ[XЭ\™Щ]YШZ[€Yќ\€K™Л€њ›Ыќ[™\И]™H™Y›Ь›YYЬ€Ш]™Hљ[H\ИШYY
+B‚KKH[™Щ€Э]YЪXИ\™Щ]ШЫЬљ[™И›Ь€RQђВ‚KKHЩ™™[њЪ]™H]ШЫЬљ[™И
+ЫЬЭ][\Y\њКH›Ь€RQђВ‚PRQђЧФUУPVРУФХH‹ЊKHЫ›H[ЭИ]ИЪ]Э[ЫЬЭH\Л€РT“’S‘О€[Ь™X\Ъ[™И\И[YHX^HШ]\ЩHЭ]\љ[™И[™Э\€\™›Ь›X[ЩH\ЬЭY\И
+Ъ[ЩHRQђИЪ[][X]H\™Щ\€\™X\КB‚PRQђЧФUРУФХРQ—У“Ф“PSHЌK‚PRQђЧФUРУФХРQ—ФХђRUH‹Њ‚PRQђЧФUРУФХРQ—Ф’U‘T€HKЊ‚PRQђЧФUРУФХРQ—Ф’U‘T—УT‘СHHKЌK‚PRQђЧФUРУФХХ“—УSХS•RS”ИH‹Њ‚PRQђЧФUРУФХХ“—С“Ф‘TХHKЊ‹‚PRQђЧФUРУФХХ“—СTСT•HKЊK‚PRQђЧФUРУФХХ“—ТSИHKЊ‹‚PRQђЧФUРУФХХ“—Т•S‘УHHKЌK‚PRQђЧФUРУФХХ“—ФRS”ИHKЊ‚PRQђЧФUРУФХХ“—ХTђђS€HKЌ‚PRQђЧФUРУФХХ“—УPT”ТHKЌK‚PRQђЧФUРУФХФT—С“Ф•УU‘SHЊ‹KH\И][\Y\€\ИШ[Э[]Y\О€KЊ
+ИYљ[™OЉ™›ЬќЫ]™[
+Ы›H›Ь€›Ьќ]™[И€
+B‚PRQђЧФUРУФХТTЧФХTWТP€HЌKKHY€H›Эљ[ЩHЩIЬ™H[ќ\љ[™И\ИHЭ\HX‚‚PRQђЧФUРУФХТTЧУђUђSРђTСHHЌKKHY€H›Эљ[ЩHЩIЬ™H[ќ\љ[™И\ИH][\ЩB‚PRQђЧФUРУФХФђRSРVWРУУ“‘PХSУ€HЋKHY€H›Эљ[Щ\И\™HЫЫ›™XЭYћHHZ[Ш^HЪ]]™[€‚KKH[™Щ€Щ™™[њЪ]™H]ШЫЬљ[™И›Ь€RQђВ‚‚TђRQЧСSђP“WРRHHќYKKHЪ]\€RHЪЭ[\ЩHHZYЮ\Э[B‚TђRQЧРФ‘PUWС”‘TUQSђЦWСVTИHЛKHЭИЩќ[€Ъ[RHќ[€]ИZYЬ™X][Ы€ЩЪXЛ€ЭЩ\љ[™И\Иќ[X™\€X^HXЬ™X\ЩH\™›Ь›X[ЩK‚‚TђRQЧФРУФ‘WСQ‘—ХЧРРSђСSHЊЛKHY€[™XYKXЬ™X]YЭЛ\ШЫЬљ[™ИZYИ\™H›ШЪЪ[™ИYЪ\‹\ШЫЬљ[™ИЫ™\Ињ›ЫH™Z[™ИЬ™X]YYHИЫЫ[X[™ЭЩ\‹\И[ЭЬИHRHИШ[Щ[HЭЩ\‹\ШЫЬљ[™ИZYЛ€Y€ЭЩ\”ШЫЬ™H[YOЉљYЪ\”ШЫЬ™X[€HЭЩ\‹\ШЫЬљ[™ИЫ™HX^H™HШ[Щ[Y€H[YHЩ€ЊYX[њИ]Ъ[™]™\€[ЭИШ[Щ[[™ИЭЩ\‹\ШЫЬљ[™ИZYЛЪ[HH[YHЩ€KЊYX[њИ]Ъ[[Ш^\И[ЭИШ[Щ[[™ИЭЩ\‹\ШЫЬљ[™ИZYЛ‚‚TђRQЧРУУSPS‘ФХСT—РРTХЧРФ‘PUHHЊЊKHHRHЪ[Ы›HћHИЬ™X]H™]ИZYИY€HЫЫ[X[™ЭЩ\€Ш\\И]X\Э\Л‚‚TђRQЧУRS—ФХPРСTФЧС“Ф—УUSђТHЌЌKKHHRHЪ[›Э][ЪHZYY€HЪ[ЩHЩ€ЭXШЩ\ЬИ\ИЭЩ\€[€\Л‚‚TђRQЧРРSђСSРQ•T—СVTЧУUSђТP“HHЊKHY€HZY\И™Y[€][ЪX›H›Ь€[Ь™H[€\П€^\Иќ]›Э™Y[€][ЪY
+K™Л€YHИYЭXШЩ\ЬИЪ[ЩJKHRHЪ[Ш[Щ[HZY‚‚TђRQЧУ•RСWХT‘СUРХUУС‘€HLKHЪ[€RHЩ[XЭИ\™Щ]И›Ь€ќZЩ\ЛЫ›HXЪИњ›ЫHH€YЪ\Э\ШЫЬљ[™И\™Щ]Л‚‚TђRQЧХS’UФРУФ‘WФХPРСTФЧРТSђСWСђPХФ€HLЊKHЪ[€RHЩ[XЭИЪXЪ[љ]ИИ\ЩH›Ь€ZYЛ][\HH[љ]ЭXШЩ\ЬИЪ[ЩH[ЩYљY\€Ъ]\Л‚‚TђRQЧХS’UФРУФ‘WСTХSђСWТУWСђPХФ€HЊKKHЪ[€RHЩ[XЭИЪXЪ[љ]ИИ\ЩH›Ь€ZYЛ][\HHЫH\Э[ЩHЪ]\Л‚‚TђRQЧРU“ТQФРSQWХT‘СUСTђUSУ—СVTИHNKHYќ\€HZY\Иљ[љ\ЪYШШ[Щ[YRH\И\ЬИZЩ[HИZYHШ[YH\™Щ]›Ь€\И[YK‚‚TђRQЧРU“ТQФРSQWХT‘СUСђPХФ€HЌKHY€RH\И[™XYHZYY
+Ь€љYYИZY
+HH\™Щ]ШЫЬ™HЩ€™]ИZYИYШZ[њЭШ[YH\™Щ]\ИXЭЬ™YћH\В‚B‚TU“УС“QUЧФT—ТS•ђTТSУ—Ф‘QТSУ—УУ—ФUH‹BBKKHЭИX[ћHХ]›Ы›Y][\]\ИЪЭ[HRHћHИ\ЩHЪ[€Щ[™\][™ИЫZ[[ЩB€RWУRS—СУRSђSђСWУPT‘ТS€HЊKHЪ[€ћZ[™ИИЩ]ЫЫќ›ЫЩ€H™YЪ[Ы‹RHЪ[ћHИ^ЩYYH™\]Z\™YЫZ[[ЩHћH]X\Э\И[[Э[ќ€УУ•“ЦWСS‘СT—С“Ф—УPVТSTФ•SђСHHLKHЪ[€XЪY[™ИЪ]\€И›ЭXЭHЫЫќ›ЮH›Э]KH[\Ьќ[ЩHЪ[ШШ[HЪ]ЫЫќ›ЮH[™Щ\€\И\И[YB€•SWРУУ•“ЦTЧС“Ф—УPVФ“ХPХSУ€HLKHЪ[€XЪY[™ИЪ]\€И›ЭXЭHЫЫќ›ЮH›Э]KH[\Ьќ[ЩHЪ[ШШ[HЪ]Hќ[X™\€Щ€ЫЫќ›Ю\И\И\И[YB€УУ•“ЦWФђRQS‘ЧХT‘СUФ‘PРSЧСVTИHЛKHXXЪ^\ЛHRHЪ[™Y][X]HЪXЪ™YЪ[ЫњИИЫЫќ›ЮHZY
+™XШ]\ЩH[™[^HЫЫќ›ЮH\ШYЩHЬ€YH›Э]\ИZYЪЪ[™ЩJB‚TХ’RСWС“ФђСWХT‘СUФ‘PРSЧСVTИHKBBBBKKHXXЪ^\ЛHRHЪ[™Y][X]HЪXЪ™YЪ[ЫњИИ]ЭљZЩH›ЬЩ\И[€
+™XШ]\ЩH]›ЫЫЭ™\YЩHЪ[Ъ[™ЩJB€RWУР’‘PХU‘WСQђUSХT‘СUФ‘PРSЧСVTИHKHXXЪ^\ЛHRHЪ[™Y][X]HЪXЪ™YЪ[ЫњИИ\™Щ]›Ь€][Z\ЬЪ[ЫњИ
+\И\ИHY][[YKќ]Ш[€™HЭ™\њљY[€ћHЬXЪYљXИШљ™XЭ]™\ЛЩYHУУ•“ЦWФђRQS‘ЧХT‘СUФ‘PРSЧСVTКB‚QS‘СT“ХTЧСS‘SVWРT“VWФТV‘HHLBBBBBKKHY€HЪ^™HЩ€H[™[^IЬИ\›^HЩ€H]XЪЪ[™ИЫЭ[ќћH\И[Ь™H[€\И[YKHRHЪ[Y][[ќ\Ъ[Ы€Y™[њЩH[\Ьќ[ЩB‚QS‘СT“ХTЧСTХSђСWХЧРРTUSHLЊBBBBKKH\Э[ЩH[€^[Ињ›ЫHH\™Щ]›Эљ[ЩHИШ\][ШШ][Ы€Ъ\™HHRHЪ[YH][[ќ\Ъ[Ы€Y™[њЩH[\Ьќ[ЩB‚B‚SђUђSФХ’RСWС“ФђСWУР’‘PХU‘WТSTФ•SђСHHВBBBKKHЬ™\љ[™ИЩ€\И\Э\И[\Ьќ[ќB‚BLЊNНKKKH[ќ\Ъ[Ы€Э\Ьќ‚BLЊЌKKKH[ќ\Ъ[Ы€Y™[њЩB‚BLKKHЭ\њИ
+Z[™TЭЩY\[™ЛZ[™S^Z[™И
+B‚BLЊЊЌKKKHЩ[™\љXИЫШ\ЭY™[њЩB‚BLKKHЭ\њИ
+ЫЫќ›ЮTZY[™ЛЫЫќ›ЮT›ЭXЭ[Ы€
+B‚BLЊLЌKKKH][ЫZ[[ЩHЭ]YЮB‚BLKKHЭ\њИ
+Z[љ[™Л][›ШЪШYKЭљZЩQ›ЬЩH
+B‚_K‚B‚SRS—СђPХФ’QTЧХЧХРS•ХЧТSTФ•HИKHZ[љ[][Hќ[X™\€Щ€Ъ]љ[X[€XЭЬљY\ИHRH]\Э]™HИЫЫњЪY\€[\Ьќ[™ИH™\ЫЭ\ЩHH\€Э]YЪXИ™\ЫЭ\ЩK€Y][\њ^H\ЪЭ[H™H\]YЪ]™]И™\ЫЭ\Щ\ЛЬ€Y€HЬ™\€Ъ[™Щ\Л‚‚BLKHЪ[‚BLKH[[Z[љ][B‚BLKHќX™\‚‚BLKH[™ЬЭ[‚‚BLKHЭY[‚BLKHЪ›ЫZ][B‚BLLKHЫШ[‚_K‚B‚TХQССTХQУ•SWУPVРРT”’QT”ИHBBBBBBKKHЩHЫ‰ЭЫ›ЭИ^XЭHЭИX[ћH[™\ИЩHЪЭ[\ЩHЪ[€][X][™ИRHќZ[ЫИЩH™YYHЭYЩЩ\ЭYќ[X™\€ИЭ\ќ[™ЬИЩ™‹€SЫИ\ЩY›Ь€\ЪИ›ЬЩHЭYЩЩ\Э[ЫњИ\Э‚‚BџK‚“‘›ШЭ\ИHВ‚Q“РХTЧФТS•СVTИHЛBBBBBKKHXXЪЪ[ќZЩ\ИHЩYZВ‚Q“РХTЧФ“СФ‘TФЧФPPСHHKBBBBKKH›ЩЬ™\ЬИ\љ[™ИXXЩB‚Q“РХTЧФ“СФ‘TФЧХРT€HKBBBBKKH›ЩЬ™\ЬИ\љ[™ИШ\‚‚SPVФРU‘QС“РХTЧФ“СФ‘TФИHLBBBKKH\И]XЪ›ЩЬ™\ЬИШ[€™HШ]™YЪ[H›Э]љ[™ИH›ШЭ\ИЩ[XЭYџK‚““Ь\]]™\ИHВ‚PQСSђЦWРФ‘PUSУ—СVTИHKBBBBBKKHќ[X™\€Щ€^\И™YYYИЬ™X]H[€[ќ[YЩ[ЩHYЩ[ЮB‚PQСSђЦWХTФђQWСVTИHМBBBBBKKHќ[X™\€Щ€^\И™YYYИ\ЬYH[€[ќ[YЩ[ЩHYЩ[ЮB‚PQСSђЦWРФ‘PUSУ—СђPХФ’QTИHBBBBKKHќ[X™\€Щ€XЭЬљY\И\ЩYИЬ™X]H[€[ќ[YЩ[ЩHYЩ[ЮB‚PQСSђЦWРRWРђTСWУ•SWСђPХФ’QTИHЌKЊBBBKKH\ЩYћHRHИXЩHH\ЬY\Л€›Ь›][H€YЉQСSђЦWРRWРђTСWУ•SWСђPХФ’QTИHќ[WШЪ]—ЩXЭЬљY\ИHќ[WЭ\ЬY\И
+€QСSђЦWРRWФT—ХTФђQWСђPХФ’QTИ
+B‚PQСSђЦWРRWФT—ХTФђQWСђPХФ’QTИH‹ЊBBKKH\ЩYћHRHИXЩHH\ЬY\Л€›Ь›][H€YЉQСSђЦWРRWРђTСWУ•SWСђPХФ’QTИHќ[WШЪ]—ЩXЭЬљY\ИHќ[WЭ\ЬY\И
+€QСSђЦWРRWФT—ХTФђQWСђPХФ’QTИ
+B‚PQСSђЦWХTФђQWФT—УФTђUU‘WФУХHKBBKKHќ[X™\€Щ€\ЬYH™YYYИ[›ШЪИ[€Y][Ы[Ь\]]™HЫЭ‚SPVУФTђUU‘WФУХС”“УWРQСSђЦWХTФђQTИHЊKKHX^Ь\]]™HЫЭИШZ[™Yњ›ЫH\ЬY\В‚PQСSђЦWУФTђUU‘WФ‘PФ•RUQS•ХSQHHKBBKKHќ[X™\€Щ€^\ИИШZ]И]™HЬ\]]™HИ™XЬќZ]Ъ[€[€Ь\]]™HЫЭљ\њЭ™XЫЫY\И]Z[X›B‚P‘PУУQWФФSPTХT—ФРУФХHBBBBKKHќ[X™\€Щ€Ы]XШ[ЭЩ\€\ЩYИ™XЫЫYHЬHX\Э\‚‚P‘PУУQWФФSPTХT—С’WРУФХHBBBBKKHXЭ[Ы€[љ]X]]™H\ЩYИ™XЫЫYHЬHX\Э\€
+Ы›HЪ]XЭ[Ы€КB‚P‘PУУQWФФSPTХT—УRS—ХTФђQTИHЛBBBKKHќ[X™\€Щ€YЩ[ЮH\ЬY\И[ЭH™YY™Y›Ь™H™XЫЫZ[™ИЬHX\Э\‚‚PђTСWРУХS•T—ТS•SQСSђСWФђUS‘ИHЊBBBBKKH\ЩH][Ы[ЫЭ[ќ\€[ќ[YЩ[ЩH][™И›Ь€[ЫЭ[ќљY\В‚PQСSђЦWСQ‘S”СWСQ‘‘PХУУ—ТФХSWРPХSУ—РУФХHЊ‹BBKKHY™[њЩHXЭЬ€]\И™\ЬЫњЪX›H›Ь€][\Z[™ИHЫЬЭЬЭ[HXЭ[ЫњИYШZ[њЭЭ\€ЫЭ[ќћHћH]И]™[[™\И[YB‚RS•SУ‘UУФ’ЧСРRS—ФђUWУУ—ХФ“У‘ЧРУУ•“УT€HLLЊBBKKH[[Э[ќЩ€™]ЫЬљИЭ™[™ЭЬЭ[€HЭ]HЪ[€]Щ\И›Э]™HHљYЪЫЫќ›Ы\€[ћ[[Ь™B‚RS•SУ‘UУФ’ЧСРRS—ФђUWУУ—УХUУС—ФђS‘СHHLKЌНKBBBKKH[[Э[ќЩ€™]ЫЬљИЭ™[™ЭЬЭ[€HЭ]H]\ИHљYЪЫЫќ›Ы\€ќ]\ИЭ]Щ€[™ЩHЩ€[ћHЬ\]]™B‚RS•SУ‘UУФ’ЧСРRS—С”“УWРQђPСSђЦWСђPХФ€HЌKBBBKKHXЭЬ€][\YYИHЭ[HЩ€HЬЪ]]™HY™™\™[ЩH™]ЩY[€HЭ]IЬИЭ™[™Э[™]И™ZYЪ›ЬњЙЛ€[€Э\€ЫЬ™ЛЭИЭ›Ы™ЫH™ZYЪ›ЬњИ[\XЭHЭ™[™ЭШZ[™Y[€HЭ]K€[Y\ИЬ™X]\€Ь€\]X[ИH\™H\ШЫЭ\YЩY‚‚RS•SУ‘UУФ’ЧСРRS—СPРVWФT—ФХTСђPХФ€HЌKBBBKKHXЭЬ€][\YYИHШZ[€Щ€H™]љ[Э\И›ЩH[€H™]ЭЬљИ[љ]X[HЫЫќљXќ]YћHHYЩ[ќ€[€Э\€ЫЬ™Л™Y›Ь™HYXЩ[ЮKHЭ™[™ЭШZ[€[€HЭ]HЫЭ[™HШZ[‘њ›ЫSЬ\]]™H
+€
+S•SУ‘UУФ’ЧСРRS—СPРVWФT—ФХTСђPХФ€€›ЩQ\
+HЪ\™H›ЩQ\\ИH\Э[ЩH™]ЩY[€HЭ]H[™HЬ\]]™IЬИШШ][Ы‹‚‚RS•SУ‘UУФ’ЧФХ‘S‘ХХT‘СUУС‘”СUФT—УФTђUU‘HHMKЊBKKHH[[Э[ќЩ€Э™[™ЭXXЪЬ\]]™HЫ€ќZ[[ќ[™]ЫЬљИZ\ЬЪ[Ы€[€HЭX€™]ЫЬљИYИH\ЩH\™Щ]™]ЫЬљИЭ™[™Э‚RS•SУ‘UУФ’ЧФХ‘S‘ХСPРVWХТS—РP“Х‘WХT‘СUHL‹ЌKBBKKHH[[Э[ќЩ€Э™[™Э™[[Э™YXXЪXЪИњ›ЫHHЭ]H]\И[Ь™HЭ™[™Э[€H\™Щ]‚RS•SУ‘UУФ’ЧРђTСWФХ‘S‘ХХT‘СUРУХS•T’S•SQСSђСWСђPХФ€HLLЊKKH\ЩTЭ™[™Э\™Щ]HXЭЬ€
+€ЫЭ[ќ\’[ќ[YЩ[ЩT][™И
+ИЩ™њЩ]‚RS•SУ‘UУФ’ЧРђTСWФХ‘S‘ХХT‘СUРУХS•T’S•SQСSђСWУС‘”СUHLKKHЩ™њЩ]Y[ќ[Ы™YX›Э™B‚RS•SУ‘UУФ’ЧУRS—Х”ХЧХT‘СUHBBBBKKHHZ[љ[][H[YHЩ€HYЪ\Э”[€HЭ]HИЫЫњЪY\€HЭ]H\ИH[Y\™Щ]ИЭ\ќќZ[[™И[€[ќ[™]ЫЬљВ‚RS•SУ‘UУФ’ЧУRS—ФХ‘S‘ХХЧХT‘СUHLKЊBBBKKHHZ[љ[][H[YHЩ€H[ќ[™]ЫЬљИ[€HЭ]HИЫЫњЪY\€]H[Y\™Щ]И\ЮH[€Ь\]]™H[‚‚RS•SУ‘UУФ’ЧУRS—ФХ‘S‘ХХЧУS’ЧФХP“‘UУФ’ФИHЊBBKKHЪ\™HH[™›Y[ЩHЩ€ЫИЬ\]]™HYY]HЫИ›Щ\ИЫ€XXЪЪYH]™HИ]™HЭљXЭH[Ь™H[€HЪ]™[€Э™[™Э™Y›Ь™HHЫИЬ\]]™\И]™HHЪ[ЩHЩ€™Z[™ИЫЫњЪY\™Y[€HШ[YH™]ЫЬљВ‚RS•SУ‘UУФ’ЧУФTђUU‘WСРRS—ФХPТТS‘ЧСђPХФ€HЌKBBKKHЪ[€][\HЬ\]]™H\™H™\Щ[ќ[€HШ[YHШШ][Ы‹\ИXЭЬ€\И\YY›Ь€XXЪЬ\]]™HЪ]HЭЩ\€ШZ[€[€HX^€ЫИY€Ь\]]™\И]™HHШZ[€ИЛK€H[€HШ[YHШШ][Ы‹]\ИЫЬќYИИK‹ИH[€ЫЫќ™\ќYИИJ‘Њ‹Љ‘ЊKИKЪ]™Z[™И\ИYљ[™KЫИY€LЌHЩH]™HИЊЌKKИH[™Hљ[[ШZ[€њ›ЫHЬ\]]™H]\ИШШ][Ы€Ъ[™HЊЌK€][™И\ИYљ[™HИ\И\]Z][[ќИЫЫњЪY\љ[™ИHX^[][H[YHЫ›K‚‚RS•SУ‘UУФ’ЧУRS—ФХ‘S‘ХС“Ф—ФХUWХЧРУХS•ХХРT‘УђUSУђSРУХ‘TђQСHHЊKKH[[Э[ќЩ€Э™[™Э
+L
+H[€HЭ]H™\]Z\™Y›Ь€]ИЫЭ[ќЭШ\™H][Ы[ЫЭ™\YЩB‚RS•SУ‘UУФ’ЧУђUSУђSРУХ‘TђQСWРУУ•“УQФХUTЧХСRQТHЊ‹BKKHЩZYЪ
+^XЭYМWJH][\YYћHHќ[X™\€Щ€Э]\ИЫЭ™\™YћHH™]ЫЬљИ]\™HЫЫќ›ЫYћHH\™Щ]Э™\€HЭ[ќ[X™\€Щ€Э]\ИH\™Щ]ЫЫќ›ЫВ‚RS•SУ‘UУФ’ЧУђUSУђSРУХ‘TђQСWРУФ‘WФХUTЧХСRQТHЌ‹BBKKHЩZYЪ
+^XЭYМWJH][\YYћHHќ[X™\€Щ€Э]\ИЫЭ™\™YћHH™]ЫЬљИ]\™HЫЬ™HИH\™Щ]Э™\€HЭ[ќ[X™\€Щ€Э]\ИH\™Щ]\И›Ь€ЫЬ™B‚RS•SУ‘UУФ’ЧУђUSУђSРУХ‘TђQСWУХУ‘QХУФ•ХСRQТHЊ‹BKKHЩZYЪ
+^XЭYМWJH][\YYћHH[YHЩ€љXЭЬћHЪ[ќИЫЭ™\™YћHH™]ЫЬљИЭ™\€HЭ[[YHЩ€љXЭЬћHЪ[ќИЫЫќ›ЫYћHH\™Щ]В‚RS•SУ‘UУФ’ЧУРРХTQQХQЧФХUTЧХСRQТHЌKBBBKKHЩZYЪ
+^XЭYМWJH][\YYИHњXЭ[Ы€Щ€ќ[X™\€Щ€Э]HЫЭ™\™YћHH[ќ[™]ЫЬљИ]љYYћHHќ[X™\€Щ€Э]\ИШШЭ\YYћHH\™Щ]Щ€H™]ЫЬљЛ\€ШШЭ\YYYВ‚RS•SУ‘UУФ’ЧУРРХTQQХQЧХУФ•ХСRQТHЌKBBBKKHЩZYЪ
+^XЭYМWJH][\YYИHњXЭ[Ы€Щ€љXЭЬћHЪ[ќИЫЬќЩ€Э]\ИЫЭ™\™YћHH[ќ[™]ЫЬљИ]љYYћHHЫЬќЩ€Э]\ИШШЭ\YYћHH\™Щ]Щ€H™]ЫЬљЛ\€ШШЭ\YYYВ‚RS•SУ‘UУФ’ЧУRS—ФХP—У‘UУФ’ЧФТV‘WС“Ф—СUPХSУ€HBBKKHZ[љ[][Hќ[X™\€Щ€Э]HЩ€HЭX‹Z[ќ[™]ЫЬљИ™Y›Ь™H[€Ь\]]™HЫ€ќZ[[ќ[™]ЫЬљИZ\ЬЪ[Ы€[€\И™]ЫЬљИШ[€™H]XЭY‚RS•SУ‘UУФ’ЧУRS—УђUSУђSРУХ‘TђQСWС“Ф—СUPХSУ€HЊ‹BKKHМWHZ[љ[][H][Ы[ЫЭ™\YЩH™\]Z\™Y›Ь€[€Ь\]]™HЫ€ќZ[[ќ[™]ЫЬљИИ]™HHЪ[ЩHИ™H\ШЫЭ™\™Y‚RS•SУ‘UУФ’ЧУRS—ФХP—У‘UУФ’ЧУђUSУђSРУХ‘TђQСWС“Ф—СUPХSУ€HЊKKKHМWHZ[љ[][H][Ы[ЫЭ™\YЩHЩ€H™]ЫЬљИHЬ\]]™HЫ€ќZ[[ќ[™]ЫЬљИ\И[€И]™HHЪ[ЩHИ™H\ШЫЭ™\™Y‚RS•SУ‘UУФ’ЧУRS—ФХP—У‘UУФ’ЧФХ‘S‘ХС“Ф—СUPХSУ€HLЊBKKHМLHZ[љ[][H™]ЫЬљИЭ™[™ЭЩ€H™]ЫЬљИHЬ\]]™HЫ€ќZ[[ќ[™]ЫЬљИZ\ЬЪ[Ы€\И[€И]™HHЪ[ЩHИ™H\ШЫЭ™\™Y‚‚RS•SУ‘UУФ’ЧТS•SQСSђСWРQСSђЦWСQ‘S”СWХЧСUPХSУ—СђPХФ€H‹ЊKKH][\YYИH[ќ[YЩ[ЩHYЩ[ЮHY™[њЩHЩ€H\™Щ]Щ€H[ќ[™]ЫЬљВ‚RS•SУ‘UУФ’ЧТS•SQСSђСWРQСSђЦWСQ‘S”СWСUPХSУ—ФРРSWСђPХФ€HЊKKHXЭЬ€][\YYИH[ќ[YЩ[ЩHYЩ[ЮHY™[њЩHЩ€H\™Щ]Щ€H[ќ[™]ЫЬљИ™Y›Ь™H™Z[™ИXЭЬ™YИH]XЭ[Ы€Ъ[ЩB‚RS•SУ‘UУФ’ЧУPVТS•SQСSђСWРQСSђЦWСQ‘S”СWСUPХSУ—ФРРSWСђPХФ€HKЊKKHЫ[\H[YHњ›ЫHH][\XШ][Ы€Щ€HX›Э™HXЭЬ€
+^XЭH[YHЬ™X]\€Ь€\]X[ИJB‚RS•SУ‘UУФ’ЧУђUSУђSРУХ‘TђQСWХЧСUPХSУ—РТSђСWСђPХФ€HKЊKKH][\YYИH][Ы[ЫЭ™\YЩH
+H[YH[€[™ЩHМWB‚RS•SУ‘UУФ’ЧФХP—У‘UУФ’ЧФХ‘S‘ХХЧСUPХSУ—РТSђСWСђPХФ€HЊKKKH][\YYИH™]ЫЬљИЭ™[™Э
+H[YH[€[™ЩHМLB‚RS•SУ‘UУФ’ЧФХP—У‘UУФ’ЧУђUSУђSРУХ‘TђQСWХЧСUPХSУ—РТSђСWСђPХФ€HЛЊKKH][\YYИHЫЫќљXќ][Ы€ИH][Ы[ЫЭ™\YЩHЩ€HЭX€™]ЫЬљИ
+H[YH[€[™ЩHМWJB‚RS•SУ‘UУФ’ЧСUPХSУ—СУРђSСђPХФ€HЊKBBBKKHЫШ[XЭЬ€][\YYИH]XЭ[Ы€Ъ[ЩH™Y›Ь™H]\И][\YYHXЩH›Ы[€H[™ЩHМL
+B‚P•RSТS•SУ‘UУФ’ЧСRSWЦСРRS€HK‚TURQUТS•SУ‘UУФ’ЧСRSWЦСРRS€H‚SФTђUU‘WУRTФТSУ—СUPХSУ—РТSђСWСђPХФ€HВ‚BKKHXЭЬ€][\YYИH]XЭ[Ы€Ъ[ЩHЩ€[€YЩ[ќЫ€Z\ЬЪ[Ы€™Y›Ь™HHЩ™њЩ]В‚BLЊKH›УZ\ЬЪ[Ы‚‚BLKЊKHќZ[[ќ[™]ЫЬљВ‚BLKЊKH]ZY][ќ[™]ЫЬљВ‚BLKЊKHЫЭ[ќ\’[ќ[YЩ[ЩB‚BLЊKH›ЫЭЭ]™\Ъ\Э[ЩB‚BLЛЊKH›ЫЬЭY[ЫЩЮB‚BLЊKKHЫЫќ›ЫYB‚BLЊKKH\ЫX]XФ™\ЬЭ\™B‚BLЛЊKH›ЬYШ[™B‚_K‚‚KKH\ЩY›Ь€Ш[Э[][™ИЭИX[ћHЬ\]]™\ИЪ[HЬHX\Э\€ШZ[€њ›ЫH]ИXЭ[Ы€Y[X™\њВ‚KKHљ\њЭќ[X™\€[€]™\ћH›ЭИ\Иќ[X™\€Щ€Ь\]]™\ИШZ[™Y‚KKHЩXЫЫ™ќ[X™\€\ИЭ[XЭЬћH™YYY
+Z[[™Ъ]ЉH›Ь€Ъ]љ[™И™]љ[Э\И][В‚SФTђUU‘WФУХЧС”“УWСђPХSУ—УQSP‘T”ЧС“Ф—ФФWУPTХT€HВ‚BLЌKMЊKHЬ\]]™H›Ь€МL
+B‚BLЌKLLЊKHЊЌHЬ\]]™H›Ь€МLL
+B‚BLЌKMLЊKHЌHЬ\]]™H›Ь€ЏHL‚_K‚‚RS•SУ‘UУФ’ЧФХUWУSСQ’QT—ФХ‘S‘ХХ‘TТУHLBBKKHZ[љ[][H[[Э[ќЩ€Э™[™Э™\]Z\™Y[€HЭ]H›Ь€H[ќ[™]ЫЬљИ™[]Y[ЩYљY\њИИЭ\ќ™Z[™И\YY‚‚RS•SУ‘UУФ’ЧУRS—СQђUSС“Ф—ФТХТS‘ИHЌKKHY][Z[€]™[›Ь€™]ЫЬљЬИ\ЩYИљ[\€Ь\][Ы€™\]Z\™[Y[ќИY€›ЭЭ™\њљY[‚‚‚SФTђUU‘WРђTСWТS•SУ‘UУФ’ЧСРRS€HЌBBBKKH\ЩH[[Э[ќЩ€™]ЫЬљИЭ™[™ЭШZ[€\€^H›ЭљYYћH[€Ь\]]™B‚SФTђUU‘WУPVТS•SУ‘UУФ’ЧСРRS€HLKЊBBBKKHX^[[Э[ќЩ€™]ЫЬљИЭ™[™ЭШZ[€\€^H›ЭљYYћH[€Ь\]]™HYќ\€[ЩYљY\њИ]™H™Y[€\YY
+™YШ]]™H[YHYX[њИ›ИX^
+B‚PУХS•T—ТS•SQСSђСWС“Ф‘RQУ—РQСS•СђPХФ€HЊBBKKH][\Y\€ИHЫЭ[ќ\€[ќ[YЩ[ЩH›ЭљYYћH›Ь™ZYЫ€
+[JHЬ\]]™\В‚PУХS•T—ТS•SQСSђСWФХPТТS‘ЧСђPХФ€HЌKBBBKKH][\Y\€\YYИXXЪЬ\]]™HYќ\€Hљ\њЭЫ™K€ЫИY€ЩH]™HH›ЫЭЪ[™ИЫЭ[ќ\€[ќ[YЩ[ЩH][™И[Y\ИИЊKЊЛЊ€KHXЭЬ€\И\YYЪXЩH›Ь€HЭЩ\Э[YH[™ЫЩH›Ь€H›™ЭЩ\ЭЫ™H\ИЭXЪ€ИЊЛЊ€
+€ЊH
+€
+€H[™[€H™\Э[\ИЭ[[YY\ИЪ]™HHљ[[][™И[YB‚PУХS•T—ТS•SQСSђСWХЧСQ‘S”СWУСЧСђPХФ€HЊBBKKHY™[њЩHHЩСXЭЬ€
+€ЩКH
+ИЫЭ[ќ\’[ќ[YЩ[ЩH
+H
+ИЫЭ[ќ\’[ќ[YЩ[ЩHИ]љ\ЫЬ‚‚PУХS•T—ТS•SQСSђСWХЧСQ‘S”СWСU’TУФ€HKЊBBBKKHЩYHX›Э™B‚PУХS•T—ТS•SQСSђСWСRSWЦСРRS€HЊLL‹‚P“УФХТQSУСЦWУђUSУђSРУХ‘TђQСWСђPХФ€HKЊBBBKKH\ЩYИЫЫ\]HHљYќXЭЬ€\И›ЫЭО€ђTСH
+€ХP—У‘UУФ’ЧУђИ
+€“УФХТQSУСЦWСQ‘S”СWСђPХФ‚‚P“УФХТQSУСЦWУPVС’Q•Р–WУФTђUU‘HHBBBKKHHX^[][HљYќ[€Ь\]]™HШ[€Ш]\ЩKH™YШ]]™H[YHYX[њИ›ИX^[][B‚P“УФХТQSУСЦWС’Q•ФХPТТS‘ЧСђPХФ€HBBBKKH][\YYИHљYќЩ€[€Ь\]]™H›Ь€XXЪЬ\]]™HYќ\€Hљ\њЭЫ™KЪ]HЬ™X]\ЭљYќ€ЫИY€ЩH]™HH›ЫЭЪ[™ИљYќ[Y\ИИЊKЊЛЊ€KHXЭЬ€\И\YYЪXЩH›Ь€HЭЩ\Э[YH[™ЫЩH›Ь€H›™ЭЩ\ЭЫ™H\ИЭXЪ€ИЊЛЊ€
+€ЊH
+€
+€H[™[€H™\Э[\ИЭ[[YY\ИЪ]™HHљ[[љYќ[YK‚‚P“УФХТQSУСЦWСQ‘S”СWСђPХФ€HBBBBKKH][\YYИH\™Щ]	ЬИY™[њЩHИЩ]H[[Э[ќЩ€љYќИ™[[Э™Hњ›ЫHXXЪЬ\]]™IЬИљYќ‚P“УФХТQSУСЦWСRSWЦСРRS€H‚SФTђUU‘WРђTСWТS•SРQСSђЦWСQ‘S”СHHKЊBBBKKH\ЩH[[Э[ќЩ€[ќ[YЩ[ЮHY™[њЩHЫЫќљXќ]YћH[€Ь\]]™HЫ€ЫЭ[ќ\—Ъ[ќ[YЩ[ЩHZ\ЬЪ[Ы‚‚SФTђUU‘WРђTСWР“УФХТQSУСЦHHЊKBBBBKKH\ЩH[[Э[ќЩ€Z[HY[ЫЩЮHљYќ›Э›ЪЩYћH[€Ь\]]™B‚SФTђUU‘WРђTСWФ“ФQРS‘WФХСT€HЊKBBBBKKH\ЩH[[Э[ќЩ€Z[HШ\€Э\Ьќ[™ЭXљ[]HЪ[™ЩHЪ[€[€Ь\]]™H\И\ЬЪYЫ™YИ›ЬYШ[™B‚T“ФQРS‘WФХP—У‘UУФ’ЧФХ‘S‘ХСђPХФ€HBBBKKH][\YYИH™]ЫЬљИЭ™[™Э™Y›Ь™H™Z[™И][\YYИHЭXљ[]KХШ\”Э\ЬќљYќШ]\ЩYћH[€Ь\]]™B‚T“ФQРS‘WСQ‘S”СWСђPХФ€HBBBBKKH][\YYИH\™Щ]	ЬИY™[њЩH™Y›Ь™H™Z[™ИЭXќXЭYњ›ЫHHЭXљ[]KХШ\”Э\ЬќљYќШ]\ЩYћH[€Ь\]]™B‚T“ФQРS‘WУФTђUU‘WФХPТТS‘ЧСђPХФ€HBBBKKH][\YYИHЭXљ[]KХШ\”Э\ЬќљYќ[Y\ИЩ€XXЪЬ\]]™HYќ\€HЫ™HЪ]HЬ™X]\Э[Y\Л€H›ШЩ\ЬИ\ИЫ™HЩ\\]H›Ь€ЭXљ[]H[™Ш\”Э\Ьќ‚T“ФQРS‘WРУХS•–WФХPТТS‘ЧСђPХФ€HBBBKKH][\YYИHЭXљ[]KХШ\”Э\ЬќљYќ[Y\ИЩ€XXЪЫЭ[ќћHYќ\€HЫ™HЪ]HЬ™X]\Э[Y\Л€H›ШЩ\ЬИ\ИЫ™HЩ\\]H›Ь€ЭXљ[]H[™Ш\”Э\Ьќ‚T“ФQРS‘WСRSWЦСРRS€H‚SФTђUU‘WРђTСWФ“УХУХUФ‘TТTХSђСWСQ‘’PТQSђЦHHKЊBBKKHH\ЩHY™љXЪY[ЮHЩ€[€Ь\]]™H]H›ЫЭЭ]™\Ъ\Э[ЩHZ\ЬЪ[Ы€
+\И\ИH\Щ[ќYЩKKЊOHL	JB‚T“УХУХUФ‘TТTХSђСWФХPТТS‘ЧСђPХФ€HЌKBBBKKH][\YYИXXЪЬ\]]™HY™љXЪY[ЮHYќ\€Hљ\њЭЫ™B‚T“УХУХUФ‘TТTХSђСWФђS‘СWФХTСђPХФ€HЌKBBBKKH][\YYИHЭ[[YY\Y™љXЪY[ЮHњ›ЫH[Ь\]]™HЬ\][™И[€HШ[YHЭ]HИ]\›Z[™HHY™љXЪY[ЮH[€™ZYЪ›Ьљ[™ИЭ]\В‚T“УХУХUФ‘TТTХSђСWСRSWЦСРRS€HЊЋ‚SФTђUU‘WРђTСWРУУ•“УХђQWС’Q•HBBBKKHH\ЩHZ[HљYќ[€YH[™›Y[ЩHШ]\ЩYћH[€Ь\]]™B‚PУУ•“УХђQWФХPТТS‘ЧСђPХФ€HBBBBKKH][\YYИHљYќЩ€XXЪЬ\]]™HYќ\€Hљ\њЭЫ™B‚PУУ•“УХђQWУPVТS‘“QSђСHHBBBBKKHHX^[][H[[Э[ќЩ€YH[™›Y[ЩH]Ш[€™HШZ[™Y›ЭYЪHЫЫќ›ЫYHZ\ЬЪ[Ы‚‚PУУ•“УХђQWТS‘“QSђСWСRSWСPРVHHBBBKKHH[[Э[ќЩ€YH[™›Y[ЩHЬЭЪ[€›ИЬ\]]™H\™H\ЬЪYЫ™YИHZ\ЬЪ[Ы‚‚PУУ•“УХђQWСRSWЦСРRS€H‚SФTђUU‘WРђTСWСTУPUPЧФ‘TФХT‘WРRWРPРСTSђСWФРУФ‘WС’Q•HKKHHZ[HЪ[™ЩH[€H[[Э[ќЩ€Ь[љ[Ы€™\]ZY\™YИ›Ъ[€HXЭ[Ы‚‚SФTђUU‘WРђTСWСTУPUPЧФ‘TФХT‘WХS”ТSУ—Ф‘TURT‘SQS•ЧС’Q•HKKHHZ[HЪ[™ЩH[€ЫЬ›[њЪ[Ы€™\]ZY\™YИ›Ъ[€HXЭ[Ы‚‚QTУPUPЧФ‘TФХT‘WУPVРRWРPРСTSђСWФРУФ‘WТSђФ‘PTСHHKKHHX^[][H[[Э[ќЩ€ZHXШЩ\[ЩHШЫЬ™Hњ›ЫH\ЫX]XИ™\ЬЭ\™B‚QTУPUPЧФ‘TФХT‘WУPVХS”ТSУ—Ф‘TURT‘SQS•ЧСPФ‘PTСHHKKH[[Э[ќЩ€[њЪ[Ы€
+[њЪ[ЫњИ\И[€[™ЩHМWJH]Ш[€™H™[[Э™Yњ›ЫHH™\]Z\™[Y[ќИ[\ЬЩYћHH[ЩYљY\€›Ъ[—ЩXЭ[Ы—Э[њЪ[Ы—Ы[Z]‚QTУPUPЧФ‘TФХT‘WУФTђUU‘WФХPТТS‘ЧСђPХФ€HЌKBKKHH[Z[љ\Ъ[™И™]\›€XЭЬ€И\HИЬ\]]™HЫЬљЪ[™И›Ь€HШ[YHXЭ[Ы€Yќ\€Hљ\њЭЫ™K€Ь\]]™\ИЬ\][™И›Ь€HШ[YHXЭ[Ы€\™H[љЩYћHZ\€Y™љXЪY[ЮH[™Z\€Ь[љ[Ы€[™[њЪ[Ы€љYќ\™H[™]љYX[H\ZYYHЭXЪЪ[™ИXЭЬ€ZЩHЫО€’Q•
+€ХPТТS‘ЧСђPХФ—”ђS’ИЪ\™HђS’И\ИH[YHњ›ЫHИHќ[X™\€Щ€Ь\]]™HLHЪ\™HHЬ\]]™HЪ]HYЪ\ЭљYќ[YH\И[љИ‚QTУPUPЧФ‘TФХT‘WРRWРPРСTSђСWФРУФ‘WСPРVHHЌBBKKHZ[HXШ^HЪ[€HZ\ЬЪ[Ы€\И›ЭXЭ]™B‚QTУPUPЧФ‘TФХT‘WХS”ТSУ—Ф‘TURT‘SQS•ЧСPРVHHЊKBBKKB‚QTУPUPЧФ‘TФХT‘WСRSWЦСРRS€HЊLНЛ‚SRS—УђUSУђSРУХ‘TђQСWС“Ф—Р“УФХТQSУСЦHHЊKBBKKHZ[љ[][H™]ЫЬљИЫЭ™\YЩH™\]Z\™YИЭ\ќHZ\ЬЪ[Ы€
+HЫЩH[њЭ\™\И]H™]ЫЬљИ^\ЭИ][
+B‚SRS—УђUSУђSРУХ‘TђQСWС“Ф—Ф“ФQРS‘HHЊKBBKKHZ[љ[][H™]ЫЬљИЫЭ™\YЩH™\]Z\™YИЭ\ќHZ\ЬЪ[Ы€
+HЫЩH[њЭ\™\И]H™]ЫЬљИ^\ЭИ][
+B‚SФTђUU‘WУRS—СVTЧТT“QQHМBBBBBKKHZ[љ[][Hќ[X™\€Щ€^\И[€Ь\]]™HШ[€™H\›YY€\YYYќ\€[ЩYљY\њЛ€Ш[€™H™\›Л‚‚SФTђUU‘WУPVСVTЧТT“QQHLЊBBBBBKKHX^[][Hќ[X™\€Щ€^\И[€Ь\]]™HШ[€™H\›YY€\YYYќ\€[ЩYљY\њЛ€\ИYЫ›Ь™YY€™YШ]]™B‚SФTђUU‘WУRS—СVTЧС“ФђСQТS•ЧТQS‘ИHЛBBBKKHZ[љ[][Hќ[X™\€Щ€^\И[€Ь\]]™HШ[€™H›ЬЩY[ќИY[™Л€\YYYќ\€[ЩYљY\њЛ€Ш[€™H™\›Л‚‚SФTђUU‘WУPVСVTЧС“ФђСQТS•ЧТQS‘ИHLЊBBBKKHX^[][Hќ[X™\€Щ€^\И[€Ь\]]™HШ[€™H›ЬЩY[ќИY[™Л€\YYYќ\€[ЩYљY\њЛ€\ИYЫ›Ь™YY€™YШ]]™B‚SФTђUU‘WУPVСVTЧХЧРUUЧФ‘TХSQWУRTФТSУ€HМBBBKKHX^[][Hќ[X™\€Щ€^\И[€Ь\]]™H\ИИ™H\ШX›Y™Y›Ь™H]ИZ\ЬЪ[Ы€\И›Э]]ЫX]XШ[H™\Э[YYЫЩHH\И]Z[X›HYШZ[‚‚SPVФ‘PФ•RUQУФTђUU‘TИHL‚‚PФ–TЧРђTСWРФ–TЧУU‘SHLЊBBBBBKKH\ЩHЬћ\ИЭ™[™Э›Ь€HЫЭ[ќћB‚PФ–TЧРФ–TЧУU‘SФT—РФ–TЧХTФђQHHЌLBBKKHЬћ\ИЭ™[™Э\€Ьћ\И\ЬYB‚‚PФ–TЧРФ–TЧРPХU‘WР“У•TЧСTђUSУ€HМBBBKKHќ[X™\€Щ€^\ИHXЭ]™HXЬћ\[Ы€›Ыќ\Щ\ИЪ[™H\YY™Y›Ь™H[™[^H™\Щ]ИZ\€[ќ[YЩ[ЩB‚PЦT”ЧРPХU‘WР“У•TЧРPХUђUSУ—Ф“СФ‘TФЧФђUSИHЌKKKHЫЩH›Ыќ\И\ИXЭ]]YXЬћ\[Ы€›ЩЬ™\ЬИЪ[™H™YXЩYИ\И][В‚‚SФTђUSУ—РRWУRS’SUSWФРУФ‘HHLЊBBBBBKKHЫЩH[€Ь\][Ы‰ЬИRHЩZYЪ[И™[ЭИHZ[љ[][HШЫЬ™H]Ъ[™HШЬ\YY€]\И™Z[™И™\\™Y‚SФTђUSУ—РУУTUSУ—ЦHN‚‚SФTђUU‘WРРTT‘WСTђUSУ—ТS—СVTИHJЊМ‚‚KKHЬ\][Ы€ЫЬЭ	€[YH\™H[Ь™X\ЩYћHY][\И][ЬИ›Ь€XXЪ‚KKH[њЭ[ЩHЩ€Ь\][Ы€]Щ\™H[™XYH^XЭ]YYШZ[њЭШ[YH\™Щ]‚‚KKHШ[€™HЭ™\њљY[€\Ъ[™И[YWЫ][\Y\€	€ЫЬЭЫ][\Y\€[€Ь\][Ы‹‚‚QQђUSУФTђUSУ—РУФХУUSTQT€HЊMK‚QQђUSУФTђUSУ—ХSQWУUSTQT€HЊ‚‚KKHH›ЫЭЪ[™ИYљ[™\И\™H][\YYИHќ[X™\€Щ€Ь\]]™\ИЬ\][™И[€H\™Щ]ЫЭ[ќћHHXЭ]љ]H]™[\ИЫЫ\]Y›Ь‚‚P•RSТS•SУ‘UУФ’ЧУRTФТSУ—РPХU’UWТS‘PРUФ—СђPХФ€HL‚P“УФХТQSУСЦWУ‘UУФ’ЧУRTФТSУ—РPХU’UWТS‘PРUФ—СђPХФ€HL‚T“ФQРS‘WУ‘UУФ’ЧУRTФТSУ—РPХU’UWТS‘PРUФ—СђPХФ€HL‚PУУ•“УХђQWУ‘UУФ’ЧУRTФТSУ—РPХU’UWТS‘PРUФ—СђPХФ€HK‚QTУPUPЧФ‘TФХT‘WУ‘UУФ’ЧУRTФТSУ—РPХU’UWТS‘PРUФ—СђPХФ€HK‚‚KKH][\YYИHЭ[HЩ€H™]ЫЬљИЫЭ™\YЩHМWH[ЫЭ[ќљY\И]™HЭ™\€H\™Щ]‚RS•SУ‘UУФ’ЧРУХ‘TђQСWРPХU’UWСђPХФ€HL‚‚KKH][\YYИHЭ™[™ЭМLHЩ€HЭ›Ы™Щ\Э™]ЫЬљИЭ™\€]ЫЭ[ќћB‚RS•SУ‘UУФ’ЧФХ‘S‘ХСS‘СT—СђPХФ€HK‚‚KKHXЭ]љ]H]™[Q[Y\В‚PPХU’UWУU‘SФ“ФФ•SУђSСђPХФ€HЊK‚PPХU’UWУU‘SТS•QФђSСђPХФ€HЊK‚PPХU’UWУU‘SСT’UђUU‘WСђPХФ€H‚‚KKH[™Щ\€]™[Q[Y\В‚QS‘СT—УU‘SФ“ФФ•SУђSСђPХФ€HЊK‚QS‘СT—УU‘SТS•QФђSСђPХФ€HЊK‚QS‘СT—УU‘SСT’UђUU‘WСђPХФ€H‚‚S•SWСVTЧР‘Q“Ф‘WФ‘SSХ’S‘ЧФ‘TT‘QУФTђUSУ”ИHЊKHќ[H^\И™Y›Ь™H™[[Эљ[™И™\\™YЬ\][ЫњВ‚‚SУ—РРTT‘WРУХS•T’S•SQСSђСWУФTђUU‘WЦСРRS€HLBBBBKKHШZ[€Ъ[€[€[™[^HЬ\]]™H\ИШ\\™Y[€HЫЭ[ќћHHЬ\]]™H\И\ЬЪYЫ™YИЫЭ[ќ\€[ќ[YЩ[ЩHЛ€\HИHЪ[™ЫH[™Ы[HЩ[XЭYЬ\]]™B‚SУ—РРTT‘WРУХS•T’S•SQСSђСWУФTђUU‘WХСRQТУХУ—РУХS•–WС“Ф—ЦH‹BBKKH[€[ќYЩ\€Ы€ЭИZЩ[H[€Ь\]]™HЬ\][™И[€\ИЭЫ€ЫЭ[ќћH\ИИЩ]Щ[XЭY›Ь€H™]Ш\™Ы€[™[^HЬ\]]™HШ\\™B‚SУ—РРTT‘WРУХS•T’S•SQСSђСWУФTђUU‘WХСRQТСQ‘‘T‘S•РУХS•–WС“Ф—ЦHKBKKHШ[YH›Ь€[€Ь\]]™H\ЬЪYЫ™YИЫЭ[ќ\€[ќ[YЩ[ЩH[€HY™™\™[ќЫЭ[ќћH[€\ИЭЫ‚‚‚€KHљ\ЪИ[™Э]ЫЫYH^Л€XXЪќ[X™\€\њ^HЪЭ[X]Ъ]ИX™[И[€Ъ^™Kќ]]ИЪИИ]™HY™™\™[ќ[[Э[ќЩ€љ\ЪИ]™[И[€Э]ЫЫY\В‚T’TТЧУU‘SИHИЊKЊ‹ЊИKKHXXЪљ\ЪИ]™[ЫЫY\ИЪ]HX™[И\Ь^H›Ь€Ь\][ЫњИY€]ЫЩ\ИXќ™H]ќ[X™\‹€Y€™[ЭИHљ\њЭ]Ъ[\ЫќXYЪЭИHЫЫЩЭ]ЫЫY\В‚T’TТЧУU‘SЧУP‘SИHИ”’TТЧУХИ‹”’TТЧУRQ‹”’TТЧТQТ€K‚SХUУУQWУU‘SИHИЊЊ‹ЊИKKHЭ]ЫЫYH]™[И\™HЪЭЫ€Y€љ\ЪИ\И™[ЭИ]Иљ\њЭ[ќћH[њЭXY‚SХUУУQWУU‘SЧУP‘SИHИ“ХUУУQWРђTСH‹“ХUУУQWСУУС‹“ХUУУQWХ‘УУС€K‚‚UPТФХPSСTURTQS•СђPХФ€H‚UPТФХPSЦQPT—СђPХФ€HџK‚“’[ќ[HВ‚PУХS•–WУU‘SТS•SУPVSUSTИHВBBKKHHX^[][H[ќ[HЫЭ[ќћHШ[€]™HЭ™\€[›Э\‚‚BLLЊKHЪ]љ[X[‚‚BLLЊKH\›^B‚BLLЊKH]ћB‚BLLЊKHZ\™›ЬЩB‚_K‚‚KKHЭ]XИЫЭ\Щ\О‚‚KKB‚KKHHЭ]XИЫЭ\ЩH\ИHЫЭ\ЩH]Ъ[ќ[HXШ^HЫЩH]ИЬљYЪ[€\Ш\X\‹‚‚KKH
+K™Л€Y\€\Э›ЮYY
+B‚KKB‚KKHPVSUSTО‚‚KKHY€Щ]И[€›Ы‹Y[\H\њ^\ЛЭ™\њљY\ИУХS•–WУU‘SТS•SУPVSUSTВ‚KKH›Ь€\ИЬXЪYљXИЫЭ\ЩH
+›ЭH]УХS•–WУU‘SТS•SУPVSUSTИ\В‚KKH\YYYќ\€S•SФУХTђСWЦУPVSUSTКB‚‚TХUPЧТS•SФУХTђСWУФTђUSУ—ХТСS”ЧУPVSUSTИHЯK‚TХUPЧТS•SФУХTђСWР”“ТСS—РЦTT—УPVSUSTИHИЊЊЊЊЊЊЊЊK‚TХUPЧТS•SФУХTђСWФђQT—УPVSUSTИHИЊЊKЊKЊK‚TХUPЧТS•SФУХTђСWТS•SУ‘UУФ’ЧУPVSUSTИHИЌKЊЌKЊЌKЊЌKЊK‚‚KKH[[ZXИ[ќ[ЫЫШ[€™HX[љ\[]Y›ЭYЪH›ЫЭЪ[™ИYљ[™\О‚‚KKB‚KKH“UСPРVH[™USСPРVHЫЫќ›ЫH]H]ЪXЪH[ќ[XШ^\В‚KKHH›Ь›][H\И\YY\И›ЫЭИ
+ќ[њИZ[JN‚‚KKH™^[ќ[H
+[ќ[H“UСPРVH
+H
+€USСPРVB‚KKB‚KKHQСФ‘QРUУСЧСђPХФ€[™QСФ‘QРUСU’TУФ€ЫЫќ›ЫH]H]ЪXЪ‚KKH[ќ[XШЭ[][]\Л€]\И\YYИHЭ[HЩ€H[ќ[Щ[™\]Y‚KKH›ЭYЪЭ]H^H\И›ЫЭО‚‚KKHYЩЬ™YШ]HСЧСђPХФ€
+€ЩКH
+И[ќ[Щ•Q^H
+H
+И[ќ[Щ•Q^HИU’TУФ‚‚KKHHYЩЬ™YШ]\И[€YYИHЫЫЩ€[ќ[‚‚KKHY€U’TУФ€\И™\›И[€H]љ\Ъ[Ы€\И][X]YИ™\›Л‚‚KKB‚KKHPVSUSTИЫЫќ›ЫИHX^[][H[YH]HЫЫШ[€ЫЫќљXќ]HВ‚KKHHљ[[[ќ[[Y\Л‚‚KKB‚KKHP”УУUWУPVSUSTИYљ[™\ИHЩZ[[™И›Ь€H[ќ[[€HЫЫ]‚KKHЪ[™]™\€™H^ЩYYY€^H\™HYX[ќИ™HЬ™X]\€Ь€\]X[В‚KKHPVSUSTЛ€Y€H\њ^H\И[\K›ИXњЫЫ]HX^[][H\ИYљ[™Y‚‚‚KKH[[ZXИЫЫU‘S•‚QSђSRPЧТS•SФУХTђСWСU‘S•С“UСPРVHHЊ‚QSђSRPЧТS•SФУХTђСWСU‘S•УUSСPРVHHЋNK‚QSђSRPЧТS•SФУХTђСWСU‘S•РQСФ‘QРUУСЧСђPХФ€H‚QSђSRPЧТS•SФУХTђСWСU‘S•РQСФ‘QРUСU’TУФ€HK‚QSђSRPЧТS•SФУХTђСWСU‘S•УPVSUSTИHИK‚QSђSRPЧТS•SФУХTђСWСU‘S•РP”УУUWУPVSUSTИHИLLLLK‚‚KKH[[ZXИЫЫS‘РУУPђU‚QSђSRPЧТS•SФУХTђСWУS‘РУУPђUС“UСPРVHHЊ‚QSђSRPЧТS•SФУХTђСWУS‘РУУPђUУUSСPРVHHЋNK‚QSђSRPЧТS•SФУХTђСWУS‘РУУPђUРQСФ‘QРUУСЧСђPХФ€HЊЌK‚QSђSRPЧТS•SФУХTђСWУS‘РУУPђUРQСФ‘QРUСU’TУФ€HL‚QSђSRPЧТS•SФУХTђСWУS‘РУУPђUУPVSUSTИHИЌKKLK‚QSђSRPЧТS•SФУХTђСWУS‘РУУPђUРP”УУUWУPVSUSTИHИМLMHK‚‚KKH[[ZXИЫЫђUђSРУУPђU‚QSђSRPЧТS•SФУХTђСWУђUђSРУУPђUС“UСPРVHHЊ‚QSђSRPЧТS•SФУХTђСWУђUђSРУУPђUУUSСPРVHHЋNK‚QSђSRPЧТS•SФУХTђСWУђUђSРУУPђUРQСФ‘QРUУСЧСђPХФ€HЊ‹‚QSђSRPЧТS•SФУХTђСWУђUђSРУУPђUРQСФ‘QРUСU’TУФ€HЊ‚QSђSRPЧТS•SФУХTђСWУђUђSРУУPђUУPVSUSTИHИKЌKЊK‚QSђSRPЧТS•SФУХTђСWУђUђSРУУPђUРP”УУUWУPVSUSTИHИLМЌHK‚‚KKH[[ZXИЫЫRT—РУУPђU‚QSђSRPЧТS•SФУХTђСWРRT—РУУPђUС“UСPРVHHЊ‚QSђSRPЧТS•SФУХTђСWРRT—РУУPђUУUSСPРVHHЋNK‚QSђSRPЧТS•SФУХTђСWРRT—РУУPђUРQСФ‘QРUУСЧСђPХФ€HK‚QSђSRPЧТS•SФУХTђСWРRT—РУУPђUРQСФ‘QРUСU’TУФ€H‹‚QSђSRPЧТS•SФУХTђСWРRT—РУУPђUУPVSUSTИHИЌHK‚QSђSRPЧТS•SФУХTђСWРRT—РУУPђUРP”УУUWУPVSUSTИHИМK‚‚KKH[[ZXИЫЫRT—Ф‘PУУ‚‚QSђSRPЧТS•SФУХTђСWРRT—Ф‘PУУ—С“UСPРVHHЊ‚QSђSRPЧТS•SФУХTђСWРRT—Ф‘PУУ—УUSСPРVHHЋNMK‚QSђSRPЧТS•SФУХTђСWРRT—Ф‘PУУ—РQСФ‘QРUУСЧСђPХФ€HЊK‚QSђSRPЧТS•SФУХTђСWРRT—Ф‘PУУ—РQСФ‘QРUСU’TУФ€HЊ‚QSђSRPЧТS•SФУХTђСWРRT—Ф‘PУУ—УPVSUSTИHИЌKЌKЌKЌHK‚QSђSRPЧТS•SФУХTђСWРRT—Ф‘PУУ—РP”УУUWУPVSUSTИHИММММK‚‚KKH[[ZXИЫЫРTT‘QУФTђUU‘B‚QSђSRPЧТS•SФУХTђСWРРTT‘QУФTђUU‘WС“UСPРVHHЊ‚QSђSRPЧТS•SФУХTђСWРРTT‘QУФTђUU‘WУUSСPРVHHЋMK‚QSђSRPЧТS•SФУХTђСWРРTT‘QУФTђUU‘WРQСФ‘QРUУСЧСђPХФ€HK‚QSђSRPЧТS•SФУХTђСWРРTT‘QУФTђUU‘WРQСФ‘QРUСU’TУФ€H‹‚QSђSRPЧТS•SФУХTђСWРРTT‘QУФTђUU‘WУPVSUSTИHИММММK‚QSђSRPЧТS•SФУХTђСWРРTT‘QУФTђUU‘WРP”УУUWУPVSUSTИHИK‚‚SS‘РУУPђUРT“VWТS•SУХ‘T—УФУ‘S•ФT—ТS”ХSђСHHKЊBBKKHY€HЬЫ™[ќ\И[ћH]љ\Ъ[Ы€™\Щ[ќ›][ќ[[YHЩ[™\]YHH\ќXЪ\[ќYШZ[њЭ[€ЬЫ™[ќ‚SS‘РУУPђUРT“VWТS•SУХ‘T—УФУ‘S•ФT—РУУRUQСU’TТSУ”ИHЌKBKKH][\YYИHќ[X™\€Щ€ЫЫZ]Y]љ\Ъ[ЫњИЩ€HЬЫ™[ќ‚SS‘РУУPђUРT“VWТS•SУХ‘T—УФУ‘S•ФT—Ф‘TСT•‘WСU’TТSУ”ИHЊKBKKHШ[YH›Ь€]љ\Ъ[ЫњИ[€™\Щ\ќ™B‚SS‘РУУPђUРT“VWТS•SУХ‘T—УФУ‘S•ФT—Ф‘U‘PUS‘ЧСU’TТSУ”ИHЊ‹BKKHШ[YH›Ь€™]™X][™И]љ\Ъ[ЫњВ‚SS‘РУУPђUРT“VWТS•SСђPХФ€HЊKBBBBBKKHXЭЬ€\YYЫЩH[[Y\И]™H™Y[€YYЩЩ]\‚‚SS‘РУУPђUРRT—ТS•SУХ‘T—УФУ‘S•ФT—ТS”ХSђСHHKЊBBBKKHY€HЬЫ™[ќ\И[ћH[™HXЭ]™H[€K›][ќ[[YHЩ[™\]YћHH\ќXЪ\[ќYШZ[њЭ]ЬЫ™[ќ‚SS‘РУУPђUРRT—ТS•SУХ‘T—УФУ‘S•ФT—ФS‘HHЊKBBBKKH][\YYИHќ[X™\€Щ€[™H]ЬЫ™[ќ\И[€HЫЫX]‚SS‘РУУPђUРRT—ТS•SСђPХФ€HЊKBBBBBKKHXЭЬ€\YYЫЩH[[Y\И]™H™Y[€YYЩЩ]\‚‚T‘PУУ—ТS•SР“У•TИHЊНKKHXXЪ™XЫЫ€Ъ]™\И\И›Ыќ\ИИЭ™\[Ш]\™Y[™[ќ[[€ЫЫX]‚‚SђUђSРУУPђUУђU–WТS•SУХ‘T—УФУ‘S•ФT—ТS”ХSђСHHKЊ‚SђUђSРУУPђUУђU–WТS•SУХ‘T—УФУ‘S•ФT—ФХP“PT’S‘HHЊ‹‚SђUђSРУУPђUУђU–WТS•SУХ‘T—УФУ‘S•ФT—ФРФ‘QS—ФТTHЌK‚SђUђSРУУPђUУђU–WТS•SУХ‘T—УФУ‘S•ФT—РРTUSФТTHKЊ‚SђUђSРУУPђUУђU–WТS•SУХ‘T—УФУ‘S•ФT—ТS•T“ђSФS‘TИHЊK‚SђUђSРУУPђUУђU–WТS•SСђPХФ€HKЊ‚SђUђSРУУPђUРТU’SPS—ТS•SУХ‘T—УФУ‘S•ФT—ТS”ХSђСHHЊ‚SђUђSРУУPђUРТU’SPS—ТS•SУХ‘T—УФУ‘S•ФT—ХђQWРУУ•“ЦHHKЊ‚SђUђSРУУPђUРТU’SPS—ТS•SСђPХФ€HKЊ‚SђUђSРУУPђUРT“VWТS•SУХ‘T—УФУ‘S•ФT—ТS”ХSђСHHЊ‚SђUђSРУУPђUРT“VWТS•SУХ‘T—УФУ‘S•ФT—ХђS”С‘T—РУУ•“ЦHHKЊ‚SђUђSРУУPђUРT“VWТS•SСђPХФ€HKЊ‚SђUђSРУУPђUРRT—ТS•SУХ‘T—УФУ‘S•ФT—ТS”ХSђСHHKЊ‚SђUђSРУУPђUРRT—ТS•SУХ‘T—УФУ‘S•ФT—ТS•T“ђSФS‘TИHЊ‚SђUђSРУУPђUРRT—ТS•SУХ‘T—УФУ‘S•ФT—СVT“ђSФS‘TИHЊK‚SђUђSРУУPђUРRT—ТS•SСђPХФ€HKЊ‚‚SђU–WТS•SРђTСWФФХS‘ЧР“У•TЧУRS—ТS•SС“Ф—Р“У•TИHKKH]X\Э\И[ќ[Y™€\И™YYY›Ь€Э\ќ\Z[™ИђTСWФФХS‘ЧС”“УWСPФ–TSУ€›Ыќ\В‚SђU–WТS•SРђTСWФФХS‘ЧР“У•TЧУPVТS•SС“Ф—Р“У•TИHKH]\И[ќ[ђTСWФФХS‘ЧС”“УWСPФ–TSУ€Ъ[™H\YYќ[B‚‚SђU–WТS•SУRS‘WСSPQСWФ‘QPХSУ—СђPХФ—УRS—ТS•SС“Ф—Р“У•TИHKKH]X\Э\И[ќ[Y™€\И™YYY›Ь€Э\ќ\Z[™ИђUђSУRS‘TЧТS•SСQ‘—СђPХФ€›Ыќ\В‚SђU–WТS•SУRS‘WСSPQСWФ‘QPХSУ—СђPХФ—УPVТS•SС“Ф—Р“У•TИHKH\И[ќ[ђUђSУRS‘TЧТS•SСQ‘—СђPХФ€Ъ[™H\YYќ[B‚‚PRT—РУУPђUРRT—ТS•SФT—ТS”ХSђСHHKЊ‚PRT—РУУPђUРRT—ТS•SФT—УФУ‘S•ФS‘HHЊ‚PRT—РУУPђUРRT—ТS•SСђPХФ€HЊ‹‚‚RS•SУ‘UУФ’ЧУђUSУђSРУХ‘TђQСWСђPХФ€H‹ЊBBHKH][\YYИH][Ы[ЫЭ™\YЩHИYXЩHHњXЭ[Ы€Щ€HX^[][H[YH\ЭY™[ЭИ]Ъ[™HYYИH[ќ[YШZ[њЭH™]ЫЬљЙЬИ\™Щ]‚RS•SУ‘UУФ’ЧУђUSУђSРУХ‘TђQСWУђUђSРђTСWСђPХФ€HMKЊKHXЭЬ€\ЩY[њЭXYЩ€X›Э™H[€Ш\ЩH[ЭHЫќЫЭ™\€][\Щ\И]В‚‚KKHHX^[][H[ќ[[Y\И][€[ќ[™]ЫЬљИЪ[›ЭљYHYШZ[њЭH\™Щ]‚RS•SУ‘UУФ’ЧУPVРТU’SPS—ТS•SHЊЊ‚RS•SУ‘UУФ’ЧУPVРT“VWТS•SHЊЊ‚RS•SУ‘UУФ’ЧУPVУђU–WТS•SHЌKЊBBBKKHЫ›H\HY€H™]ЫЬљИ[ЫЫ\\ЬИH][\ЩHЫЫќ›ЫYћHH™]ЫЬљЙЬИ\™Щ]‚RS•SУ‘UУФ’ЧУPVРRT‘“ФђСWТS•SHMKЊ‚‚TђQT—УU‘SТS•SСђPХФ€HKBBBBKKH][\YYИHY\€]™[И[HњXЭ[Ы€Щ€[ќ[\€ЫЭ™\™Y›Эљ[ЩHЩHЩ]€HY\€]™[\ИЫЫ\]Y\ИќZ[[™У]™[ИX^ќZ[[™У]™[‚‚TђQT—ТS•SФХPТТS‘ЧСђPХФ€HKBBBKKH\ЩYЪ[€][\HY\њИЫЭ™\€HШ[YH›Эљ[ЩB‚TђQT—РђTСWТS•SХђSQTЧС“Ф—РУХS•–WРУХ‘TђQСWФTђСS•QСHHВ‚BKKH[Y\И\™HHШ[YHЬ™\€\И[€УХS•–WУU‘SТS•SУPVSUSTВ‚BKKH][\YYћHHЭ[Y\€Y™љXЪY[ЮHЭ™\€H›Эљ[Щ\ИЩ‚‚BKKHHЬXЪYљXИЫЭ[ќћH]љYYћHHќ[X™\€Щ€›Эљ[Щ\ИЫЫќ›ЫY‚BKKHћH]Ш[YHЫЭ[ќћK‚‚BLЊ‚BLЊ‚BLЊ‚BLЊ‚_K‚TђQT—РђTСWТS•SХђSQTЧС“Ф—РУХ‘T‘QУS‘Ф“Х’SђСTИHВ‚BKKH[Y\И\™HHШ[YHЬ™\€\И[€УХS•–WУU‘SТS•SУPVSUSTВ‚BKKH][\YYћHHЭ[Y\€Y™љXЪY[ЮHЩ€H›Эљ[Щ\ИЩ‚‚BKKHHЬXЪYљXИЫЭ[ќћH]љYYћHH[™]љYX[Y\‰ЬВ‚BKKH\Щ[ќYЩHЩ€ЫЭ™\™Y›Эљ[Щ\Л‚‚BLЊ‚BLЊ‚BLЊ‚BLЊ‚_K‚TђQT—РђTСWТS•SХђSQTЧС“Ф—РУХ‘T‘QФСPWФ“Х’SђСTИHВ‚BKKH[Y\И\™HHШ[YHЬ™\€\И[€УХS•–WУU‘SТS•SУPVSUSTВ‚BKKH][\YYћHHЭ[Y\€Y™љXЪY[ЮHЩ€H›Эљ[Щ\В‚BKKHЫЭ™\™YћHHY\€›Ь€XXЪЭ]YЪXИ™YЪ[Ы€]\В‚BKKHЫЫќ›ЮH›Э]\И[™][\YYћHHњXЭ[Ы€Щ€ЫЫќ›ЮB‚BKKH]ЫЭ[ќћH\ИЫЪ[™И›ЭYЪH™YЪ[Ы€
+^ЫY[™ИB‚BKKHЫЫќ›Ю\ИЩ€HY\‰ЬИЭЫ™\ЉB‚BLЊ‚BLЊ‚BLЊ‚BLЊ‚_K‚TђQT—УђU–WТS•SСђPХФ—ФT—ФТTХTHHВ‚BKKH]ћH[ќ[[YHXЭЬ™YИHњXЭ[Ы€Щ€HЫЭ[ќћIЬВ‚BKKHЪ\И[€HЩXH›Ы™HЫЭ™\™YћHHY\‹ћHЪ\\B‚BLЊKHЭX›X\љ[™B‚BLЊKHШЬ™Y[€Ъ\‚BLЊKHШ\][Ъ\‚BLЊKHШ\њљY\€Ъ\‚_K‚PРTT‘QУФTђUU‘WУPVСђPХФ€HНKЊKKHYљ[™HHX^[][HЩ€H[™ЫZ^™YXЭЬ‹™Y›Ь™HHXЭЬ€њ›ЫHЬ\]]™H\И\YY‚PРTT‘QУФTђUU‘WУRS—СђPХФ€HLЊKKHYљ[™HHZ[љ[][HЩ€H[™ЫZ^™YXЭЬ‹™Y›Ь™HHXЭЬ€њ›ЫHЬ\]]™H\И\YY‚PРTT‘QУФTђUU‘WТS•SЦRQSHВ‚BKKH[Y\И\™HHШ[YHЬ™\€\И[€УХS•–WУU‘SТS•SУPVSUSTВ‚BKKHZ[H\ЩH[ќ[ZY[њ›ЫH[€Ь\]]™K™Y›Ь™HB‚BKKHXЭЬњИYљ[™YX›Э™H\™H\YY‚BLЊЛ‚BLЊЛ‚BLЊЛ‚BLЊЛ‚_K‚‚T‘PУУ—ФS‘WТS•SРђTСHHЊ‹BBBKKH[ќ[\ЩH[[Э[ќ›Ь€HЭ]YЪXИ\™XH\€[™B‚T‘PУУ—ФS‘WУS‘СTХ’P•USУ€HИLЊ‹ЊЊЛЊKKHЫЫќ›ЫИ›Ь€[™[™ЩXH›Ы™\ИЭИ]XЪЩ€XXЪ[ќ[\YH\ИЪ]™[€
+Ъ]‹\›^K]ћKZ\ЉB‚T‘PУУ—ФS‘WФСPWСTХ’P•USУ€HИЊЊLЊЊK‚‚SS‘ФФХСPРVHHЊK‚SђUђSФФХСPРVHHK‚‚QSђФ–TSУ—СPФ–TSУ—ТS•SСђPХФ”ИHВ‚BKKHXЭЬ™YИ
+H
+ИK™XЬћ\[Ы€
+HИ
+H
+И‹™[Ьћ\[Ы€
+HИ]\›Z[™HH[ќ[‚BKKHH\ИЭ™\€€Ъ[€YШXЮH[Ьћ\[Ы€[™XЬћ\[Ы€[ЩYљY\€\™H\ЩY‚‚BKKH›ЭH]Y€K™XЬћ\[Ы€\И™\›ЛH™\Э[\И›ЬЩYИ™\›В‚BKKH[€H[YHЬ™\€\ИУХS•–WУU‘SТS•SУPVSUSTВ‚BLMKЊMKЊMKЊMKЊ‚_K‚‚KKH[ќ[YЩ\€Yљ[™\В‚PТU’SPS—Ф“СPХSУ—ФђS‘СWТS•SУRS€HЊKKHZ[љ[][H[YHИЪЭИќ^ћћHXЭЬћHЫЭ[ќИ™[ЭИ\И[ЭHЪ[Щ]ППВ‚PТU’SPS—Ф“СPХSУ—ФђS‘СWТS•SУPVHЌKKHX^[][H[YHИЪЭИќ^ћћHXЭЬћHЫЭ[ќЛ€X›Э™H\И[ЭHЪ[Щ]ќ[ЫЭ[ќ‚PТU’SPS—Ф“СPХSУ—ТS•SФђS‘СWРUУХСTХТS•SHЌKKH[™ЩHЩ€[ќ[[Y\И]ЭЩ\Э[ќ[‚‚PТU’SPS—С•QSФђS‘СWТS•SУRS€HЊЛKHZ[љ[][H[YHИЪЭИќ^ћћHXЭЬћHЫЭ[ќИ™[ЭИ\И[ЭHЪ[Щ]ППВ‚PТU’SPS—С•QSФђS‘СWТS•SУPVHЌЛKHX^[][H[YHИЪЭИќ^ћћHXЭЬћHЫЭ[ќЛ€X›Э™H\И[ЭHЪ[Щ]ќ[ЫЭ[ќ‚PТU’SPS—С•QSТS•SФђS‘СWРUУХСTХТS•SHЌKKH[™ЩHЩ€[ќ[[Y\И]ЭЩ\Э[ќ[‚‚PТU’SPS—УPS”ХСT—ФђS‘СWТS•SУRS€HЊKKHZ[љ[][H[YHИЪЭИќ^ћћHXЭЬћHЫЭ[ќИ™[ЭИ\И[ЭHЪ[Щ]ППВ‚PТU’SPS—УPS”ХСT—ФђS‘СWТS•SУPVHЌЛKHX^[][H[YHИЪЭИќ^ћћHXЭЬћHЫЭ[ќЛ€X›Э™H\И[ЭHЪ[Щ]ќ[ЫЭ[ќ‚PТU’SPS—УPS”ХСT—ТS•SФђS‘СWРUУХСTХТS•SHЌKKH[™ЩHЩ€[ќ[[Y\И]ЭЩ\Э[ќ[‚‚PТU’SPS—РУУ•“ЦTЧФђS‘СWТS•SУRS€HЊKKHZ[љ[][H[YHИЪЭИќ^ћћHXЭЬћHЫЭ[ќИ™[ЭИ\И[ЭHЪ[Щ]ППВ‚PТU’SPS—РУУ•“ЦTЧТS•SФђS‘СWРUУХСTХТS•SHЌKKH[™ЩHЩ€[ќ[[Y\И]ЭЩ\Э[ќ[‚‚PТU’SPS—Х•PТФЧФђS‘СWТS•SУRS€HЊKKHZ[љ[][H[YHИЪЭИќ^ћћHXЭЬћHЫЭ[ќИ™[ЭИ\И[ЭHЪ[Щ]ППВ‚PТU’SPS—Х•PТФЧФђS‘СWТS•SУPVHЌKKHX^[][H[YHИЪЭИќ^ћћHXЭЬћHЫЭ[ќЛ€X›Э™H\И[ЭHЪ[Щ]ќ[ЫЭ[ќ‚PТU’SPS—Х•PТФЧТS•SФђS‘СWРUУХСTХТS•SHЌKKH[™ЩHЩ€[ќ[[Y\И]ЭЩ\Э[ќ[‚‚PТU’SPS—ХђRS”ЧФђS‘СWТS•SУRS€HЊKKHZ[љ[][H[YHИЪЭИќ^ћћHXЭЬћHЫЭ[ќИ™[ЭИ\И[ЭHЪ[Щ]ППВ‚PТU’SPS—ХђRS”ЧФђS‘СWТS•SУPVHЌKKHX^[][H[YHИЪЭИќ^ћћHXЭЬћHЫЭ[ќЛ€X›Э™H\И[ЭHЪ[Щ]ќ[ЫЭ[ќ‚PТU’SPS—ХђRS”ЧТS•SФђS‘СWРUУХСTХТS•SHЌKKH[™ЩHЩ€[ќ[[Y\И]ЭЩ\Э[ќ[‚‚PТU’SPS—ФХTWФђS‘СWТS•SУRS€HЊKKHZ[љ[][H[YHИЪЭИќ^ћћHXЭЬћHЫЭ[ќИ™[ЭИ\И[ЭHЪ[Щ]ППВ‚PТU’SPS—ФХTWФђS‘СWТS•SУPVHЌKKHX^[][H[YHИЪЭИќ^ћћHXЭЬћHЫЭ[ќЛ€X›Э™H\И[ЭHЪ[Щ]ќ[ЫЭ[ќ‚PТU’SPS—ФХTWТS•SФђS‘СWРUУХСTХТS•SHЌKKH[™ЩHЩ€[ќ[[Y\И]ЭЩ\Э[ќ[‚‚PТU’SPS—ХђQWФТХЧХђQWРSSХS•ИHЊKHZ[љ[][H[YHИЪЭИЭИ]XЪHЫЭ[ќћHY\ИH™\ЫЭ\ЩB‚PТU’SPS—ХђQWФТХЧХђQWФT•‘T”ИHЊKKHZ[љ[][H[YHИЪЭИЪИHЫЭ[ќћHY\ИЪ]‚PТU’SPS—УRS—ТS•SС“Ф—Ф‘TУХTђСWФ“ХUTЧХУУTИHЋKKHZ[љ[][H[YHИЪЭИЫЫќ›ЮH›Э]\И›Ь€™\ЫЭ\ЩH[њЩ™\‚‚PТU’SPS—УRS—ТS•SС“Ф—ХђQWФ“ХUTИHЌЛKHZ[љ[][H[YHИЪЭИYH›Э]\ИЫ€X\‚PТU’SPS—УRS—ТS•SС“Ф—Ф‘TУХTђСWУФ’QТS—Ф“ХUTИHЌKKHZ[љ[][H[YHИЪЭИ™\ЫЭ\ЩH[њЩ™\њИИXZ[›[™Ы€X\‚‚PT“VWУRS—ТS•SС“Ф—ФХTWФ“ХUTИHЌKKHZ[љ[][H[YHИЪЭИЫЫќ›ЮH›Э]\И›Ь€Э\H[њЩ™\‚‚PT“VWУRS—ТS•SС“Ф—ФХTWФ“ХUTЧХУУTИHЌЛKHZ[љ[][H[YHИЪЭИЫЫќ›ЮH›Э]HЫЫ\И›Ь€Э\H[њЩ™\‚‚‚PТU’SPS—ТS•SУ‘QQQХЧФТХЧРS•WРRT—Ф‘QPХSУ€HЊЛKHZ[љ[][H[YHИЪЭИ[ќHZ\€[XYЩH™YXЭ[Ы‚‚‚PТU’SPS—ТS•SУ‘QQQХЧФТХЧС“РХTЧХ‘QHHЌKKHZ[€™\]Z\™Y[ќ[И›ШЭ\И™YHЪ]ZЩ[€›ШЭ\Щ\В‚PТU’SPS—ТS•SУ‘QQQХЧФТХЧРХT”‘S•С“РХTИHЌЛKHZ[€™\]Z\™Y[ќ[ИЪЭИЭ\њ™[ќH›ШЭ\В‚PТU’SPS—ТS•SУ‘QQQХЧФТХЧРХT”‘S•С“РХTЧФ“СФ‘TФИHЌЛKHZ[€™\]Z\™Y[ќ[ИЪЭИЭ\њ™[ќ›ШЭ\И›ЩЬ™\ЬВ‚‚PТU’SPS—УRS—ТS•SХЧФТХЧТS‘TХ–WСФђTHЊМ‚PТU’SPS—УRS—ТS•SХЧФТХЧРУУ•“ЦTЧСФђTHЌМ‚PТU’SPS—УRS—ТS•SХЧФТХЧР“УP‘T”ЧСФђTHЋ‚PТU’SPS—УRS—ТS•SХЧФТХЧХ•PТФЧСФђTHЌK‚PТU’SPS—УRS—ТS•SХЧФТХЧХђRS”ЧСФђTHЌK‚‚PТU’SPS—УRS—ТS•SХЧФТХЧФђRSФХUTИHЌKHЪ[€[Э\Ъ[™ИЭ™\€Э\HX\[ЩKЪЭЬИ[XYЩKШЫЫњЭќXЭ[Ы€Э]\В‚‚SУХPТРУХS•У•SWСVTИHNKHќ[H^\ИYќ\€™\ЩX\ЪYИЫЫњЪY\€HXЪ\И›Ы‚‚RS•SХЧФТХЧХPТРУХS•HИЌKЊЛЊЛЊИKKHZ[љ[][H[YHИЪЭИЭ\њ™[ќXЪЫЭ[ќ[™Э\њ™[ќШЭљ[™B‚RS•SХЧФТХЧФ‘U’SХTУWФ‘TСPTђТQHИЌЛЌЛЌЛЌИKKHZ[љ[][H[YHИЪЭИ™]љ[Э\ЫH™\ЩX\ЪYXЪ‚RS•SХЧФТХЧРХT”‘S•WФ‘TСPTђТQHИЋЋЋЋKKHZ[љ[][H[YHИЪЭИЭ\њ™[ќH™Z[™И™\ЩX\ЪYXЪ‚‚RS•SХЧФТХЧСФђS‘СРХ’S‘HHИЊЛЊЛЊИKKHZ[љ[][H[YHИЪЭИЬ[™ШЭљ[™HИ\›^K]ћKZ\€B‚RS•SХЧФТХЧФХP‘РХ’S‘TИHИЌKЌKЌHKKHZ[љ[][H[YHИЪЭИЭX™ШЭљ[™\ИИ\›^K]ћKZ\€B‚RS•SХЧФТХЧУPTХT–HHИЌЛЌЛЌИKKHZ[љ[][H[YHИЪЭИX\Э\ћH]™[ИИ\›^K]ћKZ\€B‚‚RS•SХЧФТХЧТQPTИHИЊЊЊЊK‚‚PT“VWРT“VWРУХS•ФђS‘СWТS•SУRS€HЊMK‚PT“VWРT“VWРУХS•ФђS‘СWТS•SУPVHЌЛ‚PT“VWРT“VWРУХS•ФђS‘СWТS•SФђS‘СWРUУХСTХТS•SHЋ‚‚PT“VWФФPТPSС“ФђСTЧРУХS•ФђS‘СWТS•SФђS‘СWРUУХСTХТS•SHЌЛ‚‚PT“VWСTЦQQУPS”ХСT—РУХS•ФђS‘СWТS•SУRS€HЊЌK‚PT“VWСTЦQQУPS”ХСT—РУХS•ФђS‘СWТS•SУPVHЌЛ‚PT“VWСTЦQQУPS”ХСT—РУХS•ФђS‘СWТS•SФђS‘СWРUУХСTХТS•SHЌK‚PT“VWУRS—ТS•SХЧФТХЧСTURTQS•ФђUSИHЌЛ‚‚PT“VWУRS—ТS•SХЧФТХЧРђTТPЧХSTUWТS‘“ИHЊЛ‚PT“VWХSTUWХS’UРУХS•ТS•SУRS€HЌK‚PT“VWХSTUWХS’UРУХS•ТS•SУPVHЌЛ‚PT“VWХSTUWХS’UРУХS•ТS•SФђS‘СWРUУХСTХТS•SHKЊ‚PT“VWУRS—ТS•SХЧФТХЧСVPХХSTUWТS‘“ИHЋ‚‚PT“VWФХРТФSWРУХS•ТS•SУRS€HЊЛ‚PT“VWФХРТФSWРУХS•ТS•SУPVHЌЛ‚PT“VWФХРТФSWРУХS•ТS•SФђS‘СWРUУХСTХТS•SHЌK‚‚PT“VWУRS—ТS•SХЧФТХЧСTURTQS•СTТQУ—СURSИHЋ‚‚PT“VWУRS—ТS•SФђUSЧУ‘QQQС“Ф—СTФVRS‘ЧСђRСWСS‘SVWТS•SТS—УQСT€HЋK‚PT“VWУRS—ТS•SФђUSЧУ‘QQQС“Ф—Ф‘U‘PSS‘ЧСђRСWСS‘SVWТS•SHЋK‚‚PT“VWТS•SРУУPђUР“У•TЧУPVР“У•TИHЊ‹KHX^ЫЫX]›Ыќ\И]Ъ[\HЪ[€[ќ[\ИYЪ[›ЭYЪ‚PT“VWТS•SРУУPђUР“У•TЧСђPХФ—РUPТИHKЊKH][\Y\€›Ь€]XЪИ[YHЩ€[ќ[ЫЫX]›Ыќ\В‚PT“VWТS•SРУУPђUР“У•TЧСђPХФ—СQ‘S”СHHKЊKH][\Y\€›Ь€Y™[њЩH[YHЩ€[ќ[ЫЫX]›Ыќ\В‚‚PT“VWТS•SРУУPђUР“У•TЧУRS—ТS•SС“Ф—Р“У•TИHKKHZ[€[ќ[™YYYИЭ\ќ\Z[™ИT“VWТS•SРУУPђUР“У•TЧУPVР“У•TВ‚PT“VWТS•SРУУPђUР“У•TЧУPVТS•SС“Ф—Р“У•TИHLKH[ќ[™YYYИќ[H\HT“VWТS•SРУУPђUР“У•TЧУPVР“У•TВ‚‚SђUђSСУRSђSђСWТS•SУХИHЌBBBBBBBKKHЩH™YY[Ь™H[ќ[[€\ИИЩ][ћHЫZ[[ЩB‚SђUђSСУRSђSђСWТS•SУХЧСУRSђSђСWФSђSWФХT•HЊKBKKHЫZ[[ЩH\И™YXЩYИђUђSСУRSђSђСWТS•SУХЧСУRSђSђСWУRS—ФSђSH]Ь€™[ЭИ\И[ќ[‚SђUђSСУRSђSђСWТS•SУХЧСУRSђSђСWУRS—ФSђSHHЌKKH[ЭHЩ]\И]XЪЫZ[[ЩH]ђUђSСУRSђSђСWТS•SУХЧСУRSђSђСWФSђSWФХT•[™ШШ[\И\ИH]ђUђSСУRSђSђСWТS•SУХВ‚‚SђU–WС“QUРУХS•ТS•SУRS€HЊK‚SђU–WС“QUРУХS•ТS•SУPVHЊЛ‚SђU–WС“QUРУХS•ТS•SФђS‘СWРUУХСTХТS•SHЌK‚‚SђU–WХTТС“ФђСWРУХS•ТS•SУRS€HЊЛ‚SђU–WХTТС“ФђСWРУХS•ТS•SУPVHЌЛ‚SђU–WХTТС“ФђСWРУХS•ТS•SФђS‘СWРUУХСTХТS•SHЌK‚‚SђU–WФТTРУХS•ТS•SУRS€HЊK‚SђU–WФТTРУХS•ТS•SУPVHЋ‚SђU–WФТTРУХS•ТS•SФђS‘СWРUУХСTХТS•SHЌK‚‚SђU–WУRS—ТS•SХЧФТХЧСVTХS‘ЧРРUQУФ–WХTTИHЊKK]\И\ИX›Э]\Ш\Z[™ИЪ\ИћHЫ\ЬИШ]YЫЬћB‚SђU–WФТTХTWРУХS•ТS•SУRS€HЊЛBBBBKK]\И[™ЩH\И\ЩY›ЭЪ[€›Ь€\Ш\Z[™ИЫЭ[ќИћHЫ\ЬИ[™ЫЭ[ќИћH\љX[ќ‚SђU–WФТTХTWРУХS•ТS•SУPVHЌЛ‚SђU–WФТTХTWРУХS•ТS•SФђS‘СWРUУХСTХТS•SHЌK‚‚SђU–WУRS—ТS•SХЧФТХЧФТTРУTФСTИHЌKK]\И[ЫШЪЬИH\Ь^HЩ€HЪ]™[€\љX[ќ‚SђU–WСTЦQQУPS”ХСT—РУХS•ФђS‘СWТS•SУRS€HЊK‚SђU–WСTЦQQУPS”ХСT—РУХS•ФђS‘СWТS•SУPVHЌЛ‚SђU–WСTЦQQУPS”ХСT—РУХS•ФђS‘СWТS•SФђS‘СWРUУХСTХТS•SHЌK‚‚SђU–WУRS—ТS•SХЧФТХЧФТTСTТQУ—СURSИHЋ‚‚PRT—РRT•ТS‘ЧРУХS•ТS•SУRS€HЊ‚PRT—РRT•ТS‘ЧРУХS•ТS•SУPVHЌЛ‚PRT—РRT•ТS‘ЧРУХS•ТS•SФђS‘СWРUУХСTХТS•SHЌK‚‚PRT—УRS—ТS•SХЧФТХЧРRT•ТS‘ЧРУTФСTИHЊЛ‚PRT—ХТS‘ЧХTWРУХS•ТS•SУRS€HЌK‚PRT—ХТS‘ЧХTWРУХS•ТS•SУPVHЌЛ‚PRT—ХТS‘ЧХTWРУХS•ТS•SФђS‘СWРUУХСTХТS•SHЌK‚‚PRT—СTЦQQУPS”ХСT—РУХS•ФђS‘СWТS•SУRS€HЊK‚PRT—СTЦQQУPS”ХСT—РУХS•ФђS‘СWТS•SУPVHЌЛ‚PRT—СTЦQQУPS”ХСT—РУХS•ФђS‘СWТS•SФђS‘СWРUУХСTХТS•SHЌK‚B‚TђRQУRS—ТS•SС“Ф—ХРT“’S‘ЧУУ—УUSђТHЊKKHЭИ]XЪ[ќ[
+Щ€H™[][ќ\JH\И™YYYИЪЭИHШ\›љ[™ИЪ[€ZY\И][ЪY€ђRQУRS—ТS•SС“Ф—ХРT“’S‘ЧТS•РVWХЧУUSђТHЌKKHЭИ]XЪ[ќ[
+Щ€H™[][ќ\JH\И™YYYИЪЭИHШ\›љ[™И[ќШ^H›ЭYЪ™\\][Ы‚€KH
+\И[Z]\ИH[[^H[YHЫ›H\ЩY›Ь€ЫЫ[][љXШ][™ИH›ЫHЩ€[ќ[[€H[ќ[YЩ\€
+B€KH
+[€™X[]K]XЭ[Ы€ШШ[\И[™X\›HЪ][ќ[€М	H[ќ[H]XЭ[Ы€]М	H™\\][Ы‹L	H[ќ[H]XЭ[Ы€]L	H™\\][Ы‹]Л‚€ђRQУRS—ТS•SС“Ф—ХРT“’S‘ЧСPT“WФ‘TTђUSУ€HЋKHЭИ]XЪ[ќ[
+Щ€H™[][ќ\JH\И™YYYИЪЭИHШ\›љ[™ИX\›H[€H™\\][Ы‚€KH
+\И[Z]\ИH[[^H[YHЫ›H\ЩY›Ь€ЫЫ[][љXШ][™ИH›ЫHЩ€[ќ[[€H[ќ[YЩ\€
+B€KH
+[€™X[]K]XЭ[Ы€ШШ[\И[™X\›HЪ][ќ[€М	H[ќ[H]XЭ[Ы€]М	H™\\][Ы‹L	H[ќ[H]XЭ[Ы€]L	H™\\][Ы‹]Л‚‚‚PТU’SPS—УPTPУУ—ТS‘TХ–WРУХS•ТS•SФђS‘СWРUУХСTХТS•SHЌЛ‚‚SPTТS•SХ’TТP’SUWРХUС‘”ИHИKHЭИ]XЪX\[ќ[\ИШZ[™YЪ][ќ[Э™\€HЫЭ[ќћK€љ\њЭќ[X™\€\И™\ЪЫЩXЫЫ™\И[[Э[ќЩ€[ќ[X\[ќ[ШZ[™Y‚BLЊЌKML‚BLЌНKML‚BLKЊ‚BB‚_K‚‚KKH\ЩH\™H\ЩY[€ЫЫYHљYЩЩ\њВ‚PT“VWРU‘ЧРT“SФ—ТS•SУRS€HЊ‚PT“VWРU‘ЧРT“SФ—ТS•SУPVHЌK‚PT“VWРU‘ЧРT“SФ—ФђS‘СWРUУХСTХТS•SHKЊ‚‚PT“VWУPVРT“SФ—ТS•SУRS€HЊ‚PT“VWУPVРT“SФ—ТS•SУPVHЌK‚PT“VWУPVРT“SФ—ФђS‘СWРUУХСTХТS•SHKЊ‚‚PT“VWРU‘ЧФQTђТS‘ЧТS•SУRS€HЊ‚PT“VWРU‘ЧФQTђТS‘ЧТS•SУPVHЌK‚PT“VWРU‘ЧФQTђТS‘ЧФђS‘СWРUУХСTХТS•SHKЊ‚‚PT“VWУPVФQTђТS‘ЧТS•SУRS€HЊ‚PT“VWУPVФQTђТS‘ЧТS•SУPVHЌK‚PT“VWУPVФQTђТS‘ЧФђS‘СWРUУХСTХТS•SHKЊ‚KK_‚‚‚SђU–WУPTPУУ—УRTФТSУ—РУХS•ТS•SУRS€HЌKKHZ[€[ќ[ИЪЭИ\ЬЪYЫ™Y][Z\ЬЪ[ЫњВ‚SђU–WУPTPУУ—УRTФТSУ—РУХS•ТS•SУPVHЋKHZ[€[ќ[ИЪЭИ\ЬЪYЫ™Y][Z\ЬЪ[ЫњИЪ]\™™XЭXШЭ\XЮK[™\ЪЩ›ЬЩ\ИЫЭ[ќ‚‚SђU–WУPTPУУ—ФТХЧРSУђUђSФФ•ИHЊЛKHZ[€[ќ[ИЪЭИ[][ЬќИ
+Э\ќЪ\ЩH[ЭHЪ[Ы›HЩYH™X\ћHЫ™\КB‚SђU–WУPTPУУ—УђUђSФФ•Х’TТP’SUWСURSХ‘TТУИHИKHЭИ]Z[YHЬЭЫЫ\ИЪ[™B‚BLЊKKH›Ь€›И[ќ[‚BLЊKKKHЪЭИЬќ]™[‚BLЊЛKKHЪЭИќ^ћћH\ЪЩ›ЬЩHЫЭ[ќ‚BLЌЛKKHЪЭИќ[\ЪЩ›ЬЩHЫЭ[ќ‚BLЋKKHЪЭИ\ЪЩ›ЬЩH]Z[В‚_K‚SђU–WУPTPУУ—УђUђSФФ•ХTТС“ФђСWС•V––WХ‘TТУHЌK‚‚PRT—УPTPУУ—УRTФТSУ—РУХS•ТS•SУRS€HВ‚BLЊЛKHRT—ФХTT’SФ’UB‚BLЊЛKHРTВ‚BLЊЛKHS•TђСTSУ‚‚BLЊЛKHХђUQТPЧР“УP‘T‚‚BLЊЛKHђUђSР“УP‘T‚‚BLЊЛKH“ФУ•RСB‚BLЊЛKHTђQ“Ф‚BLЊЛKHђUђSТРSRRРV‘B€ЊЛKHФ•ФХ’RСB‚BLЊЛKHUPТЧУСТTХPФВ‚BLЊЛKHRT—ФХTB‚BLЊЛKHђRS’S‘В‚BLЊЛKHђUђSУRS‘TЧФS•S‘В‚BLЊЛKHђUђSУRS‘TЧФХСQTS‘В‚BLЊЛKH‘PУУ‚‚BLЊЛKHђUђSФU“У‚BLЊЛKHђT”ђQСB‚BLЊЛKHРSB‚_K‚PRT—УPTPУУ—УRTФТSУ—РУХS•ТS•SУPVHВ‚BLЌ‹KHRT—ФХTT’SФ’UB‚BLЌ‹KHРTВ‚BLЌ‹KHS•TђСTSУ‚‚BLЌ‹KHХђUQТPЧР“УP‘T‚‚BLЌ‹KHђUђSР“УP‘T‚‚BLЌ‹KH“ФУ•RСB‚BLЌ‹KHTђQ“Ф‚BLЌ‹KHђUђSТРSRRРV‘B€Ќ‹KHФ•ФХ’RСB‚BLЌ‹KHUPТЧУСТTХPФВ‚BLЌ‹KHRT—ФХTB‚BLЌ‹KHђRS’S‘В‚BLЌ‹KHђUђSУRS‘TЧФS•S‘В‚BLЌ‹KHђUђSУRS‘TЧФХСQTS‘В‚BLЌ‹KH‘PУУ‚‚BLЌ‹KHђUђSФU“У‚BLЌ‹KHђT”ђQСB‚BLЌ‹KHРSB‚_K‚PRT—УPTPУУ—УRTФТSУ—РУХS•ТS•SФђS‘СWРUУХСTХТS•SHВ‚BLЌKKHRT—ФХTT’SФ’UB‚BLЌKKHРTВ‚BLЌKKHS•TђСTSУ‚‚BLЌKKHХђUQТPЧР“УP‘T‚‚BLЌKKHђUђSР“УP‘T‚‚BLЌKKH“ФУ•RСB‚BLЌKKHTђQ“Ф‚BLЌKKHђUђSТРSRRРV‘B€ЌKKHФ•ФХ’RСB‚BLЌKKHUPТЧУСТTХPФВ‚BLЌKKHRT—ФХTB‚BLЌKKHђRS’S‘В‚BLЌKKHђUђSУRS‘TЧФS•S‘В‚BLЌKKHђUђSУRS‘TЧФХСQTS‘В‚BLЌKKH‘PУУ‚‚BLЌKKHђUђSФU“У‚BLЌKKHђT”ђQСB‚BLЌKKHРSB‚_K‚‚PRT—УPTPУУ—ФТХЧРSРRT—ФФ•ИHЊЛKHZ[€[ќ[ИЪЭИ[Z\€ЬќИ
+Э\ќЪ\ЩH[ЭHЪ[Ы›HЩYH™X\ћHЫ™\КB‚PRT—УPTPУУ—РRT—ФФ•Х’TТP’SUWСURSХ‘TТУИHИKHЭИ]Z[YHЬЭЫЫ\ИЪ[™B‚BLЊKKH›Ь€›И[ќ[‚BLЊЛKKHЪЭИќ^ћћHZ\€[™HЫЭ[ќ‚BLЌЛKKHЪЭИќ[Z\€ЫЭ[ќ‚BLЋKKHЪЭИZ\€[™H]Z[В‚_K‚PRT—УPTPУУ—РRT—ФФ•ФS‘WС•V––WХ‘TТУHЌK‚PRT—УRS—ТS•SХЧФТХЧСTURTQS•СTТQУ—СURSИHЋ‚‚KKHљ[ќ[YЩ\€Yљ[™\ВџK‚“ђЪ\XЭ\€HВ‚SС‘’PСT—РУФ”РQ’TУФ—СS•’QTЧТS—УQS•HHИљYЪШЫЫ[X[™‹ќ[Ьљ\Э‹\›^WЭ[Ьљ\Э‹›]ћWЭ[Ьљ\Э‹Z\—Э[Ьљ\Э‹\›^WШЪYY€‹Z\—ШЪYY€‹›]ћWШЪYY€€K‚SС‘’PСT—РУФ”ТQТРУУSPS‘ФУХЧТS—УQS•HHЛKQ›Ь€[\ќX[YЩ\€ИЫЭ[ќHќ[X™\€Щ€YЪЫЫ[X[™ЫЭИ[€HRB‚TУUPРSРQ’TУФ—ФУХЧТS—УQS•HHЛKQ›Ь€[\ќX[YЩ\€ИЫЭ[ќHќ[X™\€Щ€Ы]XШ[Yљ\ЫЬ€ЫЭИ[€HRB‚‚QQђUSФРУФХС“Ф—УRSUT–WРQ’TУФ€HLKKHЪ[€[€Yљ\ЫЬ€Щ\И›Э]™HЫЬЭ\ЬЪYЫ™Y\И\ИHY][\ЩY‚QQђUSФРУФХС“Ф—ФУUPРSРQ’TУФ€HML‚QQђUSРФРУФХС“Ф—РQ’TУФ€HKKH›Ь€Э\ќ[™ИYљ\ЫЬњВ‚QQђUSРФРУФХС“Ф—СSђSRPЧРQ’TУФ”ИHKKH›Ь€Yљ\ЫЬњИЬ™X]Y\љ[™ИШ[Y\^B‚PQ’TУФ—Ф“УSХSУ—РУФХHKKKHЫЬЭИ›Ы[ЭHЫЫY[Ы™HИYљ\ЫЬ‚‚‚PУХS•–WУPQT—РђTСWСVT‘WЦQPT—УS‘ХHKKHЪ[€Ь™X][™ИH[[ZXИЫЭ[ќћHXY\€Y€[€^\™H]H\И›ЭЩ]]Ъ[]™HHYX\њИ\ИH\ЩH^\][Ы€]B‚PУХS•–WУPQT—РђTСWФђS‘УWУPVЦQPT—УS‘ХHMKKHX^[™ЫH[YHYYИУХS•–WУPQT—РђTСWСVT‘WЦQPT—УS‘Х‚‚TФPТPSTХРQ’TУФ—УRS—ФђS’ИHK‚QVT•РQ’TУФ—УRS—ФђS’ИHL‚QСS’UTЧРQ’TУФ—УRS—ФђS’ИHMKџK‚“”Э\HHВ‚SPVФђRSРVWУU‘SHKKH\]HZ[Ш^H^\™H\ИЩ[XXЪњ[YHЫЬњ™\ЬЫ™ИИH]™[‚‚KKYYљ[™\ИИШ[Э[]HHШ\][ИЭ\K€\ИЪ[™H[ЫИ\ЩY›Ь€X^Э\HЩ€Э\€›Щ\И\[™[™ИЫ€ЭИЩ[^H\™HЫЫ›™XЭYИШ\][€\Ъ[™ИH›Ь›][N‚‚KKPШ\][Э\HHРTUSФХTWРђTСH
+И
+ќ[X™\“ЩђЪ]љ[X[‘XЭЬљY\И
+€РTUSФХTWРТU’SPS—СђPХФ’QTКH
+И
+ќ[X™\“Щ“Z[]\ћQXЭЬљY\И
+€РTUSФХTWУRSUT–WСђPХФ’QTКH
+И
+ќ[X™\“Щ‘ШЪЮX\™И
+€РTUSФХTWСРТЦPT‘КB‚PРTUSФХTWРђTСHHKKH\ЩHЭ\H›Ь€Ш\][‚PРTUSФХTWРТU’SPS—СђPХФ’QTИHЊL‹KHЭ\Hњ›ЫHЫ™HЪ]љ[X[€XЭЬћB‚PРTUSФХTWУRSUT–WСђPХФ’QTИHЊL‹KHЭ\Hњ›ЫHЫ™HZ[]\ћHXЭЬћB‚PРTUSФХTWСРТЦPT‘ИHK\Э\Hњ›ЫHЫ™H][XЭЬћB‚‚KKHYљ[™\И]\™H\ЩY›Ь€Э\H™XXЪ›Ь€Ш\][‚KKHЭ\H›ЭИЪ[Э\ќњ›ЫHS’UPSФХTWС“ХИ[™Ъ[™H™YXЩYћHH[[HЫ€XXЪ›Эљ[ЩH]]™[И
+ЪXЪ\[™ИЫ€ЭИ\€ЩH\™Hњ›ЫHЭ\€ЬљYЪ[‹\њZ[€]КB‚KKHHЭ\H™XXЪЏHKЊЫЫњЪY\™Yњ\™™XЭ€[™Ъ[™HX›HИќ[HЭ\Ьќ[љ]ИЫ€]\ќXЭ[\€›Эљ[ЩH
+\ЬЭ[Z[™И[ЭH\™H›ЭЭ™\€Ш\XЪ]JB‚PРTUSТS’UPSФХTWС“ХИHKKHЭ\ќ[™ИЭ\Hњ›ЫB‚PРTUSФХT•S‘ЧФSђSWФT—Ф“Х’SђСHHKKHЭ\ќ[™И[[H]Ъ[™HYY\ИЭ\H[Э™\И]Ш^Hњ›ЫH]ИЬљYЪ[€
+[ЩYљYYћHЭY™€ZЩH\њZ[ЉB‚PРTUSРQQФSђSWФT—Ф“Х’SђСHHKKHYY[[H\ИЩH[Э™H]Ш^Hњ›ЫHЬљYЪ[‚‚‚KKHYљ[™\И]\™H\ЩY›Ь€Э\H™XXЪ›Ь€ќZ[›Щ\В‚S“СWТS’UPSФХTWС“ХИH‹ЌK‚S“СWФХT•S‘ЧФSђSWФT—Ф“Х’SђСHHKЌL‚S“СWРQQФSђSWФT—Ф“Х’SђСHHЊMK‚‚KKHYљ[™\И]\™H\ЩY›Ь€Э\H™XXЪ›Ь€ШЪЮX\™В‚SђUђSРђTСWТS’UPSФХTWС“ХИH‹ЌK‚SђUђSРђTСWФХT•S‘ЧФSђSWФT—Ф“Х’SђСHHK‚SђUђSРђTСWРQQФSђSWФT—Ф“Х’SђСHHK‚SђUђSФХTWТP—Ф‘QPХSУ—СђPХФ€HЊBBBBBBKKH][Э\HX€Ъ[™YXЩHHЭ\H™YYИH›Y]ћH\И][В‚‚KKH›ЩH›ЭИ
+K™K€›Эљ[ЩHШ\КH[Ь™X\ЩHћH\И[[Э[ќ\€Z[Ш^H]™[Щ€H›ЩIЬИ›Э[™XЪВ‚S“СWС“ХЧР“У•TЧФT—ФђRSУU‘SHЌ‚‚KKHљ]™\њИЪ[[њЩ™\€[€™]ЩY[€›Щ\И\ИY€^HЩ\™H\И]™[‚T’U‘T—ФђRSРVWУU‘SHK‚‚KKHYљ[™\И]\™H\ЩY›Ь€Э\H™XXЪ›Ь€›Ш][™И\›ЬњВ‚Q“РUS‘ЧТTђ“Ф—ТS’UPSФХTWС“ХИH‹ЌK‚Q“РUS‘ЧТTђ“Ф—ФХT•S‘ЧФSђSWФT—Ф“Х’SђСHHK‚Q“РUS‘ЧТTђ“Ф—РQQФSђSWФT—Ф“Х’SђСHHK‚‚Q“РUS‘ЧТTђ“Ф—РђTСWФХTHHMKЊKHЭ\HЪ]™[€ћHH›Ш][™И\›Ь‚‚Q“РUS‘ЧТTђ“Ф—РђTСWСTђUSУ€HЊKH\][Ы€Щ€Hќ[›Ш][™И\›Ь‚‚Q“РUS‘ЧТTђ“Ф—СTђUSУ—ФђUSЧРUУRS—ТHЊKH\][Ы€][›Ь€H\›Ь€]Ш\И™YXЩYИ‚‚Q“РUS‘ЧТTђ“Ф—УRS—СPРVHHЊ‹KH[Ш^\И™YXЩH›Ш][™И\›Ь€Ы™Щ]љ]HћH\ИX[ћHљЭ\њИ€\€Э\‚‚Q“РUS‘ЧТTђ“Ф—СPРVWУPVРRT—Р“У•TИHLЊKKH]L	HњљY[™HZ\€Э\\љ[Э\љ]KЪ[™ЩHXШ^H]HћH\ИX[ћHљЭ\њИ€\€Э\‚‚Q“РUS‘ЧТTђ“Ф—СPРVWУPVРRT—ФSђSHHЌKH]L	H[™[^HZ\€Э\\љ[Э\љ]KЪ[™ЩHXШ^H]HћH\ИX[ћHљЭ\њИ€\€Э\‚‚Q“РUS‘ЧТTђ“Ф—СPРVWУPVУђUђSР“У•TИHLЊ‹KH]L	HњљY[™H][Э\\љ[Э\љ]KЪ[™ЩHXШ^H]HћH\ИX[ћHљЭ\њИ€\€Э\‚‚Q“РUS‘ЧТTђ“Ф—СPРVWУPVУђUђSФSђSHHЌKKH]L	H[™[^H][Э\\љ[Э\љ]KЪ[™ЩHXШ^H]HћH\ИX[ћHљЭ\њИ€\€Э\‚‚Q“РUS‘ЧТTђ“Ф—СPРVWУ“ЧРУУ•“УФSђSHHKЊKHY€YXЩ[ќ[™›Эљ[ЩH\И›Э[Ъ[™ЩHXШ^H]HћH\ИX[ћHљЭ\њИ€\€Э\‚‚‚TХTWС“ХЧС“ФФ‘QPХSУ—РUУPVТS‘”ђHHЌKHX^[™њ\ЭќXЭ\™H]™[Ъ[™YXЩHHЭ\H›ЭИ›ЬЩ™€ћH\И][В‚TХTWС“ХЧФSђSWРФ“ФФТS‘ЧФ’U‘T”ИHЌKKHЬ›ЬЬЪ[™Иљ]™\њИ[ќ›ЩXЩ\ИY][Ы[[[B‚‚HKH›ЩH›ЭИ\њZ[€[Щ™€\ИШШ[YћHЩЪ\ЭXЬИЭ\ќ™H\ЩYЫ€\Э[ЩJ
+H
+ШШ[\€И
+JЩWЉZК[ZYЪ[ќ
+JJJB‚TХTWС“ХЧСTХУСТTХPФЧСђSС‘—ТИHЌMKKHЭИЭY\HЭ\ќ™H\В‚TХTWС“ХЧСTХУСТTХPФЧСђSС‘—УRQТS•HЛЊЛKHЪYЫ[ЪY[™›XЭ[Ы€Ъ[ќ‚TХTWС“ХЧСTХУСТTХPФЧСђSС‘—ФРРST€HKЊKHX^[[HYќ\ЭY[ќYHИ\Э[ЩB‚TХTWС“ХЧСTХУСТTХPФЧСђSС‘—УRS—ФSђSWФРРSHHЊMKKHЩЪ\ЭXЬИЭ\ќ™H™]™\€™YXЩ\И[[HXЫЬ€™[ЭИ\И[Z]‚‚KKHH[™ЩH›Ыќ\ИYYИHќ[H[ЭЬљ^™YX‹€\ИЭ\H\ИYYЫ€ЬЩ€HТS’UPSФХTWС“ХИYљ[™YX›Э™K‚‚TХTWТP—С•SУSХФ’VђUSУ—Р“У•TИHЛЌK‚KKHЭИX[ћHќXЪЬИЩ\И]ЫЬЭИќ[H[ЭЬљ^™HHX‚‚TХTWТP—С•SУSХФ’VђUSУ—Х•PТЧРУФХHLЊ‚KKH›Ь€XXЪY][Ы[]™[Щ€[ЭЬљ^][Ы€Ы€HX€
+K™K€ЫЫќћHЪ]Щ][ЭЬљX^][ЫЉH™YXЩHX^›Ыќ\И›Ь€™^]™[ћH\И[[Э[ќ‚TХTWТP—УSХФ’VђUSУ—УPT‘ТSђSСQ‘‘PХСPРVHHKЌK‚‚‚KKH\ЩY›Ь€Ш[Э[][™И™›ЭИ€›Ь€Z[Ш^\Л‚‚TђRSРVWРђTСWС“ХИHKЊBKKHЭИ]XЪ\ЩH›ЭИZ[Ш^HЪ]™\ИЪ[€H›ЩHЫЫ›™XЭYИ]ИШ\][ШH][›ЩHћHHZ[Ш^B‚TђRSРVWС“ХЧФT—УU‘SHKЊKKHЭИ]XЪY][Ы[›ЭИHZ[Ш^H]™[Ъ]™\В‚TђRSРVWС“ХЧФSђSWФT—СSPQСQHЊKH[[HИ›ЭИ\€[XYЩYZ[Ш^B‚TђRSРVWУRS—С“ХИHKЊBKKHZ[љ[][HZ[Ш^H›ЭИШ[€™H™YXЩYВ‚‚KKH\ЩY›Ь€Ш[Э[][™И™›ЭИ€њ›ЫHH][›ЩHИ[›Э\€][›ЩHЪ[€]\ИЫЫ›™XЭYљXHHЫЫќ›ЮH›Э]B‚KKHђUђSРђTСWУPVФХTWС“ХЧСђPХФ€HЋKKH›ЭИЩ€H\™[ќ›ЩH\ИXЭЬ™YИ\И][И
+ЫИ][ЬЭ]Ш[€[њЩ™\€\™[ќ][›ЩH›ЭИ
+€\ИYљ[™JB‚SђUђSРђTСWС“ХИH‹ЊKHX^Э]]Ъ[њ]Щ€H][›ЩH\И[Z]YћH\И\ЩH[YH
+ИY][Ы[][И›Ь€XXЪ]™[‚SђUђSС“ХЧФT—УU‘SH‹ЊKHX^Э]]Ъ[њ]Щ€H][›ЩH\И[Z]YћH™]љ[Э\И\ЩH[YH
+И\ИYљ[™H\€]И]™[‚‚TХTWУ“СWУRS—ФХTWХ‘TТУHKЊKHY€Э\HЩ€H›ЩH\И™[ЭИ\И[YH]Ъ[™HЩ]ИKHЭ\њ™[ќH[ќ\ЩYИ\ИЪЭ[\[€Ъ[€[›ЭYЪ[XYЩHШШЭ\њВ‚‚RS‘”ђWХЧФХTHHЋBBBBBBKKHXXЪ]™[Щ€[™њHЪ]™\И\ИX[ћHЭ\B‚U”ХЧФХTWРђTСHHBBBBBBKKH›Ыќ\ИИЭ\Hњ›ЫHH”›ИX]\€H]™[‚U”ХЧФХTWР“У•TЧРУУ•‘T”ТSУ€HBBKKH›Ыќ\ИИЭ\HШШ[Э\Y\Ињ›ЫHљXЭЬћHЪ[ќЛ][\YYћH\И\ЬXЭ[™›Э[™YИЫЬЩ\Э[ќYЩ\‚‚TХTWС”“УWСSPQСQТS‘”ђHHЊ‹KH[XYЩY[™њ\ЭќXЭ\™HЫЭ[ќИ\И\И[€Э\HШ[ЬВ‚TХTWРђTСWУUSHЊ‹BBBBBBKKH][\Y\€Ы€Э\H\ЩH[Y\В‚TХTWСTФ•TSУ—СRSWФ‘PУХ‘T–HHKЌKBKKH]™\ћH^H›Щ\И™XЫЭ™\€\И]XЪЩ€Z\€XШЭ[][]Y\Ьќ\[Ы‹‚‚‚TђRSРVWРУУ•‘T”ТSУ—РУУУХУ€HMKHZ[Ш^\ИЪ[™H]Ы€ЫЫЫЭЫ€Ъ[€^H\™HШ\\™YћH[™[^H[™Ъ[›Э™H\ШX›H\љ[™ИHЫЫЫЭЫ‚‚TђRSРVWРУУ•‘T”ТSУ—РУУУХУ—РУФ‘HHЛ‚TђRSРVWРУУ•‘T”ТSУ—РУУУХУ—РТU’SРT€H‚‚QQђUSФХT•S‘ЧХ•PТЧФђUSИH‹KHЫЭ[ќљY\ИЩ]\И][ИЩ€Э\ќ[™ИќXЪИ[€Z\€ќY™™\њИЫЫ\\™YИZ\€™YY‚QQђUSФХT•S‘ЧХђRS—ФђUSИH‹KHЫЭ[ќљY\ИЩ]\И][ИЩ€Э\ќ[™ИZ[њИ[€Z\€ќY™™\њИЫЫ\\™YИZ\€™YY‚‚TХTWФТS•ЧФT—ХђRS€HЌKKHЫY][KЊЌHKH[[Э[ќЩ€Э\H]Ш[€љ][€HZ[‹€
+Z[њИ\ЭљXќ]HЭ\Hњ›ЫHШ\][ИHЭ\H›ЩKЉB‚S•SWФђRSРVTЧХђRS—СђPХФ€HЊKKHHZ[€\ШYЩH\ИШШ[YћHZ[Ш^H\Э[ЩH™]ЩY[€HЭ\H›ЩH[™HШ\][][\YYћH\ИXЭЬ‚‚‚PђTСWФХTWУUSС“Ф—Х•PТЧСQђUSР•Q‘‘T€HKЊKH[љ]X[[YH›Ь€Ш[ќYќY™™\њИЭ™\€Э[ќX[ќXЪИ\ШYЩB‚PђTСWФХTWУUSС“Ф—Х•PТЧУRS—Р•Q‘‘T€HЊKHZ[€[™X^[Y\И›Ь€ќY™™\€][В‚PђTСWФХTWУUSС“Ф—Х•PТЧУPVР•Q‘‘T€HLЊ‚‚U•PТЧРU’USУ€HЊKKH\ЩHќXЪИ]љ][Ы‚‚U•PТЧРU’USУ—СђPХФ€HЋKXHШШ[HЫ€Э[ќXЪИ]љ][Ы‚‚‚PђTСWХ•PТЧТHLЊ‚U•PТЧТФT—РT“SФ€H‹‚‚PђTСWХђRS—ТHLЊ‚UђRS—РT“SФ—ХT‘СUS‘ЧХСRQТHЊKKH›Ь€XXЪX[Ъ[ќШZ[™YћH\›[Ь—Э[YK[™[^H›ЫX™\њИ\™H\И]XЪ[Ь™HZЩ[HИ\™Щ]‚UђRS—РS•WРRT—ТUРТSђСHHЊKKH[[Ъ[™И[YHИ]\›Z[™HHЪ[ЩHЩ€Z[€[ќKXZ\€][™И[€]XЪЪ[™ИZ\ќЪ[™Л‚‚UђRS—РS•WРRT—ТUФ“УРУХS•HL‹KHHZ\—Ш]XЪИЩ€[]XЪЩYZ[њИ\™HXШЭ[][]Y[™[€ЩHИ\ИX[ћH[™ЫH›ЫИXXЪЪ]H]Ъ[ЩHЩ]X›Э™HИ]\›Z[™HHњXЭ[Ы€Щ€HXШЭ[][]YZ\—Ш]XЪИ]]Л‚‚UђRS—РS•WРRT—РUPТЧХЧРSSХS•HЊKKH[[Ъ[™И[YHИЫЫќ™\ќH][™ИZ\—Ш]XЪИИH\Щ[ќYЩH[YHЩ€H]XЪЪ[™И[™\И]\™HЪ[Y‚‚‚SRS—ХђRS—ФХTWСђPХФ€HЊ‹KH]љ[™ИZ[њИ[€ЭШЪЬ[HЫ›H\Y\И\И[[HXЭЬ‹ШШ[[™И\ИKЊЪ[€™YY\ИY]‚SRS—ХђRS—Ф‘TURT‘SQS•HЊKHY€Э[Z[€™YYH\Л[€Ы‰Э\H[ћHЭ\H[[K]™[€Y€ЭШЪЬ[H\И[њЭY™љXЪY[ќ‚‚TХTWС“ХЧФ‘QPХSУ—Х‘TТУHЊKKHY€Э\H›ЭИ\ИЭЩ\€[€\Л]\И›Э\YY‚‚KKH›ЫЭЪ[™И[Y\И\™H\ЩY›Ь€Ш[Э[][™ИЭ[ќX[ќXЪИ\ШYЩB‚KKHЩ[™\[HЭ[ќX[\ИЏHЭ\њ™[ќ\ШYЩHќ]\И[љ]И[Э™\И[Ы™ИHX\‚KKH^H\™H\ЬЪYЫ™YИY™™\™[ќ›Щ\ИЪXЪYИЫYЪHYЪ\€\ШYЩHYHИZ[љ[][HќXЪИ™YYY™Z[™ИB‚PђTСWРRT—ФХTWУUSС“Ф—Х•PТЧР•Q‘‘T€HKЊ‚PђTСWРT“VWФХTWУUSС“Ф—Х•PТЧР•Q‘‘T€HKЊ‚PђTСWУђU–WФХTWУUSС“Ф—Х•PТЧР•Q‘‘T€HKЊ‚‚PРTUSУ“СWРђTСWФХTWРQH‚P•RSУ“СWРђTСWФХTWРQHЌK‚SРРSУ“СWРђTСWФХTWРQHЌK‚SђUђSУ“СWРђTСWФХTWРQHЊЌK‚KKH™[™‚‚KKH\›ZY\ИЫЭЫHШZ[њИ[™ќY™™\њИЭ\HX›Э™HЊL	H\ИZ\€Э\HЬXЩHY€^H]™HY™љXЩ[ќЭ\H›ЭВ‚KKHЭ\ќЭ\ЩH^HЪ[ЬЩH\ИL	HЭ\H]™\ћH^H\[™[™ИЫ€ЭИYЭ\H›ЭИ\В‚PT“VWФХTWФђUSЧФХT•S‘ЧСРRS€HЊ‚PT“VWФХTWФђUSЧФФQQСРRS—ФT—ТХT€HЊ‹‚PT“VWУPVФХTWФђUSЧСРRS—ФT—ТХT€HЊ‹‚‚SRS—ФХT”‘S‘T—УSRUХЧУSХ‘WФХTWРРTUSHЊKKHЫЭ[ќћH™YYИИ™HX›Э™HЬИЭ\њ™[™\€][ИИ™HX›HИ[Э™H]ИШ\][‚PУУУХУ—СVTЧРQ•T—УSХ’S‘ЧФХTWРРTUSHМKHЫЫЫЭЫ€›Ь€[Эљ[™ИЭ\HYШZ[€Yќ\€\Э[Э™B‚QVTЧХЧФХT•СТU’S‘ЧФХTWРQ•T—УSХ’S‘ЧФХTWРРTUSHKKHHЫЭ[ќћHЪ[Э\ќШZ[љ[™ИЭ\HYќ\€\ИX[ћH^\И[Эљ[™И]ИШ\][‚QVTЧХЧФХT•СТU’S‘ЧС•SФХTWРQ•T—УSХ’S‘ЧФХTWРРTUSHМKHHЫЭ[ќћHЪ[™XXЪX^Э\HYќ\€\ИX[ћH^\И[Эљ[™И]ИШ\][‚‚SRS—СQ‘—С“Ф—РUUЧХTUS‘ЧСVTХS‘ЧФђRSРVTИHKKHЪ[HќZ[[™ИZ[Ш^\ЛHЮ\Э[HЪ[™Y™\€\][™И^\Э[™ИZ[Ш^HY€™]ИZ[Ш^H\ИЫЬЩH[›ЭYЪИ^\Э[™ИЫ™B‚B‚KKH™Z[™›ЬЩ[Y[ќИ\[™ИЫ€\Э[ЩHИШ\][[™›ЫЭЪ[™ИYљ[™\И\™H\ЩY›Ь€Ш[Э[][™И™Z[™›ЬЩ[Y[ќ[YB‚TХTWФUУPVСTХSђСHHНЊKKHX^[YH]Ш[€ZЩB‚TђRSРVWСTХSђСWСђPХФ—С“Ф—Ф‘RS‘“ФђСSQS•ФФQQHЌНKKH[YHXЭЬ€›Ь€Э[Z[Ш^H\Э[ЩB‚U•PТЧСTХSђСWСђPХФ—С“Ф—Ф‘RS‘“ФђСSQS•ФФQQHKЊKH[YHXЭЬ€›Ь€Э[ќXЪИ\Э[ЩB‚SђUђSСTХSђСWСђPХФ—С“Ф—Ф‘RS‘“ФђСSQS•ФФQQHЊЌKKH[YHXЭЬ€›Ь€Э[][\Э[ЩB‚‚PST•Х‘T–WУХЧФХTWУU‘SHЊНKBBHKH]ЪXЪЪ[ќЩHЪЭИ\HЭИ[™™\ћHЭИЭ\H]™[[\ќ€[YH\И[€	HЩ€Э\Y\ИЭ\ЬќYњИ™\]Z\™Y‚‚PST•УХЧФХTWУU‘SHЌЌK‚‚PRWС”“У•УRS’SUSWХS’UЧФT—Ф“Х’SђСWС“Ф—ФХTWРРSХSUSУ”ИHKHRHЪ[ћHИЩY\\И[[Э[ќЩ€]љ\Ъ[ЫњИ\€›Эљ[ЩH\ИHZ[љ[][HЪ[€][X][™ИЭ\H[Z]][ЫњИ›Ь€Ш\€њ›ЫќВ‚PRWС”“У•СU’TТSУ”ЧФT—ФХTWФТS•HЋKKHЭИX[ћH]љ\Ъ[ЫњИЪЭ[HRHЫЫњЪY\€]Ш[€Э\H\€]Z[X›HЭ\HЪ[ќ‚PRWС”“У•УPVХS’UЧСS‘SVWРУХS•СђPХФ€HKЊ‹KHXZЩHЭ\™HRHњ›ЫќX^њ•[љ]И\И]X\Э[™[^PЫЭ[ќ][\YYћH\ИXЭЬ‚‚TХTWХ‘TТУС“Ф—РT“VWРU’USУ€HЊМЛKH\›ZY\ИЪ[Ы›HЩ]]љ][Ы€™[ЭИ\ИЭ\B‚S•SP‘T—УС—ФТХУ—ФХTWФУХTђСTЧТS—ФХTWУPTSСHHЛKHќ[X™\€Щ€Э\H›ЭИЫЭ\Щ\ИЪЭЫ€[€њ™XZЩЭЫ€ЫЫ\‚QTХSPUQСU’TТSУ—ХСRQТС“Ф—ФХTWСTХSPUSУ”ЧСХRHHKЊKKQ]љ\Ъ[Ы€Э\HЫЫњЭ[\[Ы€\ЩY›Ь€\Э[X][™Ињ›Ыќ[™HЩZYЪ›Ь€Ь™\€ЫЫ\В‚PUђRSP“WУPS”ХСT—ФХUWФХTHHKBBBBBKKQXЭЬ€›Ь€Э]HЭ\Hњ›ЫHX^X[њЭЩ\€
+Ь[][ЫЉB‚S“У—РУФ‘WУPS”ХСT—ФХUWФХTHHЌKBBBBBKKQXЭЬ€›Ь€Ь[][Ы€Э]HЭ\HЪ[€ЫЫќ›ЫYћH[€ШШЭ\Y\€
+“ИRСH“УС
+B‚TХФ‘QФХTWРУУ”ХSTSУ—ФђUWСђPХФ€HЌНKBBBKKS][\Y\ИЫЫњЭ[\[Ы€]HЩ€ЭЬ™YЭ\H
+[Ь™KЫ\ЬИX\Щ[Y[ќ
+BџK“ђRUX]™HHВ‚PRWХPU‘WССS‘TђUSУ—ТУQWХPU‘WСTФ‘TХ’PХSУ€H‹BBKKHHЫYHX]™H\ИЩ[™\]Y\ЩYЩ™€H[љ]X[\™\ЭљXЭ[Ы‚‚PRWХPU‘WССS‘TђUSУ—Р“Ф‘T—ФТV‘WФ‘TХ’PХSУ€HЛBBBBKKHX]™\И\™HЩ[™\]Y\ЩYЩ™€›Ь™\њЛYЪ\€[YHYX[њИ\™Щ\€X]™\В‚PRWХPU‘WССS‘TђUSУ—СTХЧФХT•РУУ”ТQT’S‘ЧР“Ф‘T”ХUTИH‹KKH\Э[ЩHњ›ЫHШ\][[€\›\ИЩ€Э]\В‚PRWХPU‘WССS‘TђUSУ—УRS’SUSWФХUWРУХS•HЛBBBBBKKHЫX[X]™\ИHZ[љ[][HЭ]HЫЭ[ќ›Ь€HX]™B‚PRWХPU‘WССS‘TђUSУ—УPVСTХSђСWХЧУQT‘СHHЊBBBBKKHЫX[X]™\ИHЫќY\™ЩHЪ]ЫИ\€]Ш^HX]™\ЛYЪ\€[YHYX[њИ\ЬИY\™Ъ[™ИЪ[ШШЭ\‚‚PRWХPU‘WССS‘TђUSУ—УPVСTХSђСWХЧС’SHНLBBBBKKHљ[[Щ[™\][Ы€Э\HX^\Э[ЩHИљ[Э]\ЛYЪ\€[Y\ИYX[њИ\ЬИX]™\В‚‚PRWХPU‘WСTХ’P•USУ—ФРSQWХPU‘WФРУФ‘WУSСQ’QT€HЊЌKBBKKH[YH]Y™™XЭИHШЫЬ™HЩ€[љ]ИЪ[€\ЭљXќ][™ИИњ›ЫќИЪ][€HШ[YHX]™K]ИH\Щ[ќYЩH][\Y\‹HYЪ\€]\ИHYЪ\€HЪ[ЩHЩ€[љ]ИЭ^Z[™И[€ЫЬЩH›Ю[Z]B‚PRWХPU‘WСTХ’P•USУ—УPVФРУФ‘HHЌLBBBBBKKHX^ШЫЬ™H]H[љ]Ш[€]™HЪ[€™Z[™И\ЭљXќ]YИZHњ›ЫќЛYЪ\€[YHYX[њИ[Ь™HЬ[ќ[\љ]H[€ШЫЬ™HЪ[™Щ\ЛЭЩ\€[Y\ИYX[њИ\ЬИ\љX][Ы€[€Ъ\™H[љ]ИШ[€ЫВ‚PRWХPU‘WСTХ’P•USУ—ФTђСS•QСWУС—УRS’SUSWХS’UЧХЧТСQTHKЊKKHЭИ]XЪЪЭ[Hњ›Ыќ[™HYY\€И]ИZ[љ[][H[љ][X[™Ъ[€™[[Эљ[™ЛЬ™X\ЬЪYЫљ[™И[љ]В‚PRWХPU‘WСTХ’P•USУ—УPVФTђСS•ХS“QUСSPS‘ФT—С”“У•HЌKKH\Щ[ќYЩHЩ€ЭИ]XЪњ›ЫќИЪЭ[™\]Y\Эњ›ЫHЭ\€ЭЩ\€љ[Ьљ]Hњ›ЫќЛYX[њИЫЩHHњ›ЫќЩ]ИЫЩ€H[љ]]Э^\И\™H›Ь™]™\€[ќ[]И[X[™\И™YXЩYЫЫќ›ЫИЪY™›[™ИЩ€[љ]Л‚‚‚PRWХPU‘WФХUWХTUWУPVФХUWРУХS•ХЧСVS‘HЌKBBBKKHX^X]™HЪ^™B‚‚PRWХPU‘WР”‘PRСХУ—УRS—ФХUWРУХS•HЛBBBBBBKKHX]™\И™[ЭИ\ИЪ^™HЪ[њ™XZИ[™Y\™ЩHЪ]Э\њВ‚PRWХPU‘WР”‘PRСХУ—УPVСTХSђСWХЧУQT‘СHHЊBBBBKKHЫќY\™ЩHЪ]ЫИ\€]Ш^HX]™\ЛYЪ\€[YHYX[њИ\ЬИY\™Ъ[™ИЪ[ШШЭ\‚‚‚PRWХPU‘WФСPTђТФХTWУ“СWУPVСTHKBBBBBKKHX^\Щ€њ™XYYљ\њЭЩX\ЪЪ[HЫЪЪ[™И›Ь€Э\H›Щ\ИЪ[€Э]Щ€Э\B‚PRWХPU‘WФХTWРФ’TТTЧУSRUHЊЌKKHY€H[љ]\ИЭ[™[™И[€[€\™XHЪ]\ИЭ\H][И]Ъ[ћHИ\ШШ\B‚PRWХPU‘WРRWС”“У•УRS—СTТT‘QФђUSИHЊNBBBBBKKHњ›ЫќИ\™HЫЬќY\ЩYЫ€љ[Ьљ]KЩHќYЩH[љ][X[™\ЩYЫ€\ИЫЬќ[™ЛHYЪ\€H[YHH[Ь™H[љ]ИH[ЬЭ[\Ьќ[ќњ›ЫќЩ]ВџK“’[™\ЭљX[Ь™Ш[љ\Ш][Ы€HВ‚PTФТQУ—СTТQУ—ХPSWФРУФХФT—СVHHЊKBBBBKKHЫЬЭ[€Ы]XШ[ЭЩ\€Z[HЩ[™\][Ы€Ъ[€Ы™HRSИ\И\ЬЪYЫ™YИH™\ЩX\ЪЫЭ‚PTФТQУ—ТS‘TХ’PSУPS•QђPХT‘T—ФРУФХФT—СVHHЊЛBKKHЫЬЭ[€Ы]XШ[ЭЩ\€Z[HЩ[™\][Ы€Ъ[€Ы™HRSИ\И\ЬЪYЫ™YИH›ЩXЭ[Ы€[™B‚Q•S‘ЧС“Ф—ФТV‘WХTHLBBBBKKHќ[™И™YYY›Ь€HRSИИ[Ь™[Y[ќ]ИЪ^™H[™Щ]Ъ[ќИИ[›ШЪИZ]В‚Q•S‘ЧС“Ф—ФТV‘WХTУU‘SСђPХФ€HLBBKKHЭИ]XЪXXЪ]™[]]\Y\ИHќ[™И›Ь€Ъ^™H\‚Q•S‘ЧС“Ф—ФТV‘WХTУU‘SФХИHKЌBBBBBBKKHHЭЩ\€ЩH\YHИHZ[ИЪ^™HЪ[€Ш[Э[][™Иќ[™ИИ]™[\€B‚US“РТСQХђRUЧФT—ФТV‘WХTHKBBKKHќ[X™\€Щ€Ъ[ќИ›Ь€[›ШЪЪ[™ИZ]ИШќZ[™YЪ[€HRSИ[Ь™[Y[ќИ]ИЪ^™B‚QTТQУ—ХPSWРТS‘СWЦРУФХHЛBBBKKH›]ЫЬЭYYИHЫЬЭЩ€H™]И\]Z\Y[ќ\ЪYЫ‚‚Q•S‘ЧС“Ф—Ф‘TСPTђТРУУTUSУ—ФT—Ф‘TСPTђТРУФХHKHќ[™ИYYИRSИЪ[€H\ЪYЫ€X[H\ИЫЫ\]YH™\ЩX\Ъ][\YYћH™\ЩX\ЪШЫЬЭ[€XЪ›ЫЩЮH[\]B‚Q•S‘ЧС“Ф—РФ‘PUS‘ЧСTURTQS•ХђT’PS•HBKKHќ[™ИYYИRSИЪ[€H™]И\љX[ќ\ИЬ™X]YЪ]H\ЪYЫ€X[H\ЬЪYЫ™YИ]‚Q•S‘ЧС”“УWУPS•QђPХT‘T—ФT—ТPЧФT—СVHHЊ‹BKKHќ[™ИYYИRSИЪ[€HX[ќYXЭ\™\€\И]XЪYИH›ЩXЭ[Ы€[™K€YY]™\ћH^H›ЬЬќ[Ы[ИPИ›ЩXЩY‚‚SPVС•S‘ЧС”“УWУPS•QђPХT‘T—ФT—СVHHBKKHX^ќ[™ИЩ[™\]Y\€X[ќYXЭ\™\€\€^K€Щ]И›Ь€›ИX^[][K‚‚QTТQУ—ХPSWФ‘TСPTђТР“У•TИHЊKBBBKKH™\ЩX\Ъ›Ыќ\И›Ь€\Z[™ИH\ЪYЫ€X[H]X]Ъ\ИHXЪ›ЫЩЮB‚QSђP“WХTТЧРРTPТUHH[ЩKBBBBKKH[X›H[Z]Y\ЪИШ\XЪ]H›Ь€RSЬВ‚QQђUSТS’UPSХTТЧРРTPТUHHBBBKKHY][Э\ќ\ЪИШ\XЪ]H›Ь€XXЪRSИ
+X^H™HЭ™\њљY[€[€ЉB‚QQђUSТS’UPSФУPЦWРUPТРУФХHЊBKKHY][Э\ќ]XЪЫЬЭ[€›Ь€ЫXЪY\В‚QQђUSТS’UPSРUPТФУPЦWРУУУХУ€HNKKHY][Э\ќЫЫЫЭЫ€[€^\ИYќ\€]XЪ[™ИHЫXЮB‚SQРPЦWРУФХСђPХФ—ФРРSHHKЊBBBBKKH][\Y\€И\ЩHЪ[€YШXЮH\ЪYЫ™\€ЫЬЭXЭЬњИ\И\YYИRSЬИ
+YXQЬ›Э\—ШЫЬЭЩXЭЬЉBџK“”›Ъ™XЭHВ‚QђPТSUWФХTWХРT“’S‘ЧФ‘QФђUSИHЌЌ‹BKKHЪ[€XЪЪ[™ИЭ\H›Ь€HXЪ[]H]Ъ[™HHY[ЭИXЫЫ€ЪЭЫ€[ќ[HЭ\H\И\ЬИ[€\И[YKЪ\™H]Ъ[\›€™Y‚‚QQђUSРУУTVUHHLЊBBBBBKKHY][ЬXЪX[›Ъ™XЭ›ЭЭ\H\ЩHИЫ›H™\]Z\™HЫ™H]\][Ы‹‚‚QQђUSСSTWФ‘UРT‘ХСRQТHKЊBBBKKHHЩZYЪ›Ь€›И™]Ш\™™Z[™ИЪ]™[€Yќ\€H›ЭЭ\H]\][Ы‹‚‚QQђUSФХФФ“Т‘PХСVTИHЛBBBBKKHH[[Э[ќЩ€^\И]ZЩ\И›Ь€HШ[Щ[Y›Ъ™XЭИ™HЭЬY‚‚QVTЧХЧФ‘SSХ‘WФРТQS•TХHЛBBBBKKH[[Э[ќЩ€^\И™YYY›Ь€HШЪY[ќ\ЭИ™H[\ЬЪYЫ™Y‚‚QTУPS•WСђPТSUWСVTИHЊKH[[Э[ќЩ€^\И™YYYИ\ЫX[ќHHXЪ[]K‚‚T“ХХTWФTСWУPVФ“СФ‘TФИHLBBBKKHHќ[X™\€Щ€›ЩЬ™\ЬИЪ[ќИ™YYYИљ[љ\ЪH›ЭЭ\H\ЩH[™ЫЫ\]HH›Ъ™XЭ‚SRS’SUSWФ“Т‘PХФФQQСђPХФ—С”“УWФХTHHKЊKKHZ[љ[][HЬXЪX[›Ъ™XЭ™\ЩX\ЪЬYY\ЩYЫ€Э\B‚S‘QQQФХTWС“Ф—С•SФФQQФ“Т‘PХHЊBKKHЭ\H™YYY[€›Эљ[ЩHИЩ]ќ[™\ЩX\ЪЬYY›Ь€ЬXЪX[›Ъ™XЭ€RS’SUSWФ“Т‘PХФФQQСђPХФ—С”“УWФ‘TУХTђСWФТФ•QСHHЊ‹KHZ[љ[][HЬXЪX[›Ъ™XЭ™\ЩX\ЪЬYYXЭЬ€\ЩYЫ€™\ЫЭ\ЩHЪЬќYЩW“B‚RUTђUSУ—Ф‘UРT‘СQђUSХСRQТHKЊBBKKHY€›ИЩZYЪ\ИЬXЪYљYYЩ]]ИKЊ‚QQђUSФ“Т‘PХРУУTUSУ—ФРТQS•TХСVT’QSђСWСРRS€HМЊKKHY][^\љY[ЩHШZ[€›Ь€\ЬЪYЫ™YШЪY[ќ\ЭЪ[€H›Ъ™XЭ\ИЫЫ\]Y‚TРТQS•TХТS’•T‘QСђPХФ€HЊKKHHXЭЬ€И™YXЩHH[[Э[ќЩ€›ЩЬ™\ЬИШZ[™Y[€H›ЩЬ[HЪ]]XЪY[љќ\™YШЪY[ќ\Э€K™Л€ЌH™YXЩ\ИH›ЩЬ™\ЬИћHL	B‚T‘PФ•RUФРТQS•TХУУ‘WХђRUРТSђСHHЊНKBKKHЪ[ЩHИЩ]Ы™HZ]Ъ[€Ь™X][™ИHШЪY[ќ\Э€K™Л€ЊНHHНIHЪ[ЩHИЩ]HZ]‚TРТQS•TХРђTТPЧФ‘TСPTђТСRSWЦСРRS€HЊЌKKKHZ[H^\љY[ЩHШZ[€›Ь€Ъ[™И\ЪXИ™\ЩX\Ъ‚T‘PФ•RUФРТQS•TХРУФХHВBBBBBKKH[[Э[ќЩ€И\™HHШЪY[ќ\Э\ЩYЫ€]Z[X›HШЪY[ќ\Э‚BMKBBKKHЫЬЭY€›И]Z[X›HШЪY[ќ\Э‚BMKBBKKHЫЬЭY€H]Z[X›HШЪY[ќ\Э‚BMKBBKKHЫЬЭY€€]Z[X›HШЪY[ќ\Э‚BMBBBKKHЫЬЭY€[Ь™H[€€]Z[X›HШЪY[ќ\Э‚_K‚TРТQS•TХФТТSУU‘SХ‘TТУИHВBBKKH™\ЪЫ›Ь€ШЪY[ќ\ЭИ]™[\‚BLMНKBKKHИЫИњ›ЫH]™[И]™[B‚BLЋLKBBKKHИЫИњ›ЫH]™[HИ]™[‚‚BMBKKHИЫИњ›ЫH]™[€И]™[В‚BMLЌKBKKHИЫИњ›ЫH]™[ИИ]™[‚BMЌKBKKHИЫИњ›ЫH]™[И]™[B‚BMНNBKKHИЫИњ›ЫH]™[HИ]™[‚‚BNНKBKKHИЫИњ›ЫH]™[€И]™[В‚BNNLKBKKHИЫИњ›ЫH]™[ИИ]™[‚BLLLBKKHИЫИњ›ЫH]™[И]™[B‚BLLЊЌKBKKHX^]™[H\њ^HЪ^™B‚_K‚TРТQS•TХФТТSУU‘SФФQQУSСQ’QT€HВBKKH›Ыќ\ИИ\HИZ[H\ЩH›ЩЬ™\ЬИXШЫЬ™[™ИИHЪЪ[]™[Щ€HШЪY[ќ\Э‚HLЊЊKHLKЊYX[њИLL	H[ЫИ[YHШИЩ^H\ИРТQS•TХФТТSУU‘SУђSQWМ‚BKLЊMKKHLЊHYX[њИMIBBBX[ЫИ[YHШИЩ^H\ИРТQS•TХФТТSУU‘SУђSQWМB‚BKLЊLKKHYX[њИ›ИЪ[™ЩBBX[ЫИ[YHШИЩ^H\ИРТQS•TХФТТSУU‘SУђSQWМ‚‚BKLЊKKHЊMHYX[њИ
+МMIBBBK‹‹‚‚BLЊ‚BLЊK‚BLЊL‚BLЊMK‚BLЊЊ‚BLЊЌK‚BLЊМKKHЪ^™HUTХ™HРТQS•TХФТТSУU‘SХ‘TТУЙЬИЪ^™H
+ИB‚_K‚T“Т‘PХУФФЧСђPХФ—УУ—РРTT‘HHЊ‹KHXЭЬ€Щ€ЬЭ›ЩЬ™\ЬИЫ€›Ъ™XЭЪ[€XЪ[]H\ИШ\\™Y‚T“Т‘PХРРTT‘WСРRS—ФђUSИHЊ‹KH][ИЩ€Y™™\™[ЩHњ›ЫHШ\\™YXЪ[]Y\ИЫ™ЫЪ[™И›Ъ™XЭИ™XЩZ]™HИHШ\ЬњЙИ›ЩЬ™\ЬВ‚T“Т‘PХРРTT‘WР”‘PRХ“ХQТФ“СФ‘TФИHЊKKH][ИЩ€њ™XZЭ›ЭYЪ›ЩЬ™\ЬИЫ€Ш\\™HИHШ\Ь€›Ь€HXЪ[]Y\ИЬXЪX[^][Ы‚‚T“Т‘PХРРTT‘WСSRS’TТS‘ЧФ‘UT“€HЌ‹KH™YXЩY[[Э[ќЩ€ШZ[€Ъ[€Ш\\љ[™ИHXЪ[]HЪ]H›Ъ™XЭ[ЭH[™XYHШZ[™Y€Ъ[\HHXЭЬ€XXЪ[YHHШ\\™HШШЭ\њЛ€Ќ€YX[њИH™YXЭ[Ы€Щ€Њ	HЫ€™^›Ъ™XЭШ\\™K‚‚PђTТPЧФ‘TСPTђТХPТ“УСЦWР“У•TЧСђPХФ€HЊ‹KH›Ыќ\И™\ЩX\ЪXЭЬ€\YYИXЪ›ЫЩЪY\И\€ШЪY[ќ\ЭЪЪ[]™[Ъ[€\™›Ь›Z[™И\ЪXИ™\ЩX\Ъ[€HX]Ъ[™ИXЪ[]K‚‚PђTТPЧФ‘TСPTђТХPТ“УСЦWР“У•TЧСSRS’TТS‘ЧФ‘UT“—СђPХФ€HЊL‹KH[Z[љ\Ъ[™И™]\›€Ы€ђTТPЧФ‘TСPTђТХPТ“УСЦWР“У•TЧСђPХФ€›Ь€XXЪ^HШЪY[ќ\Э\™›Ь›Z[™И\ЪXИ™\ЩX\Ъ›Ь€][\HXЪ[]Y\Л‚‚P”‘PRХ“ХQТСRSWХPТ“УСЦWСРRS€HL‹KH[[Э[ќ[€KМL\Щ[ќYЩK€K™Л€ЌHHЊЌIB‚P”‘PRХ“ХQТСRSWФРТQS•TХФТТSСРRS€H‹KH[[Э[ќ[€KМL\Щ[ќYЩHШZ[™Y\€ЪЪ[Ъ[€Ъ[™И\ЪXИ™\ЩX\Ъ€K™Л€HHЊIH\€ЪЪ[]™[‚‚P”‘PRХ“ХQТСRSWФ“РТСUФТUWСРRS€HKBHKH[[Э[ќ[€KМL\Щ[ќYЩHШZ[™Y\€›ШЪЩ]Ъ]H]™[€K™Л€HHЊIH\€›ШЪЩ]Ъ]H]™[‚‚P”‘PRХ“ХQТСRSWУ•PУPT—Ф‘PPХФ—СРRS€HKKH[[Э[ќ[€KМL\Щ[ќYЩHШZ[™Y\€ќXЫX\€™XXЭЬ‹€K™Л€€HЊ‰H\€ќXЫX\€™XXЭЬ‹‚‚P”‘PRХ“ХQТСРRS—РS’SPUSУ—ФФQQУPVHKЊHKHH[љ[X][Ы€›Ь€ШZ[љ[™Ињ™XZЭ›ЭYЪ›ЩЬ™\ЬИ\ИH][ИЩ€\И[YH[™Э\њ™[ќZ[HШZ[‹‚‚PSSХS•УС—ФХTФ•U‘WФРТQS•TХИHЛBBHKHH[[Э[ќЩ€Э\Ьќ]™HШЪY[ќ\ЭИHXЪ[]HШ[€]™B‚TХTФ•U‘WФРТQS•TХЧС”ђPХSУ€HЊЌKBBHKHЭИY™™XЭ]™HЭ\Ьќ]™HШЪY[ќ\ЭИ\™HЫЫ\\™YИЭИЭ›Ы™И^HЫЭ[™HЫ€Y][‚TХTФ•U‘WФРТQS’UХФ“СФ‘TФЧР“У•TИHЊKBHKHЭИ]XЪЩ€H›ЩЬ™\ЬИЪ[™HЪ]™[€ИHY][Ы[ШЪY[ќ\ЭЫЭ[ќљY\И›Ъ™XЭ€\Щ[ќYЩHЩ€ЭИ]XЪHЭ\њ™[ќ›Ъ™XЭЫЭњ›ЫH]И]\][Ы‚‚TХTФ•U‘WФРТQS•TХЧФТT’S‘ЧР“У•TИHЊKBHKH™\ЩX\ЪЪ\љ[™И	H\€Э\Ьќ]™HШЪY[ќ\Э€ЫШ[\€XЭ[Ы‹‚џK“”ZYИHВ‚PђTСWСVTЧХЧФ‘TT‘HHЛBBBBBHKH\ЩHќ[X™\€Щ€^\И™\]Z\™YИЫЫ\]HZY™\\][Ы€\ЩB‚SPVФХUWХT‘СUЧХЧСUђSPUWФT—ТХT€HKHKHT‘“Ф“PSђСH
+ХT“HPТКH€YЪ\€ќ[X™\€H\Э\€Э]H\™Щ]™KY]][][Ы€
+ИЭЩ\€\™›Ь›X[ЩB‚TђRQХT‘СUТUSWФУУФТV‘HHKBBBHKHT‘“Ф“PSђСH
+RJH€ќ[X™\€Щ€[ќљY\ИИ™\Щ\ќ™H[€HZY\™Щ]][HЫЫ‚TђRQХTWТPУУ—ТUSWФУУФТV‘HHKBBHKHT‘“Ф“PSђСH
+RJH€ќ[X™\€Щ€[ќљY\ИИ™\Щ\ќ™H[€HZY\HXЫЫ€][HЫЫ€ђRQУХЧФ’TТЧФСUS‘ЧСTРTХT—УSСQ’QT€HЊKKHЭИ]XЪH\Ш\Э\€љ\ЪИ\И[ЩYљYYЪ[€HX[\ИЩ]И›ЭИ‚€ђRQУQQUSWФ’TТЧФСUS‘ЧСTРTХT—УSСQ’QT€HЊKKHЭИ]XЪH\Ш\Э\€љ\ЪИ\И[ЩYљYYЪ[€HX[\ИЩ]И›YY][H‚€ђRQТQТФ’TТЧФСUS‘ЧСTРTХT—УSСQ’QT€HЊЌKKHЭИ]XЪH\Ш\Э\€љ\ЪИ\И[ЩYљYYЪ[€HX[\ИЩ]ИљYЪ‚€ђRQФХPРСTФЧУSСQ’QT—Х‘TТУРђQHLLЊKHY€HЭXШЩ\ЬИЪ[ЩH[ЩYљY\€\И™[ЭИ\И[YK]Ъ[™H\Ь^YY[€™Y€ђRQФХPРСTФЧУSСQ’QT—Х‘TТУУ‘UUђSHЊKHY€HЭXШЩ\ЬИЪ[ЩH[ЩYљY\€\И™[ЭИ\И[YK]Ъ[™H\Ь^YY[€Y[ЭВ‚SPVСUPХQХT‘СUЧФT—ТХT€HKKHT‘“Ф“PSђСH
+ХT“HPТКH€X^ќ[X™\€Щ€\™Щ]ИИ™H]XЭY\€Э\‹“ХH€ЩY\\ИЭИ™XШ]\ЩH]XЭ[Ы€\ИЪXЪЩYYШZ[њЭ]™\ћHЫЭ[ќћHB‚TђRQСQђUSХT‘СUРУУУХУ—СVTИHМKHHY][ЫЫЫЭЫ€
+[€^\КH›Ь€ZY[™ИHШ[YH\™Щ]Ш[€™HЭ™\њљY[€›Ь€ЬXЪYљXИZY\\И›ЭYЪШЬљ\‚TђRQХS’UФФQQУUSTQT€HЊKKHЫШ[ЬYYЫЫќ›Ы‚PђTСWУђUђSРУУSPS‘ЧФђRQСTХSђСHHMLKHX^\Э[ЩH[€Ъ[ЫY]\њВ‚€ђRQУХЧФ’TТЧФСUS‘ЧФХPРСTФЧУSСQ’QT€HЊKKHЭИ]XЪHЭXШЩ\ЬИЪ[ЩH\И[ЩYљYYЪ[€HX[\ИЩ]И›ЭИ‚€ђRQУQQUSWФ’TТЧФСUS‘ЧФХPРСTФЧУSСQ’QT€HЊKKHЭИ]XЪHЭXШЩ\ЬИЪ[ЩH\И[ЩYљYYЪ[€HX[\ИЩ]И›ЭИ‚€ђRQТQТФ’TТЧФСUS‘ЧФХPРСTФЧУSСQ’QT€HЊЌKKHЭИ]XЪHЭXШЩ\ЬИЪ[ЩH\И[ЩYљYYЪ[€HX[\ИЩ]И›ЭИ‚‚‚UT‘СUСUPХSУ—ТS•SХ‘TТУHЊЊKHЭИ]XЪ[ќ[\И™YYY›Ь€H\™Щ]И™H]XЭYВ‚‚UT‘СUТS•SФT—РТU’SPS—ТS•SУХ‘T—РУХS•–HHЌKBKKH[ќ[]™[Э™\€\™Щ]ЫЭ[ќћH\ИШШ[YћH\И[YB‚UT‘СUТS•SФT—РT“VWТS•SУХ‘T—РУХS•–HHЌKBBKKH[ќ[]™[Э™\€\™Щ]ЫЭ[ќћH\ИШШ[YћH\И[YB‚UT‘СUТS•SФT—УђU–WТS•SУХ‘T—РУХS•–HHЌKBBKKH[ќ[]™[Э™\€\™Щ]ЫЭ[ќћH\ИШШ[YћH\И[YB‚UT‘СUТS•SФT—РRT‘“ФђСWТS•SУХ‘T—РУХS•–HHЌKBKKH[ќ[]™[Э™\€\™Щ]ЫЭ[ќћH\ИШШ[YћH\И[YB‚‚UT‘СUТS•SФT—У‘UУФ’ЧФХ‘S‘ХHЌKBBBKKH[ќ[™]ЫЬљИЭ™[™Э[€\™Щ]Э]H\ИШШ[YћH\И[YB‚UT‘СUТS•SС”“УWРУУ•“УQУ‘RQТ“ХT—ФХUTИHMKЊKKH›]›Ыќ\И›Ь€]љ[™ИЫЫќ›ЫЭ™\€]X\ЭЫ™H™ZYЪ›Э\€Э]B‚UT‘СUТS•SФT—РRT—ФХTT’SФ’UHHЌKBBBBKKHZ\€Э\\љ[Ьљ]HЭ™\€\™Щ]™YЪ[Ы€\ИШШ[YћH\И[YB‚UT‘СUТS•SС”“УWСPФ–TSУ€HЌKЊBBBBKKH›]›Ыќ\И›Ь€]љ[™Иќ[HXЬћ\YZ\€Ъ\\њВ‚UT‘СUТS•SФSђSWФT—СS‘SVWРУХS•T—ТS•SHKЊBKKH[™[^HЫЭ[ќ\€[ќ[\ИШШ[YћH\И[YB‚‚TђRQУХUУУQWФ‘TФ•СVTЧХЧУU‘HHLKHЭИX[ћH^\ИYќ\€HZY\И[™YЪ[HZYЭ]ЫЫYH™\Ьќ™Hљ\ЪX›HЫ€HX\™Y›Ь™H™Z[™И]]ЫX]XШ[H\ЫZ\ЬЩY‚‚S•PУPT—Р“УP—Ф“СPХSУ—ФРРSHHЌMMKЊBBBBKKH
+МHќXЫX\—Ь›ЩXЭ[Ы€Ъ]™\ИHќZЩH\€ИYX\њВ‚UT“SУ•PУPT—Р“УP—Ф“СPХSУ—ФРРSHHЌMMKЊBBKKH
+МHќXЫX\—Ь›ЩXЭ[Ы€Ъ]™\ИHќZЩH\€ИYX\њВ‚‚S•PУPT—Р“УP—УRS—СSPQСWФTђСS•HЊKBBBBKKHZ[љ[][H[XYЩHњ›ЫHќZЩ\И\ИH\Щ[ќYЩHЩ€Э\њ™[ќЭ™[™ЭЫЬ™Ш[љ\Ш][Ы‚‚S•PУPT—Р“УP—УPVСSPQСWФTђСS•HЋNKBBBBKKHZ[љ[][H[XYЩHњ›ЫHќZЩ\И\ИH\Щ[ќYЩHЩ€Э\њ™[ќЭ™[™ЭЫЬ™Ш[љ\Ш][Ы‚‚UT“SУ•PУPT—Р“УP—УRS—СSPQСWФTђСS•HЌ‹BBKKHZ[љ[][H[XYЩHњ›ЫHќZЩ\И\ИH\Щ[ќYЩHЩ€Э\њ™[ќЭ™[™ЭЫЬ™Ш[љ\Ш][Ы‚‚UT“SУ•PУPT—Р“УP—УPVСSPQСWФTђСS•HЋNKBBKKHZ[љ[][H[XYЩHњ›ЫHќZЩ\И\ИH\Щ[ќYЩHЩ€Э\њ™[ќЭ™[™ЭЫЬ™Ш[љ\Ш][Ы‚‚S•PУPT—ФђRQРРUQУФ–WУђSQHH›ќXЫX\—ЬZYИ‹KHHZYШ]YЫЬћHИXЭ]]HЪ[€ЫXЪЪ[™ИЫ€H›ќXЫX\€€Z\ЬЪ[Ы€ќ]Ы€›Ь€H›ШЪЩ]‚‚PT“VWХђS”С‘T—УSХ‘WФРQ‘SHHќYKBBBBBKKHЪ]\€И[Э™HШY™[HЪ[€[њЩ™\њљ[™И]љ\Ъ[ЫњИИHZYЫЭ\ЩB‚PT“VWХђS”С‘T—РU“ТQСS‘SVHHќYKBBBBBKKHЪ]\€И]›ЪY[™[^HЪ[€[њЩ™\њљ[™И]љ\Ъ[ЫњИИHZYЫЭ\ЩB‚‚SPVХT‘СUЧХЧХTUWФT—С”ђSQHHKBBBBKKHT‘“Ф“PSђСH
+”ђSQJH€X^ZY\™Щ]ИИ][X]H\€њ[YH
+Y™™XЭИZYX\XЫЫ€™Yњ™\Ъ]JBџK“‘XЭ[ЫњИHВ‚QђPХSУ—ТS’UPUU‘WРТS‘СWФ•SWРУФХHKBBBKKHЫЬЭЩ€Ъ[™Ъ[™ИHXЭ[Ы€ќ[H
+’HЪ[ќКB‚QђPХSУ—СРХ’S‘WФТT’S‘ЧХS“РТЧРУФХHKKHЫЬЭЩ€[›ШЪЪ[™ИШЭљ[™HЪ\љ[™И›Ь€Ы™H›Ы\‚‚QРХ’S‘WФТT’S‘ЧРђTСWУPTХT–WСРRS—УSУ•HHKHЪ[€ШЭљ[™HЪ\љ[™И\И[X›Y\И\ИH\ЩH[[Э[ќЩ€X\Э\ћHШZ[™Y[ЫќB‚QРХ’S‘WФТT’S‘ЧУSУ•WУPTХT–WСРRS—ФT—РУУSPS‘T€HKHЪ[€ШЭљ[™HЪ\љ[™И\И[X›YXXЪX]\€ЫЫ[X[™\€[Ь™X\Щ\ИH[ЫќHX\Э\ћHШZ[€ћH\И]XЪ‚‚PRWСђPХSУ—ФХСT—Ф“Т‘PХSУ—Х‘TТУHLBBKKHRHШЫЬ™H\И™YШ]]™HY€XЭ[Ы‰ЬИЭЩ\€›Ъ™XЭ[Ы€[YH\И™[ЭИH™\ЪЫ‚PRWСђPХSУ—ФХСT—Ф“Т‘PХSУ—ХђSQHHЊKBBBKKHRHШЫЬ™H\€ЭЩ\€›Ъ™XЭ[Ы€Ъ[ќ‚PRWУRS—ФХСT—Ф“Т‘PХSУ—ФРУФ‘HHLLBBBBKKHZ[€RHШЫЬ™H›Ь€ЭЩ\€›Ъ™XЭ[Ы‚‚PRWУPVФХСT—Ф“Т‘PХSУ—ФРУФ‘HHLBBBBKKHX^RHШЫЬ™H›Ь€ЭЩ\€›Ъ™XЭ[Ы‚‚QђPХSУ—ТS‘“QSђСWУS‘УPTСWСђPХФЏLЊKBBBKKHЭИ]XЪHЫЭ[ќћIЬИЫЫќљXќ][Ы€[€HXЭ[Ы€Y™™XЭИ]И[™›Y[ЩB‚QђPХSУ—ТS‘“QSђСWХРT—ФРУФ‘WСђPХФЏLЊKBBBBKKHЭИ]XЪHЫЭ[ќћIЬИШ\€ШЫЬ™HY™™XЭИ]И[™›Y[ЩB‚QђPХSУ—ТS‘“QSђСWСQ‘‘PХЧСђPХФЏLKBBBBBKKHЭИ]XЪHY™™XЭИY™™XЭИ]И[™›Y[ЩB‚QђPХSУ—ТS‘“QSђСWТS‘TХ’PSРРTPТUWСђPХФ€HKBBKKZЭИ]XЪHЫЭ[ќћIЬИ[™\ЭћHY™™XЭИ]И[™›Y[ЩB‚QђPХSУ—ТS‘“QSђСWСРT”’TУУ—ФХTФ•Ф“Х’QT—СђPХФ€HЊKKKZЭИ]XЪHЫЭ[ќћIЬИ›ЭљYYШ\њљ\ЫЫ€Э\ЬќY™™XЭИ]И[™›Y[ЩB‚QђPХSУ—ТS‘“QSђСWСРT”’TУУ—ФХTФ•Ф‘PТQU‘T—СђPХФ€HLЊKKKZЭИ]XЪHЫЭ[ќћIЬИ™XЩZ]™YШ\њљ\ЫЫ€Э\ЬќY™™XЭИ]И[™›Y[ЩB‚QђPХSУ—ТS‘“QSђСWСVQUSУђT–WС“ФђСWФ“Х’QT—СђPХФ€HЊHKKZЭИ]XЪHЫЭ[ќћIЬИ›ЭљYY^Y][Ы\ћH›ЬЩ\ИY™™XЭИ]И[™›Y[ЩB‚QђPХSУ—РУУ•’P•USУ—ФСUS‘ЧТSђФ‘PTСHHЊKBBBKKRЭИљYИHЭ\И\™H›Ь€[Ь™X\Ъ[™ЛЩXЬ™X\Ъ[™ИЫЫќљXќ][Ы€Щ][™ЬВ‚QђPХSУ—РУУ•’P•USУ—СP•УSRUHЌLBBBBBBKKRЭИ]XЪ[ЭH\™H[ЭЩYИ™H[€Xќњ›ЫHЬ[™[™ИЫЫќљXќ][Ы‚‚QђPХSУ—ТS‘“QSђСWСVQUSУђT–WС“ФђСWФ‘PТQU‘T—СђPХФ€HLЊ€KZЭИ]XЪHЫЭ[ќћIЬИ›ЭљYY^Y][Ы\ћH›ЬЩ\ИY™™XЭИ]И[™›Y[ЩB‚QђPХSУ—УPS”ХСT—СТU‘WРУУ•’P•USУ—ФРРSTЏLЊKBBKKHHШШ[\€Щ€ЭИ]XЪЫЫќљXќ][Ы€[ЭHЩ]›Ь€Ъ]љ[™ИHЪ[™Э[\€™XЬќZ]X›HЬ[][Ы€И[Э\€XЭ[Ы‚‚QђPХSУ—УPS”ХСT—Ф‘PТQU‘WРУУ•’P•USУ—ФРРSTЏLЊKBKKHHШШ[\€›Ь€ЭИ]XЪЫЫќљXќ][Ы€]ZЩ\ИИЩ]HЪ[™Э[\€™XЬќZ]X›HЬ[][Ы‚‚QђPХSУ—ТS‘“QSђСWФРТQS•TХРУУ•’P•USУ—ХђSQHHЌKBBBKKHЭИ]XЪЫЫќљXќ][Ы€Ы™HШЪY[ќ\ЭИЪ]™\ИИ[ЭHY€]\ИЫЬљЪ[™И›Ь€ЫЫYX›ЩH[ЩK‚‚QђPХSУ—ФРТQS•TХРУУ•’P•USУ—ХђSQHHBBBKKZЭИ]XЪЫЫќљXќ][Ы€Ы™HШЪY[ќ\ЭИЪ]™\ИИ[ЭHY€]\ИЫЬљЪ[™И›Ь€ЫЫYX›ЩH[ЩK‚‚PTФТQУ—СђPТSUWХЧСђPХSУ—ТS’UPUU‘WРУФХHKBKKUH[љ]X]]™HЫЬЭЩ€\ЬЪYЫљ[™ИHXЪ[]HИHXЭ[Ы‚‚QђPХSУ—РTФТQУ—ФРТQS•TХРУФХHЌKBBBBBKKZЭИ]XЪЫ]XШ[ЭЩ\€]ЫЬЭИИ\ЬЪYЫ€HЭ\Ьќ]™HШЪY[ќ\Э‚QђPХSУ—ХS“РТЧРУУSPS‘T—РУФХHKBBBBBKKZЭИ]XЪ[љ]X]]™H]ЫЬЭИИЬ™X]HH™]ИXЭ[Ы€X]\‚‚QђPХSУ—Ф‘TPСWРУУSPS‘T—РУФХHKBBBBBKKZЭИ]XЪ’H]ЫЬЭИИ™\XЩHЫЫY[Ы™H[ЩIЬИX]\€ЫЫ[X[™\‚‚QђPХSУ—ФХT‘SQWРУУSPS‘T—СQ‘‘PХU‘S‘TФИHЊ‹BBKK\\Щ[ќYЩH[YH›Ь€ЭИY™™XЭ]™HЭ\™[YHЫЫ[X[™\њИ\™HЫЫ\\™YИZ\€™YЭ[\€ЬЪ][Ы€\И“KШYZ\[‚‚QђPХSУ—ХPUT—РУУSPS‘T—РУХS•–WУSRUРђTСHHЛBBKKX\ЩH[YH›Ь€ЭИX[ћHЫЭ[ќљY\ИHX]\€ЫЫ[X[™\€Ш[€XY‚QђPХSУ—ХPUT—РУУSPS‘T—РУХS•–WУSRUФТТSСђPХФ€HKKKZЭИ]XЪXXЪЪЪ[]™[YИИHЫЭ[ќћH[Z]‚QђPХSУ—ХPUT—РУУSPS‘T—Ф‘QТSУ—УSRUРђTСHHЛBBKKH\ЩH[YHЩ€HЫЫ[X[™\€™YЪ[Ы€[Z]‚QђPХSУ—ХPUT—РУУSPS‘T—Ф‘QТSУ—УSRUФТТSСђPХФ€HKKKH[€[Ь™X\ЩHИH™YЪ[Ы€[Z]\€ЫЫ[X[™\€ЪЪ[]™[‚QђPХSУ—ХPUT—РУУSPS‘T—УS‘ФХTWХTРQСWУSСQ’QT—РђTСHHBBBKKH\ЩH[YH
+\Щ[ќYЩK™YШ]]™HHЫЫЩ
+B‚QђPХSУ—ХPUT—РУУSPS‘T—УS‘ФХTWХTРQСWУSСQ’QT—ФТТSСђPХФ€HLЊKKKH[YH\€ЪЪ[]™[
+\Щ[ќYЩK™YШ]]™HHЫЫЩ
+B‚QђPХSУ—ХPUT—РУУSPS‘T—УђU–WФХTWХTРQСWУSСQ’QT—РђTСHHBBBKKH\ЩH[YH
+\Щ[ќYЩK™YШ]]™HHЫЫЩ
+B‚QђPХSУ—ХPUT—РУУSPS‘T—УђU–WФХTWХTРQСWУSСQ’QT—ФТТSСђPХФ€HLЊKKKH[YH\€ЪЪ[]™[
+\Щ[ќYЩK™YШ]]™HHЫЫЩ
+B‚QђPХSУ—ХPUT—РУУSPS‘T—ФСPУУ‘T–WР“У•TИHЌKBBBBBBKKHH[YH]ШШ[\ИHЭ\H\ШYЩH[ЩYљY\њИY€H[™ЫЫ[X[™\€\ИЪ]љ[™ИHЭ\H›Ыќ\ИИ]ћH[™љXЩH™\њШB‚UPUT—РУУSPS‘T—УS‘СVT’QSђСWФРРSHHЊKBBBBBBBBKKHЭИ]XЪ^\љY[ЩHHX]\€ЫЫ[X[™\€Ъ[ШZ[€њ›ЫH[™ЫЫX]И
+“JB‚UPUT—РУУSPS‘T—УђU–WСVT’QSђСWФРРSHHЊKBBBBBBBBKKHЭИ]XЪ^\љY[ЩHHX]\€ЫЫ[X[™\€Ъ[ШZ[€њ›ЫH][ЫЫX]И
+YZ\[
+B‚P‘PУУQWСђPХSУ—УPQT—ТS‘“QSђСWХ‘TТУHЌBBKKUHZ[€[™›Y[ЩH\Щ[ќYЩH›Ь€HЫЭ[ќћHИ™HX›HИZЩHЭ™\€XY\њЪ\[€HXЭ[Ы‚‚SPVФ“Т‘PХРУХS•LЛBBBBBBBBKKUHX^[][Hќ[X™\€Щ€›Ъ™XЭИHXЭ[Ы€Ш[€]™B‚PRWХPUT—РФ‘PUSУ—ФSђSHH‹ЌKKH[[HYљ[™\ИЭИ]XЪXXЪX]\€™YXЩ\ИHЪ[ЩH[™X\›K€
+HYЪ\‹HЫЬњЩHH[[H\КB‚P‘PУУQWСђPХSУ—УPQT—ТS‘“QSђСWХСRQТHKBKKH[\Ьќ[ЩHЩ€XЭ[Ы€[™›Y[ЩHЪ[€]\›Z[љ[™ИЭИЫЬЩHHXЭ[Ы€Y[X™\€\ИИ™Z[™ИX›HИ\ЬЭ[YHXY\њЪ\‚‚QђPХSУ—ТS‘“QSђСWУPQT—Р“У•TИHЊBBKKHЭИ]XЪ[™›Y[ЩHЩH\™HЪ]љ[™ИHXЭ[Ы€Y[X™\€›Ь€™Z[™ИHXY\‚‚QђPХSУ—ХRСWУХ‘T—Ф‘SPХSђСWХ‘T”ХTЧТSPS—ТS‘“QSђСHHKЌKKKH][\Y\€[[H›Ь€ЭИ]XЪ[Ь™H[™›Y[ЩH\И™\]Z\™Y[€RHЫЭ[ќћHЫЫ\\™YИH[X[€И\ЬЭ[YHXY\њЪ\Щ€XЭ[Ы‹‚‚‚PRWФPТЧС”“УWХФРSSХS•HЛBBBBBBKKHRHЪ[Ь[™ЪЫЬЩHњ›ЫHHЬИXЪYHЪ]ИЬ[ќZ\€[љ]X]]™HЫ‹\ЩYЫ€HЩZYЪY[™ЫB‚‚PRWФS‘ЧРT‘PWФ’SФ’UHHLBBBBBKKHYYRHЭ]YЮH[YH›Ь€[™ЩY™YЪ[ЫњВ‚PRWФS‘ЧС”“У•ХS’UФ‘TUQTХHLBBBBKKHYYRHЭ]YЮH[YH›Ь€[™ЩY™YЪ[ЫњВ‚PRWФS‘ЧС“ФђСWРУУђСS•ђUSУ—С”“У•СђPХФ€HLBKKHYYRHЭ]YЮH[YH›Ь€[™ЩY™YЪ[ЫњВ‚PRWФS‘ЧС“ФђСWРУУђСS•ђUSУ—ХT‘СUХСRQТHLKKHYYRHЭ]YЮH[YH›Ь€[™ЩY™YЪ[ЫњВ‚PRWФS‘ЧТS•ђTТSУ—ХS’UФ‘TUQTХHLBBBKKHYYRHЭ]YЮH[YH›Ь€[™ЩY™YЪ[ЫњВ‚PRWФS‘ЧУђUђSСУRSђSђСHHLBBBBBKKHYYRHЭ]YЮH[YH›Ь€[™ЩY™YЪ[ЫњВ‚B‚PRWФS‘ЧС“ФђСWРУУђСS•ђUSУ—РРT‘Q•SСђPХФ€HЌKBKKHRHЭ]YЮHXЭЬ€›Ь€ђИ[€Ш\™Yќ[Ь™\€^XЭ][Ы€[ЩB‚PRWФS‘ЧС“ФђСWРУУђСS•ђUSУ—РQСФ‘TФТU‘WСђPХФ€HKЊ‹KKHRHЭ]YЮHXЭЬ€›Ь€ђИ[€YЩЬ™\ЬЪ]™HЬ™\€^XЭ][Ы€[ЩB‚B‚TђS’ЧС“Ф—ФТS–WС“QИHKBBBBBBKKHЬ€XЭ[ЫњИЩ]HЪ[ћH›YИЫ€HXЭ[ЫњИШЬ™Y[‹€[]X]Ш\ИЫЬќ]‚‚B‚TPPСWРУУ‘‘T‘SђСWУRS’SPSФ‘TURT‘SQS•HЌKBBKKHЭИ]XЪ[Ь™HXЭ[Ы€ЭЩ\€›Ъ™XЭ[Ы€[ЭH™YYИ]™HЫЫ\\™YИHЩXЫЫ™љYЩЩ\ЭЫЫќ\Э[™ИXЭ[Ы€ИЫЭ[ќћHИЭ\ќ™XЪY]љ[™ИHPPСWРУУ‘‘T‘SђСWУPVСTРУХS•K™Л€ЌHYX[њИ[ЭH™YYИ™HL	HљYЩЩ\‚‚TPPСWРУУ‘‘T‘SђСWУPVСTРУХS•HЊЌKBBBKKHЭИ]XЪ	H\ЫЭ[ќ[ЭHЩ]›Ь€™Z[™ИHљYЩЩ\€XЭ[Ы‹€ШШ[\И™]ЩY[€HPPСWРУУ‘‘T‘SђСWУRS’SPSФ‘TURT‘SQS•[™L	HЪ\™H]PPСWРУУ‘‘T‘SђСWУRS’SPSФ‘TURT‘SQS•[ЭHЩ]	H[™]L	H[ЭHЪ[Щ]PPСWРУУ‘‘T‘SђСWУPVСTРУХS•‚SPVУ•SWФТФ•ХT“WСУРSИHKBBBBBKKHX^[][Hќ[X™\€Щ€ЪЬќ\›HЫШ[ИHXЭ[Ы€Ш[€]™H][ћHЫ™H[YBB‚SPVУ•SWУQQUSWХT“WСУРSИHKBBBBBKKHX^[][Hќ[X™\€Щ€YY][H\›HЫШ[ИHXЭ[Ы€Ш[€]™H][ћHЫ™H[YB‚SPVУ•SWУУ‘ЧХT“WСУРSИHKBBBBBKKHX^[][Hќ[X™\€Щ€Ы™И\›HЫШ[ИHXЭ[Ы€Ш[€]™H][ћHЫ™H[YB‚T‘TPТS‘ЧХS‘’S’TТQСђPХSУ—СУРSРУФХHKBBKKHHЫЬЭЩ€™\XЪ[™ИHЫШ[Y€]\И›Эљ[љ\ЪY‚TTФТU‘WТS’UPUU‘WССS‘TђUSУ€HЊBBBKKHЭИ]XЪ[љ]X]]™HЩH\™HЩ[™\][™И\€^KШШ[YћHX[љY™\Э›ЩЬ™\ЬИ[™[™›Y[ЩIB‚SPVСђPХSУ—ХPUT”ИHKBBBBBBKKHHX^[][Hќ[X™\€Щ€XЭ[Ы€X]\њИ]Ш[€™HЬ™X]Y‚B‚PRWСђPХSУ—ХPUT—ХSTUWФСSPХSУ—ФђS‘УS‘TФИHKKKHRHЪ[XЪИHЩZYЪY[™ЫH[\]Hњ›ЫHHЬЩ€H\Э‚PRWСђPХSУ—ХPUT—РУУSPS‘T—ФСSPХSУ—ФђS‘УS‘TФИHKKKHRHЪ[XЪИHЩZYЪY[™ЫH[\]Hњ›ЫHHЬЩ€H\Э‚‚QђPХSУ—ТS•SQСSђСWРSХСQРQ’TУФ—ХђRUHИ‚BHљXYЫЩ—Ъ[ќ[YЩ[ЩH‹‚BH›X\Э\›Z[™ШЫЩWШЬXЪЩ\€‹‚BH™^\ќШЫЩWШЬXЪЩ\€‹‚BHњЬ[X\Э\€‹‚BHњЬ[X\Э\—Ы›ЧЫ\€‹‚BHЫЫ[X[™\—ЫЩ—ЭWЩ™]›ЧЩ\\Ъ‹‚BHЫЫ[X[™\—ЫЩ—ЭWЩ™]›ЧЩ\\ЪЫ›ЧЫ\€‹‚BH”ХТWЬЫЭљY]ЬЬH‹‚BH”ХТWЪ[ќ[YЩ[ЩWЫЩ™љXЩ\€‹‚BHњЬXЪX[Щ[ќ›ЮH‹‚BHђ”ђWЬЫЭљY]ЬЬH‹‚BH’S—ЫZ[]\ћWЪ[ќ[YЩ[ЩWЫЩ™љXЩ\€‹‚BHђUTЧЬЩXЬ™]]™WЬљY\Э‹‚BHђUTЧЭ™]\[—ЪXYЫЩ—ШYЩ[ЮH‹‚BHђ‘SЪ[\Ъ]™WЫX\Э\›Z[™‹‚BH‘СT—Ъ[ќ[YЩ[ЩWШЫЫЬ™[]Ь€‹‚BH‘СT—ЬЩXЬ™]\ћWЫЩ—ЬЭ]WЬЩXЭ\љ]H‹‚BH‘СT—Ь™ZXЪЬЩXЭ\љ]WЫXZ[—ЫЩ™љXЩWЩ\™XЭЬ—Ы\€‹‚BH‘СT—Ь™ZXЪЬЩXЭ\љ]WЫXZ[—ЫЩ™љXЩWЩ\™XЭЬ—Ы›ЧЫ\€‹‚BHљXYЫЩ—ЭWШXќЩZ€‹‚BHљXYЫЩ—ЭWШXќЩZ—Ъ[\›Э™Y‹‚BHљ[ќ[YЩ[ЩWЬЩ\ќљXЩWЩ\]H‹‚BH”ђЧЫ][WЭ[[ќYЩ\ЫX]Ы\€‹‚BH”ђЧЫ][WЭ[[ќYЩ\ЫX]Ы›ЧЫ\€‹‚BH”ђЧЭZ[™YШћWЭWЫљЭ™‹‚BH”ђЧЬЬ[X\Э\€‹‚BH”WЪ[ќ[YЩ[ЩWШќ\™X]WШЪYY€‹‚BH’S—ЬЭ[[љ\ЭШYЩ[ќ‹‚BH’ђTЭЪЪЫЧШЪYY€‹‚BHђТWЬЬ[X\Э\€‚‚‚_K‚QђPХSУ—ТS•SQСSђСWХS“РТЧРУФХHK‚QђPХSУ—ТS•SQСSђСWФТT’S‘ЧР“У•TИHЊKKHЭИ]XЪ[ќ[YЩ[ЩHЪ\љ[™ИЫ™H‚QђPХSУ—ТS•SQСSђСWФТT’S‘ЧФФWФУХСРRS€HKKHЭИX[ћHЬ\]]™HЫЭИ[€Yљ\ЫЬ€ЬЪ][Ы€[›ШЪЬЛ^ЫY\ИHЬ[X\Э\‚‚QђPХSУ—ТS•SQСSђСWТPQУС—РФ–TУСЦWР“У•TЧРУХS•–HHЊKKHЭИ]XЪ›Ыќ\ИHXYЩ€Ь\][ЫњИЪ]™HИHЫЭ[ќћH]ЫИ]ЬЪ][Ы‚‚QђPХSУ—ТS•SQСSђСWТPQУС—РФ–TУСЦWР“У•TЧУХT”ИHЊKKHЭИ]XЪ›Ыќ\ИHXYЩ€Ь\][ЫњИЪ]™HИHЫЭ[ќљY\И]ЫќЫ]ЬЪ][Ы‚‚QђPХSУ—ТS•SQСSђСWТPQУС—УФTђUSУ”ЧР“У•TЧРУХS•–HHЊKKHЭИ]XЪ›Ыќ\ИHXYЩ€Ь\][ЫњИЪ]™HИHЫЭ[ќћH]ЫИ]ЬЪ][Ы‚‚QђPХSУ—ТS•SQСSђСWТPQУС—УФTђUSУ”ЧР“У•TЧУХT”ИHЊKKHЭИ]XЪ›Ыќ\ИHXYЩ€Ь\][ЫњИЪ]™HИHЫЭ[ќљY\И]ЫќЫ]ЬЪ][Ы‚‚QђPХSУ—ТS•SQСSђСWТPQУС—РУХS•T—ТS•SР“У•TЧРУХS•–HHЊKKHЭИ]XЪ›Ыќ\ИHXYЩ€Ь\][ЫњИЪ]™HИHЫЭ[ќћH]ЫИ]ЬЪ][Ы‚‚QђPХSУ—ТS•SQСSђСWТPQУС—РУХS•T—ТS•SР“У•TЧУХT”ИHЊKKHЭИ]XЪ›Ыќ\ИHXYЩ€Ь\][ЫњИЪ]™HИHЫЭ[ќљY\И]ЫќЫ]ЬЪ][Ы‚‚QђPХSУ—СQђUSТPУУ€H‘С–ЩXЭ[Ы—ЫЩЫЧЩЩ[™\љXИ‹BBBKKHXЭ[Ы€XЫЫ€Ъ[€Ь™X][™ИHЩ[™\љXИXЭ[Ы€[€Ш[YH]Щ\И›Э]™H[€XЫЫ€Щ]\‚QђPХSУ—СQђUSХSTUHH™XЭ[Ы—Э[\]WЩЩ[™\љXИ‹KHY][[\]H]Щ]И\ЩYY€›И[\]H[\]H\ИЬXЪYљYYЪ[€^Z[™ИЪ]ђУ”В‚PRWСVTЧХЧФСSPХСУРSHMџK“‘ШЭљ[™\ИHВ€QђUSФ‘UРT‘УPTХT–HHЊKHЭИ]XЪX\Э\ћH\И™\]Z\™Y›Ь€[›ШЪЪ[™ИHШЭљ[™H™]Ш\™Y€›ИЭ™\њљYH\ИЩ]€ђTСWУPTХT–WСРRS—ХT‘СUУPS”ХСT€HLЊKH™^[Ы™\И[[Э[ќЩ€X[њЭЩ\€ЫЫќљXќ][™ИИX\Э\ћKX\Э\ћHШZ[€Ъ[Э\ќ]љ[™И[Z[љ\Ъ[™И™]\›њИ
+ЩYHШЭљ[™\ИШЭ[Y[ќ][ЫЉB€ђRS’S‘ЧУPTХT–WСРRS—СђPХФ€HЊKHЭИ]XЪZ[љ[™ИЫЫќљXќ]\ИИШЭљ[™HX\Э\ћH™[]]™HИЫЫX]ЫZ\ЬЪ[ЫњВ€PVУSУ•WУPTХT–WСРRS€HЊKH[ЫќHX\Э\ћHШZ[€Ъ[›Э^ЩYY\И[YB€RS—УPTХT–WСРRS—ФT—СVHHЊKHY€ЩH]™H[ћHX\Э\ћHШZ[‹]Ъ[™H›ЫЬЭYИ™H]X\Э\И]XЪ\€^H
+ЭЩ\€Ш\
+B€PTХT–WРђT—РS’SPUSУ—ФФQQФT—СRSWУPTХT–HHKЊKH][\Y\€Щ€ЭИ\ЭHX\Э\ћH\€[љ[X]\И\ЩYЫ€Z[HX\Э\ћHШZ[‚€PTХT–WРђT—УPVРS’SPUSУ—ФФQQHLЊKHX^ЬYYЩ€HX\Э\ћH\€[љ[X][Ы‚€PTХT–WРђS’ЧРУУ•‘T”ТSУ—ФђUHHЊЌKKHH]H]ЪXЪX\Э\ћHШZ[™YЪ[€HXЪИ\Иљ[љ\ЪYЬ€[\H\И[љЩY‚€PTХT–WРђS’ЧУPVHЊЊKHHX^[][H[[Э[ќЩ€X\Э\ћH]Ш[€™H[љЩY€RSUT–WРUPТWУPTХT–WХђS”С‘T—СђPХФ€HЊKH›Ь€XXЪX\Э\ћHXЪЛZ[]\ћH]XЪ\ИЪ[Y\ИњXЭ[Ы€Щ€Z\€љ\Ъ][™ИЫЭ[ќћIЬИX\Э\ћHШZ[€
+њ›ЫH[љ]ИЫ›JH[€]XЪВ€PUT—РУУSPS‘T—ХS’UЧУPTХT–WСРRS—СђPХФ—ФT—ФТТSHЊKH[љ][€HX]\€ЫЫ[X[™\‰ЬИX]\€Ъ[ЫЫќљXќ]H\ИњXЭ[Ы€Щ€Z\€X\Э\ћHШZ[€ИHX]\€ЫЫ[X[™\‰ЬИЫЭ[ќћK›Ь€XXЪЪЪ[Ъ[ќ^H]™H[€]XЪИ
+ИY™[њЩB‚SђUђSУRTФТSУ—УPTХT–WСРRS—СђPХФ”ИHИKHX\Э\ћHШZ[€њ›ЫH][Z\ЬЪ[ЫњИ\И™YXЩYќ\ЭZЩHZ[љ[™В‚BLЊKHУ‚BLЊKHU“У‚BLЊKHХ’RСH“ФђСB‚BLЊKHУУ•“ЦHђRQS‘В‚BLЊKHУУ•“ЦHTРУФ•‚BLЊKHRS‘TИS•S‘В‚BLЊKHRS‘TИХСQTS‘В‚BLЊKHђRS€И“ХTСQH[™YћHђRS’S‘ЧУPTХT–WСРRS—СђPХФ‚‚BLЊKH‘TСT•‘WС“QU‚BLЊKHђUђSТS•ђTТSУ—ФХTФ•‚_KџKџB

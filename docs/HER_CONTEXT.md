@@ -441,5 +441,6 @@ Split only when the main file becomes cumbersome; avoid fragmentation for its ow
 - Midway and the Solomon carrier actions are the historical baseline for critical balance: local damage should cause specific system failures, while catastrophic loss emerges from fire/flooding cascades, electrical or ventilation failures and disrupted damage-control organization.
 - Balance order: critical map and effects, critical probability, severity/duration, ordinary hit damage, then repair/operational absence. Do not increase aircraft target weight merely because a ship is already damaged.
 - Pre-defines critical scale: common local casualties weight `0.65-1.0`; ship-wide mission-kill casualties `0.25-0.65`; catastrophes `0.05-0.2`. Never use a critical-hit damage multiplier below `1.0`.
+- First naval defines baseline: surface STR/ORG conversion `0.50/0.90`, naval-air STR/ORG conversion `1.25/1.75`, base critical chance `0.10`, global critical damage multiplier `2.0`, torpedo critical chance/multiplier `0.15/1.5`, and defined-part damage chance `0.65` from surface fire / `0.80` from air. Base hit chance remains unchanged for isolated testing.
 - `toxic_gas_leakage` is submarine-only. Carriers instead use the separate aviation-fuel-fire casualty.
 - Detailed implementation notes: `docs/systems/naval-critical-damage.md`.

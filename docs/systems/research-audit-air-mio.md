@@ -38,6 +38,57 @@ Air Designer 2.0 target:
 - keep La-5/La-7 on the primary fighter identity unless the full historical-series review suggests otherwise;
 - update Lavochkin MIO equipment categories so the LaGG branch and later La branch can address different equipment identities cleanly.
 
+### Yakovlev
+`SOV_yakovlev_organization` is a pure light-fighter MIO and currently maps Yak-1, Yak-7 and early Yak-9 progression onto generic small fighter airframes.
+
+Observed mapping:
+- Yak-1 -> `small_plane_airframe_2`;
+- Yak-7 -> `small_plane_airframe_2`;
+- Yak-9 branch transitions to `small_plane_airframe_3` once `advanced_small_airframe` is available.
+
+This family is internally coherent as the Soviet primary-fighter line. Unlike LaGG-3, no explicit strike/fighter-bomber identity is visible in the audited Yak traits.
+
+Air Designer 2.0 target:
+- Yak-1/7/9/3 family should remain in the primary fighter identity by default;
+- preserve its lightweight / agility / production-efficiency design language rather than forcing role reassignment merely to reduce overlap;
+- use it as the clean Soviet fighter counterpart against LaGG-derived fighter-bomber identity and MiG interceptor identity.
+
+### Mikoyan-Gurevich
+`SOV_mikoyan_gurevich_organization` already demonstrates the desired role separation much better than most current MIOs.
+
+Observed mapping:
+- MiG-1 -> `small_plane_interceptor_airframe_1`;
+- MiG-3 -> `small_plane_interceptor_airframe_2`;
+- MiG-9 later moves to `small_plane_airframe_4` in the jet era.
+
+The MiG-1/3 traits explicitly emphasize high-altitude layout/engine performance. This is a strong precedent for keeping interceptor as a true separate equipment identity rather than folding all Soviet fighters together.
+
+Air Designer 2.0 target:
+- keep MiG-1/3 in the interceptor identity;
+- preserve high-altitude/interception-focused module and MIO restrictions;
+- review MiG-9 separately when jet-role architecture is redesigned.
+
+### Polikarpov
+`SOV_polikarpov_organization` currently maps:
+- I-15/I-153 -> `small_plane_airframe_0`;
+- I-16 -> `small_plane_airframe_1`;
+- I-185 -> `small_plane_airframe_2`.
+
+The I-15/I-16 line is a coherent early primary-fighter family. I-185 collides chronologically/archetypically with Yak-1/7, LaGG-3 and other improved-small-airframe families, but this is not automatically a reason to create another role identity: it is primarily an alternate fighter design school rather than a distinct operational class.
+
+Air Designer 2.0 target:
+- keep I-15/I-16 as early primary fighters;
+- treat I-185 as an alternate/experimental primary-fighter branch unless later historical-role review provides a stronger justification for interceptor or fighter-bomber reassignment;
+- solve same-role KB competition through MIO/family availability and historical production logic, not by inventing fake operational roles.
+
+### Soviet role map — current preferred direction
+- Primary fighter: Polikarpov early line -> Yak family / later La family;
+- Interceptor/high-altitude: MiG-1/3;
+- Fighter-bomber/strike: LaGG-3 branch candidate;
+- Dedicated CAS: retain dedicated CAS bureaus/airframes separately.
+
+This is significantly cleaner than the current generic-fighter pile-up because the new fighter-bomber identity creates a third real small-aircraft production channel alongside fighter and interceptor.
+
 ## USA
 ### Republic P-47
 The Republic tree contains a dedicated P-47 fighter-bomber branch (`mio_republic_p47_fighter_bomber`, external ordnance, ground attack), but every relevant P-47 trait remains limited to `small_plane_airframe_3`.
@@ -51,6 +102,33 @@ Air Designer 2.0 target:
 - strong candidate: P-47 -> fighter-bomber / strike-oriented identity;
 - P-51 -> primary fighter identity;
 - revise Republic / North American MIO applicability, starting variants and OOBs accordingly.
+
+### Curtiss / P-39 / P-40 branch
+The current `USA_curtiss_organization` contains a shared Allison V-1710 branch that splits into P-39 and P-40 paths.
+
+Observed mapping:
+- P-39 cannon and late P-39 traits -> `small_plane_airframe_2`;
+- P-40E / P-40N -> `small_plane_airframe_2`.
+
+This creates another same-archetype collision, but the correct solution is not obvious enough to assign blindly.
+
+Preliminary role interpretation for redesign:
+- P-40 remains a conventional primary fighter / fighter-bomber-capable family depending variant and theatre;
+- P-39 is a stronger candidate for a specialized low-altitude / cannon-armed fighter identity, but HER currently has no dedicated low-altitude type channel;
+- neither should be force-mapped to interceptor merely to free archetype space unless the resulting mission/bonus semantics fit.
+
+Air Designer 2.0 implication:
+- the new fighter-bomber identity can potentially absorb later strike-oriented P-40 variants if this helps MIO and production separation;
+- P-39 may remain primary fighter or become a family-specific variant inside the primary-fighter channel rather than receiving an artificial role;
+- the Curtiss tree should be reviewed together with Bell naming/ownership representation, because the current tree groups P-39/P-40 under one organization even though the historical manufacturers differ.
+
+### US role map — current preferred direction
+- Primary fighter: P-51 and conventional P-40/P-39 branches unless later reassigned by variant;
+- Fighter-bomber/strike: P-47 is the strongest clear candidate;
+- Heavy fighter: preserve medium-airframe Lockheed/twin-engine families;
+- Dedicated CAS/naval: Douglas and other specialized MIOs remain separate.
+
+The US case therefore does not require every conflicting family to receive a new role. The fighter-bomber archetype should be used where the operational identity is real (P-47), while remaining same-role manufacturer competition should be handled through KB/MIO availability and historical variant mapping.
 
 ## United Kingdom
 ### Supermarine
@@ -88,6 +166,8 @@ Preferred mapping:
 
 The physical airframe generation remains common technology; the equipment identity expresses the actual role/family that production and air wings use.
 
+A second rule is equally important: do not invent fake operational identities merely to separate manufacturers. If two families are genuinely both primary fighters, their competition should be represented through MIO availability, production choices and variant design rather than abusing interceptor/fighter-bomber categories.
+
 ## Strong current fighter-bomber migration candidates
 These are candidates for the implementation mapping pass, not blind final assignments:
 - GER: Fw 190A/F family;
@@ -97,13 +177,18 @@ These are candidates for the implementation mapping pass, not blind final assign
 
 Primary-fighter counterparts that should remain distinct:
 - GER: Bf 109 family;
-- SOV: Yak / later La fighter lines as determined by full KB audit;
-- USA: P-51 family;
+- SOV: Yak / later La fighter lines, with Polikarpov as early/alternate fighter school;
+- USA: P-51 family, with P-39/P-40 reviewed by variant rather than automatically reassigned;
 - ENG: Spitfire family.
 
+Interceptor identities already supported by current HER architecture:
+- SOV: MiG-1/MiG-3;
+- GER: late Fw 190D path currently uses interceptor airframe and must be reassessed alongside Ta 152;
+- additional ENG/USA/JAP interceptor/night-fighter families remain to audit.
+
 ## Follow-ups
-- Audit Yakovlev, Mikoyan-Gurevich and other Soviet fighter MIOs for cross-family collisions.
-- Audit remaining US fighter MIOs (Curtiss, Bell, Lockheed where relevant) and decide whether interceptor / fighter-bomber / heavy-fighter identities resolve additional conflicts.
 - Audit British Gloster/Bristol/de Havilland branches for interceptor/heavy-fighter/night-fighter conflicts.
+- Audit remaining US Lockheed/twin-engine and naval fighter branches.
 - Audit Japan and France after GER/SOV/USA/ENG migration rules are stable.
 - Build a final country-by-country migration table before touching production data.
+- Audit MIO category definitions themselves to confirm how a new fighter-bomber category must be wired into `equipment_type` / research categories / module categories.

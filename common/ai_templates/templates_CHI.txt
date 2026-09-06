@@ -89,3 +89,20 @@ infantry_CHI = {
 		}
 	}
 }
+
+garrison_CHI = {
+	available_for = { CHI }
+	role = garrison
+	upgrade_prio = { factor = 80 }
+
+	CHI_garrison = {
+		upgrade_prio = { factor = 80 }
+		reinforce_prio = 0
+		custom_icon = 13
+
+		target_template = {
+			support = { military_police = 1 }
+			regiments = { cavalry = 8 }
+		}
+	}
+}

@@ -2272,7 +2272,7 @@ NNavy = {
 	NAVAL_COMBAT_AIR_CAPITAL_TARGET_SCALE = 60,
 	NAVAL_COMBAT_AIR_CARRIER_TARGET_SCALE = 250,
 	NAVAL_COMBAT_AIR_CONVOY_TARGET_SCALE = 1.0,
-	NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCORE = 1,                        -- HER: aircraft prefer combat-capable targets instead of spending strikes on already mission-killed ships.
+	NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCORE = -2,                        -- HER: aircraft prefer combat-capable targets instead of spending strikes on already mission-killed ships.
 	NAVAL_COMBAT_AIR_LOW_AA_TARGET_SCORE = 5,                           -- how much score factor from low AA guns (scales between 0->this number)
 
 	NAVAL_BASE_DOMINANCE_FACTOR = 0.01,									-- base naval dominance buff based on naval bases in the region

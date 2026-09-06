@@ -6,16 +6,12 @@ USA_historical_plan = {
 		original_tag = USA
 	}
 	enable = {
-		always = yes
+		is_historical_focus_on = yes
 	}
-	abort = {
-		always = no
-	}
+	abort_when_not_enabled = yes
 
 	ai_national_focuses = {
 		USA_cash_and_carry_act
-		
-		
 		USA_join_the_allies
 		USA_build_the_pentagon
 		USA_appoint_william_knudsen
@@ -55,12 +51,14 @@ USA_historical_plan = {
 		USA_womens_armed_service_integration_act
 	}
 
+	# Broad research character lives in ai_focuses. Keep the historical-plan overlay modest.
 	research = {
-		air_equipment = 80
+		air_equipment = 20
+		naval_equipment = 12
+		industry = 10
 	}
 
 	ideas = {
-
 	}
 	traits = {
 		war_industrialist = 5
@@ -70,17 +68,11 @@ USA_historical_plan = {
 
 	ai_strategy = {
 		type = support
-		id = "ENG"			
+		id = "ENG"
 		value = 200
 	}
 
-	# Keep small, as it is used as a factor for some things (such as research needs)
-	# Recommended around 1.0. Useful for relation between plans
 	weight = {
 		factor = 1.0
-		modifier = {
-			factor = 1.0
-		}
 	}
-
 }

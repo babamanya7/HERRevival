@@ -10,6 +10,7 @@ sub_units = {
 		map_icon_category = infantry
 		special_forces = yes
 		marines = yes
+		can_exfiltrate_from_coast = yes
 		
 		priority = 1201
 		ai_priority = 200
@@ -63,8 +64,8 @@ sub_units = {
 			mortar = 4
 			antitank = 3
 			ammunition_equipment = 12
-			amph_equipment = 15
-			para_equipment = 15
+			amph_equipment = 10
+			para_equipment = 10
 		}
 		
 		essential = {

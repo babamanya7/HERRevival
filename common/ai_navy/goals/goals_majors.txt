@@ -1,0 +1,335 @@
+# HER major-country naval goals.
+# Generic goals intentionally remain blocked for the major naval powers in goals_generic.txt;
+# these profiles give each major an explicit naval character instead of leaving it without goals.
+
+# ==================== UNITED KINGDOM ====================
+ENG_convoy_protection = {
+	objective_type = convoy_protection
+	available_for = { ENG }
+	min_priority = 18
+	max_priority = 32
+}
+ENG_invasion_defense = {
+	objective_type = naval_invasion_defense
+	available_for = { ENG }
+	min_priority = 15
+	max_priority = 28
+}
+ENG_naval_dominance = {
+	objective_type = naval_dominance
+	available_for = { ENG }
+	min_priority = 8
+	max_priority = 20
+}
+ENG_coast_defense = {
+	objective_type = coast_defense
+	available_for = { ENG }
+	min_priority = 8
+	max_priority = 18
+}
+ENG_invasion_support = {
+	objective_type = naval_invasion_support
+	available_for = { ENG }
+	min_priority = 8
+	max_priority = 18
+}
+ENG_mine_sweeping = {
+	objective_type = mines_sweeping
+	available_for = { ENG }
+	min_priority = 5
+	max_priority = 12
+}
+ENG_convoy_raiding = {
+	objective_type = convoy_raiding
+	available_for = { ENG }
+	min_priority = 2
+	max_priority = 8
+}
+ENG_blockade = {
+	objective_type = naval_blockade
+	available_for = { ENG }
+	min_priority = 6
+	max_priority = 16
+}
+
+# ==================== UNITED STATES ====================
+USA_naval_dominance = {
+	objective_type = naval_dominance
+	available_for = { USA }
+	min_priority = 12
+	max_priority = 25
+}
+USA_invasion_support = {
+	objective_type = naval_invasion_support
+	available_for = { USA }
+	min_priority = 14
+	max_priority = 28
+}
+USA_convoy_protection = {
+	objective_type = convoy_protection
+	available_for = { USA }
+	min_priority = 10
+	max_priority = 22
+}
+USA_invasion_defense = {
+	objective_type = naval_invasion_defense
+	available_for = { USA }
+	min_priority = 10
+	max_priority = 20
+}
+USA_coast_defense = {
+	objective_type = coast_defense
+	available_for = { USA }
+	min_priority = 5
+	max_priority = 14
+}
+USA_mine_sweeping = {
+	objective_type = mines_sweeping
+	available_for = { USA }
+	min_priority = 4
+	max_priority = 10
+}
+USA_convoy_raiding = {
+	objective_type = convoy_raiding
+	available_for = { USA }
+	min_priority = 3
+	max_priority = 10
+}
+USA_blockade = {
+	objective_type = naval_blockade
+	available_for = { USA }
+	min_priority = 8
+	max_priority = 18
+}
+
+# ==================== JAPAN ====================
+JAP_naval_dominance = {
+	objective_type = naval_dominance
+	available_for = { JAP }
+	min_priority = 14
+	max_priority = 28
+}
+JAP_invasion_support = {
+	objective_type = naval_invasion_support
+	available_for = { JAP }
+	min_priority = 14
+	max_priority = 28
+}
+JAP_convoy_protection = {
+	objective_type = convoy_protection
+	available_for = { JAP }
+	min_priority = 9
+	max_priority = 18
+}
+JAP_convoy_raiding = {
+	objective_type = convoy_raiding
+	available_for = { JAP }
+	min_priority = 7
+	max_priority = 16
+}
+JAP_invasion_defense = {
+	objective_type = naval_invasion_defense
+	available_for = { JAP }
+	min_priority = 10
+	max_priority = 20
+}
+JAP_coast_defense = {
+	objective_type = coast_defense
+	available_for = { JAP }
+	min_priority = 7
+	max_priority = 16
+}
+JAP_mine_sweeping = {
+	objective_type = mines_sweeping
+	available_for = { JAP }
+	min_priority = 4
+	max_priority = 10
+}
+JAP_blockade = {
+	objective_type = naval_blockade
+	available_for = { JAP }
+	min_priority = 10
+	max_priority = 20
+}
+
+# ==================== GERMANY ====================
+GER_convoy_raiding = {
+	objective_type = convoy_raiding
+	available_for = { GER }
+	min_priority = 15
+	max_priority = 30
+}
+GER_invasion_defense = {
+	objective_type = naval_invasion_defense
+	available_for = { GER }
+	min_priority = 8
+	max_priority = 18
+}
+GER_coast_defense = {
+	objective_type = coast_defense
+	available_for = { GER }
+	min_priority = 7
+	max_priority = 15
+}
+GER_convoy_protection = {
+	objective_type = convoy_protection
+	available_for = { GER }
+	min_priority = 5
+	max_priority = 12
+}
+GER_naval_dominance = {
+	objective_type = naval_dominance
+	available_for = { GER }
+	min_priority = 4
+	max_priority = 12
+}
+GER_mine_sweeping = {
+	objective_type = mines_sweeping
+	available_for = { GER }
+	min_priority = 3
+	max_priority = 8
+}
+GER_blockade = {
+	objective_type = naval_blockade
+	available_for = { GER }
+	min_priority = 6
+	max_priority = 15
+}
+
+# ==================== ITALY ====================
+ITA_naval_dominance = {
+	objective_type = naval_dominance
+	available_for = { ITA }
+	min_priority = 10
+	max_priority = 22
+}
+ITA_convoy_protection = {
+	objective_type = convoy_protection
+	available_for = { ITA }
+	min_priority = 10
+	max_priority = 20
+}
+ITA_invasion_defense = {
+	objective_type = naval_invasion_defense
+	available_for = { ITA }
+	min_priority = 12
+	max_priority = 22
+}
+ITA_invasion_support = {
+	objective_type = naval_invasion_support
+	available_for = { ITA }
+	min_priority = 8
+	max_priority = 18
+}
+ITA_coast_defense = {
+	objective_type = coast_defense
+	available_for = { ITA }
+	min_priority = 8
+	max_priority = 18
+}
+ITA_convoy_raiding = {
+	objective_type = convoy_raiding
+	available_for = { ITA }
+	min_priority = 5
+	max_priority = 12
+}
+ITA_mine_sweeping = {
+	objective_type = mines_sweeping
+	available_for = { ITA }
+	min_priority = 4
+	max_priority = 10
+}
+ITA_blockade = {
+	objective_type = naval_blockade
+	available_for = { ITA }
+	min_priority = 7
+	max_priority = 16
+}
+
+# ==================== FRANCE ====================
+FRA_convoy_protection = {
+	objective_type = convoy_protection
+	available_for = { FRA }
+	min_priority = 12
+	max_priority = 22
+}
+FRA_invasion_defense = {
+	objective_type = naval_invasion_defense
+	available_for = { FRA }
+	min_priority = 14
+	max_priority = 24
+}
+FRA_coast_defense = {
+	objective_type = coast_defense
+	available_for = { FRA }
+	min_priority = 8
+	max_priority = 18
+}
+FRA_naval_dominance = {
+	objective_type = naval_dominance
+	available_for = { FRA }
+	min_priority = 8
+	max_priority = 18
+}
+FRA_invasion_support = {
+	objective_type = naval_invasion_support
+	available_for = { FRA }
+	min_priority = 6
+	max_priority = 14
+}
+FRA_mine_sweeping = {
+	objective_type = mines_sweeping
+	available_for = { FRA }
+	min_priority = 4
+	max_priority = 10
+}
+FRA_convoy_raiding = {
+	objective_type = convoy_raiding
+	available_for = { FRA }
+	min_priority = 3
+	max_priority = 9
+}
+
+# ==================== SOVIET UNION ====================
+SOV_invasion_defense = {
+	objective_type = naval_invasion_defense
+	available_for = { SOV }
+	min_priority = 12
+	max_priority = 24
+}
+SOV_coast_defense = {
+	objective_type = coast_defense
+	available_for = { SOV }
+	min_priority = 10
+	max_priority = 20
+}
+SOV_convoy_protection = {
+	objective_type = convoy_protection
+	available_for = { SOV }
+	min_priority = 8
+	max_priority = 16
+}
+SOV_naval_dominance = {
+	objective_type = naval_dominance
+	available_for = { SOV }
+	min_priority = 5
+	max_priority = 14
+}
+SOV_invasion_support = {
+	objective_type = naval_invasion_support
+	available_for = { SOV }
+	min_priority = 5
+	max_priority = 12
+}
+SOV_mine_sweeping = {
+	objective_type = mines_sweeping
+	available_for = { SOV }
+	min_priority = 4
+	max_priority = 9
+}
+SOV_convoy_raiding = {
+	objective_type = convoy_raiding
+	available_for = { SOV }
+	min_priority = 3
+	max_priority = 8
+}

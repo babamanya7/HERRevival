@@ -6,11 +6,9 @@ German_historical = {
 		original_tag = GER
 	}
 	enable = {
-		always = yes
+		is_historical_focus_on = yes
 	}
-	abort = {
-		always = no
-	}
+	abort_when_not_enabled = yes
 
 	ai_national_focuses = {
 		# grab as fast as you can if available
@@ -111,12 +109,16 @@ German_historical = {
 		GER_anti_partisan_operations
 	}
 
+	# Broad historical research character only. Detailed priorities live in ai_focuses
+	# and phase-specific strategy logic rather than permanently overpowering them here.
 	research = {
-		infantry_weapons = 50.0
-		air_equipment = 70
-		infantry_tech = 15.0
-		artillery = 8.0
-		support_tech = 6.5
+		infantry_weapons = 18
+		air_equipment = 20
+		infantry_tech = 8
+		artillery = 8
+		support_tech = 6
+		armor = 18
+		industry = 10
 	}
 
 	ideas = {
@@ -127,27 +129,16 @@ German_historical = {
 		captain_of_industry = 5
 	}
 
-	# Keep small, as it is used as a factor for some things (such as research needs)
-	# Recommended around 1.0. Useful for relation between plans
 	weight = {
 		factor = 1.0
-		modifier = {
-			factor = 1.0
-		}
-	}
-
-	ai_strategy = {
-		type = template_prio
-		id = medium_armor
-		value = 111
 	}
 
 	focus_factors = {
 		GER_rhineland = 1.0
 	}
-
 }
-GER_minor_allies = { #used to make minor European nations like Axis more
+
+GER_minor_allies = { # used to make minor European nations like Axis more
 	name = "Minor German Allies"
 
 	allowed = {
@@ -181,40 +172,9 @@ GER_minor_allies = { #used to make minor European nations like Axis more
 			fascism > 0.5
 		}
 		is_in_faction = no
-		GER = {
-			has_government = fascism
-		}
-		OR = {
-			original_tag = ROM
-			original_tag = HUN
-			original_tag = BUL
-			original_tag = YUG
-			original_tag = ITA
-			original_tag = CZE
-			original_tag = DEN
-			original_tag = NOR
-			original_tag = SWE
-			original_tag = FIN
-			original_tag = SPR
-			original_tag = POR
-			original_tag = HOL
-			original_tag = BEL
-			original_tag = LUX
-			original_tag = POL
-			original_tag = LAT
-			original_tag = LIT
-			original_tag = EST
-			original_tag = CRO
-			original_tag = SLO
-		}
+		GER = { has_government = fascism }
 	}
-	abort = {
-		GER = {
-			NOT = {
-				has_government = fascism
-			}
-		}
-	}
+	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = alliance

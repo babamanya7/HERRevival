@@ -1,17 +1,15 @@
-# Soviet Union: mass infantry and artillery remain the backbone, while tank and
-# mechanized formations become progressively more capable as the industrial base
-# and medium-tank programme mature. All frontline combat templates target 30 width;
-# support density increases with wartime industrial capacity.
+# Soviet Union: frontline divisions stay at the HER 30-width standard. The Red Army saves equipment
+# by varying support density and formation mix, not by fielding under-width line divisions.
 
 infantry_SOV = {
 	available_for = { SOV }
 	role = infantry
 
-	upgrade_prio = { factor = 120 }
+	upgrade_prio = { factor = 140 }
 
 	SOV_rifle_early = {
 		upgrade_prio = {
-			factor = 60
+			factor = 70
 			modifier = {
 				factor = 0
 				has_tech = support_weapons
@@ -25,12 +23,11 @@ infantry_SOV = {
 				artillery = 1
 			}
 			regiments = {
-				infantry = 12
-				artillery_brigade = 3
+				infantry = 15
 			}
 		}
 
-		replace_at_match = 0.5
+		replace_at_match = 0.55
 		replace_with = SOV_rifle_war
 		target_min_match = 0.5
 	}
@@ -40,27 +37,27 @@ infantry_SOV = {
 			has_tech = support_weapons
 			has_tech = gw_artillery
 		}
-		upgrade_prio = { factor = 100 }
+		upgrade_prio = { factor = 120 }
 		reinforce_prio = 2
 
 		target_template = {
 			support = {
 				engineer = 1
+				recon = 1
 				artillery = 1
-				anti_air_battery = 1
+				anti_air = 1
 				anti_tank = 1
+				signal_company = 1
 			}
 			regiments = {
-				heavy_infantry = 10
+				heavy_infantry = 12
 				artillery_brigade = 3
-				anti_tank_brigade = 1
-				anti_air_brigade = 1
 			}
 		}
 
-		replace_at_match = 0.7
+		replace_at_match = 0.75
 		replace_with = SOV_rifle_late
-		target_min_match = 0.55
+		target_min_match = 0.6
 	}
 
 	SOV_rifle_late = {
@@ -70,23 +67,25 @@ infantry_SOV = {
 			has_tech = interwar_antiair
 			has_tech = interwar_antitank
 		}
-		upgrade_prio = { factor = 130 }
+		upgrade_prio = { factor = 160 }
 		reinforce_prio = 2
 
+		# Proven HER 30-width firepower layout: 9 heavy infantry + 3 artillery + 1 heavy artillery.
 		target_template = {
 			support = {
 				engineer = 1
+				recon = 1
 				artillery = 1
 				anti_air_battery = 1
 				anti_tank = 1
 				signal_company = 1
 				field_hospital = 1
+				logistics_company = 1
 			}
 			regiments = {
 				heavy_infantry = 9
 				artillery_brigade = 3
 				heavy_artillery_brigade = 1
-				anti_tank_brigade = 2
 			}
 		}
 	}
@@ -96,11 +95,11 @@ armor_SOV = {
 	available_for = { SOV }
 	role = armor
 
-	upgrade_prio = { factor = 130 }
+	upgrade_prio = { factor = 150 }
 
 	SOV_light_tank = {
 		upgrade_prio = {
-			factor = 45
+			factor = 50
 			modifier = {
 				factor = 0
 				has_tech = basic_medium_tank_chassis
@@ -114,6 +113,9 @@ armor_SOV = {
 				armored_car_recon = 1
 				mot_maintenance_company = 1
 				mot_signal_company = 1
+				mot_field_hospital = 1
+				logistics_company = 1
+				anti_air = 1
 			}
 			regiments = {
 				light_armor = 4
@@ -130,7 +132,7 @@ armor_SOV = {
 	SOV_medium_tank = {
 		enable = { has_tech = basic_medium_tank_chassis }
 		upgrade_prio = {
-			factor = 130
+			factor = 145
 			modifier = {
 				factor = 2
 				date > 1940.1.1
@@ -147,6 +149,7 @@ armor_SOV = {
 				mot_field_hospital = 1
 				anti_air = 1
 				logistics_company = 1
+				artillery = 1
 			}
 			regiments = {
 				medium_armor = 5
@@ -167,7 +170,7 @@ armor_SOV = {
 			has_tech = mechanised_infantry
 		}
 		upgrade_prio = {
-			factor = 170
+			factor = 185
 			modifier = {
 				factor = 2
 				date > 1942.1.1
@@ -184,6 +187,7 @@ armor_SOV = {
 				mot_field_hospital = 1
 				anti_air = 1
 				logistics_company = 1
+				artillery = 1
 			}
 			regiments = {
 				medium_armor = 5
@@ -203,14 +207,14 @@ heavy_armor_SOV = {
 	upgrade_prio = {
 		factor = 0
 		modifier = {
-			factor = 70
+			factor = 80
 			has_tech = improved_heavy_tank_chassis
 		}
 	}
 
 	SOV_breakthrough_heavy = {
 		enable = { has_tech = improved_heavy_tank_chassis }
-		upgrade_prio = { factor = 70 }
+		upgrade_prio = { factor = 80 }
 		reinforce_prio = 3
 
 		target_template = {
@@ -222,6 +226,7 @@ heavy_armor_SOV = {
 				mot_field_hospital = 1
 				anti_air = 1
 				logistics_company = 1
+				artillery = 1
 			}
 			regiments = {
 				heavy_armor = 5
@@ -238,10 +243,10 @@ motorized_SOV = {
 	role = motorized
 	front_role_override = offence
 
-	upgrade_prio = { factor = 70 }
+	upgrade_prio = { factor = 80 }
 
 	SOV_motor_rifle = {
-		upgrade_prio = { factor = 70 }
+		upgrade_prio = { factor = 80 }
 		reinforce_prio = 3
 
 		target_template = {
@@ -250,13 +255,17 @@ motorized_SOV = {
 				motorbike_recon = 1
 				mot_signal_company = 1
 				mot_maintenance_company = 1
+				mot_field_hospital = 1
 				logistics_company = 1
+				artillery = 1
+				anti_tank = 1
+				anti_air = 1
 			}
 			regiments = {
-				motorized = 10
+				motorized = 9
 				mot_artillery_brigade = 3
+				motorized_heavy_artillery_brigade = 1
 				mot_anti_tank_brigade = 1
-				mot_anti_air_brigade = 1
 			}
 		}
 	}
@@ -270,7 +279,7 @@ mechanized_assault_SOV = {
 	upgrade_prio = {
 		factor = 0
 		modifier = {
-			factor = 90
+			factor = 105
 			has_tech = mechanised_infantry
 			date > 1941.1.1
 		}
@@ -278,7 +287,7 @@ mechanized_assault_SOV = {
 
 	SOV_mechanized_corps = {
 		enable = { has_tech = mechanised_infantry }
-		upgrade_prio = { factor = 90 }
+		upgrade_prio = { factor = 105 }
 		reinforce_prio = 3
 
 		target_template = {
@@ -289,6 +298,9 @@ mechanized_assault_SOV = {
 				mot_maintenance_company = 1
 				mot_field_hospital = 1
 				logistics_company = 1
+				artillery = 1
+				anti_tank = 1
+				anti_air = 1
 			}
 			regiments = {
 				medium_armor = 3
@@ -308,21 +320,24 @@ mountaineers_SOV = {
 	upgrade_prio = {
 		factor = 0
 		modifier = {
-			factor = 80
+			factor = 90
 			has_tech = tech_mountaineers
 		}
 	}
 
 	SOV_mountain_rifle = {
 		enable = { has_tech = tech_mountaineers }
-		upgrade_prio = { factor = 80 }
+		upgrade_prio = { factor = 90 }
 		reinforce_prio = 2
 
 		target_template = {
 			support = {
 				engineer = 1
+				recon = 1
 				artillery = 1
 				anti_air = 1
+				anti_tank = 1
+				signal_company = 1
 				field_hospital = 1
 			}
 			regiments = {
@@ -340,22 +355,25 @@ paratroopers_SOV = {
 	upgrade_prio = {
 		factor = 0
 		modifier = {
-			factor = 40
+			factor = 45
 			has_tech = paratroopers
 		}
 	}
 
 	SOV_airborne = {
 		enable = { has_tech = paratroopers }
-		upgrade_prio = { factor = 40 }
+		upgrade_prio = { factor = 45 }
 		reinforce_prio = 2
 
 		target_template = {
 			support = {
 				engineer = 1
+				recon = 1
 				artillery = 1
 				anti_air = 1
+				anti_tank = 1
 				signal_company = 1
+				field_hospital = 1
 			}
 			regiments = {
 				paratrooper = 15

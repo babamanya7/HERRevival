@@ -4,9 +4,33 @@ on_actions = {
 			CHI = { HER_CHI_aid_initialize = yes }
 			BRA = {
 				set_variable = { BRA_CHI_pending_infantry_equipment = 0 }
+				set_variable = { BRA_CHI_pending_machinegun = 0 }
+				set_variable = { BRA_CHI_pending_mortar = 0 }
+				set_variable = { BRA_CHI_pending_antitank = 0 }
 				set_variable = { BRA_CHI_pending_artillery_equipment = 0 }
+				set_variable = { BRA_CHI_pending_heavy_artillery_equipment = 0 }
+				set_variable = { BRA_CHI_pending_anti_tank_equipment = 0 }
+				set_variable = { BRA_CHI_pending_anti_air_equipment = 0 }
+				set_variable = { BRA_CHI_pending_ammunition_equipment = 0 }
+				set_variable = { BRA_CHI_pending_support_equipment = 0 }
 				set_variable = { BRA_CHI_pending_motorized_equipment = 0 }
 				set_variable = { BRA_CHI_pending_small_plane_airframe = 0 }
+				set_variable = { BRA_CHI_pending_small_plane_cas_airframe = 0 }
+				set_variable = { BRA_CHI_pending_small_plane_tactical_bomber_airframe = 0 }
+				set_variable = { BRA_CHI_in_transit_infantry_equipment = 0 }
+				set_variable = { BRA_CHI_in_transit_machinegun = 0 }
+				set_variable = { BRA_CHI_in_transit_mortar = 0 }
+				set_variable = { BRA_CHI_in_transit_antitank = 0 }
+				set_variable = { BRA_CHI_in_transit_artillery_equipment = 0 }
+				set_variable = { BRA_CHI_in_transit_heavy_artillery_equipment = 0 }
+				set_variable = { BRA_CHI_in_transit_anti_tank_equipment = 0 }
+				set_variable = { BRA_CHI_in_transit_anti_air_equipment = 0 }
+				set_variable = { BRA_CHI_in_transit_ammunition_equipment = 0 }
+				set_variable = { BRA_CHI_in_transit_support_equipment = 0 }
+				set_variable = { BRA_CHI_in_transit_motorized_equipment = 0 }
+				set_variable = { BRA_CHI_in_transit_small_plane_airframe = 0 }
+				set_variable = { BRA_CHI_in_transit_small_plane_cas_airframe = 0 }
+				set_variable = { BRA_CHI_in_transit_small_plane_tactical_bomber_airframe = 0 }
 			}
 		}
 	}

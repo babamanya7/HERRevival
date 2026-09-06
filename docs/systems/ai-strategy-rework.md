@@ -110,18 +110,44 @@ Main changes:
 
 Commits: `99b3f1789b340a255bb2683942d9ef046413ec83`, follow-up trigger correction `64882449bb3d0ce1720b64b84682a305eeae1ed7`.
 
-## Soviet strategy audit — IN PROGRESS
+## Soviet strategy — IMPLEMENTED FIRST PASS
 
-The current SOV file contains useful historical phase logic but also several legacy problems that need a deliberate rewrite rather than isolated number tweaks:
+`common/ai_strategy/SOV.txt` was rebuilt around explicit economic and Eastern Front phases instead of a large set of overlapping 1000-2000 scale area priorities and permanent military-industry weights.
 
-- `SOV_third_fyp` applies extremely large permanent military-industrial weights (`added_military_to_civilian_factory_ratio = 1000`, `arms_factory = 1500`) from February 1938 onward;
-- pre-Barbarossa area priorities use `1000-2000` scale values across many regions simultaneously, which makes relative operational priority difficult to reason about;
-- wartime front requests and area priorities likewise stack very large values across nearly the entire western front;
-- a useful defensive phase already exists (`SOV_be_defensive`: careful, no manual attacks, no order execution before November 1941), which should be preserved conceptually;
-- scripted winter counteroffensives exist for 1941/42 and 1942/43, and a late-war Bagration phase exists, providing a good basis for a cleaner phased Eastern Front model;
-- numerous city-buffer strategies exist and should be checked against the current HER state map before being retained unchanged.
+### Economic phases
 
-The SOV pass should therefore preserve the good phase architecture while normalizing industry/front weights and moving from broad legacy areas to the newer `soviet_north` / `soviet_center` / `soviet_south` / `caucasus` / `crimea` operational aliases where useful.
+- 1936-37: strong civilian construction bias and suppressed military/air expansion;
+- 1938-39: gradual military ramp while the USSR still remains an industrializing peacetime power;
+- from 1940 while at peace: accelerated military construction and air buildup;
+- major war: full wartime industrial pressure and faster army expansion.
+
+The old `SOV_third_fyp` permanent `added_military_to_civilian_factory_ratio = 1000` / `arms_factory = 1500` behavior was removed.
+
+The first rewrite accidentally made the 1940 mobilization block require both war with GER and peace; this impossible trigger was caught immediately and corrected in follow-up commit `42cc292067a72cb15e860d95f309471f63cc8e9f`.
+
+### Production personality
+
+The Soviet baseline now strongly favors infantry, artillery, armor, AA/AT, fighters/interceptors and CAS, while strategic/naval bombers and blue-water naval construction are suppressed. Medium armor and mechanized/motorized templates gain more importance after 1940.
+
+### Eastern Front phases
+
+- pre-Barbarossa: move forces west and deliberately pull demand away from the Far East;
+- opening Barbarossa through mid-November 1941: careful front execution, no manual attacks and no plan execution, with the center receiving the highest weight;
+- winter 1941/42: balanced counteroffensive;
+- spring-autumn 1942: defensive posture again, with increased priority for the southern front/Caucasus;
+- winter 1942/43: second balanced counteroffensive centered on the south/center;
+- 1943 to June 1944: sustained balanced general offensive;
+- Bagration window: temporary rush behavior and maximum central-front concentration;
+- late 1944 onward: final offensive into the Reich and secondary Balkan pressure.
+
+The rework uses the new operational aliases `soviet_north`, `soviet_center`, `soviet_south`, `caucasus`, `crimea` and `soviet_far_east` rather than stacking huge weights on every old regional alias.
+
+### Reserves / Far East
+
+The many separate city-buffer strategies were consolidated into smaller north/center and south reserve groups. Moscow/Leningrad and southern operational centers retain reserve forces without consuming a huge fraction of the entire Red Army. Far-East demand is intentionally reduced when Germany becomes the main threat, then rises again for the late-war anti-Japanese phase.
+
+Main rewrite commit: `dd209ec98904365275281f29eb61b1903d9f4b94`.
+Trigger correction: `42cc292067a72cb15e860d95f309471f63cc8e9f`.
 
 ## Defines policy / naval NAI status
 
@@ -136,16 +162,15 @@ They should be applied directly in `common/defines/00_defines.lua` when the main
 
 ## Next audit order
 
-1. SOV country strategy phases and Eastern Front behavior.
-2. GER country strategy phases.
-3. ENG country strategy phases and removal of dead old naval-role helpers.
-4. USA country strategy phases.
-5. JAP country strategy phases and Pacific operation sequence.
-6. ITA/FRA cleanup.
-7. Operation strategy files and remaining microscripts.
-8. Inventory existing AI-only helper systems before creating new concessions.
+1. GER country strategy phases.
+2. ENG country strategy phases and removal of dead old naval-role helpers.
+3. USA country strategy phases.
+4. JAP country strategy phases and Pacific operation sequence.
+5. ITA/FRA cleanup.
+6. Operation strategy files and remaining microscripts.
+7. Inventory existing AI-only helper systems before creating new concessions.
 
-CHI already has a first-pass country strategy and should be revisited after division-template and aid-system integration.
+CHI and SOV have first-pass country strategies and should be revisited after division-template/strategy-plan integration and hands-off observation.
 
 ## Hands-off requirement
 

@@ -1374,7 +1374,7 @@ NAir = {
 	DAY_NIGHT_COVERAGE_FACTOR = 0.5,					-- The max night coverage in a region that is still considered to be day-time when determining if day/night air missions shall run.
 	HOURS_DELAY_AFTER_EACH_COMBAT = 4,					-- How many hours needs the wing to be ready for the next combat. Use for tweaking if combats happens too often. (generally used as double because of roundtrip)
 	PORT_STRIKES_DELAY_MULTIPLIER = 2,					-- multplies HOURS_DELAY_AFTER_EACH_COMBAT if port strikes
-	CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 4,          -- how often carrier planes do battle inside naval combat
+	CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 5,          -- how often carrier planes do battle inside naval combat
 	CARRIER_SIZE_STAT_INCREMENT = 8,					-- Each Point of carrier_size state adds capacity for this many planes
 	SUBMARINE_CARRIER_SIZE_STAT_INCREMENT = 1,			-- Each Point of carrier_size state adds capacity for this many planes for submarines
 	MISSILE_LAUNCHER_CAPACITY = 10,                     -- The number of missiles per slot
@@ -2126,8 +2126,8 @@ NNavy = {
 
 	MAX_ANTI_AIR_REDUCTION_EFFECT_ON_INCOMING_AIR_DAMAGE 			= 0.8,	-- damage reduction for incoming air attacks is clamped to this value at maximum.
 
-	CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT							= 0.2,	-- HER: most critical hits should produce an actual local or hull-wide system casualty.
-	CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT_FROM_AIR					= 0.8,	-- HER: bomb and aerial-torpedo hits strongly favor deck, hangar, flooding and machinery casualties.
+	CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT							= 0.35,	-- HER: most critical hits should produce an actual local or hull-wide system casualty.
+	CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT_FROM_AIR					= 0.9,	-- HER: bomb and aerial-torpedo hits strongly favor deck, hangar, flooding and machinery casualties.
 
 	SCREEN_RATIO_FOR_FULL_SCREENING_FOR_CAPITALS 					= 4.0,	-- this screen ratio to num capital/carriers is needed for full screening beyond screen line
 	SCREEN_RATIO_FOR_FULL_SCREENING_FOR_CONVOYS 					= 0.5,	-- this screen ratio to num convoys is needed for full screening beyond screen line

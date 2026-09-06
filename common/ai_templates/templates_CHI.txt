@@ -1,5 +1,5 @@
-# Nationalist China: combat divisions stay at the HER 30-width standard.
-# China economises through fewer expensive supports, not by fielding under-width frontline formations.
+# Nationalist China: all regular combat divisions target exactly 30 combat width (15 line battalions).
+# China economises through support density and equipment quality, not by using under-width combat divisions.
 
 infantry_CHI = {
 	available_for = { CHI }
@@ -17,7 +17,6 @@ infantry_CHI = {
 		}
 		reinforce_prio = 2
 
-		# Cheap but full-sized 30-width mass infantry for the opening China war.
 		target_template = {
 			support = {
 				engineer = 1
@@ -41,7 +40,6 @@ infantry_CHI = {
 		upgrade_prio = { factor = 70 }
 		reinforce_prio = 2
 
-		# As artillery production improves, keep width and replace manpower with firepower.
 		target_template = {
 			support = {
 				engineer = 1
@@ -70,7 +68,7 @@ infantry_CHI = {
 		upgrade_prio = { factor = 90 }
 		reinforce_prio = 2
 
-		# Late-war elite/regular line: still 30 width, but now with the support density China can sustain.
+		# 9 infantry + 3 artillery + 1 heavy artillery + 1 AT + 1 AA = 15 line battalions / 30w.
 		target_template = {
 			support = {
 				engineer = 1
@@ -85,6 +83,8 @@ infantry_CHI = {
 				heavy_infantry = 9
 				artillery_brigade = 3
 				heavy_artillery_brigade = 1
+				anti_tank_brigade = 1
+				anti_air_brigade = 1
 			}
 		}
 	}

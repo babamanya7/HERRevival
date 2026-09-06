@@ -75,8 +75,8 @@ country_event = {
 	option = { }
 }
 
-# Route-dispatched packets spend seven days in transit. Arrivals update both a rolling
-# seven-day total and a permanent cumulative total in Chinese country scope.
+# Route-dispatched packets use route-specific travel times. Arrivals update both a
+# rolling seven-day total and a permanent cumulative total in Chinese country scope.
 country_event = {
 	id = her_chi_aid.120
 	hidden = yes
@@ -229,7 +229,7 @@ country_event = {
 	option = { }
 }
 
-# Chinese tungsten uses the same physical seven-day transit as Western equipment.
+# Chinese tungsten uses a route-specific overland and ocean transit to the United States.
 country_event = {
 	id = her_chi_aid.128
 	hidden = yes

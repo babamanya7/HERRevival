@@ -30,7 +30,7 @@ CHI_foreign_aid = {
 		visible = { has_country_flag = CHI_usa_tungsten_credit_active }
 		available = {
 			NOT = { has_country_flag = CHI_USA_rifle_request_pending }
-			check_variable = { CHI_usa_credit_balance > 49999 }
+			check_variable = { CHI_usa_credit_balance > 54999 }
 			USA = { exists = yes NOT = { has_war_with = ROOT } }
 			BRA = { exists = yes }
 		}
@@ -49,7 +49,7 @@ CHI_foreign_aid = {
 		visible = { has_country_flag = CHI_usa_tungsten_credit_active }
 		available = {
 			NOT = { has_country_flag = CHI_USA_artillery_request_pending }
-			check_variable = { CHI_usa_credit_balance > 59999 }
+			check_variable = { CHI_usa_credit_balance > 69999 }
 			USA = { exists = yes NOT = { has_war_with = ROOT } }
 			BRA = { exists = yes }
 		}
@@ -68,7 +68,7 @@ CHI_foreign_aid = {
 		visible = { has_country_flag = CHI_usa_tungsten_credit_active }
 		available = {
 			NOT = { has_country_flag = CHI_USA_ammunition_request_pending }
-			check_variable = { CHI_usa_credit_balance > 39999 }
+			check_variable = { CHI_usa_credit_balance > 44999 }
 			USA = { exists = yes NOT = { has_war_with = ROOT } }
 			BRA = { exists = yes }
 		}
@@ -87,7 +87,7 @@ CHI_foreign_aid = {
 		visible = { has_country_flag = CHI_usa_tungsten_credit_active }
 		available = {
 			NOT = { has_country_flag = CHI_USA_support_request_pending }
-			check_variable = { CHI_usa_credit_balance > 29999 }
+			check_variable = { CHI_usa_credit_balance > 44999 }
 			USA = { exists = yes NOT = { has_war_with = ROOT } }
 			BRA = { exists = yes }
 		}
@@ -106,7 +106,7 @@ CHI_foreign_aid = {
 		visible = { has_country_flag = CHI_usa_tungsten_credit_active }
 		available = {
 			NOT = { has_country_flag = CHI_USA_truck_request_pending }
-			check_variable = { CHI_usa_credit_balance > 39999 }
+			check_variable = { CHI_usa_credit_balance > 34999 }
 			USA = { exists = yes NOT = { has_war_with = ROOT } }
 			BRA = { exists = yes }
 		}
@@ -125,7 +125,7 @@ CHI_foreign_aid = {
 		visible = { has_country_flag = CHI_usa_tungsten_credit_active }
 		available = {
 			NOT = { has_country_flag = CHI_USA_aircraft_request_pending }
-			check_variable = { CHI_usa_credit_balance > 39999 }
+			check_variable = { CHI_usa_credit_balance > 49999 }
 			USA = { exists = yes NOT = { has_war_with = ROOT } }
 			BRA = { exists = yes }
 		}
@@ -144,7 +144,7 @@ CHI_foreign_aid = {
 		visible = { has_country_flag = CHI_usa_tungsten_credit_active }
 		available = {
 			NOT = { has_country_flag = CHI_USA_cas_request_pending }
-			check_variable = { CHI_usa_credit_balance > 47999 }
+			check_variable = { CHI_usa_credit_balance > 54999 }
 			USA = { exists = yes NOT = { has_war_with = ROOT } }
 			BRA = { exists = yes }
 		}
@@ -163,7 +163,7 @@ CHI_foreign_aid = {
 		visible = { has_country_flag = CHI_usa_tungsten_credit_active }
 		available = {
 			NOT = { has_country_flag = CHI_USA_tactical_bomber_request_pending }
-			check_variable = { CHI_usa_credit_balance > 59999 }
+			check_variable = { CHI_usa_credit_balance > 64999 }
 			USA = { exists = yes NOT = { has_war_with = ROOT } }
 			BRA = { exists = yes }
 		}
@@ -227,7 +227,7 @@ USA_CHI_foreign_aid = {
 			has_equipment = { machinegun > 2399 }
 			has_equipment = { mortar > 799 }
 			has_equipment = { antitank > 699 }
-			CHI = { check_variable = { CHI_usa_credit_balance > 49999 } }
+			CHI = { check_variable = { CHI_usa_credit_balance > 54999 } }
 		}
 		cost = 10
 		days_re_enable = 60
@@ -245,7 +245,7 @@ USA_CHI_foreign_aid = {
 		available = {
 			NOT = { has_country_flag = USA_CHI_ammunition_offer_pending }
 			has_equipment = { ammunition_equipment > 9999 }
-			CHI = { check_variable = { CHI_usa_credit_balance > 39999 } }
+			CHI = { check_variable = { CHI_usa_credit_balance > 44999 } }
 		}
 		cost = 10
 		days_re_enable = 60
@@ -263,7 +263,7 @@ USA_CHI_foreign_aid = {
 		available = {
 			NOT = { has_country_flag = USA_CHI_support_offer_pending }
 			has_equipment = { support_equipment > 999 }
-			CHI = { check_variable = { CHI_usa_credit_balance > 29999 } }
+			CHI = { check_variable = { CHI_usa_credit_balance > 44999 } }
 		}
 		cost = 10
 		days_re_enable = 60
@@ -284,7 +284,7 @@ USA_CHI_foreign_aid = {
 			has_equipment = { heavy_artillery_equipment > 79 }
 			has_equipment = { anti_tank_equipment > 119 }
 			has_equipment = { anti_air_equipment > 119 }
-			CHI = { check_variable = { CHI_usa_credit_balance > 59999 } }
+			CHI = { check_variable = { CHI_usa_credit_balance > 69999 } }
 		}
 		cost = 10
 		days_re_enable = 90
@@ -302,7 +302,7 @@ USA_CHI_foreign_aid = {
 		available = {
 			NOT = { has_country_flag = USA_CHI_truck_offer_pending }
 			has_equipment = { motorized_equipment > 999 }
-			CHI = { check_variable = { CHI_usa_credit_balance > 39999 } }
+			CHI = { check_variable = { CHI_usa_credit_balance > 34999 } }
 		}
 		cost = 10
 		days_re_enable = 90
@@ -320,7 +320,7 @@ USA_CHI_foreign_aid = {
 		available = {
 			NOT = { has_country_flag = USA_CHI_fighter_offer_pending }
 			has_equipment = { small_plane_airframe > 39 }
-			CHI = { check_variable = { CHI_usa_credit_balance > 39999 } }
+			CHI = { check_variable = { CHI_usa_credit_balance > 49999 } }
 		}
 		cost = 10
 		days_re_enable = 120
@@ -338,7 +338,7 @@ USA_CHI_foreign_aid = {
 		available = {
 			NOT = { has_country_flag = USA_CHI_cas_offer_pending }
 			has_equipment = { small_plane_cas_airframe > 39 }
-			CHI = { check_variable = { CHI_usa_credit_balance > 47999 } }
+			CHI = { check_variable = { CHI_usa_credit_balance > 54999 } }
 		}
 		cost = 10
 		days_re_enable = 120
@@ -356,7 +356,7 @@ USA_CHI_foreign_aid = {
 		available = {
 			NOT = { has_country_flag = USA_CHI_tactical_bomber_offer_pending }
 			has_equipment = { small_plane_tactical_bomber_airframe > 39 }
-			CHI = { check_variable = { CHI_usa_credit_balance > 59999 } }
+			CHI = { check_variable = { CHI_usa_credit_balance > 64999 } }
 		}
 		cost = 10
 		days_re_enable = 120

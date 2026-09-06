@@ -58,7 +58,7 @@ country_event = {
 	option = {
 		name = her_chi_aid.contract_accept
 		trigger = {
-			check_variable = { CHI_usa_credit_balance > 49999 }
+			check_variable = { CHI_usa_credit_balance > 54999 }
 			USA = {
 				has_equipment = { infantry_equipment > 4999 }
 				has_equipment = { machinegun > 2399 }
@@ -66,7 +66,7 @@ country_event = {
 				has_equipment = { antitank > 699 }
 			}
 		}
-		subtract_from_variable = { CHI_usa_credit_balance = 50000 }
+		subtract_from_variable = { CHI_usa_credit_balance = 55000 }
 		USA = {
 			clr_country_flag = USA_CHI_rifle_offer_pending
 			HER_stage_CHI_infantry_package = yes
@@ -87,7 +87,7 @@ country_event = {
 	option = {
 		name = her_chi_aid.contract_accept
 		trigger = {
-			check_variable = { CHI_usa_credit_balance > 59999 }
+			check_variable = { CHI_usa_credit_balance > 69999 }
 			USA = {
 				has_equipment = { artillery_equipment > 239 }
 				has_equipment = { heavy_artillery_equipment > 79 }
@@ -95,7 +95,7 @@ country_event = {
 				has_equipment = { anti_air_equipment > 119 }
 			}
 		}
-		subtract_from_variable = { CHI_usa_credit_balance = 60000 }
+		subtract_from_variable = { CHI_usa_credit_balance = 70000 }
 		USA = {
 			clr_country_flag = USA_CHI_artillery_offer_pending
 			HER_stage_CHI_artillery_package = yes
@@ -116,10 +116,10 @@ country_event = {
 	option = {
 		name = her_chi_aid.contract_accept
 		trigger = {
-			check_variable = { CHI_usa_credit_balance > 39999 }
+			check_variable = { CHI_usa_credit_balance > 34999 }
 			USA = { has_equipment = { motorized_equipment > 999 } }
 		}
-		subtract_from_variable = { CHI_usa_credit_balance = 40000 }
+		subtract_from_variable = { CHI_usa_credit_balance = 35000 }
 		USA = {
 			clr_country_flag = USA_CHI_truck_offer_pending
 			HER_stage_CHI_truck_package = yes
@@ -140,10 +140,10 @@ country_event = {
 	option = {
 		name = her_chi_aid.contract_accept
 		trigger = {
-			check_variable = { CHI_usa_credit_balance > 39999 }
+			check_variable = { CHI_usa_credit_balance > 49999 }
 			USA = { has_equipment = { small_plane_airframe > 39 } }
 		}
-		subtract_from_variable = { CHI_usa_credit_balance = 40000 }
+		subtract_from_variable = { CHI_usa_credit_balance = 50000 }
 		USA = {
 			clr_country_flag = USA_CHI_fighter_offer_pending
 			HER_stage_CHI_fighter_package = yes
@@ -169,14 +169,14 @@ country_event = {
 			has_equipment = { machinegun > 2399 }
 			has_equipment = { mortar > 799 }
 			has_equipment = { antitank > 699 }
-			CHI = { check_variable = { CHI_usa_credit_balance > 49999 } }
+			CHI = { check_variable = { CHI_usa_credit_balance > 54999 } }
 			BRA = { exists = yes }
 		}
 		ai_chance = { factor = 100 }
 		HER_stage_CHI_infantry_package = yes
 		CHI = {
 			clr_country_flag = CHI_USA_rifle_request_pending
-			subtract_from_variable = { CHI_usa_credit_balance = 50000 }
+			subtract_from_variable = { CHI_usa_credit_balance = 55000 }
 			country_event = { id = her_chi_aid.12 days = 1 }
 		}
 	}
@@ -203,14 +203,14 @@ country_event = {
 			has_equipment = { heavy_artillery_equipment > 79 }
 			has_equipment = { anti_tank_equipment > 119 }
 			has_equipment = { anti_air_equipment > 119 }
-			CHI = { check_variable = { CHI_usa_credit_balance > 59999 } }
+			CHI = { check_variable = { CHI_usa_credit_balance > 69999 } }
 			BRA = { exists = yes }
 		}
 		ai_chance = { factor = 100 }
 		HER_stage_CHI_artillery_package = yes
 		CHI = {
 			clr_country_flag = CHI_USA_artillery_request_pending
-			subtract_from_variable = { CHI_usa_credit_balance = 60000 }
+			subtract_from_variable = { CHI_usa_credit_balance = 70000 }
 			country_event = { id = her_chi_aid.12 days = 1 }
 		}
 	}
@@ -234,14 +234,14 @@ country_event = {
 		name = her_chi_aid.request_approve
 		trigger = {
 			has_equipment = { motorized_equipment > 999 }
-			CHI = { check_variable = { CHI_usa_credit_balance > 39999 } }
+			CHI = { check_variable = { CHI_usa_credit_balance > 34999 } }
 			BRA = { exists = yes }
 		}
 		ai_chance = { factor = 100 }
 		HER_stage_CHI_truck_package = yes
 		CHI = {
 			clr_country_flag = CHI_USA_truck_request_pending
-			subtract_from_variable = { CHI_usa_credit_balance = 40000 }
+			subtract_from_variable = { CHI_usa_credit_balance = 35000 }
 			country_event = { id = her_chi_aid.12 days = 1 }
 		}
 	}
@@ -265,14 +265,14 @@ country_event = {
 		name = her_chi_aid.request_approve
 		trigger = {
 			has_equipment = { small_plane_airframe > 39 }
-			CHI = { check_variable = { CHI_usa_credit_balance > 39999 } }
+			CHI = { check_variable = { CHI_usa_credit_balance > 49999 } }
 			BRA = { exists = yes }
 		}
 		ai_chance = { factor = 100 }
 		HER_stage_CHI_fighter_package = yes
 		CHI = {
 			clr_country_flag = CHI_USA_aircraft_request_pending
-			subtract_from_variable = { CHI_usa_credit_balance = 40000 }
+			subtract_from_variable = { CHI_usa_credit_balance = 50000 }
 			country_event = { id = her_chi_aid.12 days = 1 }
 		}
 	}
@@ -313,10 +313,10 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = her_chi_aid.request_approve
-		trigger = { has_equipment = { ammunition_equipment > 9999 } CHI = { check_variable = { CHI_usa_credit_balance > 39999 } } BRA = { exists = yes } }
+		trigger = { has_equipment = { ammunition_equipment > 9999 } CHI = { check_variable = { CHI_usa_credit_balance > 44999 } } BRA = { exists = yes } }
 		ai_chance = { factor = 100 }
 		HER_stage_CHI_ammunition_package = yes
-		CHI = { clr_country_flag = CHI_USA_ammunition_request_pending subtract_from_variable = { CHI_usa_credit_balance = 40000 } country_event = { id = her_chi_aid.12 days = 1 } }
+		CHI = { clr_country_flag = CHI_USA_ammunition_request_pending subtract_from_variable = { CHI_usa_credit_balance = 45000 } country_event = { id = her_chi_aid.12 days = 1 } }
 	}
 	option = { name = her_chi_aid.request_refuse ai_chance = { factor = 0 } CHI = { clr_country_flag = CHI_USA_ammunition_request_pending country_event = { id = her_chi_aid.13 days = 1 } } }
 }
@@ -329,10 +329,10 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = her_chi_aid.request_approve
-		trigger = { has_equipment = { support_equipment > 999 } CHI = { check_variable = { CHI_usa_credit_balance > 29999 } } BRA = { exists = yes } }
+		trigger = { has_equipment = { support_equipment > 999 } CHI = { check_variable = { CHI_usa_credit_balance > 44999 } } BRA = { exists = yes } }
 		ai_chance = { factor = 100 }
 		HER_stage_CHI_support_package = yes
-		CHI = { clr_country_flag = CHI_USA_support_request_pending subtract_from_variable = { CHI_usa_credit_balance = 30000 } country_event = { id = her_chi_aid.12 days = 1 } }
+		CHI = { clr_country_flag = CHI_USA_support_request_pending subtract_from_variable = { CHI_usa_credit_balance = 45000 } country_event = { id = her_chi_aid.12 days = 1 } }
 	}
 	option = { name = her_chi_aid.request_refuse ai_chance = { factor = 0 } CHI = { clr_country_flag = CHI_USA_support_request_pending country_event = { id = her_chi_aid.13 days = 1 } } }
 }
@@ -345,10 +345,10 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = her_chi_aid.request_approve
-		trigger = { has_equipment = { small_plane_cas_airframe > 39 } CHI = { check_variable = { CHI_usa_credit_balance > 47999 } } BRA = { exists = yes } }
+		trigger = { has_equipment = { small_plane_cas_airframe > 39 } CHI = { check_variable = { CHI_usa_credit_balance > 54999 } } BRA = { exists = yes } }
 		ai_chance = { factor = 100 }
 		HER_stage_CHI_cas_package = yes
-		CHI = { clr_country_flag = CHI_USA_cas_request_pending subtract_from_variable = { CHI_usa_credit_balance = 48000 } country_event = { id = her_chi_aid.12 days = 1 } }
+		CHI = { clr_country_flag = CHI_USA_cas_request_pending subtract_from_variable = { CHI_usa_credit_balance = 55000 } country_event = { id = her_chi_aid.12 days = 1 } }
 	}
 	option = { name = her_chi_aid.request_refuse ai_chance = { factor = 0 } CHI = { clr_country_flag = CHI_USA_cas_request_pending country_event = { id = her_chi_aid.13 days = 1 } } }
 }
@@ -361,10 +361,10 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = her_chi_aid.request_approve
-		trigger = { has_equipment = { small_plane_tactical_bomber_airframe > 39 } CHI = { check_variable = { CHI_usa_credit_balance > 59999 } } BRA = { exists = yes } }
+		trigger = { has_equipment = { small_plane_tactical_bomber_airframe > 39 } CHI = { check_variable = { CHI_usa_credit_balance > 64999 } } BRA = { exists = yes } }
 		ai_chance = { factor = 100 }
 		HER_stage_CHI_tactical_bomber_package = yes
-		CHI = { clr_country_flag = CHI_USA_tactical_bomber_request_pending subtract_from_variable = { CHI_usa_credit_balance = 60000 } country_event = { id = her_chi_aid.12 days = 1 } }
+		CHI = { clr_country_flag = CHI_USA_tactical_bomber_request_pending subtract_from_variable = { CHI_usa_credit_balance = 65000 } country_event = { id = her_chi_aid.12 days = 1 } }
 	}
 	option = { name = her_chi_aid.request_refuse ai_chance = { factor = 0 } CHI = { clr_country_flag = CHI_USA_tactical_bomber_request_pending country_event = { id = her_chi_aid.13 days = 1 } } }
 }
@@ -378,8 +378,8 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = her_chi_aid.contract_accept
-		trigger = { check_variable = { CHI_usa_credit_balance > 39999 } USA = { has_equipment = { ammunition_equipment > 9999 } } }
-		subtract_from_variable = { CHI_usa_credit_balance = 40000 }
+		trigger = { check_variable = { CHI_usa_credit_balance > 44999 } USA = { has_equipment = { ammunition_equipment > 9999 } } }
+		subtract_from_variable = { CHI_usa_credit_balance = 45000 }
 		USA = { clr_country_flag = USA_CHI_ammunition_offer_pending HER_stage_CHI_ammunition_package = yes }
 	}
 	option = { name = her_chi_aid.contract_refuse USA = { clr_country_flag = USA_CHI_ammunition_offer_pending } }
@@ -393,8 +393,8 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = her_chi_aid.contract_accept
-		trigger = { check_variable = { CHI_usa_credit_balance > 29999 } USA = { has_equipment = { support_equipment > 999 } } }
-		subtract_from_variable = { CHI_usa_credit_balance = 30000 }
+		trigger = { check_variable = { CHI_usa_credit_balance > 44999 } USA = { has_equipment = { support_equipment > 999 } } }
+		subtract_from_variable = { CHI_usa_credit_balance = 45000 }
 		USA = { clr_country_flag = USA_CHI_support_offer_pending HER_stage_CHI_support_package = yes }
 	}
 	option = { name = her_chi_aid.contract_refuse USA = { clr_country_flag = USA_CHI_support_offer_pending } }
@@ -408,8 +408,8 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = her_chi_aid.contract_accept
-		trigger = { check_variable = { CHI_usa_credit_balance > 47999 } USA = { has_equipment = { small_plane_cas_airframe > 39 } } }
-		subtract_from_variable = { CHI_usa_credit_balance = 48000 }
+		trigger = { check_variable = { CHI_usa_credit_balance > 54999 } USA = { has_equipment = { small_plane_cas_airframe > 39 } } }
+		subtract_from_variable = { CHI_usa_credit_balance = 55000 }
 		USA = { clr_country_flag = USA_CHI_cas_offer_pending HER_stage_CHI_cas_package = yes }
 	}
 	option = { name = her_chi_aid.contract_refuse USA = { clr_country_flag = USA_CHI_cas_offer_pending } }
@@ -423,8 +423,8 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = her_chi_aid.contract_accept
-		trigger = { check_variable = { CHI_usa_credit_balance > 59999 } USA = { has_equipment = { small_plane_tactical_bomber_airframe > 39 } } }
-		subtract_from_variable = { CHI_usa_credit_balance = 60000 }
+		trigger = { check_variable = { CHI_usa_credit_balance > 64999 } USA = { has_equipment = { small_plane_tactical_bomber_airframe > 39 } } }
+		subtract_from_variable = { CHI_usa_credit_balance = 65000 }
 		USA = { clr_country_flag = USA_CHI_tactical_bomber_offer_pending HER_stage_CHI_tactical_bomber_package = yes }
 	}
 	option = { name = her_chi_aid.contract_refuse USA = { clr_country_flag = USA_CHI_tactical_bomber_offer_pending } }

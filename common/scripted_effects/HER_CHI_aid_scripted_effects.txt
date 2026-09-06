@@ -6,8 +6,8 @@ HER_CHI_aid_initialize = {
 	set_variable = { CHI_western_export_capacity = 0 }
 	set_variable = { CHI_western_import_allocation = 0 }
 	set_variable = { CHI_western_export_allocation = 0 }
-	set_variable = { CHI_western_import_used_last_day = 0 }
-	set_variable = { CHI_western_export_used_last_day = 0 }
+	set_variable = { CHI_western_import_used_last_week = 0 }
+	set_variable = { CHI_western_export_used_last_week = 0 }
 	set_variable = { CHI_western_import_load_percent = 0 }
 	set_variable = { CHI_western_export_load_percent = 0 }
 	set_variable = { CHI_burma_route_upgrade = 0 }
@@ -102,6 +102,15 @@ HER_CHI_update_western_route_capacity = {
 	set_variable = { CHI_hump_route_capacity = 0 }
 	set_variable = { CHI_ledo_route_capacity = 0 }
 	set_variable = { CHI_western_surface_capacity = 0 }
+	set_variable = { CHI_sea_import_capacity = 0 }
+	set_variable = { CHI_sea_export_capacity = 0 }
+	set_variable = { CHI_hanoi_import_capacity = 0 }
+	set_variable = { CHI_hanoi_export_capacity = 0 }
+	set_variable = { CHI_burma_import_capacity = 0 }
+	set_variable = { CHI_burma_export_capacity = 0 }
+	set_variable = { CHI_hump_import_capacity = 0 }
+	set_variable = { CHI_ledo_import_capacity = 0 }
+	set_variable = { CHI_ledo_export_capacity = 0 }
 	clamp_variable = { var = CHI_burma_route_upgrade min = 0 max = 2500 }
 	clamp_variable = { var = CHI_hump_route_upgrade min = 0 max = 1500 }
 	clamp_variable = { var = CHI_ledo_route_upgrade min = 0 max = 2500 }
@@ -134,26 +143,70 @@ HER_CHI_update_western_route_capacity = {
 	add_to_variable = { var = CHI_western_surface_capacity value = CHI_hanoi_route_capacity }
 	add_to_variable = { var = CHI_western_surface_capacity value = CHI_burma_route_capacity }
 	add_to_variable = { var = CHI_western_surface_capacity value = CHI_ledo_route_capacity }
-	set_variable = { CHI_western_import_capacity = CHI_western_surface_capacity }
-	set_variable = { CHI_western_export_capacity = CHI_western_surface_capacity }
+	set_variable = { CHI_sea_import_capacity = CHI_sea_route_capacity }
+	set_variable = { CHI_sea_export_capacity = CHI_sea_route_capacity }
+	set_variable = { CHI_hanoi_import_capacity = CHI_hanoi_route_capacity }
+	set_variable = { CHI_hanoi_export_capacity = CHI_hanoi_route_capacity }
+	set_variable = { CHI_burma_import_capacity = CHI_burma_route_capacity }
+	set_variable = { CHI_burma_export_capacity = CHI_burma_route_capacity }
+	set_variable = { CHI_hump_import_capacity = CHI_hump_route_capacity }
+	set_variable = { CHI_ledo_import_capacity = CHI_ledo_route_capacity }
+	set_variable = { CHI_ledo_export_capacity = CHI_ledo_route_capacity }
 
 	if = {
 		limit = { has_country_flag = CHI_transport_priority_military }
-		multiply_variable = { CHI_western_import_capacity = 0.8 }
-		multiply_variable = { CHI_western_export_capacity = 0.2 }
+		multiply_variable = { CHI_sea_import_capacity = 0.8 }
+		multiply_variable = { CHI_sea_export_capacity = 0.2 }
+		multiply_variable = { CHI_hanoi_import_capacity = 0.8 }
+		multiply_variable = { CHI_hanoi_export_capacity = 0.2 }
+		multiply_variable = { CHI_burma_import_capacity = 0.8 }
+		multiply_variable = { CHI_burma_export_capacity = 0.2 }
+		multiply_variable = { CHI_ledo_import_capacity = 0.8 }
+		multiply_variable = { CHI_ledo_export_capacity = 0.2 }
 	}
 	else_if = {
 		limit = { has_country_flag = CHI_transport_priority_credit }
-		multiply_variable = { CHI_western_import_capacity = 0.4 }
-		multiply_variable = { CHI_western_export_capacity = 0.6 }
+		multiply_variable = { CHI_sea_import_capacity = 0.4 }
+		multiply_variable = { CHI_sea_export_capacity = 0.6 }
+		multiply_variable = { CHI_hanoi_import_capacity = 0.4 }
+		multiply_variable = { CHI_hanoi_export_capacity = 0.6 }
+		multiply_variable = { CHI_burma_import_capacity = 0.4 }
+		multiply_variable = { CHI_burma_export_capacity = 0.6 }
+		multiply_variable = { CHI_ledo_import_capacity = 0.4 }
+		multiply_variable = { CHI_ledo_export_capacity = 0.6 }
 	}
 	else = {
-		multiply_variable = { CHI_western_import_capacity = 0.6 }
-		multiply_variable = { CHI_western_export_capacity = 0.4 }
+		multiply_variable = { CHI_sea_import_capacity = 0.6 }
+		multiply_variable = { CHI_sea_export_capacity = 0.4 }
+		multiply_variable = { CHI_hanoi_import_capacity = 0.6 }
+		multiply_variable = { CHI_hanoi_export_capacity = 0.4 }
+		multiply_variable = { CHI_burma_import_capacity = 0.6 }
+		multiply_variable = { CHI_burma_export_capacity = 0.4 }
+		multiply_variable = { CHI_ledo_import_capacity = 0.6 }
+		multiply_variable = { CHI_ledo_export_capacity = 0.4 }
 	}
+	set_variable = { CHI_sea_import_allocation = CHI_sea_import_capacity }
+	set_variable = { CHI_sea_export_allocation = CHI_sea_export_capacity }
+	set_variable = { CHI_hanoi_import_allocation = CHI_hanoi_import_capacity }
+	set_variable = { CHI_hanoi_export_allocation = CHI_hanoi_export_capacity }
+	set_variable = { CHI_burma_import_allocation = CHI_burma_import_capacity }
+	set_variable = { CHI_burma_export_allocation = CHI_burma_export_capacity }
+	set_variable = { CHI_hump_import_allocation = CHI_hump_import_capacity }
+	set_variable = { CHI_ledo_import_allocation = CHI_ledo_import_capacity }
+	set_variable = { CHI_ledo_export_allocation = CHI_ledo_export_capacity }
 
+	set_variable = { CHI_western_import_capacity = 0 }
+	add_to_variable = { var = CHI_western_import_capacity value = CHI_sea_import_capacity }
+	add_to_variable = { var = CHI_western_import_capacity value = CHI_hanoi_import_capacity }
+	add_to_variable = { var = CHI_western_import_capacity value = CHI_burma_import_capacity }
+	add_to_variable = { var = CHI_western_import_capacity value = CHI_hump_import_capacity }
+	add_to_variable = { var = CHI_western_import_capacity value = CHI_ledo_import_capacity }
+	set_variable = { CHI_western_export_capacity = 0 }
+	add_to_variable = { var = CHI_western_export_capacity value = CHI_sea_export_capacity }
+	add_to_variable = { var = CHI_western_export_capacity value = CHI_hanoi_export_capacity }
+	add_to_variable = { var = CHI_western_export_capacity value = CHI_burma_export_capacity }
+	add_to_variable = { var = CHI_western_export_capacity value = CHI_ledo_export_capacity }
 	# The Hump carries aid into China, but is not used to export bulk tungsten.
-	add_to_variable = { var = CHI_western_import_capacity value = CHI_hump_route_capacity }
 	set_variable = { CHI_western_route_capacity = CHI_western_surface_capacity }
 	add_to_variable = { var = CHI_western_route_capacity value = CHI_hump_route_capacity }
 	round_variable = CHI_western_route_capacity
@@ -163,20 +216,170 @@ HER_CHI_update_western_route_capacity = {
 	set_variable = { CHI_western_export_allocation = CHI_western_export_capacity }
 }
 
+HER_CHI_calculate_individual_route_use = {
+	set_variable = { CHI_sea_import_used = CHI_sea_import_allocation }
+	subtract_from_variable = { var = CHI_sea_import_used value = CHI_sea_import_capacity }
+	set_variable = { CHI_sea_export_used = CHI_sea_export_allocation }
+	subtract_from_variable = { var = CHI_sea_export_used value = CHI_sea_export_capacity }
+	set_variable = { CHI_hanoi_import_used = CHI_hanoi_import_allocation }
+	subtract_from_variable = { var = CHI_hanoi_import_used value = CHI_hanoi_import_capacity }
+	set_variable = { CHI_hanoi_export_used = CHI_hanoi_export_allocation }
+	subtract_from_variable = { var = CHI_hanoi_export_used value = CHI_hanoi_export_capacity }
+	set_variable = { CHI_burma_import_used = CHI_burma_import_allocation }
+	subtract_from_variable = { var = CHI_burma_import_used value = CHI_burma_import_capacity }
+	set_variable = { CHI_burma_export_used = CHI_burma_export_allocation }
+	subtract_from_variable = { var = CHI_burma_export_used value = CHI_burma_export_capacity }
+	set_variable = { CHI_hump_import_used = CHI_hump_import_allocation }
+	subtract_from_variable = { var = CHI_hump_import_used value = CHI_hump_import_capacity }
+	set_variable = { CHI_ledo_import_used = CHI_ledo_import_allocation }
+	subtract_from_variable = { var = CHI_ledo_import_used value = CHI_ledo_import_capacity }
+	set_variable = { CHI_ledo_export_used = CHI_ledo_export_allocation }
+	subtract_from_variable = { var = CHI_ledo_export_used value = CHI_ledo_export_capacity }
+}
+
+# Select one physical route for the current packet. The caller sets
+# CHI_current_cargo_weight before invoking the selector.
+HER_CHI_select_import_route = {
+	clr_country_flag = CHI_cargo_route_sea
+	clr_country_flag = CHI_cargo_route_hanoi
+	clr_country_flag = CHI_cargo_route_burma
+	clr_country_flag = CHI_cargo_route_hump
+	clr_country_flag = CHI_cargo_route_ledo
+	if = {
+		limit = { NOT = { check_variable = { CHI_sea_import_capacity < CHI_current_cargo_weight } } }
+		subtract_from_variable = { var = CHI_sea_import_capacity value = CHI_current_cargo_weight }
+		set_country_flag = CHI_cargo_route_sea
+	}
+	else_if = {
+		limit = { NOT = { check_variable = { CHI_hanoi_import_capacity < CHI_current_cargo_weight } } }
+		subtract_from_variable = { var = CHI_hanoi_import_capacity value = CHI_current_cargo_weight }
+		set_country_flag = CHI_cargo_route_hanoi
+	}
+	else_if = {
+		limit = { NOT = { check_variable = { CHI_burma_import_capacity < CHI_current_cargo_weight } } }
+		subtract_from_variable = { var = CHI_burma_import_capacity value = CHI_current_cargo_weight }
+		set_country_flag = CHI_cargo_route_burma
+	}
+	else_if = {
+		limit = { NOT = { check_variable = { CHI_ledo_import_capacity < CHI_current_cargo_weight } } }
+		subtract_from_variable = { var = CHI_ledo_import_capacity value = CHI_current_cargo_weight }
+		set_country_flag = CHI_cargo_route_ledo
+	}
+	else_if = {
+		limit = { NOT = { check_variable = { CHI_hump_import_capacity < CHI_current_cargo_weight } } }
+		subtract_from_variable = { var = CHI_hump_import_capacity value = CHI_current_cargo_weight }
+		set_country_flag = CHI_cargo_route_hump
+	}
+}
+
+HER_CHI_select_export_route = {
+	clr_country_flag = CHI_cargo_route_sea
+	clr_country_flag = CHI_cargo_route_hanoi
+	clr_country_flag = CHI_cargo_route_burma
+	clr_country_flag = CHI_cargo_route_ledo
+	if = {
+		limit = { NOT = { check_variable = { CHI_sea_export_capacity < CHI_current_cargo_weight } } }
+		subtract_from_variable = { var = CHI_sea_export_capacity value = CHI_current_cargo_weight }
+		set_country_flag = CHI_cargo_route_sea
+	}
+	else_if = {
+		limit = { NOT = { check_variable = { CHI_hanoi_export_capacity < CHI_current_cargo_weight } } }
+		subtract_from_variable = { var = CHI_hanoi_export_capacity value = CHI_current_cargo_weight }
+		set_country_flag = CHI_cargo_route_hanoi
+	}
+	else_if = {
+		limit = { NOT = { check_variable = { CHI_burma_export_capacity < CHI_current_cargo_weight } } }
+		subtract_from_variable = { var = CHI_burma_export_capacity value = CHI_current_cargo_weight }
+		set_country_flag = CHI_cargo_route_burma
+	}
+	else_if = {
+		limit = { NOT = { check_variable = { CHI_ledo_export_capacity < CHI_current_cargo_weight } } }
+		subtract_from_variable = { var = CHI_ledo_export_capacity value = CHI_current_cargo_weight }
+		set_country_flag = CHI_cargo_route_ledo
+	}
+}
+
+# Arrival scheduling remains cargo-specific, while the selected route supplies the delay.
+HER_CHI_schedule_infantry_arrival = {
+	if = { limit = { has_country_flag = CHI_cargo_route_sea } BRA = { country_event = { id = her_chi_aid.120 days = 21 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_hanoi } BRA = { country_event = { id = her_chi_aid.120 days = 28 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_burma } BRA = { country_event = { id = her_chi_aid.120 days = 35 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_ledo } BRA = { country_event = { id = her_chi_aid.120 days = 35 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_hump } BRA = { country_event = { id = her_chi_aid.120 days = 14 } } }
+}
+HER_CHI_schedule_artillery_arrival = {
+	if = { limit = { has_country_flag = CHI_cargo_route_sea } BRA = { country_event = { id = her_chi_aid.121 days = 21 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_hanoi } BRA = { country_event = { id = her_chi_aid.121 days = 28 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_burma } BRA = { country_event = { id = her_chi_aid.121 days = 35 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_ledo } BRA = { country_event = { id = her_chi_aid.121 days = 35 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_hump } BRA = { country_event = { id = her_chi_aid.121 days = 14 } } }
+}
+HER_CHI_schedule_ammunition_arrival = {
+	if = { limit = { has_country_flag = CHI_cargo_route_sea } BRA = { country_event = { id = her_chi_aid.122 days = 21 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_hanoi } BRA = { country_event = { id = her_chi_aid.122 days = 28 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_burma } BRA = { country_event = { id = her_chi_aid.122 days = 35 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_ledo } BRA = { country_event = { id = her_chi_aid.122 days = 35 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_hump } BRA = { country_event = { id = her_chi_aid.122 days = 14 } } }
+}
+HER_CHI_schedule_support_arrival = {
+	if = { limit = { has_country_flag = CHI_cargo_route_sea } BRA = { country_event = { id = her_chi_aid.123 days = 21 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_hanoi } BRA = { country_event = { id = her_chi_aid.123 days = 28 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_burma } BRA = { country_event = { id = her_chi_aid.123 days = 35 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_ledo } BRA = { country_event = { id = her_chi_aid.123 days = 35 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_hump } BRA = { country_event = { id = her_chi_aid.123 days = 14 } } }
+}
+HER_CHI_schedule_truck_arrival = {
+	if = { limit = { has_country_flag = CHI_cargo_route_sea } BRA = { country_event = { id = her_chi_aid.124 days = 21 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_hanoi } BRA = { country_event = { id = her_chi_aid.124 days = 28 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_burma } BRA = { country_event = { id = her_chi_aid.124 days = 35 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_ledo } BRA = { country_event = { id = her_chi_aid.124 days = 35 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_hump } BRA = { country_event = { id = her_chi_aid.124 days = 14 } } }
+}
+HER_CHI_schedule_fighter_arrival = {
+	if = { limit = { has_country_flag = CHI_cargo_route_sea } BRA = { country_event = { id = her_chi_aid.125 days = 21 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_hanoi } BRA = { country_event = { id = her_chi_aid.125 days = 28 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_burma } BRA = { country_event = { id = her_chi_aid.125 days = 35 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_ledo } BRA = { country_event = { id = her_chi_aid.125 days = 35 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_hump } BRA = { country_event = { id = her_chi_aid.125 days = 14 } } }
+}
+HER_CHI_schedule_cas_arrival = {
+	if = { limit = { has_country_flag = CHI_cargo_route_sea } BRA = { country_event = { id = her_chi_aid.126 days = 21 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_hanoi } BRA = { country_event = { id = her_chi_aid.126 days = 28 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_burma } BRA = { country_event = { id = her_chi_aid.126 days = 35 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_ledo } BRA = { country_event = { id = her_chi_aid.126 days = 35 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_hump } BRA = { country_event = { id = her_chi_aid.126 days = 14 } } }
+}
+HER_CHI_schedule_tactical_bomber_arrival = {
+	if = { limit = { has_country_flag = CHI_cargo_route_sea } BRA = { country_event = { id = her_chi_aid.127 days = 21 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_hanoi } BRA = { country_event = { id = her_chi_aid.127 days = 28 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_burma } BRA = { country_event = { id = her_chi_aid.127 days = 35 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_ledo } BRA = { country_event = { id = her_chi_aid.127 days = 35 } } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_hump } BRA = { country_event = { id = her_chi_aid.127 days = 14 } } }
+}
+
+HER_CHI_schedule_tungsten_arrival = {
+	if = { limit = { has_country_flag = CHI_cargo_route_sea } country_event = { id = her_chi_aid.128 days = 35 } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_hanoi } country_event = { id = her_chi_aid.128 days = 42 } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_burma } country_event = { id = her_chi_aid.128 days = 49 } }
+	else_if = { limit = { has_country_flag = CHI_cargo_route_ledo } country_event = { id = her_chi_aid.128 days = 49 } }
+}
+
 HER_CHI_export_tungsten_to_usa = {
+	set_variable = { CHI_current_cargo_weight = 250 }
 	if = {
 		limit = {
-			check_variable = { CHI_western_export_capacity > 999 }
+			HER_CHI_export_route_can_fit_current_cargo = yes
 			check_variable = { CHI_usa_tungsten_debt > 999 }
 			check_variable = { left_tungsten > 999 }
 			USA = { exists = yes }
 		}
-		subtract_from_variable = { CHI_western_export_capacity = 1000 }
+		HER_CHI_select_export_route = yes
+		subtract_from_variable = { CHI_western_export_capacity = 250 }
 		subtract_from_variable = { CHI_usa_tungsten_debt = 1000 }
 		subtract_from_variable = { left_tungsten = 1000 }
 		add_to_variable = { CHI_tungsten_in_transit = 1000 }
 		add_to_variable = { CHI_tungsten_exported_last_day = 1000 }
-		country_event = { id = her_chi_aid.128 days = 7 }
+		HER_CHI_schedule_tungsten_arrival = yes
 	}
 	if = {
 		limit = {
@@ -189,9 +392,10 @@ HER_CHI_export_tungsten_to_usa = {
 }
 
 HER_CHI_deliver_western_rifles = {
+	set_variable = { CHI_current_cargo_weight = 445 }
 	if = {
 		limit = {
-			check_variable = { CHI_western_import_capacity > 999 }
+			HER_CHI_import_route_can_fit_current_cargo = yes
 			BRA = {
 				check_variable = { BRA_CHI_pending_infantry_equipment > 499 }
 				check_variable = { BRA_CHI_pending_machinegun > 239 }
@@ -203,6 +407,7 @@ HER_CHI_deliver_western_rifles = {
 				has_equipment = { antitank > 69 }
 			}
 		}
+		HER_CHI_select_import_route = yes
 		BRA = {
 			subtract_from_variable = { BRA_CHI_pending_infantry_equipment = 500 }
 			subtract_from_variable = { BRA_CHI_pending_machinegun = 240 }
@@ -220,17 +425,18 @@ HER_CHI_deliver_western_rifles = {
 			add_to_variable = { BRA_CHI_in_transit_machinegun = 240 }
 			add_to_variable = { BRA_CHI_in_transit_mortar = 80 }
 			add_to_variable = { BRA_CHI_in_transit_antitank = 70 }
-			country_event = { id = her_chi_aid.120 days = 7 }
 		}
-		subtract_from_variable = { CHI_western_import_capacity = 1000 }
+		HER_CHI_schedule_infantry_arrival = yes
+		subtract_from_variable = { CHI_western_import_capacity = 445 }
 		add_to_variable = { CHI_infantry_cargo_dispatched_last_day = 500 }
 	}
 }
 
 HER_CHI_deliver_western_artillery = {
+	set_variable = { CHI_current_cargo_weight = 1500 }
 	if = {
 		limit = {
-			check_variable = { CHI_western_import_capacity > 999 }
+			HER_CHI_import_route_can_fit_current_cargo = yes
 			BRA = {
 				check_variable = { BRA_CHI_pending_artillery_equipment > 59 }
 				check_variable = { BRA_CHI_pending_heavy_artillery_equipment > 19 }
@@ -242,6 +448,7 @@ HER_CHI_deliver_western_artillery = {
 				has_equipment = { anti_air_equipment > 29 }
 			}
 		}
+		HER_CHI_select_import_route = yes
 		BRA = {
 			subtract_from_variable = { BRA_CHI_pending_artillery_equipment = 60 }
 			subtract_from_variable = { BRA_CHI_pending_heavy_artillery_equipment = 20 }
@@ -259,69 +466,76 @@ HER_CHI_deliver_western_artillery = {
 			add_to_variable = { BRA_CHI_in_transit_heavy_artillery_equipment = 20 }
 			add_to_variable = { BRA_CHI_in_transit_anti_tank_equipment = 30 }
 			add_to_variable = { BRA_CHI_in_transit_anti_air_equipment = 30 }
-			country_event = { id = her_chi_aid.121 days = 7 }
 		}
-		subtract_from_variable = { CHI_western_import_capacity = 1000 }
+		HER_CHI_schedule_artillery_arrival = yes
+		subtract_from_variable = { CHI_western_import_capacity = 1500 }
 		add_to_variable = { CHI_artillery_cargo_dispatched_last_day = 60 }
 	}
 }
 
 HER_CHI_deliver_western_ammunition = {
+	set_variable = { CHI_current_cargo_weight = 500 }
 	if = { limit = {
-		check_variable = { CHI_western_import_capacity > 999 }
+		HER_CHI_import_route_can_fit_current_cargo = yes
 		BRA = { check_variable = { BRA_CHI_pending_ammunition_equipment > 999 } has_equipment = { ammunition_equipment > 999 } }
 	}
+		HER_CHI_select_import_route = yes
 		BRA = {
 			subtract_from_variable = { BRA_CHI_pending_ammunition_equipment = 1000 }
 			subtract_from_variable = { BRA_CHI_queued_ammunition_equipment = 1000 }
 			clamp_variable = { var = BRA_CHI_queued_ammunition_equipment min = 0 max = 100000000 }
 			add_to_variable = { BRA_CHI_in_transit_ammunition_equipment = 1000 }
-			country_event = { id = her_chi_aid.122 days = 7 }
 		}
-		subtract_from_variable = { CHI_western_import_capacity = 1000 }
+		HER_CHI_schedule_ammunition_arrival = yes
+		subtract_from_variable = { CHI_western_import_capacity = 500 }
 		add_to_variable = { CHI_ammunition_dispatched_last_day = 1000 }
 	}
 }
 
 HER_CHI_deliver_western_support = {
+	set_variable = { CHI_current_cargo_weight = 250 }
 	if = { limit = {
-		check_variable = { CHI_western_import_capacity > 999 }
+		HER_CHI_import_route_can_fit_current_cargo = yes
 		BRA = { check_variable = { BRA_CHI_pending_support_equipment > 199 } has_equipment = { support_equipment > 199 } }
 	}
+		HER_CHI_select_import_route = yes
 		BRA = {
 			subtract_from_variable = { BRA_CHI_pending_support_equipment = 200 }
 			subtract_from_variable = { BRA_CHI_queued_support_equipment = 200 }
 			clamp_variable = { var = BRA_CHI_queued_support_equipment min = 0 max = 100000000 }
 			add_to_variable = { BRA_CHI_in_transit_support_equipment = 200 }
-			country_event = { id = her_chi_aid.123 days = 7 }
 		}
-		subtract_from_variable = { CHI_western_import_capacity = 1000 }
+		HER_CHI_schedule_support_arrival = yes
+		subtract_from_variable = { CHI_western_import_capacity = 250 }
 		add_to_variable = { CHI_support_dispatched_last_day = 200 }
 	}
 }
 
 HER_CHI_deliver_western_trucks = {
+	set_variable = { CHI_current_cargo_weight = 1000 }
 	if = {
 		limit = {
-			check_variable = { CHI_western_import_capacity > 999 }
+			HER_CHI_import_route_can_fit_current_cargo = yes
 			BRA = {
 				check_variable = { BRA_CHI_pending_motorized_equipment > 199 }
 				has_equipment = { motorized_equipment > 199 }
 			}
 		}
+		HER_CHI_select_import_route = yes
 		BRA = {
 			subtract_from_variable = { BRA_CHI_pending_motorized_equipment = 200 }
 			subtract_from_variable = { BRA_CHI_queued_motorized_equipment = 200 }
 			clamp_variable = { var = BRA_CHI_queued_motorized_equipment min = 0 max = 100000000 }
 			add_to_variable = { BRA_CHI_in_transit_motorized_equipment = 200 }
-			country_event = { id = her_chi_aid.124 days = 7 }
 		}
+		HER_CHI_schedule_truck_arrival = yes
 		subtract_from_variable = { CHI_western_import_capacity = 1000 }
 		add_to_variable = { CHI_trucks_dispatched_last_day = 200 }
 	}
 }
 
 HER_CHI_deliver_western_aircraft = {
+	set_variable = { CHI_current_cargo_weight = 200 }
 	BRA = {
 		set_variable = { BRA_CHI_available_small_plane_airframe = num_equipment@small_plane_airframe }
 		subtract_from_variable = { var = BRA_CHI_available_small_plane_airframe value = BRA_CHI_in_transit_small_plane_airframe }
@@ -329,20 +543,21 @@ HER_CHI_deliver_western_aircraft = {
 	}
 	if = {
 		limit = {
-			check_variable = { CHI_western_import_capacity > 249 }
+			HER_CHI_import_route_can_fit_current_cargo = yes
 			BRA = {
 				check_variable = { BRA_CHI_pending_small_plane_airframe > 4 }
 				check_variable = { BRA_CHI_available_small_plane_airframe > 4 }
 			}
 		}
+		HER_CHI_select_import_route = yes
 		BRA = {
 			subtract_from_variable = { BRA_CHI_pending_small_plane_airframe = 5 }
 			subtract_from_variable = { BRA_CHI_queued_small_plane_airframe = 5 }
 			clamp_variable = { var = BRA_CHI_queued_small_plane_airframe min = 0 max = 100000000 }
 			add_to_variable = { BRA_CHI_in_transit_small_plane_airframe = 5 }
-			country_event = { id = her_chi_aid.125 days = 7 }
 		}
-		subtract_from_variable = { CHI_western_import_capacity = 250 }
+		HER_CHI_schedule_fighter_arrival = yes
+		subtract_from_variable = { CHI_western_import_capacity = 200 }
 		add_to_variable = { CHI_fighters_dispatched_last_day = 5 }
 	}
 	BRA = {
@@ -351,46 +566,50 @@ HER_CHI_deliver_western_aircraft = {
 }
 
 HER_CHI_deliver_western_cas = {
+	set_variable = { CHI_current_cargo_weight = 200 }
 	BRA = {
 		set_variable = { BRA_CHI_available_small_plane_cas_airframe = num_equipment@small_plane_cas_airframe }
 		subtract_from_variable = { var = BRA_CHI_available_small_plane_cas_airframe value = BRA_CHI_in_transit_small_plane_cas_airframe }
 		clamp_variable = { var = BRA_CHI_available_small_plane_cas_airframe min = 0 max = 1000000 }
 	}
 	if = { limit = {
-		check_variable = { CHI_western_import_capacity > 249 }
+		HER_CHI_import_route_can_fit_current_cargo = yes
 		BRA = { check_variable = { BRA_CHI_pending_small_plane_cas_airframe > 4 } check_variable = { BRA_CHI_available_small_plane_cas_airframe > 4 } }
 	}
+		HER_CHI_select_import_route = yes
 		BRA = {
 			subtract_from_variable = { BRA_CHI_pending_small_plane_cas_airframe = 5 }
 			subtract_from_variable = { BRA_CHI_queued_small_plane_cas_airframe = 5 }
 			clamp_variable = { var = BRA_CHI_queued_small_plane_cas_airframe min = 0 max = 100000000 }
 			add_to_variable = { BRA_CHI_in_transit_small_plane_cas_airframe = 5 }
-			country_event = { id = her_chi_aid.126 days = 7 }
 		}
-		subtract_from_variable = { CHI_western_import_capacity = 250 }
+		HER_CHI_schedule_cas_arrival = yes
+		subtract_from_variable = { CHI_western_import_capacity = 200 }
 		add_to_variable = { CHI_cas_dispatched_last_day = 5 }
 	}
 	BRA = { if = { limit = { check_variable = { BRA_CHI_pending_small_plane_cas_airframe > 0 } check_variable = { BRA_CHI_available_small_plane_cas_airframe < 1 } } set_variable = { BRA_CHI_pending_small_plane_cas_airframe = 0 } set_variable = { BRA_CHI_queued_small_plane_cas_airframe = 0 } } }
 }
 
 HER_CHI_deliver_western_tactical_bombers = {
+	set_variable = { CHI_current_cargo_weight = 200 }
 	BRA = {
 		set_variable = { BRA_CHI_available_small_plane_tactical_bomber_airframe = num_equipment@small_plane_tactical_bomber_airframe }
 		subtract_from_variable = { var = BRA_CHI_available_small_plane_tactical_bomber_airframe value = BRA_CHI_in_transit_small_plane_tactical_bomber_airframe }
 		clamp_variable = { var = BRA_CHI_available_small_plane_tactical_bomber_airframe min = 0 max = 1000000 }
 	}
 	if = { limit = {
-		check_variable = { CHI_western_import_capacity > 249 }
+		HER_CHI_import_route_can_fit_current_cargo = yes
 		BRA = { check_variable = { BRA_CHI_pending_small_plane_tactical_bomber_airframe > 4 } check_variable = { BRA_CHI_available_small_plane_tactical_bomber_airframe > 4 } }
 	}
+		HER_CHI_select_import_route = yes
 		BRA = {
 			subtract_from_variable = { BRA_CHI_pending_small_plane_tactical_bomber_airframe = 5 }
 			subtract_from_variable = { BRA_CHI_queued_small_plane_tactical_bomber_airframe = 5 }
 			clamp_variable = { var = BRA_CHI_queued_small_plane_tactical_bomber_airframe min = 0 max = 100000000 }
 			add_to_variable = { BRA_CHI_in_transit_small_plane_tactical_bomber_airframe = 5 }
-			country_event = { id = her_chi_aid.127 days = 7 }
 		}
-		subtract_from_variable = { CHI_western_import_capacity = 250 }
+		HER_CHI_schedule_tactical_bomber_arrival = yes
+		subtract_from_variable = { CHI_western_import_capacity = 200 }
 		add_to_variable = { CHI_tactical_bombers_dispatched_last_day = 5 }
 	}
 	BRA = { if = { limit = { check_variable = { BRA_CHI_pending_small_plane_tactical_bomber_airframe > 0 } check_variable = { BRA_CHI_available_small_plane_tactical_bomber_airframe < 1 } } set_variable = { BRA_CHI_pending_small_plane_tactical_bomber_airframe = 0 } set_variable = { BRA_CHI_queued_small_plane_tactical_bomber_airframe = 0 } } }
@@ -427,6 +646,13 @@ HER_CHI_deliver_daily_batch = {
 	HER_CHI_deliver_one_round = yes
 	HER_CHI_deliver_one_round = yes
 	HER_CHI_deliver_one_round = yes
+	HER_CHI_deliver_one_round = yes
+	HER_CHI_deliver_one_round = yes
+	HER_CHI_deliver_one_round = yes
+	HER_CHI_deliver_one_round = yes
+	HER_CHI_deliver_one_round = yes
+	HER_CHI_deliver_one_round = yes
+	HER_CHI_deliver_one_round = yes
 }
 
 HER_CHI_foreign_aid_daily = {
@@ -444,16 +670,17 @@ HER_CHI_foreign_aid_daily = {
 	HER_CHI_update_western_route_capacity = yes
 	HER_CHI_export_daily_batch = yes
 	HER_CHI_deliver_daily_batch = yes
-	set_variable = { CHI_western_import_used_last_day = CHI_western_import_allocation }
-	subtract_from_variable = { var = CHI_western_import_used_last_day value = CHI_western_import_capacity }
-	clamp_variable = { var = CHI_western_import_used_last_day min = 0 max = 100000000 }
-	set_variable = { CHI_western_export_used_last_day = CHI_western_export_allocation }
-	subtract_from_variable = { var = CHI_western_export_used_last_day value = CHI_western_export_capacity }
-	clamp_variable = { var = CHI_western_export_used_last_day min = 0 max = 100000000 }
+	HER_CHI_calculate_individual_route_use = yes
+	set_variable = { CHI_western_import_used_last_week = CHI_western_import_allocation }
+	subtract_from_variable = { var = CHI_western_import_used_last_week value = CHI_western_import_capacity }
+	clamp_variable = { var = CHI_western_import_used_last_week min = 0 max = 100000000 }
+	set_variable = { CHI_western_export_used_last_week = CHI_western_export_allocation }
+	subtract_from_variable = { var = CHI_western_export_used_last_week value = CHI_western_export_capacity }
+	clamp_variable = { var = CHI_western_export_used_last_week min = 0 max = 100000000 }
 	set_variable = { CHI_western_import_load_percent = 0 }
 	if = {
 		limit = { check_variable = { CHI_western_import_allocation > 0 } }
-		set_variable = { CHI_western_import_load_percent = CHI_western_import_used_last_day }
+		set_variable = { CHI_western_import_load_percent = CHI_western_import_used_last_week }
 		divide_variable = { CHI_western_import_load_percent = CHI_western_import_allocation }
 		multiply_variable = { CHI_western_import_load_percent = 100 }
 		round_variable = CHI_western_import_load_percent
@@ -461,7 +688,7 @@ HER_CHI_foreign_aid_daily = {
 	set_variable = { CHI_western_export_load_percent = 0 }
 	if = {
 		limit = { check_variable = { CHI_western_export_allocation > 0 } }
-		set_variable = { CHI_western_export_load_percent = CHI_western_export_used_last_day }
+		set_variable = { CHI_western_export_load_percent = CHI_western_export_used_last_week }
 		divide_variable = { CHI_western_export_load_percent = CHI_western_export_allocation }
 		multiply_variable = { CHI_western_export_load_percent = 100 }
 		round_variable = CHI_western_export_load_percent

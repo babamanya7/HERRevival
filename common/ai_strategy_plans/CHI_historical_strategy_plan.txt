@@ -6,11 +6,9 @@ CHI_nationalist_historical_plan = {
 		original_tag = CHI
 	}
 	enable = {
-		always = yes
+		is_historical_focus_on = yes
 	}
-	abort = {
-		always = no
-	}
+	abort_when_not_enabled = yes
 
 	ai_national_focuses = {
 		CHI_war_of_resistance
@@ -23,7 +21,6 @@ CHI_nationalist_historical_plan = {
 		CHI_burma_road
 		CHI_ledo_road
 		CHI_industrial_evacuations
-		
 		CHI_three_principles_of_the_people
 		CHI_democracy
 		CHI_nationalism
@@ -46,21 +43,19 @@ CHI_nationalist_historical_plan = {
 		CHI_forced_conscription
 	}
 
+	# Country research personality is defined in common/ai_focuses/CHI.txt.
 	research = {
-
+		infantry_weapons = 10
+		artillery = 6
+		support_tech = 5
+		industry = 5
 	}
 
 	ideas = {
 		CHI_soong_mei_ling = 10
 	}
 
-	# Keep small, as it is used as a factor for some things (such as research needs)
-	# Recommended around 1.0. Useful for relation between plans
 	weight = {
 		factor = 1.0
-		modifier = {
-			factor = 1.0
-		}
 	}
-
 }

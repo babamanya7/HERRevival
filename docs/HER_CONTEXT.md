@@ -160,8 +160,14 @@ Historical assignment policy for these traits:
 - assign them only where a commander's documented career or command style
   clearly supports the trait;
 - `staff_officer` requires substantive staff/operational-planning experience;
-- `mobile_warfare_leader` requires sustained armored, motorized, mechanized or
-  cavalry-mechanized command experience;
+- `mobile_warfare_leader` requires sustained command of formations whose main
+  operational role was armored, motorized, mechanized or cavalry-mechanized;
+- broad competence at operational manoeuvre or command of a combined-arms front
+  is not sufficient by itself: Georgy Zhukov and Konstantin Rokossovsky are
+  intentionally excluded from this specialist trait;
+- `soft_leader` is assigned only where a commander was distinctly humane,
+  protective of subordinates or known for avoiding needless losses, rather than
+  merely being less harsh than the worst contemporary commanders;
 - do not distribute the traits merely to fill out famous commanders;
 - compatible personality traits may coexist (for example, independence and
   improvisation), but contradictory methodical/improviser combinations are

@@ -443,7 +443,7 @@ characters = {
 			}
 		}
 		corps_commander = {
-			traits = { career_officer staff_officer methodical good_logist trait_cautious brilliant_strategist infantry_officer gen_lt }
+			traits = { career_officer staff_officer methodical soft_leader good_logist trait_cautious brilliant_strategist infantry_officer gen_lt }
 			skill = 6
 			attack_skill = 2
 			defense_skill = 8
@@ -803,7 +803,7 @@ characters = {
 		}
 
 		corps_commander = {
-			traits = { myasnik good_logist winter_specialist organizer skilled_staffer infantry_officer harsh_leader trickster mobile_warfare_leader gen_arm inflexible_strategist media_personality }
+			traits = { myasnik good_logist winter_specialist organizer skilled_staffer infantry_officer harsh_leader trickster gen_arm inflexible_strategist media_personality }
 			skill = 8
 			attack_skill = 7
 			defense_skill = 9
@@ -825,7 +825,7 @@ characters = {
 		}
 
 		corps_commander = {
-			traits = { brilliant_strategist independent_minded methodical trait_cautious mobile_warfare_leader gen_lt }
+			traits = { brilliant_strategist independent_minded methodical soft_leader trait_cautious gen_lt }
 			skill = 6
 			attack_skill = 4
 			defense_skill = 6
@@ -1679,7 +1679,7 @@ characters = {
 			}
 		}
 		corps_commander = {
-			traits = { career_officer independent_minded improviser infantry_leader war_hero gen_lt }
+			traits = { career_officer independent_minded improviser soft_leader infantry_leader war_hero gen_lt }
 			skill = 6
 			attack_skill = 2
 			defense_skill = 10

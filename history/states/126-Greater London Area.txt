@@ -14,12 +14,13 @@ state={
 		buildings = {
 			infrastructure = 9
 			arms_factory = 5
-			industrial_complex = 30
+			industrial_complex = 21
 			anti_air_building = 1
 			radar_station = 1
 			air_base = 20
 		}
 		add_core_of = ENG
+		add_extra_state_shared_building_slots = 1
 	}
 
 	provinces={

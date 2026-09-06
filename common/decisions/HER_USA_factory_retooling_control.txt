@@ -1,0 +1,72 @@
+USA_internal_factions = {
+
+	USA_disable_automatic_factory_retooling = {
+
+		icon = generic_operation
+
+		allowed = {
+			tag = USA
+		}
+
+		visible = {
+			tag = USA
+			is_ai = no
+			NOT = { has_country_flag = USA_automatic_factory_retooling_disabled }
+			OR = {
+				has_country_flag = FORD_NEGOTIATIONS_1
+				has_country_flag = FORD_NEGOTIATIONS_2
+				has_country_flag = GM_NEGOTIATIONS_1
+				has_country_flag = GM_NEGOTIATIONS_2
+			}
+		}
+
+		available = {
+			always = yes
+		}
+
+		cost = 0
+		fire_only_once = no
+
+		complete_effect = {
+			set_country_flag = USA_automatic_factory_retooling_disabled
+			remove_mission = USA_ford_retooling_factories_slow
+			remove_mission = USA_ford_retooling_factories_fast
+			remove_mission = USA_gm_retooling_factories_slow
+			remove_mission = USA_gm_retooling_factories_fast
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	USA_enable_automatic_factory_retooling = {
+
+		icon = generic_operation
+
+		allowed = {
+			tag = USA
+		}
+
+		visible = {
+			tag = USA
+			is_ai = no
+			has_country_flag = USA_automatic_factory_retooling_disabled
+		}
+
+		available = {
+			always = yes
+		}
+
+		cost = 0
+		fire_only_once = no
+
+		complete_effect = {
+			clr_country_flag = USA_automatic_factory_retooling_disabled
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}

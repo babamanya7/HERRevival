@@ -15,7 +15,7 @@ state={
 		buildings = {
 			infrastructure = 8
 			arms_factory = 9
-			industrial_complex = 15
+			industrial_complex = 13
 			steel_refinery = 4
 			air_base = 2
 			fuel_silo = 2
@@ -24,6 +24,7 @@ state={
 			9297 25
 		}
 		add_core_of = ENG
+		add_extra_state_shared_building_slots = 1
 	}
 
 	provinces={

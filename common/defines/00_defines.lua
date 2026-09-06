@@ -757,7 +757,7 @@ NBuildings = {
 	BASE_FACTORY_REPAIR = 0.5,			-- Default repair rate before factories are taken into account
 	BASE_FACTORY_REPAIR_FACTOR = 1.0,	-- Factory speed modifier when repairing.
 	SUPPLY_PORT_LEVEL_THROUGHPUT = 3,   -- supply throughput per level of naval base
-	MAX_SHARED_SLOTS = 50,				-- Max slots shared by factories
+	MAX_SHARED_SLOTS = 60,				-- Max slots shared by factories
 	OWNER_CHANGE_EXTRA_SHARED_SLOTS_FACTOR = 1, --Scale factor of extra shared slots when state owner change.
 	DESTRUCTION_COOLDOWN_IN_WAR = 180,	-- Number of days cooldown between removal of buildings in war times
 
@@ -918,10 +918,10 @@ NMilitary = {
 				     				5,  10, 15, 20, 25 }, 
 	
 	BASE_DIVISION_BRIGADE_GROUP_COST = 3, 	--Base cost to unlock a regiment slot,
-	BASE_DIVISION_BRIGADE_CHANGE_COST = 3,	--Base cost to change a regiment column.
+	BASE_DIVISION_BRIGADE_CHANGE_COST = 2,	--Base cost to change a regiment column.
 	BASE_DIVISION_SUPPORT_SLOT_COST = 2, 	--Base cost to unlock a support slot
 
-	REGIMENTAL_SUPPORT_SLOT_COST_MULTIPLIER = 2.0, -- Regimental support slot costs are scaled by this value compared to normal support slots
+	REGIMENTAL_SUPPORT_SLOT_COST_MULTIPLIER = 1.0, -- Regimental support slot costs are scaled by this value compared to normal support slots
 
 	MAX_ARMY_EXPERIENCE = 5000,			--Max army experience a country can store
 	MAX_NAVY_EXPERIENCE = 5000,			--Max navy experience a country can store

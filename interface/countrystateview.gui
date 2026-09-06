@@ -45,7 +45,7 @@ guiTypes = {
 
 			instantTextboxType = {
 				name = "state_name"
-				position = { x = 80 y = 5 }
+				position = { x = 116 y = 10 }
 				textureFile = ""
 				font = "hoi_36header"
 				text = "STATE_NAME_TEST"
@@ -60,7 +60,7 @@ guiTypes = {
 				size = { width = 480 height = 105 }
 				format = "UPPER_LEFT"
 				slotsize = { width = 60 height = 75 } #width = 137 height = 52
-				max_slots_horizontal = 5
+				max_slots_horizontal = 6
 			}
 
 			instantTextboxType = {
@@ -77,18 +77,18 @@ guiTypes = {
 			iconType ={
 				name ="energy_consumption_bg"
 				spriteType = "GFX_victorypoint_stateview_bg"
-				position = { x = 403 y = 129 }
+				position = { x = 450 y = 655 }
 			}
 			
 			iconType = {
 				name = "energy_icon"
 				spriteType = "GFX_modifiers_energy"
-				position = { x = 418 y = 126 }
+				position = { x = 465 y = 652 }
 			}
 			
 			instantTextboxType = {
 				name = "energy_text"
-				position = { x = 398 y = 134 }
+				position = { x = 450 y = 660 }
 				textureFile = ""
 				font = "hoi_16mbs"
 				text = ""
@@ -103,7 +103,7 @@ guiTypes = {
 				size = { width = 480 height = 90%% }
 				format = "UPPER_LEFT"
 				slotsize = { width = 58 height = 46 }
-				max_slots_horizontal = 5
+				max_slots_horizontal = 6
 			}
 
 			iconType ={
@@ -204,7 +204,7 @@ guiTypes = {
 					format = "UPPER_LEFT"
 					slotsize = { width = 50 height = 31 }
 					max_slots_horizontal = 2
-					max_slots_vertical = 3
+					max_slots_vertical = 4
 
 				}
 			}
@@ -321,9 +321,9 @@ guiTypes = {
 
 			instantTextboxType = {
 				name = "province"
-				position = { x = 23 y= -29 }
+				position = { x = 12 y= -29 }
 				font = "hoi_18mbs"
-				maxWidth = 80
+				maxWidth = 180
 				maxHeight = 30
 				format = left
 			}
@@ -464,7 +464,7 @@ guiTypes = {
 
 		buttonType = {
 			name = "close_button"
-			position = { x = -4 y = 12 }
+			position = { x = 58 y = 12 }
 			quadTextureSprite ="GFX_closebutton_small"
 			buttonFont = "Main_14_black"
 			shortcut = "ESCAPE"
@@ -475,7 +475,7 @@ guiTypes = {
 
 		buttonType = {
 			name = "scorched_earth_state_button"
-			position = { x = -25 y = 140 }
+			position = { x = 40 y = 143 }
 			quadTextureSprite ="GFX_scorched_earth"
 			buttonFont = "Main_14_black"
 			Orientation = "UPPER_RIGHT"

@@ -279,7 +279,7 @@ equipment_modules = {
 		add_equipment_type = capital_ship
 		
 		add_stats = {
-			reliability = 0.1
+			reliability = 0.05
 			max_strength = 35
 		}
 		build_cost_resources = {
@@ -421,7 +421,7 @@ equipment_modules = {
 		category = carrier_unit
 		critical_parts = { damage_control_center_hit }
 		add_stats = {
-			reliability = 0.1
+			reliability = 0.08
 		}
 		multiply_stats = {
 			build_cost_ic = 0.05
@@ -523,7 +523,7 @@ equipment_modules = {
 		category = carrier_miscellaneous
 		critical_parts = { armor_belt_breached }
 		add_stats = {
-			reliability = 0.1
+			reliability = 0.05
 			max_strength = 100
 		}
 		build_cost_resources = {

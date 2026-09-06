@@ -18,6 +18,34 @@ HER_CHI_aid_initialize = {
 	set_variable = { CHI_fighters_dispatched_last_day = 0 }
 	set_variable = { CHI_cas_dispatched_last_day = 0 }
 	set_variable = { CHI_tactical_bombers_dispatched_last_day = 0 }
+	set_variable = { CHI_arrived_7d_infantry_equipment = 0 }
+	set_variable = { CHI_arrived_7d_machinegun = 0 }
+	set_variable = { CHI_arrived_7d_mortar = 0 }
+	set_variable = { CHI_arrived_7d_antitank = 0 }
+	set_variable = { CHI_arrived_7d_artillery_equipment = 0 }
+	set_variable = { CHI_arrived_7d_heavy_artillery_equipment = 0 }
+	set_variable = { CHI_arrived_7d_anti_tank_equipment = 0 }
+	set_variable = { CHI_arrived_7d_anti_air_equipment = 0 }
+	set_variable = { CHI_arrived_7d_ammunition_equipment = 0 }
+	set_variable = { CHI_arrived_7d_support_equipment = 0 }
+	set_variable = { CHI_arrived_7d_motorized_equipment = 0 }
+	set_variable = { CHI_arrived_7d_small_plane_airframe = 0 }
+	set_variable = { CHI_arrived_7d_small_plane_cas_airframe = 0 }
+	set_variable = { CHI_arrived_7d_small_plane_tactical_bomber_airframe = 0 }
+	set_variable = { CHI_arrived_total_infantry_equipment = 0 }
+	set_variable = { CHI_arrived_total_machinegun = 0 }
+	set_variable = { CHI_arrived_total_mortar = 0 }
+	set_variable = { CHI_arrived_total_antitank = 0 }
+	set_variable = { CHI_arrived_total_artillery_equipment = 0 }
+	set_variable = { CHI_arrived_total_heavy_artillery_equipment = 0 }
+	set_variable = { CHI_arrived_total_anti_tank_equipment = 0 }
+	set_variable = { CHI_arrived_total_anti_air_equipment = 0 }
+	set_variable = { CHI_arrived_total_ammunition_equipment = 0 }
+	set_variable = { CHI_arrived_total_support_equipment = 0 }
+	set_variable = { CHI_arrived_total_motorized_equipment = 0 }
+	set_variable = { CHI_arrived_total_small_plane_airframe = 0 }
+	set_variable = { CHI_arrived_total_small_plane_cas_airframe = 0 }
+	set_variable = { CHI_arrived_total_small_plane_tactical_bomber_airframe = 0 }
 
 	clr_country_flag = CHI_transport_priority_military
 	clr_country_flag = CHI_transport_priority_credit
@@ -40,6 +68,24 @@ HER_CHI_ensure_chongqing_export_depot = {
 		}
 		set_country_flag = CHI_usa_export_depot_established
 	}
+}
+
+# Save-compatible repair: cargo already waiting under an older build must appear in the new queue counters.
+HER_BRA_CHI_repair_queue_counters = {
+	if = { limit = { check_variable = { BRA_CHI_queued_infantry_equipment < BRA_CHI_pending_infantry_equipment } } set_variable = { BRA_CHI_queued_infantry_equipment = BRA_CHI_pending_infantry_equipment } }
+	if = { limit = { check_variable = { BRA_CHI_queued_machinegun < BRA_CHI_pending_machinegun } } set_variable = { BRA_CHI_queued_machinegun = BRA_CHI_pending_machinegun } }
+	if = { limit = { check_variable = { BRA_CHI_queued_mortar < BRA_CHI_pending_mortar } } set_variable = { BRA_CHI_queued_mortar = BRA_CHI_pending_mortar } }
+	if = { limit = { check_variable = { BRA_CHI_queued_antitank < BRA_CHI_pending_antitank } } set_variable = { BRA_CHI_queued_antitank = BRA_CHI_pending_antitank } }
+	if = { limit = { check_variable = { BRA_CHI_queued_artillery_equipment < BRA_CHI_pending_artillery_equipment } } set_variable = { BRA_CHI_queued_artillery_equipment = BRA_CHI_pending_artillery_equipment } }
+	if = { limit = { check_variable = { BRA_CHI_queued_heavy_artillery_equipment < BRA_CHI_pending_heavy_artillery_equipment } } set_variable = { BRA_CHI_queued_heavy_artillery_equipment = BRA_CHI_pending_heavy_artillery_equipment } }
+	if = { limit = { check_variable = { BRA_CHI_queued_anti_tank_equipment < BRA_CHI_pending_anti_tank_equipment } } set_variable = { BRA_CHI_queued_anti_tank_equipment = BRA_CHI_pending_anti_tank_equipment } }
+	if = { limit = { check_variable = { BRA_CHI_queued_anti_air_equipment < BRA_CHI_pending_anti_air_equipment } } set_variable = { BRA_CHI_queued_anti_air_equipment = BRA_CHI_pending_anti_air_equipment } }
+	if = { limit = { check_variable = { BRA_CHI_queued_ammunition_equipment < BRA_CHI_pending_ammunition_equipment } } set_variable = { BRA_CHI_queued_ammunition_equipment = BRA_CHI_pending_ammunition_equipment } }
+	if = { limit = { check_variable = { BRA_CHI_queued_support_equipment < BRA_CHI_pending_support_equipment } } set_variable = { BRA_CHI_queued_support_equipment = BRA_CHI_pending_support_equipment } }
+	if = { limit = { check_variable = { BRA_CHI_queued_motorized_equipment < BRA_CHI_pending_motorized_equipment } } set_variable = { BRA_CHI_queued_motorized_equipment = BRA_CHI_pending_motorized_equipment } }
+	if = { limit = { check_variable = { BRA_CHI_queued_small_plane_airframe < BRA_CHI_pending_small_plane_airframe } } set_variable = { BRA_CHI_queued_small_plane_airframe = BRA_CHI_pending_small_plane_airframe } }
+	if = { limit = { check_variable = { BRA_CHI_queued_small_plane_cas_airframe < BRA_CHI_pending_small_plane_cas_airframe } } set_variable = { BRA_CHI_queued_small_plane_cas_airframe = BRA_CHI_pending_small_plane_cas_airframe } }
+	if = { limit = { check_variable = { BRA_CHI_queued_small_plane_tactical_bomber_airframe < BRA_CHI_pending_small_plane_tactical_bomber_airframe } } set_variable = { BRA_CHI_queued_small_plane_tactical_bomber_airframe = BRA_CHI_pending_small_plane_tactical_bomber_airframe } }
 }
 
 HER_CHI_update_western_route_capacity = {
@@ -162,6 +208,14 @@ HER_CHI_deliver_western_rifles = {
 			subtract_from_variable = { BRA_CHI_pending_machinegun = 240 }
 			subtract_from_variable = { BRA_CHI_pending_mortar = 80 }
 			subtract_from_variable = { BRA_CHI_pending_antitank = 70 }
+			subtract_from_variable = { BRA_CHI_queued_infantry_equipment = 500 }
+			subtract_from_variable = { BRA_CHI_queued_machinegun = 240 }
+			subtract_from_variable = { BRA_CHI_queued_mortar = 80 }
+			subtract_from_variable = { BRA_CHI_queued_antitank = 70 }
+			clamp_variable = { var = BRA_CHI_queued_infantry_equipment min = 0 max = 100000000 }
+			clamp_variable = { var = BRA_CHI_queued_machinegun min = 0 max = 100000000 }
+			clamp_variable = { var = BRA_CHI_queued_mortar min = 0 max = 100000000 }
+			clamp_variable = { var = BRA_CHI_queued_antitank min = 0 max = 100000000 }
 			add_to_variable = { BRA_CHI_in_transit_infantry_equipment = 500 }
 			add_to_variable = { BRA_CHI_in_transit_machinegun = 240 }
 			add_to_variable = { BRA_CHI_in_transit_mortar = 80 }
@@ -193,6 +247,14 @@ HER_CHI_deliver_western_artillery = {
 			subtract_from_variable = { BRA_CHI_pending_heavy_artillery_equipment = 20 }
 			subtract_from_variable = { BRA_CHI_pending_anti_tank_equipment = 30 }
 			subtract_from_variable = { BRA_CHI_pending_anti_air_equipment = 30 }
+			subtract_from_variable = { BRA_CHI_queued_artillery_equipment = 60 }
+			subtract_from_variable = { BRA_CHI_queued_heavy_artillery_equipment = 20 }
+			subtract_from_variable = { BRA_CHI_queued_anti_tank_equipment = 30 }
+			subtract_from_variable = { BRA_CHI_queued_anti_air_equipment = 30 }
+			clamp_variable = { var = BRA_CHI_queued_artillery_equipment min = 0 max = 100000000 }
+			clamp_variable = { var = BRA_CHI_queued_heavy_artillery_equipment min = 0 max = 100000000 }
+			clamp_variable = { var = BRA_CHI_queued_anti_tank_equipment min = 0 max = 100000000 }
+			clamp_variable = { var = BRA_CHI_queued_anti_air_equipment min = 0 max = 100000000 }
 			add_to_variable = { BRA_CHI_in_transit_artillery_equipment = 60 }
 			add_to_variable = { BRA_CHI_in_transit_heavy_artillery_equipment = 20 }
 			add_to_variable = { BRA_CHI_in_transit_anti_tank_equipment = 30 }
@@ -211,6 +273,8 @@ HER_CHI_deliver_western_ammunition = {
 	}
 		BRA = {
 			subtract_from_variable = { BRA_CHI_pending_ammunition_equipment = 1000 }
+			subtract_from_variable = { BRA_CHI_queued_ammunition_equipment = 1000 }
+			clamp_variable = { var = BRA_CHI_queued_ammunition_equipment min = 0 max = 100000000 }
 			add_to_variable = { BRA_CHI_in_transit_ammunition_equipment = 1000 }
 			country_event = { id = her_chi_aid.122 days = 7 }
 		}
@@ -226,6 +290,8 @@ HER_CHI_deliver_western_support = {
 	}
 		BRA = {
 			subtract_from_variable = { BRA_CHI_pending_support_equipment = 200 }
+			subtract_from_variable = { BRA_CHI_queued_support_equipment = 200 }
+			clamp_variable = { var = BRA_CHI_queued_support_equipment min = 0 max = 100000000 }
 			add_to_variable = { BRA_CHI_in_transit_support_equipment = 200 }
 			country_event = { id = her_chi_aid.123 days = 7 }
 		}
@@ -245,6 +311,8 @@ HER_CHI_deliver_western_trucks = {
 		}
 		BRA = {
 			subtract_from_variable = { BRA_CHI_pending_motorized_equipment = 200 }
+			subtract_from_variable = { BRA_CHI_queued_motorized_equipment = 200 }
+			clamp_variable = { var = BRA_CHI_queued_motorized_equipment min = 0 max = 100000000 }
 			add_to_variable = { BRA_CHI_in_transit_motorized_equipment = 200 }
 			country_event = { id = her_chi_aid.124 days = 7 }
 		}
@@ -269,6 +337,8 @@ HER_CHI_deliver_western_aircraft = {
 		}
 		BRA = {
 			subtract_from_variable = { BRA_CHI_pending_small_plane_airframe = 5 }
+			subtract_from_variable = { BRA_CHI_queued_small_plane_airframe = 5 }
+			clamp_variable = { var = BRA_CHI_queued_small_plane_airframe min = 0 max = 100000000 }
 			add_to_variable = { BRA_CHI_in_transit_small_plane_airframe = 5 }
 			country_event = { id = her_chi_aid.125 days = 7 }
 		}
@@ -276,7 +346,7 @@ HER_CHI_deliver_western_aircraft = {
 		add_to_variable = { CHI_fighters_dispatched_last_day = 5 }
 	}
 	BRA = {
-		if = { limit = { check_variable = { BRA_CHI_pending_small_plane_airframe > 0 } check_variable = { BRA_CHI_available_small_plane_airframe < 1 } } set_variable = { BRA_CHI_pending_small_plane_airframe = 0 } }
+		if = { limit = { check_variable = { BRA_CHI_pending_small_plane_airframe > 0 } check_variable = { BRA_CHI_available_small_plane_airframe < 1 } } set_variable = { BRA_CHI_pending_small_plane_airframe = 0 } set_variable = { BRA_CHI_queued_small_plane_airframe = 0 } }
 	}
 }
 
@@ -292,13 +362,15 @@ HER_CHI_deliver_western_cas = {
 	}
 		BRA = {
 			subtract_from_variable = { BRA_CHI_pending_small_plane_cas_airframe = 5 }
+			subtract_from_variable = { BRA_CHI_queued_small_plane_cas_airframe = 5 }
+			clamp_variable = { var = BRA_CHI_queued_small_plane_cas_airframe min = 0 max = 100000000 }
 			add_to_variable = { BRA_CHI_in_transit_small_plane_cas_airframe = 5 }
 			country_event = { id = her_chi_aid.126 days = 7 }
 		}
 		subtract_from_variable = { CHI_western_import_capacity = 250 }
 		add_to_variable = { CHI_cas_dispatched_last_day = 5 }
 	}
-	BRA = { if = { limit = { check_variable = { BRA_CHI_pending_small_plane_cas_airframe > 0 } check_variable = { BRA_CHI_available_small_plane_cas_airframe < 1 } } set_variable = { BRA_CHI_pending_small_plane_cas_airframe = 0 } } }
+	BRA = { if = { limit = { check_variable = { BRA_CHI_pending_small_plane_cas_airframe > 0 } check_variable = { BRA_CHI_available_small_plane_cas_airframe < 1 } } set_variable = { BRA_CHI_pending_small_plane_cas_airframe = 0 } set_variable = { BRA_CHI_queued_small_plane_cas_airframe = 0 } } }
 }
 
 HER_CHI_deliver_western_tactical_bombers = {
@@ -313,13 +385,15 @@ HER_CHI_deliver_western_tactical_bombers = {
 	}
 		BRA = {
 			subtract_from_variable = { BRA_CHI_pending_small_plane_tactical_bomber_airframe = 5 }
+			subtract_from_variable = { BRA_CHI_queued_small_plane_tactical_bomber_airframe = 5 }
+			clamp_variable = { var = BRA_CHI_queued_small_plane_tactical_bomber_airframe min = 0 max = 100000000 }
 			add_to_variable = { BRA_CHI_in_transit_small_plane_tactical_bomber_airframe = 5 }
 			country_event = { id = her_chi_aid.127 days = 7 }
 		}
 		subtract_from_variable = { CHI_western_import_capacity = 250 }
 		add_to_variable = { CHI_tactical_bombers_dispatched_last_day = 5 }
 	}
-	BRA = { if = { limit = { check_variable = { BRA_CHI_pending_small_plane_tactical_bomber_airframe > 0 } check_variable = { BRA_CHI_available_small_plane_tactical_bomber_airframe < 1 } } set_variable = { BRA_CHI_pending_small_plane_tactical_bomber_airframe = 0 } } }
+	BRA = { if = { limit = { check_variable = { BRA_CHI_pending_small_plane_tactical_bomber_airframe > 0 } check_variable = { BRA_CHI_available_small_plane_tactical_bomber_airframe < 1 } } set_variable = { BRA_CHI_pending_small_plane_tactical_bomber_airframe = 0 } set_variable = { BRA_CHI_queued_small_plane_tactical_bomber_airframe = 0 } } }
 }
 
 HER_CHI_export_daily_batch = {
@@ -366,6 +440,7 @@ HER_CHI_foreign_aid_daily = {
 	set_variable = { CHI_cas_dispatched_last_day = 0 }
 	set_variable = { CHI_tactical_bombers_dispatched_last_day = 0 }
 	HER_CHI_ensure_chongqing_export_depot = yes
+	BRA = { HER_BRA_CHI_repair_queue_counters = yes }
 	HER_CHI_update_western_route_capacity = yes
 	HER_CHI_export_daily_batch = yes
 	HER_CHI_deliver_daily_batch = yes

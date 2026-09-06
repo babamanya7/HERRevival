@@ -4,6 +4,12 @@ HER_stage_CHI_infantry_package = {
 	send_equipment = { target = BRA type = machinegun amount = 2400 old_prioritised = yes }
 	send_equipment = { target = BRA type = mortar amount = 800 old_prioritised = yes }
 	send_equipment = { target = BRA type = antitank amount = 700 old_prioritised = yes }
+	BRA = {
+		add_to_variable = { BRA_CHI_queued_infantry_equipment = 5000 }
+		add_to_variable = { BRA_CHI_queued_machinegun = 2400 }
+		add_to_variable = { BRA_CHI_queued_mortar = 800 }
+		add_to_variable = { BRA_CHI_queued_antitank = 700 }
+	}
 	BRA = { country_event = { id = her_chi_aid.100 days = 14 } }
 }
 HER_stage_CHI_artillery_package = {
@@ -11,29 +17,41 @@ HER_stage_CHI_artillery_package = {
 	send_equipment = { target = BRA type = heavy_artillery_equipment amount = 80 old_prioritised = yes }
 	send_equipment = { target = BRA type = anti_tank_equipment amount = 120 old_prioritised = yes }
 	send_equipment = { target = BRA type = anti_air_equipment amount = 120 old_prioritised = yes }
+	BRA = {
+		add_to_variable = { BRA_CHI_queued_artillery_equipment = 240 }
+		add_to_variable = { BRA_CHI_queued_heavy_artillery_equipment = 80 }
+		add_to_variable = { BRA_CHI_queued_anti_tank_equipment = 120 }
+		add_to_variable = { BRA_CHI_queued_anti_air_equipment = 120 }
+	}
 	BRA = { country_event = { id = her_chi_aid.101 days = 14 } }
 }
 HER_stage_CHI_ammunition_package = {
 	send_equipment = { target = BRA type = ammunition_equipment amount = 10000 old_prioritised = yes }
+	BRA = { add_to_variable = { BRA_CHI_queued_ammunition_equipment = 10000 } }
 	BRA = { country_event = { id = her_chi_aid.102 days = 14 } }
 }
 HER_stage_CHI_support_package = {
 	send_equipment = { target = BRA type = support_equipment amount = 1000 old_prioritised = yes }
+	BRA = { add_to_variable = { BRA_CHI_queued_support_equipment = 1000 } }
 	BRA = { country_event = { id = her_chi_aid.103 days = 14 } }
 }
 HER_stage_CHI_truck_package = {
 	send_equipment = { target = BRA type = motorized_equipment amount = 1000 old_prioritised = yes }
+	BRA = { add_to_variable = { BRA_CHI_queued_motorized_equipment = 1000 } }
 	BRA = { country_event = { id = her_chi_aid.104 days = 14 } }
 }
 HER_stage_CHI_fighter_package = {
 	send_equipment = { target = BRA type = small_plane_airframe amount = 40 old_prioritised = yes }
+	BRA = { add_to_variable = { BRA_CHI_queued_small_plane_airframe = 40 } }
 	BRA = { country_event = { id = her_chi_aid.105 days = 14 } }
 }
 HER_stage_CHI_cas_package = {
 	send_equipment = { target = BRA type = small_plane_cas_airframe amount = 40 old_prioritised = yes }
+	BRA = { add_to_variable = { BRA_CHI_queued_small_plane_cas_airframe = 40 } }
 	BRA = { country_event = { id = her_chi_aid.106 days = 14 } }
 }
 HER_stage_CHI_tactical_bomber_package = {
 	send_equipment = { target = BRA type = small_plane_tactical_bomber_airframe amount = 40 old_prioritised = yes }
+	BRA = { add_to_variable = { BRA_CHI_queued_small_plane_tactical_bomber_airframe = 40 } }
 	BRA = { country_event = { id = her_chi_aid.107 days = 14 } }
 }

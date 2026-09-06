@@ -3,6 +3,20 @@ on_actions = {
 		effect = {
 			CHI = { HER_CHI_aid_initialize = yes }
 			BRA = {
+				set_variable = { BRA_CHI_queued_infantry_equipment = 0 }
+				set_variable = { BRA_CHI_queued_machinegun = 0 }
+				set_variable = { BRA_CHI_queued_mortar = 0 }
+				set_variable = { BRA_CHI_queued_antitank = 0 }
+				set_variable = { BRA_CHI_queued_artillery_equipment = 0 }
+				set_variable = { BRA_CHI_queued_heavy_artillery_equipment = 0 }
+				set_variable = { BRA_CHI_queued_anti_tank_equipment = 0 }
+				set_variable = { BRA_CHI_queued_anti_air_equipment = 0 }
+				set_variable = { BRA_CHI_queued_ammunition_equipment = 0 }
+				set_variable = { BRA_CHI_queued_support_equipment = 0 }
+				set_variable = { BRA_CHI_queued_motorized_equipment = 0 }
+				set_variable = { BRA_CHI_queued_small_plane_airframe = 0 }
+				set_variable = { BRA_CHI_queued_small_plane_cas_airframe = 0 }
+				set_variable = { BRA_CHI_queued_small_plane_tactical_bomber_airframe = 0 }
 				set_variable = { BRA_CHI_pending_infantry_equipment = 0 }
 				set_variable = { BRA_CHI_pending_machinegun = 0 }
 				set_variable = { BRA_CHI_pending_mortar = 0 }

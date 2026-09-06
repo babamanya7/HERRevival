@@ -1,67 +1,305 @@
 add_namespace = her_chi_aid
 
-# Cargo becomes available in BRA after fourteen days.
-country_event = { id = her_chi_aid.100 hidden = yes is_triggered_only = yes option = {
-	add_to_variable = { BRA_CHI_pending_infantry_equipment = 5000 }
-	add_to_variable = { BRA_CHI_pending_machinegun = 2400 }
-	add_to_variable = { BRA_CHI_pending_mortar = 800 }
-	add_to_variable = { BRA_CHI_pending_antitank = 700 }
-} }
-country_event = { id = her_chi_aid.101 hidden = yes is_triggered_only = yes option = {
-	add_to_variable = { BRA_CHI_pending_artillery_equipment = 240 }
-	add_to_variable = { BRA_CHI_pending_heavy_artillery_equipment = 80 }
-	add_to_variable = { BRA_CHI_pending_anti_tank_equipment = 120 }
-	add_to_variable = { BRA_CHI_pending_anti_air_equipment = 120 }
-} }
-country_event = { id = her_chi_aid.102 hidden = yes is_triggered_only = yes option = { add_to_variable = { BRA_CHI_pending_ammunition_equipment = 10000 } } }
-country_event = { id = her_chi_aid.103 hidden = yes is_triggered_only = yes option = { add_to_variable = { BRA_CHI_pending_support_equipment = 1000 } } }
-country_event = { id = her_chi_aid.104 hidden = yes is_triggered_only = yes option = { add_to_variable = { BRA_CHI_pending_motorized_equipment = 1000 } } }
-country_event = { id = her_chi_aid.105 hidden = yes is_triggered_only = yes option = { add_to_variable = { BRA_CHI_pending_small_plane_airframe = 40 } } }
-country_event = { id = her_chi_aid.106 hidden = yes is_triggered_only = yes option = { add_to_variable = { BRA_CHI_pending_small_plane_cas_airframe = 40 } } }
-country_event = { id = her_chi_aid.107 hidden = yes is_triggered_only = yes option = { add_to_variable = { BRA_CHI_pending_small_plane_tactical_bomber_airframe = 40 } } }
+# Accepted cargo spends fourteen days in preparation before entering the route queue.
+country_event = {
+	id = her_chi_aid.100
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		add_to_variable = { BRA_CHI_pending_infantry_equipment = 5000 }
+		add_to_variable = { BRA_CHI_pending_machinegun = 2400 }
+		add_to_variable = { BRA_CHI_pending_mortar = 800 }
+		add_to_variable = { BRA_CHI_pending_antitank = 700 }
+	}
+	option = { }
+}
 
-# A dispatched packet spends seven days in transit before the actual transfer.
-country_event = { id = her_chi_aid.120 hidden = yes is_triggered_only = yes option = {
-	send_equipment = { target = CHI type = infantry_equipment amount = 500 old_prioritised = yes }
-	send_equipment = { target = CHI type = machinegun amount = 240 old_prioritised = yes }
-	send_equipment = { target = CHI type = mortar amount = 80 old_prioritised = yes }
-	send_equipment = { target = CHI type = antitank amount = 70 old_prioritised = yes }
-	subtract_from_variable = { BRA_CHI_in_transit_infantry_equipment = 500 }
-	subtract_from_variable = { BRA_CHI_in_transit_machinegun = 240 }
-	subtract_from_variable = { BRA_CHI_in_transit_mortar = 80 }
-	subtract_from_variable = { BRA_CHI_in_transit_antitank = 70 }
-} }
-country_event = { id = her_chi_aid.121 hidden = yes is_triggered_only = yes option = {
-	send_equipment = { target = CHI type = artillery_equipment amount = 60 old_prioritised = yes }
-	send_equipment = { target = CHI type = heavy_artillery_equipment amount = 20 old_prioritised = yes }
-	send_equipment = { target = CHI type = anti_tank_equipment amount = 30 old_prioritised = yes }
-	send_equipment = { target = CHI type = anti_air_equipment amount = 30 old_prioritised = yes }
-	subtract_from_variable = { BRA_CHI_in_transit_artillery_equipment = 60 }
-	subtract_from_variable = { BRA_CHI_in_transit_heavy_artillery_equipment = 20 }
-	subtract_from_variable = { BRA_CHI_in_transit_anti_tank_equipment = 30 }
-	subtract_from_variable = { BRA_CHI_in_transit_anti_air_equipment = 30 }
-} }
-country_event = { id = her_chi_aid.122 hidden = yes is_triggered_only = yes option = {
-	send_equipment = { target = CHI type = ammunition_equipment amount = 1000 old_prioritised = yes }
-	subtract_from_variable = { BRA_CHI_in_transit_ammunition_equipment = 1000 }
-} }
-country_event = { id = her_chi_aid.123 hidden = yes is_triggered_only = yes option = {
-	send_equipment = { target = CHI type = support_equipment amount = 200 old_prioritised = yes }
-	subtract_from_variable = { BRA_CHI_in_transit_support_equipment = 200 }
-} }
-country_event = { id = her_chi_aid.124 hidden = yes is_triggered_only = yes option = {
-	send_equipment = { target = CHI type = motorized_equipment amount = 200 old_prioritised = yes }
-	subtract_from_variable = { BRA_CHI_in_transit_motorized_equipment = 200 }
-} }
-country_event = { id = her_chi_aid.125 hidden = yes is_triggered_only = yes option = {
-	send_equipment = { target = CHI type = small_plane_airframe amount = 5 old_prioritised = yes }
-	subtract_from_variable = { BRA_CHI_in_transit_small_plane_airframe = 5 }
-} }
-country_event = { id = her_chi_aid.126 hidden = yes is_triggered_only = yes option = {
-	send_equipment = { target = CHI type = small_plane_cas_airframe amount = 5 old_prioritised = yes }
-	subtract_from_variable = { BRA_CHI_in_transit_small_plane_cas_airframe = 5 }
-} }
-country_event = { id = her_chi_aid.127 hidden = yes is_triggered_only = yes option = {
-	send_equipment = { target = CHI type = small_plane_tactical_bomber_airframe amount = 5 old_prioritised = yes }
-	subtract_from_variable = { BRA_CHI_in_transit_small_plane_tactical_bomber_airframe = 5 }
-} }
+country_event = {
+	id = her_chi_aid.101
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		add_to_variable = { BRA_CHI_pending_artillery_equipment = 240 }
+		add_to_variable = { BRA_CHI_pending_heavy_artillery_equipment = 80 }
+		add_to_variable = { BRA_CHI_pending_anti_tank_equipment = 120 }
+		add_to_variable = { BRA_CHI_pending_anti_air_equipment = 120 }
+	}
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.102
+	hidden = yes
+	is_triggered_only = yes
+	immediate = { add_to_variable = { BRA_CHI_pending_ammunition_equipment = 10000 } }
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.103
+	hidden = yes
+	is_triggered_only = yes
+	immediate = { add_to_variable = { BRA_CHI_pending_support_equipment = 1000 } }
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.104
+	hidden = yes
+	is_triggered_only = yes
+	immediate = { add_to_variable = { BRA_CHI_pending_motorized_equipment = 1000 } }
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.105
+	hidden = yes
+	is_triggered_only = yes
+	immediate = { add_to_variable = { BRA_CHI_pending_small_plane_airframe = 40 } }
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.106
+	hidden = yes
+	is_triggered_only = yes
+	immediate = { add_to_variable = { BRA_CHI_pending_small_plane_cas_airframe = 40 } }
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.107
+	hidden = yes
+	is_triggered_only = yes
+	immediate = { add_to_variable = { BRA_CHI_pending_small_plane_tactical_bomber_airframe = 40 } }
+	option = { }
+}
+
+# Route-dispatched packets spend seven days in transit. Arrivals update both a rolling
+# seven-day total and a permanent cumulative total in Chinese country scope.
+country_event = {
+	id = her_chi_aid.120
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		send_equipment = { target = CHI type = infantry_equipment amount = 500 old_prioritised = yes }
+		send_equipment = { target = CHI type = machinegun amount = 240 old_prioritised = yes }
+		send_equipment = { target = CHI type = mortar amount = 80 old_prioritised = yes }
+		send_equipment = { target = CHI type = antitank amount = 70 old_prioritised = yes }
+		subtract_from_variable = { BRA_CHI_in_transit_infantry_equipment = 500 }
+		subtract_from_variable = { BRA_CHI_in_transit_machinegun = 240 }
+		subtract_from_variable = { BRA_CHI_in_transit_mortar = 80 }
+		subtract_from_variable = { BRA_CHI_in_transit_antitank = 70 }
+		CHI = {
+			add_to_variable = { CHI_arrived_7d_infantry_equipment = 500 }
+			add_to_variable = { CHI_arrived_7d_machinegun = 240 }
+			add_to_variable = { CHI_arrived_7d_mortar = 80 }
+			add_to_variable = { CHI_arrived_7d_antitank = 70 }
+			add_to_variable = { CHI_arrived_total_infantry_equipment = 500 }
+			add_to_variable = { CHI_arrived_total_machinegun = 240 }
+			add_to_variable = { CHI_arrived_total_mortar = 80 }
+			add_to_variable = { CHI_arrived_total_antitank = 70 }
+		}
+		country_event = { id = her_chi_aid.140 days = 7 }
+	}
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.121
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		send_equipment = { target = CHI type = artillery_equipment amount = 60 old_prioritised = yes }
+		send_equipment = { target = CHI type = heavy_artillery_equipment amount = 20 old_prioritised = yes }
+		send_equipment = { target = CHI type = anti_tank_equipment amount = 30 old_prioritised = yes }
+		send_equipment = { target = CHI type = anti_air_equipment amount = 30 old_prioritised = yes }
+		subtract_from_variable = { BRA_CHI_in_transit_artillery_equipment = 60 }
+		subtract_from_variable = { BRA_CHI_in_transit_heavy_artillery_equipment = 20 }
+		subtract_from_variable = { BRA_CHI_in_transit_anti_tank_equipment = 30 }
+		subtract_from_variable = { BRA_CHI_in_transit_anti_air_equipment = 30 }
+		CHI = {
+			add_to_variable = { CHI_arrived_7d_artillery_equipment = 60 }
+			add_to_variable = { CHI_arrived_7d_heavy_artillery_equipment = 20 }
+			add_to_variable = { CHI_arrived_7d_anti_tank_equipment = 30 }
+			add_to_variable = { CHI_arrived_7d_anti_air_equipment = 30 }
+			add_to_variable = { CHI_arrived_total_artillery_equipment = 60 }
+			add_to_variable = { CHI_arrived_total_heavy_artillery_equipment = 20 }
+			add_to_variable = { CHI_arrived_total_anti_tank_equipment = 30 }
+			add_to_variable = { CHI_arrived_total_anti_air_equipment = 30 }
+		}
+		country_event = { id = her_chi_aid.141 days = 7 }
+	}
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.122
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		send_equipment = { target = CHI type = ammunition_equipment amount = 1000 old_prioritised = yes }
+		subtract_from_variable = { BRA_CHI_in_transit_ammunition_equipment = 1000 }
+		CHI = {
+			add_to_variable = { CHI_arrived_7d_ammunition_equipment = 1000 }
+			add_to_variable = { CHI_arrived_total_ammunition_equipment = 1000 }
+		}
+		country_event = { id = her_chi_aid.142 days = 7 }
+	}
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.123
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		send_equipment = { target = CHI type = support_equipment amount = 200 old_prioritised = yes }
+		subtract_from_variable = { BRA_CHI_in_transit_support_equipment = 200 }
+		CHI = {
+			add_to_variable = { CHI_arrived_7d_support_equipment = 200 }
+			add_to_variable = { CHI_arrived_total_support_equipment = 200 }
+		}
+		country_event = { id = her_chi_aid.143 days = 7 }
+	}
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.124
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		send_equipment = { target = CHI type = motorized_equipment amount = 200 old_prioritised = yes }
+		subtract_from_variable = { BRA_CHI_in_transit_motorized_equipment = 200 }
+		CHI = {
+			add_to_variable = { CHI_arrived_7d_motorized_equipment = 200 }
+			add_to_variable = { CHI_arrived_total_motorized_equipment = 200 }
+		}
+		country_event = { id = her_chi_aid.144 days = 7 }
+	}
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.125
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		send_equipment = { target = CHI type = small_plane_airframe amount = 5 old_prioritised = yes }
+		subtract_from_variable = { BRA_CHI_in_transit_small_plane_airframe = 5 }
+		CHI = {
+			add_to_variable = { CHI_arrived_7d_small_plane_airframe = 5 }
+			add_to_variable = { CHI_arrived_total_small_plane_airframe = 5 }
+		}
+		country_event = { id = her_chi_aid.145 days = 7 }
+	}
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.126
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		send_equipment = { target = CHI type = small_plane_cas_airframe amount = 5 old_prioritised = yes }
+		subtract_from_variable = { BRA_CHI_in_transit_small_plane_cas_airframe = 5 }
+		CHI = {
+			add_to_variable = { CHI_arrived_7d_small_plane_cas_airframe = 5 }
+			add_to_variable = { CHI_arrived_total_small_plane_cas_airframe = 5 }
+		}
+		country_event = { id = her_chi_aid.146 days = 7 }
+	}
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.127
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		send_equipment = { target = CHI type = small_plane_tactical_bomber_airframe amount = 5 old_prioritised = yes }
+		subtract_from_variable = { BRA_CHI_in_transit_small_plane_tactical_bomber_airframe = 5 }
+		CHI = {
+			add_to_variable = { CHI_arrived_7d_small_plane_tactical_bomber_airframe = 5 }
+			add_to_variable = { CHI_arrived_total_small_plane_tactical_bomber_airframe = 5 }
+		}
+		country_event = { id = her_chi_aid.147 days = 7 }
+	}
+	option = { }
+}
+
+# Expiry events remove one packet from the rolling seven-day figure only.
+country_event = {
+	id = her_chi_aid.140
+	hidden = yes
+	is_triggered_only = yes
+	immediate = { CHI = {
+		subtract_from_variable = { CHI_arrived_7d_infantry_equipment = 500 }
+		subtract_from_variable = { CHI_arrived_7d_machinegun = 240 }
+		subtract_from_variable = { CHI_arrived_7d_mortar = 80 }
+		subtract_from_variable = { CHI_arrived_7d_antitank = 70 }
+	} }
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.141
+	hidden = yes
+	is_triggered_only = yes
+	immediate = { CHI = {
+		subtract_from_variable = { CHI_arrived_7d_artillery_equipment = 60 }
+		subtract_from_variable = { CHI_arrived_7d_heavy_artillery_equipment = 20 }
+		subtract_from_variable = { CHI_arrived_7d_anti_tank_equipment = 30 }
+		subtract_from_variable = { CHI_arrived_7d_anti_air_equipment = 30 }
+	} }
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.142
+	hidden = yes
+	is_triggered_only = yes
+	immediate = { CHI = { subtract_from_variable = { CHI_arrived_7d_ammunition_equipment = 1000 } } }
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.143
+	hidden = yes
+	is_triggered_only = yes
+	immediate = { CHI = { subtract_from_variable = { CHI_arrived_7d_support_equipment = 200 } } }
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.144
+	hidden = yes
+	is_triggered_only = yes
+	immediate = { CHI = { subtract_from_variable = { CHI_arrived_7d_motorized_equipment = 200 } } }
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.145
+	hidden = yes
+	is_triggered_only = yes
+	immediate = { CHI = { subtract_from_variable = { CHI_arrived_7d_small_plane_airframe = 5 } } }
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.146
+	hidden = yes
+	is_triggered_only = yes
+	immediate = { CHI = { subtract_from_variable = { CHI_arrived_7d_small_plane_cas_airframe = 5 } } }
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.147
+	hidden = yes
+	is_triggered_only = yes
+	immediate = { CHI = { subtract_from_variable = { CHI_arrived_7d_small_plane_tactical_bomber_airframe = 5 } } }
+	option = { }
+}

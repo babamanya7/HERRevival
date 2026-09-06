@@ -8,7 +8,7 @@ Started: 2026-09-06
 
 This document tracks Block 6 of the AI rework: `common/ai_strategy`.
 
-The folder is the main behavioral glue layer between country plans, production, front allocation, operations, naval goals and engine AI. It must be audited for overlapping generic strategies, obsolete role IDs, lifecycle bugs and country-specific phase logic before touching broad NAI values further.
+The folder is the main behavioral glue layer between country plans, production, front allocation, operations, naval goals and engine AI. It must be audited for overlapping generic strategies, obsolete role IDs, lifecycle bugs and country-specific phase logic before broad NAI tuning.
 
 ## Architectural rules
 
@@ -17,6 +17,7 @@ The folder is the main behavioral glue layer between country plans, production, 
 3. Generic strategies must explicitly exclude the eight major-country AI profiles where those countries have dedicated logic: GER/SOV/ENG/USA/JAP/ITA/FRA/CHI.
 4. Temporary strategies must have deliberate lifecycle behavior (`abort_when_not_enabled` or an explicit `abort`).
 5. Country operation logic should prefer phase/condition triggers over permanent huge weights.
+6. AI defines should stay in the main `common/defines/00_defines.lua`; do not create standalone HER AI define override files unless a future technical requirement makes it unavoidable.
 
 ## Findings: `default.txt`
 
@@ -78,14 +79,36 @@ This creates a late-December 1941 Philippines operation window and matches the f
 
 Commit: `2f90529d1eaca3b7641a56360dbe242fc77b30d0`.
 
-## Naval NAI bridge
+## China strategy — IMPLEMENTED FIRST PASS
 
-A narrow override file `common/defines/zz_HER_AI_navy.lua` currently changes only:
+`common/ai_strategy/CHI.txt` was rebuilt around the actual HER target for Nationalist China instead of retaining the inherited generic/WA-style production mix.
 
-- `AI_TASKFORCE_REQUIRED_RESERVE_RATIO`: 0.20 -> 0.10;
-- `NAVAL_MISSION_AGGRESSIVE_ESCORT_DIVISOR`: 2.0 -> 1.25.
+Main changes:
 
-Further danger/fuel/repair/sortie tuning is deferred until hands-off observation proves those engine thresholds are still blocking high-scoring naval objectives.
+- infantry remains the dominant division role;
+- armor is strongly suppressed;
+- mountaineers are allowed at a small level because Chinese terrain can justify them;
+- air investment is reduced to a small fighter arm, with CAS/tactical/strategic/naval bomber ratios at zero;
+- the old capital-ship/submarine/screen aspirations were removed from the Chinese production personality; only a modest convoy requirement remains;
+- equipment production now explicitly favors infantry, artillery, AA and some AT while suppressing armor/motorized investment;
+- the existing `ignore_army_incompetence` helper is retained;
+- Japan preparation now raises `north_china`, `central_china` and `south_china` priorities and forces army growth;
+- during war with Japan, China requests more forces on that front and increases military-industry pressure;
+- pre-war military construction remains meaningful but no longer uses the old extreme `1000/1500` industrial weights;
+- coastal buffer was reduced from 12% to 8%, while the central reserve was increased from 10% to 12% to improve defense in depth.
+
+Commits: `99b3f1789b340a255bb2683942d9ef046413ec83`, follow-up trigger correction `64882449bb3d0ce1720b64b84682a305eeae1ed7`.
+
+## Defines policy / naval NAI status
+
+The temporary standalone file `common/defines/zz_HER_AI_navy.lua` was removed after the user requested that AI define changes stay in the main defines file.
+
+The two proposed naval values therefore are **not active at this point**:
+
+- `AI_TASKFORCE_REQUIRED_RESERVE_RATIO`: proposed 0.20 -> 0.10;
+- `NAVAL_MISSION_AGGRESSIVE_ESCORT_DIVISOR`: proposed 2.0 -> 1.25.
+
+They should be applied directly in `common/defines/00_defines.lua` when the main defines file is edited safely. No separate AI defines file should be reintroduced for this purpose.
 
 ## Next audit order
 
@@ -96,9 +119,11 @@ Further danger/fuel/repair/sortie tuning is deferred until hands-off observation
 5. ENG country strategy phases.
 6. USA country strategy phases.
 7. JAP country strategy phases and Pacific operation sequence.
-8. ITA/FRA/CHI.
+8. ITA/FRA cleanup.
 9. Operation strategy files and remaining microscripts.
 10. Inventory existing AI-only helper systems before creating new concessions.
+
+CHI already has a first-pass country strategy and should be revisited after division-template and aid-system integration.
 
 ## Hands-off requirement
 

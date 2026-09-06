@@ -1,242 +1,291 @@
 areas = {
-	
-	###EUROPE###
-	
+
+	### EUROPE ###
+
 	finland = {
 		strategic_regions = {
-            12
-			13
-			288
-			274
-			326
-        }
-	}
-	
-	baltics = {
-		strategic_regions = {
-			37
-			124
+			12	# Northern Finland
+			13	# Southern Finland
+			288	# Murmansk
+			274	# Karelia
+			326	# South Karelia
 		}
 	}
-	
+
+	baltics = {
+		strategic_regions = {
+			37	# Northern Baltics
+			124	# Southern Baltics
+		}
+	}
+
 	belorussia = {
 		strategic_regions = {
-			39
-			131
-        }
-    }
-	
+			39	# Western Belarus
+			131	# Belarus
+		}
+	}
+
 	ukraine = {
 		strategic_regions = {
-			34
-			163
-			201
-			260
-			258
-			270
-			302
-			30
-			339
-        }
+			34	# Galicia
+			130	# Kiev
+			163	# Odessa
+			201	# Western Ukraine
+			258	# Northern Ukraine
+			260	# Cherkasy
+			270	# Zaporozhye
+			302	# Donbas
+			339	# Crimea
+		}
 	}
-	
+
 	kuban = {
 		strategic_regions = {
-            263
-			336
-			257
-			135
-			134
-        }
+			263	# Stalingrad
+			336	# Rostov
+			257	# Astrakhan
+			135	# Kuban Region
+			134	# Caucasus Region
+		}
 	}
-	
+
 	leningrad_region = {
 		strategic_regions = {
-            304
-			125
-			132
-        }
+			304	# Pskov
+			125	# Novgorod
+			132	# Leningrad
+			149	# Volkhov
+		}
 	}
-	
+
 	moscow_region = {
 		strategic_regions = {
-			303
-			301
-			272
-			213
-			35
-			271
-        }
+			205	# Smolensk
+			303	# Rzhev
+			301	# Bryansk
+			272	# Kursk
+			213	# Voronezh
+			35	# Tula
+			271	# Moscow
+			286	# Yaroslavl
+		}
 	}
-	
+
+	# Soviet industrial rear / Volga-Urals. Kept under the old key for compatibility.
 	urals = {
 		strategic_regions = {
-			273
-			150
-			133
-			275
-			40
-			137
-			138
-        }
+			275	# Penza
+			40	# Cheboksary
+			138	# Ural Region
+			212	# Ufa
+			216	# Kirov
+			289	# Perm
+			291	# Kazan
+		}
 	}
 
-    italy = {
-        strategic_regions = {
-            169
-			115
+	# Granular operational aliases for later front and concentration strategies.
+	soviet_north = {
+		strategic_regions = {
+			304 125 132 149 273 150
+		}
+	}
+
+	soviet_center = {
+		strategic_regions = {
+			39 131 205 303 301 271 35 286
+		}
+	}
+
+	soviet_south = {
+		strategic_regions = {
+			34 130 163 201 258 260 270 302 339 336 135 134
+		}
+	}
+
+	caucasus = {
+		strategic_regions = {
+			134 135 204
+		}
+	}
+
+	crimea = {
+		strategic_regions = {
+			339
+		}
+	}
+
+	soviet_far_east = {
+		strategic_regions = {
+			147 148 208 283 284 285
+		}
+	}
+
+	italy = {
+		strategic_regions = {
+			21	# Northern Italy
+			23	# Central Italy
+			238	# Southern Italy
+			236	# Sicily
+		}
+	}
+
+	north_italy = {
+		strategic_regions = {
+			21 23
+		}
+	}
+
+	south_italy = {
+		strategic_regions = {
 			238
-			23
-			21
-        }
-    }
-	
+		}
+	}
+
+	sicily = {
+		strategic_regions = {
+			236
+		}
+	}
+
+	# Broad legacy Axis core area. Keep for existing strategy consumers.
 	reich = {
 		strategic_regions = {
-			264
-			7
-			6
-			262
-			5
-			8
-			294
-			22
-			268
-			261
-			38
-			296
-			192
-			298
-        }
+			264 7 6 262 5 8 294 22 268 261 38 296 192 298
+		}
 	}
 
-    britain = {
-        strategic_regions = {
-            1 
-            2
-            3
-            4
-        }
-    }
+	germany_core = {
+		strategic_regions = {
+			6 7 8 261 262 264
+		}
+	}
+
+	benelux = {
+		strategic_regions = {
+			5
+		}
+	}
+
+	poland = {
+		strategic_regions = {
+			38 192 296
+		}
+	}
+
+	britain = {
+		strategic_regions = {
+			1 2 3 4
+		}
+	}
 
 	europe = {
 		continents = {
 			europe
 		}
 	}
-	
+
 	france = {
 		strategic_regions = {
-			20
-			290
-			265
-			239
-			19
-			266
+			19 20 239 265 266 290
 		}
 	}
-	
+
+	north_france = {
+		strategic_regions = {
+			19 239 266
+		}
+	}
+
+	south_france = {
+		strategic_regions = {
+			20 265 290
+		}
+	}
+
 	balkans = {
 		strategic_regions = {
-			202
-			144
-			26
-			295
-			25
-			292
-			24
-			27
+			144 26 295 25 292 24 27
 		}
 	}
-	
+
 	normandy_landing_zone = {
-        strategic_regions = {
+		strategic_regions = {
 			239
-        }
-    }
-	
+		}
+	}
+
 	sicily_landing_zone = {
-        strategic_regions = {
+		strategic_regions = {
 			236
-        }
-    }
-	
+		}
+	}
+
 	south_italy_landing_zone = {
-        strategic_regions = {
+		strategic_regions = {
 			238
-			169
-        }
-    }
-	
+		}
+	}
+
 	norway = {
 		strategic_regions = {
-			11
-			297
-			191
+			11 297 191
 		}
 	}
-	
-	###AFRIKA###
+
+	### AFRICA / MIDDLE EAST ###
 
 	africa = {
 		continents = {
 			africa
 		}
 	}
-	
-	suez = {
-        strategic_regions = {
-            128
-            28
-        }
-    }
 
-    north_africa = {
-        strategic_regions = {
-            182
-			126
-			329
-			215
-			328
-			128
-			28
-			217
-        }
-    }
-	
+	suez = {
+		strategic_regions = {
+			128	# Egypt
+			28	# Middle East
+		}
+	}
+
+	north_africa = {
+		strategic_regions = {
+			182 126 329 215 328 128 217
+		}
+	}
+
 	torch_landing_zone = {
-        strategic_regions = {
-			182
-			126
-        }
-    }
-	
+		strategic_regions = {
+			182 126
+		}
+	}
+
 	central_africa = {
 		strategic_regions = {
-			140
-			184
-			183
-			185
-			338
-			139
-        }
+			140 184 183 185 338 139
+		}
 	}
-	
+
 	horn_of_africa = {
 		strategic_regions = {
 			17
-        }
+		}
 	}
-	
+
 	iraq_iran_zone = {
 		strategic_regions = {
-			28
-			259
-			116
-        }
+			28 259 116
+		}
 	}
-	
-	###AMERICA###
+
+	middle_east = {
+		continents = {
+			middle_east
+		}
+	}
+
+	### AMERICAS ###
 
 	north_america = {
 		continents = {
@@ -249,123 +298,119 @@ areas = {
 			south_america
 		}
 	}
-	
-	###ASIA###
-	
+
+	usa_east = {
+		strategic_regions = {
+			197 210 117
+		}
+	}
+
+	usa_central = {
+		strategic_regions = {
+			198 120 119
+		}
+	}
+
+	usa_west = {
+		strategic_regions = {
+			209 199 118
+		}
+	}
+
+	### ASIA / PACIFIC ###
+
 	philippines = {
 		strategic_regions = {
 			160
 		}
 	}
-	
+
 	east_indies = {
 		strategic_regions = {
-			187
-			287
-			159
+			187 287 159
 		}
 	}
-	
+
 	molucass = {
 		strategic_regions = {
-			93
-			158
-			91
+			93 158 91
 		}
 	}
-	
+
 	papua = {
 		strategic_regions = {
-			84
-			83
+			84 83
 		}
 	}
-	
+
 	burma = {
 		strategic_regions = {
-			189
-			141
-			142
+			189 141 142
 		}
 	}
-	
+
+	# Legacy home-defense area; granular aliases below are preferred for new strategies.
 	core_japan = {
 		strategic_regions = {
-			240
-			226
-			225
-			94
+			240 226 225 94 154 87
+		}
+	}
+
+	japan_home_islands = {
+		strategic_regions = {
 			154
-			87
+		}
+	}
+
+	japan_home_waters = {
+		strategic_regions = {
+			79 87 90 240
 		}
 	}
 
 	north_china = {
 		strategic_regions = {
-			279
-			155
-			276
-			143
+			279 155 276 143
 		}
 	}
 
 	central_china = {
 		strategic_regions = {
-			278
-			214
-			277
+			278 214 277
 		}
 	}
 
 	south_china = {
 		strategic_regions = {
-			165
-			253
+			165 253
 		}
 	}
 
 	china_coast = {
 		strategic_regions = {
-			164
-			253
-			254
-			143
-			155
+			164 253 254 143 155
+		}
+	}
+
+	korea = {
+		strategic_regions = {
 			186
 		}
 	}
 
 	east_india_ocean = {
 		strategic_regions = {
-			101
-			335
-			331
-			71
-			99
+			101 335 331 71 99
 		}
 	}
 
 	australia_new_zealand = {
 		strategic_regions = {
-		    282
-			195
-			193
-			281
-			194
-			156
-			157
-			235
-			
-			86
-			81
-			83
-			178
-			82
-			91
-			92
+			282 195 193 281 194 156 157 235
+			86 81 83 178 82 91 92
 		}
 	}
-	
+
 	johnston = {
 		strategic_regions = {
 			180
@@ -374,81 +419,73 @@ areas = {
 
 	hawai_zone = {
 		strategic_regions = {
-			105
-			234
-			233
-			306
+			105 234 233 306
 		}
 	}
-	
+
 	midway = {
 		strategic_regions = {
 			224
 		}
 	}
-	
+
 	wake = {
 		strategic_regions = {
 			223
 		}
 	}
-	
+
 	marcus = {
 		strategic_regions = {
 			225
 		}
 	}
-	
+
 	iwojima = {
 		strategic_regions = {
 			94
 		}
 	}
-	
+
 	saipan = {
 		strategic_regions = {
 			226
 		}
 	}
-	
+
 	marshal = {
 		strategic_regions = {
 			97
 		}
 	}
-	
+
 	gilbert = {
 		strategic_regions = {
 			227
 		}
 	}
-	
+
 	caroline = {
 		strategic_regions = {
 			229
 		}
 	}
-	
+
 	palau = {
 		strategic_regions = {
 			78
 		}
 	}
-	
+
 	okinawa = {
 		strategic_regions = {
 			240
 		}
 	}
-	
+
 	attu = {
 		strategic_regions = {
-			95
-			
-			96
-			222
-			221
-			177
+			95 96 222 221 177
 		}
 	}
 
@@ -457,56 +494,23 @@ areas = {
 			188
 		}
 	}
-	
+
 	thailand = {
 		strategic_regions = {
 			142
 		}
 	}
 
-	middle_east = {
-		continents = {
-			middle_east
-		}
-	}
-	
 	pacific_front = {
 		strategic_regions = {
-			78
-			229
-			227
-			97
-			240
-			226
-			94
-			225
-			223
-			224
-			105
-			234
-			233
-			306
-			180
-			95
+			78 229 227 97 240 226 94 225 223 224 105 234 233 306 180 95
 		}
 	}
-	
+
+	# Keep the historical key spelling for compatibility with JAP strategies.
 	japan_routs = {
 		strategic_regions = {
-			309
-			252
-			231
-			73
-			75
-			76
-			240
-			90
-			280
-			80
-			78
-			230
-			94
-			90
+			309 252 231 73 75 76 240 90 280 80 78 230 94
 		}
 	}
 }

@@ -1,6 +1,6 @@
-# Germany: use the historical 1936 OOB as the infantry baseline instead of inventing a cheaper AI line.
-# Frontline templates are intended to stay at the HER 30-width standard; support density grows with
-# Germany's industrial capacity rather than cutting combat power for AI convenience.
+# Germany: historical structure translated into exact 30-width HER combat divisions.
+# Core infantry rule: 3 infantry regiments (9 battalions) + artillery regiment
+# (3 field + 1 heavy) + 2 divisional AT/AA battalions = 15 line battalions = 30 width.
 
 infantry_GER = {
 	available_for = { GER }
@@ -8,9 +8,6 @@ infantry_GER = {
 
 	upgrade_prio = { factor = 120 }
 
-	# The starting Infanterie-Division is already essentially the desired historical HER structure:
-	# 9 heavy infantry + 3 artillery + 1 heavy artillery, with engineers/recon/signal/hospital/logistics
-	# and regimental artillery/AT represented here through the AI support pool.
 	GER_infantry_standard = {
 		upgrade_prio = { factor = 120 }
 		reinforce_prio = 2
@@ -29,6 +26,8 @@ infantry_GER = {
 				heavy_infantry = 9
 				artillery_brigade = 3
 				heavy_artillery_brigade = 1
+				anti_tank_brigade = 1
+				anti_air_brigade = 1
 			}
 		}
 
@@ -42,11 +41,10 @@ infantry_GER = {
 			has_tech = support_weapons
 			has_tech = interwar_antiair
 			has_tech = interwar_antitank
-	}
+		}
 		upgrade_prio = { factor = 150 }
 		reinforce_prio = 2
 
-		# Keep the historical 30-width line intact and improve the divisional services/supports.
 		target_template = {
 			support = {
 				engineer = 1
@@ -62,6 +60,8 @@ infantry_GER = {
 				heavy_infantry = 9
 				artillery_brigade = 3
 				heavy_artillery_brigade = 1
+				anti_tank_brigade = 1
+				anti_air_brigade = 1
 			}
 		}
 	}
@@ -205,6 +205,7 @@ motorized_GER = {
 				mot_artillery_brigade = 3
 				motorized_heavy_artillery_brigade = 1
 				mot_anti_tank_brigade = 1
+				mot_anti_air_brigade = 1
 			}
 		}
 	}
@@ -289,6 +290,7 @@ anti_armor_GER = {
 				heavy_infantry = 9
 				artillery_brigade = 3
 				heavy_artillery_brigade = 1
+				anti_tank_brigade = 2
 			}
 		}
 	}

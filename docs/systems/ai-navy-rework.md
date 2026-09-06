@@ -152,7 +152,7 @@ When that trigger fires, ENG now shifts strongly toward:
 
 At the same time submarine, battleship and carrier pressure is reduced. The block also requests a minimum convoy production allocation so a badly damaged merchant fleet does not enter a permanent death spiral while every dockyard continues building prestige combatants.
 
-A lighter always-on ENG-vs-GER screen bias sits underneath the emergency block, so the Royal Navy does not wait until catastrophic losses before caring about escorts.
+A lighter always-on ENG-vs-GER screen bias sits underneath the stronger emergency block, so the Royal Navy does not wait until catastrophic losses before caring about escorts.
 
 ### Pacific activity bridge
 
@@ -162,24 +162,22 @@ This is intended to bridge the gap between the high-scoring naval goals and the 
 
 It does not force specific historical island captures yet. Detailed island sequencing belongs in the main USA/JAP `ai_strategy` pass so it can be tested together with their existing invasion scripts.
 
-## NAI activity overrides
+## NAI activity values — PROPOSED, NOT ACTIVE
 
-New file: `common/defines/zz_HER_AI_navy.lua`.
+The temporary standalone `common/defines/zz_HER_AI_navy.lua` was removed. HER AI defines should remain in the main `common/defines/00_defines.lua`.
 
-Only two narrow overrides were added in this pass:
+The two proposed values are still:
 
 - `AI_TASKFORCE_REQUIRED_RESERVE_RATIO`: `0.20 -> 0.10`;
 - `NAVAL_MISSION_AGGRESSIVE_ESCORT_DIVISOR`: `2.0 -> 1.25`.
 
-The first reduces the share of each required task-force composition that the AI withholds as reinforcement reserve, releasing more actual ships for operational groups. This directly addresses the observed tendency to keep usable ships parked while objectives are unfulfilled.
+They are **not active until they are edited directly into `00_defines.lua`**. The first would reduce the amount of required task-force composition held back as reinforcement reserve; the second would reduce the escort-score penalty outside a purely defensive posture.
 
-The second reduces the scoring penalty applied to escort activity when the AI is not in a purely defensive posture. It is deliberately not set below `1.0`: convoy protection should become easier to justify without turning the entire navy into suicidal permanent escort patrols.
-
-Other danger, repair, fuel and sortie thresholds remain unchanged for now. This preserves the ability to diagnose whether future passivity is caused by objective scoring, fleet assembly, fuel/repair state or danger evaluation rather than changing every naval threshold simultaneously.
+Other danger, repair, fuel and sortie thresholds remain unchanged until hands-off testing demonstrates a need.
 
 ## Known deferred bugs / next naval-linked work
 
-- `common/ai_strategy/JAP.txt` contains an impossible first Southern Expansion window: `date > 1942.12.15` together with `date < 1942.1.1`. This must be corrected in the JAP strategy pass.
+- The impossible first JAP Southern Expansion date window has been corrected to late December 1941.
 - The existing ENG file still contains obsolete vanilla `naval_*` role-ratio blocks. The new HER bridge makes the needed behavior functional immediately, but the dead old blocks should be removed/converted during the full `ai_strategy` cleanup rather than left as permanent technical debt.
 - USA/JAP Pacific area/invasion priorities need a proper operational sequence after the generic strategy audit, not just a permanent high Pacific weight.
 

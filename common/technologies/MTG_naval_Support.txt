@@ -1014,39 +1014,6 @@ technologies = {
 		}
 	}
 
-	wake_homing_torpedo = {
-		xp_research_type = navy
-		xp_boost_cost = 20
-		xp_research_bonus = 1.50
-		research_cost = 1.25
-		start_year = 1951
-		destroyer = { naval_torpedo_hit_chance_factor = 0.1 }
-		submarine = { naval_torpedo_hit_chance_factor = 0.1 }
-		light_cruiser = { naval_torpedo_hit_chance_factor = 0.1 }
-		heavy_cruiser = { naval_torpedo_hit_chance_factor = 0.1 }
-		medium_cruiser = { naval_torpedo_hit_chance_factor = 0.1 }
-		folder = {
-			name = mtgnavalsupportfolder
-			position = { x = 2 y = 25 }
-		}
-		ai_will_do = {
-			factor = 2
-			modifier = {
-				OR = { tag = JAP tag = USA tag = GER }
-				factor = 5
-			}
-			modifier = { has_war = yes factor = 3 }
-		}
-		special_project_specialization = { specialization_naval }
-		categories = {
-			naval_equipment
-			ship_modules_tech
-			cat_torpedoes
-			mio_cat_tech_all_screen_ship_and_modules
-			mio_cat_tech_all_destroyer_and_modules
-		}
-	}
-
 	proximity_detonator = {
 		xp_research_type = navy
 		xp_boost_cost = 20

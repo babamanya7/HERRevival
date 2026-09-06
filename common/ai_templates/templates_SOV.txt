@@ -1,5 +1,5 @@
-# Soviet Union: frontline divisions stay at the HER 30-width standard. The Red Army saves equipment
-# by varying support density and formation mix, not by fielding under-width line divisions.
+# Soviet Union: all regular combat divisions target exactly 30 combat width (15 line battalions).
+# Regimental support and divisional support are separate layers; combat width is controlled by regiments.
 
 infantry_SOV = {
 	available_for = { SOV }
@@ -70,7 +70,7 @@ infantry_SOV = {
 		upgrade_prio = { factor = 160 }
 		reinforce_prio = 2
 
-		# Proven HER 30-width firepower layout: 9 heavy infantry + 3 artillery + 1 heavy artillery.
+		# 30w universal line: 3 infantry regiments + 3 light artillery + 1 heavy artillery + AT + AA.
 		target_template = {
 			support = {
 				engineer = 1
@@ -86,6 +86,8 @@ infantry_SOV = {
 				heavy_infantry = 9
 				artillery_brigade = 3
 				heavy_artillery_brigade = 1
+				anti_tank_brigade = 1
+				anti_air_brigade = 1
 			}
 		}
 	}
@@ -266,6 +268,7 @@ motorized_SOV = {
 				mot_artillery_brigade = 3
 				motorized_heavy_artillery_brigade = 1
 				mot_anti_tank_brigade = 1
+				mot_anti_air_brigade = 1
 			}
 		}
 	}
@@ -394,7 +397,7 @@ garrison_SOV = {
 
 		target_template = {
 			support = { military_police = 1 }
-		regiments = { cavalry = 8 }
+			regiments = { cavalry = 8 }
 		}
 	}
 }

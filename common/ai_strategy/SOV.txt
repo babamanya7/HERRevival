@@ -64,8 +64,8 @@ SOV_industry_1940_mobilization = {
 	allowed = { original_tag = SOV }
 	enable = {
 		date > 1940.1.1
-		has_war_with = GER
 		NOT = { has_war = yes }
+		NOT = { has_war_with = GER }
 	}
 	abort_when_not_enabled = yes
 

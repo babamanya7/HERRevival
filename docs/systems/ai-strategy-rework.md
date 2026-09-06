@@ -16,7 +16,7 @@ Block 6 covers `common/ai_strategy`: country production personalities, industry 
 4. Temporary behavior needs deliberate lifecycle handling (`abort_when_not_enabled` or explicit `abort`).
 5. Prefer phase/condition logic over permanent huge weights.
 6. AI defines belong in the main `common/defines/00_defines.lua`; do not create standalone AI define files.
-7. Division-template design remains a later dedicated block; strategy files may set broad template priorities but should not become the final template implementation.
+7. Division-template design is owned by the dedicated `ai_templates` block; strategy files should not become a second template implementation.
 8. `ai_focuses` owns broad research personality. Historical strategy plans may add only a modest historical overlay; they must not use huge permanent research weights that overpower the country focus layer.
 9. Historical strategy plans for the eight target majors activate only with `is_historical_focus_on = yes` and cleanly abort when that condition no longer applies.
 10. A historical focus plan is a priority queue, not a substitute for the focus tree. Availability/prerequisite gates remain authoritative; plan ordering must therefore be checked against the actual HER national-focus files.
@@ -52,64 +52,60 @@ All eight target majors have dedicated first-pass country strategies:
 
 `GER_operation_strats.txt`, `SOV_operation_strats.txt`, `ENG_operation_strats.txt` and `generic_operation_strats.txt` were audited and retained because they are intelligence/operative logic rather than land/naval operational war plans.
 
-## Strategy plans — MAJOR LIFECYCLE / RESEARCH NORMALIZATION COMPLETE
+## Strategy plans — BLOCK 7 CODE PASS COMPLETE
 
-All eight target-major historical plans now use historical-only lifecycle behavior and a modest research overlay. `ai_focuses` remains the broad research personality.
+All eight target-major historical plans now use historical-only lifecycle behavior and a modest research overlay. `ai_focuses` remains the broad research personality. The source-level pass also checks exact IDs, prerequisites and availability against the current HER focus trees rather than trusting legacy comments.
 
-- USA: historical gating and bounded air/naval/industry overlay. Commit `4c30f4e25679cedc4f0ca16d08187df57a95f046`.
-- CHI: historical gating and modest infantry/artillery/support/industry overlay. Commit `a1af66ce54bc32dba3f68f060b9ebcdc7b8fb9c0`.
-- GER: historical gating; removed `template_prio = medium_armor 111`; reduced the old infantry/air research hammer. Commit `5300cf215f7184a402df76531dff2c2a81394b57`.
-- ENG: normalized lifecycle and reduced `air_equipment = 100` into a mixed RAF/naval/industry/support overlay. Commit `d983ddcfdca4d6d5804557e2e194e5c75e99e4cf`.
-- JAP: normalized lifecycle and replaced `air_equipment = 70` with a smaller air/naval/land-industry overlay. Commit `5e18e9b68fcc06175ac030a2a4283bdf3356bd8e`.
-- ITA: normalized lifecycle and replaced the old air-heavy overlay with air/naval/artillery/industry weighting. Commit `c63dfd9d23213dbeda86daed0149bb1885fab64e`.
-- FRA: normalized lifecycle and replaced `air_equipment = 60` with air/artillery/armor/industry weighting. Commit `3148d7b20328c4aec463247001aacf12eebb987d`.
-- SOV: changed unconditional activation to historical-only lifecycle; reduced the old `air_equipment = 50`, `naval_equipment = -100`, `industry = 25` hammer to a balanced industry/land/air overlay; removed prewar naval/Far-East distractions and the Iran operation from the main historical queue while retaining the late anti-Japanese objective. Commit `27efc0fe1bb544e681dc4358b56ae56b0aa9c9e6`.
+### SOV
 
-## Focus-queue validation — IN PROGRESS
+- unconditional activation removed;
+- old air/naval/industry research hammer replaced by a bounded land/air/industry overlay;
+- prewar naval/Far-East distractions and Iran were removed from the main 1941 queue;
+- Winter-War-dependent and wartime emergency focuses remain governed by their actual availability gates.
 
-The source-level pass validates exact IDs, prerequisites and availability against the current HER focus trees instead of trusting legacy comments or old plan order.
+Commit: `27efc0fe1bb544e681dc4358b56ae56b0aa9c9e6`.
 
-### SOV — SOURCE AUDIT COMPLETE FIRST PASS
+### USA
 
-- industrial/political IDs used by the cleaned plan are current HER IDs;
-- `SOV_superior_war_machines` is date-gated after 1940-06-01 and follows the artillery branch;
-- `SOV_evolution_of_the_air_strategy` and `SOV_lessons_of_war` depend on the Winter War/FIN resolution path;
-- wartime focuses (`SOV_emergency_powers`, `SOV_form_the_stavka`, `SOV_move_industry_to_the_urals`, `SOV_tankograd`, `SOV_great_patriotic_war`) remain availability-gated and sit after the prewar queue;
-- the Soviet naval branch is intentionally not part of the main 1941 emergency priority queue.
-
-Historical-plan cleanup commit: `27efc0fe1bb544e681dc4358b56ae56b0aa9c9e6`.
-
-### USA — SOURCE AUDIT COMPLETE FIRST PASS
-
-The old queue started at `USA_cash_and_carry_act` even though the actual HER tree requires `USA_start -> USA_renew_the_neutrality_act -> USA_spanish_civil_war_amendment -> USA_cash_and_carry_act`. Those missing prerequisites were added explicitly. `USA_join_the_allies` was also moved behind `USA_the_giant_wakes`, which is its actual tree prerequisite.
+The old plan started at `USA_cash_and_carry_act` even though HER requires `USA_start -> USA_renew_the_neutrality_act -> USA_spanish_civil_war_amendment -> USA_cash_and_carry_act`. Those prerequisites are now explicit. `USA_join_the_allies` also sits after its real prerequisite `USA_the_giant_wakes`.
 
 Commit: `d8687ffdbe55b9b71da193ecdd527ad89679be36`.
 
-### JAP — SOURCE AUDIT COMPLETE FIRST PASS
+### JAP
 
-The Southern Operation path was reordered around its real HER dependencies. `JAP_non_aggression_pact_with_the_soviet_union` requires both `JAP_strike_south_doctrine` and `JAP_test_the_soviets`; `JAP_preparations_to_secure_the_islands` then requires the Soviet pact; `JAP_strike_on_the_southern_resource_area` follows that preparation focus. Optional army/naval improvement focuses no longer sit between these critical 1941 steps.
+The Southern Operation path now follows its real HER dependency chain: `JAP_sign_tripartite_pact -> JAP_test_the_soviets / JAP_strike_south_doctrine -> JAP_non_aggression_pact_with_the_soviet_union -> JAP_preparations_to_secure_the_islands -> JAP_strike_on_the_southern_resource_area`. Optional army/naval improvements no longer delay the critical 1941 branch.
 
 Commit: `fb3ffd73d063baae4d4f05b651b08742dc224e9b`.
 
-### GER — SOURCE AUDIT COMPLETE FIRST PASS
+### GER
 
-The old plan placed `GER_prepare_barbarossa` before the very focuses needed to unlock it in HER. The current tree requires both `GER_an_invincible_army` and `GER_second_vienna_award`; `GER_second_vienna_award` itself requires `GER_align_hungary` and `GER_align_romania`, which sit behind the wartime conquest/economic branch. The queue was therefore rebuilt into rearmament -> revisionism -> Poland/France -> conquest economy/Axis alignment -> Second Vienna -> Barbarossa.
-
-`GER_the_supreme_leader` was moved to the late-war section because its actual HER availability checks German control of Moscow; it must not sit ahead of Barbarossa as if it were a 1940 preparation focus. Late defeat-response focuses (`city_festungs`, `death_before_defeat`, `volkssturm`, `jaegernotprogramm`, `airland_divisions`) were also moved out of the main pre-Barbarossa path.
+The old plan placed `GER_prepare_barbarossa` ahead of the branch needed to unlock it. HER requires `GER_an_invincible_army` plus `GER_second_vienna_award`; the latter requires the Hungary/Romania alignment branch. The queue is now rearmament -> revisionism -> Poland/France -> conquest economy/Axis alignment -> Second Vienna -> Barbarossa. `GER_the_supreme_leader`, which actually checks German control of Moscow, was moved to the late-war section.
 
 Commit: `0c21a46d4a9de06dfa516568c34d0ff7d15048e5`.
 
-### ENG — SOURCE AUDIT COMPLETE FIRST PASS
+### ENG
 
-The old British queue had multiple prerequisite inversions: `ENG_prepare_for_the_inevitable` was listed before `ENG_home_defence` even though it requires it; `ENG_womans_land_army` requires `ENG_home_defence`; `ENG_emergency_powers` requires the Women's Land Army and a major war; `ENG_kickstart_the_war_industry` requires Emergency Powers. The Home Defence chain is now ordered correctly.
-
-The RAF/intelligence path also had missing dependencies. `tizard_mission_focus` requires both `ENG_bletchley_park_focus` and `chain_home`, while the historical plan previously contained Tizard/crypto priorities without explicitly prioritizing those prerequisites. Chain Home and Bletchley Park are now part of the queue before the dependent wartime research focuses.
+The Home Defence chain is now dependency-safe: `ENG_home_defence -> ENG_womans_land_army -> ENG_emergency_powers -> ENG_kickstart_the_war_industry`, while `ENG_prepare_for_the_inevitable` also sits after Home Defence. The radar/intelligence queue now explicitly includes the Bawdsey/Shadow Scheme/Chain Home/Bletchley prerequisites before Tizard and crypto priorities.
 
 Commit: `c7218d5fdf6f7354915aea431090aa13457fe62c`.
 
-### Remaining
+### FRA
 
-ITA/FRA/CHI still need the same exact source-level prerequisite/availability pass. After that, Block 7 can be considered code-complete pending integrated hands-off validation.
+A real dependency inversion was fixed in the industrial branch. HER `FRA_industrial_expansion` requires both `FRA_metropolitan_france` and `FRA_algerie_france`, while `FRA_algerie_france` itself requires the colonial-investment branch. The old plan tried `FRA_industrial_expansion` before `FRA_invest_in_the_colonies` / `FRA_algerie_france`; the queue now opens both halves before the combined expansion and research-slot follow-up.
+
+Commit: `090e8b96397c9607b8c75f7136ebc6d30a4e567b`.
+
+### CHI
+
+The historical plan no longer begins as a stack of unavailable wartime focuses. It now builds the Three Principles/nationalism/foreign-threat/United Front and Military Affairs foundations first, then gives wartime priority to `CHI_war_of_resistance -> CHI_industrial_evacuations -> CHI_scorched_earth_tactics -> CHI_army_reform`. Aid-route development follows the immediate survival package. `CHI_war_of_national_liberation` remains surrender-progress gated by the actual HER focus and is deliberately placed after the first emergency measures.
+
+Commit: `56a6111352dd320e38c08b7460aa54493e2ecd64`.
+
+### ITA
+
+First-pass source audit found the sampled historical chains already dependency-safe and therefore did not justify a mechanical rewrite. The plan has `ITA_italian_highways_bba` before `ITA_steel_industry_in_terni`, the Terni branch before `ITA_industria_della_gomma_sintetica`, and synthetic industry before `ITA_strengthen_northern_industry`. Likewise `ITA_naval_power_projection` precedes both `ITA_oto_naval_guns` and `ITA_expand_naval_facilities`; `ITA_culto_del_duce` precedes `ITA_the_man_of_providence`, and the propaganda chain keeps `ITA_ministero_della_cultura_popolare -> ITA_believe_obey_fight` in dependency order. No change was made merely for churn.
+
+Block 7 is now code-complete pending integrated hands-off validation.
 
 ## Defines policy / naval NAI status
 
@@ -122,10 +118,9 @@ Apply them only by editing `common/defines/00_defines.lua` directly after the sc
 
 ## Next audit order
 
-1. Validate ITA/FRA/CHI focus queues against current HER focus trees.
-2. Inventory remaining AI-only helper systems before adding new concessions.
-3. `ai_templates` full division-template implementation.
-4. NAI and direct edits to `common/defines/00_defines.lua` only after the scripted layers are stable.
+1. `ai_templates`: full division-template implementation for GER/SOV/ENG/USA/JAP/ITA/FRA/CHI, using current HER battalion/support IDs and country-specific roles.
+2. Inventory remaining AI-only helper systems and add only targeted concessions that solve demonstrated engine limitations.
+3. NAI and direct edits to `common/defines/00_defines.lua` only after the scripted/template layers are stable.
 
 ## Hands-off requirement
 

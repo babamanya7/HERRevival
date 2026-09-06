@@ -65,7 +65,7 @@ For each folder/block:
 
 ### AI areas — CONFIRMED-HOI4
 
-`common/ai_areas/*.txt` defines named geographic groups used by AI strategies such as `area_priority`, `front_unit_request`, force-concentration strategies and other area-targeted logic.
+`common/ai_areas/*.txt` defines named geographic groups used by AI strategies such as `area_priority`, `front_unit_request`, force-concentration strategies, `front_control`, and `put_unit_buffers`.
 
 Syntax:
 
@@ -88,11 +88,34 @@ Within an AI area, valid selectors are:
 - `continents = { ... }`
 - `strategic_regions = { ... }`
 
-If both are present, membership is additive/OR: a province can belong because it is in any listed continent or strategic region. A province may belong to multiple AI areas or to none.
+Membership is additive/OR when multiple selectors are used. A province may belong to multiple AI areas or to none.
 
-AI area names are internal identifiers and can be inspected in debug mode. They do not require localisation for AI use.
+AI area names are internal identifiers and do not require localisation for AI use.
 
-Important implication for HER: AI areas are only useful if later `ai_strategy` / theater logic actually references them. Therefore every area should have a clear operational purpose; dead aliases add maintenance cost and can hide obsolete strategic-region IDs after map changes.
+Important implication for HER: AI areas should correspond to actual operational questions. Broad aliases remain useful for generic behavior, while front allocation, force concentration, invasions and unit buffers benefit from smaller operational areas.
+
+### Area-targeting tokens — CONFIRMED-HOI4 / WORKING-HER
+
+Current documentation and existing HER code confirm area targeting for the following useful strategy families:
+
+- `area_priority`
+- `front_unit_request`
+- `force_concentration_front_factor`
+- `force_concentration_factor`
+- `force_concentration_target_weight`
+- `front_control`
+- `put_unit_buffers`
+
+`front_unit_request` may target an area, strategic region, state or country/front depending on syntax. Its value modifies troop demand for the matching front rather than directly moving a fixed number of divisions.
+
+HER already uses AI areas actively:
+
+- SOV uses `finland`, `baltics`, `belorussia`, `ukraine`, `kuban`, `leningrad_region`, `moscow_region`, `reich`, `balkans` and `north_china` in front/area priorities.
+- GER uses broad areas such as `europe`, `norway`, `north_america`, `south_america`, `north_china`, `middle_east`, `suez`, `africa`, `pacific_front` and `australia_new_zealand`.
+- JAP uses `burma`, `thailand`, `malaysia`, `philippines`, `japan_routs`, `australia_new_zealand`, `molucass`, `core_japan`, `pacific_front`, `china_coast` and `south_china`.
+- USA uses broad `europe`/`africa` areas for buffers, ally-front support and African priorities.
+
+Therefore stale strategic-region membership in `ai_areas` is a gameplay bug, not merely organizational debt.
 
 ### AI strategy lifecycle — CONFIRMED-HOI4
 
@@ -107,61 +130,60 @@ HER rule: every dynamic strategy must deliberately define its lifecycle. Do not 
 
 ## 5. Block 1 — `common/ai_areas`
 
-Status: AUDIT STARTED
+Status: IMPLEMENTED — awaiting in-game hands-off validation
 
-### 5.1 Current HER state
+### 5.1 HER / map audit findings
 
-HER currently contains a single file: `common/ai_areas/default.txt`.
+The current HER strategic-region tree was checked rather than importing vanilla or World Ablaze IDs. Several area entries had become stale after HER map reworks.
 
-Current groups include broad continental aliases (`europe`, `africa`, `north_america`, `south_america`, `middle_east`) plus many operational areas:
+Confirmed bad or obsolete memberships found and corrected:
 
-- Finland / Baltics / Belarus / Ukraine / Kuban / Leningrad / Moscow / Urals
-- Italy / Reich / Britain / France / Balkans / Norway
-- Normandy, Sicily, South Italy and Torch landing zones
-- Suez / North Africa / Central Africa / Horn of Africa / Iraq-Iran
-- Philippines / East Indies / Moluccas / Papua / Burma / Japan / China subregions
-- Pacific island and front zones
-- Japanese route-related regions
+- `italy` contained region `115`, which is now Central Northeastern Pacific, and region `169`, Tyrrhenian Sea. It now contains the Italian land regions 21/23/238/236.
+- `ukraine` contained region `30` (Black Sea) and omitted region `130` (Kiev). The land-area definition was corrected.
+- `leningrad_region` omitted the new/relocated Volkhov region `149`.
+- `moscow_region` omitted Smolensk `205` and Yaroslavl `286` after the map subdivision.
+- old `urals` mixed Vologda/Arctic/Ryazan/Western Steppe with the actual industrial rear. For compatibility the old key was retained, but its membership now represents Penza/Volga/Ural industrial regions: 275, 40, 138, 212, 216, 289, 291.
+- `balkans` contained Aegean Sea `202`; the sea region was removed from the land operational area.
+- `south_italy_landing_zone` contained Tyrrhenian Sea `169`; the landing destination is now Southern Italy `238`, while Sicily stays separate.
+- `north_africa` contained broad Middle East region `28`; it was removed from the North African land area while `suez` and `iraq_iran_zone` retain it where intentional.
+- `china_coast` included Korea `186`; Korea is now its own area to keep Japanese China-coast buffers from spreading onto the peninsula.
+- duplicate region `90` was removed from the existing `japan_routs` key. The misspelled key itself is retained because active JAP strategies reference it.
 
-HER's Soviet/European map rework means many IDs intentionally differ from vanilla and must not be replaced from vanilla/World Ablaze mechanically.
+### 5.2 New operational areas
 
-### 5.2 World Ablaze comparison — initial findings
+Following the useful World Ablaze pattern, HER now has smaller aliases ready for later country strategies while retaining old broad keys for compatibility:
 
-World Ablaze also uses one `common/ai_areas/default.txt`, but its area design is notably more operationally granular in several theaters.
+- Soviet: `soviet_north`, `soviet_center`, `soviet_south`, `caucasus`, `crimea`, `soviet_far_east`.
+- Central/Western Europe: `germany_core`, `benelux`, `poland`, `north_france`, `south_france`.
+- Italy: `north_italy`, `south_italy`, `sicily`.
+- USA: `usa_east`, `usa_central`, `usa_west`.
+- Japan/Korea: `japan_home_islands`, `japan_home_waters`, `korea`.
 
-Examples of useful patterns:
+These new aliases are intentionally mostly inert until their consumers are added during `ai_strategy`, `ai_faction_theaters` and related passes. This avoids changing several subsystems at once while giving later strategies stable geographic targets.
 
-- separates Britain from `britain_coast`;
-- splits France into north/west/south operational areas;
-- splits Italy into main Italy and south Italy;
-- defines Benelux separately;
-- splits Scandinavia/Karelia;
-- divides USSR into north/west/south/Caucasus/Crimea/east areas;
-- separates Mediterranean, Atlantic and multiple Pacific bands;
-- divides continental USA into east/central/west and separates eastern seaboard;
-- divides China into operational subregions and Shanghai/coastal areas;
-- defines Norwegian coast separately from Norway itself.
+### 5.3 World Ablaze comparison
 
-Design lesson: areas should represent actual operational questions the AI needs to answer (front allocation, invasion buffer, defense, offensive concentration, naval route/coast control), rather than only geographic labels.
+World Ablaze uses the same general architecture but with more operational granularity: Britain/coast, multiple French and Italian sectors, Benelux, USSR north/west/south/Caucasus/Crimea, Mediterranean/Atlantic/Pacific bands, continental USA sectors, and detailed China/Japan areas.
 
-### 5.3 Initial HER concerns to verify before editing
+HER adopted the structural lesson, not WA strategic-region IDs or numeric priorities. HER map IDs remain authoritative.
 
-- Some HER areas are very broad (`reich`, `europe`, `africa`) and may be too coarse for operational allocation.
-- `japan_routs` appears to be a route-focused area and contains repeated region `90`; duplicates should be checked for harmlessness and cleaned if unnecessary.
-- `iraq_iran_zone` includes region `28`, which also belongs to `suez`; confirm this overlap is intentional for the strategies that consume these areas.
-- `china_coast` contains land-oriented Chinese strategic regions rather than only literal sea/coast zones; verify how it is referenced before renaming or changing it.
-- landing-zone areas are potentially valuable and should be preserved/expanded if referenced by invasion strategies.
-- map-rework strategic region IDs must be validated against current HER `map/strategicregions` before any restructuring.
+### 5.4 Deferred issues discovered while tracing consumers
 
-No gameplay change has yet been made to `ai_areas`; current work is research/audit first.
+Do not fix these in `ai_areas`; revisit in their proper folder:
+
+- `common/ai_strategy/USA.txt`: a North Africa `put_unit_buffers` block uses `area = europe`; likely copy/paste logic error.
+- `common/ai_strategy/JAP.txt`: `Japan_southern_expansion_1_fire` currently has mutually impossible date requirements (`date > 1942.12.15` and `date < 1942.1.1`).
+- broad GER `area_priority` values and SOV pre-Barbarossa area priorities need reassessment after all geographic aliases are available.
+- `core_japan` still mixes home-island and surrounding strategic regions because existing JAP behavior consumes it; new `japan_home_islands`/`japan_home_waters` aliases allow a safe migration later.
 
 ## 6. Sources used during this audit
 
 Reference classes:
 
 - current HER repository (`AI-rework` branch)
-- Paradox/HOI4 AI modding documentation mirrors and CWTools schema
-- current vanilla file inventory / game data references where accessible
+- current HER `map/strategicregions` tree as the authoritative source for HER IDs
+- Paradox/HOI4 AI modding documentation mirrors and reliable working-mod documentation
+- current vanilla file inventory / game-data references where accessible
 - official World Ablaze public repository
 
 Do not treat old forum posts or old mod files as authoritative when contradicted by current working syntax or current game data.
@@ -174,6 +196,11 @@ Do not treat old forum posts or old mod files as authoritative when contradicted
 - Established AI rework scope and folder order.
 - Established policy allowing targeted AI-only helper decisions/events/advantages.
 - Confirmed `ai_areas` syntax and strategy lifecycle notes from documentation.
-- Inspected current HER `common/ai_areas/default.txt`.
-- Inspected World Ablaze `common/ai_areas/default.txt` and recorded initial structural differences.
-- Began Block 1 (`ai_areas`) audit; no gameplay file changes yet.
+- Inspected current HER and World Ablaze `common/ai_areas/default.txt`.
+- Traced active HER AI-area consumers in GER/SOV/JAP/USA strategies.
+- Audited HER area IDs against the current strategic-region map.
+- Corrected stale/wrong `ai_areas` memberships created by prior map changes.
+- Added operational area aliases for USSR, Europe, Italy, USA and Japan/Korea.
+- Preserved legacy keys where existing strategies depend on them.
+- Logged USA/JAP strategy bugs discovered during consumer tracing for the later `ai_strategy` block.
+- Block 1 implementation complete; hands-off validation remains for the integrated AI pass.

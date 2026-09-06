@@ -1,0 +1,268 @@
+# France: historical-style 30-width combat formations built around the 1936 three-regiment army.
+# Standard combat rule: exactly 15 line battalions (30 combat width). Regimental support remains
+# conceptually separate from normal divisional support and is not counted toward width.
+
+infantry_FRA = {
+	available_for = { FRA }
+	role = infantry
+	upgrade_prio = { factor = 125 }
+
+	FRA_infantry_standard = {
+		upgrade_prio = { factor = 125 }
+		reinforce_prio = 3
+
+		# Three infantry regiments + divisional artillery + AT/AA: exactly 15 line battalions.
+		target_template = {
+			support = {
+				engineer = 1
+				recon = 1
+				signal_company = 1
+				field_hospital = 1
+				logistics_company = 1
+				artillery = 1
+				anti_tank = 1
+				anti_air_battery = 1
+			}
+			regiments = {
+				heavy_infantry = 9
+				artillery_brigade = 3
+				heavy_artillery_brigade = 1
+				anti_tank_brigade = 1
+				anti_air_brigade = 1
+			}
+		}
+	}
+}
+
+motorized_FRA = {
+	available_for = { FRA }
+	role = motorized
+	front_role_override = offence
+	upgrade_prio = { factor = 95 }
+
+	FRA_motorized = {
+		upgrade_prio = { factor = 95 }
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				engineer = 1
+				motorbike_recon = 1
+				mot_signal_company = 1
+				mot_field_hospital = 1
+				mot_maintenance_company = 1
+				logistics_company = 1
+				artillery = 1
+				anti_tank = 1
+				anti_air = 1
+			}
+			regiments = {
+				motorized = 9
+				mot_artillery_brigade = 3
+				motorized_heavy_artillery_brigade = 1
+				mot_anti_tank_brigade = 1
+				mot_anti_air_brigade = 1
+			}
+		}
+	}
+}
+
+armor_FRA = {
+	available_for = { FRA }
+	role = armor
+	front_role_override = offence
+	upgrade_prio = { factor = 120 }
+
+	FRA_light_armor = {
+		upgrade_prio = {
+			factor = 75
+			modifier = {
+				factor = 0
+				has_tech = basic_medium_tank_chassis
+			}
+		}
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				assault_engineer = 1
+				armored_car_recon = 1
+				mot_signal_company = 1
+				mot_field_hospital = 1
+				mot_maintenance_company = 1
+				logistics_company = 1
+				anti_air = 1
+			}
+			regiments = {
+				light_armor = 4
+				motorized = 8
+				mot_artillery_brigade = 2
+				mot_anti_tank_brigade = 1
+			}
+		}
+
+		replace_at_match = 0.65
+		replace_with = FRA_medium_armor
+		target_min_match = 0.55
+	}
+
+	FRA_medium_armor = {
+		enable = { has_tech = basic_medium_tank_chassis }
+		upgrade_prio = { factor = 135 }
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				assault_engineer = 1
+				armored_car_recon = 1
+				mot_signal_company = 1
+				mot_field_hospital = 1
+				mot_maintenance_company = 1
+				logistics_company = 1
+				artillery = 1
+				anti_tank = 1
+				anti_air = 1
+			}
+			regiments = {
+				medium_armor = 5
+				motorized = 6
+				mot_artillery_brigade = 2
+				mot_anti_tank_brigade = 1
+				mot_anti_air_brigade = 1
+			}
+		}
+	}
+}
+
+mechanized_assault_FRA = {
+	available_for = { FRA }
+	role = mechanized_assault
+	front_role_override = offence
+	upgrade_prio = {
+		factor = 0
+		modifier = {
+			factor = 105
+			has_tech = mechanised_infantry
+		}
+	}
+
+	FRA_mechanized = {
+		enable = { has_tech = mechanised_infantry }
+		upgrade_prio = { factor = 105 }
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				assault_engineer = 1
+				armored_car_recon = 1
+				mot_signal_company = 1
+				mot_field_hospital = 1
+				mot_maintenance_company = 1
+				logistics_company = 1
+				artillery = 1
+				anti_tank = 1
+				anti_air = 1
+			}
+			regiments = {
+				medium_armor = 3
+				mechanized = 8
+				mechanized_sp_artillery_brigade = 2
+				medium_tank_destroyer_brigade = 1
+				mechanized_anti_air_brigade = 1
+			}
+		}
+	}
+}
+
+mountaineers_FRA = {
+	available_for = { FRA }
+	role = mountaineers
+	upgrade_prio = {
+		factor = 0
+		modifier = {
+			factor = 90
+			has_tech = tech_mountaineers
+		}
+	}
+
+	FRA_alpine = {
+		enable = { has_tech = tech_mountaineers }
+		upgrade_prio = { factor = 90 }
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				engineer = 1
+				recon = 1
+				signal_company = 1
+				field_hospital = 1
+				logistics_company = 1
+				artillery = 1
+				anti_tank = 1
+				anti_air = 1
+			}
+			regiments = {
+				mountaineers = 9
+				artillery_brigade = 3
+				heavy_artillery_brigade = 1
+				anti_tank_brigade = 1
+				anti_air_brigade = 1
+			}
+		}
+	}
+}
+
+marines_FRA = {
+	available_for = { FRA }
+	role = marines
+	upgrade_prio = {
+		factor = 0
+		modifier = {
+			factor = 40
+			has_tech = marines
+		}
+	}
+
+	FRA_marines = {
+		enable = { has_tech = marines }
+		upgrade_prio = { factor = 40 }
+		reinforce_prio = 2
+
+		target_template = {
+			support = {
+				assault_engineer = 1
+				recon = 1
+				signal_company = 1
+				field_hospital = 1
+				logistics_company = 1
+				artillery = 1
+				anti_tank = 1
+				anti_air = 1
+			}
+			regiments = {
+				marine = 9
+				artillery_brigade = 3
+				heavy_artillery_brigade = 1
+				anti_tank_brigade = 1
+				anti_air_brigade = 1
+			}
+		}
+	}
+}
+
+garrison_FRA = {
+	available_for = { FRA }
+	role = garrison
+	upgrade_prio = { factor = 100 }
+
+	FRA_garrison = {
+		upgrade_prio = { factor = 100 }
+		reinforce_prio = 0
+		custom_icon = 13
+
+		target_template = {
+			support = { military_police = 1 }
+			regiments = { cavalry = 8 }
+		}
+	}
+}

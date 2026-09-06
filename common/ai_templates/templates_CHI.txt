@@ -1,0 +1,101 @@
+# Nationalist China: cheap, supply-conscious infantry first. The AI should survive
+# the 1937-40 emergency before trying to field equipment-heavy formations.
+
+infantry_CHI = {
+	available_for = {
+		CHI
+	}
+
+	role = infantry
+
+	upgrade_prio = {
+		factor = 50
+	}
+
+	CHI_infantry_early = {
+		upgrade_prio = {
+			factor = 30
+			modifier = {
+				factor = 0
+				has_tech = support_weapons
+			}
+		}
+
+		reinforce_prio = 2
+
+		target_template = {
+			support = {
+				engineer = 1
+				artillery = 1
+			}
+
+			regiments = {
+				infantry = 12
+			}
+		}
+
+		replace_at_match = 0.5
+		replace_with = CHI_infantry_war
+		target_min_match = 0.5
+	}
+
+	CHI_infantry_war = {
+		enable = {
+			has_tech = support_weapons
+			has_tech = gw_artillery
+		}
+
+		upgrade_prio = {
+			factor = 50
+		}
+
+		reinforce_prio = 2
+
+		target_template = {
+			support = {
+				engineer = 1
+				artillery = 1
+				anti_air = 1
+			}
+
+			regiments = {
+				heavy_infantry = 10
+				artillery_brigade = 2
+			}
+		}
+
+		replace_at_match = 0.7
+		replace_with = CHI_infantry_late
+		target_min_match = 0.55
+	}
+
+	CHI_infantry_late = {
+		enable = {
+			has_tech = support_weapons
+			has_tech = gw_artillery
+			has_tech = interwar_antiair
+			has_tech = interwar_antitank
+		}
+
+		upgrade_prio = {
+			factor = 70
+		}
+
+		reinforce_prio = 2
+
+		target_template = {
+			support = {
+				engineer = 1
+				artillery = 1
+				anti_air_battery = 1
+				signal_company = 1
+			}
+
+			regiments = {
+				heavy_infantry = 9
+				artillery_brigade = 2
+				anti_tank_brigade = 1
+			}
+		}
+	}
+}

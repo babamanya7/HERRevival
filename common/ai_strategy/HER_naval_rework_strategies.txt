@@ -1,0 +1,209 @@
+# HER naval AI bridge strategies
+#
+# Purpose:
+# - connect the VNR naval equipment roles used by HER to dynamic AI strategies;
+# - give ENG a real ASW/escort emergency response;
+# - keep the USN and IJN actively preparing for carrier/screen-heavy Pacific operations.
+#
+# Exact ship designs remain controlled by common/ai_equipment and are intentionally
+# outside the current AI-rework scope.
+
+HER_ENG_prewar_escort_buildup = {
+	allowed = {
+		has_dlc = "Man the Guns"
+		original_tag = ENG
+	}
+	enable = {
+		has_war = no
+		date > 1937.6.1
+		date < 1939.9.1
+	}
+	abort_when_not_enabled = yes
+
+	# HER/VNR roles. The old ENG strategy used vanilla naval_* role IDs,
+	# which are suppressed by no_old_navy_production and therefore did not
+	# meaningfully affect VNR ship production.
+	ai_strategy = {
+		type = role_ratio
+		id = vnr_naval_screen
+		value = 180
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = vnr_naval_cruiser_light
+		value = 40
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = vnr_naval_submarine
+		value = -50
+	}
+	ai_strategy = {
+		type = unit_ratio
+		id = convoy
+		value = 150
+	}
+}
+
+HER_ENG_asw_emergency = {
+	allowed = {
+		has_dlc = "Man the Guns"
+		original_tag = ENG
+	}
+	enable = {
+		anti_submarine_strategy_required_trigger = yes
+	}
+	abort_when_not_enabled = yes
+
+	# Dynamic Battle of the Atlantic response: when the existing HER trigger
+	# decides the submarine threat is serious, RN construction swings hard
+	# toward sonar/depth-charge-capable VNR screens and light cruisers.
+	ai_strategy = {
+		type = role_ratio
+		id = vnr_naval_screen
+		value = 500
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = vnr_naval_cruiser_light
+		value = 100
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = vnr_naval_submarine
+		value = -250
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = vnr_naval_capital_bb
+		value = -80
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = vnr_naval_carrier
+		value = -30
+	}
+
+	# Avoid a death spiral where escorts are being produced but the convoy pool
+	# itself has already collapsed.
+	ai_strategy = {
+		type = unit_ratio
+		id = convoy
+		value = 250
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = convoy
+		value = 8
+	}
+}
+
+HER_ENG_atlantic_war_screen_bias = {
+	allowed = {
+		has_dlc = "Man the Guns"
+		original_tag = ENG
+	}
+	enable = {
+		has_war_with = GER
+	}
+	abort_when_not_enabled = yes
+
+	# A lighter always-on wartime bias underneath the stronger emergency block.
+	ai_strategy = {
+		type = role_ratio
+		id = vnr_naval_screen
+		value = 180
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = vnr_naval_cruiser_light
+		value = 40
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = vnr_naval_submarine
+		value = -80
+	}
+}
+
+HER_USA_pacific_fleet_activity = {
+	allowed = {
+		has_dlc = "Man the Guns"
+		original_tag = USA
+	}
+	enable = {
+		has_war_with = JAP
+	}
+	abort_when_not_enabled = yes
+
+	# Existing USA wartime production already has a large screen target.
+	# This block mainly keeps carrier warfare and invasion preparation elevated
+	# for the actual Pacific war instead of merely any generic major war.
+	ai_strategy = {
+		type = role_ratio
+		id = vnr_naval_carrier
+		value = 60
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = vnr_naval_carrier_light
+		value = 20
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = vnr_naval_screen
+		value = 120
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = vnr_naval_cruiser_light
+		value = 40
+	}
+	ai_strategy = {
+		type = naval_invasion_focus
+		value = 120
+	}
+	ai_strategy = {
+		type = area_priority
+		id = pacific_front
+		value = 120
+	}
+}
+
+HER_JAP_pacific_fleet_activity = {
+	allowed = {
+		has_dlc = "Man the Guns"
+		original_tag = JAP
+	}
+	enable = {
+		has_war_with = USA
+	}
+	abort_when_not_enabled = yes
+
+	# Japan must keep using its fleet after the opening Southern Operation rather
+	# than reverting to a passive port fleet once the scripted invasion windows end.
+	ai_strategy = {
+		type = role_ratio
+		id = vnr_naval_carrier
+		value = 55
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = vnr_naval_screen
+		value = 120
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = vnr_naval_cruiser_light
+		value = 35
+	}
+	ai_strategy = {
+		type = naval_invasion_focus
+		value = 130
+	}
+	ai_strategy = {
+		type = area_priority
+		id = pacific_front
+		value = 140
+	}
+}

@@ -1,15 +1,14 @@
-# United Kingdom: a compact, equipment-rich expeditionary army. All frontline combat
-# templates target 30 width. Britain fields fewer land formations than continental powers,
-# but the formations it does field receive strong support packages when industry permits.
+# United Kingdom: compact but equipment-rich expeditionary formations. Frontline combat divisions
+# stay at the HER 30-width standard; Britain fields fewer divisions rather than weaker divisions.
 
 infantry_ENG = {
 	available_for = { ENG }
 	role = infantry
-	upgrade_prio = { factor = 100 }
+	upgrade_prio = { factor = 120 }
 
 	ENG_infantry_early = {
 		upgrade_prio = {
-			factor = 50
+			factor = 60
 			modifier = {
 				factor = 0
 				has_tech = support_weapons
@@ -20,18 +19,19 @@ infantry_ENG = {
 		target_template = {
 			support = {
 				engineer = 1
+				recon = 1
 				artillery = 1
 				anti_tank = 1
+				signal_company = 1
 			}
 			regiments = {
-				infantry = 12
-				artillery_brigade = 3
+				infantry = 15
 			}
 		}
 
-		replace_at_match = 0.55
+		replace_at_match = 0.6
 		replace_with = ENG_infantry_standard
-		target_min_match = 0.5
+		target_min_match = 0.55
 	}
 
 	ENG_infantry_standard = {
@@ -39,22 +39,24 @@ infantry_ENG = {
 			has_tech = support_weapons
 			has_tech = gw_artillery
 		}
-		upgrade_prio = { factor = 100 }
+		upgrade_prio = { factor = 120 }
 		reinforce_prio = 2
 
 		target_template = {
 			support = {
 				engineer = 1
+				recon = 1
 				artillery = 1
 				anti_air_battery = 1
 				anti_tank = 1
 				signal_company = 1
 				field_hospital = 1
+				logistics_company = 1
 			}
 			regiments = {
-				heavy_infantry = 10
+				heavy_infantry = 9
 				artillery_brigade = 3
-				anti_tank_brigade = 2
+				heavy_artillery_brigade = 1
 			}
 		}
 	}
@@ -63,11 +65,11 @@ infantry_ENG = {
 armor_ENG = {
 	available_for = { ENG }
 	role = armor
-	upgrade_prio = { factor = 90 }
+	upgrade_prio = { factor = 105 }
 
 	ENG_cruiser_tank = {
 		upgrade_prio = {
-			factor = 45
+			factor = 55
 			modifier = {
 				factor = 0
 				has_tech = basic_medium_tank_chassis
@@ -81,24 +83,26 @@ armor_ENG = {
 				armored_car_recon = 1
 				mot_signal_company = 1
 				mot_maintenance_company = 1
+				mot_field_hospital = 1
+				logistics_company = 1
+				anti_air = 1
 			}
 			regiments = {
 				light_armor = 4
 				motorized = 8
-				mot_artillery_brigade = 2
-				mot_anti_tank_brigade = 1
+				mot_artillery_brigade = 3
 			}
 		}
 
-		replace_at_match = 0.6
+		replace_at_match = 0.65
 		replace_with = ENG_medium_armor
-		target_min_match = 0.5
+		target_min_match = 0.55
 	}
 
 	ENG_medium_armor = {
 		enable = { has_tech = basic_medium_tank_chassis }
 		upgrade_prio = {
-			factor = 95
+			factor = 110
 			modifier = {
 				factor = 2
 				date > 1940.1.1
@@ -115,12 +119,15 @@ armor_ENG = {
 				mot_maintenance_company = 1
 				anti_air = 1
 				logistics_company = 1
+				artillery = 1
+				anti_tank = 1
 			}
 			regiments = {
 				medium_armor = 5
-				motorized = 7
+				motorized = 6
 				mot_artillery_brigade = 2
 				mot_anti_tank_brigade = 1
+				mot_anti_air_brigade = 1
 			}
 		}
 
@@ -134,7 +141,7 @@ armor_ENG = {
 			has_tech = improved_medium_tank_chassis
 			has_tech = mechanised_infantry
 		}
-		upgrade_prio = { factor = 120 }
+		upgrade_prio = { factor = 135 }
 		reinforce_prio = 3
 
 		target_template = {
@@ -146,6 +153,8 @@ armor_ENG = {
 				mot_maintenance_company = 1
 				anti_air = 1
 				logistics_company = 1
+				artillery = 1
+				anti_tank = 1
 			}
 			regiments = {
 				medium_armor = 5
@@ -162,10 +171,10 @@ motorized_ENG = {
 	available_for = { ENG }
 	role = motorized
 	front_role_override = offence
-	upgrade_prio = { factor = 65 }
+	upgrade_prio = { factor = 75 }
 
 	ENG_motorized = {
-		upgrade_prio = { factor = 65 }
+		upgrade_prio = { factor = 75 }
 		reinforce_prio = 3
 
 		target_template = {
@@ -176,12 +185,15 @@ motorized_ENG = {
 				mot_maintenance_company = 1
 				mot_field_hospital = 1
 				logistics_company = 1
+				artillery = 1
+				anti_tank = 1
+				anti_air = 1
 			}
 			regiments = {
 				motorized = 9
 				mot_artillery_brigade = 3
-				mot_anti_tank_brigade = 2
-				mot_anti_air_brigade = 1
+				motorized_heavy_artillery_brigade = 1
+				mot_anti_tank_brigade = 1
 			}
 		}
 	}
@@ -194,7 +206,7 @@ mechanized_assault_ENG = {
 	upgrade_prio = {
 		factor = 0
 		modifier = {
-			factor = 70
+			factor = 80
 			has_tech = mechanised_infantry
 			date > 1941.1.1
 		}
@@ -202,7 +214,7 @@ mechanized_assault_ENG = {
 
 	ENG_mechanized = {
 		enable = { has_tech = mechanised_infantry }
-		upgrade_prio = { factor = 70 }
+		upgrade_prio = { factor = 80 }
 		reinforce_prio = 3
 
 		target_template = {
@@ -213,6 +225,9 @@ mechanized_assault_ENG = {
 				mot_maintenance_company = 1
 				mot_field_hospital = 1
 				logistics_company = 1
+				artillery = 1
+				anti_tank = 1
+				anti_air = 1
 			}
 			regiments = {
 				medium_armor = 3
@@ -231,24 +246,26 @@ marines_ENG = {
 	upgrade_prio = {
 		factor = 0
 		modifier = {
-			factor = 120
+			factor = 130
 			has_tech = marines
 		}
 	}
 
 	ENG_royal_marines = {
 		enable = { has_tech = marines }
-		upgrade_prio = { factor = 120 }
+		upgrade_prio = { factor = 130 }
 		reinforce_prio = 3
 
 		target_template = {
 			support = {
 				assault_engineer = 1
+				recon = 1
 				artillery = 1
 				anti_air = 1
 				anti_tank = 1
 				signal_company = 1
 				field_hospital = 1
+				logistics_company = 1
 			}
 			regiments = {
 				marine = 12
@@ -264,21 +281,24 @@ mountaineers_ENG = {
 	upgrade_prio = {
 		factor = 0
 		modifier = {
-			factor = 45
+			factor = 50
 			has_tech = tech_mountaineers
 		}
 	}
 
 	ENG_mountaineers = {
 		enable = { has_tech = tech_mountaineers }
-		upgrade_prio = { factor = 45 }
+		upgrade_prio = { factor = 50 }
 		reinforce_prio = 2
 
 		target_template = {
 			support = {
 				engineer = 1
+				recon = 1
 				artillery = 1
 				anti_air = 1
+				anti_tank = 1
+				signal_company = 1
 				field_hospital = 1
 			}
 			regiments = {
@@ -295,23 +315,26 @@ paratroopers_ENG = {
 	upgrade_prio = {
 		factor = 0
 		modifier = {
-			factor = 45
+			factor = 50
 			has_tech = paratroopers
 		}
 	}
 
 	ENG_airborne = {
 		enable = { has_tech = paratroopers }
-		upgrade_prio = { factor = 45 }
+		upgrade_prio = { factor = 50 }
 		reinforce_prio = 3
 
 		target_template = {
 			support = {
 				assault_engineer = 1
+				recon = 1
 				artillery = 1
 				anti_air = 1
+				anti_tank = 1
 				signal_company = 1
 				field_hospital = 1
+				logistics_company = 1
 			}
 			regiments = {
 				paratrooper = 15
@@ -332,7 +355,7 @@ garrison_ENG = {
 
 		target_template = {
 			support = { military_police = 1 }
-			regiments = { cavalry = 8 }
+		regiments = { cavalry = 8 }
 		}
 	}
 }

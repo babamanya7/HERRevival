@@ -1,0 +1,239 @@
+# Japan: strong historical-style 30-width formations for China and the Pacific.
+# The 1936 square Hohei Shidan has 12 heavy infantry, 3 divisional artillery and four regimental
+# artillery elements. AI templates abstract that regimental fire support into a full 12 + 6 artillery line.
+
+infantry_JAP = {
+	available_for = { JAP }
+	role = infantry
+	upgrade_prio = { factor = 145 }
+
+	JAP_hohei_shidan = {
+		upgrade_prio = { factor = 145 }
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				engineer = 1
+				recon = 1
+				signal_company = 1
+				field_hospital = 1
+				logistics_company = 1
+				artillery = 1
+				anti_tank = 1
+			}
+			regiments = {
+				heavy_infantry = 12
+				artillery_brigade = 6
+			}
+		}
+
+		replace_at_match = 0.8
+		replace_with = JAP_hohei_shidan_late
+		target_min_match = 0.7
+	}
+
+	JAP_hohei_shidan_late = {
+		enable = {
+			has_tech = interwar_antitank
+			has_tech = interwar_antiair
+		}
+		upgrade_prio = { factor = 165 }
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				engineer = 1
+				recon = 1
+				signal_company = 1
+				field_hospital = 1
+				logistics_company = 1
+				artillery = 1
+				anti_tank = 1
+				anti_air_battery = 1
+			}
+			regiments = {
+				heavy_infantry = 12
+				artillery_brigade = 6
+			}
+		}
+	}
+}
+
+marines_JAP = {
+	available_for = { JAP }
+	role = marines
+	upgrade_prio = {
+		factor = 0
+		modifier = {
+			factor = 170
+			has_tech = marines
+		}
+	}
+
+	JAP_rikusentai_division = {
+		enable = { has_tech = marines }
+		upgrade_prio = { factor = 170 }
+		reinforce_prio = 3
+
+		# Consolidated SNLF assault division for AI island warfare; do not use the historical battalion-sized
+		# peacetime detachment as the AI's main amphibious combat template.
+		target_template = {
+			support = {
+				assault_engineer = 1
+				recon = 1
+				signal_company = 1
+				field_hospital = 1
+				logistics_company = 1
+				artillery = 1
+				anti_tank = 1
+				anti_air_battery = 1
+			}
+			regiments = {
+				marine = 12
+				artillery_brigade = 6
+			}
+		}
+	}
+}
+
+armor_JAP = {
+	available_for = { JAP }
+	role = armor
+	front_role_override = offence
+	upgrade_prio = { factor = 55 }
+
+	JAP_light_armor = {
+		upgrade_prio = { factor = 55 }
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				assault_engineer = 1
+				armored_car_recon = 1
+				mot_signal_company = 1
+				mot_maintenance_company = 1
+				logistics_company = 1
+				anti_air = 1
+			}
+			regiments = {
+				light_armor = 4
+				motorized = 8
+				mot_artillery_brigade = 3
+			}
+		}
+
+		replace_at_match = 0.7
+		replace_with = JAP_medium_armor
+		target_min_match = 0.55
+	}
+
+	JAP_medium_armor = {
+		enable = { has_tech = basic_medium_tank_chassis }
+		upgrade_prio = { factor = 65 }
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				assault_engineer = 1
+				armored_car_recon = 1
+				mot_signal_company = 1
+				mot_maintenance_company = 1
+				logistics_company = 1
+				artillery = 1
+				anti_air = 1
+			}
+			regiments = {
+				medium_armor = 4
+				motorized = 8
+				mot_artillery_brigade = 3
+				mot_anti_tank_brigade = 1
+			}
+		}
+	}
+}
+
+motorized_JAP = {
+	available_for = { JAP }
+	role = motorized
+	front_role_override = offence
+	upgrade_prio = { factor = 45 }
+
+	JAP_motorized = {
+		upgrade_prio = { factor = 45 }
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				engineer = 1
+				motorbike_recon = 1
+				mot_signal_company = 1
+				mot_maintenance_company = 1
+				logistics_company = 1
+				artillery = 1
+				anti_tank = 1
+				anti_air = 1
+			}
+			regiments = {
+				motorized = 9
+				mot_artillery_brigade = 3
+				motorized_heavy_artillery_brigade = 1
+			}
+		}
+	}
+}
+
+mountaineers_JAP = {
+	available_for = { JAP }
+	role = mountaineers
+	upgrade_prio = {
+		factor = 0
+		modifier = {
+			factor = 70
+			has_tech = tech_mountaineers
+		}
+	}
+
+	JAP_mountain_division = {
+		enable = { has_tech = tech_mountaineers }
+		upgrade_prio = { factor = 70 }
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				engineer = 1
+				recon = 1
+				signal_company = 1
+				field_hospital = 1
+				logistics_company = 1
+				artillery = 1
+				anti_tank = 1
+				anti_air = 1
+			}
+			regiments = {
+				mountaineers = 12
+				artillery_brigade = 6
+			}
+		}
+	}
+}
+
+garrison_JAP = {
+	available_for = { JAP }
+	role = garrison
+	upgrade_prio = { factor = 100 }
+
+	JAP_garrison = {
+		upgrade_prio = { factor = 100 }
+		reinforce_prio = 0
+		custom_icon = 13
+
+		target_template = {
+			support = {
+				military_police = 1
+			}
+			regiments = {
+				heavy_infantry = 6
+			}
+		}
+	}
+}

@@ -1,0 +1,354 @@
+# Germany: combined-arms formations with a deliberate light -> medium -> mechanized
+# progression. Keep the designs within battalion/support IDs already proven in HER's
+# generic ai_templates so the country layer does not invent new parser-facing tokens.
+
+infantry_GER = {
+	available_for = { GER }
+	role = infantry
+
+	upgrade_prio = { factor = 100 }
+
+	GER_infantry_early = {
+		upgrade_prio = {
+			factor = 40
+			modifier = {
+				factor = 0
+				has_tech = support_weapons
+			}
+		}
+		reinforce_prio = 2
+
+		target_template = {
+			support = {
+				engineer = 1
+				artillery = 1
+				anti_tank = 1
+			}
+			regiments = {
+				infantry = 12
+				artillery_brigade = 3
+			}
+		}
+
+		replace_at_match = 0.55
+		replace_with = GER_infantry_standard
+		target_min_match = 0.5
+	}
+
+	GER_infantry_standard = {
+		enable = {
+			has_tech = support_weapons
+			has_tech = gw_artillery
+		}
+		upgrade_prio = { factor = 80 }
+		reinforce_prio = 2
+
+		target_template = {
+			support = {
+				engineer = 1
+				artillery = 1
+				anti_air_battery = 1
+				signal_company = 1
+				field_hospital = 1
+			}
+			regiments = {
+				heavy_infantry = 9
+				artillery_brigade = 3
+				anti_tank_brigade = 2
+			}
+		}
+	}
+}
+
+armor_GER = {
+	available_for = { GER }
+	role = armor
+
+	upgrade_prio = { factor = 120 }
+
+	GER_light_panzer = {
+		upgrade_prio = {
+			factor = 70
+			modifier = {
+				factor = 0
+				has_tech = basic_medium_tank_chassis
+			}
+		}
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				assault_engineer = 1
+				armored_car_recon = 1
+				mot_signal_company = 1
+				mot_field_hospital = 1
+				mot_maintenance_company = 1
+			}
+			regiments = {
+				light_armor = 4
+				motorized = 8
+				mot_artillery_brigade = 3
+			}
+		}
+
+		replace_at_match = 0.65
+		replace_with = GER_medium_panzer
+		target_min_match = 0.55
+	}
+
+	GER_medium_panzer = {
+		enable = { has_tech = basic_medium_tank_chassis }
+		upgrade_prio = {
+			factor = 110
+			modifier = {
+				factor = 2
+				date > 1939.1.1
+			}
+		}
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				assault_engineer = 1
+				armored_car_recon = 1
+				mot_signal_company = 1
+				mot_field_hospital = 1
+				mot_maintenance_company = 1
+				anti_air = 1
+			}
+			regiments = {
+				medium_armor = 5
+				motorized = 6
+				mot_artillery_brigade = 2
+				mot_anti_tank_brigade = 1
+				mot_anti_air_brigade = 1
+			}
+		}
+
+		replace_at_match = 0.75
+		replace_with = GER_medium_panzer_late
+		target_min_match = 0.6
+	}
+
+	GER_medium_panzer_late = {
+		enable = {
+			has_tech = improved_medium_tank_chassis
+			has_tech = mechanised_infantry
+		}
+		upgrade_prio = {
+			factor = 150
+			modifier = {
+				factor = 2
+				date > 1942.1.1
+			}
+		}
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				assault_engineer = 1
+				armored_car_recon = 1
+				mot_signal_company = 1
+				mot_field_hospital = 1
+				mot_maintenance_company = 1
+				anti_air = 1
+			}
+			regiments = {
+				medium_armor = 5
+				mechanized = 6
+				mechanized_sp_artillery_brigade = 2
+				medium_tank_destroyer_brigade = 1
+				mechanized_anti_air_brigade = 1
+			}
+		}
+	}
+}
+
+motorized_GER = {
+	available_for = { GER }
+	role = motorized
+	front_role_override = offence
+
+	upgrade_prio = { factor = 80 }
+
+	GER_motorized = {
+		upgrade_prio = { factor = 80 }
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				engineer = 1
+				motorbike_recon = 1
+				mot_signal_company = 1
+				mot_field_hospital = 1
+				mot_maintenance_company = 1
+			}
+			regiments = {
+				motorized = 9
+				mot_artillery_brigade = 3
+				mot_anti_tank_brigade = 2
+				mot_anti_air_brigade = 1
+			}
+		}
+	}
+}
+
+panzergrenadier_GER = {
+	available_for = { GER }
+	role = mechanized_assault
+	front_role_override = offence
+
+	upgrade_prio = {
+		factor = 0
+		modifier = {
+			factor = 100
+			has_tech = mechanised_infantry
+		}
+	}
+
+	GER_panzergrenadier = {
+		enable = { has_tech = mechanised_infantry }
+		upgrade_prio = { factor = 100 }
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				assault_engineer = 1
+				motorbike_recon = 1
+				armored_car_recon = 1
+				mot_signal_company = 1
+				mot_field_hospital = 1
+				mot_maintenance_company = 1
+			}
+			regiments = {
+				medium_armor = 3
+				mechanized = 7
+				mechanized_sp_artillery_brigade = 3
+				medium_tank_destroyer_brigade = 1
+				mechanized_anti_air_brigade = 1
+			}
+		}
+	}
+}
+
+anti_armor_GER = {
+	available_for = { GER }
+	role = anti_armor
+
+	upgrade_prio = {
+		factor = 10
+		modifier = {
+			factor = 10
+			has_tech = interwar_antitank
+			any_enemy_country = {
+				ROOT = {
+					estimated_intel_max_armor = { tag = PREV value > 25 }
+				}
+			}
+		}
+	}
+
+	GER_panzerjaeger_infantry = {
+		enable = { has_tech = interwar_antitank }
+		upgrade_prio = { factor = 100 }
+		reinforce_prio = 2
+
+		target_template = {
+			support = {
+				engineer = 1
+				artillery = 1
+				anti_tank = 1
+				anti_air = 1
+			}
+			regiments = {
+				heavy_infantry = 9
+				anti_tank_brigade = 3
+				artillery_brigade = 2
+			}
+		}
+	}
+}
+
+mountaineers_GER = {
+	available_for = { GER }
+	role = mountaineers
+
+	upgrade_prio = {
+		factor = 0
+		modifier = {
+			factor = 80
+			has_tech = tech_mountaineers
+		}
+	}
+
+	GER_gebirgsjaeger = {
+		enable = { has_tech = tech_mountaineers }
+		upgrade_prio = { factor = 80 }
+		reinforce_prio = 2
+
+		target_template = {
+			support = {
+				engineer = 1
+				artillery = 1
+				anti_air = 1
+				signal_company = 1
+			}
+			regiments = {
+				mountaineers = 12
+				artillery_brigade = 3
+			}
+		}
+	}
+}
+
+paratroopers_GER = {
+	available_for = { GER }
+	role = paratroopers
+
+	upgrade_prio = {
+		factor = 0
+		modifier = {
+			factor = 60
+			has_tech = paratroopers
+		}
+	}
+
+	GER_fallschirmjaeger = {
+		enable = { has_tech = paratroopers }
+		upgrade_prio = { factor = 60 }
+		reinforce_prio = 2
+
+		target_template = {
+			support = {
+				assault_engineer = 1
+				artillery = 1
+				anti_air = 1
+				signal_company = 1
+			}
+			regiments = {
+				paratrooper = 12
+			}
+		}
+	}
+}
+
+garrison_GER = {
+	available_for = { GER }
+	role = garrison
+	upgrade_prio = { factor = 100 }
+
+	GER_garrison = {
+		upgrade_prio = { factor = 100 }
+		reinforce_prio = 0
+		custom_icon = 13
+
+		target_template = {
+			support = {
+				military_police = 1
+			}
+			regiments = {
+				cavalry = 8
+			}
+		}
+	}
+}

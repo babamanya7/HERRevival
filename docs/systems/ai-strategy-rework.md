@@ -60,6 +60,7 @@ However older country files still contain vanilla `naval_*` role-ratio blocks. B
 Confirmed technical debt:
 
 - ENG: old `EAI_ENG_focus_on_screens`, `ENG_naval_role_ratios_historical` and `ENG_naval_role_ratios_anti_submarines` were removed in the British rewrite. The working VNR bridge remains responsible for the dynamic ASW production response.
+- USA: old vanilla naval-role blocks were removed in the US rewrite; the new USA ASW block uses current `vnr_naval_*` roles.
 - JAP: `JAP_naval_role_ratios_historical` and `_late` still use old naval production roles and will be handled in the Japanese pass.
 
 ## Implemented bridge strategies
@@ -266,6 +267,42 @@ Early invasions remain discouraged before 1942, but the old permanent/stacking i
 
 British rewrite commit: `fcebd166750dc12bed40a8478bf652c32be3a9ee`.
 
+## United States strategy — IMPLEMENTED FIRST PASS
+
+`common/ai_strategy/USA.txt` was rebuilt around a staged mobilization and simultaneous Europe/Pacific war instead of the inherited mix of generic-style production, large static buffers and obsolete vanilla naval roles.
+
+### Mobilization
+
+- 1936-38: civilian buildup, low military/air pressure and intentional stockpile creation;
+- 1939 to late 1941 while neutral: defense ramp with more arms factories, aircraft and army growth;
+- major war: very large but bounded military/air expansion instead of the old permanent `arms_factory = 1000` switch.
+
+### Force structure
+
+The US baseline now favors a large infantry army supported by meaningful armor, motorized/mechanized formations and a specialist marine component. Air production emphasizes fighters, CAS, naval bombers, carrier aircraft and maritime patrol while retaining strategic bombing as a real but secondary program.
+
+Naval unit ratios favor carriers, screens and a very large convoy pool. Specific VNR ship types remain controlled by `naval_production.txt`.
+
+### Two-ocean naval war
+
+The old `USA_naval_role_ratios_historical` and anti-submarine blocks using dead vanilla `naval_*` roles were removed. A dynamic US ASW response now uses `vnr_naval_screen` and `vnr_naval_cruiser_light`, together with extra convoy pressure.
+
+When at war with Japan the US receives high Pacific area priority, marine/invasion demand and additional carrier-air pressure. From mid-1942 the Pacific shifts into an explicit counteroffensive phase; from 1944 the AI can concentrate on Japanese home waters and the Home Islands.
+
+This is intentionally compatible with the earlier naval-goal and fleet-template work: the US should now have both high-scoring naval objectives and land/invasion strategies that give those fleets something to support.
+
+### Europe First without abandoning the Pacific
+
+War with Germany still raises North Africa, northern France and Germany itself. Britain is used as a staging area, but the old broad buffers that parked 10-20% of the US Army across Spain/Africa/England simultaneously were removed.
+
+Shared ENG/USA Torch and D-Day logic remains in the British strategy file, so the USA country file does not duplicate the same invasion orchestration again.
+
+### Diplomacy / support
+
+Support for Australia, India and the USSR against Axis pressure was retained in simplified form. The old Soviet-support strategy that reduced US infantry and all armor template priorities while the USSR was in danger was removed; helping the USSR should not make the US deliberately stop building its own deployable army.
+
+US rewrite commit: `190e090d28a13b33057e41f2c26c26d4d87d144f`.
+
 ## Defines policy / naval NAI status
 
 The temporary standalone file `common/defines/zz_HER_AI_navy.lua` was removed after the user requested that AI define changes stay in the main defines file.
@@ -279,13 +316,12 @@ They should be applied directly in `common/defines/00_defines.lua` when the main
 
 ## Next audit order
 
-1. USA country strategy phases.
-2. JAP country strategy phases and Pacific operation sequence.
-3. ITA/FRA cleanup.
-4. Operation strategy files and remaining microscripts.
-5. Inventory existing AI-only helper systems before creating new concessions.
+1. JAP country strategy phases and Pacific operation sequence.
+2. ITA/FRA cleanup.
+3. Operation strategy files and remaining microscripts.
+4. Inventory existing AI-only helper systems before creating new concessions.
 
-CHI, SOV, GER and ENG have first-pass country strategies and should be revisited after division-template/strategy-plan integration and hands-off observation.
+CHI, SOV, GER, ENG and USA have first-pass country strategies and should be revisited after division-template/strategy-plan integration and hands-off observation.
 
 ## Hands-off requirement
 

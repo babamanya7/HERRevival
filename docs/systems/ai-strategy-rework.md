@@ -19,20 +19,31 @@ The folder is the main behavioral glue layer between country plans, production, 
 5. Country operation logic should prefer phase/condition triggers over permanent huge weights.
 6. AI defines should stay in the main `common/defines/00_defines.lua`; do not create standalone HER AI define override files unless a future technical requirement makes it unavoidable.
 
-## Findings: `default.txt`
+## Generic strategy layer — CLEANED
 
-The current generic layer has inconsistent exception lists and therefore stacks on top of some dedicated major-country strategies unintentionally.
+`common/ai_strategy/default.txt` was rebuilt so generic production/template personalities are a fallback rather than an accidental second personality for the eight majors.
 
-Confirmed examples:
+Old problems included:
 
-- `default_unit_production` excludes GER/FRA/CHI/ENG/CZE/SOV/ITA/JAP but does **not** exclude USA. The US therefore inherits the broad generic land/air/naval production mix in addition to its own dedicated USA logic.
-- `default_role_ratios` excludes GER/ENG/USA/JAP/SOV/ITA but does **not** exclude FRA or CHI. It also uses old vanilla `naval_*` production-role IDs, making it inconsistent with the HER/VNR naval role system.
-- generic `bba_air_prod_1` excludes only GER and ENG. USA/JAP/ITA/FRA/SOV/CHI therefore receive the same broad generic air ratios on top of their country files.
-- `default_garrison_production` excludes GER/SOV/USA/CHI/FRA/JAP/ENG but not ITA.
-- `DEFAULT_early_template_design` and `DEFAULT_midlate_template_design` exclude seven majors but not CHI, so China inherits generic division-template priorities despite now having a dedicated AI architecture target.
-- generic mountaineer/mobile/armor helpers are broadly active and can stack with country role-ratio systems. These need review during the division-template/land-production pass rather than being blindly deleted.
+- USA inheriting `default_unit_production` on top of USA-specific logic;
+- FRA/CHI inheriting the old generic naval `default_role_ratios`;
+- USA/JAP/ITA/FRA/SOV/CHI inheriting generic BBA air production;
+- ITA inheriting generic garrison production;
+- CHI inheriting generic early/mid-late division-template priorities;
+- generic mountaineer/mobile/armor helpers stacking on country role ratios;
+- broad major naval nudges stacking with the already country-specific `naval_production.txt`.
 
-HER rule: generic behavior should be a fallback for countries without a dedicated major profile. The eight majors should not accidentally receive generic production personalities unless the overlap is explicitly intended.
+Implemented cleanup:
+
+- `default_unit_production`, generic BBA air production, paratrooper/patrol-bomber/garrison/mountaineer/mobile/armor helpers now exclude GER/SOV/ENG/USA/JAP/ITA/FRA/CHI;
+- CZE exceptions that existed for specialized armored behavior are retained where relevant;
+- obsolete `default_role_ratios` was removed because it used vanilla `naval_*` production roles while HER uses VNR roles;
+- the old `slightly_naval_focused_nation` and `more_naval_focused_nation` major nudges were removed; major ship production is already defined country-by-country in `naval_production.txt`;
+- treaty logic retains the generic capital-ship `unit_ratio` reduction but drops dead vanilla BB/BC role-ratio modifiers;
+- generic early/mid-late division-template priorities now explicitly exclude CHI along with the other seven majors;
+- unrelated global utility behavior (PP spending, agencies, foreign garrison manpower, economy-fatigue civ stop, etc.) was retained.
+
+Commit: `cde47aa9f87bb20c3ae7d5e9d0e9ee19a11d9ce4`.
 
 ## Findings: naval strategy integration
 
@@ -99,6 +110,19 @@ Main changes:
 
 Commits: `99b3f1789b340a255bb2683942d9ef046413ec83`, follow-up trigger correction `64882449bb3d0ce1720b64b84682a305eeae1ed7`.
 
+## Soviet strategy audit — IN PROGRESS
+
+The current SOV file contains useful historical phase logic but also several legacy problems that need a deliberate rewrite rather than isolated number tweaks:
+
+- `SOV_third_fyp` applies extremely large permanent military-industrial weights (`added_military_to_civilian_factory_ratio = 1000`, `arms_factory = 1500`) from February 1938 onward;
+- pre-Barbarossa area priorities use `1000-2000` scale values across many regions simultaneously, which makes relative operational priority difficult to reason about;
+- wartime front requests and area priorities likewise stack very large values across nearly the entire western front;
+- a useful defensive phase already exists (`SOV_be_defensive`: careful, no manual attacks, no order execution before November 1941), which should be preserved conceptually;
+- scripted winter counteroffensives exist for 1941/42 and 1942/43, and a late-war Bagration phase exists, providing a good basis for a cleaner phased Eastern Front model;
+- numerous city-buffer strategies exist and should be checked against the current HER state map before being retained unchanged.
+
+The SOV pass should therefore preserve the good phase architecture while normalizing industry/front weights and moving from broad legacy areas to the newer `soviet_north` / `soviet_center` / `soviet_south` / `caucasus` / `crimea` operational aliases where useful.
+
 ## Defines policy / naval NAI status
 
 The temporary standalone file `common/defines/zz_HER_AI_navy.lua` was removed after the user requested that AI define changes stay in the main defines file.
@@ -112,16 +136,14 @@ They should be applied directly in `common/defines/00_defines.lua` when the main
 
 ## Next audit order
 
-1. Clean generic-major overlap in `default.txt`.
-2. Consolidate obsolete naval role logic against `naval_production.txt`.
-3. GER country strategy phases.
-4. SOV country strategy phases.
-5. ENG country strategy phases.
-6. USA country strategy phases.
-7. JAP country strategy phases and Pacific operation sequence.
-8. ITA/FRA cleanup.
-9. Operation strategy files and remaining microscripts.
-10. Inventory existing AI-only helper systems before creating new concessions.
+1. SOV country strategy phases and Eastern Front behavior.
+2. GER country strategy phases.
+3. ENG country strategy phases and removal of dead old naval-role helpers.
+4. USA country strategy phases.
+5. JAP country strategy phases and Pacific operation sequence.
+6. ITA/FRA cleanup.
+7. Operation strategy files and remaining microscripts.
+8. Inventory existing AI-only helper systems before creating new concessions.
 
 CHI already has a first-pass country strategy and should be revisited after division-template and aid-system integration.
 

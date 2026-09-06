@@ -1,0 +1,369 @@
+# Soviet Union: mass infantry and artillery remain the backbone, while tank and
+# mechanized formations become progressively more capable as the industrial base
+# and medium-tank programme mature. Templates intentionally use battalion/support
+# IDs already proven in HER generic ai_templates.
+
+infantry_SOV = {
+	available_for = { SOV }
+	role = infantry
+
+	upgrade_prio = { factor = 120 }
+
+	SOV_rifle_early = {
+		upgrade_prio = {
+			factor = 60
+			modifier = {
+				factor = 0
+				has_tech = support_weapons
+			}
+		}
+		reinforce_prio = 2
+
+		target_template = {
+			support = {
+				engineer = 1
+				artillery = 1
+			}
+			regiments = {
+				infantry = 12
+				artillery_brigade = 2
+			}
+		}
+
+		replace_at_match = 0.5
+		replace_with = SOV_rifle_war
+		target_min_match = 0.5
+	}
+
+	SOV_rifle_war = {
+		enable = {
+			has_tech = support_weapons
+			has_tech = gw_artillery
+		}
+		upgrade_prio = { factor = 100 }
+		reinforce_prio = 2
+
+		target_template = {
+			support = {
+				engineer = 1
+				artillery = 1
+				anti_air_battery = 1
+			}
+			regiments = {
+				heavy_infantry = 10
+				artillery_brigade = 3
+				anti_tank_brigade = 1
+			}
+		}
+
+		replace_at_match = 0.7
+		replace_with = SOV_rifle_late
+		target_min_match = 0.55
+	}
+
+	SOV_rifle_late = {
+		enable = {
+			has_tech = support_weapons
+			has_tech = heavy_artillery_1
+			has_tech = interwar_antiair
+			has_tech = interwar_antitank
+		}
+		upgrade_prio = { factor = 130 }
+		reinforce_prio = 2
+
+		target_template = {
+			support = {
+				engineer = 1
+				artillery = 1
+				anti_air_battery = 1
+				signal_company = 1
+			}
+			regiments = {
+				heavy_infantry = 9
+				artillery_brigade = 3
+				heavy_artillery_brigade = 1
+				anti_tank_brigade = 2
+			}
+		}
+	}
+}
+
+armor_SOV = {
+	available_for = { SOV }
+	role = armor
+
+	upgrade_prio = { factor = 130 }
+
+	SOV_light_tank = {
+		upgrade_prio = {
+			factor = 45
+			modifier = {
+				factor = 0
+				has_tech = basic_medium_tank_chassis
+			}
+		}
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				assault_engineer = 1
+				armored_car_recon = 1
+				mot_maintenance_company = 1
+				mot_signal_company = 1
+			}
+			regiments = {
+				light_armor = 4
+				motorized = 8
+				mot_artillery_brigade = 3
+			}
+		}
+
+		replace_at_match = 0.6
+		replace_with = SOV_medium_tank
+		target_min_match = 0.5
+	}
+
+	SOV_medium_tank = {
+		enable = { has_tech = basic_medium_tank_chassis }
+		upgrade_prio = {
+			factor = 130
+			modifier = {
+				factor = 2
+				date > 1940.1.1
+			}
+		}
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				assault_engineer = 1
+				armored_car_recon = 1
+				mot_maintenance_company = 1
+				mot_signal_company = 1
+				mot_field_hospital = 1
+				anti_air = 1
+			}
+			regiments = {
+				medium_armor = 5
+				motorized = 7
+				mot_artillery_brigade = 2
+				mot_anti_air_brigade = 1
+			}
+		}
+
+		replace_at_match = 0.75
+		replace_with = SOV_medium_tank_late
+		target_min_match = 0.6
+	}
+
+	SOV_medium_tank_late = {
+		enable = {
+			has_tech = improved_medium_tank_chassis
+			has_tech = mechanised_infantry
+		}
+		upgrade_prio = {
+			factor = 170
+			modifier = {
+				factor = 2
+				date > 1942.1.1
+			}
+		}
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				assault_engineer = 1
+				armored_car_recon = 1
+				mot_maintenance_company = 1
+				mot_signal_company = 1
+				mot_field_hospital = 1
+				anti_air = 1
+			}
+			regiments = {
+				medium_armor = 5
+				mechanized = 7
+				mechanized_sp_artillery_brigade = 2
+				medium_tank_destroyer_brigade = 1
+				mechanized_anti_air_brigade = 1
+			}
+		}
+	}
+}
+
+heavy_armor_SOV = {
+	available_for = { SOV }
+	role = heavy_armor
+
+	upgrade_prio = {
+		factor = 0
+		modifier = {
+			factor = 70
+			has_tech = improved_heavy_tank_chassis
+		}
+	}
+
+	SOV_breakthrough_heavy = {
+		enable = { has_tech = improved_heavy_tank_chassis }
+		upgrade_prio = { factor = 70 }
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				assault_engineer = 1
+				armored_car_recon = 1
+				mot_maintenance_company = 1
+				mot_signal_company = 1
+				anti_air = 1
+			}
+			regiments = {
+				heavy_armor = 5
+				mechanized = 7
+				mechanized_sp_artillery_brigade = 2
+				mechanized_anti_air_brigade = 1
+			}
+		}
+	}
+}
+
+motorized_SOV = {
+	available_for = { SOV }
+	role = motorized
+	front_role_override = offence
+
+	upgrade_prio = { factor = 70 }
+
+	SOV_motor_rifle = {
+		upgrade_prio = { factor = 70 }
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				engineer = 1
+				motorbike_recon = 1
+				mot_signal_company = 1
+				mot_maintenance_company = 1
+			}
+			regiments = {
+				motorized = 10
+				mot_artillery_brigade = 3
+				mot_anti_tank_brigade = 1
+				mot_anti_air_brigade = 1
+			}
+		}
+	}
+}
+
+mechanized_assault_SOV = {
+	available_for = { SOV }
+	role = mechanized_assault
+	front_role_override = offence
+
+	upgrade_prio = {
+		factor = 0
+		modifier = {
+			factor = 90
+			has_tech = mechanised_infantry
+			date > 1941.1.1
+		}
+	}
+
+	SOV_mechanized_corps = {
+		enable = { has_tech = mechanised_infantry }
+		upgrade_prio = { factor = 90 }
+		reinforce_prio = 3
+
+		target_template = {
+			support = {
+				assault_engineer = 1
+				armored_car_recon = 1
+				mot_signal_company = 1
+				mot_maintenance_company = 1
+			}
+			regiments = {
+				medium_armor = 3
+				mechanized = 8
+				mechanized_sp_artillery_brigade = 2
+				medium_tank_destroyer_brigade = 1
+				mechanized_anti_air_brigade = 1
+			}
+		}
+	}
+}
+
+mountaineers_SOV = {
+	available_for = { SOV }
+	role = mountaineers
+
+	upgrade_prio = {
+		factor = 0
+		modifier = {
+			factor = 80
+			has_tech = tech_mountaineers
+		}
+	}
+
+	SOV_mountain_rifle = {
+		enable = { has_tech = tech_mountaineers }
+		upgrade_prio = { factor = 80 }
+		reinforce_prio = 2
+
+		target_template = {
+			support = {
+				engineer = 1
+				artillery = 1
+				anti_air = 1
+			}
+			regiments = {
+				mountaineers = 12
+				artillery_brigade = 3
+			}
+		}
+	}
+}
+
+paratroopers_SOV = {
+	available_for = { SOV }
+	role = paratroopers
+
+	upgrade_prio = {
+		factor = 0
+		modifier = {
+			factor = 40
+			has_tech = paratroopers
+		}
+	}
+
+	SOV_airborne = {
+		enable = { has_tech = paratroopers }
+		upgrade_prio = { factor = 40 }
+		reinforce_prio = 2
+
+		target_template = {
+			support = {
+				engineer = 1
+				artillery = 1
+				anti_air = 1
+			}
+			regiments = {
+				paratrooper = 12
+			}
+		}
+	}
+}
+
+garrison_SOV = {
+	available_for = { SOV }
+	role = garrison
+	upgrade_prio = { factor = 90 }
+
+	SOV_garrison = {
+		upgrade_prio = { factor = 90 }
+		reinforce_prio = 0
+		custom_icon = 13
+
+		target_template = {
+			support = { military_police = 1 }
+		regiments = { cavalry = 8 }
+		}
+	}
+}

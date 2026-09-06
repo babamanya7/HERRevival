@@ -71,11 +71,12 @@ equipment_modules = {
         multiply_stats = {
             naval_speed = -0.05
         }
-        critical_parts = { damaged_heavy_guns }
+        critical_parts = { damaged_missile_launchers }
     }
 
     ship_sam_1 = {
         category = ship_sam
+        critical_parts = { damaged_anti_air }
 		sfx = sfx_ui_sd_module_turret
 
         add_equipment_type = anti_air
@@ -91,6 +92,7 @@ equipment_modules = {
 
     ship_ciw_1 = {
         category = ship_ciw
+        critical_parts = { damaged_anti_air }
 		sfx = sfx_ui_sd_module_turret
 
         add_stats = {
@@ -144,6 +146,7 @@ equipment_modules = {
 
     modern_ship_engine_1 = {
         category = modern_ship_engine
+        critical_parts = { damaged_engine_room }
         sfx = sfx_ui_sd_module_engine
 
         add_stats = {
@@ -157,6 +160,7 @@ equipment_modules = {
     }
     modern_ship_engine_2 = {
         category = modern_ship_engine
+        critical_parts = { damaged_engine_room }
         sfx = sfx_ui_sd_module_engine
 
         add_stats = {
@@ -169,6 +173,7 @@ equipment_modules = {
     }
     space_ship_engine_1 = {
         category = space_ship_engine
+        critical_parts = { damaged_engine_room }
         sfx = sfx_ui_sd_module_engine
 
         add_stats = {
@@ -182,6 +187,7 @@ equipment_modules = {
 
     ship_modern_armor_1 = {
         category = ship_modern_armor
+        critical_parts = { armor_belt_breached }
         gfx = ship_armor_thick_4
 
         multiply_stats = {
@@ -198,6 +204,7 @@ equipment_modules = {
     }
     ship_space_armor_1 = {
         category = ship_space_armor
+        critical_parts = { armor_belt_breached }
 
         multiply_stats = {
 			build_cost_ic = 0.4
@@ -214,6 +221,7 @@ equipment_modules = {
 
     modern_deck_space_1 = {
         category = modern_deck_space
+        critical_parts = { damaged_aircraft_elevator hangar_fire aviation_fuel_fire }
         gfx = ship_deck_space
 
         add_stats = {

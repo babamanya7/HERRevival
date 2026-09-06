@@ -2310,14 +2310,14 @@ technologies = {
 	damage_control_1 = {
 
 		xp_research_type = navy
-		xp_unlock_cost = 100
+		xp_unlock_cost = 150
 		doctrine = yes
 		research_cost = 3
 		path = {
 			leads_to_tech = damage_control_2
 			research_cost_coeff = 1
 		}
-		critical_receive_chance = -0.05
+		critical_receive_chance = -0.02
 		naval_critical_effect_factor = -0.1
 		folder = {
 			name = old_naval_doctrine_folder
@@ -2350,15 +2350,15 @@ technologies = {
 	damage_control_2 = {
 
 		xp_research_type = navy
-		xp_unlock_cost = 100
+		xp_unlock_cost = 200
 		doctrine = yes
 		research_cost = 3
 		path = {
 			leads_to_tech = damage_control_3
 			research_cost_coeff = 1
 		}
-		critical_receive_chance = -0.05
-		naval_critical_effect_factor = -0.1
+		critical_receive_chance = -0.04
+		naval_critical_effect_factor = -0.12
 		folder = {
 			name = old_naval_doctrine_folder
 			position = { x = 0 y = 6 }
@@ -2390,12 +2390,12 @@ technologies = {
 	damage_control_3 = {
 
 		xp_research_type = navy
-		xp_unlock_cost = 100
+		xp_unlock_cost = 250
 		doctrine = yes
 		research_cost = 3
 		
-		critical_receive_chance = -0.05
-		naval_critical_effect_factor = -0.1
+		critical_receive_chance = -0.06
+		naval_critical_effect_factor = -0.16
 		folder = {
 			name = old_naval_doctrine_folder
 			position = { x = 0 y = 12 }

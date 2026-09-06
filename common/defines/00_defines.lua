@@ -1361,8 +1361,8 @@ NAir = {
 	AIR_REGION_SUPERIORITY_PIXEL_SCALE = 0.01,          -- air superiority scale = superiority/(pixels*this)
 	COMBAT_MULTIPLANE_CAP = 3.0,						-- How many planes can shoot at each plane on other side ( if there are 100 planes we are atttacking COMBAT_MULTIPLANE_CAP * 100 of our planes can shoot )
 	COMBAT_DAMAGE_SCALE = 0.02,							-- Higher value = more shot down planes
-	COMBAT_DAMAGE_SCALE_CARRIER = 0.5,					-- same as above but used inside naval combat for carrier battles
-	CARRIER_PERCENTAGE_DEFEND = 0.35,					-- Percentage of planes able to defend a carrier from air attacks (historically 15% - 35%)
+	COMBAT_DAMAGE_SCALE_CARRIER = 0.4,					-- same as above but used inside naval combat for carrier battles
+	CARRIER_PERCENTAGE_DEFEND = 0.3,					-- Percentage of planes able to defend a carrier from air attacks (historically 15% - 35%)
 	DETECT_CHANCE_FROM_OCCUPATION = 0.1, 				-- How much the controlled provinces in area affects the air detection base value.
 	DETECT_CHANCE_FROM_RADARS = 0.75, 					-- How much the radars in area affects detection chance.
 	DETECT_CHANCE_FROM_AIRCRAFTS_EFFECTIVE_COUNT = 2000, -- Max amount of aircrafts in region to give full detection bonus.
@@ -1374,14 +1374,14 @@ NAir = {
 	DAY_NIGHT_COVERAGE_FACTOR = 0.5,					-- The max night coverage in a region that is still considered to be day-time when determining if day/night air missions shall run.
 	HOURS_DELAY_AFTER_EACH_COMBAT = 4,					-- How many hours needs the wing to be ready for the next combat. Use for tweaking if combats happens too often. (generally used as double because of roundtrip)
 	PORT_STRIKES_DELAY_MULTIPLIER = 2,					-- multplies HOURS_DELAY_AFTER_EACH_COMBAT if port strikes
-	CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 4,          -- how often carrier planes do battle inside naval combat
+	CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 5,          -- how often carrier planes do battle inside naval combat
 	CARRIER_SIZE_STAT_INCREMENT = 8,					-- Each Point of carrier_size state adds capacity for this many planes
 	SUBMARINE_CARRIER_SIZE_STAT_INCREMENT = 1,			-- Each Point of carrier_size state adds capacity for this many planes for submarines
 	MISSILE_LAUNCHER_CAPACITY = 10,                     -- The number of missiles per slot
 	MISSILE_LAUNCHER_SLOTS = 1,                         -- The number of missile slots a missile launcher unit can have
 	NAVAL_STRIKE_TARGETTING_TO_AMOUNT = 0.2,			-- Balancing value to convert the naval_strike_targetting equipment stats to chances of how many airplanes managed to do successfull strike.
-	NAVAL_STRIKE_DAMAGE_TO_STR = 2.0,					-- Balancing value to convert damage ( naval_strike_attack * hits ) to Strength reduction.
-	NAVAL_STRIKE_DAMAGE_TO_ORG = 2.0,					-- Balancing value to convert damage ( naval_strike_attack * hits ) to Organisation reduction.
+	NAVAL_STRIKE_DAMAGE_TO_STR = 1.15,					-- HER: direct bomb/torpedo damage is limited; critical parts carry most mission kills.
+	NAVAL_STRIKE_DAMAGE_TO_ORG = 1.35,					-- HER: air hits disrupt more readily than they destroy hull strength.
 	NAVAL_STRIKE_CARRIER_MULTIPLIER = 12.0,              -- damage bonus when planes are in naval combat where their carrier is present (and can thus sortie faster and more effectively)
 	FIELD_EXPERIENCE_SCALE = 0.0004,
 	FIELD_EXPERIENCE_MAX_PER_DAY = 2,					-- Most xp you can gain per day
@@ -1425,8 +1425,8 @@ NAir = {
 	SUPPLY_NEED_FACTOR = 0.8, 							-- multiplies supply usage
 	SUPPLY_PRIO_FACTOR = 100.0,							-- Effect of supply need per unit for target province picking for air supply
 	CAPACITY_PENALTY = 2,								-- scales penalty of having overcrowded bases.
-	AIR_COMBAT_FINAL_DAMAGE_SCALE = 0.05,               -- % how many max disrupted only planes are alloed to die in a single combat
-	AIR_COMBAT_FINAL_DAMAGE_PLANES = 50,                -- scaling/control for when only very few planes exist to stop roundoff issues
+	AIR_COMBAT_FINAL_DAMAGE_SCALE = 0.035,               -- % how many max disrupted only planes are alloed to die in a single combat
+	AIR_COMBAT_FINAL_DAMAGE_PLANES = 20,                -- scaling/control for when only very few planes exist to stop roundoff issues
 	AIR_COMBAT_FINAL_DAMAGE_PLANES_FACTOR = 0.1,
 	AA_INDUSTRY_AIR_DAMAGE_FACTOR = -0.08,				-- 5x levels = 60% defense from bombing
 	NAVAL_STRIKE_DETECTION_BALANCE_FACTOR = 0.7,		-- Value used to scale the surface_visibility stats to balance the gameplay, so 100% detection chance still won't spam the strikes.
@@ -1470,18 +1470,18 @@ NAir = {
 	AIR_WING_XP_LOSS_REDUCTION_OVER_FRIENDLY_TERRITORY_FACTOR = 0.25, 	--Reduction on XP loss over friendly territory
 
 	DISRUPTION_FACTOR = 4.0,									-- multiplier on disruption damage to scale its effects on planes
-	DISRUPTION_FACTOR_CARRIER = 8.0,							-- multiplier on disruption damage to scale its effects on carrier vs carrier planes
-	DISRUPTION_SPEED_FACTOR = 1.25,
-	DISRUPTION_AGILITY_FACTOR = 0.5,
-	DISRUPTION_ATTACK_FACTOR = 2.0,
-	DISRUPTION_DETECTION_FACTOR = 1.2,
+	DISRUPTION_FACTOR_CARRIER = 5.0,							-- multiplier on disruption damage to scale its effects on carrier vs carrier planes
+	DISRUPTION_SPEED_FACTOR = 1.5,
+	DISRUPTION_AGILITY_FACTOR = 0.6,
+	DISRUPTION_ATTACK_FACTOR = 1.25,
+	DISRUPTION_DETECTION_FACTOR = 1.25,
 	ESCORT_FACTOR = 4.0,
-	ESCORT_SPEED_FACTOR = 0.85,
-	ESCORT_AGILITY_FACTOR = 0.85,
-	ESCORT_ATTACK_FACTOR = 1.25,
-	DISRUPTION_DEFENCE_DEFENCE_FACTOR = 1.25,
-	DISRUPTION_DEFENCE_SPEED_FACTOR = 0.8,
-	DISRUPTION_DEFENCE_ATTACK_FACTOR = 4.0,
+	ESCORT_SPEED_FACTOR = 0.70,
+	ESCORT_AGILITY_FACTOR = 1.75,
+	ESCORT_ATTACK_FACTOR = 0.4,
+	DISRUPTION_DEFENCE_DEFENCE_FACTOR = 1.35,
+	DISRUPTION_DEFENCE_SPEED_FACTOR = 1.15,
+	DISRUPTION_DEFENCE_ATTACK_FACTOR = 4.5,
 
 	CARRIER_PLANES_AMOUNT_FOR_POSITIONING = 64,         -- below this amount of planes on a carrier we no longer get max benefit on enemy positioning
 
@@ -1645,12 +1645,12 @@ NNavy = {
 	MIN_HIT_PROFILE_MULT = 0.0,										-- largest hit profile penalty to hitting
 	COMBAT_LOW_ORG_HIT_CHANCE_PENALTY = -0.4,						-- % of penalty applied to hit chance when ORG is very low.
 	COMBAT_LOW_MANPOWER_HIT_CHANCE_PENALTY = -0.2,					-- % of penalty applied to hit chance when manpower is very low.
-	COMBAT_DAMAGE_RANDOMNESS = 0.5,									-- random factor in damage. So if max damage is fe. 10, and randomness is 30%, then damage will be between 7-10.
-	COMBAT_TORPEDO_CRITICAL_CHANCE = 0.1,							-- chance for critical hit from torpedo.
-	COMBAT_TORPEDO_CRITICAL_DAMAGE_MULT = 2.0,						-- multiplier to damage when got critical hit from torpedo. (Critical hits are devastating as usualy torpedo_attack are pretty high base values).
+	COMBAT_DAMAGE_RANDOMNESS = 0.5,								-- random factor in damage. So if max damage is fe. 10, and randomness is 30%, then damage will be between 7-10.
+	COMBAT_TORPEDO_CRITICAL_CHANCE = 1.0,							-- HER: torpedo hits are especially likely to cause flooding and machinery casualties.
+	COMBAT_TORPEDO_CRITICAL_DAMAGE_MULT = 1.0,						-- HER: system casualties, not a universal raw-damage spike, carry torpedo lethality.
 
-	COMBAT_DAMAGE_TO_STR_FACTOR = 0.8,								-- casting damage value to ship strength multiplier. Use it ot balance the game difficulty.
-	COMBAT_DAMAGE_TO_ORG_FACTOR = 1.2,								-- casting damage value to ship organisation multiplier. Use it to balance the game difficulty.
+	COMBAT_DAMAGE_TO_STR_FACTOR = 0.6,								-- HER: ordinary surface hits cause limited hull loss; catastrophic STR loss comes from criticals.
+	COMBAT_DAMAGE_TO_ORG_FACTOR = 0.9,								-- HER: preserves combat disruption while preventing every hit from becoming a mission kill.
 
 	NAVY_MAX_XP = 100,
 	COMBAT_ON_THE_WAY_INIT_DISTANCE_BALANCE = 0.35, 				-- Value to balance initial distance to arrive for ships that are "on the way"
@@ -1661,8 +1661,8 @@ NNavy = {
 	COMBAT_INITIAL_DURATION = 2,									-- Number of hours that is considered the "initial phase" of naval combat, used for modifiers like surprise attack during "initial combat"
 	COMBAT_RETREAT_DECISION_CHANCE = 0.2, 							-- There is also random factor in deciding if we should retreat or not. That causes a delay in taking decision, that sooner or later will be picked. It's needed so damaged fast ships won't troll the combat.
 	COMBAT_DETECTED_CONVOYS_FROM_SURFACE_DETECTION_STAT = 0.1,		-- Each 1.0 of surface_detection that ship has (equipment stat), gives x% of convoys discovered from total travelling along the route.
-	COMBAT_BASE_CRITICAL_CHANCE = 0.07,								-- Base chance for receiving a critical chance. It get's scaled down with ship reliability.
-	COMBAT_CRITICAL_DAMAGE_MULT = 4.0,								-- Multiplier for the critical damage. Scaled down with the ship reliability.
+	COMBAT_BASE_CRITICAL_CHANCE = 1.0,								-- HER: criticals are the primary route to system casualties; reliability still scales this down.
+	COMBAT_CRITICAL_DAMAGE_MULT = 1.0,								-- HER: individual critical parts provide severity; avoid stacking every critical with a universal x4 spike.
 	COMBAT_ARMOR_PIERCING_CRITICAL_BONUS = 0.75,					-- Bonus to critical chance when shooter armor piercing is higher then target armor.
 	COMBAT_ARMOR_PIERCING_DAMAGE_REDUCTION = -0.6,					-- All damage reduction % when target armor is >= then shooter armor piercing.
 	REPAIR_AND_RETURN_PRIO_LOW = 0.2,								-- % of total Strength. When below, navy will go to home base to repair.
@@ -1984,7 +1984,7 @@ NNavy = {
 	NAVAL_MINES_ACCIDENT_ORG_LOSS_FACTOR = 0.6,						-- Amount of strength loss when hit by naval mine
 
 	TRAINING_ACCIDENT_CHANCES = 0.02,						-- Chances one ship get damage each hour while on training
-	TRAINING_ACCIDENT_CRITICAL_HIT_CHANCES = 0.3,					-- If an accident happens, how likely it is to be a critical hit
+	TRAINING_ACCIDENT_CRITICAL_HIT_CHANCES = 0.5,					-- If an accident happens, how likely it is to be a critical hit
 	TRAINING_ACCIDENT_CRITICAL_HIT_DAMAGE_SCALE = 4.0,				-- Scale the value below in case of critical hit
 	TRAINING_ACCIDENT_STRENGTH_LOSS = 4.0,							-- Amount of strength loss in a training accident
 	TRAINING_ACCIDENT_STRENGTH_LOSS_FACTOR = 0.05,						-- Amount of strength loss in a training accident, propotional to the maximum strength of the ship
@@ -2126,8 +2126,8 @@ NNavy = {
 
 	MAX_ANTI_AIR_REDUCTION_EFFECT_ON_INCOMING_AIR_DAMAGE 			= 0.8,	-- damage reduction for incoming air attacks is clamped to this value at maximum.
 
-	CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT							= 0.1,	-- the game will roll between 0-1 and will damage a random part if below this val on naval critical hits
-	CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT_FROM_AIR					= 0.1,	-- the game will roll between 0-1 and will damage a random part if below this val on air critical hits
+	CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT							= 0.35,	-- HER: most critical hits should produce an actual local or hull-wide system casualty.
+	CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT_FROM_AIR					= 0.9,	-- HER: bomb and aerial-torpedo hits strongly favor deck, hangar, flooding and machinery casualties.
 
 	SCREEN_RATIO_FOR_FULL_SCREENING_FOR_CAPITALS 					= 4.0,	-- this screen ratio to num capital/carriers is needed for full screening beyond screen line
 	SCREEN_RATIO_FOR_FULL_SCREENING_FOR_CONVOYS 					= 0.5,	-- this screen ratio to num convoys is needed for full screening beyond screen line
@@ -2262,17 +2262,17 @@ NNavy = {
 	NAVAL_COMBAT_AIR_SUB_DETECTION_DECAY_RATE = 1.0,					-- Factor to decay the value of sub detection contributed by planes on the last hour. Note: the maximum value between the decayed value and the newly computed one is taken into account. A decay rate of 1 means that nothing is carried over, the previous value is zerod out. A decay rate of 0 means that the previous value is carried over as is.
 	NAVAL_COMBAT_AIR_SUB_DETECTION_FACTOR = 0.0,						-- A global factor that applies after all others, right before the sub detection contributed by plane is added to the global sub detection of a combatant
 
-	NAVAL_COMBAT_AIR_SUB_TARGET_BASE = 10,                             -- base scoring for target picking for planes inside naval combat based on screening efficency, one define per ship typ
-	NAVAL_COMBAT_AIR_SCREEN_TARGET_BASE = 10,
+	NAVAL_COMBAT_AIR_SUB_TARGET_BASE = 5,                             -- base scoring for target picking for planes inside naval combat based on screening efficency, one define per ship typ
+	NAVAL_COMBAT_AIR_SCREEN_TARGET_BASE = 6,
 	NAVAL_COMBAT_AIR_CAPITAL_TARGET_BASE = 10,
-	NAVAL_COMBAT_AIR_CARRIER_TARGET_BASE = 10,
-	NAVAL_COMBAT_AIR_CONVOY_TARGET_BASE = 1.0,
+	NAVAL_COMBAT_AIR_CARRIER_TARGET_BASE = 13,
+	NAVAL_COMBAT_AIR_CONVOY_TARGET_BASE = 3,
 	NAVAL_COMBAT_AIR_SUB_TARGET_SCALE = 10,                             -- scaled scoring for target picking for planes inside naval combat, max value when zero screening efficency, one define per ship typ
-	NAVAL_COMBAT_AIR_SCREEN_TARGET_SCALE = 10,
-	NAVAL_COMBAT_AIR_CAPITAL_TARGET_SCALE = 50,
-	NAVAL_COMBAT_AIR_CARRIER_TARGET_SCALE = 200,
+	NAVAL_COMBAT_AIR_SCREEN_TARGET_SCALE = 14,
+	NAVAL_COMBAT_AIR_CAPITAL_TARGET_SCALE = 60,
+	NAVAL_COMBAT_AIR_CARRIER_TARGET_SCALE = 250,
 	NAVAL_COMBAT_AIR_CONVOY_TARGET_SCALE = 1.0,
-	NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCORE = 5,                         -- how much score factor from low health (scales between 0->this number)
+	NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCORE = -2,                        -- HER: aircraft prefer combat-capable targets instead of spending strikes on already mission-killed ships.
 	NAVAL_COMBAT_AIR_LOW_AA_TARGET_SCORE = 5,                           -- how much score factor from low AA guns (scales between 0->this number)
 
 	NAVAL_BASE_DOMINANCE_FACTOR = 0.01,									-- base naval dominance buff based on naval bases in the region

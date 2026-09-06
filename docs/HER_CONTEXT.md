@@ -429,3 +429,19 @@ Split only when the main file becomes cumbersome; avoid fragmentation for its ow
 - Added warehouse-system lessons.
 - Added initial China aid architecture and clearly marked unverified implementation details.
 - Established proactive maintenance policy for future HER sessions.
+# Naval critical damage implementation
+
+- Naval combat uses critical damage as the primary route to mission kills, major loss of combat capability and catastrophic losses; ordinary hits should later be balanced toward limited STR/ORG damage.
+- Criticals are split between hull-wide casualties on naval sub-units and local system casualties attached to equipment modules.
+- Each physical module family should have at least one relevant critical zone; role/classification modules are excluded because they are not physical compartments.
+- Carrier criticals separately cover flight deck, aircraft elevators, hangar, aviation fuel, flight control and damage control. Wooden and armored decks retain different risk profiles.
+- Naval criticals use the dedicated 41-frame `GFX_HER_critical_damage_icons` atlas. Each critical ID has a unique icon and frame.
+- Carrier deck damage follows two opposite profiles: wooden flight decks suffer critical damage more often but impose a lighter direct flight-operations penalty, while armored flight decks are harder to damage but a successful penetration/deformation causes a severe mission kill and additional repair damage.
+- Carrier mission kills are cumulative rather than binary. Deck holes, elevators, arresting gear, propulsion, flight control, hangar fire and aviation-fuel/ready-ordnance casualties stack into operational loss without requiring the hull to sink.
+- Midway and the Solomon carrier actions are the historical baseline for critical balance: local damage should cause specific system failures, while catastrophic loss emerges from fire/flooding cascades, electrical or ventilation failures and disrupted damage-control organization.
+- Balance order: critical map and effects, critical probability, severity/duration, ordinary hit damage, then repair/operational absence. Naval aircraft should slightly deprioritize already damaged and mission-killed ships so strikes remain focused on combat-capable threats.
+- Pre-defines critical scale: common local casualties weight `0.65-1.0`; ship-wide mission-kill casualties `0.25-0.65`; catastrophes `0.05-0.2`. Never use a critical-hit damage multiplier below `1.0`.
+- First naval defines baseline: surface STR/ORG conversion `0.50/0.90`, naval-air STR/ORG conversion `1.25/1.75`, base critical chance `0.10`, global critical damage multiplier `2.0`, torpedo critical chance/multiplier `0.15/1.5`, and defined-part damage chance `0.65` from surface fire / `0.80` from air. Base hit chance remains unchanged for isolated testing.
+- Naval-air damaged-target score is reduced from `5` to `-5`, mildly discouraging repeated strikes on already crippled ships without making them invalid targets.
+- `toxic_gas_leakage` is submarine-only. Carriers instead use the separate aviation-fuel-fire casualty.
+- Detailed implementation notes: `docs/systems/naval-critical-damage.md`.

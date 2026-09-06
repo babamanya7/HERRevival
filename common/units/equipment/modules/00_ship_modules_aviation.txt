@@ -11,6 +11,7 @@ equipment_modules = {
 ##################
     ship_deck_space_more = {
 		category = ship_deck_space
+		critical_parts = { damaged_aircraft_elevator damaged_arresting_gear hangar_fire aviation_fuel_fire armed_aircraft_detonation }
 		build_cost_resources = {
 			steel = 20
 			aluminium = 8
@@ -39,6 +40,7 @@ equipment_modules = {
 	}
 	ship_deck_space_armored = {
 		category = ship_deck_space
+		critical_parts = { damaged_aircraft_elevator damaged_arresting_gear hangar_fire aviation_fuel_fire armed_aircraft_detonation }
 		build_cost_resources = {
 			steel = 15
 			aluminium = 4
@@ -67,6 +69,7 @@ equipment_modules = {
 	}
 	ship_deck_space = {
 		category = ship_deck_space
+		critical_parts = { damaged_aircraft_elevator damaged_arresting_gear hangar_fire aviation_fuel_fire armed_aircraft_detonation }
 		build_cost_resources = {
 			steel = 15
 			aluminium = 6
@@ -92,6 +95,7 @@ equipment_modules = {
 	}
 	ship_deck_space_small = {
 		category = ship_deck_space_small
+		critical_parts = { damaged_aircraft_elevator damaged_arresting_gear hangar_fire aviation_fuel_fire armed_aircraft_detonation }
 		add_equipment_type = capital_ship
 		gui_category = ship_deck_space
 		build_cost_resources = {
@@ -114,6 +118,7 @@ equipment_modules = {
 	}
 	ship_deck_space_big = {
 		category = ship_deck_space_big
+		critical_parts = { damaged_aircraft_elevator damaged_arresting_gear hangar_fire aviation_fuel_fire armed_aircraft_detonation }
 		gui_category = ship_deck_space
 		add_equipment_type = capital_ship
 		build_cost_resources = {
@@ -140,6 +145,7 @@ equipment_modules = {
 	}
 	ship_deck_space_bb = {
 		category = ship_deck_space_bb
+		critical_parts = { damaged_aircraft_elevator damaged_arresting_gear hangar_fire aviation_fuel_fire armed_aircraft_detonation }
 		gui_category = ship_deck_space
 		add_equipment_type = carrier
 		gfx = ship_deck_space
@@ -166,6 +172,7 @@ equipment_modules = {
 	}
 	ship_deck_space_mega = {
 		category = ship_deck_space_mega
+		critical_parts = { damaged_aircraft_elevator damaged_arresting_gear hangar_fire aviation_fuel_fire armed_aircraft_detonation }
 		gui_category = ship_deck_space
 		gfx = big_ship_deck_space
 		add_equipment_type = capital_ship
@@ -191,6 +198,7 @@ equipment_modules = {
 	}
 	ship_deck_space_converted = {
 		category = ship_deck_space_converted
+		critical_parts = { damaged_aircraft_elevator damaged_arresting_gear hangar_fire aviation_fuel_fire armed_aircraft_detonation }
 		gui_category = ship_deck_space
 		gfx = ship_deck_space
 		build_cost_resources = {
@@ -223,6 +231,7 @@ equipment_modules = {
 ##########################
 	carrier_helipad_asw = {
 		category = carrier_helipad
+		critical_parts = { damaged_aviation_facilities }
 		add_stats = {
 			surface_detection = 0.5
 			sub_detection = 6
@@ -241,6 +250,7 @@ equipment_modules = {
 	}
 	carrier_helipad_aew = {
 		category = carrier_helipad
+		critical_parts = { damaged_aviation_facilities }
 		add_stats = {
 			surface_detection = 7
 			sub_detection = 1
@@ -269,7 +279,7 @@ equipment_modules = {
 		add_equipment_type = capital_ship
 		
 		add_stats = {
-			reliability = 0.1
+			reliability = 0.05
 			max_strength = 35
 		}
 		build_cost_resources = {
@@ -284,7 +294,7 @@ equipment_modules = {
 		}
 		dismantle_cost_ic = 2000
 
-		critical_parts = { damaged_armored_flight_deck }
+		critical_parts = { damaged_armored_flight_deck damaged_arresting_gear }
 	}
 	carrier_wooden_deck = {
 		category = ship_flight_deck
@@ -299,7 +309,7 @@ equipment_modules = {
 		}
 		dismantle_cost_ic = 1500
 
-		critical_parts = { damaged_wooden_flight_deck }
+		critical_parts = { damaged_wooden_flight_deck damaged_arresting_gear }
 	}	
 
 
@@ -308,6 +318,7 @@ equipment_modules = {
 ############################
     ship_airplane_launcher_3 = {
 		category = steam_catapult
+		critical_parts = { damaged_aviation_facilities }
 		gui_category = modern_carrier_equipments
 		gfx = ship_airplane_launcher_3
 		build_cost_resources = {
@@ -327,6 +338,7 @@ equipment_modules = {
 	}
 	ship_ski_jump_ramp = {
 		category = steam_catapult
+		critical_parts = { damaged_aviation_facilities }
 		gui_category = modern_carrier_equipments
 		build_cost_resources = {
 			steel = 8
@@ -345,6 +357,7 @@ equipment_modules = {
 
 	side_lift = {
 		category = carrier_side_lift
+		critical_parts = { damaged_aircraft_elevator }
 		gui_category = modern_carrier_equipments
 		gfx = ship_side_lift
 
@@ -364,6 +377,7 @@ equipment_modules = {
 
 	angled_deck = {
 		category = carrier_angled_deck
+		critical_parts = { damaged_aviation_facilities }
 		gui_category = modern_carrier_equipments
 		gfx = ship_angled_deck
 
@@ -389,6 +403,7 @@ equipment_modules = {
 #############################
 	carrier_aviation_control_unit = {
 		category = carrier_unit
+		critical_parts = { carrier_air_ops_disrupted }
 		build_cost_resources = {
 			steel = 4
 			tungsten = 1
@@ -404,8 +419,9 @@ equipment_modules = {
 	}
 	carrier_damage_control_unit = {
 		category = carrier_unit
+		critical_parts = { damage_control_center_hit }
 		add_stats = {
-			reliability = 0.1
+			reliability = 0.08
 		}
 		multiply_stats = {
 			build_cost_ic = 0.05
@@ -413,6 +429,7 @@ equipment_modules = {
 	}
 	carrier_scouting_unit = {
 		category = carrier_unit
+		critical_parts = { damaged_radar }
 		add_stats = {
 			surface_detection = 5
 			sub_detection = 4
@@ -421,6 +438,7 @@ equipment_modules = {
 	}
 	carrier_spared_squad = {
 		category = carrier_unit
+		critical_parts = { carrier_air_ops_disrupted }
 		add_stats = {
 			carrier_size = 1
 		}
@@ -435,6 +453,7 @@ equipment_modules = {
 	}
 	carrier_fuel_storage = {
 		category = carrier_miscellaneous
+		critical_parts = { fuel_tank_rupture aviation_fuel_fire }
 		add_stats = {
 			reliability = -0.05
 			supply_consumption = -0.02
@@ -466,6 +485,7 @@ equipment_modules = {
 	}
 	carrier_secondary_island = {
 		category = carrier_miscellaneous
+		critical_parts = { bridge_hit }
 		build_cost_resources = {
 			steel = 8
 			chromium = 1
@@ -501,8 +521,9 @@ equipment_modules = {
 	}
 	carrier_strength_deck = {
 		category = carrier_miscellaneous
+		critical_parts = { armor_belt_breached }
 		add_stats = {
-			reliability = 0.1
+			reliability = 0.05
 			max_strength = 100
 		}
 		build_cost_resources = {
@@ -518,6 +539,7 @@ equipment_modules = {
 	}
 	carrier_tracing_unit = {
 		category = carrier_unit
+		critical_parts = { damaged_fire_control }
 		add_stats = {
 			build_cost_ic = 800
 			surface_detection = 10

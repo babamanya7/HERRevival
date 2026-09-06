@@ -11,6 +11,7 @@ equipment_modules = {
 #############
     ship_mast_1 = {
 		category = ship_mast
+		critical_parts = { damaged_radar }
 		gui_category = ship_radar
 		build_cost_resources = {
 			#steel = 4
@@ -23,6 +24,7 @@ equipment_modules = {
 	ship_radar_1 = {
 		abbreviation = "sbj"
 		category = ship_radar
+		critical_parts = { damaged_radar }
 		sfx = sfx_ui_sd_module_sonar
 		build_cost_resources = {
 			#steel = 2
@@ -40,6 +42,7 @@ equipment_modules = {
 	ship_radar_2 = {
 		abbreviation = "sbk"
 		category = ship_radar
+		critical_parts = { damaged_radar }
 		sfx = sfx_ui_sd_module_sonar
 		parent = ship_radar_1
 		multiply_stats = {
@@ -69,6 +72,7 @@ equipment_modules = {
 	ship_radar_3 = {
 		abbreviation = "sbl"
 		category = ship_radar
+		critical_parts = { damaged_radar }
 		sfx = sfx_ui_sd_module_sonar
 		parent = ship_radar_2
 		multiply_stats = {
@@ -106,6 +110,7 @@ equipment_modules = {
 	ship_radar_4 = {
 		abbreviation = "sbm"
 		category = ship_radar
+		critical_parts = { damaged_radar }
 		sfx = sfx_ui_sd_module_sonar
 		parent = ship_radar_3
 		multiply_stats = {
@@ -142,6 +147,7 @@ equipment_modules = {
 	}
 	ship_radar_5 = {
 		category = ship_radar
+		critical_parts = { damaged_radar }
 		sfx = sfx_ui_sd_module_sonar
 		parent = ship_radar_4
 		multiply_stats = {
@@ -315,6 +321,7 @@ equipment_modules = {
 	}
 	ship_sub_torpedo_computer_1 = {
 		category = sub_fire_control_system
+		critical_parts = { damaged_torpedo_fire_control }
 		gui_category = ship_fire_control_system
 		sfx = sfx_ui_sd_module_sonar
 		
@@ -329,6 +336,7 @@ equipment_modules = {
 	}
 	ship_sub_torpedo_computer_2 = {
 		category = sub_fire_control_system
+		critical_parts = { damaged_torpedo_fire_control }
 		parent = ship_sub_torpedo_computer_1
 		gui_category = ship_fire_control_system
 		sfx = sfx_ui_sd_module_sonar
@@ -348,6 +356,7 @@ equipment_modules = {
 	}
 	ship_sub_torpedo_computer_3 = {
 		category = sub_fire_control_system
+		critical_parts = { damaged_torpedo_fire_control }
 		parent = ship_sub_torpedo_computer_2
 		gui_category = ship_fire_control_system
 		sfx = sfx_ui_sd_module_sonar
@@ -368,6 +377,7 @@ equipment_modules = {
 	}
 	ship_torpedo_fire_control_1 = {
 		category = ship_fire_control_system
+		critical_parts = { damaged_torpedo_fire_control }
 		add_stats = {
 			build_cost_ic = 120
 			naval_torpedo_hit_chance_factor = 0.05
@@ -387,6 +397,7 @@ equipment_modules = {
 	}
 	ship_torpedo_fire_control_2 = {
 		category = ship_fire_control_system
+		critical_parts = { damaged_torpedo_fire_control }
 		parent = ship_torpedo_fire_control_1
 		gfx = ship_sub_torpedo_computer_1
 		add_stats = {
@@ -408,6 +419,7 @@ equipment_modules = {
 	}
 	ship_torpedo_fire_control_3 = {
 		category = ship_fire_control_system
+		critical_parts = { damaged_torpedo_fire_control }
 		parent = ship_torpedo_fire_control_2
 		gfx = ship_sub_torpedo_computer_2
 		add_stats = {
@@ -429,6 +441,7 @@ equipment_modules = {
 	}
 	ship_torpedo_fire_control_4 = {
 		category = ship_fire_control_system
+		critical_parts = { damaged_torpedo_fire_control }
 		parent = ship_torpedo_fire_control_3
 		gfx = ship_sub_torpedo_computer_3
 		add_stats = {
@@ -451,6 +464,7 @@ equipment_modules = {
 	}
 	ship_aa_fire_control = {
 		category = generic_miscellaneous
+		critical_parts = { damaged_anti_air }
 		gui_category = ship_miscellaneous
 		multiply_stats = {
 			anti_air_attack = 0.25

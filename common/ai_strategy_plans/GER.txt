@@ -11,63 +11,20 @@ German_historical = {
 	abort_when_not_enabled = yes
 
 	ai_national_focuses = {
-		# grab as fast as you can if available
+		# 1936-38: political revision plus the economic and military base needed for war.
 		GER_rhineland
-		GER_anschluss
-		GER_demand_sudetenland
-		GER_first_vienna_award
-		GER_end_of_czechoslovakia
-		GER_demand_memel
-		GER_mol_rib_pact
-		GER_danzig_or_war
-		GER_western_war_plans
-		GER_demonstration_of_military_achievements
-		GER_an_invincible_army
-		GER_the_supreme_leader
-		GER_prepare_barbarossa
-		GER_alliance_with_finland
-		GER_eastern_lebensraum
-		
-		GER_economy_of_conquest
-		GER_rmbum
-		GER_appoint_albert_speer
-		GER_ostarbieter
-		GER_city_festungs
-		GER_flak_towers
-		
-		GER_death_before_defeat
-		GER_recruit_from_the_hitler_youth
-		GER_volkssturm
-		
-		GER_form_the_reichskommissariats
-		GER_explotation_of_acquired_resources
-		GER_fate_of_yugoslavia
-		GER_fate_of_greece
-		GER_align_hungary
-		GER_align_romania
-		GER_second_vienna_award
-		GER_integrate_hungarian_war_economies
-		GER_integrate_romanian_war_economies
-		GER_form_the_rsha
-		GER_ordnungspolizei
-		GER_feuerschutzpolizei
-		GER_einzatsgruppen
-		GER_ss_secret_operations
-		GER_subj_abwehr
-		GER_ss_armycorps
-		GER_expand_kummersdorfs_capacity
-		
-		GER_proclaim_the_axis_powers
-		GER_allgemine_ss
-		GER_condor_legion
 		GER_four_year_plan
-		GER_celebration_of_the_olympics
 		GER_nazi_economics
 		GER_deutsche_albriet_front
 		GER_reichsarbeitsdienst
-		GER_anti_comitern_pact
-		GER_treaty_of_mutual_assistance
 		GER_continue_autarky
+		GER_autobahn
+		GER_grosraumwirtschaft
+		GER_hermann_goring_werke
+		GER_kdf_wagen_scheme_mil
+		GER_institute_price_controls
+		GER_nationalize_german_arms_industries
+		GER_mobilize_the_workforce
 		GER_realization_of_the_wehrmacht
 		GER_luftwaffe_innovations
 		GER_aeronautic_funding
@@ -76,18 +33,55 @@ German_historical = {
 		GER_naval_rearmament
 		GER_the_heers_new_era
 		GER_adopt_new_panzer_doctrine
-		GER_autobahn
-		GER_grosraumwirtschaft
-		GER_hermann_goring_werke
-		GER_kdf_wagen_scheme_mil
-		GER_institute_price_controls
-		GER_nationalize_german_arms_industries
+		GER_anschluss
+		GER_demand_sudetenland
+		GER_first_vienna_award
+		GER_end_of_czechoslovakia
+		GER_demand_memel
+		GER_mol_rib_pact
+
+		# 1939-40: Poland, the western campaign and the mobilized war economy.
+		GER_danzig_or_war
+		GER_western_war_plans
+		GER_demonstration_of_military_achievements
+		GER_an_invincible_army
+		GER_organization_todt
+		GER_economy_of_conquest
+		GER_explotation_of_acquired_resources
+		GER_align_hungary
+		GER_align_romania
+		GER_second_vienna_award
+		GER_integrate_hungarian_war_economies
+		GER_integrate_romanian_war_economies
+		GER_fate_of_yugoslavia
+		GER_fate_of_greece
+
+		# 1940-41: finish the dependency chain that HER's Barbarossa focus actually requires.
+		GER_prepare_barbarossa
+		GER_alliance_with_finland
+		GER_eastern_lebensraum
+		GER_form_the_reichskommissariats
+
+		# Wartime development. Availability gates decide the exact historical timing.
+		GER_rmbum
+		GER_appoint_albert_speer
+		GER_ostarbieter
+		GER_form_the_rsha
+		GER_ordnungspolizei
+		GER_feuerschutzpolizei
+		GER_einzatsgruppen
+		GER_ss_secret_operations
+		GER_subj_abwehr
+		GER_ss_armycorps
+		GER_expand_kummersdorfs_capacity
+		GER_proclaim_the_axis_powers
+		GER_allgemine_ss
+		GER_condor_legion
+		GER_celebration_of_the_olympics
 		GER_aeronautical_research_institute
 		GER_air_fw
 		GER_advanced_panzer_research
-		GER_mobilize_the_workforce
 		GER_reorganize_the_wehrmacht
-		GER_organization_todt
 		GER_a_continental_army
 		GER_issue_weapon_contracts
 		GER_west_wall
@@ -97,16 +91,24 @@ German_historical = {
 		GER_war_of_movement
 		GER_panzer_troops_school
 		GER_fallschirmjager
-		GER_airland_divisions
 		GER_form_the_jagdwaffe
-		GER_reorganize_the_luftwaffe
-		GER_jaegernotprogramm
-		GER_issue_more_oil_contracts
 		GER_combined_arms
+		GER_issue_more_oil_contracts
 		GER_coal_liquidization
 		GER_atlantikwall
 		GER_ostwall
 		GER_anti_partisan_operations
+
+		# Late-war / defeat-response focuses must not sit ahead of Barbarossa.
+		GER_the_supreme_leader
+		GER_city_festungs
+		GER_flak_towers
+		GER_death_before_defeat
+		GER_recruit_from_the_hitler_youth
+		GER_volkssturm
+		GER_reorganize_the_luftwaffe
+		GER_jaegernotprogramm
+		GER_airland_divisions
 	}
 
 	# Broad historical research character only. Detailed priorities live in ai_focuses

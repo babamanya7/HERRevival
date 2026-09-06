@@ -147,3 +147,150 @@ country_event = {
 		USA = { clr_country_flag = USA_CHI_fighter_offer_pending }
 	}
 }
+
+# Chinese requests for American equipment
+country_event = {
+	id = her_chi_aid.8
+	title = her_chi_aid.8.t
+	desc = her_chi_aid.8.d
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+	option = {
+		name = her_chi_aid.request_approve
+		trigger = {
+			has_equipment = { infantry_equipment > 4999 }
+			CHI = { check_variable = { CHI_usa_credit_balance > 19999 } }
+			BRA = { exists = yes }
+		}
+		ai_chance = { factor = 100 }
+		send_equipment = { target = BRA type = infantry_equipment amount = 5000 old_prioritised = yes }
+		BRA = { add_to_variable = { BRA_CHI_pending_infantry_equipment = 5000 } }
+		CHI = {
+			clr_country_flag = CHI_USA_rifle_request_pending
+			subtract_from_variable = { CHI_usa_credit_balance = 20000 }
+			country_event = { id = her_chi_aid.12 days = 1 }
+		}
+	}
+	option = {
+		name = her_chi_aid.request_refuse
+		ai_chance = { factor = 0 }
+		CHI = {
+			clr_country_flag = CHI_USA_rifle_request_pending
+			country_event = { id = her_chi_aid.13 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = her_chi_aid.9
+	title = her_chi_aid.9.t
+	desc = her_chi_aid.9.d
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+	option = {
+		name = her_chi_aid.request_approve
+		trigger = {
+			has_equipment = { artillery_equipment > 499 }
+			CHI = { check_variable = { CHI_usa_credit_balance > 49999 } }
+			BRA = { exists = yes }
+		}
+		ai_chance = { factor = 100 }
+		send_equipment = { target = BRA type = artillery_equipment amount = 500 old_prioritised = yes }
+		BRA = { add_to_variable = { BRA_CHI_pending_artillery_equipment = 500 } }
+		CHI = {
+			clr_country_flag = CHI_USA_artillery_request_pending
+			subtract_from_variable = { CHI_usa_credit_balance = 50000 }
+			country_event = { id = her_chi_aid.12 days = 1 }
+		}
+	}
+	option = {
+		name = her_chi_aid.request_refuse
+		ai_chance = { factor = 0 }
+		CHI = {
+			clr_country_flag = CHI_USA_artillery_request_pending
+			country_event = { id = her_chi_aid.13 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = her_chi_aid.10
+	title = her_chi_aid.10.t
+	desc = her_chi_aid.10.d
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+	option = {
+		name = her_chi_aid.request_approve
+		trigger = {
+			has_equipment = { motorized_equipment > 999 }
+			CHI = { check_variable = { CHI_usa_credit_balance > 39999 } }
+			BRA = { exists = yes }
+		}
+		ai_chance = { factor = 100 }
+		send_equipment = { target = BRA type = motorized_equipment amount = 1000 old_prioritised = yes }
+		BRA = { add_to_variable = { BRA_CHI_pending_motorized_equipment = 1000 } }
+		CHI = {
+			clr_country_flag = CHI_USA_truck_request_pending
+			subtract_from_variable = { CHI_usa_credit_balance = 40000 }
+			country_event = { id = her_chi_aid.12 days = 1 }
+		}
+	}
+	option = {
+		name = her_chi_aid.request_refuse
+		ai_chance = { factor = 0 }
+		CHI = {
+			clr_country_flag = CHI_USA_truck_request_pending
+			country_event = { id = her_chi_aid.13 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = her_chi_aid.11
+	title = her_chi_aid.11.t
+	desc = her_chi_aid.11.d
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+	option = {
+		name = her_chi_aid.request_approve
+		trigger = {
+			has_equipment = { small_plane_airframe > 99 }
+			CHI = { check_variable = { CHI_usa_credit_balance > 79999 } }
+			BRA = { exists = yes }
+		}
+		ai_chance = { factor = 100 }
+		send_equipment = { target = BRA type = small_plane_airframe amount = 100 old_prioritised = yes }
+		BRA = { add_to_variable = { BRA_CHI_pending_small_plane_airframe = 100 } }
+		CHI = {
+			clr_country_flag = CHI_USA_aircraft_request_pending
+			subtract_from_variable = { CHI_usa_credit_balance = 80000 }
+			country_event = { id = her_chi_aid.12 days = 1 }
+		}
+	}
+	option = {
+		name = her_chi_aid.request_refuse
+		ai_chance = { factor = 0 }
+		CHI = {
+			clr_country_flag = CHI_USA_aircraft_request_pending
+			country_event = { id = her_chi_aid.13 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = her_chi_aid.12
+	title = her_chi_aid.12.t
+	desc = her_chi_aid.12.d
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+	option = { name = her_chi_aid.12.a }
+}
+
+country_event = {
+	id = her_chi_aid.13
+	title = her_chi_aid.13.t
+	desc = her_chi_aid.13.d
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+	option = { name = her_chi_aid.13.a }
+}

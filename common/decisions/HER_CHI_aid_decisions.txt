@@ -24,6 +24,82 @@ CHI_foreign_aid = {
 		ai_will_do = { factor = 10 }
 	}
 
+	CHI_request_american_rifles = {
+		icon = generic_prepare_civil_war
+		allowed = { original_tag = CHI }
+		visible = { has_country_flag = CHI_usa_tungsten_credit_active }
+		available = {
+			NOT = { has_country_flag = CHI_USA_rifle_request_pending }
+			check_variable = { CHI_usa_credit_balance > 19999 }
+			USA = { exists = yes NOT = { has_war_with = ROOT } }
+			BRA = { exists = yes }
+		}
+		cost = 5
+		days_re_enable = 60
+		complete_effect = {
+			set_country_flag = CHI_USA_rifle_request_pending
+			USA = { country_event = { id = her_chi_aid.8 days = 1 } }
+		}
+		ai_will_do = { factor = 4 }
+	}
+
+	CHI_request_american_artillery = {
+		icon = generic_industry
+		allowed = { original_tag = CHI }
+		visible = { has_country_flag = CHI_usa_tungsten_credit_active }
+		available = {
+			NOT = { has_country_flag = CHI_USA_artillery_request_pending }
+			check_variable = { CHI_usa_credit_balance > 49999 }
+			USA = { exists = yes NOT = { has_war_with = ROOT } }
+			BRA = { exists = yes }
+		}
+		cost = 5
+		days_re_enable = 90
+		complete_effect = {
+			set_country_flag = CHI_USA_artillery_request_pending
+			USA = { country_event = { id = her_chi_aid.9 days = 1 } }
+		}
+		ai_will_do = { factor = 3 }
+	}
+
+	CHI_request_american_trucks = {
+		icon = generic_industry
+		allowed = { original_tag = CHI }
+		visible = { has_country_flag = CHI_usa_tungsten_credit_active }
+		available = {
+			NOT = { has_country_flag = CHI_USA_truck_request_pending }
+			check_variable = { CHI_usa_credit_balance > 39999 }
+			USA = { exists = yes NOT = { has_war_with = ROOT } }
+			BRA = { exists = yes }
+		}
+		cost = 5
+		days_re_enable = 90
+		complete_effect = {
+			set_country_flag = CHI_USA_truck_request_pending
+			USA = { country_event = { id = her_chi_aid.10 days = 1 } }
+		}
+		ai_will_do = { factor = 4 }
+	}
+
+	CHI_request_american_aircraft = {
+		icon = generic_air
+		allowed = { original_tag = CHI }
+		visible = { has_country_flag = CHI_usa_tungsten_credit_active }
+		available = {
+			NOT = { has_country_flag = CHI_USA_aircraft_request_pending }
+			check_variable = { CHI_usa_credit_balance > 79999 }
+			USA = { exists = yes NOT = { has_war_with = ROOT } }
+			BRA = { exists = yes }
+		}
+		cost = 5
+		days_re_enable = 120
+		complete_effect = {
+			set_country_flag = CHI_USA_aircraft_request_pending
+			USA = { country_event = { id = her_chi_aid.11 days = 1 } }
+		}
+		ai_will_do = { factor = 2 }
+	}
+
 	CHI_expand_the_burma_road = {
 		icon = generic_construction
 		allowed = { original_tag = CHI }

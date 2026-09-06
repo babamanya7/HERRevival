@@ -67,17 +67,49 @@ All eight target-major historical plans now use historical-only lifecycle behavi
 
 ## Focus-queue validation — IN PROGRESS
 
-The next pass validates exact IDs, prerequisites and availability against the current HER focus trees instead of trusting legacy comments or old plan order.
+The source-level pass validates exact IDs, prerequisites and availability against the current HER focus trees instead of trusting legacy comments or old plan order.
 
-SOV audit notes already confirmed directly from `common/national_focus/soviet.txt`:
+### SOV — SOURCE AUDIT COMPLETE FIRST PASS
 
-- the industrial/political focus IDs used by the cleaned plan are current HER IDs;
+- industrial/political IDs used by the cleaned plan are current HER IDs;
 - `SOV_superior_war_machines` is date-gated after 1940-06-01 and follows the artillery branch;
-- `SOV_evolution_of_the_air_strategy` and `SOV_lessons_of_war` depend on the Winter War/FIN resolution path, so their historical placement must be treated as availability-gated rather than a guaranteed calendar slot;
-- wartime focuses such as `SOV_emergency_powers`, `SOV_form_the_stavka`, `SOV_move_industry_to_the_urals`, `SOV_tankograd` and `SOV_great_patriotic_war` have their own war/major-enemy gates and therefore belong after the prewar queue rather than being forced by generic research/strategy weights;
-- the Soviet naval branch exists and remains available, but it is intentionally no longer part of the main 1941 historical priority queue because the land-air emergency against Germany is strategically dominant.
+- `SOV_evolution_of_the_air_strategy` and `SOV_lessons_of_war` depend on the Winter War/FIN resolution path;
+- wartime focuses (`SOV_emergency_powers`, `SOV_form_the_stavka`, `SOV_move_industry_to_the_urals`, `SOV_tankograd`, `SOV_great_patriotic_war`) remain availability-gated and sit after the prewar queue;
+- the Soviet naval branch is intentionally not part of the main 1941 emergency priority queue.
 
-The same source-level validation is required for GER/ENG/USA/JAP/ITA/FRA/CHI before Block 7 is considered complete.
+Historical-plan cleanup commit: `27efc0fe1bb544e681dc4358b56ae56b0aa9c9e6`.
+
+### USA — SOURCE AUDIT COMPLETE FIRST PASS
+
+The old queue started at `USA_cash_and_carry_act` even though the actual HER tree requires `USA_start -> USA_renew_the_neutrality_act -> USA_spanish_civil_war_amendment -> USA_cash_and_carry_act`. Those missing prerequisites were added explicitly. `USA_join_the_allies` was also moved behind `USA_the_giant_wakes`, which is its actual tree prerequisite.
+
+Commit: `d8687ffdbe55b9b71da193ecdd527ad89679be36`.
+
+### JAP — SOURCE AUDIT COMPLETE FIRST PASS
+
+The Southern Operation path was reordered around its real HER dependencies. `JAP_non_aggression_pact_with_the_soviet_union` requires both `JAP_strike_south_doctrine` and `JAP_test_the_soviets`; `JAP_preparations_to_secure_the_islands` then requires the Soviet pact; `JAP_strike_on_the_southern_resource_area` follows that preparation focus. Optional army/naval improvement focuses no longer sit between these critical 1941 steps.
+
+Commit: `fb3ffd73d063baae4d4f05b651b08742dc224e9b`.
+
+### GER — SOURCE AUDIT COMPLETE FIRST PASS
+
+The old plan placed `GER_prepare_barbarossa` before the very focuses needed to unlock it in HER. The current tree requires both `GER_an_invincible_army` and `GER_second_vienna_award`; `GER_second_vienna_award` itself requires `GER_align_hungary` and `GER_align_romania`, which sit behind the wartime conquest/economic branch. The queue was therefore rebuilt into rearmament -> revisionism -> Poland/France -> conquest economy/Axis alignment -> Second Vienna -> Barbarossa.
+
+`GER_the_supreme_leader` was moved to the late-war section because its actual HER availability checks German control of Moscow; it must not sit ahead of Barbarossa as if it were a 1940 preparation focus. Late defeat-response focuses (`city_festungs`, `death_before_defeat`, `volkssturm`, `jaegernotprogramm`, `airland_divisions`) were also moved out of the main pre-Barbarossa path.
+
+Commit: `0c21a46d4a9de06dfa516568c34d0ff7d15048e5`.
+
+### ENG — SOURCE AUDIT COMPLETE FIRST PASS
+
+The old British queue had multiple prerequisite inversions: `ENG_prepare_for_the_inevitable` was listed before `ENG_home_defence` even though it requires it; `ENG_womans_land_army` requires `ENG_home_defence`; `ENG_emergency_powers` requires the Women's Land Army and a major war; `ENG_kickstart_the_war_industry` requires Emergency Powers. The Home Defence chain is now ordered correctly.
+
+The RAF/intelligence path also had missing dependencies. `tizard_mission_focus` requires both `ENG_bletchley_park_focus` and `chain_home`, while the historical plan previously contained Tizard/crypto priorities without explicitly prioritizing those prerequisites. Chain Home and Bletchley Park are now part of the queue before the dependent wartime research focuses.
+
+Commit: `c7218d5fdf6f7354915aea431090aa13457fe62c`.
+
+### Remaining
+
+ITA/FRA/CHI still need the same exact source-level prerequisite/availability pass. After that, Block 7 can be considered code-complete pending integrated hands-off validation.
 
 ## Defines policy / naval NAI status
 
@@ -90,11 +122,10 @@ Apply them only by editing `common/defines/00_defines.lua` directly after the sc
 
 ## Next audit order
 
-1. Validate GER/JAP/USA/ENG focus queues against current HER focus trees.
-2. Validate ITA/FRA/CHI focus queues.
-3. Inventory remaining AI-only helper systems before adding new concessions.
-4. `ai_templates` full division-template implementation.
-5. NAI and direct edits to `common/defines/00_defines.lua` only after the scripted layers are stable.
+1. Validate ITA/FRA/CHI focus queues against current HER focus trees.
+2. Inventory remaining AI-only helper systems before adding new concessions.
+3. `ai_templates` full division-template implementation.
+4. NAI and direct edits to `common/defines/00_defines.lua` only after the scripted layers are stable.
 
 ## Hands-off requirement
 

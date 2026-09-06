@@ -1,5 +1,5 @@
-# Nationalist China: cheap, supply-conscious infantry first. The AI should survive
-# the 1937-40 emergency before trying to field equipment-heavy formations.
+# Nationalist China: historically grounded mass infantry. Combat formations target 30 width;
+# support density grows only as the Chinese equipment base can plausibly sustain it.
 
 infantry_CHI = {
 	available_for = {
@@ -30,7 +30,7 @@ infantry_CHI = {
 			}
 
 			regiments = {
-				infantry = 12
+				infantry = 15
 			}
 		}
 
@@ -59,8 +59,9 @@ infantry_CHI = {
 			}
 
 			regiments = {
-				heavy_infantry = 10
-				artillery_brigade = 2
+				heavy_infantry = 11
+				artillery_brigade = 3
+				anti_tank_brigade = 1
 			}
 		}
 
@@ -88,13 +89,15 @@ infantry_CHI = {
 				engineer = 1
 				artillery = 1
 				anti_air_battery = 1
+				anti_tank = 1
 				signal_company = 1
 			}
 
 			regiments = {
-				heavy_infantry = 9
-				artillery_brigade = 2
+				heavy_infantry = 10
+				artillery_brigade = 3
 				anti_tank_brigade = 1
+				anti_air_brigade = 1
 			}
 		}
 	}

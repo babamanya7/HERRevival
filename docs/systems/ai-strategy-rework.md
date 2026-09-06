@@ -122,42 +122,59 @@ Commit: `190e090d28a13b33057e41f2c26c26d4d87d144f`.
 
 `common/ai_strategy/JAP.txt` was rebuilt around a China-war -> Southern Operation -> Pacific offensive -> outer-perimeter defense sequence.
 
-### Force structure
-
-- infantry/artillery remain the land-war core;
-- marines are an important specialist arm but no longer an oversized `25` ratio on top of a 90-infantry baseline;
-- armor/motorization remain limited;
-- fighters, naval bombers and carrier aircraft receive strong pressure;
-- strategic bombing is suppressed;
-- general naval demand favors carriers/screens/convoys, while exact VNR ship construction remains in `naval_production.txt` and the naval bridge.
-
-### China
-
-Before the Pacific war, China receives the majority of Japanese land attention through north/central/coastal priorities and balanced offensive execution. Coastal invasion pressure is retained. Once the USA/ENG war begins, China demand is reduced rather than allowing the continental war to consume the whole army.
-
-### Southern Operation
-
-The old narrow scripted windows were replaced by a broader preparation and first-wave phase. From mid-1941 Japan prepares PHI/MAL/INS; once war begins, all three receive strong but ordered invasion demand with the Philippines highest, then Malaya, then the East Indies. Front pushes after landing use rush execution.
-
-The earlier impossible Southern Expansion date gate was already fixed before this rewrite; the new phase structure no longer depends on a single tiny date window to make the whole Pacific opening work.
-
-### Pacific war
-
-During 1942 Japan strongly prioritizes `pacific_front`, `japan_routs`, Philippines and East Indies while keeping a high naval-invasion focus. The earlier naval bridge adds VNR carrier/screen production pressure while this country file provides the operational demand that should make those fleets leave port and support active objectives.
-
-From 1943 the AI transitions toward an outer-perimeter posture: Japan still contests the Pacific but raises priority for home waters and the Home Islands. A separate late-war emergency buffer keeps a meaningful home reserve instead of spending every division in China/Burma.
-
-Australia/New Zealand and deep India are deliberately downweighted before 1944 to prevent classic AI overextension after the initial conquests.
-
-### Soviet policy
-
-Japan is discouraged from opening a Soviet war while China or the Western Allies remain active threats. The intent is to avoid throwing the Kwantung Army into a second continental war during the decisive Pacific period.
-
-### Cleanup
-
-The old `JAP_naval_role_ratios_historical` and `_late` blocks using obsolete vanilla `naval_*` production roles were removed. The old broad always-on priorities for North/South America and other irrelevant theaters were also removed.
+- infantry/artillery are the land-war core with specialist marines and limited armor;
+- fighter/naval/carrier aviation has high priority;
+- China receives the main land focus before the Pacific war, then demand is reduced;
+- Southern Operation is a broad phase rather than a fragile tiny date window;
+- 1942 is an active Pacific offensive phase;
+- from 1943 Japan increasingly protects the outer perimeter, home waters and Home Islands;
+- Australia/New Zealand and deep India are downweighted before 1944;
+- obsolete Japanese vanilla `naval_*` role blocks were removed.
 
 Commit: `03475ca020fcea9a4d403a0e3620584b88386f4c`.
+
+## Italy — IMPLEMENTED FIRST PASS
+
+`common/ai_strategy/ITA.txt` was rebuilt around the Mediterranean rather than generic Axis participation.
+
+Key changes:
+
+- army remains infantry/artillery-heavy, with limited armor and mobile formations;
+- Regia Aeronautica now has meaningful fighter/interceptor/CAS/naval-bomber demand;
+- exact naval construction is left to VNR `naval_production.txt`, while general demand favors screens, submarines, convoys and a modest surface fleet;
+- 1936-37 industrial buildup and 1938-40 rearmament replace the old mixed static logic;
+- Ethiopia is attacked hard early but the Horn is deliberately deprioritized once the major European war begins;
+- major-war entry is delayed only until roughly the historical June 1940 window instead of using an extreme effectively permanent `dont_join_wars_with = 1000000` style block;
+- France is treated cautiously rather than as the main offensive axis;
+- once at war with Britain, Libya/Egypt/Suez and the Italian homeland become the dominant theaters;
+- Mediterranean transport avoidance is reduced to caution rather than paralysis so Libya can still be supplied;
+- Greece receives a dedicated balanced campaign;
+- Italian divisions are discouraged from wandering to Finland, Poland, Denmark and other irrelevant Axis fronts;
+- a limited Soviet contribution is allowed without letting the Eastern Front consume the army needed for North Africa and homeland defense;
+- homeland reserves now explicitly include north/south Italy and Sicily, with an emergency recall when Allied landings occur;
+- obsolete Italian vanilla `naval_*` role-ratio block was removed.
+
+Commit: `3d805e1da53fe5faabfb246544b68da3380863cf`.
+
+## France — IMPLEMENTED FIRST PASS
+
+`common/ai_strategy/FRA.txt` was rebuilt as a defensive metropolitan power with an artillery-heavy army, serious fighter force and mobile armored reserve.
+
+Key changes:
+
+- the old oversized `mountaineers = 30` ratio was removed;
+- infantry remains the majority while armor, AT/AA, artillery and modest motorization receive explicit demand;
+- the prewar economy now transitions from civilian construction into rearmament, then full wartime expansion against Germany;
+- metropolitan reserves were reduced from overlapping 30% static buffers to a single smaller reserve behind northern France/Paris;
+- the Maginot line is held carefully without concentrating armor or launching wasteful attacks through it;
+- a Dyle/Benelux phase exists while Belgium remains viable, but once the Low Countries begin collapsing the AI pulls demand back into northern France;
+- late defensive behavior increases homeland concentration rather than sending troops to colonies;
+- fighter/interceptor production and strategic air importance are raised for northern/eastern France;
+- Norway, Pacific and distant colonial theaters are downweighted;
+- obsolete French vanilla `naval_*` role-ratio production block was removed, leaving VNR naval production as the authoritative ship layer;
+- Vichy relation helpers were retained in simplified form.
+
+Commit: `3137d7e08a6f2f90c81b4e92549c332211a65111`.
 
 ## Defines policy / naval NAI status
 
@@ -170,13 +187,13 @@ They should be applied only by editing `common/defines/00_defines.lua` directly,
 
 ## Next audit order
 
-1. ITA country strategy cleanup and Mediterranean/North Africa phases.
-2. FRA country strategy cleanup and 1939-40 defense behavior.
-3. Country operation-strategy files and remaining `HER_Microscripts`.
-4. Inventory existing AI-only helper systems before adding new concessions.
-5. `ai_strategy_plans` phase and historical-plan cleanup.
+1. Country operation-strategy files and remaining `HER_Microscripts`.
+2. Inventory existing AI-only helper systems before adding new concessions.
+3. `ai_strategy_plans` phase and historical-plan cleanup.
+4. `ai_templates` full division-template implementation.
+5. NAI and direct edits to `common/defines/00_defines.lua` only after the scripted layers are stable.
 
-CHI/SOV/GER/ENG/USA/JAP now have first-pass country strategies. Revisit them after division-template/strategy-plan integration and hands-off observation.
+All eight target majors now have first-pass country strategy rewrites. Revisit them after division-template/strategy-plan integration and hands-off observation.
 
 ## Hands-off requirement
 

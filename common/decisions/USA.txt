@@ -1,9 +1,9 @@
 
 foreign_support = {
 	
-	support_china = {
+	HER_legacy_support_china = {
 		allowed = {
-			original_tag = USA
+			always = no
 		}
 
 		available = {
@@ -18,12 +18,12 @@ foreign_support = {
 		}
 	}
 	
-	USA_support_the_anti_fascist_war = {
+	HER_legacy_USA_support_the_anti_fascist_war = {
 
 		icon = generic_industry
 
 		allowed = {
-			original_tag = USA
+			always = no
 		}
 
 		available = {
@@ -90,12 +90,12 @@ foreign_support = {
 		}
 	}
 
-	USA_guns_for_the_anti_fascist_war = {
+	HER_legacy_USA_guns_for_the_anti_fascist_war = {
 
 		icon = generic_prepare_civil_war
 
 		allowed = {
-			original_tag = USA
+			always = no
 		}
 
 		available = {

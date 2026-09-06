@@ -5,10 +5,30 @@ CHI_foreign_aid = {
 		OR = {
 			has_country_flag = CHI_usa_tungsten_credit_requested
 			has_country_flag = CHI_usa_tungsten_credit_active
+			has_completed_focus = CHI_burma_road
+			has_completed_focus = CHI_the_hump
+			has_completed_focus = CHI_ledo_road
 			AND = {
 				date > 1940.1.1
 				has_war_with = JAP
 			}
+		}
+	}
+	priority = 4
+}
+
+USA_CHI_foreign_aid = {
+	icon = generic_industry
+	allowed = {
+		OR = {
+			original_tag = USA
+			original_tag = ENG
+		}
+	}
+	visible = {
+		CHI = {
+			exists = yes
+			has_war_with = JAP
 		}
 	}
 	priority = 4

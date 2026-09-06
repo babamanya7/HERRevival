@@ -8,14 +8,12 @@ CHI_foreign_aid = {
 			NOT = { has_country_flag = CHI_usa_tungsten_credit_requested }
 			NOT = { has_country_flag = CHI_usa_tungsten_credit_active }
 			NOT = { has_country_flag = CHI_usa_tungsten_credit_refused }
+			NOT = { has_country_flag = CHI_usa_tungsten_debt_repaid }
 		}
 		available = {
-			USA = {
-				exists = yes
-				NOT = { has_war_with = ROOT }
-			}
+			USA = { exists = yes NOT = { has_war_with = ROOT } }
 			BRA = { exists = yes }
-			HER_CHI_any_western_route_open = yes
+			HER_CHI_any_western_export_route_open = yes
 		}
 		cost = 25
 		fire_only_once = yes
@@ -26,36 +24,62 @@ CHI_foreign_aid = {
 		ai_will_do = { factor = 10 }
 	}
 
-	CHI_purchase_american_rifles = {
-		icon = generic_industry
+	CHI_expand_the_burma_road = {
+		icon = generic_construction
 		allowed = { original_tag = CHI }
 		visible = {
-			has_country_flag = CHI_usa_tungsten_credit_active
+			has_completed_focus = CHI_burma_road
+			check_variable = { CHI_burma_route_upgrade < 2500 }
 		}
-		available = {
-			check_variable = { CHI_usa_credit_balance > 19999 }
-			HER_CHI_any_western_route_open = yes
-			USA = {
-				exists = yes
-				has_equipment = { infantry_equipment > 4999 }
-			}
-			BRA = { exists = yes }
+		available = { HER_CHI_burma_route_open = yes }
+		cost = 25
+		days_remove = 120
+		days_re_enable = 240
+		modifier = { civilian_factory_use = 5 }
+		remove_effect = {
+			add_to_variable = { CHI_burma_route_upgrade = 500 }
+			288 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			640 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			325 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			747 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
 		}
-		cost = 0
-		days_re_enable = 30
-		complete_effect = {
-			subtract_from_variable = { CHI_usa_credit_balance = 20000 }
-			USA = {
-				send_equipment = {
-					target = BRA
-					type = infantry_equipment
-					amount = 5000
-					old_prioritised = yes
-				}
-			}
-			BRA = { add_to_variable = { BRA_CHI_pending_infantry_equipment = 5000 } }
+		ai_will_do = { factor = 2 }
+	}
+
+	CHI_expand_the_airlift = {
+		icon = generic_construction
+		allowed = { original_tag = CHI }
+		visible = {
+			has_completed_focus = CHI_the_hump
+			check_variable = { CHI_hump_route_upgrade < 1500 }
 		}
-		ai_will_do = { factor = 1 }
+		available = { HER_CHI_hump_route_open = yes }
+		cost = 25
+		days_remove = 120
+		days_re_enable = 240
+		modifier = { civilian_factory_use = 5 }
+		remove_effect = {
+			add_to_variable = { CHI_hump_route_upgrade = 500 }
+			434 = { add_building_construction = { type = air_base level = 1 instant_build = yes } }
+			601 = { add_building_construction = { type = air_base level = 1 instant_build = yes } }
+		}
+		ai_will_do = { factor = 2 }
+	}
+
+	CHI_expand_the_ledo_road = {
+		icon = generic_construction
+		allowed = { original_tag = CHI }
+		visible = {
+			has_completed_focus = CHI_ledo_road
+			check_variable = { CHI_ledo_route_upgrade < 2500 }
+		}
+		available = { HER_CHI_ledo_route_open = yes }
+		cost = 25
+		days_remove = 120
+		days_re_enable = 240
+		modifier = { civilian_factory_use = 5 }
+		remove_effect = { add_to_variable = { CHI_ledo_route_upgrade = 500 } }
+		ai_will_do = { factor = 2 }
 	}
 
 	CHI_prioritize_military_cargo = {
@@ -95,5 +119,178 @@ CHI_foreign_aid = {
 			clr_country_flag = CHI_transport_priority_balanced
 			set_country_flag = CHI_transport_priority_credit
 		}
+	}
+}
+
+USA_CHI_foreign_aid = {
+	USA_offer_china_rifle_contract = {
+		icon = generic_prepare_civil_war
+		allowed = { original_tag = USA }
+		visible = { CHI = { has_country_flag = CHI_usa_tungsten_credit_active } }
+		available = {
+			NOT = { has_country_flag = USA_CHI_rifle_offer_pending }
+			has_equipment = { infantry_equipment > 4999 }
+			CHI = { check_variable = { CHI_usa_credit_balance > 19999 } }
+		}
+		cost = 10
+		days_re_enable = 60
+		complete_effect = {
+			set_country_flag = USA_CHI_rifle_offer_pending
+			CHI = { country_event = { id = her_chi_aid.4 days = 1 } }
+		}
+		ai_will_do = { factor = 4 }
+	}
+
+	USA_offer_china_artillery_contract = {
+		icon = generic_industry
+		allowed = { original_tag = USA }
+		visible = { CHI = { has_country_flag = CHI_usa_tungsten_credit_active } }
+		available = {
+			NOT = { has_country_flag = USA_CHI_artillery_offer_pending }
+			has_equipment = { artillery_equipment > 499 }
+			CHI = { check_variable = { CHI_usa_credit_balance > 49999 } }
+		}
+		cost = 10
+		days_re_enable = 90
+		complete_effect = {
+			set_country_flag = USA_CHI_artillery_offer_pending
+			CHI = { country_event = { id = her_chi_aid.5 days = 1 } }
+		}
+		ai_will_do = { factor = 3 }
+	}
+
+	USA_offer_china_truck_contract = {
+		icon = generic_industry
+		allowed = { original_tag = USA }
+		visible = { CHI = { has_country_flag = CHI_usa_tungsten_credit_active } }
+		available = {
+			NOT = { has_country_flag = USA_CHI_truck_offer_pending }
+			has_equipment = { motorized_equipment > 999 }
+			CHI = { check_variable = { CHI_usa_credit_balance > 39999 } }
+		}
+		cost = 10
+		days_re_enable = 90
+		complete_effect = {
+			set_country_flag = USA_CHI_truck_offer_pending
+			CHI = { country_event = { id = her_chi_aid.6 days = 1 } }
+		}
+		ai_will_do = { factor = 4 }
+	}
+
+	USA_offer_china_fighter_contract = {
+		icon = generic_air
+		allowed = { original_tag = USA }
+		visible = { CHI = { has_country_flag = CHI_usa_tungsten_credit_active } }
+		available = {
+			NOT = { has_country_flag = USA_CHI_fighter_offer_pending }
+			has_equipment = { small_plane_airframe > 99 }
+			CHI = { check_variable = { CHI_usa_credit_balance > 79999 } }
+		}
+		cost = 10
+		days_re_enable = 120
+		complete_effect = {
+			set_country_flag = USA_CHI_fighter_offer_pending
+			CHI = { country_event = { id = her_chi_aid.7 days = 1 } }
+		}
+		ai_will_do = { factor = 2 }
+	}
+
+	USA_emergency_arms_for_china = {
+		icon = generic_prepare_civil_war
+		allowed = { original_tag = USA }
+		visible = {
+			has_completed_focus = USA_lend_lease_act
+			CHI = { has_war_with = JAP }
+			NOT = { has_country_flag = USA_CHI_emergency_arms_sent }
+		}
+		available = {
+			has_equipment = { infantry_equipment > 4999 }
+			has_equipment = { artillery_equipment > 299 }
+			has_equipment = { motorized_equipment > 599 }
+			BRA = { exists = yes }
+		}
+		cost = 25
+		complete_effect = {
+			set_country_flag = USA_CHI_emergency_arms_sent
+			send_equipment = { target = BRA type = infantry_equipment amount = 5000 old_prioritised = yes }
+			send_equipment = { target = BRA type = artillery_equipment amount = 300 old_prioritised = yes }
+			send_equipment = { target = BRA type = motorized_equipment amount = 600 old_prioritised = yes }
+			BRA = {
+				add_to_variable = { BRA_CHI_pending_infantry_equipment = 5000 }
+				add_to_variable = { BRA_CHI_pending_artillery_equipment = 300 }
+				add_to_variable = { BRA_CHI_pending_motorized_equipment = 600 }
+			}
+			add_war_support = 0.01
+		}
+		ai_will_do = { factor = 10 }
+	}
+
+	ENG_emergency_arms_for_china = {
+		icon = generic_prepare_civil_war
+		allowed = { original_tag = ENG }
+		visible = {
+			has_completed_focus = uk_burma_focus
+			CHI = { has_war_with = JAP }
+			NOT = { has_country_flag = ENG_CHI_emergency_arms_sent }
+		}
+		available = {
+			has_equipment = { infantry_equipment > 2999 }
+			has_equipment = { artillery_equipment > 199 }
+			has_equipment = { motorized_equipment > 399 }
+			BRA = { exists = yes }
+		}
+		cost = 25
+		complete_effect = {
+			set_country_flag = ENG_CHI_emergency_arms_sent
+			send_equipment = { target = BRA type = infantry_equipment amount = 3000 old_prioritised = yes }
+			send_equipment = { target = BRA type = artillery_equipment amount = 200 old_prioritised = yes }
+			send_equipment = { target = BRA type = motorized_equipment amount = 400 old_prioritised = yes }
+			BRA = {
+				add_to_variable = { BRA_CHI_pending_infantry_equipment = 3000 }
+				add_to_variable = { BRA_CHI_pending_artillery_equipment = 200 }
+				add_to_variable = { BRA_CHI_pending_motorized_equipment = 400 }
+			}
+		}
+		ai_will_do = { factor = 10 }
+	}
+
+	USA_finance_burma_road_expansion = {
+		icon = generic_construction
+		allowed = { OR = { original_tag = USA original_tag = ENG } }
+		visible = {
+			CHI = {
+				has_completed_focus = CHI_burma_road
+				check_variable = { CHI_burma_route_upgrade < 2500 }
+			}
+		}
+		available = { CHI = { HER_CHI_burma_route_open = yes } }
+		cost = 25
+		days_remove = 120
+		days_re_enable = 240
+		modifier = { civilian_factory_use = 5 }
+		remove_effect = {
+			CHI = { add_to_variable = { CHI_burma_route_upgrade = 500 } }
+			288 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			640 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+		ai_will_do = { factor = 3 }
+	}
+
+	USA_expand_hump_airlift = {
+		icon = generic_air
+		allowed = { OR = { original_tag = USA original_tag = ENG } }
+		visible = {
+			CHI = {
+				has_completed_focus = CHI_the_hump
+				check_variable = { CHI_hump_route_upgrade < 1500 }
+			}
+		}
+		available = { CHI = { HER_CHI_hump_route_open = yes } }
+		cost = 25
+		days_remove = 120
+		days_re_enable = 240
+		modifier = { civilian_factory_use = 5 }
+		remove_effect = { CHI = { add_to_variable = { CHI_hump_route_upgrade = 500 } } }
+		ai_will_do = { factor = 3 }
 	}
 }

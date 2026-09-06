@@ -2461,8 +2461,6 @@ focus_tree = {
 			601 = { #Xikang
 				set_state_flag = CHI_needed_for_the_hump
 			}	
-			set_variable = { CHI_the_hump_current_level = 1 }
-			add_offsite_building = { type = arms_factory level = 2 }
 		}
 	}
 	focus = {
@@ -2515,8 +2513,6 @@ focus_tree = {
 			325 = { #Yunnan
 				set_state_flag = CHI_needed_for_hanoi_route
 			}	
-			set_variable = { CHI_hanoi_route_current_level = 3 }
-			add_offsite_building = { type = arms_factory level = 2 }
 		}
 	}
 	focus = {
@@ -2743,8 +2739,6 @@ focus_tree = {
 			640 = { #Mandalay
 				set_state_flag = CHI_needed_for_burma_road
 			}
-			set_variable = { CHI_burma_road = 1 }
-			add_offsite_building = { type = arms_factory level = 4 }
 		}
 	}
 
@@ -2772,7 +2766,7 @@ focus_tree = {
 					}
 				}
 			}
-			434 = { #Assam
+			432 = { #Assam
 				CONTROLLER = {
 					NOT = { has_war_with = ROOT }
 					OR = {
@@ -2801,7 +2795,7 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
-			434 = { #Assam
+			432 = { #Assam
 				set_state_flag = CHI_needed_for_ledo_road
 			}
 			747 = { #Yunnan
@@ -2810,8 +2804,6 @@ focus_tree = {
 			640 = { #Mandalay
 				set_state_flag = CHI_needed_for_ledo_road
 			}
-			set_variable = { CHI_ledo_road = 1 }
-			add_offsite_building = { type = arms_factory level = 4 }
 		}
 	}
 

@@ -2,16 +2,19 @@ on_actions = {
 	on_startup = {
 		effect = {
 			CHI = { HER_CHI_aid_initialize = yes }
-			BRA = { set_variable = { BRA_CHI_pending_infantry_equipment = 0 } }
+			BRA = {
+				set_variable = { BRA_CHI_pending_infantry_equipment = 0 }
+				set_variable = { BRA_CHI_pending_artillery_equipment = 0 }
+				set_variable = { BRA_CHI_pending_motorized_equipment = 0 }
+				set_variable = { BRA_CHI_pending_small_plane_airframe = 0 }
+			}
 		}
 	}
 
 	on_daily_CHI = {
 		effect = {
 			if = {
-				limit = {
-					has_country_flag = CHI_usa_tungsten_credit_active
-				}
+				limit = { has_country_flag = CHI_foreign_aid_initialized }
 				HER_CHI_foreign_aid_daily = yes
 			}
 		}

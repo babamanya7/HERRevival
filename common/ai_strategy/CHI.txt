@@ -245,8 +245,8 @@ CHI_japanese_war_front = {
 CHI_prewar_military_industry = {
 	allowed = { original_tag = CHI }
 	enable = {
-		has_war_with = JAP
 		NOT = { has_war = yes }
+		NOT = { has_war_with = JAP }
 	}
 	abort_when_not_enabled = yes
 

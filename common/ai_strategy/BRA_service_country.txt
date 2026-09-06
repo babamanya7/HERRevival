@@ -1,0 +1,11 @@
+BRA_service_country_safeguards = {
+	allowed = { original_tag = BRA }
+	enable = { tag = BRA }
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = building_target
+		id = air_base
+		value = -10000
+	}
+}

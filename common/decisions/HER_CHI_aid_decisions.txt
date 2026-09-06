@@ -1,0 +1,99 @@
+CHI_foreign_aid = {
+	CHI_request_american_tungsten_credit = {
+		icon = generic_industry
+		allowed = { original_tag = CHI }
+		visible = {
+			date > 1940.1.1
+			has_war_with = JAP
+			NOT = { has_country_flag = CHI_usa_tungsten_credit_requested }
+			NOT = { has_country_flag = CHI_usa_tungsten_credit_active }
+			NOT = { has_country_flag = CHI_usa_tungsten_credit_refused }
+		}
+		available = {
+			USA = {
+				exists = yes
+				NOT = { has_war_with = ROOT }
+			}
+			BRA = { exists = yes }
+			HER_CHI_any_western_route_open = yes
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = CHI_usa_tungsten_credit_requested
+			USA = { country_event = { id = her_chi_aid.1 days = 1 } }
+		}
+		ai_will_do = { factor = 10 }
+	}
+
+	CHI_purchase_american_rifles = {
+		icon = generic_industry
+		allowed = { original_tag = CHI }
+		visible = {
+			has_country_flag = CHI_usa_tungsten_credit_active
+		}
+		available = {
+			check_variable = { CHI_usa_credit_balance > 19999 }
+			HER_CHI_any_western_route_open = yes
+			USA = {
+				exists = yes
+				has_equipment = { infantry_equipment > 4999 }
+			}
+			BRA = { exists = yes }
+		}
+		cost = 0
+		days_re_enable = 30
+		complete_effect = {
+			subtract_from_variable = { CHI_usa_credit_balance = 20000 }
+			USA = {
+				send_equipment = {
+					target = BRA
+					type = infantry_equipment
+					amount = 5000
+					old_prioritised = yes
+				}
+			}
+			BRA = { add_to_variable = { BRA_CHI_pending_infantry_equipment = 5000 } }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	CHI_prioritize_military_cargo = {
+		icon = generic_industry
+		allowed = { original_tag = CHI }
+		visible = { has_country_flag = CHI_usa_tungsten_credit_active }
+		available = { NOT = { has_country_flag = CHI_transport_priority_military } }
+		cost = 10
+		complete_effect = {
+			clr_country_flag = CHI_transport_priority_balanced
+			clr_country_flag = CHI_transport_priority_credit
+			set_country_flag = CHI_transport_priority_military
+		}
+	}
+
+	CHI_balance_foreign_cargo = {
+		icon = generic_industry
+		allowed = { original_tag = CHI }
+		visible = { has_country_flag = CHI_usa_tungsten_credit_active }
+		available = { NOT = { has_country_flag = CHI_transport_priority_balanced } }
+		cost = 10
+		complete_effect = {
+			clr_country_flag = CHI_transport_priority_military
+			clr_country_flag = CHI_transport_priority_credit
+			set_country_flag = CHI_transport_priority_balanced
+		}
+	}
+
+	CHI_prioritize_credit_repayment = {
+		icon = generic_industry
+		allowed = { original_tag = CHI }
+		visible = { has_country_flag = CHI_usa_tungsten_credit_active }
+		available = { NOT = { has_country_flag = CHI_transport_priority_credit } }
+		cost = 10
+		complete_effect = {
+			clr_country_flag = CHI_transport_priority_military
+			clr_country_flag = CHI_transport_priority_balanced
+			set_country_flag = CHI_transport_priority_credit
+		}
+	}
+}

@@ -280,7 +280,7 @@ Before altering this subsystem, inspect the current implementation rather than r
 
 ## 8. China aid / credit / logistics system
 
-Status: **DESIGN IN PROGRESS**
+Status: **PROTOTYPE IMPLEMENTED — IN-GAME VALIDATION REQUIRED**
 
 ### 8.1 Current architectural decisions — CONFIRMED-HER DESIGN
 
@@ -318,7 +318,42 @@ China is intended to be an exception to ordinary player-only gating where needed
 
 ### 8.3 Experimental / not yet syntax-verified
 
-The exact HOI4 implementation of staged `send_equipment`, throughput-limited forwarding, service-country restrictions, and market exclusion is **EXPERIMENTAL** until checked against actual working effects/triggers in the current game/mod version.
+The first isolated implementation lives on branch `china-foreign-aid`.
+
+Prototype files:
+
+- `common/decisions/HER_CHI_aid_decisions.txt`
+- `common/decisions/categories/HER_CHI_aid_decision_categories.txt`
+- `common/on_actions/HER_CHI_aid_on_actions.txt`
+- `common/scripted_effects/HER_CHI_aid_scripted_effects.txt`
+- `common/scripted_triggers/HER_CHI_aid_scripted_triggers.txt`
+- `common/ai_strategy/BRA_service_country.txt`
+- `events/HER_CHI_aid_events.txt`
+- `localisation/replace/{russian,english}/HER_CHI_aid_l_*.yml`
+
+Current prototype behavior:
+
+- China can request a US commodity credit after `1940.1.1` while at war with Japan.
+- US acceptance grants `500000` credit and creates `1000000` tungsten debt.
+- A first test purchase transfers `5000` infantry equipment from USA to the `BRA` staging stockpile.
+- `BRA` forwards a fixed packet of `1000` infantry equipment per daily tick when Western import capacity permits it.
+- China exports a fixed packet of `1000` stored tungsten to USA per daily tick when Western export capacity, Chinese stock, debt, and free US tungsten-storage capacity all permit it.
+- Current route capacity values are experimental: sea route `5000`, Hanoi route `2500`, Burma route `2500`.
+- Cargo priority splits are military `80/20`, balanced `60/40`, and debt service `40/60` for imports/exports.
+
+Route state IDs used by the prototype:
+
+- Chinese sea ports: `592` Guangzhou, `593` Guangdong, `595` Fujian, `613` Shanghai.
+- Hanoi route: `325` Yunnan and `671` Tonkin.
+- Burma Road: `288` Western Burma, `325` Yunnan, `640` Shan State, `747` Dali.
+
+Repository verification established that HER already uses the following fixed-amount pattern:
+
+`send_equipment = { target = TAG type = infantry_equipment amount = 500 old_prioritised = yes }`
+
+This syntax is therefore **CONFIRMED-HER** for fixed amounts and equipment archetypes. Variable `amount` remains unverified; the prototype deliberately uses fixed packets.
+
+The exact runtime behavior of staged USA → `BRA` → China transfers, route triggers, cross-country variable display, and the interaction between imported tungsten and warehouse caps remains **EXPERIMENTAL** until checked in game and in `error.log`.
 
 Do not generate final production code for these mechanisms solely from remembered syntax. Inspect current HER/vanilla examples first.
 
@@ -346,9 +381,9 @@ Rules:
 
 Current items:
 
-- Exact safest pattern for using `send_equipment` as a staged USA → service country → China pipeline still requires verification in the current HOI4 version.
-- Exact means of making the service country unable to deploy divisions, aircraft, or participate in the market must be established from working game definitions rather than guessed.
-- Exact route-throughput accounting for China aid remains a design task.
+- Fixed-amount staged `send_equipment` syntax is repository-verified, but the complete two-stage pipeline still requires an in-game stockpile test.
+- `BRA` already has market access disabled, division templates locked, zero research slots, zero convoys, no starting airbase in state `500`, and no military factories there. A dedicated AI strategy now assigns `-10000` air-base building target. Confirm in game that it never creates an airbase or consumes staged equipment.
+- Route throughput currently uses fixed daily packets. Dynamic packet sizes and equipment-specific cargo weights remain future work after the first vertical test passes.
 
 ---
 
@@ -429,3 +464,10 @@ Split only when the main file becomes cumbersome; avoid fragmentation for its ow
 - Added warehouse-system lessons.
 - Added initial China aid architecture and clearly marked unverified implementation details.
 - Established proactive maintenance policy for future HER sessions.
+
+### 2026-09-06
+
+- Created the `china-foreign-aid` feature branch and implemented the first isolated China-aid prototype.
+- Recorded verified fixed-amount `send_equipment` syntax already used by HER.
+- Added the initial US tungsten credit, Western staging through `BRA`, route-capacity calculation, transport priorities, one rifle contract, and fixed-packet tungsten repayment.
+- Added China and USA exceptions to the tungsten warehouse player-only gate so the credit pipeline can operate when either tag is AI-controlled.

@@ -520,7 +520,11 @@ on_actions = {
 		effect = {
 			every_country = {
 				limit = {
-					is_ai = no
+					OR = {
+						is_ai = no
+						tag = CHI
+						tag = USA
+					}
 				}
 				set_variable = { num_of_tungsten_storage = 0 }
 				
@@ -556,7 +560,11 @@ on_actions = {
 		effect = {
 			if = {
 				limit = {
-					is_ai = no
+					OR = {
+						is_ai = no
+						tag = CHI
+						tag = USA
+					}
 				}
 				set_variable = { num_of_tungsten_storage = 0 }
 				every_state = {
@@ -584,7 +592,13 @@ on_actions = {
 			# storage_use is the raw dynamic-modifier value;
 			# storage_withdrawal is the real amount delivered and removed from stock.
 			if = {
-				limit = { is_ai = no }
+				limit = {
+					OR = {
+						is_ai = no
+						tag = CHI
+						tag = USA
+					}
+				}
 				set_variable = { res_eff_size_modifier = 1 }
 				add_to_variable = { res_eff_size_modifier = modifier@local_resources_factor }
 				clamp_variable = {

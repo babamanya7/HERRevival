@@ -1,0 +1,53 @@
+HER_CHI_western_sea_route_open = {
+	original_tag = CHI
+	OR = {
+		592 = { # Guangzhou
+			CONTROLLER = { NOT = { has_war_with = ROOT } }
+		}
+		593 = { # Guangdong
+			CONTROLLER = { NOT = { has_war_with = ROOT } }
+		}
+		595 = { # Fujian
+			CONTROLLER = { NOT = { has_war_with = ROOT } }
+		}
+		613 = { # Shanghai
+			CONTROLLER = { NOT = { has_war_with = ROOT } }
+		}
+	}
+}
+
+HER_CHI_hanoi_route_open = {
+	original_tag = CHI
+	check_variable = { CHI_hanoi_route_current_level > 0 }
+	325 = { # Yunnan
+		CONTROLLER = { NOT = { has_war_with = ROOT } }
+	}
+	671 = { # Tonkin
+		CONTROLLER = { NOT = { has_war_with = ROOT } }
+	}
+}
+
+HER_CHI_burma_route_open = {
+	original_tag = CHI
+	has_completed_focus = CHI_burma_road
+	288 = { # Western Burma
+		CONTROLLER = { NOT = { has_war_with = ROOT } }
+	}
+	325 = { # Yunnan
+		CONTROLLER = { NOT = { has_war_with = ROOT } }
+	}
+	640 = { # Shan State
+		CONTROLLER = { NOT = { has_war_with = ROOT } }
+	}
+	747 = { # Dali
+		CONTROLLER = { NOT = { has_war_with = ROOT } }
+	}
+}
+
+HER_CHI_any_western_route_open = {
+	OR = {
+		HER_CHI_western_sea_route_open = yes
+		HER_CHI_hanoi_route_open = yes
+		HER_CHI_burma_route_open = yes
+	}
+}

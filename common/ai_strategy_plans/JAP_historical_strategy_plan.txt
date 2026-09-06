@@ -8,11 +8,7 @@ JAP_historical_plan = {
 	enable = {
 		is_historical_focus_on = yes
 	}
-	abort = {
-		MAN = {
-			has_completed_focus = MAN_assertiveness
-		}
-	}
+	abort_when_not_enabled = yes
 
 	ai_national_focuses = {
 		JAP_purge_the_kodoha_faction
@@ -52,21 +48,19 @@ JAP_historical_plan = {
 		JAP_exploit_the_southern_resource_area
 	}
 
+	# Historical overlay only; detailed land/naval/air research is handled in ai_focuses.
 	research = {
-		air_equipment = 70
+		air_equipment = 20
+		naval_equipment = 18
+		infantry_weapons = 8
+		artillery = 6
+		industry = 8
 	}
 
 	ideas = {
-
 	}
 
-	# Keep small, as it is used as a factor for some things (such as research needs)
-	# Recommended around 1.0. Useful for relation between plans
 	weight = {
 		factor = 1.0
-		modifier = {
-			factor = 1.0
-		}
 	}
-
 }

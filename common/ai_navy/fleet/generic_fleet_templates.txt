@@ -1,23 +1,22 @@
 generic_dominance_fleet_1 = {
 	required_taskforces = {
 		StrikeForce_1 = 1
-		PatrolDominanceForce_CA_1 = 2
-		PatrolDominanceForce_BC_1 = 1
 		PatrolReconForce_1 = 2
-	}	
+	}
 	optional_taskforces = {
 		StrikeForce_1 = 1
-		PatrolReconForce_1 = 1
-		PatrolDominanceForce_CA_1 = 1
+		PatrolReconForce_1 = 3
+		PatrolDominanceForce_CA_1 = 3
+		PatrolDominanceForce_BC_1 = 1
 	}
 }
 
 generic_raiding_fleet_2 = {
 	required_taskforces = {
 		ConvoyRaiding_1 = 2
-	}	
+	}
 	optional_taskforces = {
-		ConvoyRaiding_1 = 2
+		ConvoyRaiding_1 = 6
 		ConvoySurfaceRaiding_1 = 1
 	}
 }
@@ -27,12 +26,15 @@ generic_escort_fleet_3 = {
 		ConvoyEscort_1 = 2
 	}
 	optional_taskforces = {
-		ConvoyEscort_1 = 1
+		ConvoyEscort_1 = 6
 	}
 }
 
 generic_minelaying_fleet_4 = {
 	required_taskforces = {
+		MineLaying_1 = 1
+	}
+	optional_taskforces = {
 		MineLaying_1 = 1
 	}
 }

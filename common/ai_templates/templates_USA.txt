@@ -1,6 +1,5 @@
-# United States: historical 30-width combat formations with dense divisional support.
-# The 1936 HER Infantry Division is already an excellent baseline: 12 heavy infantry + 6 artillery.
-# US industry should field fewer incomplete formations rather than dilute these templates.
+# United States: all frontline combat formations are normalized to exactly 30 combat width.
+# Line composition is kept separate from regimental and divisional support concepts.
 
 infantry_USA = {
 	available_for = { USA }
@@ -23,8 +22,11 @@ infantry_USA = {
 				anti_air_battery = 1
 			}
 			regiments = {
-				heavy_infantry = 12
-				artillery_brigade = 6
+				heavy_infantry = 9
+				artillery_brigade = 3
+				heavy_artillery_brigade = 1
+				anti_tank_brigade = 1
+				anti_air_brigade = 1
 			}
 		}
 
@@ -38,11 +40,10 @@ infantry_USA = {
 			has_tech = support_weapons
 			has_tech = interwar_antitank
 			has_tech = interwar_antiair
-		}
+	}
 		upgrade_prio = { factor = 170 }
 		reinforce_prio = 3
 
-		# Keep the historical 30-width line and maximize divisional services/fire support.
 		target_template = {
 			support = {
 				engineer = 1
@@ -55,8 +56,11 @@ infantry_USA = {
 				anti_air_battery = 1
 			}
 			regiments = {
-				heavy_infantry = 12
-				artillery_brigade = 6
+				heavy_infantry = 9
+				artillery_brigade = 3
+				heavy_artillery_brigade = 1
+				anti_tank_brigade = 1
+				anti_air_brigade = 1
 			}
 		}
 	}
@@ -77,7 +81,6 @@ armor_USA = {
 			}
 		}
 		reinforce_prio = 3
-
 		target_template = {
 			support = {
 				assault_engineer = 1
@@ -94,7 +97,6 @@ armor_USA = {
 				mot_artillery_brigade = 3
 			}
 		}
-
 		replace_at_match = 0.65
 		replace_with = USA_medium_armor
 		target_min_match = 0.55
@@ -104,13 +106,9 @@ armor_USA = {
 		enable = { has_tech = basic_medium_tank_chassis }
 		upgrade_prio = {
 			factor = 150
-			modifier = {
-				factor = 2
-				date > 1941.1.1
-			}
+			modifier = { factor = 2 date > 1941.1.1 }
 		}
 		reinforce_prio = 3
-
 		target_template = {
 			support = {
 				assault_engineer = 1
@@ -131,7 +129,6 @@ armor_USA = {
 				mot_anti_air_brigade = 1
 			}
 		}
-
 		replace_at_match = 0.75
 		replace_with = USA_late_armor
 		target_min_match = 0.6
@@ -144,7 +141,6 @@ armor_USA = {
 		}
 		upgrade_prio = { factor = 190 }
 		reinforce_prio = 3
-
 		target_template = {
 			support = {
 				assault_engineer = 1
@@ -173,11 +169,9 @@ motorized_USA = {
 	role = motorized
 	front_role_override = offence
 	upgrade_prio = { factor = 105 }
-
 	USA_motorized = {
 		upgrade_prio = { factor = 105 }
 		reinforce_prio = 3
-
 		target_template = {
 			support = {
 				engineer = 1
@@ -195,6 +189,7 @@ motorized_USA = {
 				mot_artillery_brigade = 3
 				motorized_heavy_artillery_brigade = 1
 				mot_anti_tank_brigade = 1
+				mot_anti_air_brigade = 1
 			}
 		}
 	}
@@ -206,18 +201,12 @@ mechanized_assault_USA = {
 	front_role_override = offence
 	upgrade_prio = {
 		factor = 0
-		modifier = {
-			factor = 145
-			has_tech = mechanised_infantry
-			date > 1941.1.1
-		}
+		modifier = { factor = 145 has_tech = mechanised_infantry date > 1941.1.1 }
 	}
-
 	USA_mechanized = {
 		enable = { has_tech = mechanised_infantry }
 		upgrade_prio = { factor = 145 }
 		reinforce_prio = 3
-
 		target_template = {
 			support = {
 				assault_engineer = 1
@@ -246,18 +235,12 @@ marines_USA = {
 	role = marines
 	upgrade_prio = {
 		factor = 0
-		modifier = {
-			factor = 180
-			has_tech = marines
-		}
+		modifier = { factor = 180 has_tech = marines }
 	}
-
 	USA_marine_division = {
 		enable = { has_tech = marines }
 		upgrade_prio = { factor = 180 }
 		reinforce_prio = 3
-
-		# Full-size amphibious division; no weak brigade template for Pacific operations.
 		target_template = {
 			support = {
 				assault_engineer = 1
@@ -270,8 +253,11 @@ marines_USA = {
 				anti_air_battery = 1
 			}
 			regiments = {
-				marine = 12
-				artillery_brigade = 6
+				marine = 9
+				artillery_brigade = 3
+				heavy_artillery_brigade = 1
+				anti_tank_brigade = 1
+				anti_air_brigade = 1
 			}
 		}
 	}
@@ -282,17 +268,12 @@ paratroopers_USA = {
 	role = paratroopers
 	upgrade_prio = {
 		factor = 0
-		modifier = {
-			factor = 85
-			has_tech = paratroopers
-		}
+		modifier = { factor = 85 has_tech = paratroopers }
 	}
-
 	USA_airborne = {
 		enable = { has_tech = paratroopers }
 		upgrade_prio = { factor = 85 }
 		reinforce_prio = 3
-
 		target_template = {
 			support = {
 				assault_engineer = 1
@@ -304,9 +285,7 @@ paratroopers_USA = {
 				anti_tank = 1
 				anti_air = 1
 			}
-			regiments = {
-				paratrooper = 15
-			}
+			regiments = { paratrooper = 15 }
 		}
 	}
 }
@@ -315,19 +294,13 @@ garrison_USA = {
 	available_for = { USA }
 	role = garrison
 	upgrade_prio = { factor = 100 }
-
 	USA_garrison = {
 		upgrade_prio = { factor = 100 }
 		reinforce_prio = 0
 		custom_icon = 13
-
 		target_template = {
-			support = {
-				military_police = 1
-			}
-			regiments = {
-				cavalry = 8
-			}
+			support = { military_police = 1 }
+			regiments = { cavalry = 8 }
 		}
 	}
 }

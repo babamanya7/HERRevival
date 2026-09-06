@@ -229,6 +229,22 @@ country_event = {
 	option = { }
 }
 
+# Chinese tungsten uses the same physical seven-day transit as Western equipment.
+country_event = {
+	id = her_chi_aid.128
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		subtract_from_variable = { CHI_tungsten_in_transit = 1000 }
+		clamp_variable = { var = CHI_tungsten_in_transit min = 0 max = 100000000 }
+		add_to_variable = { CHI_tungsten_arrived_7d = 1000 }
+		add_to_variable = { CHI_tungsten_arrived_total = 1000 }
+		USA = { add_to_variable = { left_tungsten = 1000 } }
+		country_event = { id = her_chi_aid.148 days = 7 }
+	}
+	option = { }
+}
+
 # Expiry events remove one packet from the rolling seven-day figure only.
 country_event = {
 	id = her_chi_aid.140
@@ -301,5 +317,16 @@ country_event = {
 	hidden = yes
 	is_triggered_only = yes
 	immediate = { CHI = { subtract_from_variable = { CHI_arrived_7d_small_plane_tactical_bomber_airframe = 5 } } }
+	option = { }
+}
+
+country_event = {
+	id = her_chi_aid.148
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		subtract_from_variable = { CHI_tungsten_arrived_7d = 1000 }
+		clamp_variable = { var = CHI_tungsten_arrived_7d min = 0 max = 100000000 }
+	}
 	option = { }
 }

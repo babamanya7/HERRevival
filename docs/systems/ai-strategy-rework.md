@@ -12,7 +12,7 @@ Block 6 covers `common/ai_strategy`: country production personalities, industry 
 
 1. `common/ai_strategy/naval_production.txt` owns HER/VNR ship-production roles.
 2. Country files may add dynamic naval overrides, but current VNR roles (`vnr_naval_*`) must be used for actual ship-construction pressure.
-3. GER/SOV/ENG/USA/JAP/ITA/FRA/CHI have dedicated AI personalities; generic production should not stack on them unless explicitly intended.
+3. GER/SOV/ENG/USA/JAP/ITA/FRA/CHI have dedicated AI personalities; generic production/frontline behavior should not stack on them unless explicitly intended.
 4. Temporary behavior needs deliberate lifecycle handling (`abort_when_not_enabled` or explicit `abort`).
 5. Prefer phase/condition logic over permanent huge weights.
 6. AI defines belong in the main `common/defines/00_defines.lua`; do not create standalone AI define files.
@@ -45,136 +45,76 @@ Commits: `99b3f1789b340a255bb2683942d9ef046413ec83`, trigger fix `64882449bb3d0c
 
 ## Soviet Union — IMPLEMENTED FIRST PASS
 
-`common/ai_strategy/SOV.txt` now uses explicit phases:
-
-- 1936-37 civilian industrialization;
-- 1938-39 gradual military ramp;
-- 1940 prewar mobilization;
-- full wartime economy;
-- pre-Barbarossa westward concentration;
-- defensive opening through mid-November 1941;
-- winter 1941/42 counteroffensive;
-- defensive spring-autumn 1942 with southern/Caucasus emphasis;
-- winter 1942/43 counteroffensive;
-- sustained 1943 offensive;
-- Bagration rush phase;
-- late-war drive into the Reich.
-
-Large legacy `1000-2000` area priorities and permanent industrial weights were removed. City buffers were consolidated and Far-East demand is reduced while Germany is the main threat.
+`common/ai_strategy/SOV.txt` now uses explicit economic and Eastern Front phases, including a defensive opening in 1941, winter counteroffensive, 1942 southern-defense/offensive cycle, sustained 1943 pressure and a Bagration phase. Large legacy 1000-2000 area priorities and permanent industrial weights were removed. Far-East demand is reduced while Germany is the main threat.
 
 Main commit: `dd209ec98904365275281f29eb61b1903d9f4b94`; trigger fix: `42cc292067a72cb15e860d95f309471f63cc8e9f`.
 
 ## Germany — IMPLEMENTED FIRST PASS
 
-`common/ai_strategy/GER.txt` now directly expresses the intended force structure rather than using negative armor/motorized values plus compensating helpers. It has:
-
-- 1936-37 and 1938-39 rearmament phases;
-- Poland rush and armor concentration;
-- Benelux / France operational phases avoiding the Maginot;
-- Barbarossa preparation with logistics stockpiling;
-- aggressive 1941 opening;
-- winter pause;
-- 1942 southern/Caucasus offensive;
-- more sustainable late Eastern war;
-- emergency reaction to Allied landings;
-- fighter/interceptor/CAS Schwerpunkt;
-- U-boat-heavy Atlantic behavior without obsolete vanilla naval roles.
+`common/ai_strategy/GER.txt` now has staged rearmament, Poland/France campaigns, Barbarossa preparation, aggressive 1941 opening, winter pause, 1942 southern/Caucasus emphasis, later sustainable Eastern war, Allied-landing reaction, fighter/interceptor/CAS focus and U-boat-heavy Atlantic behavior without obsolete vanilla naval roles.
 
 Commit: `8498b28475d585a1657770c2c864f529047c1c90`.
 
 ## United Kingdom — IMPLEMENTED FIRST PASS
 
-`common/ai_strategy/ENG.txt` was rebuilt around Home Defence/RAF, Battle of the Atlantic and a limited expeditionary army.
-
-Key changes:
-
-- fighters/interceptors and maritime aviation are explicit priorities;
-- home-island reserve and RAF Home Defence are maintained;
-- Britain no longer overcommits the BEF into collapsing Benelux/France;
-- Suez/Gibraltar/Malta and North Africa remain important without consuming an excessive share of the army;
-- Burma/Malaya gain priority when Japan enters the war;
-- early invasions remain restrained, then transition to Torch and later Normandy;
-- obsolete `EAI_ENG_focus_on_screens`, `ENG_naval_role_ratios_historical` and old anti-submarine `naval_*` blocks were removed;
-- VNR ASW response remains in the naval bridge.
+`common/ai_strategy/ENG.txt` was rebuilt around Home Defence/RAF, Battle of the Atlantic and a limited expeditionary army. Britain no longer overcommits to collapsing France/Benelux; Suez/Gibraltar/Malta remain important; Burma/Malaya rise when Japan enters; invasion logic transitions from restraint to Torch/Normandy. Obsolete British vanilla naval-role blocks were removed.
 
 Commit: `fcebd166750dc12bed40a8478bf652c32be3a9ee`.
 
 ## United States — IMPLEMENTED FIRST PASS
 
-`common/ai_strategy/USA.txt` now uses staged mobilization and simultaneous Europe/Pacific pressure:
-
-- 1936-38 civilian buildup;
-- 1939-41 defense ramp;
-- huge but bounded wartime expansion;
-- large infantry army with meaningful armor/motorization and specialist marines;
-- strong fighter/CAS/naval/carrier aviation;
-- carrier/screen/convoy-heavy naval demand;
-- dynamic VNR ASW response;
-- Europe First without abandoning the Pacific;
-- explicit Pacific counteroffensive from 1942 and Home Islands pressure from 1944;
-- removal of old broad buffers that parked large fractions of the US Army across England, Spain and all of Africa.
-
-Shared Torch/D-Day orchestration remains in the British strategy file to avoid duplicate invasion scripts.
+`common/ai_strategy/USA.txt` now uses staged mobilization, a large combined-arms army, strong carrier/naval aviation, dynamic VNR ASW response, Europe First without abandoning the Pacific, and an explicit Pacific counteroffensive from 1942. Old broad buffers that parked large army fractions across multiple continents were removed.
 
 Commit: `190e090d28a13b33057e41f2c26c26d4d87d144f`.
 
 ## Japan — IMPLEMENTED FIRST PASS
 
-`common/ai_strategy/JAP.txt` was rebuilt around a China-war -> Southern Operation -> Pacific offensive -> outer-perimeter defense sequence.
-
-- infantry/artillery are the land-war core with specialist marines and limited armor;
-- fighter/naval/carrier aviation has high priority;
-- China receives the main land focus before the Pacific war, then demand is reduced;
-- Southern Operation is a broad phase rather than a fragile tiny date window;
-- 1942 is an active Pacific offensive phase;
-- from 1943 Japan increasingly protects the outer perimeter, home waters and Home Islands;
-- Australia/New Zealand and deep India are downweighted before 1944;
-- obsolete Japanese vanilla `naval_*` role blocks were removed.
+`common/ai_strategy/JAP.txt` now follows China war -> Southern Operation -> 1942 Pacific offensive -> outer-perimeter/home defense. Southern Operation is a broad phase instead of fragile narrow date windows. Australia/deep India are downweighted before 1944, and obsolete Japanese vanilla naval-role blocks were removed.
 
 Commit: `03475ca020fcea9a4d403a0e3620584b88386f4c`.
 
 ## Italy — IMPLEMENTED FIRST PASS
 
-`common/ai_strategy/ITA.txt` was rebuilt around the Mediterranean rather than generic Axis participation.
-
-Key changes:
-
-- army remains infantry/artillery-heavy, with limited armor and mobile formations;
-- Regia Aeronautica now has meaningful fighter/interceptor/CAS/naval-bomber demand;
-- exact naval construction is left to VNR `naval_production.txt`, while general demand favors screens, submarines, convoys and a modest surface fleet;
-- 1936-37 industrial buildup and 1938-40 rearmament replace the old mixed static logic;
-- Ethiopia is attacked hard early but the Horn is deliberately deprioritized once the major European war begins;
-- major-war entry is delayed only until roughly the historical June 1940 window instead of using an extreme effectively permanent `dont_join_wars_with = 1000000` style block;
-- France is treated cautiously rather than as the main offensive axis;
-- once at war with Britain, Libya/Egypt/Suez and the Italian homeland become the dominant theaters;
-- Mediterranean transport avoidance is reduced to caution rather than paralysis so Libya can still be supplied;
-- Greece receives a dedicated balanced campaign;
-- Italian divisions are discouraged from wandering to Finland, Poland, Denmark and other irrelevant Axis fronts;
-- a limited Soviet contribution is allowed without letting the Eastern Front consume the army needed for North Africa and homeland defense;
-- homeland reserves now explicitly include north/south Italy and Sicily, with an emergency recall when Allied landings occur;
-- obsolete Italian vanilla `naval_*` role-ratio block was removed.
+`common/ai_strategy/ITA.txt` was rebuilt around Mediterranean war: infantry/artillery-heavy army, limited armor, meaningful Regia Aeronautica, phased rearmament, fast Ethiopia cleanup, Libya/Egypt/Suez focus, bounded Eastern Front participation, homeland/Sicily reserves and reduced naval paralysis. Obsolete Italian vanilla naval-role blocks were removed.
 
 Commit: `3d805e1da53fe5faabfb246544b68da3380863cf`.
 
 ## France — IMPLEMENTED FIRST PASS
 
-`common/ai_strategy/FRA.txt` was rebuilt as a defensive metropolitan power with an artillery-heavy army, serious fighter force and mobile armored reserve.
-
-Key changes:
-
-- the old oversized `mountaineers = 30` ratio was removed;
-- infantry remains the majority while armor, AT/AA, artillery and modest motorization receive explicit demand;
-- the prewar economy now transitions from civilian construction into rearmament, then full wartime expansion against Germany;
-- metropolitan reserves were reduced from overlapping 30% static buffers to a single smaller reserve behind northern France/Paris;
-- the Maginot line is held carefully without concentrating armor or launching wasteful attacks through it;
-- a Dyle/Benelux phase exists while Belgium remains viable, but once the Low Countries begin collapsing the AI pulls demand back into northern France;
-- late defensive behavior increases homeland concentration rather than sending troops to colonies;
-- fighter/interceptor production and strategic air importance are raised for northern/eastern France;
-- Norway, Pacific and distant colonial theaters are downweighted;
-- obsolete French vanilla `naval_*` role-ratio production block was removed, leaving VNR naval production as the authoritative ship layer;
-- Vichy relation helpers were retained in simplified form.
+`common/ai_strategy/FRA.txt` now acts as a defensive metropolitan power: artillery-heavy army, serious fighter force, mobile armored reserve, careful Maginot defense, conditional Dyle/Benelux phase, withdrawal when the Low Countries collapse, and reduced colonial distractions. Obsolete French vanilla naval-role production was removed.
 
 Commit: `3137d7e08a6f2f90c81b4e92549c332211a65111`.
+
+## Global microscripts — CLEANED
+
+`common/ai_strategy/HER_Microscripts.txt` was audited because it still contained global orders capable of silently overriding the new country personalities.
+
+Important fixes:
+
+- the old `only_civ_construction` no longer applies a `building_target = 1000` to the eight dedicated majors; it is now a bounded fallback for other peaceful isolation/civilian-economy countries;
+- the global `convoy_raiding_enthusiast` was removed. Previously every country at war received the same convoy-raiding threshold, which worked directly against differentiated naval behavior such as British escort/ASW and US/Japanese fleet warfare;
+- generic naval-invasion pressure and force-concentration helpers now exclude the eight dedicated majors;
+- the global `division_template_is_really_cool` block was removed. It gave +100 priority to almost every template family and therefore erased country differentiation; final template design belongs to `ai_templates`;
+- low-tension/minor-war garrison penalties were reduced from `-9999` to bounded values. The old logic could effectively disable home/coastal defense for long periods;
+- generic military-factory ramping now excludes the eight majors so it no longer stacks on country economic phases;
+- the aluminium refinery helper was corrected to check low `aluminium` output rather than low `steel` output;
+- special-project facility/scientist helpers, nuclear late-game helpers, civil-war behavior, train stockpiling and resource-refinery logic were retained.
+
+Commit: `7309fc859fc01a17cba646069e59f0d4ae09ee4a`.
+
+## Generic frontline manager — ISOLATED FROM MAJORS
+
+`common/ai_strategy/FAI_Frontline_Management.txt` was a second hidden global war-plan layer. Its normal/rush/careful rules, emergency modes, pocket closure and empty-state rushes used priorities from 50 up to 10000 and could override deliberate country phases.
+
+The broad frontline posture and tactical rush helpers now explicitly exclude GER/SOV/ENG/USA/JAP/ITA/FRA/CHI. This is critical for planned pauses such as Soviet opening defense or German winter pauses: a global `this_state_is_empty` priority 10000 must not silently order attacks during those phases.
+
+The generic manager remains available to countries without dedicated operational personalities. The supply/capital/invasion-positioning helper remains global because it adjusts local demand rather than selecting an overall offensive doctrine.
+
+Commit: `039388fab5afa2a978d015580ad382c3bf7e0ffd`.
+
+## Operation strategies — AUDITED / RETAINED
+
+`GER_operation_strats.txt`, `SOV_operation_strats.txt`, `ENG_operation_strats.txt` and `generic_operation_strats.txt` were inspected. They are intelligence-agency/operative logic rather than land/naval operational war plans: collaboration governments, resistance work, Trotsky operations, Heavy Water/Anthropoid and generic operation execution. They do not conflict with the new front/naval strategy architecture and are retained for now.
 
 ## Defines policy / naval NAI status
 
@@ -187,11 +127,10 @@ They should be applied only by editing `common/defines/00_defines.lua` directly,
 
 ## Next audit order
 
-1. Country operation-strategy files and remaining `HER_Microscripts`.
-2. Inventory existing AI-only helper systems before adding new concessions.
-3. `ai_strategy_plans` phase and historical-plan cleanup.
-4. `ai_templates` full division-template implementation.
-5. NAI and direct edits to `common/defines/00_defines.lua` only after the scripted layers are stable.
+1. Inventory remaining AI-only helper systems before adding new concessions.
+2. `ai_strategy_plans` phase and historical-plan cleanup.
+3. `ai_templates` full division-template implementation.
+4. NAI and direct edits to `common/defines/00_defines.lua` only after the scripted layers are stable.
 
 All eight target majors now have first-pass country strategy rewrites. Revisit them after division-template/strategy-plan integration and hands-off observation.
 

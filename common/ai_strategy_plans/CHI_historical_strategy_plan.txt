@@ -11,36 +11,55 @@ CHI_nationalist_historical_plan = {
 	abort_when_not_enabled = yes
 
 	ai_national_focuses = {
+		# Prewar political/military foundation. Put the United Front prerequisites ahead
+		# of the emergency branch instead of beginning the plan with focuses that are
+		# unavailable until the Sino-Japanese War has already started.
+		CHI_three_principles_of_the_people
+		CHI_nationalism
+		CHI_foreign_threats
+		CHI_united_front
+		CHI_military_affairs_commission
+
+		# The emergency branch becomes authoritative once Japan attacks. In HER
+		# War of Resistance is date/war gated; industrial evacuation and scorched earth
+		# both require it and should be taken before optional foreign-route development.
 		CHI_war_of_resistance
+		CHI_industrial_evacuations
 		CHI_scorched_earth_tactics
-		CHI_war_of_national_liberation
+		CHI_army_reform
+
+		# Keep the external lifelines alive while the interior industrial base is being
+		# preserved. Availability of each route is controlled by the actual map/controller
+		# conditions in china_nationalist.txt.
+		CHI_burma_road
 		CHI_guarantee_the_hanoi_route
 		CHI_the_hump
-		CHI_war_of_anti_imperialism
-		CHI_dare_to_die_corps
-		CHI_burma_road
 		CHI_ledo_road
-		CHI_industrial_evacuations
-		CHI_three_principles_of_the_people
-		CHI_democracy
-		CHI_nationalism
-		CHI_military_affairs_commission
-		CHI_army_reform
+
+		# National-liberation escalation is deliberately after the immediate survival
+		# package. The HER focus itself is surrender-progress gated, so the AI will skip
+		# it until the war has become critical and return to it once available.
+		CHI_war_of_national_liberation
+		CHI_dare_to_die_corps
+		CHI_forced_conscription
+		CHI_war_of_anti_imperialism
+
+		# Industrial base and arsenals.
 		CHI_mining_commission
 		CHI_taiyuan_arsenal
 		CHI_develop_the_hanyan_arsenal
 		CHI_nationalize_key_industries
 		CHI_hangyeng_steelworks
 		CHI_expand_the_mines
-		CHI_foreign_threats
-		CHI_united_front
+
+		# Political/economic consolidation after the emergency priorities above.
+		CHI_democracy
 		CHI_financial_policy
 		CHI_abandon_the_silver_standard
 		CHI_bureau_of_investigation_and_statistics
 		CHI_whampoa_military_academy
 		CHI_price_controls
 		CHI_grain_tax
-		CHI_forced_conscription
 	}
 
 	# Country research personality is defined in common/ai_focuses/CHI.txt.

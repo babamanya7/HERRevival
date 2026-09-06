@@ -1,6 +1,6 @@
 # HER AI Navy Rework
 
-Status: IN PROGRESS / FIRST IMPLEMENTATION PASS
+Status: IN PROGRESS / SECOND IMPLEMENTATION PASS
 Branch: `AI-rework`
 Started: 2026-09-06
 
@@ -120,19 +120,68 @@ The first rework pass adds real minimums and raises active mission preference:
 
 `ai_will_do` was raised for patrol, escort and submarine-raiding templates so that the AI has more viable active task forces available to satisfy naval goals.
 
-## Important caveat: aggression and port behavior
+## Naval-production / ai_strategy audit
 
-`common/ai_navy` determines what naval objectives exist and what fleets/task forces are built to execute them. It does **not** contain every engine threshold controlling when the AI is willing to sortie, how much reserve it keeps, fuel thresholds, repair behavior or danger tolerance.
+The next pass exposed a second major integration problem.
 
-HER already has naval AI-related NAI defines such as reserve-ratio and peacetime fuel controls. Those are intentionally deferred until the later NAI pass. Do not compensate for missing goals by immediately making global sortie/danger thresholds extreme; first hands-off test the restored major goals and task-force structure.
+`common/ai_strategy/naval_production.txt` uses the HER/VNR naval production roles (`vnr_naval_screen`, `vnr_naval_submarine`, `vnr_naval_carrier`, etc.) and contains substantial country-specific production plans. For example, wartime ENG already asks for a large screen ratio, GER strongly pivots to submarines against ENG, while USA/JAP receive large wartime screen/carrier targets.
 
-If major fleets still sit in port while high-scoring objectives are unfulfilled, use `imgui show ai_navy` to distinguish:
+However several older naval strategies in `common/ai_strategy/ENG.txt` still used vanilla role IDs such as `naval_screen`, `naval_escort`, `naval_carrier`, `naval_submarine`, etc. At the same time `naval_production.txt` contains `no_old_navy_production`, which applies `-10000` to those old vanilla naval production roles when Man the Guns is active.
 
-1. no/low-scoring objective;
-2. objective exists but no valid fleet/task force can be assembled;
-3. fleet exists but NAI fuel/reserve/repair/danger logic refuses execution.
+That means important older British helper strategies were effectively disconnected from the VNR production system. The clearest example was the existing `EAI_ENG_focus_on_screens`/historical/anti-submarine logic: it attempted to manipulate old `naval_*` role IDs while current HER ship designs are produced through `vnr_naval_*` roles.
 
-Only case 3 should be solved primarily through NAI defines.
+The VNR destroyer screen design itself is suitable for ASW: current 1936+ screen designs contain sonar and depth charges. The main problem was therefore not the absence of an ASW-capable hull, but getting the AI to build and deploy enough of those ships when the submarine war becomes serious.
+
+## Implemented naval strategy bridge
+
+New file: `common/ai_strategy/HER_naval_rework_strategies.txt`.
+
+### British pre-war escort buildup
+
+From mid-1937 until the expected outbreak of the European war, ENG receives an extra VNR screen/light-cruiser bias and a higher convoy target. This is intentionally additive to the existing `naval_production.txt` plan rather than replacing it.
+
+### Dynamic Battle of the Atlantic response
+
+The existing working scripted trigger `anti_submarine_strategy_required_trigger` is reused rather than inventing a new submarine-threat detector.
+
+When that trigger fires, ENG now shifts strongly toward:
+
+- `vnr_naval_screen`;
+- `vnr_naval_cruiser_light`;
+- convoy replacement.
+
+At the same time submarine, battleship and carrier pressure is reduced. The block also requests a minimum convoy production allocation so a badly damaged merchant fleet does not enter a permanent death spiral while every dockyard continues building prestige combatants.
+
+A lighter always-on ENG-vs-GER screen bias sits underneath the emergency block, so the Royal Navy does not wait until catastrophic losses before caring about escorts.
+
+### Pacific activity bridge
+
+When USA and JAP are directly at war, both receive additional carrier/screen production pressure, `naval_invasion_focus`, and `pacific_front` area priority.
+
+This is intended to bridge the gap between the high-scoring naval goals and the land/invasion planner: the goal system can support an invasion only if the broader AI is actually interested in planning Pacific operations.
+
+It does not force specific historical island captures yet. Detailed island sequencing belongs in the main USA/JAP `ai_strategy` pass so it can be tested together with their existing invasion scripts.
+
+## NAI activity overrides
+
+New file: `common/defines/zz_HER_AI_navy.lua`.
+
+Only two narrow overrides were added in this pass:
+
+- `AI_TASKFORCE_REQUIRED_RESERVE_RATIO`: `0.20 -> 0.10`;
+- `NAVAL_MISSION_AGGRESSIVE_ESCORT_DIVISOR`: `2.0 -> 1.25`.
+
+The first reduces the share of each required task-force composition that the AI withholds as reinforcement reserve, releasing more actual ships for operational groups. This directly addresses the observed tendency to keep usable ships parked while objectives are unfulfilled.
+
+The second reduces the scoring penalty applied to escort activity when the AI is not in a purely defensive posture. It is deliberately not set below `1.0`: convoy protection should become easier to justify without turning the entire navy into suicidal permanent escort patrols.
+
+Other danger, repair, fuel and sortie thresholds remain unchanged for now. This preserves the ability to diagnose whether future passivity is caused by objective scoring, fleet assembly, fuel/repair state or danger evaluation rather than changing every naval threshold simultaneously.
+
+## Known deferred bugs / next naval-linked work
+
+- `common/ai_strategy/JAP.txt` contains an impossible first Southern Expansion window: `date > 1942.12.15` together with `date < 1942.1.1`. This must be corrected in the JAP strategy pass.
+- The existing ENG file still contains obsolete vanilla `naval_*` role-ratio blocks. The new HER bridge makes the needed behavior functional immediately, but the dead old blocks should be removed/converted during the full `ai_strategy` cleanup rather than left as permanent technical debt.
+- USA/JAP Pacific area/invasion priorities need a proper operational sequence after the generic strategy audit, not just a permanent high Pacific weight.
 
 ## Required hands-off naval metrics
 
@@ -140,6 +189,7 @@ For integrated testing record at minimum:
 
 - UK convoys and escorts lost per month to GER submarines;
 - number of active ENG convoy-escort task forces and escorted Atlantic routes;
+- whether `anti_submarine_strategy_required_trigger` activates at a sensible loss/threat level;
 - GER submarine groups at sea vs in port and submarine losses;
 - USA/JAP strike forces and patrol groups active in the Pacific;
 - number and location of major US/Japanese naval battles;
@@ -148,3 +198,10 @@ For integrated testing record at minimum:
 - fuel state and repair state when a major fleet refuses to sortie.
 
 Target is not zero convoy losses or constant suicidal sorties. The target is visible reaction: raiding creates escort/patrol pressure, fleets contest strategically important seas, and the Pacific produces repeated operational contact without immediately annihilating one side through obvious AI misuse.
+
+Debug procedure when a fleet still sits in port:
+
+1. `imgui show ai_navy`: confirm there is a high-scoring objective.
+2. Confirm the relevant fleet/task-force template can actually be assembled.
+3. Check reserve, repair and fuel state.
+4. Only then adjust further NAI danger/fuel/repair thresholds.

@@ -226,71 +226,78 @@ Do not populate it merely to fill the folder. First complete the operational-are
 
 ## 8. Block 4 — `common/ai_focuses`
 
-Status: AUDIT IN PROGRESS
+Status: IMPLEMENTED — awaiting integrated hands-off validation
 
-### 8.1 Current HER structure
+### 8.1 Original HER structure and problems
 
-Separate research-focus mappings exist for GER, SOV, ENG, USA, JAP, ITA and FRA, plus `generic.txt`. They are structurally near-copies of the generic file with country-specific numeric changes.
+Separate research-focus mappings existed for GER, SOV, ENG, USA, JAP, ITA and FRA, plus `generic.txt`. They were structurally near-copies of the generic file with a few country-specific numeric changes.
 
-CHI is the exception: `common/ai_focuses/CHI.txt` contains only the legacy `ai_historical_focus_list_CHI` and therefore has no country-specific research-focus mappings. China consequently relies on generic research-focus mappings plus its strategy-plan/technology-level logic.
+CHI was the exception: `common/ai_focuses/CHI.txt` contained only the legacy `ai_historical_focus_list_CHI` and therefore had no country-specific research-focus mappings.
 
-### 8.2 Important current weights
+Several permanent multipliers were extreme enough to dominate research whenever the matching dynamic focus became high:
 
-Several existing weights are strong enough to dominate research decisions when their corresponding dynamic AI focus is high:
+- GER had `armor = 100`, `land_doctrine = 100`, `nuclear = 100` in military advancements.
+- USA had `land_doctrine = 100`, `nuclear = 100`, plus `air_doctrine = 75`.
+- JAP/ENG/generic had `naval_doctrine = 100`.
+- historical strategy plans simultaneously add large permanent `air_equipment` weights for ENG/USA/JAP/FRA/ITA, creating another stacked source of pressure.
 
-- GER `military_advancements`: `armor = 100`, `land_doctrine = 100`, `nuclear = 100`.
-- USA `military_advancements`: `land_doctrine = 100`, `nuclear = 100`; USA also has `air_doctrine = 75` in aviation.
-- JAP naval: `naval_doctrine = 100`, `cv_tech = 10`, `shbb_tech = 10`; naval air uses `naval_air = 14`.
-- ENG naval: `naval_doctrine = 100`, strong DD/BB/CV weighting and explicit ASW weighting.
-- SOV naval is much lower than the maritime majors, while its land doctrine remains heavily weighted.
+These values are not literal percentages, but they are very large multipliers compared with surrounding values and interact with technology-level `ai_will_do` weights.
 
-These are multipliers on dynamic focus values, so values of 100 are not equivalent to "100% of research" but they are still extremely strong compared with neighboring category weights of roughly 1–20.
+### 8.2 HER technology-category audit
 
-### 8.3 Overlap with historical strategy plans
+The broad categories used by the reworked focus profiles are live in the current HER technology tree or were already active in working HER AI files. Examples verified directly in current HER technology definitions include:
 
-Current historical strategy plans add another research-category layer:
+- `infantry_weapons` in the infantry chain;
+- `artillery` in normal and heavy artillery;
+- `para_tech` in airborne technology;
+- the existing land/air/naval/support/industry category families already consumed by the old HER AI-focus files.
 
-- ENG: `air_equipment = 100`.
-- USA: `air_equipment = 80`.
-- JAP: `air_equipment = 70`.
-- FRA: `air_equipment = 60`.
-- ITA: `air_equipment = 40`.
-- GER and SOV also define their own broader research weights in their historical plans.
-- CHI's historical strategy plan currently has an empty `research` block.
+Individual HER technologies also contain substantial `ai_will_do` logic by date, country and industrial strength. Therefore `ai_focuses` must remain broad rather than trying to reproduce an exact research script.
 
-Therefore the maritime/western majors currently receive substantial air-equipment pressure from strategy plans on top of the aviation AI-focus system. This should be tuned intentionally instead of assuming `common/ai_focuses` acts alone.
+### 8.3 World Ablaze comparison
 
-### 8.4 Historical focus-order duplication / lifecycle findings
+World Ablaze uses the same engine AI-focus architecture and still carries strong generic doctrine/category multipliers in this layer. This confirms the syntax and importance of the subsystem, but HER deliberately does not copy its numbers. WA's strength comes from the whole scripted AI stack and helper systems, so copying only its very large research multipliers would reproduce distortion without reproducing the supporting behavior.
 
-- CHI has two historical focus-order sources: legacy `ai_historical_focus_list_CHI` in `common/ai_focuses/CHI.txt` and `CHI_nationalist_historical_plan` in `common/ai_strategy_plans/CHI_historical_strategy_plan.txt`. They contain different orders. This is architectural debt and should be reduced to the strategy plan only.
-- USA's old `ai_historical_focus_list_USA` in `common/ai_focuses/USA.txt` is already commented out, confirming that the strategy-plan path is effectively intended as authoritative.
-- USA's historical strategy plan currently uses `enable = { always = yes }`, not `is_historical_focus_on = yes`.
-- CHI's historical strategy plan also uses `enable = { always = yes }`.
+### 8.4 Implemented generic baseline
+
+`generic.txt` was normalized so that:
+
+- land/naval/air doctrine categories remain important but no longer receive automatic `100`-scale dominance;
+- military equipment remains centered on infantry weapons, artillery and support;
+- peaceful/war-production focuses remain industry-heavy;
+- military advancements favors armor, motorization, logistics and communications without permanently forcing nuclear/jet/rocket research;
+- naval and aviation profiles are usable by minors without pulling them excessively into capital ships, super-heavy battleships, paratroopers or advanced projects.
+
+### 8.5 Implemented major-country research personalities
+
+- **GER:** strongest land concentration of the European majors; armor, motorization, artillery, land doctrine and fighters; submarine-heavy naval profile; nuclear/jet/rocket categories reduced to secondary background weights so later phase strategies can drive them deliberately.
+- **SOV:** industry, construction, infantry, artillery, armor, land doctrine and rail/logistics; low naval investment; balanced fighter/CAS aviation.
+- **ENG:** radar/electronics, fighter defense, naval doctrine, destroyers, ASW, carriers and expeditionary/support technology; land armor remains useful but secondary.
+- **USA:** strongest industry/electronics profile, broad air/naval investment, carriers, amphibious technology and a meaningful but non-dominating advanced/nuclear baseline for later phase scripting.
+- **JAP:** carriers, naval doctrine, naval aviation, marines, infantry and synthetic-resource pressure; armor and advanced strategic projects deliberately weak.
+- **ITA:** infantry/artillery, Mediterranean fleet, submarines/destroyers/battleships, fighter/CAS support and synthetic-resource emphasis; limited armor and advanced projects.
+- **FRA:** defensive research, artillery, infantry, armor reserve, industry and fighter modernization; navy remains relevant but not allowed to crowd out the continental war.
+- **CHI:** new country-specific profile centered on infantry weapons, infantry technology, artillery, support, defensive doctrine, construction, industry and rail/logistics; armor/navy/heavy air/advanced projects heavily suppressed.
+
+### 8.6 Historical focus-list cleanup
+
+The obsolete `ai_historical_focus_list_CHI` was removed from `common/ai_focuses/CHI.txt`. Historical national-focus ordering for CHI is now intended to live only in `common/ai_strategy_plans/CHI_historical_strategy_plan.txt`, consistent with the architecture used for the other majors.
+
+USA's already-commented legacy historical-focus list was removed as part of rewriting its file; `ai_focuses` is now research personality only.
+
+The actual historical strategy-plan orders and their lifecycle are deliberately deferred to the later `ai_strategy_plans` block. In particular:
+
+- USA historical plan currently uses `enable = { always = yes }`;
+- CHI historical plan currently uses `enable = { always = yes }`;
 - ENG/FRA/ITA/JAP use `is_historical_focus_on = yes`.
 
-The USA/CHI lifecycle difference must be reviewed in the strategy-plan block because it can force historical planning even when historical AI is disabled.
+This inconsistency must be fixed when that folder is reached.
 
-### 8.5 HER technology-category audit findings so far
+### 8.7 Validation rule
 
-The categories used by the current broad AI-focus files are still live in the HER technology tree. For example:
+Do not judge the new numbers from one category in isolation. The final hands-off pass must record actual technologies researched by each major at yearly checkpoints (1937/1939/1941/1943 or equivalent wartime milestones), because technology `ai_will_do`, dynamic AI focuses and strategy-plan research weights stack multiplicatively.
 
-- the HER infantry chain uses `infantry_weapons`;
-- artillery/heavy artillery uses `artillery`;
-- paratrooper technology uses `para_tech`;
-- technology files retain their own `ai_will_do` date/country/industry modifiers.
-
-This confirms that the broad-category system itself is still valid, but also shows why extreme category weights can interact nonlinearly with the strong `ai_will_do` modifiers already embedded in HER technologies.
-
-### 8.6 Planned implementation rule
-
-For the eight majors:
-
-- keep `ai_focuses` broad and characteristic rather than scripting exact research sequences;
-- eliminate obsolete duplicate historical-focus lists from `ai_focuses`;
-- give CHI a real country-specific research-focus mapping;
-- normalize obviously runaway category weights unless there is a deliberate historical reason;
-- move phase-specific priorities (for example a pre-Barbarossa armor/air push or a late US nuclear push) into `ai_strategy_plans` / exact research strategies rather than leaving them permanently amplified whenever a generic focus becomes high;
-- validate all category names against the current HER technology files before implementation.
+If a major still over-researches one family, first identify which layer is causing it before increasing/decreasing `ai_focuses` again.
 
 ## 9. Sources used during this audit
 
@@ -324,6 +331,10 @@ Do not treat old forum posts or old mod files as authoritative when contradicted
 - Confirmed `ai_faction_theaters` is empty and deferred population until a concrete theater-allocation need is demonstrated.
 - Documented the actual `ai_focuses` research-weighting model and its interaction with technology `ai_will_do` and strategy-plan research weights.
 - Audited all eight major-country `ai_focuses` / historical strategy-plan relationships.
-- Identified CHI duplicate historical focus ordering and missing country-specific research-focus mappings.
-- Identified USA/CHI historical strategy plans that are always enabled even when historical AI is disabled; deferred correction to the strategy-plan block.
-- Began validation of AI-focus research categories against the current HER technology tree.
+- Compared HER `ai_focuses` structure with World Ablaze and current HER technology categories.
+- Rebalanced generic research-focus multipliers away from runaway permanent doctrine/advanced-project weights.
+- Rebuilt GER/SOV/ENG/USA/JAP/ITA/FRA research personalities around their historical strategic roles.
+- Replaced CHI's obsolete historical-focus-list-only file with a dedicated Chinese research personality.
+- Removed duplicate historical-focus ordering from `ai_focuses`; strategy plans are the authoritative layer for major national-focus sequencing.
+- Identified USA/CHI historical strategy plans that remain always enabled; correction deferred to the strategy-plan block.
+- Block 4 `ai_focuses` implementation complete; integrated hands-off validation remains.

@@ -149,7 +149,192 @@ Observed late branch examples:
 
 `infiltration_assault` giving special forces +15% hard and soft attack is a large direct multiplier. Consider replacing part with night, terrain, supply, initiative or planning advantages so infiltration remains operational rather than raw DPS scaling.
 
-## 5. Cross-doctrine findings so far
+## 5. Mass Assault / Soviet doctrine — detailed pass
+
+### Root: `mass_assault`
+The Soviet doctrine root is already structural rather than just numerical:
+- SOV-only;
+- `additional_brigade_column_size = 2`;
+- -5% supply consumption;
+- -10% minimum training level;
+- `experience_loss_factor = 0.05`;
+- costs the standard 100 Army XP.
+
+**A / structural:** the +2 division-designer columns appears immediately at the root. As with `concentrated_fire_plans`, this must be balance-tested as a template-system change, not as a normal doctrine modifier. It materially changes how many battalions can be packed into one division and may alter optimal combat-width and support density.
+
+The lower minimum training level is a very good Soviet mass-expansion lever in principle: it increases mobilization speed rather than directly improving combat quality. KEEP concept.
+
+`experience_loss_factor = 0.05` should be engine-verified before balance changes. If positive values increase experience loss, it is a useful quality/quantity trade-off that offsets rapid expansion; if the sign behaves differently, reassess.
+
+### Early defensive foundation
+`pocket_defence`:
+- +48 hours no-supply grace;
+- -10% out-of-supply penalty;
+- -5% pocket penalty.
+
+`defence_in_depth`:
+- +5 max entrenchment;
+- +5 org to light infantry.
+
+These are among the strongest thematic nodes in the land doctrines. They model operational resilience, encirclement tolerance and defensive depth without merely adding generic attack. KEEP direction.
+
+### Deep-operations branch
+`large_front_operations`:
+- +5 org to front-line units;
+- -5% supply consumption.
+
+`deep_operations`:
+- tanks +5 org and +5% soft/hard attack;
+- -5% org loss while moving;
+- unlocks Blitz.
+
+`operational_concentration`:
+- all artillery +5 org/+5% morale;
+- all infantry +5 org;
+- unlocks Barrage.
+
+`vast_offensives`:
+- another -5% supply consumption;
+- +5 org to front line;
+- +5% air-superiority combat bonus;
+- unlocks Overwhelming Fire.
+
+Preliminary verdict: the operational identity is strong, especially supply efficiency + movement-org retention + concentration. **B:** organization is nevertheless accumulating on very broad categories almost every other node. The branch should become better at sustaining operations primarily through supply, reinforcement, planning, movement-org retention and reserves rather than repeated +5 org to nearly everyone.
+
+### Breakthrough / mechanized phase
+`breakthrough_priority`:
+- line artillery +5 org and +15% breakthrough;
+- SP artillery +5 org and +20% breakthrough;
+- tank destroyers +5 org and +20% breakthrough;
+- unlocks Breakthrough tactic.
+
+`mechanized_wave`:
+- tanks +10% morale, +5 org, +1% initiative;
+- SP artillery and TDs +5% morale, +5 org, +5% SA/HA.
+
+This branch is conceptually useful because Soviet deep operations should eventually integrate armor, mobile artillery and exploitation forces. **B:** direct breakthrough on artillery/TD categories is very high and risks turning support/fire units into pseudo-tanks. Prefer some of this value as planning, coordination, reinforce, breakthrough for combined formations, or movement/recovery benefits rather than raw battalion breakthrough.
+
+### `continuous_offensive`
+- -15% org loss while moving;
+- +5% reinforce rate;
+- +5% max planning;
+- front line +5% SA/HA;
+- unlocks Backhand Blow.
+
+This is one of the better late Soviet nodes. The combination of lower movement-org loss, reinforcement and planning expresses continuous operations much better than a generic stat package. The extra +5% universal front-line attack is the least interesting part and is a candidate for removal/reduction if cumulative attack inflation is excessive.
+
+### People's Army branch
+`peoples_army` is highly structural:
+- military police can add +5 org to front-line categories;
+- penal battalion +10 org;
+- **militia combat width -0.45**;
+- -10% attrition;
+- +20% resistance damage to enemy garrisons on occupied Soviet states;
+- Human Wave tactic.
+
+**A / template-meta risk:** `militia combat_width = -0.45` is enormous. If this is a 45% width reduction, militia can potentially pack nearly twice as many battalions into the same combat frontage. This needs dedicated combat-width testing with actual militia stats/equipment/manpower before any doctrine balance conclusion. It can be either a brilliant mass-army identity mechanic or a severe template exploit depending on resulting damage/HP/org per width.
+
+The attrition/resistance effects are thematic and preferable to generic attack bonuses.
+
+`human_infantry_offensive`:
+- light infantry +5% morale and +10% soft attack.
+
+`large_front_offensive`:
+- +5 org to all infantry;
+- Relentless Assault tactic.
+
+`human_wave_offensive`:
+- +0.5% recruitable population;
+- MP support gives +10% morale to all infantry.
+
+`guerilla_warfare`:
+- -10% out-of-supply penalty;
+- +5% morale to the army;
+- +20% resistance growth in occupied home states;
+- Elastic Defense tactic.
+
+This branch has a much clearer quantity/resilience identity than the generic late stat stacking seen in other doctrines. However, **B:** the +10% infantry soft attack and repeated morale/org gains still need cumulative comparison against the militia-width advantage. A 45% width reduction already supplies a potentially huge effective per-frontage combat multiplier; direct attack bonuses on top may be unnecessary.
+
+### Final mechanized convergence: `masterful_blitz`
+- all armor +5 org, +5% SA/HA/breakthrough;
+- vehicle infantry +5 org, +10% morale, +1% initiative;
+- Masterful Blitz tactic.
+
+This makes sense as a mature Soviet operational-art endpoint, but its raw stat package overlaps heavily with German Mobile Warfare. Final differentiation should be:
+- GER Mobile Warfare: faster local concentration, initiative, tactical penetration, command/signal, high-quality armored spearhead;
+- SOV Deep Operations: larger operational depth, reserves, reinforce rate, supply tolerance, movement-org retention, follow-on echelons and continuous exploitation.
+
+If both endpoints simply give armor org + attack + breakthrough, their historical identities converge mechanically.
+
+### Mass Assault overall verdict
+The Soviet tree is arguably the most structurally distinctive land doctrine currently in HER. Its strongest mechanics are not the raw combat buffs but:
+- rapid deployment via lower training threshold;
+- extra template columns;
+- pocket/out-of-supply resilience;
+- supply-consumption reductions;
+- entrenchment/defense in depth;
+- reduced org loss while moving;
+- reinforce rate;
+- militia-width manipulation;
+- resistance/partisan effects;
+- eventual mechanized exploitation.
+
+KEEP these as the core identity.
+
+Primary balance risks:
+1. **A:** +2 template columns at doctrine root;
+2. **A:** militia -45% combat width;
+3. **B:** repeated +5 org across front line / infantry / artillery / armor;
+4. **B:** very high breakthrough buffs for SPG/TD/artillery in `breakthrough_priority`;
+5. **B:** late mechanized stats becoming too similar to German Mobile Warfare;
+6. cumulative manpower/recruitable effects must be checked with Soviet laws/focuses rather than in isolation.
+
+## 6. Cross-doctrine role comparison — preliminary
+
+The desired mechanical identities now look clearer:
+
+### German Mobile Warfare
+Primary value should come from:
+- local concentration and penetration;
+- armored/mobile initiative;
+- speed/operational tempo, but avoid excessive raw equipment-speed stacking;
+- signal/recon integration;
+- reduced movement-org loss;
+- high-quality combined-arms spearheads;
+- tactical flexibility / Blitz-family tactics.
+
+### Soviet Mass Assault / Deep Operations
+Primary value should come from:
+- operational depth and multiple echelons;
+- reserve/reinforce mechanics;
+- supply tolerance and lower supply use;
+- encirclement resilience;
+- movement-org retention;
+- large-front/template structure;
+- quantity/resilience options;
+- continuous mechanized exploitation late.
+
+### Superior Firepower
+Primary value should come from:
+- artillery/fire-control efficiency;
+- forward observers/recon;
+- support integration;
+- combined-arms fire coordination;
+- air-land/fire-support synergy.
+
+Avoid ending as a generic infantry+tank+artillery attack tree.
+
+### Grand Battleplan
+Primary value should come from:
+- planning ceiling and deliberate preparation;
+- command/control;
+- entrenchment/defensive preparation;
+- infiltration/night/terrain/special-force advantages;
+- operational deception and controlled assaults.
+
+Avoid excessive universal raw attack/breakthrough.
+
+## 7. Cross-doctrine findings so far
 
 ### Strong design features to keep
 - national-school doctrine gating;
@@ -158,19 +343,21 @@ Observed late branch examples:
 - support-company synergies;
 - doctrine-specific planning / reinforce / command / air-ground interaction;
 - explicit late-war German emergency-mobilization alternative;
-- trade-offs such as central planning: slower planning accumulation but higher planning ceiling.
+- trade-offs such as central planning: slower planning accumulation but higher planning ceiling;
+- Soviet pocket/supply/continuous-operation mechanics.
 
 ### Recurring problems
 1. **Organization inflation.** +5/+10 org appears very frequently, often on broad categories. Cumulative doctrine-end org must be computed by formation type.
 2. **Raw speed inflation.** Several doctrines give +5/+10% equipment/unit speed, overlapping chassis/engine/road/general effects.
 3. **Support-company universalization.** Interesting battalion multipliers sometimes target `category_army` or other huge categories, turning a support company into a universal stat multiplier.
 4. **Late-tree universal stat packages.** Branches often begin specialized but end with infantry + tanks + artillery + air interaction all improving together.
-5. **Structural effects need separate balance treatment.** `additional_brigade_column_size = 2` is not comparable to a normal 5–10% modifier and can reshape the entire template meta.
-6. Doctrine balance should be assessed by historical formation archetype (foot infantry, artillery infantry, mechanized, armor, special forces), not only total tree modifier sums.
+5. **Structural effects need separate balance treatment.** `additional_brigade_column_size = 2` and militia combat-width reduction can reshape the entire template meta and cannot be compared directly with normal percentage modifiers.
+6. Doctrine balance should be assessed by historical formation archetype (foot infantry, artillery infantry, mechanized, armor, special forces, militia), not only total tree modifier sums.
+7. German and Soviet late mechanized branches need deliberate differentiation so both do not converge on the same armor org/attack/breakthrough package.
 
 ## Next land-doctrine pass
-- finish Mass Assault/Soviet doctrine in detail;
 - compute cumulative end-state packages for representative formation types;
 - audit all support-company battalion multipliers and category scopes;
+- test structural doctrine effects: extra columns and militia width;
 - identify duplicate tactic unlocks and dead/inaccessible branch gates;
 - then move to Air Doctrine and Naval Doctrine.

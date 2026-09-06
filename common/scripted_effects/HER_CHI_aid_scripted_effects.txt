@@ -4,6 +4,10 @@ HER_CHI_aid_initialize = {
 	set_variable = { CHI_western_route_capacity = 0 }
 	set_variable = { CHI_western_import_capacity = 0 }
 	set_variable = { CHI_western_export_capacity = 0 }
+	set_variable = { CHI_western_import_allocation = 0 }
+	set_variable = { CHI_western_export_allocation = 0 }
+	set_variable = { CHI_tungsten_exported_last_day = 0 }
+	set_variable = { CHI_rifles_delivered_last_day = 0 }
 
 	clr_country_flag = CHI_transport_priority_military
 	clr_country_flag = CHI_transport_priority_credit
@@ -47,6 +51,9 @@ HER_CHI_update_western_route_capacity = {
 
 	round_variable = CHI_western_import_capacity
 	round_variable = CHI_western_export_capacity
+
+	set_variable = { CHI_western_import_allocation = CHI_western_import_capacity }
+	set_variable = { CHI_western_export_allocation = CHI_western_export_capacity }
 }
 
 HER_CHI_export_tungsten_to_usa = {
@@ -77,6 +84,7 @@ HER_CHI_export_tungsten_to_usa = {
 			add_to_variable = { left_tungsten = 1000 }
 			subtract_from_variable = { CHI_usa_tungsten_free_capacity = 1000 }
 		}
+		add_to_variable = { CHI_tungsten_exported_last_day = 1000 }
 	}
 
 	if = {
@@ -108,10 +116,13 @@ HER_CHI_deliver_western_rifles = {
 			subtract_from_variable = { BRA_CHI_pending_infantry_equipment = 1000 }
 		}
 		subtract_from_variable = { CHI_western_import_capacity = 1000 }
+		add_to_variable = { CHI_rifles_delivered_last_day = 1000 }
 	}
 }
 
 HER_CHI_foreign_aid_daily = {
+	set_variable = { CHI_tungsten_exported_last_day = 0 }
+	set_variable = { CHI_rifles_delivered_last_day = 0 }
 	HER_CHI_update_western_route_capacity = yes
 	HER_CHI_export_tungsten_to_usa = yes
 	HER_CHI_deliver_western_rifles = yes

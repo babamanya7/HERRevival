@@ -1,6 +1,6 @@
 ﻿l_english:
  CHI_foreign_aid: "Foreign Aid to China"
- CHI_foreign_aid_desc: "Foreign credits and weapons sustain Chinese resistance, but cargo and strategic materials must pass through vulnerable external routes.\n\nAmerican credit: §Y[?CHI_usa_credit_balance|0]§!\nTungsten debt: §Y[?CHI_usa_tungsten_debt|0]§!\nWestern route capacity: §Y[?CHI_western_route_capacity|0]§!\nRifles awaiting shipment: §Y[?BRA.BRA_CHI_pending_infantry_equipment|0]§!"
+ CHI_foreign_aid_desc: "Foreign credits and weapons sustain Chinese resistance, but cargo and strategic materials must pass through vulnerable external routes.\n\nAmerican credit: §Y[?CHI_usa_credit_balance|0]§!\nTungsten debt: §Y[?CHI_usa_tungsten_debt|0]§!\nTungsten in the Chinese stockpile: §Y[?left_tungsten|0]§!\nTungsten shipped during the last day: §G[?CHI_tungsten_exported_last_day|0]§!\n\nTotal route capacity: §Y[?CHI_western_route_capacity|0]§!\nAllocated to weapon imports: §Y[?CHI_western_import_allocation|0]§!\nAllocated to tungsten exports: §Y[?CHI_western_export_allocation|0]§!\n\nRifles awaiting shipment: §Y[?BRA.BRA_CHI_pending_infantry_equipment|0]§!\nRifles delivered during the last day: §G[?CHI_rifles_delivered_last_day|0]§!"
  CHI_request_american_tungsten_credit: "Request an American Tungsten Credit"
  CHI_request_american_tungsten_credit_desc: "Offer the United States a commodity-backed credit secured by future deliveries of Chinese tungsten."
  CHI_purchase_american_rifles: "Purchase American Rifles"

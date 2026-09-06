@@ -471,3 +471,4 @@ Split only when the main file becomes cumbersome; avoid fragmentation for its ow
 - Recorded verified fixed-amount `send_equipment` syntax already used by HER.
 - Added the initial US tungsten credit, Western staging through `BRA`, route-capacity calculation, transport priorities, one rifle contract, and fixed-packet tungsten repayment.
 - Added China and USA exceptions to the tungsten warehouse player-only gate so the credit pipeline can operate when either tag is AI-controlled.
+- In-game testing confirmed that rifle staging/delivery and the displayed credit, debt, route-capacity, and pending-rifle values work. Added persistent last-daily-tick telemetry for actual tungsten exports and rifle deliveries, plus the import/export capacity allocation shown in the decision category.

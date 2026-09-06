@@ -1,142 +1,131 @@
-# befriend
-# conquer
-# antagonize
-# build_ship
-# build_army
-# unit_ratio
-# build_building
-# research_tech
-# garrison
-# protect
-# influence
+# HER China AI strategy
+#
+# China is a land-defense power in the current AI pass. Its priorities are:
+# preserve the field army, keep infantry/artillery production running, defend the
+# Japanese front in depth and avoid wasting scarce industry on armor, bombers or navy.
 
 CHI_unit_production = {
 	allowed = { original_tag = CHI }
-	enable = {
-		always = yes
-	}
-	abort = {
-		always = no
-	}
-	
+	enable = { always = yes }
+	abort = { always = no }
+
 	ai_strategy = {
 		type = role_ratio
 		id = garrison
-		value = 0
+		value = 2
 	}
-
-
 	ai_strategy = {
 		type = role_ratio
 		id = paratroopers
 		value = 0
 	}
-
 	ai_strategy = {
 		type = role_ratio
 		id = mountaineers
-		value = 0
+		value = 5
 	}
-
 	ai_strategy = {
 		type = role_ratio
 		id = marines
 		value = 0
 	}
-
 	ai_strategy = {
 		type = role_ratio
 		id = armor
-		value = -10
+		value = -100
 	}
-
 	ai_strategy = {
 		type = role_ratio
 		id = infantry
 		value = 100
 	}
-	
-	#Air unit factors
+
+	# China should maintain a small fighter arm but not let aircraft consume the army budget.
 	ai_strategy = {
 		type = unit_ratio
 		id = fighter
-		value = 75 # From 70 to 75
+		value = 20
 	}
-	
 	ai_strategy = {
 		type = unit_ratio
 		id = cas
 		value = 0
 	}
-	
 	ai_strategy = {
 		type = unit_ratio
 		id = tactical_bomber
 		value = 0
 	}
-	
 	ai_strategy = {
 		type = unit_ratio
 		id = strategic_bomber
 		value = 0
 	}
-	
 	ai_strategy = {
 		type = unit_ratio
 		id = naval_bomber
 		value = 0
 	}
-	
-	
-	# Naval unit factors
+
+	# No blue-water fleet program. Keep only a modest convoy requirement for foreign aid/trade.
 	ai_strategy = {
 		type = unit_ratio
 		id = capital_ship
-		value = 25 # from 15 to 25
+		value = 0
 	}
-
 	ai_strategy = {
 		type = unit_ratio
 		id = submarine
-		value = 40 #from 50 to 40
+		value = 0
 	}
-
 	ai_strategy = {
 		type = unit_ratio
 		id = screen_ship
-		value = 20
+		value = 0
 	}
-
 	ai_strategy = {
 		type = unit_ratio
 		id = convoy
-		value = 20
+		value = 10
 	}
-	
-	ai_strategy = {
-		type = equipment_production_factor
-		id = fighter
-		value = 20
-	}
-	
+
 	ai_strategy = {
 		type = equipment_production_factor
 		id = infantry
-		value = 35
+		value = 80
 	}
-	
 	ai_strategy = {
 		type = equipment_production_factor
 		id = artillery
-		value = 25
+		value = 35
 	}
-	
+	ai_strategy = {
+		type = equipment_production_factor
+		id = anti_air
+		value = 20
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = anti_tank
+		value = 10
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = fighter
+		value = 5
+	}
 	ai_strategy = {
 		type = equipment_production_factor
 		id = armor
-		value = 0
+		value = -100
 	}
-	
+	ai_strategy = {
+		type = equipment_production_factor
+		id = motorized
+		value = -50
+	}
+
+	# Existing HER helper: reduce the hard-coded AI penalty caused by China's weak starting army.
 	ai_strategy = {
 		type = ignore_army_incompetence
 		value = 50
@@ -148,16 +137,13 @@ CHI_dont_waste_on_offensive_air_early = {
 	enable = {
 		date < 1940.1.1
 	}
-	abort = {
-		date > 1940.1.1
-	}
+	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = equipment_variant_production_factor
 		id = medium_plane_airframe
 		value = -100
 	}
-	
 	ai_strategy = {
 		type = equipment_variant_production_factor
 		id = large_plane_airframe
@@ -166,131 +152,125 @@ CHI_dont_waste_on_offensive_air_early = {
 }
 
 CHI_ignore_neighbours = {
-	allowed = {
-		original_tag = CHI
-	}
-
+	allowed = { original_tag = CHI }
 	enable = {
 		has_war_with = JAP
 	}
-
 	abort_when_not_enabled = yes
 
-	ai_strategy = {
-		type = contain
-		id = "RAJ"
-		value = -200
-	}
-
-	ai_strategy = {
-		type = contain
-		id = "FRA"
-		value = -200
-	}
-	
-	ai_strategy = {
-		type = contain
-		id = "MON"
-		value = -200
-	}
-	
-	ai_strategy = {
-		type = contain
-		id = "SIK"
-		value = -200
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "MON"
-		value = 100
-	}
-	
-	ai_strategy = {
-		type = ignore
-		id = "SIK"
-		value = 100
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "RAJ"
-		value = 100
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "FRA"
-		value = 100
-	}
+	ai_strategy = { type = contain id = "RAJ" value = -200 }
+	ai_strategy = { type = contain id = "FRA" value = -200 }
+	ai_strategy = { type = contain id = "MON" value = -200 }
+	ai_strategy = { type = contain id = "SIK" value = -200 }
+	ai_strategy = { type = ignore id = "MON" value = 100 }
+	ai_strategy = { type = ignore id = "SIK" value = 100 }
+	ai_strategy = { type = ignore id = "RAJ" value = 100 }
+	ai_strategy = { type = ignore id = "FRA" value = 100 }
 }
 
-JAP_is_threat = {
-
-	allowed = {
-		original_tag = CHI
-	}
-
-	enable = {
-		always = yes
-	}
-
+CHI_prepare_for_japan = {
+	allowed = { original_tag = CHI }
+	enable = { always = yes }
 	abort_when_not_enabled = yes
-	
 
 	ai_strategy = {
 		type = prepare_for_war
 		id = JAP
-		value = 200
+		value = 300
 	}
-	
 	ai_strategy = {
 		type = force_build_armies
-		value = 500
+		value = 350
 	}
-	
 	ai_strategy = {
 		type = build_army
 		id = infantry
-		value = 600
+		value = 500
+	}
+	ai_strategy = {
+		type = area_priority
+		id = north_china
+		value = 120
+	}
+	ai_strategy = {
+		type = area_priority
+		id = central_china
+		value = 70
+	}
+	ai_strategy = {
+		type = area_priority
+		id = south_china
+		value = 20
 	}
 }
 
-CHI_prio_military_even_at_peace = {
+CHI_japanese_war_front = {
 	allowed = { original_tag = CHI }
-	
 	enable = {
-		always = yes
+		has_war_with = JAP
 	}
-	
-	abort = { always = no }
-	
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_unit_request
+		tag = JAP
+		value = 80
+	}
+	ai_strategy = {
+		type = area_priority
+		id = north_china
+		value = 180
+	}
+	ai_strategy = {
+		type = area_priority
+		id = central_china
+		value = 120
+	}
+	ai_strategy = {
+		type = area_priority
+		id = south_china
+		value = 50
+	}
 	ai_strategy = {
 		type = added_military_to_civilian_factory_ratio
-		value = 1000
+		value = 200
 	}
-	
 	ai_strategy = {
 		type = building_target
 		id = arms_factory
-		value = 1500
+		value = 500
 	}
 }
-	
-CHI_dont_mess_with_the_soviets = {
 
+CHI_prewar_military_industry = {
 	allowed = { original_tag = CHI }
-	enable = {	
+	enable = {
+		has_war_with = JAP
+		NOT = { has_war = yes }
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 100
+	}
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 250
+	}
+}
+
+CHI_dont_mess_with_the_soviets = {
+	allowed = { original_tag = CHI }
+	enable = {
 		NOT = { has_war_with = SOV }
 	}
-	
-	abort = {
-		has_war_with = SOV
-	}
+	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = contain
-		id = "SOV"			
+		id = "SOV"
 		value = -200
 	}
 }
@@ -298,65 +278,45 @@ CHI_dont_mess_with_the_soviets = {
 CHI_some_safer_places_to_build = {
 	allowed = { original_tag = CHI }
 	enable = {
-		always = yes
+		date < 1941.1.1
 	}
-
-	abort = {
-		date > 1941.1.1
-	}
+	abort_when_not_enabled = yes
 
 	ai_strategy = {
-        type = factory_build_score_factor
-        target = 929
-        value = 300
-    }
-
+		type = factory_build_score_factor
+		target = 929
+		value = 300
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
-        target = 605
-        value = 300
-    }
+		type = factory_build_score_factor
+		target = 605
+		value = 300
+	}
 }
 
 CHI_buffer_in_coastline = {
-	allowed = {
-		original_tag = CHI
-	}
-	enable = {
-		always = yes
-	}
+	allowed = { original_tag = CHI }
+	enable = { always = yes }
 	abort_when_not_enabled = yes
-	
+
 	ai_strategy = {
-	
 		type = put_unit_buffers
-		
-		ratio = 0.12
-		
+		ratio = 0.08
 		area = china_coast
-		
 		subtract_invasions_from_need = no
 		subtract_fronts_from_need = no
 	}
 }
 
 CHI_reserve_divs = {
-	allowed = {
-		original_tag = CHI
-	}
-	enable = {
-		always = yes
-	}
+	allowed = { original_tag = CHI }
+	enable = { always = yes }
 	abort_when_not_enabled = yes
-	
+
 	ai_strategy = {
-	
 		type = put_unit_buffers
-		
-		ratio = 0.1
-		
+		ratio = 0.12
 		area = central_china
-		
 		subtract_invasions_from_need = no
 		subtract_fronts_from_need = no
 	}

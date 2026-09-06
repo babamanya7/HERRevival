@@ -11,52 +11,63 @@ ENG_historical_plan = {
 	abort_when_not_enabled = yes
 
 	ai_national_focuses = {
+		# Recovery, research and the first rearmament response.
 		uk_privatize_the_housing_market
 		ENG_bawdsey_research_centre
 		uk_government_loans
 		uk_lower_interest_rates
 		ENG_approve_new_construction_projects
 		ENG_reignite_our_manufacturing_heartland
-		ENG_womans_land_army
-		ENG_emergency_powers
-		ENG_kickstart_the_war_industry
 		limited_rearmament_focus
-		uk_empire_focus
-		uk_service_focus
 		shadow_scheme_focus
 		general_rearmament_focus
 		royal_ordinance_focus
-		uk_colonial_focus
-		uk_asia_focus
-		uk_burma_focus
-		air_defense_focus
 		air_rearmament_focus
+		naval_rearmament_focus
+
+		# Democratic/home-defence path. Keep prerequisites ahead of wartime emergency focuses.
 		ENG_steady_as_she_goes
-		ENG_prepare_for_the_inevitable
 		ENG_home_defence
-		ENG_issue_gasmasks
 		ENG_military_training_act
+		ENG_prepare_for_the_inevitable
+		ENG_womans_land_army
+		ENG_emergency_powers
+		ENG_kickstart_the_war_industry
+		ENG_issue_gasmasks
+
+		# RAF, radar and codebreaking. Tizard requires both Bletchley Park and Chain Home in HER.
+		chain_home
+		ENG_bletchley_park_focus
+		air_defense_focus
 		fighter_command_focus
 		bomber_command_focus
 		coastal_command_focus
 		aircraft_production_focus
-		naval_rearmament_focus
-		ENG_motorized_focus
 		crypto_bomb_focus
 		tizard_mission_focus
+
+		# Army, convoy protection and wartime command structure.
+		ENG_motorized_focus
 		ENG_special_air_service
 		uk_waves_focus
 		uk_convoy_focus
 		ENG_chiefs_of_staff_committee
 		maud_focus
+
+		# Empire and Mediterranean commitments after the metropolitan defence base exists.
+		uk_empire_focus
+		uk_service_focus
+		uk_colonial_focus
 		uk_mediterranean_focus
+		uk_protect_suez
+		uk_malta_focus
 		uk_carrier_focus
+		uk_asia_focus
+		uk_burma_focus
 		hongkong_focus
 		uk_rock_focus
 		singapore_focus
 		peninsular_focus
-		uk_protect_suez
-		uk_malta_focus
 		uk_commonwealth_focus
 		uk_canada_focus
 		uk_australia_focus

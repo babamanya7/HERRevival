@@ -149,6 +149,67 @@ The many separate city-buffer strategies were consolidated into smaller north/ce
 Main rewrite commit: `dd209ec98904365275281f29eb61b1903d9f4b94`.
 Trigger correction: `42cc292067a72cb15e860d95f309471f63cc8e9f`.
 
+## German strategy — IMPLEMENTED FIRST PASS
+
+`common/ai_strategy/GER.txt` was rebuilt from the inherited compensation-heavy stack into a phase-driven German war plan.
+
+### Production personality
+
+The old baseline used negative armor/motorized/mechanized role ratios and then tried to add armor back through several separate helper blocks. The new baseline directly expresses the intended force structure:
+
+- infantry remains the majority of the army;
+- armor is a substantial but limited elite component;
+- motorized/mechanized support is positive rather than being suppressed and then re-added elsewhere;
+- artillery, AA/AT, tanks, fighters/interceptors and CAS receive meaningful production pressure;
+- strategic bombing is suppressed;
+- naval unit ratios strongly favor submarines, while carriers are suppressed.
+
+Dynamic enemy-armor detection is retained and now adds AT pressure rather than being the only meaningful anti-armor signal.
+
+### Rearmament phases
+
+- 1936-37: moderate rearmament rather than an immediate all-military economy;
+- 1938 to the Polish campaign: strong arms-factory and air buildup with increased mobile/armored force demand;
+- major war: full military expansion.
+
+The old permanent `GER_no_wants_civ = -10000` behavior was removed from the German country file so the AI is not absolutely forbidden from civilian construction in all fascist phases.
+
+### Poland / France
+
+The Polish campaign now has an explicit preparation block followed by a concentrated rush phase. Armor is pulled away from France while Poland remains active. The Low Countries and French phases are separate:
+
+- avoid armor concentration through the Maginot;
+- prepare HOL/BEL/LUX after Poland;
+- rush Benelux with dedicated front requests;
+- then concentrate armor and breakthrough targets into northern France/Paris while continuing to avoid the Maginot rear.
+
+### Barbarossa / Eastern Front
+
+The old German file had useful individual pieces but also overlapping permanent `front_armor_score`, SOV preparation and rush strategies. These were consolidated into explicit phases:
+
+- from late 1940 after France: Barbarossa preparation, logistics buildup and suppression of African distractions;
+- opening campaign through mid-November 1941: maximum concentration and `rush` execution;
+- winter 1941/42: operational pause with careful/no-execute behavior;
+- spring-autumn 1942: renewed balanced offensive with strong southern/Caucasus emphasis;
+- late 1942 onward: sustained but less reckless Eastern war;
+- Allied landing / meaningful surrender progress: pull force demand and armor back toward France and switch the Soviet front to careful defense.
+
+This is intended to stop the AI from endlessly running the 1941 blitz posture after the operational situation has changed.
+
+### Air and Atlantic war
+
+The Luftwaffe now has explicit prewar and wartime fighter/CAS production profiles, including the HER interceptor role. A Battle of Britain phase prioritizes Southern England while continuing to downweight the English Channel air region.
+
+The working North Sea / Atlantic U-boat region priorities are retained and simplified. Atlantic raiding can begin with a somewhat smaller submarine force once western French bases are available.
+
+### Technical cleanup
+
+The old `GER_naval_role_ratios_historical` block using dead vanilla `naval_*` production roles was removed. VNR ship production remains owned by `naval_production.txt`.
+
+Several duplicated/dead strategies were removed, including permanently disabled war/claim helpers and duplicate Italy alliance logic. Useful shared Axis/minor de-crowding helpers from the old GER file were retained.
+
+Main rewrite commit: `8498b28475d585a1657770c2c864f529047c1c90`.
+
 ## Defines policy / naval NAI status
 
 The temporary standalone file `common/defines/zz_HER_AI_navy.lua` was removed after the user requested that AI define changes stay in the main defines file.
@@ -162,15 +223,14 @@ They should be applied directly in `common/defines/00_defines.lua` when the main
 
 ## Next audit order
 
-1. GER country strategy phases.
-2. ENG country strategy phases and removal of dead old naval-role helpers.
-3. USA country strategy phases.
-4. JAP country strategy phases and Pacific operation sequence.
-5. ITA/FRA cleanup.
-6. Operation strategy files and remaining microscripts.
-7. Inventory existing AI-only helper systems before creating new concessions.
+1. ENG country strategy phases and removal of dead old naval-role helpers.
+2. USA country strategy phases.
+3. JAP country strategy phases and Pacific operation sequence.
+4. ITA/FRA cleanup.
+5. Operation strategy files and remaining microscripts.
+6. Inventory existing AI-only helper systems before creating new concessions.
 
-CHI and SOV have first-pass country strategies and should be revisited after division-template/strategy-plan integration and hands-off observation.
+CHI, SOV and GER have first-pass country strategies and should be revisited after division-template/strategy-plan integration and hands-off observation.
 
 ## Hands-off requirement
 

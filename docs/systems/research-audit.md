@@ -288,13 +288,73 @@ The support tree appears very broad and regular, which is good for readability, 
 
 ---
 
+## 12. Special projects / secret-technology integration
+
+### General structure
+HER has a large special-project layer split across air, land, rockets, nuclear, naval projects and a separate set of naval-institute projects. This is not a minor side system: it acts as a second research economy using facilities, scientists, breakthrough points, prototype time and strategic-resource costs.
+
+**Audit rule:** a special project should represent a capability that is qualitatively different from ordinary incremental research. Where possible it should unlock a module, equipment type, building, design option or new role rather than apply a blanket stat multiplier to an entire equipment archetype.
+
+### Radar project
+`sp_air_radar` requires `electronic_mechanical_engineering`, consumes air-specialization breakthrough and resources, then directly grants `radio_detection`, creates a level-1 radar station in the facility state, and enables `ship_radar_1`. It also advertises `cavity_magnatron` as the next unlocked technology.
+
+This confirms that the earlier radar-tree inconsistency is real at the architecture level: ordinary tech paths and the special-project path currently overlap. **A:** radar progression should be normalized into a single explicit chain: prerequisite electronics -> radar project -> post-project radar/magnetron technologies/modules. Avoid direct tech-tree bypasses around the project.
+
+### Air special projects — global archetype bonuses
+`sp_air_bouncing_bomb` currently applies an equipment bonus to all `large_plane_airframe`: +10% `air_bombing` and +5% `build_cost_ic`.
+
+**A:** a highly specific special-purpose weapon project should not globally improve every large aircraft. Replace the blanket archetype bonus with an explicit bomb/release module or another design-level unlock. The current cost increase on every large airframe is especially artificial.
+
+`sp_air_intercontinental_bomber` applies +50% `air_range` and +20% `build_cost_ic` to all `large_plane_airframe`.
+
+**A:** this effectively turns every large aircraft into an intercontinental design after one project. In Air Designer 2.0 this should become a physical design capability: enlarged fuel/wing/structure/engine configuration, distinct large-airframe variant, or other explicit module set with substantial trade-offs.
+
+By contrast, `sp_air_earthshaker_bomb` enables `earthshaker_bomb_release`. **KEEP / good pattern:** this is the preferred project architecture because the project unlocks a concrete capability that the player must actually design into an aircraft.
+
+### Land special projects
+Land projects are generally closer to the desired pattern:
+- `sp_land_flamethrower_tank` enables the flamethrower module and flame-tank subunits;
+- `sp_land_military_engineering_vehicles` enables armored-support equipment and several specialist support subunits;
+- `sp_land_stabilizator` and `sp_land_improved_stabilizator` enable actual stabilizer modules;
+- `sp_land_amphibious_drive` is tied to tank-chassis prerequisites and design-template bonuses.
+
+**KEEP / integration review:** these projects represent concrete equipment/design capabilities rather than generic global modifiers. Their exact timing and resource costs should be revisited after Tank Designer 2.0 because several outputs will need to map onto the new role/chassis architecture.
+
+`sp_land_stabilizator` requires `improved_computing_machine`, while the improved stabilizer requires `advanced_computing_machine`. This is a good cross-system dependency in principle, but computing is already extremely high-value, so it further increases the indirect military payoff of the computing line. **B / integration:** account for these unlocks when reducing computing research-speed inflation.
+
+### Rocket projects
+The flying-bomb project is structurally healthy: it requires `experimental_rockets`, unlocks `guided_missile_equipment_1`, and its prototype choices modify the guided-missile equipment itself (range, payload, speed, production cost) rather than unrelated aircraft.
+
+**KEEP / preferred pattern:** project decisions produce trade-offs on the capability that was actually developed.
+
+### Nuclear projects
+The reactor project is also structurally strong: it requires `atomic_research`, unlocks the appropriate reactor technology/building, supports graphite vs heavy-water choices, and includes a first-successful-reactor information/publicity interaction that can accelerate other countries' nuclear progress.
+
+**KEEP / good system design:** this is an example of a special project acting as a genuine technological program with branching engineering choices and international knowledge spillover rather than a flat national-stat bonus.
+
+### Hidden naval overrides
+`common/special_projects/projects/_overwrite.txt` explicitly keeps vanilla `sp_naval_fleet_submarine`, `sp_naval_cruiser_submarine`, and `sp_naval_super_heavy_battleship` definitions hidden (`visible = { always = no }`) with empty outputs. This appears intentional because HER replaces them with its own naval-institute/project architecture.
+
+**C / maintenance:** document these as intentional disabled compatibility stubs so a future vanilla update does not cause them to be mistaken for unfinished content or accidentally re-enabled.
+
+### Special-project systemic verdict
+Current quality is uneven:
+- nuclear, rocket and many land projects already follow a strong "project -> concrete capability -> design/use choice" model;
+- several air projects still follow a weak "project -> blanket archetype modifier" model and should be reworked alongside Air Designer 2.0;
+- radar currently has duplicated responsibility between ordinary technologies and the special-project chain;
+- naval special projects are a separate HER architecture and remain assigned to the dedicated naval audit branch.
+
+---
+
 ## TODO — next passes
 - finish synthetic oil/rubber branch audit;
 - finish infantry special-forces branches and full support-company audit;
 - audit artillery;
-- audit armor and NSB armor integration;
-- audit air technologies and BBA modules;
-- audit naval technologies and hidden naval-institute overrides;
+- armor implementation is deferred to Tank Designer 2.0 after the accepted architecture pass;
+- air implementation is deferred to Air Designer 2.0 after the accepted architecture/MIO pass;
+- naval implementation/final combat block is deferred to the dedicated naval branch;
+- audit remaining special-project timing/resource costs and prototype-reward value;
 - build category → technology → MIO/focus bonus map;
 - audit country starting techs and research bonuses;
+- then move the general audit into national focuses / doctrines and cross-system bonus inflation;
 - convert confirmed findings into implementation changes only after each subsystem pass is complete.

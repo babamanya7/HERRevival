@@ -54,14 +54,14 @@ country_event = { id = her_chi_aid.124 hidden = yes is_triggered_only = yes opti
 	subtract_from_variable = { BRA_CHI_in_transit_motorized_equipment = 200 }
 } }
 country_event = { id = her_chi_aid.125 hidden = yes is_triggered_only = yes option = {
-	send_equipment = { target = CHI type = small_plane_airframe amount = 20 old_prioritised = yes }
-	subtract_from_variable = { BRA_CHI_in_transit_small_plane_airframe = 20 }
+	send_equipment = { target = CHI type = small_plane_airframe amount = 5 old_prioritised = yes }
+	subtract_from_variable = { BRA_CHI_in_transit_small_plane_airframe = 5 }
 } }
 country_event = { id = her_chi_aid.126 hidden = yes is_triggered_only = yes option = {
-	send_equipment = { target = CHI type = small_plane_cas_airframe amount = 20 old_prioritised = yes }
-	subtract_from_variable = { BRA_CHI_in_transit_small_plane_cas_airframe = 20 }
+	send_equipment = { target = CHI type = small_plane_cas_airframe amount = 5 old_prioritised = yes }
+	subtract_from_variable = { BRA_CHI_in_transit_small_plane_cas_airframe = 5 }
 } }
 country_event = { id = her_chi_aid.127 hidden = yes is_triggered_only = yes option = {
-	send_equipment = { target = CHI type = small_plane_tactical_bomber_airframe amount = 20 old_prioritised = yes }
-	subtract_from_variable = { BRA_CHI_in_transit_small_plane_tactical_bomber_airframe = 20 }
+	send_equipment = { target = CHI type = small_plane_tactical_bomber_airframe amount = 5 old_prioritised = yes }
+	subtract_from_variable = { BRA_CHI_in_transit_small_plane_tactical_bomber_airframe = 5 }
 } }

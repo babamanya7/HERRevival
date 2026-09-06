@@ -25,6 +25,23 @@ HER_CHI_aid_initialize = {
 	set_country_flag = CHI_foreign_aid_initialized
 }
 
+# The American commodity credit requires a warehouse away from the exposed mining regions.
+# The flag also prevents repeated slot creation. Keeping this as a daily-safe effect migrates old saves.
+HER_CHI_ensure_chongqing_export_depot = {
+	if = {
+		limit = {
+			has_country_flag = CHI_usa_tungsten_credit_active
+			NOT = { has_country_flag = CHI_usa_export_depot_established }
+			605 = { is_controlled_by = ROOT }
+		}
+		605 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = { type = tungsten_storage level = 1 instant_build = yes }
+		}
+		set_country_flag = CHI_usa_export_depot_established
+	}
+}
+
 HER_CHI_update_western_route_capacity = {
 	set_variable = { CHI_sea_route_capacity = 0 }
 	set_variable = { CHI_hanoi_route_capacity = 0 }
@@ -237,52 +254,72 @@ HER_CHI_deliver_western_trucks = {
 }
 
 HER_CHI_deliver_western_aircraft = {
+	BRA = {
+		set_variable = { BRA_CHI_available_small_plane_airframe = num_equipment@small_plane_airframe }
+		subtract_from_variable = { var = BRA_CHI_available_small_plane_airframe value = BRA_CHI_in_transit_small_plane_airframe }
+		clamp_variable = { var = BRA_CHI_available_small_plane_airframe min = 0 max = 1000000 }
+	}
 	if = {
 		limit = {
-			check_variable = { CHI_western_import_capacity > 999 }
+			check_variable = { CHI_western_import_capacity > 249 }
 			BRA = {
-				check_variable = { BRA_CHI_pending_small_plane_airframe > 19 }
-				has_equipment = { small_plane_airframe > 19 }
+				check_variable = { BRA_CHI_pending_small_plane_airframe > 4 }
+				check_variable = { BRA_CHI_available_small_plane_airframe > 4 }
 			}
 		}
 		BRA = {
-			subtract_from_variable = { BRA_CHI_pending_small_plane_airframe = 20 }
-			add_to_variable = { BRA_CHI_in_transit_small_plane_airframe = 20 }
+			subtract_from_variable = { BRA_CHI_pending_small_plane_airframe = 5 }
+			add_to_variable = { BRA_CHI_in_transit_small_plane_airframe = 5 }
 			country_event = { id = her_chi_aid.125 days = 7 }
 		}
-		subtract_from_variable = { CHI_western_import_capacity = 1000 }
-		add_to_variable = { CHI_fighters_dispatched_last_day = 20 }
+		subtract_from_variable = { CHI_western_import_capacity = 250 }
+		add_to_variable = { CHI_fighters_dispatched_last_day = 5 }
+	}
+	BRA = {
+		if = { limit = { check_variable = { BRA_CHI_pending_small_plane_airframe > 0 } check_variable = { BRA_CHI_available_small_plane_airframe < 1 } } set_variable = { BRA_CHI_pending_small_plane_airframe = 0 } }
 	}
 }
 
 HER_CHI_deliver_western_cas = {
+	BRA = {
+		set_variable = { BRA_CHI_available_small_plane_cas_airframe = num_equipment@small_plane_cas_airframe }
+		subtract_from_variable = { var = BRA_CHI_available_small_plane_cas_airframe value = BRA_CHI_in_transit_small_plane_cas_airframe }
+		clamp_variable = { var = BRA_CHI_available_small_plane_cas_airframe min = 0 max = 1000000 }
+	}
 	if = { limit = {
-		check_variable = { CHI_western_import_capacity > 999 }
-		BRA = { check_variable = { BRA_CHI_pending_small_plane_cas_airframe > 19 } has_equipment = { small_plane_cas_airframe > 19 } }
+		check_variable = { CHI_western_import_capacity > 249 }
+		BRA = { check_variable = { BRA_CHI_pending_small_plane_cas_airframe > 4 } check_variable = { BRA_CHI_available_small_plane_cas_airframe > 4 } }
 	}
 		BRA = {
-			subtract_from_variable = { BRA_CHI_pending_small_plane_cas_airframe = 20 }
-			add_to_variable = { BRA_CHI_in_transit_small_plane_cas_airframe = 20 }
+			subtract_from_variable = { BRA_CHI_pending_small_plane_cas_airframe = 5 }
+			add_to_variable = { BRA_CHI_in_transit_small_plane_cas_airframe = 5 }
 			country_event = { id = her_chi_aid.126 days = 7 }
 		}
-		subtract_from_variable = { CHI_western_import_capacity = 1000 }
-		add_to_variable = { CHI_cas_dispatched_last_day = 20 }
+		subtract_from_variable = { CHI_western_import_capacity = 250 }
+		add_to_variable = { CHI_cas_dispatched_last_day = 5 }
 	}
+	BRA = { if = { limit = { check_variable = { BRA_CHI_pending_small_plane_cas_airframe > 0 } check_variable = { BRA_CHI_available_small_plane_cas_airframe < 1 } } set_variable = { BRA_CHI_pending_small_plane_cas_airframe = 0 } } }
 }
 
 HER_CHI_deliver_western_tactical_bombers = {
+	BRA = {
+		set_variable = { BRA_CHI_available_small_plane_tactical_bomber_airframe = num_equipment@small_plane_tactical_bomber_airframe }
+		subtract_from_variable = { var = BRA_CHI_available_small_plane_tactical_bomber_airframe value = BRA_CHI_in_transit_small_plane_tactical_bomber_airframe }
+		clamp_variable = { var = BRA_CHI_available_small_plane_tactical_bomber_airframe min = 0 max = 1000000 }
+	}
 	if = { limit = {
-		check_variable = { CHI_western_import_capacity > 999 }
-		BRA = { check_variable = { BRA_CHI_pending_small_plane_tactical_bomber_airframe > 19 } has_equipment = { small_plane_tactical_bomber_airframe > 19 } }
+		check_variable = { CHI_western_import_capacity > 249 }
+		BRA = { check_variable = { BRA_CHI_pending_small_plane_tactical_bomber_airframe > 4 } check_variable = { BRA_CHI_available_small_plane_tactical_bomber_airframe > 4 } }
 	}
 		BRA = {
-			subtract_from_variable = { BRA_CHI_pending_small_plane_tactical_bomber_airframe = 20 }
-			add_to_variable = { BRA_CHI_in_transit_small_plane_tactical_bomber_airframe = 20 }
+			subtract_from_variable = { BRA_CHI_pending_small_plane_tactical_bomber_airframe = 5 }
+			add_to_variable = { BRA_CHI_in_transit_small_plane_tactical_bomber_airframe = 5 }
 			country_event = { id = her_chi_aid.127 days = 7 }
 		}
-		subtract_from_variable = { CHI_western_import_capacity = 1000 }
-		add_to_variable = { CHI_tactical_bombers_dispatched_last_day = 20 }
+		subtract_from_variable = { CHI_western_import_capacity = 250 }
+		add_to_variable = { CHI_tactical_bombers_dispatched_last_day = 5 }
 	}
+	BRA = { if = { limit = { check_variable = { BRA_CHI_pending_small_plane_tactical_bomber_airframe > 0 } check_variable = { BRA_CHI_available_small_plane_tactical_bomber_airframe < 1 } } set_variable = { BRA_CHI_pending_small_plane_tactical_bomber_airframe = 0 } } }
 }
 
 HER_CHI_export_daily_batch = {
@@ -328,6 +365,7 @@ HER_CHI_foreign_aid_daily = {
 	set_variable = { CHI_fighters_dispatched_last_day = 0 }
 	set_variable = { CHI_cas_dispatched_last_day = 0 }
 	set_variable = { CHI_tactical_bombers_dispatched_last_day = 0 }
+	HER_CHI_ensure_chongqing_export_depot = yes
 	HER_CHI_update_western_route_capacity = yes
 	HER_CHI_export_daily_batch = yes
 	HER_CHI_deliver_daily_batch = yes

@@ -59,8 +59,8 @@ However older country files still contain vanilla `naval_*` role-ratio blocks. B
 
 Confirmed technical debt:
 
-- ENG: `EAI_ENG_focus_on_screens`, `ENG_naval_role_ratios_historical`, `ENG_naval_role_ratios_anti_submarines` use old roles. A new VNR bridge now supplies the intended ASW behavior; the old blocks should be removed or converted during cleanup.
-- JAP: `JAP_naval_role_ratios_historical` and `_late` likewise use old naval production roles. Their non-role `unit_ratio` settings may still be useful and must not be deleted mechanically.
+- ENG: old `EAI_ENG_focus_on_screens`, `ENG_naval_role_ratios_historical` and `ENG_naval_role_ratios_anti_submarines` were removed in the British rewrite. The working VNR bridge remains responsible for the dynamic ASW production response.
+- JAP: `JAP_naval_role_ratios_historical` and `_late` still use old naval production roles and will be handled in the Japanese pass.
 
 ## Implemented bridge strategies
 
@@ -73,7 +73,7 @@ It provides:
 - an always-on lighter ENG-vs-GER screen bias;
 - USA/JAP Pacific-war carrier/screen/invasion-focus boosts.
 
-This file is intentionally a bridge while the large legacy country files are audited. Once all country strategy cleanup is complete, duplicated dead blocks can be removed safely.
+This file is intentionally a bridge while the large legacy country files are audited. Once all country strategy cleanup is complete, duplicated behavior can be moved into final country files or left here only where cross-country separation is useful.
 
 ## JAP Southern Expansion bug — FIXED
 
@@ -210,6 +210,62 @@ Several duplicated/dead strategies were removed, including permanently disabled 
 
 Main rewrite commit: `8498b28475d585a1657770c2c864f529047c1c90`.
 
+## British strategy — IMPLEMENTED FIRST PASS
+
+`common/ai_strategy/ENG.txt` was rebuilt around three simultaneous British constraints: Home Defence/RAF, Battle of the Atlantic, and a limited expeditionary army that must protect imperial nodes without being annihilated in continental traps.
+
+### Production personality
+
+The old file had several overlapping air-production stacks plus a very large `marines = 30` land ratio and multiple dead vanilla naval-role helpers. The new baseline:
+
+- keeps infantry as the majority of the army;
+- keeps armor meaningful but smaller than the old 15/70 split implied;
+- reduces marines to a specialist role rather than treating them as a third of the desired army mix;
+- adds modest motorized/mechanized demand;
+- strongly favors fighters/interceptors, with meaningful naval bombers and maritime patrol aircraft;
+- retains strategic bombers as a secondary capability rather than a dominant early-war program;
+- gives convoy/screens high unit-ratio pressure while specific VNR ship construction remains owned by `naval_production.txt` and the naval bridge.
+
+### Industry / RAF phases
+
+- 1936-37: civilian buildup and only limited air expansion;
+- 1938 to war: accelerated rearmament with a strong fighter/interceptor program;
+- major war: full wartime industry and army expansion;
+- Home Defence: Southern England and the British home air region gain explicit strategic air importance;
+- fighter emergency: if the deployed fighter force falls below the desired wartime threshold, fighter/interceptor production receives an additional temporary boost;
+- maritime patrol/naval bomber production has its own naval-air block instead of being mixed into every aircraft strategy.
+
+### Atlantic / naval integration
+
+The obsolete `EAI_ENG_focus_on_screens`, `ENG_naval_role_ratios_historical` and `ENG_naval_role_ratios_anti_submarines` blocks using old `naval_*` role IDs were removed.
+
+The British file now only contains high-level naval behavior and dockyard balance. Actual VNR screen/escort construction remains in `naval_production.txt` plus the existing ASW bridge, which reacts to `anti_submarine_strategy_required_trigger`.
+
+The Channel avoidance value was reduced from an overly strong blanket avoidance to a moderate penalty; the Baltic remains heavily discouraged. Britain can therefore defend nearby routes without treating the entire Channel as effectively unusable.
+
+### France / home reserve
+
+The old file contained several overlapping "don't die in France" strategies. They were consolidated into:
+
+- a permanent modest home-island reserve;
+- Benelux reluctance while Germany is breaking through;
+- a stronger withdrawal trigger when French surrender progress rises;
+- a post-capitulation France demand penalty through mid-1942.
+
+This is intended to preserve the BEF enough for later Mediterranean and invasion operations without making Britain completely refuse continental support.
+
+### Mediterranean / Empire
+
+Suez, Alexandria, Gibraltar and Malta remain high-priority imperial nodes. The North Africa/Suez buffer is retained at a smaller proportion so the AI does not park an excessive fraction of the army there.
+
+When Japan enters the war, ENG/RAJ receive Burma priority and Britain adds Malaysia/Burma pressure while keeping Australia/New Zealand secondary. Commonwealth helpers were retained but normalized from several 500-2000 scale values.
+
+### Allied offensive transition
+
+Early invasions remain discouraged before 1942, but the old permanent/stacking invasion blocks were consolidated. From 1942 onward the Allies can build toward Torch; from 1943 naval-invasion focus rises; from spring 1944 Normandy receives explicit invasion demand and execution.
+
+British rewrite commit: `fcebd166750dc12bed40a8478bf652c32be3a9ee`.
+
 ## Defines policy / naval NAI status
 
 The temporary standalone file `common/defines/zz_HER_AI_navy.lua` was removed after the user requested that AI define changes stay in the main defines file.
@@ -223,14 +279,13 @@ They should be applied directly in `common/defines/00_defines.lua` when the main
 
 ## Next audit order
 
-1. ENG country strategy phases and removal of dead old naval-role helpers.
-2. USA country strategy phases.
-3. JAP country strategy phases and Pacific operation sequence.
-4. ITA/FRA cleanup.
-5. Operation strategy files and remaining microscripts.
-6. Inventory existing AI-only helper systems before creating new concessions.
+1. USA country strategy phases.
+2. JAP country strategy phases and Pacific operation sequence.
+3. ITA/FRA cleanup.
+4. Operation strategy files and remaining microscripts.
+5. Inventory existing AI-only helper systems before creating new concessions.
 
-CHI, SOV and GER have first-pass country strategies and should be revisited after division-template/strategy-plan integration and hands-off observation.
+CHI, SOV, GER and ENG have first-pass country strategies and should be revisited after division-template/strategy-plan integration and hands-off observation.
 
 ## Hands-off requirement
 

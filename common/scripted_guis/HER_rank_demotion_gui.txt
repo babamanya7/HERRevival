@@ -1,0 +1,39 @@
+scripted_gui = {
+	HER_rank_demotion_gui = {
+		window_name = "armyleaderentry"
+
+		visible = {
+			always = yes
+		}
+
+		effects = {
+			her_demote_btn_click = {
+				HER_demote_unit_leader_rank = yes
+			}
+		}
+
+		triggers = {
+			her_demote_btn_visible = {
+				OR = {
+					has_trait = gen_pk
+					has_trait = gen_arm
+					has_trait = gen_fm
+					has_trait = tank_gen_pk
+					has_trait = tank_gen_arm
+					has_trait = tank_gen_fm
+				}
+			}
+
+			her_demote_btn_click_enabled = {
+				OR = {
+					has_trait = gen_pk
+					has_trait = gen_arm
+					has_trait = gen_fm
+					has_trait = tank_gen_pk
+					has_trait = tank_gen_arm
+					has_trait = tank_gen_fm
+				}
+			}
+		}
+	}
+}

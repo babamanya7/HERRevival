@@ -1,0 +1,24 @@
+her_terrain_trait = {
+	schema = {
+		any_key = yes
+		data = { { any_key = yes data = int } }
+	}
+	xp_gain = {
+		unit_1 = 0.422
+		unit_2 = 0.801
+		unit_3 = 1.142
+		unit_4 = 1.450
+		unit_5 = 1.726
+		unit_6 = 1.975
+		unit_7 = 2.198
+		unit_8 = 2.400
+		unit_9 = 2.581
+		unit_10 = 2.744
+		unit_11 = 2.891
+		unit_12 = 3.023
+		unit_13 = 3.142
+		unit_14 = 3.249
+		unit_15 = 3.345
+		unit_16 = 3.372
+	}
+}

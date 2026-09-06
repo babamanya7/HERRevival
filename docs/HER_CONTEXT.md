@@ -112,6 +112,49 @@ Before adding a new effect/trigger/scope pattern:
 
 ## 4. Scripting reference
 
+### 4.0 Commander trait rework — EXPERIMENTAL (awaiting in-game validation)
+
+The feature branch `commander-traits-rework` introduces a BlackICE-style progressive
+terrain-specialisation layer:
+
+- the eight final terrain traits retain their existing maximum effects;
+- levels I–IX are personality traits with cumulative effects, and level X is the
+  original visible terrain trait;
+- ordinary terrain bonuses grow by 0.5 percentage points per level;
+- the secondary `marsh_forest` bonus for forest/swamp grows by 0.25 points;
+- winter specialisation grows cold-acclimatisation gain by 5 points per level;
+- terrain XP is sampled three times per day with diminishing returns and a
+  16-division cap;
+- the expensive recurring logic is gated to player-controlled countries;
+- final XP requirements are approximately 2–2.5 times the former vanilla-style
+  trait costs, with terrain-specific stage costs;
+- HER-prefixed leader variables, flags, events and scripted effects are used to
+  prevent namespace collisions.
+
+Until this is tested in HOI4 1.19.2, treat the array indexing, delayed unit-leader
+event scope, `meta_effect` trait-name expansion and final-slot compensation as
+experimental. The implementation follows the current BlackICE pattern rather than
+unverified invented syntax.
+
+The same branch also separates cavalry, motorized/mechanized and armored commander
+progression. `combined_arms_expert` now requires both the mobile-warfare and panzer
+parents. The artillery threshold of 48 pieces per division and `myasnik` remain
+unchanged by explicit design decision.
+
+Approved new commander definitions on this branch:
+
+- `independent_minded`: +1 Logistics, +2 Logistics growth, +10% initiative,
+  +5% reconnaissance and +20% `trickster` XP;
+- `staff_officer`: +1 Planning, +2 Planning growth, +25% `organizer` XP,
+  +35% `skilled_staffer` XP and +5% general experience gain;
+- `methodical`: +2 Planning, -1 Logistics, corresponding +2/-1 skill growth,
+  +3% maximum planning, -10% planning speed and -5% initiative;
+- `improviser`: +2 Logistics, -1 Planning, corresponding +2/-1 skill growth,
+  +10% initiative/recon/planning speed and +30% `trickster` XP;
+- `mobile_warfare_leader`: requires more than 60% motorized/mechanized units,
+  costs 900 XP, grants +5% attack to both categories, +2 Attack growth and
+  +1 Logistics growth.
+
 ### 4.1 Scopes and context
 
 **Rule:** scope-sensitive effects and triggers must be validated in the exact context in which they will execute.

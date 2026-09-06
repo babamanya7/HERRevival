@@ -1,0 +1,15 @@
+add_namespace = her_terrain_traits
+
+unit_leader_event = {
+	id = her_terrain_traits.1
+	hidden = yes
+	is_triggered_only = yes
+	immediate = { FROM = { her_update_terrain_xp_sample = yes } }
+}
+
+unit_leader_event = {
+	id = her_terrain_traits.2
+	hidden = yes
+	is_triggered_only = yes
+	immediate = { FROM = { her_update_terrain_xp_sample = yes } }
+}

@@ -1,0 +1,1049 @@
+# HER progressive terrain specialisation. Levels 1-9 are hidden from the trait tree;
+# level 10 is the existing visible terrain trait in 00_traits.txt.
+leader_traits = {
+	her_desert_1 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			desert = {
+				movement = 0.0050
+				attack = 0.0050
+				defence = 0.0050
+			}
+		}
+		on_add = { her_desert_level_on_add = yes }
+	}
+
+	her_desert_2 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			desert = {
+				movement = 0.0100
+				attack = 0.0100
+				defence = 0.0100
+			}
+		}
+		on_add = { her_desert_level_on_add = yes }
+	}
+
+	her_desert_3 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			desert = {
+				movement = 0.0150
+				attack = 0.0150
+				defence = 0.0150
+			}
+		}
+		on_add = { her_desert_level_on_add = yes }
+	}
+
+	her_desert_4 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			desert = {
+				movement = 0.0200
+				attack = 0.0200
+				defence = 0.0200
+			}
+		}
+		on_add = { her_desert_level_on_add = yes }
+	}
+
+	her_desert_5 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			desert = {
+				movement = 0.0250
+				attack = 0.0250
+				defence = 0.0250
+			}
+		}
+		on_add = { her_desert_level_on_add = yes }
+	}
+
+	her_desert_6 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			desert = {
+				movement = 0.0300
+				attack = 0.0300
+				defence = 0.0300
+			}
+		}
+		on_add = { her_desert_level_on_add = yes }
+	}
+
+	her_desert_7 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			desert = {
+				movement = 0.0350
+				attack = 0.0350
+				defence = 0.0350
+			}
+		}
+		on_add = { her_desert_level_on_add = yes }
+	}
+
+	her_desert_8 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			desert = {
+				movement = 0.0400
+				attack = 0.0400
+				defence = 0.0400
+			}
+		}
+		on_add = { her_desert_level_on_add = yes }
+	}
+
+	her_desert_9 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			desert = {
+				movement = 0.0450
+				attack = 0.0450
+				defence = 0.0450
+			}
+		}
+		on_add = { her_desert_level_on_add = yes }
+	}
+
+	her_swamp_1 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			marsh = {
+				movement = 0.0050
+				attack = 0.0050
+				defence = 0.0050
+			}
+			marsh_forest = {
+				movement = 0.0025
+				attack = 0.0025
+				defence = 0.0025
+			}
+		}
+		on_add = { her_swamp_level_on_add = yes }
+	}
+
+	her_swamp_2 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			marsh = {
+				movement = 0.0100
+				attack = 0.0100
+				defence = 0.0100
+			}
+			marsh_forest = {
+				movement = 0.0050
+				attack = 0.0050
+				defence = 0.0050
+			}
+		}
+		on_add = { her_swamp_level_on_add = yes }
+	}
+
+	her_swamp_3 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			marsh = {
+				movement = 0.0150
+				attack = 0.0150
+				defence = 0.0150
+			}
+			marsh_forest = {
+				movement = 0.0075
+				attack = 0.0075
+				defence = 0.0075
+			}
+		}
+		on_add = { her_swamp_level_on_add = yes }
+	}
+
+	her_swamp_4 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			marsh = {
+				movement = 0.0200
+				attack = 0.0200
+				defence = 0.0200
+			}
+			marsh_forest = {
+				movement = 0.0100
+				attack = 0.0100
+				defence = 0.0100
+			}
+		}
+		on_add = { her_swamp_level_on_add = yes }
+	}
+
+	her_swamp_5 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			marsh = {
+				movement = 0.0250
+				attack = 0.0250
+				defence = 0.0250
+			}
+			marsh_forest = {
+				movement = 0.0125
+				attack = 0.0125
+				defence = 0.0125
+			}
+		}
+		on_add = { her_swamp_level_on_add = yes }
+	}
+
+	her_swamp_6 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			marsh = {
+				movement = 0.0300
+				attack = 0.0300
+				defence = 0.0300
+			}
+			marsh_forest = {
+				movement = 0.0150
+				attack = 0.0150
+				defence = 0.0150
+			}
+		}
+		on_add = { her_swamp_level_on_add = yes }
+	}
+
+	her_swamp_7 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			marsh = {
+				movement = 0.0350
+				attack = 0.0350
+				defence = 0.0350
+			}
+			marsh_forest = {
+				movement = 0.0175
+				attack = 0.0175
+				defence = 0.0175
+			}
+		}
+		on_add = { her_swamp_level_on_add = yes }
+	}
+
+	her_swamp_8 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			marsh = {
+				movement = 0.0400
+				attack = 0.0400
+				defence = 0.0400
+			}
+			marsh_forest = {
+				movement = 0.0200
+				attack = 0.0200
+				defence = 0.0200
+			}
+		}
+		on_add = { her_swamp_level_on_add = yes }
+	}
+
+	her_swamp_9 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			marsh = {
+				movement = 0.0450
+				attack = 0.0450
+				defence = 0.0450
+			}
+			marsh_forest = {
+				movement = 0.0225
+				attack = 0.0225
+				defence = 0.0225
+			}
+		}
+		on_add = { her_swamp_level_on_add = yes }
+	}
+
+	her_hills_1 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			hills = {
+				movement = 0.0050
+				attack = 0.0050
+				defence = 0.0050
+			}
+		}
+		on_add = { her_hills_level_on_add = yes }
+	}
+
+	her_hills_2 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			hills = {
+				movement = 0.0100
+				attack = 0.0100
+				defence = 0.0100
+			}
+		}
+		on_add = { her_hills_level_on_add = yes }
+	}
+
+	her_hills_3 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			hills = {
+				movement = 0.0150
+				attack = 0.0150
+				defence = 0.0150
+			}
+		}
+		on_add = { her_hills_level_on_add = yes }
+	}
+
+	her_hills_4 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			hills = {
+				movement = 0.0200
+				attack = 0.0200
+				defence = 0.0200
+			}
+		}
+		on_add = { her_hills_level_on_add = yes }
+	}
+
+	her_hills_5 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			hills = {
+				movement = 0.0250
+				attack = 0.0250
+				defence = 0.0250
+			}
+		}
+		on_add = { her_hills_level_on_add = yes }
+	}
+
+	her_hills_6 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			hills = {
+				movement = 0.0300
+				attack = 0.0300
+				defence = 0.0300
+			}
+		}
+		on_add = { her_hills_level_on_add = yes }
+	}
+
+	her_hills_7 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			hills = {
+				movement = 0.0350
+				attack = 0.0350
+				defence = 0.0350
+			}
+		}
+		on_add = { her_hills_level_on_add = yes }
+	}
+
+	her_hills_8 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			hills = {
+				movement = 0.0400
+				attack = 0.0400
+				defence = 0.0400
+			}
+		}
+		on_add = { her_hills_level_on_add = yes }
+	}
+
+	her_hills_9 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			hills = {
+				movement = 0.0450
+				attack = 0.0450
+				defence = 0.0450
+			}
+		}
+		on_add = { her_hills_level_on_add = yes }
+	}
+
+	her_mountain_1 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			mountain = {
+				movement = 0.0050
+				attack = 0.0050
+				defence = 0.0050
+			}
+		}
+		on_add = { her_mountain_level_on_add = yes }
+	}
+
+	her_mountain_2 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			mountain = {
+				movement = 0.0100
+				attack = 0.0100
+				defence = 0.0100
+			}
+		}
+		on_add = { her_mountain_level_on_add = yes }
+	}
+
+	her_mountain_3 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			mountain = {
+				movement = 0.0150
+				attack = 0.0150
+				defence = 0.0150
+			}
+		}
+		on_add = { her_mountain_level_on_add = yes }
+	}
+
+	her_mountain_4 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			mountain = {
+				movement = 0.0200
+				attack = 0.0200
+				defence = 0.0200
+			}
+		}
+		on_add = { her_mountain_level_on_add = yes }
+	}
+
+	her_mountain_5 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			mountain = {
+				movement = 0.0250
+				attack = 0.0250
+				defence = 0.0250
+			}
+		}
+		on_add = { her_mountain_level_on_add = yes }
+	}
+
+	her_mountain_6 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			mountain = {
+				movement = 0.0300
+				attack = 0.0300
+				defence = 0.0300
+			}
+		}
+		on_add = { her_mountain_level_on_add = yes }
+	}
+
+	her_mountain_7 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			mountain = {
+				movement = 0.0350
+				attack = 0.0350
+				defence = 0.0350
+			}
+		}
+		on_add = { her_mountain_level_on_add = yes }
+	}
+
+	her_mountain_8 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			mountain = {
+				movement = 0.0400
+				attack = 0.0400
+				defence = 0.0400
+			}
+		}
+		on_add = { her_mountain_level_on_add = yes }
+	}
+
+	her_mountain_9 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			mountain = {
+				movement = 0.0450
+				attack = 0.0450
+				defence = 0.0450
+			}
+		}
+		on_add = { her_mountain_level_on_add = yes }
+	}
+
+	her_urban_1 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			urban = {
+				movement = 0.0050
+				attack = 0.0050
+				defence = 0.0050
+			}
+		}
+		on_add = { her_urban_level_on_add = yes }
+	}
+
+	her_urban_2 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			urban = {
+				movement = 0.0100
+				attack = 0.0100
+				defence = 0.0100
+			}
+		}
+		on_add = { her_urban_level_on_add = yes }
+	}
+
+	her_urban_3 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			urban = {
+				movement = 0.0150
+				attack = 0.0150
+				defence = 0.0150
+			}
+		}
+		on_add = { her_urban_level_on_add = yes }
+	}
+
+	her_urban_4 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			urban = {
+				movement = 0.0200
+				attack = 0.0200
+				defence = 0.0200
+			}
+		}
+		on_add = { her_urban_level_on_add = yes }
+	}
+
+	her_urban_5 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			urban = {
+				movement = 0.0250
+				attack = 0.0250
+				defence = 0.0250
+			}
+		}
+		on_add = { her_urban_level_on_add = yes }
+	}
+
+	her_urban_6 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			urban = {
+				movement = 0.0300
+				attack = 0.0300
+				defence = 0.0300
+			}
+		}
+		on_add = { her_urban_level_on_add = yes }
+	}
+
+	her_urban_7 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			urban = {
+				movement = 0.0350
+				attack = 0.0350
+				defence = 0.0350
+			}
+		}
+		on_add = { her_urban_level_on_add = yes }
+	}
+
+	her_urban_8 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			urban = {
+				movement = 0.0400
+				attack = 0.0400
+				defence = 0.0400
+			}
+		}
+		on_add = { her_urban_level_on_add = yes }
+	}
+
+	her_urban_9 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			urban = {
+				movement = 0.0450
+				attack = 0.0450
+				defence = 0.0450
+			}
+		}
+		on_add = { her_urban_level_on_add = yes }
+	}
+
+	her_forest_1 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			forest = {
+				movement = 0.0050
+				attack = 0.0050
+				defence = 0.0050
+			}
+			marsh_forest = {
+				movement = 0.0025
+				attack = 0.0025
+				defence = 0.0025
+			}
+		}
+		on_add = { her_forest_level_on_add = yes }
+	}
+
+	her_forest_2 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			forest = {
+				movement = 0.0100
+				attack = 0.0100
+				defence = 0.0100
+			}
+			marsh_forest = {
+				movement = 0.0050
+				attack = 0.0050
+				defence = 0.0050
+			}
+		}
+		on_add = { her_forest_level_on_add = yes }
+	}
+
+	her_forest_3 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			forest = {
+				movement = 0.0150
+				attack = 0.0150
+				defence = 0.0150
+			}
+			marsh_forest = {
+				movement = 0.0075
+				attack = 0.0075
+				defence = 0.0075
+			}
+		}
+		on_add = { her_forest_level_on_add = yes }
+	}
+
+	her_forest_4 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			forest = {
+				movement = 0.0200
+				attack = 0.0200
+				defence = 0.0200
+			}
+			marsh_forest = {
+				movement = 0.0100
+				attack = 0.0100
+				defence = 0.0100
+			}
+		}
+		on_add = { her_forest_level_on_add = yes }
+	}
+
+	her_forest_5 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			forest = {
+				movement = 0.0250
+				attack = 0.0250
+				defence = 0.0250
+			}
+			marsh_forest = {
+				movement = 0.0125
+				attack = 0.0125
+				defence = 0.0125
+			}
+		}
+		on_add = { her_forest_level_on_add = yes }
+	}
+
+	her_forest_6 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			forest = {
+				movement = 0.0300
+				attack = 0.0300
+				defence = 0.0300
+			}
+			marsh_forest = {
+				movement = 0.0150
+				attack = 0.0150
+				defence = 0.0150
+			}
+		}
+		on_add = { her_forest_level_on_add = yes }
+	}
+
+	her_forest_7 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			forest = {
+				movement = 0.0350
+				attack = 0.0350
+				defence = 0.0350
+			}
+			marsh_forest = {
+				movement = 0.0175
+				attack = 0.0175
+				defence = 0.0175
+			}
+		}
+		on_add = { her_forest_level_on_add = yes }
+	}
+
+	her_forest_8 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			forest = {
+				movement = 0.0400
+				attack = 0.0400
+				defence = 0.0400
+			}
+			marsh_forest = {
+				movement = 0.0200
+				attack = 0.0200
+				defence = 0.0200
+			}
+		}
+		on_add = { her_forest_level_on_add = yes }
+	}
+
+	her_forest_9 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			forest = {
+				movement = 0.0450
+				attack = 0.0450
+				defence = 0.0450
+			}
+			marsh_forest = {
+				movement = 0.0225
+				attack = 0.0225
+				defence = 0.0225
+			}
+		}
+		on_add = { her_forest_level_on_add = yes }
+	}
+
+	her_jungle_1 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			jungle = {
+				movement = 0.0050
+				attack = 0.0050
+				defence = 0.0050
+			}
+		}
+		on_add = { her_jungle_level_on_add = yes }
+	}
+
+	her_jungle_2 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			jungle = {
+				movement = 0.0100
+				attack = 0.0100
+				defence = 0.0100
+			}
+		}
+		on_add = { her_jungle_level_on_add = yes }
+	}
+
+	her_jungle_3 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			jungle = {
+				movement = 0.0150
+				attack = 0.0150
+				defence = 0.0150
+			}
+		}
+		on_add = { her_jungle_level_on_add = yes }
+	}
+
+	her_jungle_4 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			jungle = {
+				movement = 0.0200
+				attack = 0.0200
+				defence = 0.0200
+			}
+		}
+		on_add = { her_jungle_level_on_add = yes }
+	}
+
+	her_jungle_5 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			jungle = {
+				movement = 0.0250
+				attack = 0.0250
+				defence = 0.0250
+			}
+		}
+		on_add = { her_jungle_level_on_add = yes }
+	}
+
+	her_jungle_6 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			jungle = {
+				movement = 0.0300
+				attack = 0.0300
+				defence = 0.0300
+			}
+		}
+		on_add = { her_jungle_level_on_add = yes }
+	}
+
+	her_jungle_7 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			jungle = {
+				movement = 0.0350
+				attack = 0.0350
+				defence = 0.0350
+			}
+		}
+		on_add = { her_jungle_level_on_add = yes }
+	}
+
+	her_jungle_8 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			jungle = {
+				movement = 0.0400
+				attack = 0.0400
+				defence = 0.0400
+			}
+		}
+		on_add = { her_jungle_level_on_add = yes }
+	}
+
+	her_jungle_9 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = {
+			jungle = {
+				movement = 0.0450
+				attack = 0.0450
+				defence = 0.0450
+			}
+		}
+		on_add = { her_jungle_level_on_add = yes }
+	}
+
+	her_winter_1 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = { acclimatization_cold_climate_gain_factor = 0.05 }
+		on_add = { her_winter_level_on_add = yes }
+	}
+
+	her_winter_2 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = { acclimatization_cold_climate_gain_factor = 0.10 }
+		on_add = { her_winter_level_on_add = yes }
+	}
+
+	her_winter_3 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = { acclimatization_cold_climate_gain_factor = 0.15 }
+		on_add = { her_winter_level_on_add = yes }
+	}
+
+	her_winter_4 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = { acclimatization_cold_climate_gain_factor = 0.20 }
+		on_add = { her_winter_level_on_add = yes }
+	}
+
+	her_winter_5 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = { acclimatization_cold_climate_gain_factor = 0.25 }
+		on_add = { her_winter_level_on_add = yes }
+	}
+
+	her_winter_6 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = { acclimatization_cold_climate_gain_factor = 0.30 }
+		on_add = { her_winter_level_on_add = yes }
+	}
+
+	her_winter_7 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = { acclimatization_cold_climate_gain_factor = 0.35 }
+		on_add = { her_winter_level_on_add = yes }
+	}
+
+	her_winter_8 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = { acclimatization_cold_climate_gain_factor = 0.40 }
+		on_add = { her_winter_level_on_add = yes }
+	}
+
+	her_winter_9 = {
+		type = corps_commander
+		trait_type = personality_trait
+		new_commander_weight = { factor = 0 }
+		modifier = { acclimatization_cold_climate_gain_factor = 0.45 }
+		on_add = { her_winter_level_on_add = yes }
+	}
+
+}
+

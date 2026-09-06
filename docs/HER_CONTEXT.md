@@ -155,6 +155,22 @@ Approved new commander definitions on this branch:
   costs 900 XP, grants +5% attack to both categories, +2 Attack growth and
   +1 Logistics growth.
 
+Historical assignment policy for these traits:
+
+- assign them only where a commander's documented career or command style
+  clearly supports the trait;
+- `staff_officer` requires substantive staff/operational-planning experience;
+- `mobile_warfare_leader` requires sustained armored, motorized, mechanized or
+  cavalry-mechanized command experience;
+- do not distribute the traits merely to fill out famous commanders;
+- compatible personality traits may coexist (for example, independence and
+  improvisation), but contradictory methodical/improviser combinations are
+  avoided.
+
+The initial GER/SOV historical distribution was added to
+`common/characters/GER.txt` and `common/characters/SOV.txt` on the
+`commander-traits-rework` branch.
+
 ### 4.1 Scopes and context
 
 **Rule:** scope-sensitive effects and triggers must be validated in the exact context in which they will execute.

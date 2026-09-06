@@ -82,7 +82,7 @@ characters = {
 			}
 		}
 		corps_commander = {
-			traits = { gen_lt trait_reckless trickster infantry_officer }
+			traits = { gen_lt trait_reckless trickster improviser infantry_officer }
 			skill = 6
 			attack_skill = 2
 			defense_skill = 9
@@ -120,7 +120,7 @@ characters = {
 			}
 		}
 		corps_commander = {
-			traits = { tank_gen_lt armor_officer panzer_leader war_hero inflexible_strategist }
+			traits = { tank_gen_lt armor_officer panzer_leader mobile_warfare_leader war_hero inflexible_strategist }
 			skill = 7
 			attack_skill = 10
 			defense_skill = 4
@@ -443,7 +443,7 @@ characters = {
 			}
 		}
 		corps_commander = {
-			traits = { career_officer good_logist trait_cautious brilliant_strategist infantry_officer gen_lt }
+			traits = { career_officer staff_officer methodical good_logist trait_cautious brilliant_strategist infantry_officer gen_lt }
 			skill = 6
 			attack_skill = 2
 			defense_skill = 8
@@ -803,7 +803,7 @@ characters = {
 		}
 
 		corps_commander = {
-			traits = { myasnik good_logist winter_specialist organizer skilled_staffer infantry_officer harsh_leader trickster gen_arm inflexible_strategist media_personality }
+			traits = { myasnik good_logist winter_specialist organizer skilled_staffer infantry_officer harsh_leader trickster mobile_warfare_leader gen_arm inflexible_strategist media_personality }
 			skill = 8
 			attack_skill = 7
 			defense_skill = 9
@@ -825,7 +825,7 @@ characters = {
 		}
 
 		corps_commander = {
-			traits = { brilliant_strategist trait_cautious gen_lt }
+			traits = { brilliant_strategist independent_minded methodical trait_cautious mobile_warfare_leader gen_lt }
 			skill = 6
 			attack_skill = 4
 			defense_skill = 6
@@ -849,6 +849,8 @@ characters = {
 				gen_fm
 				career_officer
 				brilliant_strategist
+				staff_officer
+				methodical
 				organizer
 				infantry_officer
 				logistics_wizard
@@ -950,7 +952,7 @@ characters = {
 			}
 		}
 		corps_commander = {
-			traits = { trait_reckless infantry_officer career_officer gen_lt }
+			traits = { trait_reckless staff_officer infantry_officer career_officer gen_lt }
 			skill = 4
 			attack_skill = 2
 			defense_skill = 4
@@ -1142,7 +1144,7 @@ characters = {
 			}
 		}
 		corps_commander = {
-			traits = { armor_officer career_officer brilliant_strategist gen_lt }
+			traits = { armor_officer career_officer brilliant_strategist independent_minded improviser mobile_warfare_leader gen_lt }
 			skill = 6
 			attack_skill = 6
 			defense_skill = 4
@@ -1165,7 +1167,7 @@ characters = {
 			}
 		}
 		corps_commander = {
-			traits = { cavalry_officer cavalry_leader gen_lt }
+			traits = { cavalry_officer cavalry_leader mobile_warfare_leader gen_lt }
 			skill = 4
 			attack_skill = 4
 			defense_skill = 5
@@ -1200,7 +1202,7 @@ characters = {
 		#	}
 		#}
 		corps_commander = {
-			traits = { artillery_officer bearer_of_artillery gen_lt }
+			traits = { artillery_officer bearer_of_artillery staff_officer methodical gen_lt }
 			skill = 4
 			attack_skill = 1
 			defense_skill = 7
@@ -1435,7 +1437,7 @@ characters = {
 			}
 		}
 		corps_commander = {
-			traits = { infantry_officer career_officer war_hero gen_lt }
+			traits = { infantry_officer career_officer staff_officer war_hero gen_lt }
 			skill = 4
 			attack_skill = 2
 			defense_skill = 4
@@ -1677,7 +1679,7 @@ characters = {
 			}
 		}
 		corps_commander = {
-			traits = { career_officer infantry_leader war_hero gen_lt }
+			traits = { career_officer independent_minded improviser infantry_leader war_hero gen_lt }
 			skill = 6
 			attack_skill = 2
 			defense_skill = 10
@@ -1717,7 +1719,7 @@ characters = {
 			}
 		}
 		corps_commander = {
-			traits = { trait_reckless armor_officer tank_gen_lt }
+			traits = { trait_reckless armor_officer mobile_warfare_leader tank_gen_lt }
 			skill = 3
 			attack_skill = 5
 			defense_skill = 2
@@ -1792,7 +1794,7 @@ characters = {
 		#	}
 		#}
 		corps_commander = {
-			traits = { brilliant_strategist career_officer harsh_leader trickster gen_lt }
+			traits = { brilliant_strategist career_officer independent_minded improviser harsh_leader trickster gen_lt }
 			skill = 4
 			attack_skill = 2
 			defense_skill = 6
@@ -2105,7 +2107,7 @@ characters = {
 		}
 
 		corps_commander = {
-			traits = { armor_officer panzer_leader panzer_expert tank_gen_lt }
+			traits = { armor_officer panzer_leader mobile_warfare_leader panzer_expert tank_gen_lt }
 			skill = 6
 			attack_skill = 9
 			defense_skill = 3
@@ -2128,7 +2130,7 @@ characters = {
 		}
 
 		corps_commander = {
-			traits = { brilliant_strategist armor_officer panzer_leader tank_gen_lt }
+			traits = { brilliant_strategist armor_officer panzer_leader mobile_warfare_leader tank_gen_lt }
 			skill = 6
 			attack_skill = 9
 			defense_skill = 3
@@ -2171,7 +2173,7 @@ characters = {
 		}
 
 		corps_commander = {
-			traits = { inflexible_strategist armor_officer panzer_leader war_hero harsh_leader tank_gen_lt }
+			traits = { inflexible_strategist independent_minded improviser armor_officer panzer_leader mobile_warfare_leader war_hero harsh_leader tank_gen_lt }
 			skill = 7
 			attack_skill = 12
 			defense_skill = 3
@@ -2192,7 +2194,7 @@ characters = {
 		}
 
 		corps_commander = {
-			traits = { armor_officer panzer_leader war_hero tank_gen_lt }
+			traits = { armor_officer panzer_leader mobile_warfare_leader war_hero tank_gen_lt }
 			skill = 5
 			attack_skill = 9
 			defense_skill = 2
@@ -2215,7 +2217,7 @@ characters = {
 		}
 
 		corps_commander = {
-			traits = { armor_officer panzer_leader war_hero trait_cautious tank_gen_lt }
+			traits = { armor_officer panzer_leader mobile_warfare_leader war_hero trait_cautious tank_gen_lt }
 			skill = 5
 			attack_skill = 7
 			defense_skill = 3
@@ -2249,7 +2251,7 @@ characters = {
 		}
 
 		corps_commander = {
-			traits = { career_officer war_hero trait_cautious career_officer gen_pk }
+			traits = { career_officer war_hero trait_cautious gen_pk }
 			skill = 5
 			attack_skill = 4
 			defense_skill = 5

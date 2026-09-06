@@ -1,0 +1,34 @@
+HER_demote_unit_leader_rank = {
+	if = {
+		limit = { has_trait = gen_fm }
+		remove_unit_leader_trait = gen_fm
+		add_unit_leader_trait = gen_arm
+		demote_leader = yes
+	}
+	else_if = {
+		limit = { has_trait = gen_arm }
+		remove_unit_leader_trait = gen_arm
+		add_unit_leader_trait = gen_pk
+	}
+	else_if = {
+		limit = { has_trait = gen_pk }
+		remove_unit_leader_trait = gen_pk
+		add_unit_leader_trait = gen_lt
+	}
+	else_if = {
+		limit = { has_trait = tank_gen_fm }
+		remove_unit_leader_trait = tank_gen_fm
+		add_unit_leader_trait = tank_gen_arm
+		demote_leader = yes
+	}
+	else_if = {
+		limit = { has_trait = tank_gen_arm }
+		remove_unit_leader_trait = tank_gen_arm
+		add_unit_leader_trait = tank_gen_pk
+	}
+	else_if = {
+		limit = { has_trait = tank_gen_pk }
+		remove_unit_leader_trait = tank_gen_pk
+		add_unit_leader_trait = tank_gen_lt
+	}
+}

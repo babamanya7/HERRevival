@@ -180,6 +180,26 @@ Do not fix issues during the active baseline unless they prevent the run from co
 - Suspected causes to inspect: task-force reserve thresholds, incomplete/invalid fleet-template composition, mission-assignment score thresholds, region-priority coverage, repair/readiness state, fleet assignment to inactive naval goals, or excessive hold/reserve behavior. Do not assume fuel gating.
 - Batch action: audit which exact task forces are idle in Hiroshima, their composition/template role, readiness/repair status and assigned naval goal. Trace objective -> fleet template -> task force -> mission -> region assignment and identify the first layer where activation stops. Cross-check `AI_TASKFORCE_REQUIRED_RESERVE_RATIO`, mission minimum-priority thresholds and Japanese country naval goals before further global NAI tuning.
 
+### HO1-017 — United States has the same large idle-fleet problem while Britain does not
+- Date: observed during the Pacific-war phase of Test 1.
+- Countries: USA; ENG as control/comparison case.
+- Subsystem: `navy` / task-force assignment / reserve behavior / mission utilization.
+- Severity: `MAJOR`.
+- Observed: roughly 150 US ships sit idle in San Diego instead of joining operations. Britain shows the opposite behavior: almost the entire Royal Navy is actively assigned, with only about 19 mostly light ships left in reserve.
+- Expected: the US Navy should actively employ the overwhelming majority of its combat-capable fleet in Pacific/Atlantic missions once at war, while keeping only a sensible repair/reinforcement reserve.
+- Diagnostic value: because ENG uses the same global NAI but successfully keeps nearly its whole fleet operational, this strongly suggests the primary fault is country-specific naval goals/fleet templates/mission-region assignment for USA and JAP rather than a purely global reserve/fuel define.
+- Batch action: compare USA and JAP directly against ENG through the whole naval chain: active goals, generated fleet templates, task-force completion status, reserve pools, mission scoring, region coverage and repair/readiness. Reuse the working ENG pattern where appropriate instead of blindly lowering global reserve thresholds further.
+
+### HO1-018 — Barbarossa stalls near the old Soviet border and Germany burns itself against a ~7M-man Soviet army
+- Date: observed after the start of the German-Soviet war in Test 1.
+- Countries: GER and SOV.
+- Subsystem: `front` / force generation / offensive concentration / production / templates.
+- Severity: `MAJOR`.
+- Observed: the Eastern Front stabilizes approximately around the old Soviet border. Germany repeatedly attacks and bleeds against a Soviet army of roughly 7 million men without achieving the intended deep 1941 penetration.
+- Expected: the first Barbarossa phase should produce substantial German operational penetration before the front hardens later, while the Soviet AI should survive through depth and mobilization rather than already presenting an effectively immovable wall at the pre-1939 frontier.
+- Diagnostic requirement: do not solve this with a blanket German combat buff. Audit both sides together: Soviet division count/manpower target and deployment timing, German infantry/armor force totals, panzer concentration (linked to HO1-011), attack pacing, equipment strength, templates, front allocation/AIFC, supply, and whether Germany is launching broad continuous attacks instead of concentrated breakthroughs.
+- Batch action: reconstruct the June–winter 1941 force balance and loss curve. Determine whether the main cause is excessive Soviet force generation (~7M too early), inadequate German armored mass, malformed templates, poor concentration/front AI, unsustainable attack aggressiveness, or a combination. Tune the historical 1941 campaign so Germany can advance deeply without scripting a guaranteed Soviet collapse.
+
 ## Post-run batch
 
 After the run, group fixes by layer rather than by observation order:

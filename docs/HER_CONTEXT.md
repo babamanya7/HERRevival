@@ -187,6 +187,33 @@ The initial GER/SOV historical distribution was added to
 `common/characters/GER.txt` and `common/characters/SOV.txt` on the
 `commander-traits-rework` branch.
 
+Commander icon convention:
+
+- new personality/background traits must use the exact vanilla 23x33
+  personality shield silhouette, border scale, alpha footprint and interior
+  margins;
+- use a vanilla personality DDS (for example `trait_cautious.dds`) as the
+  literal frame and alpha template rather than redrawing or approximating the
+  shield;
+- keep the coloured background inside a separate inner mask which ends before
+  the lower bevel: the fill must never occupy the shield tip or leak through
+  the gold border;
+- only the central identifying object and restrained interior colour may vary;
+- the background is a subdued vertical gradient with very light mottled/grain
+  variation, not a flat single-colour fill and not visibly noisy at native
+  scale;
+- crop transparent padding from the identifying object before scaling, centre
+  the visual mass rather than its source canvas, and scale it until it touches
+  the inner frame in at least two places, matching vanilla icon density;
+- downscale the object once with Lanczos and restrained unsharp masking; do not
+  blur the final object or repeatedly resample the 23x33 asset;
+- place a subtle contact shadow behind the object, offset one pixel down and
+  right with a sub-pixel soft blur; the shadow provides relief but must not read
+  as a heavy outline;
+- earned leader and assignable expert traits retain their separate vanilla
+  medal/badge constructions and must not be rendered as personality shields;
+- final DDS assets use uncompressed ARGB8888 with a real alpha channel.
+
 ### 4.1 Scopes and context
 
 **Rule:** scope-sensitive effects and triggers must be validated in the exact context in which they will execute.

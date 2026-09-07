@@ -831,8 +831,6 @@ leader_traits = {
 			OR = {
 				division_has_majority_template = cavalry
 				division_has_majority_template = camelry
-				division_has_majority_template = motorized
-				division_has_majority_template = mechanized
 			}
 			owner = {
 				NOT = {
@@ -868,6 +866,50 @@ leader_traits = {
 		
 		attack_skill_factor = 2
 	}
+
+	mobile_warfare_officer = {
+		type = land
+		trait_type = personality_trait
+
+		unit_trigger = {
+			OR = {
+				division_has_majority_template = motorized
+				division_has_majority_template = mechanized
+			}
+			owner = {
+				NOT = {
+					OR = {
+						has_idea = best_of_the_best_spirit
+						has_idea = academy_scholarships_spirit
+						has_idea = SOV_purged_junior_army_officers_3
+					}
+				}
+			}
+		}
+
+		trait_xp_factor = {
+			mobile_warfare_leader = 0.5
+		}
+
+		new_commander_weight = {
+			factor = 1
+			modifier = {
+				FROM = { has_idea = best_of_the_best_spirit }
+				factor = 0
+			}
+			modifier = {
+				FROM = { has_idea = academy_scholarships_spirit }
+				factor = 0
+			}
+			modifier = {
+				FROM = { has_idea = SOV_purged_junior_army_officers_3 }
+				factor = 0
+			}
+		}
+
+		attack_skill_factor = 2
+		logistics_skill_factor = 1
+	}
 	
 	armor_officer = { 
 		type = land
@@ -875,7 +917,6 @@ leader_traits = {
 		
 		trait_xp_factor = {
 			panzer_leader = 0.5     #+100%
-			cavalry_leader = 0.25     #+100%
 		}
 		
 		unit_trigger = {
@@ -1402,9 +1443,9 @@ leader_traits = {
 		attack_skill_factor = 2
 		logistics_skill_factor = 1
 		slot = army_h_command
-		specialist_advisor_trait = army_cavalry_1
-		expert_advisor_trait = army_cavalry_2
-		genius_advisor_trait = army_cavalry_3
+		specialist_advisor_trait = army_CombinedArms_1
+		expert_advisor_trait = army_CombinedArms_2
+		genius_advisor_trait = army_CombinedArms_3
 		ai_will_do = { factor = 1 }
 		gui_row = 2
 	}
@@ -1901,45 +1942,7 @@ leader_traits = {
 		trait_type = assignable_trait
 		any_parent = { panzer_leader }
 		
-		mutually_exclusive = combined_arms_expert
-		mutually_exclusive = cavalry_expert
-		
 		gui_row = 1
-	}
-	
-	combined_arms_expert = { 
-		type = corps_commander
-		gain_xp = {
-			always = no # not gainable
-		}
-		cost = 500
-		modifier = {
-			cavalry_defence_factor = 0.15
-			motorized_defence_factor = 0.15
-			mechanized_defence_factor = 0.15
-			army_armor_defence_factor = 0.15
-		}
-		
-		slot = army_h_command
-		specialist_advisor_trait = army_CombinedArms_1
-		expert_advisor_trait = army_CombinedArms_2
-		genius_advisor_trait = army_CombinedArms_3
-		
-		ai_will_do = {
-			factor = 1
-		}
-		
-		trait_type = assignable_trait
-		parent = {
-			traits = { mobile_warfare_leader panzer_leader }
-			num_parents_needed = -1
-		}
-		
-		mutually_exclusive = panzer_expert
-		mutually_exclusive = cavalry_expert
-		
-		
-		gui_row = 2
 	}
 	
 	cavalry_expert = { 
@@ -1950,8 +1953,6 @@ leader_traits = {
 		cost = 500
 		modifier = {
 			cavalry_attack_factor = 0.1
-			motorized_attack_factor = 0.1
-			mechanized_attack_factor = 0.1
 		}
 		
 		ai_will_do = {
@@ -1960,9 +1961,6 @@ leader_traits = {
 		
 		trait_type = assignable_trait
 		any_parent = { cavalry_leader }
-		
-		mutually_exclusive = panzer_expert
-		mutually_exclusive = combined_arms_expert
 		
 		gui_row = 3
 	}

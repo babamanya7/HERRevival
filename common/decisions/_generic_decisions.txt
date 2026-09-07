@@ -893,7 +893,7 @@ guide = {
 							OR = {
 								has_trait = panzer_leader
 								has_trait = armor_officer
-								has_trait = combined_arms_expert
+								has_trait = mobile_warfare_expert
 							}
 							OR = {
 								has_trait = gen_lt
@@ -906,7 +906,7 @@ guide = {
 							AND = {
 								NOT = { has_trait = panzer_leader }
 								NOT = { has_trait = armor_officer }
-								NOT = { has_trait = combined_arms_expert }
+								NOT = { has_trait = mobile_warfare_expert }
 							}
 							OR = {
 								has_trait = tank_gen_lt
@@ -988,7 +988,7 @@ guide = {
 							OR = {
 								has_trait = panzer_leader
 								has_trait = armor_officer
-								has_trait = combined_arms_expert
+								has_trait = mobile_warfare_expert
 							}
 							has_trait = gen_lt
 						}
@@ -1000,7 +1000,7 @@ guide = {
 							OR = {
 								has_trait = panzer_leader
 								has_trait = armor_officer
-								has_trait = combined_arms_expert
+								has_trait = mobile_warfare_expert
 							}
 							has_trait = gen_pk
 						}
@@ -1012,7 +1012,7 @@ guide = {
 							OR = {
 								has_trait = panzer_leader
 								has_trait = armor_officer
-								has_trait = combined_arms_expert
+								has_trait = mobile_warfare_expert
 							}
 							has_trait = gen_arm
 						}
@@ -1024,7 +1024,7 @@ guide = {
 							OR = {
 								has_trait = panzer_leader
 								has_trait = armor_officer
-								has_trait = combined_arms_expert
+								has_trait = mobile_warfare_expert
 							}
 							has_trait = gen_fm
 						}
@@ -1055,7 +1055,7 @@ guide = {
 								OR = {
 									has_trait = panzer_leader
 									has_trait = armor_officer
-									has_trait = combined_arms_expert
+									has_trait = mobile_warfare_expert
 								}
 							}
 						}
@@ -1088,7 +1088,7 @@ guide = {
 								OR = {
 									NOT = { has_trait = panzer_leader }
 									NOT = { has_trait = armor_officer }
-									NOT = { has_trait = combined_arms_expert }
+									NOT = { has_trait = mobile_warfare_expert }
 								}
 							}
 						}

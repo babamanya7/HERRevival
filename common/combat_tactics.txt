@@ -44,7 +44,7 @@ tactic_encirclement = {
 		OR = {
 			AND = {
 				hardness < 0.2
-				has_trait = combined_arms_expert
+				has_trait = mobile_warfare_expert
 			}
 			AND = {
 				hardness > 0.2
@@ -64,14 +64,14 @@ tactic_encirclement = {
 			add = 3
 			OR = {
 				has_trait = panzer_expert
-				has_trait = combined_arms_expert
+				has_trait = mobile_warfare_expert
 			}
 		}
 		modifier = {
 			add = 3
 			AND = {
 				has_trait = panzer_expert
-				has_trait = combined_arms_expert
+				has_trait = mobile_warfare_expert
 			}
 		}
 		modifier = {
@@ -187,7 +187,7 @@ tactic_breakthrough = { #counters ambush
 			}
 			AND = {
 				hardness < 0.2
-				has_trait = combined_arms_expert
+				has_trait = mobile_warfare_expert
             }
             AND = {
 				has_artillery_ratio > 0.1
@@ -208,14 +208,14 @@ tactic_breakthrough = { #counters ambush
 			add = 2
 			OR = {
 				has_trait = panzer_expert
-				has_trait = combined_arms_expert
+				has_trait = mobile_warfare_expert
 			}
 		}
 		modifier = {
 			add = 2
 			AND = {
 				has_trait = panzer_expert
-				has_trait = combined_arms_expert
+				has_trait = mobile_warfare_expert
 			}
 		}
 		modifier = {
@@ -302,7 +302,7 @@ tactic_blitz = {
 			}
 			AND = {
 				hardness < 0.2
-				has_trait = combined_arms_expert
+				has_trait = mobile_warfare_expert
 			}
 		}
 		OR = {
@@ -322,14 +322,14 @@ tactic_blitz = {
 			add = 2
 			OR = {
 				has_trait = panzer_expert
-				has_trait = combined_arms_expert
+				has_trait = mobile_warfare_expert
 			}
 		}
 		modifier = {
 			add = 2
 			AND = {
 				has_trait = panzer_expert
-				has_trait = combined_arms_expert
+				has_trait = mobile_warfare_expert
 			}
 		}
 		modifier = {
@@ -618,14 +618,14 @@ tactic_flank_attack = { #new babka tactic
 			add = 2
 			OR = {
 				has_trait = panzer_expert
-				has_trait = combined_arms_expert
+				has_trait = mobile_warfare_expert
 			}
 		}
 		modifier = {
 			add = 2
 			AND = {
 				has_trait = panzer_expert
-				has_trait = combined_arms_expert
+				has_trait = mobile_warfare_expert
 			}
 		}
 		modifier = {
@@ -680,14 +680,14 @@ tactic_unexpected_thrust = { #Mobile warfare attacker tactic
 			add = 2
 			OR = {
 				has_trait = panzer_expert
-				has_trait = combined_arms_expert
+				has_trait = mobile_warfare_expert
 			}
 		}
 		modifier = {
 			add = 2
 			AND = {
 				has_trait = panzer_expert
-				has_trait = combined_arms_expert
+				has_trait = mobile_warfare_expert
 			}
 		}
 		modifier = {
@@ -885,14 +885,14 @@ tactic_masterful_blitz = { #Improved version of Blitz for Soviets
 			add = 2
 			OR = {
 				has_trait = panzer_expert
-				has_trait = combined_arms_expert
+				has_trait = mobile_warfare_expert
 			}
 		}
 		modifier = {
 			add = 2
 			AND = {
 				has_trait = panzer_expert
-				has_trait = combined_arms_expert
+				has_trait = mobile_warfare_expert
 			}
 		}
 		modifier = {

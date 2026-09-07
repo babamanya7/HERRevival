@@ -151,16 +151,26 @@ Approved new commander definitions on this branch:
   +3% maximum planning, -10% planning speed and -5% initiative;
 - `improviser`: +2 Logistics, -1 Planning, corresponding +2/-1 skill growth,
   +10% initiative/recon/planning speed and +30% `trickster` XP;
+- `mobile_warfare_officer`: motorized/mechanized training background analogous
+  to `armor_officer` and `cavalry_officer`; accelerates the acquisition of
+  `mobile_warfare_leader`, adds +2 Attack growth and +1 Logistics growth;
 - `mobile_warfare_leader`: requires more than 60% motorized/mechanized units,
   costs 900 XP, grants +5% attack to both categories, +2 Attack growth and
-  +1 Logistics growth.
+  +1 Logistics growth;
+- the mobile specialisations form three independent two-step branches:
+  `panzer_leader` -> `panzer_expert`, `mobile_warfare_leader` ->
+  `mobile_warfare_expert`, and `cavalry_leader` -> `cavalry_expert`;
+- cavalry traits affect cavalry only; motorized/mechanized bonuses belong to the
+  mobile-warfare branch. The former cross-branch `combined_arms_expert` is
+  removed; its combat-tactic and rank-classification checks now use
+  `mobile_warfare_expert` so no dangling trait references remain.
 
 Historical assignment policy for these traits:
 
 - assign them only where a commander's documented career or command style
   clearly supports the trait;
 - `staff_officer` requires substantive staff/operational-planning experience;
-- `mobile_warfare_leader` requires sustained command of formations whose main
+- `mobile_warfare_officer` requires sustained command of formations whose main
   operational role was armored, motorized, mechanized or cavalry-mechanized;
 - broad competence at operational manoeuvre or command of a combined-arms front
   is not sufficient by itself: Georgy Zhukov and Konstantin Rokossovsky are

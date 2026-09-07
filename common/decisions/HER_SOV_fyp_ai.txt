@@ -1,0 +1,279 @@
+# HER AI support for Soviet Five-Year Plan missions.
+# AI-only fallback: gives the Soviet AI time to build normally, then fills only
+# missing mission requirements before the original mission deadlines.
+# Original missions in SOV_factions.txt remain responsible for rewards/flags.
+
+HER_SOV_fyp_ai = {
+
+	# Second Five-Year Plan: Azovstal + Zaporozhstal.
+	# Original deadlines: 325 / 400 days.
+	HER_AI_SOV_second_fyp_phase_1 = {
+		icon = generic_construction
+		cost = 0
+		fire_only_once = yes
+		days_remove = 240
+
+		visible = {
+			is_ai = yes
+			tag = SOV
+		}
+
+		available = {
+			is_ai = yes
+			tag = SOV
+			has_completed_focus = SOV_start_the_second_five_year_plan
+			OR = {
+				NOT = { has_country_flag = azov_complete }
+				NOT = { has_country_flag = zaporozh_complete }
+			}
+		}
+
+		ai_will_do = {
+			factor = 1000
+		}
+
+		remove_effect = {
+			if = {
+				limit = { NOT = { has_country_flag = azov_complete } }
+				227 = {
+					if = {
+						limit = { NOT = { steel_refinery > 3 } }
+						set_building_level = { type = steel_refinery level = 4 instant_build = yes }
+					}
+					if = {
+						limit = { NOT = { infrastructure > 7 } }
+						set_building_level = { type = infrastructure level = 8 instant_build = yes }
+					}
+				}
+			}
+
+			if = {
+				limit = { NOT = { has_country_flag = zaporozh_complete } }
+				200 = {
+					if = {
+						limit = { NOT = { steel_refinery > 3 } }
+						set_building_level = { type = steel_refinery level = 4 instant_build = yes }
+					}
+					if = {
+						limit = { NOT = { industrial_complex > 2 } }
+						set_building_level = { type = industrial_complex level = 3 instant_build = yes }
+					}
+					if = {
+						limit = { NOT = { infrastructure > 6 } }
+						set_building_level = { type = infrastructure level = 7 instant_build = yes }
+					}
+				}
+			}
+		}
+	}
+
+	# Second Five-Year Plan: Ural + Donbass heavy industry.
+	# Original deadlines: 480 / 400 days.
+	HER_AI_SOV_second_fyp_phase_2 = {
+		icon = generic_construction
+		cost = 0
+		fire_only_once = yes
+		days_remove = 330
+
+		visible = {
+			is_ai = yes
+			tag = SOV
+		}
+
+		available = {
+			is_ai = yes
+			tag = SOV
+			has_completed_focus = SOV_start_the_second_five_year_plan
+			OR = {
+				NOT = { has_country_flag = ural_complete }
+				NOT = { has_country_flag = donbass_complete }
+			}
+		}
+
+		ai_will_do = {
+			factor = 1000
+		}
+
+		remove_effect = {
+			if = {
+				limit = { NOT = { has_country_flag = ural_complete } }
+				653 = {
+					if = {
+						limit = { NOT = { industrial_complex > 2 } }
+						set_building_level = { type = industrial_complex level = 3 instant_build = yes }
+					}
+					if = {
+						limit = { NOT = { infrastructure > 3 } }
+						set_building_level = { type = infrastructure level = 4 instant_build = yes }
+					}
+				}
+			}
+
+			if = {
+				limit = { NOT = { has_country_flag = donbass_complete } }
+				227 = {
+					if = {
+						limit = { NOT = { industrial_complex > 8 } }
+						set_building_level = { type = industrial_complex level = 9 instant_build = yes }
+					}
+					if = {
+						limit = { NOT = { infrastructure > 8 } }
+						set_building_level = { type = infrastructure level = 9 instant_build = yes }
+					}
+				}
+			}
+		}
+	}
+
+	# Second Five-Year Plan: Chelyabinsk + DneproGES.
+	# Original deadlines: 540 / 540 days.
+	HER_AI_SOV_second_fyp_phase_3 = {
+		icon = generic_construction
+		cost = 0
+		fire_only_once = yes
+		days_remove = 450
+
+		visible = {
+			is_ai = yes
+			tag = SOV
+		}
+
+		available = {
+			is_ai = yes
+			tag = SOV
+			has_completed_focus = SOV_start_the_second_five_year_plan
+			OR = {
+				NOT = { has_country_flag = chtz_complete }
+				NOT = { has_country_flag = dneproges_complete }
+			}
+		}
+
+		ai_will_do = {
+			factor = 1000
+		}
+
+		remove_effect = {
+			if = {
+				limit = { NOT = { has_country_flag = chtz_complete } }
+				572 = {
+					if = {
+						limit = { NOT = { industrial_complex > 4 } }
+						set_building_level = { type = industrial_complex level = 5 instant_build = yes }
+					}
+					if = {
+						limit = { NOT = { infrastructure > 4 } }
+						set_building_level = { type = infrastructure level = 5 instant_build = yes }
+					}
+				}
+			}
+
+			if = {
+				limit = { NOT = { has_country_flag = dneproges_complete } }
+				226 = {
+					if = {
+						limit = { NOT = { infrastructure > 7 } }
+						set_building_level = { type = infrastructure level = 8 instant_build = yes }
+					}
+					if = {
+						limit = { NOT = { industrial_complex > 4 } }
+						set_building_level = { type = industrial_complex level = 5 instant_build = yes }
+					}
+				}
+				200 = {
+					if = {
+						limit = { NOT = { infrastructure > 7 } }
+						set_building_level = { type = infrastructure level = 8 instant_build = yes }
+					}
+					if = {
+						limit = { NOT = { industrial_complex > 4 } }
+						set_building_level = { type = industrial_complex level = 5 instant_build = yes }
+					}
+				}
+			}
+		}
+	}
+
+	# Third Five-Year Plan: Ural Aluminium Plant.
+	# Original deadline: 640 days.
+	HER_AI_SOV_third_fyp_ural_aluminium = {
+		icon = generic_construction
+		cost = 0
+		fire_only_once = yes
+		days_remove = 520
+
+		visible = {
+			is_ai = yes
+			tag = SOV
+		}
+
+		available = {
+			is_ai = yes
+			tag = SOV
+			has_completed_focus = SOV_start_the_third_five_year_plan
+			NOT = { has_war_with = GER }
+			NOT = { has_country_flag = ural_aluminium_complete }
+		}
+
+		ai_will_do = {
+			factor = 1000
+		}
+
+		remove_effect = {
+			if = {
+				limit = { NOT = { has_country_flag = ural_aluminium_complete } }
+				653 = {
+					if = {
+						limit = { NOT = { infrastructure > 6 } }
+						set_building_level = { type = infrastructure level = 7 instant_build = yes }
+					}
+					if = {
+						limit = { NOT = { hydro_aluminium_refinery > 3 } }
+						set_building_level = { type = hydro_aluminium_refinery level = 4 instant_build = yes }
+					}
+				}
+			}
+		}
+	}
+
+	# Third Five-Year Plan: Kazan Aircraft Plant No. 124.
+	# Original deadline: 720 days.
+	HER_AI_SOV_third_fyp_kazan_aviation = {
+		icon = generic_construction
+		cost = 0
+		fire_only_once = yes
+		days_remove = 600
+
+		visible = {
+			is_ai = yes
+			tag = SOV
+		}
+
+		available = {
+			is_ai = yes
+			tag = SOV
+			has_completed_focus = SOV_start_the_third_five_year_plan
+			NOT = { has_war_with = GER }
+			NOT = { has_country_flag = kazan_aviation_complete }
+		}
+
+		ai_will_do = {
+			factor = 1000
+		}
+
+		remove_effect = {
+			if = {
+				limit = { NOT = { has_country_flag = kazan_aviation_complete } }
+				249 = {
+					if = {
+						limit = { NOT = { arms_factory > 9 } }
+						set_building_level = { type = arms_factory level = 10 instant_build = yes }
+					}
+					if = {
+						limit = { NOT = { infrastructure > 6 } }
+						set_building_level = { type = infrastructure level = 7 instant_build = yes }
+					}
+				}
+			}
+		}
+	}
+}

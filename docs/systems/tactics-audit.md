@@ -82,6 +82,12 @@ This means the intended doctrine/general/reserve interaction is already structur
 
 Need to verify current HER/1.19 exact initiative/recon numbers before encoding them as hard audit rules.
 
+### Combat-scope trigger note
+
+`CONFIRMED-HOI4`: `has_flanked_opponent`, `frontage_full`, `has_reserves`, `skill`, `skill_advantage`, `phase`, `hardness`, `is_attacker` and related combat-scope conditions are valid HOI4 triggers. The old comment in `combat_tactics.txt` saying `has_flanked_opponent` is a "new scope - implement" is therefore stale documentation rather than evidence that the trigger is unsupported.
+
+The stale comment should eventually be cleaned up, but no functional change is required merely to use `has_flanked_opponent`.
+
 ## 4. Initial tactic findings
 
 ### 4.1 Breakthrough
@@ -183,6 +189,101 @@ This is important: reserves in HER are not merely extra divisions waiting to rei
 
 Preliminary verdict: **core system worth preserving**.
 
+### 4.7 Encirclement
+
+`CONFIRMED-HER`
+
+`tactic_encirclement` is globally active and requires full frontage plus one of:
+- a soft formation under `combined_arms_expert`;
+- a harder formation under `panzer_leader`;
+- commander `skill_advantage > 1`.
+
+Its weight strongly rewards:
+- `panzer_expert` / `combined_arms_expert`;
+- actual flanking (`has_flanked_opponent`);
+- reserves;
+- `trickster`;
+- plains;
+- progressively larger skill advantage.
+
+Effect is exceptionally strong: +75% attacker, -10% defender, +100% combat width and reduced attacker org-damage pressure; it is countered by tactical withdrawal.
+
+Preliminary verdict: **KEEP concept, REVIEW availability and naming**.
+
+The architecture is good for representing exploitation of an exposed flank, local envelopment and commitment of mobile reserves. The concern is that `skill_advantage > 1` by itself can unlock the tactic for any formation once frontage is full. That risks letting generic commander superiority substitute for the physical prerequisites of an envelopment.
+
+Historical/gameplay question: decide whether this tactic is meant to represent a true operational encirclement, or a tactical envelopment/flanking maneuver. If the latter, the current mechanics fit better than the name. If the former, availability should probably require stronger spatial/mobile conditions than commander skill alone.
+
+### 4.8 Shock
+
+`CONFIRMED-HER`
+
+`tactic_shock` is globally active, has base weight 30 and no formation/doctrine prerequisite. `aggressive_assaulter` raises its weight, while progressively higher commander skill lowers it in five steps.
+
+Effect: +35% attacker, -20% defender, but +5% attacker org-damage pressure. It is countered by `ambush`.
+
+Preliminary verdict: **KEEP as low-sophistication fallback, review floor/weight**.
+
+The skill weighting is conceptually strong: as commander quality rises, crude shock action becomes less attractive relative to more sophisticated options. This is useful for representing institutional/command quality without a hard country tag.
+
+However, because the tactic is active for everyone and starts at weight 30, its real selection share must be tested against the full unlocked tactic pool. It should remain a common fallback for armies with limited options, but it should not crowd out doctrine-specific tactics for mature high-skill forces.
+
+### 4.9 Flank Attack / Unexpected Thrust
+
+`CONFIRMED-HER`
+
+`tactic_flank_attack` is one of the cleanest conditional tactics in the file: it requires `has_flanked_opponent = yes` and then rewards harder formations, armored/combined-arms expertise, `trickster`, reserves when frontage is not full, and skill advantage. It raises combat width modestly and applies a useful attacker/defender swing. It is countered by planned defense.
+
+Preliminary verdict: **STRONG KEEP**.
+
+`tactic_unexpected_thrust` is doctrine-gated (`active = no`) but has no special trigger beyond being the attacker in the normal phase. Its weight rewards panzer/combined-arms expertise, actual flanking, reserves, trickster, plains and skill advantage.
+
+Preliminary verdict: **KEEP concept, REVIEW differentiation**.
+
+There is currently substantial conceptual overlap between `flank_attack`, `unexpected_thrust`, `encirclement`, `breakthrough` and `blitz`. The audit should preserve several mobile-war options, but each should correspond to a distinct battlefield situation rather than simply being differently weighted versions of "good mobile attack".
+
+Working distinction to test:
+- **Flank Attack** = exploit an already-created flank / multi-direction engagement;
+- **Unexpected Thrust** = opportunistic penetration made possible by initiative/recon/weak enemy reaction;
+- **Breakthrough** = deliberate rupture of a prepared front;
+- **Blitz** = rapid combined-arms exploitation following or accompanying rupture;
+- **Encirclement** = culmination of maneuver around the enemy rather than another generic penetration bonus.
+
+If this distinction is adopted, triggers should eventually be audited against it.
+
+### 4.10 Planned Attack
+
+`CONFIRMED-HER`
+
+`tactic_planned_attack` is doctrine-gated and requires either:
+- full frontage **and** reserves;
+- positive skill advantage;
+- or skill > 5.
+
+Its weight scales with skill advantage, artillery ratio, hardness and `brilliant_strategist`.
+
+Effect is a substantial +40% attacker bonus with a small movement bonus and reduced defender org-damage effectiveness.
+
+Preliminary verdict: **KEEP architecture, excellent bridge tactic**.
+
+This is one of the better generic representations of a competent set-piece attack because it can emerge from staff/commander superiority, combined-arms composition, artillery concentration and reserve preparation rather than a country-specific tag. It should be compared directly with `breakthrough`: Planned Attack should represent preparation/coherence, while Breakthrough should represent successful concentration to rupture the position.
+
+### 4.11 Infantry Charge and Banzai Charge
+
+`CONFIRMED-HER`
+
+`tactic_infantry_charge` is doctrine-gated but otherwise unconditional for the attacker; its weight rises as hardness falls. It gives a modest attack/defense increase with a small attacker org-damage penalty.
+
+Preliminary verdict: **REVIEW historical role and trigger depth**.
+
+If it is intended as the GBP infantry-branch generic offensive tactic, hardness alone is a weak discriminator. It may need to represent infantry-centric assault under a specific doctrinal model rather than merely "soft formation attacks".
+
+`tactic_banzai_charge` is active from the start for JAP, base weight 30, has no commander/formation/war-period gating, and is countered by overwhelming fire. Its effects actually make the assault relatively org-resistant while increasing attack and defense.
+
+Preliminary verdict: **HIGH-PRIORITY HISTORICAL REVIEW**.
+
+The country-tagged always-available implementation risks making a culturally stereotyped tactic a routine Japanese default. Historically, suicidal mass charges existed, especially in deteriorating defensive situations and late isolated garrisons, but they should not define ordinary Japanese tactical behavior throughout the entire war. The likely direction is not necessarily deletion: it may be better as a conditional/desperation tactic tied to defensive collapse, isolation, low supply/org, specific traits/ideas, or later-war circumstances.
+
 ## 5. Historical questions to answer
 
 ### Wehrmacht
@@ -209,6 +310,15 @@ For each period, separate doctrine from execution:
 - mobile groups / exploitation;
 - degree of lower-level initiative vs centralized control;
 - 1943-45 improvement and remaining weaknesses.
+
+### Imperial Japanese Army
+Add a focused check before finalizing country-specific tactics:
+- ordinary offensive doctrine and infiltration methods in China / Malaya / early Pacific campaigns;
+- conditions under which mass frontal or suicidal charges were actually employed;
+- transition from offensive maneuver to isolated positional defense;
+- relationship between command culture, supply collapse, garrison isolation and late-war last-stand attacks.
+
+This is specifically required before changing `tactic_banzai_charge`.
 
 ## 6. General-system overlay
 
@@ -240,6 +350,8 @@ These mappings must be tested against tactic mechanics rather than assumed to be
 6. Historical research by 1939-41 / 1942-43 / 1944-45.
 7. Overlay representative Wehrmacht and RKKA generals.
 8. Only then propose balance/code changes.
+
+Progress note: base attacker-tactic audit now covers Breakthrough, Blitz/Masterful Blitz, Human Wave, Relentless Assault, Barrage, Encirclement, Shock, Flank Attack, Unexpected Thrust, Planned Attack, Infantry Charge and Banzai Charge. Defensive and phase-specific tactics remain to be completed systematically.
 
 ## 8. Current high-level verdict
 

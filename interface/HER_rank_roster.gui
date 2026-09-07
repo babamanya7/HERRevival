@@ -18,16 +18,20 @@ guiTypes = {
 		}
 	}
 
-	# HER rank-management roster. It is populated by scripted GUI with
-	# unit-leader scopes, so buttons inside each row operate on that leader.
+	# HER rank-management roster.
 	containerWindowType = {
 		name = "HER_rank_roster_window"
-		position = { x = 8 y = 172 }
-		size = { width = 534 height = 520 }
+		position = { x = 8 y = 92 }
+		size = { width = 534 height = 620 }
 		clipping = no
 
 		background = {
 			name = "Background"
+			quadTextureSprite = "GFX_tiled_bg"
+		}
+
+		background = {
+			name = "Frame"
 			quadTextureSprite = "GFX_tiled_window2_1b_border"
 		}
 
@@ -66,47 +70,161 @@ guiTypes = {
 		containerWindowType = {
 			name = "rank_roster_scroll"
 			position = { x = 14 y = 79 }
-			size = { width = 505 height = 424 }
+			size = { width = 505 height = 524 }
 			verticalScrollbar = "right_vertical_slider"
 			margin = { top = 4 bottom = 6 right = 16 }
-			scroll_wheel_factor = 42
+			scroll_wheel_factor = 98
 			smooth_scrolling = yes
 
 			gridBoxType = {
 				name = "rank_roster_grid"
 				position = { x = 0 y = 0 }
 				size = { width = 485 height = 100%% }
-				slotsize = { width = 485 height = 42 }
+				slotsize = { width = 485 height = 98 }
 				max_slots_horizontal = 1
 				format = "UPPER_LEFT"
 			}
 		}
 	}
 
+	# Entry intentionally reuses vanilla army-leader element names where possible.
+	# Dynamic-list change_scope gives every copy a unit-leader scope.
 	containerWindowType = {
 		name = "HER_rank_roster_entry"
-		size = { width = 485 height = 42 }
+		size = { width = 485 height = 98 }
 		clipping = no
 
 		background = {
 			name = "Background"
-			quadTextureSprite = "GFX_tiled_window_transparent"
+			quadTextureSprite = "GFX_leader_selection_entry_bg"
+		}
+
+		# Vanilla leader portrait binding. If the hardcoded roster binding is
+		# available in scripted lists, this resolves to the commander's portrait.
+		buttonType = {
+			name = "leader_button"
+			position = { x = 56 y = 5 }
+			quadTextureSprite = "GFX_leader_unknown"
+			scale = 0.42
+		}
+
+		iconType = {
+			name = "clip_icon"
+			position = { x = 55 y = 0 }
+			quadTextureSprite = "GFX_clip"
+			alwaystransparent = yes
 		}
 
 		instantTextboxType = {
 			name = "leader_name"
-			position = { x = 12 y = 11 }
-			font = "hoi_18mbs"
+			position = { x = 126 y = 9 }
+			font = "hoi4_typewriter16"
 			text = "HER_RANK_ROSTER_LEADER_NAME"
-			maxWidth = 330
-			maxHeight = 22
+			maxWidth = 235
+			maxHeight = 20
 			fixedsize = yes
 			format = left
 		}
 
+		instantTextboxType = {
+			name = "her_rank"
+			position = { x = 126 y = 29 }
+			font = "hoi_16mbs"
+			text = "HER_RANK_ROSTER_RANK"
+			maxWidth = 235
+			maxHeight = 20
+			fixedsize = yes
+			format = left
+		}
+
+		# Vanilla-compatible skill field. Scripted localisation is used as a
+		# fallback so the value remains visible even if the hardcoded binding is absent.
+		instantTextboxType = {
+			name = "skill"
+			position = { x = 9 y = 17 }
+			font = "hoi_30header"
+			text = "HER_RANK_ROSTER_SKILL"
+			maxWidth = 40
+			maxHeight = 24
+			format = center
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "leader_stat_attack_bg"
+			spriteType = "GFX_trait_attack"
+			position = { x = 126 y = 52 }
+		}
+		instantTextboxType = {
+			name = "leader_stat_attack"
+			position = { x = 124 y = 70 }
+			font = "hoi_16mbs"
+			text = "HER_RANK_ROSTER_ATTACK"
+			maxWidth = 30
+			maxHeight = 20
+			format = center
+		}
+
+		iconType = {
+			name = "leader_stat_defense_bg"
+			spriteType = "GFX_trait_defense"
+			position = { x = 153 y = 51 }
+		}
+		instantTextboxType = {
+			name = "leader_stat_defense"
+			position = { x = 151 y = 70 }
+			font = "hoi_16mbs"
+			text = "HER_RANK_ROSTER_DEFENSE"
+			maxWidth = 30
+			maxHeight = 20
+			format = center
+		}
+
+		iconType = {
+			name = "leader_stat_planning_bg"
+			spriteType = "GFX_trait_planning"
+			position = { x = 180 y = 52 }
+		}
+		instantTextboxType = {
+			name = "leader_stat_planning"
+			position = { x = 178 y = 70 }
+			font = "hoi_16mbs"
+			text = "HER_RANK_ROSTER_PLANNING"
+			maxWidth = 30
+			maxHeight = 20
+			format = center
+		}
+
+		iconType = {
+			name = "leader_stat_logistics_bg"
+			spriteType = "GFX_trait_logistics"
+			position = { x = 207 y = 51 }
+		}
+		instantTextboxType = {
+			name = "leader_stat_logistics"
+			position = { x = 205 y = 70 }
+			font = "hoi_16mbs"
+			text = "HER_RANK_ROSTER_LOGISTICS"
+			maxWidth = 30
+			maxHeight = 20
+			format = center
+		}
+
+		# Same name/layout used by vanilla army leader entries. If native binding is
+		# exposed for a scoped dynamic-list entry, learned/personality traits populate here.
+		gridBoxType = {
+			name = "traits_grid"
+			position = { x = 246 y = 54 }
+			size = { width = 120 height = 38 }
+			slotsize = { width = 24 height = 32 }
+			max_slots_vertical = 1
+			max_slots_horizontal = 5
+			format = "UPPER_LEFT"
+		}
+
 		buttonType = {
 			name = "her_rank_demote"
-			position = { x = 375 y = 7 }
+			position = { x = 375 y = 56 }
 			quadTextureSprite = "GFX_leader_selection_button"
 			buttonText = "HER_UNIT_LEADER_DEMOTE"
 			buttonFont = "hoi_16mbs"

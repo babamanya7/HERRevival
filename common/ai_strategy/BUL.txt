@@ -1,0 +1,36 @@
+# HER Bulgarian AI strategy
+# Historical role: secure Bulgaria and the Balkans; do not empty the country into the Eastern Front.
+
+BUL_balkan_force_retention = {
+	allowed = { original_tag = BUL }
+	enable = {
+		is_in_faction_with = GER
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = { type = area_priority id = balkans value = 180 }
+	ai_strategy = { type = put_unit_buffers area = balkans ratio = 0.45 subtract_invasions_from_need = no subtract_fronts_from_need = no }
+
+	# Bulgaria did not send its field army to fight the USSR. Keep Soviet fronts effectively closed
+	# for AI Bulgaria while still allowing local Balkan wars and homeland defense.
+	ai_strategy = { type = front_unit_request tag = SOV value = -200 }
+	ai_strategy = { type = area_priority id = soviet_north value = -300 }
+	ai_strategy = { type = area_priority id = soviet_center value = -300 }
+	ai_strategy = { type = area_priority id = soviet_south value = -300 }
+	ai_strategy = { type = dont_defend_ally_borders id = SOV value = 500 }
+}
+
+BUL_no_eastern_front = {
+	allowed = { original_tag = BUL }
+	enable = {
+		GER = { has_war_with = SOV }
+		NOT = { has_war_with = SOV }
+	}
+	abort_when_not_enabled = yes
+
+	# Do not volunteer Bulgarian divisions onto the German-Soviet front through faction-front logic.
+	ai_strategy = { type = front_unit_request tag = SOV value = -500 }
+	ai_strategy = { type = area_priority id = soviet_north value = -500 }
+	ai_strategy = { type = area_priority id = soviet_center value = -500 }
+	ai_strategy = { type = area_priority id = soviet_south value = -500 }
+}

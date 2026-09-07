@@ -122,6 +122,25 @@ Do not fix issues during the active baseline unless they prevent the run from co
 - Suspected cause: the German historical `ai_strategy_plan` still permits too much schedule drift in the chain leading into Barbarossa, whether from unnecessary intervening focuses, late prerequisites, or insufficiently hard prioritization of the eastern-war sequence.
 - Batch action: reconstruct the full German focus timeline from the pre-war diplomatic/industrial chain through Barbarossa, identify exactly which focuses consumed the missing calendar time, and retime/reorder/prioritize the sequence so the eastern-war trigger lands around 22 June 1941. Do not patch only the final war focus if the upstream schedule is the actual cause.
 
+### HO1-011 — Germany fields too few panzer divisions for Barbarossa
+- Date: around the 1941 Barbarossa checkpoint in Test 1.
+- Country: GER.
+- Subsystem: `templates` / production / division targets.
+- Severity: `MAJOR`.
+- Observed: Germany has only about 15 tank divisions by the Soviet-war timing, which is too low for the intended HER historical/operational role of German armored forces.
+- Expected: Germany should enter the war with the USSR with a materially larger armored arm while still preserving viable equipment strength and not hollowing out the rest of the army.
+- Batch action: audit GER armor template target ratios, allowed/desired division counts, production-line weighting, equipment availability and upgrade timing. Raise the 1941 armored-force target deliberately rather than blindly increasing tank spam from 1936.
+
+### HO1-012 — AI-vs-AI Sino-Japanese War does not settle into the intended historical stalemate by 1941
+- Date: 1941 phase of Test 1.
+- Countries: JAP and CHI, specifically when both are AI-controlled.
+- Subsystem: `front` / historical strategy / theater pacing.
+- Severity: `MAJOR`.
+- Observed: China is strongly pushing Japan back in 1941. This means Japan can launch the Southern Operation against the Allies while simultaneously collapsing in China, producing an ahistorical strategic failure.
+- Expected: when both JAP and CHI are AI-controlled, the China front should roughly stabilize after the main Japanese expansion phase, approximating the historical 1940–41 stalemate. Japan should not be driven out of China while it transitions toward war with the Western Allies, and China should not be crushed outright either.
+- Design requirement: implement this specifically as an AI-vs-AI historical pacing rule so human JAP or human CHI are not artificially constrained by the same scripted stalemate.
+- Batch action: add bounded AI-only front behavior/strategy for the post-Wuhan/post-main-expansion phase: reduce low-value Japanese offensive bleeding, prevent excessive Chinese counteroffensive pressure, preserve key Japanese-held areas and enough Japanese forces in China while allowing Southern Operation commitments. Prefer strategy/front weighting and pacing controls over blanket combat-stat buffs.
+
 ## Post-run batch
 
 After the run, group fixes by layer rather than by observation order:

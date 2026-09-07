@@ -1,1 +1,164 @@
-﻿
+﻿###########################
+# Balkan Crisis 1941
+###########################
+
+add_namespace = her_balkans
+
+# Yugoslavia signs the Tripartite Pact
+country_event = {
+	id = her_balkans.1
+	title = her_balkans.1.t
+	desc = her_balkans.1.d
+	picture = GFX_report_event_germany_politician_handshake
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = YUG
+		date > 1941.3.15
+		is_in_faction = no
+		is_subject = no
+		NOT = { has_war_with = GER }
+		FRA = { has_capitulated = yes }
+		GER = {
+			exists = yes
+			is_faction_leader = yes
+			NOT = { has_capitulated = yes }
+		}
+		BUL = { is_in_faction_with = GER }
+		ROM = { is_in_faction_with = GER }
+		HUN = { is_in_faction_with = GER }
+	}
+
+	mean_time_to_happen = { days = 5 }
+
+	option = {
+		name = her_balkans.1.a
+		set_country_flag = HER_YUG_signed_tripartite_pact
+		country_event = { id = her_balkans.2 days = 2 }
+	}
+}
+
+# Coup in Belgrade
+country_event = {
+	id = her_balkans.2
+	title = her_balkans.2.t
+	desc = her_balkans.2.d
+	picture = GFX_news_event_generic_riot
+
+	is_triggered_only = yes
+
+	immediate = {
+		clr_country_flag = HER_YUG_signed_tripartite_pact
+		set_country_flag = HER_YUG_belgrade_coup
+		add_stability = -0.1
+		GER = { country_event = { id = her_balkans.3 days = 10 } }
+	}
+
+	option = {
+		name = her_balkans.2.a
+	}
+}
+
+# Directive 25: Germany attacks Yugoslavia exactly 10 days after the coup
+country_event = {
+	id = her_balkans.3
+	title = her_balkans.3.t
+	desc = her_balkans.3.d
+	picture = GFX_report_event_hitler_croatia_handshake
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				YUG = {
+					exists = yes
+					NOT = { has_capitulated = yes }
+				}
+				NOT = { has_war_with = YUG }
+			}
+			declare_war_on = {
+				target = YUG
+				type = annex_everything
+			}
+		}
+
+		# Italy takes part in the invasion of Yugoslavia if it is still aligned with Germany.
+		ITA = {
+			if = {
+				limit = {
+					is_in_faction_with = GER
+					YUG = {
+						exists = yes
+						NOT = { has_capitulated = yes }
+					}
+					NOT = { has_war_with = YUG }
+				}
+				declare_war_on = {
+					target = YUG
+					type = annex_everything
+				}
+			}
+		}
+
+		# Germany intervenes in Greece only if the Italian-Greek war is still active.
+		if = {
+			limit = {
+				GRE = {
+					exists = yes
+					NOT = { has_capitulated = yes }
+				}
+				ITA = { has_war_with = GRE }
+				NOT = { has_war_with = GRE }
+			}
+			declare_war_on = {
+				target = GRE
+				type = annex_everything
+			}
+		}
+
+		# Hungary historically entered the Yugoslav campaign a few days later.
+		HUN = {
+			if = {
+				limit = { is_in_faction_with = GER }
+				country_event = { id = her_balkans.4 days = 4 }
+			}
+		}
+	}
+
+	option = {
+		name = her_balkans.3.a
+	}
+}
+
+# Hungarian intervention in Yugoslavia
+country_event = {
+	id = her_balkans.4
+	title = her_balkans.4.t
+	desc = her_balkans.4.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				YUG = {
+					exists = yes
+					NOT = { has_capitulated = yes }
+				}
+				GER = { has_war_with = YUG }
+				NOT = { has_war_with = YUG }
+			}
+			declare_war_on = {
+				target = YUG
+				type = annex_everything
+			}
+		}
+	}
+
+	option = {
+		name = her_balkans.4.a
+	}
+}

@@ -2435,6 +2435,7 @@ focus_tree = {
 		}
 
 		available = {
+			date > 1942.4.7
 			434 = { #Arunachal Pradesh
 				CONTROLLER = {
 					NOT = { has_war_with = ROOT }
@@ -2791,6 +2792,7 @@ focus_tree = {
 		}
 
 		available = {
+			date > 1942.11.30
 			747 = { #Yunnan
 				CONTROLLER = {
 					OR = {

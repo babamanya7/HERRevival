@@ -42,6 +42,16 @@ Do not fix issues during the active baseline unless they prevent the run from co
 - Cause: the generic-decision pass was missed while the focus was on country strategy, templates and global strategy cleanup.
 - Batch action: reopen the current `generic_decision` implementation against the prior agreed design, enumerate stale entries, and apply the complete intended cleanup in the post-run batch rather than piecemeal during Test 1.
 
+### HO1-003 — German panzer target template has the wrong historical organization
+- Date: observed during Test 1.
+- Country: GER.
+- Subsystem: `templates`.
+- Severity: `MAJOR`.
+- Observed: the current German AI tank target template has a strange/non-historical battalion mix and does not match the intended HER organization.
+- Expected baseline organization: 3 tank battalions + 6 motorized infantry battalions + 3 artillery battalions, one of the artillery battalions being heavy artillery, + 3 motorized anti-tank battalions.
+- Additional requirement: preserve the agreed historical organization while also checking the resulting combat width, ordinary support companies, the separate `regimental_support` block, equipment availability, and the upgrade/target conditions so the AI converges on the intended formation rather than lingering on malformed transitional templates.
+- Batch action: rebuild the German panzer target template around the exact 3 tank / 6 motorized / 3 artillery (1 heavy) / 3 motorized AT structure, then verify width and all support layers against HER template syntax.
+
 ## Post-run batch
 
 After the run, group fixes by layer rather than by observation order:

@@ -1,0 +1,21 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			her_setup_terrain_trait_data = yes
+			every_country = {
+				limit = { is_ai = no }
+				her_sync_terrain_leaders = yes
+			}
+		}
+	}
+
+	# ROOT is the unit leader; FROM is the owning country.
+	on_army_leader_daily = {
+		effect = {
+			if = {
+				limit = { FROM = { is_ai = no } }
+				her_update_terrain_traits_daily = yes
+			}
+		}
+	}
+}

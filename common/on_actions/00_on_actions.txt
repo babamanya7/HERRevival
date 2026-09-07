@@ -893,7 +893,7 @@ on_actions = {
 						OR = {
 							has_trait = panzer_leader
 							has_trait = armor_officer
-							has_trait = combined_arms_expert
+							has_trait = mobile_warfare_expert
 						}
 					}
 				}
@@ -937,7 +937,7 @@ on_actions = {
 					OR = {
 						has_trait = panzer_leader
 						has_trait = armor_officer
-						has_trait = combined_arms_expert
+						has_trait = mobile_warfare_expert
 					}
 				}
 				if = {
@@ -1053,7 +1053,7 @@ on_actions = {
 					OR = {
 						ROOT = { has_trait = panzer_leader }
 						ROOT = { has_trait = armor_officer }
-						ROOT = { has_trait = combined_arms_expert }
+						ROOT = { has_trait = mobile_warfare_expert }
 					}
 				}
 				ROOT = { add_unit_leader_trait = tank_gen_lt }
@@ -1065,7 +1065,7 @@ on_actions = {
 						OR = {
 							ROOT = { has_trait = panzer_leader }
 							ROOT = { has_trait = armor_officer }
-							ROOT = { has_trait = combined_arms_expert }
+							ROOT = { has_trait = mobile_warfare_expert }
 						}
 					}
 				}

@@ -112,6 +112,121 @@ Before adding a new effect/trigger/scope pattern:
 
 ## 4. Scripting reference
 
+### 4.0 Commander trait rework — EXPERIMENTAL (awaiting in-game validation)
+
+The feature branch `commander-traits-rework` introduces a BlackICE-style progressive
+terrain-specialisation layer:
+
+- the eight final terrain traits retain their existing maximum effects;
+- levels I–IX are personality traits with cumulative effects, and level X is the
+  original visible terrain trait;
+- ordinary terrain bonuses grow by 0.5 percentage points per level;
+- the secondary `marsh_forest` bonus for forest/swamp grows by 0.25 points;
+- winter specialisation grows cold-acclimatisation gain by 5 points per level;
+- terrain XP is sampled three times per day with diminishing returns and a
+  16-division cap;
+- the expensive recurring logic is gated to player-controlled countries;
+- final XP requirements are approximately 2–2.5 times the former vanilla-style
+  trait costs, with terrain-specific stage costs;
+- HER-prefixed leader variables, flags, events and scripted effects are used to
+  prevent namespace collisions.
+
+Until this is tested in HOI4 1.19.2, treat the array indexing, delayed unit-leader
+event scope, `meta_effect` trait-name expansion and final-slot compensation as
+experimental. The implementation follows the current BlackICE pattern rather than
+unverified invented syntax.
+
+The same branch also separates cavalry, motorized/mechanized and armored commander
+progression. `combined_arms_expert` now requires both the mobile-warfare and panzer
+parents. The artillery threshold of 48 pieces per division and `myasnik` remain
+unchanged by explicit design decision.
+
+Approved new commander definitions on this branch:
+
+- `independent_minded`: +1 Logistics, +2 Logistics growth, +10% initiative,
+  +5% reconnaissance and +20% `trickster` XP;
+- `staff_officer`: +1 Planning, +2 Planning growth, +25% `organizer` XP,
+  +35% `skilled_staffer` XP and +5% general experience gain;
+- `methodical`: +2 Planning, -1 Logistics, corresponding +2/-1 skill growth,
+  +3% maximum planning, -10% planning speed and -5% initiative;
+- `improviser`: +2 Logistics, -1 Planning, corresponding +2/-1 skill growth,
+  +10% initiative/recon/planning speed and +30% `trickster` XP;
+- `mobile_warfare_officer`: motorized/mechanized training background analogous
+  to `armor_officer` and `cavalry_officer`; accelerates the acquisition of
+  `mobile_warfare_leader`, adds +2 Attack growth and +1 Logistics growth;
+- `mobile_warfare_leader`: requires more than 60% motorized/mechanized units,
+  costs 900 XP, grants +5% attack to both categories, +2 Attack growth and
+  +1 Logistics growth;
+- the mobile specialisations form three independent two-step branches:
+  `panzer_leader` -> `panzer_expert`, `mobile_warfare_leader` ->
+  `mobile_warfare_expert`, and `cavalry_leader` -> `cavalry_expert`;
+- cavalry traits affect cavalry only; motorized/mechanized bonuses belong to the
+  mobile-warfare branch. The former cross-branch `combined_arms_expert` is
+  removed; its combat-tactic and rank-classification checks now use
+  `mobile_warfare_expert` so no dangling trait references remain.
+
+Historical assignment policy for these traits:
+
+- assign them only where a commander's documented career or command style
+  clearly supports the trait;
+- `staff_officer` requires substantive staff/operational-planning experience;
+- `mobile_warfare_officer` requires sustained command of formations whose main
+  operational role was armored, motorized, mechanized or cavalry-mechanized;
+- broad competence at operational manoeuvre or command of a combined-arms front
+  is not sufficient by itself: Georgy Zhukov and Konstantin Rokossovsky are
+  intentionally excluded from this specialist trait;
+- `soft_leader` is assigned only where a commander was distinctly humane,
+  protective of subordinates or known for avoiding needless losses, rather than
+  merely being less harsh than the worst contemporary commanders;
+- do not distribute the traits merely to fill out famous commanders;
+- compatible personality traits may coexist (for example, independence and
+  improvisation), but contradictory methodical/improviser combinations are
+  avoided.
+
+Current German cavalry/mobile assignment decision: Ewald von Kleist is the only
+German character who retains a cavalry specialization (`cavalry_leader`).
+Eberhard von Mackensen, Erich Hoepner, Josef Harpe, Paul Hausser, Hasso von
+Manteuffel and Hermann Balck use `mobile_warfare_leader`; Georg Lindemann and
+Maximilian von Weichs use `mobile_warfare_officer`. Hoepner does not retain
+`cavalry_officer` in this gameplay classification.
+
+The initial GER/SOV historical distribution was added to
+`common/characters/GER.txt` and `common/characters/SOV.txt` on the
+`commander-traits-rework` branch.
+
+Commander icon convention:
+
+- new personality/background traits must use the exact vanilla 23x33
+  personality shield silhouette, border scale, alpha footprint and interior
+  margins;
+- use a vanilla personality DDS (for example `trait_cautious.dds`) as the
+  literal frame and alpha template rather than redrawing or approximating the
+  shield;
+- keep the coloured background inside a separate inner mask which ends before
+  the lower bevel: the fill must never occupy the shield tip or leak through
+  the gold border;
+- only the central identifying object and restrained interior colour may vary;
+- the background is a subdued vertical gradient with very light mottled/grain
+  variation, not a flat single-colour fill and not visibly noisy at native
+  scale;
+- crop transparent padding from the identifying object before scaling, centre
+  the visual mass rather than its source canvas, and scale it until it touches
+  the inner frame in at least two places, matching vanilla icon density;
+- downscale the object once with Lanczos and restrained unsharp masking; do not
+  blur the final object or repeatedly resample the 23x33 asset;
+- place a subtle contact shadow behind the object, offset one pixel down and
+  right with a sub-pixel soft blur; the shadow provides relief but must not read
+  as a heavy outline;
+- earned leader and assignable expert traits retain their separate vanilla
+  medal/badge constructions and must not be rendered as personality shields;
+- final DDS assets use uncompressed ARGB8888 with a real alpha channel.
+
+The inherited cavalry and motorized leader/expert artwork is intentionally
+cross-wired in `interface/her_traits.gfx`: the filenames contain the opposite
+motifs, so `GFX_trait_cavalry_*` uses `trait_mobile_warfare_*.dds` and
+`GFX_trait_mobile_warfare_*` uses `trait_cavalry_*.dds`. Do not rename or redraw
+the source assets merely to correct this historical filename mismatch.
+
 ### 4.1 Scopes and context
 
 **Rule:** scope-sensitive effects and triggers must be validated in the exact context in which they will execute.

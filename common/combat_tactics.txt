@@ -10,7 +10,13 @@
 #
 # Doctrine unlocks determine what an army knows; composition / reserves / terrain
 # determine what is possible; traits define style; overall skill and skill_advantage
-# remain general quality checks; HER subskills now steer tactic selection itself.
+# remain general quality checks; HER subskills steer tactic selection itself.
+#
+# Trait integration rule:
+# - professional / branch traits (panzer, mobile warfare, artillery, engineers) may
+#   directly open or strongly weight relevant tactics;
+# - personality traits primarily work through HER subskills and receive only small
+#   direct weights when the character of the decision itself is relevant.
 ###############################################################################
 
 phases = {
@@ -47,6 +53,8 @@ tactic_encirclement = {
 		OR = {
 			AND = { hardness < 0.2 has_trait = combined_arms_expert }
 			AND = { hardness > 0.2 has_trait = panzer_leader }
+			has_trait = mobile_warfare_leader
+			AND = { has_trait = mobile_warfare_officer logistics_skill_level > 7 }
 			skill_advantage > 1
 		}
 	}
@@ -55,9 +63,13 @@ tactic_encirclement = {
 		factor = 5
 		modifier = { add = 3 OR = { has_trait = panzer_expert has_trait = combined_arms_expert } }
 		modifier = { add = 3 AND = { has_trait = panzer_expert has_trait = combined_arms_expert } }
+		modifier = { add = 2 has_trait = mobile_warfare_officer }
+		modifier = { add = 4 has_trait = mobile_warfare_leader }
 		modifier = { add = 3 has_flanked_opponent = yes }
 		modifier = { add = 2 has_reserves = yes }
 		modifier = { add = 3 has_trait = trickster }
+		modifier = { add = 1 has_trait = independent_minded }
+		modifier = { add = 1 has_trait = improviser }
 		modifier = { add = 2 is_fighting_in_terrain = plains }
 		modifier = { add = 1 planning_skill_level > 5 }
 		modifier = { add = 2 planning_skill_level > 8 }
@@ -87,6 +99,8 @@ tactic_shock = {
 		modifier = { add = 6 has_trait = aggressive_assaulter }
 		modifier = { add = 2 AND = { hardness > 0.2 attack_skill_level > 8 } }
 		modifier = { add = 2 AND = { hardness < 0.2 defense_skill_level > 8 } }
+		modifier = { add = 1 has_trait = improviser }
+		modifier = { add = -1 has_trait = methodical }
 		modifier = { add = -2 planning_skill_level > 8 }
 		modifier = { add = -2 planning_skill_level > 11 }
 		modifier = { add = -1 logistics_skill_level > 10 }
@@ -108,6 +122,7 @@ tactic_breakthrough = {
 		OR = {
 			AND = { hardness > 0.2 skill_advantage > 0 }
 			AND = { hardness > 0.2 has_trait = panzer_expert }
+			AND = { hardness > 0.15 has_trait = mobile_warfare_leader }
 			AND = { hardness < 0.2 has_trait = combined_arms_expert }
 			AND = { has_artillery_ratio > 0.1 has_trait = bearer_of_artillery }
 			AND = { has_artillery_ratio > 0.1 skill_advantage > 0 }
@@ -118,6 +133,7 @@ tactic_breakthrough = {
 		factor = 5
 		modifier = { add = 2 OR = { has_trait = panzer_expert has_trait = combined_arms_expert } }
 		modifier = { add = 2 AND = { has_trait = panzer_expert has_trait = combined_arms_expert } }
+		modifier = { add = 2 has_trait = mobile_warfare_leader }
 		modifier = { add = 3 has_trait = bearer_of_artillery }
 		modifier = { add = 2 has_artillery_ratio > 0.15 }
 		modifier = { add = 2 has_artillery_ratio > 0.25 }
@@ -153,6 +169,12 @@ tactic_blitz = {
 		OR = {
 			AND = { hardness > 0.2 has_trait = panzer_leader }
 			AND = { hardness < 0.2 has_trait = combined_arms_expert }
+			has_trait = mobile_warfare_leader
+			AND = {
+				has_trait = mobile_warfare_officer
+				attack_skill_level > 6
+				logistics_skill_level > 6
+			}
 		}
 		OR = { skill > 4 frontage_full = yes has_reserves = yes skill_advantage > 0 }
 		OWNER = { NOT = { has_tech = masterful_blitz } }
@@ -162,6 +184,11 @@ tactic_blitz = {
 		factor = 5
 		modifier = { add = 2 OR = { has_trait = panzer_expert has_trait = combined_arms_expert } }
 		modifier = { add = 2 AND = { has_trait = panzer_expert has_trait = combined_arms_expert } }
+		modifier = { add = 2 has_trait = mobile_warfare_officer }
+		modifier = { add = 4 has_trait = mobile_warfare_leader }
+		modifier = { add = 1 has_trait = independent_minded }
+		modifier = { add = 2 has_trait = improviser }
+		modifier = { add = -1 has_trait = methodical }
 		modifier = { add = 3 has_reserves = yes frontage_full = yes }
 		modifier = { add = 2 is_fighting_in_terrain = plains }
 		modifier = { add = 2 attack_skill_level > 6 }
@@ -260,6 +287,8 @@ tactic_planned_attack = {
 	active = no
 	base = {
 		factor = 5
+		modifier = { add = 1 has_trait = staff_officer }
+		modifier = { add = 1 has_trait = methodical }
 		modifier = { add = 2 planning_skill_level > 5 }
 		modifier = { add = 3 planning_skill_level > 8 }
 		modifier = { add = 3 planning_skill_level > 11 }
@@ -290,6 +319,7 @@ tactic_relentless_assault = {
 		factor = 10
 		modifier = { add = 5 frontage_full = yes }
 		modifier = { add = 10 has_reserves = yes }
+		modifier = { add = 1 has_trait = staff_officer }
 		modifier = { add = 1 planning_skill_level > 5 }
 		modifier = { add = 2 planning_skill_level > 8 }
 		modifier = { add = 2 planning_skill_level > 11 }
@@ -317,7 +347,11 @@ tactic_flank_attack = {
 		modifier = { add = 3 hardness > 0.2 }
 		modifier = { add = 2 OR = { has_trait = panzer_expert has_trait = combined_arms_expert } }
 		modifier = { add = 2 AND = { has_trait = panzer_expert has_trait = combined_arms_expert } }
+		modifier = { add = 2 has_trait = mobile_warfare_officer }
+		modifier = { add = 3 has_trait = mobile_warfare_leader }
 		modifier = { add = 6 has_trait = trickster }
+		modifier = { add = 1 has_trait = independent_minded }
+		modifier = { add = 1 has_trait = improviser }
 		modifier = { add = 4 has_reserves = yes frontage_full = no }
 		modifier = { add = 1 planning_skill_level > 5 }
 		modifier = { add = 2 planning_skill_level > 8 }
@@ -344,9 +378,14 @@ tactic_unexpected_thrust = {
 		factor = 15
 		modifier = { add = 2 OR = { has_trait = panzer_expert has_trait = combined_arms_expert } }
 		modifier = { add = 2 AND = { has_trait = panzer_expert has_trait = combined_arms_expert } }
+		modifier = { add = 3 has_trait = mobile_warfare_officer }
+		modifier = { add = 4 has_trait = mobile_warfare_leader }
 		modifier = { add = 5 has_flanked_opponent = yes }
 		modifier = { add = 2 has_reserves = yes }
 		modifier = { add = 3 has_trait = trickster }
+		modifier = { add = 1 has_trait = independent_minded }
+		modifier = { add = 2 has_trait = improviser }
+		modifier = { add = -1 has_trait = methodical }
 		modifier = { add = 2 is_fighting_in_terrain = plains }
 		modifier = { add = 1 logistics_skill_level > 5 }
 		modifier = { add = 2 logistics_skill_level > 8 }
@@ -432,13 +471,22 @@ tactic_masterful_blitz = {
 		hardness > 0.3
 		phase = no
 		skill > 4
-		OR = { has_trait = panzer_leader skill_advantage > 0 }
+		OR = {
+			has_trait = panzer_leader
+			has_trait = mobile_warfare_leader
+			AND = { has_trait = mobile_warfare_officer logistics_skill_level > 7 }
+			skill_advantage > 0
+		}
 	}
 	active = no
 	base = {
 		factor = 5
 		modifier = { add = 2 OR = { has_trait = panzer_expert has_trait = combined_arms_expert } }
 		modifier = { add = 2 AND = { has_trait = panzer_expert has_trait = combined_arms_expert } }
+		modifier = { add = 2 has_trait = mobile_warfare_officer }
+		modifier = { add = 4 has_trait = mobile_warfare_leader }
+		modifier = { add = 1 has_trait = independent_minded }
+		modifier = { add = 2 has_trait = improviser }
 		modifier = { add = 3 has_reserves = yes frontage_full = yes }
 		modifier = { add = 2 attack_skill_level > 6 }
 		modifier = { add = 2 attack_skill_level > 9 }
@@ -509,6 +557,8 @@ tactic_delay = {
 		modifier = { add = 12 has_reserves = yes }
 		modifier = { add = 5 has_trait = defensive_doctrine }
 		modifier = { add = 8 has_trait = guerilla_fighter }
+		modifier = { add = 1 has_trait = independent_minded }
+		modifier = { add = 1 has_trait = improviser }
 		modifier = { add = 1 defense_skill_level > 5 }
 		modifier = { add = 2 defense_skill_level > 8 }
 		modifier = { add = 2 logistics_skill_level > 5 }
@@ -543,6 +593,8 @@ tactic_ambush = {
 		modifier = { add = 4 has_trait = trickster }
 		modifier = { add = 8 has_trait = ambusher }
 		modifier = { add = 3 has_trait = defensive_doctrine }
+		modifier = { add = 1 has_trait = independent_minded }
+		modifier = { add = 1 has_trait = improviser }
 		modifier = { add = 1 defense_skill_level > 5 }
 		modifier = { add = 2 defense_skill_level > 8 }
 		modifier = { add = 2 defense_skill_level > 11 }
@@ -569,6 +621,10 @@ tactic_elastic_defense = {
 		factor = 15
 		modifier = { add = 4 has_reserves = yes }
 		modifier = { add = 2 frontage_full = yes }
+		modifier = { add = 1 has_trait = mobile_warfare_officer }
+		modifier = { add = 2 has_trait = mobile_warfare_leader }
+		modifier = { add = 1 has_trait = independent_minded }
+		modifier = { add = 1 has_trait = improviser }
 		modifier = { add = 2 defense_skill_level > 5 }
 		modifier = { add = 3 defense_skill_level > 8 }
 		modifier = { add = 2 defense_skill_level > 11 }
@@ -593,7 +649,13 @@ tactic_backhand_blow = {
 		is_attacker = no
 		phase = no
 		skill > 4
-		OR = { skill > 5 AND = { hardness > 0.2 has_trait = panzer_leader } skill_advantage > 0 has_trait = trickster }
+		OR = {
+			skill > 5
+			AND = { hardness > 0.2 has_trait = panzer_leader }
+			has_trait = mobile_warfare_leader
+			skill_advantage > 0
+			has_trait = trickster
+		}
 	}
 	active = no
 	base = {
@@ -601,8 +663,11 @@ tactic_backhand_blow = {
 		modifier = { add = 6 has_reserves = yes }
 		modifier = { add = 2 hardness > 0.2 }
 		modifier = { add = 2 hardness > 0.4 }
+		modifier = { add = 2 has_trait = mobile_warfare_leader }
 		modifier = { add = 5 has_trait = trickster }
 		modifier = { add = 3 has_trait = brilliant_strategist }
+		modifier = { add = 1 has_trait = staff_officer }
+		modifier = { add = 1 has_trait = methodical }
 		modifier = { add = 2 has_trait = reckless }
 		modifier = { add = 4 has_flanked_opponent = yes }
 		modifier = { add = 2 planning_skill_level > 5 }
@@ -667,6 +732,8 @@ tactic_planned_defense = {
 	active = no
 	base = {
 		factor = 5
+		modifier = { add = 1 has_trait = staff_officer }
+		modifier = { add = 1 has_trait = methodical }
 		modifier = { add = 2 planning_skill_level > 5 }
 		modifier = { add = 3 planning_skill_level > 8 }
 		modifier = { add = 3 planning_skill_level > 11 }
@@ -820,7 +887,8 @@ tactic_cc_withdraw = {
 		modifier = { add = 2 logistics_skill_level > 9 }
 		modifier = { add = 1 planning_skill_level > 7 }
 		modifier = { add = 2 planning_skill_level > 10 }
-		modifier = { add = 2 has_trait = cautious }
+		modifier = { add = 2 has_trait = trait_cautious }
+		modifier = { add = 1 has_trait = independent_minded }
 	}
 	picture = cc_withdraw
 	display_phase = close_combat
@@ -886,6 +954,10 @@ tactic_tw_chase = {
 	trigger = { is_attacker = yes phase = tactical_withdrawal }
 	base = {
 		factor = 10
+		modifier = { add = 1 has_trait = mobile_warfare_officer }
+		modifier = { add = 2 has_trait = mobile_warfare_leader }
+		modifier = { add = 1 has_trait = independent_minded }
+		modifier = { add = 1 has_trait = improviser }
 		modifier = { add = 2 logistics_skill_level > 6 }
 		modifier = { add = 2 logistics_skill_level > 9 }
 		modifier = { add = 1 attack_skill_level > 8 }
@@ -903,6 +975,10 @@ tactic_tw_intercept = {
 	base = {
 		factor = 5
 		modifier = { add = 3 has_unit_type = motorbike_recon }
+		modifier = { add = 2 has_trait = mobile_warfare_officer }
+		modifier = { add = 4 has_trait = mobile_warfare_leader }
+		modifier = { add = 1 has_trait = independent_minded }
+		modifier = { add = 2 has_trait = improviser }
 		modifier = { add = 2 logistics_skill_level > 5 }
 		modifier = { add = 3 logistics_skill_level > 8 }
 		modifier = { add = 2 logistics_skill_level > 11 }
@@ -921,11 +997,22 @@ tactic_tw_intercept = {
 
 tactic_tactical_withdrawal = {
 	is_attacker = no
-	trigger = { is_attacker = no phase = no OR = { skill_advantage > 0 has_trait = trickster } }
+	trigger = {
+		is_attacker = no
+		phase = no
+		OR = {
+			skill_advantage > 0
+			has_trait = trickster
+			has_trait = independent_minded
+			has_trait = improviser
+		}
+	}
 	active = no
 	base = {
 		factor = 5
 		modifier = { add = 2 has_trait = trickster }
+		modifier = { add = 1 has_trait = independent_minded }
+		modifier = { add = 2 has_trait = improviser }
 		modifier = { add = 2 logistics_skill_level > 5 }
 		modifier = { add = 3 logistics_skill_level > 8 }
 		modifier = { add = 2 logistics_skill_level > 11 }
@@ -963,6 +1050,8 @@ tactic_tw_evade = {
 	base = {
 		factor = 5
 		modifier = { add = 2 has_trait = trickster }
+		modifier = { add = 1 has_trait = independent_minded }
+		modifier = { add = 2 has_trait = improviser }
 		modifier = { add = 2 logistics_skill_level > 5 }
 		modifier = { add = 3 logistics_skill_level > 8 }
 		modifier = { add = 2 logistics_skill_level > 11 }
@@ -1341,6 +1430,8 @@ tactic_sf_ambush = {
 	base = {
 		factor = 3
 		modifier = { add = 3 has_trait = trickster }
+		modifier = { add = 1 has_trait = independent_minded }
+		modifier = { add = 1 has_trait = improviser }
 		modifier = { add = 2 defense_skill_level > 6 }
 		modifier = { add = 3 defense_skill_level > 9 }
 		modifier = { add = 2 logistics_skill_level > 7 }

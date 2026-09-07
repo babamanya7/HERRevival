@@ -2463,6 +2463,39 @@ focus_tree = {
 			}	
 		}
 	}
+
+	focus = {
+		id = CHI_invite_the_flying_tigers
+		icon = GFX_focus_chi_flying_tigers
+		prerequisite = { focus = CHI_war_of_resistance }
+		x = 4
+		y = 2
+		relative_position_id = CHI_war_of_resistance
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 4
+		}
+
+		available = {
+			USA_will_support = yes
+			is_subject = no
+		}
+
+		bypass = {
+			USA = { has_country_flag = CHI_flying_tigers }
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			USA = { country_event = wtt_china_shared.10 }
+		}
+	}
+
 	focus = {
 		id = CHI_guarantee_the_hanoi_route
 		icon = GFX_goal_generic_intelligence_exchange

@@ -2619,46 +2619,6 @@ shared_focus = {
 }
 
 shared_focus = {
-	id = CHI_invite_the_flying_tigers
-	icon = GFX_focus_chi_flying_tigers
-	prerequisite = { focus = CHI_hire_chennault }
-	x = 1
-	y = 2
-	relative_position_id = CHI_hire_chennault
-
-	cost = 10
-
-	ai_will_do = {
-		factor = 1
-		modifier = {
-			factor = 4
-			tag = CHI
-		}
-	}
-
-	available = {
-		USA_will_support = yes
-		is_subject = no
-	}
-
-	bypass = {
-		any_other_country = {
-			has_completed_focus = CHI_invite_the_flying_tigers
-		}
-	}
-
-	cancel_if_invalid = yes
-	continue_if_invalid = no
-	available_if_capitulated = no
-
-	completion_reward = {
-		USA = {
-			country_event = wtt_china_shared.10
-		}
-	}
-}
-
-shared_focus = {
 	id = CHI_sino_american_cooperative_organization
 	icon = GFX_focus_generic_paratrooper
 	prerequisite = { focus = CHI_invite_the_flying_tigers }

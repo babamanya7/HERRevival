@@ -508,16 +508,62 @@ USA_CHI_foreign_aid = {
 		cost = 50
 		days_remove = 790
 		modifier = { civilian_factory_use = 10 }
-		complete_effect = { CHI = { set_country_flag = CHI_ledo_road_construction_started } }
-		cancel_effect = { CHI = { clr_country_flag = CHI_ledo_road_construction_started } }
+		complete_effect = {
+			set_country_flag = HER_CHI_ledo_construction_sponsor
+			CHI = {
+				set_country_flag = CHI_ledo_road_construction_started
+				activate_mission = HER_CHI_ledo_construction_underway
+			}
+			USA = {
+				if = {
+					limit = { NOT = { has_country_flag = HER_CHI_ledo_construction_sponsor } }
+					activate_mission = HER_CHI_ledo_construction_underway
+				}
+			}
+			ENG = {
+				if = {
+					limit = { NOT = { has_country_flag = HER_CHI_ledo_construction_sponsor } }
+					activate_mission = HER_CHI_ledo_construction_underway
+				}
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = HER_CHI_ledo_construction_sponsor
+			CHI = {
+				clr_country_flag = CHI_ledo_road_construction_started
+				remove_mission = HER_CHI_ledo_construction_underway
+			}
+			USA = { remove_mission = HER_CHI_ledo_construction_underway }
+			ENG = { remove_mission = HER_CHI_ledo_construction_underway }
+		}
 		remove_effect = {
+			clr_country_flag = HER_CHI_ledo_construction_sponsor
 			CHI = {
 				clr_country_flag = CHI_ledo_road_construction_started
 				set_country_flag = CHI_ledo_road_construction_complete
+				remove_mission = HER_CHI_ledo_construction_underway
 			}
+			USA = { remove_mission = HER_CHI_ledo_construction_underway }
+			ENG = { remove_mission = HER_CHI_ledo_construction_underway }
 			432 = { add_building_construction = { type = infrastructure level = 2 instant_build = yes } }
 		}
 		ai_will_do = { factor = 10 }
+	}
+
+	HER_CHI_ledo_construction_underway = {
+		icon = generic_construction
+		allowed = { OR = { original_tag = CHI original_tag = USA original_tag = ENG } }
+		activation = { always = no }
+		visible = {
+			CHI = { has_country_flag = CHI_ledo_road_construction_started }
+			NOT = { has_country_flag = HER_CHI_ledo_construction_sponsor }
+		}
+		available = { hidden_trigger = { always = no } }
+		cost = 0
+		days_mission_timeout = 790
+		is_good = yes
+		cancel_trigger = { CHI = { NOT = { has_country_flag = CHI_ledo_road_construction_started } } }
+		timeout_effect = { }
 	}
 
 	USA_expand_ledo_road = {
@@ -526,6 +572,7 @@ USA_CHI_foreign_aid = {
 		visible = {
 			CHI = {
 				has_country_flag = CHI_ledo_road_construction_complete
+				NOT = { has_country_flag = CHI_ledo_expansion_in_progress }
 				check_variable = { CHI_ledo_route_upgrade < 1500 }
 			}
 		}
@@ -534,8 +581,45 @@ USA_CHI_foreign_aid = {
 		days_remove = 120
 		days_re_enable = 240
 		modifier = { civilian_factory_use = 5 }
-		remove_effect = { CHI = { add_to_variable = { CHI_ledo_route_upgrade = 500 } } }
+		complete_effect = {
+			set_country_flag = HER_CHI_ledo_expansion_sponsor
+			CHI = {
+				set_country_flag = CHI_ledo_expansion_in_progress
+				activate_mission = HER_CHI_ledo_expansion_underway
+			}
+			USA = { if = { limit = { NOT = { has_country_flag = HER_CHI_ledo_expansion_sponsor } } activate_mission = HER_CHI_ledo_expansion_underway } }
+			ENG = { if = { limit = { NOT = { has_country_flag = HER_CHI_ledo_expansion_sponsor } } activate_mission = HER_CHI_ledo_expansion_underway } }
+		}
+		cancel_effect = {
+			clr_country_flag = HER_CHI_ledo_expansion_sponsor
+			CHI = { clr_country_flag = CHI_ledo_expansion_in_progress remove_mission = HER_CHI_ledo_expansion_underway }
+			USA = { remove_mission = HER_CHI_ledo_expansion_underway }
+			ENG = { remove_mission = HER_CHI_ledo_expansion_underway }
+		}
+		remove_effect = {
+			clr_country_flag = HER_CHI_ledo_expansion_sponsor
+			CHI = {
+				clr_country_flag = CHI_ledo_expansion_in_progress
+				remove_mission = HER_CHI_ledo_expansion_underway
+				add_to_variable = { CHI_ledo_route_upgrade = 500 }
+			}
+			USA = { remove_mission = HER_CHI_ledo_expansion_underway }
+			ENG = { remove_mission = HER_CHI_ledo_expansion_underway }
+		}
 		ai_will_do = { factor = 3 }
+	}
+
+	HER_CHI_ledo_expansion_underway = {
+		icon = generic_construction
+		allowed = { OR = { original_tag = CHI original_tag = USA original_tag = ENG } }
+		activation = { always = no }
+		visible = { CHI = { has_country_flag = CHI_ledo_expansion_in_progress } NOT = { has_country_flag = HER_CHI_ledo_expansion_sponsor } }
+		available = { hidden_trigger = { always = no } }
+		cost = 0
+		days_mission_timeout = 120
+		is_good = yes
+		cancel_trigger = { CHI = { NOT = { has_country_flag = CHI_ledo_expansion_in_progress } } }
+		timeout_effect = { }
 	}
 
 	USA_finance_burma_road_expansion = {
@@ -547,6 +631,7 @@ USA_CHI_foreign_aid = {
 					has_completed_focus = CHI_burma_road
 					ENG = { has_completed_focus = uk_burma_focus }
 				}
+				NOT = { has_country_flag = CHI_burma_expansion_in_progress }
 				check_variable = { CHI_burma_route_upgrade < 2500 }
 			}
 		}
@@ -555,12 +640,47 @@ USA_CHI_foreign_aid = {
 		days_remove = 120
 		days_re_enable = 240
 		modifier = { civilian_factory_use = 5 }
+		complete_effect = {
+			set_country_flag = HER_CHI_burma_expansion_sponsor
+			CHI = {
+				set_country_flag = CHI_burma_expansion_in_progress
+				activate_mission = HER_CHI_burma_expansion_underway
+			}
+			USA = { if = { limit = { NOT = { has_country_flag = HER_CHI_burma_expansion_sponsor } } activate_mission = HER_CHI_burma_expansion_underway } }
+			ENG = { if = { limit = { NOT = { has_country_flag = HER_CHI_burma_expansion_sponsor } } activate_mission = HER_CHI_burma_expansion_underway } }
+		}
+		cancel_effect = {
+			clr_country_flag = HER_CHI_burma_expansion_sponsor
+			CHI = { clr_country_flag = CHI_burma_expansion_in_progress remove_mission = HER_CHI_burma_expansion_underway }
+			USA = { remove_mission = HER_CHI_burma_expansion_underway }
+			ENG = { remove_mission = HER_CHI_burma_expansion_underway }
+		}
 		remove_effect = {
-			CHI = { add_to_variable = { CHI_burma_route_upgrade = 500 } }
+			clr_country_flag = HER_CHI_burma_expansion_sponsor
+			CHI = {
+				clr_country_flag = CHI_burma_expansion_in_progress
+				remove_mission = HER_CHI_burma_expansion_underway
+				add_to_variable = { CHI_burma_route_upgrade = 500 }
+			}
+			USA = { remove_mission = HER_CHI_burma_expansion_underway }
+			ENG = { remove_mission = HER_CHI_burma_expansion_underway }
 			288 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
 			640 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
 		}
 		ai_will_do = { factor = 3 }
+	}
+
+	HER_CHI_burma_expansion_underway = {
+		icon = generic_construction
+		allowed = { OR = { original_tag = CHI original_tag = USA original_tag = ENG } }
+		activation = { always = no }
+		visible = { CHI = { has_country_flag = CHI_burma_expansion_in_progress } NOT = { has_country_flag = HER_CHI_burma_expansion_sponsor } }
+		available = { hidden_trigger = { always = no } }
+		cost = 0
+		days_mission_timeout = 120
+		is_good = yes
+		cancel_trigger = { CHI = { NOT = { has_country_flag = CHI_burma_expansion_in_progress } } }
+		timeout_effect = { }
 	}
 
 	USA_expand_hump_airlift = {

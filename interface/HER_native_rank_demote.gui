@@ -1,0 +1,23 @@
+guiTypes = {
+	# Injected into every native armyleaderentry by scripted GUI.
+	# The native entry keeps the hardcoded portrait, traits, medals, stats and sorting;
+	# this container only contributes the HER rank-demotion button.
+	containerWindowType = {
+		name = "HER_native_rank_demote"
+		position = { x = 366 y = 56 }
+		size = { width = 46 height = 34 }
+		clipping = no
+
+		buttonType = {
+			name = "her_native_rank_demote"
+			position = { x = 0 y = 0 }
+			quadTextureSprite = "GFX_leader_selection_button"
+			buttonText = "HER_UNIT_LEADER_DEMOTE_SHORT"
+			buttonFont = "hoi_16mbs"
+			pdx_tooltip = "HER_UNIT_LEADER_DEMOTE_TT"
+			clicksound = click_default
+			frame = 1
+			scale = 0.5
+		}
+	}
+}

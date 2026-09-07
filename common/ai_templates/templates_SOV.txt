@@ -1,5 +1,6 @@
-# Soviet Union: all regular combat divisions target exactly 30 combat width (15 line battalions).
-# Regimental support and divisional support are separate layers; combat width is controlled by regiments.
+# Soviet Union: regular combat divisions target 30 combat width (15 line battalions where practical).
+# Regimental support and divisional support are separate HER layers.
+# Soviet OOB baseline uses regimental artillery attached to each rifle regiment.
 
 infantry_SOV = {
 	available_for = { SOV }
@@ -18,12 +19,14 @@ infantry_SOV = {
 		reinforce_prio = 2
 
 		target_template = {
-			support = {
-				engineer = 1
-				artillery = 1
-			}
 			regiments = {
 				infantry = 15
+			}
+			regimental_support = {
+				artillery = 3
+			}
+			support = {
+				engineer = 1
 			}
 		}
 
@@ -41,17 +44,19 @@ infantry_SOV = {
 		reinforce_prio = 2
 
 		target_template = {
-			support = {
-				engineer = 1
-				recon = 1
-				artillery = 1
-				anti_air = 1
-				anti_tank = 1
-				signal_company = 1
-			}
 			regiments = {
 				heavy_infantry = 12
 				artillery_brigade = 3
+			}
+			regimental_support = {
+				artillery = 3
+			}
+			support = {
+				engineer = 1
+				recon = 1
+				signal_company = 1
+				field_hospital = 1
+				logistics_company = 1
 			}
 		}
 
@@ -70,24 +75,23 @@ infantry_SOV = {
 		upgrade_prio = { factor = 160 }
 		reinforce_prio = 2
 
-		# 30w universal line: 3 infantry regiments + 3 light artillery + 1 heavy artillery + AT + AA.
 		target_template = {
-			support = {
-				engineer = 1
-				recon = 1
-				artillery = 1
-				anti_air_battery = 1
-				anti_tank = 1
-				signal_company = 1
-				field_hospital = 1
-				logistics_company = 1
-			}
 			regiments = {
 				heavy_infantry = 9
 				artillery_brigade = 3
 				heavy_artillery_brigade = 1
 				anti_tank_brigade = 1
 				anti_air_brigade = 1
+			}
+			regimental_support = {
+				artillery = 3
+			}
+			support = {
+				engineer = 1
+				recon = 1
+				signal_company = 1
+				field_hospital = 1
+				logistics_company = 1
 			}
 		}
 	}
@@ -110,6 +114,14 @@ armor_SOV = {
 		reinforce_prio = 3
 
 		target_template = {
+			regiments = {
+				light_armor = 4
+				motorized = 8
+				mot_artillery_brigade = 3
+			}
+			regimental_support = {
+				artillery = 3
+			}
 			support = {
 				assault_engineer = 1
 				armored_car_recon = 1
@@ -118,11 +130,6 @@ armor_SOV = {
 				mot_field_hospital = 1
 				logistics_company = 1
 				anti_air = 1
-			}
-			regiments = {
-				light_armor = 4
-				motorized = 8
-				mot_artillery_brigade = 3
 			}
 		}
 
@@ -143,21 +150,23 @@ armor_SOV = {
 		reinforce_prio = 3
 
 		target_template = {
+			regiments = {
+				medium_armor = 5
+				motorized = 7
+				mot_artillery_brigade = 2
+				mot_anti_air_brigade = 1
+			}
+			regimental_support = {
+				artillery = 3
+			}
 			support = {
 				assault_engineer = 1
 				armored_car_recon = 1
 				mot_maintenance_company = 1
 				mot_signal_company = 1
 				mot_field_hospital = 1
-				anti_air = 1
 				logistics_company = 1
-				artillery = 1
-			}
-			regiments = {
-				medium_armor = 5
-				motorized = 7
-				mot_artillery_brigade = 2
-				mot_anti_air_brigade = 1
+				anti_air = 1
 			}
 		}
 
@@ -181,22 +190,24 @@ armor_SOV = {
 		reinforce_prio = 3
 
 		target_template = {
-			support = {
-				assault_engineer = 1
-				armored_car_recon = 1
-				mot_maintenance_company = 1
-				mot_signal_company = 1
-				mot_field_hospital = 1
-				anti_air = 1
-				logistics_company = 1
-				artillery = 1
-			}
 			regiments = {
 				medium_armor = 5
 				mechanized = 6
 				mechanized_sp_artillery_brigade = 2
 				medium_tank_destroyer_brigade = 1
 				mechanized_anti_air_brigade = 1
+			}
+			regimental_support = {
+				artillery = 3
+			}
+			support = {
+				assault_engineer = 1
+				armored_car_recon = 1
+				mot_maintenance_company = 1
+				mot_signal_company = 1
+				mot_field_hospital = 1
+				logistics_company = 1
+				anti_air = 1
 			}
 		}
 	}
@@ -220,21 +231,23 @@ heavy_armor_SOV = {
 		reinforce_prio = 3
 
 		target_template = {
+			regiments = {
+				heavy_armor = 5
+				mechanized = 7
+				mechanized_sp_artillery_brigade = 2
+				mechanized_anti_air_brigade = 1
+			}
+			regimental_support = {
+				artillery = 3
+			}
 			support = {
 				assault_engineer = 1
 				armored_car_recon = 1
 				mot_maintenance_company = 1
 				mot_signal_company = 1
 				mot_field_hospital = 1
-				anti_air = 1
 				logistics_company = 1
-				artillery = 1
-			}
-			regiments = {
-				heavy_armor = 5
-				mechanized = 7
-				mechanized_sp_artillery_brigade = 2
-				mechanized_anti_air_brigade = 1
+				anti_air = 1
 			}
 		}
 	}
@@ -252,6 +265,16 @@ motorized_SOV = {
 		reinforce_prio = 3
 
 		target_template = {
+			regiments = {
+				motorized = 9
+				mot_artillery_brigade = 3
+				motorized_heavy_artillery_brigade = 1
+				mot_anti_tank_brigade = 1
+				mot_anti_air_brigade = 1
+			}
+			regimental_support = {
+				artillery = 3
+			}
 			support = {
 				engineer = 1
 				motorbike_recon = 1
@@ -259,16 +282,6 @@ motorized_SOV = {
 				mot_maintenance_company = 1
 				mot_field_hospital = 1
 				logistics_company = 1
-				artillery = 1
-				anti_tank = 1
-				anti_air = 1
-			}
-			regiments = {
-				motorized = 9
-				mot_artillery_brigade = 3
-				motorized_heavy_artillery_brigade = 1
-				mot_anti_tank_brigade = 1
-				mot_anti_air_brigade = 1
 			}
 		}
 	}
@@ -294,6 +307,16 @@ mechanized_assault_SOV = {
 		reinforce_prio = 3
 
 		target_template = {
+			regiments = {
+				medium_armor = 3
+				mechanized = 8
+				mechanized_sp_artillery_brigade = 2
+				medium_tank_destroyer_brigade = 1
+				mechanized_anti_air_brigade = 1
+			}
+			regimental_support = {
+				artillery = 3
+			}
 			support = {
 				assault_engineer = 1
 				armored_car_recon = 1
@@ -301,16 +324,6 @@ mechanized_assault_SOV = {
 				mot_maintenance_company = 1
 				mot_field_hospital = 1
 				logistics_company = 1
-				artillery = 1
-				anti_tank = 1
-				anti_air = 1
-			}
-			regiments = {
-				medium_armor = 3
-				mechanized = 8
-				mechanized_sp_artillery_brigade = 2
-				medium_tank_destroyer_brigade = 1
-				mechanized_anti_air_brigade = 1
 			}
 		}
 	}
@@ -334,18 +347,18 @@ mountaineers_SOV = {
 		reinforce_prio = 2
 
 		target_template = {
-			support = {
-				engineer = 1
-				recon = 1
-				artillery = 1
-				anti_air = 1
-				anti_tank = 1
-				signal_company = 1
-				field_hospital = 1
-			}
 			regiments = {
 				mountaineers = 12
 				artillery_brigade = 3
+			}
+			regimental_support = {
+				artillery = 4
+			}
+			support = {
+				engineer = 1
+				recon = 1
+				signal_company = 1
+				field_hospital = 1
 			}
 		}
 	}
@@ -369,17 +382,17 @@ paratroopers_SOV = {
 		reinforce_prio = 2
 
 		target_template = {
+			regiments = {
+				paratrooper = 15
+			}
+			regimental_support = {
+				artillery = 3
+			}
 			support = {
 				engineer = 1
 				recon = 1
-				artillery = 1
-				anti_air = 1
-				anti_tank = 1
 				signal_company = 1
 				field_hospital = 1
-			}
-			regiments = {
-				paratrooper = 15
 			}
 		}
 	}
@@ -396,8 +409,8 @@ garrison_SOV = {
 		custom_icon = 13
 
 		target_template = {
-			support = { military_police = 1 }
 			regiments = { cavalry = 8 }
+			support = { military_police = 1 }
 		}
 	}
 }

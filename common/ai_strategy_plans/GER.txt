@@ -12,6 +12,7 @@ German_historical = {
 
 	ai_national_focuses = {
 		# 1936-38: political revision plus the economic and military base needed for war.
+		# Keep this path compact enough that the diplomatic crisis chain still lands on time.
 		GER_rhineland
 		GER_four_year_plan
 		GER_nazi_economics
@@ -21,16 +22,11 @@ German_historical = {
 		GER_autobahn
 		GER_grosraumwirtschaft
 		GER_hermann_goring_werke
-		GER_kdf_wagen_scheme_mil
 		GER_institute_price_controls
 		GER_nationalize_german_arms_industries
 		GER_mobilize_the_workforce
 		GER_realization_of_the_wehrmacht
 		GER_luftwaffe_innovations
-		GER_aeronautic_funding
-		GER_Peenemunde_Army_Research_Centre
-		GER_strengthen_the_kriegsmarine
-		GER_naval_rearmament
 		GER_the_heers_new_era
 		GER_adopt_new_panzer_doctrine
 		GER_anschluss
@@ -40,27 +36,34 @@ German_historical = {
 		GER_demand_memel
 		GER_mol_rib_pact
 
-		# 1939-40: Poland, the western campaign and the mobilized war economy.
+		# 1939-40: Poland and France. Do not bury the eastern-war prerequisites
+		# behind optional wartime economy, naval or technology focuses.
 		GER_danzig_or_war
 		GER_western_war_plans
 		GER_demonstration_of_military_achievements
 		GER_an_invincible_army
-		GER_organization_todt
-		GER_economy_of_conquest
-		GER_explotation_of_acquired_resources
+
+		# 1940: secure the two Axis partners required by HER's Barbarossa branch.
+		# second_vienna_award is a hard prerequisite for prepare_barbarossa.
 		GER_align_hungary
 		GER_align_romania
 		GER_second_vienna_award
-		GER_integrate_hungarian_war_economies
-		GER_integrate_romanian_war_economies
-		GER_fate_of_yugoslavia
-		GER_fate_of_greece
 
-		# 1940-41: finish the dependency chain that HER's Barbarossa focus actually requires.
+		# 1940-41: critical Barbarossa path. Keep uninterrupted once available.
 		GER_prepare_barbarossa
 		GER_alliance_with_finland
 		GER_eastern_lebensraum
 		GER_form_the_reichskommissariats
+
+		# Balkans and wartime economic consolidation. These remain historical goals,
+		# but they must not consume the calendar needed for the Soviet-war trigger.
+		GER_fate_of_yugoslavia
+		GER_fate_of_greece
+		GER_organization_todt
+		GER_economy_of_conquest
+		GER_explotation_of_acquired_resources
+		GER_integrate_hungarian_war_economies
+		GER_integrate_romanian_war_economies
 
 		# Wartime development. Availability gates decide the exact historical timing.
 		GER_rmbum
@@ -137,6 +140,11 @@ German_historical = {
 
 	focus_factors = {
 		GER_rhineland = 1.0
+		# Once these are available they are calendar-critical for the historical 1941 war.
+		GER_second_vienna_award = 20.0
+		GER_prepare_barbarossa = 50.0
+		GER_alliance_with_finland = 30.0
+		GER_eastern_lebensraum = 50.0
 	}
 }
 

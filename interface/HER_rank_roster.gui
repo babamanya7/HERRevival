@@ -71,7 +71,9 @@ guiTypes = {
 			name = "rank_roster_scroll"
 			position = { x = 14 y = 79 }
 			size = { width = 505 height = 524 }
+			clipping = yes
 			verticalScrollbar = "right_vertical_slider"
+			vertical_scroll_step = 98
 			margin = { top = 4 bottom = 6 right = 16 }
 			scroll_wheel_factor = 98
 			smooth_scrolling = yes
@@ -79,7 +81,7 @@ guiTypes = {
 			gridBoxType = {
 				name = "rank_roster_grid"
 				position = { x = 0 y = 0 }
-				size = { width = 485 height = 100%% }
+				size = { width = 485 height = 1 }
 				slotsize = { width = 485 height = 98 }
 				max_slots_horizontal = 1
 				format = "UPPER_LEFT"
@@ -87,8 +89,6 @@ guiTypes = {
 		}
 	}
 
-	# Entry intentionally reuses vanilla army-leader element names where possible.
-	# Dynamic-list change_scope gives every copy a unit-leader scope.
 	containerWindowType = {
 		name = "HER_rank_roster_entry"
 		size = { width = 485 height = 98 }
@@ -99,8 +99,6 @@ guiTypes = {
 			quadTextureSprite = "GFX_leader_selection_entry_bg"
 		}
 
-		# Vanilla leader portrait binding. If the hardcoded roster binding is
-		# available in scripted lists, this resolves to the commander's portrait.
 		buttonType = {
 			name = "leader_button"
 			position = { x = 56 y = 5 }
@@ -137,8 +135,6 @@ guiTypes = {
 			format = left
 		}
 
-		# Vanilla-compatible skill field. Scripted localisation is used as a
-		# fallback so the value remains visible even if the hardcoded binding is absent.
 		instantTextboxType = {
 			name = "skill"
 			position = { x = 9 y = 17 }
@@ -210,8 +206,6 @@ guiTypes = {
 			format = center
 		}
 
-		# Same name/layout used by vanilla army leader entries. If native binding is
-		# exposed for a scoped dynamic-list entry, learned/personality traits populate here.
 		gridBoxType = {
 			name = "traits_grid"
 			position = { x = 246 y = 54 }

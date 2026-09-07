@@ -309,7 +309,7 @@ characters={
 		}
 
 		corps_commander = {
-			traits = { cavalry_officer inflexible_strategist gen_lt }
+			traits = { mobile_warfare_officer inflexible_strategist gen_lt }
 			skill = 5
 			attack_skill = 2
 			defense_skill = 8
@@ -347,7 +347,7 @@ characters={
 		}
 
 		corps_commander = {
-			traits = { career_officer armor_officer cavalry_leader mobile_warfare_officer harsh_leader tank_gen_lt nobleman }
+			traits = { career_officer armor_officer mobile_warfare_leader mobile_warfare_officer harsh_leader tank_gen_lt nobleman }
 			skill = 5
 			attack_skill = 8
 			defense_skill = 1
@@ -423,7 +423,7 @@ characters={
 		}
 
 		corps_commander = {
-			traits = { war_hero politically_connected trickster cavalry_leader mobile_warfare_officer armor_officer tank_gen_lt }
+			traits = { war_hero politically_connected trickster mobile_warfare_leader mobile_warfare_officer armor_officer tank_gen_lt }
 			skill = 9
 			attack_skill = 12
 			defense_skill = 3
@@ -537,7 +537,7 @@ characters={
 			}
 		}
 		corps_commander = {
-			traits = { cavalry_officer cavalry_leader armor_officer panzer_leader mobile_warfare_officer gen_lt }
+			traits = { mobile_warfare_leader armor_officer panzer_leader mobile_warfare_officer gen_lt }
 			skill = 5
 			attack_skill = 9
 			defense_skill = 1
@@ -834,7 +834,7 @@ characters={
 			}
 		}
 		corps_commander={
-			traits={ cavalry_officer nobleman career_officer gen_pk }
+			traits={ mobile_warfare_officer nobleman career_officer gen_pk }
 			skill=6
 			attack_skill=4
 			defense_skill=8
@@ -989,7 +989,7 @@ characters={
 			}
 		}
 		corps_commander={
-			traits={ brilliant_strategist armor_officer panzer_leader mobile_warfare_officer politically_connected harsh_leader cavalry_leader organizer gen_lt }
+			traits={ brilliant_strategist armor_officer panzer_leader mobile_warfare_officer mobile_warfare_leader politically_connected harsh_leader organizer gen_lt }
 			skill = 11
 			attack_skill = 15
 			defense_skill = 10
@@ -1090,7 +1090,7 @@ characters={
 			}
 		}
 		corps_commander={
-			traits={ career_officer ranger brilliant_strategist improviser trait_cautious armor_officer panzer_leader mobile_warfare_officer cavalry_leader trait_engineer tank_gen_pk }
+			traits={ career_officer ranger brilliant_strategist improviser trait_cautious armor_officer panzer_leader mobile_warfare_officer mobile_warfare_leader trait_engineer tank_gen_pk }
 			skill = 13
 			attack_skill = 18
 			defense_skill = 8
@@ -1256,7 +1256,7 @@ characters={
 			}
 		}
 		corps_commander={
-			traits={ trickster improviser independent_minded war_hero cavalry_leader armor_officer brilliant_strategist panzer_leader mobile_warfare_officer tank_gen_pk }
+			traits={ trickster improviser independent_minded war_hero mobile_warfare_leader armor_officer brilliant_strategist panzer_leader mobile_warfare_officer tank_gen_pk }
 			skill=15
 			attack_skill=23
 			defense_skill=9

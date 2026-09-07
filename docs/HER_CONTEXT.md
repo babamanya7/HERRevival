@@ -183,6 +183,13 @@ Historical assignment policy for these traits:
   improvisation), but contradictory methodical/improviser combinations are
   avoided.
 
+Current German cavalry/mobile assignment decision: Ewald von Kleist is the only
+German character who retains a cavalry specialization (`cavalry_leader`).
+Eberhard von Mackensen, Erich Hoepner, Josef Harpe, Paul Hausser, Hasso von
+Manteuffel and Hermann Balck use `mobile_warfare_leader`; Georg Lindemann and
+Maximilian von Weichs use `mobile_warfare_officer`. Hoepner does not retain
+`cavalry_officer` in this gameplay classification.
+
 The initial GER/SOV historical distribution was added to
 `common/characters/GER.txt` and `common/characters/SOV.txt` on the
 `commander-traits-rework` branch.
@@ -213,6 +220,12 @@ Commander icon convention:
 - earned leader and assignable expert traits retain their separate vanilla
   medal/badge constructions and must not be rendered as personality shields;
 - final DDS assets use uncompressed ARGB8888 with a real alpha channel.
+
+The inherited cavalry and motorized leader/expert artwork is intentionally
+cross-wired in `interface/her_traits.gfx`: the filenames contain the opposite
+motifs, so `GFX_trait_cavalry_*` uses `trait_mobile_warfare_*.dds` and
+`GFX_trait_mobile_warfare_*` uses `trait_cavalry_*.dds`. Do not rename or redraw
+the source assets merely to correct this historical filename mismatch.
 
 ### 4.1 Scopes and context
 

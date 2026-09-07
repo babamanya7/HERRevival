@@ -84,6 +84,11 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_trait_mobile_warfare_leader"
+		texturefile = "gfx/interface/traits/trait_cavalry_leader.dds"
+	}
+
+	spriteType = {
+		name = "GFX_trait_cavalry_leader"
 		texturefile = "gfx/interface/traits/trait_mobile_warfare_leader.dds"
 	}
 
@@ -94,6 +99,11 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_trait_mobile_warfare_expert"
+		texturefile = "gfx/interface/traits/trait_cavalry_expert.dds"
+	}
+
+	spriteType = {
+		name = "GFX_trait_cavalry_expert"
 		texturefile = "gfx/interface/traits/trait_mobile_warfare_expert.dds"
 	}
 

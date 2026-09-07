@@ -17,7 +17,10 @@ HER_CHI_hanoi_route_open = {
 
 HER_CHI_burma_route_open = {
 	original_tag = CHI
-	has_completed_focus = CHI_burma_road
+	OR = {
+		has_completed_focus = CHI_burma_road
+		ENG = { has_completed_focus = uk_burma_focus }
+	}
 	288 = { CONTROLLER = { NOT = { has_war_with = ROOT } } }
 	325 = { CONTROLLER = { NOT = { has_war_with = ROOT } } }
 	640 = { CONTROLLER = { NOT = { has_war_with = ROOT } } }

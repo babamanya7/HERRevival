@@ -419,7 +419,10 @@ USA_CHI_foreign_aid = {
 		allowed = { OR = { original_tag = USA original_tag = ENG } }
 		visible = {
 			CHI = {
-				has_completed_focus = CHI_burma_road
+				OR = {
+					has_completed_focus = CHI_burma_road
+					ENG = { has_completed_focus = uk_burma_focus }
+				}
 				check_variable = { CHI_burma_route_upgrade < 2500 }
 			}
 		}

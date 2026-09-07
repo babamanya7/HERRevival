@@ -135,7 +135,7 @@ HER_CHI_update_western_route_capacity = {
 	}
 	if = {
 		limit = { HER_CHI_ledo_route_open = yes }
-		set_variable = { CHI_ledo_route_capacity = 2500 }
+		set_variable = { CHI_ledo_route_capacity = 1000 }
 		add_to_variable = { var = CHI_ledo_route_capacity value = CHI_ledo_route_upgrade }
 	}
 

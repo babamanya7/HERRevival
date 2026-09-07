@@ -429,3 +429,77 @@ country_event = {
 	}
 	option = { name = her_chi_aid.contract_refuse USA = { clr_country_flag = USA_CHI_tactical_bomber_offer_pending } }
 }
+
+# China requests a second, larger commodity-backed credit line after demonstrating repayment capacity.
+country_event = {
+	id = her_chi_aid.30
+	title = her_chi_aid.30.t
+	desc = her_chi_aid.30.d
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+	option = {
+		name = her_chi_aid.30.a
+		ai_chance = { factor = 100 }
+		CHI = {
+			clr_country_flag = CHI_usa_credit_expansion_requested
+			set_country_flag = CHI_usa_credit_expansion_active
+			set_country_flag = CHI_usa_tungsten_credit_active
+			clr_country_flag = CHI_usa_tungsten_debt_repaid
+			add_to_variable = { CHI_usa_credit_balance = 750000 }
+			add_to_variable = { CHI_usa_tungsten_debt = 1500000 }
+			country_event = { id = her_chi_aid.31 days = 1 }
+		}
+	}
+	option = {
+		name = her_chi_aid.30.b
+		ai_chance = { factor = 0 }
+		CHI = {
+			clr_country_flag = CHI_usa_credit_expansion_requested
+			set_country_flag = CHI_usa_credit_expansion_refused
+			country_event = { id = her_chi_aid.32 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = her_chi_aid.31
+	title = her_chi_aid.31.t
+	desc = her_chi_aid.31.d
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+	option = { name = her_chi_aid.31.a }
+}
+
+country_event = {
+	id = her_chi_aid.32
+	title = her_chi_aid.32.t
+	desc = her_chi_aid.32.d
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+	option = { name = her_chi_aid.32.a }
+}
+
+# A later American initiative still requires Chinese consent before creating new obligations.
+country_event = {
+	id = her_chi_aid.33
+	title = her_chi_aid.33.t
+	desc = her_chi_aid.33.d
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+	option = {
+		name = her_chi_aid.33.a
+		ai_chance = { factor = 100 }
+		set_country_flag = CHI_usa_emergency_credit_accepted
+		set_country_flag = CHI_usa_tungsten_credit_active
+		clr_country_flag = CHI_usa_tungsten_debt_repaid
+		add_to_variable = { CHI_usa_credit_balance = 1000000 }
+		add_to_variable = { CHI_usa_tungsten_debt = 1000000 }
+		USA = { clr_country_flag = USA_CHI_emergency_credit_offer_pending }
+	}
+	option = {
+		name = her_chi_aid.33.b
+		ai_chance = { factor = 0 }
+		set_country_flag = CHI_usa_emergency_credit_refused
+		USA = { clr_country_flag = USA_CHI_emergency_credit_offer_pending }
+	}
+}

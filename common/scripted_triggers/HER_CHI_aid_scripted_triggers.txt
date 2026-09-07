@@ -36,8 +36,17 @@ HER_CHI_hump_route_open = {
 HER_CHI_ledo_route_open = {
 	original_tag = CHI
 	has_completed_focus = CHI_ledo_road
+	has_country_flag = CHI_ledo_road_construction_complete
+	date > 1945.1.27
 	432 = { CONTROLLER = { NOT = { has_war_with = ROOT } } }
 	640 = { CONTROLLER = { NOT = { has_war_with = ROOT } } }
+	747 = { CONTROLLER = { NOT = { has_war_with = ROOT } } }
+}
+
+HER_CHI_ledo_construction_can_start = {
+	original_tag = CHI
+	has_completed_focus = CHI_ledo_road
+	432 = { CONTROLLER = { NOT = { has_war_with = ROOT } } }
 	747 = { CONTROLLER = { NOT = { has_war_with = ROOT } } }
 }
 

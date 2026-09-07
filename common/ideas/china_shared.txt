@@ -1,6 +1,17 @@
 ideas = {
 
 	country = {
+		CHI_flying_tigers_air_group = {
+			allowed = { original_tag = CHI }
+			removal_cost = -1
+			picture = generic_air_bonus
+			modifier = {
+				air_mission_efficiency = 0.05
+				air_ace_generation_chance_factor = 0.25
+				air_wing_xp_loss_when_killed_factor = -0.20
+			}
+		}
+
 		CHI_wargaming_division = {
 
 			picture = chi_wargaming_division

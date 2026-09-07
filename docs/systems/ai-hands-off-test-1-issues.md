@@ -50,7 +50,18 @@ Do not fix issues during the active baseline unless they prevent the run from co
 - Observed: the current German AI tank target template has a strange/non-historical battalion mix and does not match the intended HER organization.
 - Expected baseline organization: 3 tank battalions + 6 motorized infantry battalions + 3 artillery battalions, one of the artillery battalions being heavy artillery, + 3 motorized anti-tank battalions.
 - Additional requirement: preserve the agreed historical organization while also checking the resulting combat width, ordinary support companies, the separate `regimental_support` block, equipment availability, and the upgrade/target conditions so the AI converges on the intended formation rather than lingering on malformed transitional templates.
-- Batch action: rebuild the German panzer target template around the exact 3 tank / 6 motorized / 3 artillery (1 heavy) / 3 motorized AT structure, then verify width and all support layers against HER template syntax.
+- Scope expansion: this is not only a GER-panzer fix. The post-run pass must audit **all AI target templates for all countries** (national and generic) for historical organization, combat width, `regiments`, separate `regimental_support`, ordinary `support`, equipment realism, role assignment and upgrade/convergence conditions. GER panzer organization above is the explicit benchmark case already identified.
+- Batch action: rebuild the German panzer target template around the exact 3 tank / 6 motorized / 3 artillery (1 heavy) / 3 motorized AT structure, then perform the full cross-country AI-template audit before considering the template layer complete.
+
+### HO1-004 — `handle_economy_fatigue` can roll Germany back to Civilian Economy immediately before war
+- Date: observed during Test 1, immediately before the coming war.
+- Country: GER.
+- Subsystem: `decision` / economy law management.
+- Severity: `MAJOR`.
+- Observed: the Reich took `handle_economy_fatigue` and switched onto Civilian Economy directly before war, undoing its pre-war mobilization state and damaging the entire German buildup.
+- Expected: economy-fatigue handling must not demobilize Germany into Civilian Economy on the eve of a historical war. Any fatigue relief must respect imminent-war/historical mobilization context and preserve an appropriate wartime/pre-war economy law floor.
+- Suspected cause: decision availability/effect logic is insufficiently gated against historical-war proximity and/or the AI is allowed to value the fatigue relief without accounting for the strategic cost of downgrading the economy law.
+- Batch action: inspect the full `handle_economy_fatigue` decision chain and any related law-switch effects/AI weights. Add explicit historical-war and current-law guards so GER cannot use the decision to downgrade below the intended pre-war mobilization floor; check whether the same defect can affect other majors.
 
 ## Post-run batch
 

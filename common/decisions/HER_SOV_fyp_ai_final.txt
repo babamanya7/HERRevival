@@ -1,0 +1,41 @@
+# Final AI-only safety for the Second Five-Year Plan.
+# If all six real industrial projects and the finishing focus are completed,
+# do not let an AI USSR fail only because it narrowly missed the 301-civ macro threshold.
+# This does NOT create any factories; the retained Second FYP civ-construction bonus
+# remains the normal way for the AI to reach the threshold.
+
+HER_SOV_fyp_ai_final = {
+	HER_AI_SOV_second_fyp_final_safety = {
+		icon = generic_construction
+		cost = 0
+		fire_only_once = yes
+
+		visible = {
+			is_ai = yes
+			tag = SOV
+		}
+
+		available = {
+			is_ai = yes
+			tag = SOV
+			has_active_mission = SOV_complete_second_five_year_plan
+			has_completed_focus = SOV_finish_the_second_five_year_plan
+			has_country_flag = azov_complete
+			has_country_flag = zaporozh_complete
+			has_country_flag = ural_complete
+			has_country_flag = donbass_complete
+			has_country_flag = chtz_complete
+			has_country_flag = dneproges_complete
+			NOT = { num_of_civilian_factories > 300 }
+		}
+
+		ai_will_do = {
+			factor = 1000
+		}
+
+		complete_effect = {
+			remove_mission = SOV_complete_second_five_year_plan
+			add_stability = 0.05
+		}
+	}
+}

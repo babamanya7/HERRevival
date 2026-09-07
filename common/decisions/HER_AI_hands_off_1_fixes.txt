@@ -1,0 +1,90 @@
+# HER AI hands-off Test 1 corrective guards
+# Keep these fixes AI-only and narrowly scoped to deterministic failures observed in HO1.
+
+guide = {
+	# HO1-004: the generic economy-fatigue chain could leave historical GER on
+	# Civilian/Low Economy immediately before the 1939 war.  Germany must retain
+	# at least Partial Mobilization once the final pre-war buildup has begun.
+	HER_AI_GER_prewar_economy_floor = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+
+		visible = {
+			is_ai = yes
+			original_tag = GER
+			date > 1938.1.1
+			has_war = no
+			OR = {
+				has_idea = civilian_economy
+				has_idea = low_economic_mobilisation
+			}
+		}
+
+		available = {
+			is_ai = yes
+			original_tag = GER
+			date > 1938.1.1
+			has_war = no
+			OR = {
+				has_idea = civilian_economy
+				has_idea = low_economic_mobilisation
+			}
+		}
+
+		ai_will_do = {
+			factor = 100000
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				remove_ideas = civilian_economy
+				remove_ideas = low_economic_mobilisation
+				add_ideas = partial_economic_mobilisation
+			}
+		}
+	}
+
+	# Wartime safety net: a major already at war must never remain on a peacetime
+	# economy law because of a generic fatigue/law transition.
+	HER_AI_GER_wartime_economy_floor = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+
+		visible = {
+			is_ai = yes
+			original_tag = GER
+			has_war = yes
+			OR = {
+				has_idea = civilian_economy
+				has_idea = low_economic_mobilisation
+				has_idea = partial_economic_mobilisation
+			}
+		}
+
+		available = {
+			is_ai = yes
+			original_tag = GER
+			has_war = yes
+			OR = {
+				has_idea = civilian_economy
+				has_idea = low_economic_mobilisation
+				has_idea = partial_economic_mobilisation
+			}
+		}
+
+		ai_will_do = {
+			factor = 100000
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				remove_ideas = civilian_economy
+				remove_ideas = low_economic_mobilisation
+				remove_ideas = partial_economic_mobilisation
+				add_ideas = war_economy
+			}
+		}
+	}
+}

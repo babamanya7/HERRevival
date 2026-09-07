@@ -63,6 +63,55 @@ Do not fix issues during the active baseline unless they prevent the run from co
 - Suspected cause: decision availability/effect logic is insufficiently gated against historical-war proximity and/or the AI is allowed to value the fatigue relief without accounting for the strategic cost of downgrading the economy law.
 - Batch action: inspect the full `handle_economy_fatigue` decision chain and any related law-switch effects/AI weights. Add explicit historical-war and current-law guards so GER cannot use the decision to downgrade below the intended pre-war mobilization floor; check whether the same defect can affect other majors.
 
+### HO1-005 — Generals are being reassigned between armies too frequently
+- Date: observed during Test 1.
+- Countries: observed globally; at minimum majors under active fronts.
+- Subsystem: `front` / army leader assignment.
+- Severity: `MAJOR`.
+- Observed: AI repeatedly moves generals from one army to another instead of maintaining stable command assignments.
+- Expected: generals should remain attached to an army/front for meaningful periods unless there is a strong reason to replace them, preserving specialization and avoiding constant command churn.
+- Suspected cause: current leader-assignment scoring/reassignment thresholds are too permissive relative to the score advantage of a new assignment.
+- Batch action: inspect NAI army-leader assignment/reassignment defines and any scripted assignment behavior; strengthen assignment persistence and reduce pointless leader churn without blocking genuinely better reassignment.
+
+### HO1-006 — Britain commits roughly half of its army to France and still loses the campaign
+- Date: observed during the Battle of France in Test 1.
+- Country: ENG.
+- Subsystem: `front` / expeditionary commitment / historical strategy.
+- Severity: `MAJOR`.
+- Observed: Britain sent roughly half of its army, about 600k men, into France, yet Germany still overran France.
+- Expected: the BEF should be historically meaningful but bounded; Britain must retain sufficient home, imperial and strategic reserve while avoiding a huge commitment that does not materially improve the French defense.
+- Batch action: audit ENG France/Benelux front weights, ally-front commitment, reserve/home-defense requirements and expeditionary behavior. Determine whether the issue is excessive commitment, poor placement, weak templates, bad front AI, or some combination rather than merely reducing the raw division count.
+
+### HO1-007 — British India sends essentially its entire army to France
+- Date: observed during the Battle of France in Test 1.
+- Country: RAJ.
+- Subsystem: `front` / expeditionaries / subject AI.
+- Severity: `MAJOR`.
+- Observed: British India transferred/committed all or nearly all of its divisions to France.
+- Expected: RAJ should retain the overwhelming majority of its army for India, Burma, internal/imperial defense and the Asian theater; only a limited historical expeditionary contribution should be possible.
+- Suspected cause: generic faction/ally front desire and expeditionary logic overwhelms local-defense priorities for subjects.
+- Batch action: add/strengthen RAJ home-area and Asian-theater retention, cap European expeditionary participation, and review subject expeditionary NAI/strategy behavior so colonial armies are not emptied into Europe.
+
+### HO1-008 — Japan bleeds equipment stockpiles in China and fails to take Wuhan
+- Date: observed during the Sino-Japanese War in Test 1.
+- Country: JAP.
+- Subsystem: `front` / production / supply / China strategy.
+- Severity: `MAJOR`.
+- Observed: Japan is fighting in China at unsustainable intensity, driving equipment stockpiles deeply negative, while at the same time failing to capture Wuhan.
+- Expected: Japan should maintain enough offensive pressure to progress historically through central China, including a credible Wuhan campaign, but should not destroy its entire equipment reserve through continuous low-value attacks.
+- Batch action: diagnose attack aggressiveness, target/front priorities toward Wuhan, supply/terrain awareness, template cost, reinforcement needs and production balance together. Avoid solving this with blanket combat buffs; objective is better concentration and pacing, not free strength.
+
+### HO1-009 — Soviet area-defense orders defend naval bases in inaccessible/non-applicable regions and strand divisions
+- Date: observed during Test 1.
+- Country: SOV.
+- Subsystem: `front` / area defense / `ai_areas`.
+- Severity: `MAJOR`.
+- Evidence: screenshot shows a Soviet area-defense order with `Protect naval bases` enabled while divisions assigned to the order are in regions where no usable naval bases are accessible.
+- Observed: divisions assigned to these territorial-defense orders remain idle/stuck because the order asks them to defend naval bases that do not exist or cannot be reached in the selected area.
+- Expected: inland Soviet area-defense orders should not use naval-base defense as an active objective unless the selected area actually contains reachable naval bases; divisions must be assigned to valid VP/fort/border/rail/supply objectives instead of dead orders.
+- Suspected cause: global default area-defense setting `AREA_DEFENSE_SETTING_PORTS = true` is being applied indiscriminately to scripted Soviet defense areas and/or the selected `ai_areas` contain no valid port targets for that order.
+- Batch action: audit Soviet area-defense strategy generation and global NAI area-defense defaults. Ensure port-defense objectives are only used for coastal areas with reachable ports, and inspect all major-country defense orders for the same dead-order failure mode.
+
 ## Post-run batch
 
 After the run, group fixes by layer rather than by observation order:

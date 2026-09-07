@@ -112,3 +112,35 @@ country_event = {
 		HUN = { transfer_state = 45 }
 	}
 }
+
+# Historical accession to the Axis
+country_event = {
+	id = hungary.7
+	title = hungary.7.t
+	desc = hungary.7.d
+	picture = GFX_report_event_hitler_handshake
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = HUN
+		date > 1940.11.10
+		is_in_faction = no
+		is_subject = no
+		NOT = { has_war_with = GER }
+		has_completed_focus = HUN_joint_aluminum_mining_company
+		FRA = { has_capitulated = yes }
+		GER = {
+			exists = yes
+			is_faction_leader = yes
+			NOT = { has_capitulated = yes }
+		}
+	}
+
+	mean_time_to_happen = { days = 5 }
+
+	option = {
+		name = hungary.7.a
+		GER = { add_to_faction = ROOT }
+	}
+}

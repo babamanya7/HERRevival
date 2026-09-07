@@ -172,3 +172,109 @@ Before calling the system final:
 5. Verify that high skill no longer makes every commander converge on the same advanced tactics.
 6. Check that base fallback tactics remain common enough when situational prerequisites are absent.
 7. Revisit numerical steps only after observed frequency data; do not rebalance from isolated tooltip impressions.
+
+## 10. Commander-traits rework integration plan
+
+Target source branch: `commander-traits-rework`.
+
+The branch introduces personality-style traits and new professional specialization chains that must be treated differently by the tactic system.
+
+### 10.1 Core rule: avoid double counting personality traits
+
+The following new personality traits already alter HER subskills and therefore should affect most tactics **indirectly** through the `*_skill_level` checks rather than receiving large direct tactic weights:
+
+- `independent_minded` — raises Logistics/initiative profile;
+- `staff_officer` — raises Planning/staff profile;
+- `methodical` — raises Planning while reducing Logistics/initiative;
+- `improviser` — raises Logistics/initiative while reducing Planning.
+
+Direct tactic bonuses for these traits, where used at all, should be small (`+1` or occasionally `+2`) and reserved for tactics whose behavioral meaning is especially specific to the personality. The trait's subskill changes remain the primary mechanism.
+
+Recommended personality interaction:
+
+- `independent_minded`: light preference for `Flank Attack`, `Unexpected Thrust`, `Tactical Withdrawal` / `TW Evade` and opportunity exploitation;
+- `staff_officer`: normally no direct bonus; Planning already feeds `Planned Attack`, `Planned Defense`, `Breakthrough`, `Backhand Blow`, artillery preparation and reserve-heavy operations;
+- `methodical`: small positive preference for `Planned Attack`, `Planned Defense`, `Barrage`; small negative preference for `Unexpected Thrust`, `Flank Attack`, rapid pursuit/interception;
+- `improviser`: small positive preference for `Unexpected Thrust`, `Flank Attack`, `TW Intercept`, bridge seizure/retaking; small negative preference for the most prepared fire-plan/position-defense choices.
+
+### 10.2 Professional traits should directly mark tactical school
+
+Professional/formation-specialist traits may receive direct tactic weights because they mean the commander has actual specialist experience, not merely a personality inclination.
+
+The most important new chain is:
+
+`mobile_warfare_officer -> mobile_warfare_leader -> assignable mobile-warfare expertise`
+
+`mobile_warfare_officer` is gained from motorized/mechanized command and feeds `mobile_warfare_leader`. This fills the previous gap where mobile/mechanized commanders were often represented by tank-only `panzer_leader` semantics.
+
+Planned direct integration after merge:
+
+- `mobile_warfare_officer`: `Unexpected Thrust` +2, `Flank Attack` +1, `Blitz` +1;
+- `mobile_warfare_leader`: `Unexpected Thrust` +2, `Flank Attack` +2, `Blitz` +2, `Encirclement` +1, `TW Intercept` +1;
+- higher mobile-warfare expert trait: additional +1 to `Blitz`, `Encirclement`, `Flank Attack` and pursuit/interception-type choices, without replacing `panzer_expert` as the stronger pure armored marker.
+
+The intended distinction is:
+
+- `panzer_leader` / `panzer_expert` = armored shock, armored breakthrough and tank-led exploitation;
+- `mobile_warfare_officer` / `mobile_warfare_leader` = motorized/mechanized maneuver, rapid exploitation and pursuit;
+- `combined_arms_expert` = combined-arms execution across softer formations;
+- `bearer_of_artillery` = artillery-centric fire preparation and fire control.
+
+### 10.3 Planned trigger changes after merge
+
+The current normal `Blitz` trigger is too binary because it effectively requires either `panzer_leader` for hard formations or `combined_arms_expert` for soft formations.
+
+After the trait branch is merged, review the trigger toward this structure:
+
+- hard formations: `panzer_leader` OR `mobile_warfare_leader` OR exceptionally high Attack+Logistics with suitable overall skill/advantage;
+- medium/mobile formations: `mobile_warfare_officer` / `mobile_warfare_leader` should become a natural access path;
+- soft formations: `combined_arms_expert` remains the main specialist path.
+
+This should allow an operationally gifted mobile commander to use Blitz without forcing every such commander to carry a tank-specialist trait, while a true panzer specialist still receives the strongest weight.
+
+### 10.4 Tactic-by-tactic trait overlay after merge
+
+**Encirclement**
+- keep `trickster`, `panzer_expert`, `combined_arms_expert`;
+- add light `mobile_warfare_leader` weight;
+- personality traits mainly act through Planning/Logistics.
+
+**Blitz / Masterful Blitz**
+- direct `mobile_warfare_officer`/`mobile_warfare_leader` weights;
+- preserve stronger `panzer_leader`/`panzer_expert` armored identity;
+- do not use `staff_officer` as a direct Blitz booster.
+
+**Unexpected Thrust / Flank Attack**
+- strongest beneficiaries of mobile-warfare traits;
+- `improviser` and `independent_minded` may receive small direct bonuses because the behavior matches opportunity exploitation.
+
+**Breakthrough**
+- remain primarily Planning + formation competence + reserves;
+- direct mobile-warfare bonuses should be small or absent;
+- `panzer_expert`, `combined_arms_expert`, `bearer_of_artillery` remain the important professional markers.
+
+**Planned Attack / Planned Defense / Barrage / Overwhelming Fire**
+- mostly driven by Planning/Defense and specialist professional traits;
+- `methodical` may receive a small direct preference;
+- `staff_officer` should normally work only through its Planning increase.
+
+**Delay / Tactical Withdrawal / TW Evade / TW Intercept**
+- Logistics remains primary;
+- `independent_minded` / `improviser` may receive small direct opportunity-response bonuses;
+- `mobile_warfare_leader` can directly help interception/pursuit where mobile formations are present.
+
+**Backhand Blow**
+- Planning + Logistics + reserves remain central;
+- light `mobile_warfare_leader` contribution is acceptable for hard/mobile formations;
+- do not turn it into a generic panzer tactic: `trickster` / `brilliant_strategist` and operational-quality stats remain more important.
+
+### 10.5 Post-merge implementation order
+
+1. Confirm exact final trait IDs after merge.
+2. Add direct weights for the professional mobile-warfare chain.
+3. Add only small personality-specific direct modifiers where justified.
+4. Expand Blitz and selected maneuver-tactic triggers so mobile-warfare specialists are valid access paths.
+5. Re-run commander comparison matrix with the merged GER/SOV character rosters.
+6. Only then tune numerical weights from combat-debug frequencies.
+
+This integration plan is intentionally documented before merge so the tactic system does not have to be redesigned a second time after the trait branch lands.

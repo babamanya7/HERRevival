@@ -141,6 +141,34 @@ Do not fix issues during the active baseline unless they prevent the run from co
 - Design requirement: implement this specifically as an AI-vs-AI historical pacing rule so human JAP or human CHI are not artificially constrained by the same scripted stalemate.
 - Batch action: add bounded AI-only front behavior/strategy for the post-Wuhan/post-main-expansion phase: reduce low-value Japanese offensive bleeding, prevent excessive Chinese counteroffensive pressure, preserve key Japanese-held areas and enough Japanese forces in China while allowing Southern Operation commitments. Prefer strategy/front weighting and pacing controls over blanket combat-stat buffs.
 
+### HO1-013 — Japanese Southern Operation invasions are fragmented instead of sequential and concentrated
+- Date: observed during the Pacific-war phase of Test 1.
+- Country: JAP.
+- Subsystem: `navy` / naval invasions / historical strategy.
+- Severity: `MAJOR`.
+- Observed: Japan launches amphibious operations in a disorganized, fragmented manner instead of concentrating forces and resolving objectives in sequence.
+- Expected operational sequence: prioritize and complete major invasion phases in roughly this order: Philippines -> Malaya -> Indonesia/Dutch East Indies -> Papua/New Guinea. Parallel side operations are acceptable only when they do not dilute the main phase.
+- Design requirement: Southern Operation should be represented as staged AI behavior, with each phase receiving concentrated invasion-force, escort, patrol and fleet-support priority before the next phase becomes dominant.
+- Batch action: audit JAP invasion target weights, `invasion`/`naval_invasion` strategy entries, target-area activation conditions, army commitment and task-force support. Convert the current broad Pacific desire into sequential phase logic tied to conquest/control of the preceding objectives.
+
+### HO1-014 — Japan lacks sufficiently explicit patrol/dominance preparation for scripted invasions
+- Date: observed during the Pacific-war phase of Test 1.
+- Country: JAP.
+- Subsystem: `navy` / patrol / naval dominance / invasion support.
+- Severity: `MAJOR`.
+- Observed: Japanese invasion plans are not consistently preceded by concentrated naval missions in the relevant sea zones, reducing `naval_dominance` and causing invasion preparation/execution to stall or scatter.
+- Expected: before each Southern Operation phase, the AI should deliberately assign patrol/strike-force/invasion-support capacity to the sea regions required by that phase, with patrol priority high enough to produce the dominance needed for launch.
+- Batch action: add phase-specific naval mission priorities for the Philippines, Malaya, Indonesia and Papua/New Guinea routes; ensure patrol groups and strike forces are present in the exact required sea zones before army invasion priorities peak. Validate interaction with the new major-navy goals/taskforce templates rather than relying only on generic mission scoring.
+
+### HO1-015 — Investigate AI-only scripted naval invasions without the normal naval-superiority gate
+- Date: design request raised during Test 1.
+- Country: primarily JAP; potentially reusable for other scripted historical AI invasions.
+- Subsystem: `navy` / naval invasion engine constraints / NAI defines.
+- Severity: `MEDIUM` pending feasibility; becomes `MAJOR` if dominance gating remains a recurrent blocker after HO1-014.
+- Requested behavior: if technically possible, historical AI-controlled scripted invasions should be able to launch without satisfying the normal player-facing naval-superiority/naval-dominance requirement, while human invasions and ordinary unscripted AI invasions retain the normal rule.
+- Constraint: do not globally remove naval-superiority requirements for players or all AI. Any bypass should be narrowly scoped to AI-only historical operations and should not create free unrestricted teleport-style invasions.
+- Batch action: inspect available invasion-related defines, scripted effects/triggers and operation mechanisms for a supported way to bypass or satisfy the supremacy gate only for targeted AI operations. If no safe AI-only bypass exists, retain the normal gate and solve reliability through HO1-014 mission/dominance preparation instead.
+
 ## Post-run batch
 
 After the run, group fixes by layer rather than by observation order:

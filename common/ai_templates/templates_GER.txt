@@ -1,6 +1,7 @@
-# Germany: historical structure translated into exact 30-width HER combat divisions.
-# Core infantry rule: 3 infantry regiments (9 battalions) + artillery regiment
-# (3 field + 1 heavy) + 2 divisional AT/AA battalions = 15 line battalions = 30 width.
+# Germany: historical structure translated into HER combat divisions.
+# Regimental support is a distinct HER layer: do not fold it into divisional support.
+# Standard German regimental support follows the OOB pattern of 3 artillery companies
+# and 3 anti-tank companies for three-regiment divisions.
 
 infantry_GER = {
 	available_for = { GER }
@@ -13,21 +14,23 @@ infantry_GER = {
 		reinforce_prio = 2
 
 		target_template = {
-			support = {
-				engineer = 1
-				recon = 1
-				signal_company = 1
-				field_hospital = 1
-				logistics_company = 1
-				artillery = 1
-				anti_tank = 1
-			}
 			regiments = {
 				heavy_infantry = 9
 				artillery_brigade = 3
 				heavy_artillery_brigade = 1
 				anti_tank_brigade = 1
 				anti_air_brigade = 1
+			}
+			regimental_support = {
+				artillery_company = 3
+				anti_tank_company = 3
+			}
+			support = {
+				engineer = 1
+				recon = 1
+				signal_company = 1
+				field_hospital = 1
+				logistics_company = 1
 			}
 		}
 
@@ -46,22 +49,24 @@ infantry_GER = {
 		reinforce_prio = 2
 
 		target_template = {
-			support = {
-				engineer = 1
-				recon = 1
-				signal_company = 1
-				field_hospital = 1
-				logistics_company = 1
-				artillery = 1
-				anti_tank = 1
-				anti_air_battery = 1
-			}
 			regiments = {
 				heavy_infantry = 9
 				artillery_brigade = 3
 				heavy_artillery_brigade = 1
 				anti_tank_brigade = 1
 				anti_air_brigade = 1
+			}
+			regimental_support = {
+				artillery_company = 3
+				anti_tank_company = 3
+			}
+			support = {
+				engineer = 1
+				recon = 1
+				signal_company = 1
+				field_hospital = 1
+				logistics_company = 1
+				anti_air_battery = 1
 			}
 		}
 	}
@@ -71,11 +76,11 @@ armor_GER = {
 	available_for = { GER }
 	role = armor
 
-	upgrade_prio = { factor = 140 }
+	upgrade_prio = { factor = 170 }
 
 	GER_light_panzer = {
 		upgrade_prio = {
-			factor = 80
+			factor = 110
 			modifier = {
 				factor = 0
 				has_tech = basic_medium_tank_chassis
@@ -83,20 +88,28 @@ armor_GER = {
 		}
 		reinforce_prio = 3
 
+		# Historical HER organization target: 3 tank battalions, 6 motorized,
+		# 2 field + 1 heavy motorized artillery, 3 motorized AT = 15 line battalions.
 		target_template = {
+			regiments = {
+				light_armor = 3
+				motorized = 6
+				mot_artillery_brigade = 2
+				motorized_heavy_artillery_brigade = 1
+				mot_anti_tank_brigade = 3
+			}
+			regimental_support = {
+				artillery_company = 3
+				anti_tank_company = 3
+			}
 			support = {
 				assault_engineer = 1
-				armored_car_recon = 1
+				mot_recon = 1
 				mot_signal_company = 1
 				mot_field_hospital = 1
 				mot_maintenance_company = 1
 				logistics_company = 1
 				anti_air = 1
-			}
-			regiments = {
-				light_armor = 4
-				motorized = 8
-				mot_artillery_brigade = 3
 			}
 		}
 
@@ -108,7 +121,7 @@ armor_GER = {
 	GER_medium_panzer = {
 		enable = { has_tech = basic_medium_tank_chassis }
 		upgrade_prio = {
-			factor = 130
+			factor = 180
 			modifier = {
 				factor = 2
 				date > 1939.1.1
@@ -117,22 +130,25 @@ armor_GER = {
 		reinforce_prio = 3
 
 		target_template = {
+			regiments = {
+				medium_armor = 3
+				motorized = 6
+				mot_artillery_brigade = 2
+				motorized_heavy_artillery_brigade = 1
+				mot_anti_tank_brigade = 3
+			}
+			regimental_support = {
+				artillery_company = 3
+				anti_tank_company = 3
+			}
 			support = {
 				assault_engineer = 1
-				armored_car_recon = 1
+				mot_recon = 1
 				mot_signal_company = 1
 				mot_field_hospital = 1
 				mot_maintenance_company = 1
-				anti_air = 1
 				logistics_company = 1
-				artillery = 1
-			}
-			regiments = {
-				medium_armor = 5
-				motorized = 6
-				mot_artillery_brigade = 2
-				mot_anti_tank_brigade = 1
-				mot_anti_air_brigade = 1
+				anti_air = 1
 			}
 		}
 
@@ -147,7 +163,7 @@ armor_GER = {
 			has_tech = mechanised_infantry
 		}
 		upgrade_prio = {
-			factor = 170
+			factor = 190
 			modifier = {
 				factor = 2
 				date > 1942.1.1
@@ -155,23 +171,28 @@ armor_GER = {
 		}
 		reinforce_prio = 3
 
+		# Late-war modernization keeps the same three-regiment organization,
+		# replacing motorized infantry with mechanized while retaining divisional AT mass.
 		target_template = {
+			regiments = {
+				medium_armor = 3
+				mechanized = 6
+				mechanized_sp_artillery_brigade = 2
+				motorized_heavy_artillery_brigade = 1
+				medium_tank_destroyer_brigade = 3
+			}
+			regimental_support = {
+				artillery_company = 3
+				anti_tank_company = 3
+			}
 			support = {
 				assault_engineer = 1
 				armored_car_recon = 1
 				mot_signal_company = 1
 				mot_field_hospital = 1
 				mot_maintenance_company = 1
-				anti_air = 1
 				logistics_company = 1
-				artillery = 1
-			}
-			regiments = {
-				medium_armor = 5
-				mechanized = 6
-				mechanized_sp_artillery_brigade = 2
-				medium_tank_destroyer_brigade = 1
-				mechanized_anti_air_brigade = 1
+				anti_air = 1
 			}
 		}
 	}
@@ -182,13 +203,24 @@ motorized_GER = {
 	role = motorized
 	front_role_override = offence
 
-	upgrade_prio = { factor = 90 }
+	upgrade_prio = { factor = 100 }
 
 	GER_motorized = {
-		upgrade_prio = { factor = 90 }
+		upgrade_prio = { factor = 100 }
 		reinforce_prio = 3
 
 		target_template = {
+			regiments = {
+				motorized = 9
+				mot_artillery_brigade = 3
+				motorized_heavy_artillery_brigade = 1
+				mot_anti_tank_brigade = 1
+				mot_anti_air_brigade = 1
+			}
+			regimental_support = {
+				artillery_company = 3
+				anti_tank_company = 3
+			}
 			support = {
 				engineer = 1
 				motorbike_recon = 1
@@ -196,16 +228,6 @@ motorized_GER = {
 				mot_field_hospital = 1
 				mot_maintenance_company = 1
 				logistics_company = 1
-				artillery = 1
-				anti_tank = 1
-				anti_air = 1
-			}
-			regiments = {
-				motorized = 9
-				mot_artillery_brigade = 3
-				motorized_heavy_artillery_brigade = 1
-				mot_anti_tank_brigade = 1
-				mot_anti_air_brigade = 1
 			}
 		}
 	}
@@ -230,24 +252,24 @@ panzergrenadier_GER = {
 		reinforce_prio = 3
 
 		target_template = {
+			regiments = {
+				medium_armor = 3
+				mechanized = 6
+				mechanized_sp_artillery_brigade = 3
+				medium_tank_destroyer_brigade = 3
+			}
+			regimental_support = {
+				artillery_company = 3
+				anti_tank_company = 3
+			}
 			support = {
 				assault_engineer = 1
-				motorbike_recon = 1
 				armored_car_recon = 1
 				mot_signal_company = 1
 				mot_field_hospital = 1
 				mot_maintenance_company = 1
 				logistics_company = 1
-				artillery = 1
-				anti_tank = 1
 				anti_air = 1
-			}
-			regiments = {
-				medium_armor = 3
-				mechanized = 7
-				mechanized_sp_artillery_brigade = 3
-				medium_tank_destroyer_brigade = 1
-				mechanized_anti_air_brigade = 1
 			}
 		}
 	}
@@ -276,21 +298,22 @@ anti_armor_GER = {
 		reinforce_prio = 2
 
 		target_template = {
-			support = {
-				engineer = 1
-				recon = 1
-				artillery = 1
-				anti_tank = 1
-				anti_air = 1
-				signal_company = 1
-				field_hospital = 1
-				logistics_company = 1
-			}
 			regiments = {
 				heavy_infantry = 9
 				artillery_brigade = 3
 				heavy_artillery_brigade = 1
 				anti_tank_brigade = 2
+			}
+			regimental_support = {
+				artillery_company = 3
+				anti_tank_company = 3
+			}
+			support = {
+				engineer = 1
+				recon = 1
+				signal_company = 1
+				field_hospital = 1
+				logistics_company = 1
 			}
 		}
 	}
@@ -314,19 +337,20 @@ mountaineers_GER = {
 		reinforce_prio = 2
 
 		target_template = {
-			support = {
-				engineer = 1
-				recon = 1
-				artillery = 1
-				anti_air = 1
-				anti_tank = 1
-				signal_company = 1
-				field_hospital = 1
-				logistics_company = 1
-			}
 			regiments = {
 				mountaineers = 12
 				artillery_brigade = 3
+			}
+			regimental_support = {
+				artillery_company = 3
+				anti_tank_company = 3
+			}
+			support = {
+				engineer = 1
+				recon = 1
+				signal_company = 1
+				field_hospital = 1
+				logistics_company = 1
 			}
 		}
 	}
@@ -350,18 +374,19 @@ paratroopers_GER = {
 		reinforce_prio = 2
 
 		target_template = {
+			regiments = {
+				paratrooper = 15
+			}
+			regimental_support = {
+				artillery_company = 3
+				anti_tank_company = 3
+			}
 			support = {
 				assault_engineer = 1
 				recon = 1
-				artillery = 1
-				anti_air = 1
-				anti_tank = 1
 				signal_company = 1
 				field_hospital = 1
 				logistics_company = 1
-			}
-			regiments = {
-				paratrooper = 15
 			}
 		}
 	}
@@ -378,11 +403,11 @@ garrison_GER = {
 		custom_icon = 13
 
 		target_template = {
-			support = {
-				military_police = 1
-			}
 			regiments = {
 				cavalry = 8
+			}
+			support = {
+				military_police = 1
 			}
 		}
 	}

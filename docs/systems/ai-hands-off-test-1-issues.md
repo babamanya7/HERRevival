@@ -112,6 +112,16 @@ Do not fix issues during the active baseline unless they prevent the run from co
 - Suspected cause: global default area-defense setting `AREA_DEFENSE_SETTING_PORTS = true` is being applied indiscriminately to scripted Soviet defense areas and/or the selected `ai_areas` contain no valid port targets for that order.
 - Batch action: audit Soviet area-defense strategy generation and global NAI area-defense defaults. Ensure port-defense objectives are only used for coastal areas with reachable ports, and inspect all major-country defense orders for the same dead-order failure mode.
 
+### HO1-010 — Germany misses the historical 22 June 1941 Barbarossa timing because the focus schedule drifts
+- Date: 1941-06-22 checkpoint in Test 1.
+- Country: GER.
+- Subsystem: `focus` / historical strategy plan / war timing.
+- Severity: `MAJOR`.
+- Observed: Germany had not attacked the Soviet Union by 22 June 1941 because its focus progression had fallen behind schedule.
+- Expected: with historical focuses enabled, the German AI should reliably reach the Barbarossa war trigger in time for an invasion on or very near 22 June 1941, assuming no major alternate-history blocker has occurred.
+- Suspected cause: the German historical `ai_strategy_plan` still permits too much schedule drift in the chain leading into Barbarossa, whether from unnecessary intervening focuses, late prerequisites, or insufficiently hard prioritization of the eastern-war sequence.
+- Batch action: reconstruct the full German focus timeline from the pre-war diplomatic/industrial chain through Barbarossa, identify exactly which focuses consumed the missing calendar time, and retime/reorder/prioritize the sequence so the eastern-war trigger lands around 22 June 1941. Do not patch only the final war focus if the upstream schedule is the actual cause.
+
 ## Post-run batch
 
 After the run, group fixes by layer rather than by observation order:
